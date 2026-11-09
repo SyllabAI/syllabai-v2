@@ -1,0 +1,4380 @@
+{
+ "artifact": "rn11-run-015-mirror-sweep-r0",
+ "pinSha": "01a847d1229cf28c50827200e242b67c0c4479a2",
+ "law": "spine titles == content titles (verbatim, code-matched, document order)",
+ "spineByteRoundTrip": {
+  "stable": 106,
+  "unstable": [],
+  "law": "json.dumps(load(b), ensure_ascii=False, separators=(',',':')) preserves bytes (+/- trailing newline)"
+ },
+ "totals": {
+  "spines": 106,
+  "contentDirs": 106,
+  "slugsSwept": 106,
+  "missingContent": [],
+  "missingSpine": [],
+  "driftRows": 1,
+  "driftCourses": 1,
+  "driftByFamily": {
+   "SPEC_POINT": 1
+  },
+  "driftByMatchedBy": {
+   "exact": 1
+  },
+  "fragContentEnding": 1,
+  "fragSpineEnding": 0,
+  "structuralRows": 0,
+  "unmatchedContentCodes": 215,
+  "unmatchedSpineCodes": 32,
+  "unmatchedSynthetic": 180,
+  "censusMismatches": 13
+ },
+ "perSlug": {
+  "cie-a-level-accounting-21": {
+   "slug": "cie-a-level-accounting-21",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 17,
+     "SPEC_POINT": 34
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 17,
+     "specPoints": 34,
+     "parsePool": 34,
+     "scopedPool": 34,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 1.4 title drift (page-wrap artifact): kept 'Reconciliation and verification'; also seen ['Reconciliation and verification continued']",
+    "subtopic 1.5 title drift (page-wrap artifact): kept 'Preparation of financial statements'; also seen ['Preparation of financial statements continued']",
+    "subtopic 1.6 title drift (page-wrap artifact): kept 'Analysis and communication of accounting information'; also seen ['Analysis and communication of accounting information continued']",
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Traditional costing methods'; also seen ['Traditional costing methods continued']",
+    "subtopic 3.1 title drift (page-wrap artifact): kept 'Preparation of financial statements'; also seen ['Preparation of financial statements continued']",
+    "duplicate subtopic title 'Preparation of financial statements' in section 'Financial accounting (A Level)' (official key 3.1) — suffixed with key"
+   ]
+  },
+  "cie-a-level-biology-25": {
+   "slug": "cie-a-level-biology-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 19,
+     "SUBTOPIC": 44,
+     "SPEC_POINT": 257
+    },
+    "spineMeta": {
+     "topics": 19,
+     "subtopics": 44,
+     "specPoints": 257,
+     "parsePool": 257,
+     "scopedPool": 257,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'Control and coordination in' in section 'Control and coordination' (official key 15.2) — suffixed with key"
+   ]
+  },
+  "cie-a-level-business-23": {
+   "slug": "cie-a-level-business-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 10,
+     "SUBTOPIC": 34,
+     "SPEC_POINT": 116
+    },
+    "spineMeta": {
+     "topics": 10,
+     "subtopics": 34,
+     "specPoints": 116,
+     "parsePool": 116,
+     "scopedPool": 116,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Enterprise'; also seen ['Enterprise continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Human resource management (HRM)'; also seen ['Human resource management (HRM) continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'The marketing mix'; also seen ['The marketing mix continued']",
+    "subtopic 4.1 title drift (page-wrap artifact): kept 'The nature of operations'; also seen ['The nature of operations continued']",
+    "subtopic 6.1 title drift (page-wrap artifact): kept 'External influences on business activity'; also seen ['External influences on business activity continued']",
+    "subtopic 7.1 title drift (page-wrap artifact): kept 'Organisational structure'; also seen ['Organisational structure continued']"
+   ]
+  },
+  "cie-a-level-chemistry-25": {
+   "slug": "cie-a-level-chemistry-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 37,
+     "SUBTOPIC": 90,
+     "SPEC_POINT": 356
+    },
+    "spineMeta": {
+     "topics": 37,
+     "subtopics": 90,
+     "specPoints": 356,
+     "parsePool": 356,
+     "scopedPool": 356,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 1 title drift (page-wrap artifact): kept 'Atomic structure'; also seen ['Analytical techniques']",
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Particles in the atom and atomic radius'; also seen ['× abundance of M ion']",
+    "duplicate subtopic title 'Homogeneous and heterogeneous catalysts' in section 'Reaction kinetics' (official key 26.2) — suffixed with key",
+    "duplicate subtopic title 'Similarities and trends in the properties of the Group 2 metals, magnesium to barium, and' in section 'Group' (official key 27.1) — suffixed with key",
+    "duplicate subtopic title 'Formulas, functional groups and the naming of organic compounds' in section 'Chemistry of transition elements' (official key 29.1) — suffixed with key"
+   ]
+  },
+  "cie-a-level-computer-science-19": {
+   "slug": "cie-a-level-computer-science-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 20,
+     "SUBTOPIC": 44,
+     "SPEC_POINT": 227
+    },
+    "spineMeta": {
+     "topics": 20,
+     "subtopics": 44,
+     "specPoints": 227,
+     "parsePool": 227,
+     "scopedPool": 227,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'Algorithms' in section 'Computational thinking and Problem-solving' (official key 19.1) — suffixed with key"
+   ]
+  },
+  "cie-a-level-economics-23": {
+   "slug": "cie-a-level-economics-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 11,
+     "SUBTOPIC": 53,
+     "SPEC_POINT": 253
+    },
+    "spineMeta": {
+     "topics": 11,
+     "subtopics": 53,
+     "specPoints": 253,
+     "parsePool": 253,
+     "scopedPool": 253,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "topic 8 title drift (page-wrap artifact): kept 'Government microeconomic intervention (A Level)'; also seen ['The price system and the microeconomy (A Level)']",
+    "subtopic 7.6 title drift (page-wrap artifact): kept 'Different market structures'; also seen ['Different market structures continued']",
+    "subtopic 8.1 title drift (page-wrap artifact): kept 'Government policies to achieve efficient resource allocation and correct market failure'; also seen ['Government policies to achieve efficient resource allocation and correct market failure continued']",
+    "subtopic 9.2 title drift (page-wrap artifact): kept 'Economic growth and sustainability'; also seen ['Economic growth and sustainability continued']",
+    "subtopic 9.4 title drift (page-wrap artifact): kept 'Money and banking'; also seen ['Money and banking continued']",
+    "duplicate subtopic title 'Government macroeconomic policy objectives' in section 'Government macroeconomic intervention (A Level)' (official key 10.1) — suffixed with key"
+   ]
+  },
+  "cie-a-level-geography-21": {
+   "slug": "cie-a-level-geography-21",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 14,
+     "SUBTOPIC": 56,
+     "SPEC_POINT": 167
+    },
+    "spineMeta": {
+     "topics": 14,
+     "subtopics": 56,
+     "specPoints": 167,
+     "parsePool": 167,
+     "scopedPool": 167,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "a0b10aac9e6ba66fba398c2e9a8d009c54092bee",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'The human impact' in section 'Atmosphere and weather' (official key 2.4) — suffixed with key",
+    "duplicate subtopic title 'The human impact' in section 'Rocks and weathering' (official key 3.4) — suffixed with key"
+   ]
+  },
+  "cie-a-level-maths-20-mechanics": {
+   "slug": "cie-a-level-maths-20-mechanics",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 22
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 5,
+     "specPoints": 22,
+     "parsePool": 146,
+     "scopedPool": 22,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 4 title drift (page-wrap artifact): kept 'Pure Mathematics'; also seen ['Mechanics']"
+   ]
+  },
+  "cie-a-level-maths-20-probability-and-statistics-1": {
+   "slug": "cie-a-level-maths-20-probability-and-statistics-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 17
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 5,
+     "specPoints": 17,
+     "parsePool": 146,
+     "scopedPool": 17,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 5 title drift (page-wrap artifact): kept 'Mechanics'; also seen ['Probability & Statistics']"
+   ]
+  },
+  "cie-a-level-maths-20-probability-and-statistics-2": {
+   "slug": "cie-a-level-maths-20-probability-and-statistics-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 18
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 5,
+     "specPoints": 18,
+     "parsePool": 146,
+     "scopedPool": 18,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-a-level-maths-20-pure-1": {
+   "slug": "cie-a-level-maths-20-pure-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 8,
+     "SPEC_POINT": 33
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 8,
+     "specPoints": 33,
+     "parsePool": 146,
+     "scopedPool": 33,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-a-level-maths-20-pure-2": {
+   "slug": "cie-a-level-maths-20-pure-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 6,
+     "SPEC_POINT": 17
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 6,
+     "specPoints": 17,
+     "parsePool": 146,
+     "scopedPool": 17,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "340803c9af4a949d3e274251b08697c6b42ba016",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-a-level-maths-20-pure-3": {
+   "slug": "cie-a-level-maths-20-pure-3",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 9,
+     "SPEC_POINT": 43
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 9,
+     "specPoints": 43,
+     "parsePool": 146,
+     "scopedPool": 39,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-a-level-physics-25": {
+   "slug": "cie-a-level-physics-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 25,
+     "SUBTOPIC": 76,
+     "SPEC_POINT": 303
+    },
+    "spineMeta": {
+     "topics": 25,
+     "subtopics": 76,
+     "specPoints": 303,
+     "parsePool": 303,
+     "scopedPool": 303,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-as-accounting-21": {
+   "slug": "cie-as-accounting-21",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 2,
+     "SUBTOPIC": 8,
+     "SPEC_POINT": 19
+    },
+    "spineMeta": {
+     "topics": 2,
+     "subtopics": 8,
+     "specPoints": 19,
+     "parsePool": 34,
+     "scopedPool": 19,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 1.4 title drift (page-wrap artifact): kept 'Reconciliation and verification'; also seen ['Reconciliation and verification continued']",
+    "subtopic 1.5 title drift (page-wrap artifact): kept 'Preparation of financial statements'; also seen ['Preparation of financial statements continued']",
+    "subtopic 1.6 title drift (page-wrap artifact): kept 'Analysis and communication of accounting information'; also seen ['Analysis and communication of accounting information continued']",
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Traditional costing methods'; also seen ['Traditional costing methods continued']"
+   ]
+  },
+  "cie-as-biology-25": {
+   "slug": "cie-as-biology-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 11,
+     "SUBTOPIC": 24,
+     "SPEC_POINT": 123
+    },
+    "spineMeta": {
+     "topics": 11,
+     "subtopics": 24,
+     "specPoints": 123,
+     "parsePool": 257,
+     "scopedPool": 123,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-as-business-23": {
+   "slug": "cie-as-business-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 19,
+     "SPEC_POINT": 62
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 19,
+     "specPoints": 62,
+     "parsePool": 116,
+     "scopedPool": 62,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Enterprise'; also seen ['Enterprise continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Human resource management (HRM)'; also seen ['Human resource management (HRM) continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'The marketing mix'; also seen ['The marketing mix continued']",
+    "subtopic 4.1 title drift (page-wrap artifact): kept 'The nature of operations'; also seen ['The nature of operations continued']"
+   ]
+  },
+  "cie-as-chemistry-25": {
+   "slug": "cie-as-chemistry-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 22,
+     "SUBTOPIC": 51,
+     "SPEC_POINT": 204
+    },
+    "spineMeta": {
+     "topics": 22,
+     "subtopics": 51,
+     "specPoints": 204,
+     "parsePool": 356,
+     "scopedPool": 204,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 1 title drift (page-wrap artifact): kept 'Atomic structure'; also seen ['Analytical techniques']",
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Particles in the atom and atomic radius'; also seen ['× abundance of M ion']"
+   ]
+  },
+  "cie-as-computer-science-19": {
+   "slug": "cie-as-computer-science-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 12,
+     "SUBTOPIC": 29,
+     "SPEC_POINT": 161
+    },
+    "spineMeta": {
+     "topics": 12,
+     "subtopics": 29,
+     "specPoints": 161,
+     "parsePool": 227,
+     "scopedPool": 161,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-as-english-general-paper-21": {
+   "slug": "cie-as-english-general-paper-21",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 1,
+     "SPEC_POINT": 73
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 1,
+     "specPoints": 73,
+     "parsePool": 73,
+     "scopedPool": 73,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "topic S1 title drift (page-wrap artifact): kept 'Economic, historical, moral, political and social issues'; also seen ['3 Literature, language, the arts, crafts, and the media']"
+   ]
+  },
+  "cie-as-environmental-management-20": {
+   "slug": "cie-as-environmental-management-20",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 8,
+     "SUBTOPIC": 28,
+     "SPEC_POINT": 126
+    },
+    "spineMeta": {
+     "topics": 8,
+     "subtopics": 28,
+     "specPoints": 126,
+     "parsePool": 126,
+     "scopedPool": 126,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'Ecosystems' in section 'Managing ecosystems and biodiversity' (official key 4.1) — suffixed with key"
+   ]
+  },
+  "cie-as-maths-20-mechanics": {
+   "slug": "cie-as-maths-20-mechanics",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 22
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 5,
+     "specPoints": 22,
+     "parsePool": 146,
+     "scopedPool": 22,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 4 title drift (page-wrap artifact): kept 'Pure Mathematics'; also seen ['Mechanics']"
+   ]
+  },
+  "cie-as-maths-20-probability-and-statistics-1": {
+   "slug": "cie-as-maths-20-probability-and-statistics-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 17
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 5,
+     "specPoints": 17,
+     "parsePool": 146,
+     "scopedPool": 17,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 5 title drift (page-wrap artifact): kept 'Mechanics'; also seen ['Probability & Statistics']"
+   ]
+  },
+  "cie-as-maths-20-pure-1": {
+   "slug": "cie-as-maths-20-pure-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 8,
+     "SPEC_POINT": 33
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 8,
+     "specPoints": 33,
+     "parsePool": 146,
+     "scopedPool": 33,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-as-maths-20-pure-2": {
+   "slug": "cie-as-maths-20-pure-2",
+   "driftRows": 1,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 6,
+     "SPEC_POINT": 17
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 6,
+     "specPoints": 17,
+     "parsePool": 146,
+     "scopedPool": 17,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-as-physics-25": {
+   "slug": "cie-as-physics-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 11,
+     "SUBTOPIC": 32,
+     "SPEC_POINT": 145
+    },
+    "spineMeta": {
+     "topics": 11,
+     "subtopics": 32,
+     "specPoints": 145,
+     "parsePool": 303,
+     "scopedPool": 145,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-accounting-21": {
+   "slug": "cie-igcse-accounting-21",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 7,
+     "SUBTOPIC": 27,
+     "SPEC_POINT": 144
+    },
+    "spineMeta": {
+     "topics": 7,
+     "subtopics": 27,
+     "specPoints": 144,
+     "parsePool": 144,
+     "scopedPool": 144,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-accounting-25": {
+   "slug": "cie-igcse-accounting-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 7,
+     "SUBTOPIC": 28,
+     "SPEC_POINT": 177
+    },
+    "spineMeta": {
+     "topics": 7,
+     "subtopics": 28,
+     "specPoints": 177,
+     "parsePool": 177,
+     "scopedPool": 177,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-biology-23": {
+   "slug": "cie-igcse-biology-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 21,
+     "SUBTOPIC": 61,
+     "SPEC_POINT": 388
+    },
+    "spineMeta": {
+     "topics": 21,
+     "subtopics": 61,
+     "specPoints": 388,
+     "parsePool": 388,
+     "scopedPool": 388,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic 6.1 title drift (page-wrap artifact): kept 'Photosynthesis'; also seen ['Photosynthesis continued']",
+    "subtopic 10.1 title drift (page-wrap artifact): kept 'Diseases and immunity'; also seen ['Diseases and immunity continued']",
+    "subtopic 12.3 title drift (page-wrap artifact): kept 'Anaerobic respiration'; also seen ['Anaerobic respiration continued']",
+    "subtopic 16.3 title drift (page-wrap artifact): kept 'Sexual reproduction in plants'; also seen ['Sexual reproduction in plants continued']",
+    "subtopic 17.1 title drift (page-wrap artifact): kept 'Chromosomes, genes and proteins'; also seen ['Chromosomes, genes and proteins continued']"
+   ]
+  },
+  "cie-igcse-business-23": {
+   "slug": "cie-igcse-business-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 25,
+     "SPEC_POINT": 63
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 25,
+     "specPoints": 63,
+     "parsePool": 63,
+     "scopedPool": 63,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 1.3 title drift (page-wrap artifact): kept 'Enterprise, business growth and size'; also seen ['Enterprise, business growth and size continued']",
+    "subtopic 5.3 title drift (page-wrap artifact): kept 'Income statements'; also seen ['Income statements continued']",
+    "subtopic 6.3 title drift (page-wrap artifact): kept 'Business and the international economy'; also seen ['Business and the international economy continued']"
+   ]
+  },
+  "cie-igcse-business-25": {
+   "slug": "cie-igcse-business-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 29,
+     "SPEC_POINT": 61
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 29,
+     "specPoints": 61,
+     "parsePool": 61,
+     "scopedPool": 61,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Organisation and management'; also seen ['Organisation and management continued']",
+    "subtopic 2.4 title drift (page-wrap artifact): kept 'Motivating employees'; also seen ['Motivating employees continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'Marketing mix'; also seen ['Marketing mix continued']"
+   ]
+  },
+  "cie-igcse-chemistry-23": {
+   "slug": "cie-igcse-chemistry-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 26,
+     "SUBTOPIC": 81,
+     "SPEC_POINT": 252
+    },
+    "spineMeta": {
+     "topics": 12,
+     "subtopics": 49,
+     "specPoints": 252,
+     "parsePool": 252,
+     "scopedPool": 252,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic 4.1 title drift (page-wrap artifact): kept 'Electrolysis'; also seen ['Electrolysis continued']",
+    "subtopic 10.3 title drift (page-wrap artifact): kept 'Air quality and climate'; also seen ['Air quality and climate continued']",
+    "subtopic 11.1 title drift (page-wrap artifact): kept 'Formulae, functional groups and terminology'; also seen ['Formulae, functional groups and terminology continued']",
+    "subtopic 12.5 title drift (page-wrap artifact): kept 'Identification of ions and gases'; also seen ['Identification of ions and gases continued']"
+   ]
+  },
+  "cie-igcse-computer-science-23": {
+   "slug": "cie-igcse-computer-science-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 10,
+     "SUBTOPIC": 21,
+     "SPEC_POINT": 88
+    },
+    "spineMeta": {
+     "topics": 7,
+     "subtopics": 21,
+     "specPoints": 88,
+     "parsePool": 88,
+     "scopedPool": 88,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 6 title drift (page-wrap artifact): kept 'Automated and emerging technologies'; also seen ['Algorithm design and problem-solving']"
+   ]
+  },
+  "cie-igcse-economics-20": {
+   "slug": "cie-igcse-economics-20",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 39,
+     "SPEC_POINT": 129
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 39,
+     "specPoints": 129,
+     "parsePool": 129,
+     "scopedPool": 129,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 4.3 title drift (page-wrap artifact): kept 'Fiscal policy'; also seen ['Fiscal policy continued']"
+   ]
+  },
+  "cie-igcse-economics-25": {
+   "slug": "cie-igcse-economics-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 36,
+     "SPEC_POINT": 113
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 36,
+     "specPoints": 113,
+     "parsePool": 113,
+     "scopedPool": 113,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Demand'; also seen ['Demand continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'Workers'; also seen ['Workers continued']",
+    "subtopic 3.7 title drift (page-wrap artifact): kept 'Types of markets'; also seen ['Types of markets continued']",
+    "subtopic 4.2 title drift (page-wrap artifact): kept 'Fiscal policy'; also seen ['Fiscal policy continued']",
+    "subtopic 5.2 title drift (page-wrap artifact): kept 'Poverty'; also seen ['Poverty continued']",
+    "subtopic 6.2 title drift (page-wrap artifact): kept 'Globalisation and trade restrictions'; also seen ['Globalisation and trade restrictions continued']"
+   ]
+  },
+  "cie-igcse-english-language-20": {
+   "slug": "cie-igcse-english-language-20",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 3,
+     "SUBTOPIC": 3,
+     "SPEC_POINT": 18
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 3,
+     "specPoints": 18,
+     "parsePool": 18,
+     "scopedPool": 18,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "topic S1 title drift (page-wrap artifact): kept 'Why choose this syllabus?'; also seen ['Planning and Teaching and Learning and revision Results']",
+    "topic S2 title drift (page-wrap artifact): kept 'Syllabus overview'; also seen ['Reading']",
+    "topic S4 title drift (page-wrap artifact): kept 'Speaking and Listening'; also seen ['Details of the assessment']",
+    "topic S5 title drift (page-wrap artifact): kept 'Level Marks Description'; also seen ['What else you need to know']",
+    "duplicate subtopic title 'General' in section 'General' (official key _) — suffixed with key",
+    "duplicate subtopic title 'General' in section 'General' (official key _) — suffixed with key"
+   ]
+  },
+  "cie-igcse-english-language-25": {
+   "slug": "cie-igcse-english-language-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 3,
+     "SUBTOPIC": 3,
+     "SPEC_POINT": 18
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 3,
+     "specPoints": 18,
+     "parsePool": 18,
+     "scopedPool": 18,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "topic S1 title drift (page-wrap artifact): kept 'Why choose this syllabus?'; also seen ['Level Marks Description']",
+    "topic S2 title drift (page-wrap artifact): kept 'Syllabus overview'; also seen ['Level Marks Description']",
+    "topic S4 title drift (page-wrap artifact): kept 'Details of the assessment'; also seen ['6 9–10 General']",
+    "topic S5 title drift (page-wrap artifact): kept 'Specific – descriptive Specific – narrative'; also seen ['What else you need to know']",
+    "duplicate subtopic title 'Specific – descriptive Specific – narrative' in section 'Specific – descriptive Specific – narrative' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Specific – descriptive Specific – narrative' in section 'Specific – descriptive Specific – narrative' (official key _) — suffixed with key"
+   ]
+  },
+  "cie-igcse-english-literature-21": {
+   "slug": "cie-igcse-english-literature-21",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 15,
+     "SUBTOPIC": 15,
+     "SPEC_POINT": 203
+    },
+    "spineMeta": {
+     "topics": 15,
+     "subtopics": 15,
+     "specPoints": 203,
+     "parsePool": 203,
+     "scopedPool": 203,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Set texts for examination in 2023 – Paper' in section 'Set texts for examination in 2023 – Paper' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section A: Poetry' in section 'Section A: Poetry' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Section B: Prose' in section 'Section B: Prose' (official key _) — suffixed with key",
+    "duplicate subtopic title 'Set texts for examination in 2024 – Paper' in section 'Set texts for examination in 2024 – Paper' (official key _) — suffixed with key"
+   ]
+  },
+  "cie-igcse-environmental-management-25": {
+   "slug": "cie-igcse-environmental-management-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 7,
+     "SUBTOPIC": 30,
+     "SPEC_POINT": 142
+    },
+    "spineMeta": {
+     "topics": 7,
+     "subtopics": 30,
+     "specPoints": 142,
+     "parsePool": 142,
+     "scopedPool": 142,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "subtopic 1.3 title drift (page-wrap artifact): kept 'Sustainable management of rocks, ores and minerals'; also seen ['Sustainable management of rocks, ores and minerals continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Soils and crop growth'; also seen ['Soils and crop growth continued']",
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Food production and crop yield'; also seen ['Food production and crop yield continued']",
+    "subtopic 2.3 title drift (page-wrap artifact): kept 'Soil erosion'; also seen ['Soil erosion continued']",
+    "subtopic 3.1 title drift (page-wrap artifact): kept 'Water sources and supply'; also seen ['Water sources and supply continued']",
+    "subtopic 3.2 title drift (page-wrap artifact): kept 'Water pollution'; also seen ['Water pollution continued']"
+   ]
+  },
+  "cie-igcse-further-maths-additional-maths-25": {
+   "slug": "cie-igcse-further-maths-additional-maths-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 14,
+     "SUBTOPIC": 34,
+     "SPEC_POINT": 77
+    },
+    "spineMeta": {
+     "topics": 14,
+     "subtopics": 34,
+     "specPoints": 77,
+     "parsePool": 68,
+     "scopedPool": 68,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-geography-20": {
+   "slug": "cie-igcse-geography-20",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 3,
+     "SUBTOPIC": 19,
+     "SPEC_POINT": 113
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 19,
+     "specPoints": 113,
+     "parsePool": 113,
+     "scopedPool": 113,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-geography-25": {
+   "slug": "cie-igcse-geography-25",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 19,
+     "SPEC_POINT": 113
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 19,
+     "specPoints": 113,
+     "parsePool": 113,
+     "scopedPool": 113,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-history-18": {
+   "slug": "cie-igcse-history-18",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 23,
+     "SUBTOPIC": 23,
+     "SPEC_POINT": 371
+    },
+    "spineMeta": {
+     "topics": 23,
+     "subtopics": 23,
+     "specPoints": 371,
+     "parsePool": 371,
+     "scopedPool": 371,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "topic S1 title drift (page-wrap artifact): kept 'Were the revolutions of 1848 important?'; also seen ['nineteenth century?']",
+    "topic S2 title drift (page-wrap artifact): kept 'How was Italy unified?'; also seen ['6 What caused the First World War?']",
+    "topic S3 title drift (page-wrap artifact): kept 'How was Germany unified?'; also seen ['1 Was the Treaty of Versailles fair?']"
+   ]
+  },
+  "cie-igcse-ict-21": {
+   "slug": "cie-igcse-ict-21",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 15,
+     "SUBTOPIC": 52,
+     "SPEC_POINT": 95
+    },
+    "spineMeta": {
+     "topics": 15,
+     "subtopics": 52,
+     "specPoints": 95,
+     "parsePool": 95,
+     "scopedPool": 95,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 18 title drift (page-wrap artifact): kept 'Databases'; also seen ['Presentations']",
+    "duplicate subtopic title 'Manipulate data' in section 'Spreadsheets' (official key 20.2) — suffixed with key",
+    "duplicate subtopic title 'Present data' in section 'Spreadsheets' (official key 20.3) — suffixed with key"
+   ]
+  },
+  "cie-igcse-maths-25-core": {
+   "slug": "cie-igcse-maths-25-core",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 9,
+     "SUBTOPIC": 53,
+     "SPEC_POINT": 112
+    },
+    "spineMeta": {
+     "topics": 9,
+     "subtopics": 53,
+     "specPoints": 112,
+     "parsePool": 290,
+     "scopedPool": 112,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic C4.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms (continued) Notes and examples']"
+   ]
+  },
+  "cie-igcse-maths-25-extended": {
+   "slug": "cie-igcse-maths-25-extended",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 9,
+     "SUBTOPIC": 72,
+     "SPEC_POINT": 178
+    },
+    "spineMeta": {
+     "topics": 9,
+     "subtopics": 72,
+     "specPoints": 178,
+     "parsePool": 290,
+     "scopedPool": 178,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic E4.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms (continued) Notes and examples']"
+   ]
+  },
+  "cie-igcse-maths-international-maths-23-core": {
+   "slug": "cie-igcse-maths-international-maths-23-core",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 11,
+     "SUBTOPIC": 55,
+     "SPEC_POINT": 109
+    },
+    "spineMeta": {
+     "topics": 10,
+     "subtopics": 55,
+     "specPoints": 109,
+     "parsePool": 274,
+     "scopedPool": 109,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic C5.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms (continued) Notes and examples']"
+   ]
+  },
+  "cie-igcse-maths-international-maths-23-extended": {
+   "slug": "cie-igcse-maths-international-maths-23-extended",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 11,
+     "SUBTOPIC": 70,
+     "SPEC_POINT": 165
+    },
+    "spineMeta": {
+     "topics": 10,
+     "subtopics": 70,
+     "specPoints": 165,
+     "parsePool": 274,
+     "scopedPool": 165,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic E5.1 title drift (page-wrap artifact): kept 'Geometrical terms Notes and examples'; also seen ['Geometrical terms']"
+   ]
+  },
+  "cie-igcse-physics-23": {
+   "slug": "cie-igcse-physics-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 24,
+     "SPEC_POINT": 294
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 24,
+     "specPoints": 294,
+     "parsePool": 294,
+     "scopedPool": 294,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic 1.5 title drift (page-wrap artifact): kept 'Forces'; also seen ['Forces continued']",
+    "subtopic 1.7 title drift (page-wrap artifact): kept 'Energy, work and power'; also seen ['Energy, work and power continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Kinetic particle model of matter'; also seen ['Kinetic particle model of matter continued']",
+    "subtopic 2.3 title drift (page-wrap artifact): kept 'Transfer of thermal energy'; also seen ['Transfer of thermal energy continued']",
+    "subtopic 3.1 title drift (page-wrap artifact): kept 'General properties of waves'; also seen ['General properties of waves continued']"
+   ]
+  },
+  "cie-igcse-religious-studies-23": {
+   "slug": "cie-igcse-religious-studies-23",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 18,
+     "SUBTOPIC": 85,
+     "SPEC_POINT": 364
+    },
+    "spineMeta": {
+     "topics": 18,
+     "subtopics": 85,
+     "specPoints": 364,
+     "parsePool": 364,
+     "scopedPool": 364,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "duplicate subtopic title 'Changes to festivals and fasts' in section 'Festivals and fasts' (official key I4.4) — suffixed with key",
+    "duplicate subtopic title 'Tradition and change' in section 'Rites of passage; religion and the family' (official key I5.5) — suffixed with key",
+    "duplicate subtopic title 'Changes to festivals and fasts' in section 'Festivals and fasts' (official key J4.5) — suffixed with key",
+    "duplicate subtopic title 'Tradition and change' in section 'Rites of passage; religion and the family' (official key J5.7) — suffixed with key"
+   ]
+  },
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-biology": {
+   "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-biology",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 19,
+     "SUBTOPIC": 43,
+     "SPEC_POINT": 230
+    },
+    "spineMeta": {
+     "topics": 19,
+     "subtopics": 43,
+     "specPoints": 230,
+     "parsePool": 632,
+     "scopedPool": 230,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry": {
+   "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 12,
+     "SUBTOPIC": 46,
+     "SPEC_POINT": 181
+    },
+    "spineMeta": {
+     "topics": 12,
+     "subtopics": 46,
+     "specPoints": 181,
+     "parsePool": 632,
+     "scopedPool": 181,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-physics": {
+   "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 23,
+     "SPEC_POINT": 221
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 23,
+     "specPoints": 221,
+     "parsePool": 632,
+     "scopedPool": 221,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic P4 title drift (page-wrap artifact): kept 'Electricity and magnetism'; also seen ['Electricity']"
+   ]
+  },
+  "cie-igcse-science-combined-science-23-biology": {
+   "slug": "cie-igcse-science-combined-science-23-biology",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 13,
+     "SUBTOPIC": 20,
+     "SPEC_POINT": 70
+    },
+    "spineMeta": {
+     "topics": 12,
+     "subtopics": 20,
+     "specPoints": 70,
+     "parsePool": 238,
+     "scopedPool": 70,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic B10 title drift (page-wrap artifact): kept 'Reproduction'; also seen ['Coordination and response']",
+    "subtopic B10.3 title drift (page-wrap artifact): kept 'Sexual reproduction in humans'; also seen ['Sexual reproduction in humans continued']"
+   ]
+  },
+  "cie-igcse-science-combined-science-23-chemistry": {
+   "slug": "cie-igcse-science-combined-science-23-chemistry",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 12,
+     "SUBTOPIC": 32,
+     "SPEC_POINT": 82
+    },
+    "spineMeta": {
+     "topics": 12,
+     "subtopics": 32,
+     "specPoints": 82,
+     "parsePool": 238,
+     "scopedPool": 82,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic C8 title drift (page-wrap artifact): kept 'Acids, bases and salts'; also seen ['Chemical reactions']",
+    "topic C11 title drift (page-wrap artifact): kept 'Air and water'; also seen ['Metals']"
+   ]
+  },
+  "cie-igcse-science-combined-science-23-physics": {
+   "slug": "cie-igcse-science-combined-science-23-physics",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 24,
+     "SPEC_POINT": 86
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 24,
+     "specPoints": 86,
+     "parsePool": 238,
+     "scopedPool": 86,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "e9e86e22239c20ea0fcdd5a91e076c88c5ae62ec",
+   "driftWarnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ]
+  },
+  "ial-biology-18": {
+   "slug": "ial-biology-18",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 18,
+     "SUBTOPIC": 39,
+     "SPEC_POINT": 170
+    },
+    "spineMeta": {
+     "topics": 8,
+     "subtopics": 10,
+     "specPoints": 170,
+     "parsePool": 170,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "ial-chemistry-17": {
+   "slug": "ial-chemistry-17",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 27,
+     "SUBTOPIC": 60,
+     "SPEC_POINT": 319
+    },
+    "spineMeta": {
+     "topics": 20,
+     "subtopics": 20,
+     "specPoints": 319,
+     "parsePool": 319,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "ial-further-maths-18-further-pure-1": {
+   "slug": "ial-further-maths-18-further-pure-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 8,
+     "SUBTOPIC": 8,
+     "SPEC_POINT": 25
+    },
+    "spineMeta": {
+     "topics": 8,
+     "subtopics": 8,
+     "specPoints": 25,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-decision-1": {
+   "slug": "ial-maths-20-decision-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 15
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 5,
+     "specPoints": 15,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-mechanics-1": {
+   "slug": "ial-maths-20-mechanics-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 6,
+     "SPEC_POINT": 12
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 6,
+     "specPoints": 12,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-mechanics-2": {
+   "slug": "ial-maths-20-mechanics-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 13
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 5,
+     "specPoints": 13,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-pure-1": {
+   "slug": "ial-maths-20-pure-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 22
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 5,
+     "specPoints": 22,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-pure-2": {
+   "slug": "ial-maths-20-pure-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 8,
+     "SUBTOPIC": 8,
+     "SPEC_POINT": 19
+    },
+    "spineMeta": {
+     "topics": 8,
+     "subtopics": 8,
+     "specPoints": 19,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-pure-3": {
+   "slug": "ial-maths-20-pure-3",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 6,
+     "SPEC_POINT": 18
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 6,
+     "specPoints": 18,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-pure-4": {
+   "slug": "ial-maths-20-pure-4",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 7,
+     "SUBTOPIC": 7,
+     "SPEC_POINT": 18
+    },
+    "spineMeta": {
+     "topics": 7,
+     "subtopics": 7,
+     "specPoints": 18,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-statistics-1": {
+   "slug": "ial-maths-20-statistics-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 5,
+     "SPEC_POINT": 16
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 5,
+     "specPoints": 16,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-maths-20-statistics-2": {
+   "slug": "ial-maths-20-statistics-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 4,
+     "SPEC_POINT": 16
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 4,
+     "specPoints": 16,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "159ab8540e1fe6f184a5bd1b9523a18146060664",
+   "driftWarnings": []
+  },
+  "ial-physics-19": {
+   "slug": "ial-physics-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 17,
+     "SUBTOPIC": 48,
+     "SPEC_POINT": 171
+    },
+    "spineMeta": {
+     "topics": 11,
+     "subtopics": 11,
+     "specPoints": 171,
+     "parsePool": 171,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "1912a2c5877357faf0bc42e1563bc4bddadb0c0f",
+   "driftWarnings": []
+  },
+  "igcse-accounting-17-financial-statements": {
+   "slug": "igcse-accounting-17-financial-statements",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 2,
+     "SUBTOPIC": 10,
+     "SPEC_POINT": 36
+    },
+    "spineMeta": {
+     "topics": 2,
+     "subtopics": 10,
+     "specPoints": 36,
+     "parsePool": 101,
+     "orphans": 17
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": {
+   "slug": "igcse-accounting-17-introduction-to-bookkeeping-and-accounting",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 3,
+     "SUBTOPIC": 16,
+     "SPEC_POINT": 48
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 16,
+     "specPoints": 48,
+     "parsePool": 101,
+     "orphans": 17
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-biology-19": {
+   "slug": "igcse-biology-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 22,
+     "SPEC_POINT": 176
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 22,
+     "specPoints": 176,
+     "parsePool": 176,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-biology-modular-24-unit-1": {
+   "slug": "igcse-biology-modular-24-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 2,
+     "SUBTOPIC": 9,
+     "SPEC_POINT": 54
+    },
+    "spineMeta": {
+     "topics": 2,
+     "subtopics": 9,
+     "specPoints": 54,
+     "parsePool": 176,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-biology-modular-24-unit-2": {
+   "slug": "igcse-biology-modular-24-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 13,
+     "SPEC_POINT": 122
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 13,
+     "specPoints": 122,
+     "parsePool": 176,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-business-19": {
+   "slug": "igcse-business-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 25,
+     "SUBTOPIC": 25,
+     "SPEC_POINT": 59
+    },
+    "spineMeta": {
+     "topics": 25,
+     "subtopics": 25,
+     "specPoints": 59,
+     "parsePool": 59,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-chemistry-19": {
+   "slug": "igcse-chemistry-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 28,
+     "SPEC_POINT": 182
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 28,
+     "specPoints": 182,
+     "parsePool": 182,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-chemistry-modular-24-unit-1": {
+   "slug": "igcse-chemistry-modular-24-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 14,
+     "SPEC_POINT": 100
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 14,
+     "specPoints": 100,
+     "parsePool": 181,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-chemistry-modular-24-unit-2": {
+   "slug": "igcse-chemistry-modular-24-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 14,
+     "SPEC_POINT": 81
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 14,
+     "specPoints": 81,
+     "parsePool": 181,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-economics-17": {
+   "slug": "igcse-economics-17",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 18,
+     "SPEC_POINT": 108
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 18,
+     "specPoints": 108,
+     "parsePool": 108,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing": {
+   "slug": "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 2,
+     "SPEC_POINT": 12
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 2,
+     "specPoints": 12,
+     "parsePool": 26,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing": {
+   "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 2,
+     "SPEC_POINT": 12
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 2,
+     "specPoints": 12,
+     "parsePool": 26,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-english-language-a-16-paper-3-coursework": {
+   "slug": "igcse-english-language-a-16-paper-3-coursework",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 1,
+     "SUBTOPIC": 1,
+     "SPEC_POINT": 2
+    },
+    "spineMeta": {
+     "topics": 1,
+     "subtopics": 1,
+     "specPoints": 2,
+     "parsePool": 26,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-english-literature-16": {
+   "slug": "igcse-english-literature-16",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 3,
+     "SUBTOPIC": 12,
+     "SPEC_POINT": 65
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 12,
+     "specPoints": 65,
+     "parsePool": 65,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-further-maths-19": {
+   "slug": "igcse-further-maths-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 10,
+     "SUBTOPIC": 10,
+     "SPEC_POINT": 43
+    },
+    "spineMeta": {
+     "topics": 10,
+     "subtopics": 10,
+     "specPoints": 43,
+     "parsePool": 43,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-geography-19": {
+   "slug": "igcse-geography-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 9,
+     "SUBTOPIC": 31,
+     "SPEC_POINT": 202
+    },
+    "spineMeta": {
+     "topics": 9,
+     "subtopics": 31,
+     "specPoints": 202,
+     "parsePool": 240,
+     "orphans": 38
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": [
+    "duplicate subtopic title 'Rural environments' in section 'Rural environments' (official key 5.2) — suffixed with key",
+    "duplicate subtopic title 'Rural environments' in section 'Rural environments' (official key 5.3) — suffixed with key"
+   ]
+  },
+  "igcse-history-17": {
+   "slug": "igcse-history-17",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 21,
+     "SUBTOPIC": 105,
+     "SPEC_POINT": 105
+    },
+    "spineMeta": {
+     "topics": 21,
+     "subtopics": 105,
+     "specPoints": 105,
+     "parsePool": 105,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "340803c9af4a949d3e274251b08697c6b42ba016",
+   "driftWarnings": []
+  },
+  "igcse-ict-17": {
+   "slug": "igcse-ict-17",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 36,
+     "SUBTOPIC": 36,
+     "SPEC_POINT": 138
+    },
+    "spineMeta": {
+     "topics": 36,
+     "subtopics": 36,
+     "specPoints": 138,
+     "parsePool": 138,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-maths-a-18-foundation": {
+   "slug": "igcse-maths-a-18-foundation",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 35,
+     "SPEC_POINT": 162
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 35,
+     "specPoints": 162,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": [
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.2) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.3) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.4) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.5) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.6) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.7) — suffixed with key"
+   ]
+  },
+  "igcse-maths-a-18-higher": {
+   "slug": "igcse-maths-a-18-higher",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 39,
+     "SPEC_POINT": 188
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 39,
+     "specPoints": 188,
+     "parsePool": 242,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": [
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.2) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.3) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.4) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.5) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.6) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.7) — suffixed with key"
+   ]
+  },
+  "igcse-maths-a-modular-24-foundation-unit-1": {
+   "slug": "igcse-maths-a-modular-24-foundation-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 22,
+     "SPEC_POINT": 93
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 22,
+     "specPoints": 93,
+     "parsePool": 241,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": [
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.2) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.3) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.4) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.5) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.6) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.8) — suffixed with key"
+   ]
+  },
+  "igcse-maths-a-modular-24-foundation-unit-2": {
+   "slug": "igcse-maths-a-modular-24-foundation-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 18,
+     "SPEC_POINT": 68
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 18,
+     "specPoints": 68,
+     "parsePool": 241,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": [
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.6) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.7) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.9) — suffixed with key",
+    "duplicate subtopic title 'Equations, formulae and identities' in section 'Equations, formulae and identities' (official key 2.6) — suffixed with key",
+    "duplicate subtopic title 'Equations, formulae and identities' in section 'Equations, formulae and identities' (official key 2.8) — suffixed with key",
+    "duplicate subtopic title 'Geometry' in section 'Geometry' (official key 4.3) — suffixed with key"
+   ]
+  },
+  "igcse-maths-a-modular-24-higher-unit-1": {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 23,
+     "SPEC_POINT": 99
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 23,
+     "specPoints": 99,
+     "parsePool": 241,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": [
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.2) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.3) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.4) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.5) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.6) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.8) — suffixed with key"
+   ]
+  },
+  "igcse-maths-a-modular-24-higher-unit-2": {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 6,
+     "SUBTOPIC": 25,
+     "SPEC_POINT": 97
+    },
+    "spineMeta": {
+     "topics": 6,
+     "subtopics": 25,
+     "specPoints": 97,
+     "parsePool": 241,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": [
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.6) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.7) — suffixed with key",
+    "duplicate subtopic title 'Numbers and the number system' in section 'Numbers and the number system' (official key 1.9) — suffixed with key",
+    "duplicate subtopic title 'Equations, formulae and identities' in section 'Equations, formulae and identities' (official key 2.3) — suffixed with key",
+    "duplicate subtopic title 'Equations, formulae and identities' in section 'Equations, formulae and identities' (official key 2.5) — suffixed with key",
+    "duplicate subtopic title 'Equations, formulae and identities' in section 'Equations, formulae and identities' (official key 2.6) — suffixed with key"
+   ]
+  },
+  "igcse-maths-b-16": {
+   "slug": "igcse-maths-b-16",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 10,
+     "SUBTOPIC": 10,
+     "SPEC_POINT": 98
+    },
+    "spineMeta": {
+     "topics": 10,
+     "subtopics": 10,
+     "specPoints": 98,
+     "parsePool": 98,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-physics-19": {
+   "slug": "igcse-physics-19",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 8,
+     "SUBTOPIC": 30,
+     "SPEC_POINT": 195
+    },
+    "spineMeta": {
+     "topics": 8,
+     "subtopics": 30,
+     "specPoints": 195,
+     "parsePool": 195,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-physics-modular-24-unit-1": {
+   "slug": "igcse-physics-modular-24-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 14,
+     "SPEC_POINT": 94
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 14,
+     "specPoints": 94,
+     "parsePool": 195,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-physics-modular-24-unit-2": {
+   "slug": "igcse-physics-modular-24-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 16,
+     "SPEC_POINT": 101
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 16,
+     "specPoints": 101,
+     "parsePool": 195,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-17-biology": {
+   "slug": "igcse-science-double-award-17-biology",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 21,
+     "SPEC_POINT": 134
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 21,
+     "specPoints": 134,
+     "parsePool": 412,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-17-chemistry": {
+   "slug": "igcse-science-double-award-17-chemistry",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 21,
+     "SPEC_POINT": 131
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 21,
+     "specPoints": 131,
+     "parsePool": 412,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-17-physics": {
+   "slug": "igcse-science-double-award-17-physics",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 8,
+     "SUBTOPIC": 26,
+     "SPEC_POINT": 147
+    },
+    "spineMeta": {
+     "topics": 8,
+     "subtopics": 26,
+     "specPoints": 147,
+     "parsePool": 412,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-modular-24-biology-unit-1": {
+   "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 3,
+     "SUBTOPIC": 12,
+     "SPEC_POINT": 74
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 12,
+     "specPoints": 74,
+     "parsePool": 411,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-modular-24-biology-unit-2": {
+   "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 3,
+     "SUBTOPIC": 9,
+     "SPEC_POINT": 60
+    },
+    "spineMeta": {
+     "topics": 3,
+     "subtopics": 9,
+     "specPoints": 60,
+     "parsePool": 411,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-modular-24-chemistry-unit-1": {
+   "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 13,
+     "SPEC_POINT": 83
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 13,
+     "specPoints": 83,
+     "parsePool": 411,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-modular-24-chemistry-unit-2": {
+   "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 9,
+     "SPEC_POINT": 47
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 9,
+     "specPoints": 47,
+     "parsePool": 411,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-modular-24-physics-unit-1": {
+   "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 5,
+     "SUBTOPIC": 15,
+     "SPEC_POINT": 90
+    },
+    "spineMeta": {
+     "topics": 5,
+     "subtopics": 15,
+     "specPoints": 90,
+     "parsePool": 411,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  },
+  "igcse-science-double-award-modular-24-physics-unit-2": {
+   "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+   "driftRows": 0,
+   "census": {
+    "content": {
+     "TOPIC": 4,
+     "SUBTOPIC": 11,
+     "SPEC_POINT": 57
+    },
+    "spineMeta": {
+     "topics": 4,
+     "subtopics": 11,
+     "specPoints": 57,
+     "parsePool": 411,
+     "orphans": 0
+    },
+    "metaSpecPointsMatchesLive": true
+   },
+   "resourcesSha": "888bca4abfe545ce86784fe0ea9a9698209b3ddf",
+   "driftWarnings": []
+  }
+ },
+ "driftRows": [
+  {
+   "slug": "cie-as-maths-20-pure-2",
+   "family": "SPEC_POINT",
+   "code": "2.3.2",
+   "matchedBy": "exact",
+   "contentTitle": "use trigonometrical identities for the simplification and exact evaluation of expressions, e.g. solving and in the course of solving equations, and select an identity or identities appropriate to the context, showing familiarity in particular with the use of tan( A ± B ) forms R sin ^ i ! a h and R cos ^ i ! a h .: • sec i / 1 + tan i and cosec i / 1 + cot i • the expansions of sin( A ± B ) , cos( A ± B ) and • the formulae for sin 2 A , cos 2 A and tan 2 A • the expression of a sin i + b cos i in the",
+   "spineTitle": "use trigonometrical identities for the simplification and exact evaluation of expressions, and in the course of solving equations, and select an identity or identities appropriate to the context, showing familiarity in particular with the use of: • sec²θ≡1+tan²θ and cosec²θ≡1+cot²θ • the expansions of sin(A ± B), cos(A ± B) and tan(A ± B) • the formulae for sin 2A, cos 2A and tan 2A • the expression of asinθ+bcosθ in the forms Rsin(θ±A) and Rcos(θ±A).",
+   "structural": null,
+   "fragContent": true,
+   "fragSpine": false
+  }
+ ],
+ "unmatchedContentCodes": [
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S1",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S2",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S3",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S4",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S5",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S6",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S7",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S8",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S9",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S10",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S11",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S12",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S13",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S14",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S1:1-1-solids-liquids-and-gases",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S12:12-3-identification-of-ions-and-gases",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S2:2-1-atomic-structure-and-the-periodic-table",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S2:2-2-ions-and-ionic-bonds",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S2:2-3-simple-molecules-and-covalent-bonds",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S2:2-4-giant-structures",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S3:3-1-formulae-and-relative-masses",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S3:3-2-the-mole-and-the-avogadro-constant",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S4:4-1-electrolysis",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S4:4-2-applications-of-electrolysis",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S5:5-1-exothermic-and-endothermic-reactions",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S6:6-1-chemical-change-and-rate-of-reaction",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S6:6-2-reversible-reactions-and-equilibrium",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S6:6-3-redox",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S7:7-1-the-characteristic-properties-of-acids-and-bases",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S7:7-2-preparation-of-salts",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S8:8-1-the-periodic-table-and-trends",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S8:8-2-group-properties-and-trends",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S9:9-1-properties-uses-and-alloys-of-metals",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S9:9-2-reactivity-series-and-corrosion-of-metals",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S9:9-3-extraction-of-metals",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S10:10-1-water-and-water-pollution",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S10:10-2-air-quality-and-climate",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S11:11-1-formulae-functional-groups-and-terminology",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S11:11-2-organic-families",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S11:11-3-polymers",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S12:12-1-experimental-techniques",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S12:12-2-separation-and-purification",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S13:specimen",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S14:exam-technique",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S14:handling-data-and-maths-skills",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-chemistry-23-SME-S14:practical-and-investigative-skills",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-computer-science-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-computer-science-2023-2025-T7",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "cie-igcse-computer-science-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-computer-science-2023-2025-T9",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "cie-igcse-computer-science-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-computer-science-2023-2025-T10",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "cie-igcse-geography-25",
+   "family": "TOPIC",
+   "code": "cie-igcse-geography-2025-2026-SME-CLIMATE-CHANGE",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-geography-25",
+   "family": "TOPIC",
+   "code": "cie-igcse-geography-2025-2026-SME-GEOGRAPHICAL-SKILLS",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-maths-international-maths-23-core",
+   "family": "TOPIC",
+   "code": "cie-igcse-maths-international-maths-2025-2027-TC-SME-INVESTIGATIONS",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-maths-international-maths-23-extended",
+   "family": "TOPIC",
+   "code": "cie-igcse-maths-international-maths-2025-2027-TE-SME-INVESTIGATIONS-MODELLING",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "cie-igcse-science-combined-science-23-biology",
+   "family": "TOPIC",
+   "code": "cie-igcse-science-combined-science-2023-2024-SME-DRUGS",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-SME-SYNOPTIC-ASSESSMENT",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S1",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S2",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S3",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S4",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S5",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S6",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S7",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S8",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-18-SME-S9",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S1:biological-molecules",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S1:the-circulatory-system",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S8:the-nervous-system",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S1:diet-and-health",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S2:gas-exchange-cell-membranes-and-transport",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S2:proteins",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S2:dna-and-gene-expression-",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S2:inheritance",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S3:reproduction-and-inheritance",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S3:cell-structure-and-organisation",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S4:plant-structure-and-function",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S4:plants-and-conservation",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S4:plants-and-bacterial-growth",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S4:classification-and-biodiversity",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S5:photosynthesis",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S5:ecosystems",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S5:environmental-biology",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S6:microbiology",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S6:immunity",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S6:antibiotics",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S6:decomposition-and-decay",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S6:forensics",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S7:respiration",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S7:muscular-movement",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S7:the-internal-environment",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S8:plant-hormones",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S8:the-brain",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S8:gene-technology",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "code": "ial-biology-18-SME-S9:synoptic-exam-questions-section-c",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-17-SME-S1",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-17-SME-S2",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-17-SME-S3",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-17-SME-S4",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-17-SME-S5",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-17-SME-S6",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-17-SME-S7",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-1-energetics",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-3-energetics",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S5:5-1-redox-equilibria",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-4-chemical-equilibria",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-5-acid-base-equilibria",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-6-introduction-to-kinetics-and-equilibria",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-1-formulae-and-equations",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S3:3-1-physical-chemistry-core-practicals",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S6:6-1-advanced-physical-chemistry-core-practicals",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S6:6-2-advanced-inorganic-and-organic-chemistry-core-practicals",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S3:3-2-inorganic-and-organic-chemistry-core-practicals",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S7:synoptic-exam-questions-section-c",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-1-kinetics",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-2-intermolecular-forces",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-2-amount-of-substance",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-2-entropy",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S5:5-2-transition-metals-and-complexes",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-3-atomic-structure",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-6-ionic-and-metallic-bonding-and-structure",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-7-covalent-bonding-and-structure",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-3-redox-chemistry-and-acid-base-titrations",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S5:5-3-transition-metal-reactions",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-4-groups-1-and-2",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S5:5-4-organic-chemistry-arenes",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-4-electrons-and-ions",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-5-group-7",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S5:5-5-organic-chemistry-nitrogen-compounds",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-5-the-periodic-table",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S5:5-6-organic-synthesis",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-6-organic-chemistry-chirality",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-7-organic-chemistry-carbonyls",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-7-organic-chemistry-introduction",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-8-introductory-organic-chemistry",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-8-organic-chemistry-carboxylic-acids",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-8-organic-chemistry-halogenoalkanes",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-9-organic-chemistry-alcohols",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S4:4-9-organic-analytical-techniques",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-9-alkanes",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S2:2-10-organic-chemistry-techniques-and-spectra",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-17-SME-S1:1-10-alkenes",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "TOPIC",
+   "code": "ial-physics-19-SME-S1",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "TOPIC",
+   "code": "ial-physics-19-SME-S2",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "TOPIC",
+   "code": "ial-physics-19-SME-S3",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "TOPIC",
+   "code": "ial-physics-19-SME-S4",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "TOPIC",
+   "code": "ial-physics-19-SME-S5",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "TOPIC",
+   "code": "ial-physics-19-SME-S6",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:transverse-and-longitudinal-waves",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:interference-and-stationary-waves",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S1:motion",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S4:circular-motion",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:simple-harmonic-motion",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S3:practical-skills-i-planning",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S6:practical-skills-ii-planning",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:thermal-energy-transfer",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S4:momentum-and-impulse",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:kinetic-theory-and-ideal-gases",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S3:practical-skills-i-implementation-and-measurements",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S6:practical-skills-ii-implementation-and-measurements",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S1:forces-and-momentum",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S3:practical-skills-i-processing-results",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S4:electric-fields",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S4:magnetic-fields",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:gravitational-fields",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S1:moments",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S6:practical-skills-ii-analysis",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:nuclear-fusion-and-fission",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:refraction-reflection-and-polarisation",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S1:work-energy-and-power",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:current-potential-difference-resistance-and-power",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:waves-electrons-and-photons",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:radioactivity-decay",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S4:capacitance",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:the-photoelectric-effect-and-atomic-spectra",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S1:density-upthrust-and-viscous-drag",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S4:exploring-the-structure-of-matter",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S1:stretching-materials",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:resonance",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:resistance-resistivity-and-potential-dividers",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S4:particle-interactions-and-conservation",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S2:e-m-f-and-modelling-resistance",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:black-body-radiation",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:astronomy",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "code": "ial-physics-19-SME-S5:cosmology",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": true
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "4CH1-S1",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "4CH1-S2",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "4CH1-S3",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "4CH1-S4",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-a",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-a",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S3-a",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-a",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-b",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-b",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S3-b",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-b",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-c",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-c",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S3-c",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-c",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-d",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-d",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-d",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-e",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-e",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-e",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-f",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-f",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-f",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-g",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-g",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-g",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-h",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S2-h",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S4-h",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "4CH1-S1-i",
+   "reason": "ambiguous_or_missing_spine_partner",
+   "synthetic": false
+  }
+ ],
+ "unmatchedSpineCodes": [
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-T1",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-T2",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-T3",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-T4",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBa",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBb",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBc",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBd",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBe",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBf",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBg",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBh",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T1:SUBi",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBa",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBb",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBc",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBd",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBe",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBf",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBg",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T2:SUBh",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T3:SUBa",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T3:SUBb",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T3:SUBc",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBa",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBb",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBc",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBd",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBe",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBf",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBg",
+   "reason": "no_content_partner"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-chemistry-T4:SUBh",
+   "reason": "no_content_partner"
+  }
+ ],
+ "censusMismatches": [
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "TOPIC",
+   "content": 26,
+   "spine": 12
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "family": "SUBTOPIC",
+   "content": 81,
+   "spine": 49
+  },
+  {
+   "slug": "cie-igcse-computer-science-23",
+   "family": "TOPIC",
+   "content": 10,
+   "spine": 7
+  },
+  {
+   "slug": "cie-igcse-geography-25",
+   "family": "TOPIC",
+   "content": 5,
+   "spine": 3
+  },
+  {
+   "slug": "cie-igcse-maths-international-maths-23-core",
+   "family": "TOPIC",
+   "content": 11,
+   "spine": 10
+  },
+  {
+   "slug": "cie-igcse-maths-international-maths-23-extended",
+   "family": "TOPIC",
+   "content": 11,
+   "spine": 10
+  },
+  {
+   "slug": "cie-igcse-science-combined-science-23-biology",
+   "family": "TOPIC",
+   "content": 13,
+   "spine": 12
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "content": 18,
+   "spine": 8
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "SUBTOPIC",
+   "content": 39,
+   "spine": 10
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "content": 27,
+   "spine": 20
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "content": 60,
+   "spine": 20
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "TOPIC",
+   "content": 17,
+   "spine": 11
+  },
+  {
+   "slug": "ial-physics-19",
+   "family": "SUBTOPIC",
+   "content": 48,
+   "spine": 11
+  }
+ ],
+ "kgEvidenceCensus": {
+  "cie-as-maths-20-pure-2": {
+   "kgLabels": 17,
+   "contentPoints": 17,
+   "verbatimMatched": 15,
+   "contentOnlySample": [
+    "2 | a | = | b | ⇔ a = b and | x – a | < b ⇔ a – b < x < a + b when solving equations and inequalities by a linear or quadratic polynomial, and identify the quotient and remainder (which may be zero) theorem.: • divide a polynomial, of degree not exceeding 4, • use the factor theorem and the remainder",
+    "understand the meaning of | x |, sketch the graph of y = | ax + b | and use relations such as functions"
+   ],
+   "kgOnlySample": [
+    "2 |a| = |b| ⇔ a = b and |x – a| < b ⇔ a – b < x < a + b when solving equations and inequalities by a linear or quadratic polynomial, and identify the quotient and remainder (which may be zero) theorem.: • divide a polynomial, of degree not exceeding 4, • use the factor theorem and the remainder",
+    "understand the meaning of |x|, sketch the graph of y = |ax + b| and use relations such as functions"
+   ]
+  }
+ }
+}
