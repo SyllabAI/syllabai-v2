@@ -118,11 +118,11 @@ function ActionRow({ action, rank }: { action: DashboardAction; rank: number }) 
         </span>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-1.5">
-            <Badge variant="outline" className={`${config.chip} h-5 gap-1 px-1.5 text-[11px]`}>
+            <Badge variant="outline" className={`${config.chip} h-5 gap-1 px-1.5 text-2xs`}>
               <Icon className="size-3" aria-hidden="true" />
               {config.label}
             </Badge>
-            <Badge variant="secondary" className="h-5 px-1.5 text-[11px] font-medium">
+            <Badge variant="secondary" className="h-5 px-1.5 text-2xs font-medium">
               {action.courseLabel} · {action.courseLevel}
             </Badge>
           </div>

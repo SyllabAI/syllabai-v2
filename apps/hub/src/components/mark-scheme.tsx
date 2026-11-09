@@ -80,7 +80,7 @@ export function MarkScheme({ md, className }: { md: string; className?: string }
             {s.codes.map((c, j) => (
               <span
                 key={j}
-                className="rounded bg-primary/10 px-1.5 py-0.5 text-[11px] font-semibold tabular-nums text-primary"
+                className="rounded bg-primary/10 px-1.5 py-0.5 text-2xs font-semibold tabular-nums text-primary"
                 title={`mark code ${c}`}
               >
                 {c}
@@ -89,7 +89,7 @@ export function MarkScheme({ md, className }: { md: string; className?: string }
           </p>
         ),
       )}
-      <p className="mt-2 border-t pt-1.5 text-[11px] leading-relaxed text-muted-foreground">
+      <p className="mt-2 border-t pt-1.5 text-2xs leading-relaxed text-muted-foreground">
         M = method mark · A = accuracy mark · B = independent mark · SC = special case ·{" "}
         <i>or equivalent</i> / <i>follow through</i> / <i>correct answer only</i> are written out
         in full where the scheme uses them.

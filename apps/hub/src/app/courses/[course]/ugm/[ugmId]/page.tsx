@@ -105,29 +105,29 @@ export default async function UgmReaderPage({
       <PageHeader className="mt-5" title={<MathText text={resource.title} />}>
         <div className="flex flex-wrap items-center gap-1.5">
           {resource.resourceTypeLabel || resource.resourceType ? (
-            <Badge variant="outline" className="text-[10px]">
+            <Badge variant="outline" className="text-2xs">
               {resource.resourceTypeLabel ?? resource.resourceType}
             </Badge>
           ) : null}
           {resource.level ? (
-            <Badge variant="outline" className="text-[10px]">
+            <Badge variant="outline" className="text-2xs">
               {resource.level}
             </Badge>
           ) : null}
           {resource.hasTeacherSupport ? (
-            <Badge variant="outline" className="text-[10px]">
+            <Badge variant="outline" className="text-2xs">
               includes teacher support
             </Badge>
           ) : null}
           {resource.nonOverlap ? (
-            <Badge variant="outline" className="border-dashed text-[10px]">
+            <Badge variant="outline" className="border-dashed text-2xs">
               beyond the specification map
             </Badge>
           ) : (
             specCodes.map((code) => {
               const sp = resource.specPoints.find((s) => s.code === code);
               return (
-                <Badge key={code} variant="outline" className="font-mono text-[10px]">
+                <Badge key={code} variant="outline" className="font-mono text-2xs">
                   {sp?.primaryPick ? (
                     <Star className="mr-0.5 size-2.5 text-primary" aria-hidden />
                   ) : null}
@@ -141,7 +141,7 @@ export default async function UgmReaderPage({
 
       {resource.nonOverlap && resource.nonOverlapReason ? (
         <Card className="mt-4 border-dashed">
-          <CardContent className="flex items-start gap-2.5 p-3.5 text-[13px] leading-relaxed text-muted-foreground">
+          <CardContent className="flex items-start gap-2.5 p-3.5 text-xs leading-relaxed text-muted-foreground">
             <Landmark className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
             <span>
               <span className="font-medium text-foreground">Beyond the specification map.</span>{" "}
@@ -179,7 +179,7 @@ export default async function UgmReaderPage({
                 <li key={id}>
                   <Link
                     href={`${base}/ugm/${r.ugmId}`}
-                    className="flex items-center gap-2 rounded-md border px-3 py-2 text-[13px] transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
+                    className="flex items-center gap-2 rounded-md border px-3 py-2 text-xs transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                   >
                     <ArrowLeft className="size-3.5 rotate-180 text-primary" aria-hidden />
                     <span className="min-w-0 truncate">

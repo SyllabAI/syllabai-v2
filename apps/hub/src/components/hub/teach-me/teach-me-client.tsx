@@ -282,7 +282,7 @@ export function TeachMeClient({ course, courseLabel, topics }: TeachMeClientProp
       }`}
     >
       <p className="font-medium">{failure.headline}</p>
-      {failure.detail && <p className="mt-0.5 text-[13px] opacity-90">{failure.detail}</p>}
+      {failure.detail && <p className="mt-0.5 text-xs opacity-90">{failure.detail}</p>}
       {(failure.cls === "provider" || failure.cls === "network" || failure.cls === "unknown") && (
         <Button
           size="sm"

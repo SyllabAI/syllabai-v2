@@ -134,7 +134,7 @@ export function SemanticSearchExperiment({
         <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight">
           <Search className="size-5 text-primary" aria-hidden />
           <span className="font-mono">semantic-search</span>
-          <Badge variant="secondary" className="text-[10px]">
+          <Badge variant="secondary" className="text-2xs">
             SEED
           </Badge>
         </h1>
@@ -149,7 +149,7 @@ export function SemanticSearchExperiment({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search everything — e.g. “diffusion”, “electronic configuration”, “separation”…"
-        className="w-full rounded-md border px-3.5 py-2.5 text-sm outline-none focus:ring-1 focus:ring-primary"
+        className="w-full rounded-md border px-3.5 py-2.5 text-sm outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
         aria-label="Search the corpus"
       />
 
@@ -177,7 +177,7 @@ export function SemanticSearchExperiment({
           <Card key={`${s.kind}-${s.ref}`} className="py-0">
             <CardContent className="p-3.5">
               <div className="mb-1 flex flex-wrap items-center gap-2">
-                <Badge variant="outline" className="text-[10px]">
+                <Badge variant="outline" className="text-2xs">
                   {KIND_LABEL[s.kind]}
                 </Badge>
                 {s.specPointCode && <SpecChip code={s.specPointCode} />}

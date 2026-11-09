@@ -107,7 +107,7 @@ export function NoteBookLinks({
           className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
         >
           <BookOpen className="size-4 text-primary" aria-hidden />
-          <span className="text-[13px] font-medium">
+          <span className="text-xs font-medium">
             Student book — {c.unitTitle ? `${c.unitTitle}: ` : ""}ch. {c.chapterIndex} {c.title}
             <span className="block text-xs font-normal text-muted-foreground">
               Open the matching chapter of the student book

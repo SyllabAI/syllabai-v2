@@ -1,0 +1,470 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-igcse-biology-23",
+ "qual": "IGCSE",
+ "source": {
+  "provider": "multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only)",
+  "label": "cie-igcse-biology-23",
+  "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY",
+  "enumeratedUtc": "2026-11-01T01:04:15Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P2C",
+  "ruledUtc": "2026-11-09T06:10:24Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "Same title-only posture. Pilot sweep: one spec trimmed from an enzyme video, one generic-title reject.",
+  "rowsApproved": 13,
+  "rowsRejected": 2,
+  "rejects": [
+   {
+    "lessonRef": null,
+    "video": "AgMvvybtRL4",
+    "spec": "5.1.6",
+    "reason": "FSL 'Effect of Temperature and pH on Enzymes' names the 5.1.5 investigation; the enzyme-action mechanism (active site, ES complex) of 5.1.6 is a different clause, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "RNLceVI8jcc",
+    "spec": "14.1.8",
+    "reason": "Amoeba 'Nervous System' generic title; synapse structure with vesicles/neurotransmitter (14.1.8) not title-evidenced."
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "Wx-MrhlOFMk",
+   "title": "GCSE Biology Revision \"Arteries, Veins and Capillaries\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Wx-MrhlOFMk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 188,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "4n7Cd7SLEQE",
+   "title": "GCSE Biology Revision \"Advantages + Disadvantages of Sexual / Asexual Reproduction\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4n7Cd7SLEQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 248,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "kx7AeCx_6xQ",
+   "title": "GCSE Biology Revision \"Limiting Factors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=kx7AeCx_6xQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 254,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ZKAaDbTP6Dc",
+   "title": "GCSE Biology Revision \"Respiration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ZKAaDbTP6Dc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 243,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "_vZ0lefPg_0",
+   "title": "Circulatory System and Pathway of Blood Through the Heart",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=_vZ0lefPg_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 494,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "AgMvvybtRL4",
+   "title": "GCSE Biology Revision \"Effect of Temperature and pH on Enzymes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=AgMvvybtRL4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 212,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "B0cH91joZwA",
+   "title": "GCSE Biology Revision \"Osmosis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=B0cH91joZwA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "O965gA4goVI",
+   "title": "GCSE Biology Revision \"Diffusion\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=O965gA4goVI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 234,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ECldVkp6Rw0",
+   "title": "GCSE Biology Revision \"Active Transport\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ECldVkp6Rw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 243,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "aPUPfzsqDgs",
+   "title": "GCSE Biology Revision \"Gas Exchange in the Lungs\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=aPUPfzsqDgs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 193,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "uPeZBhJYlnU",
+   "title": "GCSE Biology Revision \"Vaccination\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=uPeZBhJYlnU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 198,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "vWZWPlFmua4",
+   "title": "GCSE Biology Revision The Nitrogen Cycle (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=vWZWPlFmua4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 282,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "oDS1hAqWp2M",
+   "title": "GCSE Biology Revision \"The Nervous System\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=oDS1hAqWp2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 220,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "RNLceVI8jcc",
+   "title": "Nervous System",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=RNLceVI8jcc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 692,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "Wx-MrhlOFMk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "arteries, veins and capillaries structures = the 9.3.1 description",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4n7Cd7SLEQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "advantages/disadvantages of sexual vs asexual reproduction = 16.1.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kx7AeCx_6xQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.11"
+   ],
+   "confidence": "medium",
+   "evidence": "limiting factors of photosynthesis = the 6.1.11 identify-and-explain",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ZKAaDbTP6Dc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "respiration incl. anaerobic = the less-energy-per-glucose clause of 12.3.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "_vZ0lefPg_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "circulatory system and blood pathway = the 9.1.1 description; US channel",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "AgMvvybtRL4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "temperature/pH effect on enzymes = the 5.1.5 investigation + 5.1.6 action explanation (partial)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "B0cH91joZwA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "osmosis = the water-movement definition of 3.2.7",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "O965gA4goVI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "diffusion = the net-movement definition of 3.1.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ECldVkp6Rw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "active transport = movement through membrane via proteins of 3.3.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "aPUPfzsqDgs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "gas exchange in the lungs = features of gas-exchange surfaces of 11.1.1 (partial)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uPeZBhJYlnU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.11"
+   ],
+   "confidence": "medium",
+   "evidence": "vaccination = the process outline of 10.1.11",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vWZWPlFmua4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "19.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "nitrogen cycle = the cycle description of 19.3.2 (microorganism roles clause partial)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "oDS1hAqWp2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "the nervous system = CNS/organs description of 14.1.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 388,
+  "specPointsMapped": 13,
+  "specPointsUnmapped": 375,
+  "videosTotal": 14,
+  "videosMapped": 13,
+  "videosUnmapped": 1,
+  "mappingRows": 13,
+  "byConfidence": {
+   "high": 0,
+   "medium": 13,
+   "low": 0
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-igcse-biology-23.json",
+   "sha256": "49e7b29d4ad7a90ab6462dfc2fa6621ae8d52770619e7ddb855d311853527c17"
+  },
+  "draft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-biology-23/video-map.draft.external.json",
+   "task": "T-VIDEOMAP-P2C",
+   "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  }
+ },
+ "generatedUtc": "2026-11-09T06:12:44.909Z"
+}

@@ -351,7 +351,7 @@ export function AssistantClient({
           </span>
           <div className="leading-tight">
             <h1 className="text-sm font-semibold">Contextual Learning Assistant</h1>
-            <p className="text-[11px] text-muted-foreground">
+            <p className="text-2xs text-muted-foreground">
               you pick the context — it answers from validated course material
             </p>
           </div>
@@ -371,7 +371,7 @@ export function AssistantClient({
             compact selects (the s129 overlay vocabulary, now shared) */}
         <div className="space-y-2.5 border-b px-4 py-3">
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="mr-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">Anchor</span>
+            <span className="mr-1 text-2xs font-medium uppercase tracking-wide text-muted-foreground">Anchor</span>
             <span className="flex items-center gap-1.5" role="tablist" aria-label="Context kind">
               <button
                 type="button"
@@ -381,7 +381,7 @@ export function AssistantClient({
                 className={cn(
                   // t-ui-polish run-006: the assistant's toggle pills speak the
                   // house hover voice (border-primary/60), not the legacy /40.
-                  "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
+                  "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-2xs font-medium transition-colors",
                   kind === "SPEC_TOPIC"
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border text-muted-foreground hover:border-primary/60",
@@ -397,7 +397,7 @@ export function AssistantClient({
                 disabled={questionTopics.length === 0}
                 title={questionTopics.length === 0 ? "This course has no exam-question sets yet" : undefined}
                 className={cn(
-                  "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+                  "inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-2xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
                   kind === "EXAM_QUESTION"
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border text-muted-foreground hover:border-primary/60",
@@ -425,7 +425,7 @@ export function AssistantClient({
         {/* anchored entity */}
         {kind === "SPEC_TOPIC" ? (
           <div className="space-y-1.5">
-            <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+            <span className="text-2xs font-medium uppercase tracking-wide text-muted-foreground">
               Anchored topic — the server resolves it VALIDATED-only
             </span>
             <Select value={topicCode} onValueChange={setTopicCode}>
@@ -444,7 +444,7 @@ export function AssistantClient({
         ) : (
           <div className="space-y-3">
             <div className="space-y-1.5">
-              <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+              <span className="text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                 Question set (served from the exam bank)
               </span>
               <Select
@@ -469,7 +469,7 @@ export function AssistantClient({
               </Select>
             </div>
             <div className="space-y-1.5">
-              <span className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+              <span className="text-2xs font-medium uppercase tracking-wide text-muted-foreground">
                 Anchored question
               </span>
               <Select
@@ -497,7 +497,7 @@ export function AssistantClient({
                 </SelectContent>
               </Select>
               {question && (
-                <p className="text-[11px] leading-snug text-muted-foreground">
+                <p className="text-2xs leading-snug text-muted-foreground">
                   {question.marks} marks
                   {question.specPointCodes.length > 0
                     ? ` · ${question.specPointCodes.slice(0, 3).join(", ")}${question.specPointCodes.length > 3 ? ", …" : ""}`
@@ -516,7 +516,7 @@ export function AssistantClient({
 
         {/* mode vocabulary */}
         <div className="flex flex-wrap items-center gap-1.5 border-t pt-3">
-          <span className="mr-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">Mode</span>
+          <span className="mr-1 text-2xs font-medium uppercase tracking-wide text-muted-foreground">Mode</span>
           {MODES.map((m) => {
             const available = !m.questionOnly || kind === "EXAM_QUESTION";
             return available ? (
@@ -527,7 +527,7 @@ export function AssistantClient({
                 aria-pressed={mode === m.value}
                 title={m.hint}
                 className={cn(
-                  "flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
+                  "flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-2xs font-medium transition-colors",
                   mode === m.value
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border text-muted-foreground hover:border-primary/60",
@@ -544,7 +544,7 @@ export function AssistantClient({
               <span
                 key={m.value}
                 title="Question contexts only — attempt-gated in production"
-                className="cursor-not-allowed rounded-full border border-dashed px-2.5 py-0.5 text-[11px] text-muted-foreground/60"
+                className="cursor-not-allowed rounded-full border border-dashed px-2.5 py-0.5 text-2xs text-muted-foreground/60"
               >
                 {m.label}
               </span>
@@ -598,7 +598,7 @@ export function AssistantClient({
         {thread.map((m, i) =>
           m.role === "user" ? (
             <div key={i} className="flex justify-end">
-              <div className="max-w-[85%] rounded-2xl rounded-br-md bg-muted px-3.5 py-2 text-[13px]">
+              <div className="max-w-[85%] rounded-2xl rounded-br-md bg-muted px-3.5 py-2 text-xs">
                 {m.content}
               </div>
             </div>
@@ -611,7 +611,7 @@ export function AssistantClient({
               )}
             >
               {m.refused && (
-                <p className="flex items-center gap-1.5 text-[11px] font-semibold text-warn">
+                <p className="flex items-center gap-1.5 text-2xs font-semibold text-warn">
                   <TriangleAlert className="size-3.5" aria-hidden />
                   Honest refusal — the anchored material does not support this
                 </p>
@@ -622,10 +622,10 @@ export function AssistantClient({
                   {m.citations.map((c) => {
                     const pill = (
                       <span
-                        className="inline-flex max-w-full items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 text-[11px]"
+                        className="inline-flex max-w-full items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 text-2xs"
                         title={c.label}
                       >
-                        <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-semibold text-primary">
+                        <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-2xs font-semibold text-primary">
                           {c.index}
                         </span>
                         <FileText className="size-3 shrink-0 text-muted-foreground" aria-hidden />
@@ -645,7 +645,7 @@ export function AssistantClient({
                 </div>
               )}
               {m.context && (
-                <p className="text-[10px] leading-relaxed text-muted-foreground">
+                <p className="text-2xs leading-relaxed text-muted-foreground">
                   anchored <span className="font-medium text-foreground">{m.context.anchor}</span>
                   {" · "}
                   {m.context.kind === "EXAM_QUESTION" ? "exam question" : "spec topic"}
@@ -687,7 +687,7 @@ export function AssistantClient({
         <div className="border-t bg-background p-3 sm:p-4">
           <div className="rounded-2xl border bg-background shadow-sm transition-colors focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/15">
             <div className="flex items-center px-3.5 pt-3">
-              <span className="inline-flex min-w-0 items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium">
+              <span className="inline-flex min-w-0 items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-2xs font-medium">
                 <Compass className="size-3 shrink-0 text-muted-foreground" aria-hidden />
                 <span className="truncate">{anchorSummary}</span>
               </span>
@@ -714,11 +714,11 @@ export function AssistantClient({
               className="resize-none border-0 bg-transparent px-3.5 py-2.5 text-sm shadow-none placeholder:text-muted-foreground/70 focus-visible:ring-0 focus-visible:ring-offset-0"
             />
             <div className="flex items-center justify-between gap-2 px-3 pb-3">
-              <span className="text-[11px] text-muted-foreground">
+              <span className="text-2xs text-muted-foreground">
                 Enter to ask · Shift+Enter for a new line
               </span>
               <span className="flex items-center gap-2">
-                <span aria-live="polite" className="text-[11px] tabular-nums text-muted-foreground">
+                <span aria-live="polite" className="text-2xs tabular-nums text-muted-foreground">
                   {draft.length}/{MAX_QUESTION_CHARS}
                 </span>
                 <Button

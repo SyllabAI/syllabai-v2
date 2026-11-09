@@ -10,6 +10,7 @@ import {
   Files,
   GraduationCap,
   Lightbulb,
+  MonitorPlay,
   NotebookPen,
   ScrollText,
   Sparkles,
@@ -36,6 +37,7 @@ import { allCourseParams } from "@/lib/static-params";
 import { courseHasBookArchive } from "@/lib/books-registry";
 import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
 import { getGradeBoundariesSummary } from "@/lib/grade-boundaries";
+import { getVideoMap } from "@/lib/video-map";
 
 interface ResourceItem {
   icon: typeof BookOpen;
@@ -173,6 +175,11 @@ export default async function CourseHubPage({
   // T-TEACHME-001 run-003 (⚠️ OUT-OF-FENCE — see the card comment): the
   // flags.json render gate, the same read the /teach-me page serves under.
   const teachMe = await teachMeEnabledForCourse(meta.slug);
+  // T-VIDEOMAP-P3 (one-mount precedent, T-MIG-010/T-SENECA-001/run-002): the
+  // owner-reviewed video lane keys on the SAME flags.json "videoMap" gate the
+  // /videos page and lib/video-map.ts loader serve under — absent=OFF, so a
+  // course without a committed map keeps honest absence, never a ghost card.
+  const videoMap = await getVideoMap(meta.slug);
 
   // Topics tab data (hub-coursepage-mg-layout): the canonical spec tree with
   // per-subtopic counts + canonical hrefs — the SAME joins the sidebar uses,
@@ -418,6 +425,25 @@ export default async function CourseHubPage({
               },
             ]
           : []),
+        // T-VIDEOMAP-P3 (⚠️ OUT-OF-FENCE ADDITIVE MOUNT — this page is not in
+        // the task fence; shipped as its own commit for ratification, same
+        // one-mount precedent as the Teach SillyAI card): the owner-reviewed
+        // video lane (Cognito + free science channels, mapped spec point by
+        // point). Gate = flags.json "videoMap" (absent=OFF), the SAME read
+        // the /videos page serves under; unflagged courses show nothing.
+        ...(videoMap
+          ? [
+              {
+                icon: MonitorPlay,
+                title: "Videos",
+                desc: `Owner-reviewed video lessons mapped to this specification point by point — watch the exact clip a spec point needs. Title-only evidence is disclosed per row.`,
+                href: `${base}/videos`,
+                countLabel: `${fmtCount(videoMap.coverage.videosMapped)} videos · ${videoMap.coverage.specPointsMapped}/${videoMap.coverage.specPointsTotal} spec points`,
+                ready: true,
+                tint: "bg-chart-4/15",
+              },
+            ]
+          : []),
         {
           // R-1 + R-5 (operator trace 1a179c6b53bff529): this card was the
           // stale "Smart Lesson — Phase C of the build plan" roadmap ghost
@@ -503,7 +529,7 @@ export default async function CourseHubPage({
                     <span className="flex flex-wrap items-center gap-2">
                       <span className="font-bold group-hover:text-primary">{r.title}</span>
                       {!r.ready && (
-                        <span className="rounded-full bg-foreground px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-background">
+                        <span className="rounded-full bg-foreground px-2 py-0.5 text-2xs font-bold uppercase tracking-wide text-background">
                           {r.notReadyLabel ?? "coming soon"}
                         </span>
                       )}

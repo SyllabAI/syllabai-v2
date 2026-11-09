@@ -256,11 +256,11 @@ export function LocalClassWorkspace({
       <PageHeader
         eyebrow={
           <span className="flex flex-wrap items-center gap-2">
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <Users className="size-3" aria-hidden />
               Class workspace
             </Badge>
-            <Badge variant="secondary" className="text-[10px] font-normal">
+            <Badge variant="secondary" className="text-2xs font-normal">
               browser-local container
             </Badge>
           </span>
@@ -299,7 +299,7 @@ export function LocalClassWorkspace({
           <h2 id="live-console" className="text-sm font-semibold">
             Live teacher console
           </h2>
-          <span className="text-[11px] text-muted-foreground">
+          <span className="text-2xs text-muted-foreground">
             live cohort data — core RBAC on every call
           </span>
         </div>
@@ -310,7 +310,7 @@ export function LocalClassWorkspace({
                 <span className="flex size-9 items-center justify-center rounded-md bg-primary/10">
                   <ClipboardCheck className="size-4 text-primary" aria-hidden />
                 </span>
-                <Badge variant="outline" className="border-success/40 text-success text-[10px] font-normal">
+                <Badge variant="outline" className="border-success/40 text-success text-2xs font-normal">
                   live
                 </Badge>
               </div>
@@ -333,7 +333,7 @@ export function LocalClassWorkspace({
                 <span className="flex size-9 items-center justify-center rounded-md bg-primary/10">
                   <Network className="size-4 text-primary" aria-hidden />
                 </span>
-                <Badge variant="outline" className="border-success/40 text-success text-[10px] font-normal">
+                <Badge variant="outline" className="border-success/40 text-success text-2xs font-normal">
                   live
                 </Badge>
               </div>
@@ -361,7 +361,7 @@ export function LocalClassWorkspace({
           <h2 id="class-geography" className="text-sm font-semibold">
             My Class Geography Progress
           </h2>
-          <span className="text-[11px] text-muted-foreground">
+          <span className="text-2xs text-muted-foreground">
             corpus coverage per subtopic — not learner mastery
           </span>
         </div>
@@ -372,7 +372,7 @@ export function LocalClassWorkspace({
                 <span className="flex size-9 items-center justify-center rounded-md bg-primary/10">
                   <MapIcon className="size-4 text-primary" aria-hidden />
                 </span>
-                <Badge variant="outline" className="text-[10px] font-normal">
+                <Badge variant="outline" className="text-2xs font-normal">
                   browser-local
                 </Badge>
               </div>
@@ -455,7 +455,7 @@ export function LocalClassWorkspace({
                       </p>
                       <p className="mt-1 text-xs text-muted-foreground tabular-nums">
                         {stat && !stat.hasBundle && !papers ? (
-                          <Badge variant="outline" className="text-[10px] font-normal">
+                          <Badge variant="outline" className="text-2xs font-normal">
                             no corpus package
                           </Badge>
                         ) : papers ? (
@@ -486,7 +486,7 @@ export function LocalClassWorkspace({
                         <span className="flex size-9 items-center justify-center rounded-md bg-primary/10">
                           <t.icon className="size-4 text-primary" aria-hidden />
                         </span>
-                        <Badge variant="outline" className="text-[10px] font-normal">
+                        <Badge variant="outline" className="text-2xs font-normal">
                           {t.badge}
                         </Badge>
                       </div>
@@ -516,7 +516,7 @@ export function LocalClassWorkspace({
                         >
                           <t.icon className="size-4" style={{ color: t.color }} aria-hidden />
                         </span>
-                        <Badge variant="outline" className="text-[10px] font-normal">
+                        <Badge variant="outline" className="text-2xs font-normal">
                           {t.badge}
                         </Badge>
                       </div>

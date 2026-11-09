@@ -188,11 +188,11 @@ export function ValidationClient({
       <PageHeader
         eyebrow={
           <span className="flex items-center gap-2">
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <FileCheck2 className="size-3" aria-hidden />
               Validation
             </Badge>
-            <Badge variant="secondary" className="text-[10px] font-normal">
+            <Badge variant="secondary" className="text-2xs font-normal">
               Phase 2 · demo-truth
             </Badge>
           </span>
@@ -230,11 +230,11 @@ export function ValidationClient({
           <ChevronDown className="pointer-events-none absolute top-1/2 right-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
         </div>
         {current && (
-          <Badge variant="outline" className="gap-1 font-mono text-[10px] font-normal">
+          <Badge variant="outline" className="gap-1 font-mono text-2xs font-normal">
             {current.code} · {current.level}
           </Badge>
         )}
-        <span className="text-[11px] text-muted-foreground">
+        <span className="text-2xs text-muted-foreground">
           {loading
             ? "loading queue…"
             : loadError
@@ -286,17 +286,17 @@ export function ValidationClient({
               <Card className="py-0">
                 <CardContent className="space-y-3 p-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <Badge variant="outline" className="font-mono text-[10px] font-normal">
+                    <Badge variant="outline" className="font-mono text-2xs font-normal">
                       {item.subCode}
                     </Badge>
                     <span className="min-w-0 flex-1 truncate text-xs text-muted-foreground">
                       {item.subTitle} · {item.topicName}
                     </span>
-                    <Badge variant="secondary" className="text-[10px] font-normal tabular-nums">
+                    <Badge variant="secondary" className="text-2xs font-normal tabular-nums">
                       {item.part.marks} mark{item.part.marks === 1 ? "" : "s"}
                     </Badge>
                     {item.part.commandWord && (
-                      <Badge variant="outline" className="text-[10px] font-normal">
+                      <Badge variant="outline" className="text-2xs font-normal">
                         {item.part.commandWord}
                       </Badge>
                     )}
@@ -304,7 +304,7 @@ export function ValidationClient({
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-1 text-[11px] text-muted-foreground underline underline-offset-2 hover:text-foreground"
+                      className="flex items-center gap-1 text-2xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
                     >
                       open in Exam Questions
                       <ExternalLink className="size-3" aria-hidden />
@@ -315,7 +315,7 @@ export function ValidationClient({
                     <span className="font-medium">Problem: </span>
                     {item.part.problemExcerpt}
                   </p>
-                  <p className="rounded-md border border-primary/20 bg-primary/5 p-3 text-xs leading-relaxed">
+                  <p className="rounded-md border border-primary/30 bg-primary/5 p-3 text-xs leading-relaxed">
                     <span className="font-medium">AI model solution under review: </span>
                     {item.part.solutionExcerpt}
                   </p>
@@ -408,11 +408,11 @@ export function ValidationClient({
                     >
                       <Icon className={cn("size-3.5", meta.cls)} aria-hidden />
                       <span className="font-medium">{meta.label}</span>
-                      <span className="font-mono text-[10px] text-muted-foreground">{r.courseCode}</span>
+                      <span className="font-mono text-2xs text-muted-foreground">{r.courseCode}</span>
                       <span className="min-w-0 flex-1 truncate text-muted-foreground">
                         {r.comment ? `“${r.comment}”` : r.resourceId}
                       </span>
-                      <span className="tabular-nums text-[10px] text-muted-foreground">
+                      <span className="tabular-nums text-2xs text-muted-foreground">
                         {fmtWhen(r.createdAt)} · {r.reviewer}
                       </span>
                       <Button
