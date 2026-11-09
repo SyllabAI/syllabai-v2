@@ -2060,6 +2060,13 @@ origin/main
 - GATES: bundle-seed.test.ts 64/64; full CI lane locally bun test apps/api packages = 3,484 pass / 0 fail (was 3,481/1); root typecheck 5/5. Hub gates unchanged (content untouched by this run).
 - Receipt: .syllabai/receipts/T-SME-SEL-W2-1/run-002.md. Same branch t-sme-sel-w2/run-001, second commit.
 
+
+## T-VERCEL-API-DIAG run-001 (2026-11-09) — read-only discovery for the API bake floor (T-MG-CH1-MARK-1 follow-up)
+
+- The regions fix (#864) is merged and the data of record is verified in production (t-mg-ch1-mark-1-db-apply run 7 postverify: 9 questions / 95 mark points / 95 rects), but api.syllab-ai.com still serves a pre-fix build. The worklog of record (#658, #857) documents the why: the OLD account is usage-blocked (Nov 5), production moved to a SECOND account (the hub's CLI bakes), and the API project's git integration went silent Nov 4 (last status 04e3c40a #783) — the API never moved and never baked.
+- THIS workflow: zero-write GETs with VERCEL_BAKE_TOKEN — teams visible, every project's name/id/rootDirectory, each project's newest production deployment (state + commit + date), each project's assigned domains. It answers the three facts the API bake job needs: does an API project exist on the bake token's scope, with which rootDirectory, and where api.syllabai-v2's domain sits.
+- Secret law unchanged (t-ops-plane): the token is never printed; only names/ids/states.
+
 ## receipt(T-KG-TRIPWIRE-1) — tripwire spec phase 2: kg_tripwire_report.py + first weekly run — run-004 — 2026-11-09 (operator trace 1a1bebd26cb5d9a9)
 
 - Scope: operator order "Phase 2 (kg_tripwire_report.py + the first weekly run)" — spec section 8 phase 2: the weekly report script + first run, queue filing, calibration cohort section, verdict fields byte-empty, append-only queue byte-asserted.
