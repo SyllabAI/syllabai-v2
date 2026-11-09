@@ -223,7 +223,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
                     <span className={`block leading-snug ${isPicked ? "font-medium text-foreground" : "text-foreground"}`}>
                       {n.title}
                     </span>
-                    <span className="mt-0.5 block text-[11px] leading-snug text-muted-foreground">
+                    <span className="mt-0.5 block text-2xs leading-snug text-muted-foreground">
                       {hit ? `${hit.unitTitle} · ${hit.topicTitle} — ` : ""}
                       <span className="font-mono">{codesCaption(n)}</span>
                     </span>
@@ -264,7 +264,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
         >
           {busy ? "Waking SillyAI…" : "Start session"}
         </Button>
-        <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
+        <p className="text-center text-2xs leading-relaxed text-muted-foreground">
           Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts. Quota: 3 sessions a day.
         </p>
       </div>
@@ -295,7 +295,7 @@ function Segmented({
             role="radio"
             aria-checked={value === o.value}
             onClick={() => onChange(o.value)}
-            className={`flex-1 cursor-pointer rounded-md px-2 py-1.5 text-sm font-medium transition-all ${
+            className={`flex-1 cursor-pointer rounded-md px-2 py-1.5 text-sm font-medium transition-[color,background-color,box-shadow] ${
               value === o.value ? "bg-card shadow-sm ring-1 ring-border" : "text-muted-foreground hover:text-foreground"
             }`}
           >

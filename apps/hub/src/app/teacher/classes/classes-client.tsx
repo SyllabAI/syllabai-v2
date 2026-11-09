@@ -218,7 +218,7 @@ export function TeacherClassesClient({
                     </Link>
                     <p className="text-xs text-muted-foreground">{c.courseLabel}</p>
                   </div>
-                  <Badge variant="outline" className="font-mono text-[10px]">
+                  <Badge variant="outline" className="font-mono text-2xs">
                     {c.status}
                   </Badge>
                 </div>
@@ -263,11 +263,11 @@ export function TeacherClassesClient({
                   href={`/teacher/classes/${c.id}`}
                   className="flex items-center gap-2.5 rounded-lg border border-dashed px-3 py-2.5 transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <span className="shrink-0 rounded-full border bg-background px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  <span className="shrink-0 rounded-full border bg-background px-2 py-0.5 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                     This browser
                   </span>
                   <span className="min-w-0 flex-1 truncate text-sm font-medium">{c.name}</span>
-                  <span className="shrink-0 text-[11px] text-muted-foreground">
+                  <span className="shrink-0 text-2xs text-muted-foreground">
                     {c.subjectSlugs.length} {c.subjectSlugs.length === 1 ? "subject" : "subjects"}
                   </span>
                 </Link>

@@ -134,7 +134,7 @@ function SubtopicRow({ row, index }: { row: TopicSubtopicRow; index: number }) {
             <span className="mr-1.5 text-muted-foreground">{index + 1}.</span>
             {row.title}
           </span>
-          <span className="flex-none text-[10px] uppercase tracking-wide text-muted-foreground">
+          <span className="flex-none text-2xs uppercase tracking-wide text-muted-foreground">
             no resources yet
           </span>
         </div>

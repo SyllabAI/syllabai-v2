@@ -129,7 +129,7 @@ function QuestionRow({
   const [copied, copy] = useCopyFeedback();
   return (
     <li className="group/q flex items-start gap-2 py-1.5">
-      <Badge variant="outline" className="mt-0.5 h-5 shrink-0 px-1.5 text-[10px] tabular-nums">
+      <Badge variant="outline" className="mt-0.5 h-5 shrink-0 px-1.5 text-2xs tabular-nums">
         {q.marks}
         {q.marks === 1 ? "mk" : "mks"}
       </Badge>
@@ -137,7 +137,7 @@ function QuestionRow({
         <p className="line-clamp-2 text-xs leading-snug">{q.stem}</p>
         <FigureChips q={q} courseSlug={courseSlug} />
         <div className="mt-0.5 flex items-center gap-1">
-          <p className="min-w-0 flex-1 truncate text-[10px] text-muted-foreground">
+          <p className="min-w-0 flex-1 truncate text-2xs text-muted-foreground">
             {[
               q.paper ? paperLabel(q.paper) : null,
               q.specPointCodes.length > 0 ? q.specPointCodes.join(", ") : null,
@@ -216,7 +216,7 @@ export function BandCard({ band, courseSlug }: { band: TurnBand; courseSlug?: st
       ) : (
         <PaperBand band={band} courseSlug={courseSlug} />
       )}
-      <p className="border-t bg-background/60 px-3 py-1.5 text-[10px] text-muted-foreground">
+      <p className="border-t bg-background/60 px-3 py-1.5 text-2xs text-muted-foreground">
         Deterministic result from the SyllabAI question bank — no AI model involved.
       </p>
     </div>
@@ -263,7 +263,7 @@ function QuestionsBand({
         ))}
       </ul>
       {cut && (
-        <p className="text-[10px] text-muted-foreground">
+        <p className="text-2xs text-muted-foreground">
           Showing the first {view.items.length} of {view.total} — refine the topic to narrow the list.
         </p>
       )}
@@ -306,7 +306,7 @@ function PaperBand({ band, courseSlug }: { band: Extract<TurnBand, { kind: "pape
         </button>
       </div>
       {view.siblings.length > 0 && (
-        <p className="text-[10px] text-muted-foreground">
+        <p className="text-2xs text-muted-foreground">
           Same-session papers also in the bank:{" "}
           {view.siblings.map((s) => s.paperCode).filter(Boolean).join(", ")}
         </p>
@@ -333,7 +333,7 @@ function PaperBand({ band, courseSlug }: { band: Extract<TurnBand, { kind: "pape
         </ul>
       )}
       {view.questions.length > 12 && (
-        <p className="text-[10px] text-muted-foreground">
+        <p className="text-2xs text-muted-foreground">
           First 12 of {view.questions.length} questions shown — open the paper to read them all.
         </p>
       )}
@@ -367,7 +367,7 @@ function DocRow({
     <>
       <FileText className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
       <span className="flex-1 text-xs font-medium">{label}</span>
-      <span className="shrink-0 text-[10px] tabular-nums text-muted-foreground">
+      <span className="shrink-0 text-2xs tabular-nums text-muted-foreground">
         {chunkCount > 0 ? `${chunkCount} pages${span ? ` · ${span}` : ""}` : "not digitized"}
       </span>
       {href && <ExternalLink className="size-3 shrink-0 text-muted-foreground" aria-hidden />}

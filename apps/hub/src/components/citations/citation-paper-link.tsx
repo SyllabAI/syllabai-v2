@@ -395,7 +395,7 @@ export function CitationPaperLink({
             <>
               <DialogHeader className="flex-row items-center gap-2 space-y-0 border-b px-4 py-3 pr-12 text-left">
                 <DialogTitle className="flex min-w-0 flex-wrap items-center gap-2 text-sm">
-                  <Badge variant="outline" className="shrink-0 text-[10px]">
+                  <Badge variant="outline" className="shrink-0 text-2xs">
                     {KIND_LABELS[state.data.doc.kind] ?? "Source document"}
                   </Badge>
                   <span className="min-w-0 truncate">{state.data.doc.title}</span>
@@ -433,7 +433,7 @@ export function CitationPaperLink({
             <>
               <DialogHeader className="flex-row items-center gap-2 space-y-0 border-b px-4 py-3 pr-12 text-left">
                 <DialogTitle className="flex min-w-0 flex-wrap items-center gap-2 text-sm">
-                  <Badge variant="outline" className="shrink-0 text-[10px]">
+                  <Badge variant="outline" className="shrink-0 text-2xs">
                     {KIND_LABELS[state.data.doc.kind] ?? "Source document"}
                   </Badge>
                   <span className="min-w-0 truncate">{state.data.noteTitle}</span>
@@ -466,7 +466,7 @@ export function CitationPaperLink({
                   {state.data.noteHref && (
                     <a
                       href={state.data.noteHref}
-                      className="mt-3 inline-flex items-center gap-1 text-[11px] text-muted-foreground underline hover:text-foreground"
+                      className="mt-3 inline-flex items-center gap-1 text-2xs text-muted-foreground underline hover:text-foreground"
                     >
                       Open the full note <ExternalLink className="size-3" aria-hidden />
                     </a>
@@ -492,7 +492,7 @@ export function CitationPaperLink({
             <>
               <DialogHeader className="flex-row items-center gap-2 space-y-0 border-b px-4 py-3 pr-12 text-left">
                 <DialogTitle className="flex min-w-0 flex-wrap items-center gap-2 text-sm">
-                  <Badge variant="outline" className="shrink-0 text-[10px]">
+                  <Badge variant="outline" className="shrink-0 text-2xs">
                     {ROLE_LABELS[state.data.role]}
                   </Badge>
                   <span className="font-mono font-semibold">{state.data.ref}</span>

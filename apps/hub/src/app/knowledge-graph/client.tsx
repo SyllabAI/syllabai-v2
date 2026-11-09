@@ -157,13 +157,13 @@ function CourseGraphLanding({
                     {/* the slug disambiguates same-subject variants (Accounting
                         paper variants, Maths Pure 1-4, modular units) without
                         inventing display names the registry does not carry */}
-                    <span className="block truncate font-mono text-[10px] text-muted-foreground">
+                    <span className="block truncate font-mono text-2xs text-muted-foreground">
                       {c.slug}
                     </span>
                   </span>
                   <Badge
                     variant="outline"
-                    className="shrink-0 font-mono text-[10px]"
+                    className="shrink-0 font-mono text-2xs"
                   >
                     {c.code}
                   </Badge>
@@ -319,7 +319,7 @@ function KnowledgeGraphCourse({
             <Badge variant="outline" className="hidden max-w-[15rem] truncate font-medium sm:inline-flex">
               {current.label}
             </Badge>
-            <Badge variant="outline" className="hidden font-mono text-[10px] md:inline">
+            <Badge variant="outline" className="hidden font-mono text-2xs md:inline">
               {current.code}
             </Badge>
           </>
@@ -327,7 +327,7 @@ function KnowledgeGraphCourse({
         {counts && (
           <Badge
             variant="outline"
-            className="hidden font-mono text-[10px] text-success xl:inline"
+            className="hidden font-mono text-2xs text-success xl:inline"
           >
             {counts.nodes} nodes · {counts.edges} edges · {counts.specPoints} spec points
           </Badge>
@@ -340,7 +340,7 @@ function KnowledgeGraphCourse({
             ref={stateChipRef}
             variant="outline"
             size="sm"
-            className="h-8 gap-1.5 px-2 font-mono text-[10px] text-muted-foreground"
+            className="h-8 gap-1.5 px-2 font-mono text-2xs text-muted-foreground"
             aria-haspopup="dialog"
             onClick={() => setDrawerOpen(true)}
           >
@@ -411,7 +411,7 @@ function KnowledgeGraphCourse({
             {error ? (
               <Alert variant="destructive" className="max-w-md text-left">
                 <AlertTitle>Graph data failed to load</AlertTitle>
-                <AlertDescription className="font-mono text-[11px]">
+                <AlertDescription className="font-mono text-2xs">
                   {error}
                 </AlertDescription>
               </Alert>
@@ -444,7 +444,7 @@ function KnowledgeGraphCourse({
       </div>
 
       {/* honest data-path footnote */}
-      <div className="flex items-center gap-1.5 border-t px-4 py-1.5 text-[10px] text-muted-foreground">
+      <div className="flex items-center gap-1.5 border-t px-4 py-1.5 text-2xs text-muted-foreground">
         <Network className="size-3 shrink-0" aria-hidden />
         <span>
           {current?.label ?? "This course"}&apos;s specification graph — generated

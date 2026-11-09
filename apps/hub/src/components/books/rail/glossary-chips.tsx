@@ -47,13 +47,13 @@ export function GlossaryCard({ term }: { term: BookGlossaryTerm }) {
       <p className="font-semibold leading-snug">{term.term}</p>
       <p className="leading-relaxed text-muted-foreground">{term.definition}</p>
       {term.msAccepts.length > 0 && (
-        <p className="text-[13px] leading-snug">
+        <p className="text-xs leading-snug">
           <span className="font-medium text-emerald-700 dark:text-emerald-300">Examiners accept: </span>
           {term.msAccepts.join("; ")}
         </p>
       )}
       {term.msAvoids.length > 0 && (
-        <p className="text-[13px] leading-snug">
+        <p className="text-xs leading-snug">
           <span className="font-medium text-rose-700 dark:text-rose-300">Avoid: </span>
           {term.msAvoids.join("; ")}
         </p>
@@ -113,7 +113,7 @@ export function GlossaryStrip({ terms }: { terms: BookGlossaryTerm[] }) {
   if (sorted.length === 0) return null;
   return (
     <div className="rounded-lg border bg-muted/40 p-2.5">
-      <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+      <p className="mb-1.5 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
         Key terms
       </p>
       <div className="flex flex-wrap gap-1.5">

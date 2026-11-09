@@ -553,7 +553,7 @@ export const AnswerEditor = forwardRef<
     <EditorContent
       editor={editor}
       style={minHeight ? { minHeight } : undefined}
-      className="answer-editor-area max-h-96 overflow-y-auto px-4 py-4 text-[13px] md:text-sm"
+      className="answer-editor-area max-h-96 overflow-y-auto px-4 py-4 text-xs md:text-sm"
     />
   );
 });

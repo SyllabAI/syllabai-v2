@@ -231,7 +231,7 @@ export function TutorCourseGate({
         <h1 className="mt-3 text-base font-semibold">
           {unknown ? "Course not found" : `Tutor not yet available for ${label}`}
         </h1>
-        <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
           {unknown
             ? `No course is registered under "${label}" — check the link or pick the course from its hub.`
             : `The ${label} tutor isn't connected yet — it answers only from that course's own material, so there's nothing to chat with here.`}
@@ -840,7 +840,7 @@ export function TutorChat({
             onClick={newChat}
             title="Start a new chat"
             aria-label="New chat"
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center gap-1.5 rounded-[10px] border text-[13px] font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:w-auto sm:px-3"
+            className="inline-flex h-9 w-9 shrink-0 items-center justify-center gap-1.5 rounded-[10px] border text-xs font-semibold text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:w-auto sm:px-3"
           >
             <Plus className="size-4 shrink-0" aria-hidden />
             <span className="hidden sm:inline">New chat</span>
@@ -976,7 +976,7 @@ export function TutorChat({
                 setAtBottom(true);
                 scrollToBottom(true);
               }}
-              className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border bg-background px-3 py-1 text-[11px] text-muted-foreground shadow-sm transition-colors hover:text-foreground"
+              className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border bg-background px-3 py-1 text-2xs text-muted-foreground shadow-sm transition-colors hover:text-foreground"
             >
               <ArrowDown className="size-3" aria-hidden /> Jump to latest
             </button>
@@ -1020,7 +1020,7 @@ export function TutorChat({
               onSend={() => send()}
               onStop={() => abortsRef.current.get(activeThread?.id ?? "")?.abort()}
             />
-            <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
+            <p className="text-center text-2xs leading-relaxed text-muted-foreground">
               Answers cite the {courseLabel ? `${courseLabel} material` : "4CH1 material"} and can make
               mistakes — check citations before an exam. By asking you agree to the{" "}
               <Link
@@ -1162,7 +1162,7 @@ function Welcome({
           </button>
         ))}
       </div>
-      <p className="mt-6 text-center text-[11px] text-muted-foreground">
+      <p className="mt-6 text-center text-2xs text-muted-foreground">
         Paste a question, a spec code like{" "}
         <code className="rounded bg-muted px-1 py-px font-mono">
           {courseRef != null && !/^4CH/.test(courseRef) ? `${courseRef.split("-")[0]}-1.1` : "4CH1-1.38"}

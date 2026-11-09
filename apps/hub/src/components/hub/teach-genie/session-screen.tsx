@@ -562,7 +562,7 @@ function Composer({
           </Button>
         </div>
       </div>
-      <p className="mt-1.5 px-2 text-[11px] text-muted-foreground">
+      <p className="mt-1.5 px-2 text-2xs text-muted-foreground">
         Give it 40+ words — short replies earn a nudge instead of a verdict.
       </p>
     </form>

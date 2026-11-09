@@ -66,14 +66,14 @@ export default async function GuidedLessonsIndexPage({
     <Link
       key={entry.noteId}
       href={`/courses/${meta.slug}/guided-lessons/${entry.noteId}`}
-      className="group flex items-start gap-2.5 rounded-md border bg-card px-3 py-2.5 text-[13px] transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
+      className="group flex items-start gap-2.5 rounded-md border bg-card px-3 py-2.5 text-xs transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
     >
       <GraduationCap aria-hidden className="mt-0.5 size-4 shrink-0 text-primary" />
       <span className="min-w-0 flex-1">
         <span className="block font-medium leading-snug group-hover:text-primary">{note.title}</span>
         <span className="mt-1 flex flex-wrap items-center gap-1">
           {note.specPointCodes.slice(0, 3).map((c) => (
-            <code key={c} className="rounded bg-muted px-1 text-[10px]">
+            <code key={c} className="rounded bg-muted px-1 text-2xs">
               {c}
             </code>
           ))}

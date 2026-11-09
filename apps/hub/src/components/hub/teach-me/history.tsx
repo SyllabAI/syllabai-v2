@@ -73,11 +73,11 @@ export function TeachMeHistory({ items, onOpen }: TeachMeHistoryProps) {
                           {it.specPointIds.join(" · ")}
                         </span>
                       </span>
-                      <Badge variant="outline" className={`text-[10px] ${badge.className}`}>
+                      <Badge variant="outline" className={`text-2xs ${badge.className}`}>
                         {badge.label}
                       </Badge>
                     </div>
-                    <p className="mt-1 text-[11px] text-muted-foreground/70">
+                    <p className="mt-1 text-2xs text-muted-foreground/70">
                       {new Date(it.createdAt).toLocaleString()}
                     </p>
                   </button>

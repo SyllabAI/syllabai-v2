@@ -121,7 +121,7 @@ export function LessonProgressTracker({
   if (shown <= 0) return null;
   return (
     <div data-lesson-progress className="mt-3 rounded-md border bg-card p-2.5">
-      <div className="mb-1 flex items-baseline justify-between text-[11px]">
+      <div className="mb-1 flex items-baseline justify-between text-2xs">
         <span className="font-semibold uppercase tracking-wide text-muted-foreground">Reading progress</span>
         <span className="font-medium text-muted-foreground">{shown}% read</span>
       </div>

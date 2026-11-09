@@ -72,7 +72,7 @@ export function FeatureTile({
           aria-hidden
         />
       ) : (
-        <span className="shrink-0 self-center rounded-full border bg-background px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+        <span className="shrink-0 self-center rounded-full border bg-background px-2 py-0.5 text-2xs font-medium text-muted-foreground">
           {ghostLabel}
         </span>
       )}

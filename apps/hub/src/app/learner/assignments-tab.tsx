@@ -272,7 +272,7 @@ export function AssignmentsTab() {
                   <span className="flex flex-wrap items-center gap-2">
                     <ClipboardList className="size-4 shrink-0 text-primary" aria-hidden />
                     <span className="text-sm font-semibold">{a.title}</span>
-                    <Badge variant="outline" className="font-mono text-[10px] font-normal">
+                    <Badge variant="outline" className="font-mono text-2xs font-normal">
                       {a.courseLabel}
                     </Badge>
                   </span>
@@ -288,28 +288,28 @@ export function AssignmentsTab() {
                 </span>
                 <span className="flex shrink-0 items-center gap-2">
                   {a.status === "closed" ? (
-                    <Badge variant="secondary" className="text-[10px] font-normal">
+                    <Badge variant="secondary" className="text-2xs font-normal">
                       closed
                     </Badge>
                   ) : overdue ? (
-                    <Badge variant="destructive" className="text-[10px] font-normal">
+                    <Badge variant="destructive" className="text-2xs font-normal">
                       overdue
                     </Badge>
                   ) : dueSoon ? (
-                    <Badge variant="outline" className="text-[10px] font-normal text-warn">
+                    <Badge variant="outline" className="text-2xs font-normal text-warn">
                       due soon
                     </Badge>
                   ) : null}
                   {mySubmission === null ? (
-                    <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+                    <Badge variant="outline" className="gap-1 text-2xs font-normal">
                       <XCircle className="size-3" aria-hidden /> not handed in
                     </Badge>
                   ) : late ? (
-                    <Badge variant="outline" className="gap-1 text-[10px] font-normal text-warn">
+                    <Badge variant="outline" className="gap-1 text-2xs font-normal text-warn">
                       <CircleAlert className="size-3" aria-hidden /> handed in late
                     </Badge>
                   ) : (
-                    <Badge variant="outline" className="gap-1 text-[10px] font-normal text-primary">
+                    <Badge variant="outline" className="gap-1 text-2xs font-normal text-primary">
                       <CheckCircle2 className="size-3" aria-hidden /> handed in
                     </Badge>
                   )}
@@ -347,7 +347,7 @@ export function AssignmentsTab() {
                         <a
                           key={code}
                           href={`/courses/${a.courseSlug}/exam-questions?spec=${encodeURIComponent(code)}`}
-                          className="inline-flex items-center gap-1 rounded-md border px-2 py-1 font-mono text-[10px] hover:bg-muted/60"
+                          className="inline-flex items-center gap-1 rounded-md border px-2 py-1 font-mono text-2xs hover:bg-muted/60"
                         >
                           {code}
                           <ExternalLink className="size-3" aria-hidden />
@@ -381,7 +381,7 @@ export function AssignmentsTab() {
                         )}
                         {mySubmission === null ? "Hand in" : "Update hand-in"}
                       </Button>
-                      <span className="max-w-md text-[11px] leading-relaxed text-muted-foreground">
+                      <span className="max-w-md text-2xs leading-relaxed text-muted-foreground">
                         {isPackRow
                           ? packDone === 0
                             ? "Work through the pack tasks first — hand-in records the completions your account already holds."
@@ -392,7 +392,7 @@ export function AssignmentsTab() {
                       </span>
                     </div>
                   ) : (
-                    <p className="text-[11px] text-muted-foreground">
+                    <p className="text-2xs text-muted-foreground">
                       This assignment is closed — no new hand-ins. Your recorded hand-in stays on
                       your account.
                     </p>

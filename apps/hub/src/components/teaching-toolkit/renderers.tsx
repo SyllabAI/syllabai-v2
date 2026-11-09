@@ -36,7 +36,7 @@ function Chip({ label, value }: { label: string; value: string | number | null |
   if (value === null || value === undefined || value === "") return null;
   return (
     <div className="rounded-md border bg-muted/40 px-3 py-2">
-      <div className="text-[11px] uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className="text-2xs uppercase tracking-wide text-muted-foreground">{label}</div>
       <div className="text-sm font-medium">{String(value)}</div>
     </div>
   );
@@ -376,7 +376,7 @@ export function SowView({ out }: { out: SowOutput }) {
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{a.description}</p>
                   <div className="mt-1.5 flex flex-wrap gap-1">
                     {a.resources.map((r, j) => (
-                      <Badge key={j} variant="outline" className="text-[11px]">
+                      <Badge key={j} variant="outline" className="text-2xs">
                         {r}
                       </Badge>
                     ))}

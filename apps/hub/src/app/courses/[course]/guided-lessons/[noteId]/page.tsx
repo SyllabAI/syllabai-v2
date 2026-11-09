@@ -118,7 +118,7 @@ export default async function GuidedLessonPage({
               <span className="flex size-8 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <GraduationCap className="size-4.5" aria-hidden />
               </span>
-              <span className="text-[13px] font-medium uppercase tracking-wide text-muted-foreground">
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                 Guided lesson
               </span>
             </div>
@@ -128,7 +128,7 @@ export default async function GuidedLessonPage({
             >
               <div className="flex flex-wrap items-center gap-2">
                 {lesson.specAnchors.map((a) => (
-                  <Badge key={a.code} variant="secondary" className="font-mono text-[11px]">
+                  <Badge key={a.code} variant="secondary" className="font-mono text-2xs">
                     {a.code}
                   </Badge>
                 ))}
@@ -151,7 +151,7 @@ export default async function GuidedLessonPage({
           {/* no-JS / prefer-scroll fallback — the full authored lesson as a
               plain page (every authored string stays server-rendered) */}
           <details className="rounded-lg border">
-            <summary className="cursor-pointer px-4 py-3 text-[13px] font-medium">
+            <summary className="cursor-pointer px-4 py-3 text-xs font-medium">
               Prefer to read it all at once? Show the full lesson as a page
             </summary>
             <div className="space-y-5 border-t px-4 py-4">
@@ -171,7 +171,7 @@ export default async function GuidedLessonPage({
                   <h2 id="static-note-figures" className="text-base font-semibold tracking-tight">
                     From the revision note
                   </h2>
-                  <p className="text-[13px] text-muted-foreground">
+                  <p className="text-xs text-muted-foreground">
                     Diagrams on this note&apos;s page that are not tied to a specific lesson.
                   </p>
                   <div className="grid gap-2 sm:grid-cols-2">
@@ -235,13 +235,13 @@ function StaticModuleSection({
         {m.specRefs.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {m.specRefs.map((code) => (
-              <Badge key={code} variant="outline" className="font-mono text-[11px]">
+              <Badge key={code} variant="outline" className="font-mono text-2xs">
                 {code}
               </Badge>
             ))}
           </div>
         )}
-        <p className="text-[13px] leading-relaxed text-muted-foreground">{m.opening}</p>
+        <p className="text-xs leading-relaxed text-muted-foreground">{m.opening}</p>
         {figures.length > 0 && (
           <div className="grid gap-2 sm:grid-cols-2">
             {figures.map((f) => (
@@ -256,7 +256,7 @@ function StaticModuleSection({
           <p className="mb-3 text-sm font-semibold">Key points</p>
           <ul className="space-y-2">
             {m.keyPoints.map((kp, i) => (
-              <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed">
+              <li key={i} className="flex gap-2.5 text-xs leading-relaxed">
                 <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
                 <span>{kp}</span>
               </li>
@@ -295,7 +295,7 @@ function StaticFigure({ f }: { f: GuidedFigure }) {
       </span>
       {f.caption && (
         <figcaption className="space-y-0.5">
-          <p className="text-[13px] leading-relaxed">{f.caption}</p>
+          <p className="text-xs leading-relaxed">{f.caption}</p>
         </figcaption>
       )}
     </figure>
@@ -317,8 +317,8 @@ function StaticDepthLayers({
         <Card key={label}>
           <CardContent className="space-y-2.5 p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</p>
-            <p className="text-[13px] leading-relaxed">{layer.restatement}</p>
-            <p className="text-[13px] leading-relaxed text-muted-foreground">
+            <p className="text-xs leading-relaxed">{layer.restatement}</p>
+            <p className="text-xs leading-relaxed text-muted-foreground">
               <span className="font-medium text-foreground">Analogy — </span>
               {layer.analogy}
             </p>
