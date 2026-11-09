@@ -1,0 +1,72 @@
+version: 1
+task:
+  id: T-HUB-COURSES-UI-2
+  title: "The /courses directory adopts the course-page design language — the operator's approved PageHero band (gradient wash, display title, honest StatChip row), course-page section-title recipes, pill chips and the proportionate identity tile"
+  owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1bc441088a9629)"
+  status: "IN_REVIEW run-001 (PR open, awaiting operator/integrator review)"
+  priority: P1
+  band: T-HUB (frontend — courses directory surface)
+  wave: hub-courses-directory
+  deps: [T-HUB-COURSES-PUBLIC-1, T-HUB-COURSES-UI-1, T-HUB-COURSES-PUBLIC-2]
+  execution_record: >
+    run-000 (2026-11-09, operator trace 1a1bc441088a9629): the operator attached
+    the saved Chemistry IGCSE course page (the approved design of record,
+    www.syllab-ai.com production) and ordered "Look at the design of this page.
+    How about making the course page look more like this?" — the /courses
+    directory (the page under improvement since PUBLIC-1/UI-1/PUBLIC-2) should
+    carry the course page's design language.
+    run-001 (2026-11-09, same trace): implementing as a faithful RE-USE of the
+    house's own approved kit — the attachment's hero IS the hub's PageHero
+    (components/dashboard/kit/page-hero.tsx: the same .course-hero-gradient
+    wash, the same 3xl/4xl extrabold title recipe, the same p-5/sm:p-6 rhythm,
+    the StatChip row) — plus the course page's section-title recipe
+    (text-lg font-bold tracking-tight over the old uppercase eyebrows), its
+    pill-chip language (rounded-full counts) and its proportionate identity
+    tile (size-12/rounded-xl on grid cards; the course rows' size-14 is a
+    list-row scale). The search + board chips and the Continue chip move INTO
+    the hero's children slot (the kit's one-spine law: the hero opens the page,
+    the body carries content); the provenance <details> rides the hero too
+    (server-authored, passed as a prop). Hero stats are REAL registry/manifest
+    facts computed at build (summarizeDirectoryStats in lib/directory-stats.ts,
+    unit-pinned): courses, full corpus, tutor-ready, committed archive papers —
+    the StatChip honesty law (absent value renders nothing) is inherited, the
+    option-1 static-facts law is untouched.
+    LAW AMENDMENT DISCLOSED: T-HEADER-1 (trace 1a1b173567f8eb99) pinned the
+    tool-page header law — PageHeader text-2xl everywhere, the PageHero band
+    for LANDERS ONLY (course root, dashboard, teacher home). This run moves
+    /courses to the lander posture BY OPERATOR DESIGN ORDER (the trace above
+    names the course page as the target look); every other tool page keeps the
+    PageHeader law untouched.
+    Gates: bun test (directory-stats + directory-groups suites incl. the new
+    summary anchors), tsc --noEmit, eslint on changed files, build:hub
+    (compile + in-build TS + prerender; the standalone-output ENOSPC of four
+    prior runs is the disclosed precedent — the CI hub job stays the packaging
+    gate of record). Runtime verification on the built artifact.
+    House notes: zero new dependencies (PageHero/StatChip/lucide in-tree); no
+    font/palette/theme changes (the gradient wash and every colour ride the
+    existing token sheet, all four themes re-skin for free); no network added;
+    the operator's GitHub PAT env-only, rotation still outstanding.
+base:
+  repo: "syllabai-v2 @ a3561bd1 (origin/main at claim; local clone re-synced after a sandbox recycle reverted it to the 1dd5335 snapshot — stale worklog state verified byte-identical upstream and kept in a local stash, disclosed)"
+basis: >
+  Operator order 2026-11-09 trace 1a1bc441088a9629 with the saved Chemistry
+  IGCSE course page attached as the design of record. Continues the
+  directory program: PUBLIC-1 (option-1 open-up), UI-1 (identity tiles +
+  family grouping), PUBLIC-2 (substance line, jump-nav, ?q=, JSON-LD).
+  Everything shown on the public page stays static registry + committed-bundle
+  facts (option-1 law); nothing user-data touches the surface.
+scope:
+  allowed:
+    - "apps/hub/src/app/courses/page.tsx (PageHeader -> hero composition + stats)"
+    - "apps/hub/src/app/courses/course-directory.tsx (PageHero band, hero children: continue chip + toolbar + provenance; section-title recipes; tile scale; pill chips; jump-nav radius)"
+    - "apps/hub/src/lib/directory-stats.ts (summarizeDirectoryStats append only)"
+    - "apps/hub/src/lib/directory-stats.test.ts (summary-law tests append only)"
+    - ".syllabai/tasks/T-HUB-COURSES-UI-2.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-HUB-COURSES-UI-2/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/hub/src/app/courses/[course]/** (hub subtree untouched)"
+    - "fonts/palette/theme-pack changes (house design system is law)"
+    - "components/dashboard/kit/**, components/hub/**, components/layout/** (the kit is consumed, not edited)"
+    - "packages/**, apps/api/**, golden/** (out of band)"
+    - "any user-data surface on the public directory (option-1 law)"

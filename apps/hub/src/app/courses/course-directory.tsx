@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
 import { BookOpen, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { PageHero } from "@/components/dashboard/kit/page-hero";
 import { boardOf, distinctBoards } from "@/lib/board";
 import type { CourseMeta } from "@/lib/courses";
 import {
@@ -48,6 +49,7 @@ export function CourseDirectory({
   courses,
   archivePapers,
   bundleStats,
+  hero,
 }: {
   courses: CourseMeta[];
   /** slug -> committed corpus archive paper count (UX review F-01); rows
@@ -58,6 +60,19 @@ export function CourseDirectory({
    *  page and plumbed like archivePapers. Absent rows simply render no
    *  substance line — the same never-a-false-claim law. */
   bundleStats?: Record<string, CourseCounts>;
+  /** T-HUB-COURSES-UI-2: the opening band's server-authored content — the
+   *  operator ordered the course page's design language for this page
+   *  (trace 1a1bc441088a9629), and that design IS the house's PageHero kit.
+   *  The server composes title/description/StatChips/provenance here; this
+   *  client component supplies the band's interactive slots (search, board
+   *  chips, the Continue pointer) as its children. */
+  hero: {
+    eyebrow: string;
+    title: ReactNode;
+    description: ReactNode;
+    stats: ReactNode;
+    provenance: ReactNode;
+  };
 }) {
   const [q, setQ] = useState("");
   // Audit #4: the directory rendered no board anywhere and offered no way
@@ -170,68 +185,83 @@ export function CourseDirectory({
 
   return (
     <div className="space-y-6">
-      {/* fix ③: the one personal, action-leading element sits above the
-          tool row — quiet card, primary link, the resource named. */}
-      {lastEntry && (
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border bg-card px-3.5 py-2.5 text-sm">
-          <span className="text-muted-foreground">Continue where you left off:</span>
-          <Link
-            href={lastEntry.href}
-            className="font-medium text-primary underline-offset-2 hover:underline"
-          >
-            {lastEntry.course.label}
-          </Link>
-          <span className="text-muted-foreground">
-            · {resourceLabel(lastEntry.resource)}
-          </span>
-        </div>
-      )}
-      {/* t-ui-polish run-003 — one toolbar row: search beside the board
-          chips at sm+ (they wrap as a stack below sm, exactly as before). */}
-      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-        <Input
-          value={q}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder={`Search ${courses.length} courses by subject, exam code or board…`}
-          aria-label="Search courses"
-          className="w-full sm:w-80"
-        />
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by board">
-        <Button
-          type="button"
-          size="sm"
-          variant="outline"
-          aria-pressed={board === null}
-          onClick={() => setBoard(null)}
-          className={
-            "gap-1.5 " + (board === null ? "border-primary/60 bg-primary/5 font-medium" : "")
-          }
-        >
-          All boards
-          <Badge variant="secondary" className="px-1.5">
-            {courses.length}
-          </Badge>
-        </Button>
-        {boards.map(([name, count]) => (
+      {/* T-HUB-COURSES-UI-2: the opening band — the course page's own hero
+          recipe (the operator's approved design of record): gradient wash,
+          display-weight title, description, honest StatChip row. The kit's
+          one-spine law holds: the hero opens the page, nothing below
+          competes for the H1, and the interactive furniture (Continue
+          pointer, search + board chips, provenance disclosure) rides the
+          band's children slot exactly as the course page's action row does. */}
+      <PageHero
+        eyebrow={hero.eyebrow}
+        title={hero.title}
+        description={hero.description}
+        stats={hero.stats}
+      >
+        {/* fix ③: the one personal, action-leading element sits above the
+            tool row — quiet card, primary link, the resource named. */}
+        {lastEntry && (
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border bg-card px-3.5 py-2.5 text-sm">
+            <span className="text-muted-foreground">Continue where you left off:</span>
+            <Link
+              href={lastEntry.href}
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              {lastEntry.course.label}
+            </Link>
+            <span className="text-muted-foreground">
+              · {resourceLabel(lastEntry.resource)}
+            </span>
+          </div>
+        )}
+        {/* t-ui-polish run-003 — one toolbar row: search beside the board
+            chips at sm+ (they wrap as a stack below sm, exactly as before). */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          <Input
+            value={q}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={`Search ${courses.length} courses by subject, exam code or board…`}
+            aria-label="Search courses"
+            className="w-full sm:w-80"
+          />
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by board">
           <Button
-            key={name}
             type="button"
             size="sm"
             variant="outline"
-            aria-pressed={board === name}
-            onClick={() => setBoard(board === name ? null : name)}
+            aria-pressed={board === null}
+            onClick={() => setBoard(null)}
             className={
-              "gap-1.5 " + (board === name ? "border-primary/60 bg-primary/5 font-medium" : "")
+              "gap-1.5 " + (board === null ? "border-primary/60 bg-primary/5 font-medium" : "")
             }
           >
-            {name}
-            <Badge variant="secondary" className="px-1.5">
-              {count}
+            All boards
+            <Badge variant="secondary" className="rounded-full px-1.5 tabular-nums">
+              {courses.length}
             </Badge>
           </Button>
-        ))}
+          {boards.map(([name, count]) => (
+            <Button
+              key={name}
+              type="button"
+              size="sm"
+              variant="outline"
+              aria-pressed={board === name}
+              onClick={() => setBoard(board === name ? null : name)}
+              className={
+                "gap-1.5 " + (board === name ? "border-primary/60 bg-primary/5 font-medium" : "")
+              }
+            >
+              {name}
+              <Badge variant="secondary" className="rounded-full px-1.5 tabular-nums">
+                {count}
+              </Badge>
+            </Button>
+          ))}
+          </div>
         </div>
-      </div>
+        {hero.provenance}
+      </PageHero>
       {/* T-HUB-COURSES-PUBLIC-2 (③): the page is 106 cards across up to 4
           levels × 5 families — one quiet anchor row under the toolbar makes
           it navigable without search. Renders only the levels actually
@@ -247,7 +277,7 @@ export function CourseDirectory({
             <a
               key={level}
               href={`#${courseLevelAnchor(level)}`}
-              className="rounded-md border px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
+              className="rounded-lg border px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
             >
               {level}{" "}
               <span className="font-normal">
@@ -264,9 +294,13 @@ export function CourseDirectory({
           aria-label={level}
           className="scroll-mt-20"
         >
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+          {/* T-HUB-COURSES-UI-2: the course page's section-title recipe
+              (text-lg font-bold tracking-tight) replaces the old uppercase
+              eyebrow — the level heading now reads like the attached page's
+              own section headings, with the honest count riding quieter. */}
+          <h2 className="mb-3 text-lg font-bold tracking-tight">
             {level}{" "}
-            <span className="font-normal">
+            <span className="text-sm font-normal text-muted-foreground">
               · {total} course{total === 1 ? "" : "s"}
             </span>
           </h2>
@@ -274,9 +308,10 @@ export function CourseDirectory({
             {families.map(({ family, label, courses: rows }) => (
               <div key={family}>
                 {/* run-002: the family scan line — quieter than the level
-                    header (text-xs under its text-sm), still a real heading
-                    so the section reads as level → family → card. */}
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    header (text-sm under its text-lg), still a real heading
+                    so the section reads as level → family → card. The old
+                    uppercase shout is gone with the UI-2 recipe pass. */}
+                <h3 className="mb-2 text-sm font-semibold text-muted-foreground">
                   {label}{" "}
                   <span className="font-normal">
                     · {rows.length} course{rows.length === 1 ? "" : "s"}
@@ -325,7 +360,7 @@ export function CourseDirectory({
                             {identity ? (
                               <span
                                 aria-hidden
-                                className="subject-tile flex size-10 shrink-0 items-center justify-center rounded-lg border"
+                                className="subject-tile flex size-12 shrink-0 items-center justify-center rounded-xl border"
                                 style={
                                   {
                                     "--subj-bg": identity.tile.bg,
@@ -333,14 +368,14 @@ export function CourseDirectory({
                                   } as CSSProperties
                                 }
                               >
-                                <SubjectGlyph glyph={identity.glyph} className="size-5" />
+                                <SubjectGlyph glyph={identity.glyph} className="size-6" />
                               </span>
                             ) : (
                               <span
                                 aria-hidden
-                                className="flex size-10 shrink-0 items-center justify-center rounded-lg border bg-muted text-muted-foreground"
+                                className="flex size-12 shrink-0 items-center justify-center rounded-xl border bg-muted text-muted-foreground"
                               >
-                                <BookOpen className="size-5" />
+                                <BookOpen className="size-6" />
                               </span>
                             )}
                             <div className="min-w-0 flex-1">
@@ -391,21 +426,22 @@ export function CourseDirectory({
                                 {(archivePapers?.[c.slug] ?? 0) > 0 && (
                                 <Badge
                                   variant="secondary"
+                                  className="rounded-full tabular-nums"
                                   title="Official question papers + mark schemes, readable on the course page"
                                 >
                                   {archivePapers?.[c.slug]} past paper{(archivePapers?.[c.slug] ?? 0) === 1 ? "" : "s"}
                                 </Badge>
                               )}
                               {c.status === "pilot" ? (
-                                  <Badge className="uppercase">pilot corpus · official spec tree</Badge>
+                                  <Badge className="rounded-full uppercase">pilot corpus · official spec tree</Badge>
                                 ) : c.status === "full" ? (
-                                  <Badge variant="outline" className="uppercase">
+                                  <Badge variant="outline" className="rounded-full uppercase">
                                     full corpus
                                   </Badge>
                                 ) : (
                                   <Badge
                                     variant="outline"
-                                    className="uppercase text-muted-foreground"
+                                    className="rounded-full uppercase text-muted-foreground"
                                     title="This lane is registered; its full corpus — notes, exam questions, flashcards and the past-paper archive — is queued for import. Nothing is rendered for it yet."
                                   >
                                     import pending
