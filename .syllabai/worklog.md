@@ -2037,3 +2037,12 @@ Stage Summary:
 origin/main
 origin/main
 origin/main
+
+## receipt(T-KG-TRIPWIRE-1) — tripwire spec phase 2: kg_tripwire_report.py + first weekly run — run-004 — 2026-11-09 (operator trace 1a1bebd26cb5d9a9)
+
+- Scope: operator order "Phase 2 (kg_tripwire_report.py + the first weekly run)" — spec section 8 phase 2: the weekly report script + first run, queue filing, calibration cohort section, verdict fields byte-empty, append-only queue byte-asserted.
+- Shipped: scripts/kg_tripwire_report.py (stdlib-only; QA-of-record law set P1-P6 + F8.1-F8.7 in COLLECTION mode + Kahn cycles + inversion census; census re-derived every run; T1 >=3-sessions/7d window + long-tail; T2 n>=30 insufficient_data law, Wald CI, threshold 0.10 web / any-direction control; section-6 routing; four confounds every report; L1-L5 self-laws) + .syllabai/lane-artifacts/T-KG-TRIPWIRE-1/ (weekly-report-2026-11-09.md+csv, review-queue.csv header+3 rows, 3 evidence bundles).
+- The finding of record: QA of record FAILS at main 676bbc6d — [F8.1] el20 11 + el25 9 dead-anchor concepts, [F8.5] el20 drift sym 2 (the 2 disclosed reversed-governance pairs). Attribution: RN-DEBRIS-11 run-012 (a52c187a) rebuilt the 0500 spines and disclosed the drops but left aims anchors byte-untouched; its gates covered surviving pairs, not corpus-wide F8 laws. 3 OPEN rows filed (highest priority, blocks nothing); repair belongs to the owning lane, not this run.
+- Census re-derived: 106 courses / 20,351 served / web 20,264 / validated 124 (118+6 retarget-sole — run-002 rows reconciled) / inferred 30 / unclassified 0 / cycles 0 / inversions 0; web edges 9,072 unchanged. Retarget law corrected BEFORE any of-record artifact: provenance strings are untouched by design, the class is structural (direct-endpoint validated edges; 12 edges -> 6 sole-derivation served pairs — run-002's assert reproduced exactly).
+- Acceptance ALL PASS (independently re-verified): section-6 schema header byte-equal; verdict/reviewer/review_date byte-empty 3/3; append-only byte-assert PASS and same-day re-run appended 0 bytes (dedup by already-OPEN, the queue is a work queue not a log); calibration cohort + all four confounds present; prereqValidated 0/106 by JSON-parse walk; git delta scope scripts/ + .syllabai/ only; zero content/public/label bytes.
+- Environment: fifth sandbox recycle (everything rebuilt); PAT lost with it — branch t-kg-tripwire-1/run-004 is local of record, push+PR commands handed to the operator; PAT rotation reminder fifth filing (chat-transit exposure still unrotated).
