@@ -174,18 +174,18 @@ export function ThreadSidebar({
         {/* ── synced conversations (server-owned, web s143 parity) ── */}
         {serverPane && (
           <div className="mb-2">
-            <p className="flex items-center gap-1.5 px-2 pb-1 pt-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground/80">
+            <p className="flex items-center gap-1.5 px-2 pb-1 pt-1 text-2xs font-semibold uppercase tracking-wide text-muted-foreground/80">
               <Cloud className="size-3" aria-hidden /> Synced to your account
             </p>
             {conversationsError ? (
-              <p className="mx-1 rounded-md border border-warn/30 bg-warn/10 px-2 py-1.5 text-[11px] leading-snug text-warn-ink">
+              <p className="mx-1 rounded-md border border-warn/30 bg-warn/10 px-2 py-1.5 text-2xs leading-snug text-warn-ink">
                 Couldn’t load your conversations — {conversationsError}. The chat itself keeps
                 working.
               </p>
             ) : synced === null ? (
-              <p className="px-2 py-2 text-[11px] text-muted-foreground">Loading…</p>
+              <p className="px-2 py-2 text-2xs text-muted-foreground">Loading…</p>
             ) : synced.length === 0 ? (
-              <p className="px-2 py-2 text-[11px] text-muted-foreground">
+              <p className="px-2 py-2 text-2xs text-muted-foreground">
                 No synced conversations yet — your chats will appear here.
               </p>
             ) : (
@@ -207,7 +207,7 @@ export function ThreadSidebar({
                       >
                         <span
                           className={cn(
-                            "w-full truncate text-[13px] leading-tight",
+                            "w-full truncate text-xs leading-tight",
                             active && "font-semibold",
                           )}
                         >
@@ -253,13 +253,13 @@ export function ThreadSidebar({
         )}
 
         {serverPane && (groups.length > 0 || filtered.length > 0) && (
-          <p className="flex items-center gap-1.5 px-2 pb-1 pt-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground/80">
+          <p className="flex items-center gap-1.5 px-2 pb-1 pt-1 text-2xs font-semibold uppercase tracking-wide text-muted-foreground/80">
             On this device
           </p>
         )}
 
         {activeCourseLabel ? (
-          <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-[10px] leading-relaxed text-muted-foreground">
+          <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-2xs leading-relaxed text-muted-foreground">
             Scoped to <span className="font-medium text-foreground">{activeCourseLabel}</span>
             {activeCourseRef ? (
               <span className="ml-1 font-mono">({activeCourseRef})</span>
@@ -267,7 +267,7 @@ export function ThreadSidebar({
             — this tutor keeps its own conversations, separate from every other course
           </p>
         ) : (
-          <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-[10px] leading-relaxed text-muted-foreground">
+          <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-2xs leading-relaxed text-muted-foreground">
             Pilot tutor — each course&apos;s tutor keeps its own conversations separately
           </p>
         )}
@@ -281,7 +281,7 @@ export function ThreadSidebar({
         ) : (
           groups.map((g) => (
             <div key={g.label} className="mb-2">
-              <p className="px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground/80">
+              <p className="px-2 pb-1 pt-2 text-2xs font-semibold uppercase tracking-wide text-muted-foreground/80">
                 {g.label}
               </p>
               <ul className="space-y-px">
@@ -339,7 +339,7 @@ export function ThreadSidebar({
                           >
                             <span
                               className={cn(
-                                "w-full truncate text-[13px] leading-tight",
+                                "w-full truncate text-xs leading-tight",
                                 active && "font-semibold",
                               )}
                             >
@@ -389,14 +389,14 @@ export function ThreadSidebar({
       <div className="space-y-1.5 p-3">
         {identity ? (
           <div className="flex items-center gap-2 rounded-md px-1 py-1">
-            <span className="flex size-7 items-center justify-center rounded-full bg-primary/10 text-[11px] font-semibold text-primary">
+            <span className="flex size-7 items-center justify-center rounded-full bg-primary/10 text-2xs font-semibold text-primary">
               {identity.name.slice(0, 1).toUpperCase()}
             </span>
             <span className="min-w-0 flex-1">
               <span className="block truncate text-xs font-medium">{identity.name}</span>
-              <span className="block truncate text-[10px] text-muted-foreground">{identity.email}</span>
+              <span className="block truncate text-2xs text-muted-foreground">{identity.email}</span>
             </span>
-            <Badge variant="outline" className="shrink-0 text-[9px] capitalize">
+            <Badge variant="outline" className="shrink-0 text-2xs capitalize">
               {identity.role}
             </Badge>
           </div>
@@ -415,7 +415,7 @@ export function ThreadSidebar({
           <Button
             variant="ghost"
             size="sm"
-            className="h-7 w-full justify-start gap-1.5 px-2 text-[11px] text-muted-foreground hover:text-destructive"
+            className="h-7 w-full justify-start gap-1.5 px-2 text-2xs text-muted-foreground hover:text-destructive"
             onClick={() => onClearAll()}
           >
             <Trash2 className="size-3" aria-hidden /> Clear all conversations

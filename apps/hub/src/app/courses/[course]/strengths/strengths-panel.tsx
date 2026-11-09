@@ -122,7 +122,7 @@ export function StrengthsPanel({ course }: { course: string }) {
       <div className="flex flex-wrap items-center gap-2">
         <Activity className="size-4 text-primary" aria-hidden />
         <h2 className="text-base font-semibold">Strength by spec point</h2>
-        <Badge variant="outline" className="border-primary/30 text-[10px] text-primary">
+        <Badge variant="outline" className="border-primary/30 text-2xs text-primary">
           decay-aware · computed at read
         </Badge>
       </div>
@@ -149,7 +149,7 @@ export function StrengthsPanel({ course }: { course: string }) {
                 className="flex items-center gap-3 rounded-lg border p-3 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
               >
                 <span className="font-mono text-sm font-medium">{q.code}</span>
-                <Badge variant="outline" className={cn("text-[10px]", BAND_CHIP[q.band])}>
+                <Badge variant="outline" className={cn("text-2xs", BAND_CHIP[q.band])}>
                   {q.band}
                 </Badge>
                 <span className="ml-auto flex items-center gap-1.5 text-xs tabular-nums text-muted-foreground">
@@ -168,7 +168,7 @@ export function StrengthsPanel({ course }: { course: string }) {
             <div key={b.code} className="rounded-lg border p-3">
               <div className="mb-1.5 flex flex-wrap items-center gap-2 text-sm">
                 <span className="font-mono font-medium">{b.code}</span>
-                <Badge variant="outline" className={cn("text-[10px]", BAND_CHIP[b.band])}>
+                <Badge variant="outline" className={cn("text-2xs", BAND_CHIP[b.band])}>
                   {b.band}
                 </Badge>
                 <span className="ml-auto text-xs tabular-nums text-muted-foreground">
@@ -180,7 +180,7 @@ export function StrengthsPanel({ course }: { course: string }) {
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-muted">
                 <div
-                  className={cn("h-full rounded-full transition-all duration-500", BAND_FILL[b.band])}
+                  className={cn("h-full rounded-full transition-[width] duration-500", BAND_FILL[b.band])}
                   style={{ width: `${b.strength * 100}%` }}
                 />
               </div>

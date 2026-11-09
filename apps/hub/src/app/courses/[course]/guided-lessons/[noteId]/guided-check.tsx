@@ -58,7 +58,7 @@ export function GuidedCheckList({ questions }: Props) {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-[13px] text-muted-foreground" aria-live="polite">
+        <p className="text-xs text-muted-foreground" aria-live="polite">
           {answered} of {questions.length} attempted · {correct} correct
           {hasWritten ? "" : " on first pick"}
         </p>
@@ -140,7 +140,7 @@ function GuidedCheck({ index, question, pickedKey, revealed, onPick, onReveal }:
                 disabled={settled}
                 onClick={() => onPick(o.key)}
                 className={cn(
-                  "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-[13px] transition-colors",
+                  "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-xs transition-colors",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                   // t-ui-polish run-007: the idle hover speaks the house voice,
                   // matching the picked state's border-primary/60 below.
@@ -153,7 +153,7 @@ function GuidedCheck({ index, question, pickedKey, revealed, onPick, onReveal }:
               >
                 <span
                   className={cn(
-                    "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
+                    "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border text-2xs font-semibold",
                     state === "correct" && "border-success/60 text-success",
                     state === "wrong" && "border-destructive/60 text-destructive-ink",
                     (state === "idle" || state === "picked") && "text-muted-foreground",
@@ -185,7 +185,7 @@ function GuidedCheck({ index, question, pickedKey, revealed, onPick, onReveal }:
         {showVerdict && (
           <p
             className={cn(
-              "mt-3 text-[13px] font-medium",
+              "mt-3 text-xs font-medium",
               pickedOption.correct
                 ? "text-success"
                 : "text-destructive",
@@ -198,14 +198,14 @@ function GuidedCheck({ index, question, pickedKey, revealed, onPick, onReveal }:
         )}
 
         {showAnswer && !pickedOption && correctOption && (
-          <p className="mt-3 text-[13px] text-muted-foreground" role="status">
+          <p className="mt-3 text-xs text-muted-foreground" role="status">
             Answer: <span className="font-medium text-foreground">{correctOption.key}</span> —{" "}
             {correctOption.explanation}
           </p>
         )}
 
         {settled && pickedOption && !pickedOption.correct && correctOption && (
-          <p className="mt-2 text-[13px] text-muted-foreground">
+          <p className="mt-2 text-xs text-muted-foreground">
             Answer: <span className="font-medium text-foreground">{correctOption.key}</span> —{" "}
             {correctOption.explanation}
           </p>
@@ -257,7 +257,7 @@ function WrittenCheck({ index, question, verdict, onSettle }: WrittenProps) {
         </p>
         {gradable && (
           <div className="grid gap-1.5">
-            <label htmlFor={`written-check-${question.id.replace(/[^a-z0-9]/gi, "-")}`} className="text-[13px] font-medium">
+            <label htmlFor={`written-check-${question.id.replace(/[^a-z0-9]/gi, "-")}`} className="text-xs font-medium">
               Your answer
             </label>
             <textarea
@@ -267,7 +267,7 @@ function WrittenCheck({ index, question, verdict, onSettle }: WrittenProps) {
               disabled={settled}
               rows={2}
               className={cn(
-                "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-[13px] leading-relaxed",
+                "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-xs leading-relaxed",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 "disabled:cursor-default disabled:opacity-70",
               )}
@@ -292,17 +292,17 @@ function WrittenCheck({ index, question, verdict, onSettle }: WrittenProps) {
         {settled && (
           <div className="space-y-2" role="status">
             {verdict === "correct" && (
-              <p className="text-[13px] font-medium text-success">Correct</p>
+              <p className="text-xs font-medium text-success">Correct</p>
             )}
             {verdict === "notquite" && (
-              <p className="text-[13px] font-medium text-destructive">Not quite</p>
+              <p className="text-xs font-medium text-destructive">Not quite</p>
             )}
             {modelAnswer ? (
-              <p className="text-[13px] leading-relaxed text-muted-foreground">
+              <p className="text-xs leading-relaxed text-muted-foreground">
                 Model answer: <span className="font-medium text-foreground">{modelAnswer}</span>
               </p>
             ) : (
-              <p className="text-[13px] text-muted-foreground">Model answer unavailable for this item.</p>
+              <p className="text-xs text-muted-foreground">Model answer unavailable for this item.</p>
             )}
           </div>
         )}

@@ -98,7 +98,7 @@ export function ResourcePanel({ variant }: { variant: PanelVariant }) {
               <span className="flex items-center gap-2">
                 Saved questions
                 {savedCount > 0 && (
-                  <span className="rounded-full bg-muted px-1.5 text-[10px] tabular-nums text-muted-foreground">
+                  <span className="rounded-full bg-muted px-1.5 text-2xs tabular-nums text-muted-foreground">
                     {savedCount}
                   </span>
                 )}

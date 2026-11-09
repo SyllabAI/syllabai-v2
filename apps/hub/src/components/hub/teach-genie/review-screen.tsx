@@ -206,7 +206,7 @@ function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLab
                 <CircleAlert className="mt-0.5 size-5 shrink-0 text-orange-500" aria-hidden />
                 <div className="prose-sm text-sm leading-relaxed text-foreground/90">
                   <Markdown>{`You said: *${imp.statement}* — actually: ${imp.correction}`}</Markdown>
-                  <p className="mt-1 font-mono text-[10px] text-muted-foreground">{imp.specPointIds.join(" · ")}</p>
+                  <p className="mt-1 font-mono text-2xs text-muted-foreground">{imp.specPointIds.join(" · ")}</p>
                 </div>
               </li>
             ))}
@@ -248,7 +248,7 @@ function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLab
         </section>
       )}
 
-      <p className="text-[11px] leading-relaxed text-muted-foreground">
+      <p className="text-2xs leading-relaxed text-muted-foreground">
         AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record. Spec verdicts of record:
         {review.specPointVerdicts.map((v) => ` ${v.specPointId}=${v.verdict}`).join("," )}.
       </p>

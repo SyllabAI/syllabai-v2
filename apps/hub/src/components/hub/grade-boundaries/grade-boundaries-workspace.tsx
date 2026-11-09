@@ -833,7 +833,7 @@ export function GradeBoundariesWorkspace({
                               i ===
                                 Math.min(pairIdx, activeAgg.pairs.length - 1),
                             ),
-                            "h-7 px-2.5 font-mono text-[11px]",
+                            "h-7 px-2.5 font-mono text-2xs",
                           )}
                           onClick={() => setPairIdx(i)}
                         >
@@ -856,7 +856,7 @@ export function GradeBoundariesWorkspace({
                           className="flex items-center gap-2 rounded-xl border bg-background px-3 py-2"
                         >
                           <div className="min-w-0 flex-1">
-                            <p className="truncate font-mono text-[11px] text-muted-foreground">
+                            <p className="truncate font-mono text-2xs text-muted-foreground">
                               {u.code}
                             </p>
                             <Input
@@ -879,7 +879,7 @@ export function GradeBoundariesWorkspace({
                             <p className="text-lg font-semibold tabular-nums">
                               {ums ?? "–"}
                             </p>
-                            <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                            <p className="text-2xs uppercase tracking-wide text-muted-foreground">
                               UMS / {u.ums?.maxMark ?? "?"}
                             </p>
                           </div>
@@ -1018,15 +1018,15 @@ export function GradeBoundariesWorkspace({
                                             : (s.scale ?? "—"))}
                                       </span>
                                       {isRegionalVariant(s.papersNote) && (
-                                        <Badge variant="outline" className="px-1 py-0 text-[10px]">R</Badge>
+                                        <Badge variant="outline" className="px-1 py-0 text-2xs">R</Badge>
                                       )}
                                       {s.tier && (
-                                        <Badge variant="outline" className="px-1 py-0 text-[10px] capitalize">
+                                        <Badge variant="outline" className="px-1 py-0 text-2xs capitalize">
                                           {s.tier}
                                         </Badge>
                                       )}
                                       {canCalculate && markTouched && rowGrade && (
-                                        <Badge className="px-1.5 py-0 text-[10px]">{rowGrade}</Badge>
+                                        <Badge className="px-1.5 py-0 text-2xs">{rowGrade}</Badge>
                                       )}
                                     </span>
                                   </td>
@@ -1324,7 +1324,7 @@ export function GradeBoundariesWorkspace({
                                     {r.option ? (
                                       <Badge
                                         variant="outline"
-                                        className="mr-1.5 px-1 py-0 text-[10px]"
+                                        className="mr-1.5 px-1 py-0 text-2xs"
                                       >
                                         {r.option}
                                       </Badge>
@@ -1333,7 +1333,7 @@ export function GradeBoundariesWorkspace({
                                     {awardLabel(r.award) && (
                                       <Badge
                                         variant="outline"
-                                        className="ml-1.5 px-1 py-0 text-[10px] text-muted-foreground"
+                                        className="ml-1.5 px-1 py-0 text-2xs text-muted-foreground"
                                       >
                                         {awardLabel(r.award)}
                                       </Badge>

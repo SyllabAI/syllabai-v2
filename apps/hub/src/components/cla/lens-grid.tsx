@@ -30,11 +30,11 @@ export function LensGrid<T extends LensRow>({
           onClick={() => onPick(a)}
           className="flex flex-col gap-1 rounded-xl bg-primary/10 px-3 py-2.5 text-left transition-colors hover:bg-primary/15 disabled:pointer-events-none disabled:opacity-50"
         >
-          <span className="flex items-center gap-1.5 text-[13px] font-semibold">
+          <span className="flex items-center gap-1.5 text-xs font-semibold">
             <a.icon className="size-3.5 shrink-0 text-primary" aria-hidden />
             {a.title}
           </span>
-          <span className="text-[11px] leading-snug text-muted-foreground">{a.description}</span>
+          <span className="text-2xs leading-snug text-muted-foreground">{a.description}</span>
         </button>
       ))}
     </div>
@@ -59,7 +59,7 @@ export function LensRouterCta({ href, children }: { href: string; children: Reac
     <button
       type="button"
       onClick={() => router.push(href)}
-      className="inline-flex w-fit items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-[11px] font-medium text-primary transition-colors hover:bg-primary/10"
+      className="inline-flex w-fit items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-2xs font-medium text-primary transition-colors hover:bg-primary/10"
     >
       {children}
       <ArrowRight className="size-3 shrink-0" aria-hidden />

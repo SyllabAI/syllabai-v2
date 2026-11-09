@@ -43,7 +43,7 @@ export function CitationHover({
       <HoverCardContent align="start" side="top" className="w-64 p-3">
         <div className="space-y-1.5">
           <p className="text-xs font-semibold leading-snug">{label || "Cited source"}</p>
-          <p className="text-[11px] leading-relaxed text-muted-foreground">
+          <p className="text-2xs leading-relaxed text-muted-foreground">
             {(() => {
               if (!href)
                 return "Read-only citation — the tutor cited this source, but no in-app viewer is wired for it.";
@@ -55,7 +55,7 @@ export function CitationHover({
             })()}
           </p>
           {href && (
-            <p className="flex items-center gap-1 text-[10px] text-muted-foreground/70">
+            <p className="flex items-center gap-1 text-2xs text-muted-foreground/70">
               <MousePointerClick className="size-3" aria-hidden /> Click to open
             </p>
           )}

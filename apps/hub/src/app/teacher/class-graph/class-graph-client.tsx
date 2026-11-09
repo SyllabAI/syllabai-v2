@@ -132,11 +132,11 @@ export function ClassGraphClient({
       <PageHeader
         eyebrow={
           <span className="flex items-center gap-2">
-            <Badge variant="outline" className="gap-1 text-[10px] font-normal">
+            <Badge variant="outline" className="gap-1 text-2xs font-normal">
               <Network className="size-3" aria-hidden />
               Analytics · teacher
             </Badge>
-            <Badge variant="secondary" className="text-[10px] font-normal">
+            <Badge variant="secondary" className="text-2xs font-normal">
               TEACHER_ARCHITECTURE §13
             </Badge>
           </span>
@@ -172,11 +172,11 @@ export function ClassGraphClient({
           <ChevronDown className="pointer-events-none absolute top-1/2 right-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
         </div>
         {data && (
-          <Badge variant="outline" className="gap-1 font-mono text-[10px] font-normal">
+          <Badge variant="outline" className="gap-1 font-mono text-2xs font-normal">
             {data.class.className} · {data.class.students} students
           </Badge>
         )}
-        <span className="ml-auto text-[11px] text-muted-foreground">
+        <span className="ml-auto text-2xs text-muted-foreground">
           SAMPLE cohort — simulated evidence generated deterministically for the demo; real
           analytics need accounts + server-side attempts
         </span>
@@ -243,7 +243,7 @@ export function ClassGraphClient({
                     /{subtopicList.length}
                   </span>
                 </p>
-                <p className="text-[10px] text-muted-foreground">
+                <p className="text-2xs text-muted-foreground">
                   rest is seeded SAMPLE evidence
                 </p>
               </CardContent>
@@ -251,7 +251,7 @@ export function ClassGraphClient({
           </div>
 
           {/* legend (§13.1 semantics) */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border bg-muted/40 px-3 py-2 text-[11px] text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-md border bg-muted/40 px-3 py-2 text-2xs text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <span className="inline-block size-3 rounded-sm border bg-background" />
               not taught (no coverage recorded)
@@ -367,7 +367,7 @@ function SubtopicRow({
 
         <span
           className={cn(
-            "shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-medium",
+            "shrink-0 rounded-full border px-2 py-0.5 text-2xs font-medium",
             isTaught ? BAND_CLASS[sub.band] : "border-border bg-background text-muted-foreground",
           )}
         >
@@ -375,7 +375,7 @@ function SubtopicRow({
         </span>
 
         {sub.misconceptions.length > 0 && (
-          <Badge variant="outline" className="gap-1 border-warn/40 text-[10px] font-normal">
+          <Badge variant="outline" className="gap-1 border-warn/40 text-2xs font-normal">
             <ShieldAlert className="size-3" aria-hidden />
             {sub.misconceptions.length}
           </Badge>
@@ -420,7 +420,7 @@ function SubtopicRow({
                   <span className="w-9 text-right tabular-nums">{sub.strugglingPct}%</span>
                 </li>
               </ul>
-              <p className="mt-2 text-[10px] text-muted-foreground">
+              <p className="mt-2 text-2xs text-muted-foreground">
                 teaching status:{" "}
                 <span className={isTaught ? "font-medium text-foreground" : ""}>
                   {isTaught ? "TAUGHT" : "NOT_TAUGHT"}
@@ -441,7 +441,7 @@ function SubtopicRow({
                         <TriangleAlert className="mt-0.5 size-3.5 shrink-0 text-warn" aria-hidden />
                         {m.title}
                       </p>
-                      <p className="mt-1 text-[10px] text-muted-foreground">
+                      <p className="mt-1 text-2xs text-muted-foreground">
                         prevalence {(m.probability * 100).toFixed(0)}% · {m.evidenceCount} evidence
                         events
                       </p>

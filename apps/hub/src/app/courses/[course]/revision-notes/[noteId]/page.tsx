@@ -94,12 +94,12 @@ export default async function NoteReaderPage({
             {/* trust meta — the SyllabAI analogue of SME's authorship block.
                 Board-aware (CIE wave): registry-explicit board, else the
                 founding "Pearson Edexcel" — pre-CIE rows render byte-identical. */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
               {/* RN-DEBRIS-11 run-005: exam-skills notes carry their explicit
                   fold label at the point of reading — exam technique, not
                   spec-tied (no spec-point anchor by design). */}
               {note.contentKind === "exam-technique" && (
-                <span className="rounded-md bg-muted px-1.5 py-0.5 text-[11px] font-medium text-muted-foreground">
+                <span className="rounded-md bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
                   Exam technique — not tied to a spec point
                 </span>
               )}
@@ -181,7 +181,7 @@ export default async function NoteReaderPage({
                   className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                 >
                   <FileQuestion className="size-4 text-primary" aria-hidden />
-                  <span className="text-[13px] font-medium">
+                  <span className="text-xs font-medium">
                     Exam Questions
                     {subtopic ? <span className="block text-xs font-normal text-muted-foreground">{subtopic.title}</span> : null}
                   </span>
@@ -192,7 +192,7 @@ export default async function NoteReaderPage({
                   className="group flex items-center gap-3 rounded-md border px-3 py-2.5 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm"
                 >
                   <SquareStack className="size-4 text-primary" aria-hidden />
-                  <span className="text-[13px] font-medium">
+                  <span className="text-xs font-medium">
                     Flashcards
                     {subtopic ? <span className="block text-xs font-normal text-muted-foreground">{subtopic.title}</span> : null}
                   </span>

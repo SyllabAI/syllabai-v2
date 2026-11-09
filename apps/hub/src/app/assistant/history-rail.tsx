@@ -48,7 +48,7 @@ export function AssistantRailBrand() {
       </span>
       <div className="leading-tight">
         <h2 className="text-sm font-semibold">Assistant chats</h2>
-        <p className="text-[11px] text-muted-foreground">saved on this device</p>
+        <p className="text-2xs text-muted-foreground">saved on this device</p>
       </div>
     </div>
   );
@@ -155,7 +155,7 @@ export function AssistantHistoryRail({
 
       <nav aria-label="Conversation history" className="min-h-0 flex-1 overflow-y-auto px-2 pb-2">
         {activeCourse.label && (
-          <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-[10px] leading-relaxed text-muted-foreground">
+          <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-2xs leading-relaxed text-muted-foreground">
             Scoped to <span className="font-medium text-foreground">{activeCourse.label}</span>
             {" "}— other courses’ chats are hidden
           </p>
@@ -170,7 +170,7 @@ export function AssistantHistoryRail({
         ) : (
           groups.map((g) => (
             <div key={g.label} className="mb-2">
-              <p className="px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground/80">
+              <p className="px-2 pb-1 pt-2 text-2xs font-semibold uppercase tracking-wide text-muted-foreground/80">
                 {g.label}
               </p>
               <ul className="space-y-px">
@@ -225,7 +225,7 @@ export function AssistantHistoryRail({
                           >
                             <span
                               className={
-                                "w-full truncate text-[13px] leading-tight" +
+                                "w-full truncate text-xs leading-tight" +
                                 (active ? " font-semibold" : "")
                               }
                             >

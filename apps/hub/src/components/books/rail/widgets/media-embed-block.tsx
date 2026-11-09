@@ -58,7 +58,7 @@ export function MediaEmbedBlock({ block }: { block: RailBlock }) {
 
   return (
     <WidgetCard ord={block.ord} typeLabel="Watch" prompt={title}>
-      {blurb && <p className="mb-2 text-[13px] leading-snug text-muted-foreground">{blurb}</p>}
+      {blurb && <p className="mb-2 text-xs leading-snug text-muted-foreground">{blurb}</p>}
       {youtubeId ? (
         <>
           <div className="overflow-hidden rounded-md border bg-black/90">
@@ -91,7 +91,7 @@ export function MediaEmbedBlock({ block }: { block: RailBlock }) {
           </Button>
         </div>
       )}
-      {attribution && <p className="mt-1.5 text-[11px] text-muted-foreground">{attribution}</p>}
+      {attribution && <p className="mt-1.5 text-2xs text-muted-foreground">{attribution}</p>}
     </WidgetCard>
   );
 }

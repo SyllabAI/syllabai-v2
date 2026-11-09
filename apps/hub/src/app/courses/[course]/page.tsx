@@ -503,7 +503,7 @@ export default async function CourseHubPage({
                     <span className="flex flex-wrap items-center gap-2">
                       <span className="font-bold group-hover:text-primary">{r.title}</span>
                       {!r.ready && (
-                        <span className="rounded-full bg-foreground px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-background">
+                        <span className="rounded-full bg-foreground px-2 py-0.5 text-2xs font-bold uppercase tracking-wide text-background">
                           {r.notReadyLabel ?? "coming soon"}
                         </span>
                       )}

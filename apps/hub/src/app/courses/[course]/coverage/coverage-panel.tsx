@@ -196,7 +196,7 @@ export function CoveragePanel({ course }: { course: string }) {
           </div>
           <div className="flex flex-wrap gap-2">
             {(Object.keys(BUCKET_LABEL) as CoverageBucket[]).map((b) => (
-              <Badge key={b} variant="outline" className={cn("text-[10px]", BUCKET_CHIP[b])}>
+              <Badge key={b} variant="outline" className={cn("text-2xs", BUCKET_CHIP[b])}>
                 {BUCKET_LABEL[b]}
               </Badge>
             ))}
