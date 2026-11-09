@@ -89,7 +89,7 @@ export function TeachGenieLanding({
           </div>
         </div>
         <BabyGenieAvatar size={180} />
-        <h2 className="mt-6 text-balance text-3xl font-extrabold tracking-tight text-foreground">Learn by Teaching</h2>
+        <h2 className="mt-6 text-balance text-3xl font-bold tracking-tight text-foreground">Learn by Teaching</h2>
         <p className="mt-3 text-balance text-base font-normal text-muted-foreground">
           Review a concept by teaching it to SillyAI.
           <br />
