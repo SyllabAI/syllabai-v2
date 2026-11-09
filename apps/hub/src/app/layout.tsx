@@ -120,6 +120,11 @@ d.classList.toggle("dark",dark);
 d.style.colorScheme=dark?"dark":"light";
 }catch(e){}})();`;
 
+// T-HUB-AUDITFIX-1 run-005: the description of record — one source shared
+// by the metadata block and the OG/Twitter defaults below.
+const siteDescription =
+  "Spec-anchored revision for Edexcel & Cambridge International: notes, exam questions, flashcards, past papers and a grounded AI tutor — mapped to your syllabus.";
+
 export const metadata: Metadata = {
   // UX review 2026-10-31 F-08: canonical + Open Graph URLs on the course
   // pages are relative — metadataBase is the absolute base they resolve
@@ -139,8 +144,32 @@ export const metadata: Metadata = {
     default: "SyllabAI Hub — IGCSE & A-Level revision",
     template: "%s — SyllabAI Hub",
   },
-  description:
-    "Spec-anchored revision for Edexcel & Cambridge International: notes, exam questions, flashcards, past papers and a grounded AI tutor — mapped to your syllabus.",
+  description: siteDescription,
+  // T-HUB-AUDITFIX-1 run-005: site-wide Open Graph / Twitter defaults —
+  // the 2026-11-08 design audit P4 (no root OG, no og:image). Every route
+  // without its own OG block inherits these; metadataBase resolves /og.png
+  // against the production home.
+  openGraph: {
+    type: "website",
+    siteName: "SyllabAI Hub",
+    url: "/",
+    title: "SyllabAI Hub — IGCSE & A-Level revision",
+    description: siteDescription,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "SyllabAI Hub — spec-anchored revision for Edexcel & Cambridge International",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SyllabAI Hub — IGCSE & A-Level revision",
+    description: siteDescription,
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
