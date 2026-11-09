@@ -2205,6 +2205,55 @@ Stage Summary:
   documented bake-lane floor (run#12, success). One thread hands off to the bake lane: the
   account-level git-build block + the API floor's failed CLI deploy.
 
+## ADR-044 run-001 (2026-11-09) — the editor role & the content workbench: the design of record filed
+
+- Operator order: "Re-file the spec where it counts" (trace 1a1bf9b23f1d45a9) — re-filing the
+  editor-role engagement after its sandbox artifacts were lost to a workspace recycle; the design
+  itself survived in the session of record and is now the repo's law candidate.
+- THE ADR (docs/ADR-044-EDITOR_ROLE_CONTENT_WORKBENCH.md, PROPOSED -> ACCEPTED on merge): E-0 — the
+  serving plane is never directly editable; every human edit flows corpus -> gates -> tiered merge ->
+  receipt -> census -> serve. Editor = v2-native grant plane (editor_grants rows; the frozen Role
+  enum { STUDENT, TEACHER, ADMIN } untouched — zero capture-band divergence, the workspace-docs
+  class), requireEditor shell per the teacher-me class (401 before everything, 403 otherwise), the
+  capability matrix strictly content-scoped (no platform powers; composable with TEACHER), the
+  server-side tier classifier (Tier 1 typography auto-merge on green — the operator ruling of
+  record; Tier 2 content-bearing four-eyes via G-EYES author-independence + post-merge census
+  receipt; Tier 3 structural refused to the lane process), the gate engine as ONE module consumed
+  twice (hub pre-flight + CI gates; families G-CANON / G-SER / G-FIELD / G-CHAR / G-ASSET / G-EYES
+  / G-SCOPE), the data plane carded at packages/db/drizzle/0028_editor-planes.sql (next free after
+  0027_mark-award-delta; editor_edit_proposals + editor_edit_receipts per the 0022/0023
+  personal-state law; the F5-S7 grants lane as a Phase 1 exit criterion; caps per T-CAPS-POLICY-1),
+  /api/v1/editor/* v2-native additive with NO editor-reachable serve/merge endpoint, phasing 0-4,
+  and the negative space of record (no free-text AI rewrite passes over banks, no direct plane
+  writes, no edits without PRs, no per-field locking, no self-merge above Tier 1).
+- Rulings carried verbatim from the originating session: Tier 1 auto-merge acceptable; scope = all
+  banks at once and future ones (no per-bank entitlement list); the role is named "editor"; holders
+  internal + external. Re-rulings amend the ADR in public; they never re-interpret it silently.
+- Evidence: grounding reads from live main at filing time (auth.ts frozen Role pin /
+  content-writes.ts teacher-ingestion band / middleware auth shell / identity.ts derived mapping /
+  the docs/ ADR series 037-043 with ADR-044 next free / drizzle 0000-0027 with 0028 next free);
+  the reference MVP's verified golden path (API 20/20, browser 10/10, lint clean, real
+  syllabai-resources fixtures incl. the three wave-D-repaired physics questions) recorded as
+  companion evidence.
+- Docs-only, zero src/test bytes; PR opened against main, NOT self-merged per house law. Receipt:
+  .syllabai/receipts/ADR-044/run-001-spec-of-record.md. Circulation copy (md + docx + pdf)
+  regenerated outside the repo at download/editor-role/. Standing reminder (TENTH filing): the PAT
+  remains exposed from chat transmission and MUST be revoked/rotated.
+- MERGED (same trace): PR #883 -> main 9c6dd883 on the operator explicit order; review pass recorded in the receipt landing addendum; landing loops 1-6 (worklog union-merge each time, append-only law); Phase 1 landed as run-003 during the chase; sixth sandbox recycle — rotation reminder sixth filing this lane.
+
+## T-SME-SEL-COSM-1 run-001 (2026-11-09) — the chemistry spine-cosmetics lane: T8/T19 official titles restored from the spec PDF of record + the synoptic set's kind label (ADR-039 r4)
+
+- Operator order: "Check if merged or not. If not, review+merge yourself. then the 88-course census (40 DIVERGENT / 17 NEAR), the chemistry T8/T19 cosmetics, and — seventh filing". Merge-state check executed FIRST from git history (the summary-carried PAT read 401 once, then 200 — the documented intermittent class): PR #867 (wave 1) ALREADY MERGED as squash 48540486; wave 2 (biology) ALREADY MERGED as PR #878 e1736f4d (run-001 + run-002 seed-map law); the SEVENTH PAT filing already of record in the wave-2 run-001 entry. No merge action owed; this lane executes the next queue item.
+- THE DEFECTS (documented-not-fixed by wave 1's receipt, queued with the spine-cosmetics class): ial-chemistry-17 spine T8 "Redox Chemistry and Groups 1, 2 and" + T19 "Organic Nitrogen Compounds: Amines, Amides," — both truncated; and the synoptic set row (synoptic-exam-questions-section-c--exam-questions) carrying setName null while the other 71 rows carry the kind label.
+- EVIDENCE OF RECORD (fetched this session): the official spec PDF is committed in the corpus of record — syllabai-resources @ 1a5c37bc Official-Specifications/ial-chemistry/International-A-Level-Chemistry-Spec.pdf (Pearson Edexcel IAL Chemistry, Issue 1, September 2017). Extraction: line 1267 "Topic 8: Redox Chemistry and Groups 1, 2 and 7"; lines 2616-2617 "Topic 19: Organic Nitrogen Compounds: Amines, Amides, Amino Acids and Proteins" — the corpus truncations sit EXACTLY at the PDF's line wraps (the import kept the first printed line). All 20 official topic titles diffed against the spine: T8/T19 the ONLY truncations. setName law: {"Multiple-Choice Questions" x35 / "Structured Questions" x36} across the other 71 rows; the synoptic row's slug suffix --exam-questions + SME's own per-topic set naming give "Exam Questions".
+- THE EDITS (byte-disciplined): curriculum.json T8 TOPIC + T8:SUB_ SUBTOPIC and T19 TOPIC + T19:SUB_ SUBTOPIC titles → the official strings (+54 bytes); questions.json synoptic setName null → "Exam Questions" (+12 bytes). Round-trip identity asserted before each write (both files minified, 0 newlines); deep-diff asserted EXACTLY the 5 leaves. r3 row-15 precedent followed: the serving curriculum is the fix surface; the committed derivation-vintage spine apps/hub/spines/ial-chemistry-17.json stays byte-carried (disclosed). NO set moved: no set name or note title equals the old truncated strings (repo-wide grep of record) — title edits touch zero placement rungs.
+- DERIVED DATA RECONCILED (disclosed): public/kg/data/ial-chemistry-17.json was stale at its 2026-11-05 vintage — truncated labels AND the wave-1 SME picker layer never re-exported after 48540486 (wave-1's 7-file inventory missed the kg plane). Regenerated via kg_export.py v1.6 --qual ial-chemistry-17 and verified surgical: pre-edge multiset 344 == 344 (the F8 YCH11 AI concept-web tier byte-identical), prereqValidated untouched, exactly 4 shared nodes changed (label-only), +47 nodes = EXACTLY the wave-1 SME layer (7 sections + 40 rows), points/pointSubtopics/subPointCounts byte-identical. Queued (product question, own lane): whether the kg exporter should EXCLUDE selector-navigation rows from the spec graph.
+- RECEIPT-OF-RECORD CORRECTION: wave 1's "T8 empty spec container" does NOT reproduce on main — T8:SUB_ carries 28 spec points (8.1-8.28) and NO chemistry container has zero (12+18+22+18+8+11+6+28+11+23+13+19+9+23+23+19+33+6+12+5 = 319 exact); the claim was an artifact of the pre-wave audit's parent-link assumption. The truncated-title half was real and is now fixed.
+- GATES: NEW apps/hub/scripts/verify_sme_cosmetics1.ts PASS (14 asserts: 4 titles == official strings; no truncated title survives; spine 20/319 + SME 7 rows intact; synoptic setName + the 3-value kind law across all 72 sets; kg carries the full titles + zero truncated labels + 344 pre edges). Regression: verify_sme_wave1.ts PASS, verify_sme_wave2.ts PASS, verify_sme_wire_r0.ts PASS (2,574/2,574 placed, 0 unplaced, gen-row homes 29 unchanged); tsc --noEmit clean (after bun install in the recycled sandbox); eslint clean (scripts/ ignore-listed per config).
+- Records: ADR-039 §4 rows 18-20 (r4 subsection) + §5 gate bullet + status/date lines; task card .syllabai/tasks/T-SME-SEL-COSM-1.yaml; receipt .syllabai/receipts/T-SME-SEL-COSM-1/run-001.md; edit engine in the operator workspace (scripts/chem_cosmetics_r4.py).
+- NEXT (the census program): the 88-course queue (40 DIVERGENT / 17 NEAR) re-derivation is pending — the operator-workspace census artifacts were lost to a sandbox recycle; the census re-runs against the repo corpus before wave 3 files.
+- Standing reminder (EIGHTH filing): the PAT remains exposed from chat transmission and MUST be revoked/rotated. (This session observed the documented intermittent class: one 401 Bad credentials, then 200 — still unrotated.)
+- Branch t-sme-sel-cosm/run-001 from main edfd1e76; PR against main; NOT self-merged per house law.
 ## t-ugm-link-fix run-007 (2026-11-09) — OPTIONAL-1 re-consume lane (operator order trace 1a1bfa803d7c9d4d) lands as NULL-DELTA VERIFICATION + CORRECTION OF RECORD; zero content changes
 
 - THE FINDING OF RECORD: run-004's "22 upstream-only figures the hub never imported" is
