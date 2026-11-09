@@ -1833,3 +1833,9 @@ Stage Summary:
 - Gates: bun test kg-prereq-feedback.test.ts 22/22 PASS; tsc --noEmit clean; eslint clean;
   fork JS node --check OK; CI hub lane gains the T1 acceptance step (schema + fork contract).
 - Standing PAT-rotation reminder refiled (fifth filing) — the token remains unrotated.
+
+## T-HUB-AUDITFIX-1 run-002 (2026-11-09) — chat-app-plum swaps Inter → Plus Jakarta Sans (user decision 3 of 4)
+- DECISION CONSUMED: the 2026-11-08 design review swapped plum's body/display face to the default theme's Plus Jakarta Sans (already loaded + preloaded for every visitor — zero new downloads, one family weight-driven per plum Law 8).
+- EDITS (2 files, comment-and-var only): globals.css plum block —app-font-sans/--app-font-display var(--font-inter)→var(--font-jakarta), fallback chain normalized to the SME chain (ui-sans-serif, system-ui, sans-serif); layout.tsx dual-theme comment updated to record the swap. No other --font-inter consumers existed (verified by grep: layout declaration + globals + MANIFEST only).
+- DISCLOSED: the pinned inter-latin-var.woff2 STAYS committed under the T-C36 bytes law (MANIFEST row intact); the localFont declaration stays (preload:false) — unused now, plum visitors never fetch it; dropping the declaration + asset is a separate ops lane if wanted. plum spec audit doc (2026-09-29) is history — not rewritten.
+- GATES: tsc --noEmit exit 0 (comment+CSS-var only change). Receipt: .syllabai/receipts/t-hub-auditfix-1/run-002-inter-swap.json. fetch-first, no force.
