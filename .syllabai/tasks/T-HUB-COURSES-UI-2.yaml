@@ -3,7 +3,7 @@ task:
   id: T-HUB-COURSES-UI-2
   title: "The /courses directory adopts the course-page design language — the operator's approved PageHero band (gradient wash, display title, honest StatChip row), course-page section-title recipes, pill chips and the proportionate identity tile"
   owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1bc441088a9629)"
-  status: "IN_REVIEW run-002 (PR open, awaiting operator/integrator review)"
+  status: "DONE (run-002 merged via PR #882 on the operator's explicit merge order, trace 1a1bf536fb061c11; production pickup = the post-merge hub bake, watch item in the run-002 merge receipt)"
   priority: P1
   band: T-HUB (frontend — courses directory surface)
   wave: hub-courses-directory
@@ -91,6 +91,31 @@ task:
     again (stale duplicate, discarded after the grep census), bun install
     988 packages fresh. House lane, no self-merge; PAT rotation SEVENTH
     filing — still outstanding.
+    MERGE (2026-11-09, operator trace 1a1bf536fb061c11 "merge #882"): the
+    explicit merge order. Pre-merge: PR #882 was mergeable_state dirty —
+    main had advanced 676bbc6d → 391de0cd (15 PRs: T-HUB-AUDITFIX-1 runs
+    1-6, t-sme-sel-w2, t-tutor-aim/exp, t-kg-tripwire, t-ugm-link-fix r4 +
+    r4-ledger, t-vercel-api-bake, video-map) with ZERO overlap on the
+    run-002 code files; the conflict was the house's known worklog
+    tail-append collision, resolved by the union-merge law (both sides
+    kept, append-only: main's landing entries, then this lane's run-002
+    entry last) — merge commit 5509875e pushed fetch-first no force. NOTE:
+    the sandbox recycled a FOURTH time mid-merge (HEAD fell back to
+    1dd5335, local branch wiped, the +17-line dirty artifact
+    re-materialized and was re-verified stale 17/17) — the recovery ran
+    off the pushed remote branch. CI on 5509875e: hub FAILED in
+    setup-bun@v2 (infra flake BEFORE any compile — the documented
+    re-trigger class), verify + preview success; the job re-run went GREEN
+    (hub success). MERGED c9316450 (merge method merge, the house merge
+    commit). Post-merge production watch: the hub bake of main-head
+    c9316450 had NOT surfaced on www.syllab-ai.com within the first ~9 min
+    of anonymous polling (the served build was still run-001's); the
+    auto-bake of a 4647-page build runs long and the repo carries the
+    documented bake-lane floor (SHA-tagged CLI deploys, t-vercel-api-bake)
+    for dropped-bake recovery — pickup verified as the hand-off watch
+    item, NOT self-fired (the bake lane's guardrails + the disclosed
+    deploy-incident precedent keep CLI bakes out of this lane's hands).
+    PAT rotation EIGHTH filing — still outstanding.
 base:
   repo: "syllabai-v2 @ a3561bd1 (origin/main at claim; local clone re-synced after a sandbox recycle reverted it to the 1dd5335 snapshot — stale worklog state verified byte-identical upstream and kept in a local stash, disclosed)"
 basis: >
