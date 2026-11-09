@@ -75,7 +75,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
                   <span className="font-medium text-foreground/80">You said: </span>
                   “{imp.statement}”
                 </p>
-                <p className="mt-1.5 rounded-md border border-primary/25 bg-primary/5 px-3 py-2">
+                <p className="mt-1.5 rounded-md border border-primary/30 bg-primary/5 px-3 py-2">
                   <span className="font-medium">Actually: </span>
                   {imp.correction}
                 </p>

@@ -2067,6 +2067,19 @@ origin/main
 - THIS workflow: zero-write GETs with VERCEL_BAKE_TOKEN — teams visible, every project's name/id/rootDirectory, each project's newest production deployment (state + commit + date), each project's assigned domains. It answers the three facts the API bake job needs: does an API project exist on the bake token's scope, with which rootDirectory, and where api.syllabai-v2's domain sits.
 - Secret law unchanged (t-ops-plane): the token is never printed; only names/ids/states.
 
+## receipt(T-KG-TRIPWIRE-1) — Phase 1 T1 thumbs-down — run-003 — 2026-11-09 (trace 1a1bc99cd7f38ef1)
+
+- Shipped: T1 affordance in the provenance drawer (product fork), browser-local course-keyed
+  event store, schema law of record + fork-contract tests as a new CI hub step. 22/22 tests,
+  tsc + eslint clean, node --check on the fork, first-hand headless smoke test PASS
+  (evidence in lane-artifacts/T-KG-TRIPWIRE-1/run-003/).
+- I1-I5 intact: signal-not-verdict (no disposition path exists), no label bytes
+  (prereqValidated untouched, snapshot census 0/106), no serving/progress gate, nothing
+  crosses the bridge (no network call added), store append-only.
+- Disclosed boundary: the /graph-explorer prototype builds stay byte-faithful (no-patch
+  law) — affordance ships on the product surface where the served corpus lives; export
+  path + weekly report are Phase 2. Standing PAT-rotation reminder (fifth filing).
+
 ## receipt(T-TUTOR-EXP-2) — run-001: the v17 A/B battery of record — 2026-11-04 (the design §5 gate executed)
 
 - THE GATE FAILS — the v17 draft clause does not land: the controlled A/B (both arms over the REAL prompt assembly, system prompts asserted to differ by the clause block alone, user prompts byte-identical per scenario) reads explanation probe-rate 3/5 (gate 5/5; S1/S2 under-fired), ONE insufficiency-turn probe whose answer had drifted beyond the sources (S11b — the clause's own grounding law violated in the same event), and a VERBATIM probe repeat across turns (S12 — a defect class the design did not enumerate; the no-verbatim-repeat law governs answers, the clause never guarded the probe). The skip-set is REAL: quiz/scaffold/tier-1-hint/walkthrough/lookup turns held 5/5 clean, and on the tier-1 hint turn v17 IMPROVED on the v16 baseline (v16 probed organically; v17 served a clean 28-word hint). Receipt of record: .syllabai/receipts/T-TUTOR-EXP-2/run-001.md (full matrices + the disclosed model substitution).

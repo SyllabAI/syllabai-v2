@@ -1,0 +1,2981 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-a-level-chemistry-25",
+ "qual": "A Level (CIE)",
+ "source": {
+  "provider": "multi (freesciencelessons / doodlescience / cognito channel-only / amoeba-sisters / malmesbury)",
+  "label": "cie-a-level-chemistry-25",
+  "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY; AQA<->CIE divergence handled by conservative binding (medium/low only, no high rows). NOTE: freesciencelessons videos with embedding disabled (oEmbed 401) were identity-checked via i.ytimg.com thumbnail liveness + the channel uploads-playlist enumeration instead; identityMethod field records which path each video used",
+  "enumeratedUtc": "2026-11-09T05:12:35Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P2D",
+  "ruledUtc": "2026-11-09T06:10:24Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "Title-only posture, tightened rule. 20 spec-level rejects: A-level-only clauses carried by GCSE videos (acyl chlorides, pH calculations, Q=It, Kp, pH curves, condensation repeat units), wrong-topic hits (Group-2 video bound to Period-3 spec), and benzene videos bound to phenol/phenylamine clauses.",
+  "rowsApproved": 89,
+  "rowsRejected": 20,
+  "rejects": [
+   {
+    "lessonRef": null,
+    "video": "m5u4STdFlOE",
+    "spec": "3.4.2",
+    "reason": "GCSE 'Covalent Bonding 1' covers H2/Cl2/HCl; the expanded-octet examples (SO2, PCl5, SF6) of 3.4.2 are A-level-only, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "yFDNBl8KjHg",
+    "spec": "24.1.2",
+    "reason": "F=Le relation between the Faraday and Avogadro constants (24.1.2) is electrochemistry, not title-evidenced in an Avogadro-constant calculations video."
+   },
+   {
+    "lessonRef": null,
+    "video": "7OW_DM8ZXbg",
+    "spec": "23.1.1",
+    "reason": "'How to Determine the Standard Enthalpy Change of Reaction' — lattice energy / atomisation enthalpies (23.1.1) are a distinct topic, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "7OW_DM8ZXbg",
+    "spec": "23.2.2",
+    "reason": "Same video: energy cycles combining lattice energy and enthalpy change of solution (23.2.2) not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "CRRvDqQqOkc",
+    "spec": "9.2.1",
+    "reason": "'Redox Reactions of Group 2 Elements…' bound to a Period-3 clause (9.2.1: Na, Mg, Al reactions) — wrong group; topic mismatch."
+   },
+   {
+    "lessonRef": null,
+    "video": "8PM_tWNFbGY",
+    "spec": "14.1.6",
+    "reason": "GCSE 'Combustion of Hydrocarbons' names the reaction; the environmental-consequences clause (CO, NOx, unburnt hydrocarbons) of 14.1.6 is not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "sssQlWf3YYI",
+    "spec": "31.1.1",
+    "reason": "'Directing Groups in the Reactions of Benzene' — halogenoarene production routes (31.1.1) not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "ySJkA4XiCXU",
+    "spec": "3.7.1",
+    "reason": "GCSE 'Limitations of Bonding Diagrams' is about the limits of dot-and-cross; the construct-ionic-covalent-coordinate-diagrams clause of 3.7.1 is not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "tvzlGwIZXHk",
+    "spec": "32.2.5",
+    "reason": "'Nitration of Benzene' — the phenol-vs-benzene conditions comparison of 32.2.5 is a distinct clause, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "tvzlGwIZXHk",
+    "spec": "34.2.1",
+    "reason": "Same video: phenylamine preparation via nitration-then-reduction (34.2.1) not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "WVwiozCzTX0",
+    "spec": "32.2.5",
+    "reason": "'Bromination of Benzene' — phenol bromination comparison (32.2.5) not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "dRwGa62uoNk",
+    "spec": "32.2.1",
+    "reason": "'The Reactions of Phenol' — the phenol production route from diazonium salts (32.2.1) is a preparation clause, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "ketAGS1gkQM",
+    "spec": "33.1.4",
+    "reason": "GCSE 'Carboxylic Acids' — relative acidities of carboxylic acids/phenols/alcohols (33.1.4) is A-level-only, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "ketAGS1gkQM",
+    "spec": "33.1.2",
+    "reason": "Same video: PCl3/PCl5/SOCl2 conversion to acyl chlorides (33.1.2) not title-evidenced at GCSE."
+   },
+   {
+    "lessonRef": null,
+    "video": "b8IzjgX2UlQ",
+    "spec": "7.1.7",
+    "reason": "'The Equilibrium Constant Kc' — the Kp (partial-pressure) calculations of 7.1.7 are a distinct CIE topic, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "Pvzqiz8wqJ4",
+    "spec": "7.2.9",
+    "reason": "'How to Carry Out a Titration' is technique-level; the pH-curve sketching of 7.2.9 is the distinctive content, not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "4pIHhXfGZlE",
+    "spec": "25.1.4",
+    "reason": "GCSE 'Strong and Weak Acids' — [H+] and pH calculation clause of 25.1.4 not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "ukbtTTG1Kew",
+    "spec": "24.1.3",
+    "reason": "GCSE RP3 Electrolysis — Q=It charge/mass/volume calculations of 24.1.3 not title-evidenced."
+   },
+   {
+    "lessonRef": null,
+    "video": "vWZWPlFmua4",
+    "spec": "12.1.1",
+    "reason": "GCSE Biology 'The Nitrogen Cycle' bound to a chemistry clause (N2 triple-bond inertness, 12.1.1) — cross-subject keyword hit."
+   },
+   {
+    "lessonRef": null,
+    "video": "EP0zfm_FVqc",
+    "spec": "35.1.3",
+    "reason": "Cognito 'What is a Polymer?' is addition-polymer level; the condensation repeat-unit deduction of 35.1.3 is not title-evidenced."
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "a95E-XBm4Fk",
+   "title": "A Level Chemistry Revision \"Intermolecular Forces\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=a95E-XBm4Fk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 175,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "uWNHjDSHQwU",
+   "title": "A Level Chemistry Revision \"Permanent Dipole-Dipole Interactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=uWNHjDSHQwU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 250,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "UqdEzkhhuBs",
+   "title": "A Level Chemistry Revision \"Relative Molecular Mass and Relative Formula Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UqdEzkhhuBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 255,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "yOsMN89wIQc",
+   "title": "GCSE Chemistry Revision \"Relative Atomic Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yOsMN89wIQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m5u4STdFlOE",
+   "title": "GCSE Chemistry Revision \"Covalent Bonding 1: Bonding in Hydrogen, Chlorine and Hydrogen chloride\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=m5u4STdFlOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 301,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NnooA7J42iU",
+   "title": "A Level Chemistry Revision \"Electrophilic Addition of Hydrogen Halide to Alkenes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=NnooA7J42iU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "RVesvXbGIC8",
+   "title": "A Level Chemistry Revision \"Reaction between Halides and Concentrated Sulfuric Acid\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=RVesvXbGIC8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 305,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "oYggmO-W9lQ",
+   "title": "A Level Chemistry Revision (Year 13) \"Reaction of Aldehydes and Ketones with Hydrogen Cyanide\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=oYggmO-W9lQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 218,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "yFDNBl8KjHg",
+   "title": "A Level Chemistry Revision \"Calculations Involving the Avogadro Constant Part 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yFDNBl8KjHg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 227,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "HR9dM7Hg7d4",
+   "title": "A Level Chemistry Revision \"Primary, Secondary and Tertiary Alcohols\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=HR9dM7Hg7d4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 211,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "gvU7aSTF9Kg",
+   "title": "A Level Biology Revision \"Hydrogen Bonding in Water\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gvU7aSTF9Kg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 205,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "WAA08FzArw8",
+   "title": "A Level Chemistry Revision \"Giant Covalent Structures and Simple Molecular Structures\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=WAA08FzArw8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 318,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "XZ-MhFM3hCM",
+   "title": "A Level Chemistry Revision \"Displayed Formula, Structural Formula and Skeletal Formula\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=XZ-MhFM3hCM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 310,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "LQZgqFxb8Mo",
+   "title": "A Level Chemistry Revision \"Molecular Formula and Empirical Formula\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=LQZgqFxb8Mo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 325,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "5mP0z1MAdCk",
+   "title": "A Level Chemistry Revision \"Shorthand Electron Configuration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=5mP0z1MAdCk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 247,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kIebyQWtjPQ",
+   "title": "A Level Chemistry Revision \"Electron Configuration of Ions 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=kIebyQWtjPQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 224,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "gnbuTl2ariI",
+   "title": "GCSE Chemistry Revision \"Oxidation and Reduction in Terms of Electrons\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gnbuTl2ariI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7OW_DM8ZXbg",
+   "title": "A Level Chemistry Revision \"How to Determine the Standard Enthalpy Change of Reaction\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7OW_DM8ZXbg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 333,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "PtIWf6pjik0",
+   "title": "A Level Chemistry \"The Effect of Catalysts on the Rate of Reaction\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=PtIWf6pjik0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 273,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "8zBLPLiXK-w",
+   "title": "A Level Chemistry Revision \"Markownikoff's Rule for Electrophilic Addition to Alkenes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=8zBLPLiXK-w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 335,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "xMPQKzRQDzo",
+   "title": "A Level Chemistry \"Free Radical Substitution of Alkanes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xMPQKzRQDzo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 346,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "4HS6D0hTzdg",
+   "title": "GCSE Chemistry Revision \"Exothermic and Endothermic Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4HS6D0hTzdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eExCBkp4jB4",
+   "title": "GCSE Chemistry Revision \"Bond Energy Calculations 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=eExCBkp4jB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 241,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CRRvDqQqOkc",
+   "title": "A Level Chemistry Revision \"Redox Reactions of Group 2 Elements with Dilute Acid and Chlorine\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=CRRvDqQqOkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 197,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "qYL1_V_GpNQ",
+   "title": "A Level Chemistry Revision \"Reactivity of Group 7\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=qYL1_V_GpNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 191,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "pqYl_UMjN-8",
+   "title": "A Level Chemistry Revision \"Displacement Reactions of Halogens\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=pqYl_UMjN-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 292,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "GFBEaDare6Q",
+   "title": "A Level Chemistry Revision \"Disproportionation Reactions of Halogens\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GFBEaDare6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "8PM_tWNFbGY",
+   "title": "GCSE Chemistry Revision \"Combustion of Hydrocarbons\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=8PM_tWNFbGY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RHT7SocYKZk",
+   "title": "A Level Chemistry Revision \"Heterogeneous and Homogeneous Catalysts\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=RHT7SocYKZk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 232,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "WXu8uAiCtLU",
+   "title": "A Level Chemistry Revision \"Relative Atomic Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=WXu8uAiCtLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 276,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Czi90XPVqfA",
+   "title": "A Level Chemistry Revision \"Reversible Reactions and Dynamic Equilibria\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Czi90XPVqfA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Xsc05N7CgK0",
+   "title": "A Level Chemistry \"Functional Groups and Homologous Series\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Xsc05N7CgK0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 225,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "sssQlWf3YYI",
+   "title": "A Level Chemistry Revision (Year 13) \"Directing Groups in the Reactions of Benzene\" (OCR)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=sssQlWf3YYI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 261,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "77xJ0s2uxXg",
+   "title": "A Level Chemistry Revision (Year 13) \"Electrophilic Substitution in Benzene\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=77xJ0s2uxXg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 335,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "eBLJLD2D5ao",
+   "title": "A Level Chemistry Revision \"Successive Ionisation Energies\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=eBLJLD2D5ao",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 273,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "s8XqX3UhPOo",
+   "title": "A Level Chemistry Revision \"Trend in First Ionisation Energy Down a Group\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=s8XqX3UhPOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 286,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "YkQjkcW6Itw",
+   "title": "A Level Chemistry Revision \"Trend in First Ionisation Energy Across a Period\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=YkQjkcW6Itw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 252,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "1O-BuIf7Zqs",
+   "title": "A Level Chemistry Revision \"Ionisation Energy across a Period\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1O-BuIf7Zqs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 217,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "mbIkDqzdyFE",
+   "title": "A Level Chemistry Revision \"Periodic Trends in Atomic Radius\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=mbIkDqzdyFE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "nwsSl8UiozA",
+   "title": "A Level Chemistry Revision \"Using Oxidation Numbers in Compounds\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nwsSl8UiozA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 293,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "XH4b0RRqPGQ",
+   "title": "A Level Chemistry Revision \"Using Oxidation Numbers in Chemical Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=XH4b0RRqPGQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "vxCyzR6uETs",
+   "title": "GCSE Chemistry Revision \"Balancing Chemical Equations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=vxCyzR6uETs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 347,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "O162yDXTQc0",
+   "title": "A Level Chemistry Revision \"Balancing Equations for the Complete Combustion of Alcohols\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=O162yDXTQc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "9QUPJJtmqZ0",
+   "title": "A Level Chemistry Revision \"Calculations using the ideal gas equation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9QUPJJtmqZ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 207,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ySJkA4XiCXU",
+   "title": "GCSE Chemistry Revision \"Limitations of Bonding Diagrams\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ySJkA4XiCXU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 174,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "B-W_ic1eubA",
+   "title": "A Level Chemistry Revision \"Dative Covalent Bonding\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=B-W_ic1eubA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 150,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "tvzlGwIZXHk",
+   "title": "A Level Chemistry Revision (Year 13) \"Nitration of Benzene\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=tvzlGwIZXHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "WVwiozCzTX0",
+   "title": "A Level Chemistry Revision (Year 13) \"Bromination of Benzene\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=WVwiozCzTX0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 220,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "dRwGa62uoNk",
+   "title": "A Level Chemistry Revision (Year 13) \"The Reactions of Phenol\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dRwGa62uoNk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 278,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "JJO_5hjhq34",
+   "title": "A Level Chemistry Revision \"Naming Aromatic Compounds\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=JJO_5hjhq34",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 339,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "lmPiydJfGrk",
+   "title": "A Level Chemistry Revision \"Shapes of Molecules\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=lmPiydJfGrk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 390,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "4rzxZIu5OHc",
+   "title": "A Level Chemistry Revision \"Ionic Bonding\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4rzxZIu5OHc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 177,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "iWWfbWJ-QMw",
+   "title": "A Level Chemistry Revision \"Periodic Trends in Bonding and Structure: Metallic Bonding\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=iWWfbWJ-QMw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 221,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Oog0E8cCWqg",
+   "title": "A Level Chemistry Revision \"Electronegativity\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Oog0E8cCWqg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "puEYUjobUUY",
+   "title": "A Level Chemistry Revision \"The Maxwell-Boltzmann Distribution Curve\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=puEYUjobUUY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 257,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "u4Co4N-Jmbs",
+   "title": "GCSE Chemistry Revision \"Effect of Concentration on Rate\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=u4Co4N-Jmbs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 230,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mpjlFJkMA9Q",
+   "title": "A Level Chemistry \"Using a Tangent to Calculate the Rate of a Reaction\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=mpjlFJkMA9Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 235,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "CLq7WzCmYrk",
+   "title": "GCSE Chemistry Revision \"Mean Rate of Reaction\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=CLq7WzCmYrk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 281,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8Gwsz0b7m9k",
+   "title": "A Level Chemistry Revision \"Nucleophilic Substitution of Haloalkanes with Ammonia and Cyanide ions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=8Gwsz0b7m9k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 263,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "QsvVP5zGOaY",
+   "title": "A Level Chemistry Revision \"Elimination Reaction of Haloalkanes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=QsvVP5zGOaY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "EUD33h9V9w4",
+   "title": "A Level Chemistry Revision \"Formation of Haloalkanes from Alcohols\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=EUD33h9V9w4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 188,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "9RTiFuog06s",
+   "title": "A Level Chemistry Revision \"Reaction between Alkenes and Sulfuric Acid\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9RTiFuog06s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 232,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "cTk0qCKhcvs",
+   "title": "A Level Chemistry Revision \"Oxidation of Primary Alcohols\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cTk0qCKhcvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 265,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "AUUdh6xrV0k",
+   "title": "A Level Chemistry Revision (Year 13) \"Reduction of Aldehydes and Ketones by Nucleophilic Addition\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=AUUdh6xrV0k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "uP-N40vn9kw",
+   "title": "A Level Chemistry Revision (Year 13) \"Identifying Aldehydes and Ketones using 2,4-DNP\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=uP-N40vn9kw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "YjyCkfzbCig",
+   "title": "A Level Chemistry Revision (Year 13) \"Chemical tests to distinguish between Aldehydes and Ketones\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=YjyCkfzbCig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 289,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ketAGS1gkQM",
+   "title": "GCSE Chemistry Revision \"Carboxylic Acids\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ketAGS1gkQM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 221,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QBuSFPOtcJ4",
+   "title": "GCSE Chemistry Revision \"Condensation Polymers\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=QBuSFPOtcJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 206,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UY2TzghAAC8",
+   "title": "A Level Chemistry Revision \"Water of Crystallisation Part 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UY2TzghAAC8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 374,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "tjZWeL7P2AY",
+   "title": "A Level Chemistry Revision \"Testing for Halide Ions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=tjZWeL7P2AY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 247,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "BNFmtvYVub4",
+   "title": "A Level Chemistry Revision \"Half Equations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=BNFmtvYVub4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 231,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "cUYYPVh7KIU",
+   "title": "A Level Chemistry Revision \"The Mass Spectrometer\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cUYYPVh7KIU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 390,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "T34mkIRwQgg",
+   "title": "A Level Chemistry Revision \"Interpreting Fragmentation Patterns in a Mass Spectrum\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=T34mkIRwQgg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 266,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "EP0RiWQhkXQ",
+   "title": "A Level Chemistry Revision \"Infrared Spectroscopy\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=EP0RiWQhkXQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 379,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "dsKz9eF1Sc0",
+   "title": "GCSE Chemistry Revision \"Paper Chromatography\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dsKz9eF1Sc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 237,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HAkaD6-7fgQ",
+   "title": "GCSE Chemistry Revision \"The Haber Process\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=HAkaD6-7fgQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 260,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7zcIKkkFg1A",
+   "title": "A Level Chemistry Revision \"Le Chatelier's Principle and Temperature\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7zcIKkkFg1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "W1HDDeX4cPM",
+   "title": "A Level Chemistry Revision \"Le Chatelier's Principle and Pressure\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=W1HDDeX4cPM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 269,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "b8IzjgX2UlQ",
+   "title": "A Level Chemistry Revision \"The Equilibrium Constant Kc\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=b8IzjgX2UlQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 297,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Pvzqiz8wqJ4",
+   "title": "A Level Chemistry Revision \"How to Carry Out a Titration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Pvzqiz8wqJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 460,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "4pIHhXfGZlE",
+   "title": "GCSE Chemistry Revision \"Strong and Weak Acids\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4pIHhXfGZlE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 267,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mL7mkqyLpSo",
+   "title": "GCSE Chemistry Revision \"Electrolysis of Aqueous Solutions 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=mL7mkqyLpSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 232,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ukbtTTG1Kew",
+   "title": "GCSE Chemistry Revision \"Required Practical 3: Electrolysis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ukbtTTG1Kew",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 237,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "19iFmRALf8w",
+   "title": "A Level Chemistry Revision \"Hydrogenation of Alkenes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=19iFmRALf8w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 175,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Eidpt9jj70E",
+   "title": "A Level Chemistry Revision \"Dehydration of Alcohols\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Eidpt9jj70E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 219,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "_IZjZm4E--Y",
+   "title": "A Level Chemistry Revision (Year 13) \"Friedel-Crafts Alkylation and Acylation of Benzene\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=_IZjZm4E--Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 255,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "kP7oyOHYuLk",
+   "title": "A Level Chemistry Revision \"Group 2 Hydroxides\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=kP7oyOHYuLk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 287,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "_UGHsbTEBvA",
+   "title": "Water Purification & Testing - GCSE Science Required Practical (Triple)",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=_UGHsbTEBvA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Malmesbury Education required-practicals channel",
+   "durationS": 406,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vWZWPlFmua4",
+   "title": "GCSE Biology Revision The Nitrogen Cycle (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=vWZWPlFmua4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 282,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EP0zfm_FVqc",
+   "title": "GCSE Chemistry - What is a Polymer? Polymers / Monomers / Their Properties Explained (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=EP0zfm_FVqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "a95E-XBm4Fk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.6.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names intermolecular forces",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uWNHjDSHQwU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.6.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names permanent dipole-dipole interactions (listed IMF clause)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UqdEzkhhuBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names relative molecular and formula mass",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yOsMN89wIQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names relative atomic mass",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yOsMN89wIQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "Ar named; C-12 amu definition not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "m5u4STdFlOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names covalent bonding",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NnooA7J42iU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.2.2",
+    "14.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electrophilic addition of hydrogen halides to alkenes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RVesvXbGIC8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names halides + concentrated sulfuric acid",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "oYggmO-W9lQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.1.2",
+    "17.1.3",
+    "19.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names reaction of aldehydes and ketones with HCN (hydroxynitriles)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yFDNBl8KjHg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.1",
+    "2.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names calculations involving the Avogadro constant",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "HR9dM7Hg7d4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names primary, secondary and tertiary alcohols",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gvU7aSTF9Kg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.6.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names hydrogen bonding in water (N-H/O-H clause)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WAA08FzArw8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names giant covalent structures",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WAA08FzArw8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "structure types named; property predictions not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XZ-MhFM3hCM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.1.6",
+    "13.1.4",
+    "29.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names displayed, structural and skeletal formulas",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LQZgqFxb8Mo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.3",
+    "2.3.5",
+    "13.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names molecular and empirical formula",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "5mP0z1MAdCk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names shorthand electron configuration",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kIebyQWtjPQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electron configuration of ions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gnbuTl2ariI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names oxidation and reduction in terms of electrons",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7OW_DM8ZXbg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.2",
+    "5.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "standard enthalpy named; pathway-diagram/lattice clauses not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "PtIWf6pjik0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names effect of catalysts on rate",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8zBLPLiXK-w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names Markownikoff's rule",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "xMPQKzRQDzo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.1.2",
+    "14.1.3",
+    "15.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names free-radical substitution of alkanes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4HS6D0hTzdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names exothermic and endothermic reactions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eExCBkp4jB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names bond energy calculations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eExCBkp4jB4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.4",
+    "5.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "bond energy named; qualitative clauses not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CRRvDqQqOkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names redox reactions of Group 2 elements",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CRRvDqQqOkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "Group 2 named; oxides/hydroxides and Period-3 clauses not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "qYL1_V_GpNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names reactivity of Group 7 (halogens + hydrogen)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pqYl_UMjN-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names displacement reactions of halogens",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GFBEaDare6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names disproportionation reactions of halogens",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RHT7SocYKZk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "26.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names heterogeneous and homogeneous catalysts",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RHT7SocYKZk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "26.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "catalyst types named; mode-of-action clause not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WXu8uAiCtLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names relative atomic mass (A-level)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Czi90XPVqfA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names reversible reactions and dynamic equilibrium",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Xsc05N7CgK0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "21.1.1",
+    "36.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names functional groups and homologous series",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Xsc05N7CgK0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.1.5",
+    "29.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "functional groups named; systematic nomenclature not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "sssQlWf3YYI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "30.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names directing groups",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "77xJ0s2uxXg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "30.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electrophilic substitution",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eBLJLD2D5ao",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1",
+    "1.4.4",
+    "1.4.5",
+    "1.4.6",
+    "1.4.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names successive ionisation energies",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eBLJLD2D5ao",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.2",
+    "1.4.8"
+   ],
+   "confidence": "low",
+   "evidence": "successive IE named; equations/position clauses not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "s8XqX3UhPOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names trend in first ionisation energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YkQjkcW6Itw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names trend in first ionisation energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1O-BuIf7Zqs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ionisation energy across a period",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mbIkDqzdyFE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.7",
+    "9.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names periodic trends in atomic radius",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nwsSl8UiozA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.1",
+    "6.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names using oxidation numbers in compounds",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XH4b0RRqPGQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names using oxidation numbers in chemical reactions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vxCyzR6uETs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names balancing chemical equations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "O162yDXTQc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "balancing named (combustion context only)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9QUPJJtmqZ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ideal gas equation calculations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "B-W_ic1eubA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "28.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "dative covalent bonding named; ligand definition not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "dRwGa62uoNk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "32.2.7"
+   ],
+   "confidence": "low",
+   "evidence": "phenol reactions named; production route not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JJO_5hjhq34",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "29.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names naming aromatic compounds",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "lmPiydJfGrk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names shapes of molecules",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4rzxZIu5OHc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ionic bonding",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "iWWfbWJ-QMw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names metallic bonding",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Oog0E8cCWqg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.2",
+    "3.1.3",
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electronegativity",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "puEYUjobUUY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.2",
+    "8.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the Maxwell-Boltzmann distribution",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "u4Co4N-Jmbs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names effect of concentration on rate",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mpjlFJkMA9Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names using a tangent to calculate rate",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CLq7WzCmYrk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names mean rate of reaction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8Gwsz0b7m9k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.1.5",
+    "15.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names nucleophilic substitution of halogenoalkanes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8Gwsz0b7m9k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "substitution named; SN1/SN2 mechanism split not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QsvVP5zGOaY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names elimination reaction of haloalkanes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "EUD33h9V9w4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.1.1",
+    "16.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names formation of haloalkanes from alcohols",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9RTiFuog06s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names reaction between alkenes and sulfuric acid (hydration route)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "cTk0qCKhcvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.1.1",
+    "18.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names oxidation of primary alcohols",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "AUUdh6xrV0k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names reduction of aldehydes and ketones (NaBH4/LiAlH4 clause of 16.1.1)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uP-N40vn9kw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2,4-DNP identification of carbonyls",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YjyCkfzbCig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names chemical tests distinguishing aldehydes and ketones",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QBuSFPOtcJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "35.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names condensation polymers",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UY2TzghAAC8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names water of crystallisation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tjZWeL7P2AY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names testing for halide ions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "BNFmtvYVub4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "24.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names half equations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "cUYYPVh7KIU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the mass spectrometer",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "T34mkIRwQgg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names interpreting fragmentation patterns",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "EP0RiWQhkXQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names infrared spectroscopy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "dsKz9eF1Sc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "37.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names paper chromatography (stationary/mobile phases)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "HAkaD6-7fgQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.10"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the Haber process",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7zcIKkkFg1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.2",
+    "7.1.3",
+    "7.1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names Le Chatelier's principle and temperature",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "W1HDDeX4cPM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.2",
+    "7.1.3",
+    "7.1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names Le Chatelier's principle and pressure",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "b8IzjgX2UlQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the equilibrium constant Kc",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4pIHhXfGZlE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.4",
+    "7.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names strong and weak acids",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mL7mkqyLpSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "24.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electrolysis of aqueous solutions (product prediction)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "19iFmRALf8w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names hydrogenation of alkenes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Eidpt9jj70E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names dehydration of alcohols",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "_IZjZm4E--Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "30.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names Friedel-Crafts alkylation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kP7oyOHYuLk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "Group 2 hydroxides named; acid/base equations not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "_UGHsbTEBvA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "water purification named; chlorine reactions not in title",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-09T06:10:24Z",
+   "boardMismatch": true
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 356,
+  "specPointsMapped": 108,
+  "specPointsUnmapped": 248,
+  "videosTotal": 90,
+  "videosMapped": 81,
+  "videosUnmapped": 9,
+  "mappingRows": 89,
+  "byConfidence": {
+   "high": 0,
+   "medium": 75,
+   "low": 14
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-a-level-chemistry-25.json",
+   "sha256": "7fe2e4f7081bb5487893523b2f816f0e76b1b8d452a3e3dcacf5c96beba18942"
+  },
+  "draft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-chemistry-25/video-map.draft.external.json",
+   "task": "T-VIDEOMAP-P2D",
+   "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  }
+ },
+ "generatedUtc": "2026-11-09T06:12:44.918Z"
+}
