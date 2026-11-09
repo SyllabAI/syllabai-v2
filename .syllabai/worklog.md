@@ -2204,3 +2204,38 @@ Stage Summary:
   — verified 22/22 against www.syllab-ai.com. The dropped git auto-bake was remedied by the
   documented bake-lane floor (run#12, success). One thread hands off to the bake lane: the
   account-level git-build block + the API floor's failed CLI deploy.
+
+## ADR-044 run-001 (2026-11-09) — the editor role & the content workbench: the design of record filed
+
+- Operator order: "Re-file the spec where it counts" (trace 1a1bf9b23f1d45a9) — re-filing the
+  editor-role engagement after its sandbox artifacts were lost to a workspace recycle; the design
+  itself survived in the session of record and is now the repo's law candidate.
+- THE ADR (docs/ADR-044-EDITOR_ROLE_CONTENT_WORKBENCH.md, PROPOSED -> ACCEPTED on merge): E-0 — the
+  serving plane is never directly editable; every human edit flows corpus -> gates -> tiered merge ->
+  receipt -> census -> serve. Editor = v2-native grant plane (editor_grants rows; the frozen Role
+  enum { STUDENT, TEACHER, ADMIN } untouched — zero capture-band divergence, the workspace-docs
+  class), requireEditor shell per the teacher-me class (401 before everything, 403 otherwise), the
+  capability matrix strictly content-scoped (no platform powers; composable with TEACHER), the
+  server-side tier classifier (Tier 1 typography auto-merge on green — the operator ruling of
+  record; Tier 2 content-bearing four-eyes via G-EYES author-independence + post-merge census
+  receipt; Tier 3 structural refused to the lane process), the gate engine as ONE module consumed
+  twice (hub pre-flight + CI gates; families G-CANON / G-SER / G-FIELD / G-CHAR / G-ASSET / G-EYES
+  / G-SCOPE), the data plane carded at packages/db/drizzle/0028_editor-planes.sql (next free after
+  0027_mark-award-delta; editor_edit_proposals + editor_edit_receipts per the 0022/0023
+  personal-state law; the F5-S7 grants lane as a Phase 1 exit criterion; caps per T-CAPS-POLICY-1),
+  /api/v1/editor/* v2-native additive with NO editor-reachable serve/merge endpoint, phasing 0-4,
+  and the negative space of record (no free-text AI rewrite passes over banks, no direct plane
+  writes, no edits without PRs, no per-field locking, no self-merge above Tier 1).
+- Rulings carried verbatim from the originating session: Tier 1 auto-merge acceptable; scope = all
+  banks at once and future ones (no per-bank entitlement list); the role is named "editor"; holders
+  internal + external. Re-rulings amend the ADR in public; they never re-interpret it silently.
+- Evidence: grounding reads from live main at filing time (auth.ts frozen Role pin /
+  content-writes.ts teacher-ingestion band / middleware auth shell / identity.ts derived mapping /
+  the docs/ ADR series 037-043 with ADR-044 next free / drizzle 0000-0027 with 0028 next free);
+  the reference MVP's verified golden path (API 20/20, browser 10/10, lint clean, real
+  syllabai-resources fixtures incl. the three wave-D-repaired physics questions) recorded as
+  companion evidence.
+- Docs-only, zero src/test bytes; PR opened against main, NOT self-merged per house law. Receipt:
+  .syllabai/receipts/ADR-044/run-001-spec-of-record.md. Circulation copy (md + docx + pdf)
+  regenerated outside the repo at download/editor-role/. Standing reminder (TENTH filing): the PAT
+  remains exposed from chat transmission and MUST be revoked/rotated.
