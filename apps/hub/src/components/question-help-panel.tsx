@@ -92,7 +92,7 @@ export function QuestionHelpPanel({
       <CollapsibleTrigger asChild>
         <button
           type="button"
-          className="flex w-full items-center gap-2 px-3 py-2 text-left text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+          className="flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           aria-expanded={open}
         >
           <BookOpen className="size-4 shrink-0" aria-hidden />
@@ -106,7 +106,7 @@ export function QuestionHelpPanel({
         </button>
       </CollapsibleTrigger>
       <CollapsibleContent className="px-3 pb-3">
-        <p className="mb-2 text-[11px] leading-snug text-muted-foreground">
+        <p className="mb-2 text-2xs leading-snug text-muted-foreground">
           Looking things up is allowed — keep your confidence rating honest. Notes are joined
           through the question&apos;s specification points
           {codes.length > 0 ? ` (${codes.slice(0, 4).join(", ")}${codes.length > 4 ? ", …" : ""})` : ""}.
@@ -138,7 +138,7 @@ export function QuestionHelpPanel({
             ))}
           </ul>
         )}
-        <p className="mt-2.5 text-[11px] text-muted-foreground">
+        <p className="mt-2.5 text-2xs text-muted-foreground">
           Still stuck?{" "}
           <a href={tutorHref} className="inline-flex items-center gap-0.5 underline hover:text-foreground">
             Ask the free Tutor <ExternalLink className="size-3" aria-hidden />
@@ -196,12 +196,12 @@ function NoteDisclosure({
         className="flex w-full items-center gap-2 px-3 py-2 text-left"
       >
         <span className="min-w-0 flex-1">
-          <span className="block truncate text-[13px] font-medium">{title}</span>
-          {path && <span className="block truncate text-[11px] text-muted-foreground">{path}</span>}
+          <span className="block truncate text-xs font-medium">{title}</span>
+          {path && <span className="block truncate text-2xs text-muted-foreground">{path}</span>}
         </span>
         <span className="flex shrink-0 gap-1">
           {matchedCodes.slice(0, 3).map((c) => (
-            <Badge key={c} variant="secondary" className="font-mono text-[10px]">
+            <Badge key={c} variant="secondary" className="font-mono text-2xs">
               {c}
             </Badge>
           ))}
@@ -228,7 +228,7 @@ function NoteDisclosure({
           )}
           <a
             href={`/courses/${course}/revision-notes/${noteId}`}
-            className="mt-2 inline-flex items-center gap-1 text-[11px] text-muted-foreground underline hover:text-foreground"
+            className="mt-2 inline-flex items-center gap-1 text-2xs text-muted-foreground underline hover:text-foreground"
           >
             Open the full note <ExternalLink className="size-3" aria-hidden />
           </a>

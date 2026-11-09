@@ -124,16 +124,16 @@ export function GraphExplorerClient() {
         <h1 className="truncate text-sm font-semibold tracking-tight">
           Graph Explorer
         </h1>
-        <Badge variant="outline" className="hidden font-mono text-[10px] md:inline">
+        <Badge variant="outline" className="hidden font-mono text-2xs md:inline">
           OpenHuman build · prototype
         </Badge>
-        <Badge variant="outline" className="hidden font-mono text-[10px] lg:inline">
+        <Badge variant="outline" className="hidden font-mono text-2xs lg:inline">
           Edexcel Int. GCSE Chemistry · 4CH1
         </Badge>
         {counts && (
           <Badge
             variant="outline"
-            className="hidden font-mono text-[10px] text-success xl:inline"
+            className="hidden font-mono text-2xs text-success xl:inline"
           >
             {counts.nodes} nodes · {counts.edges} edges · {counts.specPoints} spec points
           </Badge>
@@ -154,7 +154,7 @@ export function GraphExplorerClient() {
               aria-pressed={build === key}
               onClick={() => switchBuild(key)}
               className={cn(
-                "px-2.5 py-1 font-mono text-[11px] transition-colors",
+                "px-2.5 py-1 font-mono text-2xs transition-colors",
                 build === key
                   ? "bg-primary font-semibold text-primary-foreground"
                   : "text-muted-foreground hover:bg-muted",
@@ -265,7 +265,7 @@ export function GraphExplorerClient() {
       </div>
 
       {/* honest data-path footnote (host-level only, out of the canvas) */}
-      <div className="flex items-center gap-1.5 border-t px-4 py-1.5 text-[10px] text-muted-foreground">
+      <div className="flex items-center gap-1.5 border-t px-4 py-1.5 text-2xs text-muted-foreground">
         <Download className="size-3" aria-hidden />
         <span>
           Prototype build lab — byte-faithful v75/v76/v77 with the operator&apos;s hand-curated

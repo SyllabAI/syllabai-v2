@@ -34,7 +34,7 @@ export function SimEmbedBlock({ block }: { block: RailBlock }) {
 
   return (
     <WidgetCard ord={block.ord} typeLabel="Simulation" prompt={title} accent>
-      {blurb && <p className="mb-2 text-[13px] leading-snug text-muted-foreground">{blurb}</p>}
+      {blurb && <p className="mb-2 text-xs leading-snug text-muted-foreground">{blurb}</p>}
       {loaded ? (
         <div className="overflow-hidden rounded-md border">
           <iframe
@@ -48,7 +48,7 @@ export function SimEmbedBlock({ block }: { block: RailBlock }) {
         </div>
       ) : (
         <div className="flex flex-col items-start gap-2 rounded-md border border-dashed p-3">
-          <p className="text-[13px] text-muted-foreground">
+          <p className="text-xs text-muted-foreground">
             Interactive simulation — loads from PhET (University of Colorado Boulder) when you start it.
           </p>
           <Button size="sm" className="h-7 gap-1 px-3 text-xs" onClick={() => setLoaded(true)}>
@@ -57,7 +57,7 @@ export function SimEmbedBlock({ block }: { block: RailBlock }) {
           </Button>
         </div>
       )}
-      <div className="mt-2 flex items-center justify-between gap-2 text-[11px] text-muted-foreground">
+      <div className="mt-2 flex items-center justify-between gap-2 text-2xs text-muted-foreground">
         <span>
           PhET Interactive Simulations · {attribution ?? "CC-BY-4.0"}
         </span>

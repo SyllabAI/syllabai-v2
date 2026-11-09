@@ -112,7 +112,7 @@ export function McqEmbedBlock({ block, onJump, checkSource }: Props) {
                 <RadioGroupItem value={o.id} id={`${block.id}-${o.id}`} disabled={verdict != null} />
                 <Label
                   htmlFor={`${block.id}-${o.id}`}
-                  className="flex-1 cursor-pointer text-[13px] font-normal leading-snug"
+                  className="flex-1 cursor-pointer text-xs font-normal leading-snug"
                 >
                   <span className="mr-1.5 font-semibold">{o.label}</span>
                   {o.text}
@@ -150,9 +150,9 @@ export function McqEmbedBlock({ block, onJump, checkSource }: Props) {
 
 function WidgetHeader({ ord }: { ord: number }) {
   return (
-    <p className="mb-1 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+    <p className="mb-1 flex items-center gap-2 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
       <span>Check yourself</span>
-      <span className="text-[10px] font-normal normal-case opacity-60">block {ord}</span>
+      <span className="text-2xs font-normal normal-case opacity-60">block {ord}</span>
     </p>
   );
 }

@@ -440,7 +440,7 @@ export function QuestionClaOverlay({
     <>
         {/* SME's one-line banner — their verbatim copy, on the hub's
             theme-aware warn tokens */}
-        <div className="flex items-center gap-2 border-b bg-warn/10 px-4 py-2 text-[11px] leading-snug text-warn-ink">
+        <div className="flex items-center gap-2 border-b bg-warn/10 px-4 py-2 text-2xs leading-snug text-warn-ink">
           <Info className="size-3.5 shrink-0 text-warn" aria-hidden />
           <p>Chat can make mistakes. Please check all responses carefully.</p>
         </div>
@@ -477,7 +477,7 @@ export function QuestionClaOverlay({
                     // t-ui-polish run-006: the overlay's toggle pills and
                     // thread rows speak the house hover voice
                     // (border-primary/60), not the legacy /40.
-                    "rounded-full border px-2 py-0.5 text-[11px] font-medium leading-none transition-colors",
+                    "rounded-full border px-2 py-0.5 text-2xs font-medium leading-none transition-colors",
                     target?.hubPartId === t.hubPartId
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border text-muted-foreground hover:border-primary/60",
@@ -504,11 +504,11 @@ export function QuestionClaOverlay({
                 onClick={() => void ask({ kind: "WHOLE" }, "EXPLAIN", understandPrompt)}
                 className="flex flex-col gap-1 rounded-xl bg-primary/10 px-3 py-2.5 text-left transition-colors hover:bg-primary/15 disabled:pointer-events-none disabled:opacity-50"
               >
-                <span className="flex items-center gap-1.5 text-[13px] font-semibold">
+                <span className="flex items-center gap-1.5 text-xs font-semibold">
                   <Compass className="size-3.5 shrink-0 text-primary" aria-hidden />
                   Understand
                 </span>
-                <span className="text-[11px] leading-snug text-muted-foreground">
+                <span className="text-2xs leading-snug text-muted-foreground">
                   Explain what this question is asking
                 </span>
               </button>
@@ -518,16 +518,16 @@ export function QuestionClaOverlay({
                 onClick={() => target && void ask({ kind: "TARGET", target }, "HINT", approachPrompt)}
                 className="flex flex-col gap-1 rounded-xl bg-primary/10 px-3 py-2.5 text-left transition-colors hover:bg-primary/15 disabled:pointer-events-none disabled:opacity-50"
               >
-                <span className="flex items-center gap-1.5 text-[13px] font-semibold">
+                <span className="flex items-center gap-1.5 text-xs font-semibold">
                   <Lightbulb className="size-3.5 shrink-0 text-primary" aria-hidden />
                   Approach
                   {target && (
-                    <span className="rounded-full bg-muted px-1.5 py-px text-[10px] font-medium text-muted-foreground">
+                    <span className="rounded-full bg-muted px-1.5 py-px text-2xs font-medium text-muted-foreground">
                       part {target.label}
                     </span>
                   )}
                 </span>
-                <span className="text-[11px] leading-snug text-muted-foreground">
+                <span className="text-2xs leading-snug text-muted-foreground">
                   {target?.anchor === "QUESTION_PART"
                     ? `Coach me through part (${target?.label}) without the answer`
                     : "Coach me through this question without the answer"}
@@ -544,18 +544,18 @@ export function QuestionClaOverlay({
                 onClick={() => router.push(questionWhyMarkedHref(course, questionFirstLine))}
                 className="flex flex-col gap-1 rounded-xl bg-primary/10 px-3 py-2.5 text-left transition-colors hover:bg-primary/15 disabled:pointer-events-none disabled:opacity-50"
               >
-                <span className="flex items-center gap-1.5 text-[13px] font-semibold">
+                <span className="flex items-center gap-1.5 text-xs font-semibold">
                   <Scale className="size-3.5 shrink-0 text-primary" aria-hidden />
                   {QUESTION_WHY_MARKED.title}
                 </span>
-                <span className="text-[11px] leading-snug text-muted-foreground">
+                <span className="text-2xs leading-snug text-muted-foreground">
                   {QUESTION_WHY_MARKED.description}
                 </span>
               </button>
             </div>
             {question && pastThreads.length > 0 && (
               <div className="space-y-1 pt-1">
-                <p className="flex items-center gap-1.5 px-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                <p className="flex items-center gap-1.5 px-1 text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
                   <History className="size-3" aria-hidden />
                   Past chats on this question
                 </p>
@@ -597,7 +597,7 @@ export function QuestionClaOverlay({
                         className="min-w-0 flex-1 px-2.5 py-1.5 text-left"
                       >
                         <span className="block truncate text-[12px] font-medium">{t.title}</span>
-                        <span className="text-[10px] text-muted-foreground">
+                        <span className="text-2xs text-muted-foreground">
                           {t.messages.length} turn{t.messages.length === 1 ? "" : "s"} ·{" "}
                           {relativeTime(t.updatedAt)}
                         </span>
@@ -636,7 +636,7 @@ export function QuestionClaOverlay({
           )}
           {messages.map((m, i) =>
             m.kind === "user" ? (
-              <div key={i} className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-muted px-3 py-2 text-[13px]">
+              <div key={i} className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-muted px-3 py-2 text-xs">
                 {m.text}
               </div>
             ) : m.kind === "assistant" ? (
@@ -648,7 +648,7 @@ export function QuestionClaOverlay({
                 )}
               >
                 {m.result.refused && (
-                  <p className="flex items-center gap-1.5 text-[11px] font-semibold text-warn">
+                  <p className="flex items-center gap-1.5 text-2xs font-semibold text-warn">
                     <TriangleAlert className="size-3.5" aria-hidden />
                     Not supported by this question
                   </p>
@@ -661,10 +661,10 @@ export function QuestionClaOverlay({
                       // reader for corpus documents) becomes a link; everything
                       // else stays the honest read-only badge
                       const badgeClass =
-                        "inline-flex max-w-full items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 text-[11px]";
+                        "inline-flex max-w-full items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 text-2xs";
                       const badge = (
                         <>
-                          <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-semibold text-primary">
+                          <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-2xs font-semibold text-primary">
                             {c.index}
                           </span>
                           <FileText className="size-3 shrink-0 text-muted-foreground" aria-hidden />
@@ -687,7 +687,7 @@ export function QuestionClaOverlay({
                     tiny disclosure (SME shows nothing; provider, model, mode,
                     evidence, latency and the read-only tools stay one click
                     away) */}
-                <details className="text-[10px] text-muted-foreground">
+                <details className="text-2xs text-muted-foreground">
                   <summary className="w-fit cursor-pointer select-none hover:text-foreground">
                     trace
                   </summary>
@@ -760,7 +760,7 @@ export function QuestionClaOverlay({
                 onClick={() => setFreeMode(m)}
                 aria-pressed={freeMode === m}
                 className={cn(
-                  "rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors",
+                  "rounded-full border px-2.5 py-0.5 text-2xs font-medium transition-colors",
                   freeMode === m
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border text-muted-foreground hover:border-primary/60",
@@ -795,7 +795,7 @@ export function QuestionClaOverlay({
                   setDraft(p.phrase);
                   askInputRef.current?.focus();
                 }}
-                className="rounded-full border border-border bg-background px-2.5 py-1 text-[11px] text-muted-foreground transition-colors [@media(hover:hover)]:hover:border-primary/60 [@media(hover:hover)]:hover:text-foreground disabled:opacity-50"
+                className="rounded-full border border-border bg-background px-2.5 py-1 text-2xs text-muted-foreground transition-colors [@media(hover:hover)]:hover:border-primary/60 [@media(hover:hover)]:hover:text-foreground disabled:opacity-50"
               >
                 {p.phrase}
               </button>

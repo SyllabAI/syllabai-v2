@@ -116,7 +116,7 @@ export function ThemeToggle({ variant = "icon" }: { variant?: "icon" | "row" }) 
         <Palette className="size-4" aria-hidden />
       </Button>
     ) : (
-      <Button variant="outline" size="sm" className="gap-1.5 text-[11px] font-normal">
+      <Button variant="outline" size="sm" className="gap-1.5 text-2xs font-normal">
         <Palette className="size-3.5" aria-hidden />
         {THEME_LABEL[state.theme]} · {MODE_LABEL[state.mode]}
       </Button>

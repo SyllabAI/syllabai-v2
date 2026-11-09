@@ -160,7 +160,7 @@ const MENU_BUTTON_SQUARE =
  *  padding-inline .5rem .75rem, label hidden when the box is narrow
  *  (their @container (max-width: 540px) rule). */
 const MENU_BUTTON_PILL =
-  "flex h-8 items-center gap-1 rounded-full pl-2 pr-3 text-[13px] font-medium text-foreground/90 hover:bg-muted aria-expanded:bg-muted focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/25";
+  "flex h-8 items-center gap-1 rounded-full pl-2 pr-3 text-xs font-medium text-foreground/90 hover:bg-muted aria-expanded:bg-muted focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/25";
 
 /** SME Insert-symbol popover: xs-bold legends over a 7-column grid of
  *  square symbol buttons, their exact popover shadow. */
@@ -480,7 +480,7 @@ export function AnswerTextarea({
                 <div className="ms-2 flex flex-wrap items-center gap-2">
                   {statusSlot}
                   {wordCount > 0 && (
-                    <span className="text-[11px] tabular-nums text-muted-foreground">
+                    <span className="text-2xs tabular-nums text-muted-foreground">
                       {wordCount} word{wordCount === 1 ? "" : "s"}
                     </span>
                   )}
@@ -491,7 +491,7 @@ export function AnswerTextarea({
         )}
       </div>
       {active && hintSlot && (
-        <p className="mt-1.5 text-[11px] text-muted-foreground">{hintSlot}</p>
+        <p className="mt-1.5 text-2xs text-muted-foreground">{hintSlot}</p>
       )}
       {padOpen && hasSession && (
         <AnswerInkPad

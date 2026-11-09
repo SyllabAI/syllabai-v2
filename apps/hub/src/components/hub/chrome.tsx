@@ -15,7 +15,7 @@ export interface Crumb {
 
 export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: string }) {
   return (
-    <nav aria-label="Breadcrumb" className={cn("flex flex-wrap items-center gap-1 text-[13px]", className)}>
+    <nav aria-label="Breadcrumb" className={cn("flex flex-wrap items-center gap-1 text-xs", className)}>
       <Link
         href="/"
         className="-ml-1 inline-flex min-h-9 min-w-9 items-center justify-center gap-1 rounded-md px-1 py-2 text-muted-foreground transition-colors hover:text-foreground"
@@ -64,7 +64,7 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
  */
 export function ExamCodePill({ code, href, className }: { code: string; href?: string; className?: string }) {
   const pillClass = cn(
-    "inline-flex items-center gap-1.5 rounded-lg border bg-muted/50 px-3 py-1.5 text-[13px]",
+    "inline-flex items-center gap-1.5 rounded-lg border bg-muted/50 px-3 py-1.5 text-xs",
     className,
   );
   if (!href) {

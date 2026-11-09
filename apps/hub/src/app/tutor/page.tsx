@@ -95,7 +95,7 @@ export default async function TutorPage({
             <Sparkles className="size-5" />
           </span>
           <h1 className="mt-3 text-base font-semibold">The tutor isn&apos;t available yet</h1>
-          <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
             The tutor answers only from a course&apos;s own validated material, and no
             course has one connected yet. Once your course&apos;s tutor is live, it
             opens from here and from the course&apos;s hub.
