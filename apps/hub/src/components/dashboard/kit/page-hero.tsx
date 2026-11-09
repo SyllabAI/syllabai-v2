@@ -59,7 +59,7 @@ export function PageHero({
           </p>
         )}
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <h1 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
+          <h1 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
             {title}
           </h1>
           {actions && (

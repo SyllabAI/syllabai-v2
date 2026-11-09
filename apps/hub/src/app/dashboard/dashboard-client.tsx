@@ -297,7 +297,7 @@ function SubjectCard({
     : null;
 
   return (
-    <Card className="relative h-full border-primary/25 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm">
+    <Card className="relative h-full border-primary/30 transition-[border-color,box-shadow] hover:border-primary/60 hover:shadow-sm">
       <Button
         variant="ghost"
         size="icon"
