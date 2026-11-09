@@ -108,3 +108,10 @@ jobs:
       # hub src/lib carries pre-existing UGM-lane baseline failures elsewhere.
       - name: KG corpus integrity laws (T-KG-FIX-1)
         run: bun test apps/hub/src/lib/kg-corpus.test.ts
+
+      # T-KG-TRIPWIRE-1 run-003: Phase 1 T1 acceptance as CI law — the
+      # feedback schema/aggregation law of record + the renderer-fork contract
+      # (constants cannot drift, zero new network calls, prereqValidated
+      # payload law untouched).
+      - name: KG T1 feedback schema + fork contract (T-KG-TRIPWIRE-1)
+        run: bun test apps/hub/src/lib/kg-prereq-feedback.test.ts
