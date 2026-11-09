@@ -2095,7 +2095,6 @@ origin/main
 - Env discipline: production env values fingerprint-identical pre/post (verified per-var); the only Vercel mutation is ADDING the preview target to the 15 existing env vars (additive, reversible, production untouched). PAT + Vercel token env-var-only; provider keys in process memory only, in no artifact.
 - NEXT (design §6 law — the battery verdict is the gate, not taste): revise the clause with R1 firing-consistency / R2 the insufficiency skip / R3 the probe no-repeat guard (or design option (b) cadence state), then re-run THIS battery unchanged; the re-run verdict gates the merge.
 - Anti-truncation asserts: worklog appended append-only (new = old + this section incl. leading blank-line separator); byte delta == len(section); asserted by this script before commit.
-
 ## receipt(RN-DEBRIS-11) run-013 — the CIE batch row-label title repairs (2026-11-09) — 33 rows / 6 courses / 3 planes, evidence-passed per the run-008/009 standard
 
 - Source of record: syllabai-resources @ 34aa6fab (sparse blobless; RS-23 PDF sha256 901548ef… byte-matches the run-009 pin). pdftotext -layout official-code extraction: title column + wrapped-continuation join, '(continued)' page-repeat dedupe; upstream parsed titles (same PDF pins) carry the same fragments and are completed by the extraction — 29 rows direct PDF prose, 4 rows composed (0606 4.1/4.2/10.4/14.11 formula bullet lists flattened per the corpus's own Unicode-glyph convention, flagged composed=true with source pins).

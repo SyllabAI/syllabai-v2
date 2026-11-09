@@ -509,6 +509,24 @@ export function AppShell({
             >
               How content is checked
             </Link>
+            {/* T-HUB-AUDITFIX-1 run-005: the legal pair is reachable from the
+                one strip every non-immersive page renders (audit P9 — minors
+                audience had no privacy/terms surface). Both pages are
+                scaffolds pending legal review. */}
+            {" · "}
+            <Link
+              href="/privacy"
+              className="underline underline-offset-2 hover:text-foreground"
+            >
+              Privacy
+            </Link>
+            {" · "}
+            <Link
+              href="/terms"
+              className="underline underline-offset-2 hover:text-foreground"
+            >
+              Terms
+            </Link>
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
