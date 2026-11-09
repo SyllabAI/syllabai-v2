@@ -436,26 +436,62 @@ export function mapBundleNodes(
       // carry zero corpus anchors, so the seed map SKIPS them fleet-wide
       // (both boards): nothing lands, nothing dangles, every official law
       // below stays byte-identical. SHAPE-GUARDED fail-closed: a future
-      // -SME- row that is NOT the disclosed childless SUBJECT-root leaf
-      // shape refuses rather than silently dropping (the skip can never eat
-      // a data-bearing row). The pinned refusal law for OFFICIAL topics
-      // (a drifted non-SME code without the -T tail) is untouched.
+      // -SME- row that is NOT a disclosed shape refuses rather than silently
+      // dropping (the skip can never eat a data-bearing row). The pinned
+      // refusal law for OFFICIAL topics (a drifted non-SME code without the
+      // -T tail) is untouched.
+      //
+      // T-SME-SEL-W2 run-002 law extension (trace 1a1bc9898d589d79): the
+      // ADR-039 SME-picker waves added a SECOND disclosed -SME- class — the
+      // exam-questions picker layer (T-SME-SEL-W1-1 run-001 @ 48540486 for
+      // ial-physics-19 + ial-chemistry-17; T-SME-SEL-W2-1 run-001 for
+      // ial-biology-18): section rows <course>-SME-S<digits> whose children
+      // are exclusively the picker topic rows <section-code>:<sme-slug>
+      // (SUBTOPIC, themselves childless, skipped in the SUBTOPIC branch
+      // below). Same rationale as the r0 class — UI-level navigation rows of
+      // the hub corpus plane, no official UNIT identity, nothing lands,
+      // nothing dangles — with a STRICTER shape: the section row must carry
+      // the -SME-S<digits> tail, sit on the SUBJECT root with a single
+      // parent, and every child must be a picker topic row. Any other
+      // -SME- shape (a childless row without the S<digits> tail, a section
+      // with a SPEC_POINT or official child) still refuses fail-closed.
       if (n.code.includes("-SME-")) {
-        const childless = bundle.nodes.every(
-          (x) => !(x.parents ?? []).includes(n.code),
+        const kids = bundle.nodes.filter((x) =>
+          (x.parents ?? []).includes(n.code),
         );
+        const childless = kids.length === 0;
+        // class 1 (r0): the childless SUBJECT-root leaf — original law
         if (
-          subjectNodeCode == null ||
-          n.parents.length !== 1 ||
-          n.parents[0] !== subjectNodeCode ||
-          !childless
+          subjectNodeCode != null &&
+          n.parents.length === 1 &&
+          n.parents[0] === subjectNodeCode &&
+          childless
         ) {
+          continue;
+        }
+        // class 2 (T-SME-SEL-W1/W2): the picker-layer section row
+        const pickerShape =
+          subjectNodeCode != null &&
+          n.parents.length === 1 &&
+          n.parents[0] === subjectNodeCode &&
+          /-SME-S\d+$/.test(n.code) &&
+          kids.every(
+            (x) =>
+              x.family === "SUBTOPIC" && x.code.startsWith(n.code + ":"),
+          );
+        if (pickerShape) {
+          continue;
+        }
+        if (/-SME-S\d+$/.test(n.code)) {
           throw new BundleSeedConflictError(
             "bundle TOPIC " + n.code +
-              " carries the -SME- segment but is not the disclosed childless SUBJECT-root leaf shape",
+              " is not the disclosed picker-layer section shape (single SUBJECT-root parent; children exclusively the :<slug> picker topic rows)",
           );
         }
-        continue;
+        throw new BundleSeedConflictError(
+          "bundle TOPIC " + n.code +
+            " carries the -SME- segment but is not the disclosed childless SUBJECT-root leaf shape",
+        );
       }
       // the optionA UNIT law: for CIE the UNIT identity is the TOPIC code's
       // own official -T tail, FAIL-CLOSED — the order digit is NOT an
@@ -553,6 +589,34 @@ export function mapBundleNodes(
       continue;
     }
     if (n.family === "SUBTOPIC") {
+      // T-SME-SEL-W2 run-002 law extension: the picker topic rows
+      // <course>-SME-S<n>:<sme-slug> skip like their section rows (the
+      // TOPIC branch's class 2 above) — UI-level selector rows of the hub
+      // corpus plane, no DB identity. Fail-closed: skip ONLY when the row
+      // is childless and its sole parent is a -SME-S<digits> TOPIC section
+      // row; every other -SME- SUBTOPIC shape refuses (the skip can never
+      // eat a data-bearing row, and the :SUBx grammar below must never
+      // graft an identity onto a picker row).
+      if (n.code.includes("-SME-")) {
+        const childless = bundle.nodes.every(
+          (x) => !(x.parents ?? []).includes(n.code),
+        );
+        const sectionRow =
+          n.parents.length === 1
+            ? bundle.nodes.find((x) => x.code === n.parents[0])
+            : undefined;
+        if (
+          childless &&
+          sectionRow?.family === "TOPIC" &&
+          /-SME-S\d+$/.test(sectionRow.code)
+        ) {
+          continue;
+        }
+        throw new BundleSeedConflictError(
+          "bundle SUBTOPIC " + n.code +
+            " carries the -SME- segment but is not the disclosed picker topic row (childless, sole parent a -SME-S<digits> section row)",
+        );
+      }
       // topics land as TOPICs: S{section}-{suffix} — the suffix comes from
       // the bundle code's own :SUBx tail, never re-derived from order.
       // T-MIG-135a TWO-shape grammar (physics LETTER `:SUBa`, maths DOTTED
