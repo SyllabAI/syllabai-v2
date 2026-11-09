@@ -93,8 +93,13 @@ export function ClassroomTab() {
 
   if (overview === null || feed === null) {
     return (
-      <div className="flex min-h-[20vh] items-center justify-center">
-        <Loader2 className="size-5 animate-spin text-muted-foreground" aria-label="Loading classroom" />
+      <div className="min-h-[20vh] space-y-3 py-2" role="status" aria-label="Loading classroom">
+        {/* T-HUB-AUDITFIX-1 run-006 (P5): surfaces load as skeletons, spinners
+            are for actions — the courses/root loader voice. */}
+        <div className="h-8 w-48 animate-pulse rounded-md bg-muted motion-reduce:animate-none" aria-hidden />
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="h-24 animate-pulse rounded-lg border bg-muted/50 motion-reduce:animate-none" aria-hidden />
+        ))}
       </div>
     );
   }
