@@ -14,6 +14,19 @@
  * relatedNoteIds entry must resolve within the SAME package's notes.json
  * (baseline threshold 0 via `?? 0`; hard referential-integrity gate).
  *
+ * t-ugm-link-fix run-004 (2026-11-09) adds a 7th dimension: `relativeImages`
+ * — every markdown image-ish target (](…) with an image extension) in the
+ * corpus must be an absolute https:// hotlink or a committed local mirror
+ * prefix (/content-assets/, /ugm-assets/, /seneca-images/). The absolute
+ * crawl of record found 8 note-body images resolving to /assets/* 404 on
+ * production (igcse-english-literature-16 x2, ial-chemistry-17 x6 — relative
+ * paths surviving the SME import); the run-004 corpus census found the same
+ * defect family in question bodies too (bare `assets/…` form, 6 more). All
+ * 14 were absolutized to the corpus hotlink law of record
+ * (raw.githubusercontent.com/SyllabAI/syllabai-resources@<corpus pin>/…).
+ * Baseline 0: any future import that ships a relative image target fails
+ * the build here (fail-closed, same shape as the run-001 import_ugm law).
+ *
  * Run: bun scripts/verify_corpus_23a.ts   (wired as `prebuild`)
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "fs";
@@ -44,7 +57,7 @@ const DOLLAR = /(?<!\\)\$(?!\$)((?:[^$\n\\]|\\.)+?)(?<!\\)\$(?!\$)/g;
 const BAD_TEXT_CONTENT =
   /^\s*(end|open|close|left|right|fraction|numerator|denominator|strike|enclose|bracket|parenthesis|table|row|cell|root|of|the)\s*[.,]?\s*$/i;
 
-const counts = { span: 0, dollar: 0, textwrap: 0, multiline: 0, baretext: 0, danglingRefs: 0 };
+const counts = { span: 0, dollar: 0, textwrap: 0, multiline: 0, baretext: 0, danglingRefs: 0, relativeImages: 0 };
 const offenders: { kind: string; snippet: string }[] = [];
 const rec = (kind: string, snippet: string) => {
   if (offenders.length < 24) offenders.push({ kind, snippet: snippet.slice(0, 90) });
@@ -55,7 +68,22 @@ const rec = (kind: string, snippet: string) => {
 const MARK_STRONG =
   /\b(end enclose|end table|end cell|end row|end stack|end attributes|end style|begin mathsize|presubscript|presuperscript|end strike|fraction numerator|over denominator|end fraction|end exponent|stack sum)\b/i;
 
+// markdown image-ish targets: ](…) with an image extension. Matching on the
+// extension (not on `![`) keeps this correct for the nested-bracket alt texts
+// the SME corpus actually ships (e.g. ![Table to show rates [D] …](…)).
+const IMG_TARGET = /\]\(([^)\s]+)\)/g;
+const IMG_EXT = /\.(png|jpe?g|gif|webp|svg|avif)$/i;
+const IMG_LEGAL_PREFIX =
+  /^(https:\/\/|\/content-assets\/|\/ugm-assets\/|\/seneca-images\/)/;
+
 function scanString(s: string) {
+  for (const m of s.matchAll(IMG_TARGET)) {
+    const u = m[1];
+    if (IMG_EXT.test(u) && !IMG_LEGAL_PREFIX.test(u)) {
+      counts.relativeImages++;
+      rec("relativeImages", u);
+    }
+  }
   for (const m of s.matchAll(CODE1)) {
     if (MARK.test(m[1])) {
       counts.span++;
@@ -153,6 +181,7 @@ console.log(`  \\text{} garbage        : ${counts.textwrap}`);
 console.log(`  multi-line broken spans: ${counts.multiline}`);
 console.log(`  bare speech text       : ${counts.baretext}`);
 console.log(`  dangling relatedNoteIds: ${counts.danglingRefs}`);
+console.log(`  relative image targets : ${counts.relativeImages}`);
 
 let fail = false;
 if (!baseline) {
@@ -162,7 +191,7 @@ if (!baseline) {
   );
   console.log(`baseline frozen -> ${BASELINE_FILE}`);
 } else {
-  for (const k of ["span", "dollar", "textwrap", "multiline", "baretext", "danglingRefs"] as const) {
+  for (const k of ["span", "dollar", "textwrap", "multiline", "baretext", "danglingRefs", "relativeImages"] as const) {
     if (counts[k] > (baseline[k] ?? 0)) {
       fail = true;
       console.error(`  REGRESSION: ${k} ${counts[k]} > baseline ${baseline[k] ?? 0}`);
@@ -174,6 +203,11 @@ if (fail) {
   console.error("\nGATE FAILED — pollution above baseline:");
   for (const o of offenders) console.error(`  [${o.kind}] ${o.snippet}`);
   for (const d of danglingSamples) console.error(`  [danglingRefs] ${d}`);
+  console.error(
+    "  relativeImages: every markdown image target must be an absolute https:// hotlink " +
+      "or a committed mirror (/content-assets/, /ugm-assets/, /seneca-images/) — " +
+      "t-ugm-link-fix run-004 law",
+  );
   process.exit(1);
 }
 console.log("\nCORPUS GATE PASSED");
