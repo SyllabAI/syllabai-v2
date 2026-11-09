@@ -246,7 +246,7 @@ function SourceReaderInner() {
           </div>
 
           {paperLinkHref && (
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-2.5">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-md border border-primary/30 bg-primary/5 px-3 py-2.5">
               <p className="text-xs text-muted-foreground">
                 This text was parsed from the real{" "}
                 {state.doc.paper?.role === "MS" ? "mark scheme" : "question paper"}.

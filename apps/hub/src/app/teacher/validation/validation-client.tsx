@@ -315,7 +315,7 @@ export function ValidationClient({
                     <span className="font-medium">Problem: </span>
                     {item.part.problemExcerpt}
                   </p>
-                  <p className="rounded-md border border-primary/20 bg-primary/5 p-3 text-xs leading-relaxed">
+                  <p className="rounded-md border border-primary/30 bg-primary/5 p-3 text-xs leading-relaxed">
                     <span className="font-medium">AI model solution under review: </span>
                     {item.part.solutionExcerpt}
                   </p>

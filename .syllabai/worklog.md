@@ -2037,6 +2037,48 @@ Stage Summary:
 origin/main
 origin/main
 origin/main
+## T-SME-SEL-W2-1 run-001 (2026-11-09) — SME picker layer for the Exam Questions selector, wave 2 (ial-biology-18) — the last IAL science
+
+- Operator order: "bless PR #867 and go for wave 2 (biology)". The bless executed FIRST: PR #867 reviewed (diff, CI, byte-discipline), merge-chased through TWO main advances (7d35592b's direct-to-main ledger append, then the merge — worklog union-resolved twice, second round by the new reusable date-ordered resolver scripts/union_resolve_worklog.py), CI re-proven green on merge head aa2f1d86 (census/verify/hub success), squash-merged as 48540486. Wave 2 branches from that commit.
+- AUDIT OF RECORD (live payload 2026-11-09): SME ial-biology-18 picker = 9 sections / 29 topics / 170 subtopics / 29 sets (one "Exam Questions" set per topic). Content parity PERFECT at set level: topicSlug bijection 29/29 (zero hub-only, zero sme-only), per-topic AND per-section set counts exact (3/4/2/4/3/5/3/4/1), zero upstream drift (all 9 corpus section labels verbatim). The corpus reproduces SME's own trailing-hyphen quirk dna-and-gene-expression- verbatim on BOTH sides. Counts taken BY ID (the Energetics lesson).
+- STRUCTURE (differs from physics/chemistry): biology's official spine topics T1-T8 already mirror SME's numbered sections 1-8 by construction (the Edexcel IAL biology topic list; and/& + numbering cosmetics only), plus a pre-existing ial-biology-SME-SYNOPTIC-ASSESSMENT TOPIC row (RULE_DERIVED, predates the layer). The layer still adds value: SME verbatim titles/numbering + 29 topic rows vs the sparse 10-row official subtopic layer.
+- THE CHANGE (append-only, ADR-039 disclosed): content/ial-biology-18/curriculum.json +38 SME_REFERENCE nodes — 9 section rows (orders 171-179 after spine max 170) + 29 topic rows (0-based per section). Byte discipline: +16,331 byte delta == serialized additions exactly; removal round-trip re-serializes to the original 106,205 bytes; edges array byte-untouched (this file, unlike physics/chemistry, carries a trailing edges array — the splice point is the nodes array close, first append attempt caught by the splice-identity assert before any write).
+- GATES: NEW verify_sme_wave2.ts (+ sme-wave2-fixtures.json, live-derived) PASS — spine intact (9 topics / 170 spec points), 38 layer nodes all SME_REFERENCE, bijection (29 rows, per-row counts == live picker), 29/29 sets resolve 1:1, row codes deep-linkable. One scoped change vs the wave-1 gate: the SME-node detector is the layer code pattern <course>-SME-S\d+(:|$) instead of a substring test (the substring form miscounts the pre-existing synoptic spine row as an untagged layer node). Regression: verify_sme_wave1.ts PASS, verify_sme_wire_r0.ts PASS (90 courses, 2,574/2,574 placed, 0 unplaced). tsc clean; eslint clean.
+- HOME MOVEMENT (probed, disclosed): exactly ONE set home changed — synoptic-exam-questions-section-c moved from the runtime-generated fallback row ial-biology-SME-SYNOPTIC-ASSESSMENT-gen to the deterministic appended row ial-biology-18-SME-S9:synoptic-exam-questions-section-c (gen-row homes 30 -> 29; strictly deterministic upgrade, no other set moved).
+- HONEST DISCLOSURES: (a) question-level counts not gated (the selector organizes SETS) — corpus 216 questions vs SME pubQ 215 overall, per-topic Δ -3..+2 on 20/29 topics (SME's counter is its own published-groups metric with 2024-2025 update stamps); set-level parity of record is exact. (b) SME's third picker level (170 subtopics) not reproduced — same disclosed scope cut as wave 1. (c) Fixtures pin the live picker at 2026-11-09; future SME drift is a NEW disclosed wave (audit scripts in the operator workspace: sme_bio_fetch_parse.py / sme_wave2_bio_audit.py / sme_wave2_bio_append.py). (d) Official spine cosmetics documented NOT fixed (and/& + numbering; the pre-existing synoptic row's "(SME section)" title suffix). (e) IAL sciences now COMPLETE: physics-19 + chemistry-17 (wave 1) + biology-18 (wave 2) — all three selectors mirror the SME picker; remaining courses are the census queue. Standing reminder (seventh filing): the PAT remains exposed from chat transmission and MUST be revoked/rotated.
+- Receipt: .syllabai/receipts/T-SME-SEL-W2-1/run-001.md. Branch t-sme-sel-w2/run-001 from main 48540486. PR against main; NOT self-merged per house law.
+
+
+
+
+## T-SME-SEL-W2-1 run-002 (2026-11-09) — the seed-map law extension: the picker-layer -SME- class lands nothing, fail-closed
+
+- Same operator order, follow-up run: CI's verify job on the wave-2 PR head 681f27e4 went RED — 3,481 pass / 1 fail: "ruling A — the optionA identity laws > the ADR-039 §4 SME section rows skip the seed map (T-SME-REDS-FIX r0)".
+- ROOT CAUSE (pinned): the r0 fleet law skips -SME- TOPIC rows in mapBundleNodes ONLY as childless SUBJECT-root leaves, refusing everything else fail-closed. Wave 1 (48540486) introduced a SECOND, data-bearing -SME- class — picker section rows with topic-row children — but the pinned ruling-A test maps only ial-biology-18 (the Edexcel representative), never physics/chemistry, so CI stayed green and the law/shape divergence went unexposed. Wave 2 appended the same layer to the one course the test maps -> the guard refused ial-biology-18-SME-S1 (has children) and the honest red fired exactly as designed. The wave-1 layer has the SAME latent exposure on main (any api seed/bundle pass over physics-19/chemistry-17 would refuse); this run fixes the LAW fleet-wide, not a biology-shaped hole.
+- THE CHANGE (fail-closed, disclosed): bundle-seed.ts -SME- skip law gains class 2, the picker-layer shape — TOPIC rows matching <course>-SME-S<digits> (sole SUBJECT-root parent) whose children are EXCLUSIVELY the picker topic rows <section-code>:<slug> skip with the same rationale as r0 (hub-UI navigation rows, no official UNIT identity, nothing lands, nothing dangles); a -SME-S<n> row failing the shape refuses with a NEW message; every other -SME- shape keeps the ORIGINAL r0 message byte-identical (the geography refusal pin untouched). NEW SUBTOPIC-branch guard: <course>-SME-S<n>:<slug> rows skip ONLY when childless with a sole -SME-S<n> TOPIC parent; every other -SME- SUBTOPIC refuses — the :SUBx grammar can never graft an identity onto a picker row.
+- TESTS: ruling-A pin extended (all three picker courses assert section rows AND :<slug> rows absent AND zero -SME- keys land; official biology spine still maps); two new refusal pins (a -SME-S99 section with a SPEC_POINT child -> the new message; a picker row given a SPEC_POINT child -> the SUBTOPIC message). Original tests byte-identical.
+- GATES: bundle-seed.test.ts 64/64; full CI lane locally bun test apps/api packages = 3,484 pass / 0 fail (was 3,481/1); root typecheck 5/5. Hub gates unchanged (content untouched by this run).
+- Receipt: .syllabai/receipts/T-SME-SEL-W2-1/run-002.md. Same branch t-sme-sel-w2/run-001, second commit.
+
+
+## T-VERCEL-API-DIAG run-001 (2026-11-09) — read-only discovery for the API bake floor (T-MG-CH1-MARK-1 follow-up)
+
+- The regions fix (#864) is merged and the data of record is verified in production (t-mg-ch1-mark-1-db-apply run 7 postverify: 9 questions / 95 mark points / 95 rects), but api.syllab-ai.com still serves a pre-fix build. The worklog of record (#658, #857) documents the why: the OLD account is usage-blocked (Nov 5), production moved to a SECOND account (the hub's CLI bakes), and the API project's git integration went silent Nov 4 (last status 04e3c40a #783) — the API never moved and never baked.
+- THIS workflow: zero-write GETs with VERCEL_BAKE_TOKEN — teams visible, every project's name/id/rootDirectory, each project's newest production deployment (state + commit + date), each project's assigned domains. It answers the three facts the API bake job needs: does an API project exist on the bake token's scope, with which rootDirectory, and where api.syllabai-v2's domain sits.
+- Secret law unchanged (t-ops-plane): the token is never printed; only names/ids/states.
+
+## receipt(T-KG-TRIPWIRE-1) — Phase 1 T1 thumbs-down — run-003 — 2026-11-09 (trace 1a1bc99cd7f38ef1)
+
+- Shipped: T1 affordance in the provenance drawer (product fork), browser-local course-keyed
+  event store, schema law of record + fork-contract tests as a new CI hub step. 22/22 tests,
+  tsc + eslint clean, node --check on the fork, first-hand headless smoke test PASS
+  (evidence in lane-artifacts/T-KG-TRIPWIRE-1/run-003/).
+- I1-I5 intact: signal-not-verdict (no disposition path exists), no label bytes
+  (prereqValidated untouched, snapshot census 0/106), no serving/progress gate, nothing
+  crosses the bridge (no network call added), store append-only.
+- Disclosed boundary: the /graph-explorer prototype builds stay byte-faithful (no-patch
+  law) — affordance ships on the product surface where the served corpus lives; export
+  path + weekly report are Phase 2. Standing PAT-rotation reminder (fifth filing).
 
 ## receipt(RN-DEBRIS-11) run-013 — the CIE batch row-label title repairs (2026-11-09) — 33 rows / 6 courses / 3 planes, evidence-passed per the run-008/009 standard
 

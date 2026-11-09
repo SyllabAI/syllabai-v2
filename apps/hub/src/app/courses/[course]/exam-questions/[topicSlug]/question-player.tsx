@@ -2544,7 +2544,7 @@ function CoreMarkingFlow({
                     </p>
                   )}
                   {explain && explain !== "loading" && explain !== "error" && "explanation" in explain && (
-                    <div className="mt-2 rounded-md border border-primary/20 bg-primary/5 p-2.5">
+                    <div className="mt-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
                       <p className="mb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         Why this feedback
                       </p>
@@ -2554,7 +2554,7 @@ function CoreMarkingFlow({
                     </div>
                   )}
                   {improve && improve !== "loading" && improve !== "error" && "plan" in improve && (
-                    <div className="mt-2 rounded-md border border-primary/20 bg-primary/5 p-2.5">
+                    <div className="mt-2 rounded-md border border-primary/30 bg-primary/5 p-2.5">
                       <p className="mb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         How to improve
                       </p>

@@ -1780,6 +1780,66 @@ Stage Summary:
 - AUDITED NON-GOALS: AI vocabulary already one-noun-per-concept (Smart Mark / Mark my draft with AI / AI-suggested mark / AI_MARK_UNAVAILABLE — recorded on the card); single-accent color law deferred to the design system (#865 just landed the theme audit); per-part visible relabeling loses to SME's quiet-part law.
 - Verified: tsc 0; eslint 0 (3 files); mark-scheme + route-gate 14/14 (47 expects); full hub suite 1217 pass with the SAME single pre-existing failure as clean main (T-UGM-RENDER-1 IGCSE corpus katex — stash-compared identical, NOT this batch's, flagged for the integrator). Drawer verified in the local dev render (QA routing session via the POST /api/session shape-check issuer — routing-only by design): 672px sheet at 1440, question visible beside, 4 blurred teasers, one-way reveal, empty-jump-row bug caught and fixed, overlay 10%. Core-plane features (Submit · N marks on a live card; CLA chips — locally bridgeless by design) are preview-verified against the PR's Vercel deployment. Task card .syllabai/tasks/T-QVIEW-ACTION-1.yaml + receipt .syllabai/receipts/T-QVIEW-ACTION-1/run-001.md. Branch t-qview-action/run-001, PR integrator-queued — NOT self-merged per house law.
 
+
+## t-ugm-link-fix run-004 (2026-11-09) — the 8-image fix lane: 14 same-family images absolutized + the corpus gate law that kills the class
+
+- Operator order: "dispatch the 8-image fix lane" (trace 1a1bebdade5cb265) — the run-003 finding of record (8 note-body markdown images resolving to /assets/* 404 on production: igcse-english-literature-16 x2, ial-chemistry-17 x6) executed under the no-guess law. syllabai-resources never cloned (6.8 GB law): every origin proven via GitHub contents API + raw bytes at the corpus pin of record main@1a5c37bcecf379cd98e83aa74aa9472920092428 (RN-RECONSUME-1/EQFC), token env-only.
+- Pre-fix corpus census over the gate's 321-file set: 61,060 image targets already follow the hotlink law of record (raw.githubusercontent.com/SyllabAI/syllabai-resources@<pin>/…) and exactly 14 are illegal — the 8 of record (traversal form in notes bodies) PLUS 6 same-family siblings in QUESTION bodies (bare assets/… form: cie-a-level-computer-science-19 x3 solutionMd, ial-chemistry-17 x1 problemMd, ial-further-maths-18-further-pure-1 x2 solutionMd) that run-003's root-relative probe could not see (page-relative resolution, gated routes). One class, one lane: all 14 fixed, delta attributed in the receipt, nothing silently absorbed.
+- Evidence of record: 8/8 note origins at SME-RevisionNotes/<course>/assets/ + 6/6 question origins at SME-ExamQuestion/<course>/<section>/<topic>/assets/ (topic dir = pack slug minus --exam-questions/--multiple-choice-questions suffix; the suffixed form 404s) — each contents-API 200 + raw GET 200 + PNG magic with sizes; upstream note .md confirmed to carry the same relative refs (the hub import was faithful to a mangled upstream, same verdict as run-001). Upstream carries 22 MORE relative refs than the hub bodies (macbeth 12 vs 2, ionic-product 3 vs 1, benzene 12 vs 2) — hub bundles are faithful subsets of the consumed vintage; the extras are not shipped here and stay out of scope (disclosed for any future notes re-consume lane).
+- THE FIX: byte-surgical — 14 substring replacements across 5 content JSON files, each asserted exactly-once, JSON re-validated per file, net +2,294 pure-additive bytes; replacement URL = the corpus hotlink law at the SAME pin (no re-pin, no mirror, no guessing). Renderer untouched: the img: law's https path now renders the real figure where the italic alt-text placeholder stood.
+- THE LAW: verify_corpus_23a.ts (prebuild corpus gate of record — runs in CI build:hub AND Vercel prebuild) gains the 7th dimension relativeImages: every markdown image-ish target with an image extension must be an absolute https:// hotlink or a committed mirror (/content-assets/, /ugm-assets/, /seneca-images/); extension-matched on purpose so SME's nested-bracket alt texts (![Table to show rates [D] …](…)) cannot dodge the scan; baseline 0 via the ?? 0 law — any future import shipping a relative image target FAILS the build. Negative test: synthetic corpus with one ../../../assets/ + one assets/ target → GATE FAILED exit 1, both offenders listed. Fail-closed proven both directions.
+- GATES: corpus gate PASSED (files=321, relative image targets 0, six frozen baselines intact), tsc --noEmit exit 0, eslint 0 errors on the changed script (scripts/ ignore-listed per config, same posture as run-001's import_ugm law). Receipt: .syllabai/receipts/t-ugm-link-fix/run-004-8-image-fix-lane-r0.json (compact single-line). Residuals: run-005 ledger post-merge (CI 3/3 + auto-bake sha currency + bounded live battery), optional notes re-consume lane (22 upstream-only figures), run-003's 309-suspect citation class unchanged. fetch-first, no force.
+
+## T-HUB-AUDITFIX-1 run-001 (2026-11-09) — minors sweep: the border-opacity ladder codified, the strays retired
+- SCOPE (presentation-only, zero logic): P2 strays normalized onto the house ladder + P-aux extrabold retired. 12 files.
+- THE LAW (now written above :root in globals.css): /30 REST (tinted callouts, card rest) · /50 FOCUS (composer focus-within: border-primary/50 + ring-2 ring-primary/15) · /60 INTERACT (hover/selected/status chips). Anything else is a stray — normalize in the introducing commit.
+- EDITS (each asserted exactly-once): border-primary/20→/30 ×4 (question-player ×2, source-reader, validation-client) · /25→/30 ×4 (dashboard-client Card, entity-tile-card ×2 incl. its law comment, teach-me/review) · /40→/60 ×1 (teach-me/history "in progress" chip — the 4-file legacy-/40 comment family now fully retired) · answer-textarea composer ring aligned to family (ring-1→ring-2, ring-primary/20→/15 — joins picker/session-screen/assistant/composer voice) · font-extrabold→font-bold ×3 (page-hero h1, teach-genie landing/picker h2 — house display voice is bold, not extrabold).
+- DISCLOSED: the live tree already self-corrected two audit items upstream — shadow-black×1 gone (verified 0 hits), 100vh fallback pair in globals.css is the intentional dvh-cascade pattern (kept). Audit counts drifted +1 micro-size, −4 border strays since 2026-11-08; this run consumed the LIVE counts.
+- GATES: tsc --noEmit exit 0; eslint 0 errors on the 11 changed TS/TSX (globals.css config-ignored as usual); post-asserts residual /20|/25|/40 = 0, font-extrabold = 0. Receipt: .syllabai/receipts/t-hub-auditfix-1/run-001-minors-sweep.json (compact single-line). fetch-first, no force.
+
+## T-VERCEL-API-DIAG run-001 (2026-11-09) — read-only discovery for the API bake floor (T-MG-CH1-MARK-1 follow-up)
+
+- The regions fix (#864) is merged and the data of record is verified in production (t-mg-ch1-mark-1-db-apply run 7 postverify: 9 questions / 95 mark points / 95 rects), but api.syllab-ai.com still serves a pre-fix build. The worklog of record (#658, #857) documents the why: the OLD account is usage-blocked (Nov 5), production moved to a SECOND account (the hub's CLI bakes), and the API project's git integration went silent Nov 4 (last status 04e3c40a #783) — the API never moved and never baked.
+- THIS workflow: zero-write GETs with VERCEL_BAKE_TOKEN — teams visible, every project's name/id/rootDirectory, each project's newest production deployment (state + commit + date), each project's assigned domains. It answers the three facts the API bake job needs: does an API project exist on the bake token's scope, with which rootDirectory, and where api.syllabai-v2's domain sits.
+- Secret law unchanged (t-ops-plane): the token is never printed; only names/ids/states.
+
+## receipt(T-KG-TRIPWIRE-1) — Phase 1: the T1 thumbs-down ships — run-003 — 2026-11-09 (operator trace 1a1bc99cd7f38ef1 "Phase 1 — ship the T1 thumbs-down")
+
+- Scope: Phase 1 of the merged tripwire spec's own rollout ladder (PR #859 = Phase 0). The
+  affordance lives in the product fork's relationship inspector (public/kg/
+  openhuman-course-explorer.html): "This prerequisite seems wrong?" with the spec's
+  WRONG_DIRECTION / NOT_A_PREREQ / UNCLEAR vocabulary, optional free text capped at 280,
+  and the honest disclosure in tooltip + visible copy (reviewed by humans · does not change
+  the graph · stays in this browser).
+- Event law: kg_prereq_feedback per spec §4 — browser-local, course-keyed
+  (syllabai.kg-feedback:<course>), append-only, anonymous per-browser session id
+  (crypto.randomUUID, no account link, never the account doc — the T-ACCOUNT-ONLY retirement
+  of the localStorage progress store makes a dedicated namespace the letter of the §7 law).
+  Events post out as syllabai-kg:feedback (host-ignorable); ZERO network calls added — the
+  loader's /kg/data fetch remains the only fetch in the file (test-enforced).
+- Schema law of record: src/lib/kg-prereq-feedback.ts (builder + ingestion guard + store +
+  the Phase-2 aggregation law pinned now: >=3 DISTINCT sessions in a rolling 7-day window,
+  same-session repeats never converge). The fork cannot import TS, so the fork-contract
+  tests pin the fork's inline constants to the lib's verbatim — drift fails CI.
+- First-hand runtime proof (headless chromium, static serve of public/): pre edge opens the
+  block (3 chips), hier edge shows none, click stored the exact §4 schema (verified in
+  localStorage) + honest confirmation; no page errors. Evidence filed under
+  .syllabai/lane-artifacts/T-KG-TRIPWIRE-1/run-003/.
+- Boundaries: /graph-explorer's byte-faithful builds stay unpatched (the host chrome's
+  no-patch law wins over the spec's "both surfaces" parenthetical until the operator says
+  otherwise — the build lab's dataset is the legacy 4CH1 prototype, not the served corpus);
+  no host client.tsx bytes; no export path (Phase 2); zero content/, public/kg/data/, label
+  bytes; prereqValidated untouched (snapshot key census still 0/106).
+- Gates: bun test kg-prereq-feedback.test.ts 22/22 PASS; tsc --noEmit clean; eslint clean;
+  fork JS node --check OK; CI hub lane gains the T1 acceptance step (schema + fork contract).
+- Standing PAT-rotation reminder refiled (fifth filing) — the token remains unrotated.
+
+## T-HUB-AUDITFIX-1 run-002 (2026-11-09) — chat-app-plum swaps Inter → Plus Jakarta Sans (user decision 3 of 4)
+- DECISION CONSUMED: the 2026-11-08 design review swapped plum's body/display face to the default theme's Plus Jakarta Sans (already loaded + preloaded for every visitor — zero new downloads, one family weight-driven per plum Law 8).
+- EDITS (2 files, comment-and-var only): globals.css plum block —app-font-sans/--app-font-display var(--font-inter)→var(--font-jakarta), fallback chain normalized to the SME chain (ui-sans-serif, system-ui, sans-serif); layout.tsx dual-theme comment updated to record the swap. No other --font-inter consumers existed (verified by grep: layout declaration + globals + MANIFEST only).
+- DISCLOSED: the pinned inter-latin-var.woff2 STAYS committed under the T-C36 bytes law (MANIFEST row intact); the localFont declaration stays (preload:false) — unused now, plum visitors never fetch it; dropping the declaration + asset is a separate ops lane if wanted. plum spec audit doc (2026-09-29) is history — not rewritten.
+- GATES: tsc --noEmit exit 0 (comment+CSS-var only change). Receipt: .syllabai/receipts/t-hub-auditfix-1/run-002-inter-swap.json. fetch-first, no force.
+
 ## receipt(RN-DEBRIS-11) run-013 — the CIE batch row-label title repairs (2026-11-09) — 33 rows / 6 courses / 3 planes, evidence-passed per the run-008/009 standard
 
 - Source of record: syllabai-resources @ 34aa6fab (sparse blobless; RS-23 PDF sha256 901548ef… byte-matches the run-009 pin). pdftotext -layout official-code extraction: title column + wrapped-continuation join, '(continued)' page-repeat dedupe; upstream parsed titles (same PDF pins) carry the same fragments and are completed by the extraction — 29 rows direct PDF prose, 4 rows composed (0606 4.1/4.2/10.4/14.11 formula bullet lists flattened per the corpus's own Unicode-glyph convention, flagged composed=true with source pins).
