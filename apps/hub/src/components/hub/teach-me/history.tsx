@@ -15,7 +15,7 @@ export interface TeachMeHistoryProps {
 }
 
 const STATUS_BADGE: Record<TeachSessionStatus, { label: string; className: string }> = {
-  active: { label: "in progress", className: "border-primary/40 text-primary" },
+  active: { label: "in progress", className: "border-primary/60 text-primary" },
   review_pending: { label: "review generating", className: "border-amber-500/40 text-amber-600 dark:text-amber-400" },
   completed: { label: "reviewed", className: "border-emerald-500/40 text-emerald-600 dark:text-emerald-400" },
   abandoned: { label: "ended early", className: "border-muted-foreground/30 text-muted-foreground" },

@@ -104,7 +104,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
         <ArrowLeft aria-hidden /> Back
       </Button>
 
-      <h2 className="mt-3 text-balance text-2xl font-extrabold tracking-tight text-foreground">New session</h2>
+      <h2 className="mt-3 text-balance text-2xl font-bold tracking-tight text-foreground">New session</h2>
       <p className="mt-2 text-sm text-muted-foreground">
         Pick the revision note you&apos;ll teach {courseLabel} from — SillyAI will muddle its way through whatever&apos;s in
         it.

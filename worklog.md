@@ -1790,6 +1790,12 @@ Stage Summary:
 - THE LAW: verify_corpus_23a.ts (prebuild corpus gate of record — runs in CI build:hub AND Vercel prebuild) gains the 7th dimension relativeImages: every markdown image-ish target with an image extension must be an absolute https:// hotlink or a committed mirror (/content-assets/, /ugm-assets/, /seneca-images/); extension-matched on purpose so SME's nested-bracket alt texts (![Table to show rates [D] …](…)) cannot dodge the scan; baseline 0 via the ?? 0 law — any future import shipping a relative image target FAILS the build. Negative test: synthetic corpus with one ../../../assets/ + one assets/ target → GATE FAILED exit 1, both offenders listed. Fail-closed proven both directions.
 - GATES: corpus gate PASSED (files=321, relative image targets 0, six frozen baselines intact), tsc --noEmit exit 0, eslint 0 errors on the changed script (scripts/ ignore-listed per config, same posture as run-001's import_ugm law). Receipt: .syllabai/receipts/t-ugm-link-fix/run-004-8-image-fix-lane-r0.json (compact single-line). Residuals: run-005 ledger post-merge (CI 3/3 + auto-bake sha currency + bounded live battery), optional notes re-consume lane (22 upstream-only figures), run-003's 309-suspect citation class unchanged. fetch-first, no force.
 
+## T-HUB-AUDITFIX-1 run-001 (2026-11-09) — minors sweep: the border-opacity ladder codified, the strays retired
+- SCOPE (presentation-only, zero logic): P2 strays normalized onto the house ladder + P-aux extrabold retired. 12 files.
+- THE LAW (now written above :root in globals.css): /30 REST (tinted callouts, card rest) · /50 FOCUS (composer focus-within: border-primary/50 + ring-2 ring-primary/15) · /60 INTERACT (hover/selected/status chips). Anything else is a stray — normalize in the introducing commit.
+- EDITS (each asserted exactly-once): border-primary/20→/30 ×4 (question-player ×2, source-reader, validation-client) · /25→/30 ×4 (dashboard-client Card, entity-tile-card ×2 incl. its law comment, teach-me/review) · /40→/60 ×1 (teach-me/history "in progress" chip — the 4-file legacy-/40 comment family now fully retired) · answer-textarea composer ring aligned to family (ring-1→ring-2, ring-primary/20→/15 — joins picker/session-screen/assistant/composer voice) · font-extrabold→font-bold ×3 (page-hero h1, teach-genie landing/picker h2 — house display voice is bold, not extrabold).
+- DISCLOSED: the live tree already self-corrected two audit items upstream — shadow-black×1 gone (verified 0 hits), 100vh fallback pair in globals.css is the intentional dvh-cascade pattern (kept). Audit counts drifted +1 micro-size, −4 border strays since 2026-11-08; this run consumed the LIVE counts.
+- GATES: tsc --noEmit exit 0; eslint 0 errors on the 11 changed TS/TSX (globals.css config-ignored as usual); post-asserts residual /20|/25|/40 = 0, font-extrabold = 0. Receipt: .syllabai/receipts/t-hub-auditfix-1/run-001-minors-sweep.json (compact single-line). fetch-first, no force.
 
 ## T-VERCEL-API-DIAG run-001 (2026-11-09) — read-only discovery for the API bake floor (T-MG-CH1-MARK-1 follow-up)
 
@@ -1803,3 +1809,39 @@ Stage Summary:
 - t-vercel-api-diag run-001 discovered (first-hand, read-only): the bake token's team (syllabainoreply-4440 / team_oRKtmWlfLMR0hNaqViyWj7NZ) holds BOTH projects of record — syllabai-hub-v2 (rootDirectory apps/hub) AND syllabai-v2 (the API, rootDirectory repo root, domains api.syllab-ai.com + syllabai-v2-six.vercel.app). The migration question of record is closed: the API project DID move to the second account — but nothing ever baked it (its newest production was a dashboard Redeploy of stale bytes, 05:51:51Z, empty commit SHA; live probe 06:12Z with a self-registered viewer account: /paper-assets/resolve 200, /regions 500 — the pre-#864 build).
 - THIS workflow mirrors the t-vercel-usage-bake law for the API project, with one delta: the CLI deployment carries --meta githubCommitSha=<HEAD> (and githubCommitRef=main) so the state-aware skip works for CLI deploys — the floor skips when the newest LIVE production deployment already carries main HEAD, idempotent by design (the hub floor re-bakes daily because its CLI deployments carry no SHA).
 - Strict dispositions unchanged (t-ops-plane class): VERCEL_BAKE_TOKEN never printed; at most ONE deployment per run, only when the newest live deployment's meta SHA differs from main HEAD; read-only preflight prints the project's build settings so a failed bake explains itself; schedule 03:30 UTC staggered after the hub's 02:30.
+## receipt(T-KG-TRIPWIRE-1) — Phase 1: the T1 thumbs-down ships — run-003 — 2026-11-09 (operator trace 1a1bc99cd7f38ef1 "Phase 1 — ship the T1 thumbs-down")
+
+- Scope: Phase 1 of the merged tripwire spec's own rollout ladder (PR #859 = Phase 0). The
+  affordance lives in the product fork's relationship inspector (public/kg/
+  openhuman-course-explorer.html): "This prerequisite seems wrong?" with the spec's
+  WRONG_DIRECTION / NOT_A_PREREQ / UNCLEAR vocabulary, optional free text capped at 280,
+  and the honest disclosure in tooltip + visible copy (reviewed by humans · does not change
+  the graph · stays in this browser).
+- Event law: kg_prereq_feedback per spec §4 — browser-local, course-keyed
+  (syllabai.kg-feedback:<course>), append-only, anonymous per-browser session id
+  (crypto.randomUUID, no account link, never the account doc — the T-ACCOUNT-ONLY retirement
+  of the localStorage progress store makes a dedicated namespace the letter of the §7 law).
+  Events post out as syllabai-kg:feedback (host-ignorable); ZERO network calls added — the
+  loader's /kg/data fetch remains the only fetch in the file (test-enforced).
+- Schema law of record: src/lib/kg-prereq-feedback.ts (builder + ingestion guard + store +
+  the Phase-2 aggregation law pinned now: >=3 DISTINCT sessions in a rolling 7-day window,
+  same-session repeats never converge). The fork cannot import TS, so the fork-contract
+  tests pin the fork's inline constants to the lib's verbatim — drift fails CI.
+- First-hand runtime proof (headless chromium, static serve of public/): pre edge opens the
+  block (3 chips), hier edge shows none, click stored the exact §4 schema (verified in
+  localStorage) + honest confirmation; no page errors. Evidence filed under
+  .syllabai/lane-artifacts/T-KG-TRIPWIRE-1/run-003/.
+- Boundaries: /graph-explorer's byte-faithful builds stay unpatched (the host chrome's
+  no-patch law wins over the spec's "both surfaces" parenthetical until the operator says
+  otherwise — the build lab's dataset is the legacy 4CH1 prototype, not the served corpus);
+  no host client.tsx bytes; no export path (Phase 2); zero content/, public/kg/data/, label
+  bytes; prereqValidated untouched (snapshot key census still 0/106).
+- Gates: bun test kg-prereq-feedback.test.ts 22/22 PASS; tsc --noEmit clean; eslint clean;
+  fork JS node --check OK; CI hub lane gains the T1 acceptance step (schema + fork contract).
+- Standing PAT-rotation reminder refiled (fifth filing) — the token remains unrotated.
+
+## T-HUB-AUDITFIX-1 run-002 (2026-11-09) — chat-app-plum swaps Inter → Plus Jakarta Sans (user decision 3 of 4)
+- DECISION CONSUMED: the 2026-11-08 design review swapped plum's body/display face to the default theme's Plus Jakarta Sans (already loaded + preloaded for every visitor — zero new downloads, one family weight-driven per plum Law 8).
+- EDITS (2 files, comment-and-var only): globals.css plum block —app-font-sans/--app-font-display var(--font-inter)→var(--font-jakarta), fallback chain normalized to the SME chain (ui-sans-serif, system-ui, sans-serif); layout.tsx dual-theme comment updated to record the swap. No other --font-inter consumers existed (verified by grep: layout declaration + globals + MANIFEST only).
+- DISCLOSED: the pinned inter-latin-var.woff2 STAYS committed under the T-C36 bytes law (MANIFEST row intact); the localFont declaration stays (preload:false) — unused now, plum visitors never fetch it; dropping the declaration + asset is a separate ops lane if wanted. plum spec audit doc (2026-09-29) is history — not rewritten.
+- GATES: tsc --noEmit exit 0 (comment+CSS-var only change). Receipt: .syllabai/receipts/t-hub-auditfix-1/run-002-inter-swap.json. fetch-first, no force.

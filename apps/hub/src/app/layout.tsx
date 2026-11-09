@@ -26,7 +26,10 @@ import { publicConfig } from "@/lib/config";
  * them — they download only when the quiet-green theme activates and its
  * --app-font-* chains reference the variables. Candy Shop follows the
  * same pattern (Fraunces display / Nunito body, preload: false), and
- * Chat App Plum too (Inter everywhere — one family, Law 8 of its spec).
+ * Chat App Plum too (Plus Jakarta Sans everywhere since T-HUB-AUDITFIX-1
+ * run-002 — one family, weight-driven, Law 8 of its spec; the pinned
+ * inter-latin-var.woff2 stays committed under the T-C36 bytes law but no
+ * theme references --font-inter anymore, so plum visitors never fetch it).
  */
 const jakarta = localFont({
   src: "../fonts/plus-jakarta-sans-latin-var.woff2",

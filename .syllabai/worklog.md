@@ -2073,3 +2073,15 @@ origin/main
 - t-vercel-api-diag run-001 discovered (first-hand, read-only): the bake token's team (syllabainoreply-4440 / team_oRKtmWlfLMR0hNaqViyWj7NZ) holds BOTH projects of record — syllabai-hub-v2 (rootDirectory apps/hub) AND syllabai-v2 (the API, rootDirectory repo root, domains api.syllab-ai.com + syllabai-v2-six.vercel.app). The migration question of record is closed: the API project DID move to the second account — but nothing ever baked it (its newest production was a dashboard Redeploy of stale bytes, 05:51:51Z, empty commit SHA; live probe 06:12Z with a self-registered viewer account: /paper-assets/resolve 200, /regions 500 — the pre-#864 build).
 - THIS workflow mirrors the t-vercel-usage-bake law for the API project, with one delta: the CLI deployment carries --meta githubCommitSha=<HEAD> (and githubCommitRef=main) so the state-aware skip works for CLI deploys — the floor skips when the newest LIVE production deployment already carries main HEAD, idempotent by design (the hub floor re-bakes daily because its CLI deployments carry no SHA).
 - Strict dispositions unchanged (t-ops-plane class): VERCEL_BAKE_TOKEN never printed; at most ONE deployment per run, only when the newest live deployment's meta SHA differs from main HEAD; read-only preflight prints the project's build settings so a failed bake explains itself; schedule 03:30 UTC staggered after the hub's 02:30.
+## receipt(T-KG-TRIPWIRE-1) — Phase 1 T1 thumbs-down — run-003 — 2026-11-09 (trace 1a1bc99cd7f38ef1)
+
+- Shipped: T1 affordance in the provenance drawer (product fork), browser-local course-keyed
+  event store, schema law of record + fork-contract tests as a new CI hub step. 22/22 tests,
+  tsc + eslint clean, node --check on the fork, first-hand headless smoke test PASS
+  (evidence in lane-artifacts/T-KG-TRIPWIRE-1/run-003/).
+- I1-I5 intact: signal-not-verdict (no disposition path exists), no label bytes
+  (prereqValidated untouched, snapshot census 0/106), no serving/progress gate, nothing
+  crosses the bridge (no network call added), store append-only.
+- Disclosed boundary: the /graph-explorer prototype builds stay byte-faithful (no-patch
+  law) — affordance ships on the product surface where the served corpus lives; export
+  path + weekly report are Phase 2. Standing PAT-rotation reminder (fifth filing).

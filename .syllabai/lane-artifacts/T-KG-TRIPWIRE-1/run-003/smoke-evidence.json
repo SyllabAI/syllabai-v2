@@ -1,0 +1,9 @@
+{
+  "surface": "/kg/openhuman-course-explorer.html?course=cie-igcse-chemistry-23 (static serve of apps/hub/public, headless chromium)",
+  "checks": [
+    {"check": "pre edge p:1.1.2 -> p:1.1.4 opens the drawer with the T1 block (3 chips)", "result": "PASS", "observed": {"preBlock": true, "chips": 3, "tag": "INFERRED PROTOTYPE"}},
+    {"check": "hier edge shows NO T1 block (pre-only law)", "result": "PASS", "observed": {"hierBlock": false}},
+    {"check": "click WRONG_DIRECTION stores the exact spec schema, browser-local, zero network", "result": "PASS", "observed": {"confirm": "Signal noted — thank you. Saved in this browser only; a human reviews these signals, and the graph does not change.", "stored_event": {"event": "kg_prereq_feedback", "course": "cie-igcse-chemistry-23", "a": "p:1.1.2", "b": "p:1.1.4", "type": "pre", "rendered_tier": "INFERRED PROTOTYPE", "verdict": "WRONG_DIRECTION", "free_text": "the order looks backwards here", "ts": "2026-11-08T19:28:51.591Z", "session": "c2112969-e617-49e4-bcff-e202f3141b09"}}},
+    {"check": "page errors / console", "result": "PASS", "observed": "none"}
+  ]
+}

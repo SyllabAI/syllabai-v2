@@ -307,7 +307,7 @@ export function AnswerTextarea({
           .Editor_writtenMode:focus-within, so tabbing into the tools keeps
           the ring just as it does on the real editor */}
       <div
-        className="overflow-hidden rounded-lg border border-input bg-background transition-colors focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20"
+        className="overflow-hidden rounded-lg border border-input bg-background transition-colors focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/15"
         // activation tracks the COMPOSITE (SME verbatim: their blur handler
         // drops focus state only when relatedTarget leaves the wrapper —
         // focus moving into the toolbar must not tear the strip down, or
