@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_xtDjSxws2YwbcXng",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "66d68ccb3bba83121cf121297eb44d09accf731b2d4df642ac2ce7d1699eb0c2",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_xtDjSxws2YwbcXng",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q1",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "How does photographic film indicate radiation exposure?",
+      "misconceptionClass": "detection recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it darkens as it absorbs radiation",
+          "correct": true,
+          "explanation": "More absorbed radiation means a darker developed film.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it changes colour to blue only",
+          "correct": false,
+          "explanation": "Darkening, not a specific blue, is the signal.",
+          "misconception": "colour myth"
+        },
+        {
+          "key": "C",
+          "text": "it warms up measurably",
+          "correct": false,
+          "explanation": "Warming is not the detection mechanism.",
+          "misconception": "heat myth"
+        },
+        {
+          "key": "D",
+          "text": "it clicks audibly",
+          "correct": false,
+          "explanation": "Clicks belong to the GM tube.",
+          "misconception": "tube confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q2",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "What does a Geiger-Müller tube do each time it absorbs radiation?",
+      "misconceptionClass": "detection recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "stores the radiation inside",
+          "correct": false,
+          "explanation": "Nothing is stored; each event is counted.",
+          "misconception": "storage myth"
+        },
+        {
+          "key": "B",
+          "text": "transmits an electrical pulse to a counting circuit",
+          "correct": true,
+          "explanation": "Each absorption generates one pulse — the count.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "develops a patch of film",
+          "correct": false,
+          "explanation": "That is the film badge’s job.",
+          "misconception": "film confusion"
+        },
+        {
+          "key": "D",
+          "text": "emits radiation of its own",
+          "correct": false,
+          "explanation": "The tube detects; it does not emit.",
+          "misconception": "emission myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q3",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "A GM tube is moved closer to a source. What happens to the count rate?",
+      "misconceptionClass": "geometry reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it stays constant regardless of distance",
+          "correct": false,
+          "explanation": "Geometry matters — the syllabus says so.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "B",
+          "text": "it becomes zero",
+          "correct": false,
+          "explanation": "Closeness maximises, not zeroes, the count.",
+          "misconception": "zeroing myth"
+        },
+        {
+          "key": "C",
+          "text": "it rises",
+          "correct": true,
+          "explanation": "Closeness raises the intensity of radiation reaching the tube.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it falls",
+          "correct": false,
+          "explanation": "Falling is what happens when you move away.",
+          "misconception": "distance inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q4",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "Why do radiographers wear film badges with layered absorbers?",
+      "misconceptionClass": "detection reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "to keep the badge lightweight",
+          "correct": false,
+          "explanation": "Weight is not the design goal.",
+          "misconception": "weight reason"
+        },
+        {
+          "key": "B",
+          "text": "to make the film develop faster",
+          "correct": false,
+          "explanation": "Development speed is unrelated.",
+          "misconception": "speed reason"
+        },
+        {
+          "key": "C",
+          "text": "to shield the wearer completely",
+          "correct": false,
+          "explanation": "A badge monitors; it does not shield.",
+          "misconception": "shielding confusion"
+        },
+        {
+          "key": "D",
+          "text": "the layers discriminate the dose delivered by different radiation types",
+          "correct": true,
+          "explanation": "Absorber layers let the developed film separate contributions.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q5",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "Which detector gives an immediate count rate rather than a cumulative record?",
+      "misconceptionClass": "detection comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "the Geiger-Müller tube",
+          "correct": true,
+          "explanation": "The tube counts events as they arrive.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "photographic film",
+          "correct": false,
+          "explanation": "Film integrates until it is developed.",
+          "misconception": "film confusion"
+        },
+        {
+          "key": "C",
+          "text": "a lead-lined box",
+          "correct": false,
+          "explanation": "A box is shielding, not a detector.",
+          "misconception": "shielding confusion"
+        },
+        {
+          "key": "D",
+          "text": "an absorber stack",
+          "correct": false,
+          "explanation": "Absorbers modify radiation; the tube measures it.",
+          "misconception": "absorber confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q6",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "Name two detectors of ionising radiation.",
+      "misconceptionClass": "detection recall",
+      "kind": "recall",
+      "modelAnswer": "Photographic film and the Geiger-Müller tube both detect ionising radiation.",
+      "keywords": [
+        "photographic",
+        "film",
+        "geiger",
+        "tube"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q7",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "State what is meant by count rate.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The count rate is the number of radiation detections per unit time recorded by a detector such as a GM tube.",
+      "keywords": [
+        "count",
+        "rate",
+        "detections",
+        "time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q8",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "Explain why a film badge is checked regularly even though it gives no immediate reading.",
+      "misconceptionClass": "detection reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The badge accumulates darkening with every exposure, so regular checks read off the cumulative dose and flag over-exposure even though no single moment is timed.",
+      "keywords": [
+        "badge",
+        "dose",
+        "cumulative",
+        "exposure"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L1::Q9",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L1",
+      "stem": "A GM tube records 480 counts in 2 minutes. Calculate the count rate in counts per second.",
+      "misconceptionClass": "count application",
+      "kind": "application",
+      "modelAnswer": "480 counts ÷ 120 s = 4 counts per second.",
+      "keywords": [
+        "counts",
+        "second",
+        "rate",
+        "480"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q1",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "Which gas is a significant natural source of background radiation inside buildings?",
+      "misconceptionClass": "background recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "chlorine",
+          "correct": false,
+          "explanation": "Chlorine is not the named natural source.",
+          "misconception": "gas confusion"
+        },
+        {
+          "key": "B",
+          "text": "radon",
+          "correct": true,
+          "explanation": "Radon seeps from rocks and building materials.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "oxygen",
+          "correct": false,
+          "explanation": "Oxygen is not radioactive.",
+          "misconception": "gas confusion"
+        },
+        {
+          "key": "D",
+          "text": "helium",
+          "correct": false,
+          "explanation": "Helium is inert and not a background source.",
+          "misconception": "gas confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q2",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "Cosmic rays reaching the atmosphere produce which radiation on collision with air molecules?",
+      "misconceptionClass": "background recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "sound waves",
+          "correct": false,
+          "explanation": "Sound is irrelevant to cosmic rays.",
+          "misconception": "sound confusion"
+        },
+        {
+          "key": "B",
+          "text": "visible light only",
+          "correct": false,
+          "explanation": "Gamma is the named product.",
+          "misconception": "light confusion"
+        },
+        {
+          "key": "C",
+          "text": "gamma radiation",
+          "correct": true,
+          "explanation": "Fast protons colliding with air generate gamma.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "alpha particles",
+          "correct": false,
+          "explanation": "Alphas come from nuclei, not from atmospheric collisions.",
+          "misconception": "alpha confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q3",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "Why does carbon-14 appear in all living things?",
+      "misconceptionClass": "background reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because carbon-14 is manufactured by cells",
+          "correct": false,
+          "explanation": "Cells do not make carbon-14.",
+          "misconception": "biological myth"
+        },
+        {
+          "key": "B",
+          "text": "because carbon-14 enters only through drinking water",
+          "correct": false,
+          "explanation": "The carbon cycle, not water alone, delivers it.",
+          "misconception": "water myth"
+        },
+        {
+          "key": "C",
+          "text": "because plants filter out carbon-12",
+          "correct": false,
+          "explanation": "Nothing filters isotopes selectively like that.",
+          "misconception": "filtering myth"
+        },
+        {
+          "key": "D",
+          "text": "living organisms constantly replace their carbon, keeping the carbon-14 supply topped up",
+          "correct": true,
+          "explanation": "Biological carbon turnover maintains the trace level.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q4",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "Which food-based isotope is named as a background contributor?",
+      "misconceptionClass": "background recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "potassium-40 in bananas",
+          "correct": true,
+          "explanation": "Bananas are the named example of food-borne radioactivity.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "carbon-12 in rice",
+          "correct": false,
+          "explanation": "Carbon-12 is stable and not the named source.",
+          "misconception": "isotope confusion"
+        },
+        {
+          "key": "C",
+          "text": "iodine-131 in milk",
+          "correct": false,
+          "explanation": "Not the named natural food example.",
+          "misconception": "isotope confusion"
+        },
+        {
+          "key": "D",
+          "text": "uranium-235 in bread",
+          "correct": false,
+          "explanation": "Not the named food source.",
+          "misconception": "isotope confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q5",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "Why can inhaled radon be more hazardous than its low airborne concentration suggests?",
+      "misconceptionClass": "background reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because radon blocks oxygen",
+          "correct": false,
+          "explanation": "Suffocation is not the named mechanism.",
+          "misconception": "mechanism confusion"
+        },
+        {
+          "key": "B",
+          "text": "because its alpha emissions act directly inside the lungs",
+          "correct": true,
+          "explanation": "An internal alpha emitter delivers a concentrated local dose.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "because radon is visible",
+          "correct": false,
+          "explanation": "Radon is colourless and odourless.",
+          "misconception": "visibility myth"
+        },
+        {
+          "key": "D",
+          "text": "because radon makes food radioactive",
+          "correct": false,
+          "explanation": "The hazard is inhalation, not food contamination.",
+          "misconception": "food confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q6",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "Define background radiation.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Background radiation is the ionising radiation present all around us at all times, from natural and artificial sources.",
+      "keywords": [
+        "background",
+        "radiation",
+        "around",
+        "time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q7",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "List three natural sources of background radiation.",
+      "misconceptionClass": "background recall",
+      "kind": "recall",
+      "modelAnswer": "Radon gas from rocks and buildings, cosmic rays from space, and radioactive material in food and drink (with carbon-14 in living matter).",
+      "keywords": [
+        "radon",
+        "cosmic",
+        "food",
+        "carbon"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q8",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "Explain why radon levels differ noticeably from one location to another.",
+      "misconceptionClass": "background reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Radon comes from radioactive elements in rocks and soils, and geology varies regionally, so the gas seeping into buildings varies too.",
+      "keywords": [
+        "radon",
+        "rocks",
+        "soils",
+        "varies"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L2::Q9",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L2",
+      "stem": "A patient is worried that all background radiation is man-made. Give a short, evidence-based correction.",
+      "misconceptionClass": "background application",
+      "kind": "application",
+      "modelAnswer": "Most significant contributions are natural — radon from rocks, cosmic rays from space, and traces in food and drink — while man-made additions (medicine, fallout, accidents) exist but are not the whole picture.",
+      "keywords": [
+        "natural",
+        "radon",
+        "cosmic",
+        "medicine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q1",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "The background count is 24 counts per minute. Express that per second.",
+      "misconceptionClass": "count application",
+      "options": [
+        {
+          "key": "A",
+          "text": "2.4 counts per second",
+          "correct": false,
+          "explanation": "Wrong factor of ten.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "B",
+          "text": "0.24 counts per second",
+          "correct": false,
+          "explanation": "That would be 14.4 per minute.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "C",
+          "text": "0.4 counts per second",
+          "correct": true,
+          "explanation": "24 ÷ 60 = 0.4.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "24 counts per second",
+          "correct": false,
+          "explanation": "That skips the division by 60.",
+          "misconception": "no division"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q2",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "A source gives 285 counts per minute; background is 24. The corrected count rate is…",
+      "misconceptionClass": "count application",
+      "options": [
+        {
+          "key": "A",
+          "text": "309 counts per minute",
+          "correct": false,
+          "explanation": "Addition is the wrong operation.",
+          "misconception": "operation error"
+        },
+        {
+          "key": "B",
+          "text": "285 counts per minute",
+          "correct": false,
+          "explanation": "That ignores the background subtraction.",
+          "misconception": "no subtraction"
+        },
+        {
+          "key": "C",
+          "text": "24 counts per minute",
+          "correct": false,
+          "explanation": "That is the background itself.",
+          "misconception": "confusion with background"
+        },
+        {
+          "key": "D",
+          "text": "261 counts per minute",
+          "correct": true,
+          "explanation": "285 − 24 = 261.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q3",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "Which is an artificial source of background radiation?",
+      "misconceptionClass": "background recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "nuclear medicine",
+          "correct": true,
+          "explanation": "Medical uses of radiation add to background.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "radon from rocks",
+          "correct": false,
+          "explanation": "Radon is natural.",
+          "misconception": "natural confusion"
+        },
+        {
+          "key": "C",
+          "text": "cosmic rays",
+          "correct": false,
+          "explanation": "Cosmic rays are natural.",
+          "misconception": "natural confusion"
+        },
+        {
+          "key": "D",
+          "text": "carbon-14 in the body",
+          "correct": false,
+          "explanation": "Carbon-14 is natural.",
+          "misconception": "natural confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q4",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "Why does averaging repeated counts improve the accuracy of a corrected count rate?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because background changes every minute",
+          "correct": false,
+          "explanation": "Background is steady over a session.",
+          "misconception": "background myth"
+        },
+        {
+          "key": "B",
+          "text": "because the randomness of decay makes single counts scatter",
+          "correct": true,
+          "explanation": "Averaging tames the random fluctuation.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "because the source weakens while you count",
+          "correct": false,
+          "explanation": "That is a real effect but not the averaging rationale asked for here.",
+          "misconception": "fading reason"
+        },
+        {
+          "key": "D",
+          "text": "because the GM tube drifts between readings",
+          "correct": false,
+          "explanation": "Tube drift is not the named cause.",
+          "misconception": "drift reason"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q5",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "Background is measured at 24 cpm. With the source at 1 m the reading stays at 24 cpm. What is the corrected count rate, and what does it mean?",
+      "misconceptionClass": "count reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "48 — add the two measurements",
+          "correct": false,
+          "explanation": "Addition is meaningless here.",
+          "misconception": "operation error"
+        },
+        {
+          "key": "B",
+          "text": "negative — subtract twice",
+          "correct": false,
+          "explanation": "Corrected rates are not double-subtracted.",
+          "misconception": "operation error"
+        },
+        {
+          "key": "C",
+          "text": "0 — the source’s radiation is fully absorbed by the air before the tube",
+          "correct": true,
+          "explanation": "The reading equals background, so the source contributes nothing at that distance.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "24 — the source contributes everything",
+          "correct": false,
+          "explanation": "The 24 is entirely background here.",
+          "misconception": "double counting"
+        }
+      ]
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q6",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "Describe how to find the corrected count rate of a source.",
+      "misconceptionClass": "method recall",
+      "kind": "recall",
+      "modelAnswer": "Measure the background count rate with no source present, measure the rate with the source present, and subtract the background from the source reading.",
+      "keywords": [
+        "background",
+        "subtract",
+        "source",
+        "corrected"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q7",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "Give the corrected count rate in counts per second for a source reading of 261 counts per minute.",
+      "misconceptionClass": "count application",
+      "kind": "recall",
+      "modelAnswer": "261 ÷ 60 = 4.35 counts per second.",
+      "keywords": [
+        "261",
+        "second",
+        "corrected",
+        "rate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q8",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "Explain why the background measurement must be taken in the same place as the source measurements.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Background varies with location, so a baseline measured elsewhere would not match the contributions present during the source readings, corrupting the subtraction.",
+      "keywords": [
+        "background",
+        "varies",
+        "location",
+        "subtraction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xtDjSxws2YwbcXng::L3::Q9",
+      "moduleId": "rn_xtDjSxws2YwbcXng::L3",
+      "stem": "A GM tube records 160 counts in 5 minutes with no source, and 208 counts in 5 minutes with a source. Find both rates and the corrected count rate.",
+      "misconceptionClass": "count application",
+      "kind": "application",
+      "modelAnswer": "Background: 160 ÷ 5 = 32 cpm; with source: 208 ÷ 5 ≈ 41.6 cpm; corrected: 41.6 − 32 = 9.6 cpm.",
+      "keywords": [
+        "background",
+        "source",
+        "corrected",
+        "rate"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sMDdXt3jtZzq5k7b",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "bfc6e9c886c4d790dffa106cf6eb1e4a8a2ff22311ec7582d4e98df0ba9ec0f4",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_sMDdXt3jtZzq5k7b",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Properties of Radiation",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-1-properties-of-radiation/7-1-3-types-of-radiation",
+    "specAnchors": [
+      {
+        "code": "7.4",
+        "text": "know that alpha (α) particles, beta (β−) particles, and gamma (γ) rays are ionising radiations emitted from unstable nuclei in a random process"
+      },
+      {
+        "code": "7.5",
+        "text": "describe the nature of alpha (α) particles, beta (β−) particles and gamma (γ) rays, and recall that they may be distinguished in terms of penetrating power and ability to ionise"
+      }
+    ],
+    "primer": {
+      "text": "Unstable nuclei shed their excess energy by emitting ionising radiation: alpha particles, beta particles or gamma rays. This note explains why decay happens, what each emission is made of, and how penetration and ionising power set the three apart.",
+      "prerequisiteSubtopic": "Properties of Radiation"
+    },
+    "modules": [
+      {
+        "id": "rn_sMDdXt3jtZzq5k7b::L1",
+        "title": "Unstable nuclei and radioactive decay",
+        "sourceHeadings": [
+          "Types of radiation"
+        ],
+        "specRefs": [
+          "7.4"
+        ],
+        "opening": "A nucleus is radioactive when a proton-neutron imbalance makes it unstable, and it decays by emitting radiation — a high-energy particle or wave — to reach a more stable state. The emissions are alpha, beta and gamma, and the timing of any single decay is random.",
+        "keyPoints": [
+          "Unstable nuclei have an imbalance of protons or neutrons.",
+          "Radioactive decay is the emission of radiation from an unstable nucleus to gain stability.",
+          "The emitted radiations are alpha particles, beta particles and gamma rays.",
+          "Decay events are spontaneous and random — a single nucleus cannot be timed.",
+          "Carbon-14 carries two neutrons more than carbon-12, and that imbalance leaves it unstable."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "An overloaded nucleus throws out a particle or a burst of energy. That loss leaves it more settled, like letting steam off a pressurised pot.",
+            "analogy": "Radioactive decay is a wobbly stack of blocks toppling a few blocks off — the remaining stack stands steadier.",
+            "examPointer": "The words \"random\" and \"spontaneous\" are mark-carrying: no cause, no clock, no prediction for one nucleus."
+          },
+          "medium": {
+            "restatement": "Decay releases energy because the daughter arrangement has lower energy than the parent; the emitted particle or photon carries the difference away. Randomness means each nucleus has a constant decay probability per unit time, independent of its history.",
+            "analogy": "Each unstable nucleus is a lottery ticket with the same tiny winning chance every second — winning (decaying) is unpredictable for any single ticket even though the odds never change.",
+            "examPointer": "Distinguish radiation (the emission) from radioactivity (the property of the nucleus); questions probe the vocabulary."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sMDdXt3jtZzq5k7b::L1::Q1",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q2",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q3",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q4",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q5",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q6",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q7",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q8",
+          "rn_sMDdXt3jtZzq5k7b::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_sMDdXt3jtZzq5k7b::L2",
+        "title": "Alpha, beta and gamma: nature and penetration",
+        "sourceHeadings": [
+          "Alpha, beta & gamma radiation",
+          "Penetrating power of alpha, beta and gamma"
+        ],
+        "specRefs": [
+          "7.5"
+        ],
+        "opening": "The three radiations differ in what they are and how far they travel. Alpha is a helium nucleus stopped by paper, beta is a fast electron stopped by a few millimetres of aluminium, and gamma is an electromagnetic wave only reduced by thick lead — with ionising power falling in the reverse order.",
+        "keyPoints": [
+          "An alpha particle is a helium nucleus: 2 protons and 2 neutrons.",
+          "A beta particle is a high-energy electron created when a neutron becomes a proton.",
+          "Gamma rays are the highest-energy electromagnetic waves, with no mass or charge.",
+          "Alpha is the least penetrating and the most ionising; gamma is the most penetrating and the least ionising.",
+          "Paper stops alpha; a few millimetres of aluminium stop beta; only several centimetres of lead reduce gamma."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Line up three barriers — paper, thin aluminium, thick lead. Alpha dies at the paper, beta dies at the aluminium, gamma ploughs on until lead slows it.",
+            "analogy": "Alpha is a bowling ball (huge impact, barely travels), beta a thrown pebble, gamma a laser beam that goes far but nudges lightly.",
+            "examPointer": "Pair the properties in reverse: most ionising = least penetrating. Questions love that inversion."
+          },
+          "medium": {
+            "restatement": "Ionising ability tracks charge and size: the heavy, double-charged alpha rips electrons from atoms most effectively but collides and stops soonest; the massless gamma interacts rarely, so it penetrates furthest while ionising least. Absorber choice follows directly.",
+            "analogy": "A heavy truck stops at the first wall but wrecks it; a bullet goes further with less smash; a searchlight passes over everything while barely touching it.",
+            "examPointer": "Absorption tables are free marks if you attach each radiation to its absorber — and remember the beta/aluminium thickness nuance."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sMDdXt3jtZzq5k7b::L2::Q1",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q2",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q3",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q4",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q5",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q6",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q7",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q8",
+          "rn_sMDdXt3jtZzq5k7b::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "radioactive decay",
+          "definition": "The random emission of radiation from an unstable nucleus, leaving it more stable.",
+          "firstLesson": 1
+        },
+        {
+          "term": "alpha particle",
+          "definition": "A helium nucleus (2 protons, 2 neutrons) emitted from an unstable nucleus.",
+          "firstLesson": 2
+        },
+        {
+          "term": "beta particle",
+          "definition": "A high-energy electron emitted when a nucleus converts a neutron into a proton.",
+          "firstLesson": 2
+        },
+        {
+          "term": "gamma ray",
+          "definition": "A high-energy electromagnetic wave emitted from a nucleus, with no mass or charge.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/86041bc2da73-4-2-1-unstable-nucleus.png",
+        "alt": "Unstable nucleus, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Types of radiation",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Carbon-12 is stable, whereas carbon-14 is unstable because it has two extra neutrons"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a357fc59f0b8-4-2-1-radioactive-decay.png",
+        "alt": "Radioactive decay, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Types of radiation",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Unstable nuclei decay by emitting high energy particles or waves"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/598e21c5be98-alpha-beta-gamma.png",
+        "alt": "alpha-beta-gamma, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Alpha, beta & gamma radiation",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Alpha particles, beta particles and gamma waves emitted from unstable nuclei"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/d19a7b83b3fd-penetration-increase.png",
+        "alt": "Penetrating Power, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Penetrating power of alpha, beta and gamma",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Alpha is the least penetrating and gamma the most penetrating of the radiations"
+      }
+    ]
+  }
+}

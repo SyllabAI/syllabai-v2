@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_y8W2TJWjqNdWsDRK",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "fa0b73bc7af88f20625a2d5440a46c1c8eeca4cc3e213a7d4f4b85f3dabe4e08",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_y8W2TJWjqNdWsDRK",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q1",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "What is the activity of a radioactive source?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the rate at which its unstable nuclei decay",
+          "correct": true,
+          "explanation": "Activity is decays per unit time.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the number of nuclei it contains",
+          "correct": false,
+          "explanation": "That is a population, not a rate.",
+          "misconception": "population confusion"
+        },
+        {
+          "key": "C",
+          "text": "the energy of its emissions",
+          "correct": false,
+          "explanation": "Energy per emission is a different property.",
+          "misconception": "energy confusion"
+        },
+        {
+          "key": "D",
+          "text": "the time it takes to become safe",
+          "correct": false,
+          "explanation": "That relates to half-life, not the definition.",
+          "misconception": "half-life confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q2",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "One becquerel corresponds to…",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "one gram of radioactive material",
+          "correct": false,
+          "explanation": "Mass is not the unit of activity.",
+          "misconception": "mass confusion"
+        },
+        {
+          "key": "B",
+          "text": "one nucleus decaying per second",
+          "correct": true,
+          "explanation": "The Bq is a per-second decay rate.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "one nucleus decaying per hour",
+          "correct": false,
+          "explanation": "The unit is per second.",
+          "misconception": "time unit error"
+        },
+        {
+          "key": "D",
+          "text": "one particle detected by a GM tube",
+          "correct": false,
+          "explanation": "Detections define count rate, not the becquerel.",
+          "misconception": "count confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q3",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "Why must the activity of any source decrease with time?",
+      "misconceptionClass": "activity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because detectors tire out",
+          "correct": false,
+          "explanation": "Detector behaviour does not alter the source.",
+          "misconception": "detector confusion"
+        },
+        {
+          "key": "B",
+          "text": "because radiation damages the container",
+          "correct": false,
+          "explanation": "Container damage is irrelevant.",
+          "misconception": "container confusion"
+        },
+        {
+          "key": "C",
+          "text": "because every decay removes one unstable nucleus from the source",
+          "correct": true,
+          "explanation": "The decaying population only shrinks.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "because nuclei get heavier as they decay",
+          "correct": false,
+          "explanation": "Decay changes identity; the reasoning is about counts.",
+          "misconception": "mass reasoning"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q4",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "A source has an activity of 8000 Bq. How many unstable nuclei decay in it each second?",
+      "misconceptionClass": "unit application",
+      "options": [
+        {
+          "key": "A",
+          "text": "8000 × 60",
+          "correct": false,
+          "explanation": "The per-minute figure is not the activity quoted.",
+          "misconception": "time unit error"
+        },
+        {
+          "key": "B",
+          "text": "1/8000",
+          "correct": false,
+          "explanation": "That inverts the rate.",
+          "misconception": "inversion error"
+        },
+        {
+          "key": "C",
+          "text": "it cannot be said from the activity",
+          "correct": false,
+          "explanation": "The definition answers directly.",
+          "misconception": "insufficient data"
+        },
+        {
+          "key": "D",
+          "text": "8000",
+          "correct": true,
+          "explanation": "8000 Bq means 8000 decays per second.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q5",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "Which statement distinguishes activity from count rate?",
+      "misconceptionClass": "definition reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "activity counts decays in the source; count rate counts detections at the detector",
+          "correct": true,
+          "explanation": "The two live at opposite ends of the journey.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "activity is measured in counts per minute",
+          "correct": false,
+          "explanation": "Activity is in becquerels.",
+          "misconception": "unit confusion"
+        },
+        {
+          "key": "C",
+          "text": "count rate is always larger than activity",
+          "correct": false,
+          "explanation": "No fixed ordering exists.",
+          "misconception": "ordering myth"
+        },
+        {
+          "key": "D",
+          "text": "they are two names for the same quantity",
+          "correct": false,
+          "explanation": "They are deliberately distinguished.",
+          "misconception": "synonym myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q6",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "Define the activity of a radioactive source.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Activity measures the rate at which a source’s unstable nuclei decay.",
+      "keywords": [
+        "activity",
+        "rate",
+        "unstable",
+        "nuclei"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q7",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "State the unit of activity and what one unit equals.",
+      "misconceptionClass": "unit recall",
+      "kind": "recall",
+      "modelAnswer": "Activity is measured in becquerels (Bq); one becquerel is one nucleus decaying per second.",
+      "keywords": [
+        "becquerel",
+        "nucleus",
+        "decaying",
+        "second"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q8",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "Explain why a source whose activity is 2000 Bq today must have a smaller activity in a year’s time.",
+      "misconceptionClass": "activity reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each decay removes one unstable nucleus, so the number available to decay keeps falling; a smaller decaying population means a lower rate, hence a lower activity.",
+      "keywords": [
+        "decay",
+        "nuclei",
+        "activity",
+        "falling"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L1::Q9",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L1",
+      "stem": "A source’s activity is 400 Bq. How many unstable nuclei decay in 30 seconds, assuming the activity stays steady over that short window?",
+      "misconceptionClass": "unit application",
+      "kind": "application",
+      "modelAnswer": "400 decays per second × 30 seconds = 12,000 decays.",
+      "keywords": [
+        "400",
+        "30",
+        "decay"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q1",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "What does a falling count-rate trace indicate over time?",
+      "misconceptionClass": "activity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "background radiation is rising",
+          "correct": false,
+          "explanation": "Background is steady; the trend is the source’s.",
+          "misconception": "background confusion"
+        },
+        {
+          "key": "B",
+          "text": "the source’s activity is decreasing",
+          "correct": true,
+          "explanation": "Fewer decays per second as nuclei run down.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the GM tube is failing",
+          "correct": false,
+          "explanation": "The trend is physical, not instrumental.",
+          "misconception": "instrument confusion"
+        },
+        {
+          "key": "D",
+          "text": "the source is absorbing radiation",
+          "correct": false,
+          "explanation": "Sources emit; they do not absorb into inactivity.",
+          "misconception": "absorption myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q2",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "What do the fluctuations on a count-time graph demonstrate?",
+      "misconceptionClass": "randomness recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "that activity increases with time",
+          "correct": false,
+          "explanation": "The trend is downward.",
+          "misconception": "trend inversion"
+        },
+        {
+          "key": "B",
+          "text": "that the source is contaminated",
+          "correct": false,
+          "explanation": "No contamination is needed to explain the wobble.",
+          "misconception": "contamination myth"
+        },
+        {
+          "key": "C",
+          "text": "that radioactive decay is a random process",
+          "correct": true,
+          "explanation": "Irregular wobble at fixed conditions is the randomness evidence.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "that the GM tube is faulty",
+          "correct": false,
+          "explanation": "Fluctuation is expected physics, not fault.",
+          "misconception": "fault myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q3",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "Why does each decay event make the source slightly less active?",
+      "misconceptionClass": "activity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the emitted radiation removes energy from the source",
+          "correct": false,
+          "explanation": "Energy loss is not the population argument.",
+          "misconception": "energy confusion"
+        },
+        {
+          "key": "B",
+          "text": "the detector counts fewer because it moves away",
+          "correct": false,
+          "explanation": "Geometry is unrelated here.",
+          "misconception": "geometry confusion"
+        },
+        {
+          "key": "C",
+          "text": "the nuclei get too heavy to decay",
+          "correct": false,
+          "explanation": "Weight is not the mechanism.",
+          "misconception": "mass myth"
+        },
+        {
+          "key": "D",
+          "text": "one fewer unstable nucleus remains to decay later",
+          "correct": true,
+          "explanation": "The decaying population shrinks one nucleus at a time.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q4",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "A corrected count rate at fixed geometry reads 41, 38, 43, 39 over four minutes. The best interpretation is…",
+      "misconceptionClass": "randomness reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "a roughly steady activity with random fluctuation",
+          "correct": true,
+          "explanation": "Scatter about a level is the random signature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the activity is doubling each minute",
+          "correct": false,
+          "explanation": "The readings hover, they do not double.",
+          "misconception": "trend myth"
+        },
+        {
+          "key": "C",
+          "text": "the detector is broken",
+          "correct": false,
+          "explanation": "Scatter is normal.",
+          "misconception": "fault myth"
+        },
+        {
+          "key": "D",
+          "text": "background was subtracted twice",
+          "correct": false,
+          "explanation": "Nothing suggests a subtraction error.",
+          "misconception": "method myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q5",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "Which graph sketch matches a decaying source’s count rate against time?",
+      "misconceptionClass": "graph reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "a perfectly smooth exponential only",
+          "correct": false,
+          "explanation": "The randomness forbids perfect smoothness at the count level.",
+          "misconception": "smoothness myth"
+        },
+        {
+          "key": "B",
+          "text": "a downward-sloping, wobbly curve",
+          "correct": true,
+          "explanation": "Decreasing overall with random fluctuation.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a straight horizontal line",
+          "correct": false,
+          "explanation": "That would mean constant activity.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "D",
+          "text": "a smooth upward curve",
+          "correct": false,
+          "explanation": "Activity cannot rise in an isolated source.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q6",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "State what happens to the activity of a source over time, and why.",
+      "misconceptionClass": "activity recall",
+      "kind": "recall",
+      "modelAnswer": "The activity decreases over time because each decay event reduces the number of unstable nuclei remaining in the source.",
+      "keywords": [
+        "activity",
+        "decrease",
+        "decay",
+        "nuclei"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q7",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "Name the graph feature cited as evidence for the randomness of decay.",
+      "misconceptionClass": "randomness recall",
+      "kind": "recall",
+      "modelAnswer": "The fluctuations of the count rate plotted against time are cited as evidence of randomness.",
+      "keywords": [
+        "fluctuations",
+        "count",
+        "random",
+        "graph"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q8",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "Explain why the count rate of a steady-geometry source still wobbles from minute to minute.",
+      "misconceptionClass": "randomness reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Decay is random: which nucleus decays in any second is unpredictable, so the number of emissions per interval fluctuates around the average set by the activity.",
+      "keywords": [
+        "random",
+        "decay",
+        "count",
+        "fluctuate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_y8W2TJWjqNdWsDRK::L2::Q9",
+      "moduleId": "rn_y8W2TJWjqNdWsDRK::L2",
+      "stem": "A teacher shows two traces: one perfectly smooth and falling, one wobbly and falling. Which better represents a real corrected count rate, and why?",
+      "misconceptionClass": "randomness application",
+      "kind": "application",
+      "modelAnswer": "The wobbly falling trace: real decay is random, so counts fluctuate while the overall downward trend from the shrinking unstable population persists.",
+      "keywords": [
+        "random",
+        "falling",
+        "fluctuation",
+        "trend"
+      ],
+      "options": []
+    }
+  ]
+}

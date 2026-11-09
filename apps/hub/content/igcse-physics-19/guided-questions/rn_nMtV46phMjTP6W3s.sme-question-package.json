@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nMtV46phMjTP6W3s",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8dbd13dea69559ffa782ec869797f7e7d32ac9fb8f612b5f5c35e1c63b4d7aca",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_nMtV46phMjTP6W3s",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q1",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "Which radiation does a smoke detector use?",
+      "misconceptionClass": "uses recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "alpha",
+          "correct": true,
+          "explanation": "Alpha ionises the air inside the detector.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "beta",
+          "correct": false,
+          "explanation": "Beta would pass through smoke.",
+          "misconception": "beta confusion"
+        },
+        {
+          "key": "C",
+          "text": "gamma",
+          "correct": false,
+          "explanation": "Gamma would pass through smoke.",
+          "misconception": "gamma confusion"
+        },
+        {
+          "key": "D",
+          "text": "neutrons",
+          "correct": false,
+          "explanation": "Neutrons are not used in detectors.",
+          "misconception": "neutron confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q2",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "What triggers the smoke alarm circuit?",
+      "misconceptionClass": "uses reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "gamma reflection off the smoke",
+          "correct": false,
+          "explanation": "No gamma is involved.",
+          "misconception": "gamma confusion"
+        },
+        {
+          "key": "B",
+          "text": "the sensor no longer detecting the alpha-driven current",
+          "correct": true,
+          "explanation": "Smoke blocks the alpha, cutting the current.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a rise in the alpha current",
+          "correct": false,
+          "explanation": "The current falls, not rises, when smoke enters.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "D",
+          "text": "heating of the alpha source",
+          "correct": false,
+          "explanation": "Heating is not the mechanism.",
+          "misconception": "heat myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q3",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "Why is beta suited to measuring foil thickness?",
+      "misconceptionClass": "uses reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because beta passes through everything untouched",
+          "correct": false,
+          "explanation": "That is closer to gamma’s behaviour.",
+          "misconception": "gamma confusion"
+        },
+        {
+          "key": "B",
+          "text": "because beta ionises the foil chemically",
+          "correct": false,
+          "explanation": "No chemistry is involved.",
+          "misconception": "chemistry myth"
+        },
+        {
+          "key": "C",
+          "text": "because foil only partially absorbs beta, so the count rate tracks thickness",
+          "correct": true,
+          "explanation": "Partial absorption gives a usable signal range.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "because beta is stopped entirely by any foil",
+          "correct": false,
+          "explanation": "Complete absorption would give a useless on/off signal.",
+          "misconception": "full absorption myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q4",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "Foil on the gauge line gets thicker. What happens to the detector count rate?",
+      "misconceptionClass": "uses application",
+      "options": [
+        {
+          "key": "A",
+          "text": "it increases, because thicker foil emits beta",
+          "correct": false,
+          "explanation": "The foil does not emit.",
+          "misconception": "emission myth"
+        },
+        {
+          "key": "B",
+          "text": "it stays exactly the same",
+          "correct": false,
+          "explanation": "The signal’s whole point is to change.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "C",
+          "text": "it falls to zero immediately",
+          "correct": false,
+          "explanation": "Partial absorption keeps a nonzero count.",
+          "misconception": "zeroing myth"
+        },
+        {
+          "key": "D",
+          "text": "it decreases, because more beta is absorbed",
+          "correct": true,
+          "explanation": "Absorption rises with thickness.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q5",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "Why would gamma be a poor choice for the foil gauge?",
+      "misconceptionClass": "uses reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because nearly all gamma would pass through regardless of thickness",
+          "correct": true,
+          "explanation": "Gamma’s deep penetration removes the signal’s sensitivity.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "because gamma cannot be detected",
+          "correct": false,
+          "explanation": "Gamma is detectable.",
+          "misconception": "detection myth"
+        },
+        {
+          "key": "C",
+          "text": "because gamma would be fully absorbed",
+          "correct": false,
+          "explanation": "That is alpha’s problem.",
+          "misconception": "alpha confusion"
+        },
+        {
+          "key": "D",
+          "text": "because gamma is not ionising",
+          "correct": false,
+          "explanation": "Gamma is weakly ionising but that is not the issue here.",
+          "misconception": "ionisation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q6",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "Describe how a smoke detector uses alpha radiation.",
+      "misconceptionClass": "uses recall",
+      "kind": "recall",
+      "modelAnswer": "The alpha source ionises the air so a small current flows; smoke blocks the alpha, the current stops, and the alarm sounds.",
+      "keywords": [
+        "alpha",
+        "ionise",
+        "current",
+        "smoke"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q7",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "State one medical and one industrial use of radioactivity.",
+      "misconceptionClass": "uses recall",
+      "kind": "recall",
+      "modelAnswer": "Medical: radiotherapy for cancer (or tracers for diagnosis). Industrial: monitoring the thickness of foil (or smoke detection).",
+      "keywords": [
+        "radiotherapy",
+        "cancer",
+        "thickness",
+        "smoke"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q8",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "Explain why beta, rather than alpha or gamma, monitors aluminium foil thickness.",
+      "misconceptionClass": "uses reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Foil partially absorbs beta, so count-rate changes track thickness; alpha would be absorbed completely at any thickness, and gamma would pass through almost unchanged — neither gives a usable signal.",
+      "keywords": [
+        "beta",
+        "absorbed",
+        "thickness",
+        "gamma"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L1::Q9",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L1",
+      "stem": "A gauge reading rises above its set-point while making foil. Should the rollers press harder or ease off? Explain.",
+      "misconceptionClass": "uses application",
+      "kind": "application",
+      "modelAnswer": "A higher count rate means fewer beta particles were absorbed, so the foil is too thin — the rollers must press harder to thicken it back to the set-point.",
+      "keywords": [
+        "count",
+        "absorbed",
+        "thin",
+        "rollers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q1",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "Which radiation treats cancer from outside the body?",
+      "misconceptionClass": "medical recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "neutrons",
+          "correct": false,
+          "explanation": "Neutron therapy is not the named syllabus treatment.",
+          "misconception": "neutron confusion"
+        },
+        {
+          "key": "B",
+          "text": "gamma rays",
+          "correct": true,
+          "explanation": "Gamma beams penetrate deeply enough to reach tumours.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "alpha particles",
+          "correct": false,
+          "explanation": "Alpha cannot penetrate skin.",
+          "misconception": "alpha confusion"
+        },
+        {
+          "key": "D",
+          "text": "beta particles",
+          "correct": false,
+          "explanation": "Beta lacks the required depth.",
+          "misconception": "beta confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q2",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "Why are the gamma beams rotated around the patient?",
+      "misconceptionClass": "medical reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "to avoid using a tracer",
+          "correct": false,
+          "explanation": "Tracers are a separate diagnostic tool.",
+          "misconception": "tracer confusion"
+        },
+        {
+          "key": "B",
+          "text": "to stop the tumour moving",
+          "correct": false,
+          "explanation": "Rotation does not immobilise tissue.",
+          "misconception": "motion myth"
+        },
+        {
+          "key": "C",
+          "text": "to spread the entry dose over healthy tissue while concentrating dose on the tumour",
+          "correct": true,
+          "explanation": "Rotation protects the paths, not the target.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "to make the beams stronger",
+          "correct": false,
+          "explanation": "Rotation redistributes dose; it does not amplify it.",
+          "misconception": "intensity myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q3",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "What is a tracer?",
+      "misconceptionClass": "medical recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a beam of gamma aimed at a tumour",
+          "correct": false,
+          "explanation": "That is radiotherapy.",
+          "misconception": "therapy confusion"
+        },
+        {
+          "key": "B",
+          "text": "a device that detects radiation dose",
+          "correct": false,
+          "explanation": "That is a dosemeter/badge.",
+          "misconception": "badge confusion"
+        },
+        {
+          "key": "C",
+          "text": "a lead container for sources",
+          "correct": false,
+          "explanation": "That is storage shielding.",
+          "misconception": "storage confusion"
+        },
+        {
+          "key": "D",
+          "text": "a radioactive isotope whose emissions are tracked through the body",
+          "correct": true,
+          "explanation": "Tracers trace movement of substances like blood.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q4",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "Why is gamma preferred for sterilising sealed instruments?",
+      "misconceptionClass": "sterilisation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because it penetrates the packaging and irradiates all sides",
+          "correct": true,
+          "explanation": "Sealed packs can be treated without opening.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "because it is the weakest ioniser so it is safest",
+          "correct": false,
+          "explanation": "Sterilisation needs the killing dose, not weakness.",
+          "misconception": "safety myth"
+        },
+        {
+          "key": "C",
+          "text": "because alpha could also pass through the pack",
+          "correct": false,
+          "explanation": "Alpha cannot even pass paper.",
+          "misconception": "alpha confusion"
+        },
+        {
+          "key": "D",
+          "text": "because gamma makes instruments radioactive",
+          "correct": false,
+          "explanation": "Irradiation does not make objects radioactive.",
+          "misconception": "activation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q5",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "Irradiated food carries the Radura symbol. The treatment’s purpose is to…",
+      "misconceptionClass": "sterilisation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "add flavour to the food",
+          "correct": false,
+          "explanation": "Flavour is not the aim.",
+          "misconception": "flavour myth"
+        },
+        {
+          "key": "B",
+          "text": "kill micro-organisms so the food keeps longer",
+          "correct": true,
+          "explanation": "Irradiation reduces food-borne organisms.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "make the food radioactive for tracing",
+          "correct": false,
+          "explanation": "Food is not made radioactive.",
+          "misconception": "activation myth"
+        },
+        {
+          "key": "D",
+          "text": "heat the food for cooking",
+          "correct": false,
+          "explanation": "No heating is involved.",
+          "misconception": "heat myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q6",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "Name the radiation used in radiotherapy and state why it is chosen.",
+      "misconceptionClass": "medical recall",
+      "kind": "recall",
+      "modelAnswer": "Gamma rays are used because they penetrate the body deeply enough to reach the tumour.",
+      "keywords": [
+        "gamma",
+        "penetrate",
+        "tumour",
+        "radiotherapy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q7",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "Explain the role of a tracer in diagnosing cancer.",
+      "misconceptionClass": "medical recall",
+      "kind": "recall",
+      "modelAnswer": "A tracer is a radioactive isotope introduced into the body; a PET scan detects its emissions to reveal the tumour’s location.",
+      "keywords": [
+        "tracer",
+        "isotope",
+        "pet",
+        "tumour"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q8",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "Explain why gamma, not beta, sterilises medical equipment inside sealed packaging.",
+      "misconceptionClass": "sterilisation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Gamma’s deep penetration lets it pass through the wrapping and reach every surface of the instruments; beta would be stopped by the packaging and could not sterilise the contents.",
+      "keywords": [
+        "gamma",
+        "penetrate",
+        "packaging",
+        "beta"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nMtV46phMjTP6W3s::L2::Q9",
+      "moduleId": "rn_nMtV46phMjTP6W3s::L2",
+      "stem": "A hospital needs to sterilise single-use syringes that are pre-sealed in plastic. Justify the choice of source and note one safety outcome for patients.",
+      "misconceptionClass": "sterilisation application",
+      "kind": "application",
+      "modelAnswer": "A gamma source is chosen because it irradiates through the sealed plastic from all sides, killing micro-organisms without unsealing; patients receive sterile syringes with no microbial contamination.",
+      "keywords": [
+        "gamma",
+        "sealed",
+        "sterile",
+        "micro-organisms"
+      ],
+      "options": []
+    }
+  ]
+}

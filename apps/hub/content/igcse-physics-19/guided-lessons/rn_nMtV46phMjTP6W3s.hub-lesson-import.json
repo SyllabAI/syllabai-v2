@@ -1,0 +1,229 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nMtV46phMjTP6W3s",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8dbd13dea69559ffa782ec869797f7e7d32ac9fb8f612b5f5c35e1c63b4d7aca",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_nMtV46phMjTP6W3s",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Radioactivity Uses and Dangers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-2-radioactivity-uses-and-dangers/7-2-3-uses-of-radioactivity",
+    "specAnchors": [
+      {
+        "code": "7.14",
+        "text": "describe uses of radioactivity in industry and medicine"
+      }
+    ],
+    "primer": {
+      "text": "Choose the radiation to fit the job: alpha’s strong ionisation runs smoke detectors, beta’s partial absorption gauges foil thickness, gamma’s deep reach treats tumours and sterilises equipment. Industry and medicine simply exploit the property table from the last topic.",
+      "prerequisiteSubtopic": "Radioactivity Uses and Dangers"
+    },
+    "modules": [
+      {
+        "id": "rn_nMtV46phMjTP6W3s::L1",
+        "title": "Smoke detectors and thickness gauges",
+        "sourceHeadings": [
+          "Smoke detectors",
+          "Measuring the thickness of materials"
+        ],
+        "specRefs": [
+          "7.14"
+        ],
+        "opening": "Smoke detectors rely on alpha ionising the air to hold a small current; smoke blocks the alpha and the alarm fires. Thickness gauges rely on beta partly penetrating foil: thicker foil, fewer counts — so the detector’s reading steers the rollers.",
+        "keyPoints": [
+          "Smoke detectors use alpha radiation to ionise air and sustain a current.",
+          "Smoke absorbs the alpha, the current stops, and the alarm triggers.",
+          "Beta radiation monitors foil thickness because foil partially absorbs it.",
+          "Thicker material absorbs more beta, so the count rate falls; thinner raises it.",
+          "Alpha would be fully absorbed at any foil thickness; gamma would pass almost unaffected."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Detector: alpha current always on until smoke eats it. Gauge: beta always partly through until thicker foil eats more.",
+            "analogy": "Alpha in a detector is a tripwire that any smoke cuts; beta in a gauge is a flowmeter whose reading tracks the foil’s thickness.",
+            "examPointer": "The classic \"why alpha, not beta or gamma\" answer: smoke absorbs alpha easily; beta/gamma would pass straight through and never trigger."
+          },
+          "medium": {
+            "restatement": "The choice is a matching exercise between penetration and signal sensitivity: alpha gives a huge, easily-cancelled ion current in still air; beta’s partial absorption turns thickness into a proportional count change, giving a feedback signal with enough dynamic range to control rollers in real time.",
+            "analogy": "Choosing radiation is choosing a dimmer: alpha is an on/off switch (detector), beta is a smooth dial (gauge), gamma would be a light shining through the wall regardless.",
+            "examPointer": "For gauge questions name both directions: thicker → fewer counts, thinner → more counts."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nMtV46phMjTP6W3s::L1::Q1",
+          "rn_nMtV46phMjTP6W3s::L1::Q2",
+          "rn_nMtV46phMjTP6W3s::L1::Q3",
+          "rn_nMtV46phMjTP6W3s::L1::Q4",
+          "rn_nMtV46phMjTP6W3s::L1::Q5",
+          "rn_nMtV46phMjTP6W3s::L1::Q6",
+          "rn_nMtV46phMjTP6W3s::L1::Q7",
+          "rn_nMtV46phMjTP6W3s::L1::Q8",
+          "rn_nMtV46phMjTP6W3s::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_nMtV46phMjTP6W3s::L2",
+        "title": "Medicine and sterilisation",
+        "sourceHeadings": [
+          "Diagnosis and treatment of cancer",
+          "Sterilising food and medical equipment"
+        ],
+        "specRefs": [
+          "7.14"
+        ],
+        "opening": "In medicine, gamma beams reach deep tumours from rotating angles, and tracers let PET scans locate disease. In industry, gamma sterilises sealed instruments and irradiates food to kill micro-organisms — the Radura symbol marks the treated pack.",
+        "keyPoints": [
+          "Radiotherapy treats cancer with beams of gamma rays aimed at the tumour.",
+          "Gamma is chosen for radiotherapy because it penetrates the body to reach the tumour.",
+          "Beams rotate around the patient to limit harm to healthy tissue.",
+          "A tracer is a radioactive isotope tracked through the body; PET scans detect its emissions.",
+          "Gamma sterilises instruments and food because it penetrates packaging and kills micro-organisms."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Radiotherapy: gamma beams cross-fire the tumour. Sterilisation: gamma passes through sealed packs, killing germs inside.",
+            "analogy": "Rotating gamma beams are like torches closing in on a target from all sides — the target gets full dose, the paths only pass once.",
+            "examPointer": "Radiotherapy is radiation treatment — do not confuse it with chemotherapy (drugs)."
+          },
+          "medium": {
+            "restatement": "The same deep penetration that makes gamma useful forces the rotating-beam geometry: any single fixed beam would over-dose healthy tissue en route. Sterilisation exploits the same property through packaging — the dose integrates uniformly inside sealed wrapping, killing organisms without unsealing.",
+            "analogy": "Gamma sterilisation is a邮 stamp soaked through an envelope — the treatment reaches the contents without opening it.",
+            "examPointer": "Tracer + PET = diagnosis; gamma beam = treatment. Keep the two directions distinct."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nMtV46phMjTP6W3s::L2::Q1",
+          "rn_nMtV46phMjTP6W3s::L2::Q2",
+          "rn_nMtV46phMjTP6W3s::L2::Q3",
+          "rn_nMtV46phMjTP6W3s::L2::Q4",
+          "rn_nMtV46phMjTP6W3s::L2::Q5",
+          "rn_nMtV46phMjTP6W3s::L2::Q6",
+          "rn_nMtV46phMjTP6W3s::L2::Q7",
+          "rn_nMtV46phMjTP6W3s::L2::Q8",
+          "rn_nMtV46phMjTP6W3s::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-04",
+          "fig-05"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "radiotherapy",
+          "definition": "The treatment of cancer using beams of ionising radiation, typically gamma rays.",
+          "firstLesson": 2
+        },
+        {
+          "term": "tracer",
+          "definition": "A radioactive isotope followed through the body to image or track a process.",
+          "firstLesson": 2
+        },
+        {
+          "term": "sterilisation",
+          "definition": "Killing micro-organisms on instruments or food, here by gamma irradiation.",
+          "firstLesson": 2
+        },
+        {
+          "term": "radura",
+          "definition": "The international symbol marking food that has been irradiated.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Explain why a source of alpha radiation is used in smoke detectors, and not beta or gamma radiation.",
+        "steps": [
+          "Alpha is the most weakly penetrating and most strongly ionising of the three radiations.",
+          "Smoke easily absorbs the alpha, so the ion current stops and the alarm triggers.",
+          "Beta or gamma would pass straight through the smoke, so the alarm would not sound."
+        ],
+        "finalAnswer": "Alpha is used because smoke absorbs it — beta and gamma would pass through and never trigger the alarm."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a303bc70a3b2-4-2-3-smoke-alarm-diagram-1.png",
+        "alt": "Smoke alarm diagram 1, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Smoke detectors",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8f092917ba97-4-2-3-smoke-alarm-diagram-2.png",
+        "alt": "Smoke alarm diagram 2, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Smoke detectors",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/73daa0c4dae7-thickness-of-aluminium.png",
+        "alt": "Thickness of aluminium, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Measuring the thickness of materials",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Beta particles measure the thickness of thin materials such as foil"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/4ac372298687-8-1-6-radiation-therapy-2.png",
+        "alt": "Radiation Therapy 2, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Diagnosis and treatment of cancer",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Radiation therapy targets a tumour with ionising radiation"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fc5c0ec85dbd-6-3-3-radura-symbol.png",
+        "alt": "The Radura symbol, the international label for irradiated food",
+        "sourceHeading": "Sterilising food and medical equipment",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

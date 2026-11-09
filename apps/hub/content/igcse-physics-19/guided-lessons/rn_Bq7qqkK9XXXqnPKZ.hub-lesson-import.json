@@ -1,0 +1,274 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Bq7qqkK9XXXqnPKZ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7846dd1cd4e14d607ef64896439fe303669f68c6bb08896e7b020cd463fa0110",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_Bq7qqkK9XXXqnPKZ",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Properties of Radiation",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-1-properties-of-radiation/7-1-1-atomic-structure",
+    "specAnchors": [
+      {
+        "code": "7.2",
+        "text": "describe the structure of an atom in terms of protons, neutrons and electrons and use symbols such as 14 C to describe particular nuclei 6"
+      },
+      {
+        "code": "7.3",
+        "text": "know the terms atomic (proton) number, mass (nucleon) number and isotope"
+      }
+    ],
+    "primer": {
+      "text": "Atoms hide almost all of their mass in a nucleus barely a ten-thousandth of their size. This note maps the three subatomic particles, shows why a neutral atom balances charge to zero, and teaches nuclear notation so any nucleus can be read as two numbers and a symbol.",
+      "prerequisiteSubtopic": "Properties of Radiation"
+    },
+    "modules": [
+      {
+        "id": "rn_Bq7qqkK9XXXqnPKZ::L1",
+        "title": "The nucleus and its particles",
+        "sourceHeadings": [
+          "Atomic structure",
+          "Particles in the atom"
+        ],
+        "specRefs": [
+          "7.2"
+        ],
+        "opening": "An atom is built from a tiny, dense nucleus holding protons and neutrons, with electrons orbiting far outside. The nucleus carries nearly all the mass; the electrons occupy almost all the volume, so most of the atom is empty space.",
+        "keyPoints": [
+          "Atoms have a radius of about 1 × 10⁻¹⁰ m, and the nucleus is more than 10,000 times smaller still.",
+          "Protons sit in the nucleus with relative charge +1 and relative mass 1.",
+          "Neutrons also sit in the nucleus: no charge, relative mass 1.",
+          "Electrons orbit the nucleus with charge −1 and a negligible mass (about 1/2000 of a nucleon).",
+          "Almost the whole mass of an atom is concentrated in its nucleus."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Draw an atom: a cramped central bundle of protons and neutrons, with much lighter electrons whizzing around a shell far away. The bundle carries nearly everything heavy.",
+            "analogy": "The atom is like a stadium with a single pea on the centre spot — the pea is the nucleus and the stadium is where the electrons roam.",
+            "examPointer": "Particle-property tables are near-certain marks: memorise charge +1/0/−1 and mass 1/1/negligible for proton, neutron, electron."
+          },
+          "medium": {
+            "restatement": "The nucleus concentrates nucleons whose relative masses are each 1, so the atom’s mass is effectively the nucleon count. Electrons contribute charge balance but almost no mass, which is why chemical behaviour and nuclear identity are governed by different particle counts.",
+            "analogy": "Weigh a full bus (the nucleus) against the driver’s wristwatch (the electrons): the watch matters for timing, not for weight.",
+            "examPointer": "If a question compares nuclear and atomic radii, quote the factor of about 10,000 and state that the nucleus holds almost all of the mass."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q1",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q2",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q3",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q4",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q5",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q6",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q7",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q8",
+          "rn_Bq7qqkK9XXXqnPKZ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_Bq7qqkK9XXXqnPKZ::L2",
+        "title": "Charge, ions and nuclear notation",
+        "sourceHeadings": [
+          "Charge in the atom",
+          "Nuclear notation"
+        ],
+        "specRefs": [
+          "7.2"
+        ],
+        "opening": "Nuclear notation writes any nucleus as a symbol with two numbers: the mass number on top and the atomic number underneath. Reading those numbers tells you the protons, neutrons and electrons of the atom, and losing an electron turns the neutral atom into an ion.",
+        "keyPoints": [
+          "The total charge of a neutral atom is zero because protons and electrons balance exactly.",
+          "An atom that loses electrons is ionised.",
+          "Nuclear notation places the mass number above and the atomic number below the element symbol.",
+          "The lower number (atomic number) counts protons; the upper number (mass number) counts protons plus neutrons."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Take carbon-12: symbol C, bottom number 6, top number 12. Six protons, six electrons, and 12 − 6 = 6 neutrons.",
+            "analogy": "Nuclear notation is like a name badge with two counters — the top counter totals every heavy particle, the bottom counter identifies which element it is.",
+            "examPointer": "Practise reading notation both ways: given the symbol, find the particle counts; given the counts, write the symbol."
+          },
+          "medium": {
+            "restatement": "The atomic number fixes the element’s identity and equals both the proton count and, in a neutral atom, the electron count. The mass number totals the nucleons, so neutron number is their difference. Removing electrons changes charge but not the nuclear identity.",
+            "analogy": "Think of a shopping receipt: the atomic number is the store name (never changes), the mass number is the item count, and the neutrons are the receipt total minus the store line.",
+            "examPointer": "Ionisation questions hinge on electrons only — removing electrons never alters the mass number."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q1",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q2",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q3",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q4",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q5",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q6",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q7",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q8",
+          "rn_Bq7qqkK9XXXqnPKZ::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03",
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_Bq7qqkK9XXXqnPKZ::L3",
+        "title": "Atomic and mass numbers",
+        "sourceHeadings": [
+          "Atomic number",
+          "Mass number"
+        ],
+        "specRefs": [
+          "7.3"
+        ],
+        "opening": "The atomic number is the proton count that fixes which element an atom belongs to, while the mass number totals the nucleons in the nucleus. Between them they determine the neutron count, because neutrons equal mass number minus atomic number.",
+        "keyPoints": [
+          "The atomic number (proton number) is fixed for every atom of a given element.",
+          "The periodic table orders the elements by atomic number.",
+          "The mass number (nucleon number) is the total of protons and neutrons.",
+          "Number of neutrons = mass number − atomic number.",
+          "In a neutral atom the electron count equals the atomic number."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Sodium: atomic number 11, mass number 23. That is 11 protons, 11 electrons, and 23 − 11 = 12 neutrons.",
+            "analogy": "The atomic number is your surname (fixed by family), the mass number is the size of your whole household.",
+            "examPointer": "A one-mark staple: subtract to find neutrons. Write the subtraction explicitly to earn the working mark."
+          },
+          "medium": {
+            "restatement": "Because the proton count defines the element, changing it means a different element appears — the basis of transmutation in decay. The nucleon total can vary between isotopes of one element without changing identity.",
+            "analogy": "Changing the atomic number re-brands the element entirely, like changing the country on a passport; changing the mass number only swaps the passport’s edition.",
+            "examPointer": "Exam tables often give two of {protons, neutrons, mass number} — fill the third with atomic number = protons and mass = protons + neutrons."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q1",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q2",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q3",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q4",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q5",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q6",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q7",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q8",
+          "rn_Bq7qqkK9XXXqnPKZ::L3::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "nucleus",
+          "definition": "The tiny, dense centre of an atom containing protons and neutrons, holding nearly all of its mass.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ion",
+          "definition": "An atom that has lost or gained electrons and so carries an overall charge.",
+          "firstLesson": 2
+        },
+        {
+          "term": "nuclear notation",
+          "definition": "The writing of an element symbol with its mass number above and atomic number below.",
+          "firstLesson": 2
+        },
+        {
+          "term": "mass number",
+          "definition": "The total number of protons and neutrons in a nucleus.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": {
+        "prompt": "A nucleus of carbon-12 contains 6 protons. How many electrons are there in a neutral carbon atom?",
+        "steps": [
+          "The proton count of carbon is 6.",
+          "A neutral atom has equal numbers of electrons and protons."
+        ],
+        "finalAnswer": "The neutral carbon atom has 6 electrons."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c6b34b2d01e0-11-1-2-nucleus-and-electrons-e1632120061207.png",
+        "alt": "Nucleus and electrons, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Atomic structure",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A lithium atom drawn with its central nucleus and orbiting electrons (not to scale)"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/23fefb330462-periodic-table-symbol-for-carbon-aqa-1-e16321199.png",
+        "alt": "Periodic table symbol for carbon in nuclear notation",
+        "sourceHeading": "Charge in the atom",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Carbon-12 written in nuclear notation"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5e213254f82e-4-1-1-carbon-12-nucleus-worked-example.png",
+        "alt": "Carbon 12 Nucleus Worked Example, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Charge in the atom",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/c308889afa83-4-1-3-nuclear-notation.png",
+        "alt": "Nuclear Notation, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Nuclear notation",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Nuclear notation for atoms of hydrogen, sodium and uranium"
+      }
+    ]
+  }
+}

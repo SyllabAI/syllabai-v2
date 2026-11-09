@@ -1,0 +1,200 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_S9XBhFdwtjPR4ZJd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5df7c9dc738f977a2da270b514be53bff0051051f27b8a713f2bd4895a5cd018",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_S9XBhFdwtjPR4ZJd",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Radioactivity Uses and Dangers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-2-radioactivity-uses-and-dangers/7-2-5-dangers-of-radiation",
+    "specAnchors": [
+      {
+        "code": "7.16",
+        "text": "describe the dangers of ionising radiations, including: • that radiation can cause mutations in living organisms • that radiation can damage cells and tissue • the problems arising from the disposal of radioactive waste and how the associated risks can be reduced"
+      }
+    ],
+    "primer": {
+      "text": "Ionising radiation damages cells: DNA breaks, repairs fail, mutations and cancer follow. Which radiation is worst depends on geography — alpha inside, gamma outside. Handling rules, dosemeter badges and engineered waste disposal keep the dose ledger short.",
+      "prerequisiteSubtopic": "Radioactivity Uses and Dangers"
+    },
+    "modules": [
+      {
+        "id": "rn_S9XBhFdwtjPR4ZJd::L1",
+        "title": "Ionisation inside the body and out",
+        "sourceHeadings": [
+          "Dangers of ionising radiation",
+          "Effect of radiation on a living cell"
+        ],
+        "specRefs": [
+          "7.16"
+        ],
+        "opening": "All ionising radiations can damage cells and tissue and cause mutations that lead to cancer. Inside the body, the strongly ionising alpha is the most dangerous; outside it, the deeply penetrating gamma is worst — alpha can barely reach the skin from the air.",
+        "keyPoints": [
+          "Ionising radiation can cause mutations in living organisms.",
+          "It can damage cells and tissue, sometimes leading to cancer.",
+          "Inside the body, alpha is the most harmful because it is the most ionising.",
+          "Outside the body, gamma is the most harmful because it is the most penetrating.",
+          "Gamma ionises about 20 times less than alpha per interaction, but reaches where alpha cannot."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Inside: alpha is a wrecker up close (swallowed source). Outside: alpha stops in air, gamma goes straight to your cells.",
+            "analogy": "Alpha is a boxer — devastating in the ring, harmless from the street; gamma is a sniper’s torch — weak touch, long reach.",
+            "examPointer": "The in/out inversion is the exam favourite: alpha worst inside, gamma worst outside. Justify both with ionising vs penetrating."
+          },
+          "medium": {
+            "restatement": "Tissue damage begins with DNA ionisation: breaks usually repair, but mis-repair fixes a mutation, and cumulative mutations raise cancer risk. Radiation type ranks harm through two independent axes — ionisation density (inside) and range (outside) — so hazard assessments must fix the geometry first.",
+            "analogy": "Harm ranking is like ranking vehicles: a lorry (alpha) is deadliest in a crowded room, a motorway (gamma) carries danger to the far horizon.",
+            "examPointer": "Mutations + cell/tissue damage + waste disposal — the three-part list of spec 7.16. Hit all three in long answers."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q1",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q2",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q3",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q4",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q5",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q6",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q7",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q8",
+          "rn_S9XBhFdwtjPR4ZJd::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_S9XBhFdwtjPR4ZJd::L2",
+        "title": "Safe handling and waste disposal",
+        "sourceHeadings": [
+          "Safe handling of radioactive sources",
+          "Disposal of nuclear waste"
+        ],
+        "specRefs": [
+          "7.16"
+        ],
+        "opening": "Hands stay safe with shielded storage, tongs, protective clothing and short exposure times, while dosemeter badges keep a running dose record. Waste is sorted by its emission — alpha in canisters, beta in metal plus concrete, gamma in lead-lined silos — and long-lived waste is buried deep and dry.",
+        "keyPoints": [
+          "Keep sources in shielded, lead-lined containers when not in use.",
+          "Handle sources with gloves and tongs, and limit the time a source is out.",
+          "A dosemeter (or radiation badge) records a worker’s accumulated dose.",
+          "Waste storage escalates with penetration: plastic/metal canisters for alpha, metal plus concrete for beta, lead-lined thick concrete for gamma.",
+          "Long-half-life waste is buried underground in geologically stable, secure sites to protect groundwater."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Lab rules: lead box, tongs, short visits, badge on the chest. Waste rules: match the container to the radiation, bury the long-lived stuff deep and dry.",
+            "analogy": "The badge is a odometer for dose — it never blocks the miles, it just records them.",
+            "examPointer": "List-four safety questions: lead-lined storage, tongs, distance, minimal time (plus hand-washing) — give several, not one."
+          },
+          "medium": {
+            "restatement": "Dose monitoring converts an invisible hazard into a measured quantity that can be capped by rostering; waste engineering, meanwhile, matches barriers to penetration and adds time as a barrier — geological isolation, corrosion-resistant containers and site stability guard the very long half-lives against groundwater pathways.",
+            "analogy": "Waste disposal is a multi-lock vault: the right metal for the radiation, concrete and lead as walls, and geology as the moat — for centuries.",
+            "examPointer": "Waste answers score by matching emitter to container: alpha→canister, beta→metal+concrete, gamma→lead-lined concrete. Memorise the trio."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q1",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q2",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q3",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q4",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q5",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q6",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q7",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q8",
+          "rn_S9XBhFdwtjPR4ZJd::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "mutation",
+          "definition": "A permanent change to DNA that can follow ionising damage and mis-repair.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dosemeter",
+          "definition": "A worn device (or badge) that records the radiation dose a person receives.",
+          "firstLesson": 2
+        },
+        {
+          "term": "radioactive waste",
+          "definition": "Material emitting ionising radiation that must be stored or disposed of securely.",
+          "firstLesson": 2
+        },
+        {
+          "term": "groundwater",
+          "definition": "Water beneath the ground that buried waste must never contaminate.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/12be808aa71e-6-3-1-mutation-of-human-cell.png",
+        "alt": "Mutation of human cell",
+        "sourceHeading": "Effect of radiation on a living cell",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Ionising radiation damages DNA; incorrect repairs cause mutations"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/784cdb105674-radiation-badge.png",
+        "alt": "radiation-badge, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Safe handling of radioactive sources",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "A dosemeter badge tracks the radiation a worker receives"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5eda3cb97cd9-4-3-2-radioactive-waste.png",
+        "alt": "Radioactive waste",
+        "sourceHeading": "Disposal of nuclear waste",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Nuclear waste is treated differently depending on the radiation it emits"
+      }
+    ]
+  }
+}

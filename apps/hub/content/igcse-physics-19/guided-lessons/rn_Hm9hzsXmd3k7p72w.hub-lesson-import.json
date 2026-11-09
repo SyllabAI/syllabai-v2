@@ -1,0 +1,241 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Hm9hzsXmd3k7p72w",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "0e04382056fbd6a2c0ddb55d67041721b86b5555f004613ce5076651f23f1af2",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_Hm9hzsXmd3k7p72w",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Properties of Radiation",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-1-properties-of-radiation/7-1-4-core-practical-investigating-radiation",
+    "specAnchors": [
+      {
+        "code": "7.6",
+        "text": "practical: investigate the penetration powers of different types of radiation using either radioactive sources or simulations"
+      }
+    ],
+    "primer": {
+      "text": "How do we know which radiations a source emits? Place absorbers in its path and watch the count rate. This core practical measures penetration: paper, aluminium and lead act as the three filters, with background subtraction and safe handling doing the quiet science.",
+      "prerequisiteSubtopic": "Properties of Radiation"
+    },
+    "modules": [
+      {
+        "id": "rn_Hm9hzsXmd3k7p72w::L1",
+        "title": "Aim, variables and equipment",
+        "sourceHeadings": [
+          "Aim of the experiment",
+          "Equipment List"
+        ],
+        "specRefs": [
+          "7.6"
+        ],
+        "opening": "The experiment investigates the penetration powers of alpha, beta and gamma radiation by placing absorbers between a source and a Geiger-Müller tube. The absorber material is changed, the count rate is measured, and the source, distance and location are controlled.",
+        "keyPoints": [
+          "The independent variable is the absorber material placed between source and detector.",
+          "The dependent variable is the count rate recorded by the Geiger-Müller tube.",
+          "Control variables include the source itself, the source-to-tube distance and the location’s background level.",
+          "The absorber set spans paper, aluminium of increasing thickness, and lead.",
+          "Repeating each measurement and averaging tames the random flicker of decay.",
+          "Sources are stored in lead-lined containers and handled with tongs."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Fix the source 3 cm from the tube. Slide in paper, then aluminium sheets, then lead plates, and watch the counter after each change.",
+            "analogy": "It is a set of sieves of different weave: whichever sieve cuts the flow tells you the size of what is flowing.",
+            "examPointer": "Name all three variable types explicitly — practical questions award marks for each correct identification."
+          },
+          "medium": {
+            "restatement": "Only the absorber may vary with the count rate; holding the source, geometry and background constant makes the count-rate change attributable to absorption alone. Repeating readings averages the random flicker of radioactive emission.",
+            "analogy": "Testing three swimmer types against pool lanes of increasing length — same pool, same starting block, only the lane length changes.",
+            "examPointer": "If asked why repetitions matter, answer: radioactive decay is random, so repeats and averages tame the fluctuation."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hm9hzsXmd3k7p72w::L1::Q1",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q2",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q3",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q4",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q5",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q6",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q7",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q8",
+          "rn_Hm9hzsXmd3k7p72w::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_Hm9hzsXmd3k7p72w::L2",
+        "title": "Method and analysis of results",
+        "sourceHeadings": [
+          "Method",
+          "Analysis of results"
+        ],
+        "specRefs": [
+          "7.6"
+        ],
+        "opening": "First measure the background count with no source present and subtract it from every later reading. Then, source fixed at 3 cm, insert each absorber in turn and record a one-minute count. Where the corrected rate collapses identifies the radiation the absorber stopped.",
+        "keyPoints": [
+          "Measure background first and subtract it to get corrected count rates.",
+          "A corrected rate near background means the radiation has been fully absorbed.",
+          "A drop at paper reveals alpha; a drop at a few millimetres of aluminium reveals beta.",
+          "Radiation still passing a few millimetres of lead indicates gamma.",
+          "Some sources emit more than one type of radiation."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Reading with no source: say 24 per minute. With the source and paper: 800. With aluminium: 20 — back at background. Paper did nothing, aluminium killed it: beta.",
+            "analogy": "Weigh luggage with and without the case, then subtract the case weight — the corrected rate is the true payload.",
+            "examPointer": "Always say \"corrected count rate\" when background has been subtracted — the phrase itself earns credit."
+          },
+          "medium": {
+            "restatement": "Absorption edges classify the emission: the absorber that produces a step down to background is the one matching the radiation’s range. Residual counts above background after lead signal a gamma component, since gamma is only attenuated, never fully stopped by modest shields.",
+            "analogy": "Three locks in a row; the lock that finally stops the intruder identifies how determined the intruder was.",
+            "examPointer": "Mixed sources are real: quote \"the source emits beta and gamma\" style answers when two distinct drops appear."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hm9hzsXmd3k7p72w::L2::Q1",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q2",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q3",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q4",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q5",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q6",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q7",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q8",
+          "rn_Hm9hzsXmd3k7p72w::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_Hm9hzsXmd3k7p72w::L3",
+        "title": "Errors and safety",
+        "sourceHeadings": [
+          "Evaluating the experiment",
+          "Safety considerations"
+        ],
+        "specRefs": [
+          "7.6"
+        ],
+        "opening": "Systematic error creeps in when a stray source sits near the counter or the background shifts between locations, so sources stay far away and the site never changes. Random error is tamed with long-lived, active sources; safety runs on distance, tongs and shielding.",
+        "keyPoints": [
+          "Keep sources well away from the counter between runs to avoid systematic error.",
+          "Conduct all runs in the same location so background stays consistent.",
+          "Reliable sources have long half-lives and activities well above background.",
+          "Handle sources with tongs, pointing them away from the body.",
+          "Minimise exposure time and maximise distance when a source is in use."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Store the source on the far bench, do every trial in the same corner of the lab, lift it with tongs, and put it back in its lead box the moment you finish.",
+            "analogy": "Treat the source like a very smelly bin: keep your distance, gloves on, brief trips, and a sealed lid when done.",
+            "examPointer": "Safety marks come in lists: distance, time, shielding, tongs — give several, not one."
+          },
+          "medium": {
+            "restatement": "A nearby source biases every reading upward by the same amount (systematic), while counting noise scatters readings (random). The design counters both: fixed location and remote storage for the former, repeats over a longer interval with an adequately active, long-half-life source for the latter.",
+            "analogy": "A systematic error is a watch running five minutes fast — every reading wrong the same way; random error is a jittery hand — wrong in every direction.",
+            "examPointer": "Long half-life matters because a rapidly fading source changes the count during the experiment itself."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hm9hzsXmd3k7p72w::L3::Q1",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q2",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q3",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q4",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q5",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q6",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q7",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q8",
+          "rn_Hm9hzsXmd3k7p72w::L3::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "independent variable",
+          "definition": "The quantity deliberately changed by the experimenter — here, the absorber material.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dependent variable",
+          "definition": "The quantity measured in response — here, the count rate.",
+          "firstLesson": 1
+        },
+        {
+          "term": "corrected count rate",
+          "definition": "The measured count rate with the background count rate subtracted.",
+          "firstLesson": 2
+        },
+        {
+          "term": "background radiation",
+          "definition": "The ionising radiation present all around us from natural and artificial sources.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3833b82a4b12-7-1-4-investigating-radiation-apparatus.png",
+        "alt": "Investigating Radiation Apparatus, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Apparatus for investigating the penetrating powers of different types of radiation"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/dc0ab3585790-8-1-3-radiation-stopping-distances.png",
+        "alt": "Radiation Stopping Distances, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Analysis of results",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Penetrating power of alpha, beta and gamma radiation"
+      }
+    ]
+  }
+}
