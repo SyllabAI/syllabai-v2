@@ -1803,6 +1803,12 @@ Stage Summary:
 - THIS workflow: zero-write GETs with VERCEL_BAKE_TOKEN — teams visible, every project's name/id/rootDirectory, each project's newest production deployment (state + commit + date), each project's assigned domains. It answers the three facts the API bake job needs: does an API project exist on the bake token's scope, with which rootDirectory, and where api.syllabai-v2's domain sits.
 - Secret law unchanged (t-ops-plane): the token is never printed; only names/ids/states.
 
+
+## T-VERCEL-API-BAKE run-001 (2026-11-09) — the API project's production bake floor
+
+- t-vercel-api-diag run-001 discovered (first-hand, read-only): the bake token's team (syllabainoreply-4440 / team_oRKtmWlfLMR0hNaqViyWj7NZ) holds BOTH projects of record — syllabai-hub-v2 (rootDirectory apps/hub) AND syllabai-v2 (the API, rootDirectory repo root, domains api.syllab-ai.com + syllabai-v2-six.vercel.app). The migration question of record is closed: the API project DID move to the second account — but nothing ever baked it (its newest production was a dashboard Redeploy of stale bytes, 05:51:51Z, empty commit SHA; live probe 06:12Z with a self-registered viewer account: /paper-assets/resolve 200, /regions 500 — the pre-#864 build).
+- THIS workflow mirrors the t-vercel-usage-bake law for the API project, with one delta: the CLI deployment carries --meta githubCommitSha=<HEAD> (and githubCommitRef=main) so the state-aware skip works for CLI deploys — the floor skips when the newest LIVE production deployment already carries main HEAD, idempotent by design (the hub floor re-bakes daily because its CLI deployments carry no SHA).
+- Strict dispositions unchanged (t-ops-plane class): VERCEL_BAKE_TOKEN never printed; at most ONE deployment per run, only when the newest live deployment's meta SHA differs from main HEAD; read-only preflight prints the project's build settings so a failed bake explains itself; schedule 03:30 UTC staggered after the hub's 02:30.
 ## receipt(T-KG-TRIPWIRE-1) — Phase 1: the T1 thumbs-down ships — run-003 — 2026-11-09 (operator trace 1a1bc99cd7f38ef1 "Phase 1 — ship the T1 thumbs-down")
 
 - Scope: Phase 1 of the merged tripwire spec's own rollout ladder (PR #859 = Phase 0). The
