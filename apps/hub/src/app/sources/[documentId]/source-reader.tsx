@@ -197,8 +197,12 @@ function SourceReaderInner() {
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-10">
       {state.status === "loading" && (
-        <div className="flex min-h-[40vh] items-center justify-center" aria-hidden>
-          <Loader2 className="size-5 animate-spin text-muted-foreground" />
+        <div className="min-h-[40vh] space-y-3 pt-2" role="status" aria-label="Loading document">
+          {/* run-006 (P5): the document surface loads as a prose skeleton. */}
+          <div className="h-8 w-72 max-w-full animate-pulse rounded-md bg-muted motion-reduce:animate-none" aria-hidden />
+          {["w-full", "w-full", "w-11/12", "w-full", "w-10/12", "w-9/12"].map((w, i) => (
+            <div key={i} className={`h-4 animate-pulse rounded-md bg-muted motion-reduce:animate-none ${w}`} aria-hidden />
+          ))}
         </div>
       )}
 

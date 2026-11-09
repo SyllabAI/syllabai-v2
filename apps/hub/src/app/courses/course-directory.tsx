@@ -332,10 +332,16 @@ export function CourseDirectory({
                     // inputs — real committed-corpus counts (server-plumbed
                     // manifest counts) + the tutor signal where the registry
                     // genuinely scopes one (curriculumCode, V53/ADR-030).
+                    // run-002 (UI-2): the past-paper count joins the same
+                    // line (folded out of the badge row per the operator's
+                    // card-design decision, trace 1a1beb40a15f8125) — one
+                    // substance line, sourced from the same two maps the
+                    // hero StatChips aggregate.
                     const statsLine = formatCourseStats(
                       bundleStats?.[c.slug] ?? ZERO_COURSE_COUNTS,
                     );
                     const tutorReady = Boolean(c.curriculumCode);
+                    const papers = archivePapers?.[c.slug] ?? 0;
                     // run-002: the card's icon slot is the run-001 identity —
                     // the subject's bespoke glyph on its tile colour pair
                     // (lib/subject-identity.ts, the approved mockup), themed
@@ -356,11 +362,22 @@ export function CourseDirectory({
                                 : "h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
                           }
                         >
-                          <CardContent className="flex h-full items-start gap-3.5 p-5">
+                          {/* run-002 (UI-2): gap-4 — the attachment's row recipe
+                              (tile + text at the course rows' own rhythm). */}
+                          <CardContent className="flex h-full items-start gap-4 p-5">
+                            {/* run-002 (UI-2): the tile is now the attachment's
+                                own tile verbatim — size-14 rounded-2xl, no
+                                border (the design of record's tiles are
+                                borderless solid tints; the .subject-tile
+                                template keeps driving bg/fg for all four
+                                themes + dark). The run-001 size-12/rounded-xl
+                                was the compromise grid echo; the operator's
+                                card-design round (trace 1a1beb40a15f8125)
+                                moved the cards to the full row scale. */}
                             {identity ? (
                               <span
                                 aria-hidden
-                                className="subject-tile flex size-12 shrink-0 items-center justify-center rounded-xl border"
+                                className="subject-tile flex size-14 shrink-0 items-center justify-center rounded-2xl"
                                 style={
                                   {
                                     "--subj-bg": identity.tile.bg,
@@ -373,7 +390,7 @@ export function CourseDirectory({
                             ) : (
                               <span
                                 aria-hidden
-                                className="flex size-12 shrink-0 items-center justify-center rounded-xl border bg-muted text-muted-foreground"
+                                className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-muted text-muted-foreground"
                               >
                                 <BookOpen className="size-6" />
                               </span>
@@ -383,9 +400,16 @@ export function CourseDirectory({
                                   "Unit 2") now wraps to two balanced lines instead
                                   of being truncated away; the color flip on hover
                                   stays a real-corpus signal, ghosts keep foreground. */}
+                              {/* run-002 (UI-2): the title is the loudest line in
+                                  the card — the attachment's row titles are
+                                  font-bold at full size with tracking-tight; a
+                                  14px semibold title competing with three 12px
+                                  strata read flat. text-[15px] is already in the
+                                  design of record's own vocabulary (its hero
+                                  description rides text-[15px]). */}
                               <p
                                 className={
-                                  "line-clamp-2 text-pretty text-sm font-semibold" +
+                                  "line-clamp-2 text-pretty text-[15px] font-bold tracking-tight" +
                                   (ghost ? "" : " group-hover:text-primary")
                                 }
                               >
@@ -394,22 +418,33 @@ export function CourseDirectory({
                               {subtitles.get(c.slug) && (
                                 <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitles.get(c.slug)}</p>
                               )}
-                              <p className="mt-0.5 font-mono text-xs text-muted-foreground">
-                                {/* t-ui-polish run-003 — the board rides the mono meta
-                                    line (the MG spec-code recipe); the badges carry
-                                    only the honesty signals (archive size, corpus
-                                    status), max two, no soup. */}
-                                {boardOf(c)} · {c.code ? c.code : <span className="not-italic">code pending</span>}
+                              {/* run-002 (UI-2): the meta line is the attachment's
+                                  own mixed-weight recipe — board in medium
+                                  full-ink, thin | separators, the code in mono
+                                  (the course page's "Edexcel | IGCSE | 4CH1" line).
+                                  The bare mono line wrapped cold on narrow cards;
+                                  a 22-char board name in mono was the worst
+                                  wrapping offender. */}
+                              <p className="mt-0.5 text-xs text-muted-foreground">
+                                <span className="font-medium text-foreground">{boardOf(c)}</span>
+                                <span className="mx-1.5 text-muted-foreground/50">|</span>
+                                {c.code ? <span className="font-mono">{c.code}</span> : <span className="not-italic">code pending</span>}
                               </p>
                               {/* T-HUB-COURSES-PUBLIC-2 (①+②): the substance
                                   line — what is actually inside this course,
                                   led by the tutor signal where true. Zero-sized
                                   parts are omitted and an all-zero lane (the
                                   import-pending ghosts) renders no line at
-                                  all; the max-two-badges law is untouched —
-                                  this is a line, not a badge soup. */}
-                              {(statsLine || tutorReady) && (
-                                <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-muted-foreground">
+                                  all.
+                                  run-002 (UI-2): the line now carries the past
+                                  papers too, and the emphasis follows the
+                                  attachment's count-line recipe ("112 notes" at
+                                  text-xs font-medium text-foreground) — counts
+                                  are content, full ink; the tutor lead keeps its
+                                  primary sparkle. The old all-muted caption
+                                  inverted that emphasis. */}
+                              {(statsLine || papers > 0 || tutorReady) && (
+                                <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs">
                                   {tutorReady && (
                                     <span className="inline-flex items-center gap-1 font-medium text-foreground/80">
                                       <Sparkles
@@ -419,35 +454,52 @@ export function CourseDirectory({
                                       Tutor ready
                                     </span>
                                   )}
-                                  {statsLine && <span>{statsLine}</span>}
+                                  {statsLine && (
+                                    <span className="font-medium text-foreground">{statsLine}</span>
+                                  )}
+                                  {papers > 0 && (
+                                    <span
+                                      className="font-medium tabular-nums text-foreground"
+                                      title="Official question papers + mark schemes, readable on the course page"
+                                    >
+                                      {papers} past paper{papers === 1 ? "" : "s"}
+                                    </span>
+                                  )}
                                 </p>
                               )}
-                              <div className="mt-2 flex flex-wrap gap-1.5">
-                                {(archivePapers?.[c.slug] ?? 0) > 0 && (
-                                <Badge
-                                  variant="secondary"
-                                  className="rounded-full tabular-nums"
-                                  title="Official question papers + mark schemes, readable on the course page"
-                                >
-                                  {archivePapers?.[c.slug]} past paper{(archivePapers?.[c.slug] ?? 0) === 1 ? "" : "s"}
-                                </Badge>
+                              {/* run-002 (UI-2): the badge row is retired for the
+                                  common path. The operator's card-design round
+                                  (trace 1a1beb40a15f8125): "retire the full
+                                  corpus pill and fold papers into the count
+                                  line" — an always-on constant on 102/106 cards
+                                  is noise, and the hero StatChip row owns the
+                                  aggregate ("102 full corpus"); per-card honesty
+                                  is carried by the real counts line + the
+                                  committed border. What survives: the rare,
+                                  differentiating statuses only — pilot and the
+                                  import-pending ghosts — and they lose the
+                                  uppercase shout (the last survivors after
+                                  run-001 de-shouted the headings). A full card
+                                  now renders ZERO badges; the max-two-badges
+                                  law is satisfied with room to spare. */}
+                              {(c.status === "pilot" || ghost) && (
+                                <div className="mt-2 flex flex-wrap gap-1.5">
+                                  {c.status === "pilot" && (
+                                    <Badge className="rounded-full">
+                                      pilot corpus · official spec tree
+                                    </Badge>
+                                  )}
+                                  {ghost && (
+                                    <Badge
+                                      variant="outline"
+                                      className="rounded-full text-muted-foreground"
+                                      title="This lane is registered; its full corpus — notes, exam questions, flashcards and the past-paper archive — is queued for import. Nothing is rendered for it yet."
+                                    >
+                                      import pending
+                                    </Badge>
+                                  )}
+                                </div>
                               )}
-                              {c.status === "pilot" ? (
-                                  <Badge className="rounded-full uppercase">pilot corpus · official spec tree</Badge>
-                                ) : c.status === "full" ? (
-                                  <Badge variant="outline" className="rounded-full uppercase">
-                                    full corpus
-                                  </Badge>
-                                ) : (
-                                  <Badge
-                                    variant="outline"
-                                    className="rounded-full uppercase text-muted-foreground"
-                                    title="This lane is registered; its full corpus — notes, exam questions, flashcards and the past-paper archive — is queued for import. Nothing is rendered for it yet."
-                                  >
-                                    import pending
-                                  </Badge>
-                                )}
-                              </div>
                             </div>
                           </CardContent>
                         </Card>
