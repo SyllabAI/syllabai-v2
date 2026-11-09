@@ -3,7 +3,7 @@ task:
   id: T-HUB-COURSES-UI-2
   title: "The /courses directory adopts the course-page design language — the operator's approved PageHero band (gradient wash, display title, honest StatChip row), course-page section-title recipes, pill chips and the proportionate identity tile"
   owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1bc441088a9629)"
-  status: "DONE (run-002 merged via PR #882 on the operator's explicit merge order, trace 1a1bf536fb061c11; production pickup = the post-merge hub bake, watch item in the run-002 merge receipt)"
+  status: "DONE (run-002 merged via PR #882 on the operator's explicit merge order, trace 1a1bf536fb061c11; production watch item CLOSED 2026-11-09 trace 1a1bf7086060b1bd — the account-blocked git auto-bake was remedied by the documented bake-lane floor t-vercel-usage-bake run#12, run-002 markers verified 22/22 live on www.syllab-ai.com/courses)"
   priority: P1
   band: T-HUB (frontend — courses directory surface)
   wave: hub-courses-directory
@@ -116,6 +116,31 @@ task:
     item, NOT self-fired (the bake lane's guardrails + the disclosed
     deploy-incident precedent keep CLI bakes out of this lane's hands).
     PAT rotation EIGHTH filing — still outstanding.
+    PRODUCTION PICKUP VERIFIED (2026-11-09, operator trace 1a1bf7086060b1bd
+    "re-check production"): ~25 min post-merge www.syllab-ai.com still served
+    run-001's build; first-hand cause on record — BOTH post-merge main tips
+    (c9316450 @08:15:50Z, 4e889ea7 @08:39:00Z) carry [failure] Vercel commit
+    statuses "syllabai-hub-v2 → why-is-my-account-deployment-blocked": the
+    git-triggered auto-bake path is account-blocked, not a one-off flake.
+    Remedy per the DONE-flip's documented first option: dispatched the hub
+    bake floor t-vercel-usage-bake.yml on main (workflow_dispatch run#12,
+    08:45:47Z → SUCCESS 09:01:24Z, ~15.6 min — the SHA-gated idempotent CLI
+    deploy bypasses ignoreCommand by design; the repo secret never touched
+    this lane; the empty-commit re-trigger was the rejected alternative —
+    git builds are the blocked path). Verified 22/22 (marker battery on the
+    SSR HTML): size-14 borderless tiles ×106, rounded-2xl ×107, text-[15px]
+    font-bold tracking-tight ×106, mixed-weight meta separator ×106, papers
+    tooltip ×59 in the full-ink count line, ZERO full-corpus pills /
+    rounded-full+uppercase pairs, import pending ×3 lowercase, Tutor ready
+    ×60, one h1, hero census 106/102/60/4,382, old size-12 ×0; route-gate
+    law intact (/courses public 200; /courses/<slug> 307 → /login?next=%2F…
+    session gate, Tier-0 signInHref contract; the trailing-slash variant
+    308-strips then gates identically — operator ruling option 1).
+    Screenshot evidence in the session download area
+    (prod-run002-{hero,cards}.png, 1440×1000). CONTEXT for the bake lane:
+    t-vercel-api-bake run#1 (the API floor) failed at its CLI deploy step
+    06:51Z — api.syllab-ai.com stale since Nov 4, unaddressed here.
+    PAT rotation NINTH filing — still outstanding.
 base:
   repo: "syllabai-v2 @ a3561bd1 (origin/main at claim; local clone re-synced after a sandbox recycle reverted it to the 1dd5335 snapshot — stale worklog state verified byte-identical upstream and kept in a local stash, disclosed)"
 basis: >

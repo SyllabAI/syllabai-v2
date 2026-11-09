@@ -1926,4 +1926,46 @@ Stage Summary:
 - The tripwire's design goal proved itself on run one: the first real anomaly surfaced itself instead of waiting for an SME who does not exist yet. The el20/el25 anchor repairs belong to the owning lane; the queue holds them highest-priority.
 - Open queue: PAT refile -> push + PR; el20/el25 F8.1/F8.5 repairs (RN-DEBRIS-11 / exporter lane); T1 affordance (spec phase 1) still unimplemented — telemetry sections stay honestly empty until it ships.
 - Landing (same day, PAT refiled): full-fetch collision found (remote run-003 = spec Phase 1, open PR #877, own run-003.md receipt) -> the unlanded bytes of this run renumbered run-003 -> run-004 before first push; branch t-kg-tripwire-1/run-004 pushed (tip c1f19026); PR #883 opened (base main) — operator merges, no self-merge; PAT rotation reminder re-filed (this PAT also chat-exposed).
+
+## T-HUB-COURSES-UI-2 run-002 PRODUCTION PICKUP (2026-11-09) — watch item CLOSED: git auto-bake account-blocked, the documented bake-lane floor fired and verified (operator order "re-check production", trace 1a1bf7086060b1bd)
+
+- RE-CHECK (~25 min post-merge): www.syllab-ai.com/courses still served the run-001-era build
+  (size-12 ×106, text-sm font-semibold ×122, zero run-002 markers; import pending ×3, Tutor
+  ready ×60, hero census intact). First-hand cause on record: BOTH post-merge main tips carry a
+  [failure] Vercel commit status "syllabai-hub-v2 → why-is-my-account-deployment-blocked"
+  (c9316450 @08:15:50Z, 4e889ea7 @08:39:00Z) — the git-triggered auto-bake path is
+  account-blocked, not a one-off flake.
+- REMEDY (the DONE-flip's documented first option, "the bake lane's SHA-tagged floor"):
+  dispatched .github/workflows/t-vercel-usage-bake.yml on main (workflow_dispatch run#12,
+  idempotent SHA-gated, at most ONE prod deployment, VERCEL_BAKE_TOKEN stays a repo secret —
+  no token in this lane's hands). Run 08:45:47Z → SUCCESS 09:01:24Z (~15.6 min); the CLI deploy
+  bypasses ignoreCommand by design and proves the account still admits CLI deploys while git
+  builds are blocked. The empty-commit re-trigger was the rejected alternative: git builds ARE
+  the blocked path, so a re-trigger would fail identically and pollute main.
+- PRODUCTION VERIFIED 22/22 (marker battery on the SSR HTML, scripts/verify_prod_courses.py in
+  the session area): run-002 markers LIVE on www.syllab-ai.com/courses — size-14 borderless
+  tiles ×106, rounded-2xl ×107, text-[15px] font-bold tracking-tight ×106, mixed-weight meta
+  separator ×106, papers tooltip ×59 inside the full-ink count line, ZERO full-corpus pills /
+  rounded-full+uppercase pairs, import pending ×3 lowercase, Tutor ready ×60, one h1, hero
+  census 106/102/60/4,382, old size-12 gone (×0). Route-gate law intact: /courses public 200;
+  /courses/<slug> 307 → /login?next=%2F… (session gate, Tier-0 signInHref contract); the
+  trailing-slash variant 308-strips to the bare path (Next normalization) then gates
+  identically — "the directory is public, the courses themselves are not" (operator ruling
+  option 1, route-gate.test). Screenshot evidence in the session download area
+  (prod-run002-{hero,cards}.png, 1440×1000).
+- CONTEXT for the bake lane (adjacent, NOT touched here): t-vercel-api-bake run#1 (the API
+  floor, #898) FAILED at its CLI deploy step 06:51Z — api.syllab-ai.com remains stale since
+  Nov 4; whether the account-level block hits the API project's CLI deploys too is the bake
+  lane's / operator's call.
+- Bookkeeping: yaml status + the execution_record closure paragraph + this entry in both
+  worklogs. Ledger-only, zero code/content. .syllabai-only direct-main, fetch-first, no force.
+- Standing reminder (NINTH filing): the PAT remains exposed from chat transmission and MUST be
+  revoked/rotated.
+
+Stage Summary:
+- The run-002 card design is LIVE of record: production serves borderless size-14 tiles, bold
+  15px titles, mixed-weight meta, papers inside the full-ink count line, zero full-corpus pills
+  — verified 22/22 against www.syllab-ai.com. The dropped git auto-bake was remedied by the
+  documented bake-lane floor (run#12, success). One thread hands off to the bake lane: the
+  account-level git-build block + the API floor's failed CLI deploy.
 - MERGED (operator order "review+merge #883", trace 1a1bf5bf6a023e39): merge commit 9c6dd883 on main; review pass of record in the receipt (scope/stdlib/L1-L2/schema/byte-empty/idempotence byte-identical 980->980/CI green on 5a210374); six landing loops, Phase 1 (#877) merged as run-003 during the chase; sixth sandbox recycle rebuilt from the session-refiled PAT — rotation reminder sixth filing this lane.

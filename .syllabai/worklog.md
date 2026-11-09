@@ -2161,4 +2161,82 @@ Stage Summary:
 - Acceptance ALL PASS (independently re-verified): section-6 schema header byte-equal; verdict/reviewer/review_date byte-empty 3/3; append-only byte-assert PASS and same-day re-run appended 0 bytes (dedup by already-OPEN, the queue is a work queue not a log); calibration cohort + all four confounds present; prereqValidated 0/106 by JSON-parse walk; git delta scope scripts/ + .syllabai/ only; zero content/public/label bytes.
 - Environment: fifth sandbox recycle (everything rebuilt); PAT lost with it — branch t-kg-tripwire-1/run-004 is local of record, push+PR commands handed to the operator; PAT rotation reminder fifth filing (chat-transit exposure still unrotated).
 - Landing (same day): PAT refiled; full-fetch collision with the Phase 1 lane (remote branch run-003 = open PR #877 with its own run-003.md receipt) resolved by renumbering this run run-003 -> run-004 BEFORE first push (no facts/traces/artifacts changed, Phase 1 branch untouched — fetch-first no force); branch t-kg-tripwire-1/run-004 pushed (tip c1f19026); PR #883 opened — operator merges, no self-merge; PAT rotation reminder re-filed (this PAT also chat-transited).
+
+
+## T-HUB-COURSES-UI-2 run-002 PRODUCTION PICKUP (2026-11-09) — watch item CLOSED: git auto-bake account-blocked, the documented bake-lane floor fired and verified (operator order "re-check production", trace 1a1bf7086060b1bd)
+
+- RE-CHECK (~25 min post-merge): www.syllab-ai.com/courses still served the run-001-era build
+  (size-12 ×106, text-sm font-semibold ×122, zero run-002 markers; import pending ×3, Tutor
+  ready ×60, hero census intact). First-hand cause on record: BOTH post-merge main tips carry a
+  [failure] Vercel commit status "syllabai-hub-v2 → why-is-my-account-deployment-blocked"
+  (c9316450 @08:15:50Z, 4e889ea7 @08:39:00Z) — the git-triggered auto-bake path is
+  account-blocked, not a one-off flake.
+- REMEDY (the DONE-flip's documented first option, "the bake lane's SHA-tagged floor"):
+  dispatched .github/workflows/t-vercel-usage-bake.yml on main (workflow_dispatch run#12,
+  idempotent SHA-gated, at most ONE prod deployment, VERCEL_BAKE_TOKEN stays a repo secret —
+  no token in this lane's hands). Run 08:45:47Z → SUCCESS 09:01:24Z (~15.6 min); the CLI deploy
+  bypasses ignoreCommand by design and proves the account still admits CLI deploys while git
+  builds are blocked. The empty-commit re-trigger was the rejected alternative: git builds ARE
+  the blocked path, so a re-trigger would fail identically and pollute main.
+- PRODUCTION VERIFIED 22/22 (marker battery on the SSR HTML, scripts/verify_prod_courses.py in
+  the session area): run-002 markers LIVE on www.syllab-ai.com/courses — size-14 borderless
+  tiles ×106, rounded-2xl ×107, text-[15px] font-bold tracking-tight ×106, mixed-weight meta
+  separator ×106, papers tooltip ×59 inside the full-ink count line, ZERO full-corpus pills /
+  rounded-full+uppercase pairs, import pending ×3 lowercase, Tutor ready ×60, one h1, hero
+  census 106/102/60/4,382, old size-12 gone (×0). Route-gate law intact: /courses public 200;
+  /courses/<slug> 307 → /login?next=%2F… (session gate, Tier-0 signInHref contract); the
+  trailing-slash variant 308-strips to the bare path (Next normalization) then gates
+  identically — "the directory is public, the courses themselves are not" (operator ruling
+  option 1, route-gate.test). Screenshot evidence in the session download area
+  (prod-run002-{hero,cards}.png, 1440×1000).
+- CONTEXT for the bake lane (adjacent, NOT touched here): t-vercel-api-bake run#1 (the API
+  floor, #898) FAILED at its CLI deploy step 06:51Z — api.syllab-ai.com remains stale since
+  Nov 4; whether the account-level block hits the API project's CLI deploys too is the bake
+  lane's / operator's call.
+- Bookkeeping: yaml status + the execution_record closure paragraph + this entry in both
+  worklogs. Ledger-only, zero code/content. .syllabai-only direct-main, fetch-first, no force.
+- Standing reminder (NINTH filing): the PAT remains exposed from chat transmission and MUST be
+  revoked/rotated.
+
+Stage Summary:
+- The run-002 card design is LIVE of record: production serves borderless size-14 tiles, bold
+  15px titles, mixed-weight meta, papers inside the full-ink count line, zero full-corpus pills
+  — verified 22/22 against www.syllab-ai.com. The dropped git auto-bake was remedied by the
+  documented bake-lane floor (run#12, success). One thread hands off to the bake lane: the
+  account-level git-build block + the API floor's failed CLI deploy.
+
+## ADR-044 run-001 (2026-11-09) — the editor role & the content workbench: the design of record filed
+
+- Operator order: "Re-file the spec where it counts" (trace 1a1bf9b23f1d45a9) — re-filing the
+  editor-role engagement after its sandbox artifacts were lost to a workspace recycle; the design
+  itself survived in the session of record and is now the repo's law candidate.
+- THE ADR (docs/ADR-044-EDITOR_ROLE_CONTENT_WORKBENCH.md, PROPOSED -> ACCEPTED on merge): E-0 — the
+  serving plane is never directly editable; every human edit flows corpus -> gates -> tiered merge ->
+  receipt -> census -> serve. Editor = v2-native grant plane (editor_grants rows; the frozen Role
+  enum { STUDENT, TEACHER, ADMIN } untouched — zero capture-band divergence, the workspace-docs
+  class), requireEditor shell per the teacher-me class (401 before everything, 403 otherwise), the
+  capability matrix strictly content-scoped (no platform powers; composable with TEACHER), the
+  server-side tier classifier (Tier 1 typography auto-merge on green — the operator ruling of
+  record; Tier 2 content-bearing four-eyes via G-EYES author-independence + post-merge census
+  receipt; Tier 3 structural refused to the lane process), the gate engine as ONE module consumed
+  twice (hub pre-flight + CI gates; families G-CANON / G-SER / G-FIELD / G-CHAR / G-ASSET / G-EYES
+  / G-SCOPE), the data plane carded at packages/db/drizzle/0028_editor-planes.sql (next free after
+  0027_mark-award-delta; editor_edit_proposals + editor_edit_receipts per the 0022/0023
+  personal-state law; the F5-S7 grants lane as a Phase 1 exit criterion; caps per T-CAPS-POLICY-1),
+  /api/v1/editor/* v2-native additive with NO editor-reachable serve/merge endpoint, phasing 0-4,
+  and the negative space of record (no free-text AI rewrite passes over banks, no direct plane
+  writes, no edits without PRs, no per-field locking, no self-merge above Tier 1).
+- Rulings carried verbatim from the originating session: Tier 1 auto-merge acceptable; scope = all
+  banks at once and future ones (no per-bank entitlement list); the role is named "editor"; holders
+  internal + external. Re-rulings amend the ADR in public; they never re-interpret it silently.
+- Evidence: grounding reads from live main at filing time (auth.ts frozen Role pin /
+  content-writes.ts teacher-ingestion band / middleware auth shell / identity.ts derived mapping /
+  the docs/ ADR series 037-043 with ADR-044 next free / drizzle 0000-0027 with 0028 next free);
+  the reference MVP's verified golden path (API 20/20, browser 10/10, lint clean, real
+  syllabai-resources fixtures incl. the three wave-D-repaired physics questions) recorded as
+  companion evidence.
+- Docs-only, zero src/test bytes; PR opened against main, NOT self-merged per house law. Receipt:
+  .syllabai/receipts/ADR-044/run-001-spec-of-record.md. Circulation copy (md + docx + pdf)
+  regenerated outside the repo at download/editor-role/. Standing reminder (TENTH filing): the PAT
+  remains exposed from chat transmission and MUST be revoked/rotated.
 - MERGED (same trace): PR #883 -> main 9c6dd883 on the operator explicit order; review pass recorded in the receipt landing addendum; landing loops 1-6 (worklog union-merge each time, append-only law); Phase 1 landed as run-003 during the chase; sixth sandbox recycle — rotation reminder sixth filing this lane.
