@@ -1,0 +1,496 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sMDdXt3jtZzq5k7b",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "bfc6e9c886c4d790dffa106cf6eb1e4a8a2ff22311ec7582d4e98df0ba9ec0f4",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_sMDdXt3jtZzq5k7b",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q1",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "Which statement about radioactive decay is true?",
+      "misconceptionClass": "decay recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the timing of a single nucleus’s decay cannot be predicted",
+          "correct": true,
+          "explanation": "Decay is a random process — no prediction is possible for one nucleus.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "scientists can predict when each nucleus will decay",
+          "correct": false,
+          "explanation": "Randomness forbids per-nucleus prediction.",
+          "misconception": "predictability myth"
+        },
+        {
+          "key": "C",
+          "text": "decay happens only in artificial sources",
+          "correct": false,
+          "explanation": "Unstable nuclei decay wherever they are, natural or not.",
+          "misconception": "artificial only"
+        },
+        {
+          "key": "D",
+          "text": "decay always emits all three radiations at once",
+          "correct": false,
+          "explanation": "A given decay emits one type (or a subset), not necessarily all three.",
+          "misconception": "triple emission"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q2",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "What causes a nucleus to be unstable?",
+      "misconceptionClass": "stability recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "absorbing visible light",
+          "correct": false,
+          "explanation": "Decay needs no external light — it is spontaneous.",
+          "misconception": "light trigger"
+        },
+        {
+          "key": "B",
+          "text": "an imbalance of protons or neutrons",
+          "correct": true,
+          "explanation": "The proton-neutron balance is what the nucleus is sensitive to.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "too many orbiting electrons",
+          "correct": false,
+          "explanation": "Electrons do not destabilise the nucleus.",
+          "misconception": "electron cause"
+        },
+        {
+          "key": "D",
+          "text": "a high atomic radius",
+          "correct": false,
+          "explanation": "Nuclear stability is unrelated to the atomic radius.",
+          "misconception": "radius cause"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q3",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "Why is carbon-14 unstable while carbon-12 is stable?",
+      "misconceptionClass": "isotope stability",
+      "options": [
+        {
+          "key": "A",
+          "text": "carbon-12 is ionised",
+          "correct": false,
+          "explanation": "Stability is not about ionisation.",
+          "misconception": "ionisation cause"
+        },
+        {
+          "key": "B",
+          "text": "carbon-14 has lost electrons",
+          "correct": false,
+          "explanation": "Electron count is irrelevant to nuclear stability.",
+          "misconception": "electron cause"
+        },
+        {
+          "key": "C",
+          "text": "carbon-14 carries two extra neutrons",
+          "correct": true,
+          "explanation": "The two additional neutrons unbalance the nucleus.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "carbon-14 has extra protons",
+          "correct": false,
+          "explanation": "Both carbon isotopes have 6 protons.",
+          "misconception": "proton difference"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q4",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "What happens to a nucleus when it emits radiation?",
+      "misconceptionClass": "decay reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it becomes more unstable",
+          "correct": false,
+          "explanation": "Decay is the route towards stability.",
+          "misconception": "stability inversion"
+        },
+        {
+          "key": "B",
+          "text": "it disappears entirely",
+          "correct": false,
+          "explanation": "The nucleus remains, transformed.",
+          "misconception": "annihilation myth"
+        },
+        {
+          "key": "C",
+          "text": "it absorbs the radiation back",
+          "correct": false,
+          "explanation": "Emission, not absorption, defines decay.",
+          "misconception": "absorption swap"
+        },
+        {
+          "key": "D",
+          "text": "it becomes more stable",
+          "correct": true,
+          "explanation": "The emission carries energy away, settling the nucleus.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q5",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "Radiation from a decaying nucleus can be…",
+      "misconceptionClass": "emission recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a high-energy particle or a high-energy wave",
+          "correct": true,
+          "explanation": "Alpha and beta are particles; gamma is a wave of the electromagnetic kind.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "only particles",
+          "correct": false,
+          "explanation": "Gamma rays are waves, not particles.",
+          "misconception": "particle only"
+        },
+        {
+          "key": "C",
+          "text": "only waves",
+          "correct": false,
+          "explanation": "Alpha and beta are particles.",
+          "misconception": "wave only"
+        },
+        {
+          "key": "D",
+          "text": "slow, heavy atoms",
+          "correct": false,
+          "explanation": "The emissions are subatomic, not whole atoms.",
+          "misconception": "atom emission"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q6",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "Name the three types of radiation emitted from unstable nuclei.",
+      "misconceptionClass": "emission recall",
+      "kind": "recall",
+      "modelAnswer": "The three emissions are alpha particles, beta particles and gamma rays.",
+      "keywords": [
+        "alpha",
+        "beta",
+        "gamma",
+        "radiation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q7",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "Define radioactive decay.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Radioactive decay is the process in which an unstable nucleus emits radiation — a particle or wave — and becomes more stable.",
+      "keywords": [
+        "unstable",
+        "nucleus",
+        "emits",
+        "radiation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q8",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "Explain why it is impossible to state the moment when one particular unstable nucleus will decay.",
+      "misconceptionClass": "randomness reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Radioactive decay is a random process: each nucleus has a fixed chance of decaying in any interval, but nothing about its history or surroundings marks the exact moment.",
+      "keywords": [
+        "random",
+        "nucleus",
+        "decay",
+        "chance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L1::Q9",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L1",
+      "stem": "A student claims carbon-14 should be stable because it is carbon. Use the proton-neutron story to correct them.",
+      "misconceptionClass": "stability reasoning",
+      "kind": "application",
+      "modelAnswer": "Being carbon fixes 6 protons but not stability; carbon-14 has 8 neutrons, two more than the stable carbon-12, and that proton-neutron imbalance makes its nucleus unstable.",
+      "keywords": [
+        "carbon",
+        "protons",
+        "neutrons",
+        "unstable"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q1",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "What is an alpha particle identical to?",
+      "misconceptionClass": "nature recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "an electromagnetic wave",
+          "correct": false,
+          "explanation": "That is gamma radiation.",
+          "misconception": "gamma confusion"
+        },
+        {
+          "key": "B",
+          "text": "a helium nucleus",
+          "correct": true,
+          "explanation": "Alpha = 2 protons + 2 neutrons, the helium nucleus.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a hydrogen atom",
+          "correct": false,
+          "explanation": "Hydrogen has one proton — not the alpha composition.",
+          "misconception": "hydrogen confusion"
+        },
+        {
+          "key": "D",
+          "text": "a fast electron",
+          "correct": false,
+          "explanation": "That is a beta particle.",
+          "misconception": "beta confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q2",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "Which absorber stops beta particles?",
+      "misconceptionClass": "penetration recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a few centimetres of air only",
+          "correct": false,
+          "explanation": "Beta travels tens of centimetres in air.",
+          "misconception": "air stopping"
+        },
+        {
+          "key": "B",
+          "text": "nothing stops beta",
+          "correct": false,
+          "explanation": "Aluminium stops beta readily.",
+          "misconception": "unstoppable myth"
+        },
+        {
+          "key": "C",
+          "text": "a few millimetres of aluminium",
+          "correct": true,
+          "explanation": "Beta is stopped by several millimetres of aluminium.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a sheet of paper",
+          "correct": false,
+          "explanation": "Paper stops alpha; beta sails through.",
+          "misconception": "paper absorption"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q3",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "Which radiation has the greatest ionising power?",
+      "misconceptionClass": "ionising recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "beta",
+          "correct": false,
+          "explanation": "Beta ionises moderately.",
+          "misconception": "beta ranking"
+        },
+        {
+          "key": "B",
+          "text": "gamma",
+          "correct": false,
+          "explanation": "Gamma is the weakest ioniser.",
+          "misconception": "gamma ranking"
+        },
+        {
+          "key": "C",
+          "text": "they ionise equally",
+          "correct": false,
+          "explanation": "The three differ sharply in ionising ability.",
+          "misconception": "equal ionisation"
+        },
+        {
+          "key": "D",
+          "text": "alpha",
+          "correct": true,
+          "explanation": "Alpha is the most strongly ionising of the three.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q4",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "Gamma rays are best described as…",
+      "misconceptionClass": "nature recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "high-energy electromagnetic waves",
+          "correct": true,
+          "explanation": "Gamma is wave radiation with no mass or charge.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "helium nuclei",
+          "correct": false,
+          "explanation": "That is alpha.",
+          "misconception": "alpha confusion"
+        },
+        {
+          "key": "C",
+          "text": "fast neutrons",
+          "correct": false,
+          "explanation": "Neutron emission is a separate, rarer decay mode.",
+          "misconception": "neutron confusion"
+        },
+        {
+          "key": "D",
+          "text": "slow electrons",
+          "correct": false,
+          "explanation": "Beta electrons are fast, and gamma is not an electron at all.",
+          "misconception": "electron confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q5",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "A source’s count rate falls sharply behind 5 mm of aluminium but barely changes behind paper or 5 mm of lead. Which radiation is emitted?",
+      "misconceptionClass": "penetration reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "alpha, beta and gamma together",
+          "correct": false,
+          "explanation": "The paper result already rules alpha out.",
+          "misconception": "triple reading"
+        },
+        {
+          "key": "B",
+          "text": "beta only",
+          "correct": true,
+          "explanation": "Aluminium absorption identifies beta; paper and lead transparency exclude alpha and significant gamma.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "alpha only",
+          "correct": false,
+          "explanation": "Alpha would have been stopped by the paper.",
+          "misconception": "alpha reading"
+        },
+        {
+          "key": "D",
+          "text": "gamma only",
+          "correct": false,
+          "explanation": "Gamma would pass aluminium and be cut by thick lead.",
+          "misconception": "gamma reading"
+        }
+      ]
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q6",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "State what a beta particle is and how it is produced inside a nucleus.",
+      "misconceptionClass": "nature recall",
+      "kind": "recall",
+      "modelAnswer": "A beta particle is a high-energy electron, produced when a neutron in the nucleus changes into a proton and an electron.",
+      "keywords": [
+        "beta",
+        "electron",
+        "neutron",
+        "proton"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q7",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "Give the absorber that stops each of alpha, beta and gamma.",
+      "misconceptionClass": "penetration recall",
+      "kind": "recall",
+      "modelAnswer": "Alpha is stopped by paper, beta by a few millimetres of aluminium, and gamma is only reduced by several centimetres of lead.",
+      "keywords": [
+        "alpha",
+        "beta",
+        "gamma",
+        "aluminium"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q8",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "Explain why gamma is the most penetrating of the three radiations even though it is the weakest ioniser.",
+      "misconceptionClass": "penetration reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Gamma photons carry no charge and no mass, so they interact with matter only rarely; each interaction loses little energy, letting gamma travel far, while its weak interaction is also why it ionises least.",
+      "keywords": [
+        "gamma",
+        "penetrating",
+        "ionising",
+        "interact"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sMDdXt3jtZzq5k7b::L2::Q9",
+      "moduleId": "rn_sMDdXt3jtZzq5k7b::L2",
+      "stem": "Count rates behind absorbers are: bare 4320, paper 4318, 5 mm aluminium 256, 5 mm lead 244. Identify the radiation and justify each step.",
+      "misconceptionClass": "penetration application",
+      "kind": "application",
+      "modelAnswer": "Paper barely changes the count (4320 → 4318), so no alpha; aluminium cuts it sharply (4320 → 256), so beta is present; lead leaves a similar residual (244), so no significant gamma. The source emits beta.",
+      "keywords": [
+        "aluminium",
+        "beta",
+        "count",
+        "alpha",
+        "gamma"
+      ],
+      "options": []
+    }
+  ]
+}

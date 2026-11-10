@@ -210,10 +210,10 @@ function SectionBlock({
       </div>
       {segments.map((seg, i) =>
         seg.kind === "box" ? (
-          <Box key={i} type={seg.boxType ?? ""} md={rewriteGlossaryChips(seg.md)} />
+          <Box key={i} type={seg.boxType ?? ""} md={rewriteGlossaryChips(seg.md, glossary)} />
         ) : (
           <div key={i} className="text-[15px] leading-relaxed [&_p]:my-2.5 [&_ul]:my-2.5 [&_ol]:my-2.5">
-            <Markdown>{rewriteGlossaryChips(seg.md)}</Markdown>
+            <Markdown>{rewriteGlossaryChips(seg.md, glossary)}</Markdown>
           </div>
         ),
       )}

@@ -1,0 +1,1860 @@
+{
+ "manifest": "rn11-run-015-apply-manifest-r0",
+ "basis": "rn11_run015_mirror_sweep_r0.json sha256 f0bcce228f074445 (see sweep artifact header)",
+ "law": "spine.title := content.title, verbatim, node-identity by code+index; content-defect rows excluded (never propagate a wreck into the mirror)",
+ "classes": {
+  "reworded": 124,
+  "content_defect": 1,
+  "spine_glue": 33
+ },
+ "classRows": {
+  "reworded": [
+   "cie-a-level-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T10",
+   "cie-a-level-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T11",
+   "cie-a-level-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T13",
+   "cie-a-level-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T27",
+   "cie-a-level-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T29",
+   "cie-a-level-computer-science-19|SPEC_POINT|20.2.4",
+   "cie-a-level-maths-20-mechanics|TOPIC|cie-a-level-maths-2023-2025-T4",
+   "cie-a-level-maths-20-probability-and-statistics-1|TOPIC|cie-a-level-maths-2023-2025-T5",
+   "cie-a-level-maths-20-probability-and-statistics-2|TOPIC|cie-a-level-maths-2023-2025-T6",
+   "cie-a-level-maths-20-pure-1|TOPIC|cie-a-level-maths-2023-2025-T1",
+   "cie-a-level-maths-20-pure-2|TOPIC|cie-a-level-maths-2023-2025-T2",
+   "cie-a-level-maths-20-pure-3|TOPIC|cie-a-level-maths-2023-2025-T3",
+   "cie-as-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T10",
+   "cie-as-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T11",
+   "cie-as-chemistry-25|TOPIC|cie-a-level-chemistry-2025-2027-T13",
+   "cie-as-maths-20-mechanics|TOPIC|cie-a-level-maths-2023-2025-T4",
+   "cie-as-maths-20-probability-and-statistics-1|TOPIC|cie-a-level-maths-2023-2025-T5",
+   "cie-as-maths-20-pure-1|TOPIC|cie-a-level-maths-2023-2025-T1",
+   "cie-as-maths-20-pure-2|TOPIC|cie-a-level-maths-2023-2025-T2",
+   "cie-igcse-ict-21|SUBTOPIC|cie-igcse-ict-2023-2025-T6:SUB6.1",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TC1",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TC2",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TC3",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TC4",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TC5",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TC6",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TI1",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TI2",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TI3",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TI4",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TI5",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TI6",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TJ1",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TJ2",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TJ3",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TJ4",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TJ5",
+   "cie-igcse-religious-studies-23|TOPIC|cie-igcse-religious-studies-2025-2027-TJ6",
+   "ial-biology-18|TOPIC|ial-biology-T4",
+   "ial-biology-18|TOPIC|ial-biology-T7",
+   "ial-chemistry-17|TOPIC|ial-chemistry-T19",
+   "ial-chemistry-17|SUBTOPIC|ial-chemistry-T19:SUB_",
+   "igcse-biology-modular-24-unit-1|TOPIC|igcse-biology-modular-T2",
+   "igcse-biology-modular-24-unit-2|TOPIC|igcse-biology-modular-T3",
+   "igcse-business-19|TOPIC|igcse-business-T1.3",
+   "igcse-business-19|TOPIC|igcse-business-T1.5",
+   "igcse-business-19|TOPIC|igcse-business-T1.6",
+   "igcse-business-19|TOPIC|igcse-business-T1.8",
+   "igcse-business-19|TOPIC|igcse-business-T2.1",
+   "igcse-business-19|TOPIC|igcse-business-T2.2",
+   "igcse-business-19|TOPIC|igcse-business-T2.4",
+   "igcse-business-19|TOPIC|igcse-business-T2.5",
+   "igcse-business-19|TOPIC|igcse-business-T3.1",
+   "igcse-business-19|TOPIC|igcse-business-T3.3",
+   "igcse-business-19|TOPIC|igcse-business-T5.1",
+   "igcse-business-19|SUBTOPIC|igcse-business-T1.3:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T1.5:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T1.6:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T1.8:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T2.1:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T2.2:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T2.4:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T2.5:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T3.1:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T3.3:SUB_",
+   "igcse-business-19|SUBTOPIC|igcse-business-T5.1:SUB_",
+   "igcse-chemistry-modular-24-unit-1|TOPIC|igcse-chemistry-modular-T1",
+   "igcse-chemistry-modular-24-unit-1|TOPIC|igcse-chemistry-modular-T2",
+   "igcse-chemistry-modular-24-unit-1|TOPIC|igcse-chemistry-modular-T3",
+   "igcse-chemistry-modular-24-unit-1|TOPIC|igcse-chemistry-modular-T4",
+   "igcse-chemistry-modular-24-unit-2|TOPIC|igcse-chemistry-modular-T5",
+   "igcse-chemistry-modular-24-unit-2|TOPIC|igcse-chemistry-modular-T6",
+   "igcse-chemistry-modular-24-unit-2|TOPIC|igcse-chemistry-modular-T7",
+   "igcse-chemistry-modular-24-unit-2|TOPIC|igcse-chemistry-modular-T8",
+   "igcse-economics-17|SPEC_POINT|1.2.6d",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T1:SUB1.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T1:SUB1.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T1:SUB1.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T2:SUB2.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T2:SUB2.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T2:SUB2.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T3:SUB1.4",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T3:SUB2.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T3:SUB3.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T3:SUB3.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T3:SUB3.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T4:SUB4.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T4:SUB4.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T4:SUB4.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T5:SUB5.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T5:SUB5.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T5:SUB5.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T6:SUB2.4",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T6:SUB6.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T6:SUB6.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T6:SUB6.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T7:SUB7.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T7:SUB7.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T7:SUB7.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T8:SUB8.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T8:SUB8.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T8:SUB8.3",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T9:SUB_",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T9:SUB9.1",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T9:SUB9.2",
+   "igcse-geography-19|SUBTOPIC|igcse-geography-T9:SUB9.3",
+   "igcse-ict-17|SPEC_POINT|2.4.4",
+   "igcse-maths-a-18-foundation|SPEC_POINT|1.9A",
+   "igcse-maths-a-18-higher|SPEC_POINT|1.1G",
+   "igcse-maths-a-18-higher|SPEC_POINT|2.2F",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.2D",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.3A",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.3E",
+   "igcse-maths-a-18-higher|SPEC_POINT|4.8E",
+   "igcse-maths-a-modular-24-foundation-unit-2|SPEC_POINT|1.9A",
+   "igcse-maths-a-modular-24-higher-unit-1|SPEC_POINT|2.2F",
+   "igcse-maths-a-modular-24-higher-unit-1|SPEC_POINT|3.3A",
+   "igcse-maths-a-modular-24-higher-unit-1|SPEC_POINT|4.8E",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|3.2D",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|3.3E",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|5.2M",
+   "igcse-maths-b-16|SPEC_POINT|4J",
+   "igcse-physics-modular-24-unit-1|TOPIC|igcse-physics-modular-T4",
+   "igcse-physics-modular-24-unit-2|TOPIC|igcse-physics-modular-T6"
+  ],
+  "content_defect": [
+   "cie-as-maths-20-pure-2|SPEC_POINT|2.3.2"
+  ],
+  "spine_glue": [
+   "cie-igcse-religious-studies-23|SUBTOPIC|cie-igcse-religious-studies-2025-2027-TI2:SUBI2.5",
+   "cie-igcse-religious-studies-23|SUBTOPIC|cie-igcse-religious-studies-2025-2027-TI2:SUBI2.6",
+   "cie-igcse-religious-studies-23|SUBTOPIC|cie-igcse-religious-studies-2025-2027-TI3:SUBI3.3",
+   "cie-igcse-religious-studies-23|SUBTOPIC|cie-igcse-religious-studies-2025-2027-TI4:SUBI4.1",
+   "cie-igcse-religious-studies-23|SUBTOPIC|cie-igcse-religious-studies-2025-2027-TI4:SUBI4.3",
+   "cie-igcse-religious-studies-23|SUBTOPIC|cie-igcse-religious-studies-2025-2027-TI6:SUBI6.2",
+   "igcse-maths-a-18-higher|SPEC_POINT|1.5C",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.1A",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.1B",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.1C",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.2B",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.3B",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.3H",
+   "igcse-maths-a-18-higher|SPEC_POINT|3.4B",
+   "igcse-maths-a-18-higher|SPEC_POINT|4.6C",
+   "igcse-maths-a-18-higher|SPEC_POINT|5.2C",
+   "igcse-maths-a-modular-24-foundation-unit-1|SPEC_POINT|1.6A",
+   "igcse-maths-a-modular-24-foundation-unit-1|SPEC_POINT|1.8A",
+   "igcse-maths-a-modular-24-foundation-unit-2|SPEC_POINT|5.2C",
+   "igcse-maths-a-modular-24-higher-unit-1|SPEC_POINT|1.5C",
+   "igcse-maths-a-modular-24-higher-unit-1|SPEC_POINT|1.6A",
+   "igcse-maths-a-modular-24-higher-unit-1|SPEC_POINT|3.3C",
+   "igcse-maths-a-modular-24-higher-unit-1|SPEC_POINT|3.3H",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|3.1A",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|3.1B",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|3.1C",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|3.2B",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|3.4B",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|4.6C",
+   "igcse-maths-a-modular-24-higher-unit-2|SPEC_POINT|5.2C",
+   "igcse-maths-b-16|SPEC_POINT|5F",
+   "igcse-physics-modular-24-unit-1|SPEC_POINT|1.10",
+   "igcse-science-double-award-modular-24-physics-unit-1|SPEC_POINT|1.10"
+  ]
+ },
+ "applyRows": [
+  {
+   "slug": "cie-a-level-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T10",
+   "oldSpineTitle": "Group",
+   "newSpineTitle": "Group 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T11",
+   "oldSpineTitle": "Group",
+   "newSpineTitle": "Group 17",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T13",
+   "oldSpineTitle": "Nitrogen and sulfur",
+   "newSpineTitle": "An introduction to AS Level organic chemistry",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T27",
+   "oldSpineTitle": "Group",
+   "newSpineTitle": "Group 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T29",
+   "oldSpineTitle": "Chemistry of transition elements",
+   "newSpineTitle": "An introduction to A Level organic chemistry",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-computer-science-19",
+   "family": "SPEC_POINT",
+   "code": "20.2.4",
+   "oldSpineTitle": "Hardware Candidates need to have access to a system with direct-access file capability on backing store and hardcopy facilities.",
+   "newSpineTitle": "Hardware Candidates need to have access to a system with direct-access file capability on backing store and hard-copy facilities.",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-maths-20-mechanics",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T4",
+   "oldSpineTitle": "Pure Mathematics",
+   "newSpineTitle": "Mechanics",
+   "shrinkReview": true,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-maths-20-probability-and-statistics-1",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T5",
+   "oldSpineTitle": "Mechanics",
+   "newSpineTitle": "Probability & Statistics 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-maths-20-probability-and-statistics-2",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T6",
+   "oldSpineTitle": "Probability & Statistics",
+   "newSpineTitle": "Probability & Statistics 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-1",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T1",
+   "oldSpineTitle": "Pure Mathematics",
+   "newSpineTitle": "Pure Mathematics 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-2",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T2",
+   "oldSpineTitle": "Pure Mathematics",
+   "newSpineTitle": "Pure Mathematics 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-3",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T3",
+   "oldSpineTitle": "Pure Mathematics",
+   "newSpineTitle": "Pure Mathematics 3",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-as-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T10",
+   "oldSpineTitle": "Group",
+   "newSpineTitle": "Group 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-as-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T11",
+   "oldSpineTitle": "Group",
+   "newSpineTitle": "Group 17",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-as-chemistry-25",
+   "family": "TOPIC",
+   "code": "cie-a-level-chemistry-2025-2027-T13",
+   "oldSpineTitle": "Nitrogen and sulfur",
+   "newSpineTitle": "An introduction to AS Level organic chemistry",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-as-maths-20-mechanics",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T4",
+   "oldSpineTitle": "Pure Mathematics",
+   "newSpineTitle": "Mechanics",
+   "shrinkReview": true,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-as-maths-20-probability-and-statistics-1",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T5",
+   "oldSpineTitle": "Mechanics",
+   "newSpineTitle": "Probability & Statistics 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-as-maths-20-pure-1",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T1",
+   "oldSpineTitle": "Pure Mathematics",
+   "newSpineTitle": "Pure Mathematics 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-as-maths-20-pure-2",
+   "family": "TOPIC",
+   "code": "cie-a-level-maths-2023-2025-T2",
+   "oldSpineTitle": "Pure Mathematics",
+   "newSpineTitle": "Pure Mathematics 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-ict-21",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-ict-2023-2025-T6:SUB6.1",
+   "oldSpineTitle": "Communication",
+   "newSpineTitle": "Communication applications",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TC1",
+   "oldSpineTitle": "Worship",
+   "newSpineTitle": "Christian Worship",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TC2",
+   "oldSpineTitle": "Beliefs and scriptures",
+   "newSpineTitle": "Christian Beliefs & Scriptures",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TC3",
+   "oldSpineTitle": "Sacred places – places of pilgrimage and of religious importance",
+   "newSpineTitle": "Christian Sacred Places",
+   "shrinkReview": true,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TC4",
+   "oldSpineTitle": "Festivals and fasts",
+   "newSpineTitle": "Christian Festivals & Fasts",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TC5",
+   "oldSpineTitle": "Rites of passage; religion and the family",
+   "newSpineTitle": "Christian Rites of Passage & Family Life",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TC6",
+   "oldSpineTitle": "Religion and social action",
+   "newSpineTitle": "Christianity & Social Action",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI1",
+   "oldSpineTitle": "Worship",
+   "newSpineTitle": "Islam & Worship",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI2",
+   "oldSpineTitle": "Beliefs and scriptures",
+   "newSpineTitle": "Islamic Beliefs & Scriptures",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI3",
+   "oldSpineTitle": "Sacred places – places of pilgrimage and of religious importance",
+   "newSpineTitle": "Islamic Sacred Places",
+   "shrinkReview": true,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI4",
+   "oldSpineTitle": "Festivals and fasts",
+   "newSpineTitle": "Islamic Festivals & Fasts",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI5",
+   "oldSpineTitle": "Rites of passage; religion and the family",
+   "newSpineTitle": "Islamic Rites of Passage & Family Life",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI6",
+   "oldSpineTitle": "Religion and social action",
+   "newSpineTitle": "Islam & Social Action",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TJ1",
+   "oldSpineTitle": "Worship",
+   "newSpineTitle": "Judaism & Worship",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TJ2",
+   "oldSpineTitle": "Beliefs and scriptures",
+   "newSpineTitle": "Jewish Beliefs & Scriptures",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TJ3",
+   "oldSpineTitle": "Sacred places – places of pilgrimage and of religious importance",
+   "newSpineTitle": "Jewish Places of Pilgrimage",
+   "shrinkReview": true,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TJ4",
+   "oldSpineTitle": "Festivals and fasts",
+   "newSpineTitle": "Jewish Festivals & Fasts",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TJ5",
+   "oldSpineTitle": "Rites of passage; religion and the family",
+   "newSpineTitle": "Jewish Rites of Passage & Family Life",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "TOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TJ6",
+   "oldSpineTitle": "Religion and social action",
+   "newSpineTitle": "Judaism & Social Action",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI2:SUBI2.5",
+   "oldSpineTitle": "The development of Islam; origins of Sunni and Shi ʿ ah",
+   "newSpineTitle": "The development of Islam; origins of Sunni and Shiʿah",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI2:SUBI2.6",
+   "oldSpineTitle": "The Qur ʾ an; different ways in which Muslims understand and interpret it",
+   "newSpineTitle": "The Qurʾan; different ways in which Muslims understand and interpret it",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI3:SUBI3.3",
+   "oldSpineTitle": "ʿ Umrah",
+   "newSpineTitle": "ʿUmrah",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI4:SUBI4.1",
+   "oldSpineTitle": "ʿ Id al-Adha (feast of sacrifice)",
+   "newSpineTitle": "ʿId al-Adha (feast of sacrifice)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI4:SUBI4.3",
+   "oldSpineTitle": "ʿ Id al-Fitr (the end of Ramadan)",
+   "newSpineTitle": "ʿId al-Fitr (the end of Ramadan)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "cie-igcse-religious-studies-23",
+   "family": "SUBTOPIC",
+   "code": "cie-igcse-religious-studies-2025-2027-TI6:SUBI6.2",
+   "oldSpineTitle": "Shari ʿ ah (‘straight path’) as a code of behaviour and ethics for Muslims; as a legal system",
+   "newSpineTitle": "Shariʿah (‘straight path’) as a code of behaviour and ethics for Muslims; as a legal system",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-T4",
+   "oldSpineTitle": "Plant Structure and Function, Biodiversity",
+   "newSpineTitle": "Plant Structure and Function, Biodiversity & Conservation",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "ial-biology-18",
+   "family": "TOPIC",
+   "code": "ial-biology-T7",
+   "oldSpineTitle": "Respiration, Muscles and the Internal",
+   "newSpineTitle": "Respiration, Muscles and the Internal Environment",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "TOPIC",
+   "code": "ial-chemistry-T19",
+   "oldSpineTitle": "Organic Nitrogen Compounds: Amines, Amides,",
+   "newSpineTitle": "Organic Nitrogen Compounds: Amines, Amides, Amino Acids and Proteins",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "family": "SUBTOPIC",
+   "code": "ial-chemistry-T19:SUB_",
+   "oldSpineTitle": "Organic Nitrogen Compounds: Amines, Amides,",
+   "newSpineTitle": "Organic Nitrogen Compounds: Amines, Amides, Amino Acids and Proteins",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-biology-modular-24-unit-1",
+   "family": "TOPIC",
+   "code": "igcse-biology-modular-T2",
+   "oldSpineTitle": "Structure and functions in living organisms: Part",
+   "newSpineTitle": "Structure and functions in living organisms: Part 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-biology-modular-24-unit-2",
+   "family": "TOPIC",
+   "code": "igcse-biology-modular-T3",
+   "oldSpineTitle": "Structure and functions in living organisms: Part",
+   "newSpineTitle": "Structure and functions in living organisms: Part 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T1.3",
+   "oldSpineTitle": "Classification of",
+   "newSpineTitle": "Classification of businesses",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T1.5",
+   "oldSpineTitle": "Business and the",
+   "newSpineTitle": "Business and the international economy",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T1.6",
+   "oldSpineTitle": "Government objectives",
+   "newSpineTitle": "Government objectives and policies",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T1.8",
+   "oldSpineTitle": "What makes a",
+   "newSpineTitle": "What makes a business successful?",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T2.1",
+   "oldSpineTitle": "Internal and external",
+   "newSpineTitle": "Internal and external communication",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T2.2",
+   "oldSpineTitle": "Recruitment and",
+   "newSpineTitle": "Recruitment and selection process",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T2.4",
+   "oldSpineTitle": "Motivation and",
+   "newSpineTitle": "Motivation and rewards",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T2.5",
+   "oldSpineTitle": "Organisation structure",
+   "newSpineTitle": "Organisation structure and employees",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T3.1",
+   "oldSpineTitle": "Business finance –",
+   "newSpineTitle": "Business finance – sources",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T3.3",
+   "oldSpineTitle": "Costs and break-even",
+   "newSpineTitle": "Costs and break-even analysis",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "TOPIC",
+   "code": "igcse-business-T5.1",
+   "oldSpineTitle": "Economies and",
+   "newSpineTitle": "Economies and diseconomies of scale",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T1.3:SUB_",
+   "oldSpineTitle": "Classification of",
+   "newSpineTitle": "Classification of businesses",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T1.5:SUB_",
+   "oldSpineTitle": "Business and the",
+   "newSpineTitle": "Business and the international economy",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T1.6:SUB_",
+   "oldSpineTitle": "Government objectives",
+   "newSpineTitle": "Government objectives and policies",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T1.8:SUB_",
+   "oldSpineTitle": "What makes a",
+   "newSpineTitle": "What makes a business successful?",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T2.1:SUB_",
+   "oldSpineTitle": "Internal and external",
+   "newSpineTitle": "Internal and external communication",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T2.2:SUB_",
+   "oldSpineTitle": "Recruitment and",
+   "newSpineTitle": "Recruitment and selection process",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T2.4:SUB_",
+   "oldSpineTitle": "Motivation and",
+   "newSpineTitle": "Motivation and rewards",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T2.5:SUB_",
+   "oldSpineTitle": "Organisation structure",
+   "newSpineTitle": "Organisation structure and employees",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T3.1:SUB_",
+   "oldSpineTitle": "Business finance –",
+   "newSpineTitle": "Business finance – sources",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T3.3:SUB_",
+   "oldSpineTitle": "Costs and break-even",
+   "newSpineTitle": "Costs and break-even analysis",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-business-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-business-T5.1:SUB_",
+   "oldSpineTitle": "Economies and",
+   "newSpineTitle": "Economies and diseconomies of scale",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-1",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T1",
+   "oldSpineTitle": "Principles of chemistry: Part",
+   "newSpineTitle": "Principles of chemistry: Part 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-1",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T2",
+   "oldSpineTitle": "Inorganic chemistry: Part",
+   "newSpineTitle": "Inorganic chemistry: Part 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-1",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T3",
+   "oldSpineTitle": "Physical chemistry: Part",
+   "newSpineTitle": "Physical chemistry: Part 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-1",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T4",
+   "oldSpineTitle": "Organic chemistry: Part",
+   "newSpineTitle": "Organic chemistry: Part 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-2",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T5",
+   "oldSpineTitle": "Principles of chemistry: Part",
+   "newSpineTitle": "Principles of chemistry: Part 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-2",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T6",
+   "oldSpineTitle": "Inorganic chemistry: Part",
+   "newSpineTitle": "Inorganic chemistry: Part 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-2",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T7",
+   "oldSpineTitle": "Physical chemistry: Part",
+   "newSpineTitle": "Physical chemistry: Part 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-2",
+   "family": "TOPIC",
+   "code": "igcse-chemistry-modular-T8",
+   "oldSpineTitle": "Organic chemistry: Part",
+   "newSpineTitle": "Organic chemistry: Part 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-economics-17",
+   "family": "SPEC_POINT",
+   "code": "1.2.6d",
+   "oldSpineTitle": "Government intervention in the labour market: of a minimum wage and the increase of a minimum wage.: • reasons for minimum wage • advantages and disadvantages of minimum wage • the use of diagrams to show impact of the introduction • low inflation • low unemployment • increases in economic growth • surpluses or equilibrium on the current account of the balance of • redistribution of income • environmental protection. • Examination of 1 hour and 30 minutes, set and marked by Pearson. • Single tier of entry. • The assessment is out of 80 marks, which will be converted to UMS. • The examination consists of four compulsory questions, each worth • Each question will be based on a particular topic from the subject • This unit is available as a paper-based or onscreen assessment.",
+   "newSpineTitle": "Government intervention in the labour market: of a minimum wage and the increase of a minimum wage.: • reasons for minimum wage • advantages and disadvantages of minimum wage • the use of diagrams to show impact of the introduction • low inflation • low unemployment • increases in economic growth • surpluses or equilibrium on the current account of the balance of • redistribution of income • environmental protection. • Examination of 1 hour and 30 minutes, set and marked by Pearson. • Single tier of entry. • The assessment is out of 80 marks, which will be converted to UMS. • The examination consists of four compulsory questions, each worth • Each question will be based on a particular topic from the subject • This unit is available as a paper-based or on-screen assessment.",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T1:SUB1.1",
+   "oldSpineTitle": "Description",
+   "newSpineTitle": "The world’s water supply is contained in a closed system – the hydrological cycle",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T1:SUB1.2",
+   "oldSpineTitle": "Physical processes",
+   "newSpineTitle": "Physical processes give rise to characteristic river landforms",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T1:SUB1.3",
+   "oldSpineTitle": "River environments",
+   "newSpineTitle": "River environments are of great importance to people and need to be sustainably managed",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T2:SUB2.1",
+   "oldSpineTitle": "Physical processes",
+   "newSpineTitle": "Physical processes and human intervention give rise to characteristic coastal landforms",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T2:SUB2.2",
+   "oldSpineTitle": "Distinctive",
+   "newSpineTitle": "Distinctive ecosystems develop along particular stretches of coastline",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T2:SUB2.3",
+   "oldSpineTitle": "Coastal environments",
+   "newSpineTitle": "Coastal environments are of great importance to people and need to be sustainably managed",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T3:SUB1.4",
+   "oldSpineTitle": "Assessment of fieldwork skills – Section B",
+   "newSpineTitle": "Assessment of fieldwork skills – Section B (Paper 1)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T3:SUB2.1",
+   "oldSpineTitle": "Description",
+   "newSpineTitle": "Description (Paper 2)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T3:SUB3.1",
+   "oldSpineTitle": "Some places are",
+   "newSpineTitle": "Some places are more hazardous than others",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T3:SUB3.2",
+   "oldSpineTitle": "Hazards have an",
+   "newSpineTitle": "Hazards have an impact on people and the environment",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T3:SUB3.3",
+   "oldSpineTitle": "Earthquakes present",
+   "newSpineTitle": "Earthquakes present a hazard to many people and need to be managed carefully",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T4:SUB4.1",
+   "oldSpineTitle": "The relative",
+   "newSpineTitle": "The relative importance of different economic sectors and the location of economic activity varies spatially, and changes over time",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T4:SUB4.2",
+   "oldSpineTitle": "The growth and",
+   "newSpineTitle": "The growth and decline of different economic sectors has resulted in a range of impacts and possible resource issues",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T4:SUB4.3",
+   "oldSpineTitle": "Countries",
+   "newSpineTitle": "Countries increasingly experience an energy gap and therefore seek energy security by developing a balanced energy mix and sustainable energy use",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T5:SUB5.1",
+   "oldSpineTitle": "Rural environments",
+   "newSpineTitle": "Rural environments are natural ecosystems that are exploited by human activities",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T5:SUB5.2",
+   "oldSpineTitle": "Rural environments (5.2)",
+   "newSpineTitle": "Rural environments have contrasting physical, social and economic characteristics and are experiencing significant changes",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T5:SUB5.3",
+   "oldSpineTitle": "Rural environments (5.3)",
+   "newSpineTitle": "Rural environments need to adapt to be socially, economically and environmentally sustainable",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T6:SUB2.4",
+   "oldSpineTitle": "Assessment of fieldwork skills – Section B",
+   "newSpineTitle": "Assessment of fieldwork skills – Section B (Paper 2)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T6:SUB6.1",
+   "oldSpineTitle": "A growing",
+   "newSpineTitle": "A growing percentage of the world’s population lives in urban areas",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T6:SUB6.2",
+   "oldSpineTitle": "Cities face a range of",
+   "newSpineTitle": "Cities face a range of social and environmental challenges resulting from rapid growth and resource demands",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T6:SUB6.3",
+   "oldSpineTitle": "Different strategies",
+   "newSpineTitle": "Different strategies can be used to manage social, economic and environmental challenges in a sustainable manner",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T7:SUB7.1",
+   "oldSpineTitle": "Fragile environments",
+   "newSpineTitle": "Fragile environments are under threat from desertification, deforestation and global climate change",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T7:SUB7.2",
+   "oldSpineTitle": "There are various",
+   "newSpineTitle": "There are various impacts of desertification, deforestation and climate change on fragile environments",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T7:SUB7.3",
+   "oldSpineTitle": "The responses to",
+   "newSpineTitle": "The responses to desertification, deforestation and climate change vary depending on a country’s level of development",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T8:SUB8.1",
+   "oldSpineTitle": "Globalisation is",
+   "newSpineTitle": "Globalisation is creating a more connected world, with increased movements of goods (trade) and people (migration and tourism) worldwide",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T8:SUB8.2",
+   "oldSpineTitle": "The impacts of",
+   "newSpineTitle": "The impacts of globalisation vary on a global scale",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T8:SUB8.3",
+   "oldSpineTitle": "The responses to",
+   "newSpineTitle": "The responses to increased migration and tourism vary depending on a country’s level of development",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T9:SUB_",
+   "oldSpineTitle": "Development and human welfare",
+   "newSpineTitle": "Geographical skills and transferable skills (appendices)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T9:SUB9.1",
+   "oldSpineTitle": "Definitions of",
+   "newSpineTitle": "Definitions of development and human welfare vary, as do attempts to measure it",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T9:SUB9.2",
+   "oldSpineTitle": "The level of",
+   "newSpineTitle": "The level of development and human welfare varies globally and has had a range of consequences",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-geography-19",
+   "family": "SUBTOPIC",
+   "code": "igcse-geography-T9:SUB9.3",
+   "oldSpineTitle": "A range of",
+   "newSpineTitle": "A range of sustainable strategies is required to address uneven levels of development and human welfare",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-ict-17",
+   "family": "SPEC_POINT",
+   "code": "2.4.4",
+   "oldSpineTitle": "Understand the benefits of using a client- server network: • control of user access rights • centralised administration • centralised backup • shared software • shared storage and file access • roaming profiles (hotdesk).",
+   "newSpineTitle": "Understand the benefits of using a client- server network: • control of user access rights • centralised administration • centralised backup • shared software • shared storage and file access • roaming profiles (hot-desk).",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-foundation",
+   "family": "SPEC_POINT",
+   "code": "1.9A",
+   "oldSpineTitle": "calculate with and interpret numbers in the forma × 10 wherenis an integer and1 a < 10",
+   "newSpineTitle": "calculate with and interpret numbers in the form a × 10ⁿ where n is an integer and 1 a < 10",
+   "shrinkReview": false,
+   "puaConvention": true
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "1.1G",
+   "oldSpineTitle": "use the terms ‘odd’, ‘even’, ’prime numbers’, ‘factors’ and ‘multiples’",
+   "newSpineTitle": "use the terms ‘odd’, ‘even’, ‘prime numbers’, ‘factors’ and ‘multiples’",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "1.5C",
+   "oldSpineTitle": "use the notationn(A)for the number of elements in the setA",
+   "newSpineTitle": "use the notation n(A) for the number of elements in the set A",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "2.2F",
+   "oldSpineTitle": "understand the concept of a quadratic expression and be able to factorise such expressions (limited tox + bx + c)",
+   "newSpineTitle": "understand the concept of a quadratic expression and be able to factorise such expressions (limited to x² + bx + c)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.1A",
+   "oldSpineTitle": "understand and use common difference (d)and first term(a)in an arithmetic sequence",
+   "newSpineTitle": "understand and use common difference (d) and first term (a) in an arithmetic sequence",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.1B",
+   "oldSpineTitle": "know and use nth term = a + ( n − 1)d",
+   "newSpineTitle": "know and use nth term = a + (n − 1)d",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.1C",
+   "oldSpineTitle": "find the sum of the firstnterms of an arithmetic series(Sn)",
+   "newSpineTitle": "find the sum of the first n terms of an arithmetic series (Sn)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.2B",
+   "oldSpineTitle": "use function notations of the form f(x) = …and f :x …",
+   "newSpineTitle": "use function notations of the form f(x) = … and f : x  …",
+   "shrinkReview": false,
+   "puaConvention": true
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.2D",
+   "oldSpineTitle": "understand and find the composite -1 functionfgand the inverse functionf",
+   "newSpineTitle": "understand and find the composite function fg and the inverse function f⁻¹",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.3A",
+   "oldSpineTitle": "recognise, plot and draw graphs with equation: 3 2 y = Ax + Bx + Cx + D in which: (i) the constants are integers and some could be zero (ii) the lettersxandycan be replaced with any other two letters or: 3 2 E F y = Ax + Bx + Cx + D + + x x in which: (i) the constants are numerical and at least three of them are zero (ii) the lettersxandycan be replaced with any other two letters or: y = sin x, y = cos x, y = tan x for angles of any size (in degrees)",
+   "newSpineTitle": "recognise, plot and draw graphs with equation: y = Ax³ + Bx² + Cx + D in which: (i) the constants are integers and some could be zero (ii) the letters x and y can be replaced with any other two letters or: y = Ax³ + Bx² + Cx + D + E/x + F/x² in which: (i) the constants are numerical and at least three of them are zero (ii) the letters x and y can be replaced with any other two letters or: y = sin x, y = cos x, y = tan x for angles of any size (in degrees)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.3B",
+   "oldSpineTitle": "apply to the graph ofy = f(x)the transformations y = f(x) + a, y = f(ax), y = f(x + a), y = af(x) for linear, quadratic, sine and cosine functions",
+   "newSpineTitle": "apply to the graph of y = f(x) the transformations y = f(x) + a, y = f(ax), y = f(x + a), y = af(x) for linear, quadratic, sine and cosine functions",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.3E",
+   "oldSpineTitle": "find the intersection points of two graphs, one linear ( y ) and one non-linear ( y ), and and recognise that the solutions correspond to the solutions of ( y − y ) = 0 2 1",
+   "newSpineTitle": "find the intersection points of two graphs, one linear (y₁) and one non-linear (y₂), and and recognise that the solutions correspond to the solutions of (y₂ − y₁) = 0",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.3H",
+   "oldSpineTitle": "recognise that equations of the form y = mx + care straight line graphs with gradientmand intercept on the y-axis at the point(0,c)",
+   "newSpineTitle": "recognise that equations of the form y = mx + c are straight line graphs with gradient m and intercept on the y-axis at the point (0, c)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "3.4B",
+   "oldSpineTitle": "differentiate integer powers ofx",
+   "newSpineTitle": "differentiate integer powers of x",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "4.6C",
+   "oldSpineTitle": "understand and use angle properties of the circle including: (i) angle subtended by an arc at the centre of a circle is twice the angle subtended at any point on the remaining part of the circumference (ii) angle subtended at the circumference by a diameter is a right angle (iii) angles in the same segment are equal (iv) the sum of the opposite angles of a cyclic quadrilateral is180° (v) the alternate segment theorem",
+   "newSpineTitle": "understand and use angle properties of the circle including: (i) angle subtended by an arc at the centre of a circle is twice the angle subtended at any point on the remaining part of the circumference (ii) angle subtended at the circumference by a diameter is a right angle (iii) angles in the same segment are equal (iv) the sum of the opposite angles of a cyclic quadrilateral is 180° (v) the alternate segment theorem",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "4.8E",
+   "oldSpineTitle": "understand and use the formula ab sin C for the area of a triangle",
+   "newSpineTitle": "understand and use the formula 1⁄2 ab sin C for the area of a triangle",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "family": "SPEC_POINT",
+   "code": "5.2C",
+   "oldSpineTitle": "recognise that an anti-clockwise rotation is apositiveangle of rotation and a clockwise rotation is anegativeangle of rotation",
+   "newSpineTitle": "recognise that an anti-clockwise rotation is a positive angle of rotation and a clockwise rotation is a negative angle of rotation",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-foundation-unit-1",
+   "family": "SPEC_POINT",
+   "code": "1.6A",
+   "oldSpineTitle": "understand that ‛percentage’ means ‛number of parts per100’",
+   "newSpineTitle": "understand that ‛percentage’ means ‛number of parts per 100’",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-foundation-unit-1",
+   "family": "SPEC_POINT",
+   "code": "1.8A",
+   "oldSpineTitle": "round integers to a given power of10",
+   "newSpineTitle": "round integers to a given power of 10",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-foundation-unit-2",
+   "family": "SPEC_POINT",
+   "code": "1.9A",
+   "oldSpineTitle": "calculate with and interpret numbers in the forma × 10 wherenis an integer and 1 a < 10",
+   "newSpineTitle": "calculate with and interpret numbers in the form a × 10ⁿ where n is an integer and 1 a < 10",
+   "shrinkReview": false,
+   "puaConvention": true
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-foundation-unit-2",
+   "family": "SPEC_POINT",
+   "code": "5.2C",
+   "oldSpineTitle": "recognise that an anti-clockwise rotation is a positiveangle of rotation and a clockwise rotation is anegativeangle of rotation",
+   "newSpineTitle": "recognise that an anti-clockwise rotation is a positive angle of rotation and a clockwise rotation is anegativeangle of rotation",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "family": "SPEC_POINT",
+   "code": "1.5C",
+   "oldSpineTitle": "use the notationn(A)for the number of elements in the setA",
+   "newSpineTitle": "use the notation n(A) for the number of elements in the set A",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "family": "SPEC_POINT",
+   "code": "1.6A",
+   "oldSpineTitle": "understand that ‛percentage’ means ‛number of parts per100’",
+   "newSpineTitle": "understand that ‛percentage’ means ‛number of parts per 100’",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "family": "SPEC_POINT",
+   "code": "2.2F",
+   "oldSpineTitle": "understand the concept of a quadratic expression and be able to factorise such expressions (limited to x + bx + c )",
+   "newSpineTitle": "understand the concept of a quadratic expression and be able to factorise such expressions (limited to x² + bx + c)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "family": "SPEC_POINT",
+   "code": "3.3A",
+   "oldSpineTitle": "recognise, plot and draw graphs with equation: 3 2 y = Ax + Bx + Cx + D in which: (i) the constants are integers and some could be zero (ii) the lettersxandycan be replaced with any other two letters or: 3 2 E F y = Ax + Bx + Cx + D + + x x in which: (i) the constants are numerical and at least three of them are zero (ii) the lettersxandycan be replaced with any other two letters y = sin x, y = cos x, y = tan x for angles of any size (in degrees)",
+   "newSpineTitle": "recognise, plot and draw graphs with equation: y = Ax³ + Bx² + Cx + D in which: (i) the constants are integers and some could be zero (ii) the letters x and y can be replaced with any other two letters or: y = Ax³ + Bx² + Cx + D + E/x + F/x² in which: (i) the constants are numerical and at least three of them are zero (ii) the letters x and y can be replaced with any other two letters y = sin x, y = cos x, y = tan x for angles of any size (in degrees)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "family": "SPEC_POINT",
+   "code": "3.3C",
+   "oldSpineTitle": "plot points(x, y)in any of the four quadrants or locate points with given coordinates",
+   "newSpineTitle": "plot points (x, y) in any of the four quadrants or locate points with given coordinates",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "family": "SPEC_POINT",
+   "code": "3.3H",
+   "oldSpineTitle": "recognise that equations of the form y = mx + care straight line graphs with gradient m and intercept on they-axis at the point (0,c)",
+   "newSpineTitle": "recognise that equations of the form y = mx + c are straight line graphs with gradient m and intercept on the y-axis at the point (0, c)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "family": "SPEC_POINT",
+   "code": "4.8E",
+   "oldSpineTitle": "understand and use the formula ab sin C for the area of a triangle",
+   "newSpineTitle": "understand and use the formula 1⁄2 ab sin C for the area of a triangle",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "3.1A",
+   "oldSpineTitle": "understand and use common difference(d) and first term(a)in an arithmetic sequence",
+   "newSpineTitle": "understand and use common difference (d) and first term (a) in an arithmetic sequence",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "3.1B",
+   "oldSpineTitle": "know and usenth term = a + ( n − 1) d",
+   "newSpineTitle": "know and use nth term = a + (n − 1)d",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "3.1C",
+   "oldSpineTitle": "find the sum of the firstnterms of an arithmetic series(Sn)",
+   "newSpineTitle": "find the sum of the first n terms of an arithmetic series (Sn)",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "3.2B",
+   "oldSpineTitle": "use function notations of the form f(x) = …and f :x …",
+   "newSpineTitle": "use function notations of the form f(x) = … and f : x  …",
+   "shrinkReview": false,
+   "puaConvention": true
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "3.2D",
+   "oldSpineTitle": "understand and find the composite function -1 fgand the inverse functionf",
+   "newSpineTitle": "understand and find the composite function fg and the inverse function f⁻¹",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "3.3E",
+   "oldSpineTitle": "find the intersection points of two graphs, one linear ( y ) and one non-linear ( y ) and 1 2 recognise that the solutions correspond to the solutions of ( y − y ) = 0 2 1",
+   "newSpineTitle": "find the intersection points of two graphs, one linear (y₁) and one non-linear (y₂) and recognise that the solutions correspond to the solutions of (y₂ − y₁) = 0",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "3.4B",
+   "oldSpineTitle": "differentiate integer powers ofx",
+   "newSpineTitle": "differentiate integer powers of x",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "4.6C",
+   "oldSpineTitle": "understand and use angle properties of the circle including: (i) angle subtended by an arc at the centre of a circle is twice the angle subtended at any point on the remaining part of the circumference (ii) angle subtended at the circumference by a diameter is a right angle (iii) angles in the same segment are equal (iv) the sum of the opposite angles of a cyclic quadrilateral is180° (v) the alternate segment theorem",
+   "newSpineTitle": "understand and use angle properties of the circle including: (i) angle subtended by an arc at the centre of a circle is twice the angle subtended at any point on the remaining part of the circumference (ii) angle subtended at the circumference by a diameter is a right angle (iii) angles in the same segment are equal (iv) the sum of the opposite angles of a cyclic quadrilateral is 180° (v) the alternate segment theorem",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "5.2C",
+   "oldSpineTitle": "recognise that an anti-clockwise rotation is a positiveangle of rotation and a clockwise rotation is anegativeangle of rotation",
+   "newSpineTitle": "recognise that an anti-clockwise rotation is a positive angle of rotation and a clockwise rotation is a negative angle of rotation",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "family": "SPEC_POINT",
+   "code": "5.2M",
+   "oldSpineTitle": "identify and give complete descriptions of transformations are assessed in Higher Tier only.",
+   "newSpineTitle": "identify and give complete descriptions of transformations",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-b-16",
+   "family": "SPEC_POINT",
+   "code": "4J",
+   "oldSpineTitle": "Graphs and graphical treatment of the equation: 3 2 E F y = Ax + Bx + Cx + D + + x x in which the constants are numerical and at least three of them are zero",
+   "newSpineTitle": "Graphs and graphical treatment of the equation: y = Ax³ + Bx² + Cx + D + E/x + F/x² in which the constants are numerical and at least three of them are zero",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-maths-b-16",
+   "family": "SPEC_POINT",
+   "code": "5F",
+   "oldSpineTitle": "Transformations of the plane associated with2 × 2 matrices",
+   "newSpineTitle": "Transformations of the plane associated with 2 × 2 matrices",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-physics-modular-24-unit-1",
+   "family": "TOPIC",
+   "code": "igcse-physics-modular-T4",
+   "oldSpineTitle": "Solids, liquids and gases: Part",
+   "newSpineTitle": "Solids, liquids and gases: Part 1",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-physics-modular-24-unit-1",
+   "family": "SPEC_POINT",
+   "code": "1.10",
+   "oldSpineTitle": "use the relationship between final speed, initial speed, acceleration and distance moved: ( finalspeed ) 2 = ( initial speed ) 2 + ( 2 acceleration distance moved × × ) v 2 = u 2 + ( 2 × a × s )",
+   "newSpineTitle": "use the relationship between final speed, initial speed, acceleration and distance moved: ( final speed ) 2 = ( initial speed ) 2 + ( 2 acceleration distance moved × × ) v 2 = u 2 + ( 2 × a × s )",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-physics-modular-24-unit-2",
+   "family": "TOPIC",
+   "code": "igcse-physics-modular-T6",
+   "oldSpineTitle": "Solids, liquids and gases: Part",
+   "newSpineTitle": "Solids, liquids and gases: Part 2",
+   "shrinkReview": false,
+   "puaConvention": false
+  },
+  {
+   "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+   "family": "SPEC_POINT",
+   "code": "1.10",
+   "oldSpineTitle": "use the relationship between final speed, initial speed, acceleration and distance moved: (finalspeed)2 =(initial speed)2 +(2acceleration distance moved× × ) v2 =u2 +(2× ×a s)",
+   "newSpineTitle": "use the relationship between final speed, initial speed, acceleration and distance moved: (final speed)2 =(initial speed)2 +(2acceleration distance moved× × ) v2 =u2 +(2× ×a s)",
+   "shrinkReview": false,
+   "puaConvention": false
+  }
+ ],
+ "contentDefectQueue": [
+  {
+   "slug": "cie-as-maths-20-pure-2",
+   "family": "SPEC_POINT",
+   "code": "2.3.2",
+   "contentTitle": "use trigonometrical identities for the simplification and exact evaluation of expressions, e.g. solving and in the course of solving equations, and select an identity or identities appropriate to the context, showing familiarity in particular with the use of tan( A ± B ) forms R sin ^ i ! a h and R cos ^ i ! a h .: • sec i / 1 + tan i and cosec i / 1 + cot i • the expansions of sin( A ± B ) , cos( A ± B ) and • the formulae for sin 2 A , cos 2 A and tan 2 A • the expression of a sin i + b cos i in the",
+   "spineTitle": "use trigonometrical identities for the simplification and exact evaluation of expressions, and in the course of solving equations, and select an identity or identities appropriate to the context, showing familiarity in particular with the use of: • sec²θ≡1+tan²θ and cosec²θ≡1+cot²θ • the expansions of sin(A ± B), cos(A ± B) and tan(A ± B) • the formulae for sin 2A, cos 2A and tan 2A • the expression of asinθ+bcosθ in the forms Rsin(θ±A) and Rcos(θ±A).",
+   "note": "content plane carries extraction garbage; spine holds clean official-era title; needs a content repair pass (official-PDF evidence) — NOT a mirror sync"
+  }
+ ],
+ "ambiguousRows": [],
+ "chem19OrderAlignedAnnex": [
+  {
+   "family": "TOPIC",
+   "contentCode": "4CH1-S1",
+   "spineCode": "igcse-chemistry-T1",
+   "contentTitle": "Principles of chemistry",
+   "spineTitle": "Principles of chemistry",
+   "titleEqual": true
+  },
+  {
+   "family": "TOPIC",
+   "contentCode": "4CH1-S2",
+   "spineCode": "igcse-chemistry-T2",
+   "contentTitle": "Inorganic chemistry",
+   "spineTitle": "Inorganic chemistry",
+   "titleEqual": true
+  },
+  {
+   "family": "TOPIC",
+   "contentCode": "4CH1-S3",
+   "spineCode": "igcse-chemistry-T3",
+   "contentTitle": "Physical chemistry",
+   "spineTitle": "Physical chemistry",
+   "titleEqual": true
+  },
+  {
+   "family": "TOPIC",
+   "contentCode": "4CH1-S4",
+   "spineCode": "igcse-chemistry-T4",
+   "contentTitle": "Organic chemistry",
+   "spineTitle": "Organic chemistry",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-a",
+   "spineCode": "igcse-chemistry-T1:SUBa",
+   "contentTitle": "States of matter",
+   "spineTitle": "States of matter",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-b",
+   "spineCode": "igcse-chemistry-T1:SUBb",
+   "contentTitle": "Elements, compounds and mixtures",
+   "spineTitle": "Elements, compounds and mixtures",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-c",
+   "spineCode": "igcse-chemistry-T1:SUBc",
+   "contentTitle": "Atomic structure",
+   "spineTitle": "Atomic structure",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-d",
+   "spineCode": "igcse-chemistry-T1:SUBd",
+   "contentTitle": "The Periodic Table",
+   "spineTitle": "The Periodic Table",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-e",
+   "spineCode": "igcse-chemistry-T1:SUBe",
+   "contentTitle": "Chemical formulae, equations and calculations",
+   "spineTitle": "Chemical formulae, equations and calculations",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-f",
+   "spineCode": "igcse-chemistry-T1:SUBf",
+   "contentTitle": "Ionic bonding",
+   "spineTitle": "Ionic bonding",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-g",
+   "spineCode": "igcse-chemistry-T1:SUBg",
+   "contentTitle": "Covalent bonding",
+   "spineTitle": "Covalent bonding",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-h",
+   "spineCode": "igcse-chemistry-T1:SUBh",
+   "contentTitle": "Metallic bonding",
+   "spineTitle": "Metallic bonding",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S1-i",
+   "spineCode": "igcse-chemistry-T1:SUBi",
+   "contentTitle": "Electrolysis",
+   "spineTitle": "Electrolysis",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-a",
+   "spineCode": "igcse-chemistry-T2:SUBa",
+   "contentTitle": "Group 1 (alkali metals) – lithium, sodium and potassium",
+   "spineTitle": "Group 1 (alkali metals) – lithium, sodium and potassium",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-b",
+   "spineCode": "igcse-chemistry-T2:SUBb",
+   "contentTitle": "Group 7 (halogens) – chlorine, bromine and iodine",
+   "spineTitle": "Group 7 (halogens) – chlorine, bromine and iodine",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-c",
+   "spineCode": "igcse-chemistry-T2:SUBc",
+   "contentTitle": "Gases in the atmosphere",
+   "spineTitle": "Gases in the atmosphere",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-d",
+   "spineCode": "igcse-chemistry-T2:SUBd",
+   "contentTitle": "Reactivity series",
+   "spineTitle": "Reactivity series",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-e",
+   "spineCode": "igcse-chemistry-T2:SUBe",
+   "contentTitle": "Extraction and uses of metals",
+   "spineTitle": "Extraction and uses of metals",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-f",
+   "spineCode": "igcse-chemistry-T2:SUBf",
+   "contentTitle": "Acids, alkalis and titrations",
+   "spineTitle": "Acids, alkalis and titrations",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-g",
+   "spineCode": "igcse-chemistry-T2:SUBg",
+   "contentTitle": "Acids, bases and salt preparations",
+   "spineTitle": "Acids, bases and salt preparations",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S2-h",
+   "spineCode": "igcse-chemistry-T2:SUBh",
+   "contentTitle": "Chemical tests",
+   "spineTitle": "Chemical tests",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S3-a",
+   "spineCode": "igcse-chemistry-T3:SUBa",
+   "contentTitle": "Energetics",
+   "spineTitle": "Energetics",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S3-b",
+   "spineCode": "igcse-chemistry-T3:SUBb",
+   "contentTitle": "Rates of reaction",
+   "spineTitle": "Rates of reaction",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S3-c",
+   "spineCode": "igcse-chemistry-T3:SUBc",
+   "contentTitle": "Reversible reactions and equilibria",
+   "spineTitle": "Reversible reactions and equilibria",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-a",
+   "spineCode": "igcse-chemistry-T4:SUBa",
+   "contentTitle": "Introduction",
+   "spineTitle": "Introduction",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-b",
+   "spineCode": "igcse-chemistry-T4:SUBb",
+   "contentTitle": "Crude oil",
+   "spineTitle": "Crude oil",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-c",
+   "spineCode": "igcse-chemistry-T4:SUBc",
+   "contentTitle": "Alkanes",
+   "spineTitle": "Alkanes",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-d",
+   "spineCode": "igcse-chemistry-T4:SUBd",
+   "contentTitle": "Alkenes",
+   "spineTitle": "Alkenes",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-e",
+   "spineCode": "igcse-chemistry-T4:SUBe",
+   "contentTitle": "Alcohols",
+   "spineTitle": "Alcohols",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-f",
+   "spineCode": "igcse-chemistry-T4:SUBf",
+   "contentTitle": "Carboxylic acids",
+   "spineTitle": "Carboxylic acids",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-g",
+   "spineCode": "igcse-chemistry-T4:SUBg",
+   "contentTitle": "Esters",
+   "spineTitle": "Esters",
+   "titleEqual": true
+  },
+  {
+   "family": "SUBTOPIC",
+   "contentCode": "4CH1-S4-h",
+   "spineCode": "igcse-chemistry-T4:SUBh",
+   "contentTitle": "Synthetic polymers",
+   "spineTitle": "Synthetic polymers",
+   "titleEqual": true
+  }
+ ]
+}

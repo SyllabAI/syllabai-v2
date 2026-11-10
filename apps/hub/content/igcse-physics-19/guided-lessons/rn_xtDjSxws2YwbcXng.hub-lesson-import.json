@@ -1,0 +1,301 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_xtDjSxws2YwbcXng",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "66d68ccb3bba83121cf121297eb44d09accf731b2d4df642ac2ce7d1699eb0c2",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_xtDjSxws2YwbcXng",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Properties of Radiation",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-1-properties-of-radiation/7-1-6-detecting-radiation",
+    "specAnchors": [
+      {
+        "code": "7.9",
+        "text": "know that photographic film or a Geiger−Müller detector can detect ionising radiations"
+      },
+      {
+        "code": "7.10",
+        "text": "explain the sources of background (ionising) radiation from Earth and space"
+      }
+    ],
+    "primer": {
+      "text": "Radiation is invisible, but not undetectable: photographic film darkens where radiation strikes, and the Geiger-Müller tube clicks for every count. Add the ever-present background from radon, cosmic rays and food, and every honest measurement starts by subtracting it.",
+      "prerequisiteSubtopic": "Properties of Radiation"
+    },
+    "modules": [
+      {
+        "id": "rn_xtDjSxws2YwbcXng::L1",
+        "title": "Photographic film and the GM tube",
+        "sourceHeadings": [
+          "Photographic film",
+          "Geiger-Müller tube"
+        ],
+        "specRefs": [
+          "7.9"
+        ],
+        "opening": "Two detectors cover the syllabus: photographic film, which darkens as it absorbs radiation and so monitors workers’ doses, and the Geiger-Müller tube, which turns each absorbed particle into an electrical pulse and a count rate. Closer to the source, higher the count.",
+        "keyPoints": [
+          "Photographic film detects radiation by darkening when it absorbs it.",
+          "Film badges worn by radiographers record cumulative exposure between checks.",
+          "The Geiger-Müller tube transmits an electrical pulse for each radiation absorbed.",
+          "The count rate rises as the tube moves closer to the source.",
+          "The frequency of clicks tracks the intensity of the radiation arriving."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Film is a passive record — wear it, develop it, read the dose. The GM tube is active — it counts every hit with a click, and moving it closer raises the tally.",
+            "analogy": "Film is a sunburn log of your day; the GM tube is a rain gauge ticking with every drop.",
+            "examPointer": "Name the GM tube precisely (Geiger-Müller, GM tube, Geiger counter all accepted); never just \"radiation detector\"."
+          },
+          "medium": {
+            "restatement": "Film integrates dose through layered absorbers that discriminate radiation types, while the GM tube resolves counts in real time, so it serves rate measurements and corrected-count work. Distance matters because intensity falls with spreading, so geometry is part of every count comparison.",
+            "analogy": "Film is the month-end bank statement; the GM tube is the live payment alert on your phone — same information, different time resolution.",
+            "examPointer": "For \"state a detector\" questions give both film and GM tube; for rate questions the tube is the answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_xtDjSxws2YwbcXng::L1::Q1",
+          "rn_xtDjSxws2YwbcXng::L1::Q2",
+          "rn_xtDjSxws2YwbcXng::L1::Q3",
+          "rn_xtDjSxws2YwbcXng::L1::Q4",
+          "rn_xtDjSxws2YwbcXng::L1::Q5",
+          "rn_xtDjSxws2YwbcXng::L1::Q6",
+          "rn_xtDjSxws2YwbcXng::L1::Q7",
+          "rn_xtDjSxws2YwbcXng::L1::Q8",
+          "rn_xtDjSxws2YwbcXng::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_xtDjSxws2YwbcXng::L2",
+        "title": "Background radiation and its sources",
+        "sourceHeadings": [
+          "Background radiation",
+          "Natural Sources of Background Radiation"
+        ],
+        "specRefs": [
+          "7.10"
+        ],
+        "opening": "Background radiation is the low-level bath of ionising radiation that surrounds us always. Natural contributors dominate: radon gas seeping from rocks, cosmic rays from space, carbon-14 in living material, and trace radioactivity in food and drink.",
+        "keyPoints": [
+          "Background radiation is the low-level radiation present everywhere, all the time.",
+          "Radon gas, an alpha emitter, seeps from rocks and building materials.",
+          "Cosmic rays — fast protons from the sun and beyond — strike the atmosphere and produce gamma radiation.",
+          "All organic matter carries a trace of carbon-14.",
+          "Foods such as bananas carry tiny amounts of potassium-40."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Even with no source on the bench, the counter still ticks: radon from the ground, particles from space, a whisper of carbon-14 and potassium-40 in your lunch.",
+            "analogy": "Background radiation is the faint hiss behind a radio station — always there, usually unnoticed, but real.",
+            "examPointer": "Learn the big three natural sources (radon, cosmic rays, food and drink) — the exam hint names them as the significant contributors."
+          },
+          "medium": {
+            "restatement": "Radon matters because it is inhaled — an alpha emitter inside the lungs delivers a large local dose. Cosmic protons spawn secondary gamma in the upper atmosphere, and biological carbon cycling keeps carbon-14 topped up in living tissue, so background dose is a geography-dependent mixture.",
+            "analogy": "The background is a stew with regional recipes: radon-heavy granite districts, mountain tops with extra cosmic seasoning.",
+            "examPointer": "Radon is the natural source with the health caveat (inhaled alpha) — pair those two facts if a question asks why radon matters."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_xtDjSxws2YwbcXng::L2::Q1",
+          "rn_xtDjSxws2YwbcXng::L2::Q2",
+          "rn_xtDjSxws2YwbcXng::L2::Q3",
+          "rn_xtDjSxws2YwbcXng::L2::Q4",
+          "rn_xtDjSxws2YwbcXng::L2::Q5",
+          "rn_xtDjSxws2YwbcXng::L2::Q6",
+          "rn_xtDjSxws2YwbcXng::L2::Q7",
+          "rn_xtDjSxws2YwbcXng::L2::Q8",
+          "rn_xtDjSxws2YwbcXng::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_xtDjSxws2YwbcXng::L3",
+        "title": "Corrected count rate",
+        "sourceHeadings": [
+          "Accounting for background radiation",
+          "Artificial Sources of Background Radiation"
+        ],
+        "specRefs": [
+          "7.10"
+        ],
+        "opening": "Honest counting subtracts the surroundings: measure the background with no source, then subtract it from every source reading to get the corrected count rate. Artificial sources — medicine, waste, fallout, accidents — add to the natural baseline but repeatable technique keeps them out of your data.",
+        "keyPoints": [
+          "Measure the background count rate with no source present.",
+          "The corrected count rate is the source reading minus the background reading.",
+          "Repeating readings and averaging, or counting over longer intervals, improves accuracy.",
+          "Artificial background sources include nuclear medicine, nuclear waste, fallout and accidents.",
+          "A GM tube recording 24 counts per minute of background is 24/60 = 0.4 counts per second."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "No source: 24 counts in a minute. With source: 285. Corrected: 285 − 24 = 261 per minute.",
+            "analogy": "Weigh yourself holding the suitcase, then subtract your own weight — only the suitcase remains.",
+            "examPointer": "Show the subtraction line explicitly — \"corrected count rate\" answers without the arithmetic can drop a mark."
+          },
+          "medium": {
+            "restatement": "Because decay is random, a single-minute window is noisy; averaging repeats or extending the interval shrinks the uncertainty on both the background and the source measurements, so the corrected rate inherits the smaller error. Artificial contributions rarely vary over a session, which is what makes subtraction valid.",
+            "analogy": "Taring a kitchen scale: the bowl’s weight is constant during the bake, so subtracting it once is fair — provided nobody swaps the bowl mid-recipe.",
+            "examPointer": "If a question offers \"repeat and average\" as an accuracy improvement, take it — it is the stock answer here."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_xtDjSxws2YwbcXng::L3::Q1",
+          "rn_xtDjSxws2YwbcXng::L3::Q2",
+          "rn_xtDjSxws2YwbcXng::L3::Q3",
+          "rn_xtDjSxws2YwbcXng::L3::Q4",
+          "rn_xtDjSxws2YwbcXng::L3::Q5",
+          "rn_xtDjSxws2YwbcXng::L3::Q6",
+          "rn_xtDjSxws2YwbcXng::L3::Q7",
+          "rn_xtDjSxws2YwbcXng::L3::Q8",
+          "rn_xtDjSxws2YwbcXng::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04",
+          "fig-05",
+          "fig-06"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "background radiation",
+          "definition": "The ionising radiation present at all times from natural and artificial sources.",
+          "firstLesson": 2
+        },
+        {
+          "term": "corrected count rate",
+          "definition": "The measured count rate with the background count rate subtracted.",
+          "firstLesson": 3
+        },
+        {
+          "term": "cosmic rays",
+          "definition": "High-speed particles from space that generate secondary radiation in the atmosphere.",
+          "firstLesson": 2
+        },
+        {
+          "term": "radon",
+          "definition": "A colourless, odourless radioactive gas, an alpha emitter, that seeps from rocks and building materials.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A Geiger counter records 24 counts in one minute with no source present, and 285 counts in one minute with a source present. Find the background rate and the corrected count rate.",
+        "steps": [
+          "Background: 24 counts per minute (24/60 = 0.4 counts per second).",
+          "Corrected count rate: 285 − 24 = 261 counts per minute.",
+          "In per-second form: 261/60 = 4.35 counts per second."
+        ],
+        "finalAnswer": "Background 24 cpm (0.4 cps); corrected count rate 261 cpm (4.35 cps)."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/784cdb105674-radiation-badge.png",
+        "alt": "radiation-badge, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Photographic film",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A film badge monitors a person’s exposure to radiation"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/bf12127aa15e-geiger-counter.png",
+        "alt": "Geiger-Counter, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Geiger-Müller tube",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A Geiger-Müller tube is a common radiation detector"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fa691b4cbf16-8-1-5-background-radiation-chart.png",
+        "alt": "Background Radiation Chart, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Background radiation",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Background radiation sources, with radon gas given off by some rocks"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a577d6886af1-2-7-background-radiation-gm-tube-set-up-no-sourc.png",
+        "alt": "GM tube set-up with no source present, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Accounting for background radiation",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "The background count rate is measured with a GM tube and no source present"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3365bd106384-2-7-background-radiation-gm-tube-set-up.png",
+        "alt": "GM tube set-up with a source present, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Accounting for background radiation",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "The corrected count rate is the source reading minus the background"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/79378cddc288-4-3-1-background-example.png",
+        "alt": "Background example, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Accounting for background radiation",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

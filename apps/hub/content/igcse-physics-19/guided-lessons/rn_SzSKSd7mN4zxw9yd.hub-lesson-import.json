@@ -1,0 +1,173 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_SzSKSd7mN4zxw9yd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "f8c754b45ea294e14bbee145e28b6b9f6d7256bb6b08fde33e8c01ceb0c82aea",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_SzSKSd7mN4zxw9yd",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Properties of Radiation",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-1-properties-of-radiation/7-1-2-isotopes",
+    "specAnchors": [
+      {
+        "code": "7.3",
+        "text": "know the terms atomic (proton) number, mass (nucleon) number and isotope"
+      }
+    ],
+    "primer": {
+      "text": "Every atom of an element carries the same proton count, yet their neutron counts can differ. Such siblings are isotopes. This note defines isotopes, works chlorine-35 and chlorine-37 side by side, and explains why proton-neutron imbalance leaves some isotopes unstable.",
+      "prerequisiteSubtopic": "Properties of Radiation"
+    },
+    "modules": [
+      {
+        "id": "rn_SzSKSd7mN4zxw9yd::L1",
+        "title": "Defining isotopes",
+        "sourceHeadings": [
+          "Isotopes"
+        ],
+        "specRefs": [
+          "7.3"
+        ],
+        "opening": "Isotopes are atoms of the same element with equal numbers of protons but different numbers of neutrons. Because the proton count fixes the element, isotopes share chemical identity while their nuclei differ in mass.",
+        "keyPoints": [
+          "Isotopes have the same atomic number but different mass numbers.",
+          "The proton count determines the element, so isotopes are always the same element.",
+          "Isotopes of one element differ only in their neutron count.",
+          "Each element can have several isotopes."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Chlorine-35 and chlorine-37 both have 17 protons. One has 18 neutrons, the other 20 — same element, different nuclei.",
+            "analogy": "Isotopes are like identical twins wearing backpacks of different weights: same person, different load.",
+            "examPointer": "Quote the definition with both halves: same protons, different neutrons. One half alone scores zero."
+          },
+          "medium": {
+            "restatement": "Nuclear notation exposes isotopes at a glance: the atomic number is shared, the mass number differs. Neutron number is the difference, so each isotope occupies its own point on the chart of nuclides with its own stability.",
+            "analogy": "Same house number (protons, the identity), different number of residents (neutrons, the mass).",
+            "examPointer": "When two notations share a lower number, say the word \"isotopes\" and justify it with the proton equality."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_SzSKSd7mN4zxw9yd::L1::Q1",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q2",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q3",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q4",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q5",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q6",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q7",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q8",
+          "rn_SzSKSd7mN4zxw9yd::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_SzSKSd7mN4zxw9yd::L2",
+        "title": "Stability and abundance of isotopes",
+        "sourceHeadings": [
+          "Isotopes of hydrogen"
+        ],
+        "specRefs": [
+          "7.3"
+        ],
+        "opening": "Isotopes differ in stability: an imbalance between protons and neutrons leaves some nuclei prone to decay and rare in nature. Hydrogen shows the spread, from common hydrogen-1 to scarce deuterium and vanishingly rare tritium.",
+        "keyPoints": [
+          "Some isotopes are unstable because of a proton-neutron imbalance.",
+          "Unstable isotopes are more likely to decay and often rarer in nature.",
+          "About 2 in every 10,000 hydrogen atoms are the isotope deuterium.",
+          "Tritium is far rarer still — roughly 1 in a billion billion hydrogen atoms."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Hydrogen-1 is the everyday form. Deuterium adds one neutron; tritium adds two and is so rare you will never meet it outside special sources.",
+            "analogy": "Think of stability like a balanced seesaw: the proton-neutron balance keeps some nuclei level, while lopsided ones wobble until they decay.",
+            "examPointer": "Abundance figures are order-of-magnitude facts: deuterium 2 in 10,000; tritium 1 in 10¹⁸. Do not swap them."
+          },
+          "medium": {
+            "restatement": "Nuclear stability depends on the proton-to-neutron ratio; departing too far from it raises the nucleus’s energy and its likelihood of decaying. That same imbalance explains why unstable isotopes are less abundant in nature.",
+            "analogy": "A supermarket shelf: the well-balanced isotope is stocked everywhere (hydrogen-1), the slightly awkward one is a niche product (deuterium), and the unstable one is a discontinued line (tritium).",
+            "examPointer": "Link the ideas in one sentence for the exam: imbalance → instability → decay → scarcity."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_SzSKSd7mN4zxw9yd::L2::Q1",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q2",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q3",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q4",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q5",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q6",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q7",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q8",
+          "rn_SzSKSd7mN4zxw9yd::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "isotope",
+          "definition": "An atom of an element with the usual proton count but a different number of neutrons.",
+          "firstLesson": 1
+        },
+        {
+          "term": "deuterium",
+          "definition": "The hydrogen isotope containing one neutron (hydrogen-2).",
+          "firstLesson": 2
+        },
+        {
+          "term": "tritium",
+          "definition": "The rare hydrogen isotope containing two neutrons (hydrogen-3).",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "State the numbers of protons, neutrons and electrons in the two chlorine isotopes with atomic number 17 and mass numbers 35 and 37.",
+        "steps": [
+          "Atomic number 17 means 17 protons, and neutral atoms carry 17 electrons.",
+          "Neutrons in chlorine-35: 35 − 17 = 18.",
+          "Neutrons in chlorine-37: 37 − 17 = 20."
+        ],
+        "finalAnswer": "Both isotopes: 17 protons, 17 electrons; chlorine-35 has 18 neutrons and chlorine-37 has 20 neutrons."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/0197cc01dc47-3-1-1-defining-isotopes-table.png",
+        "alt": "Defining Isotopes table",
+        "sourceHeading": "Isotopes",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

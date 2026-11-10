@@ -1,0 +1,737 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Hm9hzsXmd3k7p72w",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "0e04382056fbd6a2c0ddb55d67041721b86b5555f004613ce5076651f23f1af2",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_Hm9hzsXmd3k7p72w",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q1",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "In this core practical, what is the independent variable?",
+      "misconceptionClass": "variables recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the absorber material between source and detector",
+          "correct": true,
+          "explanation": "The absorber is deliberately changed to test penetration.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the count rate",
+          "correct": false,
+          "explanation": "Count rate is measured, so it is the dependent variable.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "C",
+          "text": "the source-to-tube distance",
+          "correct": false,
+          "explanation": "Distance is held fixed — a control variable.",
+          "misconception": "control confusion"
+        },
+        {
+          "key": "D",
+          "text": "the temperature of the room",
+          "correct": false,
+          "explanation": "Temperature is irrelevant here.",
+          "misconception": "irrelevant variable"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q2",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "Which quantity is the dependent variable?",
+      "misconceptionClass": "variables recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the time of day",
+          "correct": false,
+          "explanation": "Not a variable of this experiment.",
+          "misconception": "irrelevant variable"
+        },
+        {
+          "key": "B",
+          "text": "the count rate",
+          "correct": true,
+          "explanation": "The count rate responds to the absorber change.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the absorber thickness list",
+          "correct": false,
+          "explanation": "Absorbers are chosen by the experimenter.",
+          "misconception": "variable swap"
+        },
+        {
+          "key": "D",
+          "text": "the identity of the source",
+          "correct": false,
+          "explanation": "The source is controlled, not measured.",
+          "misconception": "control confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q3",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "Why is the source kept at a fixed distance from the tube?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because the tube only works at 3 cm",
+          "correct": false,
+          "explanation": "The tube works at any reasonable distance.",
+          "misconception": "equipment myth"
+        },
+        {
+          "key": "B",
+          "text": "to save absorber material",
+          "correct": false,
+          "explanation": "Absorber use is unrelated to distance.",
+          "misconception": "resource reason"
+        },
+        {
+          "key": "C",
+          "text": "so that count-rate changes can only be due to the absorber",
+          "correct": true,
+          "explanation": "Holding geometry constant isolates the absorber’s effect.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "to make the source decay faster",
+          "correct": false,
+          "explanation": "Distance does not change decay behaviour.",
+          "misconception": "decay speed myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q4",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "Which absorber set matches the investigation?",
+      "misconceptionClass": "equipment recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "paper and water only",
+          "correct": false,
+          "explanation": "Water is not part of this absorber set.",
+          "misconception": "water confusion"
+        },
+        {
+          "key": "B",
+          "text": "aluminium only",
+          "correct": false,
+          "explanation": "Aluminium alone cannot separate all three radiations.",
+          "misconception": "single absorber"
+        },
+        {
+          "key": "C",
+          "text": "plastic sheets of different colours",
+          "correct": false,
+          "explanation": "Colour is irrelevant; material and thickness matter.",
+          "misconception": "colour confusion"
+        },
+        {
+          "key": "D",
+          "text": "paper, aluminium of several thicknesses, lead",
+          "correct": true,
+          "explanation": "The three absorbers separate alpha, beta and gamma.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q5",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "Sources are stored in lead-lined containers when not in use because…",
+      "misconceptionClass": "safety reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "lead shielding keeps emissions contained between measurements",
+          "correct": true,
+          "explanation": "Storage shielding protects people when no measurement is running.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "lead makes the source more active",
+          "correct": false,
+          "explanation": "Shielding never changes the source’s activity.",
+          "misconception": "activation myth"
+        },
+        {
+          "key": "C",
+          "text": "lead stops the source decaying",
+          "correct": false,
+          "explanation": "Nothing stops radioactive decay.",
+          "misconception": "decay stop myth"
+        },
+        {
+          "key": "D",
+          "text": "the counter needs lead to work",
+          "correct": false,
+          "explanation": "The counter is independent of storage shielding.",
+          "misconception": "equipment confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q6",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "Name the instrument used to measure the count rate in this experiment.",
+      "misconceptionClass": "equipment recall",
+      "kind": "recall",
+      "modelAnswer": "A Geiger-Müller tube connected to a counter measures the count rate.",
+      "keywords": [
+        "geiger",
+        "tube",
+        "count",
+        "rate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q7",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "State one control variable and one safety precaution for this experiment.",
+      "misconceptionClass": "practical recall",
+      "kind": "recall",
+      "modelAnswer": "Control: keep the same source (or the same source-to-tube distance, or the same location). Safety: handle sources with tongs and store them in lead-lined containers.",
+      "keywords": [
+        "source",
+        "distance",
+        "tongs",
+        "lead"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q8",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "Explain why readings are repeated and averaged in this investigation.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Radioactive decay is random, so single readings fluctuate; repeating each measurement and averaging reduces the effect of those fluctuations.",
+      "keywords": [
+        "random",
+        "readings",
+        "averaging",
+        "fluctuate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L1::Q9",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L1",
+      "stem": "A student measures with no absorber, then paper, then aluminium. The count rates are 850, 848 and 210. What does this suggest about the emission, and why?",
+      "misconceptionClass": "penetration application",
+      "kind": "application",
+      "modelAnswer": "Paper leaves the rate almost unchanged (850 → 848), so alpha is absent; aluminium cuts it sharply (848 → 210), so beta is being absorbed — the source emits beta.",
+      "keywords": [
+        "paper",
+        "aluminium",
+        "count",
+        "beta"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q1",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "Why is the background count measured before any source is used?",
+      "misconceptionClass": "background reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "to make the source decay slower",
+          "correct": false,
+          "explanation": "Nothing about the source changes.",
+          "misconception": "decay myth"
+        },
+        {
+          "key": "B",
+          "text": "to subtract it from later readings for corrected count rates",
+          "correct": true,
+          "explanation": "Background subtraction isolates the source’s contribution.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "to check the source is working",
+          "correct": false,
+          "explanation": "The source is not present during the background measurement.",
+          "misconception": "source check"
+        },
+        {
+          "key": "D",
+          "text": "to calibrate the absorbers",
+          "correct": false,
+          "explanation": "Absorbers need no calibration by background.",
+          "misconception": "calibration confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q2",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "The corrected count rate falls to background level behind paper. Which radiation was emitted?",
+      "misconceptionClass": "analysis reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "gamma",
+          "correct": false,
+          "explanation": "Gamma penetrates paper easily.",
+          "misconception": "gamma misread"
+        },
+        {
+          "key": "B",
+          "text": "no radiation",
+          "correct": false,
+          "explanation": "The drop to background shows radiation was present and then absorbed.",
+          "misconception": "no radiation"
+        },
+        {
+          "key": "C",
+          "text": "alpha",
+          "correct": true,
+          "explanation": "Only alpha is stopped by paper.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "beta",
+          "correct": false,
+          "explanation": "Beta penetrates paper.",
+          "misconception": "beta misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q3",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "After a few millimetres of lead, some counts above background remain. What does that indicate?",
+      "misconceptionClass": "analysis reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the lead has become radioactive",
+          "correct": false,
+          "explanation": "Irradiation does not make the lead a source.",
+          "misconception": "activation myth"
+        },
+        {
+          "key": "B",
+          "text": "the GM tube is faulty",
+          "correct": false,
+          "explanation": "Residual gamma, not fault, explains the counts.",
+          "misconception": "faulty tube"
+        },
+        {
+          "key": "C",
+          "text": "alpha is passing through",
+          "correct": false,
+          "explanation": "Alpha cannot pass anything, let alone lead.",
+          "misconception": "alpha leak"
+        },
+        {
+          "key": "D",
+          "text": "a gamma component is still penetrating",
+          "correct": true,
+          "explanation": "Only gamma survives modest lead shielding.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q4",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "What does a corrected count rate close to zero tell you about the absorber used?",
+      "misconceptionClass": "analysis reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it fully absorbed the emitted radiation",
+          "correct": true,
+          "explanation": "Counts at background mean the source contributes nothing through that absorber.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the absorber emits its own radiation",
+          "correct": false,
+          "explanation": "Absorbers do not emit.",
+          "misconception": "absorber emission"
+        },
+        {
+          "key": "C",
+          "text": "the source has decayed away completely",
+          "correct": false,
+          "explanation": "Decay takes far longer than a measurement session.",
+          "misconception": "decay myth"
+        },
+        {
+          "key": "D",
+          "text": "background was measured wrongly",
+          "correct": false,
+          "explanation": "The comparison itself is the method working as intended.",
+          "misconception": "method doubt"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q5",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "A source shows a drop at paper AND a further drop at aluminium, with a residual behind lead. What is emitted?",
+      "misconceptionClass": "mixed source reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "gamma only",
+          "correct": false,
+          "explanation": "Gamma alone would show no paper or aluminium step.",
+          "misconception": "single component"
+        },
+        {
+          "key": "B",
+          "text": "alpha and beta, with some gamma",
+          "correct": true,
+          "explanation": "Two absorption steps identify two components; the lead residual adds gamma.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "alpha only",
+          "correct": false,
+          "explanation": "Alpha alone would show only the paper drop.",
+          "misconception": "single component"
+        },
+        {
+          "key": "D",
+          "text": "beta only",
+          "correct": false,
+          "explanation": "Beta alone would pass paper unchanged.",
+          "misconception": "single component"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q6",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "Describe how to measure the background count rate.",
+      "misconceptionClass": "background recall",
+      "kind": "recall",
+      "modelAnswer": "Record the count for one minute with no source present, repeat and average; the result is the background count rate to subtract later.",
+      "keywords": [
+        "background",
+        "count",
+        "minute",
+        "source"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q7",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "State what count-rate change reveals a beta emitter in this experiment.",
+      "misconceptionClass": "analysis recall",
+      "kind": "recall",
+      "modelAnswer": "A sharp fall in corrected count rate when a few millimetres of aluminium are inserted identifies beta emission.",
+      "keywords": [
+        "aluminium",
+        "count",
+        "fall",
+        "beta"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q8",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "Explain why the absorbers are tested one at a time rather than all together.",
+      "misconceptionClass": "method reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Stacking absorbers would hide which one caused the change; testing one at a time attributes each count-rate drop to a single absorber, so each radiation is identified cleanly.",
+      "keywords": [
+        "absorber",
+        "count",
+        "drop",
+        "identified"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L2::Q9",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L2",
+      "stem": "Corrected rates are: no absorber 600, paper 595, aluminium 60, lead 55. Identify the emission(s) and state what the lead residual shows.",
+      "misconceptionClass": "penetration application",
+      "kind": "application",
+      "modelAnswer": "Paper changes nothing (no alpha); aluminium drops the rate to near background (beta present); the small lead residual of 55 suggests a weak gamma component above background.",
+      "keywords": [
+        "paper",
+        "aluminium",
+        "beta",
+        "gamma",
+        "residual"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q1",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "Which is a systematic error to avoid in this experiment?",
+      "misconceptionClass": "error identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "choosing lead as an absorber",
+          "correct": false,
+          "explanation": "Absorber choice is the design, not an error.",
+          "misconception": "design confusion"
+        },
+        {
+          "key": "B",
+          "text": "averaging repeated readings",
+          "correct": false,
+          "explanation": "Averaging reduces error; it is not an error.",
+          "misconception": "practice confusion"
+        },
+        {
+          "key": "C",
+          "text": "a spare source sitting near the counter",
+          "correct": true,
+          "explanation": "A stray source lifts every reading the same way.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a single unusually high count",
+          "correct": false,
+          "explanation": "Single high counts are random fluctuation.",
+          "misconception": "random confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q2",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "Why should every run take place in the same location?",
+      "misconceptionClass": "error reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the tube only works in one place",
+          "correct": false,
+          "explanation": "The tube works anywhere.",
+          "misconception": "equipment myth"
+        },
+        {
+          "key": "B",
+          "text": "sources decay faster elsewhere",
+          "correct": false,
+          "explanation": "Location does not change decay.",
+          "misconception": "decay myth"
+        },
+        {
+          "key": "C",
+          "text": "absorbers work differently in different rooms",
+          "correct": false,
+          "explanation": "Absorption physics is location-independent.",
+          "misconception": "absorber myth"
+        },
+        {
+          "key": "D",
+          "text": "background radiation varies from place to place",
+          "correct": true,
+          "explanation": "Moving changes the baseline being subtracted.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q3",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "Why is a source with a long half-life preferred here?",
+      "misconceptionClass": "design reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "its activity stays steady during the whole experiment",
+          "correct": true,
+          "explanation": "A fading source would corrupt comparisons between absorbers.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "it is less dangerous",
+          "correct": false,
+          "explanation": "Long half-life does not imply low danger.",
+          "misconception": "safety myth"
+        },
+        {
+          "key": "C",
+          "text": "it is cheaper",
+          "correct": false,
+          "explanation": "Cost is not the stated reason.",
+          "misconception": "cost reason"
+        },
+        {
+          "key": "D",
+          "text": "it emits only gamma",
+          "correct": false,
+          "explanation": "Half-life says nothing about the radiation type.",
+          "misconception": "type confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q4",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "Which practice best reduces exposure while a source is in use?",
+      "misconceptionClass": "safety recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "warm it to room temperature first",
+          "correct": false,
+          "explanation": "Temperature is irrelevant.",
+          "misconception": "irrelevant step"
+        },
+        {
+          "key": "B",
+          "text": "keep it at arm’s length with tongs for the shortest time needed",
+          "correct": true,
+          "explanation": "Distance plus tongs plus minimal time is the standard trio.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "hold it close to keep control of it",
+          "correct": false,
+          "explanation": "Closeness increases dose.",
+          "misconception": "distance inversion"
+        },
+        {
+          "key": "D",
+          "text": "look directly at it to monitor it",
+          "correct": false,
+          "explanation": "Looking has no effect and eye exposure matters.",
+          "misconception": "supervision myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q5",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "A student leaves the source on the bench next to the tube for ten minutes between runs. What effect does this have?",
+      "misconceptionClass": "error reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "only the first reading is affected",
+          "correct": false,
+          "explanation": "The bias persists while the source sits there.",
+          "misconception": "single reading myth"
+        },
+        {
+          "key": "B",
+          "text": "the source decays twice as fast",
+          "correct": false,
+          "explanation": "Decay rate is unaffected by position.",
+          "misconception": "decay myth"
+        },
+        {
+          "key": "C",
+          "text": "every subsequent reading is biased upward",
+          "correct": true,
+          "explanation": "The nearby source adds counts to all later measurements — systematic.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "no effect, storage position does not matter",
+          "correct": false,
+          "explanation": "Storage position absolutely matters.",
+          "misconception": "no effect myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q6",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "State three safety precautions for handling a radioactive source.",
+      "misconceptionClass": "safety recall",
+      "kind": "recall",
+      "modelAnswer": "Keep the source in a lead-lined container when not in use, handle it with tongs, and stay at a good distance while minimising the time it is out.",
+      "keywords": [
+        "lead",
+        "container",
+        "tongs",
+        "distance",
+        "time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q7",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "Distinguish a systematic error from a random error in this experiment.",
+      "misconceptionClass": "error recall",
+      "kind": "recall",
+      "modelAnswer": "A systematic error shifts all readings the same way (such as a stray source nearby), while a random error scatters readings unpredictably (such as counting noise from decay randomness).",
+      "keywords": [
+        "systematic",
+        "random",
+        "readings",
+        "source"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q8",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "Explain why tongs, rather than gloves alone, are used to move the source.",
+      "misconceptionClass": "safety reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Tongs hold the source at a distance, and dose falls sharply with separation; gloves alone would keep the source against the hand at zero distance.",
+      "keywords": [
+        "tongs",
+        "distance",
+        "dose",
+        "source"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hm9hzsXmd3k7p72w::L3::Q9",
+      "moduleId": "rn_Hm9hzsXmd3k7p72w::L3",
+      "stem": "During the experiment the lab’s background rises because a colleague unboxes a different source across the room. Explain the effect on your corrected rates and one fix.",
+      "misconceptionClass": "error application",
+      "kind": "application",
+      "modelAnswer": "The raised background is still subtracted if re-measured, but a fixed old subtraction over-corrects or under-corrects every rate; the fix is to re-measure the background in the changed conditions (and keep all sources far from the counter).",
+      "keywords": [
+        "background",
+        "subtract",
+        "corrected",
+        "source"
+      ],
+      "options": []
+    }
+  ]
+}

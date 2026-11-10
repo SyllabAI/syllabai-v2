@@ -75,6 +75,7 @@ import { createBooksRouter } from "./routes/books";
 import { buildLlmAdminRouters } from "./routes/llmadmin";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildTeacherMeRouters } from "./routes/teacherme";
+import { buildEditorRouters } from "./routes/editor";
 import { buildWorkspaceDocsRouters } from "./routes/workspace-docs";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
@@ -112,6 +113,7 @@ const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const teacherMe = buildTeacherMeRouters();
+const editor = buildEditorRouters();
 const workspaceDocs = buildWorkspaceDocsRouters();
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
@@ -559,6 +561,17 @@ app.route("/api/v1/teachers/me", teacherMe.teacherMeRoute);
 // every signed-in account owns this plane; the /api/v1/* fallback below
 // stays the 404-after-auth path for NO router claimed).
 app.route("/api/v1/me/documents", workspaceDocs.workspaceDocsRoute);
+// Editor router (ADR-044 run-002 Phase 1 — v2-NATIVE additive, NO
+// frozen-core counterpart): the capability surface of record under
+// /api/v1/editor (GET /me — 200 {editor:true,scopes} for holders of an
+// unrevoked editor_grants row, the Boot 403 otherwise, the Boot 401
+// unauthenticated). The router owns its authz internally (requireAuth +
+// the requireEditor grant-row predicate — ADR-044 §3; the grant is read
+// AT REQUEST TIME so revocation is effective on the next request); the
+// /api/v1/* fallback below stays the 404-after-auth path for NO router
+// claimed. Phase 2 adds the proposal surfaces behind the same shell; no
+// editor-reachable serve/merge endpoint exists in any phase (ADR §8).
+app.route("/api/v1/editor", editor.editorRoute);
 // SME admin router (T-MIG-033 tranche-3 — Wave 3). Path parity with the
 // frozen core: SmeQuestionAdminController under /api/v1/admin/question-bank
 // (SecurityConfig.java:86 hasRole("ADMIN") + @PreAuthorize defense-in-depth;

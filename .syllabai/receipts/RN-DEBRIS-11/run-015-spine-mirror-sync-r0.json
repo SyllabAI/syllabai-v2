@@ -1,0 +1,104 @@
+{
+ "receipt": "rn11-run-015-spine-mirror-sync-r0",
+ "family": "RN-DEBRIS-11",
+ "run": "015",
+ "lane": "dedicated mirror-sync hygiene run — hub spine mirrors reconciled to the content plane of record (the residual spine-title debt after run-013/014 discharged the 58-row content queue with three-plane co-fixes)",
+ "operatorOrder": "a dedicated mirror-sync hygiene run",
+ "mode": "apply+verify",
+ "base": "origin/main 01a847d1229c (fetch-first; pinned worktree; execution trace 1a1c15ef3355fba5)",
+ "defectOfRecord": {
+  "queue": "spine mirror title drift at the pinned tip: 158 rows across 35 courses (TOPIC 62 / SUBTOPIC 50 / SPEC_POINT 46), all exact-code-matched — the live remainder of the run-009-era spine debt (pinned 31 courses/153 rows pre-run-013/014; moved by merged desk waves since)",
+  "classes": "spine_glue 33 (space-glue around italic variables; whitespace-only diff) + reworded 124 (generator-era titles vs newer content plane) + content_defect 1 (excluded from sync) + ambiguous 0",
+  "ciInvisibility": "validate_spines.py golden-checks only igcse-chemistry-19 titles; validate_cie_bundles.ts:264 asserts spine census counts, not titles — title drift was CI-invisible"
+ },
+ "evidenceOfRecord": {
+  "sweepPre": {
+   "path": "mirror_sweep_pre_r0.json",
+   "sha256": "f0bcce228f07444594501ab46a37de1bbf5d83af81bd29b39a00119a2718da8e",
+   "law": "spine titles == content titles (verbatim, code-matched, document order; suffix fallback with ambiguity refusal)"
+  },
+  "applyManifest": {
+   "path": "apply_manifest_r0.json",
+   "sha256": "57f99504ada7ec70522f17ef39eabac657732d429f37673422c470bcfb3f534f",
+   "applyRows": 157,
+   "courses": 35,
+   "shrinkReviewLineage": [
+    "e2625254 adr039-r5 (#779 merged) — RS-23 per-religion section titles (TC3/I3/J3)",
+    "f4eb2b7e CIE phase 3 (merged) — maths-20 content titles; spine's 'Pure Mathematics' @ T4 traces to f0144d90 CIE phase 1 generation (generator warning records also-seen ['Mechanics'] — sync resolves to it)",
+    "48df8ee3 run-008 geography repair (merged) — T9:SUB_ 'Geographical skills and transferable skills (appendices)'"
+   ],
+   "puaConvention": 4,
+   "puaNote": "\\uf084/\\uf061 are the corpus's documented glyph convention (run-013 composed precedent; KG meta T-SPEC-AUDIT-1 'corpus itself stays spine-verbatim') — copied verbatim, never normalized here"
+  },
+  "sweepPost": {
+   "path": "mirror_sweep_post_r0.json",
+   "sha256": "e693a0a290e577fbafec17a913f63fc234bea1932e3c0795fdb457aecf4a2ade",
+   "driftRows": 1,
+   "residualIsContentDefectOfRecord": true
+  },
+  "kgEvidenceCensus": "KG point labels verbatim-match content on clean slugs (e.g. igcse-business-19 59/59, igcse-chemistry-modular-24 100/100, ial-chemistry-17 319/319) — spine was the sole laggard; KG is the documented presentation projection (T-SPEC-AUDIT-1) and was NOT an apply target",
+  "chem19CodeSchemeAnnex": "32 order-aligned TOPIC/SUBTOPIC pairs (4CH1-S* <-> igcse-chemistry-T*), titles equal 32/32 — code-scheme divergence only; zero title drift; no action"
+ },
+ "repair": {
+  "files": "35x apps/hub/spines/<slug>.json (157 title edits) — title-only, placement-neutral, zero code changes; content and KG planes untouched",
+  "law": "spine.title := content.title verbatim at node identity (family, code, document-order occurrence); meta.counts deep-equal per file; compact single-line serializer preserved (byte round-trip 106/106; git diff = exactly 1 line per file)"
+ },
+ "gates": {
+  "G0_fileScope": [
+   "apps/hub/spines/cie-a-level-chemistry-25.json",
+   "apps/hub/spines/cie-a-level-computer-science-19.json",
+   "apps/hub/spines/cie-a-level-maths-20-mechanics.json",
+   "apps/hub/spines/cie-a-level-maths-20-probability-and-statistics-1.json",
+   "apps/hub/spines/cie-a-level-maths-20-probability-and-statistics-2.json",
+   "apps/hub/spines/cie-a-level-maths-20-pure-1.json",
+   "apps/hub/spines/cie-a-level-maths-20-pure-2.json",
+   "apps/hub/spines/cie-a-level-maths-20-pure-3.json",
+   "apps/hub/spines/cie-as-chemistry-25.json",
+   "apps/hub/spines/cie-as-maths-20-mechanics.json",
+   "apps/hub/spines/cie-as-maths-20-probability-and-statistics-1.json",
+   "apps/hub/spines/cie-as-maths-20-pure-1.json",
+   "apps/hub/spines/cie-as-maths-20-pure-2.json",
+   "apps/hub/spines/cie-igcse-ict-21.json",
+   "apps/hub/spines/cie-igcse-religious-studies-23.json",
+   "apps/hub/spines/ial-biology-18.json",
+   "apps/hub/spines/ial-chemistry-17.json",
+   "apps/hub/spines/igcse-biology-modular-24-unit-1.json",
+   "apps/hub/spines/igcse-biology-modular-24-unit-2.json",
+   "apps/hub/spines/igcse-business-19.json",
+   "apps/hub/spines/igcse-chemistry-modular-24-unit-1.json",
+   "apps/hub/spines/igcse-chemistry-modular-24-unit-2.json",
+   "apps/hub/spines/igcse-economics-17.json",
+   "apps/hub/spines/igcse-geography-19.json",
+   "apps/hub/spines/igcse-ict-17.json",
+   "apps/hub/spines/igcse-maths-a-18-foundation.json",
+   "apps/hub/spines/igcse-maths-a-18-higher.json",
+   "apps/hub/spines/igcse-maths-a-modular-24-foundation-unit-1.json",
+   "apps/hub/spines/igcse-maths-a-modular-24-foundation-unit-2.json",
+   "apps/hub/spines/igcse-maths-a-modular-24-higher-unit-1.json",
+   "apps/hub/spines/igcse-maths-a-modular-24-higher-unit-2.json",
+   "apps/hub/spines/igcse-maths-b-16.json",
+   "apps/hub/spines/igcse-physics-modular-24-unit-1.json",
+   "apps/hub/spines/igcse-physics-modular-24-unit-2.json",
+   "apps/hub/spines/igcse-science-double-award-modular-24-physics-unit-1.json"
+  ],
+  "G1_serializer": "compact single-line preserved; round-trip probe stable 106/106",
+  "G2_fieldDiffs": "title-only (157 nodes); per-file deep walk asserted: no other field changed; meta.counts byte-equal pre/post",
+  "G3_structure": "node counts unchanged (35/35 files); diffstat 35 files, 35 insertions / 35 deletions",
+  "G6_mirrorEquality": "post-apply sweep: spine == content on every matched row; residual drift 1 row = the content-defect of record (content plane carries extraction garbage; spine side clean)",
+  "GV1_validator": "apps/hub/scripts/validate_spines.py exit 0; chemistry golden statement_diff_count 0 (improved to zero by this run)",
+  "G7_collision": "RN-DEBRIS-11 registry runs 001-014 used; run-015 free in-family (receipts dir + remote branch namespace checked). Cross-family run-015 usage disclosed (family-scoped numbering law): T-OEQ-MATHSB-SERVE-1/run-015-f5-fleet-strip.json, T-MIG-130/run-015-quiz-scaffold-r0.json"
+ },
+ "contentDefectQueue": [
+  {
+   "slug": "cie-as-maths-20-pure-2",
+   "family": "SPEC_POINT",
+   "code": "2.3.2",
+   "class": "pdf-extraction glyph garbage in the CONTENT plane ('R sin ^ i ! a h' / 'sec i / 1 + tan i' artifacts); the spine holds the clean official-era title",
+   "disposition": "NOT mirror-syncable (a mirror must never import a wreck); queued for a content repair pass with official-PDF evidence (run-013/014 standard)",
+   "spineTitlePreserved": "use trigonometrical identities for the simplification and exact evaluation of expressions, and in the course of solving "
+  }
+ ],
+ "projectionDeltasOfRecord": "evidence-only, out of title-hygiene scope, disclosed for a future structural run: 13 family-count mismatches (SME synthetic sections — 180 synthetic unmatched codes; cie-igcse-computer-science-23 T7/T9/T10; IAL topic-tree depth on ial-biology-18/ial-chemistry-17/ial-physics-19; cie-igcse-chemistry-23 SME-S*)",
+ "zeroInvention": "every applied title is a verbatim byte-copy of the content plane of record at the pinned base; no title was composed, normalized (PUA glyphs copied verbatim), truncated, or inferred; the one excluded row is documented verbatim above",
+ "operatorNote": "author does not self-merge — PR filed for desk (R0) review; no force-push; fetch-first race-guard at push"
+}

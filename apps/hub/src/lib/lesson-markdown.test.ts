@@ -94,13 +94,33 @@ describe("lessonBoxTypes", () => {
 });
 
 describe("rewriteGlossaryChips", () => {
-  test("[[slug]] → bold", () => {
+  test("[[slug]] without glossary → bold slug (honest fallback, unchanged)", () => {
     expect(rewriteGlossaryChips("The [[particle-model]] explains it.")).toBe(
       "The **particle-model** explains it.",
     );
   });
-  test("pipe alias form also rewrites to the slug", () => {
-    expect(rewriteGlossaryChips("[[diffusion|spreads]]")).toBe("**diffusion**");
+  test("[[slug]] + glossary → bold term (f-0009: no hyphenated-slug leak)", () => {
+    expect(
+      rewriteGlossaryChips("The [[particle-model]] explains it.", [
+        { slug: "particle-model", term: "particle model" },
+      ]),
+    ).toBe("The **particle model** explains it.");
+  });
+  test("pipe display half wins over slug and glossary term (f-0009: display no longer discarded)", () => {
+    expect(rewriteGlossaryChips("[[diffusion|spreads]]")).toBe("**spreads**");
+    expect(
+      rewriteGlossaryChips("[[diffusion|spreads]]", [{ slug: "diffusion", term: "Diffusion" }]),
+    ).toBe("**spreads**");
+  });
+  test("blank display half falls through to the glossary term", () => {
+    expect(
+      rewriteGlossaryChips("[[diffusion| ]]", [{ slug: "diffusion", term: "Diffusion" }]),
+    ).toBe("**Diffusion**");
+  });
+  test("unresolved slug with glossary present → honest slug fallback", () => {
+    expect(rewriteGlossaryChips("[[unknown-slug]]", [{ slug: "other", term: "Other" }])).toBe(
+      "**unknown-slug**",
+    );
   });
   test("no chips → unchanged", () => {
     expect(rewriteGlossaryChips("plain text")).toBe("plain text");

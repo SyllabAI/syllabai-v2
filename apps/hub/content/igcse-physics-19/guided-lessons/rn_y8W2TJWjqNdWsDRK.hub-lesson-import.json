@@ -1,0 +1,180 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_y8W2TJWjqNdWsDRK",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "fa0b73bc7af88f20625a2d5440a46c1c8eeca4cc3e213a7d4f4b85f3dabe4e08",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_y8W2TJWjqNdWsDRK",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Radioactivity Uses and Dangers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-2-radioactivity-uses-and-dangers/7-2-1-activity-and-decay",
+    "specAnchors": [
+      {
+        "code": "7.11",
+        "text": "know that the activity of a radioactive source decreases over a period of time and is measured in becquerels"
+      }
+    ],
+    "primer": {
+      "text": "A radioactive source is measured by its activity — how many unstable nuclei decay each second, counted in becquerels. Every decay thins the ranks of remaining nuclei, so activity inevitably falls with time, while random flicker in the count rate betrays the process.",
+      "prerequisiteSubtopic": "Radioactivity Uses and Dangers"
+    },
+    "modules": [
+      {
+        "id": "rn_y8W2TJWjqNdWsDRK::L1",
+        "title": "Activity and the becquerel",
+        "sourceHeadings": [
+          "Activity & decay"
+        ],
+        "specRefs": [
+          "7.11"
+        ],
+        "opening": "The activity of a source is the rate at which its unstable nuclei decay, measured in becquerels: one becquerel means one decay per second. Objects carrying radioactive nuclei are sources, and different sources decay at different rates.",
+        "keyPoints": [
+          "A source is an object containing radioactive nuclei.",
+          "Activity measures the rate at which unstable nuclei in the source decay.",
+          "Activity is measured in becquerels (Bq).",
+          "One becquerel equals one nucleus decaying per second.",
+          "Different sources decay at different rates."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A 500 Bq source decays 500 nuclei every second; a 50 Bq source only 50. The unit counts decays, not particles seen.",
+            "analogy": "Activity is popcorn pace — kernels popping per second — not the size of the pan.",
+            "examPointer": "Quote the definition as a rate (\"per second\") — defining activity as just \"how radioactive\" earns nothing."
+          },
+          "medium": {
+            "restatement": "Because each decay consumes one unstable nucleus, the population of decaying nuclei is strictly decreasing, so activity must decline over time — the law that half-life quantifies. The becquerel is small, so real sources quote kilo- or mega-becquerels.",
+            "analogy": "A candle burns its wax as it shines: the flame (activity) must eventually gutter because the fuel (unstable nuclei) is finite.",
+            "examPointer": "Keep activity (nuclei decaying) distinct from count rate (detections recorded) — examiners separate them deliberately."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_y8W2TJWjqNdWsDRK::L1::Q1",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q2",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q3",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q4",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q5",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q6",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q7",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q8",
+          "rn_y8W2TJWjqNdWsDRK::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_y8W2TJWjqNdWsDRK::L2",
+        "title": "Activity falls, randomness shows",
+        "sourceHeadings": [
+          "How does activity vary with time?"
+        ],
+        "specRefs": [
+          "7.11"
+        ],
+        "opening": "Plot a source’s count rate against time and the trace slopes downward — each decay shrinks the pool of unstable nuclei — but the line wobbles, because decay is random. Those fluctuations are the experimental evidence for randomness itself.",
+        "keyPoints": [
+          "The activity of a source decreases with time.",
+          "Each decay event reduces the number of radioactive nuclei left in the source.",
+          "Radioactive decay is a random process.",
+          "Count-rate fluctuations plotted against time are evidence for that randomness."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The graph trends down but zig-zags on the way: one minute high, next minute low, always drifting downward.",
+            "analogy": "It is like rain drying on a window — the overall trend is fewer droplets, but which drop goes next is anyone’s guess.",
+            "examPointer": "If asked for evidence of randomness, answer: the fluctuating count rate at constant conditions."
+          },
+          "medium": {
+            "restatement": "The downward trend reflects the shrinking population of unstable nuclei; the scatter reflects independent, unpredictable decay events whose statistical noise never fully averages out over short windows. Distinguishing trend from noise is the graph-reading skill this topic tests.",
+            "analogy": "A popcorn pan rattles irregularly (random pops) while the popping rate overall falls as kernels run out (trend).",
+            "examPointer": "Quote both halves: decreasing overall, fluctuating locally. A smooth line answer misses the randomness mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_y8W2TJWjqNdWsDRK::L2::Q1",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q2",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q3",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q4",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q5",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q6",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q7",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q8",
+          "rn_y8W2TJWjqNdWsDRK::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "activity",
+          "definition": "The rate at which unstable nuclei in a source decay.",
+          "firstLesson": 1
+        },
+        {
+          "term": "becquerel",
+          "definition": "The unit of activity: one decay per second.",
+          "firstLesson": 1
+        },
+        {
+          "term": "count rate",
+          "definition": "The number of radiation detections per unit time at the detector.",
+          "firstLesson": 1
+        },
+        {
+          "term": "source",
+          "definition": "An object containing radioactive nuclei that emits radiation.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A source has an activity of 2000 Bq. How many unstable nuclei decay in 2 minutes?",
+        "steps": [
+          "2000 Bq means 2000 nuclei decay every second.",
+          "Convert the time: 2 × 60 = 120 seconds.",
+          "Multiply: 2000 × 120 = 240 000 decays."
+        ],
+        "finalAnswer": "240 000 unstable nuclei decay in 2 minutes."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a2b30c52d549-23-2-radioactivity-fluctuations.png",
+        "alt": "Radioactivity Fluctuations, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "How does activity vary with time?",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "A falling activity trace whose fluctuations show the randomness of decay"
+      }
+    ]
+  }
+}

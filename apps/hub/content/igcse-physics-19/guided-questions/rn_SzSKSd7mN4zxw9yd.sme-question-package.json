@@ -1,0 +1,492 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_SzSKSd7mN4zxw9yd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "f8c754b45ea294e14bbee145e28b6b9f6d7256bb6b08fde33e8c01ceb0c82aea",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_SzSKSd7mN4zxw9yd",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q1",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "What must two atoms share to be isotopes of the same element?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the same number of protons",
+          "correct": true,
+          "explanation": "Proton count fixes the element; isotopes differ only in neutrons.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the same number of neutrons",
+          "correct": false,
+          "explanation": "Differing neutrons is exactly what makes them isotopes.",
+          "misconception": "neutron equality"
+        },
+        {
+          "key": "C",
+          "text": "the same mass number",
+          "correct": false,
+          "explanation": "Mass numbers differ between isotopes.",
+          "misconception": "mass equality"
+        },
+        {
+          "key": "D",
+          "text": "the same number of electrons and neutrons",
+          "correct": false,
+          "explanation": "Neutrons differ; electrons are irrelevant to the definition.",
+          "misconception": "electron relevance"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q2",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "How do chlorine-35 and chlorine-37 differ?",
+      "misconceptionClass": "isotope comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "they are different elements",
+          "correct": false,
+          "explanation": "Shared proton count means the same element.",
+          "misconception": "element change"
+        },
+        {
+          "key": "B",
+          "text": "chlorine-37 has two more neutrons",
+          "correct": true,
+          "explanation": "35 − 17 = 18 and 37 − 17 = 20 neutrons: a difference of two.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "chlorine-37 has two more protons",
+          "correct": false,
+          "explanation": "Both have 17 protons — extra protons would change the element.",
+          "misconception": "proton difference"
+        },
+        {
+          "key": "D",
+          "text": "chlorine-37 has two more electrons",
+          "correct": false,
+          "explanation": "Neutral atoms of both have 17 electrons.",
+          "misconception": "electron difference"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q3",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "An isotope’s mass number differs from another isotope of the same element because…",
+      "misconceptionClass": "isotope reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "it has lost electrons",
+          "correct": false,
+          "explanation": "Electron loss changes charge, not the mass number.",
+          "misconception": "electron loss"
+        },
+        {
+          "key": "B",
+          "text": "its nucleus has shrunk",
+          "correct": false,
+          "explanation": "Nuclear size is not what the mass number measures.",
+          "misconception": "nuclear size"
+        },
+        {
+          "key": "C",
+          "text": "its nucleus holds a different number of neutrons",
+          "correct": true,
+          "explanation": "Mass number = protons + neutrons; only neutrons vary.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "its nucleus holds a different number of protons",
+          "correct": false,
+          "explanation": "Protons are constant across isotopes.",
+          "misconception": "proton variance"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q4",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "Which pair of numbers could describe two isotopes of the same element?",
+      "misconceptionClass": "isotope identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "atomic numbers 6 and 7, mass number 12",
+          "correct": false,
+          "explanation": "Different atomic numbers are different elements.",
+          "misconception": "element pair"
+        },
+        {
+          "key": "B",
+          "text": "atomic number 8, mass numbers 16 and 17 protons",
+          "correct": false,
+          "explanation": "A proton change would alter the atomic number.",
+          "misconception": "mixed units"
+        },
+        {
+          "key": "C",
+          "text": "mass number 16, proton numbers 8 and 9",
+          "correct": false,
+          "explanation": "Again two elements, not isotopes.",
+          "misconception": "element pair"
+        },
+        {
+          "key": "D",
+          "text": "atomic number 6, mass numbers 12 and 14",
+          "correct": true,
+          "explanation": "Shared atomic number with different mass numbers is the isotope pattern.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q5",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "Why are isotopes of an element chemically indistinguishable in most reactions?",
+      "misconceptionClass": "identity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because chemistry depends on electrons, and their count tracks the unchanged proton number",
+          "correct": true,
+          "explanation": "Equal protons give equal electrons in neutral atoms, so chemistry matches.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "because isotopes have identical masses",
+          "correct": false,
+          "explanation": "Their masses differ — that is the definition.",
+          "misconception": "mass equality"
+        },
+        {
+          "key": "C",
+          "text": "because neutrons control all chemistry",
+          "correct": false,
+          "explanation": "Neutrons are chemically inert inside the nucleus.",
+          "misconception": "neutron chemistry"
+        },
+        {
+          "key": "D",
+          "text": "because isotopes always decay at the same rate",
+          "correct": false,
+          "explanation": "Decay behaviour differs between isotopes.",
+          "misconception": "decay sameness"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q6",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "Define the term isotope.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Isotopes are atoms of the same element with the same number of protons but different numbers of neutrons.",
+      "keywords": [
+        "isotopes",
+        "protons",
+        "neutrons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q7",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "State what stays the same and what changes between two isotopes of carbon.",
+      "misconceptionClass": "isotope comparison",
+      "kind": "recall",
+      "modelAnswer": "The proton count stays the same (6 for carbon) while the neutron count changes, so the mass number changes too.",
+      "keywords": [
+        "proton",
+        "neutron",
+        "carbon"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q8",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "Explain why an atom with 8 protons and 10 neutrons is an isotope of oxygen rather than a different element.",
+      "misconceptionClass": "identity reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The proton count of 8 fixes the element as oxygen; the neutron count only selects which isotope of oxygen it is.",
+      "keywords": [
+        "protons",
+        "oxygen",
+        "isotope",
+        "neutron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L1::Q9",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L1",
+      "stem": "Two neutral atoms have notations of atomic number 17 with mass numbers 35 and 37. Give the neutron and electron counts for each atom.",
+      "misconceptionClass": "isotope application",
+      "kind": "application",
+      "modelAnswer": "Each atom has 17 protons and 17 electrons; the neutrons are 35 − 17 = 18 and 37 − 17 = 20 respectively.",
+      "keywords": [
+        "protons",
+        "electrons",
+        "neutrons",
+        "mass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q1",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "What makes some isotopes more unstable than others?",
+      "misconceptionClass": "stability reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "chemical reactivity of the element",
+          "correct": false,
+          "explanation": "Stability is nuclear, not chemical.",
+          "misconception": "chemical cause"
+        },
+        {
+          "key": "B",
+          "text": "an imbalance between their protons and neutrons",
+          "correct": true,
+          "explanation": "The proton-neutron balance governs nuclear stability.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "having too many electrons",
+          "correct": false,
+          "explanation": "Electrons do not affect nuclear stability.",
+          "misconception": "electron cause"
+        },
+        {
+          "key": "D",
+          "text": "a large atomic radius",
+          "correct": false,
+          "explanation": "Nuclear stability is not set by atomic size.",
+          "misconception": "radius cause"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q2",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "Which isotope of hydrogen is rarer, deuterium or tritium?",
+      "misconceptionClass": "abundance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "they are equally rare",
+          "correct": false,
+          "explanation": "The abundances differ by many orders of magnitude.",
+          "misconception": "equal rarity"
+        },
+        {
+          "key": "B",
+          "text": "neither occurs in nature",
+          "correct": false,
+          "explanation": "Both occur naturally, in the stated tiny fractions.",
+          "misconception": "no natural occurrence"
+        },
+        {
+          "key": "C",
+          "text": "tritium",
+          "correct": true,
+          "explanation": "Tritium is about 1 in a billion billion; deuterium is 2 in 10,000.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "deuterium",
+          "correct": false,
+          "explanation": "Deuterium is far more common than tritium.",
+          "misconception": "abundance swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q3",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "About 2 in every 10,000 hydrogen atoms are deuterium. What fraction is that?",
+      "misconceptionClass": "abundance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 in 500",
+          "correct": false,
+          "explanation": "That would be 20 in 10,000 — ten times too high.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "B",
+          "text": "1 in 50,000",
+          "correct": false,
+          "explanation": "That would be 0.2 in 10,000 — ten times too low.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "C",
+          "text": "1 in a billion",
+          "correct": false,
+          "explanation": "That magnitude belongs to tritium, not deuterium.",
+          "misconception": "tritium mix-up"
+        },
+        {
+          "key": "D",
+          "text": "1 in 5,000",
+          "correct": true,
+          "explanation": "2/10,000 simplifies to 1/5,000.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q4",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "Why might an unstable isotope be unlikely to occur naturally in large amounts?",
+      "misconceptionClass": "stability reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because unstable nuclei decay away over time",
+          "correct": true,
+          "explanation": "Decay converts the isotope into other nuclei, depleting natural stores.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "because it is too chemically reactive to form compounds",
+          "correct": false,
+          "explanation": "The scarcity is nuclear, not chemical.",
+          "misconception": "chemical scarcity"
+        },
+        {
+          "key": "C",
+          "text": "because it cannot exist on Earth",
+          "correct": false,
+          "explanation": "Unstable isotopes exist; they simply do not persist.",
+          "misconception": "existence claim"
+        },
+        {
+          "key": "D",
+          "text": "because decay makes it heavier",
+          "correct": false,
+          "explanation": "Decay changes identity, not the argument about abundance.",
+          "misconception": "mass gain"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q5",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "Two isotopes of an element have very different proton-neutron ratios. What else will differ?",
+      "misconceptionClass": "isotope reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "their electron configuration in neutral atoms",
+          "correct": false,
+          "explanation": "Equal protons mean equal electrons and similar chemistry.",
+          "misconception": "electron difference"
+        },
+        {
+          "key": "B",
+          "text": "their likelihood of decaying",
+          "correct": true,
+          "explanation": "Stability, set by the ratio, sets the decay likelihood.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "their position in the periodic table",
+          "correct": false,
+          "explanation": "Both share the same atomic number and so the same position.",
+          "misconception": "table position"
+        },
+        {
+          "key": "D",
+          "text": "their chemical symbol",
+          "correct": false,
+          "explanation": "The element symbol is shared.",
+          "misconception": "symbol change"
+        }
+      ]
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q6",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "Name the two heavier isotopes of hydrogen and state how many neutrons each contains.",
+      "misconceptionClass": "isotope recall",
+      "kind": "recall",
+      "modelAnswer": "Deuterium is hydrogen with one neutron, and tritium is hydrogen with two neutrons.",
+      "keywords": [
+        "deuterium",
+        "tritium",
+        "hydrogen",
+        "neutrons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q7",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "State the approximate natural abundance of deuterium among hydrogen atoms.",
+      "misconceptionClass": "abundance recall",
+      "kind": "recall",
+      "modelAnswer": "Deuterium makes up about 2 in every 10,000 hydrogen atoms.",
+      "keywords": [
+        "deuterium",
+        "hydrogen",
+        "abundance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q8",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "Explain why an isotope with a large proton-neutron imbalance may be less likely to occur naturally.",
+      "misconceptionClass": "stability reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The imbalance makes the nucleus unstable, so it decays into other nuclei; over time the unstable isotope is depleted and becomes rare in nature.",
+      "keywords": [
+        "unstable",
+        "decays",
+        "nucleus",
+        "rare"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_SzSKSd7mN4zxw9yd::L2::Q9",
+      "moduleId": "rn_SzSKSd7mN4zxw9yd::L2",
+      "stem": "A sample contains 100,000 hydrogen atoms. Estimate how many are deuterium, and name the rarer isotope.",
+      "misconceptionClass": "abundance application",
+      "kind": "application",
+      "modelAnswer": "At 2 in 10,000, the sample holds about 20 deuterium atoms; tritium is the rarer isotope.",
+      "keywords": [
+        "deuterium",
+        "tritium",
+        "hydrogen",
+        "atoms"
+      ],
+      "options": []
+    }
+  ]
+}

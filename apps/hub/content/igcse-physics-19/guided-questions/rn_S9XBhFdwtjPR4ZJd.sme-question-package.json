@@ -1,0 +1,496 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_S9XBhFdwtjPR4ZJd",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "5df7c9dc738f977a2da270b514be53bff0051051f27b8a713f2bd4895a5cd018",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_S9XBhFdwtjPR4ZJd",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q1",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "Which radiation is most dangerous if a source is swallowed?",
+      "misconceptionClass": "inside-body reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "alpha",
+          "correct": true,
+          "explanation": "Alpha’s strong ionisation acts directly on internal tissue.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "beta",
+          "correct": false,
+          "explanation": "Beta ionises less than alpha.",
+          "misconception": "beta ranking"
+        },
+        {
+          "key": "C",
+          "text": "gamma",
+          "correct": false,
+          "explanation": "Gamma is the weakest ioniser.",
+          "misconception": "gamma ranking"
+        },
+        {
+          "key": "D",
+          "text": "all equal",
+          "correct": false,
+          "explanation": "The rankings differ sharply.",
+          "misconception": "equality myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q2",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "Which radiation is most dangerous when the source is outside the body?",
+      "misconceptionClass": "outside-body reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "they are equally dangerous outside",
+          "correct": false,
+          "explanation": "Penetration differences matter.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "B",
+          "text": "gamma",
+          "correct": true,
+          "explanation": "Gamma penetrates skin and reaches internal cells.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "alpha",
+          "correct": false,
+          "explanation": "Alpha is absorbed by air before the skin.",
+          "misconception": "alpha ranking"
+        },
+        {
+          "key": "D",
+          "text": "beta",
+          "correct": false,
+          "explanation": "Beta penetrates moderately, less than gamma.",
+          "misconception": "beta ranking"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q3",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "How can ionising radiation damage a living cell?",
+      "misconceptionClass": "cell damage recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it freezes the cell’s chemistry",
+          "correct": false,
+          "explanation": "No freezing occurs.",
+          "misconception": "freezing myth"
+        },
+        {
+          "key": "B",
+          "text": "it feeds the cell extra energy",
+          "correct": false,
+          "explanation": "Damage, not nutrition.",
+          "misconception": "nutrition myth"
+        },
+        {
+          "key": "C",
+          "text": "it ionises DNA; mis-repair of the damage can fix a mutation",
+          "correct": true,
+          "explanation": "The mutation route to cancer.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it melts the cell membrane",
+          "correct": false,
+          "explanation": "Melting is not the mechanism.",
+          "misconception": "melting myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q4",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "Why is alpha nearly harmless from an external source a metre away?",
+      "misconceptionClass": "outside-body reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "alpha has no charge",
+          "correct": false,
+          "explanation": "Alpha is double-charged.",
+          "misconception": "charge myth"
+        },
+        {
+          "key": "B",
+          "text": "alpha is not ionising",
+          "correct": false,
+          "explanation": "Alpha is the strongest ioniser.",
+          "misconception": "ionisation myth"
+        },
+        {
+          "key": "C",
+          "text": "air destroys the alpha particles’ nature",
+          "correct": false,
+          "explanation": "Absorption by range, not destruction of identity.",
+          "misconception": "air myth"
+        },
+        {
+          "key": "D",
+          "text": "its range in air is only a few centimetres",
+          "correct": true,
+          "explanation": "Alpha cannot reach the body from a metre.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q5",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "A worker ingests equal activities of an alpha emitter and a gamma emitter. Which causes more localised harm, and why?",
+      "misconceptionClass": "inside-body reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the alpha emitter — its dense ionisation acts directly on internal organs",
+          "correct": true,
+          "explanation": "Internal geometry favours the strong ioniser.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the gamma emitter — it penetrates the organs best",
+          "correct": false,
+          "explanation": "Penetration matters outside, not inside.",
+          "misconception": "geometry inversion"
+        },
+        {
+          "key": "C",
+          "text": "they do equal harm inside",
+          "correct": false,
+          "explanation": "Ionising power dominates internally.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "D",
+          "text": "neither harms internal tissue",
+          "correct": false,
+          "explanation": "Internal emitters are the classic hazard.",
+          "misconception": "null myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q6",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "State two dangers of ionising radiation to living organisms.",
+      "misconceptionClass": "dangers recall",
+      "kind": "recall",
+      "modelAnswer": "Radiation can cause mutations in living organisms and can damage cells and tissue.",
+      "keywords": [
+        "mutations",
+        "damage",
+        "cells",
+        "tissue"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q7",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "Which radiation is most harmful inside the body, and which outside?",
+      "misconceptionClass": "dangers recall",
+      "kind": "recall",
+      "modelAnswer": "Alpha is the most harmful inside the body (most ionising); gamma is the most harmful outside (most penetrating).",
+      "keywords": [
+        "alpha",
+        "gamma",
+        "ionising",
+        "penetrating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q8",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "Explain the reversal: alpha is worst inside the body but nearly harmless outside.",
+      "misconceptionClass": "dangers reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Alpha’s intense ionisation does maximal damage where it lands, so inside the body it harms organs directly; outside, its few-centimetre range in air means it never reaches the skin, while gamma’s long range carries its weaker ionisation deep into the body.",
+      "keywords": [
+        "alpha",
+        "ionisation",
+        "range",
+        "gamma"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L1::Q9",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L1",
+      "stem": "A hospital stores two sources: an alpha emitter and a gamma emitter, both sealed. Which storage demands thicker shielding, and why?",
+      "misconceptionClass": "dangers application",
+      "kind": "application",
+      "modelAnswer": "The gamma emitter: gamma is the most penetrating, so lead-lined thick shielding is needed; alpha is contained by almost any solid and even by a few centimetres of air.",
+      "keywords": [
+        "gamma",
+        "shielding",
+        "alpha",
+        "penetrating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q1",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "What does a dosemeter badge do?",
+      "misconceptionClass": "monitoring recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "reduces the source’s activity",
+          "correct": false,
+          "explanation": "Badges do not affect sources.",
+          "misconception": "activity myth"
+        },
+        {
+          "key": "B",
+          "text": "records the accumulated radiation dose a worker receives",
+          "correct": true,
+          "explanation": "The badge is the dose ledger.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "shields the worker from gamma rays",
+          "correct": false,
+          "explanation": "It monitors, it does not shield.",
+          "misconception": "shielding confusion"
+        },
+        {
+          "key": "D",
+          "text": "decontaminates clothing",
+          "correct": false,
+          "explanation": "No decontamination role.",
+          "misconception": "decontamination myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q2",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "Gamma-emitting waste is stored in…",
+      "misconceptionClass": "waste recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "paper envelopes",
+          "correct": false,
+          "explanation": "Nothing so weak.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "open pits",
+          "correct": false,
+          "explanation": "Security and containment forbid it.",
+          "misconception": "open myth"
+        },
+        {
+          "key": "C",
+          "text": "lead-lined, thick concrete silos",
+          "correct": true,
+          "explanation": "The deepest shielding tier.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "plastic canisters",
+          "correct": false,
+          "explanation": "Plastic suits alpha waste.",
+          "misconception": "alpha confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q3",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "Why must burial sites for long-lived waste be geologically stable?",
+      "misconceptionClass": "waste reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "to keep the waste warmer",
+          "correct": false,
+          "explanation": "Temperature is not the concern.",
+          "misconception": "temperature myth"
+        },
+        {
+          "key": "B",
+          "text": "to speed up the decay",
+          "correct": false,
+          "explanation": "Geology does not change decay rates.",
+          "misconception": "decay myth"
+        },
+        {
+          "key": "C",
+          "text": "to make retrieval easier",
+          "correct": false,
+          "explanation": "Disposal is not meant to be easy retrieval.",
+          "misconception": "retrieval myth"
+        },
+        {
+          "key": "D",
+          "text": "earthquakes or ground movement could breach containers and release waste into groundwater",
+          "correct": true,
+          "explanation": "Stability protects the containment over centuries.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q4",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "Which practice belongs to safe handling of sources?",
+      "misconceptionClass": "safety recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "using tongs and keeping the source in a lead-lined box when idle",
+          "correct": true,
+          "explanation": "The standard storage-plus-handling pair.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "holding the source in a bare hand briefly",
+          "correct": false,
+          "explanation": "Direct handling is forbidden.",
+          "misconception": "handling myth"
+        },
+        {
+          "key": "C",
+          "text": "storing it on the open bench overnight",
+          "correct": false,
+          "explanation": "Idle sources go into shielding.",
+          "misconception": "storage myth"
+        },
+        {
+          "key": "D",
+          "text": "pointing it at colleagues for checks",
+          "correct": false,
+          "explanation": "Never point sources at people.",
+          "misconception": "pointing myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q5",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "Rust and corrosion resistance matter for waste containers because…",
+      "misconceptionClass": "waste reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "the law requires visible rust",
+          "correct": false,
+          "explanation": "Nonsense.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "containers must stay intact for very long periods in hostile conditions",
+          "correct": true,
+          "explanation": "Integrity over centuries is the design brief.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "rust increases the activity",
+          "correct": false,
+          "explanation": "Chemistry does not change nuclear activity.",
+          "misconception": "activity myth"
+        },
+        {
+          "key": "D",
+          "text": "rust makes waste less dangerous",
+          "correct": false,
+          "explanation": "Corrosion threatens containment.",
+          "misconception": "safety inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q6",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "List four precautions a student should take when using a radioactive source.",
+      "misconceptionClass": "safety recall",
+      "kind": "recall",
+      "modelAnswer": "Store the source in its lead-lined box until the moment it is needed, handle it with tongs, keep maximum distance, and minimise the time it is out (then wash hands and log the usage).",
+      "keywords": [
+        "lead",
+        "container",
+        "tongs",
+        "distance",
+        "time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q7",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "Match each waste type to its storage: alpha, beta, gamma emitters.",
+      "misconceptionClass": "waste recall",
+      "kind": "recall",
+      "modelAnswer": "Alpha waste in plastic or metal canisters; beta waste in metal canisters inside concrete silos; gamma waste in lead-lined, thick concrete silos.",
+      "keywords": [
+        "alpha",
+        "beta",
+        "gamma",
+        "concrete"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q8",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "Explain why sources with long half-lives shape the whole waste-disposal problem.",
+      "misconceptionClass": "waste reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Long half-lives keep the waste radioactive and dangerous for very long times, so containers must resist corrosion and sites must stay stable and secure for centuries to keep it out of groundwater.",
+      "keywords": [
+        "half-lives",
+        "radioactive",
+        "containers",
+        "groundwater"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S9XBhFdwtjPR4ZJd::L2::Q9",
+      "moduleId": "rn_S9XBhFdwtjPR4ZJd::L2",
+      "stem": "A radiographer’s quarterly badge reading has crept upward across the year. Give two system changes that would reduce the dose.",
+      "misconceptionClass": "monitoring application",
+      "kind": "application",
+      "modelAnswer": "Reduce exposure time per procedure (roster or automation) and increase distance/shielding — for example remote handling or better screens — so the recorded dose per quarter falls.",
+      "keywords": [
+        "dose",
+        "time",
+        "distance",
+        "shielding"
+      ],
+      "options": []
+    }
+  ]
+}

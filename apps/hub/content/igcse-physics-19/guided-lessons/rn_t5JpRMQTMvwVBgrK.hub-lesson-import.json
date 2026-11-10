@@ -1,0 +1,188 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_t5JpRMQTMvwVBgrK",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "555e1b4d290ab692338117753125a88f11d3122e4e26da37041d0e8ae2bd5a92",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_t5JpRMQTMvwVBgrK",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Radioactivity Uses and Dangers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-2-radioactivity-uses-and-dangers/7-2-4-contamination-and-irradiation",
+    "specAnchors": [
+      {
+        "code": "7.15",
+        "text": "describe the difference between contamination and irradiation"
+      }
+    ],
+    "primer": {
+      "text": "Two words, one trap. Irradiation bathes an object in radiation from outside — the object never becomes radioactive. Contamination puts radioactive atoms onto or into the material itself — and then it is radioactive. Protection differs for each, and the exam tests the difference.",
+      "prerequisiteSubtopic": "Radioactivity Uses and Dangers"
+    },
+    "modules": [
+      {
+        "id": "rn_t5JpRMQTMvwVBgrK::L1",
+        "title": "Contamination versus irradiation",
+        "sourceHeadings": [
+          "Contamination",
+          "Irradiation"
+        ],
+        "specRefs": [
+          "7.15"
+        ],
+        "opening": "Contamination is the unwanted arrival of radioactive material on or inside a substance — an accident, such as a leak — and the material becomes radioactive as a result. Irradiation is the deliberate exposure of a material to ionising radiation: useful for sterilisation, and it never makes the material radioactive.",
+        "keyPoints": [
+          "Contamination is the unwanted transfer of radioactive material onto or into something.",
+          "A contaminated object becomes radioactive because it now contains a source.",
+          "Irradiation is exposing a material to ionising radiation, usually deliberately.",
+          "Irradiation does not make the exposed object radioactive.",
+          "Irradiation can still kill living cells — sterility comes at a dose."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Spill isotope on the bench: contaminated. Shine gamma at the bench: irradiated, but wipe-clean ordinary matter either way.",
+            "analogy": "Contamination is spilling paint ON you; irradiation is standing in the spray of a paint gun — wet paint only where it lands as matter.",
+            "examPointer": "The money sentence: only contamination makes things radioactive — irradiation never does."
+          },
+          "medium": {
+            "restatement": "The distinction is about location of the source: outside the object (irradiation) versus part of the object (contamination). Consequences follow: irradiation stops when the beam stops, contamination persists and emits until the isotope decays or is removed.",
+            "analogy": "Sunlight warms you only while you stand in it (irradiation); a charcoal briquette in your pocket keeps burning wherever you go (contamination).",
+            "examPointer": "Comparison tables on this pair are frequent — rehearse description/source/prevention/causes rows."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_t5JpRMQTMvwVBgrK::L1::Q1",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q2",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q3",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q4",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q5",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q6",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q7",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q8",
+          "rn_t5JpRMQTMvwVBgrK::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_t5JpRMQTMvwVBgrK::L2",
+        "title": "Protection and the comparison",
+        "sourceHeadings": [
+          "Protection from irradiation and contamination",
+          "Differences between irradiation and contamination"
+        ],
+        "specRefs": [
+          "7.15"
+        ],
+        "opening": "Irradiation risk falls with time, distance and shielding; contamination risk falls with airtight barriers and careful handling, because blocking an internal emitter is impossible. Inside the body, contamination is the graver hazard — the source rides with you.",
+        "keyPoints": [
+          "Irradiation exposure is reduced by minimising time and maximising distance from the source.",
+          "Contamination is prevented by airtight suits and safe handling, not by shielding after the fact.",
+          "Inhaled or ingested sources — radon gas, contaminated food — irradiate the internal organs from inside.",
+          "Contamination is generally the greater risk; irradiation is usually deliberate and controlled.",
+          "Long-half-life sources pose the greater contamination risk — the long-term burden that waste policy must carry."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Beam hazard: step back, hurry up, hide behind lead. Spill hazard: seal up, gloves on, never touch — you cannot shield what is already inside.",
+            "analogy": "Irradiation is standing near a bonfire — move away. Contamination is a lit match in your pocket — distance is no longer available.",
+            "examPointer": "Match each protection to its hazard; swapping them is the classic lost mark."
+          },
+          "medium": {
+            "restatement": "The half-life asymmetry explains the risk table: high activity (short half-life) means intense irradiation now, while longevity (long half-life) means a contamination burden that persists for storage lifetimes. Hence waste policy favours long-term geological isolation, and laboratory policy favours tongs and short exposures.",
+            "analogy": "A short-half-life source is a firework — fierce but brief; a long-half-life source is a slow candle — gentle but it stays lit for years.",
+            "examPointer": "WE-style questions ask for the half-life risk split: short → irradiation, long → contamination."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_t5JpRMQTMvwVBgrK::L2::Q1",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q2",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q3",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q4",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q5",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q6",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q7",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q8",
+          "rn_t5JpRMQTMvwVBgrK::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "contamination",
+          "definition": "The accidental transfer of a radioactive substance onto or into a material.",
+          "firstLesson": 1
+        },
+        {
+          "term": "irradiation",
+          "definition": "Exposing a material to ionising radiation without it becoming radioactive.",
+          "firstLesson": 1
+        },
+        {
+          "term": "airtight suit",
+          "definition": "Protective clothing that prevents radioactive atoms reaching the skin or being inhaled.",
+          "firstLesson": 2
+        },
+        {
+          "term": "half-life risk split",
+          "definition": "Short half-lives dominate irradiation risk; long half-lives dominate contamination risk.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/65c762b5c164-radiation-hazard.png",
+        "alt": "Radiation-Hazard, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Irradiation",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The international symbol indicating the presence of radioactive material"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/41b9323b9e8f-32856-4-2-11-safety-wear.png",
+        "alt": "Diagram of a full-body yellow radiation suit with visor, gloves and boots, labelled as providing protection from contamination.",
+        "sourceHeading": "Protection from irradiation and contamination",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Contamination carries much greater risks than irradiation"
+      }
+    ]
+  }
+}

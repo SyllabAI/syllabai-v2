@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_t5JpRMQTMvwVBgrK",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "555e1b4d290ab692338117753125a88f11d3122e4e26da37041d0e8ae2bd5a92",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_t5JpRMQTMvwVBgrK",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q1",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "Which process can make an object radioactive?",
+      "misconceptionClass": "distinction recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "contamination",
+          "correct": true,
+          "explanation": "Only containing radioactive atoms makes an object radioactive.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "irradiation",
+          "correct": false,
+          "explanation": "Exposure to radiation does not create a source.",
+          "misconception": "irradiation myth"
+        },
+        {
+          "key": "C",
+          "text": "both equally",
+          "correct": false,
+          "explanation": "The asymmetry is the entire point.",
+          "misconception": "symmetry myth"
+        },
+        {
+          "key": "D",
+          "text": "neither",
+          "correct": false,
+          "explanation": "Contamination does.",
+          "misconception": "null myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q2",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "Irradiating a surgical instrument makes it…",
+      "misconceptionClass": "distinction recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "unsafe to use ever again",
+          "correct": false,
+          "explanation": "Sterilised instruments are used routinely.",
+          "misconception": "safety myth"
+        },
+        {
+          "key": "B",
+          "text": "sterile but not radioactive",
+          "correct": true,
+          "explanation": "The dose kills organisms; no atoms are transferred.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "radioactive and sterile",
+          "correct": false,
+          "explanation": "Irradiation never confers radioactivity.",
+          "misconception": "activation myth"
+        },
+        {
+          "key": "D",
+          "text": "contaminated",
+          "correct": false,
+          "explanation": "Nothing was transferred onto it.",
+          "misconception": "contamination confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q3",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "Contamination is almost always…",
+      "misconceptionClass": "distinction recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a way to sterilise food",
+          "correct": false,
+          "explanation": "That is irradiation’s role.",
+          "misconception": "irradiation confusion"
+        },
+        {
+          "key": "B",
+          "text": "impossible to prevent",
+          "correct": false,
+          "explanation": "Safe handling prevents it.",
+          "misconception": "prevention myth"
+        },
+        {
+          "key": "C",
+          "text": "an accident or mistake, such as a leak",
+          "correct": true,
+          "explanation": "Contamination is accidental transfer.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a deliberate medical treatment",
+          "correct": false,
+          "explanation": "Deliberate exposure is irradiation.",
+          "misconception": "deliberate confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q4",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "A worker stands near a gamma source behind a screen. If a spot of the source’s dust lands on their sleeve, the worker is now…",
+      "misconceptionClass": "distinction application",
+      "options": [
+        {
+          "key": "A",
+          "text": "only irradiated",
+          "correct": false,
+          "explanation": "The dust adds contamination.",
+          "misconception": "dust ignored"
+        },
+        {
+          "key": "B",
+          "text": "only contaminated",
+          "correct": false,
+          "explanation": "The standing exposure is irradiation.",
+          "misconception": "exposure ignored"
+        },
+        {
+          "key": "C",
+          "text": "neither, because a screen was present",
+          "correct": false,
+          "explanation": "The screen does not undo either process.",
+          "misconception": "screen myth"
+        },
+        {
+          "key": "D",
+          "text": "both irradiated (by the source) and contaminated (by the dust)",
+          "correct": true,
+          "explanation": "Exposure from the source plus transferred atoms.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q5",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "Why does an irradiated object stop posing a radiation risk as soon as it leaves the beam?",
+      "misconceptionClass": "distinction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because it contains no source of its own — the radiation came from outside",
+          "correct": true,
+          "explanation": "No internal emitter remains.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "because irradiation removes all atoms",
+          "correct": false,
+          "explanation": "Nothing is removed.",
+          "misconception": "removal myth"
+        },
+        {
+          "key": "C",
+          "text": "because objects absorb gamma permanently",
+          "correct": false,
+          "explanation": "Absorption is not retention of a source.",
+          "misconception": "absorption myth"
+        },
+        {
+          "key": "D",
+          "text": "because the beam ionises the air instead",
+          "correct": false,
+          "explanation": "Air ionisation is irrelevant to the object.",
+          "misconception": "air myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q6",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "Define contamination.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Contamination is the unwanted, accidental transfer of radioactive material onto or into some object, which then becomes radioactive itself.",
+      "keywords": [
+        "contamination",
+        "transfer",
+        "radioactive",
+        "material"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q7",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "Define irradiation.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Irradiation means deliberately exposing a material to ionising radiation — and the material does not become radioactive as a result.",
+      "keywords": [
+        "irradiation",
+        "exposing",
+        "radiation",
+        "material"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q8",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "Explain why a contaminated object remains dangerous long after the spill, while an irradiated one does not.",
+      "misconceptionClass": "distinction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The contaminated object carries its own radioactive source, which keeps emitting until the isotope decays or is removed; the irradiated object holds no source, so the risk ends when the exposure does.",
+      "keywords": [
+        "contaminated",
+        "source",
+        "emitting",
+        "irradiated"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L1::Q9",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L1",
+      "stem": "A sealed syringe is gamma-irradiated, and later a drop of radioactive solution splashes onto a second syringe. Contrast the two syringes’ states.",
+      "misconceptionClass": "distinction application",
+      "kind": "application",
+      "modelAnswer": "The first is sterile and not radioactive — irradiation transferred no atoms; the second is contaminated — it carries radioactive material and emits radiation until cleaned or decayed.",
+      "keywords": [
+        "irradiated",
+        "contaminated",
+        "radioactive",
+        "sterile"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q1",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "Which practice reduces irradiation from an external source?",
+      "misconceptionClass": "protection recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "washing hands afterwards",
+          "correct": false,
+          "explanation": "Useful against contamination, not irradiation.",
+          "misconception": "washing confusion"
+        },
+        {
+          "key": "B",
+          "text": "maximising distance and minimising exposure time",
+          "correct": true,
+          "explanation": "Distance and time are the irradiation levers.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "wearing an airtight suit",
+          "correct": false,
+          "explanation": "That targets contamination.",
+          "misconception": "suit confusion"
+        },
+        {
+          "key": "D",
+          "text": "drinking iodine tablets",
+          "correct": false,
+          "explanation": "Not in this syllabus context.",
+          "misconception": "tablets myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q2",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "What is the point of an airtight suit in a contaminated area?",
+      "misconceptionClass": "protection recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "it makes the worker immune to irradiation",
+          "correct": false,
+          "explanation": "Distance and shielding address irradiation.",
+          "misconception": "immunity myth"
+        },
+        {
+          "key": "B",
+          "text": "it cleans the air of radiation",
+          "correct": false,
+          "explanation": "Suits do not clean air.",
+          "misconception": "cleaning myth"
+        },
+        {
+          "key": "C",
+          "text": "it stops radioactive atoms getting onto or into the worker",
+          "correct": true,
+          "explanation": "The suit is the barrier against transfer.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "it shields the worker from gamma rays",
+          "correct": false,
+          "explanation": "A suit is not gamma shielding.",
+          "misconception": "shielding confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q3",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "Why is inhaled radon particularly hazardous?",
+      "misconceptionClass": "protection reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because alpha cannot travel through air",
+          "correct": false,
+          "explanation": "Air travel is exactly how it is inhaled.",
+          "misconception": "travel myth"
+        },
+        {
+          "key": "B",
+          "text": "because radon is more penetrating than gamma",
+          "correct": false,
+          "explanation": "Radon’s alphas are weakly penetrating.",
+          "misconception": "penetration myth"
+        },
+        {
+          "key": "C",
+          "text": "because radon irradiates from outside the body",
+          "correct": false,
+          "explanation": "The hazard is internal.",
+          "misconception": "location inversion"
+        },
+        {
+          "key": "D",
+          "text": "it is a contamination route putting an alpha emitter inside the lungs",
+          "correct": true,
+          "explanation": "Internal alpha delivery is the worst case.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q4",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "A source has a very short half-life. Its chief risk profile is…",
+      "misconceptionClass": "risk reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "high irradiation risk from intense activity",
+          "correct": true,
+          "explanation": "Short half-life → high activity → strong exposure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "high contamination risk for centuries",
+          "correct": false,
+          "explanation": "Short half-life does not persist.",
+          "misconception": "persistence myth"
+        },
+        {
+          "key": "C",
+          "text": "no risk at all",
+          "correct": false,
+          "explanation": "High activity is precisely the risk.",
+          "misconception": "null myth"
+        },
+        {
+          "key": "D",
+          "text": "risk only if swallowed",
+          "correct": false,
+          "explanation": "External irradiation already matters.",
+          "misconception": "ingestion only"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q5",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "Long-half-life waste demands…",
+      "misconceptionClass": "risk reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "immediate dilution into air",
+          "correct": false,
+          "explanation": "That is not the named control.",
+          "misconception": "dilution myth"
+        },
+        {
+          "key": "B",
+          "text": "secure long-term storage to prevent contamination spreading",
+          "correct": true,
+          "explanation": "Longevity drives the storage burden.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "only a brief quarantine",
+          "correct": false,
+          "explanation": "The timescale is the opposite.",
+          "misconception": "time myth"
+        },
+        {
+          "key": "D",
+          "text": "no special handling",
+          "correct": false,
+          "explanation": "It is the hardest case.",
+          "misconception": "null myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q6",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "State how to reduce the risk from irradiation by an external source.",
+      "misconceptionClass": "protection recall",
+      "kind": "recall",
+      "modelAnswer": "Minimise the time spent near the source, maximise the distance from it, and use shielding where possible.",
+      "keywords": [
+        "time",
+        "distance",
+        "shielding",
+        "source"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q7",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "State how contamination is prevented.",
+      "misconceptionClass": "protection recall",
+      "kind": "recall",
+      "modelAnswer": "Contamination is prevented by handling sources safely — airtight protective clothing, gloves and tongs — so radioactive atoms never transfer onto or into a person.",
+      "keywords": [
+        "airtight",
+        "handling",
+        "gloves",
+        "transfer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q8",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "Explain why contamination inside the body is more dangerous than the same activity outside.",
+      "misconceptionClass": "protection reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Inside the body there is no distance and no shielding; the source directly irradiates internal organs as it moves through them.",
+      "keywords": [
+        "inside",
+        "organs",
+        "distance",
+        "shielding"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t5JpRMQTMvwVBgrK::L2::Q9",
+      "moduleId": "rn_t5JpRMQTMvwVBgrK::L2",
+      "stem": "Summarise the difference in risk between short-half-life and long-half-life sources for (a) irradiation and (b) contamination.",
+      "misconceptionClass": "risk application",
+      "kind": "application",
+      "modelAnswer": "(a) Short half-lives mean high activity, so irradiation risk is greatest for them. (b) Long half-lives remain radioactive for longer, so contamination risk persists and demands long-term control and storage.",
+      "keywords": [
+        "half-life",
+        "activity",
+        "irradiation",
+        "contamination"
+      ],
+      "options": []
+    }
+  ]
+}

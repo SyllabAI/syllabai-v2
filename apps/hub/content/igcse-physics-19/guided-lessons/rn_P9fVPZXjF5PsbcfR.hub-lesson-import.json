@@ -1,0 +1,204 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_P9fVPZXjF5PsbcfR",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "696aa4c2eba4d079aaaed0cb16f405cbc0d43cca2b8693ccd6a27668fa0e787b",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_P9fVPZXjF5PsbcfR",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Radioactivity Uses and Dangers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-2-radioactivity-uses-and-dangers/7-2-2-half-life",
+    "specAnchors": [
+      {
+        "code": "7.12",
+        "text": "know the definition of the term 'half-life' and understand that it is different for different radioactive isotopes"
+      },
+      {
+        "code": "7.13",
+        "text": "use the concept of the half-life to carry out simple calculations on activity, including graphical methods"
+      }
+    ],
+    "primer": {
+      "text": "No clock can time a single nucleus, but a sample keeps a timetable: the half-life. It is the time for the activity — or the nuclei count — to halve, it is fixed for each isotope, and it spans from fractions of a second to billions of years. Graphs turn it into easy arithmetic.",
+      "prerequisiteSubtopic": "Radioactivity Uses and Dangers"
+    },
+    "modules": [
+      {
+        "id": "rn_P9fVPZXjF5PsbcfR::L1",
+        "title": "Defining half-life",
+        "sourceHeadings": [
+          "Half life",
+          "Measuring half life"
+        ],
+        "specRefs": [
+          "7.12"
+        ],
+        "opening": "Half-life is the time needed for the number of unstable nuclei in a sample — equivalently the activity — to fall to half its starting value. Each isotope has its own fixed half-life, and measuring one is simply timing the fall from an initial activity to half of it.",
+        "keyPoints": [
+          "Half-life is the time for the number of unstable nuclei to halve.",
+          "Equivalently, it is the time for the activity to fall to half its initial value.",
+          "Different isotopes have different half-lives.",
+          "Half-lives range from fractions of a second to billions of years.",
+          "Measure the initial activity, then time the fall to half of that value."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Watch the meter: 800, 400, 200, 100… the gaps between halvings are all the same length — that gap is the half-life.",
+            "analogy": "Half-life is like a queue leaving a stadium at a steady pattern — every ten minutes, half of whoever remains walks out.",
+            "examPointer": "Both phrasings score: \"number of nuclei halves\" or \"activity halves\". Tie them together for full credit."
+          },
+          "medium": {
+            "restatement": "Because decay probability per nucleus is constant, any fixed fraction of the remaining nuclei decays per unit time; the half is just the most convenient fraction, and halving repeats indefinitely — never quite reaching zero. Isotope identity fixes the probability, hence the half-life.",
+            "analogy": "A photocopier set to 50%: each copy is half the previous one, forever approaching but never hitting blank.",
+            "examPointer": "Half-life never \"runs out\" — after n half-lives, (1/2)ⁿ remains. Quote the table 100-50-25-12.5-6.25%."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_P9fVPZXjF5PsbcfR::L1::Q1",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q2",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q3",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q4",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q5",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q6",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q7",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q8",
+          "rn_P9fVPZXjF5PsbcfR::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_P9fVPZXjF5PsbcfR::L2",
+        "title": "Half-life calculations",
+        "sourceHeadings": [
+          "Half life calculations",
+          "A graph can be used to make half-life calculations"
+        ],
+        "specRefs": [
+          "7.13"
+        ],
+        "opening": "Half-life arithmetic runs on repeated halving: divide the activity by 2 per half-life, or count halvings between two activities and divide the elapsed time by that count. On a graph, read the initial activity, find half of it, and read off the time — constant per isotope.",
+        "keyPoints": [
+          "Each half-life halves the remaining activity or nuclei count.",
+          "Number of half-lives = elapsed time ÷ half-life.",
+          "On an activity-time graph, the half-life is the time to fall from any value to half of it.",
+          "The half-life read between 100%→50% equals that from 50%→25%.",
+          "A sample falling 880 → 440 → 220 Bq in one year has a half-life of 6 months."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Start 880 Bq: after one half-life 440, after two 220. Two halvings took a year, so one half-life is six months.",
+            "analogy": "Keep halving a pizza: every cut takes the same time, and counting cuts tells you the kitchen’s rhythm.",
+            "examPointer": "Write the halving chain explicitly (880 → 440 → 220) — the visible chain is the working examiners reward."
+          },
+          "medium": {
+            "restatement": "Graphically, choose a clean starting value A₀, locate A₀/2 on the axis, and read the horizontal gap; the same gap recurs for A₀/2→A₀/4, which is the consistency check. Arithmetic-wise, converting elapsed time into half-life counts (n = t/T½) and applying (1/2)ⁿ to the initial activity solves both directions.",
+            "analogy": "Reading a half-life graph is like using a repeated staircase: every riser is the same height (the half) and the same tread (the half-life).",
+            "examPointer": "Technetium-style graph questions: draw the horizontal lines at A₀ and A₀/2 on the printed figure — visible construction earns method marks."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_P9fVPZXjF5PsbcfR::L2::Q1",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q2",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q3",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q4",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q5",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q6",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q7",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q8",
+          "rn_P9fVPZXjF5PsbcfR::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "half-life",
+          "definition": "The time for the number of unstable nuclei, or the activity, of a sample to halve.",
+          "firstLesson": 1
+        },
+        {
+          "term": "initial activity",
+          "definition": "The activity of a sample at the start of the measurement (A₀).",
+          "firstLesson": 2
+        },
+        {
+          "term": "graphical method",
+          "definition": "Finding the half-life by reading the time for the curve to fall from A₀ to A₀/2.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "The activity of a radioactive sample is 880 Bq. After one year it has dropped to 220 Bq. What is the half-life of this material?",
+        "steps": [
+          "880 → 440 after one half-life; 440 → 220 after two.",
+          "Two half-lives elapsed in one year.",
+          "Half-life = 1 year ÷ 2 = 6 months."
+        ],
+        "finalAnswer": "The half-life is 6 months."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a567c252202a-6-2-10-half-life-graph.png",
+        "alt": "Half-life Graph, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "A graph can be used to make half-life calculations",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Each time the original activity halves, another half-life has passed"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/cfdd39b426e0-8-2-3-worked-example-half-life-curve.png",
+        "alt": "Worked Example - Half Life Curve, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "A graph can be used to make half-life calculations",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/a7b5b789a294-8-2-3-worked-example-half-life-curve-ans-a.png",
+        "alt": "Worked Example - Half Life Curve Ans a, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "A graph can be used to make half-life calculations",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
+      }
+    ]
+  }
+}

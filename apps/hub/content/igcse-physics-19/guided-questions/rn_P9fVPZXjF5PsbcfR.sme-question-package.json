@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_P9fVPZXjF5PsbcfR",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "696aa4c2eba4d079aaaed0cb16f405cbc0d43cca2b8693ccd6a27668fa0e787b",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "packageId": "igcse-physics::rn_P9fVPZXjF5PsbcfR",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q1",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "Which statement correctly defines the half-life of a sample of unstable nuclei?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the time for the number of unstable nuclei in a sample to halve",
+          "correct": true,
+          "explanation": "The canonical definition.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the time for a sample to become completely stable",
+          "correct": false,
+          "explanation": "Half-life never implies full stability.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "C",
+          "text": "the time for one particular nucleus to decay",
+          "correct": false,
+          "explanation": "Single-nucleus timing is impossible (randomness).",
+          "misconception": "nucleus timing"
+        },
+        {
+          "key": "D",
+          "text": "the average lifetime of a detector",
+          "correct": false,
+          "explanation": "Nothing to do with detectors.",
+          "misconception": "detector confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q2",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "After two half-lives, what fraction of the original unstable nuclei remains?",
+      "misconceptionClass": "halving application",
+      "options": [
+        {
+          "key": "A",
+          "text": "none",
+          "correct": false,
+          "explanation": "Halving approaches zero but never reaches it.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "B",
+          "text": "one quarter",
+          "correct": true,
+          "explanation": "Half of a half is a quarter.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "one half",
+          "correct": false,
+          "explanation": "That is one half-life.",
+          "misconception": "one life confusion"
+        },
+        {
+          "key": "D",
+          "text": "one eighth",
+          "correct": false,
+          "explanation": "That is three half-lives.",
+          "misconception": "counting error"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q3",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "Why can a single nucleus’s decay moment never be found, even though a sample’s half-life is measurable?",
+      "misconceptionClass": "randomness reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because half-life depends on the detector",
+          "correct": false,
+          "explanation": "Half-life is a property of the isotope.",
+          "misconception": "detector confusion"
+        },
+        {
+          "key": "B",
+          "text": "because half-lives change with temperature",
+          "correct": false,
+          "explanation": "They are fixed per isotope.",
+          "misconception": "condition myth"
+        },
+        {
+          "key": "C",
+          "text": "because decay is random per nucleus, but large samples show a steady statistical pattern",
+          "correct": true,
+          "explanation": "Randomness evens out over populations.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "because nuclei hide their age",
+          "correct": false,
+          "explanation": "There is no literal hiding — it is statistics.",
+          "misconception": "vitalism myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q4",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "The half-life of carbon-14 is 5700 years, while uranium-235 needs 704 million years. This comparison shows…",
+      "misconceptionClass": "variation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "carbon always decays faster than every element",
+          "correct": false,
+          "explanation": "No such universal rule exists.",
+          "misconception": "element myth"
+        },
+        {
+          "key": "B",
+          "text": "half-life depends on sample size",
+          "correct": false,
+          "explanation": "Half-life is independent of sample size.",
+          "misconception": "size myth"
+        },
+        {
+          "key": "C",
+          "text": "uranium is more radioactive",
+          "correct": false,
+          "explanation": "Activity depends on the sample, not just the isotope.",
+          "misconception": "activity confusion"
+        },
+        {
+          "key": "D",
+          "text": "half-lives differ between isotopes",
+          "correct": true,
+          "explanation": "The two isotopes span enormous ranges.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q5",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "A sample’s activity falls from 600 Bq to 300 Bq in 8 days. Its half-life is…",
+      "misconceptionClass": "halving application",
+      "options": [
+        {
+          "key": "A",
+          "text": "8 days",
+          "correct": true,
+          "explanation": "The activity halved exactly once in 8 days.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "4 days",
+          "correct": false,
+          "explanation": "That would be the half-life if it had halved twice.",
+          "misconception": "counting error"
+        },
+        {
+          "key": "C",
+          "text": "16 days",
+          "correct": false,
+          "explanation": "That doubles the elapsed time with no reason.",
+          "misconception": "doubling error"
+        },
+        {
+          "key": "D",
+          "text": "300 days",
+          "correct": false,
+          "explanation": "No arithmetic path leads there.",
+          "misconception": "arithmetic error"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q6",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "Define half-life.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Half-life is the time needed for the number of unstable nuclei in a sample — equivalently, the activity — to fall to half its starting value.",
+      "keywords": [
+        "half-life",
+        "nuclei",
+        "activity",
+        "half"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q7",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "State the range of half-life values isotopes can have.",
+      "misconceptionClass": "variation recall",
+      "kind": "recall",
+      "modelAnswer": "Half-lives span enormous ranges — a fraction of a second at one extreme, billions of years at the other — and each isotope has its own fixed value.",
+      "keywords": [
+        "half-lives",
+        "isotopes",
+        "second",
+        "years"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q8",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "Explain why the half-life of an isotope is constant regardless of how old the sample is.",
+      "misconceptionClass": "randomness reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each nucleus has a fixed decay probability per unit time set by the isotope itself; the remaining nuclei therefore always halve in the same time, however long the sample has existed.",
+      "keywords": [
+        "nucleus",
+        "probability",
+        "half",
+        "constant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L1::Q9",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L1",
+      "stem": "An isotope’s initial activity is 720 Bq. State the activity after three half-lives.",
+      "misconceptionClass": "halving application",
+      "kind": "application",
+      "modelAnswer": "720 → 360 → 180 → 90 Bq after three half-lives.",
+      "keywords": [
+        "activity",
+        "half-lives",
+        "720",
+        "90"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q1",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "A sample’s activity drops from 880 Bq to 220 Bq in one year. How many half-lives passed?",
+      "misconceptionClass": "halving application",
+      "options": [
+        {
+          "key": "A",
+          "text": "4",
+          "correct": false,
+          "explanation": "Four would reach 55.",
+          "misconception": "counting error"
+        },
+        {
+          "key": "B",
+          "text": "2",
+          "correct": true,
+          "explanation": "880 → 440 → 220: two halvings.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "1",
+          "correct": false,
+          "explanation": "One half-life would reach 440.",
+          "misconception": "counting error"
+        },
+        {
+          "key": "D",
+          "text": "3",
+          "correct": false,
+          "explanation": "Three would reach 110.",
+          "misconception": "counting error"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q2",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "Using the previous halving chain, the half-life of that sample is…",
+      "misconceptionClass": "halving application",
+      "options": [
+        {
+          "key": "A",
+          "text": "3 months",
+          "correct": false,
+          "explanation": "That would fit four half-lives per year.",
+          "misconception": "counting error"
+        },
+        {
+          "key": "B",
+          "text": "2 years",
+          "correct": false,
+          "explanation": "The half-life must be shorter than the elapsed year.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "C",
+          "text": "6 months",
+          "correct": true,
+          "explanation": "One year ÷ 2 half-lives = 6 months.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "1 year",
+          "correct": false,
+          "explanation": "A year holds two half-lives here.",
+          "misconception": "elapsed confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q3",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "On an activity-time graph, the half-life is found by…",
+      "misconceptionClass": "graph method recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "reading where the curve touches zero",
+          "correct": false,
+          "explanation": "The curve never reaches zero.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "B",
+          "text": "taking the total time shown on the axis",
+          "correct": false,
+          "explanation": "Axis span is arbitrary.",
+          "misconception": "axis confusion"
+        },
+        {
+          "key": "C",
+          "text": "doubling the steepest gradient",
+          "correct": false,
+          "explanation": "Gradients are not part of the method.",
+          "misconception": "gradient confusion"
+        },
+        {
+          "key": "D",
+          "text": "reading the time for the activity to fall from its starting value to half of it",
+          "correct": true,
+          "explanation": "The graphical definition.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q4",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "An isotope has a half-life of 8 hours. Starting from 640 Bq, the activity after 24 hours is…",
+      "misconceptionClass": "halving application",
+      "options": [
+        {
+          "key": "A",
+          "text": "80 Bq",
+          "correct": true,
+          "explanation": "24 h = 3 half-lives: 640 → 320 → 160 → 80.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "160 Bq",
+          "correct": false,
+          "explanation": "That is two half-lives (16 hours).",
+          "misconception": "counting error"
+        },
+        {
+          "key": "C",
+          "text": "40 Bq",
+          "correct": false,
+          "explanation": "That is four half-lives (32 hours).",
+          "misconception": "counting error"
+        },
+        {
+          "key": "D",
+          "text": "320 Bq",
+          "correct": false,
+          "explanation": "That is one half-life (8 hours).",
+          "misconception": "counting error"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q5",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "For carbon-14 the half-life is 5700 years. After 11 400 years, the fraction of carbon-14 remaining is…",
+      "misconceptionClass": "halving application",
+      "options": [
+        {
+          "key": "A",
+          "text": "0%",
+          "correct": false,
+          "explanation": "Halving never reaches zero.",
+          "misconception": "zero myth"
+        },
+        {
+          "key": "B",
+          "text": "25%",
+          "correct": true,
+          "explanation": "11 400 = 2 × 5700: two halvings leave a quarter.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "50%",
+          "correct": false,
+          "explanation": "That is one half-life.",
+          "misconception": "counting error"
+        },
+        {
+          "key": "D",
+          "text": "12.5%",
+          "correct": false,
+          "explanation": "That is three half-lives.",
+          "misconception": "counting error"
+        }
+      ]
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q6",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "State the two-step method to find a half-life from an activity-time graph.",
+      "misconceptionClass": "graph method recall",
+      "kind": "recall",
+      "modelAnswer": "Read the initial activity A₀, locate A₀/2 on the activity axis, and read the time at which the curve reaches it — that time is the half-life.",
+      "keywords": [
+        "initial",
+        "activity",
+        "half",
+        "time"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q7",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "A sample falls from 880 Bq to 220 Bq in one year. State the number of half-lives and the half-life.",
+      "misconceptionClass": "halving application",
+      "kind": "recall",
+      "modelAnswer": "Two half-lives passed (880 → 440 → 220), so the half-life is 6 months.",
+      "keywords": [
+        "half-lives",
+        "880",
+        "220",
+        "months"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q8",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "Explain why the time taken to fall from 50% to 25% of the initial activity equals the time from 100% to 50%.",
+      "misconceptionClass": "halving reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Halving is proportional, not absolute: the isotope’s fixed half-life halves whatever amount is present, so each successive halving takes the same time.",
+      "keywords": [
+        "halving",
+        "proportional",
+        "half-life",
+        "equal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_P9fVPZXjF5PsbcfR::L2::Q9",
+      "moduleId": "rn_P9fVPZXjF5PsbcfR::L2",
+      "stem": "A technetium sample’s activity falls from 8 × 10⁷ Bq to 4 × 10⁷ Bq in 6 hours. State its half-life and its activity after 12 hours.",
+      "misconceptionClass": "halving application",
+      "kind": "application",
+      "modelAnswer": "The half-life is 6 hours (the fall to half A₀); after 12 hours (two half-lives) the activity is 2 × 10⁷ Bq.",
+      "keywords": [
+        "half-life",
+        "activity",
+        "hours",
+        "10⁷"
+      ],
+      "options": []
+    }
+  ]
+}

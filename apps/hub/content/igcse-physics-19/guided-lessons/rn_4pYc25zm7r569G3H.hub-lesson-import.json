@@ -1,0 +1,264 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_4pYc25zm7r569G3H",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "172294a24e8de092b61aac7802ec221610ef6c9593f4c708955d677b7d50e61c",
+    "pinnedRef": "231141d399520f94577de83ea58d23d978972666"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_4pYc25zm7r569G3H",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Properties of Radiation",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-1-properties-of-radiation/7-1-5-decay-equations",
+    "specAnchors": [
+      {
+        "code": "7.7",
+        "text": "describe the effects on the atomic and mass numbers of a nucleus of the emission of each of the four main types of radiation (alpha, beta, gamma and neutron radiation)"
+      },
+      {
+        "code": "7.8",
+        "text": "understand how to balance nuclear equations in terms of mass and charge"
+      }
+    ],
+    "primer": {
+      "text": "Every emission rewrites the nucleus in a predictable way: alpha removes two protons and two neutrons, beta promotes a neutron to a proton, gamma changes nothing but energy, and neutron emission trims one nucleon. Balance mass and charge either side and any decay equation yields.",
+      "prerequisiteSubtopic": "Properties of Radiation"
+    },
+    "modules": [
+      {
+        "id": "rn_4pYc25zm7r569G3H::L1",
+        "title": "Alpha and beta decay",
+        "sourceHeadings": [
+          "Alpha decay",
+          "Beta decay"
+        ],
+        "specRefs": [
+          "7.7"
+        ],
+        "opening": "In alpha decay the nucleus ejects a helium nucleus, cutting its mass number by 4 and its atomic number by 2 — a new element forms. In beta decay a neutron turns into a proton and an emitted electron, so the mass number holds while the atomic number rises by 1.",
+        "keyPoints": [
+          "Alpha emission lowers the mass number by 4 and the atomic number by 2.",
+          "An alpha particle is a helium nucleus, so the daughter element is a different element.",
+          "Beta decay changes a neutron into a proton plus an emitted electron.",
+          "In beta decay the mass number is unchanged and the atomic number increases by 1.",
+          "A beta particle has mass number 0 and atomic number −1 in nuclear notation."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Alpha: subtract 4 from the top number and 2 from the bottom. Beta: top number stays, bottom number climbs by 1.",
+            "analogy": "Alpha is throwing a four-person lifeboat off a ship (two oarsmen, two passengers gone); beta is a crew member switching uniforms but staying aboard.",
+            "examPointer": "Write the two number changes per emission as a mini-table — examiners award the arithmetic even if element names are unknown."
+          },
+          "medium": {
+            "restatement": "The emitted alpha carries A = 4, Z = 2, so nucleon and proton conservation fix the daughter. In beta decay charge conservation requires Z to rise by 1 because the emitted electron carries charge −1 while the nucleon total stays constant.",
+            "analogy": "The nuclear ledger never lies: whatever leaves the nucleus is deducted from its accounts, and both the mass and the charge columns must still balance.",
+            "examPointer": "Element names are never required — only the balanced numbers. Do not waste time memorising daughters."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4pYc25zm7r569G3H::L1::Q1",
+          "rn_4pYc25zm7r569G3H::L1::Q2",
+          "rn_4pYc25zm7r569G3H::L1::Q3",
+          "rn_4pYc25zm7r569G3H::L1::Q4",
+          "rn_4pYc25zm7r569G3H::L1::Q5",
+          "rn_4pYc25zm7r569G3H::L1::Q6",
+          "rn_4pYc25zm7r569G3H::L1::Q7",
+          "rn_4pYc25zm7r569G3H::L1::Q8",
+          "rn_4pYc25zm7r569G3H::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_4pYc25zm7r569G3H::L2",
+        "title": "Gamma decay and neutron emission",
+        "sourceHeadings": [
+          "Gamma decay",
+          "Neutron emission"
+        ],
+        "specRefs": [
+          "7.7"
+        ],
+        "opening": "Gamma decay lets an excited nucleus shed pure energy: no protons or neutrons leave, so both numbers stay the same. Neutron emission instead trims one nucleon — the mass number falls by 1 while the atomic number holds, producing another isotope of the same element.",
+        "keyPoints": [
+          "Gamma emission carries away energy but no mass or charge.",
+          "After gamma decay the mass and atomic numbers are exactly as before.",
+          "Neutron emission lowers the mass number by 1 and leaves the atomic number unchanged.",
+          "Neutron emission turns a nucleus into another isotope of the same element."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Gamma: same element, same numbers, less energy. Neutron emission: top number down by 1, bottom number unchanged — same element, lighter isotope.",
+            "analogy": "Gamma is a hot pan cooling without losing any ingredients; neutron emission is tipping one marble out of a jar — same marbles, one fewer.",
+            "examPointer": "Neutron emission is the odd one out: know its A − 1, Z rule alongside the other three."
+          },
+          "medium": {
+            "restatement": "Because gamma carries neither nucleon number nor charge, conservation leaves the nucleus identity and both counts intact — only its energy state drops. Neutron emission removes a neutral nucleon, so charge is conserved trivially and the proton count, hence the element, is fixed.",
+            "analogy": "Gamma decay is venting steam from a kettle (nothing material leaves); neutron emission is dropping one coin from a purse of mixed coins — the denominations (elements) are unchanged, the total (mass) falls.",
+            "examPointer": "Isotope questions: \"same element, different mass\" points to neutron emission as the decay route."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4pYc25zm7r569G3H::L2::Q1",
+          "rn_4pYc25zm7r569G3H::L2::Q2",
+          "rn_4pYc25zm7r569G3H::L2::Q3",
+          "rn_4pYc25zm7r569G3H::L2::Q4",
+          "rn_4pYc25zm7r569G3H::L2::Q5",
+          "rn_4pYc25zm7r569G3H::L2::Q6",
+          "rn_4pYc25zm7r569G3H::L2::Q7",
+          "rn_4pYc25zm7r569G3H::L2::Q8",
+          "rn_4pYc25zm7r569G3H::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_4pYc25zm7r569G3H::L3",
+        "title": "Balancing nuclear equations",
+        "sourceHeadings": [
+          "Decay equations",
+          "Nuclear decay equations"
+        ],
+        "specRefs": [
+          "7.8"
+        ],
+        "opening": "A decay equation must balance in both mass number and atomic number: the totals before the arrow equal the totals after. Check any equation by adding top numbers and bottom numbers separately — polonium-212 decaying to lead-208 plus an alpha is the model case.",
+        "keyPoints": [
+          "Particles before the decay sit before the arrow; products sit after it.",
+          "The sum of mass numbers is equal on both sides of a balanced equation.",
+          "The sum of atomic numbers is equal on both sides as well.",
+          "Polonium-212 → lead-208 + alpha balances: 212 = 208 + 4 and 84 = 82 + 2.",
+          "You never need the daughter’s element name — only its balanced numbers."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Add the top numbers each side; they must match. Add the bottom numbers each side; they must match. If either pair differs, the equation is wrong.",
+            "analogy": "It is a till receipt: whatever leaves the till (nucleus) must appear itemised on the customer’s side.",
+            "examPointer": "Show both checks explicitly (mass, then charge) — the working is worth as much as the answer."
+          },
+          "medium": {
+            "restatement": "Conservation of nucleon number and of charge underwrites the two balances. Unknown daughters are solved algebraically: write A, Z for the missing particle and equate sums, which recovers alpha (4, 2), beta (0, −1), gamma (0, 0) or neutron (1, 0) emissions from the arithmetic alone.",
+            "analogy": "Two accounting columns that must reconcile — the missing entry is whatever makes the columns add up.",
+            "examPointer": "For \"find the missing particle\" questions, compute ΔA and ΔZ first; the pair (4,2), (0,−1), (0,0), (1,0) names the emission."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4pYc25zm7r569G3H::L3::Q1",
+          "rn_4pYc25zm7r569G3H::L3::Q2",
+          "rn_4pYc25zm7r569G3H::L3::Q3",
+          "rn_4pYc25zm7r569G3H::L3::Q4",
+          "rn_4pYc25zm7r569G3H::L3::Q5",
+          "rn_4pYc25zm7r569G3H::L3::Q6",
+          "rn_4pYc25zm7r569G3H::L3::Q7",
+          "rn_4pYc25zm7r569G3H::L3::Q8",
+          "rn_4pYc25zm7r569G3H::L3::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "alpha decay",
+          "definition": "Emission of a helium nucleus, lowering the mass number by 4 and the atomic number by 2.",
+          "firstLesson": 1
+        },
+        {
+          "term": "beta decay",
+          "definition": "Conversion of a neutron into a proton with emission of an electron; A unchanged, Z + 1.",
+          "firstLesson": 1
+        },
+        {
+          "term": "gamma decay",
+          "definition": "Emission of a gamma ray that lowers the nucleus’s energy without changing either number.",
+          "firstLesson": 2
+        },
+        {
+          "term": "neutron emission",
+          "definition": "Ejection of a neutron: mass number − 1, atomic number unchanged.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A nucleus with 84 protons and 126 neutrons undergoes alpha decay and forms lead. Which isotope of lead forms?",
+        "steps": [
+          "Mass number of the parent: 84 + 126 = 210.",
+          "Alpha decay removes 2 protons: atomic number 84 − 2 = 82.",
+          "Alpha decay removes 4 nucleons: mass number 210 − 4 = 206."
+        ],
+        "finalAnswer": "The daughter is lead-206, with atomic number 82 and mass number 206."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6df6a122e5c2-11-1-11-alpha-decay-diagram.png",
+        "alt": "Alpha decay diagram, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Alpha decay",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Alpha decay lowers both the mass and the charge of a large unstable nucleus"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8e2e57da3c1c-6-2-5-beta-minus-decay-gcse-1.png",
+        "alt": "Beta minus decay GCSE, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Beta decay",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Beta decay keeps the mass number but raises the atomic number by one"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b657ba67fc82-4-2-6-gamma-decay-1.png",
+        "alt": "Gamma decay, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Gamma decay",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Gamma decay reduces the nucleus’s energy but changes neither number"
+      }
+    ]
+  }
+}
