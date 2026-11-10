@@ -1,0 +1,73 @@
+{
+ "G0_fileScope": {
+  "changed": 15,
+  "law": "exactly the 15 of-record files (8 Part A label sites + 3 UGM byte-true re-serves + 4 cs-23 mirror/manifest/KG)",
+  "files": [
+   "apps/hub/content/cie-as-maths-20-pure-2/curriculum.json",
+   "apps/hub/content/cie-as-maths-20-pure-2/ugm-resources.json",
+   "apps/hub/content/cie-a-level-maths-20-pure-2/curriculum.json",
+   "apps/hub/content/cie-a-level-maths-20-pure-2/ugm-resources.json",
+   "apps/hub/content/cie-a-level-maths-20-pure-3/curriculum.json",
+   "apps/hub/content/cie-a-level-maths-20-pure-3/ugm-resources.json",
+   "apps/hub/content/cie-igcse-computer-science-23/curriculum.json",
+   "apps/hub/content/cie-igcse-computer-science-23/manifest.json",
+   "apps/hub/spines/cie-a-level-maths-20-pure-2.json",
+   "apps/hub/spines/cie-a-level-maths-20-pure-3.json",
+   "apps/hub/spines/cie-igcse-computer-science-23.json",
+   "apps/hub/public/kg/data/cie-as-maths-20-pure-2.json",
+   "apps/hub/public/kg/data/cie-a-level-maths-20-pure-2.json",
+   "apps/hub/public/kg/data/cie-a-level-maths-20-pure-3.json",
+   "apps/hub/public/kg/data/cie-igcse-computer-science-23.json"
+  ]
+ },
+ "G0b_validatorArtifact": "apps/hub/spines/_validation.json refreshed by the validator-of-record run (fails=[], chemistry golden statement_diff_count 0); the totalSpecPoints 12246->11919 delta is the committed artifact's own staleness — PROVEN by the pre-apply refresh at origin/main reproducing 11919/0 byte-identically",
+ "G1_serializer": "content+UGM planes indent=1 + trailing NL; spine+KG compact single-line (± trailing NL preserved per file); round-trip byte-stable pre AND post on every touched file",
+ "G2_fieldDiffs": "Part A: string-site diffs only (deep_diff_strings = exactly the replaced sites -> the official row; zero other fields); Part B: cs-23 = T7 title + T8 order + T7 array position + spine T7/T9/T10 topic mirrors + counts",
+ "G3_structure": {
+  "content_cs23": "120 nodes (1 SUBJECT + 10 TOPIC + 21 SUBTOPIC + 88 SPEC_POINT) / 119 edges — census UNCHANGED except T7 title + T8 order + T7 array position (canonical DFS); no invented rows",
+  "spine_cs23": "120 nodes mirroring content (T7/T9/T10 TOPIC nodes restored — the census TOPIC 10==10 fix) / 119 edges verbatim-mirroring content's edge array; meta.counts 10/21/88/88/88/0",
+  "manifest_cs23": "sections 10 / topics 21 / specPoints 88 == curriculum truth",
+  "kg_cs23": "REGENERATED via kg_export.export_course (run-011 law): 120 nodes / 210 edges (119 hier + 91 pre) / specPoints 88; G4 deep-equal (ex-generatedUtc) PASS"
+ },
+ "G4_kg": {
+  "pure2pure3": "label-site edits only (run-013 law): 2 sites per KG file -> official row; meta byte-untouched",
+  "cs23": "KG-REGEN-OK after the revised (zero-invention) shape — the first pass's topic-level-point shape was REJECTED by the completion gates: kg_export v1.6 refuses points without a SUBTOPIC parent ('SPEC_POINT 7.1 has 0 SUBTOPIC parents') and the fleet law is universal (the apparent precedent igcse-chemistry-19 is dual-parented — its S1-a..i rows are real official subsections); the 21 official points are filed as the PROPOSAL MAP of record instead"
+ },
+ "G6_mirrorEquality": {
+  "pre": {
+   "driftRows": 1,
+   "censusMismatches": 21,
+   "unmatchedContent": 364,
+   "unmatchedSynthetic": 329
+  },
+  "post": {
+   "driftRows": 0,
+   "censusMismatches": 20,
+   "unmatchedContent": 361,
+   "unmatchedSynthetic": 329
+  },
+  "verdict": "drift 1 -> 0 (the excluded 2.3.2 row family resolved); census 21 -> 20 (cs-23 TOPIC row resolved by the T7/T9/T10 topic mirror; the 20 remaining = the exempt SME-synthetic class); non-synthetic unmatched = the chem-19 4CH1 code-scheme annex only (re-affirmed, no action)"
+ },
+ "G7_collision": "run-016 free in-family (receipts runs 001-015 + remote branch namespace checked pre-cut); run-015 merged of record via PR #909 before the branch cut",
+ "GV1_validators": {
+  "validate_spines.py": "exit 0 UNMASKED (the earlier pipeline-masked readings are disclosed as a lane lesson); _validation.json fails=[]; chemistry golden statement_diff_count 0",
+  "validate_cie_bundles.ts": "exit 0",
+  "validate_gradeb_bundle.ts": "exit 0 (after bun install in the recycled sandbox — the first masked run was a module-resolution error, not a validation failure)",
+  "verify_corpus_23a.ts": "exit 0 — CORPUS GATE PASSED",
+  "verify_flashcard_sync_courses.ts": "exit 0",
+  "verify_subject_identity.ts": "exit 0 — PASS 106/106"
+ },
+ "placementGateAB": {
+  "script": "apps/hub/scripts/verify_sme_wire_r0.ts (bun 1.3.14)",
+  "pre": "courses 90 sets 2574 questions 43232 / placed 2574 unplaced 0 / gen-row homes 29 (origin/main worktree)",
+  "post": "identical counts, gen-row homes 29 (applied tree)",
+  "verdict": "IDENTICAL",
+  "note": "the cs-23 T7/T9/T10 '-gen' homes (T7-gen x4, T9-gen x1, T10-gen x1) byte-untouched; gen-row homes 30->29 moved between run-013's base and current main (wave-4 era), not by this changeset"
+ },
+ "treeProbe": {
+  "script": "run-016/scripts/rn16_tree_probe.ts (bun 1.3.14, buildSpecTreeIndex)",
+  "results": "cs-23: 10 topic refs, T7/T9/T10 present as empty-husk mirrors (no invented rows), T7 official hyphenated title, 88 point refs; as-pure-2 + a-level-pure-2: 2.3.2 == official row byte-equal, 17 points; pure-3: 3.3.2 == official row byte-equal",
+  "exit": 0
+ },
+ "antiTruncation": "sweep artifacts carry full per-row lists (no caps) + round-trip count asserts; apply manifest carries per-file sites + shas; every Part A site re-derived from origin/main bytes"
+}
