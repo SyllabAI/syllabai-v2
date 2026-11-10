@@ -888,6 +888,16 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // /content/books paths (shelf + per-book chapters); /content/documents
   // and /content/question-assets keep their own rows.
   "/api/v1/content/books",
+  // ADR-044 run-002 — the editor plane: v2-NATIVE family (no frozen-core
+  // analogue exists to golden-verify — editor-ness is a GRANT ROW on the v2
+  // db, never a fourth Role enum member; the surface of record is the
+  // run-002 Hono router mounted at /api/v1/editor/**, gated by the
+  // requireEditor grant-row shell). Phase 1 serves GET /editor/me (the
+  // capability bootstrap that feeds identity.capabilities); Phase 2 adds
+  // the proposal surfaces behind the same shell. startsWith-safety: no
+  // hub-emitted path shares the /api/v1/editor segment (grep-verified at
+  // the widening commit — the frozen core served no /editor/* surface).
+  "/api/v1/editor",
 ];
 
 /**

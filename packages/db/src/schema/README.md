@@ -54,6 +54,15 @@ drizzle-kit pull baseline:
   referenced by the bare `resource_id` text id per the seam law (§4.1:
   ids are the contract — no cross-project FK).
 
+- `editorGrants` / `editorEditProposals` / `editorEditReceipts` — ADR-044
+  run-002 (0028, the editor role & content workbench — Phase 1 role
+  plumbing). The grant row IS the role (ADR §3; requireEditor + GET
+  /api/v1/editor/me read it); the §7 proposal/receipt planes stay unwritten
+  until Phase 2's proposal router. Personal-state FK law (grants/proposals
+  cascade with the user); receipts are the append-only journal, actor
+  deliberately FK-free. Rebaseline pins 99/926/131/100/181 →
+  102/953/135/103/186 (verify PASS, 0 drifts).
+
 `flyway_schema_history` is present in the generated schema (62/62 tables are
 modelled — none omitted silently) but is **Flyway-owned forever**:
 

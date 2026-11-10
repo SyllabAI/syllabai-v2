@@ -2277,3 +2277,79 @@ export const userDocuments = pgTable("user_documents", {
                 name: "user_documents_user_id_fkey"
         }).onDelete("cascade"),
 ]);
+
+// ADR-044 run-002 — the editor planes (0028). The grant row IS the role
+// (ADR-044 §3): possession of an unrevoked editor_grants row is what the
+// requireEditor shell checks; scopes ride the closed vocabulary of
+// packages/contracts editorScopeSchema. Proposals/receipts are the §7
+// planes (proposal state machine + the append-only receipt journal); they
+// stay unwritten until Phase 2's proposal router lands. Personal-state FK
+// law for grants + proposals (a deleted user takes them); receipts are the
+// audit plane — proposal-cascaded, actor deliberately FK-free so the
+// journal survives actor-account deletion. granted_by is likewise FK-free
+// (who granted is data, not a live reference).
+export const editorGrants = pgTable("editor_grants", {
+        id: uuid("id").primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        scopes: jsonb("scopes").notNull(),
+        grantedBy: uuid("granted_by").notNull(),
+        grantedAt: timestamp("granted_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+        revokedAt: timestamp("revoked_at", { withTimezone: true, mode: 'string' }),
+}, (table) => [
+        // one ACTIVE grant per user — revocation writes revoked_at and the
+        // next grant is a fresh row (the partial-open index, the
+        // teach_candidates_open_idx precedent)
+        uniqueIndex("uq_editor_grants_active_user").on(table.userId).where(sql`revoked_at IS NULL`),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "editor_grants_user_id_fkey"
+        }).onDelete("cascade"),
+]);
+
+export const editorEditProposals = pgTable("editor_edit_proposals", {
+        id: uuid("id").primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        courseSlug: varchar("course_slug", { length: 120 }).notNull(),
+        bank: varchar("bank", { length: 20 }).notNull(),
+        targetPath: text("target_path").notNull(),
+        tier: smallint("tier").notNull(),
+        fields: jsonb("fields").notNull(),
+        baseSha: text("base_sha").notNull(),
+        proposalPr: text("proposal_pr"),
+        state: varchar("state", { length: 30 }).default('draft').notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("idx_editor_edit_proposals_user").on(table.userId),
+        index("idx_editor_edit_proposals_state").on(table.state),
+        foreignKey({
+                columns: [table.userId],
+                foreignColumns: [users.id],
+                name: "editor_edit_proposals_user_id_fkey"
+        }).onDelete("cascade"),
+        check("editor_edit_proposals_course_slug_check", sql`course_slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+        check("editor_edit_proposals_bank_check", sql`bank IN ('questions', 'notes', 'flashcards')`),
+        check("editor_edit_proposals_tier_check", sql`tier IN (1, 2, 3)`),
+        check("editor_edit_proposals_state_check", sql`state IN ('draft', 'preflight_failed', 'queued_review', 'approved', 'merged', 'rejected', 'superseded')`),
+]);
+
+export const editorEditReceipts = pgTable("editor_edit_receipts", {
+        id: uuid("id").primaryKey().notNull(),
+        proposalId: uuid("proposal_id").notNull(),
+        actor: uuid("actor").notNull(),
+        action: varchar("action", { length: 30 }).notNull(),
+        beforeHash: text("before_hash"),
+        afterHash: text("after_hash"),
+        gateRunId: text("gate_run_id"),
+        detail: jsonb("detail"),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("idx_editor_edit_receipts_proposal").on(table.proposalId),
+        foreignKey({
+                columns: [table.proposalId],
+                foreignColumns: [editorEditProposals.id],
+                name: "editor_edit_receipts_proposal_id_fkey"
+        }).onDelete("cascade"),
+        check("editor_edit_receipts_action_check", sql`action IN ('propose', 'preflight_refusal', 'approve', 'reject', 'stale_regate', 'merge', 'serve')`),
+]);
