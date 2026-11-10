@@ -6,7 +6,12 @@
   "provider": "multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only)",
   "label": "igcse-physics-19",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p2e": {
+   "provider": "physics-online (@PhysicsOnline — one channel behind gcsephysicsonline.com + alevelphysicsonline.com, Lewis Matheson / Physics Online Ltd)",
+   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence posture title-only (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/worksheet-answers/paper-walkthrough videos excluded)",
+   "enumeratedUtc": "2026-11-10T03:03:19Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2C",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. Strong sweep: 101/102 mappings pass; the single reject trims two application clauses that the generic static-electricity video does not name.",
-  "rowsApproved": 101,
+  "rowsApproved": 179,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -29,7 +34,45 @@
     "spec": "2.28P",
     "reason": "Same video: photocopier/inkjet uses clause (2.28P) not title-evidenced."
    }
-  ]
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels (P2B/P2C/P2D)",
+    "task": "T-VIDEOMAP-P2C",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "Same title-only posture. Strong sweep: 101/102 mappings pass; the single reject trims two application clauses that the generic static-electricity video does not name.",
+    "rowsApproved": 101,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "5obbfXg_MH4",
+      "spec": "2.27P",
+      "reason": "FSL 'Static Electricity' core is charge production/attraction; the fuelling-aircraft dangers clause (2.27P) is a distinct application, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "5obbfXg_MH4",
+      "spec": "2.28P",
+      "reason": "Same video: photocopier/inkjet uses clause (2.28P) not title-evidenced."
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p2e (physics-online)",
+    "task": "T-VIDEOMAP-P2E",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-10T03:30:11Z",
+    "evidenceBasis": "yt-dlp flat channel enumeration (1,080 uploads, 100% net-new vs all three courses' existing external lanes) + oEmbed identity 229/229 + LLM title-to-spec adjudication under the tightened binding rule (title must name the spec's distinctive content; no high rows). Self-review standard applied as in P2B: medium kept when the video title names the spec's distinctive topic (partial clause coverage acceptable where the clause is the standard body of that topic); low kept only where the partial support is genuine and inline; rejected where the evidence field itself concedes the distinctive clause is not title-evidenced, where the video is a demo/teaching-ideas piece without the named content, or where the source level cannot carry the clause (e.g. IGCSE video for an A2 ratio clause). Board fit: channel is AQA-oriented; titles board-agnostic; the CIE/Edexcel fit of each row adjudicated individually and carried as boardMismatch:true.",
+    "rowsApproved": 78,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ],
+  "selfReviewNote": "Both external lanes adjudicated by delegated self-review per owner chat 2026-11-09 ('For now, approve and review yourself'); the P2E lane adds PhysicsOnline (gcsephysicsonline.com + alevelphysicsonline.com) under the same tightened binding rule."
  },
  "videos": [
   {
@@ -1516,6 +1559,1254 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "DoodleScience",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "xH4w97eUBgw",
+   "title": "Speed - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=xH4w97eUBgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 147,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "caQj2Tjaark",
+   "title": "Acceleration - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=caQj2Tjaark",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 146,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wrRhlz2exuc",
+   "title": "Distance-Time Graphs - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=wrRhlz2exuc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 214,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CkrQB45dLOI",
+   "title": "Velocity-Time Graphs - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=CkrQB45dLOI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 211,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1ehCM_SKJso",
+   "title": "Calculating the Area under a Graph - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=1ehCM_SKJso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 303,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KGpItFFE6B4",
+   "title": "Stopping Distance - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=KGpItFFE6B4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 215,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "exKdmv4hj9o",
+   "title": "Braking Distance Explained - GCSE and A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=exKdmv4hj9o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 215,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3jjwS_nZuIg",
+   "title": "Stopping, Thinking and Braking Distance - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=3jjwS_nZuIg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "silFXR2kG7E",
+   "title": "Scalars and Vectors - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=silFXR2kG7E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 299,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9WdTzubd89M",
+   "title": "Acceleration and Force Experiment (Constant Mass) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=9WdTzubd89M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 369,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PBojFeRN-z0",
+   "title": "Linear Momentum - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=PBojFeRN-z0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 177,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l3wtC6VE_WU",
+   "title": "Car Safety Features - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=l3wtC6VE_WU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 317,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XefR-1rwcu4",
+   "title": "Conservation of Linear Momentum - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=XefR-1rwcu4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 389,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "trPCwp_RHJM",
+   "title": "The Impulse of a Force - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=trPCwp_RHJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 230,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7x6SpYdkjC4",
+   "title": "The Principle of Moments - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=7x6SpYdkjC4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 431,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lBKjThIlOUA",
+   "title": "Energy Stores - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=lBKjThIlOUA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 121,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IJ9r7WkTZiI",
+   "title": "Energy Transfers - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=IJ9r7WkTZiI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 138,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1s6YNAbyE6E",
+   "title": "Energy Transfer Examples - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=1s6YNAbyE6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 210,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HpuZadw7NeE",
+   "title": "Efficiency - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=HpuZadw7NeE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 144,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4G6qW2b1vDQ",
+   "title": "Kinetic Energy - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=4G6qW2b1vDQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 134,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dNH5GsUEz-E",
+   "title": "Gravitational Potential Energy - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=dNH5GsUEz-E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 145,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FjZqEWVdoZ0",
+   "title": "Power - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=FjZqEWVdoZ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 80,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cEOKd64ga2M",
+   "title": "Energy Resources - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=cEOKd64ga2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 154,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sL0yQiyxrcY",
+   "title": "Wind Energy - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=sL0yQiyxrcY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 140,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vx17cGuVKF0",
+   "title": "Solar Energy - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=vx17cGuVKF0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 119,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Oa3VanaAQP4",
+   "title": "Tidal, Wave and Hydroelectric Energy Resources - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Oa3VanaAQP4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 464,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UNg7AxvkN30",
+   "title": "Geothermal Energy - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=UNg7AxvkN30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 105,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fRkuQFGinDY",
+   "title": "Fossil Fuels - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=fRkuQFGinDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 97,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tiH8kez7Z18",
+   "title": "Specific Heat Capacity - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=tiH8kez7Z18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 288,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tIWt0Px2fy0",
+   "title": "Specific Heat Capacity of Aluminium Experiment - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=tIWt0Px2fy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 926,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7bucHPbrxkg",
+   "title": "Specific Heat Capacity of Water Experiment - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=7bucHPbrxkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 921,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8cr-ymSrvH8",
+   "title": "Calculating the Specific Heat Capacity of Aluminium - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=8cr-ymSrvH8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 207,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZuUpXAhqFJ0",
+   "title": "Conduction - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=ZuUpXAhqFJ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 400,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PI171ww4yeA",
+   "title": "Convection - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=PI171ww4yeA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 263,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MBFUfld_5i0",
+   "title": "Convection Experiment - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=MBFUfld_5i0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 197,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PsHANcj1dgQ",
+   "title": "The Leslie Cylinder - Infrared Emission - GCSE and A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=PsHANcj1dgQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qVP4iCt-FLg",
+   "title": "Wave Speed Equation - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=qVP4iCt-FLg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 185,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EmEmIudNvhM",
+   "title": "Time Period and Frequency of Waves - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=EmEmIudNvhM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 314,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X4MqYUNPnww",
+   "title": "Amplitude and Wavelength of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=X4MqYUNPnww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 129,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pVYfCKUYyfE",
+   "title": "Calculate the Speed of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=pVYfCKUYyfE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 165,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gGdwW7cVEYc",
+   "title": "Calculate the Wavelength of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=gGdwW7cVEYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 145,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p2tfX7U8SaI",
+   "title": "Frequency and Amplitude of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=p2tfX7U8SaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MnTYZKHSUBk",
+   "title": "Reflection - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=MnTYZKHSUBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 315,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4n2S0AIDSDs",
+   "title": "Reflection Ray Diagram - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=4n2S0AIDSDs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 173,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_OPx3F1r-PM",
+   "title": "Measure the Angle of Refraction using a Protractor - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=_OPx3F1r-PM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 124,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k8oK67nlm3M",
+   "title": "Refraction and Snell's Law - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=k8oK67nlm3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5py3JxDZaZM",
+   "title": "Total Internal Reflection and Critical Angle - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=5py3JxDZaZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Zeo3UOk7_vA",
+   "title": "Optical Fibres - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Zeo3UOk7_vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 235,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l-nFHceQNEQ",
+   "title": "TIR in water - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=l-nFHceQNEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 191,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xVzHT5BP-Sw",
+   "title": "Measuring the Speed of Sound - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=xVzHT5BP-Sw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 177,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "R6I7Fh3hN3M",
+   "title": "Electromagnetic Waves: Wavelengths and Frequencies - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=R6I7Fh3hN3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 323,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tcUijxcUbxo",
+   "title": "Current and Charge - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=tcUijxcUbxo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 306,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qvH56hIZCm8",
+   "title": "Current and Charge - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=qvH56hIZCm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 192,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EcqPg2Ym5NU",
+   "title": "Voltage and Resistance - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=EcqPg2Ym5NU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 349,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GM5xQ5gp4kw",
+   "title": "Calculating Resistance, Current and Potential Difference - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=GM5xQ5gp4kw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 244,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FXcs8Cl0coU",
+   "title": "Electrical Power - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=FXcs8Cl0coU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 158,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oHIm47NVZA0",
+   "title": "Series Circuits - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=oHIm47NVZA0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 185,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "51ct-qWfJUU",
+   "title": "Parallel Circuits - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=51ct-qWfJUU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 171,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WIoZxBU4sfc",
+   "title": "Resistors in Series and Parallel - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=WIoZxBU4sfc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 234,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fCLi8bDKRhA",
+   "title": "What is the Total Resistance? WORKED EXAMPLE - GCSE (and A Level) Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=fCLi8bDKRhA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 151,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xjL4s7sJZM8",
+   "title": "Filament Lamps - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=xjL4s7sJZM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 375,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HSMDw-eBtCU",
+   "title": "Diodes - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=HSMDw-eBtCU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 244,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BUxpamxzLYM",
+   "title": "Light Dependent Resistors (LDRs) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=BUxpamxzLYM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 121,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "z5pQ4hitt14",
+   "title": "IV Characteristics of a Bulb Experiment - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=z5pQ4hitt14",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 326,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Yb3e6HbmnUA",
+   "title": "IV Characteristics of a Diode Experiment - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Yb3e6HbmnUA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 321,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ummRvdOh1bU",
+   "title": "IV Characteristics of a Resistor Experiment - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=ummRvdOh1bU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VFsuWu6uxSs",
+   "title": "IV Characteristics of a Wire Experiment (Ohm's Law) - GCSE Physics Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=VFsuWu6uxSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 233,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_Ag_DKztFkg",
+   "title": "Permanent Magnets - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=_Ag_DKztFkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 396,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VFyppOI1-Fc",
+   "title": "The Parts of the Atom (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=VFyppOI1-Fc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-LDsSKidCfQ",
+   "title": "Representing Atoms (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=-LDsSKidCfQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 282,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rqlstLTRIb4",
+   "title": "Representing Atoms - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=rqlstLTRIb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 181,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Sq8CWusNry8",
+   "title": "Ions and Isotopes (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Sq8CWusNry8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 206,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "muXcZJP4sVA",
+   "title": "Alpha Decay Equations (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=muXcZJP4sVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 154,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GImej8WpwjU",
+   "title": "Beta Decay and its Nuclear Equations - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=GImej8WpwjU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 470,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iUxh0tQNVjQ",
+   "title": "Nuclear Energy Overview - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=iUxh0tQNVjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 225,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "r0aLfBPJbSo",
+   "title": "Fusion Reactors - Inside JET, the HOTTEST place in the Solar System! A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=r0aLfBPJbSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 907,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qENsPSk_tuE",
+   "title": "Orbital Speed - IGCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=qENsPSk_tuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 169,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KgWFFGSUVN0",
+   "title": "Redshift Calculations - IGCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=KgWFFGSUVN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 201,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -3092,20 +4383,1204 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "video": "xH4w97eUBgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names speed (average speed = distance/time)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "caQj2Tjaark",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names acceleration (change in velocity/time)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "wrRhlz2exuc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names distance-time graphs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "CkrQB45dLOI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7",
+    "1.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names velocity-time graphs (plot/explain; acceleration from gradient)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "1ehCM_SKJso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names calculating the area under a graph (distance from v-t area)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "KGpItFFE6B4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.20"
+   ],
+   "confidence": "medium",
+   "evidence": "title names stopping distance",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "exKdmv4hj9o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.20"
+   ],
+   "confidence": "medium",
+   "evidence": "title names braking distance explained (stopping-distance factors)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "3jjwS_nZuIg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.20"
+   ],
+   "confidence": "medium",
+   "evidence": "title names stopping, thinking and braking distance (A-level-titled; Edexcel IGCSE owns the stopping-distance clause)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "silFXR2kG7E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title names scalars and vectors",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "9WdTzubd89M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.17"
+   ],
+   "confidence": "low",
+   "evidence": "title names an acceleration-and-force experiment at constant mass; F = ma applied not named",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "PBojFeRN-z0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.25P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names linear momentum (p = mv)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "l3wtC6VE_WU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.26P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names car safety features (momentum used to explain safety features)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "XefR-1rwcu4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.27P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names conservation of linear momentum",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "trPCwp_RHJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.28P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the impulse of a force (force = change in momentum/time)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "7x6SpYdkjC4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.30P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the principle of moments (moment = force x perpendicular distance)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "lBKjThIlOUA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names energy stores (store list clause)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "IJ9r7WkTZiI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names energy transfers",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "1s6YNAbyE6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names energy transfer examples",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "HpuZadw7NeE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names efficiency (useful output/total input)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "4G6qW2b1vDQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.14"
+   ],
+   "confidence": "medium",
+   "evidence": "title names kinetic energy (KE = 1/2 m v^2)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "dNH5GsUEz-E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title names gravitational potential energy (GPE = mgh)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "FjZqEWVdoZ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.16",
+    "4.17"
+   ],
+   "confidence": "medium",
+   "evidence": "title names power (rate of transfer of energy; power = work/time)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "cEOKd64ga2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.18P",
+    "4.19P"
+   ],
+   "confidence": "low",
+   "evidence": "title names energy resources generically; the wind/water/geothermal list and trade-offs only partially evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "sL0yQiyxrcY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.18P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names wind energy (generation electricity transfer list)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "vx17cGuVKF0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.18P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names solar energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "Oa3VanaAQP4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.18P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names tidal, wave and hydroelectric energy resources",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "UNg7AxvkN30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.18P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names geothermal energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "fRkuQFGinDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.19P"
+   ],
+   "confidence": "low",
+   "evidence": "title names fossil fuels; advantages/disadvantages framing partially evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "tiH8kez7Z18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.12P",
+    "5.13P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names specific heat capacity (definition; change in thermal energy = m c delta-theta)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "tIWt0Px2fy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.14P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names an SHC-of-aluminium experiment (practical: investigate SHC of materials)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "7bucHPbrxkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.14P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names an SHC-of-water experiment (practical: investigate SHC of materials)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "8cr-ymSrvH8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.13P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names calculating the specific heat capacity of aluminium (worked example)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "ZuUpXAhqFJ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names conduction (thermal energy transfer by conduction)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "PI171ww4yeA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6",
+    "4.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names convection (transfer by convection; role in everyday phenomena)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "MBFUfld_5i0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names a convection experiment (practical: investigate thermal energy transfer)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "PsHANcj1dgQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6"
+   ],
+   "confidence": "low",
+   "evidence": "title names the Leslie Cylinder infrared emission; the conduction/convection/radiation clause partially evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "qVP4iCt-FLg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the wave speed equation (v = f lambda)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "EmEmIudNvhM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3",
+    "3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names time period and frequency of waves (definitions; f = 1/T)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "X4MqYUNPnww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names amplitude and wavelength of a wave (definitions worked example)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "pVYfCKUYyfE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names calculating the speed of a wave",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "gGdwW7cVEYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5"
+   ],
+   "confidence": "low",
+   "evidence": "title names calculating wavelength (worked example)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "p2tfX7U8SaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3"
+   ],
+   "confidence": "low",
+   "evidence": "title names frequency and amplitude of a wave (worked example)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "MnTYZKHSUBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title names reflection (law of reflection)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "4n2S0AIDSDs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.16"
+   ],
+   "confidence": "medium",
+   "evidence": "title names a reflection ray diagram worked example",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "_OPx3F1r-PM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.16"
+   ],
+   "confidence": "low",
+   "evidence": "title names measuring the angle of refraction; ray-diagram clause partially evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "k8oK67nlm3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.18"
+   ],
+   "confidence": "medium",
+   "evidence": "title names refraction and Snell's law (refractive index, angle of incidence and refraction)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "5py3JxDZaZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.21",
+    "3.22"
+   ],
+   "confidence": "medium",
+   "evidence": "title names total internal reflection and critical angle (meaning of c; sin c = 1/n)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "Zeo3UOk7_vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.20"
+   ],
+   "confidence": "medium",
+   "evidence": "title names optical fibres (TIR transmitting information)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "l-nFHceQNEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.21"
+   ],
+   "confidence": "low",
+   "evidence": "title names TIR in water; critical-angle clause partially evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "xVzHT5BP-Sw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.25P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names measuring the speed of sound (practical: investigate the speed of sound in air)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "R6I7Fh3hN3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title names EM wavelengths and frequencies (order of the EM spectrum)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "tcUijxcUbxo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.14",
+    "2.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title names current and charge (rate of flow; Q = It)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "qvH56hIZCm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title names a current-and-charge worked example",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "EcqPg2Ym5NU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title names voltage and resistance (V = IR)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "GM5xQ5gp4kw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title names calculating resistance, current and potential difference (worked example)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "FXcs8Cl0coU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names electrical power (P = IV)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "oHIm47NVZA0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names series circuits (current depends on applied voltage and components)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "51ct-qWfJUU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.18"
+   ],
+   "confidence": "medium",
+   "evidence": "title names parallel circuits (voltage the same across parallel components)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "WIoZxBU4sfc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.19"
+   ],
+   "confidence": "low",
+   "evidence": "title names resistors in series and parallel; the two-component series calculation clause partially evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "fCLi8bDKRhA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.19"
+   ],
+   "confidence": "low",
+   "evidence": "title names a total-resistance worked example",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "xjL4s7sJZM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names filament lamps (current-voltage variation)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "HSMDw-eBtCU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names diodes (current-voltage variation)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "BUxpamxzLYM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title names light-dependent resistors (resistance vs illumination)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "z5pQ4hitt14",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names an I-V characteristics of a bulb experiment (current varies with voltage in lamps)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "Yb3e6HbmnUA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names an I-V characteristics of a diode experiment",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "ummRvdOh1bU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names an I-V characteristics of a resistor experiment",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "VFsuWu6uxSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names an I-V characteristics of a wire experiment (Ohm's law framing)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "_Ag_DKztFkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2",
+    "6.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names permanent magnets (repel/attract; hard/soft magnetic materials)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "VFyppOI1-Fc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the parts of the atom (protons, neutrons, electrons)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "-LDsSKidCfQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2",
+    "7.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names representing atoms (nuclide symbols; atomic/mass numbers)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "rqlstLTRIb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names a representing-atoms worked example",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "Sq8CWusNry8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ions and isotopes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "muXcZJP4sVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.7",
+    "7.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names alpha decay equations (effects on atomic/mass numbers; balancing nuclear equations)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "GImej8WpwjU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.7",
+    "7.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names beta decay and its nuclear equations (A-level-titled; clauses match)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "iUxh0tQNVjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.17"
+   ],
+   "confidence": "low",
+   "evidence": "title names a nuclear energy overview; nuclear reactions as energy source partially evidenced",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "r0aLfBPJbSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.23",
+    "7.24",
+    "7.25"
+   ],
+   "confidence": "medium",
+   "evidence": "title names fusion reactors (fusion vs fission; fusion as energy source)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "qENsPSk_tuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names orbital speed (v = 2 pi r / T)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "KgWFFGSUVN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.14P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names redshift calculations (red-shift as Big Bang evidence)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T03:30:11Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 195,
-  "specPointsMapped": 142,
-  "specPointsUnmapped": 53,
-  "videosTotal": 99,
-  "videosMapped": 99,
+  "specPointsMapped": 146,
+  "specPointsUnmapped": 49,
+  "videosTotal": 177,
+  "videosMapped": 177,
   "videosUnmapped": 0,
-  "mappingRows": 101,
+  "mappingRows": 179,
   "byConfidence": {
    "high": 0,
-   "medium": 97,
-   "low": 4
+   "medium": 164,
+   "low": 15
   }
  },
  "inputs": {
@@ -3118,7 +5593,13 @@
    "path": "Videos/drafts/igcse-physics-19/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2C",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p2e": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-physics-19/video-map.draft.external-p2e.json",
+   "task": "T-VIDEOMAP-P2E",
+   "reviewAppliedUtc": "2026-11-10T03:30:11Z"
   }
  },
- "generatedUtc": "2026-11-09T06:12:44.905Z"
+ "generatedUtc": "2026-11-10T03:32:02.741Z"
 }
