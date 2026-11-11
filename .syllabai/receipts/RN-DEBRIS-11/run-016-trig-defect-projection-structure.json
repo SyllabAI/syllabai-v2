@@ -1,0 +1,68 @@
+{
+ "receipt": "rn11-run-016-trig-defect-projection-structure",
+ "family": "RN-DEBRIS-11",
+ "run": "016",
+ "lane": "the run-015 follow-up content repair pass — the excluded cie-as-maths-20-pure-2 2.3.2 row family (content-defect queue of record) + the structural projection deltas (cs-23 mirror restoration + the SME-synthetic census disposition + the topic-level-points proposal map)",
+ "operatorOrder": "draft the follow-up content repair pass for the excluded cie-as-maths-20-pure-2 2.3.2 row and the structural projection deltas",
+ "operatorTrace": "1a1c3551a566d859",
+ "generatedUtc": "2026-11-10",
+ "mode": "apply+verify",
+ "base": "origin/main f31323cf9ecb0571f04df2d3ad856a974d226949 (fetch-first race-guard; run-015 merged of record via PR #909 before the branch cut; wave-4 #907 landed in the same advance — zero overlap, path-scoped; main advanced to 0806e132 (PR #911 video-map) mid-run — race-guard union-merge carried at push, zero overlap re-verified)",
+ "defectOfRecord": {
+  "partA_excludedRow": "run-015 contentDefectQueue[0]: cie-as-maths-20-pure-2 SPEC_POINT 2.3.2 — pdf-extraction glyph garbage in the CONTENT plane; repaired here together with the family of record: the both-planes-equal sibling cie-a-level-maths-20-pure-2 2.3.2 (invisible to the run-015 mirror sweep — identical 506-char garbage on both sides), cie-a-level-maths-20-pure-3 3.3.2 (KG 493-char variant; content/spine clean form + '1+tan²θand' space glue + '• e.g. …' notes-glue tail — tail pinned verbatim), and the 3 UGM byte-true re-serve planes whose officialText mirrored the garbage (T-UGM serve law: byte-true copy of the hub bundle of record)",
+  "partB_projectionDeltas": "run-015 projectionDeltasOfRecord: cs-23 TOPIC census 10 vs 7 — content T7/T9/T10 are empty r5-era husks (T7 at array tail, duplicate order 7 colliding with T8, title off-official 'problem solving') and the spine dropped them entirely; RESOLVED by mirror restoration (spine gains the 3 empty TOPIC nodes + subject edges; T7 title hyphen fix 'Algorithm design and problem-solving'; T8 order 7->8; canonical DFS array) — census TOPIC 10==10, zero invented rows",
+  "smeSynthetic": "the other 19->20 census rows (10 courses) = SME-* synthetic picker-layer sections — EXEMPT-BY-LAW"
+ },
+ "evidenceOfRecord": {
+  "officialDocs": [
+   {
+    "pdf": "9709-2023-2025-syllabus.pdf",
+    "sha256": "3a7a3769…6256",
+    "sha1": "997e5a9f…2e32",
+    "continuity": "== run-009 pins of record (byte-matched); syllabai-resources @ 4e3a1c6843b0"
+   },
+   {
+    "pdf": "0478-2023-2025-syllabus.pdf",
+    "sha256": "48cd6cf0…bdb4",
+    "sha1": "bee666fb…b20",
+    "continuity": "sha1 == upstream spec.json pin; fresh sha256 pin of record"
+   }
+  ],
+  "extraction": "run-009/010/011/013 law family (pdftotext -layout; 3+-space column split; wrapped-continuation join; CTRL strip; '(continued)' dedupe; notes column excluded — statement-only law; lettered rows -> separate points with the letter in the code per the 714-code fleet precedent; roman sub-items flattened doc-verbatim)",
+  "glyphLaw": "the assembled official 2.3.2 title is BYTE-EQUAL to the cie-as-maths-20-pure-2 spine artifact (run-015's 'clean official-era title'); pure-3's 3.3.2 reconciles after stripping the pinned glue tail + restoring the raw-token space; composed=true, 2-source corroboration",
+  "crossChecks": [
+   "P2 §2.3 and P3 §3.3 bullet rows extracted independently; statement rows byte-equal",
+   "2.3.1/3.3.1 statements vs corpus clean titles consistent (no repair needed)",
+   "0478 T7 official title hyphenated vs content husk 'problem solving' — husk off-official, repaired",
+   "the official 0478 T7/T9/T10 carry NO subtopic layer (9/4/3 numbered rows = 12/4/5 points with lettered rows)"
+  ]
+ },
+ "repairOfRecord": {
+  "partA": "11 files / 14 string sites -> the official row of record: content as-pure-2 + a-level-pure-2 + pure-3 (2.3.2/3.3.2), spine a-level-pure-2 + pure-3, KG x3 (2 sites each), UGM x3 (1 site each — byte-true re-serve law); as-pure-2 SPINE untouched (already the official form)",
+  "partB_cs23": "T7 title hyphen fix; T8 order 7->8; canonical DFS array (T7 husk before T8); spine +3 TOPIC nodes (T7/T9/T10 mirrors, census TOPIC 10==10) + edges verbatim-mirroring content's 119; meta.counts 10/21/88/88/88/0; manifest 10/21/88; KG REGENERATED via export_course (120n/210e/88pts, deep-equal PASS)",
+  "proposalOfRecord": "the 21 official topic-level points (7.1..7.9 + 7.2a/b/c + 7.5a/b + 9.1..9.4 + 10.1..10.3c) filed apply-ready in topic_level_points_proposal_r0.json — run-009 precedent ('title maps are repair-pass work'); NOT applied: the corpus's universal point law requires exactly one SUBTOPIC parent per SPEC_POINT and the official doc has no subtopic layer there"
+ },
+ "dispositions": {
+  "smeSyntheticSections": "EXEMPT-BY-LAW (zero plane bytes): 10 courses / 20 census rows / 329 synthetic unmatched codes are by-design picker-layer placement hosts — provenance #867 (w1) + t-sme-sel-w2/w3 + ADR-039 §4 #732 + wave-4 #907 (bio-23 + 3 co-ordinated slices, landed during this run's evidence window); the spine mirror law gains the documented exemption; the census rows REMAIN by design and the sweep's synthetic flag is the machine-checkable form of the law",
+  "chem19CodeScheme": "RE-AFFIRMED (no action): 32 4CH1-S* spine codes vs igcse-chemistry-T* content codes — order-aligned titles 32/32, zero title drift (run-015 annex)"
+ },
+ "gates": "ALL GREEN — see run-016/gates_r0.json (G0 15 files; G0b validator-artifact refresh with the staleness proof; G1 serializers; G2 field diffs; G3 structure; G4 KG regen + deep-equal; G6 drift 1->0 + census 21->20; G7 collision; GV1 six validators exit 0 UNMASKED; placement A/B IDENTICAL; tree probe ALL PASS)",
+ "laneLesson": "gate exit codes must be captured unmasked — the first pass's pipeline ('cmd | tail; echo $?') read tail's exit and briefly recorded masked green/red states; all six validator exits re-measured direct; the completion-gate loop (apply -> verify -> revise) is the law working as designed",
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/official_evidence_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/apply_manifest_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/topic_level_points_proposal_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/mirror_sweep_pre_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/mirror_sweep_post_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/pdf_pins_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/gates_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/scripts/ (extractor, applier, sweep pre/post, tree probe)"
+ ],
+ "newFindings": [
+  "cs-23 both-planes-garbage rows (NEW, queued not repaired): existing cs-23 point titles carry the 2.3.2 garbage class — pinned examples 1.1.2 (interleaved (a)/(b)/(i)-(iii) + \\u0007 control chars), 8.1.1a (multi-row mangling), 6.3.1a (notes-column fragment) — sweep-invisible (both planes byte-equal); the 0478 pin is now of record for that pass",
+  "cs-23 T8.1 corpus point codes (8.1.1a carries the (f) row's text) suspected mis-mapped vs the doc — queued with the above",
+  "pure-1 glue rows (run-013 disclosure re-affirmed, both-planes class) — the 9709 P1 family remains its own candidate",
+  "the corpus has NO subtopic-less point precedent (fleet-universal dual/single SUBTOPIC-parent law) — the exporter-law extension decision (option: accept topic-level points) belongs to the desk"
+ ],
+ "boundaries": "zero src/ bytes; zero code changes (the exporter-law extension is QUEUED for the desk, not implemented); title/label + structural mirror + UGM byte-true re-serve only; author does not self-merge — PR for the R0 desk; no force-push; fetch-first race-guard at push"
+}
