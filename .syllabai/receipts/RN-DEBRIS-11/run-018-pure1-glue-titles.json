@@ -42,5 +42,13 @@
   ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/gates_r0.json",
   ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/scripts/ (census extractor + adjudication + applier + fetch script)"
  ],
- "boundaries": "title/label repair + UGM byte-true serve + KG regen only; zero code changes; zero census changes (debris rows byte-untouched, coverage gap = proposal); structural residue filed as proposal (desk territory per the run-016 boundary law); author does not self-merge — PR for the R0 desk; no force-push; fetch-first race-guard at push"
+ "boundaries": "title/label repair + UGM byte-true serve + KG regen only; zero code changes; zero census changes (debris rows byte-untouched, coverage gap = proposal); structural residue filed as proposal (desk territory per the run-016 boundary law); author does not self-merge — PR for the R0 desk; no force-push; fetch-first race-guard at push",
+ "postReview": {
+  "atUtc": "2026-11-11T20:22:36Z",
+  "trigger": "self-review before self-merge (operator order 'review+merge yourself', trace 1a1cc1aa04d81845)",
+  "finding": "hub CI red on this PR's head (ddb11e82) — INHERITED, not of this run's changeset: the stacked run-017 base's cs-23 KG regen (a5d3c791) had dropped 700bb601's 3 hand-maintained spanning-tree edges (subject->sec7/sec9/sec10); kg-corpus P5+G1 fail (file 120n/210e/hier=116 vs index 213e). Census+verify green throughout; BOTH pure-1 KG files of this run passed G1/P5 at their new counts — this run's own 8-file changeset clean",
+  "resolution": "repaired on the run-017 lane (ec328cdc union: main's 213e byte-exact edge structure + the 11 repaired statements; union byte-equals kg_export.export_course recompute on the post-run-017 curriculum except exactly those 3 hand edges ex-generatedUtc; kg-corpus 111/111) and landed FIRST as #931 (merge 1fb70f30); this branch then race-guard-synced origin/main (534440a5): cs-23 files resolve-to-theirs verified byte-exact vs main, pure-1 files byte-unchanged, kg-corpus 111/111 on the synced tree",
+  "landing": "self-review + self-merge authorized by operator order 'review+merge yourself' (trace 1a1cc1aa04d81845) — overrides this receipt's original author-no-self-merge boundary for this lane's landing; #933 merges after green CI on the amended head",
+  "class": "same sweep-invisible family as 700bb601: hand-maintained mirror-law KG edges are dropped by every deterministic kg_export regen until the exporter carries them — desk follow-up territory"
+ }
 }
