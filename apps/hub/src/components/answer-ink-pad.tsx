@@ -295,7 +295,7 @@ export function AnswerInkPad({
             variant="outline"
             onClick={convertInk}
             disabled={!hasInk && !hasPhoto}
-            className="h-8 gap-1.5 text-[12px]"
+            className="h-8 gap-1.5 text-xs"
           >
             <PenLine className="size-3.5" aria-hidden />
             Convert to text
@@ -306,7 +306,7 @@ export function AnswerInkPad({
             variant="ghost"
             onClick={undo}
             disabled={!hasInk}
-            className="h-8 gap-1.5 text-[12px] text-muted-foreground"
+            className="h-8 gap-1.5 text-xs text-muted-foreground"
           >
             <Undo2 className="size-3.5" aria-hidden /> undo
           </Button>
@@ -316,7 +316,7 @@ export function AnswerInkPad({
             variant="ghost"
             onClick={clear}
             disabled={!hasInk && !hasPhoto}
-            className="h-8 gap-1.5 text-[12px] text-muted-foreground"
+            className="h-8 gap-1.5 text-xs text-muted-foreground"
           >
             <Eraser className="size-3.5" aria-hidden /> clear
           </Button>
@@ -325,7 +325,7 @@ export function AnswerInkPad({
             size="sm"
             variant="ghost"
             onClick={() => fileInputRef.current?.click()}
-            className="h-8 gap-1.5 text-[12px] text-muted-foreground"
+            className="h-8 gap-1.5 text-xs text-muted-foreground"
           >
             <Camera className="size-3.5" aria-hidden /> use a photo
           </Button>
@@ -367,7 +367,7 @@ export function AnswerInkPad({
               size="sm"
               onClick={insert}
               disabled={!preview.trim()}
-              className="h-8 text-[12px]"
+              className="h-8 text-xs"
             >
               Insert into answer
             </Button>
@@ -379,7 +379,7 @@ export function AnswerInkPad({
                 setStatus("drawing");
                 setError(null);
               }}
-              className="h-8 text-[12px] text-muted-foreground"
+              className="h-8 text-xs text-muted-foreground"
             >
               Back to drawing
             </Button>
