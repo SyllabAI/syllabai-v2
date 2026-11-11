@@ -19,7 +19,7 @@ export default function NotFound() {
       </h1>
       <p className="text-sm leading-relaxed text-muted-foreground">
         The link may be stale, or the course may have moved. Course pages live
-        under <code className="rounded bg-muted px-1 py-0.5 font-mono text-[12px]">/courses/…</code>{" "}
+        under <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">/courses/…</code>{" "}
         — the directory below lists everything that is real right now.
       </p>
       <div className="mt-2 flex flex-wrap items-center justify-center gap-2">

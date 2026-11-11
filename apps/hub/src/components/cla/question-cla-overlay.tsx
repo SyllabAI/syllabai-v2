@@ -574,7 +574,7 @@ export function QuestionClaOverlay({
                           if (e.key === "Escape") setRenamingId(null);
                         }}
                         aria-label="Chat title"
-                        className="h-6 border-0 px-1.5 text-[12px] shadow-none focus-visible:ring-0"
+                        className="h-6 border-0 px-1.5 text-xs shadow-none focus-visible:ring-0"
                       />
                       <Button
                         size="icon"
@@ -596,7 +596,7 @@ export function QuestionClaOverlay({
                         onClick={() => setActiveQuestionThread(question.id, t.id)}
                         className="min-w-0 flex-1 px-2.5 py-1.5 text-left"
                       >
-                        <span className="block truncate text-[12px] font-medium">{t.title}</span>
+                        <span className="block truncate text-xs font-medium">{t.title}</span>
                         <span className="text-2xs text-muted-foreground">
                           {t.messages.length} turn{t.messages.length === 1 ? "" : "s"} ·{" "}
                           {relativeTime(t.updatedAt)}

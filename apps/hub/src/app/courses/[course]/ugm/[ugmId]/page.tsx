@@ -153,7 +153,7 @@ export default async function UgmReaderPage({
       ) : null}
 
       <Card className="mt-4">
-        <CardContent className="flex flex-wrap items-start gap-2.5 p-3.5 text-[12px] leading-relaxed text-muted-foreground">
+        <CardContent className="flex flex-wrap items-start gap-2.5 p-3.5 text-xs leading-relaxed text-muted-foreground">
           <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
           <span>
             <span className="font-medium text-foreground">{ugm.rights.holder}</span>. Source:

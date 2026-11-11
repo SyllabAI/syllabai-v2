@@ -31,7 +31,7 @@ export default function RouteError({
       <p className="text-sm leading-relaxed text-muted-foreground">
         It usually works — retrying fixes transient failures. If it keeps
         happening, the reference is{" "}
-        <code className="rounded bg-muted px-1 py-0.5 font-mono text-[12px]">
+        <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">
           {error.digest ?? "n/a"}
         </code>
         .

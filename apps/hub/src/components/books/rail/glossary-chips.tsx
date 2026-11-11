@@ -122,7 +122,7 @@ export function GlossaryStrip({ terms }: { terms: BookGlossaryTerm[] }) {
             <PopoverTrigger asChild>
               <button
                 type="button"
-                className="rounded-full border bg-background px-2 py-0.5 text-[12px] hover:border-primary"
+                className="rounded-full border bg-background px-2 py-0.5 text-xs hover:border-primary"
                 onClick={() => setOpen(open === t.slug ? null : t.slug)}
                 aria-expanded={open === t.slug}
               >
