@@ -1,0 +1,47 @@
+{
+  "lane": "t-lesson-states-ws3",
+  "run": "run-001",
+  "date": "2026-11-11",
+  "plan": "docs/books/PLAN-LESSON-VISUAL-v1.2.md (WS3 — interactive states checklist; v1.2 supersedes the unrecoverable v1.1, re-derivation disclosed in the plan header)",
+  "scope": "the Lesson reader (components/books/lesson/lesson-view.tsx) — presentation-only className changes, zero JSX structure, zero behavior, zero pack/content bytes, server-first intact (server component; no new client boundaries)",
+  "reland_disclosure": "sandbox recycle #6 consumed the first landing pre-push (branch + receipt + worklog append, all unpushed); the lane was re-landed byte-identically from context on the re-based tree (main 03ff688d -> 3be2f575, zero overlap with the advance verified path-scoped) — the chip-lane re-land precedent",
+  "states_checklist": {
+    "aside_section_anchor_links": {
+      "was": "hover:bg-muted hover:text-foreground only — no focus voice (keyboard-invisible focus)",
+      "now": "hover kept + outline-none + transition-[background-color,color,box-shadow] + focus-visible:ring-2 focus-visible:ring-ring (the hub-dominant link voice, 44+35 sites)"
+    },
+    "breadcrumb_rail_link": {
+      "was": "hover:text-foreground only",
+      "now": "+ rounded-sm + outline-none + transition-[color,box-shadow] + focus-visible:ring-2 focus-visible:ring-ring"
+    },
+    "breadcrumb_book_shelf_link": {
+      "was": "hover:text-foreground only",
+      "now": "+ rounded-sm + outline-none + transition-[color,box-shadow] + focus-visible:ring-2 focus-visible:ring-ring"
+    },
+    "derived_links_keep_going_x3": {
+      "was": "underline decoration-dotted underline-offset-4 hover:text-primary only (notes, question topics, flashcards links)",
+      "now": "+ rounded-sm + outline-none + transition-[color,box-shadow] + focus-visible:ring-2 focus-visible:ring-ring (underline/decoration/offset byte-kept)"
+    },
+    "footer_chapter_buttons_x2": {
+      "was": "rounded-md border px-3 py-1.5 hover:bg-muted only",
+      "now": "+ outline-none + transition-[background-color,box-shadow] + hover:bg-muted kept + focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] (the run-004 border-control voice)"
+    }
+  },
+  "not_applicable_disclosure": {
+    "static_elements": "boxes, glossary strip, learning-objectives box, badges (SB p.X / paper route / DRAFT preview), headings — not interactive, no states owed",
+    "active_voice": "active:scale is the ui/button component law; these are styled Links, not Button — active voice not applied (house has no link active idiom)",
+    "disabled_voice": "no disableable controls on this surface — nothing to voice",
+    "lesson_progress_tracker": "client component, WS5 scope per plan",
+    "block_renderer_zones": "client component, WS6 scope per plan (the entire books/ tree measured focus-visible-free — rail needs its own lane, out of WS3 scope)"
+  },
+  "motion_note": "transitions are explicit property lists per the T-HUB-AUDITFIX-1 run-004 law (transition-all retired hub-wide); no duration/easing tokens exist yet — that is WS2's deliverable, so WS3 ships the list shape only, tokenized durations arrive with WS2 without re-touching this file",
+  "gates": {
+    "tsc_noEmit": 0,
+    "eslint_changed_file": 0,
+    "lesson_suites": "37 pass / 0 fail / 59 expects (lesson-markdown + lesson-blocks-join + books-lesson + books-lesson-links)",
+    "full_hub_battery": "1303 pass / 9 fail / 1 error / 38,636 expects — A/B-proven pre-existing: stashed-change run returned the IDENTICAL 1303/9/1 on the clean tree",
+    "next_build": "delegated to the CI hub gate on the exact head (sandbox 6.6G free vs the ~6G scratch the build receipts measure — the repo's disclosed delegation posture)"
+  },
+  "ci_gate_of_record": "verify + hub on the PR head",
+  "honesty": "no data derived, no behavior changed; keyboard focus becomes visible on every interactive element of the Lesson reader"
+}
