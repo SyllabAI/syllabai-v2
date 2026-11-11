@@ -88,6 +88,29 @@ function timeoutSignal(seconds: number): { signal: AbortSignal; clear(): void } 
 const STREAM_IDLE_TIMEOUT_SECONDS = 60;
 
 /**
+ * The reasoning completion allowance (T-REASON-WALL-1): the chain of record
+ * serves REASONING models on this member (groq openai/gpt-oss-*, openrouter
+ * nemotron-*) whose reasoning tokens count AGAINST the completion cap — so a
+ * caller budget calibrated for the pre-reasoning era (the #706 tutor wall
+ * class) gets eaten inside the reasoning channel and the visible content
+ * truncates or never starts. The caller's maxTokens stays the CONTENT
+ * budget of record; this allowance rides ON TOP of it as the reasoning
+ * channel's own headroom, so every OpenAI-compatible seam's content budget
+ * survives the reasoning spend:
+ *   - toolkit sow (the largest contract, 4–6k) and rubric under 8000 + low
+ *     effort — no more TRUNCATED_OUTPUT walls;
+ *   - teach-me review/objectives/judge (4000, no §26 knob → provider
+ *     default effort) — no more shape drift from a starved content channel
+ *     (A7 2026-11-09: review LLM_SHAPE_DRIFT after a 60 s timeout →
+ *     failover to a reasoning-only openrouter leg).
+ * A cap is a ceiling, not a floor — a member that finishes inside the
+ * content budget bills nothing extra. Disclosed: the OPENAI-compatible
+ * members only (the gemini member's bounded-thinking purpose is preserved
+ * by its own generationConfig caps, unchanged).
+ */
+export const REASONING_COMPLETION_ALLOWANCE = 4_096;
+
+/**
  * Idle-timeout race for one streamed read: a provider that stalls between
  * chunks degrades into a counted TIMEOUT failure instead of an open stream.
  * The losing side of the race must never surface an unhandled rejection —
@@ -184,8 +207,11 @@ interface ChatCompletionChunk {
 /**
  * groqChatModel()/openRouterChatModel() construction + the adapter generate/
  * stream law, over POST {baseUrl}/chat/completions. openAiRuntimeOptions
- * parity: request.model > configured default; temperature/maxTokens ride only
- * when present; reasoningEffort → reasoning_effort (the §26 knob).
+ * parity: request.model > configured default; temperature rides only when
+ * present; maxTokens = the CONTENT budget — the wire cap rides it plus the
+ * reasoning completion allowance (reasoning tokens count against the cap on
+ * this member's reasoning models); reasoningEffort → reasoning_effort (the
+ * §26 knob).
  */
 export class OpenAiCompatibleChainMember extends BaseChainMember {
   constructor(
@@ -214,7 +240,13 @@ export class OpenAiCompatibleChainMember extends BaseChainMember {
       stream,
     };
     if (request.temperature != null) body.temperature = request.temperature;
-    if (request.maxTokens != null) body.max_tokens = request.maxTokens;
+    // maxTokens = the caller's CONTENT budget; the reasoning channel (whose
+    // tokens count against the wire cap on the reasoning models this member
+    // serves) rides the allowance on top — the #706 class at the adapter
+    // boundary, so every seam's budget survives the reasoning spend
+    if (request.maxTokens != null) {
+      body.max_tokens = request.maxTokens + REASONING_COMPLETION_ALLOWANCE;
+    }
     if (request.reasoningEffort != null) body.reasoning_effort = request.reasoningEffort;
     return body;
   }
