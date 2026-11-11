@@ -2337,3 +2337,9 @@ Stage Summary:
 - FIX 1 (this PR): t-vercel-api-rollback.yml — promote the newest READY production deployment created before 2026-11-10 00:00Z (the 2026-11-09 05:51:51Z dashboard redeploy: stale on /regions but serving the rest of /api/v1), then a read-only serving probe (/api/v1/auth/login must answer JSON 400, not the NOT_FOUND page).
 - FIX 2 (same PR): the 03:30Z schedule is STRIPPED from t-vercel-api-bake.yml (dispatch-only) so the floor can never re-deploy the empty build. The floor returns once the recipe of record is re-established (the correct source + build config).
 - DOCTRINE NOTE (honest): run-001 of the bake was gated by the quota and I read "the pipeline is proven" from the upload succeeding; the deeper proof (does the DEPLOYED BUILD serve?) never ran. The lesson is filed: a bake floor without a post-deploy serving probe is not a floor, it is a bet.
+
+
+## T-VERCEL-API-ROLLBACK run-001 receipt (2026-11-11 05:34Z) — the Hobby-plan rollback law
+
+- The pick (newest READY before 2026-11-10 00:00Z) = dpl_8FRDnLyZ9ScLD2cuLtrThnrDUAdP (syllabai-v2-qip6hfk8h-*, created Nov 8 09:38Z) — and the promotion was REFUSED by Vercel: "To rollback further than the previous production deployment, upgrade to pro. (402)". The Hobby plan promotes ONLY the immediately-previous production deployment.
+- run-002 law: print the full deployment list for the record, target EXACTLY index 1 (the previous production deployment), refuse if it is itself from the empty-bake era (>= 2026-11-10 00:00Z) or not READY, promote, then the serving probe (/api/v1/auth/login must answer JSON 400, not the NOT_FOUND page).
