@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_H9chr9BWCfXYW472",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e38a2aa5fc6284251ab43c5c56f6566030b8b47a6f29b0b38142ad5d7978f96a",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "2d7e97b3e4d198213b6b8440899f2f3eb5d5843ae34e05cd8e944160ef98a780",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_H9chr9BWCfXYW472",
@@ -87,6 +87,9 @@
           "rn_H9chr9BWCfXYW472::L1::Q7",
           "rn_H9chr9BWCfXYW472::L1::Q8",
           "rn_H9chr9BWCfXYW472::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -140,7 +143,8 @@
           "rn_H9chr9BWCfXYW472::L2::Q7",
           "rn_H9chr9BWCfXYW472::L2::Q8",
           "rn_H9chr9BWCfXYW472::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_H9chr9BWCfXYW472::L3",
@@ -155,7 +159,7 @@
         "opening": "Separated fractions feed transport, heating and the petrochemical industry at large. This lesson gathers the uses into one picture and explains why carbon chemistry can support such a variety of products.",
         "keyPoints": [
           "Most modern transport runs on oil products, from cars and trains to aircraft.",
-          "Polymers, lubricants, solvents, detergents and adhesives are all obtained from crude oil.",
+          "Crude oil yields polymers, lubricants, solvents, detergents and adhesives.",
           "The industry that turns oil into products underpins modern society and its development.",
           "Carbon bonds strongly and repeatedly to itself, which lets it build a huge number of organic compounds.",
           "The spread of fractions and their many products both stem from that bonding versatility of carbon."
@@ -192,7 +196,8 @@
           "rn_H9chr9BWCfXYW472::L3::Q7",
           "rn_H9chr9BWCfXYW472::L3::Q8",
           "rn_H9chr9BWCfXYW472::L3::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -238,10 +243,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/15142aa12293-fractional-distillation.png",
         "alt": "Fractional-Distillation, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Fractional distillation of crude oil",
-        "caption": "Diagram showing the process of fractional distillation to separate crude oil in a fractionating column",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "How is crude oil separated?",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the process of fractional distillation to separate crude oil in a fractionating column"
       }
     ]
   }

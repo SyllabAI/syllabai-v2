@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_H6ZVkxvdNgYDvfFb",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "3a4d6d3d4764583440326903d08c89ce6fcd660730e54080337e9f19dc5a11f6",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "6e122f1c4255c2bcde2321f4c2e9717609864d47bad4e42139878d11498404ae",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_H6ZVkxvdNgYDvfFb",
@@ -17,10 +17,6 @@
       {
         "code": "4CH1-3.15",
         "text": "practical: investigate the effect of changing the surface area of marble chips and of changing the concentration of hydrochloric acid on the rate of reaction between marble chips and dilute hydrochloric acid"
-      },
-      {
-        "code": "4CH1-3.9",
-        "text": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a reaction"
       }
     ],
     "primer": {
@@ -36,12 +32,11 @@
           "Method:"
         ],
         "specRefs": [
-          "4CH1-3.15",
-          "4CH1-3.9"
+          "4CH1-3.15"
         ],
         "opening": "Calcium carbonate chips meet dilute hydrochloric acid in the classic rate practical. This lesson states the aim, lists the apparatus and walks the five-step method that fills the results table.",
         "keyPoints": [
-          "The aim is to investigate the effect of changing surface area on the rate of reaction.",
+          "The aim is to investigate how changing surface area affects the rate of reaction.",
           "A fixed volume of hydrochloric acid is placed in a conical flask connected to an inverted measuring cylinder.",
           "Marble chips are added, the bung is closed, and the gas volume in a fixed time is recorded.",
           "The method is repeated with different sizes of marble chips for comparison.",
@@ -79,6 +74,11 @@
           "rn_H6ZVkxvdNgYDvfFb::L1::Q7",
           "rn_H6ZVkxvdNgYDvfFb::L1::Q8",
           "rn_H6ZVkxvdNgYDvfFb::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
         ]
       },
       {
@@ -131,7 +131,8 @@
           "rn_H6ZVkxvdNgYDvfFb::L2::Q7",
           "rn_H6ZVkxvdNgYDvfFb::L2::Q8",
           "rn_H6ZVkxvdNgYDvfFb::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -178,26 +179,32 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/99f7914c498b-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
         "alt": "Effect of Surface Area on a Reaction Rate 1, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Diagram:",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim:",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/53457075782f-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
         "alt": "Effect of Surface Area on a Reaction Rate 2, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Diagram:",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim:",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bc431f784ecc-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
         "alt": "Effect of Surface Area on a Reaction Rate 3, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Diagram:",
-        "caption": "Investigating the effect of different size marble chips on the rate of reaction between calcium carbonate and hydrochloric acid",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim:",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Investigating the effect of different size marble chips on the rate of reaction between calcium carbonate and hydrochloric acid"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_MmqCNJfWbtYzRVqT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f3af823b475bce932e4d2e96bad2f7be2e406ff5b531686de25afb66e090becd",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "82a7ece1b429166b3ae553455221a5a73d743af88330b5ee37386f2944aa64c0",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_MmqCNJfWbtYzRVqT",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Methanol and hydrochloric acid",
+          "correct": false,
+          "explanation": "Methanol belongs to the alcohol family and chlorine never enters this reaction.",
+          "misconception": "families crossed"
+        },
+        {
+          "key": "B",
           "text": "Bromomethane and hydrogen bromide",
           "correct": true,
           "explanation": "The swap makes CH3Br and pairs the displaced hydrogen with the remaining bromine as HBr.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Carbon dioxide and water",
           "correct": false,
           "explanation": "That is the combustion product pair; no oxygen appears here.",
           "misconception": "combustion products used"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Dibromoethane only",
           "correct": false,
           "explanation": "Dibromo products come from alkene addition, a different family and reaction.",
           "misconception": "addition products used"
-        },
-        {
-          "key": "D",
-          "text": "Methanol and hydrochloric acid",
-          "correct": false,
-          "explanation": "Methanol belongs to the alcohol family and chlorine never enters this reaction.",
-          "misconception": "families crossed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because a hydrogen atom on the alkane is replaced by a halogen atom",
-          "correct": true,
-          "explanation": "One-for-one replacement is the defining signature of substitution.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because two molecules merge into one product",
-          "correct": false,
-          "explanation": "Merging describes addition, and here two products form.",
-          "misconception": "addition confused"
-        },
-        {
-          "key": "C",
           "text": "Because the alkane burns in the halogen",
           "correct": false,
           "explanation": "Burning requires oxygen; halogens are not oxygen.",
           "misconception": "combustion mislabelled"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the molecules merely mix without reacting",
           "correct": false,
           "explanation": "New substances with new bonds form, so a genuine reaction has occurred.",
           "misconception": "mixing claimed"
+        },
+        {
+          "key": "C",
+          "text": "Because a hydrogen atom on the alkane is replaced by a halogen atom",
+          "correct": true,
+          "explanation": "One-for-one replacement is the defining signature of substitution.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because two molecules merge into one product",
+          "correct": false,
+          "explanation": "Merging describes addition, and here two products form.",
+          "misconception": "addition confused"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Only one halogen atom replaces a hydrogen per methane molecule",
-          "correct": true,
-          "explanation": "The specification limits the treatment to a single swap, giving CH3Br rather than multi-brominated products.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Only one reaction may happen per container",
           "correct": false,
           "explanation": "The limit describes the molecule, not laboratory logistics.",
           "misconception": "scale misread"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Only methane may take part, ever",
           "correct": false,
           "explanation": "Other alkanes also undergo the substitution; the limit is about swap count.",
           "misconception": "substrate restricted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Only one UV photon is allowed per second",
           "correct": false,
           "explanation": "Light intensity is not what mono-substitution describes.",
           "misconception": "photon counting"
+        },
+        {
+          "key": "D",
+          "text": "Only one halogen atom replaces a hydrogen per methane molecule",
+          "correct": true,
+          "explanation": "The specification limits the treatment to a single swap, giving CH3Br rather than multi-brominated products.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "Ultraviolet radiation (UV light) must be present for the reaction to occur.",
       "keywords": [
         "ultraviolet",
-        "uv"
+        "uv",
+        "radiation"
       ],
       "options": []
     },
@@ -213,7 +214,8 @@
       "modelAnswer": "Chloromethane, CH3Cl, and hydrogen chloride, HCl.",
       "keywords": [
         "chloromethane",
-        "hcl"
+        "hcl",
+        "hydrogen"
       ],
       "options": []
     },
@@ -225,7 +227,9 @@
       "kind": "explain-why",
       "modelAnswer": "A bromine atom replaces one hydrogen atom of methane, giving CH3Br and HBr; nothing adds across a bond and the two bromine atoms end up in different molecules, which is why the move is substitution and not addition.",
       "keywords": [
-        "replaces"
+        "replaces",
+        "substitution",
+        "classified"
       ],
       "options": []
     },
@@ -238,7 +242,8 @@
       "modelAnswer": "The reaction is limited to mono-substitution: only one halogen atom replaces a hydrogen per methane molecule, so no dibrominated product forms.",
       "keywords": [
         "mono",
-        "once"
+        "substitution",
+        "reaction"
       ],
       "options": []
     },
@@ -250,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "CH3Cl only",
+          "correct": false,
+          "explanation": "The displaced hydrogen must appear as the second product, hydrogen chloride.",
+          "misconception": "product dropped"
+        },
+        {
+          "key": "B",
           "text": "CH3Cl + HCl",
           "correct": true,
           "explanation": "One chlorine joins the carbon, and the displaced hydrogen pairs with the other chlorine as HCl.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "CH2Cl2 + H2",
           "correct": false,
           "explanation": "That is a double substitution beyond the mono-substitution limit of this treatment.",
           "misconception": "limit breached"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "CCl4 + 4H2",
           "correct": false,
           "explanation": "Full substitution is excluded here and the hydrogen product form is wrong.",
           "misconception": "over-substituted"
-        },
-        {
-          "key": "D",
-          "text": "CH3Cl only",
-          "correct": false,
-          "explanation": "The displaced hydrogen must appear as the second product, hydrogen chloride.",
-          "misconception": "product dropped"
         }
       ]
     },
@@ -286,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Solvents and refrigerants",
-          "correct": true,
-          "explanation": "The note lists solvents, refrigerants, propellants and pharmaceuticals.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Road surfacing",
-          "correct": false,
-          "explanation": "Roads take bitumen, a crude oil fraction, not halogenoalkanes.",
-          "misconception": "uses crossed"
-        },
-        {
-          "key": "C",
           "text": "Jet fuel",
           "correct": false,
           "explanation": "Jet fuel is kerosene from the fraction ladder.",
           "misconception": "fuel confused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Fertilisers",
           "correct": false,
           "explanation": "Fertilisers belong to nitrogen chemistry, not haloalkane uses.",
           "misconception": "sector invented"
+        },
+        {
+          "key": "C",
+          "text": "Solvents and refrigerants",
+          "correct": true,
+          "explanation": "The note lists solvents, refrigerants, propellants and pharmaceuticals.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Road surfacing",
+          "correct": false,
+          "explanation": "Roads take bitumen, a crude oil fraction, not halogenoalkanes.",
+          "misconception": "uses crossed"
         }
       ]
     },
@@ -322,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Chlorofluorocarbon, phased out for ozone layer damage",
-          "correct": true,
-          "explanation": "The exam hint names the class and the ozone-layer reason for the phase-out.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Carbon fuel cell, phased out for inefficiency",
           "correct": false,
           "explanation": "The letters spell a halogenoalkane class, not a fuel cell device.",
           "misconception": "expansion invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Chlorofluorocarbon, phased out for costing too much",
           "correct": false,
           "explanation": "Cost was never the recorded reason; ozone damage was.",
           "misconception": "reason swapped"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Chlorine gas, banned for toxicity",
           "correct": false,
           "explanation": "CFCs are compounds containing chlorine and fluorine, not the raw gas.",
           "misconception": "substance confused"
+        },
+        {
+          "key": "D",
+          "text": "Chlorofluorocarbon, phased out for ozone layer damage",
+          "correct": true,
+          "explanation": "The exam hint names the class and the ozone-layer reason for the phase-out.",
+          "misconception": null
         }
       ]
     },
@@ -394,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The reaction happened but was invisible",
+          "correct": false,
+          "explanation": "The colour change as bromine is consumed would be visible had it reacted.",
+          "misconception": "observation denied"
+        },
+        {
+          "key": "B",
           "text": "The substitution specifically needs ultraviolet radiation, not visible light",
           "correct": true,
           "explanation": "The condition of record is ultraviolet; other light lacks the energy trigger the reaction needs.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The gases must first be dissolved in water",
           "correct": false,
           "explanation": "No solution step is part of this reaction.",
           "misconception": "procedure invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Bromine is too unreactive to react with anything",
           "correct": false,
           "explanation": "Bromine reacts readily once the UV condition is met.",
           "misconception": "reactivity misjudged"
-        },
-        {
-          "key": "D",
-          "text": "The reaction happened but was invisible",
-          "correct": false,
-          "explanation": "The colour change as bromine is consumed would be visible had it reacted.",
-          "misconception": "observation denied"
         }
       ]
     },
@@ -431,7 +436,8 @@
       "modelAnswer": "They are called halogenoalkanes, or haloalkanes for short.",
       "keywords": [
         "haloalkanes",
-        "halogenoalkanes"
+        "halogenoalkanes",
+        "molecules"
       ],
       "options": []
     },
@@ -458,7 +464,9 @@
       "kind": "explain-why",
       "modelAnswer": "CFCs are chlorofluorocarbons that harm the ozone layer, so the whole family was phased out despite its usefulness.",
       "keywords": [
-        "ozone"
+        "ozone",
+        "chlorofluorocarbons",
+        "refrigerants"
       ],
       "options": []
     },
@@ -471,7 +479,8 @@
       "modelAnswer": "CH4 + Cl2 -> CH3Cl + HCl, run under ultraviolet light.",
       "keywords": [
         "ch3cl",
-        "hcl"
+        "hcl",
+        "substitution"
       ],
       "options": []
     }

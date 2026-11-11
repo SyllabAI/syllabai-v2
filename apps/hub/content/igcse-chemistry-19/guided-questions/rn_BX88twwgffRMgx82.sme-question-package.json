@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_BX88twwgffRMgx82",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9b83fbbb989a2bd769da23fa1d67d7157a2e022b7b379ac494b47dc18b860817",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "98eca681d518a548aafaf1aa30e5aecbcf25fa11fc882657515dbd4618beabf3",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_BX88twwgffRMgx82",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Steam, which condenses on the tube wall",
+          "correct": false,
+          "explanation": "Condensation may be seen but it is not what the splint tests; the pop identifies hydrogen.",
+          "misconception": "physical sign confused with the chemical test"
+        },
+        {
+          "key": "B",
           "text": "Hydrogen, which makes the splint go pop",
           "correct": true,
           "explanation": "A lighted splint held at the mouth of the tube gives a distinctive pop when hydrogen is present.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Carbon dioxide, which turns the splint brighter",
           "correct": false,
           "explanation": "Carbon dioxide is the gas that extinguishes a lit splint and is tested with limewater, not with a pop.",
           "misconception": "gas tests crossed between hydrogen and carbon dioxide"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Oxygen, which dissolves the metal",
           "correct": false,
           "explanation": "Oxygen relights a glowing splint, and it is not the product of these acid-metal reactions.",
           "misconception": "wrong gas and wrong observation combined"
-        },
-        {
-          "key": "D",
-          "text": "Steam, which condenses on the tube wall",
-          "correct": false,
-          "explanation": "Condensation may be seen but it is not what the splint tests; the pop identifies hydrogen.",
-          "misconception": "physical sign confused with the chemical test"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "About 5 cm3, measured with a small measuring cylinder",
-          "correct": true,
-          "explanation": "The method specifies a measured 5 cm3 of dilute acid in each of the three tubes.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The tubes are filled to the brim",
-          "correct": false,
-          "explanation": "Filling to the brim would make fizzing overflow and gives no controlled volume to compare.",
-          "misconception": "uncontrolled quantity assumed"
-        },
-        {
-          "key": "C",
           "text": "One drop of acid in each tube",
           "correct": false,
           "explanation": "A single drop would barely react; the method uses a measured few cubic centimetres.",
           "misconception": "scale of the practical misjudged"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The volume varies so that each metal gets a fairer amount",
           "correct": false,
           "explanation": "Fairness comes from keeping the volume the same for every metal, not from varying it.",
           "misconception": "fair test logic inverted"
+        },
+        {
+          "key": "C",
+          "text": "About 5 cm3, measured with a small measuring cylinder",
+          "correct": true,
+          "explanation": "The method specifies a measured 5 cm3 of dilute acid in each of the three tubes.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The tubes are filled to the brim",
+          "correct": false,
+          "explanation": "Filling to the brim would make fizzing overflow and gives no controlled volume to compare.",
+          "misconception": "uncontrolled quantity assumed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Magnesium, iron and zinc",
-          "correct": true,
-          "explanation": "These are exactly the metals named in the aim and added one per tube.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Magnesium, copper and silver",
           "correct": false,
           "explanation": "Copper and silver are unreactive with dilute acids and are not part of this investigation.",
           "misconception": "unreactive metals substituted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Sodium, potassium and calcium",
           "correct": false,
           "explanation": "These extremely reactive metals are far too dangerous to drop into acids in a school practical.",
           "misconception": "Group 1 metals wrongly substituted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Iron, gold and lead",
           "correct": false,
           "explanation": "Gold does not react with dilute acids at all and was not one of the three test metals.",
           "misconception": "unreactive metal substituted for zinc"
+        },
+        {
+          "key": "D",
+          "text": "Magnesium, iron and zinc",
+          "correct": true,
+          "explanation": "These are exactly the metals named in the aim and added one per tube.",
+          "misconception": null
         }
       ]
     },
@@ -222,7 +222,6 @@
         "repeat",
         "sulfuric",
         "acid",
-        "again",
         "dilute"
       ],
       "options": []
@@ -240,11 +239,9 @@
         "eyes",
         "eye",
         "protect",
-        "protection",
         "safety",
         "glasses",
-        "acid",
-        "dangerous"
+        "acid"
       ],
       "options": []
     },
@@ -263,7 +260,6 @@
         "hydrogen",
         "burn",
         "burns",
-        "burning",
         "test"
       ],
       "options": []
@@ -276,31 +272,31 @@
       "options": [
         {
           "key": "A",
+          "text": "All three reacted equally",
+          "correct": false,
+          "explanation": "The table clearly separates fast magnesium, steady zinc and slow iron.",
+          "misconception": "distinct results flattened to equality"
+        },
+        {
+          "key": "B",
           "text": "Magnesium, which dissolved quickly, got hot and gave rapid bubbling",
           "correct": true,
           "explanation": "Magnesium shows the most dramatic signs of reaction in both acids, marking it as the most reactive of the three.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Iron, because it lasted longest in the acid",
           "correct": false,
           "explanation": "Lingering longest shows slowness, not vigour; iron is the least reactive of the three.",
           "misconception": "slowness misread as reactivity"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Zinc, because it made the loudest pop",
           "correct": false,
           "explanation": "The pop only identifies hydrogen; the pace of dissolving and bubbling is what ranks the metals.",
           "misconception": "test outcome confused with reaction rate"
-        },
-        {
-          "key": "D",
-          "text": "All three reacted equally",
-          "correct": false,
-          "explanation": "The table clearly separates fast magnesium, steady zinc and slow iron.",
-          "misconception": "distinct results flattened to equality"
         }
       ]
     },
@@ -312,31 +308,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A metal salt and hydrogen gas",
-          "correct": true,
-          "explanation": "Every positive reaction leaves a metal salt in solution and gives off hydrogen, which pops with a splint.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "A metal salt and carbon dioxide",
-          "correct": false,
-          "explanation": "Carbon dioxide comes from carbonate reactions; metals with acids release hydrogen.",
-          "misconception": "carbonate products transferred to metals"
-        },
-        {
-          "key": "C",
           "text": "A metal oxide and water only",
           "correct": false,
           "explanation": "No water forms in the acid-metal reaction; the gas evolved is hydrogen.",
           "misconception": "neutralisation products transferred to metals"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Pure metal crystals and steam",
           "correct": false,
           "explanation": "The metal is consumed, not produced, and the gas identified is hydrogen rather than steam.",
           "misconception": "direction of change reversed"
+        },
+        {
+          "key": "C",
+          "text": "A metal salt and hydrogen gas",
+          "correct": true,
+          "explanation": "Every positive reaction leaves a metal salt in solution and gives off hydrogen, which pops with a splint.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A metal salt and carbon dioxide",
+          "correct": false,
+          "explanation": "Carbon dioxide comes from carbonate reactions; metals with acids release hydrogen.",
+          "misconception": "carbonate products transferred to metals"
         }
       ]
     },
@@ -348,38 +344,38 @@
       "options": [
         {
           "key": "A",
-          "text": "Mg > Zn > Fe",
-          "correct": true,
-          "explanation": "Magnesium reacts fastest, zinc next and iron slowest, which fixes this order.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Fe > Zn > Mg",
           "correct": false,
           "explanation": "That order reverses the observations, which show iron bubbling slowest of the three.",
           "misconception": "ranking reversed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Zn > Mg > Fe",
           "correct": false,
           "explanation": "Magnesium clearly outpaces zinc in both acids, so zinc cannot sit above it.",
           "misconception": "middle and top positions swapped"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "No ordering is possible from these observations",
           "correct": false,
           "explanation": "The differing speeds of reaction are exactly what allow the metals to be ranked.",
           "misconception": "qualitative evidence undervalued"
+        },
+        {
+          "key": "D",
+          "text": "Mg > Zn > Fe",
+          "correct": true,
+          "explanation": "Magnesium reacts fastest, zinc next and iron slowest, which fixes this order.",
+          "misconception": null
         }
       ]
     },
     {
       "id": "rn_BX88twwgffRMgx82::L2::Q4",
       "moduleId": "rn_BX88twwgffRMgx82::L2",
-      "stem": "What was observed for iron in dilute hydrochloric acid?",
+      "stem": "What was observed for the slowest metal, iron, in dilute hydrochloric acid?",
       "misconceptionClass": "observation recall",
       "options": [
         {
@@ -420,31 +416,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because the pop test forces every reaction to look the same",
+          "correct": false,
+          "explanation": "The pop test only identifies the gas; the pattern is visible in the bubbling before any test.",
+          "misconception": "test procedure blamed for the pattern"
+        },
+        {
+          "key": "B",
           "text": "Because the vigour of the reaction is set by the metal, not by which dilute acid is used",
           "correct": true,
           "explanation": "Both acids attack in the same way, so the metal's own reactivity decides the speed and the ordering.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because the two acids are chemically identical",
           "correct": false,
           "explanation": "Hydrochloric and sulfuric acids are different substances; they simply react with metals in the same general way.",
           "misconception": "different acids treated as one substance"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because the metals were coated so nothing could change",
           "correct": false,
           "explanation": "The metals clearly react; the shared pattern comes from the reaction type, not from any coating.",
           "misconception": "inertness invented to explain similarity"
-        },
-        {
-          "key": "D",
-          "text": "Because the pop test forces every reaction to look the same",
-          "correct": false,
-          "explanation": "The pop test only identifies the gas; the pattern is visible in the bubbling before any test.",
-          "misconception": "test procedure blamed for the pattern"
         }
       ]
     },
@@ -496,7 +492,6 @@
         "metals",
         "reactivity",
         "acid",
-        "independent",
         "same",
         "pattern",
         "not",

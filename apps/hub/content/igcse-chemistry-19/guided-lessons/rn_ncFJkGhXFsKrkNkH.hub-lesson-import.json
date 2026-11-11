@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_ncFJkGhXFsKrkNkH",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f45ad62c093dc30fe1fdf3336f0aa27e6dfcd034984aaaf6e3088572e909a8aa",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "66834bea6001161ef1012e2c5d312ffc1b2ec90b11e4e3dcdf8a2ccfe1d588c6",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_ncFJkGhXFsKrkNkH",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-4.32C",
-        "text": "know that ethanol can be manufactured by: reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about 300 ºC and a pressure of about 60–70 atm; the fermentation of glucose, in the absence of air, at an optimum temperature of about 30 ºC and using the enzymes in yeast"
+        "text": "know that ethanol can be manufactured by: • reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about 300 ºC and a pressure of about 60–70 atm • the fermentation of glucose, in the absence of air, at an optimum temperature of about 30 ºC and using the enzymes in yeast"
       },
       {
         "code": "4CH1-4.33C",
@@ -132,7 +132,8 @@
           "rn_ncFJkGhXFsKrkNkH::L2::Q7",
           "rn_ncFJkGhXFsKrkNkH::L2::Q8",
           "rn_ncFJkGhXFsKrkNkH::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -158,11 +159,6 @@
           "firstLesson": 2
         },
         {
-          "term": "respiration",
-          "definition": "The release of energy from glucose in living cells; yeast carries it out without oxygen here so ethanol forms.",
-          "firstLesson": 2
-        },
-        {
           "term": "batch process",
           "definition": "A production method that stops and restarts; fermentation ends when alcohol near 15 percent kills the yeast.",
           "firstLesson": 2
@@ -185,11 +181,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bee92fbdc07c-addition-water-to-ethene.png",
         "alt": "Equation showing the hydration of ethene with steam to form ethanol",
         "sourceHeading": "Hydration of ethene",
-        "caption": "A water molecule adds across the C=C in the hydration of ethene to produce ethanol",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "A water molecule adds across the C=C in the hydration of ethene to produce ethanol"
       }
     ]
   }

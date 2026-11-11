@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_dgVRCKCwn4rTGxGZ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9e2d094fb293614ab8bac5b18ddf11730d077d22acd180e8616ebe4fdbf073f8",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "10ca32dc58de489bdd45739f3b9208ca2f9a0a7237ef2ea835ef2bab9a2d7a43",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_dgVRCKCwn4rTGxGZ",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Water releases 4.18 J when it freezes",
+          "correct": false,
+          "explanation": "Freezing involves a different energy change altogether.",
+          "misconception": "process swapped"
+        },
+        {
+          "key": "B",
           "text": "1 g of water needs 4.18 J to rise by 1 °C",
           "correct": true,
           "explanation": "The definition ties one gram and one degree to the stated energy.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "1 litre of water needs 4.18 J to boil",
           "correct": false,
           "explanation": "The definition concerns a 1 °C rise for 1 g, not boiling a litre.",
           "misconception": "definition stretched"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Water warms by 4.18 °C for every joule supplied",
           "correct": false,
           "explanation": "That inverts the ratio; many joules are needed for a single degree.",
           "misconception": "ratio inverted"
-        },
-        {
-          "key": "D",
-          "text": "Water releases 4.18 J when it freezes",
-          "correct": false,
-          "explanation": "Freezing involves a different energy change altogether.",
-          "misconception": "process swapped"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "100 g, because the solution is assumed to have the density of water",
-          "correct": true,
-          "explanation": "The 1 g/cm3 assumption makes the volume reading double as the mass.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "50 g, because half the solution is water",
-          "correct": false,
-          "explanation": "No such split exists in the assumption set; the whole solution behaves like water.",
-          "misconception": "invented split"
-        },
-        {
-          "key": "C",
           "text": "The mass of the dissolved solid only",
           "correct": false,
           "explanation": "Everything in the cup is warmed, not just the solute.",
           "misconception": "solute only"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The mass cannot be found without a balance",
           "correct": false,
           "explanation": "The density assumption removes the need to weigh the solution.",
           "misconception": "assumption ignored"
+        },
+        {
+          "key": "C",
+          "text": "100 g, because the solution is assumed to have the density of water",
+          "correct": true,
+          "explanation": "The 1 g/cm3 assumption makes the volume reading double as the mass.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "50 g, because half the solution is water",
+          "correct": false,
+          "explanation": "No such split exists in the assumption set; the whole solution behaves like water.",
+          "misconception": "invented split"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "12 °C, the difference between final and initial readings",
-          "correct": true,
-          "explanation": "Subtracting 25 from 37 gives the change the expression needs.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "37 °C, the final temperature itself",
           "correct": false,
           "explanation": "The expression wants the change, not the endpoint.",
           "misconception": "endpoint used"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "62 °C, the two readings added",
           "correct": false,
           "explanation": "Adding temperatures has no physical meaning here.",
           "misconception": "readings added"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "25 °C, the starting temperature",
           "correct": false,
           "explanation": "The starting reading alone says nothing about the size of the change.",
           "misconception": "start used"
+        },
+        {
+          "key": "D",
+          "text": "12 °C, the difference between final and initial readings",
+          "correct": true,
+          "explanation": "Subtracting 25 from 37 gives the change the expression needs.",
+          "misconception": null
         }
       ]
     },
@@ -242,7 +242,8 @@
       "modelAnswer": "Substitute m = 100, the specific heat capacity 4.18 and the 8-degree rise for the temperature difference, then multiply them to get Q in joules.",
       "keywords": [
         "substitute",
-        "multiply"
+        "multiply",
+        "temperature"
       ],
       "options": []
     },
@@ -254,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "3135 kJ, because the sign is optional",
+          "correct": false,
+          "explanation": "The sign is chemistry, not decoration, and the unit is wrong.",
+          "misconception": "both errors kept"
+        },
+        {
+          "key": "B",
           "text": "-3.14 kJ, because the exothermic change makes the value negative",
           "correct": true,
           "explanation": "The rise shows energy left the chemicals, so the negative sign applies before converting to kilojoules.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "+3.14 kJ, because energy calculations are always positive",
           "correct": false,
           "explanation": "Sizes are positive but enthalpy changes carry the direction as a sign.",
           "misconception": "sign dropped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "-3135 kJ, because joules convert directly",
           "correct": false,
           "explanation": "Dividing by 1000 was skipped; the number is a kilojoule conversion error.",
           "misconception": "conversion skipped"
-        },
-        {
-          "key": "D",
-          "text": "3135 kJ, because the sign is optional",
-          "correct": false,
-          "explanation": "The sign is chemistry, not decoration, and the unit is wrong.",
-          "misconception": "both errors kept"
         }
       ]
     },
@@ -290,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Combustion always releases heat, and released energy is written as a negative change",
-          "correct": true,
-          "explanation": "Burning fuels warm their surroundings, which fixes the sign by convention.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because flames are hot, and hot means negative",
-          "correct": false,
-          "explanation": "The sign tracks energy flow, not temperature size.",
-          "misconception": "temperature equated to sign"
-        },
-        {
-          "key": "C",
           "text": "Because fuels are negative chemicals",
           "correct": false,
           "explanation": "No chemical carries a sign; the transfer does.",
           "misconception": "chemical sign myth"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because kilojoules are always negative units",
           "correct": false,
           "explanation": "Units are neutral; endothermic values in kilojoules are positive.",
           "misconception": "unit sign myth"
+        },
+        {
+          "key": "C",
+          "text": "Combustion always releases heat, and released energy is written as a negative change",
+          "correct": true,
+          "explanation": "Burning fuels warm their surroundings, which fixes the sign by convention.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because flames are hot, and hot means negative",
+          "correct": false,
+          "explanation": "The sign tracks energy flow, not temperature size.",
+          "misconception": "temperature equated to sign"
         }
       ]
     },
@@ -326,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "State the expression, list values, substitute, solve, apply the sign",
-          "correct": true,
-          "explanation": "That sequence keeps units and direction under control to the final line.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Guess the sign, substitute, then find the expression",
           "correct": false,
           "explanation": "The expression comes first; the sign is applied at the end from the temperature direction.",
           "misconception": "sequence scrambled"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Convert to kilojoules first, then find the mass",
           "correct": false,
           "explanation": "The mass is needed before any multiplication can happen.",
           "misconception": "order inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Solve, then decide which expression was used",
           "correct": false,
           "explanation": "Choosing the expression after solving makes the answer untraceable.",
           "misconception": "reverse engineering"
+        },
+        {
+          "key": "D",
+          "text": "State the expression, list values, substitute, solve, apply the sign",
+          "correct": true,
+          "explanation": "That sequence keeps units and direction under control to the final line.",
+          "misconception": null
         }
       ]
     },
@@ -398,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "25080 kJ",
+          "correct": false,
+          "explanation": "No conversion was applied at all.",
+          "misconception": "no conversion"
+        },
+        {
+          "key": "B",
           "text": "25.1 kJ",
           "correct": true,
           "explanation": "Dividing 25080 by 1000 gives 25.08, which rounds to 25.1 at three significant figures.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "250.8 kJ",
           "correct": false,
           "explanation": "That divides by 100 rather than 1000.",
           "misconception": "wrong divisor"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "0.0251 kJ",
           "correct": false,
           "explanation": "That divides by a million, confusing joules with millijoules.",
           "misconception": "over-division"
-        },
-        {
-          "key": "D",
-          "text": "25080 kJ",
-          "correct": false,
-          "explanation": "No conversion was applied at all.",
-          "misconception": "no conversion"
         }
       ]
     },
@@ -435,7 +436,8 @@
       "modelAnswer": "A temperature rise shows an exothermic reaction, so the heat energy change must be given as negative.",
       "keywords": [
         "negative",
-        "exothermic"
+        "exothermic",
+        "temperature"
       ],
       "options": []
     },
@@ -448,7 +450,8 @@
       "modelAnswer": "Dividing the value of Q by 1000 converts it from joules to kilojoules.",
       "keywords": [
         "dividing",
-        "1000"
+        "1000",
+        "kilojoules"
       ],
       "options": []
     },
@@ -489,31 +492,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It divides the heat energy change by the number of moles of fuel",
-          "correct": true,
-          "explanation": "The per-mole scaling is exactly what makes the value comparable between fuels.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It multiplies the heat energy change by the volume heated",
-          "correct": false,
-          "explanation": "Volume belongs to the mass step, and multiplication goes the wrong way.",
-          "misconception": "operation inverted"
-        },
-        {
-          "key": "C",
           "text": "It ignores the temperature change entirely",
           "correct": false,
           "explanation": "The temperature change feeds the heat energy change that the division starts from.",
           "misconception": "dependency denied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It is always measured directly by the thermometer",
           "correct": false,
           "explanation": "The thermometer only gives the temperature change; the molar value is calculated.",
           "misconception": "measurement conflated"
+        },
+        {
+          "key": "C",
+          "text": "It divides the heat energy change by the number of moles of fuel",
+          "correct": true,
+          "explanation": "The per-mole scaling is exactly what makes the value comparable between fuels.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It multiplies the heat energy change by the volume heated",
+          "correct": false,
+          "explanation": "Volume belongs to the mass step, and multiplication goes the wrong way.",
+          "misconception": "operation inverted"
         }
       ]
     },
@@ -525,31 +528,31 @@
       "options": [
         {
           "key": "A",
-          "text": "kJ/mol",
-          "correct": true,
-          "explanation": "Kilojoules per mole is the stated unit for the molar enthalpy change.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "J/°C",
           "correct": false,
           "explanation": "That mixes energy with a temperature step and misses the per-mole part.",
           "misconception": "unit garbled"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "g/J",
           "correct": false,
           "explanation": "That inverts both parts of the scaling.",
           "misconception": "unit inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "mol/dm3",
           "correct": false,
           "explanation": "That is a concentration unit from a different topic.",
           "misconception": "unit borrowed"
+        },
+        {
+          "key": "D",
+          "text": "kJ/mol",
+          "correct": true,
+          "explanation": "Kilojoules per mole is the stated unit for the molar enthalpy change.",
+          "misconception": null
         }
       ]
     },
@@ -597,31 +600,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Moles cancel the temperature change out",
+          "correct": false,
+          "explanation": "The temperature change still feeds the heat energy change at the start.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "B",
           "text": "Different experiments burn different amounts, so only per-mole values are like for like",
           "correct": true,
           "explanation": "Scaling to a mole removes the effect of how much fuel happened to be burned.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Per-experiment values are always larger",
           "correct": false,
           "explanation": "Size depends on the amounts chosen, not on the basis of comparison.",
           "misconception": "size myth"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Experiments are unreliable and should be avoided",
           "correct": false,
           "explanation": "The experiments are fine; the scaling is what makes them comparable.",
           "misconception": "method dismissed"
-        },
-        {
-          "key": "D",
-          "text": "Moles cancel the temperature change out",
-          "correct": false,
-          "explanation": "The temperature change still feeds the heat energy change at the start.",
-          "misconception": "cancellation myth"
         }
       ]
     },
@@ -633,31 +636,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The relative formula mass, to convert the per-gram value to a per-mole value",
-          "correct": true,
-          "explanation": "Multiplying the per-gram figure by the formula mass in g/mol reaches kJ/mol.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The volume of water heated",
-          "correct": false,
-          "explanation": "That data fed the original heat calculation and adds nothing here.",
-          "misconception": "stale data reused"
-        },
-        {
-          "key": "C",
           "text": "The colour of the flame",
           "correct": false,
           "explanation": "Flame appearance carries no quantitative information for this step.",
           "misconception": "irrelevant datum"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The room temperature during burning",
           "correct": false,
           "explanation": "The temperature change is already inside the per-gram figure.",
           "misconception": "double counting"
+        },
+        {
+          "key": "C",
+          "text": "The relative formula mass, to convert the per-gram value to a per-mole value",
+          "correct": true,
+          "explanation": "Multiplying the per-gram figure by the formula mass in g/mol reaches kJ/mol.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The volume of water heated",
+          "correct": false,
+          "explanation": "That data fed the original heat calculation and adds nothing here.",
+          "misconception": "stale data reused"
         }
       ]
     },
@@ -670,7 +673,8 @@
       "modelAnswer": "Energy released per gram is the heat energy change divided by the mass of fuel burned.",
       "keywords": [
         "divided",
-        "burned"
+        "burned",
+        "calculated"
       ],
       "options": []
     },

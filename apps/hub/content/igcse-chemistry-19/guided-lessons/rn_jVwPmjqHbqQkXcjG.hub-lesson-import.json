@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_jVwPmjqHbqQkXcjG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7ef964e5b3a45c3f3104c60a7f840cda7011912744845ab551481888b65b775d",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "7bbe809a12967348f38df31065aba63567d35a0e19a6b9a2c313445b2c346d97",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_jVwPmjqHbqQkXcjG",
@@ -85,7 +85,8 @@
           "rn_jVwPmjqHbqQkXcjG::L1::Q9"
         ],
         "figureIds": [
-          "fig-01"
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -189,31 +190,33 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/aefc6e6cc34b-oppositely-charged-ions-attraction-due-to-electr.png",
         "alt": "Oppositely charged ions attraction due to electrostatic attraction, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Ionic bonding",
-        "caption": "Electrostatic forces of attraction exist between the oppositely charged ions",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Electrostatic forces of attraction exist between the oppositely charged ions"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1fc8bbfea68e-nacl-lattice-ball-ball-stick.png",
         "alt": "NaCl Lattice_ Ball + Ball & Stick, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Giant ionic lattice of sodium chloride",
-        "caption": "Strong electrostatic forces act in all directions in an ionic solid such as sodium chloride",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Ionic lattices",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Strong electrostatic forces act in all directions in an ionic solid such as sodium chloride"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7418c58b0248-molten-ionic-substances-conduct-electricity-1.png",
         "alt": "Molten ionic substances conduct electricity, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Conductivity of ionic compounds",
-        "caption": "Molten or aqueous particles move and conduct electricity but cannot in the solid state",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Molten or aqueous particles move and conduct electricity but cannot in the solid state"
       }
     ]
   }

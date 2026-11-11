@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_HNXFQt7vM32g6PMv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "bb805685de5330511b09594fe290ba2efbe860174bd7f0d78f84e43f9ee0be63",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "9f194fb20c623fd24cf8a3a3a0a017fa9bd69ab9e8d6fd57a239fdd633edf71f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_HNXFQt7vM32g6PMv",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It depends on the temperature of the room",
+          "correct": false,
+          "explanation": "The arrow follows the chemistry, not the surroundings.",
+          "misconception": "surroundings conflated"
+        },
+        {
+          "key": "B",
           "text": "Upwards, because the products end higher than the reactants",
           "correct": true,
           "explanation": "Energy taken in leaves the products on a higher level, so the arrow climbs.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Downwards, because the mixture cools",
           "correct": false,
           "explanation": "The cooling of the surroundings is not what the arrow tracks; the product level is higher.",
           "misconception": "direction inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Horizontal, because energy is conserved",
           "correct": false,
           "explanation": "Conservation governs total energy, not the levels drawn for the chemicals.",
           "misconception": "conservation misdrawn"
-        },
-        {
-          "key": "D",
-          "text": "It depends on the temperature of the room",
-          "correct": false,
-          "explanation": "The arrow follows the chemistry, not the surroundings.",
-          "misconception": "surroundings conflated"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The overall enthalpy change of the reaction",
-          "correct": true,
-          "explanation": "The height difference is exactly the energy change the diagram is built to show.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The activation energy of the reaction",
-          "correct": false,
-          "explanation": "Activation energy appears on reaction profiles, not on simple energy level diagrams.",
-          "misconception": "diagram types merged"
-        },
-        {
-          "key": "C",
           "text": "The time the reaction takes",
           "correct": false,
           "explanation": "Time never appears on an energy level diagram.",
           "misconception": "axis confusion"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The temperature rise recorded by a thermometer",
           "correct": false,
           "explanation": "Thermometer data is experimental; the gap is the energy difference.",
           "misconception": "data conflated"
+        },
+        {
+          "key": "C",
+          "text": "The overall enthalpy change of the reaction",
+          "correct": true,
+          "explanation": "The height difference is exactly the energy change the diagram is built to show.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The activation energy of the reaction",
+          "correct": false,
+          "explanation": "Activation energy appears on reaction profiles, not on simple energy level diagrams.",
+          "misconception": "diagram types merged"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Below the reactants, because energy was given out",
-          "correct": true,
-          "explanation": "Released energy leaves the products on a lower level than the reactants.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Above the reactants, because the mixture warmed",
           "correct": false,
           "explanation": "Warming the surroundings does not lift the product level; giving out energy lowers it.",
           "misconception": "placement inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "On the same level as the reactants",
           "correct": false,
           "explanation": "Equal levels would mean no enthalpy change at all.",
           "misconception": "flat line error"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Off the diagram, because products are unstable",
           "correct": false,
           "explanation": "Products sit firmly on their own level however stable they are.",
           "misconception": "invented rule"
+        },
+        {
+          "key": "D",
+          "text": "Below the reactants, because energy was given out",
+          "correct": true,
+          "explanation": "Released energy leaves the products on a lower level than the reactants.",
+          "misconception": null
         }
       ]
     },
@@ -214,7 +214,8 @@
       "modelAnswer": "The arrow points downwards for exothermic reactions and upwards for endothermic ones.",
       "keywords": [
         "downwards",
-        "down"
+        "down",
+        "endothermic"
       ],
       "options": []
     },
@@ -241,7 +242,8 @@
       "modelAnswer": "Reactants sitting below the products shows an endothermic reaction, because energy has been taken in to raise the product level.",
       "keywords": [
         "endothermic",
-        "taken"
+        "taken",
+        "reactants"
       ],
       "options": []
     },
@@ -253,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The temperature values measured",
+          "correct": false,
+          "explanation": "Experimental temperatures are not part of the diagram.",
+          "misconception": "data intrusion"
+        },
+        {
+          "key": "B",
           "text": "Labelled axes, named energy levels and a directed arrow",
           "correct": true,
           "explanation": "Those three elements let the reader extract the reaction type and the enthalpy change.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A curve through the transition state",
           "correct": false,
           "explanation": "Curves and peaks belong to reaction profiles, not energy level diagrams.",
           "misconception": "diagram types merged"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Time intervals along the x-axis",
           "correct": false,
           "explanation": "The x-axis carries reaction progress, not time.",
           "misconception": "axis mislabelled"
-        },
-        {
-          "key": "D",
-          "text": "The temperature values measured",
-          "correct": false,
-          "explanation": "Experimental temperatures are not part of the diagram.",
-          "misconception": "data intrusion"
         }
       ]
     },
@@ -289,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Negative, because energy left the chemicals",
-          "correct": true,
-          "explanation": "A drop in level means energy was released, which is written as a negative change.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Positive, because the products are stable",
-          "correct": false,
-          "explanation": "Stability is not the sign rule; the direction of energy flow is.",
-          "misconception": "stability confused"
-        },
-        {
-          "key": "C",
           "text": "Zero, because the arrow is short",
           "correct": false,
           "explanation": "Arrow length is a drawing choice, not the sign.",
           "misconception": "length confused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The sign depends on the fuel used",
           "correct": false,
           "explanation": "The placement of the levels fixes the sign whatever the chemicals.",
           "misconception": "context denied"
+        },
+        {
+          "key": "C",
+          "text": "Negative, because energy left the chemicals",
+          "correct": true,
+          "explanation": "A drop in level means energy was released, which is written as a negative change.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Positive, because the products are stable",
+          "correct": false,
+          "explanation": "Stability is not the sign rule; the direction of energy flow is.",
+          "misconception": "stability confused"
         }
       ]
     },
@@ -325,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The arrow, which must point downwards from reactants to products",
-          "correct": true,
-          "explanation": "Exothermic changes lose energy, so the arrow descends to the lower product level.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Nothing: exothermic arrows point upwards",
           "correct": false,
           "explanation": "Upward arrows mark endothermic changes only.",
           "misconception": "error accepted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The axes, which should swap places",
           "correct": false,
           "explanation": "The axes are correct; only the arrow direction is wrong.",
           "misconception": "misdiagnosis"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The reaction type, which must be endothermic",
           "correct": false,
           "explanation": "The student intends an exothermic sketch; the drawing, not the intent, needs fixing.",
           "misconception": "type rewritten"
+        },
+        {
+          "key": "D",
+          "text": "The arrow, which must point downwards from reactants to products",
+          "correct": true,
+          "explanation": "Exothermic changes lose energy, so the arrow descends to the lower product level.",
+          "misconception": null
         }
       ]
     },
@@ -397,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Check whether the diagram is drawn in pencil",
+          "correct": false,
+          "explanation": "Drawing medium has no chemical meaning.",
+          "misconception": "absurd cue"
+        },
+        {
+          "key": "B",
           "text": "Compare the reactant and product levels and note the arrow direction",
           "correct": true,
           "explanation": "Relative levels plus arrow direction give the type immediately.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Measure the length of the x-axis",
           "correct": false,
           "explanation": "The x-axis carries progress and its length means nothing.",
           "misconception": "irrelevant feature"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Count the labels written on the diagram",
           "correct": false,
           "explanation": "Label count is a quality check, not a type test.",
           "misconception": "surface feature"
-        },
-        {
-          "key": "D",
-          "text": "Check whether the diagram is drawn in pencil",
-          "correct": false,
-          "explanation": "Drawing medium has no chemical meaning.",
-          "misconception": "absurd cue"
         }
       ]
     },
@@ -448,7 +450,9 @@
       "kind": "recall",
       "modelAnswer": "The enthalpy change is positive for the endothermic sketch and negative for the exothermic one.",
       "keywords": [
-        "positive"
+        "positive",
+        "endothermic",
+        "exothermic"
       ],
       "options": []
     },
@@ -475,7 +479,8 @@
       "modelAnswer": "The temperature fall shows energy is taken in from the surroundings by the reaction, so the change is endothermic.",
       "keywords": [
         "endothermic",
-        "fall"
+        "fall",
+        "surroundings"
       ],
       "options": []
     }

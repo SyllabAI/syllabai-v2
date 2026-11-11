@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_kb2VkFMdBTbmG33t",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d0b11274f81072c0508bff747ab23a41a877f6e613ba8e39c691c48cf65f1d04",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "bded0d1e191d8f6a15a7923b1e265159495213a93c8880f6e61d4893cc352467",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_kb2VkFMdBTbmG33t",
   "subject": "igcse-chemistry",
@@ -14,36 +14,36 @@
     {
       "id": "rn_kb2VkFMdBTbmG33t::L1::Q1",
       "moduleId": "rn_kb2VkFMdBTbmG33t::L1",
-      "stem": "Most of the mass of an atom is located in...",
+      "stem": "Effectively all of an atom's mass is contained where?",
       "misconceptionClass": "mass spread evenly across particles",
       "options": [
         {
           "key": "A",
-          "text": "the shells, where the electrons move",
-          "correct": false,
-          "explanation": "The shells hold only electrons, whose mass of about 1/1840 is negligible, so the shells contain almost none of the atom's mass.",
-          "misconception": "electron mass treated as significant"
-        },
-        {
-          "key": "B",
           "text": "the nucleus, which holds protons and neutrons",
           "correct": true,
           "explanation": "Protons and neutrons each have relative mass 1 and both sit in the nucleus, while the electron's mass is negligible, so effectively all the mass is at the centre.",
           "misconception": null
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "shared evenly between protons, neutrons and electrons",
           "correct": false,
           "explanation": "Electrons are about 2000 times lighter than protons and neutrons, so the mass is not shared evenly.",
           "misconception": "the phrase relative mass read as equal mass"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "the electron orbits considered as a whole",
           "correct": false,
           "explanation": "Shells are paths electrons move along, not a store of mass; there is no separate orbit material.",
           "misconception": "orbits imagined as physical structures"
+        },
+        {
+          "key": "D",
+          "text": "the shells, where the electrons move",
+          "correct": false,
+          "explanation": "The shells hold only electrons, whose mass of about 1/1840 is negligible, so the shells contain almost none of the atom's mass.",
+          "misconception": "electron mass treated as significant"
         }
       ]
     },
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Protons in shells, neutrons in the nucleus",
+          "correct": false,
+          "explanation": "Only electrons are found in shells; the nucleus is shared by protons and neutrons alike.",
+          "misconception": "mixed-up particle homes"
+        },
+        {
+          "key": "B",
           "text": "In the nucleus at the centre of the atom",
           "correct": true,
           "explanation": "Both heavy particles sit in the nucleus, which is why the centre holds nearly all the mass.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "In shells orbiting the nucleus",
           "correct": false,
           "explanation": "Shells belong to the electrons; protons and neutrons never occupy them.",
           "misconception": "all particles assumed to orbit"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Spread evenly through the whole atom",
           "correct": false,
           "explanation": "The atom has structure: heavy particles at the centre, light ones around the outside.",
           "misconception": "atom imagined as uniform soup"
-        },
-        {
-          "key": "D",
-          "text": "Protons in shells, neutrons in the nucleus",
-          "correct": false,
-          "explanation": "Only electrons are found in shells; the nucleus is shared by protons and neutrons alike.",
-          "misconception": "mixed-up particle homes"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "0 - it is neutral",
-          "correct": true,
-          "explanation": "The neutron is charge-free, which is why it adds mass without affecting charge.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "+1, like the proton",
-          "correct": false,
-          "explanation": "That is the proton's charge; the neutron is the neutral partner in the nucleus.",
-          "misconception": "nuclear particles assumed identical"
-        },
-        {
-          "key": "C",
           "text": "-1, like the electron",
           "correct": false,
           "explanation": "Negative charge belongs to the electrons in the shells, not to anything in the nucleus.",
           "misconception": "charges shuffled between particles"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "+1/1840",
           "correct": false,
           "explanation": "That mixes up charge with the electron's tiny relative mass.",
           "misconception": "charge confused with relative mass"
+        },
+        {
+          "key": "C",
+          "text": "0 - it is neutral",
+          "correct": true,
+          "explanation": "The neutron is charge-free, which is why it adds mass without affecting charge.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "+1, like the proton",
+          "correct": false,
+          "explanation": "That is the proton's charge; the neutron is the neutral partner in the nucleus.",
+          "misconception": "nuclear particles assumed identical"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Two or more atoms chemically joined into an identifiable unit",
-          "correct": true,
-          "explanation": "The joined unit keeps the properties and composition of the substance it belongs to.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The smallest particle of an element",
           "correct": false,
           "explanation": "That is the atom; the molecule is the joined group of atoms.",
           "misconception": "atom and molecule definitions swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Any particle found in the nucleus",
           "correct": false,
           "explanation": "Nuclear residents are protons and neutrons; molecules are built from whole atoms.",
           "misconception": "scale of molecules misjudged"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "A charged group of particles",
           "correct": false,
           "explanation": "Charge is not part of the definition; molecules are about atoms joined together.",
           "misconception": "molecules confused with ions"
+        },
+        {
+          "key": "D",
+          "text": "Two or more atoms chemically joined into an identifiable unit",
+          "correct": true,
+          "explanation": "The joined unit keeps the properties and composition of the substance it belongs to.",
+          "misconception": null
         }
       ]
     },
@@ -252,7 +252,6 @@
         "molecule",
         "joined",
         "three",
-        "3",
         "two"
       ],
       "options": []
@@ -265,31 +264,31 @@
       "options": [
         {
           "key": "A",
+          "text": "34, the two numbers added together",
+          "correct": false,
+          "explanation": "Adding the numbers double-counts the protons, and electrons are not part of either figure.",
+          "misconception": "numbers summed without a model"
+        },
+        {
+          "key": "B",
           "text": "11, because a neutral atom matches electrons to its proton count",
           "correct": true,
           "explanation": "Atoms are neutral, so the electron count equals the proton count, which the atomic number gives.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "23, taken from the mass number",
           "correct": false,
           "explanation": "Mass number counts protons and neutrons in the nucleus; neither of those sets the electron count.",
           "misconception": "mass number read as electron source"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "12, to balance the neutrons",
           "correct": false,
           "explanation": "Neutrons carry no charge, so nothing needs balancing against them.",
           "misconception": "electron count balanced against neutrons"
-        },
-        {
-          "key": "D",
-          "text": "34, the two numbers added together",
-          "correct": false,
-          "explanation": "Adding the numbers double-counts the protons, and electrons are not part of either figure.",
-          "misconception": "numbers summed without a model"
         }
       ]
     },
@@ -301,31 +300,31 @@
       "options": [
         {
           "key": "A",
-          "text": "12, found by 23 - 11",
-          "correct": true,
-          "explanation": "Neutrons are the mass number minus the atomic number: 23 - 11 = 12.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "11, the same as the proton count",
-          "correct": false,
-          "explanation": "Protons and neutrons are both counted in the mass number, but they are not equal by definition.",
-          "misconception": "proton count copied to neutrons"
-        },
-        {
-          "key": "C",
           "text": "23, the whole mass number",
           "correct": false,
           "explanation": "That ignores the 11 protons already included in the mass number.",
           "misconception": "mass number taken as neutron count"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "34, the sum of both numbers",
           "correct": false,
           "explanation": "Summing counts the nucleons twice; the question needs a subtraction.",
           "misconception": "addition used where subtraction is needed"
+        },
+        {
+          "key": "C",
+          "text": "12, found by 23 - 11",
+          "correct": true,
+          "explanation": "Neutrons are the mass number minus the atomic number: 23 - 11 = 12.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "11, the same as the proton count",
+          "correct": false,
+          "explanation": "Protons and neutrons are both counted in the mass number, but they are not equal by definition.",
+          "misconception": "proton count copied to neutrons"
         }
       ]
     },
@@ -337,31 +336,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Isotopes of the same element",
-          "correct": true,
-          "explanation": "Equal proton numbers mean one element; the differing neutrons make them isotopes of it.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Atoms of two different elements",
           "correct": false,
           "explanation": "Element identity is fixed by proton count, which is equal here.",
           "misconception": "neutron count taken to change the element"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "A molecule split into two atoms",
           "correct": false,
           "explanation": "No bond is involved; these are two separate atoms of one element.",
           "misconception": "isotopes confused with bonded structures"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "One charged atom and one uncharged atom",
           "correct": false,
           "explanation": "Neutron count does not touch charge; that job belongs to the electrons.",
           "misconception": "isotopes confused with ions"
+        },
+        {
+          "key": "D",
+          "text": "Isotopes of the same element",
+          "correct": true,
+          "explanation": "Equal proton numbers mean one element; the differing neutrons make them isotopes of it.",
+          "misconception": null
         }
       ]
     },
@@ -409,31 +408,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The neutrons of the commonest isotope only",
+          "correct": false,
+          "explanation": "All isotopes and their abundances enter the average, not just one.",
+          "misconception": "average reduced to a single isotope"
+        },
+        {
+          "key": "B",
           "text": "The abundance of every isotope of the element",
           "correct": true,
           "explanation": "It is the average mass of one atom, weighted by how common each isotope is.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The charges of the sub-atomic particles",
           "correct": false,
           "explanation": "Charge is a separate property; relative atomic mass is about mass alone.",
           "misconception": "mass and charge conflated"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The mass of the electrons in the shells",
           "correct": false,
           "explanation": "Electron mass is negligible and never drives the average.",
           "misconception": "negligible term re-weighted"
-        },
-        {
-          "key": "D",
-          "text": "The neutrons of the commonest isotope only",
-          "correct": false,
-          "explanation": "All isotopes and their abundances enter the average, not just one.",
-          "misconception": "average reduced to a single isotope"
         }
       ]
     },
@@ -447,12 +446,8 @@
       "keywords": [
         "mass",
         "atomic",
-        "minus",
-        "takeaway",
-        "subtract",
         "take",
-        "away",
-        "difference"
+        "away"
       ],
       "options": []
     },
@@ -466,8 +461,7 @@
       "keywords": [
         "3",
         "4",
-        "three",
-        "four"
+        "protons"
       ],
       "options": []
     },
@@ -481,7 +475,6 @@
       "keywords": [
         "neutral",
         "equal",
-        "equals",
         "same",
         "protons",
         "electrons"
@@ -497,7 +490,8 @@
       "modelAnswer": "They are isotopes — isotopes share an element and proton count but differ in their neutron counts.",
       "keywords": [
         "isotopes",
-        "isotope"
+        "isotope",
+        "relationship"
       ],
       "options": []
     }

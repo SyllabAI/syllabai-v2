@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_DrqzYWZMScqGrbWT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "41a524d73d0d0986af7934fa9a751f444b29fb2fd9cd1df879d6496201242179",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "4ba00dc5427d086f280a6612e9407d79028a0cd34a8e1dfdec4fc8c53e77fcf4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_DrqzYWZMScqGrbWT",
@@ -78,6 +78,9 @@
           "rn_DrqzYWZMScqGrbWT::L1::Q7",
           "rn_DrqzYWZMScqGrbWT::L1::Q8",
           "rn_DrqzYWZMScqGrbWT::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -179,21 +182,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4f52075a6a96-cracking-decane.png",
         "alt": "Cracking-Decane, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Example of cracking",
-        "caption": "Decane is cracked to produce octane for petrol and ethene for ethanol synthesis",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "What is cracking?",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Decane is cracked to produce octane for petrol and ethene for ethanol synthesis"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/fcc3b30abdc7-4-2-4-supply-demand-of-crude-oil-fractions.png",
         "alt": "Supply & Demand of Crude oil Fractions",
         "sourceHeading": "Supply & demand of crude oil fractions",
-        "caption": "Demand for short chain hydrocarbon molecules such as petrol, kerosene and diesel is greater than the supply, while demand for long chain hydrocarbons such as fuel oil is less than the supply",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Demand for short chain hydrocarbon molecules such as petrol, kerosene and diesel is greater than the supply, while demand for long chain hydrocarbons such as fuel oil is less than the supply"
       }
     ]
   }

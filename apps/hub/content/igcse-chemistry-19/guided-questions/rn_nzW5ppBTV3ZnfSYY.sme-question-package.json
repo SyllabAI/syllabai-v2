@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_nzW5ppBTV3ZnfSYY",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "58daaa7ee4f3f622b33acb6d8f3b4fc45be0c43bbcd12aa3c422d2d5c3d89c99",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "2eecffe0b3aa8fe0747fac72c896a3d515c3a7be338628f8c920a0e42dfa5b11",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_nzW5ppBTV3ZnfSYY",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The hot air blown in at the bottom",
+          "correct": false,
+          "explanation": "Hot air supplies oxygen for burning the coke but contains no carbon.",
+          "misconception": "air mistaken for a carbon source"
+        },
+        {
+          "key": "B",
           "text": "Coke, an impure form of carbon",
           "correct": true,
           "explanation": "Coke is charged into the furnace specifically to provide carbon for burning and reduction.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Limestone, which burns to give carbon dioxide",
           "correct": false,
           "explanation": "Limestone's job is neutralising acidic impurities; the carbon comes from the coke.",
           "misconception": "raw-material roles swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Hematite, the iron ore itself",
           "correct": false,
           "explanation": "Hematite supplies the iron(III) oxide, not the carbon needed for reduction.",
           "misconception": "ore confused with fuel"
-        },
-        {
-          "key": "D",
-          "text": "The hot air blown in at the bottom",
-          "correct": false,
-          "explanation": "Hot air supplies oxygen for burning the coke but contains no carbon.",
-          "misconception": "air mistaken for a carbon source"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Coke reduces carbon dioxide to carbon monoxide",
-          "correct": true,
-          "explanation": "At the furnace's high temperature, more coke reacts with carbon dioxide, and the carbon dioxide is reduced to carbon monoxide.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Iron(III) oxide is reduced to iron",
-          "correct": false,
-          "explanation": "That is Zone 3, where carbon monoxide does the reducing of the ore itself.",
-          "misconception": "zone 3 chemistry placed in zone 2"
-        },
-        {
-          "key": "C",
           "text": "Limestone decomposes to calcium oxide",
           "correct": false,
           "explanation": "Thermal decomposition of limestone belongs to the removal of impurities, not to Zone 2.",
           "misconception": "impurity step misplaced"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Coke burns in hot air to heat the furnace",
           "correct": false,
           "explanation": "That is Zone 1; Zone 2 consumes the carbon dioxide made there.",
           "misconception": "zone 1 chemistry misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Coke reduces carbon dioxide to carbon monoxide",
+          "correct": true,
+          "explanation": "At the furnace's high temperature, more coke reacts with carbon dioxide, and the carbon dioxide is reduced to carbon monoxide.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Iron(III) oxide is reduced to iron",
+          "correct": false,
+          "explanation": "That is Zone 3, where carbon monoxide does the reducing of the ore itself.",
+          "misconception": "zone 3 chemistry placed in zone 2"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "To remove acidic impurities from the ore as molten slag",
-          "correct": true,
-          "explanation": "Limestone decomposes to calcium oxide, which reacts with silicon dioxide to form calcium silicate slag that floats on the iron.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "To provide extra carbon for the reduction",
           "correct": false,
           "explanation": "Coke, not limestone, provides carbon; limestone handles the acidic impurities.",
           "misconception": "fuel role given to limestone"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "To make the iron more pure by dissolving it",
           "correct": false,
           "explanation": "The limestone never touches the reduction chemistry; it deals with the sandy impurity in the ore.",
           "misconception": "purification route misdescribed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "To speed up the burning of the coke",
           "correct": false,
           "explanation": "The burn rate in Zone 1 is set by the hot air blast, not by limestone.",
           "misconception": "rate role invented"
+        },
+        {
+          "key": "D",
+          "text": "To remove acidic impurities from the ore as molten slag",
+          "correct": true,
+          "explanation": "Limestone decomposes to calcium oxide, which reacts with silicon dioxide to form calcium silicate slag that floats on the iron.",
+          "misconception": null
         }
       ]
     },
@@ -217,7 +217,6 @@
       "modelAnswer": "Heating with carbon: the carbon reduces the metal out of its oxide, and carbon is a cheap reducing agent.",
       "keywords": [
         "heating",
-        "heated",
         "carbon",
         "cheap",
         "reduces",
@@ -277,31 +276,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To remove impurities from the bauxite",
+          "correct": false,
+          "explanation": "The bauxite is purified before electrolysis; cryolite dissolves the clean oxide.",
+          "misconception": "purification step misplaced"
+        },
+        {
+          "key": "B",
           "text": "To lower the melting point of the mixture and save energy",
           "correct": true,
           "explanation": "Pure aluminium oxide melts above 2000 degrees Celsius, which would be very expensive; the cryolite mixture melts far lower without interfering with the reaction.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To make the aluminium ions more positive",
           "correct": false,
           "explanation": "The ion charges never change; cryolite's role is purely to lower the operating temperature.",
           "misconception": "chemistry invented for the additive"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To act as the positive electrode",
           "correct": false,
           "explanation": "The electrodes are graphite; cryolite is the molten solvent holding the oxide.",
           "misconception": "solvent and electrode roles confused"
-        },
-        {
-          "key": "D",
-          "text": "To remove impurities from the bauxite",
-          "correct": false,
-          "explanation": "The bauxite is purified before electrolysis; cryolite dissolves the clean oxide.",
-          "misconception": "purification step misplaced"
         }
       ]
     },
@@ -313,31 +312,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Al3+ + 3e- gives Al",
-          "correct": true,
-          "explanation": "Aluminium ions gain three electrons each at the cathode, which is reduction to the metal.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Al gives Al3+ + 3e-",
-          "correct": false,
-          "explanation": "That is oxidation of aluminium metal; extraction needs the reverse, reduction of the ion.",
-          "misconception": "oxidation and reduction swapped"
-        },
-        {
-          "key": "C",
           "text": "2O2- gives O2 + 4e-",
           "correct": false,
           "explanation": "This is the anode half-equation for oxide ions, not the cathode reaction.",
           "misconception": "electrodes confused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Al3+ + 2e- gives Al",
           "correct": false,
           "explanation": "The charge does not balance: a 3+ ion needs three electrons to become the neutral metal.",
           "misconception": "electron count misbalanced"
+        },
+        {
+          "key": "C",
+          "text": "Al3+ + 3e- gives Al",
+          "correct": true,
+          "explanation": "Aluminium ions gain three electrons each at the cathode, which is reduction to the metal.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Al gives Al3+ + 3e-",
+          "correct": false,
+          "explanation": "That is oxidation of aluminium metal; extraction needs the reverse, reduction of the ion.",
+          "misconception": "oxidation and reduction swapped"
         }
       ]
     },
@@ -349,31 +348,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Oxygen, from oxide ions losing electrons",
-          "correct": true,
-          "explanation": "Oxide ions are oxidised at the anode, pairing up to form oxygen gas.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Aluminium, from aluminium ions gaining electrons",
           "correct": false,
           "explanation": "That is the cathode product; the anode handles the oxide ions.",
           "misconception": "electrode products swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Carbon dioxide, directly from the cryolite",
           "correct": false,
           "explanation": "Carbon dioxide forms when the oxygen made at the anode attacks the graphite; it does not come from the cryolite.",
           "misconception": "secondary reaction mistaken for the primary one"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Hydrogen, from the molten mixture",
           "correct": false,
           "explanation": "There is no water in the cell, so no hydrogen forms; oxide ions supply the anode chemistry.",
           "misconception": "aqueous electrolysis habits transferred"
+        },
+        {
+          "key": "D",
+          "text": "Oxygen, from oxide ions losing electrons",
+          "correct": true,
+          "explanation": "Oxide ions are oxidised at the anode, pairing up to form oxygen gas.",
+          "misconception": null
         }
       ]
     },
@@ -421,31 +420,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Transporting bauxite from the mine",
+          "correct": false,
+          "explanation": "Ore transport is not the named cost; the electrolysis current dominates.",
+          "misconception": "logistics cost invented"
+        },
+        {
+          "key": "B",
           "text": "The large amount of electricity the process requires",
           "correct": true,
           "explanation": "Electrolysis of molten compounds draws huge current, and the note names electricity as the major expense.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The price of cryolite",
           "correct": false,
           "explanation": "Cryolite is recycled in the cell; the named expense is the electricity.",
           "misconception": "minor input inflated"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The replacement of steel cell linings",
           "correct": false,
           "explanation": "The steel shell lined with graphite is long-lasting; the anodes are replaced, but the expense named is electricity.",
           "misconception": "maintenance cost inflated"
-        },
-        {
-          "key": "D",
-          "text": "Transporting bauxite from the mine",
-          "correct": false,
-          "explanation": "Ore transport is not the named cost; the electrolysis current dominates.",
-          "misconception": "logistics cost invented"
         }
       ]
     },
@@ -455,11 +454,10 @@
       "stem": "Starting from the ore, name the two preparation stages that ready aluminium oxide for the electrolysis cell.",
       "misconceptionClass": "bauxite preparation recall",
       "kind": "recall",
-      "modelAnswer": "Bauxite is first purified to aluminium oxide, and the aluminium oxide is then dissolved in molten cryolite.",
+      "modelAnswer": "Bauxite is purified to aluminium oxide first, and that oxide then dissolves in molten cryolite.",
       "keywords": [
         "bauxite",
         "purified",
-        "purify",
         "aluminium",
         "oxide",
         "dissolved",
@@ -478,7 +476,6 @@
       "keywords": [
         "cathode",
         "gain",
-        "gains",
         "electrons",
         "aluminium",
         "al",
@@ -504,8 +501,7 @@
         "energy",
         "cost",
         "saving",
-        "saves",
-        "cheaper"
+        "saves"
       ],
       "options": []
     },
@@ -521,14 +517,12 @@
         "graphite",
         "carbon",
         "reacts",
-        "reaction",
         "burns",
         "burning",
         "anode",
         "anodes",
         "wear",
-        "dioxide",
-        "co2"
+        "dioxide"
       ],
       "options": []
     }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_KpvF2TWr5fYHk2Jz",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cbbdb2b3844537611f47bb7e05a7a74aa91eaf5c77ad0c0fb8bb911fc71b5f64",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "82988b142f2ef7e0d3ee71967b6453f198181a8cfec1cfa94b1c65462d2a40a6",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_KpvF2TWr5fYHk2Jz",
@@ -23,10 +23,6 @@
         "text": "explain why the melting and boiling points of substances with simple molecular structures increase, in general, with increasing relative molecular mass"
       },
       {
-        "code": "4CH1-1.50",
-        "text": "explain how the structures of diamond, graphite and C60 fullerene influence their physical properties, including electrical conductivity and hardness"
-      },
-      {
         "code": "4CH1-1.51",
         "text": "know that covalent compounds do not usually conduct electricity"
       }
@@ -41,11 +37,10 @@
         "title": "Simple molecular structures & C60 fullerene",
         "sourceHeadings": [
           "Simple molecular structures",
-          "C60 fullerene"
+          "C<sub>60</sub> fullerene"
         ],
         "specRefs": [
-          "4CH1-1.47",
-          "4CH1-1.50"
+          "4CH1-1.47"
         ],
         "opening": "Simple molecular substances hold their atoms together with strong covalent bonds, but the forces acting between neighbouring molecules are weak. That split explains their behaviour: little energy is needed to pull separate molecules apart, so most are gases or liquids at room temperature, or solids that melt easily. C60 fullerene belongs here too, as a simple molecular structure built from sixty carbon atoms.",
         "keyPoints": [
@@ -64,7 +59,7 @@
           "medium": {
             "restatement": "The two force scales must be kept apart: covalent bonds within molecules are strong, while the intermolecular forces between molecules are weak, so state changes cost little energy and the substances are gases, liquids, or low-melting solids. C60 fullerene extends the pattern: a molecular cage of 60 carbons whose unbonded fourth electron stays inside each cage, so no charge migrates between cages.",
             "analogy": "Picture a bowl of oranges, each one wrapped tightly in string but only resting against its neighbours: the string is the covalent bonding, and the light contact between oranges is the intermolecular force.",
-            "examPointer": "For C60, quote both halves of the conductivity story: electrons do exist inside each buckyball, but they cannot migrate from one buckyball to another, so the substance does not conduct."
+            "examPointer": "For C60, quote both halves of the conductivity story: electrons do exist inside each buckyball, but they have no way to hop from one buckyball to the next, so the substance does not conduct."
           }
         },
         "gatePolicy": {
@@ -89,7 +84,8 @@
           "rn_KpvF2TWr5fYHk2Jz::L1::Q9"
         ],
         "figureIds": [
-          "fig-01"
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -103,7 +99,7 @@
           "4CH1-1.48",
           "4CH1-1.51"
         ],
-        "opening": "As the relative molecular mass of a simple molecular substance rises, its melting and boiling points generally rise with it. A bigger molecule contains more electrons, so there are more intermolecular forces of attraction to overcome when the substance changes state. The same molecular picture explains conduction: with no free ions or electrons to move, covalent compounds are poor conductors and common insulators.",
+        "opening": "As the relative molecular mass of a simple molecular substance rises, its melting and boiling points generally rise with it. A bigger molecule contains more electrons, so more intermolecular forces of attraction exist to overcome when the substance changes state. The same molecular picture explains conduction: with no free ions or electrons to move, covalent compounds are poor conductors and common insulators.",
         "keyPoints": [
           "Melting and boiling points of simple molecular substances rise as the relative molecular mass increases.",
           "Bigger molecules contain more electrons, so more intermolecular forces of attraction must be overcome.",
@@ -145,6 +141,7 @@
           "rn_KpvF2TWr5fYHk2Jz::L2::Q9"
         ],
         "figureIds": [
+          "fig-03",
           "fig-04"
         ]
       }
@@ -194,38 +191,42 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3e82430107bc-2-2-5-intermolecular-forces-vs-covalent-bonds.png",
         "alt": "Intermolecular Forces Vs Covalent Bonds, downloadable IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Simple molecular structures",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/cb17c2f79e81-4-1-11-the-structure-of-buckminsterfullerene-1.png",
         "alt": "The structure of Buckminsterfullerene",
-        "sourceHeading": "C<sub>60</sub> fullerene",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Simple molecular structures",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e81c57c28b08-10-1-1-alkanes-boiling-point-graph.png",
         "alt": "Alkanes Boiling Point",
-        "sourceHeading": "The relationship between molecular mass and boiling point",
-        "caption": "As the molecular mass increases, so does the boiling point",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Melting and boiling point patterns",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "As the molecular mass increases, so does the boiling point"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/ed6b00507fcf-electrical-wire-insulator.png",
         "alt": "Electrical wire insulator, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Conductivity of simple molecular structures",
-        "caption": "The plastic coating around electrical wires is made from covalent substances that do not allow a flow of charge",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The plastic coating around electrical wires is made from covalent substances that do not allow a flow of charge"
       }
     ]
   }

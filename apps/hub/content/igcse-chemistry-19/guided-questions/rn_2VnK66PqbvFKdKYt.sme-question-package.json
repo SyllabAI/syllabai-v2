@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_2VnK66PqbvFKdKYt",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b35232ce00c5f7be3507196201bacbec9e82a6d7f1ddcbd9c8039b1681a8fed9",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "16aeb58ae5b3e8df07e0a5614bfef0b3b5b19f384c84d55c4819aa28658b339a",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_2VnK66PqbvFKdKYt",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "They stay completely still at all temperatures",
+          "correct": false,
+          "explanation": "Solid particles always vibrate, and the vibration grows as more energy is supplied.",
+          "misconception": "motion denied in solids"
+        },
+        {
+          "key": "B",
           "text": "They vibrate about fixed positions",
           "correct": true,
           "explanation": "A regular arrangement holds each particle in place, so solids only vibrate on the spot.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "They slide around each other freely",
           "correct": false,
           "explanation": "Moving around each other describes liquid particles, not the fixed sites of a solid.",
           "misconception": "liquid motion assigned to solid"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They move quickly in all directions",
           "correct": false,
           "explanation": "Fast motion in all directions belongs to gas particles, which are also far apart.",
           "misconception": "gas motion assigned to solid"
-        },
-        {
-          "key": "D",
-          "text": "They stay completely still at all temperatures",
-          "correct": false,
-          "explanation": "Solid particles always vibrate, and the vibration grows as more energy is supplied.",
-          "misconception": "motion denied in solids"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Randomly arranged, far apart and moving quickly in all directions",
-          "correct": true,
-          "explanation": "The properties table gives gases random arrangement, wide spacing and fast movement in all directions.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Regularly arranged and vibrating about fixed positions",
-          "correct": false,
-          "explanation": "That is the solid row of the table, not the gas row.",
-          "misconception": "solid properties recalled"
-        },
-        {
-          "key": "C",
           "text": "Randomly arranged, close together and moving around each other",
           "correct": false,
           "explanation": "That is the liquid row; gas particles are far apart rather than close.",
           "misconception": "liquid properties recalled"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Regularly arranged, far apart and almost still",
           "correct": false,
           "explanation": "Gases are random rather than regular, and their particles move quickly.",
           "misconception": "order and stillness invented"
+        },
+        {
+          "key": "C",
+          "text": "Randomly arranged, far apart and moving quickly in all directions",
+          "correct": true,
+          "explanation": "The properties table gives gases random arrangement, wide spacing and fast movement in all directions.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Regularly arranged and vibrating about fixed positions",
+          "correct": false,
+          "explanation": "That is the solid row of the table, not the gas row.",
+          "misconception": "solid properties recalled"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "At the same temperature: the melting point of the substance",
-          "correct": true,
-          "explanation": "Melting and freezing both take place at the melting point, which is why the two changes share one temperature.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Melting needs a higher temperature than freezing",
           "correct": false,
           "explanation": "Both changes occur at the single melting-point temperature for a pure substance.",
           "misconception": "two separate points assumed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Both occur at the boiling point",
           "correct": false,
           "explanation": "The boiling point is where liquid and gas interconvert, not where solid and liquid do.",
           "misconception": "state-change points swapped"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "At whatever temperature the change happens to be observed",
           "correct": false,
           "explanation": "State changes occur at fixed temperatures that are properties of the substance.",
           "misconception": "fixed point denied"
+        },
+        {
+          "key": "D",
+          "text": "At the same temperature: the melting point of the substance",
+          "correct": true,
+          "explanation": "Melting and freezing both take place at the melting point, which is why the two changes share one temperature.",
+          "misconception": null
         }
       ]
     },
@@ -252,7 +252,8 @@
       "modelAnswer": "X is a solid (particles sit in a regular arrangement, vibrating about fixed positions, very close together); Y is a gas (particles are randomly arranged, far apart, moving quickly in all directions).",
       "keywords": [
         "solid",
-        "gas"
+        "gas",
+        "arrangement"
       ],
       "options": []
     },
@@ -264,31 +265,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Evaporation needs a higher temperature than boiling",
+          "correct": false,
+          "explanation": "Evaporation can occur at temperatures below the boiling point, not above some higher threshold.",
+          "misconception": "temperature order inverted"
+        },
+        {
+          "key": "B",
           "text": "Boiling happens throughout the liquid at one fixed temperature; evaporation happens only at the surface across a range of temperatures",
           "correct": true,
           "explanation": "Bubbles form inside the liquid at the boiling point, while high-energy particles escape from the surface below it.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Boiling happens at the surface while evaporation forms bubbles inside the liquid",
           "correct": false,
           "explanation": "It is the reverse: bubbles form inside during boiling, and evaporation is a surface process.",
           "misconception": "mechanisms swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They are identical processes that simply carry different names",
           "correct": false,
           "explanation": "Both the temperature range and the location within the liquid differ between them.",
           "misconception": "distinction collapsed"
-        },
-        {
-          "key": "D",
-          "text": "Evaporation needs a higher temperature than boiling",
-          "correct": false,
-          "explanation": "Evaporation can occur at temperatures below the boiling point, not above some higher threshold.",
-          "misconception": "temperature order inverted"
         }
       ]
     },
@@ -300,31 +301,31 @@
       "options": [
         {
           "key": "A",
-          "text": "At exactly the same temperature",
-          "correct": true,
-          "explanation": "Freezing is the reverse of melting and happens at the same temperature, as with water at 0 °C.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "At a lower temperature than melting",
-          "correct": false,
-          "explanation": "The melting point and freezing point of a pure substance are one and the same value.",
-          "misconception": "two points assumed"
-        },
-        {
-          "key": "C",
           "text": "At a higher temperature than melting",
           "correct": false,
           "explanation": "No gap separates the two; they coincide at the melting point.",
           "misconception": "direction of gap invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Freezing has no fixed temperature at all",
           "correct": false,
           "explanation": "Freezing occurs at a specific temperature once enough thermal energy is lost.",
           "misconception": "fixed point denied"
+        },
+        {
+          "key": "C",
+          "text": "At exactly the same temperature",
+          "correct": true,
+          "explanation": "Freezing is the reverse of melting and happens at the same temperature, as with water at 0 °C.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "At a lower temperature than melting",
+          "correct": false,
+          "explanation": "The melting point and freezing point of a pure substance are one and the same value.",
+          "misconception": "two points assumed"
         }
       ]
     },
@@ -336,31 +337,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the particles themselves stay the same and only the forces between them change",
-          "correct": true,
-          "explanation": "The particles remain unchanged throughout; it is only the forces between them that alter.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because a new chemical substance forms each time the state changes",
           "correct": false,
           "explanation": "No new substance appears: water is water whether ice, liquid or steam.",
           "misconception": "identity change assumed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because the particles are broken apart and remade in a new form",
           "correct": false,
           "explanation": "Particles persist throughout the change; only their arrangement and energy differ afterwards.",
           "misconception": "particle destruction imagined"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because no energy is ever taken in or given out",
           "correct": false,
           "explanation": "Energy is central: it is absorbed to overcome forces and released as particles settle.",
           "misconception": "energy role denied"
+        },
+        {
+          "key": "D",
+          "text": "Because the particles themselves stay the same and only the forces between them change",
+          "correct": true,
+          "explanation": "The particles remain unchanged throughout; it is only the forces between them that alter.",
+          "misconception": null
         }
       ]
     },
@@ -408,31 +409,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A gas changes directly into a solid as it cools",
+          "correct": false,
+          "explanation": "That direction is deposition or desublimation, the reverse of sublimation.",
+          "misconception": "reverse direction taken"
+        },
+        {
+          "key": "B",
           "text": "A solid changes directly into a gas, as iodine and solid carbon dioxide do",
           "correct": true,
           "explanation": "Sublimation is the direct solid-to-gas change, shown by only a few solids such as iodine and solid carbon dioxide.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Any solid can be made to sublime if enough heat is supplied",
           "correct": false,
           "explanation": "Only a few solids, such as iodine or solid carbon dioxide, behave this way.",
-          "misconception": "generality over-extended"
+          "misconception": "generality overextended"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A liquid changes into a solid as it cools",
           "correct": false,
           "explanation": "That change is freezing, the reverse of melting.",
           "misconception": "state change misnamed"
-        },
-        {
-          "key": "D",
-          "text": "A gas changes directly into a solid as it cools",
-          "correct": false,
-          "explanation": "That direction is deposition or desublimation, the reverse of sublimation.",
-          "misconception": "reverse direction taken"
         }
       ]
     },
@@ -447,8 +448,6 @@
         "kinetic",
         "energy",
         "vibrate",
-        "vibrates",
-        "vibrating",
         "more"
       ],
       "options": []
@@ -496,9 +495,7 @@
         "boiling",
         "boil",
         "condensing",
-        "condensation",
-        "condense",
-        "condenses"
+        "condensation"
       ],
       "options": []
     }

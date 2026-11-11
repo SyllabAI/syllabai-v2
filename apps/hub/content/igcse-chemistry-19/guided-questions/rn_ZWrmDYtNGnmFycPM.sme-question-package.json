@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_ZWrmDYtNGnmFycPM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5b53888f7f97a6fc6dc5289183823a208bf862ffbbf1184b1a09b1b83e4c3c55",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "2db6e6c64507a14adb30f65505fa8e445dca783bbb7e0f2fa2e0a1a27c5ddf31",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_ZWrmDYtNGnmFycPM",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Electrons, which float freely",
+          "correct": false,
+          "explanation": "Free electrons belong to metal lattices; solutions carry ions instead.",
+          "misconception": "metal model transferred to solutions"
+        },
+        {
+          "key": "B",
           "text": "Negative hydroxide ions, OH-",
           "correct": true,
           "explanation": "Alkalis in aqueous solution are a source of hydroxide ions, which make the solution alkaline.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Positive hydrogen ions, H+",
           "correct": false,
           "explanation": "Hydrogen ions belong to acids; releasing them would make the water acidic.",
           "misconception": "acid behaviour copied"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Neutral water molecules only",
           "correct": false,
           "explanation": "Water is the solvent; the alkali adds hydroxide ions to it.",
           "misconception": "dissolution misdescribed"
-        },
-        {
-          "key": "D",
-          "text": "Electrons, which float freely",
-          "correct": false,
-          "explanation": "Free electrons belong to metal lattices; solutions carry ions instead.",
-          "misconception": "metal model transferred to solutions"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The amount of hydrogen ions present in the solution",
-          "correct": true,
-          "explanation": "The note defines pH as a measure of the hydrogen ion amount, which is why acids read low.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "How dangerous the solution is to touch",
-          "correct": false,
-          "explanation": "Hazard is not what pH reports; the ion concentration is.",
-          "misconception": "safety conflated with chemistry"
-        },
-        {
-          "key": "C",
           "text": "The temperature of the solution",
           "correct": false,
           "explanation": "Temperature is unrelated to the pH reading described here.",
           "misconception": "unrelated variable chosen"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The total volume of liquid present",
           "correct": false,
           "explanation": "Volume has no part in the pH definition.",
           "misconception": "quantity confusion"
+        },
+        {
+          "key": "C",
+          "text": "The amount of hydrogen ions present in the solution",
+          "correct": true,
+          "explanation": "The note defines pH as a measure of the hydrogen ion amount, which is why acids read low.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "How dangerous the solution is to touch",
+          "correct": false,
+          "explanation": "Hazard is not what pH reports; the ion concentration is.",
+          "misconception": "safety conflated with chemistry"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the dissolved acid releases hydrogen ions into the water",
-          "correct": true,
-          "explanation": "The released H+ ions make the solution acidic, and litmus signals acidity with red.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because hydrochloric acid contains chloride ions",
           "correct": false,
           "explanation": "Chloride ions are spectators here; it is the hydrogen ions that set the acidity.",
           "misconception": "wrong ion credited"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because litmus reacts to the green colour of the solution",
           "correct": false,
           "explanation": "The solution is colourless; litmus responds to acidity, not to colour.",
           "misconception": "invented colour"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because water itself is acidic",
           "correct": false,
           "explanation": "Pure water is neutral; the acid added to it supplies the hydrogen ions.",
           "misconception": "solvent blamed"
+        },
+        {
+          "key": "D",
+          "text": "Because the dissolved acid releases hydrogen ions into the water",
+          "correct": true,
+          "explanation": "The released H+ ions make the solution acidic, and litmus signals acidity with red.",
+          "misconception": null
         }
       ]
     },
@@ -221,8 +221,7 @@
         "above",
         "7",
         "hydroxide",
-        "oh",
-        "base"
+        "oh"
       ],
       "options": []
     },
@@ -271,36 +270,36 @@
     {
       "id": "rn_ZWrmDYtNGnmFycPM::L2::Q1",
       "moduleId": "rn_ZWrmDYtNGnmFycPM::L2",
-      "stem": "What is produced when H+ ions meet OH- ions?",
+      "stem": "What single product forms when H+ ions meet OH- ions?",
       "misconceptionClass": "product identification",
       "options": [
         {
           "key": "A",
+          "text": "Common salt, NaCl, only",
+          "correct": false,
+          "explanation": "A salt forms alongside the water in a full equation, but the ions themselves make water.",
+          "misconception": "salt mistaken for the ionic product"
+        },
+        {
+          "key": "B",
           "text": "Water, H2O",
           "correct": true,
           "explanation": "The hydrogen ion and hydroxide ion combine to give a water molecule, which is the heart of neutralisation.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Hydrogen gas, H2",
           "correct": false,
           "explanation": "Hydrogen gas forms with metals, not when the two ions combine.",
           "misconception": "metal reaction product copied"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Carbon dioxide, CO2",
           "correct": false,
           "explanation": "Carbon dioxide belongs to carbonate reactions; no carbon is involved here.",
           "misconception": "carbonate product copied"
-        },
-        {
-          "key": "D",
-          "text": "Common salt, NaCl, only",
-          "correct": false,
-          "explanation": "A salt forms alongside the water in a full equation, but the ions themselves make water.",
-          "misconception": "salt mistaken for the ionic product"
         }
       ]
     },
@@ -312,31 +311,31 @@
       "options": [
         {
           "key": "A",
-          "text": "H+ + OH- gives H2O",
-          "correct": true,
-          "explanation": "This single line covers all such neutralisations and explains why the result can be neutral.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "H+ + Cl- gives HCl",
-          "correct": false,
-          "explanation": "That re-forms an acid; neutralisation removes the ions into water.",
-          "misconception": "direction reversed"
-        },
-        {
-          "key": "C",
           "text": "Na+ + OH- gives NaOH",
           "correct": false,
           "explanation": "That dissolves an alkali; it is not the neutralisation step.",
           "misconception": "dissolution confused with neutralisation"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "H2O gives H+ + OH-",
           "correct": false,
           "explanation": "That is the reverse direction, the splitting of water rather than its formation.",
           "misconception": "equation reversed"
+        },
+        {
+          "key": "C",
+          "text": "H+ + OH- gives H2O",
+          "correct": true,
+          "explanation": "This single line covers all such neutralisations and explains why the result can be neutral.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "H+ + Cl- gives HCl",
+          "correct": false,
+          "explanation": "That re-forms an acid; neutralisation removes the ions into water.",
+          "misconception": "direction reversed"
         }
       ]
     },
@@ -348,31 +347,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A salt forms but no water is made",
-          "correct": true,
-          "explanation": "The definition of neutralisation needs the water-forming ion pairing, which the metal reaction lacks.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because magnesium is too unreactive to count",
           "correct": false,
           "explanation": "Magnesium reacts readily; the classification fails on the missing water, not on vigour.",
           "misconception": "reactivity blamed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because no salt forms in the reaction",
           "correct": false,
           "explanation": "A salt does form; it is the absence of water that excludes the reaction.",
           "misconception": "product inventory wrong"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because the acid is not concentrated enough",
           "correct": false,
           "explanation": "Concentration plays no part in whether the reaction is called a neutralisation.",
           "misconception": "concentration blamed"
+        },
+        {
+          "key": "D",
+          "text": "A salt forms but no water is made",
+          "correct": true,
+          "explanation": "The definition of neutralisation needs the water-forming ion pairing, which the metal reaction lacks.",
+          "misconception": null
         }
       ]
     },
@@ -420,31 +419,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To kill all the organisms in the soil",
+          "correct": false,
+          "explanation": "Nothing in the treatment targets soil life; it corrects acidity.",
+          "misconception": "purpose invented"
+        },
+        {
+          "key": "B",
           "text": "The bases neutralise acidic soil, raising the pH for crops that dislike low values",
           "correct": true,
           "explanation": "Neutralisation in the field lifts the soil pH, since some crops cannot tolerate values below 7.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To make the soil more acidic for special plants",
           "correct": false,
           "explanation": "The additions are bases, so they raise pH rather than lower it.",
           "misconception": "direction reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To add metal salts as fertiliser",
           "correct": false,
           "explanation": "The purpose named is pH adjustment, not fertilising.",
           "misconception": "purpose mislabelled"
-        },
-        {
-          "key": "D",
-          "text": "To kill all the organisms in the soil",
-          "correct": false,
-          "explanation": "Nothing in the treatment targets soil life; it corrects acidity.",
-          "misconception": "purpose invented"
         }
       ]
     },
@@ -480,8 +479,7 @@
         "water",
         "salt",
         "definition",
-        "neutralisation",
-        "neutralization"
+        "neutralisation"
       ],
       "options": []
     },
@@ -518,7 +516,6 @@
         "bases",
         "base",
         "neutralise",
-        "neutralize",
         "raising",
         "raise",
         "ph",

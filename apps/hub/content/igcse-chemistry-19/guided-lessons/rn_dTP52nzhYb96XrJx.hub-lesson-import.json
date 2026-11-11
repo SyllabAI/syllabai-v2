@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_dTP52nzhYb96XrJx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "05ad7e79fd9600510b363b9eb614967e3bd41abdb8cb6fd47d5f66b49b771b9a",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "3f92eff78eb170b4cc946d61bd068fc7605ffafade7e48f5b4b7a243538c999b",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_dTP52nzhYb96XrJx",
@@ -82,7 +82,8 @@
           "rn_dTP52nzhYb96XrJx::L1::Q7",
           "rn_dTP52nzhYb96XrJx::L1::Q8",
           "rn_dTP52nzhYb96XrJx::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_dTP52nzhYb96XrJx::L2",
@@ -154,11 +155,6 @@
           "firstLesson": 1
         },
         {
-          "term": "litmus",
-          "definition": "The natural indicator extracted from lichens, red in acid and blue in alkali.",
-          "firstLesson": 1
-        },
-        {
           "term": "phenolphthalein",
           "definition": "The synthetic indicator that is colourless in acid and pink in alkali.",
           "firstLesson": 1
@@ -167,16 +163,6 @@
           "term": "methyl orange",
           "definition": "The synthetic indicator that is red in acid and yellow in alkali.",
           "firstLesson": 1
-        },
-        {
-          "term": "universal indicator",
-          "definition": "A mixture of indicators that estimates the approximate pH of a solution against a colour chart.",
-          "firstLesson": 2
-        },
-        {
-          "term": "neutral",
-          "definition": "Neither acidic nor alkaline, with a pH of 7.",
-          "firstLesson": 2
         },
         {
           "term": "endpoint",
@@ -200,11 +186,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9ac22038140d-universal-indicator-and-the-ph-scale2.png",
         "alt": "Universal-indicator-and-the-pH-scale2, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Universal indicator",
-        "caption": "pH scale with the Universal Indicator colours used to determine the pH of a solution",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "pH scale with the Universal Indicator colours used to determine the pH of a solution"
       }
     ]
   }

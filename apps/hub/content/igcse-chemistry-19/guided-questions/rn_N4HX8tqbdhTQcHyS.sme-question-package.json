@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_N4HX8tqbdhTQcHyS",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "fab15971c100e8b90ff9b4d8593cdc621a6dbc33599e98b6e99321af289eac66",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "6f946aa034ed375c2bc2773d67bc047d2ef1f16e2facad36a1292ff00064026a",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_N4HX8tqbdhTQcHyS",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The mass of one mole of the substance in grams",
+          "correct": false,
+          "explanation": "A mass in grams per mole is a later idea; Mr itself is a unit-free relative total.",
+          "misconception": "molar mass conflated with Mr"
+        },
+        {
+          "key": "B",
           "text": "The total mass of all the atoms present in one formula",
           "correct": true,
           "explanation": "Mr adds one Ar for every atom the formula contains, giving the formula's total relative mass.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The mass of a single atom of the element",
           "correct": false,
           "explanation": "That value is Ar, which belongs to one atom; Mr belongs to the whole formula.",
           "misconception": "Ar and Mr swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The number of atoms in the formula",
           "correct": false,
           "explanation": "Mr is a mass total, not a count; the subscripts give the count and the Ar values give the mass.",
           "misconception": "count treated as mass"
-        },
-        {
-          "key": "D",
-          "text": "The mass of one mole of the substance in grams",
-          "correct": false,
-          "explanation": "A mass in grams per mole is a later idea; Mr itself is a unit-free relative total.",
-          "misconception": "molar mass conflated with Mr"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "18",
-          "correct": true,
-          "explanation": "(2 x 1) + (1 x 16) = 18, so a water molecule totals 18.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "17",
-          "correct": false,
-          "explanation": "This forgets to double the hydrogen: two H atoms contribute 2, not 1.",
-          "misconception": "subscript ignored on hydrogen"
-        },
-        {
-          "key": "C",
           "text": "16",
           "correct": false,
           "explanation": "This drops the hydrogen entirely; both elements in the formula must be counted.",
           "misconception": "hydrogen omitted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "34",
           "correct": false,
           "explanation": "This doubles the oxygen as well as the hydrogen; the subscript 2 belongs to H only.",
           "misconception": "subscript over-applied"
+        },
+        {
+          "key": "C",
+          "text": "18",
+          "correct": true,
+          "explanation": "(2 x 1) + (1 x 16) = 18, so a water molecule totals 18.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "17",
+          "correct": false,
+          "explanation": "This forgets to double the hydrogen: two H atoms contribute 2, not 1.",
+          "misconception": "subscript ignored on hydrogen"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "2",
-          "correct": true,
-          "explanation": "Two hydrogen atoms each contribute 1, so the formula mass is 2 x 1 = 2.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "1",
           "correct": false,
           "explanation": "This counts one atom only; the subscript shows hydrogen gas travels as a pair.",
           "misconception": "diatomic subscript ignored"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "0.5",
           "correct": false,
           "explanation": "Dividing instead of multiplying has no meaning here; each atom adds its Ar once.",
           "misconception": "division misapplied"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "There is no Mr for an element",
           "correct": false,
           "explanation": "Elements that form molecules still have formula masses; H2 is a molecule of two atoms.",
           "misconception": "Mr reserved for compounds"
+        },
+        {
+          "key": "D",
+          "text": "2",
+          "correct": true,
+          "explanation": "Two hydrogen atoms each contribute 1, so the formula mass is 2 x 1 = 2.",
+          "misconception": null
         }
       ]
     },
@@ -197,13 +197,11 @@
       "stem": "State where to find an element's relative atomic mass on the Periodic Table.",
       "misconceptionClass": "Ar location recall",
       "kind": "recall",
-      "modelAnswer": "It is the larger of the two numbers beside the element's symbol.",
+      "modelAnswer": "It is whichever of the two numbers beside the element's symbol comes out larger.",
       "keywords": [
         "larger",
-        "big",
-        "bigger",
-        "greater",
-        "top"
+        "top",
+        "whichever"
       ],
       "options": []
     },
@@ -215,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "The relative molecular mass.",
       "keywords": [
-        "molecular"
+        "molecular",
+        "substance",
+        "relative"
       ],
       "options": []
     },
@@ -231,7 +231,6 @@
         "conservation",
         "same",
         "rearranges",
-        "rearranged",
         "match",
         "totals"
       ],
@@ -246,7 +245,8 @@
       "modelAnswer": "Reactants: N2 = 2 x 14 = 28 and 3H2 = 3 x 2 = 6, total 34; products: 2NH3 = 2 x 17 = 34 — the totals are equal, exactly what conservation of mass requires.",
       "keywords": [
         "34",
-        "equal"
+        "equal",
+        "conservation"
       ],
       "options": []
     },
@@ -258,31 +258,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Two Ca, two O and two H",
+          "correct": false,
+          "explanation": "The subscript sits outside the bracket, so it never touches the calcium.",
+          "misconception": "multiplier applied to the metal"
+        },
+        {
+          "key": "B",
           "text": "One Ca, two O and two H",
           "correct": true,
           "explanation": "The bracket holds one O and one H, and the subscript 2 multiplies both.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One Ca, one O and one H",
           "correct": false,
           "explanation": "This ignores the subscript 2, which multiplies the whole bracket.",
           "misconception": "bracket multiplier ignored"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "One Ca, one O and two H",
           "correct": false,
           "explanation": "The subscript 2 applies to the oxygen inside the bracket as well as the hydrogen.",
           "misconception": "multiplier applied to hydrogen only"
-        },
-        {
-          "key": "D",
-          "text": "Two Ca, two O and two H",
-          "correct": false,
-          "explanation": "The subscript sits outside the bracket, so it never touches the calcium.",
-          "misconception": "multiplier applied to the metal"
         }
       ]
     },
@@ -294,31 +294,31 @@
       "options": [
         {
           "key": "A",
-          "text": "74",
-          "correct": true,
-          "explanation": "(1 x 40) + (2 x 16) + (2 x 1) = 40 + 32 + 2 = 74.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "57",
-          "correct": false,
-          "explanation": "This misses the bracket doubling, counting only one O and one H.",
-          "misconception": "bracket multiplier ignored"
-        },
-        {
-          "key": "C",
           "text": "72",
           "correct": false,
           "explanation": "This forgets the two hydrogens, which add 2 to the total.",
           "misconception": "hydrogen omitted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "98",
           "correct": false,
           "explanation": "This doubles the calcium as well: 80 + 16 + 2 = 98 applies the subscript to the wrong atom.",
           "misconception": "multiplier applied to the metal"
+        },
+        {
+          "key": "C",
+          "text": "74",
+          "correct": true,
+          "explanation": "(1 x 40) + (2 x 16) + (2 x 1) = 40 + 32 + 2 = 74.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "57",
+          "correct": false,
+          "explanation": "This misses the bracket doubling, counting only one O and one H.",
+          "misconception": "bracket multiplier ignored"
         }
       ]
     },
@@ -330,31 +330,31 @@
       "options": [
         {
           "key": "A",
-          "text": "138",
-          "correct": true,
-          "explanation": "(2 x 39) + (1 x 12) + (3 x 16) = 78 + 12 + 48 = 138.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "99",
           "correct": false,
           "explanation": "This counts one potassium only; the subscript 2 doubles the 39.",
           "misconception": "subscript ignored on potassium"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "122",
           "correct": false,
           "explanation": "This counts two oxygens instead of three, losing 16 from the total.",
           "misconception": "oxygen miscounted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "140",
           "correct": false,
           "explanation": "This borrows 40 as the Ar of potassium; potassium's value is 39.",
           "misconception": "wrong Ar read from the table"
+        },
+        {
+          "key": "D",
+          "text": "138",
+          "correct": true,
+          "explanation": "(2 x 39) + (1 x 12) + (3 x 16) = 78 + 12 + 48 = 138.",
+          "misconception": null
         }
       ]
     },
@@ -402,31 +402,31 @@
       "options": [
         {
           "key": "A",
+          "text": "148",
+          "correct": false,
+          "explanation": "This counts five oxygens; the formula shows four, contributing 64.",
+          "misconception": "oxygen miscounted"
+        },
+        {
+          "key": "B",
           "text": "132",
           "correct": true,
           "explanation": "(2 x 14) + (8 x 1) + (1 x 32) + (4 x 16) = 28 + 8 + 32 + 64 = 132.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "114",
           "correct": false,
           "explanation": "This ignores the bracket doubling, counting one N and four H.",
           "misconception": "bracket multiplier ignored"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "130",
           "correct": false,
           "explanation": "This counts six hydrogens; the bracket gives 4 x 2 = 8.",
           "misconception": "hydrogen miscounted"
-        },
-        {
-          "key": "D",
-          "text": "148",
-          "correct": false,
-          "explanation": "This counts five oxygens; the formula shows four, contributing 64.",
-          "misconception": "oxygen miscounted"
         }
       ]
     },
@@ -440,8 +440,6 @@
       "keywords": [
         "multiplies",
         "multiply",
-        "multiplied",
-        "times",
         "doubles",
         "triples"
       ],
@@ -458,7 +456,6 @@
         "list",
         "listing",
         "element",
-        "elements",
         "before"
       ],
       "options": []
@@ -473,7 +470,6 @@
       "keywords": [
         "multiplies",
         "multiply",
-        "multiplied",
         "two",
         "2",
         "bracket",

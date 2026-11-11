@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_FCnWFz9MhgsqnZGM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2c55847dc50598c5648dbdadea7665f9cfc0a6dc78d2ba298a6c9612fc0feb01",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "02630f64a3479e4e2ec4e5291023011c50add0a37157014a2decf4a8c91c573b",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_FCnWFz9MhgsqnZGM",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Charges are not written on dot-and-cross diagrams",
+          "correct": false,
+          "explanation": "The charge is essential information on an ionic diagram; omitting it loses the mark.",
+          "misconception": "charge omitted entirely"
+        },
+        {
+          "key": "B",
           "text": "Outside the square brackets, at the top right, as a superscript",
           "correct": true,
           "explanation": "The brackets enclose the ion and its electrons, and the charge sits outside them at the top right.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Inside the square brackets, next to the nucleus",
           "correct": false,
           "explanation": "Charges describe the whole ion, not the nucleus alone, so they sit outside the brackets.",
           "misconception": "charge attached to the nucleus"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Underneath the ion, on a separate line",
           "correct": false,
           "explanation": "Convention places the charge at the top right; a separate line is not the accepted layout.",
           "misconception": "layout invented"
-        },
-        {
-          "key": "D",
-          "text": "Charges are not written on dot-and-cross diagrams",
-          "correct": false,
-          "explanation": "The charge is essential information on an ionic diagram; omitting it loses the mark.",
-          "misconception": "charge omitted entirely"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because it has gained one electron, giving it one more electron than protons",
-          "correct": true,
-          "explanation": "The extra transferred electron tips the balance from neutral to 1-.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because it has lost one electron",
-          "correct": false,
-          "explanation": "Losing electrons gives positive charges; chlorine gains the transferred electron.",
-          "misconception": "gain and loss reversed"
-        },
-        {
-          "key": "C",
           "text": "Because it shares an electron with sodium",
           "correct": false,
           "explanation": "No sharing happens in ionic bonding; the electron transfers completely to the chlorine.",
           "misconception": "shared-pair model applied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because chlorine atoms always carry a charge",
           "correct": false,
           "explanation": "A chlorine atom starts neutral; the charge appears only after the transfer.",
           "misconception": "atoms assumed permanently charged"
+        },
+        {
+          "key": "C",
+          "text": "Because it has gained one electron, giving it one more electron than protons",
+          "correct": true,
+          "explanation": "The extra transferred electron tips the balance from neutral to 1-.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because it has lost one electron",
+          "correct": false,
+          "explanation": "Losing electrons gives positive charges; chlorine gains the transferred electron.",
+          "misconception": "gain and loss reversed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Two, both from magnesium to oxygen",
-          "correct": true,
-          "explanation": "Magnesium is in Group 2 and oxygen in Group 6, so two electrons transfer and both ions reach full outer shells.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "One",
           "correct": false,
           "explanation": "One electron would leave magnesium at 1+ and oxygen at 1-, charges that do not match their groups.",
           "misconception": "sodium chloride count reused"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Two, one travelling in each direction",
           "correct": false,
           "explanation": "Both transferred electrons come from magnesium; oxygen gains rather than trades electrons.",
           "misconception": "exchange model imagined"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Four",
           "correct": false,
           "explanation": "Four electrons would mean two complete transfers twice over; the group numbers fix the count at two.",
           "misconception": "count doubled"
+        },
+        {
+          "key": "D",
+          "text": "Two, both from magnesium to oxygen",
+          "correct": true,
+          "explanation": "Magnesium is in Group 2 and oxygen in Group 6, so two electrons transfer and both ions reach full outer shells.",
+          "misconception": null
         }
       ]
     },
@@ -204,7 +204,6 @@
         "crosses",
         "cross",
         "symbol",
-        "symbols",
         "outer",
         "electrons",
         "electron",
@@ -240,11 +239,10 @@
       "stem": "Explain, in terms of outer shells, why gaining one electron completes the chlorine atom's outer shell in the sodium chloride diagram.",
       "misconceptionClass": "chloride charge reasoning",
       "kind": "explain-why",
-      "modelAnswer": "Chlorine is a Group 7 non-metal, so gaining the one electron that sodium loses completes its own outer shell; with one more electron than protons the ion carries a 1- charge.",
+      "modelAnswer": "Chlorine, a Group 7 non-metal, completes its own outer shell by gaining the one electron that sodium loses; with one more electron than protons the ion carries a 1- charge.",
       "keywords": [
         "group",
         "7",
-        "seven",
         "gains",
         "gain",
         "electron",
@@ -293,31 +291,31 @@
       "options": [
         {
           "key": "A",
+          "text": "6-, because oxygen is in Group 6",
+          "correct": false,
+          "explanation": "The group number counts outer electrons, not the charge; oxygen gains only two.",
+          "misconception": "group number read as the charge"
+        },
+        {
+          "key": "B",
           "text": "2-, because it gains two electrons",
           "correct": true,
           "explanation": "Two extra electrons give the oxide ion two more negatives than positives.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "1-, because only one shell is involved",
           "correct": false,
           "explanation": "Shell count sets nothing here; the charge follows the two electrons gained.",
           "misconception": "shell count linked to charge size"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "2+, because it lost two protons",
           "correct": false,
           "explanation": "Protons never transfer during bonding; oxygen gains electrons, so its charge is negative.",
           "misconception": "protons thought to move"
-        },
-        {
-          "key": "D",
-          "text": "6-, because oxygen is in Group 6",
-          "correct": false,
-          "explanation": "The group number counts outer electrons, not the charge; oxygen gains only two.",
-          "misconception": "group number read as the charge"
         }
       ]
     },
@@ -329,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "They keep the magnesium atom's symbol and appear inside the oxide ion's brackets",
-          "correct": true,
-          "explanation": "Each electron keeps the symbol of the atom it came from, so the transferred pair shows the donor inside the acceptor's shell.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "They are redrawn with the oxygen atom's symbol",
-          "correct": false,
-          "explanation": "Changing the symbol would hide where the electrons came from; the donor's marking travels with them.",
-          "misconception": "symbols reassigned after transfer"
-        },
-        {
-          "key": "C",
           "text": "They are left out, since transferred electrons cannot be drawn",
           "correct": false,
           "explanation": "The transferred electrons are exactly what the diagram must show; leaving them out would hide the transfer.",
           "misconception": "transfer left undrawn"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "They sit between the two ions as a shared pair",
           "correct": false,
           "explanation": "A shared pair would depict covalent bonding; here the electrons belong wholly to the oxide ion.",
           "misconception": "shared-pair drawing used"
+        },
+        {
+          "key": "C",
+          "text": "They keep the magnesium atom's symbol and appear inside the oxide ion's brackets",
+          "correct": true,
+          "explanation": "Each electron keeps the symbol of the atom it came from, so the transferred pair shows the donor inside the acceptor's shell.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "They are redrawn with the oxygen atom's symbol",
+          "correct": false,
+          "explanation": "Changing the symbol would hide where the electrons came from; the donor's marking travels with them.",
+          "misconception": "symbols reassigned after transfer"
         }
       ]
     },
@@ -365,31 +363,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the 2+ and 2- charges cancel one-to-one, so the simplest ratio needs one of each ion",
-          "correct": true,
-          "explanation": "The charges are equal and opposite, and formulas give the simplest whole-number ratio.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because magnesium oxide is a molecular compound",
           "correct": false,
           "explanation": "Magnesium oxide is ionic with a giant lattice; the ratio reflects the lattice's repeating unit.",
           "misconception": "molecular model applied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because the number 2 is never written in a formula",
           "correct": false,
           "explanation": "Counts of 2 appear whenever the charges demand them, as in CaCl2; the one-to-one ratio here needs no 2.",
           "misconception": "rule about the digit 2 overgeneralised"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because oxygen cannot sit next to two magnesium ions",
           "correct": false,
           "explanation": "In the lattice each oxide ion does sit among several magnesium ions; the formula simply reports the simplest ratio.",
           "misconception": "lattice geometry confused with the formula ratio"
+        },
+        {
+          "key": "D",
+          "text": "Because the 2+ and 2- charges cancel one-to-one, so the simplest ratio needs one of each ion",
+          "correct": true,
+          "explanation": "The charges are equal and opposite, and formulas give the simplest whole-number ratio.",
+          "misconception": null
         }
       ]
     },
@@ -437,31 +435,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Nothing differs, as both diagrams show one electron moving",
+          "correct": false,
+          "explanation": "The chloride diagram shows one electron transferring, while the oxide diagram shows two.",
+          "misconception": "diagrams conflated"
+        },
+        {
+          "key": "B",
           "text": "Two electrons transfer instead of one, giving charges of 2+ and 2- rather than 1+ and 1-",
           "correct": true,
           "explanation": "The group positions of the two metals set the transfer counts: Group 2 loses two, Group 1 loses one.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Electrons move from the non-metal to the metal",
           "correct": false,
           "explanation": "In both compounds the metal provides the electrons and the non-metal receives them.",
           "misconception": "transfer direction reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The electrons are shared in pairs rather than transferred",
           "correct": false,
           "explanation": "Both compounds are ionic; sharing belongs to the covalent notes that follow.",
           "misconception": "bonding type confused"
-        },
-        {
-          "key": "D",
-          "text": "Nothing differs, as both diagrams show one electron moving",
-          "correct": false,
-          "explanation": "The chloride diagram shows one electron transferring, while the oxide diagram shows two.",
-          "misconception": "diagrams conflated"
         }
       ]
     },
@@ -515,7 +513,6 @@
       "keywords": [
         "group",
         "6",
-        "six",
         "two",
         "2",
         "more",

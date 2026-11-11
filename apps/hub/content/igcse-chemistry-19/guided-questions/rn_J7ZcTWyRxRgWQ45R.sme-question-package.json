@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_J7ZcTWyRxRgWQ45R",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4f5d835d390c2ff363495b5de29bcac844c3d062ec0fdcfc55eac180cb105847",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "65607a29d3ceb3add53b7fce340ffc21c5edd3ae6755d8bbd0c6cf419efbdc5c",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_J7ZcTWyRxRgWQ45R",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Ca2Cl2",
+          "correct": false,
+          "explanation": "Although these counts do cancel the charges, the formula must be given as the simplest whole-number ratio, which is CaCl2.",
+          "misconception": "unsimplified ratio accepted"
+        },
+        {
+          "key": "B",
           "text": "CaCl2",
           "correct": true,
           "explanation": "The single 2+ charge needs two 1- chloride ions to cancel, so the formula carries two chlorides.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "CaCl",
           "correct": false,
           "explanation": "Matching one of each ion leaves a net 1+ charge, so the compound would not be neutral.",
           "misconception": "one-of-each assumption ignoring unequal charges"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Ca2Cl",
           "correct": false,
           "explanation": "Doubling the calcium gives a net 2+ and leaves the charges even further from cancelling.",
           "misconception": "counts swapped between the ions"
-        },
-        {
-          "key": "D",
-          "text": "Ca2Cl2",
-          "correct": false,
-          "explanation": "Although these counts do cancel the charges, the formula must be given as the simplest whole-number ratio, which is CaCl2.",
-          "misconception": "unsimplified ratio accepted"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because only one sulfate ion pairs with each iron(II) ion",
-          "correct": true,
-          "explanation": "Brackets are needed only when more than one of a complex ion appears; the one-to-one match here makes brackets unnecessary.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because sulfate is a simple ion, not a complex one",
-          "correct": false,
-          "explanation": "Sulfate is a complex ion with several atoms; it is its count of one, not its structure, that removes the need for brackets.",
-          "misconception": "complex-ion structure confused with the bracket rule"
-        },
-        {
-          "key": "C",
           "text": "Because iron and sulfate carry opposite charges",
           "correct": false,
           "explanation": "Opposite charges are true of every ionic compound and never by themselves decide whether brackets appear.",
           "misconception": "charge difference read as the bracket trigger"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the metal is always written first in the formula",
           "correct": false,
           "explanation": "Element order governs writing order, not bracket use; brackets track multi-ion counts.",
           "misconception": "ordering rule misapplied to brackets"
+        },
+        {
+          "key": "C",
+          "text": "Because only one sulfate ion pairs with each iron(II) ion",
+          "correct": true,
+          "explanation": "Brackets are needed only when more than one of a complex ion appears; the one-to-one match here makes brackets unnecessary.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because sulfate is a simple ion, not a complex one",
+          "correct": false,
+          "explanation": "Sulfate is a complex ion with several atoms; it is its count of one, not its structure, that removes the need for brackets.",
+          "misconception": "complex-ion structure confused with the bracket rule"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The charges do not cancel: two sodium ions are needed for each oxide ion, so the formula is Na2O",
-          "correct": true,
-          "explanation": "One 1+ charge cannot balance one 2- charge; the direct comparison shows the 2- remains, so the sodium count must double.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Nothing: one of each ion is always the correct ratio",
           "correct": false,
           "explanation": "A one-of-each ratio only works when the charges are equal and opposite; here a 1- charge would remain.",
           "misconception": "one-of-each rule overgeneralised"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The metal should be written second, giving ONa",
           "correct": false,
           "explanation": "Convention writes the metal first, but reordering the symbols would not fix the unbalanced charge.",
           "misconception": "cosmetic rule treated as the error"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Sodium oxide is covalent, so ionic formula rules do not apply",
           "correct": false,
           "explanation": "Sodium oxide is ionic, formed between a metal and a non-metal, so the charge-cancellation method applies fully.",
           "misconception": "bonding type misclassified"
+        },
+        {
+          "key": "D",
+          "text": "The charges do not cancel: two sodium ions are needed for each oxide ion, so the formula is Na2O",
+          "correct": true,
+          "explanation": "One 1+ charge cannot balance one 2- charge; the direct comparison shows the 2- remains, so the sodium count must double.",
+          "misconception": null
         }
       ]
     },
@@ -200,9 +200,6 @@
       "modelAnswer": "Ionic compounds carry no overall charge: the positive and negative charges on their ions cancel exactly.",
       "keywords": [
         "no",
-        "none",
-        "zero",
-        "0",
         "overall",
         "charge",
         "charges",
@@ -224,9 +221,7 @@
       "keywords": [
         "feso4",
         "one",
-        "1",
         "sulfate",
-        "sulphate",
         "2-",
         "2+",
         "cancels",
@@ -246,7 +241,6 @@
       "keywords": [
         "whole",
         "compound",
-        "atoms",
         "atom",
         "charges",
         "charge",
@@ -256,8 +250,7 @@
         "electrons",
         "electron",
         "not",
-        "same",
-        "different"
+        "same"
       ],
       "options": []
     },
@@ -275,9 +268,7 @@
         "three",
         "3",
         "aluminium",
-        "aluminum",
         "oxide",
-        "oxygen",
         "cancels",
         "cancel",
         "6+",
@@ -294,31 +285,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Al3O3",
+          "correct": false,
+          "explanation": "Copying the 3 onto both ions ignores the 2 on oxide; the counts exchange rather than repeat.",
+          "misconception": "count copied instead of swapped"
+        },
+        {
+          "key": "B",
           "text": "Al2O3",
           "correct": true,
           "explanation": "The 3 on aluminium becomes the count of oxide ions, and the 2 on oxide becomes the count of aluminium ions, giving Al2O3.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Al3O2",
           "correct": false,
           "explanation": "Dropping each number onto its own ion skips the swap; the 3 belongs to the oxide count.",
           "misconception": "counts dropped straight down without swapping"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "AlO",
           "correct": false,
           "explanation": "Treating the charges as equal assumes one of each cancels, but a net 1+ charge would remain.",
           "misconception": "unequal charges assumed equal"
-        },
-        {
-          "key": "D",
-          "text": "Al3O3",
-          "correct": false,
-          "explanation": "Copying the 3 onto both ions ignores the 2 on oxide; the counts exchange rather than repeat.",
-          "misconception": "count copied instead of swapped"
         }
       ]
     },
@@ -330,31 +321,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Reduce the ratio to its simplest whole numbers, giving CaS",
-          "correct": true,
-          "explanation": "Equal charges cancel one-to-one, so the dropped counts both divide by two and the formula is CaS.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Keep Ca2S2, since it shows both charges",
-          "correct": false,
-          "explanation": "The formula must state the simplest ratio; Ca2S2 carries the same ratio twice over.",
-          "misconception": "explicit counts preferred over simplest form"
-        },
-        {
-          "key": "C",
           "text": "Swap again to give S2Ca2",
           "correct": false,
           "explanation": "A second swap only reorders the same unsimplified counts and still needs reducing.",
           "misconception": "method reapplied instead of simplifying"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Change the charges to 1+ and 1- before swapping",
           "correct": false,
           "explanation": "The ions genuinely carry 2+ and 2-; it is the written counts, not the charges, that get reduced.",
           "misconception": "charges edited to fit the answer"
+        },
+        {
+          "key": "C",
+          "text": "Reduce the ratio to its simplest whole numbers, giving CaS",
+          "correct": true,
+          "explanation": "Equal charges cancel one-to-one, so the dropped counts both divide by two and the formula is CaS.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Keep Ca2S2, since it shows both charges",
+          "correct": false,
+          "explanation": "The formula must state the simplest ratio; Ca2S2 carries the same ratio twice over.",
+          "misconception": "explicit counts preferred over simplest form"
         }
       ]
     },
@@ -366,31 +357,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Ca(OH)2",
-          "correct": true,
-          "explanation": "The 2+ calcium needs two hydroxide ions, and the whole OH group is bracketed before the 2 is applied.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "CaOH2",
           "correct": false,
           "explanation": "Without brackets the 2 appears to multiply only the hydrogen, distorting the group count.",
           "misconception": "brackets omitted around a doubled complex ion"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Ca2OH",
           "correct": false,
           "explanation": "The counts have been swapped the wrong way; calcium's 2 belongs to the hydroxide count.",
           "misconception": "swap direction reversed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "CaOH",
           "correct": false,
           "explanation": "One hydroxide ion cancels only one of calcium's two positive charges, leaving a net 1+.",
           "misconception": "unequal charges treated as equal"
+        },
+        {
+          "key": "D",
+          "text": "Ca(OH)2",
+          "correct": true,
+          "explanation": "The 2+ calcium needs two hydroxide ions, and the whole OH group is bracketed before the 2 is applied.",
+          "misconception": null
         }
       ]
     },
@@ -438,31 +429,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Iron trichloride, Fe3Cl",
+          "correct": false,
+          "explanation": "Prefix naming is not used for ionic compounds, and the counts sit on the wrong ions.",
+          "misconception": "covalent naming transferred to ionic compounds"
+        },
+        {
+          "key": "B",
           "text": "Iron chloride, FeCl3",
           "correct": true,
           "explanation": "Three 1- chloride ions cancel the 3+ charge, and the metal keeps its name while chlorine becomes chloride.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Iron(III) chlorine, FeCl3",
           "correct": false,
           "explanation": "The non-metal takes the -ide ending in an ionic name; chlorine as a name fragment is reserved for the element itself.",
           "misconception": "naming rule misapplied to the non-metal"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Iron chloride, FeCl",
           "correct": false,
           "explanation": "One chloride leaves two of iron's three charges uncancelled; the counts must come from the charge sizes.",
           "misconception": "one-of-each ratio reused"
-        },
-        {
-          "key": "D",
-          "text": "Iron trichloride, Fe3Cl",
-          "correct": false,
-          "explanation": "Prefix naming is not used for ionic compounds, and the counts sit on the wrong ions.",
-          "misconception": "covalent naming transferred to ionic compounds"
         }
       ]
     },
@@ -520,15 +511,13 @@
         "overcount",
         "reduce",
         "reduced",
-        "reduction",
         "simplest",
         "whole",
         "numbers",
         "ratio",
         "cas",
         "calcium",
-        "sulfide",
-        "sulphide"
+        "sulfide"
       ],
       "options": []
     },

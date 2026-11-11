@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_7Q8M9nVkr2FxCzxd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "3006fe8309703aeb5ddcbb34436e9af7ecb34f5ccb120d4c87adffd9c0eeaa78",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "5615b84b18e44a8e142606af49dab8dcf7f1c82d4ab096bc3665b77c6b2b7cf7",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_7Q8M9nVkr2FxCzxd",
@@ -82,6 +82,10 @@
           "rn_7Q8M9nVkr2FxCzxd::L1::Q7",
           "rn_7Q8M9nVkr2FxCzxd::L1::Q8",
           "rn_7Q8M9nVkr2FxCzxd::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -97,7 +101,7 @@
         "opening": "Because the halogens share the same outer-electron count, their chemistry follows one pattern, which lets you predict how any member of the group behaves. With metals they form ionic metal halide salts, the halide ion carrying a single negative charge. With hydrogen they form hydrogen halides, and the reaction grows less vigorous down the group.",
         "keyPoints": [
           "Halogens react with metals to form ionic metal halide salts.",
-          "The halide ion carries a 1- charge, so the salt formula depends on the metal's valency.",
+          "The halide ion's 1- charge means the salt formula depends on the metal's valency.",
           "Sodium forms NaCl with chlorine, while calcium forms CaBr2 with bromine.",
           "Reactivity decreases down the group, so bromine and iodine react more slowly with metals such as iron.",
           "Fluorine reacts with hydrogen without light, while chlorine needs light or a high temperature."
@@ -134,6 +138,9 @@
           "rn_7Q8M9nVkr2FxCzxd::L2::Q7",
           "rn_7Q8M9nVkr2FxCzxd::L2::Q8",
           "rn_7Q8M9nVkr2FxCzxd::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
         ]
       },
       {
@@ -186,7 +193,8 @@
           "rn_7Q8M9nVkr2FxCzxd::L3::Q7",
           "rn_7Q8M9nVkr2FxCzxd::L3::Q8",
           "rn_7Q8M9nVkr2FxCzxd::L3::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -232,28 +240,34 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b8f3422dce2f-melting-boiling-points-of-the-halogens.png",
         "alt": "Melting & boiling points of the Halogens, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Graph to show the melting and boiling points of Group 7 elements",
-        "caption": "This graph shows the melting and boiling points of the Group 7 halogens",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Trends in physical properties",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "This graph shows the melting and boiling points of the Group 7 halogens"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b725fd20a7ee-states-of-the-halogens.png",
         "alt": "States of the Halogens, IGCE & GCSE Chemistry revision notes",
-        "sourceHeading": "Appearance of Group 7 elements",
-        "caption": "The physical states and colours of chlorine, bromine and iodine at room temperature",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Trends in physical properties",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The physical states and colours of chlorine, bromine and iodine at room temperature"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/294b444066c4-ionic-bonding-e2-80-93-sodium-chloride.png",
         "alt": "Ionic bonding – Sodium Chloride, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Formation of sodium chloride",
-        "caption": "Sodium donates its single outer electron to a chlorine atom and an ionic bond is formed between the positive sodium ion and the negative chloride ion",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Metal halides",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Sodium donates its single outer electron to a chlorine atom and an ionic bond is formed between the positive sodium ion and the negative chloride ion"
       }
     ]
   }

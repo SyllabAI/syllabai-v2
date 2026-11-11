@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_vfmJxw4VQgXKzXF3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1d4d5cc1d90126828ec044d26e9b5de2f3bdb8796780f293118d5c2ccc5221f5",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "33ac3460cf8967d357a5c202a2d785c8466b43a715092a49a98f1e418fe93074",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_vfmJxw4VQgXKzXF3",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Two each, making four shared electrons",
+          "correct": false,
+          "explanation": "Four shared electrons would be a double bond; the single bond between two chlorines shares one pair only.",
+          "misconception": "bond order miscalculated"
+        },
+        {
+          "key": "B",
           "text": "One each",
           "correct": true,
           "explanation": "In a normal covalent bond each atom provides one of the two electrons in the shared pair.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One atom provides both",
           "correct": false,
           "explanation": "Both-atoms-from-one descriptions fit dative bonding, which is beyond this course; the normal bond takes one from each.",
           "misconception": "one-sided contribution assumed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Seven each",
           "correct": false,
           "explanation": "Seven is each chlorine atom's outer electron count; only one electron from each enters the shared pair.",
           "misconception": "outer count confused with contribution"
-        },
-        {
-          "key": "D",
-          "text": "Two each, making four shared electrons",
-          "correct": false,
-          "explanation": "Four shared electrons would be a double bond; the single bond between two chlorines shares one pair only.",
-          "misconception": "bond order miscalculated"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Non-bonding electrons",
-          "correct": true,
-          "explanation": "Outer electrons untouched by the shared pairs keep their own name: non-bonding electrons.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Delocalised electrons",
-          "correct": false,
-          "explanation": "Delocalised describes electrons free to move through a whole structure, as in metals; these stay with their own atom.",
-          "misconception": "metallic term borrowed"
-        },
-        {
-          "key": "C",
           "text": "Free electrons",
           "correct": false,
           "explanation": "The non-bonding electrons remain attached to their atom; they are not free to roam.",
           "misconception": "mobility overestimated"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Inner-shell electrons",
           "correct": false,
           "explanation": "The electrons in question sit on the outer shell; inner shells are not part of the discussion.",
           "misconception": "shell level confused"
+        },
+        {
+          "key": "C",
+          "text": "Non-bonding electrons",
+          "correct": true,
+          "explanation": "Outer electrons untouched by the shared pairs keep their own name: non-bonding electrons.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Delocalised electrons",
+          "correct": false,
+          "explanation": "Delocalised describes electrons free to move through a whole structure, as in metals; these stay with their own atom.",
+          "misconception": "metallic term borrowed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because a large amount of energy is needed to break the attraction holding the shared pair in place",
-          "correct": true,
-          "explanation": "The shared pair is gripped by both nuclei at once, so breaking the bond costs substantial energy.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because the shared electrons move at very high speed",
           "correct": false,
           "explanation": "Speed of the electrons is not the measure of bond strength; the energy needed to break the bond is.",
           "misconception": "kinetic language misapplied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because the atoms involved are always large",
           "correct": false,
           "explanation": "Bond strength does not follow atom size; it follows the strength of the shared-pair attraction.",
           "misconception": "size linked to strength"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because each bond contains two full outer shells",
           "correct": false,
           "explanation": "The outer shells belong to the atoms separately; the bond is the shared pair between them.",
           "misconception": "bond and shells conflated"
+        },
+        {
+          "key": "D",
+          "text": "Because a large amount of energy is needed to break the attraction holding the shared pair in place",
+          "correct": true,
+          "explanation": "The shared pair is gripped by both nuclei at once, so breaking the bond costs substantial energy.",
+          "misconception": null
         }
       ]
     },
@@ -200,8 +200,6 @@
       "modelAnswer": "Non-metal atoms share pairs of electrons to gain full outer shells, instead of forming ions.",
       "keywords": [
         "share",
-        "shares",
-        "sharing",
         "shared",
         "pairs",
         "pair",
@@ -223,7 +221,6 @@
       "modelAnswer": "Outer electrons that take no part in the bond are called non-bonding electrons.",
       "keywords": [
         "non-bonding",
-        "nonbonding",
         "non",
         "bonding",
         "electrons",
@@ -245,7 +242,6 @@
         "shared",
         "pair",
         "strong",
-        "strength",
         "bond",
         "bonds",
         "covalent",
@@ -284,31 +280,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Between the non-bonding electrons of each atom",
+          "correct": false,
+          "explanation": "Non-bonding electrons repel each other; the bond's attraction centres on the shared pair.",
+          "misconception": "lone-pair repulsion mistaken for the bond"
+        },
+        {
+          "key": "B",
           "text": "Between the shared electron pair and the nuclei of both atoms",
           "correct": true,
           "explanation": "The negative pair sits between positive nuclei, and each nucleus attracts it, which holds the bond.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Between the two nuclei directly",
           "correct": false,
           "explanation": "Two positive nuclei would repel each other; the shared negative pair between them is what joins the atoms.",
           "misconception": "nucleus-nucleus attraction imagined"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Between the outer shells of the two atoms",
           "correct": false,
           "explanation": "Shells are regions, not charges; the attraction acts between the shared pair and the nuclei.",
           "misconception": "shells treated as charged objects"
-        },
-        {
-          "key": "D",
-          "text": "Between the non-bonding electrons of each atom",
-          "correct": false,
-          "explanation": "Non-bonding electrons repel each other; the bond's attraction centres on the shared pair.",
-          "misconception": "lone-pair repulsion mistaken for the bond"
         }
       ]
     },
@@ -320,31 +316,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A short straight line between the two atoms, as in H-H",
-          "correct": true,
-          "explanation": "One line stands for one shared electron pair, which is one covalent bond.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "A pair of circles overlapping between the atoms",
-          "correct": false,
-          "explanation": "Overlapping circles belong to shell diagrams; the displayed formula uses a line for the bond.",
-          "misconception": "diagram types mixed"
-        },
-        {
-          "key": "C",
           "text": "An arrow from one atom to the other",
           "correct": false,
           "explanation": "Arrows suggest transfer, which is the ionic picture; covalent bonds share rather than move electrons.",
           "misconception": "transfer arrow drawn"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The formula letters simply written side by side, as in HH",
           "correct": false,
           "explanation": "Side-by-side letters give the formula but show no bond; the line is what marks the shared pair.",
           "misconception": "bond notation omitted"
+        },
+        {
+          "key": "C",
+          "text": "A single straight line joining the two atoms, as in H-H",
+          "correct": true,
+          "explanation": "One line stands for one shared electron pair, which is one covalent bond.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A pair of circles overlapping between the atoms",
+          "correct": false,
+          "explanation": "Overlapping circles belong to shell diagrams; the displayed formula uses a line for the bond.",
+          "misconception": "diagram types mixed"
         }
       ]
     },
@@ -356,31 +352,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the electrons are in a state of constant motion rather than sitting at fixed positions",
-          "correct": true,
-          "explanation": "The shared pair occupies a moving region of space, so a cloud describes it better than a dot.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because the electrons are electrically neutral",
           "correct": false,
           "explanation": "Electrons carry negative charge; the cloud describes their motion, not a lack of charge.",
           "misconception": "charge removed from electrons"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because the cloud belongs to only one nucleus",
           "correct": false,
           "explanation": "The shared pair is attracted by both nuclei at once; that is what makes it a bond.",
           "misconception": "cloud assigned to one atom"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because the electrons leave the bond at intervals",
           "correct": false,
           "explanation": "The shared pair remains the bond; only its position within the region is in motion.",
           "misconception": "bond imagined to switch off"
+        },
+        {
+          "key": "D",
+          "text": "Because the electrons never sit still — they are constantly on the move rather than fixed in place",
+          "correct": true,
+          "explanation": "The shared pair occupies a moving region of space, so a cloud describes it better than a dot.",
+          "misconception": null
         }
       ]
     },
@@ -428,31 +424,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Covalent bonds are always weak and ionic bonds always strong",
+          "correct": false,
+          "explanation": "Covalent bonds are very strong; the weak forces in molecular substances lie between the molecules, not inside them.",
+          "misconception": "bond strength confused with intermolecular strength"
+        },
+        {
+          "key": "B",
           "text": "Covalent bonds share electron pairs and form no ions, while ionic bonds follow from electron transfer",
           "correct": true,
           "explanation": "Sharing without transfer and without ions is the covalent signature; transfer producing ions is the ionic signature.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Covalent bonds transfer electrons while ionic bonds share them",
           "correct": false,
           "explanation": "The two models have been swapped; covalent is the sharing case.",
           "misconception": "definitions swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Both bond types require a metal atom to be present",
           "correct": false,
           "explanation": "Covalent bonding happens between non-metals only; the metal requirement belongs to ionic bonding.",
           "misconception": "metal requirement overgeneralised"
-        },
-        {
-          "key": "D",
-          "text": "Covalent bonds are always weak and ionic bonds always strong",
-          "correct": false,
-          "explanation": "Covalent bonds are very strong; the weak forces in molecular substances lie between the molecules, not inside them.",
-          "misconception": "bond strength confused with intermolecular strength"
         }
       ]
     },
@@ -462,17 +458,15 @@
       "stem": "State how a single covalent bond is drawn in a displayed formula, using hydrogen as the example.",
       "misconceptionClass": "displayed formula recall",
       "kind": "recall",
-      "modelAnswer": "A covalent bond is drawn as a short straight line between the two atoms, such as H-H.",
+      "modelAnswer": "A covalent bond is drawn as one short straight line joining the two atoms, such as H-H.",
       "keywords": [
         "line",
         "straight",
         "short",
         "drawn",
         "draw",
-        "between",
         "atoms",
         "h-h",
-        "hh",
         "displayed",
         "formula"
       ],
@@ -511,10 +505,8 @@
         "clouds",
         "cloud",
         "motion",
-        "moving",
         "move",
         "constant",
-        "constantly",
         "not",
         "fixed",
         "points",
@@ -537,7 +529,6 @@
         "arrangement",
         "similar",
         "stable",
-        "stability",
         "more",
         "outer",
         "shell",

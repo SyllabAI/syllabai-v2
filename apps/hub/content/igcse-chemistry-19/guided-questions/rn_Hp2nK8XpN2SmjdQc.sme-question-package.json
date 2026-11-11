@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_Hp2nK8XpN2SmjdQc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "97d444d093e005036dd4a95093b91d83b00351eadc3db55444d59e761d74bcbc",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "e0fb3a267589483d772d866d3a6de497f9f1a14b2c9f2e2e807f9823b71856e8",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_Hp2nK8XpN2SmjdQc",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The strong attraction between the positive metal ions and the delocalised electrons",
+          "text": "A shared pair of electrons between two atoms",
+          "correct": false,
+          "explanation": "Shared pairs belong to covalent bonding; the metallic bond is collective, not pairwise.",
+          "misconception": "covalent definition reused"
+        },
+        {
+          "key": "B",
+          "text": "The strong electrostatic pull between the metal ions and their sea of delocalised electrons",
           "correct": true,
           "explanation": "The bond names the electrostatic grip between the ion array and the shared electron sea.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The attraction between two positive ions",
           "correct": false,
           "explanation": "Two positive charges repel; the electrons between the ions are the joining party.",
           "misconception": "ion-ion attraction imagined"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The attraction between delocalised electrons and each other",
           "correct": false,
           "explanation": "Like charges repel; the electrons bind to the positive ions, not to one another.",
           "misconception": "electron-electron attraction imagined"
-        },
-        {
-          "key": "D",
-          "text": "A shared pair of electrons between two atoms",
-          "correct": false,
-          "explanation": "Shared pairs belong to covalent bonding; the metallic bond is collective, not pairwise.",
-          "misconception": "covalent definition reused"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Rows of positive ions with delocalised electrons distributed between them",
-          "correct": true,
-          "explanation": "The regular ion array and the free electrons between the rows are the two essential features.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Neutral atoms with all their electrons still attached",
-          "correct": false,
-          "explanation": "The lattice holds ions that have lost their outer electrons, not intact neutral atoms.",
-          "misconception": "neutral atoms drawn"
-        },
-        {
-          "key": "C",
           "text": "Alternating positive and negative ions",
           "correct": false,
           "explanation": "Alternating charges describe ionic lattices; a metal lattice is positive ions only, plus free electrons.",
           "misconception": "ionic lattice pattern transferred"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Molecules of metal joined by lines",
           "correct": false,
           "explanation": "Metals contain no molecules; the diagram shows the ion array and the electron sea.",
           "misconception": "molecular picture applied"
+        },
+        {
+          "key": "C",
+          "text": "Rows of positive ions with delocalised electrons distributed between them",
+          "correct": true,
+          "explanation": "The regular ion array and the free electrons between the rows are the two essential features.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Neutral atoms with all their electrons still attached",
+          "correct": false,
+          "explanation": "The lattice holds ions that have lost their outer electrons, not intact neutral atoms.",
+          "misconception": "neutral atoms drawn"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "In metal alloys, which are mixtures of metals",
-          "correct": true,
-          "explanation": "Alloys keep the same ion-plus-electron-sea structure, so the same bonding applies.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "In ionic compounds dissolved in water",
           "correct": false,
           "explanation": "Dissolved ionic compounds conduct through moving ions, not through metallic bonding.",
           "misconception": "solution conduction confused with bonding"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "In giant covalent structures such as diamond",
           "correct": false,
           "explanation": "Diamond is a covalent network of non-metal atoms with no electron sea.",
           "misconception": "covalent structure misfiled"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Nowhere else; only pure elements can bond metallically",
           "correct": false,
           "explanation": "Mixtures of metals share the same bonding, so alloys are included.",
           "misconception": "alloys excluded wrongly"
+        },
+        {
+          "key": "D",
+          "text": "In metal alloys, which are mixtures of metals",
+          "correct": true,
+          "explanation": "Alloys keep the same ion-plus-electron-sea structure, so the same bonding applies.",
+          "misconception": null
         }
       ]
     },
@@ -200,8 +200,6 @@
       "modelAnswer": "Within the lattice the atoms lose their outer electrons, becoming positive metal ions.",
       "keywords": [
         "lose",
-        "loses",
-        "lost",
         "outer",
         "electrons",
         "electron",
@@ -269,7 +267,6 @@
         "electron",
         "move",
         "freely",
-        "freedom",
         "mobile",
         "carry",
         "carries",
@@ -282,36 +279,36 @@
     {
       "id": "rn_Hp2nK8XpN2SmjdQc::L2::Q1",
       "moduleId": "rn_Hp2nK8XpN2SmjdQc::L2",
-      "stem": "Why do most metals have high melting and boiling points?",
+      "stem": "Why do metals mostly have high melting and boiling points?",
       "misconceptionClass": "melting point reasoning",
       "options": [
         {
           "key": "A",
+          "text": "Melting requires breaking covalent bonds between metal atoms",
+          "correct": false,
+          "explanation": "Metals contain no covalent bonds; the forces are electrostatic between ions and the electron sea.",
+          "misconception": "covalent model reapplied"
+        },
+        {
+          "key": "B",
           "text": "Strong electrostatic forces between the positive ions and the delocalised electrons need lots of energy to overcome",
           "correct": true,
           "explanation": "Melting must loosen the ion-electron grip throughout the giant lattice, and that grip is strong.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Metal atoms are very large and hard to move",
           "correct": false,
           "explanation": "Size is not the cause; the strength of the attractions between ions and electrons is.",
           "misconception": "size blamed for melting point"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The delocalised electrons hold their positions firmly",
           "correct": false,
           "explanation": "The electrons are mobile by definition; the melting point reflects the strong attraction, not electron fixation.",
           "misconception": "electron immobility assumed"
-        },
-        {
-          "key": "D",
-          "text": "Melting requires breaking covalent bonds between metal atoms",
-          "correct": false,
-          "explanation": "Metals contain no covalent bonds; the forces are electrostatic between ions and the electron sea.",
-          "misconception": "covalent model reapplied"
         }
       ]
     },
@@ -323,31 +320,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Delocalised electrons are free to move through the lattice and carry the charge",
-          "correct": true,
-          "explanation": "The mobile electron sea is the charge carrier that lets a current flow through the metal.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The positive ions drift through the solid",
-          "correct": false,
-          "explanation": "The ions stay in their lattice positions; the electrons do the moving in a solid metal.",
-          "misconception": "ion migration in solids assumed"
-        },
-        {
-          "key": "C",
           "text": "Metals are molten at room temperature",
           "correct": false,
           "explanation": "Metals are solid at room temperature and still conduct, which rules the state out as the cause.",
           "misconception": "state confused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Their layers slide, letting charge pass",
           "correct": false,
           "explanation": "Layer sliding explains malleability; conduction is the electron sea's work.",
           "misconception": "malleability mechanism reused"
+        },
+        {
+          "key": "C",
+          "text": "Delocalised electrons are free to move through the lattice and carry the charge",
+          "correct": true,
+          "explanation": "The mobile electron sea is the charge carrier that lets a current flow through the metal.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The positive ions drift through the solid",
+          "correct": false,
+          "explanation": "The ions stay in their lattice positions; the electrons do the moving in a solid metal.",
+          "misconception": "ion migration in solids assumed"
         }
       ]
     },
@@ -359,31 +356,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Their atoms or ions are arranged in layers that can slide over each other when a force is applied",
-          "correct": true,
-          "explanation": "Sliding layers let the metal change shape without fracturing, which is what malleable means.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Their bonds break easily and reform elsewhere",
           "correct": false,
           "explanation": "The bonding persists while layers slide; breaking and reforming is not the model used here.",
           "misconception": "bond-breaking model invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The electron sea pushes the ions into new shapes",
           "correct": false,
           "explanation": "The sea maintains the bonding; reshaping follows from layer sliding under force.",
           "misconception": "electron push imagined"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Metals are soft because their ions carry high charges",
           "correct": false,
           "explanation": "Charge size affects melting point, not the layer-sliding that gives malleability.",
           "misconception": "charge linked to softness"
+        },
+        {
+          "key": "D",
+          "text": "Their ion layers are able to slip past one another whenever a force acts",
+          "correct": true,
+          "explanation": "Sliding layers let the metal change shape without fracturing, which is what malleable means.",
+          "misconception": null
         }
       ]
     },
@@ -431,31 +428,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Conduction comes from ions moving between lattice sites",
+          "correct": false,
+          "explanation": "In a solid metal the ions are fixed; the electrons are the mobile carriers.",
+          "misconception": "carrier misidentified"
+        },
+        {
+          "key": "B",
           "text": "Delocalised electrons give conduction, and layers of ions give malleability",
           "correct": true,
           "explanation": "Each property traces to its own structural feature: mobile electrons for conduction, sliding layers for malleability.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Delocalised electrons give malleability, and layers of ions give conduction",
           "correct": false,
           "explanation": "The two explanations have been swapped between the properties.",
           "misconception": "explanations swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "High melting points come from sliding layers",
           "correct": false,
           "explanation": "Sliding layers explain malleability; the melting point follows from the strong ion-electron attraction.",
           "misconception": "melting point misassigned"
-        },
-        {
-          "key": "D",
-          "text": "Conduction comes from ions moving between lattice sites",
-          "correct": false,
-          "explanation": "In a solid metal the ions are fixed; the electrons are the mobile carriers.",
-          "misconception": "carrier misidentified"
         }
       ]
     },
@@ -465,7 +462,7 @@
       "stem": "State which forces must be broken when a metal melts, and what supplies the energy needed.",
       "misconceptionClass": "metal melting point recall",
       "kind": "recall",
-      "modelAnswer": "Most metals have high melting and boiling points because strong electrostatic forces need lots of energy to break.",
+      "modelAnswer": "Metals mostly have high melting and boiling points because strong electrostatic forces need lots of energy to break.",
       "keywords": [
         "high",
         "melting",
@@ -509,13 +506,10 @@
         "layers",
         "layer",
         "slide",
-        "slides",
-        "sliding",
         "push",
         "hammered",
         "across",
-        "neighbour",
-        "neighbor"
+        "neighbour"
       ],
       "options": []
     },
@@ -531,12 +525,10 @@
         "electrons",
         "electron",
         "carry",
-        "carries",
         "current",
         "charge",
         "move",
         "conduct",
-        "conduction",
         "available"
       ],
       "options": []

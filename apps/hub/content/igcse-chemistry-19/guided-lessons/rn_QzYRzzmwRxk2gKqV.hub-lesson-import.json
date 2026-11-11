@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_QzYRzzmwRxk2gKqV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "751e1dba5d82da937b8491e61d7c9b7b2d9ea84947af84af54b6a86026995959",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "8711c4fad704bf2bec6850ad8b31f5a6b4e57102e51fab9b235a5cf458b14fcb",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_QzYRzzmwRxk2gKqV",
@@ -43,7 +43,7 @@
         ],
         "depthLayers": {
           "low": {
-            "restatement": "Heat alone can split a substance into simpler pieces, and that is what thermal decomposition means. Heat a metal carbonate from the lower half of the reactivity series and it splits into a metal oxide and carbon dioxide gas.",
+            "restatement": "Heat alone can split a substance into simpler pieces, and that is what thermal decomposition means. Heat the carbonate of a metal low in the reactivity series and it splits into a metal oxide and carbon dioxide gas.",
             "analogy": "Like a parcel that springs open when the temperature rises: the contents separate into two clearly different items, a solid and a gas.",
             "examPointer": "Learn the general word pattern metal carbonate giving metal oxide plus carbon dioxide; it writes half the answer for you."
           },
@@ -73,7 +73,8 @@
           "rn_QzYRzzmwRxk2gKqV::L1::Q7",
           "rn_QzYRzzmwRxk2gKqV::L1::Q8",
           "rn_QzYRzzmwRxk2gKqV::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_QzYRzzmwRxk2gKqV::L2",
@@ -174,11 +175,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/14369b6537eb-2-3-4-thermal-decomposition-of-metal-carbonates.png",
         "alt": "Thermal Decomposition of Metal Carbonates, downloadable IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Thermal decomposition of copper(II) carbonate",
-        "caption": "The thermal decomposition of copper(II)carbonate produces copper(II) oxide and carbon dioxide",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The thermal decomposition of copper(II)carbonate produces copper(II) oxide and carbon dioxide"
       }
     ]
   }

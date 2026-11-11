@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_WJD4ZN4kQfzJNSPV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cefbde0ee618b67a47c34ebe30f2a29011d36b4aa4011290aa7d6295f43d37e7",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "e849dc8f2b72c1d6f82a1b48c98df7625eed855988598b7ae9633e4da4b7885f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_WJD4ZN4kQfzJNSPV",
   "subject": "igcse-chemistry",
@@ -14,7 +14,7 @@
     {
       "id": "rn_WJD4ZN4kQfzJNSPV::L1::Q1",
       "moduleId": "rn_WJD4ZN4kQfzJNSPV::L1",
-      "stem": "Why is the volume between the final mark on the burette scale and the tap measured at the start?",
+      "stem": "Why is the volume between the burette's final scale mark and the tap measured at the start?",
       "misconceptionClass": "apparatus reasoning",
       "options": [
         {
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It cleans the iron wool so it reacts cleanly",
+          "correct": false,
+          "explanation": "No cleaning is involved; iron wool is added dry to the closed burette above the water.",
+          "misconception": "preparation step invented"
+        },
+        {
+          "key": "B",
           "text": "It seals the air sample and lets the water level show changes in gas volume",
           "correct": true,
           "explanation": "Water blocks entry or exit of gas while its rising level inside the burette records the lost volume directly.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It cools the iron wool so the reaction stays slow",
           "correct": false,
           "explanation": "The reaction is slow anyway over days; the water's job is sealing and volume display, not temperature control.",
           "misconception": "cooling attributed to the trough"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It dissolves the oxygen out of the air sample",
           "correct": false,
           "explanation": "Dissolved oxygen would spoil the measurement; the sealed air is meant to lose its oxygen to the iron, not the water.",
           "misconception": "oxygen removal mechanism misstated"
-        },
-        {
-          "key": "D",
-          "text": "It cleans the iron wool so it reacts cleanly",
-          "correct": false,
-          "explanation": "No cleaning is involved; iron wool is added dry to the closed burette above the water.",
-          "misconception": "preparation step invented"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the iron oxidises slowly, so the oxygen is only fully used up after several days",
-          "correct": true,
-          "explanation": "Rusting proceeds gradually; reading too early would leave oxygen unreacted and the result short of the true value.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because the water level needs time to settle at the same height everywhere",
-          "correct": false,
-          "explanation": "Levels settle within moments; the wait is for the chemistry, not for the physics of the water.",
-          "misconception": "settling time confused with reaction time"
-        },
-        {
-          "key": "C",
           "text": "Because the burette scale only works after four days",
           "correct": false,
           "explanation": "The scale can be read at any time; the four days belong to the oxidation of the iron.",
           "misconception": "apparatus property invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the tap must be opened daily to release pressure",
           "correct": false,
           "explanation": "The tap stays closed throughout; opening it would break the sealed sample.",
           "misconception": "procedure detail misremembered"
+        },
+        {
+          "key": "C",
+          "text": "Because the iron oxidises slowly, so the oxygen is only fully used up after several days",
+          "correct": true,
+          "explanation": "Rusting proceeds gradually; reading too early would leave oxygen unreacted and the result short of the true value.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because the water level needs time to settle at the same height everywhere",
+          "correct": false,
+          "explanation": "Levels settle within moments; the wait is for the chemistry, not for the physics of the water.",
+          "misconception": "settling time confused with reaction time"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The oxygen share it measures should come out at about one-fifth, matching the approximate 20 percent of oxygen in dry air",
-          "correct": true,
-          "explanation": "The practical is the experimental check on the quoted composition, and its answer is the familiar one-fifth.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It measures the nitrogen share, which is the larger part of air",
           "correct": false,
           "explanation": "Nitrogen never reacts in the burette; only the oxygen is removed and therefore measured.",
           "misconception": "target gas misidentified"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It measures the carbon dioxide share, which is rising year by year",
           "correct": false,
           "explanation": "Carbon dioxide is a trace gas here and is not what the iron consumes; the measurement targets oxygen.",
           "misconception": "trace gas promoted to target"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It proves air is a compound with a fixed formula",
           "correct": false,
           "explanation": "The practical measures a percentage in a mixture; it says nothing about chemical bonding between the gases.",
           "misconception": "mixture misclassified as compound"
+        },
+        {
+          "key": "D",
+          "text": "The oxygen share it measures should come out at about one-fifth, matching the approximate 20 percent of oxygen in dry air",
+          "correct": true,
+          "explanation": "The practical is the experimental check on the quoted composition, and its answer is the familiar one-fifth.",
+          "misconception": null
         }
       ]
     },
@@ -223,7 +223,6 @@
         "3-4",
         "days",
         "level",
-        "levels",
         "recorded",
         "record",
         "read",
@@ -243,14 +242,11 @@
       "keywords": [
         "water",
         "rust",
-        "rusting",
-        "moisture",
         "moisten",
         "moistening",
         "oxygen",
         "react",
         "reaction",
-        "consumes",
         "consume",
         "used"
       ],
@@ -264,7 +260,6 @@
       "kind": "application",
       "modelAnswer": "The closed burette inverted into the trough of water seals the air sample inside so no gas can enter or leave, and the dead volume from the last graduation to the tap is measured by draining 50.0 mL of water, so the whole volume of trapped air is known before the wait begins.",
       "keywords": [
-        "sealed",
         "seal",
         "closed",
         "inverted",
@@ -289,31 +284,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because the iron wool displaces 3.8 mL of air",
+          "correct": false,
+          "explanation": "The 3.8 mL is the measured space between scale and tap, not the iron wool's volume.",
+          "misconception": "quantities misattributed"
+        },
+        {
+          "key": "B",
           "text": "Because the air fills the whole column, including the 3.8 mL beyond the scale, less the 2.6 mL of water already inside",
           "correct": true,
           "explanation": "The starting sample is the air trapped between the water surface and the tap, so both the dead volume and the initial water must be accounted for.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because the burette only measures accurately below 50 mL",
           "correct": false,
           "explanation": "The scale stops at 50 mL but the air continues to the tap; that extra air is real and must be included.",
           "misconception": "scale limit treated as sample limit"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because the 2.6 mL of water adds to the air volume",
           "correct": false,
           "explanation": "Water inside the burette takes up space, so it must be subtracted from, not added to, the air column.",
           "misconception": "correction applied in the wrong direction"
-        },
-        {
-          "key": "D",
-          "text": "Because the iron wool displaces 3.8 mL of air",
-          "correct": false,
-          "explanation": "The 3.8 mL is the measured space between scale and tap, not the iron wool's volume.",
-          "misconception": "quantities misattributed"
         }
       ]
     },
@@ -325,67 +320,67 @@
       "options": [
         {
           "key": "A",
-          "text": "53.8 - 12.7",
-          "correct": true,
-          "explanation": "The whole column of 50.0 plus 3.8 is 53.8 mL, and the risen water now occupies 12.7 mL, leaving 41.1 mL of air.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "50.0 - 12.7",
-          "correct": false,
-          "explanation": "That drops the 3.8 mL dead volume from the column, undercounting the air present at the end.",
-          "misconception": "dead volume dropped from the working"
-        },
-        {
-          "key": "C",
           "text": "51.2 - 12.7",
           "correct": false,
           "explanation": "That mixes the initial net volume with the final water level; the final column starts from the full 53.8 mL.",
           "misconception": "start and end quantities mixed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "12.7 - 2.6",
           "correct": false,
           "explanation": "That is the water's own rise, 10.1 mL, which is the oxygen volume rather than the final air volume.",
           "misconception": "oxygen volume mislabelled as air volume"
+        },
+        {
+          "key": "C",
+          "text": "53.8 - 12.7",
+          "correct": true,
+          "explanation": "The whole column of 50.0 plus 3.8 is 53.8 mL, and the risen water now occupies 12.7 mL, leaving 41.1 mL of air.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "50.0 - 12.7",
+          "correct": false,
+          "explanation": "That drops the 3.8 mL dead volume from the column, undercounting the air present at the end.",
+          "misconception": "dead volume dropped from the working"
         }
       ]
     },
     {
       "id": "rn_WJD4ZN4kQfzJNSPV::L2::Q3",
       "moduleId": "rn_WJD4ZN4kQfzJNSPV::L2",
-      "stem": "What does the difference 51.2 - 41.1 = 10.1 mL represent?",
+      "stem": "What does the volume difference 51.2 - 41.1 = 10.1 mL represent?",
       "misconceptionClass": "quantity interpretation",
       "options": [
         {
           "key": "A",
-          "text": "The volume of oxygen that the iron removed from the sealed air sample",
-          "correct": true,
-          "explanation": "Only the oxygen left the gas phase, so the fall in air volume is exactly the oxygen volume.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The volume of water added to the trough",
           "correct": false,
           "explanation": "The trough water is untouched as a quantity; the 10.1 mL is inside the burette readings.",
           "misconception": "quantity attributed to the wrong vessel"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The volume of nitrogen that reacted with the iron",
           "correct": false,
           "explanation": "Nitrogen does not react here; if it had, the result could not be an oxygen percentage.",
           "misconception": "inert gas given a role"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The error margin of the experiment",
           "correct": false,
           "explanation": "It is the measured oxygen volume itself, the central quantity of the whole practical, not an uncertainty.",
           "misconception": "measurement misread as error"
+        },
+        {
+          "key": "D",
+          "text": "The volume of oxygen that the iron removed from the sealed air sample",
+          "correct": true,
+          "explanation": "Only the oxygen left the gas phase, so the fall in air volume is exactly the oxygen volume.",
+          "misconception": null
         }
       ]
     },
@@ -433,31 +428,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Air contains about 80 percent oxygen by volume",
+          "correct": false,
+          "explanation": "That inverts the composition; 80 percent belongs to nitrogen, and the measurement itself says otherwise.",
+          "misconception": "composition inverted in the conclusion"
+        },
+        {
+          "key": "B",
           "text": "The oxygen takes up approximately 20 percent of the air",
           "correct": true,
           "explanation": "It states the measured result rounded sensibly and connects it to the accepted composition, which is the role of the conclusion.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The iron wool dissolved completely during the week",
           "correct": false,
           "explanation": "The iron rusts rather than dissolves, and the conclusion should state the oxygen percentage, not the iron's fate.",
           "misconception": "irrelevant observation promoted to conclusion"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The experiment failed because the water rose",
           "correct": false,
           "explanation": "The rising water is the experiment working; a failed run would show little or no rise.",
           "misconception": "success misread as failure"
-        },
-        {
-          "key": "D",
-          "text": "Air contains about 80 percent oxygen by volume",
-          "correct": false,
-          "explanation": "That inverts the composition; 80 percent belongs to nitrogen, and the measurement itself says otherwise.",
-          "misconception": "composition inverted in the conclusion"
         }
       ]
     },
@@ -467,7 +462,7 @@
       "stem": "Show how the initial volume of air, 51.2 mL, is built up in this write-up.",
       "misconceptionClass": "initial volume calculation recall",
       "kind": "recall",
-      "modelAnswer": "Initial volume of air = (50.0 + 3.8) - 2.6 = 51.2 mL.",
+      "modelAnswer": "Initial volume of air: 50.0 + 3.8, then minus 2.6, which comes to 51.2 mL.",
       "keywords": [
         "50.0",
         "3.8",
@@ -475,8 +470,7 @@
         "51.2",
         "initial",
         "volume",
-        "air",
-        "dead"
+        "air"
       ],
       "options": []
     },
@@ -491,8 +485,6 @@
         "oxygen",
         "used",
         "use",
-        "consumed",
-        "consumes",
         "volume",
         "iron",
         "air"
@@ -513,7 +505,6 @@
         "20",
         "percent",
         "close",
-        "uncertainty",
         "uncertainties",
         "accepted",
         "evidence"
@@ -535,7 +526,6 @@
         "51.2",
         "40.9",
         "agrees",
-        "agreement",
         "supports",
         "20",
         "yes"

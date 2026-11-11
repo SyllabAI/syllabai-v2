@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_3B8JxsSjJvR9B4fk",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "db193afbac15ad776f1682efd676fab8d2a12db68e12e7629c46ef856e220b24",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "d6f913e8205b43b6ace6865676455957900809f6f1d3c73f772a787dd6e007f6",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_3B8JxsSjJvR9B4fk",
@@ -20,7 +20,7 @@
       },
       {
         "code": "4CH1-2.19",
-        "text": "understand how the rusting of iron may be prevented by: barrier methods; galvanising; sacrificial protection"
+        "text": "understand how the rusting of iron may be prevented by: • barrier methods • galvanising • sacrificial protection."
       }
     ],
     "primer": {
@@ -133,7 +133,8 @@
           "rn_3B8JxsSjJvR9B4fk::L2::Q7",
           "rn_3B8JxsSjJvR9B4fk::L2::Q8",
           "rn_3B8JxsSjJvR9B4fk::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_3B8JxsSjJvR9B4fk::L3",
@@ -185,6 +186,9 @@
           "rn_3B8JxsSjJvR9B4fk::L3::Q7",
           "rn_3B8JxsSjJvR9B4fk::L3::Q8",
           "rn_3B8JxsSjJvR9B4fk::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -232,20 +236,22 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/5cacfed8a0f9-conditions-for-rusting.png",
         "alt": "Investigating the conditions for rusting",
         "sourceHeading": "Investigating rusting",
-        "caption": "Diagram showing how the conditions for rusting can be investigated",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing how the conditions for rusting can be investigated"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a36784424a95-vlerzcau-9-2-4-sacrificial-protection.png",
         "alt": "VleRzCAu_9-2-4-sacrificial-protection",
-        "sourceHeading": "Zinc bars on the side of steel ships",
-        "caption": "Diagram to show the use of zinc bars on the sides of steel ships as a method of sacrificial protection",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Sacrificial Protection",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram to show the use of zinc bars on the sides of steel ships as a method of sacrificial protection"
       }
     ]
   }

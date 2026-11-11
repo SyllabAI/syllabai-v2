@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_N4HX8tqbdhTQcHyS",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "fab15971c100e8b90ff9b4d8593cdc621a6dbc33599e98b6e99321af289eac66",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "6f946aa034ed375c2bc2773d67bc047d2ef1f16e2facad36a1292ff00064026a",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_N4HX8tqbdhTQcHyS",
@@ -73,7 +73,8 @@
           "rn_N4HX8tqbdhTQcHyS::L1::Q7",
           "rn_N4HX8tqbdhTQcHyS::L1::Q8",
           "rn_N4HX8tqbdhTQcHyS::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_N4HX8tqbdhTQcHyS::L2",
@@ -95,14 +96,14 @@
         ],
         "depthLayers": {
           "low": {
-            "restatement": "For Ca(OH)2, the bracket gives two O and two H alongside one Ca, so the total reads (1 x 40) + (2 x 16) + (2 x 1) = 74.",
+            "restatement": "For Ca(OH)2, the bracket doubles the O and the H alongside one Ca, so the total reads (2 x 1) + (2 x 16) + 40 = 74.",
             "analogy": "A bracketed group works like a multipack: (OH)2 buys two packs, each holding one oxygen and one hydrogen, so two of each land in the basket.",
             "examPointer": "Write the atoms-present list before any arithmetic; examiners award the method even when a final total slips."
           },
           "medium": {
-            "restatement": "Ammonium sulfate, (NH4)2SO4, shows the method at full size: two nitrogens, eight hydrogens, one sulfur and four oxygens give (2 x 14) + (8 x 1) + (1 x 32) + (4 x 16) = 132.",
+            "restatement": "Ammonium sulfate, (NH4)2SO4, shows the method at full size: two nitrogens, eight hydrogens, one sulfur and four oxygens give (8 x 1) + (2 x 14) + (4 x 16) + (1 x 32) = 132.",
             "analogy": "Keep the receipt layout: one line per element with its count times its Ar, then a single addition at the bottom - the same discipline as the simple compounds, one row longer.",
-            "examPointer": "Potassium carbonate, K2CO3, is a favourite check: (2 x 39) + (1 x 12) + (3 x 16) = 138, with no brackets at all."
+            "examPointer": "Potassium carbonate, K2CO3, is a favourite check: (3 x 16) + (1 x 12) + (2 x 39) = 138, with no brackets at all."
           }
         },
         "gatePolicy": {
@@ -125,7 +126,8 @@
           "rn_N4HX8tqbdhTQcHyS::L2::Q7",
           "rn_N4HX8tqbdhTQcHyS::L2::Q8",
           "rn_N4HX8tqbdhTQcHyS::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -154,16 +156,6 @@
           "term": "isotopes",
           "definition": "Atoms of the same element with the same number of protons but different numbers of neutrons; their abundances fix the element's relative atomic mass.",
           "firstLesson": 1
-        },
-        {
-          "term": "subscript",
-          "definition": "The small number written after a symbol or bracket, giving how many of that atom the formula contains.",
-          "firstLesson": 2
-        },
-        {
-          "term": "formulae",
-          "definition": "The plural of formula: the written patterns of symbols and subscripts that state what a substance is made of.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {

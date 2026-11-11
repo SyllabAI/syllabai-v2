@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_b3XCzdtfQddbJjVf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "daca9b859fa5c3a91aab5bde5e982d5fd995e0cf4671664aae63fa15bfe9e809",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "e9a992cb94221822231270f79eaa9a053da43b483387318345ed8d40326e55b9",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_b3XCzdtfQddbJjVf",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "There is no fixed pattern",
+          "correct": false,
+          "explanation": "The pattern is as fixed as it gets: plus one every step.",
+          "misconception": "regularity denied"
+        },
+        {
+          "key": "B",
           "text": "Exactly one more",
           "correct": true,
           "explanation": "Adjacent elements differ by a single proton, which is why the order is so regular.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Eight more",
           "correct": false,
           "explanation": "Eight is a period-length idea, not the neighbour-to-neighbour step.",
           "misconception": "period length applied to neighbours"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It doubles",
           "correct": false,
           "explanation": "Doubling would tear through the sequence; the step is one.",
           "misconception": "growth pattern invented"
-        },
-        {
-          "key": "D",
-          "text": "There is no fixed pattern",
-          "correct": false,
-          "explanation": "The pattern is as fixed as it gets: plus one every step.",
-          "misconception": "regularity denied"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "So that elements with similar properties end up in the same columns",
-          "correct": true,
-          "explanation": "The arrangement is functional: chemical families gather vertically.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because atomic numbers are easier to spell",
-          "correct": false,
-          "explanation": "The choice is chemical, not cosmetic.",
-          "misconception": "trivial reason substituted"
-        },
-        {
-          "key": "C",
           "text": "Because proton counts can change during reactions",
           "correct": false,
           "explanation": "Proton counts are fixed; that stability is precisely why they can anchor the table.",
           "misconception": "fingerprint property inverted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "So the table fits neatly on one page",
           "correct": false,
           "explanation": "Page layout has nothing to do with it; property patterns do.",
           "misconception": "layout mistaken for logic"
+        },
+        {
+          "key": "C",
+          "text": "So that elements with similar properties end up in the same columns",
+          "correct": true,
+          "explanation": "The arrangement is functional: chemical families gather vertically.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because atomic numbers are easier to spell",
+          "correct": false,
+          "explanation": "The choice is chemical, not cosmetic.",
+          "misconception": "trivial reason substituted"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The atomic number",
-          "correct": true,
-          "explanation": "Electron changes cannot touch the proton count, so the element keeps its identity.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The electron count",
           "correct": false,
           "explanation": "That is exactly what changed when the electron was gained.",
           "misconception": "the changed quantity missed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The ion's charge",
           "correct": false,
           "explanation": "Gaining an electron alters the charge by definition.",
           "misconception": "charge assumed fixed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "None - gaining an electron makes a new element",
           "correct": false,
           "explanation": "Only a change in proton count makes a new element; electrons merely make ions.",
           "misconception": "electron change read as transmutation"
+        },
+        {
+          "key": "D",
+          "text": "The atomic number",
+          "correct": true,
+          "explanation": "Electron changes cannot touch the proton count, so the element keeps its identity.",
+          "misconception": null
         }
       ]
     },
@@ -200,8 +200,8 @@
       "modelAnswer": "Over 100 elements.",
       "keywords": [
         "100",
-        "hundred",
-        "over"
+        "over",
+        "elements"
       ],
       "options": []
     },
@@ -214,7 +214,8 @@
       "modelAnswer": "The atomic number — it never changes, even in reactions.",
       "keywords": [
         "atomic",
-        "number"
+        "number",
+        "fingerprint"
       ],
       "options": []
     },
@@ -246,8 +247,7 @@
       "keywords": [
         "similar",
         "same",
-        "alike",
-        "comparable"
+        "they"
       ],
       "options": []
     },
@@ -259,31 +259,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Neither direction has a special name",
+          "correct": false,
+          "explanation": "Both directions are named because both carry information.",
+          "misconception": "naming dismissed"
+        },
+        {
+          "key": "B",
           "text": "Periods are rows; groups are columns",
           "correct": true,
           "explanation": "The vocabulary is fixed: periods across, groups down.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Periods are columns; groups are rows",
           "correct": false,
           "explanation": "The two names are swapped; remember groups go down like gravity.",
           "misconception": "row and column labels swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Both rows and columns are called groups",
           "correct": false,
           "explanation": "Only the vertical columns carry the name group.",
           "misconception": "vocabulary collapsed"
-        },
-        {
-          "key": "D",
-          "text": "Neither direction has a special name",
-          "correct": false,
-          "explanation": "Both directions are named because both carry information.",
-          "misconception": "naming dismissed"
         }
       ]
     },
@@ -295,31 +295,31 @@
       "options": [
         {
           "key": "A",
-          "text": "How many shells of electrons it holds",
-          "correct": true,
-          "explanation": "Period 3 atoms have three shells; the row number is the shell count.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "How many electrons are in the outer shell",
-          "correct": false,
-          "explanation": "That is the group number's job, not the period's.",
-          "misconception": "group meaning assigned to period"
-        },
-        {
-          "key": "C",
           "text": "How many protons it has",
           "correct": false,
           "explanation": "Proton count is the atomic number, read from order rather than position name.",
           "misconception": "atomic number conflated with period"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "How many neutrons it has",
           "correct": false,
           "explanation": "Neutrons vary between isotopes and appear nowhere in the position numbers.",
           "misconception": "neutrons drafted in"
+        },
+        {
+          "key": "C",
+          "text": "How many shells of electrons it holds",
+          "correct": true,
+          "explanation": "Period 3 atoms have three shells; the row number is the shell count.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "How many electrons are in the outer shell",
+          "correct": false,
+          "explanation": "That is the group number's job, not the period's.",
+          "misconception": "group meaning assigned to period"
         }
       ]
     },
@@ -331,31 +331,31 @@
       "options": [
         {
           "key": "A",
-          "text": "How many electrons sit in its outermost shell",
-          "correct": true,
-          "explanation": "Group 4 atoms carry four outer electrons; the column is the outer count.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "How many shells it holds",
           "correct": false,
           "explanation": "Shell count comes from the period row, not the group column.",
           "misconception": "period meaning assigned to group"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "How many isotopes the element has",
           "correct": false,
           "explanation": "Isotope counts are properties of samples and discovery, not of position.",
           "misconception": "unrelated property attached"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Its atomic mass",
           "correct": false,
           "explanation": "Atomic mass is a separate number printed in the element's box.",
           "misconception": "box numbers confused"
+        },
+        {
+          "key": "D",
+          "text": "How many electrons sit in its outermost shell",
+          "correct": true,
+          "explanation": "Group 4 atoms carry four outer electrons; the column is the outer count.",
+          "misconception": null
         }
       ]
     },
@@ -403,31 +403,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Period 8, Group 5",
+          "correct": false,
+          "explanation": "Periods run only 1 to 7; three shells means Period 3.",
+          "misconception": "invented period number"
+        },
+        {
+          "key": "B",
           "text": "Period 3, Group 5",
           "correct": true,
           "explanation": "Shell count sets the period, outer-electron count sets the group.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Period 5, Group 3",
           "correct": false,
           "explanation": "The two translations are swapped; shells give the period.",
           "misconception": "translations reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Period 3, Group 0",
           "correct": false,
           "explanation": "Group 0 is the last column's name, not a home for five outer electrons.",
           "misconception": "Group 0 misapplied"
-        },
-        {
-          "key": "D",
-          "text": "Period 8, Group 5",
-          "correct": false,
-          "explanation": "Periods run only 1 to 7; three shells means Period 3.",
-          "misconception": "invented period number"
         }
       ]
     },
@@ -459,8 +459,8 @@
       "modelAnswer": "The final column is named Group 0 instead of Group 8 (groups run 1 to 7).",
       "keywords": [
         "0",
-        "zero",
-        "group"
+        "group",
+        "final"
       ],
       "options": []
     },
@@ -489,7 +489,8 @@
       "modelAnswer": "Five — the group number gives the number of electrons in the outermost shell.",
       "keywords": [
         "five",
-        "5"
+        "5",
+        "electrons"
       ],
       "options": []
     }

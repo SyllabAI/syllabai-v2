@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_BDkhS5vQpRd4hvwf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "49b73866ba12f7bb79543bfad1871d03e2543020ef3fbf3f319c0efb3719a045",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "f347466c654c62067fd5f3ef96a98a5f38a84530acbda48d2b88c76c2a2183ec",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_BDkhS5vQpRd4hvwf",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Nothing else forms",
+          "correct": false,
+          "explanation": "The reaction is a joining that always pays for itself with water.",
+          "misconception": "second product denied"
+        },
+        {
+          "key": "B",
           "text": "Water",
           "correct": true,
           "explanation": "One -H and one -OH leave the reactants as a water molecule for every ester link made.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Hydrogen gas",
           "correct": false,
           "explanation": "Hydrogen belongs to acid-metal reactions, not to esterification.",
           "misconception": "reaction crossed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Carbon dioxide",
           "correct": false,
           "explanation": "No carbonate is present, so no carbon dioxide can form.",
           "misconception": "gas invented"
-        },
-        {
-          "key": "D",
-          "text": "Nothing else forms",
-          "correct": false,
-          "explanation": "The reaction is a joining that always pays for itself with water.",
-          "misconception": "second product denied"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Concentrated sulfuric acid",
-          "correct": true,
-          "explanation": "The strong acid catalyses the joining without being consumed.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Phosphoric acid",
-          "correct": false,
-          "explanation": "Phosphoric acid catalyses ethene hydration, a different process.",
-          "misconception": "catalyst crossed"
-        },
-        {
-          "key": "C",
           "text": "Enzymes from yeast",
           "correct": false,
           "explanation": "Enzymes belong to fermentation, not to ester-making.",
           "misconception": "route crossed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "No catalyst is needed at all",
           "correct": false,
           "explanation": "Without the acid catalyst the reaction is impractically slow.",
           "misconception": "catalyst denied"
+        },
+        {
+          "key": "C",
+          "text": "Concentrated sulfuric acid",
+          "correct": true,
+          "explanation": "The strong acid catalyses the joining without being consumed.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Phosphoric acid",
+          "correct": false,
+          "explanation": "Phosphoric acid catalyses ethene hydration, a different process.",
+          "misconception": "catalyst crossed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A -COO- link sitting between two carbon chains",
-          "correct": true,
-          "explanation": "The R-COO-R arrangement is the ester signature.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "A terminal -COOH group",
           "correct": false,
           "explanation": "That is the carboxylic acid group, the reactant rather than the product.",
           "misconception": "reactant group reused"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "A lone -OH group",
           "correct": false,
           "explanation": "A lone -OH marks an alcohol.",
           "misconception": "alcohol confused"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "A carbon-carbon double bond",
           "correct": false,
           "explanation": "A C=C marks an alkene and plays no part in the ester group.",
           "misconception": "alkene confused"
+        },
+        {
+          "key": "D",
+          "text": "A -COO- link sitting between two carbon chains",
+          "correct": true,
+          "explanation": "The R-COO-R arrangement is the ester signature.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "The reaction is called esterification.",
       "keywords": [
-        "esterification"
+        "esterification",
+        "carboxylic",
+        "reaction"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "A molecule of water is released as the reactants join.",
       "keywords": [
-        "water"
+        "water",
+        "reactants",
+        "molecule"
       ],
       "options": []
     },
@@ -223,7 +227,9 @@
       "kind": "explain-why",
       "modelAnswer": "The CH3CO part comes from the carboxylic acid chain and the C2H5 part comes from the alcohol chain, joined through the ester link.",
       "keywords": [
-        "chain"
+        "chain",
+        "carboxylic",
+        "ch3cooc2h5"
       ],
       "options": []
     },
@@ -235,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "The ester is propyl ethanoate.",
       "keywords": [
-        "propyl"
+        "propyl",
+        "ethanoate",
+        "propanol"
       ],
       "options": []
     },
@@ -247,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Ethyl ethanoate",
+          "correct": false,
+          "explanation": "That ester needs ethanol, one carbon longer than methanol.",
+          "misconception": "chain lengthened"
+        },
+        {
+          "key": "B",
           "text": "Methyl ethanoate",
           "correct": true,
           "explanation": "One-carbon alcohol gives methyl, two-carbon acid gives ethanoate.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Ethyl methanoate",
           "correct": false,
           "explanation": "Both halves are shifted: the reactants are reversed in size.",
           "misconception": "parts reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Methyl methanoate",
           "correct": false,
           "explanation": "The acid half stays ethanoate because ethanoic acid supplies it.",
           "misconception": "acid half misread"
-        },
-        {
-          "key": "D",
-          "text": "Ethyl ethanoate",
-          "correct": false,
-          "explanation": "That ester needs ethanol, one carbon longer than methanol.",
-          "misconception": "chain lengthened"
         }
       ]
     },
@@ -283,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Propanol and methanoic acid",
-          "correct": true,
-          "explanation": "Propyl points to a three-carbon alcohol and methanoate to the one-carbon acid.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Methanol and propanoic acid",
-          "correct": false,
-          "explanation": "That pair would be named methyl propanoate, the mirror mix-up.",
-          "misconception": "parts reversed"
-        },
-        {
-          "key": "C",
           "text": "Ethanol and methanoic acid",
           "correct": false,
           "explanation": "Ethanol lends ethyl, not propyl.",
           "misconception": "chain shortened"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Propanol and propanoic acid",
           "correct": false,
           "explanation": "The acid half would then read propanoate, not methanoate.",
           "misconception": "acid half misread"
+        },
+        {
+          "key": "C",
+          "text": "Propanol and methanoic acid",
+          "correct": true,
+          "explanation": "Propyl points to a three-carbon alcohol and methanoate to the one-carbon acid.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Methanol and propanoic acid",
+          "correct": false,
+          "explanation": "That pair would be named methyl propanoate, the mirror mix-up.",
+          "misconception": "parts reversed"
         }
       ]
     },
@@ -319,38 +327,38 @@
       "options": [
         {
           "key": "A",
-          "text": "They are volatile with distinctive pleasant smells",
-          "correct": true,
-          "explanation": "Easy evaporation carries the scent, and the smells are exactly the sweet kind wanted.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "They are the cheapest liquids available",
           "correct": false,
           "explanation": "Cost is not the stated reason; smell and volatility are.",
           "misconception": "economics blamed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "They are completely unreactive on skin",
           "correct": false,
           "explanation": "Inertness is not the property being exploited in perfumery.",
           "misconception": "property invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "They dissolve metal salts readily",
           "correct": false,
           "explanation": "Solvent power over salts is irrelevant to perfume use.",
           "misconception": "property invented"
+        },
+        {
+          "key": "D",
+          "text": "They are volatile with distinctive pleasant smells",
+          "correct": true,
+          "explanation": "Easy evaporation carries the scent, and the smells are exactly the sweet kind wanted.",
+          "misconception": null
         }
       ]
     },
     {
       "id": "rn_BDkhS5vQpRd4hvwf::L2::Q4",
       "moduleId": "rn_BDkhS5vQpRd4hvwf::L2",
-      "stem": "In the name butyl propanoate, what does the butyl part describe?",
+      "stem": "In the ester name butyl propanoate, what does the butyl part describe?",
       "misconceptionClass": "name anatomy",
       "options": [
         {
@@ -391,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Volatility makes them gases at room temperature",
+          "correct": false,
+          "explanation": "They are described as oily liquids that evaporate easily, not as gases.",
+          "misconception": "phase overstated"
+        },
+        {
+          "key": "B",
           "text": "Their low boiling points let vapours reach the nose readily",
           "correct": true,
           "explanation": "Volatility means easy evaporation, which delivers the scent efficiently.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "They never evaporate at room temperature",
           "correct": false,
           "explanation": "Volatility means precisely that they do evaporate readily.",
           "misconception": "definition reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They only evaporate above 100 degrees",
           "correct": false,
           "explanation": "Esters boil below water in many cases, which is why they smell at all.",
           "misconception": "boiling point inflated"
-        },
-        {
-          "key": "D",
-          "text": "Volatility makes them gases at room temperature",
-          "correct": false,
-          "explanation": "They are described as oily liquids that evaporate easily, not as gases.",
-          "misconception": "phase overstated"
         }
       ]
     },
@@ -427,7 +435,9 @@
       "kind": "recall",
       "modelAnswer": "The ester is pentyl butanoate.",
       "keywords": [
-        "pentyl"
+        "pentyl",
+        "butanoate",
+        "pentanol"
       ],
       "options": []
     },
@@ -439,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "The part from the alcohol always ends in yl.",
       "keywords": [
-        "yl"
+        "yl",
+        "alcohol",
+        "derived"
       ],
       "options": []
     },
@@ -451,7 +463,9 @@
       "kind": "explain-why",
       "modelAnswer": "Esters are volatile liquids with distinctive sweet smells, so the ester itself carries the fruity aroma while the acid and alcohol do not.",
       "keywords": [
-        "volatile"
+        "volatile",
+        "distinctive",
+        "flavouring"
       ],
       "options": []
     },
@@ -463,7 +477,9 @@
       "kind": "application",
       "modelAnswer": "The acid partner is butanoic acid — the butanoate part of the name comes from the carboxylic acid.",
       "keywords": [
-        "butanoic"
+        "butanoic",
+        "contributed",
+        "carboxylic"
       ],
       "options": []
     }

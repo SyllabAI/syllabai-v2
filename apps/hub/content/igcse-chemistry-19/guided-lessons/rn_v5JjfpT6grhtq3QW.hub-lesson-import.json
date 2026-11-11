@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_v5JjfpT6grhtq3QW",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "df1f7a5627b4c149f41afad6467330e90ff0d6b7a9a8fb74478e5c7f8b14cf88",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "72a72bb45311f9b1c3d57e9567a71b8a08b7f3fdf83442130be105d3c50c5071",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_v5JjfpT6grhtq3QW",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-2.47",
-        "text": "describe tests for these cations: NH4+ using sodium hydroxide solution and identifying the gas evolved; Cu2+, Fe2+ and Fe3+ using sodium hydroxide solution"
+        "text": "describe tests for these cations: • NH 4 + using sodium hydroxide solution and identifying the gas evolved • Cu 2+ , Fe 2+ and Fe 3+ using sodium hydroxide solution."
       }
     ],
     "primer": {
@@ -82,7 +82,7 @@
         "id": "rn_v5JjfpT6grhtq3QW::L2",
         "title": "Test for ammonium ion, NH4+",
         "sourceHeadings": [
-          "Test for ammonium ion, NH4+"
+          "Test for ammonium ion, NH<sub>4</sub><sup>+</sup>"
         ],
         "specRefs": [
           "4CH1-2.47"
@@ -127,7 +127,8 @@
           "rn_v5JjfpT6grhtq3QW::L2::Q7",
           "rn_v5JjfpT6grhtq3QW::L2::Q8",
           "rn_v5JjfpT6grhtq3QW::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -174,11 +175,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6e1199d29e25-testing-for-positive-metal-ions.png",
         "alt": "testing-for-positive-metal-ions",
         "sourceHeading": "Testing for metal cations",
-        "caption": "The addition of sodium hydroxide to the metal ions forms precipitates of different colours",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The addition of sodium hydroxide to the metal ions forms precipitates of different colours"
       }
     ]
   }

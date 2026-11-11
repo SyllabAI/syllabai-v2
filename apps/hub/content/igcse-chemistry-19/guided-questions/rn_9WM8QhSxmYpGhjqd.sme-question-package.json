@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_9WM8QhSxmYpGhjqd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "3d08e5844d9aa46e83b02828df657be04a671cc33dc45b9f4b24e8b23948278e",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "ee226d7972f1cd1916884e9589d4901b82661f9853e24387dd09e7d16544818b",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_9WM8QhSxmYpGhjqd",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A metal oxide only",
+          "correct": false,
+          "explanation": "No oxide forms; the metal dissolves into the salt while hydrogen bubbles off.",
+          "misconception": "products invented"
+        },
+        {
+          "key": "B",
           "text": "A salt and hydrogen gas",
           "correct": true,
           "explanation": "This is the general equation of record: metal + acid gives salt + hydrogen.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A salt and water",
           "correct": false,
           "explanation": "Salt plus water is the acid-base pattern; metals give hydrogen instead.",
           "misconception": "base products copied"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A salt, water and carbon dioxide",
           "correct": false,
           "explanation": "That triple belongs to carbonate reactions, not metals.",
           "misconception": "carbonate products copied"
-        },
-        {
-          "key": "D",
-          "text": "A metal oxide only",
-          "correct": false,
-          "explanation": "No oxide forms; the metal dissolves into the salt while hydrogen bubbles off.",
-          "misconception": "products invented"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "They react with acids explosively, which is far too dangerous",
-          "correct": true,
-          "explanation": "Their very high reactivity makes the reaction violent, so safer mid-series metals are used instead.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "They do not react with acids at all",
-          "correct": false,
-          "explanation": "They react far too well; danger, not inertness, excludes them.",
-          "misconception": "reactivity misjudged"
-        },
-        {
-          "key": "C",
           "text": "They are too rare and expensive",
           "correct": false,
           "explanation": "Cost is not the stated reason; the explosive reaction is.",
           "misconception": "economic reason invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "They dissolve without any reaction",
           "correct": false,
           "explanation": "Dissolving metal would itself be reaction; these metals explode instead.",
           "misconception": "observation misdescribed"
+        },
+        {
+          "key": "C",
+          "text": "They react with acids explosively, which is far too dangerous",
+          "correct": true,
+          "explanation": "Their very high reactivity makes the reaction violent, so safer mid-series metals are used instead.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "They do not react with acids at all",
+          "correct": false,
+          "explanation": "They react far too well; danger, not inertness, excludes them.",
+          "misconception": "reactivity misjudged"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Zinc sulfate",
-          "correct": true,
-          "explanation": "Sulfuric acid always stamps sulfate onto the metal's name.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Zinc chloride",
           "correct": false,
           "explanation": "Chlorides come from hydrochloric acid, not sulfuric.",
           "misconception": "acid-salt mapping crossed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Zinc nitrate",
           "correct": false,
           "explanation": "Nitrates come from nitric acid.",
           "misconception": "acid-salt mapping crossed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Zinc carbonate",
           "correct": false,
           "explanation": "Carbonates are not products of acid reactions at all; they are reactants.",
           "misconception": "reaction direction confused"
+        },
+        {
+          "key": "D",
+          "text": "Zinc sulfate",
+          "correct": true,
+          "explanation": "Sulfuric acid always stamps sulfate onto the metal's name.",
+          "misconception": null
         }
       ]
     },
@@ -201,11 +201,9 @@
       "keywords": [
         "above",
         "hydrogen",
-        "higher",
         "series",
         "position",
-        "reactivity",
-        "than"
+        "reactivity"
       ],
       "options": []
     },
@@ -218,9 +216,7 @@
       "modelAnswer": "Sulfuric acid forms sulfate salts, while hydrochloric acid forms chloride salts.",
       "keywords": [
         "sulfate",
-        "sulfates",
         "chloride",
-        "chlorides",
         "salt",
         "salts"
       ],
@@ -237,13 +233,11 @@
         "explosive",
         "explosively",
         "violent",
-        "violently",
         "danger",
         "dangerous",
         "too",
         "reactive",
-        "fast",
-        "hazard"
+        "fast"
       ],
       "options": []
     },
@@ -256,14 +250,12 @@
       "modelAnswer": "Magnesium is the more reactive metal, so its reaction with the acid is the more vigorous: it fizzes faster and releases more heat, while the iron only bubbles slowly.",
       "keywords": [
         "vigorous",
-        "vigorously",
         "faster",
         "fast",
         "more",
         "reactive",
         "reactivity",
         "bubbles",
-        "bubbling",
         "heat",
         "slow",
         "slowly"
@@ -278,31 +270,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Copper metal and steam",
+          "correct": false,
+          "explanation": "The copper stays as ions in the salt; no free metal appears.",
+          "misconception": "products invented"
+        },
+        {
+          "key": "B",
           "text": "A salt and water",
           "correct": true,
           "explanation": "Metal oxides act as bases, so the neutralisation pattern applies: salt plus water, as in CuO + H2SO4 giving CuSO4 + H2O.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A salt and hydrogen",
           "correct": false,
           "explanation": "Hydrogen comes from metals; oxides react through the neutralisation pattern.",
           "misconception": "metal products copied"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A salt, water and carbon dioxide",
           "correct": false,
           "explanation": "Carbon dioxide needs a carbonate; copper(II) oxide contains none.",
           "misconception": "carbonate products copied"
-        },
-        {
-          "key": "D",
-          "text": "Copper metal and steam",
-          "correct": false,
-          "explanation": "The copper stays as ions in the salt; no free metal appears.",
-          "misconception": "products invented"
         }
       ]
     },
@@ -314,31 +306,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A salt, carbon dioxide and water",
-          "correct": true,
-          "explanation": "This triple defines the carbonate family, complete with visible fizzing of the gas.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "A salt and hydrogen",
-          "correct": false,
-          "explanation": "That is the metal family's pair; carbonates release carbon dioxide instead.",
-          "misconception": "metal products copied"
-        },
-        {
-          "key": "C",
           "text": "A salt and water only",
           "correct": false,
           "explanation": "The carbonate adds its third product, the carbon dioxide gas.",
           "misconception": "base products copied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Carbon monoxide and steam",
           "correct": false,
           "explanation": "That belongs to blast-furnace chemistry, not acid-carbonate work.",
           "misconception": "topic crossed"
+        },
+        {
+          "key": "C",
+          "text": "A salt, carbon dioxide and water",
+          "correct": true,
+          "explanation": "This triple defines the carbonate family, complete with visible fizzing of the gas.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A salt and hydrogen",
+          "correct": false,
+          "explanation": "That is the metal family's pair; carbonates release carbon dioxide instead.",
+          "misconception": "metal products copied"
         }
       ]
     },
@@ -350,31 +342,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Metal oxides and metal hydroxides",
-          "correct": true,
-          "explanation": "The note names both families as bases that neutralise acids to salt and water.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Metal carbonates only",
           "correct": false,
           "explanation": "Carbonates do react with acids, but they add carbon dioxide; the base pair named is oxides and hydroxides.",
           "misconception": "families merged"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Reactive metals such as magnesium",
           "correct": false,
           "explanation": "Metals give hydrogen, not the salt-and-water pattern of bases.",
           "misconception": "metal family misfiled"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Other acids",
           "correct": false,
           "explanation": "Acids react with bases; they do not act as them.",
           "misconception": "role reversal"
+        },
+        {
+          "key": "D",
+          "text": "Metal oxides and metal hydroxides",
+          "correct": true,
+          "explanation": "The note names both families as bases that neutralise acids to salt and water.",
+          "misconception": null
         }
       ]
     },
@@ -417,36 +409,36 @@
     {
       "id": "rn_9WM8QhSxmYpGhjqd::L2::Q5",
       "moduleId": "rn_9WM8QhSxmYpGhjqd::L2",
-      "stem": "An unknown solid fizzes vigorously when dilute acid is added. What does this reveal?",
+      "stem": "An unknown solid fizzes vigorously when dilute acid is added. What does the effervescence reveal?",
       "misconceptionClass": "observation diagnosis",
       "options": [
         {
           "key": "A",
+          "text": "The acid is boiling",
+          "correct": false,
+          "explanation": "Dilute acids are not hot; the bubbles are a chemical product, not boiling.",
+          "misconception": "physical explanation substituted"
+        },
+        {
+          "key": "B",
           "text": "The solid is a metal carbonate, releasing carbon dioxide",
           "correct": true,
           "explanation": "Effervescence in an acid reaction is the signature of a carbonate making carbon dioxide gas.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The solid is a metal oxide, releasing hydrogen",
           "correct": false,
           "explanation": "Oxides react quietly to salt and water; the fizz points elsewhere.",
           "misconception": "family misdiagnosed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The solid is a metal, releasing oxygen",
           "correct": false,
           "explanation": "Metals release hydrogen, and only if they are reactive enough; oxygen never appears here.",
           "misconception": "wrong gas assigned"
-        },
-        {
-          "key": "D",
-          "text": "The acid is boiling",
-          "correct": false,
-          "explanation": "Dilute acids are not hot; the bubbles are a chemical product, not boiling.",
-          "misconception": "physical explanation substituted"
         }
       ]
     },
@@ -461,8 +453,7 @@
         "salt",
         "carbon",
         "dioxide",
-        "water",
-        "three"
+        "water"
       ],
       "options": []
     },
