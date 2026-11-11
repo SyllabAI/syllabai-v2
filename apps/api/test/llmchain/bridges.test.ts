@@ -10,7 +10,9 @@
  * carrying the raw text); the JSON-body extraction (first '{' … last '}');
  * UUID mark-point validation (a malformed id is a bad CANDIDATE, never an
  * HTTP 400); the completion-budget formula (800 + 400/mark, caps 4k/8k); the
- * temperature 0.1 + reasoning-effort LOW request contract.
+ * temperature 0.1 + reasoning-effort LOW request contract; the toolkit
+ * generate contract (temp 0.5 + reasoning MEDIUM + 8000 + allowance,
+ * T-REASON-WALL-2 — LOW lazily truncates the big JSON contracts).
  */
 import { describe, expect, test } from "bun:test";
 import { FailoverLlmChain, buildLlmChain } from "../../src/services/llmchain";
@@ -18,6 +20,8 @@ import {
   chainAsCandidateGenerator,
   chainAsFeedbackLlm,
   chainAsLlmProvider,
+  chainAsToolkitGenerator,
+  ToolkitGenerationError,
   chainAsTranscriptionProvider,
   completionBudget,
   batchCompletionBudget,
@@ -414,6 +418,61 @@ describe("chainAsCandidateGenerator — the LlmMarkingCandidateGenerator port", 
       expect.unreachable();
     } catch (e) {
       expect((e as CandidateGenerationError).reason).toBe("PROVIDER_UNAVAILABLE");
+    }
+  });
+});
+
+describe("chainAsToolkitGenerator — the teaching-toolkit generation port", () => {
+  const TOOLKIT_DOC = JSON.stringify({
+    metadata: { subject: "Chemistry", marksPerCriterion: 8 },
+    overview: { criteriaAssessed: 3 },
+    rubric: { criteria: [] },
+    moderationGuidance: ["align on observable verbs", "calibrate against the top band first"],
+  });
+
+  test("the toolkit generate contract: temp 0.5 + reasoning MEDIUM + budget 8000 + allowance (T-REASON-WALL-2: LOW lazily truncates the big JSON contracts — finish=stop, parse FAIL 'Expected }' — the deterministic 502 wall)", async () => {
+    const { chain, calls } = groqChain({
+      choices: [{ finish_reason: "stop", message: { content: TOOLKIT_DOC } }],
+    });
+    const gen = chainAsToolkitGenerator(chain);
+    const out = await gen.generate("SYSTEM PROMPT", "Generate the document now.");
+    expect(out.model).toBe("groq-model");
+    expect(out.providerName).toBe("groq");
+    expect((out.root as Record<string, unknown>).metadata).toBeTruthy();
+    const body = JSON.parse(String(calls[0]!.init.body)) as Record<string, unknown>;
+    expect(body.temperature).toBe(0.5);
+    expect(body.reasoning_effort).toBe("medium");
+    // 8000 content + the reasoning completion allowance (T-REASON-WALL-1)
+    expect(body.max_tokens).toBe(8000 + REASONING_COMPLETION_ALLOWANCE);
+    const system = (body.messages as Array<{ role: string; content: string }>)[0]!.content;
+    expect(system).toBe("SYSTEM PROMPT");
+    const user = (body.messages as Array<{ role: string; content: string }>)[1]!.content;
+    expect(user).toBe("Generate the document now.");
+  });
+
+  test("a brace-less raw text refuses UNPARSEABLE_OUTPUT before the zod wall (the lazy-truncation wall class, model=null on the FAILED row)", async () => {
+    const { chain } = groqChain({
+      choices: [{ finish_reason: "stop", message: { content: "no object here" } }],
+    });
+    try {
+      await chainAsToolkitGenerator(chain).generate("S", "U");
+      expect.unreachable();
+    } catch (e) {
+      expect(e).toBeInstanceOf(ToolkitGenerationError);
+      expect((e as ToolkitGenerationError).reason).toBe("UNPARSEABLE_OUTPUT");
+    }
+  });
+
+  test("unavailable chain → PROVIDER_UNAVAILABLE refusal", async () => {
+    const generator = chainAsToolkitGenerator(
+      buildLlmChain({}, { now: () => new Date(0), utcDay: () => "2026-11-12" }),
+    );
+    try {
+      await generator.generate("S", "U");
+      expect.unreachable();
+    } catch (e) {
+      expect(e).toBeInstanceOf(ToolkitGenerationError);
+      expect((e as ToolkitGenerationError).reason).toBe("PROVIDER_UNAVAILABLE");
     }
   });
 });
