@@ -1,0 +1,1080 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "igcse-further-maths-19",
+ "qual": "IGCSE Further Pure Mathematics (Edexcel)",
+ "source": {
+  "provider": "cognito (Cognito Edu YouTube channel)",
+  "label": "igcse-further-maths-19",
+  "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/announcement/non-teaching uploads excluded)",
+  "enumeratedUtc": "2026-11-10T03:03:19Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-further-maths-19)",
+  "ruledUtc": "2026-11-11T14:41:20Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "Checked every mapping row of the 34-row draft against the igcse-further-maths-19 (4PM1) spine, per (video,spec). Kept the low rows whose partial support names a clause genuinely in the spec (index rules for 1B's indices half, linear-only solving for 3D 'Simple inequalities, linear and quadratic', cubic/reciprocal for 4A's halves, parallel/perpendicular for 8E's halves, resultants for 7A addition, SOH CAH TOA for 10B's three-basic-ratios head). Rejected 3 spec-level bindings where the evidence concedes the spec's distinctive content is not title-evidenced: sequence-classification off 5B series, degree-measure arc/sector off 10A radian measure, and basic 2D Pythagoras off 10C's 2D/3D applied-problems frame.",
+  "rowsApproved": 31,
+  "rowsRejected": 3,
+  "rejects": [
+   {
+    "lessonRef": null,
+    "video": "871OBfK5o2M",
+    "spec": "5B",
+    "reason": "'Types of Number Sequences - Arithmetic vs Geometric' names sequence-type recognition; 5B is 'Arithmetic and geometric series' — nth-term and sum-of-terms formulae — and the evidence itself concedes 'series sums not named'. Same 'arithmetic/geometric' words, different topic (sequence classification vs series summation); keyword-adjacent, rejected at low. (The same title is correctly kept in the additional-maths lane against 12.3.1, whose distinctive content IS progression recognition.)"
+   },
+   {
+    "lessonRef": null,
+    "video": "Wcv0f5PpTv0",
+    "spec": "10A",
+    "reason": "'Area of a Sector and Length of an Arc of a Circle (Circles Part 3)' is the degree-measure GCSE treatment; 10A's distinctive content is 'Radian measure, including use for arc length and area of sector' — the radian clause is the head of this spec point and the evidence concedes 'radian measure not named'. Degree-based arc/sector work is not title-evidenced for a radian-measure spec; rejected at low."
+   },
+   {
+    "lessonRef": null,
+    "video": "CnHgqfBSgco",
+    "spec": "10C",
+    "reason": "'Pythagoras' Theorem And How To Use It' is the basic right-triangle theorem lesson; 10C is 'Applications to simple problems in two or three dimensions (including angles between a line and a plane and between two planes)' — the evidence concedes the 3D plane-angle clause is not named and offers only generic 2D use. Title names a tool, not the spec's applied-problems frame; keyword-adjacent, rejected at low."
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "ZLlwb4syPx4",
+   "title": "GCSE Maths - Introduction to Powers/Indices & 3 Basic Rules (Powers Part 1/6) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ZLlwb4syPx4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 208,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:14Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tHCM6qNdVSc",
+   "title": "GCSE Maths - How to Multiply and Divide Numbers With Powers (Powers Part 2/6) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=tHCM6qNdVSc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 393,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:14Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "83K4uW50HRU",
+   "title": "GCSE Maths - How to Raise One Power to Another Power (Powers Part 3/6) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=83K4uW50HRU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 278,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:14Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wzAotwNPhm8",
+   "title": "GCSE Maths - What on Earth are Surds??? And How do You Simplify Them? (Part 1/3) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=wzAotwNPhm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 337,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ApPCgZWxzro",
+   "title": "GCSE Maths - Surd Rules and Simplifying Expressions Containing Surds (Part 2/3) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ApPCgZWxzro",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 471,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-5Z0xfYr0yE",
+   "title": "GCSE Maths - How to Rationalise the Denominator of a Surd (Part 3/3) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-5Z0xfYr0yE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 328,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3kE_Q-JdlO4",
+   "title": "GCSE Maths - Factorising Quadratics - Part 1 - (When the x² Coefficient is 1) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=3kE_Q-JdlO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 384,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nfLb8MPO99U",
+   "title": "GCSE Maths - Factorising Quadratics - Part 2 - (When the x² Coefficient is More Than 1)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=nfLb8MPO99U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 462,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JmyBxpYPIS0",
+   "title": "GCSE Maths - What is Difference of Two Squares (DOTS) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=JmyBxpYPIS0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 377,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Dvo1Q-yBBhk",
+   "title": "GCSE Maths - How to Expand Double Brackets (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Dvo1Q-yBBhk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 280,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ov3r4hXBU98",
+   "title": "GCSE Maths - How to Factorise Quadratics by Completing the Square (Part 1 - Factorise When a=1)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ov3r4hXBU98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 314,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "maejPmUzqpM",
+   "title": "GCSE Maths - Solving Quadratics Using the Quadratic Formula (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=maejPmUzqpM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 327,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qaF2CTijjJQ",
+   "title": "GCSE Maths - How to Solve a Quadratic by Completing the Square (Part 2 - Solve When a=1)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=qaF2CTijjJQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 217,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "e_tY6X5PwWw",
+   "title": "GCSE Maths - What are Inequalities? (Inequalities Part 1) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=e_tY6X5PwWw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 331,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "u-YNzmlZWeg",
+   "title": "GCSE Maths - Solving Algebraic Inequalities with 1 Inequality Sign (Inequalities Part 2)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=u-YNzmlZWeg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L_AfY1Bqosk",
+   "title": "GCSE Maths - Solving Algebraic Inequalities with 2 Inequality Signs (Inequalities Part 3)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=L_AfY1Bqosk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 273,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "b9ODSx3RJAE",
+   "title": "GCSE Maths - Solving Inequalities by Plotting them on a Graph (Inequalities Part 4) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=b9ODSx3RJAE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wCA1VskgTag",
+   "title": "GCSE Maths - What are Cubic Graphs & How to Plot Them (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=wCA1VskgTag",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1xmdZ2Wqznc",
+   "title": "GCSE Maths - What are Reciprocal Graphs? (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=1xmdZ2Wqznc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 283,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3G8uFHEdqH0",
+   "title": "GCSE Maths - How to Solve Simultaneous Equations Using Graphs (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=3G8uFHEdqH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 154,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "871OBfK5o2M",
+   "title": "GCSE Maths - Types of Number Sequences - Arithmetic vs Geometric (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=871OBfK5o2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 353,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ry5-WEiTUs4",
+   "title": "GCSE Physics - Resolving Vectors & Scale Drawing | How to Find Resultant Forces (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Ry5-WEiTUs4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 280,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KBKtpSX-NMk",
+   "title": "GCSE Maths - Using Ratios to Find the Coordinates of a Point On a Line (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=KBKtpSX-NMk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 435,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T0g6M0YlXvk",
+   "title": "GCSE Maths - How to Find the Gradient Using the Coordinates of Two Points (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=T0g6M0YlXvk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 291,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zVSq5b3PPfY",
+   "title": "GCSE Maths - How to Find the Gradient of a Straight Line (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=zVSq5b3PPfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 408,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ys0Dxj-jKTk",
+   "title": "GCSE Maths - How to Find the Equation of a Straight Line (y = mx + c) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ys0Dxj-jKTk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 268,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nUk47WSiS30",
+   "title": "GCSE Maths - What on Earth is y = mx + c (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=nUk47WSiS30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 293,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UdHaBsfatxc",
+   "title": "GCSE Maths - Finding the Equation of a Straight Line From 2 Sets of Coordinates (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=UdHaBsfatxc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 367,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4w4RbiHvwuk",
+   "title": "GCSE Maths - Straight Line Equations You Need to Know (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=4w4RbiHvwuk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 202,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0SD0z2VMS7M",
+   "title": "GCSE Maths - Parallel Lines (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=0SD0z2VMS7M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 304,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tXxIwT6ZSwQ",
+   "title": "GCSE Maths - Perpendicular Lines (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=tXxIwT6ZSwQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 320,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Wcv0f5PpTv0",
+   "title": "GCSE Maths - Area of a Sector and Length of an Arc of a Circle  (Circles Part 3) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Wcv0f5PpTv0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 339,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WFH_7n7hpHo",
+   "title": "Trigonometry | SOH CAH TOA | Sin, Cos, Tan",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=WFH_7n7hpHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 494,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CnHgqfBSgco",
+   "title": "GCSE Maths - Pythagoras' Theorem And How To Use It (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=CnHgqfBSgco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 391,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "ZLlwb4syPx4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1B"
+   ],
+   "confidence": "low",
+   "evidence": "title names index rules (logarithms/change-of-base clause not title-evidenced)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "tHCM6qNdVSc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1B"
+   ],
+   "confidence": "low",
+   "evidence": "title names multiplying and dividing with powers (indices half of the spec only)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "83K4uW50HRU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1B"
+   ],
+   "confidence": "low",
+   "evidence": "title names raising one power to another (indices half of the spec only)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "wzAotwNPhm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names surds and how to simplify them",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "ApPCgZWxzro",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names surd rules and simplifying expressions containing surds",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "-5Z0xfYr0yE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names rationalising the denominator of a surd",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "3kE_Q-JdlO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names factorising quadratics when the x² coefficient is 1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "nfLb8MPO99U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names factorising quadratics when the x² coefficient is more than 1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "JmyBxpYPIS0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the difference of two squares",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "Dvo1Q-yBBhk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names expanding double brackets",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "ov3r4hXBU98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names completing the square for quadratic expressions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "maejPmUzqpM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names solving quadratics using the quadratic formula — roots of a quadratic equation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "qaF2CTijjJQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names solving a quadratic by completing the square — roots of a quadratic equation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "e_tY6X5PwWw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3D"
+   ],
+   "confidence": "low",
+   "evidence": "title names what inequalities are (GCSE linear scope; quadratic inequalities not named)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "u-YNzmlZWeg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3D"
+   ],
+   "confidence": "low",
+   "evidence": "title names solving algebraic inequalities with 1 inequality sign (linear only)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "L_AfY1Bqosk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3D"
+   ],
+   "confidence": "low",
+   "evidence": "title names solving algebraic inequalities with 2 inequality signs (linear only)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "b9ODSx3RJAE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names solving inequalities by plotting them on a graph — graphical representation of inequalities",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "wCA1VskgTag",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4A"
+   ],
+   "confidence": "low",
+   "evidence": "title names cubic graphs (polynomial graphs; rational linear denominators not named)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "1xmdZ2Wqznc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4A"
+   ],
+   "confidence": "low",
+   "evidence": "title names reciprocal graphs — rational functions with linear denominators",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "3G8uFHEdqH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4B"
+   ],
+   "confidence": "low",
+   "evidence": "title names solving simultaneous equations using graphs (graphical method named; transcendental functions not)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "Ry5-WEiTUs4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7A"
+   ],
+   "confidence": "low",
+   "evidence": "title names resolving vectors and finding resultants — vector addition (physics-branded support)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "KBKtpSX-NMk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names using ratios to find the coordinates of a point on a line — a point dividing a line in a given ratio",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "T0g6M0YlXvk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names finding the gradient using the coordinates of two points",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "zVSq5b3PPfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names finding the gradient of a straight line",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "ys0Dxj-jKTk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names finding the equation of a straight line (y = mx + c)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "nUk47WSiS30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names y = mx + c — the straight line and its equation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "UdHaBsfatxc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names finding the equation of a straight line from 2 sets of coordinates",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "4w4RbiHvwuk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names straight line equations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "0SD0z2VMS7M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8E"
+   ],
+   "confidence": "low",
+   "evidence": "title names parallel lines (parallel condition partially evidenced)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "tXxIwT6ZSwQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8E"
+   ],
+   "confidence": "low",
+   "evidence": "title names perpendicular lines (perpendicular condition partially evidenced)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "WFH_7n7hpHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10B"
+   ],
+   "confidence": "low",
+   "evidence": "title names SOH CAH TOA — sin, cos, tan (acute-angle ratios; any-magnitude/graphs clause not named)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 43,
+  "specPointsMapped": 15,
+  "specPointsUnmapped": 28,
+  "videosTotal": 34,
+  "videosMapped": 31,
+  "videosUnmapped": 3,
+  "mappingRows": 31,
+  "byConfidence": {
+   "high": 0,
+   "medium": 18,
+   "low": 13
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/igcse-further-maths-19.json",
+   "sha256": "5156806c979ad0ca28d47d93dc736058bd778dfbc8403d5aec6609a662f08ea4"
+  },
+  "draft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-further-maths-19/video-map.draft.external.json",
+   "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-further-maths-19)",
+   "reviewAppliedUtc": "2026-11-11T14:41:20Z"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.050Z"
+}
