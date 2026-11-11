@@ -447,3 +447,83 @@ export function sortSessionsNewestFirst<
     (a, b) => b.year - a.year || b.session.localeCompare(a.session),
   );
 }
+
+/**
+ * T-GB-GRADE-CARD: the "how this qualification is graded" payload for the
+ * 16 modular IGCSE pages (aggregate-ums mode). Every field the card renders
+ * comes from the calculator block the resources lanes transcribed from the
+ * modular specifications; a course missing any required field yields null
+ * (absent stays absent — the card only appears where the law is known).
+ * Grade maps order 9→1 (descending grade, the ladder the tables print).
+ */
+export type QualificationGradingInfo = {
+  cashIn: string;
+  units: Array<{
+    code: string;
+    umsMax: number;
+    thresholds: Array<{ grade: string; ums: number }>;
+  }>;
+  umsMax: number;
+  thresholds: Array<{ grade: string; ums: number }>;
+  resitRule: string;
+  topGradeNote?: string;
+};
+
+export function describeAggregateQualification(
+  calc:
+    | {
+        mode: string;
+        cashIn?: string;
+        required?: string[];
+        umsMax?: number;
+        unitUmsMax?: Record<string, number>;
+        gradeThresholds?: Record<string, number>;
+        unitGradeTables?: Record<string, Record<string, number>>;
+        resitRule?: string;
+        aStar?: { overallMin: number; note?: string };
+      }
+    | null
+    | undefined,
+): QualificationGradingInfo | null {
+  if (!calc || calc.mode !== "aggregate-ums") return null;
+  if (!calc.cashIn || !calc.required?.length || calc.umsMax === undefined) {
+    return null;
+  }
+  if (!calc.unitUmsMax || !calc.gradeThresholds || !calc.resitRule) {
+    return null;
+  }
+
+  const orderThresholds = (t: Record<string, number>) =>
+    // grades are "9".."1" on single ladders and "9-9".."1-1" on the
+    // double-award paired ladder — order by the numeric parts descending
+    // (tuple compare handles both shapes without assuming either)
+    Object.entries(t)
+      .sort((a, b) => {
+        const pa = a[0].split("-").map(Number);
+        const pb = b[0].split("-").map(Number);
+        for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+          const d = (pb[i] ?? 0) - (pa[i] ?? 0);
+          if (d !== 0) return d;
+        }
+        return 0;
+      })
+      .map(([grade, ums]) => ({ grade, ums }));
+
+  const units = calc.required.map((code) => ({
+    code,
+    umsMax: calc.unitUmsMax![code],
+    thresholds: calc.unitGradeTables?.[code]
+      ? orderThresholds(calc.unitGradeTables[code])
+      : [],
+  }));
+  if (units.some((u) => u.umsMax === undefined)) return null;
+
+  return {
+    cashIn: calc.cashIn,
+    units,
+    umsMax: calc.umsMax,
+    thresholds: orderThresholds(calc.gradeThresholds),
+    resitRule: calc.resitRule,
+    ...(calc.aStar?.note ? { topGradeNote: calc.aStar.note } : {}),
+  };
+}
