@@ -1,0 +1,179 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "igcse-biology-modular-24-unit-1",
+ "qual": "IGCSE",
+ "source": {
+  "provider": "inherited (multi (freesciencelessons, malmesbury-education, amoeba-sisters, cognito-ks3))",
+  "label": "igcse-biology-modular-24-unit-1",
+  "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of igcse-biology-19; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
+  "enumeratedUtc": "2026-10-31T19:19:49Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (inheritance lane)",
+  "ruledUtc": "2026-11-10T23:00:00Z",
+  "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+  "rowsApproved": 3,
+  "rowsRejected": 0,
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "inherited-external (from igcse-biology-19)",
+    "task": "T-VIDEOMAP-P4 (inheritance lane)",
+    "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-10T23:00:00Z",
+    "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+    "rowsApproved": 3,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ],
+  "selfReviewNote": "Inherited rows derive deterministically from owner-approved parent rows; the containment map is committed and spot-checked (owner chat 2026-11-09 'approve and review yourself'). The parent lanes carry the title-only evidence rulings; below-threshold child specs stay honestly unmapped."
+ },
+ "videos": [
+  {
+   "id": "1Dx7LDwINLU",
+   "title": "Biomolecules (Updated 2023)",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=1Dx7LDwINLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 469,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "ALFE2tNIY5c",
+   "title": "Dehydration Synthesis and Hydrolysis",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 368,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "UrTchvRUMW0",
+   "title": "KS3 Biology - Exercise, Smoking & Asthma",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=UrTchvRUMW0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel, KS3 tier — below IGCSE level",
+   "durationS": 300,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "1Dx7LDwINLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Biomolecules' = elements/structure of carbohydrates, proteins, lipids (2.7); per-molecule element lists title-only; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Dehydration Synthesis and Hydrolysis' = large molecules built from smaller units (2.8); monomer-per-polymer naming title-only; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "UrTchvRUMW0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.49"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito's own channel, KS3 tier: title names Smoking = 2.49 topic, but video is below IGCSE level; lungs/circulatory clause detail unverified; only smoking candidate found (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 54,
+  "specPointsMapped": 3,
+  "specPointsUnmapped": 51,
+  "videosTotal": 3,
+  "videosMapped": 3,
+  "videosUnmapped": 0,
+  "mappingRows": 3,
+  "byConfidence": {
+   "high": 0,
+   "medium": 2,
+   "low": 1
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/igcse-biology-modular-24-unit-1.json",
+   "sha256": "f6b148874072e053462df88d1dbce540263196a056c22142c50baee83642cf9b"
+  },
+  "inheritanceMap": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/_p4/inheritance-map.json",
+   "task": "T-VIDEOMAP-P4 (inheritance lane)",
+   "reviewAppliedUtc": "2026-11-10T23:00:00Z"
+  },
+  "parentDraft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "course": "igcse-biology-19",
+   "paths": [
+    "Videos/drafts/igcse-biology-19/video-map.draft.external.json"
+   ],
+   "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.099Z"
+}

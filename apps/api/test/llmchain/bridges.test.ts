@@ -24,7 +24,11 @@ import {
   isTruncationFinish,
   resolveMarks,
 } from "../../src/services/llmchain";
-import { OpenAiCompatibleChainMember, GeminiChainMember } from "../../src/services/llmchain/adapters";
+import {
+  OpenAiCompatibleChainMember,
+  GeminiChainMember,
+  REASONING_COMPLETION_ALLOWANCE,
+} from "../../src/services/llmchain/adapters";
 import { CandidateGenerationError } from "../../src/services/smartmark";
 import type { MarkingContext, MarkingPoint } from "../../src/services/smartmark";
 
@@ -222,8 +226,9 @@ describe("chainAsCandidateGenerator — the LlmMarkingCandidateGenerator port", 
     const body = JSON.parse(String(calls[0]!.init.body)) as Record<string, unknown>;
     expect(body.temperature).toBe(0.1);
     expect(body.reasoning_effort).toBe("low");
-    // 800 + 400 * 3 marks = 2000
-    expect(body.max_tokens).toBe(2000);
+    // 800 + 400 * 3 marks = 2000 content + the reasoning completion allowance
+    // (reasoning tokens count against the wire cap — T-REASON-WALL-1)
+    expect(body.max_tokens).toBe(2000 + REASONING_COMPLETION_ALLOWANCE);
     const system = (body.messages as Array<{ role: string; content: string }>)[0]!.content;
     expect(system).toContain("Respond with ONLY a JSON object");
     expect(system).toContain("sub-point INDEPENDENTLY");
@@ -346,8 +351,9 @@ describe("chainAsCandidateGenerator — the LlmMarkingCandidateGenerator port", 
     expect(candidates[1]!.allocations[0]!.marksAwarded).toBe(0);
     expect(candidates[1]!.allocations[0]!.awarded).toBe(false);
     const body = JSON.parse(String(calls[0]!.init.body)) as Record<string, unknown>;
-    // batch budget: 800 + 400 * (3 + 1 marks) = 2400 — under the 8000 cap
-    expect(body.max_tokens).toBe(2400);
+    // batch budget: 800 + 400 * (3 + 1 marks) = 2400 content — under the 8000
+    // cap — plus the reasoning completion allowance (T-REASON-WALL-1)
+    expect(body.max_tokens).toBe(2400 + REASONING_COMPLETION_ALLOWANCE);
     const user = (body.messages as Array<{ role: string; content: string }>)[1]!.content;
     expect(user).toContain("STRUCTURED ATTEMPT: 2");
     expect(user).toContain("===== PART 1 of 2");

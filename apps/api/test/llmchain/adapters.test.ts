@@ -11,8 +11,10 @@
  *     failures reset); recordFailure classified (AUTHENTICATION_FAILURE
  *     cools down to the end of the UTC day);
  *   - OpenAI-compatible wire shape: POST {baseUrl}/chat/completions, Bearer
- *     key, model = request.model > configured default, temperature/max_tokens
- *     ride only when present, reasoning_effort carries the §26 knob;
+ *     key, model = request.model > configured default, temperature rides only
+ *     when present, max_tokens = maxTokens + the reasoning completion
+ *     allowance (the content budget cannot be eaten by the reasoning
+ *     channel), reasoning_effort carries the §26 knob;
  *   - Gemini wire shape: POST v1beta models/{model}:generateContent with
  *     x-goog-api-key, systemInstruction, generationConfig.maxOutputTokens
  *     ("GenAI names the cap differently"), media as inlineData (the
@@ -24,6 +26,7 @@ import { describe, expect, test } from "bun:test";
 import {
   GeminiChainMember,
   OpenAiCompatibleChainMember,
+  REASONING_COMPLETION_ALLOWANCE,
   classifyHttpStatus,
   classifyTransportError,
   type MemberOpts,
@@ -132,7 +135,9 @@ describe("OpenAiCompatibleChainMember — the SpringAiChatModelAdapter wire law"
       { role: "user", content: "USER" },
     ]);
     expect(body.temperature).toBe(0.2);
-    expect(body.max_tokens).toBe(900);
+    // the content budget of record + the reasoning completion allowance —
+    // the wire cap can never be eaten inside the reasoning channel (#706 class)
+    expect(body.max_tokens).toBe(900 + REASONING_COMPLETION_ALLOWANCE);
     expect(body.stream).toBe(false);
     expect("reasoning_effort" in body).toBeFalse(); // the §26 knob rides only when asked
     expect(out).toEqual({
@@ -158,6 +163,21 @@ describe("OpenAiCompatibleChainMember — the SpringAiChatModelAdapter wire law"
     expect(body.reasoning_effort).toBe("low");
     expect("temperature" in body).toBeFalse(); // null = provider default (frozen law)
     expect("max_tokens" in body).toBeFalse();
+  });
+
+  test("maxTokens is the CONTENT budget — the wire cap rides the reasoning completion allowance", async () => {
+    // T-REASON-WALL-1: the reasoning models this member serves (groq
+    // gpt-oss-*, openrouter nemotron-*) spend reasoning tokens out of the
+    // completion cap — the #706 tutor wall class. The caller's budget must
+    // survive the reasoning spend, so the wire cap = maxTokens + allowance;
+    // without a budget no cap rides at all (unchanged frozen law).
+    const { fetchImpl, calls } = fetchJson(200, {
+      choices: [{ finish_reason: "stop", message: { content: "x" } }],
+    });
+    const member = groqMember(fetchImpl);
+    await member.generate({ system: "s", user: "u", maxTokens: 8000 });
+    const body = JSON.parse(String(calls[0]!.init.body)) as Record<string, unknown>;
+    expect(body.max_tokens).toBe(8000 + REASONING_COMPLETION_ALLOWANCE);
   });
 
   test("401 → AUTHENTICATION_FAILURE + cooldown to the END OF THE UTC DAY (dead keys cannot heal)", async () => {

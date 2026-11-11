@@ -1,0 +1,59 @@
+version: 1
+task:
+  id: T-REASON-WALL-1
+  title: 'Rubric validation-wall one-liner + the Groq adapter reasoning completion
+    allowance (unblocks rubric + sow + teach-me review together) (operator
+    scope order: "Scope: (1) the rubric one-liner, (2) the Groq adapter
+    reasoning-budget change (unblocks rubric + sow + teach-me review
+    together), as a PR against main")'
+  owner: Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405,
+    chat 97a19c8c-d041-4ae2-9754-07fef634fc42)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-REASON-WALL (the reasoning-budget wall class — sibling of
+    T-TUTOR-FIX-1 / #724 which fixed the tutor seam of the same class)
+  wave: ai-wall-fixes
+  deps: [T-TUTOR-FIX-1]
+  scope:
+    allowed:
+    - packages/contracts/src/teaching-toolkit.ts (rubricLevelSchema.score ->
+      optional — the ONE-LINER of record; the computed-score law is
+      unchanged, the wall stops contradicting the v1.0 prompt)
+    - packages/contracts/src/teaching-toolkit.test.ts (+the scoreless-shape
+      regression pin)
+    - apps/api/src/services/llmchain/adapters.ts (REASONING_COMPLETION_ALLOWANCE
+      = 4096 riding ON TOP of every caller maxTokens on the OpenAI-compatible
+      member — the reasoning channel can no longer starve the content budget)
+    - apps/api/test/llmchain/adapters.test.ts + bridges.test.ts (wire pins
+      ride the allowance; +the allowance law test)
+    - .syllabai/tasks/T-REASON-WALL-1.yaml + .syllabai/receipts/
+      T-REASON-WALL-1/run-001.md + both worklogs (append-only)
+    forbidden:
+    - any teach-me file (the review unblock rides the adapter allowance —
+      its 4000 content budget and config are untouched)
+    - the gemini member (its bounded-thinking law stays with the
+      generationConfig caps — disclosed in the constant's javadoc)
+    - the toolkit route / prompts / prompt_versions rows (v1.0 templates
+      stay byte-identical; the self-heal retry loop stays fail-closed)
+    - any per-feature budget constant (TOOLKIT_MAX_TOKENS 8000,
+      TEACH_ME llm.maxTokens 4000, tutor 4000 + SYLLABAI_TUTOR_MAX_TOKENS —
+      all keep their meaning as CONTENT budgets)
+  evidence:
+    - prod battery 2026-11-09 (ai-battery-2026-11-09.json + -r2): B2
+      lesson-plan 200 groq, B5 coach 200 groq — PASS; B3 rubric 502
+      "failed validation twice" (64.22s incl. an openrouter leg), B4 sow
+      502 same, A7 teach-me review 409 LLM_SHAPE_DRIFT at 108.88s (60s groq
+      timeout -> reasoning-only openrouter leg -> empty content).
+    - fresh before-probe 2026-11-11 05:55Z (first-hand): rubric 502 in
+      3.42s, sow 502 in 3.02s — the wall is DETERMINISTIC, two fast
+      attempts; failed-row forensics (teaching_toolkit_resources rows
+      2eb5b951/b2481ef1/5ccdbbb7) show the groq/openrouter provider mix.
+    - the rubric wall mechanism is PROVABLE statically: prompt_versions
+      teaching-toolkit/rubric v1.0 (migration 0008 seed) commands "Do NOT
+      include 'score' fields; they are computed by the app" while
+      rubricLevelSchema REQUIRED score on all 12 levels BEFORE
+      postProcess computes them — an obedient model can never pass.
+    - the reasoning-cap mechanism is the #706 class of record (worklog
+      T-TUTOR-FIX-1: reasoning tokens count against the completion cap on
+      gpt-oss; the tutor's pre-reasoning 900 budget -> zero content
+      deltas; fixed 900->4000 by #724) applied at the adapter boundary.

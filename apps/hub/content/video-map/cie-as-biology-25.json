@@ -1,0 +1,2464 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-as-biology-25",
+ "qual": "A Level (CIE)",
+ "source": {
+  "provider": "inherited (multi (freesciencelessons / doodlescience / cognito channel-only / amoeba-sisters / malmesbury))",
+  "label": "cie-as-biology-25",
+  "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-a-level-biology-25; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
+  "enumeratedUtc": "2026-11-09T05:12:35Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (inheritance lane)",
+  "ruledUtc": "2026-11-10T23:00:00Z",
+  "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+  "rowsApproved": 66,
+  "rowsRejected": 0,
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "inherited-external (from cie-a-level-biology-25)",
+    "task": "T-VIDEOMAP-P4 (inheritance lane)",
+    "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-10T23:00:00Z",
+    "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+    "rowsApproved": 66,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ],
+  "selfReviewNote": "Inherited rows derive deterministically from owner-approved parent rows; the containment map is committed and spot-checked (owner chat 2026-11-09 'approve and review yourself'). The parent lanes carry the title-only evidence rulings; below-threshold child specs stay honestly unmapped."
+ },
+ "videos": [
+  {
+   "id": "W0TkmHl27jE",
+   "title": "A Level Biology Revision \"Tertiary Structure and Quaternary Structure of Proteins\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=W0TkmHl27jE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 217,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "1BhfCbCitn8",
+   "title": "A Level Biology Revision \"Primary Structure and Secondary Structure of Proteins\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1BhfCbCitn8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 224,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "O-P_NJwa-h4",
+   "title": "A Level Biology Revision \"Conservative vs Semi-conservative DNA replication\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=O-P_NJwa-h4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 403,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "7PJGaweLeOk",
+   "title": "A Level Biology Revision \"The Endoplasmic Reticulum and Golgi Apparatus\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7PJGaweLeOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 331,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "cnfamzARDrs",
+   "title": "A Level Biology Revision \"The Structure and Function of the Nucleus\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cnfamzARDrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 269,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "vLRkmbL3KYA",
+   "title": "A-Level Biology - Osmosis - Water Potential | Osmosis in Animal & Plant Cells (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vLRkmbL3KYA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 355,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "w6GZUhaR3II",
+   "title": "A Level Biology Revision \"The Effect of Substrate Concentration and Enzyme Concentration on Enzymes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=w6GZUhaR3II",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 218,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "iFgAacVKCrc",
+   "title": "A Level Biology Revision \"Active and Passive Immunity\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=iFgAacVKCrc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 327,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "m90Zgdi0-O0",
+   "title": "A Level Biology Revision \"Structure and Function of Cellulose\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=m90Zgdi0-O0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 216,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Wx-MrhlOFMk",
+   "title": "GCSE Biology Revision \"Arteries, Veins and Capillaries\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Wx-MrhlOFMk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 188,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oZpt1Pcx-OU",
+   "title": "A Level Biology Revision \"Fibrous Proteins Collagen, Keratin and Elastin\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=oZpt1Pcx-OU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 284,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "h37eR6DaiI8",
+   "title": "A Level Biology Revision \"Light Microscopy and Resolution\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=h37eR6DaiI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "N6aumZOIMU4",
+   "title": "A Level Biology \"Non-Competitive Inhibitors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=N6aumZOIMU4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 155,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "dwjThNIaIBQ",
+   "title": "A Level Biology Revision \"Competitive Inhibitors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dwjThNIaIBQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 311,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "EJaGonrfEow",
+   "title": "A Level Biology Revision \"The Fluid-Mosaic Model of Membrane Structure\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=EJaGonrfEow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 322,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "OaRvfVYWYok",
+   "title": "A Level Biology Revision \"Globular Proteins 2 Insulin and Lysozyme\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=OaRvfVYWYok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 158,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "cFr7mg2xSz8",
+   "title": "A Level Biology Revision \"Globular Proteins 1 Haemoglobin\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cFr7mg2xSz8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 198,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Xv25kbsBHfI",
+   "title": "A Level Biology Revision \"Facilitated Diffusion\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Xv25kbsBHfI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "sfqF-M-QVJE",
+   "title": "A-Level Biology - Carbohydrates: Tests - Reducing & Non-Reducing Sugars | Starch (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=sfqF-M-QVJE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 322,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LuAuCri2fKM",
+   "title": "A Level Biology Revision \"Testing for Reducing and Non-reducing sugars\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=LuAuCri2fKM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "1agWPmxsuf4",
+   "title": "A Level Biology Revision \"Testing for Starch, Protein and Lipids\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1agWPmxsuf4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 246,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "yNYYg02ET8o",
+   "title": "A Level Biology Revision \"Haemoglobin and the Oxygen Dissociation Curve\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yNYYg02ET8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 361,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "nVd4BdeuJYU",
+   "title": "A Level Biology Revision \"The Induced Fit Model of Enzyme Action\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nVd4BdeuJYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 156,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "_vZ0lefPg_0",
+   "title": "Circulatory System and Pathway of Blood Through the Heart",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=_vZ0lefPg_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 494,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pHGMKnTlUm8",
+   "title": "A Level Biology Revision \"Single and Double Circulatory Systems\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=pHGMKnTlUm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 350,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "2f2trnlwTk8",
+   "title": "A Level Biology Revision \"Measuring the Rate of Enzyme Controlled Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=2f2trnlwTk8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 252,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "4p5la61R6X0",
+   "title": "A Level Biology Revision \"Using a Colorimeter to Quantify Glucose 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4p5la61R6X0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Ur7w9IdP8Xg",
+   "title": "A Level Biology \"The Structure and Functions of Phloem\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Ur7w9IdP8Xg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 201,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "U7EUUNiX0vA",
+   "title": "A Level Biology Revision \"The Structure and Functions of Xylem\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=U7EUUNiX0vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 218,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "fKbi1AJJzxU",
+   "title": "A Level Biology Revision \"Transpiration and the Cohesion-Tension Theory\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=fKbi1AJJzxU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 295,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "On12SvJ1IPU",
+   "title": "A Level Biology Revision \"Pressure Changes during the Cardiac Cycle\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=On12SvJ1IPU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 215,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "WwBr8Q06MxQ",
+   "title": "A Level Biology Revision \"Human Immunodeficiency Virus (HIV)\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=WwBr8Q06MxQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 317,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Pxujitlv8wc",
+   "title": "Prokaryotic vs. Eukaryotic Cells (Updated)",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=Pxujitlv8wc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 328,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6oM-j-2zN6w",
+   "title": "A Level Biology Revision \"Surface Area to Volume Ratio\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=6oM-j-2zN6w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 341,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ZcYmb9A7Fu0",
+   "title": "GCSE Biology Revision \"Required Practical 3: Effects of Osmosis on Plant Tissue\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ZcYmb9A7Fu0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 308,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tVcEEw6qbBQ",
+   "title": "Microscopes and How to Use a Light Microscope",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=tVcEEw6qbBQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 556,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oefAI2x2CQM",
+   "title": "Protein Synthesis: Transcription and Translation (Updated)",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=oefAI2x2CQM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 527,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yTzjOzPDKXs",
+   "title": "A Level Biology Revision \"Xerophytic Adaptations of Plants\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yTzjOzPDKXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 261,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "RlRLNGWx_qQ",
+   "title": "A Level Biology Revision \"Viruses\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=RlRLNGWx_qQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "zLwhXkfSh9c",
+   "title": "A-Level Biology - Genetic Code | How DNA Packs into Chromosomes | Codon Tables (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=zLwhXkfSh9c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 527,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HRga77i64nY",
+   "title": "A Level Biology Revision \"The Structure of DNA and RNA\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=HRga77i64nY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 288,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "aPUPfzsqDgs",
+   "title": "GCSE Biology Revision \"Gas Exchange in the Lungs\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=aPUPfzsqDgs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 193,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JIjKZah2CBw",
+   "title": "A Level Biology Revision \"The Structure of the Human Heart\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=JIjKZah2CBw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 264,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "cKHASGk-_6o",
+   "title": "A level Biology Revision \"The Cardiac Cycle\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cKHASGk-_6o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 171,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "M3LBPQ_Mma0",
+   "title": "A Level Biology Revision \"Neutrophils, Macrophages and Phagocytosis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=M3LBPQ_Mma0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 310,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "cYRe5ftY8pI",
+   "title": "A Level Biology Revision \"Antigens and Antibodies\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cYRe5ftY8pI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 327,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "DtUmpd7mrZc",
+   "title": "A Level Biology Revision \"T Lymphocytes and Cell-Mediated Immunity\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=DtUmpd7mrZc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 322,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "mAY_DLYBaIg",
+   "title": "A Level Biology Revision \"B Lymphocytes and Humoral Immunity\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=mAY_DLYBaIg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 377,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "nBA-hJRDa50",
+   "title": "A-Level Biology - Antibodies - Structure & Function in the Immune System (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=nBA-hJRDa50",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 248,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cGNvdB3qNw4",
+   "title": "GCSE Biology Revision \"Monoclonal Antibodies\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cGNvdB3qNw4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 178,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KVQlbfIJMHI",
+   "title": "A Level Biology Revision \"Cell Division by Mitosis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=KVQlbfIJMHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 258,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "eTmibYv8ouw",
+   "title": "A Level Biology Revision \"Stages in Mitosis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=eTmibYv8ouw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 232,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "5qSrmeiWsuc",
+   "title": "(OLD VIDEO) DNA Replication: The Cell's Extreme Team Sport",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=5qSrmeiWsuc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 479,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JT0co8VTM4E",
+   "title": "A Level Biology Revision \"DNA and Chromosomes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=JT0co8VTM4E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 299,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Hi1Ox1hkW9I",
+   "title": "A Level Biology Revision \"Starch Part 1: Amylose\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Hi1Ox1hkW9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 187,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "JfuhvesOA9E",
+   "title": "A Level Biology Revision \"Structure and Function of Glycogen\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=JfuhvesOA9E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 153,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "8GDXf2LrrUg",
+   "title": "A Level Biology Revision \"Alpha and Beta Glucose\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=8GDXf2LrrUg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 142,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ALFE2tNIY5c",
+   "title": "Dehydration Synthesis and Hydrolysis",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 368,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gvU7aSTF9Kg",
+   "title": "A Level Biology Revision \"Hydrogen Bonding in Water\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gvU7aSTF9Kg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 205,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "TPEQBB_u4tc",
+   "title": "A Level Biology Revision \"Triglycerides\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=TPEQBB_u4tc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "E0GEp3zgK7w",
+   "title": "A Level Biology Revision \"Phospholipids and Cholesterol\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=E0GEp3zgK7w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 270,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Rtp80mFQvcc",
+   "title": "Cell Membranes and Transport [Chapters 5 and 6 Aligned]: Before the Bell Biology",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=Rtp80mFQvcc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 420,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MGcaSZ8KzFw",
+   "title": "A Level Biology Revision \"The Structure of Enzymes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=MGcaSZ8KzFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 268,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "oP0OU2s4NHM",
+   "title": "A Level Biology Revision \"Communicable Diseases and Pathogens\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=oP0OU2s4NHM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 296,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "pfxaUimrrZY",
+   "title": "A Level Biology Revision \"Antibiotics and Antibiotic Resistance\" (OCR)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=pfxaUimrrZY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 351,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "2mtcB2FnLAw",
+   "title": "A-Level Biology - HIV - Structure | How it Replicates | How it Causes AIDS (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=2mtcB2FnLAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 343,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "tVcEEw6qbBQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names light-microscope use (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "h37eR6DaiI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names light microscopy and resolution (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7PJGaweLeOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ER and Golgi apparatus structure (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cnfamzARDrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names nucleus structure and function (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Pxujitlv8wc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.5",
+    "1.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names prokaryotic vs eukaryotic cells (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "RlRLNGWx_qQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names viruses (A-level level) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "sfqF-M-QVJE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.3",
+    "2.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names carbohydrate tests incl. reducing/non-reducing sugars (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "1agWPmxsuf4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names tests for starch, protein and lipids (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "LuAuCri2fKM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.3",
+    "2.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names testing for reducing and non-reducing sugars (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8GDXf2LrrUg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names alpha and beta glucose (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names hydrolysis (and its condensation reverse) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Hi1Ox1hkW9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names starch Part 1: amylose (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JfuhvesOA9E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names structure and function of glycogen (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "m90Zgdi0-O0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names cellulose structure and function (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TPEQBB_u4tc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.10",
+    "2.2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title names triglycerides (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "W0TkmHl27jE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names tertiary and quaternary protein structure (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "1BhfCbCitn8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names primary and secondary protein structure (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "OaRvfVYWYok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names globular proteins with named examples (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cFr7mg2xSz8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.5",
+    "2.3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names haemoglobin (globular protein structure/function) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oZpt1Pcx-OU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.7",
+    "2.3.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names fibrous proteins incl. collagen (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gvU7aSTF9Kg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names hydrogen bonding in water (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MGcaSZ8KzFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names structure of enzymes (globular-protein catalysts) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nVd4BdeuJYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names induced-fit model of enzyme action (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2f2trnlwTk8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names measuring rate of enzyme-controlled reactions (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4p5la61R6X0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names colorimeter use (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "w6GZUhaR3II",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names substrate-concentration effect on enzyme rate (one listed factor) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "N6aumZOIMU4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names non-competitive inhibitors (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dwjThNIaIBQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names competitive inhibitors (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "EJaGonrfEow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the fluid-mosaic model (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "E0GEp3zgK7w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.2",
+    "4.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names phospholipids and cholesterol (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Rtp80mFQvcc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "membranes named; component roles not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Xv25kbsBHfI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "facilitated diffusion named (one of the listed transport processes) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ZcYmb9A7Fu0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names osmosis required practical (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "6oM-j-2zN6w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names surface area to volume ratio (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vLRkmbL3KYA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names osmosis and water potential (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JT0co8VTM4E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names DNA and chromosomes (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "5qSrmeiWsuc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1a"
+   ],
+   "confidence": "low",
+   "evidence": "DNA replication named (US video) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KVQlbfIJMHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names cell division by mitosis (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "eTmibYv8ouw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names stages in mitosis (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "HRga77i64nY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.3",
+    "6.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names DNA and RNA structure (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "O-P_NJwa-h4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names semi-conservative replication (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zLwhXkfSh9c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the genetic code (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oefAI2x2CQM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names transcription and translation (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Ur7w9IdP8Xg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.3",
+    "7.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "phloem named; micrograph-drawing clause not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "U7EUUNiX0vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names xylem structure and functions (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "fKbi1AJJzxU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names transpiration and the cohesion-tension mechanism (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "yTzjOzPDKXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names xerophytic adaptations (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_vZ0lefPg_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "circulatory pathway named; closed-double-circulation wording not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pHGMKnTlUm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names single and double circulatory systems (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Wx-MrhlOFMk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.3",
+    "8.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "vessel types named (GCSE level; microscopy/clause detail not in title) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "yNYYg02ET8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.4",
+    "8.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the oxygen dissociation curve (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JIjKZah2CBw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names structure of the human heart (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "On12SvJ1IPU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names pressure changes during the cardiac cycle (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cKHASGk-_6o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "cardiac cycle named; SA/AV node conduction not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "aPUPfzsqDgs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1",
+    "9.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "lungs named; alveoli clause not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oP0OU2s4NHM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names communicable diseases and pathogens (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WwBr8Q06MxQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "HIV named (one of the listed pathogens) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2mtcB2FnLAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "HIV named (one of the listed pathogens) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pfxaUimrrZY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names antibiotics and antibiotic resistance (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "M3LBPQ_Mma0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names neutrophils, macrophages and phagocytosis (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cYRe5ftY8pI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names antigens and antibodies (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "DtUmpd7mrZc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "T lymphocytes named; primary-response sequence not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mAY_DLYBaIg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "B lymphocytes named; primary-response sequence not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nBA-hJRDa50",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names antibody structure and function (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cGNvdB3qNw4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.2",
+    "11.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "monoclonal antibodies named; diagnostic use not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "iFgAacVKCrc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names active and passive immunity (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 123,
+  "specPointsMapped": 68,
+  "specPointsUnmapped": 55,
+  "videosTotal": 66,
+  "videosMapped": 66,
+  "videosUnmapped": 0,
+  "mappingRows": 66,
+  "byConfidence": {
+   "high": 0,
+   "medium": 53,
+   "low": 13
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-as-biology-25.json",
+   "sha256": "f9cbbe7f1b14ff9f02f1e47f95272267a24c62863e634e7b7435ec6aaf803800"
+  },
+  "inheritanceMap": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/_p4/inheritance-map.json",
+   "task": "T-VIDEOMAP-P4 (inheritance lane)",
+   "reviewAppliedUtc": "2026-11-10T23:00:00Z"
+  },
+  "parentDraft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "course": "cie-a-level-biology-25",
+   "paths": [
+    "Videos/drafts/cie-a-level-biology-25/video-map.draft.external.json"
+   ],
+   "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.060Z"
+}
