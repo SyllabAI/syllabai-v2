@@ -6,7 +6,12 @@
   "provider": "inherited (multi (freesciencelessons / doodlescience / cognito channel-only / amoeba-sisters / malmesbury))",
   "label": "ial-biology-18",
   "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-a-level-biology-25; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
-  "enumeratedUtc": "2026-11-09T05:12:35Z"
+  "enumeratedUtc": "2026-11-09T05:12:35Z",
+  "p2f": {
+   "provider": "Edexcel-native channels: Exam Essentials, Sergei's Chemistry, Allery Chemistry, Omar's Biology Lab, A-star Solution, MedDude",
+   "method": "yt-dlp flat enumeration + machine-verified Edexcel paper-code binding (method paper-code, confidence high, boardMismatch false) + idf topic-title containment (>= 0.55, >= 3 informative tokens, P4 rule) for topic anchors; oEmbed identity sweep with thumbnail-liveness fallback; sewage filter (promos, results-day, shorts/vlog); evidence posture title-only",
+   "enumeratedUtc": "2026-11-11T18:04:45Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (inheritance lane)",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 7,
+  "rowsApproved": 23,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -26,6 +31,17 @@
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
     "rowsApproved": 7,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p2f (edexcel-native anchors)",
+    "task": "T-VIDEOMAP-P2F",
+    "ruling": "delegated self-review per owner chat 2026-11-09 'approve and review yourself' (standing ruling); owner chat 2026-11-12 'Go'",
+    "reviewer": "delegated-self-review",
+    "ruledUtc": "2026-11-11T18:05:50Z",
+    "evidenceBasis": "title-only; paper codes machine-verified against Edexcel code grammar (re-checked at review); oEmbed identity sweep 100% with author-vs-provider cross-check; topic anchors via idf title-token containment (tier 1 >= 3 tokens >= 0.55 medium; tier 2 >= 2 idf-distinctive tokens low); sewage filter re-scanned at review",
+    "rowsApproved": 16,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -144,6 +160,246 @@
    "oembedAuthor": "Amoeba Sisters",
    "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "40TwX7aiDgs",
+   "title": "Edexcel IAL Biology Unit 5 | WBI15/01 January 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=40TwX7aiDgs",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 3318,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "7_r3lsZbFtw",
+   "title": "Edexcel IAL Biology Unit 2 | WBI12/01 OCTOBER 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=7_r3lsZbFtw",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2861,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "9atFYtGW638",
+   "title": "Edexcel IAL Biology Unit 2 | WBI12/01 JANUARY 2026 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=9atFYtGW638",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2439,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "Ar_eGx0rXfk",
+   "title": "Edexcel IAL Biology Unit 4 | WBI14/01 January 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=Ar_eGx0rXfk",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 4655,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "O6myZO0V4x4",
+   "title": "Edexcel IAL Biology Unit 4 | WBI14/01 October 2024 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=O6myZO0V4x4",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 4118,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "PkrYLvyc9Zo",
+   "title": "Edexcel IAL Biology Unit 3 | WBI13/01 JANUARY 2026 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=PkrYLvyc9Zo",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 1307,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "Qj1Ulhk71XM",
+   "title": "EDEXCEL IAL BIOLOGY UNIT 1  | WBI11/01 | MAY 2026 PAST PAPER | FULL WALKTHROUGH | (paper in comment)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "A-star Solution (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=Qj1Ulhk71XM",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 3277,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": "A-star Solution",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "UWXWCT5KAD8",
+   "title": "Edexcel IAL Biology Unit 6 | WBI16/01 January 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=UWXWCT5KAD8",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2717,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "Vv5Ar0QlREE",
+   "title": "Edexcel IAL Biology Unit 3 | WBI13/01 October 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=Vv5Ar0QlREE",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 1764,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "YoQ2u6kqc3o",
+   "title": "Edexcel IAL Biology Unit 1 | WBI11/01 OCTOBER 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=YoQ2u6kqc3o",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 3410,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "cW-KzHeqdSE",
+   "title": "Edexcel A-Level Biology Unit 1 | Most Difficult/Important/ Common Questions Explained | WBI11/01",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=cW-KzHeqdSE",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 4985,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "cnTlSl-PS9s",
+   "title": "Edexcel A-Level Biology May2024 Unit 2 | WBI12/01| Full Paper Solution with Detailed Explanation",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=cnTlSl-PS9s",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 4364,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "etkfDEL4SmM",
+   "title": "Edexcel IAL Biology Unit 1 | WBI11/01 JANUARY 2026 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=etkfDEL4SmM",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2227,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "fmlvI8N9MFQ",
+   "title": "Edexcel IAL Biology Unit 1 | WBI11/01 May 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=fmlvI8N9MFQ",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2593,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "o1xSC71D2Mo",
+   "title": "Edexcel IAL Biology Unit 2 | WBI12/01 May 2025 | Full Paper Walkthrough (Detailed Explanation)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=o1xSC71D2Mo",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 4152,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "quw120s-pkI",
+   "title": "Edexcel IAL Biology Unit 1 Full Syllabus Review | WBI11/01 | May 2025 Exam Revision",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=quw120s-pkI",
+   "levelTag": "IAL",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 6772,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
   }
  ],
  "mappings": [
@@ -286,18 +542,322 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "40TwX7aiDgs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U5",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 5 | WBI15/01 January 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI15; session January 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "7_r3lsZbFtw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U2",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 2 | WBI12/01 OCTOBER 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI12; session OCTOBER 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "9atFYtGW638",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U2",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 2 | WBI12/01 JANUARY 2026 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI12; session JANUARY 2026"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Ar_eGx0rXfk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U4",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 4 | WBI14/01 January 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI14; session January 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "O6myZO0V4x4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U4",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 4 | WBI14/01 October 2024 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI14; session October 2024"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "PkrYLvyc9Zo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U3",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 3 | WBI13/01 JANUARY 2026 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI13; session JANUARY 2026"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Qj1Ulhk71XM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U1",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"EDEXCEL IAL BIOLOGY UNIT 1  | WBI11/01 | MAY 2026 PAST PAPER | FULL WALKTHROUGH | (paper in comment)\"; paper code WBI11; session MAY 2026"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "UWXWCT5KAD8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U6",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 6 | WBI16/01 January 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI16; session January 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Vv5Ar0QlREE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U3",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 3 | WBI13/01 October 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI13; session October 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YoQ2u6kqc3o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U1",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 1 | WBI11/01 OCTOBER 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI11; session OCTOBER 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "cW-KzHeqdSE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U1",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel A-Level Biology Unit 1 | Most Difficult/Important/ Common Questions Explained | WBI11/01\"; paper code WBI11"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "cnTlSl-PS9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U2",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel A-Level Biology May2024 Unit 2 | WBI12/01| Full Paper Solution with Detailed Explanation\"; paper code WBI12; session May2024"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "etkfDEL4SmM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U1",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 1 | WBI11/01 JANUARY 2026 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI11; session JANUARY 2026"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fmlvI8N9MFQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U1",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 1 | WBI11/01 May 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI11; session May 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "o1xSC71D2Mo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U2",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 2 | WBI12/01 May 2025 | Full Paper Walkthrough (Detailed Explanation)\"; paper code WBI12; session May 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-biology-18"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "quw120s-pkI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": "U1",
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IAL Biology Unit 1 Full Syllabus Review | WBI11/01 | May 2025 Exam Revision\"; paper code WBI11; session May 2025"
   }
  ],
  "coverage": {
   "specPointsTotal": 170,
   "specPointsMapped": 5,
   "specPointsUnmapped": 165,
-  "videosTotal": 7,
-  "videosMapped": 7,
+  "videosTotal": 23,
+  "videosMapped": 23,
   "videosUnmapped": 0,
-  "mappingRows": 7,
+  "mappingRows": 23,
   "byConfidence": {
-   "high": 0,
+   "high": 16,
    "medium": 5,
    "low": 2
   }
@@ -320,7 +880,13 @@
     "Videos/drafts/cie-a-level-biology-25/video-map.draft.external.json"
    ],
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  },
+  "p2f": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-biology-18/video-map.draft.external-p2f.json",
+   "task": "T-VIDEOMAP-P2F",
+   "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.093Z"
+ "generatedUtc": "2026-11-11T18:07:40.944Z"
 }
