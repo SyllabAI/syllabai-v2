@@ -6,7 +6,12 @@
   "provider": "multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only)",
   "label": "igcse-chemistry-19",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p2f": {
+   "provider": "Edexcel-native channels: Exam Essentials, Sergei's Chemistry, Allery Chemistry, Omar's Biology Lab, A-star Solution, MedDude",
+   "method": "yt-dlp flat enumeration + machine-verified Edexcel paper-code binding (method paper-code, confidence high, boardMismatch false) + idf topic-title containment (>= 0.55, >= 3 informative tokens, P4 rule) for topic anchors; oEmbed identity sweep with thumbnail-liveness fallback; sewage filter (promos, results-day, shorts/vlog); evidence posture title-only",
+   "enumeratedUtc": "2026-11-11T18:04:45Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2C",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture as P2B. Self-review rejects are rows where the video title names only an adjacent or generic topic and the evidence field itself concedes the spec's distinctive clause is not title-evidenced.",
-  "rowsApproved": 87,
+  "rowsApproved": 95,
   "rowsRejected": 8,
   "rejects": [
    {
@@ -64,6 +69,79 @@
     "video": "7AWwjKbRa_o",
     "spec": "4.18",
     "reason": "FSL 'Cracking' names the process; the supply/demand rationale of 4.18 is a sidebar clause, not title-evidenced."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P2C",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "Same title-only posture as P2B. Self-review rejects are rows where the video title names only an adjacent or generic topic and the evidence field itself concedes the spec's distinctive clause is not title-evidenced.",
+    "rowsApproved": 87,
+    "rowsRejected": 8,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "7wguWXOZ8dc",
+      "spec": "1.53C",
+      "reason": "FSL 'Metals' is a generic title; metallic bonding as electrostatic attraction between ions and delocalised electrons (1.53C) is not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "o56nWrsp-hI",
+      "spec": "1.54C",
+      "reason": "FSL 'Metals and Alloys' — conductivity/malleability explanation (1.54C) not title-evidenced; adjacent hit."
+     },
+     {
+      "lessonRef": null,
+      "video": "AhTRiL6xjBA",
+      "spec": "1.58C",
+      "reason": "FSL 'Introducing Electrolysis' is concept-level; the molten-compound experiment clause of 1.58C is not title-evidenced, and 1.58C already carries a stronger medium binding (Electrolysis of Aluminium Oxide)."
+     },
+     {
+      "lessonRef": null,
+      "video": "4pIHhXfGZlE",
+      "spec": "2.35",
+      "reason": "FSL 'Strong and Weak Acids' — proton-transfer framing of 2.35 is a different frame from strength vs concentration; donor/acceptor definitions not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "4pIHhXfGZlE",
+      "spec": "2.36",
+      "reason": "Same video: 'acid is a proton donor' definition (2.36) not title-evidenced in a strong/weak acids video."
+     },
+     {
+      "lessonRef": null,
+      "video": "4HS6D0hTzdg",
+      "spec": "3.14C",
+      "reason": "Reaction-profile diagrams with ΔH and activation energy (3.14C) — evidence concedes 'likely drawn but not title-evidenced'. Fails the bar."
+     },
+     {
+      "lessonRef": null,
+      "video": "66qcNNJFy6E",
+      "spec": "3.19C",
+      "reason": "Dynamic equilibrium in a sealed container (3.19C) not title-evidenced in 'Reversible Reactions'."
+     },
+     {
+      "lessonRef": null,
+      "video": "7AWwjKbRa_o",
+      "spec": "4.18",
+      "reason": "FSL 'Cracking' names the process; the supply/demand rationale of 4.18 is a sidebar clause, not title-evidenced."
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p2f (edexcel-native anchors)",
+    "task": "T-VIDEOMAP-P2F",
+    "ruling": "delegated self-review per owner chat 2026-11-09 'approve and review yourself' (standing ruling); owner chat 2026-11-12 'Go'",
+    "reviewer": "delegated-self-review",
+    "ruledUtc": "2026-11-11T18:05:50Z",
+    "evidenceBasis": "title-only; paper codes machine-verified against Edexcel code grammar (re-checked at review); oEmbed identity sweep 100% with author-vs-provider cross-check; topic anchors via idf title-token containment (tier 1 >= 3 tokens >= 0.55 medium; tier 2 >= 2 idf-distinctive tokens low); sewage filter re-scanned at review",
+    "rowsApproved": 8,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -1432,6 +1510,126 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "3YuMa0Z10o8",
+   "title": "EDEXCEL IGCSE CHEMISTRY | PAPER 1  | 4CH1 | MAY 2026 | FULL WALKTHROUGH | (paper in comment)",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "A-star Solution (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=3YuMa0Z10o8",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 6260,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": "A-star Solution",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "4q9yGboOdWI",
+   "title": "Edexcel IGCSE Chemistry (4CH1/2C) | November 2024 Paper 2C | Fully Solved with Detailed Explanation",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=4q9yGboOdWI",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2510,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "CnQFEIOK3IQ",
+   "title": "Edexcel IGCSE Chemistry (4CH1/1C) | November 2024 Paper 1C | Fully Solved with Detailed Explanation",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=CnQFEIOK3IQ",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 3544,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "EqryuoHcaIY",
+   "title": "Edexcel IGCSE Chemistry (4CH1/1C) | May 2025 Paper 1C | Fully Solved with Detailed Explanation",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=EqryuoHcaIY",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2561,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "H7OUIOu9t9c",
+   "title": "June 2025 Unit 1 Chemistry Edexcel IGCSE Detailed Solution Paper reference 4CH1/1C 4SD0/1C  P78950A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Sergei's Chemistry (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=H7OUIOu9t9c",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel IAL-native wording",
+   "durationS": 3008,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": "Sergei's Chemistry",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "_rbDEJcGxHM",
+   "title": "Edexcel IGCSE Chemistry (4CH1/2C) | JUNE 2025 Paper 2C | Fully Solved with Detailed Explanation",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=_rbDEJcGxHM",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2103,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "fRfuY1VEQbE",
+   "title": "Edexcel IGCSE Chemistry (4CH1/2C) | November 2025 Paper 2C | Fully Solved with Detailed Explanation",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=fRfuY1VEQbE",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 2994,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
+  },
+  {
+   "id": "xo-X7Cx-PfY",
+   "title": "Edexcel IGCSE Chemistry (4CH1/1C) | November 2025 Paper 1C | Fully Solved with Detailed Explanation",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "provider": "Exam Essentials (YouTube)",
+   "watchUrl": "https://www.youtube.com/watch?v=xo-X7Cx-PfY",
+   "levelTag": "IGCSE",
+   "boardNote": "Edexcel-native (IAL/IGCSE paper-session titles)",
+   "durationS": 5616,
+   "guestVisible": null,
+   "identityMethod": "oembed",
+   "oembedAuthor": " Exam Essentials ",
+   "oembedVerifiedUtc": "2026-11-11T18:04:45Z"
   }
  ],
  "mappings": [
@@ -2787,18 +2985,170 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "3YuMa0Z10o8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"EDEXCEL IGCSE CHEMISTRY | PAPER 1  | 4CH1 | MAY 2026 | FULL WALKTHROUGH | (paper in comment)\"; paper code 4CH1; session MAY 2026"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "4q9yGboOdWI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IGCSE Chemistry (4CH1/2C) | November 2024 Paper 2C | Fully Solved with Detailed Explanation\"; paper code 4CH1; session November 2024"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "CnQFEIOK3IQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IGCSE Chemistry (4CH1/1C) | November 2024 Paper 1C | Fully Solved with Detailed Explanation\"; paper code 4CH1; session November 2024"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "EqryuoHcaIY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IGCSE Chemistry (4CH1/1C) | May 2025 Paper 1C | Fully Solved with Detailed Explanation\"; paper code 4CH1; session May 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "H7OUIOu9t9c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"June 2025 Unit 1 Chemistry Edexcel IGCSE Detailed Solution Paper reference 4CH1/1C 4SD0/1C  P78950A\"; paper code 4CH1; Edexcel paper ref P78950A; session June 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "_rbDEJcGxHM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IGCSE Chemistry (4CH1/2C) | JUNE 2025 Paper 2C | Fully Solved with Detailed Explanation\"; paper code 4CH1; session JUNE 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fRfuY1VEQbE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IGCSE Chemistry (4CH1/2C) | November 2025 Paper 2C | Fully Solved with Detailed Explanation\"; paper code 4CH1; session November 2025"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-chemistry-19"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "xo-X7Cx-PfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated-self-review",
+   "reviewedUtc": "2026-11-11T18:05:50Z",
+   "evidence": "title: \"Edexcel IGCSE Chemistry (4CH1/1C) | November 2025 Paper 1C | Fully Solved with Detailed Explanation\"; paper code 4CH1; session November 2025"
   }
  ],
  "coverage": {
   "specPointsTotal": 182,
   "specPointsMapped": 119,
   "specPointsUnmapped": 63,
-  "videosTotal": 91,
-  "videosMapped": 86,
+  "videosTotal": 99,
+  "videosMapped": 94,
   "videosUnmapped": 5,
-  "mappingRows": 87,
+  "mappingRows": 95,
   "byConfidence": {
-   "high": 0,
+   "high": 8,
    "medium": 80,
    "low": 7
   }
@@ -2813,7 +3163,13 @@
    "path": "Videos/drafts/igcse-chemistry-19/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2C",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p2f": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-chemistry-19/video-map.draft.external-p2f.json",
+   "task": "T-VIDEOMAP-P2F",
+   "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.011Z"
+ "generatedUtc": "2026-11-11T18:07:40.951Z"
 }
