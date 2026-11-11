@@ -5,6 +5,7 @@ import { coreBaseUrl, coreFetchAuthorized } from "@/lib/core-proxy";
 import { v2SurfaceBase } from "@/lib/api";
 import { v2FetchAuthorized } from "@/lib/v2-proxy";
 import { smeMemberSuffixReserve, smeQuestionRef, smeClaimIndex, smeSeriesForSoft, type SmeSeries } from "@syllabai/shared";
+import { smeServeFamilyCandidates } from "@/lib/sme-serve-aliases";
 import type { QuestionFamilyView } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -311,24 +312,43 @@ export async function GET(req: NextRequest) {
     // leaves room for the "-p<idx>"/"-s" member refs on mixed questions
     const series = seriesForOrder(q.order);
     const ref = refFor(q.order, smeMemberSuffixReserve(q.parts));
+    const bareLegacy =
+      series === "structured" && course !== legacyPilotSlug
+        ? smeQuestionRef(course, corpusTopicSlug, q.order, smeMemberSuffixReserve(q.parts))
+        : null;
     let family = families.find((f) => f.ref === ref || f.key === ref);
-    if (!family && series === "structured" && course !== legacyPilotSlug) {
+    if (!family && bareLegacy && bareLegacy !== ref) {
       // D-KG1b serving continuity: the FIRST structured twin's wave-era
       // identity was the bare slot ref (banked before the amendment, e.g.
       // topics that gained their MCQ page only later) — degrade to it when
       // the -w family is not (yet) banked. k>=2 slots have NO wave-era
       // identity (they were unbankable before the amendment) — no fallback,
       // a bare hit there would be a DIFFERENT question's family.
-      const legacyRef = smeQuestionRef(course, corpusTopicSlug, q.order, smeMemberSuffixReserve(q.parts));
-      if (legacyRef !== ref) {
-        family = families.find((f) => f.ref === legacyRef || f.key === legacyRef);
+      family = families.find((f) => f.ref === bareLegacy || f.key === bareLegacy);
+    }
+    let joined = family ? joinQuestion(family, q) : null;
+    if (!joined) {
+      // D-SERVE-1 serving continuity (corpus-slug drift, r2 law): the drift
+      // class covers slug renames AND claim-index slot reshuffles — the
+      // latter RESOLVE (to the wrong family) and are honestly skipped by the
+      // guards above. The generated map is content-built (each alias target
+      // provably carries the same content as the corpus question) and keyed
+      // by the exact refs this route derives, so on a miss OR a guard
+      // failure we retry the STORED family ref the content was banked
+      // under. joinQuestion still gates every aliased family: an alias
+      // resolves a content-verified family or degrades to the honest miss
+      // it replaced.
+      for (const alt of smeServeFamilyCandidates(ref, bareLegacy)) {
+        const altFamily = families.find((f) => f.ref === alt || f.key === alt);
+        if (!altFamily) continue;
+        const altJoined = joinQuestion(altFamily, q);
+        if (altJoined) {
+          family = altFamily;
+          joined = altJoined;
+          break;
+        }
       }
     }
-    if (!family) {
-      skipped.push(q.id);
-      continue;
-    }
-    const joined = joinQuestion(family, q);
     if (!joined) {
       skipped.push(q.id);
       continue;

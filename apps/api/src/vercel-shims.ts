@@ -11,6 +11,9 @@
 //                         pass silently)
 // Recovered from the serving-lane archaeology of 2026-11-11 — see
 // docs/T-VERCEL-API-SERVING-RECOVERY.md.
+// js-yaml types come from the @types/js-yaml devDependency (the package
+// itself ships none in this graph); the loaders are fail-closed
+// SHA-256-pinned, so parser drift cannot pass silently either way.
 import { createHash } from "node:crypto";
 import { load as yamlLoad } from "js-yaml";
 
