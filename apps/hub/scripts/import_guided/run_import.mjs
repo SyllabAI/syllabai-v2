@@ -3793,6 +3793,53 @@ rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
     },
   },
 
+  "bio-stagea-v33": {
+    manifest: "hub-import-manifest-v33.json",
+    manifest_version: 33,
+    course_id: "igcse-biology-19",
+    lesson_kind: "hub-lesson-import-1.6",
+    kinds: { "hub-lesson-import-1.6": 1, "sme-question-package": 1 },
+    adapter: "guided-lesson-0.7--hub-lesson-import-1.6",
+    directive: "run the BIOLOGY-4BI1 stage-A chain \u2014 import the igcse-biology-19 stage-A pilot of record per the new-subject runbook B3 (ONE note end-to-end: rn_qRXSsjyzyZsJnc7k 'Characteristics of Living Organisms', spec 1.1; 2 lessons / 18 checks = 10 MCQ + 4 recall + 2 explain-why + 2 application; 11 figures = 7 module-mapped + 4 note-level; glossary 4; workedExample designed null) riding the newly minted 0.7/1.6/1.3 generation (strictly additive over 0.6/1.5/1.2; schemas landed at the resources commit-A pin) \u2014 biology-scope manifest v33 (the per-course manifest convention of the global v-series: chemistry v1..v17+v32, physics v18..v31, now v33), resources chain 7378f249 + 6dd46755 with the physics v31 (254) and chemistry v32 (224) packs re-pinned byte-identical and the spec_point_resolution.json mechanical bootstrap (210 ids / 175 codes / 142 notes) at commit A. Declared hub landing = 2/2 written (the course's first guided-lessons + guided-questions files) + the runner-owned guided-import.json created with 1 row. The frozen B4 partition of record (141 notes in 10 subtopic-atomic waves) rides the resources promotion receipt; stage-B waves are subsequent operator ignitions. Operator directive trace 1a1cbe5f60023dd5 ('the same four-plane treatment for the remaining Reasoning subjects (Chemistry 4CH1 stage-B authoring, Biology)'), execution trace 1a1cbe5f60023dd5.",
+    promo: {
+      commit: "e7ce875d8b67ca8b921ffd447f9a7b143ff490ad",
+      tree: "0f6833585c22442d7a6da0e4eb5e40e561b1955c",
+      parent: "6dd46755ce41b4249a61e7d299cef094f23073d1",
+      trace: "1a1cbe5f60023dd5",
+    },
+    integration_branch: null, // ancestry of record \u2014 the stage-A commits are on resources main
+    artifact_pin: "7378f2498a76501a907a0bda9724237bd4486663", // stage-A commit A \u2014 the source-0.7 generation pin for the pilot
+    schemas: {
+      hub: "/home/z/my-project/scripts/bio-stagea-survivors/hub-lesson-import.1.6.schema.json",
+      pkg: "/home/z/my-project/scripts/bio-stagea-survivors/sme-question-package.1.3.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.6.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.3.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/bio-stagea-survivors/hub-import-manifest-v33.json",
+      int3: "/home/z/my-project/scripts/bio-stagea-survivors/INT-3-transform-record-bio-stagea.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261112-bio-stagea.json",
+    identity: {"notes": 1, "lessons": 2, "checks": 18, "keyPoints": 10, "distractors": 30, "glossaryTerms": 4, "figures": 11, "figures_module_mapped": 7, "figures_note_level": 4, "workedExamples_populated": 0, "workedExamples_null": 1, "authored_chars_conserved": 14664},
+    figures_feed: true,
+    checks_feed: true,
+    artifact_count: 2,
+    note_count: 1,
+    wave_count: 1,
+    id_prefix: "igcse-biology",
+    manifest_min_bytes: 100,
+    package_schema: "sme-question-package/1.3",
+    targetSchemas: ["hub/lesson-import/1.6", "sme-question-package/1.3"],
+    landing: "additive", // the course's first guided planes \u2014 first issues, nothing to revise
+    relFor(a) { return a.path; }, // v33 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.6" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.6/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.3/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";
