@@ -22,8 +22,17 @@ import { describe, expect, test, mock } from "bun:test";
 // BEFORE the module under test loads (the books-lesson.test.ts law).
 mock.module("server-only", () => ({}));
 
-const { videoHref, videoSourceLabel, formatDuration, VideoMapFileSchema, getVideoMap } =
-  await import("./video-map");
+const {
+  videoHref,
+  videoSourceLabel,
+  formatDuration,
+  VideoMapFileSchema,
+  getVideoMap,
+  isAnchorRow,
+  anchorBuckets,
+  anchorKindLabel,
+  formatUnitScope,
+} = await import("./video-map");
 const { loadContentJson } = await import("./corpus");
 
 const externalVideo = {
@@ -133,6 +142,72 @@ describe("review law — getVideoMap never surfaces an unreviewed row", () => {
   });
 });
 
+describe("P2F anchor granularity — the zero-weight passthrough law", () => {
+  test("anchor rows survive parse with level/ref/kind intact (ial-chemistry-17)", async () => {
+    const map = await getVideoMap("ial-chemistry-17");
+    expect(map).not.toBeNull();
+    // at rest: 42 mappings = 8 lesson rows + 34 anchor rows (17 course, 17 topic)
+    expect(map!.mappings.length).toBe(42);
+    const anchor = map!.mappings.filter(isAnchorRow);
+    expect(anchor.length).toBe(34);
+    for (const row of anchor) {
+      // the accounting rule: coarse anchors are zero-weight enrichment
+      expect(row.specs).toEqual([]);
+      expect(row.lessonRef ?? null).toBeNull();
+      expect(row.anchor!.level).toMatch(/^(course|topic|subtopic|subject)$/);
+      expect(row.anchor!.ref).toBeTruthy();
+      expect(row.reviewed).toBe(true);
+    }
+    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(17);
+    expect(anchor.filter((r) => r.anchor!.level === "topic")).toHaveLength(17);
+    for (const row of anchor.filter((r) => r.anchor!.level === "course"))
+      expect(row.kind).toBe("past-paper-walkthrough");
+    for (const row of anchor.filter((r) => r.anchor!.level === "topic"))
+      expect(row.kind).toBe("topic-revision");
+  });
+
+  test("anchorBuckets partition — course/topicArea/subject, lesson rows never bucketed", async () => {
+    const map = await getVideoMap("ial-physics-19");
+    expect(map).not.toBeNull();
+    const buckets = anchorBuckets(map!);
+    expect(buckets.course.length).toBe(32);
+    expect(buckets.topicArea.length).toBe(0);
+    expect(buckets.subject.length).toBe(0);
+    // buckets + lesson rows = every served mapping, no double counting
+    const bucketed = new Set(
+      [...buckets.course, ...buckets.topicArea, ...buckets.subject].map((r) => r.video),
+    );
+    for (const row of map!.mappings)
+      expect(bucketed.has(row.video)).toBe(isAnchorRow(row));
+  });
+
+  test("anchor chips — kind and unit-scope labels", () => {
+    expect(anchorKindLabel("past-paper-walkthrough")).toBe("Past paper walkthrough");
+    expect(anchorKindLabel("topic-revision")).toBe("Topic revision");
+    expect(anchorKindLabel("exam-technique")).toBe("Exam technique");
+    expect(anchorKindLabel("something-new")).toBe("something-new");
+    expect(anchorKindLabel(null)).toBeNull();
+    expect(formatUnitScope("U5")).toBe("Unit 5");
+    expect(formatUnitScope("u1")).toBe("Unit 1");
+    expect(formatUnitScope("full-course")).toBe("full-course");
+    expect(formatUnitScope(null)).toBeNull();
+  });
+
+  test("the four P2F courses carry exactly the shipped anchor rows at rest", async () => {
+    const expected: Record<string, number> = {
+      "ial-biology-18": 16,
+      "ial-chemistry-17": 34,
+      "ial-physics-19": 32,
+      "igcse-chemistry-19": 8,
+    };
+    for (const [slug, count] of Object.entries(expected)) {
+      const map = await getVideoMap(slug);
+      expect(map).not.toBeNull();
+      expect(map!.mappings.filter(isAnchorRow)).toHaveLength(count);
+    }
+  });
+});
+
 describe("corpus-at-rest census — the emitter's gate, re-checked hub-side", () => {
   test("every flags.videoMap course parses as hub.video-map/1 with 0 reviewed:false at rest", async () => {
     const flags = (await loadContentJson("flags.json")) as {
@@ -149,6 +224,13 @@ describe("corpus-at-rest census — the emitter's gate, re-checked hub-side", ()
         (m) => m.reviewed !== true,
       );
       expect(unreviewed).toHaveLength(0);
+      // anchor rows (P2F) are zero-weight at rest: the emitter never ships
+      // specs on them — the accounting rule holds corpus-wide.
+      for (const m of (raw as {
+        mappings: { anchor?: { level: string }; specs: string[] }[];
+      }).mappings) {
+        if (m.anchor && m.anchor.level !== "lesson") expect(m.specs).toEqual([]);
+      }
     }
   });
 });

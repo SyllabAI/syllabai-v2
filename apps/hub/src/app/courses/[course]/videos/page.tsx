@@ -7,12 +7,16 @@ import { CoursePageHeader } from "@/components/hub/course-header";
 import { allCourseParams } from "@/lib/static-params";
 import { normalizeSpecText } from "@/lib/spec-text";
 import {
+  anchorBuckets,
+  anchorKindLabel,
   formatDuration,
+  formatUnitScope,
   getVideoMap,
   listVideoMapCourseSlugs,
   videoHref,
   videoMapEnabledForCourse,
   videoSourceLabel,
+  type VideoMapData,
   type VideoMapRow,
 } from "@/lib/video-map";
 
@@ -49,6 +53,75 @@ interface TopicGroup {
   /** spec points in this topic with ≥1 mapped video */
   covered: number;
   total: number;
+}
+
+/**
+ * The one video row card, shared by every lane surface: spec-point rows,
+ * the P2F course shelf, topic-area blocks and the subject shelf. Chips run
+ * source → duration → kind/unit scope → confidence → board; the evidence
+ * line stays verbatim. Unknown videos (data drift) render nothing.
+ */
+function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
+  const video = map.videoById.get(row.video);
+  if (!video) return null;
+  const href = videoHref(video, row);
+  const title = video.title ?? video.id;
+  const kind = anchorKindLabel(row.kind);
+  const unit = formatUnitScope(row.unitScope);
+  return (
+    <li key={row.video} className="rounded-md border bg-background/60 p-2.5">
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-medium underline-offset-4 hover:underline"
+        >
+          {title}
+        </a>
+      ) : (
+        <span className="text-sm font-medium">{title}</span>
+      )}
+      <div className="mt-1 flex flex-wrap items-center gap-1.5">
+        <Badge variant="secondary" className="text-2xs">
+          {videoSourceLabel(video)}
+        </Badge>
+        {typeof video.durationS === "number" && (
+          <Badge variant="outline" className="text-2xs tabular-nums">
+            {formatDuration(video.durationS)}
+          </Badge>
+        )}
+        {unit && (
+          <Badge variant="outline" className="text-2xs">
+            {unit}
+          </Badge>
+        )}
+        {kind && (
+          <Badge variant="outline" className="text-2xs">
+            {kind}
+          </Badge>
+        )}
+        {row.confidence && (
+          <Badge variant="outline" className="text-2xs">
+            {row.confidence}-confidence match
+          </Badge>
+        )}
+        {row.boardMismatch && (
+          <Badge variant="outline" className="text-2xs">
+            different-board source
+          </Badge>
+        )}
+      </div>
+      {row.boardMismatch && video.boardNote && (
+        <p className="mt-1 text-xs text-muted-foreground">{video.boardNote}</p>
+      )}
+      {row.evidence && (
+        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+          Evidence (title-only): {row.evidence}
+        </p>
+      )}
+    </li>
+  );
 }
 
 function groupByTopics(
@@ -202,6 +275,61 @@ export default async function VideosPage({
   const topics = groupByTopics(map, curriculum);
   const c = map.coverage;
 
+  // P2F anchor rows (granularity spec §7): course rows → the "Past papers
+  // & walkthroughs" shelf; topic/subtopic rows → the matching topic
+  // section; subject rows → a flat subject-wide shelf. All are zero-weight
+  // enrichment (specs:[]) — the coverage numbers above never move.
+  const buckets = anchorBuckets(map);
+  const topicAreaByTopic = new Map<string, VideoMapRow[]>();
+  const topicAreaFlat: VideoMapRow[] = [];
+  if (curriculum) {
+    const nodeByCode = new Map(curriculum.nodes.map((n) => [n.code, n]));
+    const topicOfCode = (code: string) => {
+      let cur = nodeByCode.get(code);
+      const seen = new Set<string>();
+      while (cur && !seen.has(cur.code)) {
+        seen.add(cur.code);
+        if (cur.family === "TOPIC") return cur;
+        const parent = cur.parents?.[0];
+        cur = parent ? nodeByCode.get(parent) : undefined;
+      }
+      return null;
+    };
+    for (const row of buckets.topicArea) {
+      const topic = topicOfCode(row.anchor!.ref);
+      if (!topic) {
+        // ref unknown to this spine render — the flat shelf keeps it
+        // visible instead of silently dropping it.
+        topicAreaFlat.push(row);
+        continue;
+      }
+      const list = topicAreaByTopic.get(topic.code);
+      if (list) list.push(row);
+      else topicAreaByTopic.set(topic.code, [row]);
+    }
+  } else {
+    topicAreaFlat.push(...buckets.topicArea);
+  }
+  const unitRank = (scope: string | null | undefined) => {
+    const m = /^U(\d+)$/i.exec(scope ?? "");
+    return m ? Number(m[1]) : 99;
+  };
+  const courseRows = [...buckets.course].sort(
+    (a, b) =>
+      unitRank(a.unitScope) - unitRank(b.unitScope) ||
+      (map.videoById.get(a.video)?.title ?? a.video).localeCompare(
+        map.videoById.get(b.video)?.title ?? b.video,
+      ),
+  );
+  const anchorTotal = buckets.course.length + buckets.topicArea.length + buckets.subject.length;
+  const anchorBadge = [
+    buckets.course.length > 0 ? `${buckets.course.length} past-paper` : null,
+    buckets.topicArea.length > 0 ? `${buckets.topicArea.length} topic videos` : null,
+    buckets.subject.length > 0 ? `${buckets.subject.length} subject-wide` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <CoursePageHeader
@@ -230,6 +358,11 @@ export default async function VideosPage({
             {c.byConfidence.low} low
           </Badge>
         )}
+        {anchorBadge && (
+          <Badge variant="secondary" className="text-2xs">
+            {anchorBadge}
+          </Badge>
+        )}
         <p className="w-full max-w-3xl text-xs leading-relaxed text-muted-foreground">
           Matches are title-only: the confidence chip says how directly the video
           title names the spec point&apos;s content — watch before relying on a medium
@@ -239,8 +372,34 @@ export default async function VideosPage({
         </p>
       </div>
 
+      {courseRows.length > 0 && (
+        <section aria-label="Past papers and walkthroughs" className="mt-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-base font-semibold tracking-tight">
+              Past papers &amp; walkthroughs
+            </h2>
+            <span className="text-xs text-muted-foreground">
+              {courseRows.length} full-paper {courseRows.length === 1 ? "video" : "videos"}
+            </span>
+          </div>
+          <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+            Whole-paper walkthroughs anchored to the course — typically full papers
+            whose Edexcel paper code is stated in the title. They sit outside the
+            spec-point coverage: they teach the paper, not a single point, so they
+            never inflate the numbers above.
+          </p>
+          <ul className="mt-3 space-y-2">
+            {courseRows.map((row) => (
+              <VideoRowItem key={row.video} map={map} row={row} />
+            ))}
+          </ul>
+        </section>
+      )}
+
       <div className="mt-6 space-y-8">
-        {topics.map((topic) => (
+        {topics.map((topic) => {
+          const topicRows = topicAreaByTopic.get(topic.key);
+          return (
           <section key={topic.key}>
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h2 className="text-base font-semibold tracking-tight">{topic.title}</h2>
@@ -248,6 +407,25 @@ export default async function VideosPage({
                 {topic.covered}/{topic.total} spec points with videos
               </span>
             </div>
+
+            {topicRows && topicRows.length > 0 && (
+              <div className="mt-3 rounded-lg border bg-card/40 p-3">
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <Badge variant="outline" className="text-2xs">
+                    Topic videos
+                  </Badge>
+                  <span className="text-xs text-muted-foreground">
+                    {topicRows.length} revision {topicRows.length === 1 ? "video" : "videos"}{" "}
+                    for this topic — zero spec-point weight
+                  </span>
+                </div>
+                <ul className="mt-2 space-y-2">
+                  {topicRows.map((row) => (
+                    <VideoRowItem key={row.video} map={map} row={row} />
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {topic.points.length === 0 ? (
               <p className="mt-2 text-xs text-muted-foreground">
@@ -268,64 +446,9 @@ export default async function VideosPage({
                       )}
                     </div>
                     <ul className="mt-2 space-y-2">
-                      {point.rows.map((row) => {
-                        const video = map.videoById.get(row.video);
-                        if (!video) return null;
-                        const href = videoHref(video, row);
-                        const title = video.title ?? video.id;
-                        return (
-                          <li
-                            key={row.video}
-                            className="rounded-md border bg-background/60 p-2.5"
-                          >
-                            {href ? (
-                              <a
-                                href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm font-medium underline-offset-4 hover:underline"
-                              >
-                                {title}
-                              </a>
-                            ) : (
-                              <span className="text-sm font-medium">{title}</span>
-                            )}
-                            <div className="mt-1 flex flex-wrap items-center gap-1.5">
-                              <Badge variant="secondary" className="text-2xs">
-                                {videoSourceLabel(video)}
-                              </Badge>
-                              {typeof video.durationS === "number" && (
-                                <Badge
-                                  variant="outline"
-                                  className="text-2xs tabular-nums"
-                                >
-                                  {formatDuration(video.durationS)}
-                                </Badge>
-                              )}
-                              {row.confidence && (
-                                <Badge variant="outline" className="text-2xs">
-                                  {row.confidence}-confidence match
-                                </Badge>
-                              )}
-                              {row.boardMismatch && (
-                                <Badge variant="outline" className="text-2xs">
-                                  different-board source
-                                </Badge>
-                              )}
-                            </div>
-                            {row.boardMismatch && video.boardNote && (
-                              <p className="mt-1 text-xs text-muted-foreground">
-                                {video.boardNote}
-                              </p>
-                            )}
-                            {row.evidence && (
-                              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                                Evidence (title-only): {row.evidence}
-                              </p>
-                            )}
-                          </li>
-                        );
-                      })}
+                      {point.rows.map((row) => (
+                        <VideoRowItem key={row.video} map={map} row={row} />
+                      ))}
                     </ul>
                   </div>
                 ))}
@@ -339,7 +462,38 @@ export default async function VideosPage({
               </p>
             )}
           </section>
-        ))}
+          );
+        })}
+
+        {topicAreaFlat.length > 0 && (
+          <section aria-label="Topic videos outside the spine render">
+            <h2 className="text-base font-semibold tracking-tight">Topic videos</h2>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Anchored to topic areas that don&apos;t resolve in this spine render —
+              listed flat rather than dropped.
+            </p>
+            <ul className="mt-3 space-y-2">
+              {topicAreaFlat.map((row) => (
+                <VideoRowItem key={row.video} map={map} row={row} />
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {buckets.subject.length > 0 && (
+          <section aria-label="Subject-wide videos">
+            <h2 className="text-base font-semibold tracking-tight">Subject-wide</h2>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Board-agnostic technique and skills videos that apply across the
+              whole subject — zero spec-point weight.
+            </p>
+            <ul className="mt-3 space-y-2">
+              {buckets.subject.map((row) => (
+                <VideoRowItem key={row.video} map={map} row={row} />
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
   );

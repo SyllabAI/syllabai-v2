@@ -1,0 +1,42 @@
+# T-DBPROBE-PROMPT-1 run-001 — read-only production DB probe (prompt_versions +
+# toolkit FAILED-row forensics), from the runner vantage (CI reaches the prod
+# DB via the SMOKE_DB_URI secret of record, the t-teachme-1-vantage-probe law).
+#
+# WHY: the toolkit walls persisted after the #918 bake while the sandbox→US
+# repro of the repo's 0008 templates on the exact wire shape returns COMPLETE
+# JSON from groq — the production template text and the persisted failure
+# forensics are the remaining unknowns of record.
+#
+# READ-ONLY: the probe script contains zero writes. SMOKE_DB_URI is never
+# printed. Templates are non-secret prompt text (migration-0008 class).
+# OPERATOR GATE: workflow_dispatch ONLY — inert until dispatched.
+
+name: t-dbprobe-prompt-versions
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install (frozen)
+        run: bun install --frozen-lockfile
+
+      - name: Read-only probe — prompt_versions + toolkit FAILED forensics
+        env:
+          SMOKE_DB_URI: ${{ secrets.SMOKE_DB_URI }}
+        run: |
+          set -eu
+          if [ -z "$SMOKE_DB_URI" ]; then echo "SMOKE_DB_URI secret not set — abort"; exit 1; fi
+          bun scripts/dbprobe/prompt-versions-probe.ts "$SMOKE_DB_URI"

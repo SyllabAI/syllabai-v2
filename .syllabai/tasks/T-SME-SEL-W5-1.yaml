@@ -1,0 +1,59 @@
+version: 1
+task:
+  id: T-SME-SEL-W5-1
+  title: 'SME picker layer for the Exam Questions selector, wave 5 — the IAL
+    Maths family in one sweep (ial-maths-20-pure-1/2/3/4, mechanics-1/2,
+    statistics-1/2, decision-1) (operator order: "the whole IAL Maths
+    family (9 courses in one sweep)")'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 5 after the merged
+    physics/chemistry #867, biology #878, cosmetics #886, chem-23 #890 and
+    bio-23+DA-slices #907)
+  wave: sme-selector
+  deps: [T-SME-SEL-W1-1, T-SME-SEL-W2-1, T-SME-SEL-W3-1, T-SME-SEL-COSM-1, T-SME-SEL-W4-1]
+  scope:
+    allowed:
+    - apps/hub/content/ial-maths-20-{pure-1,pure-2,pure-3,pure-4,mechanics-1,
+      mechanics-2,statistics-1,statistics-2,decision-1}/curriculum.json
+      (+145 SME_REFERENCE nodes append-only total: 45 section rows + 100
+      topic rows, verbatim from the live picker fetch 2026-11-11, module-
+      filtered from the one pooled SME course; removal round-trip asserted
+      byte-identical on all nine)
+    - apps/hub/scripts/verify_sme_wave5.ts +
+      apps/hub/scripts/sme-wave5-fixtures.json (NEW gate, live-derived)
+    - .syllabai/tasks/T-SME-SEL-W5-1.yaml + .syllabai/receipts/
+      T-SME-SEL-W5-1/run-001.md + both worklogs (append-only)
+    forbidden:
+    - questions.json on any of the nine courses (sets untouched; homes are
+      runtime via smeRowOfQuestionSet by corpus topicSlug)
+    - the official spines (5/5/22, 8/8/19, 6/6/18, 7/7/18, 6/6/12, 5/5/13,
+      5/5/16, 4/4/16, 5/5/15 byte-untouched)
+    - any set home, question content, kind label, note, flashcard
+    - ial-further-maths-18-further-pure-1 (separate SME course, 2018 spec —
+      stays queued for a later wave)
+  evidence:
+    - live picker fetches 2026-11-11 (operator workspace scratch/sme-w5/
+      sme_ial_maths_<unit>.html x9): ONE SME course (crs_7R3phcphwpXF9rWr,
+      "Edexcel International A Level (IAL) Maths") with NINE modules; every
+      unit page ships the whole-course payload pooled (45 sections / 100
+      topics / 90 questionSets) with sections+topics module-filtered;
+      per-module pickers reconstructed by module id (pinned in fixtures)
+    - audit of record (scripts/sme_w5_audit.py, by slug/ID): 8 of 9 courses
+      PERFECT bijections (0 sme-only / 0 hub-only / 0 count mismatches /
+      0 name variance); decision-1 9/9 sets match + 10 sme-only season rows
+      ALL 0-set under "Past Paper Questions" (mirrored verbatim as empty
+      rows, the wave-1/3/4 precedent); ZERO DRIFT on every row of all nine
+      — the first zero-drift wave
+  verification:
+    - bun apps/hub/scripts/verify_sme_wave5.ts PASS (spines 5/5/22, 8/8/19,
+      6/6/18, 7/7/18, 6/6/12, 5/5/13, 5/5/16, 4/4/16, 5/5/15 intact; 145
+      SME_REFERENCE nodes; 45 runtime smeSections; 100 rows pinned to
+      CORPUS counts; zero-drift law exact; 90/90 sets resolve 1:1; deep
+      links resolve)
+    - verify_sme_wave1/wave2/wave3/cosmetics1/wave4 PASS; verify_sme_wire_r0
+      PASS (2,574/2,574, 0 unplaced, gen-row homes 29 — zero homes moved)
+    - bun test bundle-seed + sme bundle-questions: 89 pass / 0 fail / 11,729
+      expect() calls (after bun install in the recycled sandbox)
