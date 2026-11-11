@@ -114,3 +114,50 @@ async function main() {
 }
 
 main().catch((e) => { console.error("fatal:", e?.message ?? e); process.exit(1); });
+
+// T-DBPROBE-TOOLKIT-1 run-002 additions: the effort hypothesis —
+// gpt-oss-20b lazily truncates big JSON contracts at effort LOW; medium
+// should complete. Direct groq legs at both efforts, rubric + sow.
+const SOW_PROD = `You are an expert head of department writing a scheme of work.
+Respond with a single valid JSON object and nothing else. No markdown fences, no commentary.
+Scheme of work: 3 lesson(s) of 60 minutes each for IGCSE Chemistry (unspecified board), topic "States of matter and changes of state". Difficulty: Intermediate.
+Emphasis areas to weave in: Scientific Thinking, Practical Skills.
+Required JSON shape (all keys mandatory, exact casing):
+{
+  "subject": string, "topic": string,
+  "overarchingObjectives": string[3-4] (course-level goals, ~70 chars each),
+  "lessons": [ exactly 3 items: {
+    "lessonNumber": int (1-based), "title": string (~55 chars), "duration": 60,
+    "learningObjectives": string[3-4] (measurable, "By the end... students can..." style, ~70 chars),
+    "activities": [3-5 items: { "title": string (~40 chars), "description": string (~200-270 chars), "duration": int, "resources": string[3-4] } ]  // activity durations must sum to 60
+    ,
+    "assessment": string[3-4] (~70 chars each, concrete checks for understanding),
+    "differentiation": { "support": string[3-4], "core": string[3], "extension": string[3] },
+    "scaffoldingStrategies": string[3-4] (~70 chars),
+    "reflectionPrompts": string[3] (~75 chars, questions the teacher asks students),
+    "crossCurricularLinks": string[3] (~60-80 chars, name the other subject),
+    "stretchTasks": string[3] (~85 chars, beyond-spec challenge)
+  } ],
+  "metadata": { "author": "Curriculum Planning Expert", "createdAt": "YYYY-MM-DD", "version": "1.0" }
+}
+Lessons must build progressively (later lessons assume earlier ones).`;
+
+async function main2() {
+  const groqKey = process.env.SYLLABAI_GROQ_API_KEY ?? process.env.SYLLABAI_LLM_GROQ_API_KEY ?? "";
+  const opts = OPTS as any;
+  const mk = (system: string, effort: "low" | "medium") => ({
+    system, user: GO_LINE, temperature: 0.5, maxTokens: 8000, reasoningEffort: effort,
+  });
+  const groq = () => new OpenAiCompatibleChainMember(
+    "groq-effort-probe",
+    { apiKey: groqKey, baseUrl: "https://api.groq.com/openai/v1", model: process.env.SYLLABAI_LLM_GROQ_MODEL ?? "openai/gpt-oss-20b" },
+    opts,
+  );
+  await leg("groq rubric effort=LOW  (contrast)", async () => groq().generate(mk(RUBRIC_PROD, "low") as any));
+  await leg("groq rubric effort=MEDIUM (fix?)", async () => groq().generate(mk(RUBRIC_PROD, "medium") as any));
+  await leg("groq sow    effort=LOW   (contrast)", async () => groq().generate(mk(SOW_PROD, "low") as any));
+  await leg("groq sow    effort=MEDIUM (fix?)", async () => groq().generate(mk(SOW_PROD, "medium") as any));
+}
+
+main2().catch((e) => { console.error("fatal2:", e?.message ?? e); });
+
