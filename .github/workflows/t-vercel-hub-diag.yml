@@ -52,12 +52,18 @@ jobs:
           if not failed:
               print("no failed deployment found — nothing to diagnose")
               raise SystemExit(0)
-          print(f"--- events of the failed deployment {failed.get('uid')} ({failed.get('state')}) ---")
-          events = vapi(f"https://api.vercel.com/v3/deployments/{failed.get('uid')}/events?limit=100&builds=1").get("events", [])
-          # print the tail of the build log: errors live at the end
+          print(f"--- the failed deployment {failed.get('uid')} ({failed.get('state')}) ---")
+          one = vapi(f"https://api.vercel.com/v13/deployments/{failed.get('uid')}")
+          be = one.get("blockingError")
+          print("blockingError:", json.dumps(be) if be else "(none)")
+          print("disabledReason:", one.get("disabledReason"))
+          data = vapi(f"https://api.vercel.com/v3/deployments/{failed.get('uid')}/events?limit=100&builds=1")
+          events = data.get("events", []) if isinstance(data, dict) else data
           lines = []
           for ev in events:
-              payload = ev.get("payload", {})
+              if not isinstance(ev, dict):
+                  continue
+              payload = ev.get("payload", {}) or {}
               txt = payload.get("text") or payload.get("info", {}).get("name", "")
               if txt:
                   lines.append(str(txt))
