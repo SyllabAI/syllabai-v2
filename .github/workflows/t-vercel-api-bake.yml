@@ -33,7 +33,7 @@
 #     deployment's meta.githubCommitSha differs from main HEAD.
 #   - the stage is GATED (boot + health parity) before the deploy, and the
 #     LIVE surface is probed after it; either check red = job red.
-#   - the gate env values are STAGE-ONLY dummies (boot law demands non-blank;
+#   - the gate env values are STAGE-ONLY dummies (boot law demands >=32 bytes;
 #     the gate probes never touch the database) — they are not secrets and
 #     are deliberately non-production strings.
 #   - no other environment touched.
@@ -126,7 +126,9 @@ jobs:
       - name: Gate the stage (boot + health parity, stage-only dummy envs)
         if: steps.prod.outputs.sha != steps.head.outputs.sha
         env:
-          SYLLABAI_JWT_SECRET: stage-gate-not-a-secret
+          # stage-only dummy, >=32 bytes per the bundle boot law
+          # (syllabai.security.jwt-secret); never a production value
+          SYLLABAI_JWT_SECRET: stage-gate-not-a-secret-0123456789abcdef
           DATABASE_URL: postgres://stage-gate:stage-gate@127.0.0.1:5432/stage-gate
         run: node scripts/api-stage/localgate-server.cjs "$STAGE_DIR" 8971
 
