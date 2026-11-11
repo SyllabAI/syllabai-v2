@@ -135,7 +135,7 @@ function DerivedLinks({
         <Link
           key={n.noteId}
           href={`/courses/${courseSlug}/revision-notes/${n.noteId}`}
-          className="inline-flex items-center gap-1 underline decoration-dotted underline-offset-4 hover:text-primary"
+          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
         >
           <BookOpen className="h-3.5 w-3.5" aria-hidden />
           {n.title}
@@ -145,7 +145,7 @@ function DerivedLinks({
         <Link
           key={t.topicSlug}
           href={`/courses/${courseSlug}/exam-questions/${t.topicSlug}`}
-          className="inline-flex items-center gap-1 underline decoration-dotted underline-offset-4 hover:text-primary"
+          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
         >
           <FileQuestion className="h-3.5 w-3.5" aria-hidden />
           {(t as { topicName?: string }).topicName ?? t.topicSlug}
@@ -154,7 +154,7 @@ function DerivedLinks({
       {cards.length > 0 && (
         <Link
           href={`/courses/${courseSlug}/flashcards`}
-          className="inline-flex items-center gap-1 underline decoration-dotted underline-offset-4 hover:text-primary"
+          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
         >
           <ListChecks className="h-3.5 w-3.5" aria-hidden />
           Flashcards ({cards.length})
@@ -288,7 +288,7 @@ export function LessonView({
             <a
               key={s.id}
               href={`#${s.id.replace(/:/g, "-")}`}
-              className="rounded px-2 py-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+              className="rounded px-2 py-1 text-muted-foreground outline-none transition-[background-color,color,box-shadow] hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
             >
               {i + 1}. {s.title}
             </a>
@@ -306,13 +306,16 @@ export function LessonView({
         <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
           <Link
             href={`/courses/${courseSlug}/books/${docId}?chapter=${encodeURIComponent(chapterKey)}`}
-            className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-1 rounded-sm text-muted-foreground outline-none transition-[color,box-shadow] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Rail
           </Link>
           <span className="text-muted-foreground">·</span>
-          <Link href={`/courses/${courseSlug}/books`} className="text-muted-foreground hover:text-foreground">
+          <Link
+            href={`/courses/${courseSlug}/books`}
+            className="rounded-sm text-muted-foreground outline-none transition-[color,box-shadow] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+          >
             Book shelf
           </Link>
           <span className="rounded bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
@@ -366,14 +369,14 @@ export function LessonView({
         <div className="mt-6 flex flex-wrap gap-3 text-sm">
           <Link
             href={`/courses/${courseSlug}/books/${docId}?chapter=${encodeURIComponent(chapterKey)}`}
-            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 hover:bg-muted"
+            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 outline-none transition-[background-color,box-shadow] hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Open this chapter in the Rail
           </Link>
           <Link
             href={`/courses/${courseSlug}/books`}
-            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 hover:bg-muted"
+            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 outline-none transition-[background-color,box-shadow] hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
           >
             All chapters
           </Link>
