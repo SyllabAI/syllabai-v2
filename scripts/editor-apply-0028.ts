@@ -40,7 +40,12 @@
  *     materialize into a new table's ACL at CREATE time, so the driver
  *     additionally REVOKEs every verb beyond the invariant set in the same
  *     transaction and the wire proof NEGATIVELY proves the forbidden verbs
- *     are denied (has_table_privilege).
+ *     are denied (has_table_privilege). run-004: the receipt also carries
+ *     the ROLE-TOPOLOGY diagnostics of record (memberships, PUBLIC
+ *     privileges, inherit flags, per-table ACL entries) — a has_table_
+ *     privilege TRUE with no matching ACL entry means the residual path is
+ *     membership or PUBLIC, which NO per-table REVOKE can reach and which
+ *     no census view displays; the red receipt must name the path.
  *   - post-verify AFTER the DDL: per-table invariant census (columns, PK,
  *     FK→users/proposals with ON DELETE cascade, indexes incl. the
  *     partial-open unique grant index, CHECK constraints, app-role DML
@@ -407,6 +412,33 @@ try {
 				if (holds) violated.push(`${APP_ROLE} still holds ${p} on public.${t}`);
 			}
 		}
+		// ── ROLE-TOPOLOGY DIAGNOSTICS OF RECORD (run-004, read-only catalog
+		// reads): has_table_privilege TRUE with no matching ACL entry means the
+		// residual path is ROLE MEMBERSHIP or PUBLIC — paths no per-table
+		// REVOKE can reach and no role_table_grants census displays. A red
+		// receipt must NAME the path; a green receipt should record that the
+		// topology was checked and clean. ───────────────────────────────────
+		const memberships = await sql`SELECT r.rolname AS member, g.rolname AS granted_role, m.admin_option, r.rolinherit AS member_inherits FROM pg_auth_members m JOIN pg_roles r ON r.oid = m.member JOIN pg_roles g ON g.oid = m.roleid WHERE r.rolname = ${APP_ROLE} ORDER BY g.rolname`;
+		const publicRolePrivileges: Record<string, boolean> = {};
+		for (const t of files.flatMap((f) => f.tables)) {
+			for (const p of ALL_TABLE_VERBS) {
+				publicRolePrivileges[`${t}.${p}`] = (await sql`SELECT has_table_privilege('public', ${`public.${t}`}, ${p}) AS ok`)[0]?.ok as boolean;
+			}
+		}
+		const tableAcls: Record<string, Array<{ grantee: string; privilege_type: string }>> = {};
+		for (const t of files.flatMap((f) => f.tables)) {
+			tableAcls[t] = (await sql`SELECT pg_get_userbyid(acl.grantee) AS grantee, acl.privilege_type FROM aclexplode((SELECT relacl FROM pg_class WHERE oid = ${`public.${t}`}::regclass)) AS acl ORDER BY grantee, privilege_type`).map((r) => ({ grantee: r.grantee as string, privilege_type: r.privilege_type as string }));
+		}
+		const appMemberOfOwner = tableOwner
+			? ((await sql`SELECT pg_has_role(${APP_ROLE}, ${tableOwner}, 'member') AS m`)[0]?.m as boolean)
+			: null;
+		receipt.app_role_topology = {
+			memberships,
+			public_role_privileges: publicRolePrivileges,
+			table_acls: tableAcls,
+			app_member_of_table_owner: appMemberOfOwner,
+			note: "has_table_privilege consults ACLs + PUBLIC + the membership inherit chain; role_table_grants displays ONLY explicit ACL entries — a disagreement between the two is the signature of a membership/PUBLIC residual path",
+		};
 		if (violated.length > 0) {
 			receipt.app_role_append_only_proof = { violated };
 			throw new Error(
