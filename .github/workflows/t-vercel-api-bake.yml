@@ -2,24 +2,28 @@
 #
 # Mirrors the proven t-vercel-usage-bake law (run-001..005 receipts) for the
 # OTHER project of record: the API (syllabai-v2, prj_vf1MQaCuuGHd83HaTA3uqDx
-# ETpb5, rootDirectory = repo root, domains api.syllab-ai.com +
-# syllabai-v2-six.vercel.app — discovered first-hand by t-vercel-api-diag
-# run-001, 2026-11-09 06:07Z).
+# ETpb5, domains api.syllab-ai.com + syllabai-v2-six.vercel.app — discovered
+# first-hand by t-vercel-api-diag run-001, 2026-11-09 06:07Z).
 #
-# WHY IT EXISTS: the API project's git integration has been silent since
-# Nov 4 (worklog #658: last status 04e3c40a, PR #783) and the account
-# migration left it unbaked — the regions fix (#864) plus every API-side
-# change since #783 is merged to main but never served. A dashboard
-# Redeploy of the stale deployment (2026-11-09 05:51Z, empty commit SHA)
-# reproduced OLD bytes — the regions endpoint still 500s (live probe,
-# 06:12Z). The CLI deploy uploads source directly and does not consult
-# ignoreCommand (the t-vercel-usage-bake run-002/003 first-hand proof).
+# THE RECIPE OF RECORD (T-VERCEL-API-STAGE run-001, 2026-11-11): the project's
+# Vercel build settings are ALL unset (framework/buildCommand/outputDirectory/
+# rootDirectory — null on the old account AND the new one; the migration never
+# carried them). Serving works because the deployable is a PREBUILT STAGE:
+#   vercel.json        (rewrites /api/v1/(.*) and /actuator/health -> /api/index)
+#   api/index.js       (ONE esbuild-bundled Node lambda, default-exported handler)
+#   api/concept-graph/ (SHA-256-pinned snapshot yamls read from __dirname)
+# produced by scripts/api-stage/build.sh and gated by
+# scripts/api-stage/localgate-server.cjs BEFORE any deploy. The recipe was
+# recovered by deployment archaeology on the old account's serving lane
+# (dpl_7Q3CRpcTWavgD6VMbXvSrpshCVKV) and validated locally to byte-shape
+# parity with the live surface (docs/T-VERCEL-API-SERVING-RECOVERY.md).
 #
-# DELTA vs the hub floor: the CLI deployment carries
-# --meta githubCommitSha=<HEAD> so the state-aware skip works for CLI
-# deploys too (the hub floor's CLI deployments have no SHA and therefore
-# re-bake daily; this floor skips when the newest LIVE deployment already
-# carries main HEAD — idempotent by design).
+# THE 2026-11-10 INCIDENT (never again): run-2 (schedule) deployed the
+# MONOREPO ROOT — no vercel.json, no api/ — producing an EMPTY deployment;
+# api.syllab-ai.com 404'd on every path for ~19h (first live probe 2026-11-11
+# ~03:38Z; restored 2026-11-11 ~06:0xZ by the ops lane). Doctrine note
+# closed: this floor now boots the bundle and probes the LIVE surface after
+# the deploy — a bake without a serving proof is not a bake.
 #
 # STRICT DISPOSITIONS (t-ops-plane doctrine class, unchanged):
 #   - VERCEL_BAKE_TOKEN is a repository secret: never printed, never
@@ -27,23 +31,29 @@
 #   - prod writes: at most ONE deployment per run, and ONLY when the
 #     newest LIVE (READY/BUILDING/QUEUED/INITIATING) production
 #     deployment's meta.githubCommitSha differs from main HEAD.
-#   - read-only preflight prints the project's build settings (never the
-#     token) so a failed bake explains itself.
-#   - no other environment touched; zero app/contracts/db bytes beyond
-#     the deployment itself.
+#   - the stage is GATED (boot + health parity) before the deploy, and the
+#     LIVE surface is probed after it; either check red = job red.
+#   - the gate env values are STAGE-ONLY dummies (boot law demands >=32 bytes;
+#     the gate probes never touch the database) — they are not secrets and
+#     are deliberately non-production strings.
+#   - no other environment touched.
+#
+# SCHEDULE: re-armed 2026-11-11 (operator order "re-arm the bake schedule",
+# trace 1a1cad986dc88415) at the original 03:30 UTC cadence — one hour behind
+# the hub floor's 02:30 UTC, as staggered from day one. The 2026-11-10
+# incident class is closed by construction: the stage carries its own
+# vercel.json (an empty deployment is structurally impossible from this
+# recipe), the boot gate blocks a bad build BEFORE the deploy, and the
+# post-deploy LIVE serving proof turns any silent regression into a red job.
+# A scheduled run at an already-current HEAD is a no-op read (the
+# state-aware skip).
 
 name: t-vercel-api-bake
 
 on:
+  schedule:
+    - cron: "30 3 * * *" # 03:30 UTC — staggered one hour after the hub floor
   workflow_dispatch: {}
-  # 2026-11-11 INCIDENT STOP: the schedule is removed. Run-2 (2026-11-10
-  # 11:34Z, schedule) deployed THIS monorepo onto the syllabai-v2 project
-  # whose serving code is the Java core (SyllabAI/syllabai-core); the
-  # project's build settings are unset on the new account (the migration
-  # never carried them), so the deployment was EMPTY and api.syllab-ai.com
-  # 404s on every path. t-vercel-api-rollback restores the last serving
-  # build. The floor returns pointed at the right source with the right
-  # build config once the recipe of record is re-established.
 
 permissions:
   contents: read
@@ -55,12 +65,17 @@ concurrency:
 env:
   API_PROJECT_ID: prj_vf1MQaCuuGHd83HaTA3uqDxETpb5
   API_PROJECT_NAME: syllabai-v2
+  STAGE_DIR: /tmp/api-stage
 
 jobs:
   bake:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
 
       - name: Resolve main HEAD
         id: head
@@ -104,6 +119,19 @@ jobs:
         if: steps.prod.outputs.sha == steps.head.outputs.sha
         run: echo "API production already at main HEAD — nothing to bake"
 
+      - name: Build the prebuilt stage (scripts/api-stage/build.sh)
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        run: bash scripts/api-stage/build.sh "$STAGE_DIR"
+
+      - name: Gate the stage (boot + health parity, stage-only dummy envs)
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        env:
+          # stage-only dummy, >=32 bytes per the bundle boot law
+          # (syllabai.security.jwt-secret); never a production value
+          SYLLABAI_JWT_SECRET: stage-gate-not-a-secret-0123456789abcdef
+          DATABASE_URL: postgres://stage-gate:stage-gate@127.0.0.1:5432/stage-gate
+        run: node scripts/api-stage/localgate-server.cjs "$STAGE_DIR" 8971
+
       - name: Install Vercel CLI
         if: steps.prod.outputs.sha != steps.head.outputs.sha
         run: npm install -g vercel@latest
@@ -114,13 +142,31 @@ jobs:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
         run: vercel link --yes --project "$API_PROJECT_NAME" --token="$VERCEL_BAKE_TOKEN"
 
-      - name: Bake production (CLI deploy from repo root; source-tagged with main HEAD)
+      - name: Bake production (CLI deploy FROM THE GATED STAGE; source-tagged with main HEAD)
         if: steps.prod.outputs.sha != steps.head.outputs.sha
         env:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
         run: |
           SHA="$(git rev-parse HEAD)"
+          cd "$STAGE_DIR"
           vercel deploy --prod --yes \
             --meta "githubCommitSha=$SHA" \
             --meta "githubCommitRef=main" \
             --token="$VERCEL_BAKE_TOKEN"
+
+      - name: Post-deploy serving proof (read-only live probe)
+        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        run: |
+          sleep 15
+          echo "--- /actuator/health (expect 200 UP, never the NOT_FOUND page) ---"
+          H=$(curl -s -w "\n%{http_code}" https://api.syllab-ai.com/actuator/health)
+          echo "$H"
+          echo "$H" | tail -1 | grep -q 200 || { echo "SERVING PROOF RED: health not 200"; exit 1; }
+          echo "$H" | grep -q '"status":"UP"' || { echo "SERVING PROOF RED: not the UP shape"; exit 1; }
+          echo "--- POST /api/v1/auth/login {} (expect JSON 400 validation_failed) ---"
+          L=$(curl -s -w "\n%{http_code}" -X POST -H "Content-Type: application/json" -d '{}' https://api.syllab-ai.com/api/v1/auth/login)
+          echo "$L"
+          echo "$L" | tail -1 | grep -q 400 || { echo "SERVING PROOF RED: login-garbage not 400"; exit 1; }
+          echo "$L" | grep -q "validation_failed" || { echo "SERVING PROOF RED: not the API error shape"; exit 1; }
+          echo "$L" | grep -q "NOT_FOUND" && { echo "SERVING PROOF RED: the empty-deployment 404 shape"; exit 1; }
+          echo "SERVING PROOF GREEN — the deployment serves the API, not the empty shell"

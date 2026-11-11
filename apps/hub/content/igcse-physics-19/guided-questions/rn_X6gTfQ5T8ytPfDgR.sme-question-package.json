@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_X6gTfQ5T8ytPfDgR",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "b071943e901b603639d61d905565044ebb0c8703977dc7683e21bdad05cd75d0",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_X6gTfQ5T8ytPfDgR",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q1",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "Ahead of a moving wave source, the observed wavelength…",
+      "misconceptionClass": "doppler direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "decreases, and the frequency increases",
+          "correct": true,
+          "explanation": "Bunched wavefronts mean shorter wavelength, higher frequency.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "increases, and the frequency decreases",
+          "correct": false,
+          "explanation": "That happens behind the source.",
+          "misconception": "direction swap"
+        },
+        {
+          "key": "C",
+          "text": "stays the same",
+          "correct": false,
+          "explanation": "Relative motion changes the observation.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "D",
+          "text": "doubles",
+          "correct": false,
+          "explanation": "Nothing doubles here.",
+          "misconception": "arithmetic error"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q2",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "Behind a moving wave source, the waves…",
+      "misconceptionClass": "doppler direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "reverse direction",
+          "correct": false,
+          "explanation": "Wave travel does not reverse.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "stretch out, so wavelength increases and frequency decreases",
+          "correct": true,
+          "explanation": "The rear side carries the stretched pattern.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "bunch up, raising the frequency",
+          "correct": false,
+          "explanation": "That is the forward side.",
+          "misconception": "direction swap"
+        },
+        {
+          "key": "D",
+          "text": "vanish completely",
+          "correct": false,
+          "explanation": "Waves still propagate behind the source.",
+          "misconception": "absolutism error"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q3",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "The Doppler effect happens when…",
+      "misconceptionClass": "doppler condition",
+      "options": [
+        {
+          "key": "A",
+          "text": "the wave amplitude changes",
+          "correct": false,
+          "explanation": "Amplitude is not the shifting quantity.",
+          "misconception": "quantity error"
+        },
+        {
+          "key": "B",
+          "text": "the wave changes medium",
+          "correct": false,
+          "explanation": "Medium changes refraction, not this effect.",
+          "misconception": "mechanism error"
+        },
+        {
+          "key": "C",
+          "text": "the wave source moves relative to the observer",
+          "correct": true,
+          "explanation": "Relative motion is the trigger.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the source and observer are both stationary",
+          "correct": false,
+          "explanation": "No relative motion, no shift.",
+          "misconception": "condition error"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q4",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "Δλ names which change?",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the reference wavelength",
+          "correct": false,
+          "explanation": "That is λ₀.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "B",
+          "text": "the speed of light",
+          "correct": false,
+          "explanation": "That is c.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "C",
+          "text": "the wave amplitude",
+          "correct": false,
+          "explanation": "Amplitude is a different quantity.",
+          "misconception": "symbol error"
+        },
+        {
+          "key": "D",
+          "text": "the change in wavelength",
+          "correct": true,
+          "explanation": "Delta marks the change.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q5",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "A stationary emitter's wavefronts are…",
+      "misconceptionClass": "wavefront pattern",
+      "options": [
+        {
+          "key": "A",
+          "text": "evenly spaced in every direction",
+          "correct": true,
+          "explanation": "Symmetric spreading is the stationary baseline.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "bunched ahead only",
+          "correct": false,
+          "explanation": "Bunching needs motion.",
+          "misconception": "pattern error"
+        },
+        {
+          "key": "C",
+          "text": "stretched behind only",
+          "correct": false,
+          "explanation": "Stretching needs motion.",
+          "misconception": "pattern error"
+        },
+        {
+          "key": "D",
+          "text": "absent, since it is not moving",
+          "correct": false,
+          "explanation": "Stationary sources still emit waves.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q6",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "State what happens to the observed frequency and wavelength for a source moving relative to an observer.",
+      "misconceptionClass": "doppler condition",
+      "kind": "recall",
+      "modelAnswer": "Both change: the observed frequency and wavelength shift because of the relative motion.",
+      "keywords": [
+        "frequency",
+        "wavelength",
+        "change",
+        "relative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q7",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "State the wavelength change in front of and behind a moving source.",
+      "misconceptionClass": "doppler direction",
+      "kind": "recall",
+      "modelAnswer": "In front the wavelength decreases; behind it increases.",
+      "keywords": [
+        "front",
+        "behind",
+        "wavelength",
+        "decreases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q8",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "Explain why the wavelength ahead of a moving source decreases.",
+      "misconceptionClass": "doppler direction",
+      "kind": "explain-why",
+      "modelAnswer": "The source chases its own wavefronts, emitting each new crest from a position closer to the observer than the last, so the crests bunch together and the wavelength shortens.",
+      "keywords": [
+        "wavefronts",
+        "source",
+        "wavelength",
+        "decreases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L1::Q9",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L1",
+      "stem": "An observer in front of an approaching ambulance hears a higher pitch. Explain using the Doppler effect.",
+      "misconceptionClass": "doppler direction",
+      "kind": "application",
+      "modelAnswer": "The approaching source bunches the sound wavefronts ahead of it, so the observed wavelength is shorter and the frequency — heard as pitch — is higher.",
+      "keywords": [
+        "wavefronts",
+        "wavelength",
+        "frequency",
+        "higher"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q1",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "In the Doppler equation, λ₀ is…",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the change in wavelength",
+          "correct": false,
+          "explanation": "That is Δλ.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "B",
+          "text": "the reference wavelength measured from a stationary source",
+          "correct": true,
+          "explanation": "λ₀ is the unshifted comparison wavelength.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the observed wavelength",
+          "correct": false,
+          "explanation": "That is λ.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "D",
+          "text": "the galaxy's velocity",
+          "correct": false,
+          "explanation": "That is v.",
+          "misconception": "symbol swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q2",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "A galaxy's light is red-shifted. Its velocity v from the equation is…",
+      "misconceptionClass": "sign reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "zero, since light is involved",
+          "correct": false,
+          "explanation": "The shift exists precisely because v is not zero.",
+          "misconception": "logic error"
+        },
+        {
+          "key": "B",
+          "text": "undefined",
+          "correct": false,
+          "explanation": "The equation defines it directly.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "positive, moving away from the observer",
+          "correct": true,
+          "explanation": "Red-shift means λ > λ₀, so Δλ and v are positive.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "negative, moving towards us",
+          "correct": false,
+          "explanation": "Approach would blue-shift the light.",
+          "misconception": "sign error"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q3",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "The Doppler shift Δλ/λ₀ carries units of…",
+      "misconceptionClass": "unitless reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "metres",
+          "correct": false,
+          "explanation": "The ratio cancels the metres.",
+          "misconception": "unit error"
+        },
+        {
+          "key": "B",
+          "text": "m/s",
+          "correct": false,
+          "explanation": "Velocity sits on the other side of the equation.",
+          "misconception": "unit error"
+        },
+        {
+          "key": "C",
+          "text": "hertz",
+          "correct": false,
+          "explanation": "Frequency is not in this ratio.",
+          "misconception": "unit error"
+        },
+        {
+          "key": "D",
+          "text": "none — both numerator and denominator are wavelengths",
+          "correct": true,
+          "explanation": "Same-unit ratios are dimensionless.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q4",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "A galaxy shows λ = 485 nm where the reference is λ₀ = 435 nm. Δλ is…",
+      "misconceptionClass": "delta calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "50 nm, since Δλ = λ − λ₀",
+          "correct": true,
+          "explanation": "485 − 435 = 50 nm.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "920 nm",
+          "correct": false,
+          "explanation": "That adds the wavelengths instead of subtracting.",
+          "misconception": "operation error"
+        },
+        {
+          "key": "C",
+          "text": "435 nm",
+          "correct": false,
+          "explanation": "That is λ₀ itself.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "D",
+          "text": "−50 nm",
+          "correct": false,
+          "explanation": "Red-shift gives a positive change.",
+          "misconception": "sign error"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q5",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "With c = 3 × 10⁸ m/s and Δλ/λ₀ = 50/435, the galaxy's speed is about…",
+      "misconceptionClass": "speed calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "435 m/s",
+          "correct": false,
+          "explanation": "That quotes λ₀ where the speed belongs.",
+          "misconception": "substitution error"
+        },
+        {
+          "key": "B",
+          "text": "3.4 × 10⁷ m/s",
+          "correct": true,
+          "explanation": "v = c × 50/435 ≈ 3.4 × 10⁷ m/s.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "3.4 × 10⁵ m/s",
+          "correct": false,
+          "explanation": "Two orders of magnitude low.",
+          "misconception": "arithmetic error"
+        },
+        {
+          "key": "D",
+          "text": "3.4 × 10⁹ m/s",
+          "correct": false,
+          "explanation": "That would exceed the speed of light.",
+          "misconception": "physics error"
+        }
+      ]
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q6",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "Write the Doppler effect equation for light.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "(λ − λ₀)/λ₀ = Δλ/λ₀ = v/c.",
+      "keywords": [
+        "equation",
+        "wavelength",
+        "velocity",
+        "light"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q7",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "State what Δλ equals in terms of λ and λ₀.",
+      "misconceptionClass": "delta calculation",
+      "kind": "recall",
+      "modelAnswer": "Δλ = λ − λ₀, the observed wavelength minus the reference wavelength.",
+      "keywords": [
+        "observed",
+        "reference",
+        "wavelength",
+        "minus"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q8",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "Explain why the Doppler shift has no units.",
+      "misconceptionClass": "unitless reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The shift compares a change in wavelength with a wavelength — metres over metres — so the units cancel and the ratio is dimensionless.",
+      "keywords": [
+        "ratio",
+        "wavelength",
+        "units",
+        "cancel"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_X6gTfQ5T8ytPfDgR::L2::Q9",
+      "moduleId": "rn_X6gTfQ5T8ytPfDgR::L2",
+      "stem": "A galaxy emits light at λ = 610 nm; the reference wavelength is λ₀ = 600 nm. Calculate its recession speed, using c = 3 × 10⁸ m/s.",
+      "misconceptionClass": "speed calculation",
+      "kind": "application",
+      "modelAnswer": "Δλ = 610 − 600 = 10 nm, so v = c × Δλ/λ₀ = (3 × 10⁸) × 10/600 = 5.0 × 10⁶ m/s.",
+      "keywords": [
+        "galaxy",
+        "speed",
+        "wavelength",
+        "calculate"
+      ],
+      "options": []
+    }
+  ]
+}

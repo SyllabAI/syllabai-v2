@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_DPzwCBzdqcWJHpyQ",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "fd5709a1a3ce939066972ad87238512c82f241154ac5582e679a943a4ec34004",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_DPzwCBzdqcWJHpyQ",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q1",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "What keeps a moon in orbit around its planet?",
+      "misconceptionClass": "orbital cause",
+      "options": [
+        {
+          "key": "A",
+          "text": "the gravitational attraction of the planet",
+          "correct": true,
+          "explanation": "Gravity towards the larger body bends the moon's path into an orbit.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the moon's engines firing",
+          "correct": false,
+          "explanation": "Moons are natural; no engines exist.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "magnetic repulsion from the planet",
+          "correct": false,
+          "explanation": "Orbits are gravitational, not magnetic.",
+          "misconception": "force error"
+        },
+        {
+          "key": "D",
+          "text": "the moon's own gravity alone",
+          "correct": false,
+          "explanation": "The planet's pull is what curves the path.",
+          "misconception": "force error"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q2",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "In an orbit, the gravitational force on the smaller body points…",
+      "misconceptionClass": "force direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "towards the nearest other planet",
+          "correct": false,
+          "explanation": "The dominant pull is from the orbited body.",
+          "misconception": "body error"
+        },
+        {
+          "key": "B",
+          "text": "towards the centre of the larger body",
+          "correct": true,
+          "explanation": "The attraction always aims at the larger body's centre.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "away from the larger body",
+          "correct": false,
+          "explanation": "Attraction pulls inward, never outward.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "D",
+          "text": "along the direction of travel",
+          "correct": false,
+          "explanation": "The force is not along the motion; that is why the path curves.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q3",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "Which pairing of orbiter and orbited body is correct?",
+      "misconceptionClass": "orbit pairings",
+      "options": [
+        {
+          "key": "A",
+          "text": "planets orbit moons",
+          "correct": false,
+          "explanation": "The larger body is orbited, not the orbiter.",
+          "misconception": "pairing swap"
+        },
+        {
+          "key": "B",
+          "text": "artificial satellites orbit the Sun",
+          "correct": false,
+          "explanation": "Satellites orbit the Earth.",
+          "misconception": "pairing error"
+        },
+        {
+          "key": "C",
+          "text": "planets orbit the Sun",
+          "correct": true,
+          "explanation": "The Sun anchors the planetary orbits.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "moons orbit the Sun",
+          "correct": false,
+          "explanation": "Moons orbit planets.",
+          "misconception": "pairing swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q4",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "Artificial satellites stay in orbit around the Earth because of…",
+      "misconceptionClass": "orbital cause",
+      "options": [
+        {
+          "key": "A",
+          "text": "air resistance balancing them",
+          "correct": false,
+          "explanation": "Air resistance would drag satellites down.",
+          "misconception": "force error"
+        },
+        {
+          "key": "B",
+          "text": "their constant speed alone",
+          "correct": false,
+          "explanation": "Speed alone cannot curve the path; force is required.",
+          "misconception": "concept error"
+        },
+        {
+          "key": "C",
+          "text": "solar wind pressure",
+          "correct": false,
+          "explanation": "Solar wind does not hold satellites.",
+          "misconception": "force error"
+        },
+        {
+          "key": "D",
+          "text": "the Earth's gravitational pull",
+          "correct": true,
+          "explanation": "Gravity supplies the inward force the orbit needs.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q5",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "Comets travel around…",
+      "misconceptionClass": "orbit pairings",
+      "options": [
+        {
+          "key": "A",
+          "text": "the Sun, on stretched elliptical paths",
+          "correct": true,
+          "explanation": "Comets are Sun-orbiters with highly elliptical orbits.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the Earth, on circular paths",
+          "correct": false,
+          "explanation": "Comets orbit the Sun, not the Earth.",
+          "misconception": "body swap"
+        },
+        {
+          "key": "C",
+          "text": "planets, on square paths",
+          "correct": false,
+          "explanation": "Neither the body nor the shape is right.",
+          "misconception": "pairing error"
+        },
+        {
+          "key": "D",
+          "text": "the Milky Way's centre only",
+          "correct": false,
+          "explanation": "The course-level answer is comets orbit the Sun.",
+          "misconception": "level error"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q6",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "State what causes orbital motion.",
+      "misconceptionClass": "orbital cause",
+      "kind": "recall",
+      "modelAnswer": "Orbital motion results from the gravitational force of attraction acting between the two bodies.",
+      "keywords": [
+        "orbital",
+        "motion",
+        "gravitational",
+        "attraction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q7",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "Name the force that keeps satellites in orbit around the Earth.",
+      "misconceptionClass": "orbital cause",
+      "kind": "recall",
+      "modelAnswer": "The Earth's gravitational pull keeps artificial satellites in orbit.",
+      "keywords": [
+        "gravitational",
+        "pull",
+        "satellites",
+        "orbit"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q8",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "Explain why the gravitational force makes an orbiting body move in a circular path.",
+      "misconceptionClass": "force direction",
+      "kind": "explain-why",
+      "modelAnswer": "The pull always points towards the centre of the larger body, so the smaller body is constantly steered inward — a steady inward turn of its motion traces out a circular path.",
+      "keywords": [
+        "gravitational",
+        "force",
+        "centre",
+        "circular"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L1::Q9",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L1",
+      "stem": "Classify each orbit: our Moon, the planet Neptune, a weather satellite, and Halley's-type comet.",
+      "misconceptionClass": "orbit pairings",
+      "kind": "application",
+      "modelAnswer": "The Moon orbits a planet; Neptune orbits the Sun; the satellite orbits the Earth; the comet orbits the Sun on a highly elliptical path.",
+      "keywords": [
+        "moon",
+        "planet",
+        "satellite",
+        "comet"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q1",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "How do the orbits of the planets compare in direction and plane?",
+      "misconceptionClass": "planet orbit features",
+      "options": [
+        {
+          "key": "A",
+          "text": "they all orbit backwards",
+          "correct": false,
+          "explanation": "Retrograde motion is not the shared pattern.",
+          "misconception": "feature error"
+        },
+        {
+          "key": "B",
+          "text": "they all travel the same direction around the Sun, in the same plane",
+          "correct": true,
+          "explanation": "Shared plane and direction are two of the planet similarities.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "each planet picks its own plane and direction",
+          "correct": false,
+          "explanation": "Planets share plane and direction.",
+          "misconception": "feature error"
+        },
+        {
+          "key": "D",
+          "text": "they orbit in random directions",
+          "correct": false,
+          "explanation": "The directions are common, not random.",
+          "misconception": "feature error"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q2",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "The further a planet sits from the Sun, the…",
+      "misconceptionClass": "distance speed law",
+      "options": [
+        {
+          "key": "A",
+          "text": "shorter its orbital time",
+          "correct": false,
+          "explanation": "Distant planets take longer.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "B",
+          "text": "more circular its path becomes",
+          "correct": false,
+          "explanation": "All planetary orbits are slightly elliptical already.",
+          "misconception": "shape error"
+        },
+        {
+          "key": "C",
+          "text": "slower it travels and the longer its orbit takes",
+          "correct": true,
+          "explanation": "Distance up, speed down, period up.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "faster it travels",
+          "correct": false,
+          "explanation": "Near planets are the fast ones.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q3",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "A moon orbits its planet in…",
+      "misconceptionClass": "moon orbit",
+      "options": [
+        {
+          "key": "A",
+          "text": "a highly elliptical path like a comet",
+          "correct": false,
+          "explanation": "That is comet behaviour.",
+          "misconception": "body mix-up"
+        },
+        {
+          "key": "B",
+          "text": "a straight line past the planet",
+          "correct": false,
+          "explanation": "A straight line is not an orbit.",
+          "misconception": "shape error"
+        },
+        {
+          "key": "C",
+          "text": "an orbit around the Sun instead",
+          "correct": false,
+          "explanation": "Moons orbit planets.",
+          "misconception": "body swap"
+        },
+        {
+          "key": "D",
+          "text": "a circular path",
+          "correct": true,
+          "explanation": "Moons follow circular orbits around their planets.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q4",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "Bringing a moon closer to its planet makes its orbit…",
+      "misconceptionClass": "moon orbit",
+      "options": [
+        {
+          "key": "A",
+          "text": "faster and shorter in time",
+          "correct": true,
+          "explanation": "Closer moons race round in less time.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "slower and longer",
+          "correct": false,
+          "explanation": "That is what distance does, not closeness.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "C",
+          "text": "unchanged in speed",
+          "correct": false,
+          "explanation": "Speed depends on distance.",
+          "misconception": "no effect myth"
+        },
+        {
+          "key": "D",
+          "text": "perfectly vertical",
+          "correct": false,
+          "explanation": "Orbits do not stand upright like that.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q5",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "Which statement about planetary orbital radii is right?",
+      "misconceptionClass": "planet orbit features",
+      "options": [
+        {
+          "key": "A",
+          "text": "radii change randomly each year",
+          "correct": false,
+          "explanation": "Orbital radii stay effectively fixed.",
+          "misconception": "stability error"
+        },
+        {
+          "key": "B",
+          "text": "planets orbit at different distances from the Sun",
+          "correct": true,
+          "explanation": "Radii differ — that is one of the listed differences.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "all planets share the same orbital radius",
+          "correct": false,
+          "explanation": "Radii differ between planets.",
+          "misconception": "equality myth"
+        },
+        {
+          "key": "D",
+          "text": "orbital radius has no effect on speed",
+          "correct": false,
+          "explanation": "Radius sets speed: distant planets are slower.",
+          "misconception": "no effect myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q6",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "State the shared features of the planets' orbits.",
+      "misconceptionClass": "planet orbit features",
+      "kind": "recall",
+      "modelAnswer": "Their orbits are slightly elliptical with the Sun near the centre, they share one plane, and they travel the same direction.",
+      "keywords": [
+        "elliptical",
+        "plane",
+        "direction",
+        "orbit"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q7",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "State how a moon's orbit changes as it sits closer to its planet.",
+      "misconceptionClass": "moon orbit",
+      "kind": "recall",
+      "modelAnswer": "The closer moon completes each orbit in less time and at greater speed.",
+      "keywords": [
+        "closer",
+        "moon",
+        "orbit",
+        "speed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q8",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "Explain why distant planets take longer to orbit the Sun.",
+      "misconceptionClass": "distance speed law",
+      "kind": "explain-why",
+      "modelAnswer": "The further a planet sits from the Sun, the slower it travels along its orbit, and with a longer path to cover at lower speed each circuit takes more time.",
+      "keywords": [
+        "travels",
+        "slower",
+        "orbit",
+        "longer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L2::Q9",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L2",
+      "stem": "Two planets, X near the Sun and Y far out. Compare their orbital speeds and periods.",
+      "misconceptionClass": "distance speed law",
+      "kind": "application",
+      "modelAnswer": "Planet X, nearer the Sun, travels faster and completes each orbit sooner; planet Y travels more slowly and takes longer for each circuit.",
+      "keywords": [
+        "planet",
+        "speed",
+        "orbit",
+        "longer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q1",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "The shape of a comet's orbit is…",
+      "misconceptionClass": "comet orbit",
+      "options": [
+        {
+          "key": "A",
+          "text": "a square around the Sun",
+          "correct": false,
+          "explanation": "No orbit is square.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "always identical to a planet's",
+          "correct": false,
+          "explanation": "Comet orbits differ sharply from planetary ones.",
+          "misconception": "body mix-up"
+        },
+        {
+          "key": "C",
+          "text": "highly elliptical or hyperbolic",
+          "correct": true,
+          "explanation": "Stretched ellipses and hyperbolas are comet territory.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a perfect circle",
+          "correct": false,
+          "explanation": "Comet orbits are strongly stretched.",
+          "misconception": "shape error"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q2",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "As a comet approaches the Sun, its speed…",
+      "misconceptionClass": "comet speed",
+      "options": [
+        {
+          "key": "A",
+          "text": "stays constant",
+          "correct": false,
+          "explanation": "Comet speed changes with distance.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "B",
+          "text": "decreases",
+          "correct": false,
+          "explanation": "That happens on the outward leg.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "C",
+          "text": "drops to zero at closest approach",
+          "correct": false,
+          "explanation": "Closest approach is the fastest point.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "D",
+          "text": "increases",
+          "correct": true,
+          "explanation": "Approach means speed-up; recession means slow-down.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q3",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "As a comet moves away from the Sun, its speed…",
+      "misconceptionClass": "comet speed",
+      "options": [
+        {
+          "key": "A",
+          "text": "decreases",
+          "correct": true,
+          "explanation": "Distance gained is speed lost.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "increases further",
+          "correct": false,
+          "explanation": "The speed-up belongs to the approach.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "C",
+          "text": "stays the same",
+          "correct": false,
+          "explanation": "Speed varies along the orbit.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "D",
+          "text": "becomes exactly circular",
+          "correct": false,
+          "explanation": "Speed has nothing to do with shape here.",
+          "misconception": "category error"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q4",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "Comet orbits compared with planetary orbits…",
+      "misconceptionClass": "comet orbit",
+      "options": [
+        {
+          "key": "A",
+          "text": "never pass close to the Sun",
+          "correct": false,
+          "explanation": "Close approaches are the hallmark of comet orbits.",
+          "misconception": "proximity myth"
+        },
+        {
+          "key": "B",
+          "text": "need not share the planets' plane and may run the opposite direction",
+          "correct": true,
+          "explanation": "Inclination and direction are not fixed for comets.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "always lie in the planets' plane",
+          "correct": false,
+          "explanation": "Comets are not confined to that plane.",
+          "misconception": "plane myth"
+        },
+        {
+          "key": "D",
+          "text": "always run the same direction as planets",
+          "correct": false,
+          "explanation": "Some comets run counter to the planets.",
+          "misconception": "direction myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q5",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "Why does a comet's speed change significantly along its orbit?",
+      "misconceptionClass": "comet speed",
+      "options": [
+        {
+          "key": "A",
+          "text": "because the Sun's gravity vanishes far away",
+          "correct": false,
+          "explanation": "Gravity weakens with distance but never vanishes.",
+          "misconception": "physics error"
+        },
+        {
+          "key": "B",
+          "text": "because comets collide with planets",
+          "correct": false,
+          "explanation": "Collisions are not part of the orbital story.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "its distance from the Sun changes dramatically on the stretched orbit",
+          "correct": true,
+          "explanation": "Large distance swings drive large speed swings.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "because comets fire thrusters",
+          "correct": false,
+          "explanation": "Comets have no engines.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q6",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "Describe the shape of a comet's orbit.",
+      "misconceptionClass": "comet orbit",
+      "kind": "recall",
+      "modelAnswer": "A comet's orbit is highly elliptical — very stretched — or hyperbolic.",
+      "keywords": [
+        "comet",
+        "orbit",
+        "elliptical",
+        "hyperbolic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q7",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "State how a comet's speed changes during one orbit.",
+      "misconceptionClass": "comet speed",
+      "kind": "recall",
+      "modelAnswer": "The comet speeds up as it approaches the Sun and slows down as it moves away.",
+      "keywords": [
+        "comet",
+        "speed",
+        "approaches",
+        "away"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q8",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "Explain why comet orbits differ so much from planetary orbits.",
+      "misconceptionClass": "comet orbit",
+      "kind": "explain-why",
+      "modelAnswer": "Comets follow highly elliptical or hyperbolic paths rather than the planets' near-circular, single-plane circles, so their distance from the Sun — and hence their speed — swings enormously, and their planes and directions need not match the planets'.",
+      "keywords": [
+        "elliptical",
+        "orbit",
+        "speed",
+        "plane"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DPzwCBzdqcWJHpyQ::L3::Q9",
+      "moduleId": "rn_DPzwCBzdqcWJHpyQ::L3",
+      "stem": "A comet is observed slowing down over successive nights. State where it is in its orbit relative to the Sun.",
+      "misconceptionClass": "comet speed",
+      "kind": "application",
+      "modelAnswer": "The comet is moving away from the Sun on the outward leg of its orbit, where its speed decreases.",
+      "keywords": [
+        "comet",
+        "moving",
+        "away",
+        "speed"
+      ],
+      "options": []
+    }
+  ]
+}

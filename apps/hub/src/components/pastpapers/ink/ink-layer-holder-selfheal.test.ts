@@ -112,9 +112,20 @@ async function mountInkLayer() {
   // T-MG-INK-11: the gate is GONE (MG's law — the annotator toolbar is
   // always visible). The canvases must be mounted the moment the layer
   // renders: no launcher, no enabling click.
+  // T-HUB-INK-TOUCH run-001: "always visible" now means the chrome is
+  // present in ONE of its two postures — a fresh device mounts the full
+  // row; a device that collapsed before mounts the one-button pill.
   const toggle = container.querySelector('button[aria-label="Draw on this paper (ink layer)"]');
   expect(toggle, "no launcher may exist (the gate is dead)").toBeNull();
-  expect(container.querySelector('[role="toolbar"]'), "the toolbar renders ungated").not.toBeNull();
+  const collapsedPosture = container.querySelector('button[aria-label="Show annotation tools"]');
+  if (collapsedPosture) {
+    expect(
+      window.localStorage.getItem("syllabai-ink-toolbar-collapsed"),
+      "the pill only mounts on a device that collapsed before",
+    ).toBe("1");
+  } else {
+    expect(container.querySelector('[role="toolbar"]'), "the toolbar renders ungated").not.toBeNull();
+  }
   const c1 = holder1.querySelector("canvas[data-ink-page]");
   const c2 = holder2.querySelector("canvas[data-ink-page]");
   expect(c1, "holder 1 must carry its portal canvas immediately").not.toBeNull();
@@ -230,7 +241,7 @@ async function openMenu(tb: HTMLElement, prefix: string) {
 }
 
 describe("T-MG-INK-11 run-001 — the ungated toolbar + the palette menus (MG's shape)", () => {
-  test("(a) the toolbar renders ungated: 9 tool buttons, no launcher, no close", async () => {
+  test("(a) the toolbar renders ungated: 10 buttons (the 9 MG tools + the T-HUB-INK-TOUCH collapse), no launcher, no close", async () => {
     const { container } = await mountInkLayer();
     const tb = container.querySelector('[role="toolbar"]')!;
     const labels = [...tb.querySelectorAll("button")].map((b) => b.getAttribute("aria-label"));
@@ -303,5 +314,61 @@ describe("T-MG-INK-11 run-001 — the ungated toolbar + the palette menus (MG's 
       b.getAttribute("aria-label")?.startsWith("Pen thickness: "),
     );
     expect(after!.getAttribute("aria-label")).toBe("Pen thickness: Extra thick");
+  });
+});
+// ── T-HUB-INK-TOUCH run-001: browse-first gestures + the collapsible toolbar ──
+
+describe("T-HUB-INK-TOUCH run-001 — the paper opens in Browse and the toolbar folds", () => {
+  test("(a) the paper opens in Browse: the page canvas's touch-action is the paper's (pan + pinch), not none", async () => {
+    const { container } = await mountInkLayer();
+    const canvas = container.querySelector('canvas[data-ink-page="1"]')! as HTMLElement;
+    expect(canvas, "the ink canvas rides page 1").not.toBeNull();
+    expect(canvas.style.touchAction, "browse hands pan + pinch-zoom back to the paper").toBe(
+      "pan-x pan-y pinch-zoom",
+    );
+  });
+
+  test("(b) arming a draw tool owns the gesture (touch-action: none); Select hands it back", async () => {
+    const { container } = await mountInkLayer();
+    const tb = container.querySelector('[role="toolbar"]')! as HTMLElement;
+    const canvas = container.querySelector('canvas[data-ink-page="1"]')! as HTMLElement;
+    const draw = [...tb.querySelectorAll("button")].find((b) => b.getAttribute("aria-label") === "Draw")!;
+    await act(async () => {
+      draw.dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    expect(canvas.style.touchAction, "a finger IS the pen under a draw tool").toBe("none");
+    const select = [...tb.querySelectorAll("button")].find((b) => b.getAttribute("aria-label") === "Select")!;
+    await act(async () => {
+      select.dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    expect(canvas.style.touchAction, "Select restores the paper's gestures").toBe("pan-x pan-y pinch-zoom");
+  });
+
+  test("(c) the toolbar folds to the pill and the posture persists; the pill is the way back", async () => {
+    const { container } = await mountInkLayer();
+    const tb = container.querySelector('[role="toolbar"]')! as HTMLElement;
+    const collapse = [...tb.querySelectorAll("button")].find(
+      (b) => b.getAttribute("aria-label") === "Collapse annotation tools",
+    )!;
+    await act(async () => {
+      collapse.dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    expect(container.querySelector('[role="toolbar"]'), "the row is gone").toBeNull();
+    const pill = container.querySelector('button[aria-label="Show annotation tools"]')! as HTMLElement;
+    expect(pill, "the one-button pill takes the corner").not.toBeNull();
+    expect(window.localStorage.getItem("syllabai-ink-toolbar-collapsed"), "the posture persists").toBe("1");
+    await act(async () => {
+      pill.dispatchEvent(jsdomMouseEvent("click", { bubbles: true }));
+    });
+    expect(container.querySelector('[role="toolbar"]'), "the pill re-opens the row").not.toBeNull();
+    expect(container.querySelector('button[aria-label="Show annotation tools"]')).toBeNull();
+    expect(window.localStorage.getItem("syllabai-ink-toolbar-collapsed")).toBe("0");
+  });
+
+  test("(d) a device that collapsed before mounts collapsed (fresh devices stay expanded)", async () => {
+    window.localStorage.setItem("syllabai-ink-toolbar-collapsed", "1");
+    const { container } = await mountInkLayer();
+    expect(container.querySelector('[role="toolbar"]'), "the collapsed posture survives a reload").toBeNull();
+    expect(container.querySelector('button[aria-label="Show annotation tools"]')).not.toBeNull();
   });
 });

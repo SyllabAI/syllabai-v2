@@ -1,0 +1,172 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_gPNH4hG4sPVYXrDk",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "2b800f28f106efd1e4b953df7a8125d22a61602cd66e9bbf308ca1d152404e6e",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_gPNH4hG4sPVYXrDk",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Fission and Fusion",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-3-fission-and-fusion/7-3-4-nuclear-fusion",
+    "specAnchors": [
+      {
+        "code": "7.24",
+        "text": "describe nuclear fusion as the creation of larger nuclei resulting in a loss of mass from smaller nuclei, accompanied by a release of energy"
+      },
+      {
+        "code": "7.23",
+        "text": "explain the difference between nuclear fusion and nuclear fission"
+      }
+    ],
+    "primer": {
+      "text": "Fusion builds up: two light nuclei merge into a heavier one, and a sliver of mass converts into a colossal release of energy. Stars fuse hydrogen into helium; fission instead breaks heavy nuclei apart in reactors — the two processes differ in fuel, products, location and the conditions they demand.",
+      "prerequisiteSubtopic": "Fission and Fusion"
+    },
+    "modules": [
+      {
+        "id": "rn_gPNH4hG4sPVYXrDk::L1",
+        "title": "The fusion process",
+        "sourceHeadings": [
+          "Nuclear fusion"
+        ],
+        "specRefs": [
+          "7.24"
+        ],
+        "opening": "Nuclear fusion joins two light nuclei into one heavier nucleus. In most stars hydrogen nuclei fuse into helium, and the energy released is enormous because a tiny fraction of the particles' mass is converted into energy — fusing 1 kg of hydrogen matches burning about ten million kilograms of coal.",
+        "keyPoints": [
+          "Fusion joins two light nuclei into one heavier nucleus.",
+          "Stars fuse hydrogen into helium and release huge amounts of energy.",
+          "The energy appears because a small part of the mass is converted into energy.",
+          "Fusion demands extremely high temperatures to keep running.",
+          "1 kg of hydrogen fused matches burning about ten million kilograms of coal."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Fusion: two light nuclei merge, a speck of mass turns into energy.",
+            "analogy": "Two raindrops merging into one bigger drop — the join releases a splash.",
+            "examPointer": "Remember the direction: fusion builds up from small nuclei; fission breaks down from large ones."
+          },
+          "medium": {
+            "restatement": "Mass–energy conversion powers fusion: the product nucleus carries slightly less mass than its two parents, and the deficit is released as energy.",
+            "analogy": "Packing two suitcases into one smaller case — the squeezed-out space appears as the burst of energy.",
+            "examPointer": "The coal equivalence is an order-of-magnitude comparison; never present it as an exact conversion."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gPNH4hG4sPVYXrDk::L1::Q1",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q2",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q3",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q4",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q5",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q6",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q7",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q8",
+          "rn_gPNH4hG4sPVYXrDk::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_gPNH4hG4sPVYXrDk::L2",
+        "title": "Fusion versus fission",
+        "sourceHeadings": [
+          "Differences between fusion and fission"
+        ],
+        "specRefs": [
+          "7.23"
+        ],
+        "opening": "The two nuclear energy processes point in opposite directions. Fusion joins small nuclei such as hydrogen and runs in stars; fission splits large nuclei such as uranium and runs in reactors. Fusion's products are usually stable, its hydrogen fuel is abundant in water, and it leaves no long-lived waste — but its conditions are far harder to achieve on Earth.",
+        "keyPoints": [
+          "Fusion joins small nuclei such as hydrogen; fission splits large nuclei such as uranium.",
+          "Fusion happens in stars; fission runs in nuclear reactors on Earth.",
+          "Fusion's products are usually stable; fission leaves radioactive daughters plus neutrons.",
+          "Fusion needs very high temperatures and pressures; fission needs thermal neutrons to induce it.",
+          "Fusion fuel from water is more abundant than fissile ore, and fusion leaves no long-lived waste."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Fusion = join small nuclei (stars); fission = split large nuclei (reactors).",
+            "analogy": "Construction versus demolition: fusion welds bricks together, fission knocks a building into two unstable halves.",
+            "examPointer": "Comparison tables reward precision: fuel, location, products and conditions are the four rows to memorise."
+          },
+          "medium": {
+            "restatement": "Every contrast line pairs with its mirror: hydrogen/uranium, stars/reactors, stable/radioactive products, heat+pressure/thermal neutrons.",
+            "analogy": "Two opposite weather systems: one builds a cloud up, the other tears it apart — same sky, opposite dynamics.",
+            "examPointer": "Per-kilogram energy and waste longevity are the two standard fusion advantage marks; conditions difficulty is the standard disadvantage."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gPNH4hG4sPVYXrDk::L2::Q1",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q2",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q3",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q4",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q5",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q6",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q7",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q8",
+          "rn_gPNH4hG4sPVYXrDk::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "nuclear fusion",
+          "definition": "Joining of two light nuclei into a heavier nucleus, converting a little mass into energy.",
+          "firstLesson": 1
+        },
+        {
+          "term": "nuclear fission",
+          "definition": "Splitting of a large nucleus into smaller radioactive daughters plus neutrons.",
+          "firstLesson": 2
+        },
+        {
+          "term": "helium",
+          "definition": "The larger nucleus built when hydrogen isotopes fuse in stars.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/82526ac35b9a-nuclear-fusion.png",
+        "alt": "nuclear fusion, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Nuclear fusion",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Two hydrogen nuclei fuse into one helium nucleus"
+      }
+    ]
+  }
+}

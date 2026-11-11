@@ -1,0 +1,176 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_vVJjCmGbcDY2Ck9G",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "0abbff67caa26a5c015924b3a26fbaed20a2537beca7dd25ffeda714c7258daa",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_vVJjCmGbcDY2Ck9G",
+    "topicTitle": "8. Astrophysics",
+    "subtopicTitle": "Motion in the Universe",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/8-astrophysics/8-1-motion-in-the-universe/8-1-4-orbital-period",
+    "specAnchors": [
+      {
+        "code": "8.6",
+        "text": "use the relationship between orbital speed, orbital radius and time period: 2×π × orbital radius orbital speed = time period 2 × π × r v = T"
+      }
+    ],
+    "primer": {
+      "text": "One orbit is one lap of a circle, so the distance travelled is the circumference 2πr. Divide that lap by the time taken — the orbital period T — and the orbital speed follows: v = 2πr / T, with r measured from the centre of the orbited body, not its surface.",
+      "prerequisiteSubtopic": "Motion in the Universe"
+    },
+    "modules": [
+      {
+        "id": "rn_vVJjCmGbcDY2Ck9G::L1",
+        "title": "The orbital speed equation",
+        "sourceHeadings": [
+          "Orbital period equation"
+        ],
+        "specRefs": [
+          "8.6"
+        ],
+        "opening": "A body in circular orbit covers the circumference of a circle, 2πr, in one lap. Average orbital speed divides that distance by the orbital period T: v = 2πr / T, with v in m/s, r the orbital radius in metres, and T the time for one orbit in seconds. The radius always runs from the centre of the orbited body.",
+        "keyPoints": [
+          "In one orbit a body travels the circumference of a circle, 2πr.",
+          "The orbital speed equation is v = 2πr / T.",
+          "v is the orbital speed in m/s, r the orbital radius in metres, T the orbital period in seconds.",
+          "The orbital period is the duration of one full orbit.",
+          "The orbital radius runs from the centre of the orbited body to the orbiting object."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Speed = lap distance ÷ lap time = 2πr ÷ T.",
+            "analogy": "A running track: lap length over lap time is your average speed.",
+            "examPointer": "Radius means centre-to-satellite; adding altitude to the body's radius is the classic step students forget."
+          },
+          "medium": {
+            "restatement": "The equation is speed = distance/time wearing orbital clothes: distance = 2πr, time = T, radius centre-to-object.",
+            "analogy": "Clock hands: the tip of the minute hand sweeps 2πr each hour, so its speed is 2πr per 3,600 s.",
+            "examPointer": "Convert km to m and minutes to seconds before substituting — unit slips cost the answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q1",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q2",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q3",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q4",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q5",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q6",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q7",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q8",
+          "rn_vVJjCmGbcDY2Ck9G::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_vVJjCmGbcDY2Ck9G::L2",
+        "title": "Calculating orbital speeds",
+        "sourceHeadings": [
+          "Calculating orbital period"
+        ],
+        "specRefs": [
+          "8.6"
+        ],
+        "opening": "Applying v = 2πr / T takes three habits: build the radius from the orbited body's centre (its radius plus any altitude), convert everything to metres and seconds, then substitute. The Hubble Space Telescope, orbiting 560 km up with a 96-minute period above a 6400 km Earth, lands near 7590 m/s.",
+        "keyPoints": [
+          "Orbital radius = radius of the orbited body plus the orbiter's height above its surface.",
+          "Convert distances to metres and times to seconds before substituting.",
+          "Hubble: r = 6400 + 560 = 6960 km, T = 96 × 60 = 5760 s.",
+          "Hubble's orbital speed: v = 2π × 6,960,000 / 5760 ≈ 7590 m/s."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Add altitude to the body's radius, convert to m and s, then substitute.",
+            "analogy": "Measuring a lift's floor count: ground floor (the body's centre) to the top, not just the floors above the roof.",
+            "examPointer": "HST-style questions hide two unit conversions — kilometres to metres and minutes to seconds — before any physics happens."
+          },
+          "medium": {
+            "restatement": "The worked chain: r = 6400 + 560 = 6960 km = 6,960,000 m; T = 5760 s; v ≈ 7590 m/s.",
+            "analogy": "A recipe: gather (radius), convert (units), then cook (substitute) — skip a step and the dish fails.",
+            "examPointer": "Quote the final speed to 3 significant figures — the corpus answer does."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q1",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q2",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q3",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q4",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q5",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q6",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q7",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q8",
+          "rn_vVJjCmGbcDY2Ck9G::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "orbital speed",
+          "definition": "Average speed around one orbit: v = 2πr / T.",
+          "firstLesson": 1
+        },
+        {
+          "term": "orbital period",
+          "definition": "The duration of one full orbit, in seconds.",
+          "firstLesson": 1
+        },
+        {
+          "term": "orbital radius",
+          "definition": "Distance from the centre of the orbited body to the orbiting object.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A telescope rides 560 km above the Earth's surface and laps the planet every 96 minutes; the Earth's radius is 6400 km. Calculate the orbital speed in m/s.",
+        "steps": [
+          "Orbital radius runs from the Earth's centre: r = 6400 + 560 = 6960 km.",
+          "Convert units: r = 6,960,000 m and T = 96 × 60 = 5760 s.",
+          "Substitute into v = 2πr / T: v = (2 × π × 6,960,000) / 5760.",
+          "Evaluate: v = 7592.18… m/s."
+        ],
+        "finalAnswer": "The orbital speed is about 7590 m/s (3 s.f.)."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/efdfdd8c8427-8-1-4-orbital-period.png",
+        "alt": "Orbital Period, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Orbital period equation",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Orbital radius and speed for a planet circling the Sun"
+      }
+    ]
+  }
+}

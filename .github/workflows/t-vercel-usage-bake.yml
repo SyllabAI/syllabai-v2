@@ -66,6 +66,16 @@ jobs:
           with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
               f.write('sha=' + sha + chr(10) + 'state=' + state + chr(10))
           print('newest live deployment: ' + state + ' @ ' + (sha[:10] if sha else '(none)'))
+          # T-HUB-INK-TOUCH run-001 receipt (PR #922): the newest deployment
+          # can be BLOCKED at the account level and still report BUILDING for
+          # a while — treating it as 'production is at this SHA' made the
+          # 2026-11-11 11:07Z run skip while the #922 build never went live.
+          # The skip stays (idempotence against double-deploys), but it now
+          # states the risk honestly: if that build settles to a terminal
+          # non-READY state, production is NOT at this SHA and the next bake
+          # (cron 02:30Z or a dispatch) MUST deploy.
+          if state != 'READY':
+              print('NOTE: the newest deployment is not READY — if it settles to a terminal non-READY state (blocked/failed), production is NOT at this SHA; re-run this workflow once the build settles.')
           "
 
       - name: Skip when production is already current

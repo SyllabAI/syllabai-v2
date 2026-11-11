@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nKkQDZXgBW9W8DwG",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "6475c50447d0e5ada1bcda3b1c72773c121e538552d0fcf58bfe8272332bc1d7",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_nKkQDZXgBW9W8DwG",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q1",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "Stars begin their lives as…",
+      "misconceptionClass": "formation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a nebula — a giant cloud of gas and dust",
+          "correct": true,
+          "explanation": "The nebula is stage one for every star.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a white dwarf",
+          "correct": false,
+          "explanation": "White dwarfs are the end of the road, not the start.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "C",
+          "text": "a red giant",
+          "correct": false,
+          "explanation": "Red giants come after the main sequence.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "D",
+          "text": "a supernova",
+          "correct": false,
+          "explanation": "Supernovae end the largest stars' lives.",
+          "misconception": "stage swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q2",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "What force pulls a nebula into a protostar?",
+      "misconceptionClass": "formation physics",
+      "options": [
+        {
+          "key": "A",
+          "text": "nuclear fusion starting inside",
+          "correct": false,
+          "explanation": "Fusion starts only after the protostar is hot enough.",
+          "misconception": "sequence error"
+        },
+        {
+          "key": "B",
+          "text": "gravity, pulling the particles closer together",
+          "correct": true,
+          "explanation": "Gravity drives the collapse.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "magnetism from the galaxy",
+          "correct": false,
+          "explanation": "Gravity, not magnetism, does the gathering.",
+          "misconception": "force error"
+        },
+        {
+          "key": "D",
+          "text": "the particles' own light pressure",
+          "correct": false,
+          "explanation": "Light pressure is not the collapsing agent.",
+          "misconception": "force error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q3",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "As the protostar's density increases, its temperature…",
+      "misconceptionClass": "protostar physics",
+      "options": [
+        {
+          "key": "A",
+          "text": "stays constant",
+          "correct": false,
+          "explanation": "The temperature climbs during collapse.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "B",
+          "text": "drops to absolute zero",
+          "correct": false,
+          "explanation": "Nothing cools to zero here.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "increases, because collisions between particles become more frequent",
+          "correct": true,
+          "explanation": "More crowding means more collisions and more heating.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "decreases, because the particles spread out",
+          "correct": false,
+          "explanation": "Collapsing crowds particles, it does not spread them.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q4",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "A protostar becomes a main sequence star when…",
+      "misconceptionClass": "ignition condition",
+      "options": [
+        {
+          "key": "A",
+          "text": "it runs out of hydrogen",
+          "correct": false,
+          "explanation": "Running out comes billions of years later.",
+          "misconception": "sequence error"
+        },
+        {
+          "key": "B",
+          "text": "it collapses into a white dwarf",
+          "correct": false,
+          "explanation": "That is the solar-mass ending.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "C",
+          "text": "it explodes as a supernova",
+          "correct": false,
+          "explanation": "Only the most massive stars do that.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "D",
+          "text": "it becomes hot enough for nuclear fusion to begin in its core",
+          "correct": true,
+          "explanation": "Fusion ignition is the promotion criterion.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q5",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "Which sequence opens a star's life story, starting from a nebula?",
+      "misconceptionClass": "sequence recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "nebula → protostar → main sequence star",
+          "correct": true,
+          "explanation": "All stars follow the same opening stages.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "protostar → nebula → main sequence",
+          "correct": false,
+          "explanation": "The nebula comes first.",
+          "misconception": "order error"
+        },
+        {
+          "key": "C",
+          "text": "nebula → red giant → protostar",
+          "correct": false,
+          "explanation": "The red giant is a late stage.",
+          "misconception": "order error"
+        },
+        {
+          "key": "D",
+          "text": "main sequence → nebula → protostar",
+          "correct": false,
+          "explanation": "The main sequence follows ignition.",
+          "misconception": "order error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q6",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "State what a nebula is.",
+      "misconceptionClass": "formation recall",
+      "kind": "recall",
+      "modelAnswer": "A nebula is an enormous drifting cloud of gas and dust, and stars form inside it.",
+      "keywords": [
+        "nebula",
+        "cloud",
+        "gas",
+        "dust"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q7",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "Describe how a protostar forms.",
+      "misconceptionClass": "formation physics",
+      "kind": "recall",
+      "modelAnswer": "Gravity draws the nebula's particles inward until a hot ball of gas forms — the protostar.",
+      "keywords": [
+        "gravity",
+        "particles",
+        "hot",
+        "protostar"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q8",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "Explain why a collapsing protostar gets hotter.",
+      "misconceptionClass": "protostar physics",
+      "kind": "explain-why",
+      "modelAnswer": "As gravity packs the particles closer, the density rises and collisions between particles become more frequent, and those more frequent collisions raise the temperature.",
+      "keywords": [
+        "density",
+        "collisions",
+        "temperature",
+        "particles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L1::Q9",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L1",
+      "stem": "A cloud of gas is collapsing. State the stage it has reached once it is a hot, dense ball but fusion has not yet started.",
+      "misconceptionClass": "ignition condition",
+      "kind": "application",
+      "modelAnswer": "It is a protostar: fusion ignition, which would promote it to a main sequence star, has not yet begun.",
+      "keywords": [
+        "protostar",
+        "fusion",
+        "hot",
+        "ball"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q1",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "A main sequence star is stable because…",
+      "misconceptionClass": "main sequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "it is collapsing slowly",
+          "correct": false,
+          "explanation": "Collapse ended at the protostar stage.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "B",
+          "text": "it is in equilibrium during its fusion-powered life",
+          "correct": true,
+          "explanation": "Equilibrium is the main-sequence state.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it has stopped fusing entirely",
+          "correct": false,
+          "explanation": "Fusion is what powers the main sequence.",
+          "misconception": "power error"
+        },
+        {
+          "key": "D",
+          "text": "it is expanding rapidly",
+          "correct": false,
+          "explanation": "Expansion belongs to the red giant stage.",
+          "misconception": "stage swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q2",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "What triggers the red giant stage?",
+      "misconceptionClass": "red giant trigger",
+      "options": [
+        {
+          "key": "A",
+          "text": "the star immediately exploding",
+          "correct": false,
+          "explanation": "Solar-mass stars never explode.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "B",
+          "text": "helium fusion stopping",
+          "correct": false,
+          "explanation": "Helium fusion is what happens next, not what stops.",
+          "misconception": "sequence error"
+        },
+        {
+          "key": "C",
+          "text": "the hydrogen in the core beginning to run out",
+          "correct": true,
+          "explanation": "Fuel exhaustion starts the transition.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the star colliding with a nebula",
+          "correct": false,
+          "explanation": "Collisions are not part of the sequence.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q3",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "During the red giant stage the star…",
+      "misconceptionClass": "red giant physics",
+      "options": [
+        {
+          "key": "A",
+          "text": "shrinks and heats up",
+          "correct": false,
+          "explanation": "That describes the white dwarf turn.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "B",
+          "text": "stays exactly the same size",
+          "correct": false,
+          "explanation": "The star swells dramatically.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "C",
+          "text": "begins fusing hydrogen faster",
+          "correct": false,
+          "explanation": "Hydrogen is fading, not accelerating.",
+          "misconception": "fuel error"
+        },
+        {
+          "key": "D",
+          "text": "expands outward as its surface cools",
+          "correct": true,
+          "explanation": "Helium fusion swells the outer layers; expansion cools them.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q4",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "After the main sequence, a Sun-like star becomes…",
+      "misconceptionClass": "sequence recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "a red giant",
+          "correct": true,
+          "explanation": "Red giant precedes the white dwarf for solar-mass stars.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a supernova",
+          "correct": false,
+          "explanation": "Only much larger stars go supernova.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "C",
+          "text": "a neutron star",
+          "correct": false,
+          "explanation": "That follows supernovae of big stars.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "D",
+          "text": "a protostar again",
+          "correct": false,
+          "explanation": "Stages do not rewind.",
+          "misconception": "sequence error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q5",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "The star begins to fuse which fuel as it turns into a red giant?",
+      "misconceptionClass": "fuel switch",
+      "options": [
+        {
+          "key": "A",
+          "text": "uranium",
+          "correct": false,
+          "explanation": "Uranium is a fission fuel, not a stellar fuel.",
+          "misconception": "process mix-up"
+        },
+        {
+          "key": "B",
+          "text": "helium",
+          "correct": true,
+          "explanation": "Helium fusion swells the outer layers.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "carbon, immediately",
+          "correct": false,
+          "explanation": "Carbon comes later, in larger stars.",
+          "misconception": "element error"
+        },
+        {
+          "key": "D",
+          "text": "iron",
+          "correct": false,
+          "explanation": "Iron belongs to the most massive stars.",
+          "misconception": "element error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q6",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "State the stage a star enters once fusion starts in its core.",
+      "misconceptionClass": "main sequence",
+      "kind": "recall",
+      "modelAnswer": "It becomes a main sequence star and is in stable equilibrium.",
+      "keywords": [
+        "main",
+        "sequence",
+        "fusion",
+        "equilibrium"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q7",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "Name the stage after the main sequence for a Sun-like star.",
+      "misconceptionClass": "sequence recall",
+      "kind": "recall",
+      "modelAnswer": "The star becomes a red giant.",
+      "keywords": [
+        "red",
+        "giant",
+        "stage",
+        "star"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q8",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "Explain why the star expands when the red giant stage begins.",
+      "misconceptionClass": "red giant physics",
+      "kind": "explain-why",
+      "modelAnswer": "With the hydrogen fading, the star starts fusing helium, and those reactions push the outer layers outward — the star swells while its surface cools.",
+      "keywords": [
+        "helium",
+        "fusion",
+        "expand",
+        "outer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L2::Q9",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L2",
+      "stem": "A star has burned most of its core hydrogen. State the next two stages it passes through.",
+      "misconceptionClass": "sequence recall",
+      "kind": "application",
+      "modelAnswer": "It next becomes a red giant, then a white dwarf.",
+      "keywords": [
+        "red",
+        "giant",
+        "white",
+        "dwarf"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q1",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "What does a solar-mass star become when helium fusion ends?",
+      "misconceptionClass": "white dwarf trigger",
+      "options": [
+        {
+          "key": "A",
+          "text": "a supernova",
+          "correct": false,
+          "explanation": "Solar-mass stars shed no supernova.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "B",
+          "text": "a black hole",
+          "correct": false,
+          "explanation": "Black holes need far more mass.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "C",
+          "text": "a white dwarf, as the star collapses",
+          "correct": true,
+          "explanation": "Collapse after helium exhaustion forms the white dwarf.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a red giant again",
+          "correct": false,
+          "explanation": "Stages do not repeat backwards.",
+          "misconception": "sequence error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q2",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "Over time a white dwarf…",
+      "misconceptionClass": "white dwarf physics",
+      "options": [
+        {
+          "key": "A",
+          "text": "heats up indefinitely",
+          "correct": false,
+          "explanation": "It cools, it does not climb.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "B",
+          "text": "restarts hydrogen fusion",
+          "correct": false,
+          "explanation": "The fuel is gone.",
+          "misconception": "fuel error"
+        },
+        {
+          "key": "C",
+          "text": "swells back into a giant",
+          "correct": false,
+          "explanation": "No re-expansion happens.",
+          "misconception": "sequence error"
+        },
+        {
+          "key": "D",
+          "text": "cools down and emits decreasing energy",
+          "correct": true,
+          "explanation": "Cooling is the white dwarf's whole career.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q3",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "A black dwarf is…",
+      "misconceptionClass": "black dwarf",
+      "options": [
+        {
+          "key": "A",
+          "text": "a white dwarf that has cooled until it no longer emits light",
+          "correct": true,
+          "explanation": "The fully faded endpoint carries the 'black' name.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a star that never formed",
+          "correct": false,
+          "explanation": "It is the cooled endpoint of a formed star.",
+          "misconception": "definition error"
+        },
+        {
+          "key": "C",
+          "text": "a nebula ready to form stars",
+          "correct": false,
+          "explanation": "Nebulae are birthplaces, not endings.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "D",
+          "text": "another name for a black hole",
+          "correct": false,
+          "explanation": "Black holes form from the most massive stars.",
+          "misconception": "object mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q4",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "What does a solar-mass star collapse into once helium fusion finishes?",
+      "misconceptionClass": "white dwarf trigger",
+      "options": [
+        {
+          "key": "A",
+          "text": "main sequence → supernova → neutron star",
+          "correct": false,
+          "explanation": "That is the large-star path.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "B",
+          "text": "a white dwarf, once helium fusion finishes",
+          "correct": true,
+          "explanation": "Collapse follows the end of helium fusion.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "main sequence → white dwarf → red giant",
+          "correct": false,
+          "explanation": "The dwarf comes last.",
+          "misconception": "order error"
+        },
+        {
+          "key": "D",
+          "text": "red giant → main sequence → white dwarf",
+          "correct": false,
+          "explanation": "The main sequence comes first.",
+          "misconception": "order error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q5",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "As the white dwarf cools, the energy it emits…",
+      "misconceptionClass": "white dwarf physics",
+      "options": [
+        {
+          "key": "A",
+          "text": "stays constant forever",
+          "correct": false,
+          "explanation": "The emission declines as it cools.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "B",
+          "text": "switches to gamma rays",
+          "correct": false,
+          "explanation": "Nothing restarts high-energy emission.",
+          "misconception": "spectrum error"
+        },
+        {
+          "key": "C",
+          "text": "decreases",
+          "correct": true,
+          "explanation": "Cooling output falls in step with temperature.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "increases",
+          "correct": false,
+          "explanation": "Cooling means less emission.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q6",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "State what a star becomes when its helium fusion finishes.",
+      "misconceptionClass": "white dwarf trigger",
+      "kind": "recall",
+      "modelAnswer": "Collapse sets in, and the star becomes a white dwarf.",
+      "keywords": [
+        "collapse",
+        "becomes",
+        "white",
+        "dwarf"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q7",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "State what a white dwarf eventually becomes.",
+      "misconceptionClass": "black dwarf",
+      "kind": "recall",
+      "modelAnswer": "It cools until it no longer emits light and becomes a black dwarf.",
+      "keywords": [
+        "cools",
+        "emits",
+        "light",
+        "black"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q8",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "Explain why a white dwarf's light output falls over time.",
+      "misconceptionClass": "white dwarf physics",
+      "kind": "explain-why",
+      "modelAnswer": "The white dwarf has no fusion left to feed it, so it simply cools; as its temperature drops, the energy it emits decreases until it no longer emits light.",
+      "keywords": [
+        "cools",
+        "temperature",
+        "emits",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nKkQDZXgBW9W8DwG::L3::Q9",
+      "moduleId": "rn_nKkQDZXgBW9W8DwG::L3",
+      "stem": "Order the full solar-mass biography: white dwarf, nebula, red giant, main sequence star.",
+      "misconceptionClass": "sequence recall",
+      "kind": "application",
+      "modelAnswer": "Nebula → main sequence star → red giant → white dwarf.",
+      "keywords": [
+        "nebula",
+        "main",
+        "sequence",
+        "white"
+      ],
+      "options": []
+    }
+  ]
+}

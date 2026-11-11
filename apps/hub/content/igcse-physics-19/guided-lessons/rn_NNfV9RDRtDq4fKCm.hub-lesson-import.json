@@ -1,0 +1,222 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_NNfV9RDRtDq4fKCm",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "f68a4e9e1f8ed826f8c9e519d9f5c51e3e55e92692ad5feba18d651da2392e17",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_NNfV9RDRtDq4fKCm",
+    "topicTitle": "8. Astrophysics",
+    "subtopicTitle": "Cosmology",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/8-astrophysics/8-3-cosmology/8-3-3-galactic-red-shift",
+    "specAnchors": [
+      {
+        "code": "8.17P",
+        "text": "describe the red-shift in light received from galaxies at different distances away from the Earth"
+      },
+      {
+        "code": "8.18P",
+        "text": "explain why the red-shift of galaxies provides evidence for the expansion of the universe"
+      }
+    ],
+    "primer": {
+      "text": "The Doppler effect works on light too: a receding source's wavelengths stretch towards the red end (redshift), an approaching one's squeeze towards the blue (blueshift). Distant galaxies show bigger redshifts than nearby ones — the further the galaxy, the faster it flees — and that pattern is the expansion of the universe written in light.",
+      "prerequisiteSubtopic": "Cosmology"
+    },
+    "modules": [
+      {
+        "id": "rn_NNfV9RDRtDq4fKCm::L1",
+        "title": "Redshift and blueshift",
+        "sourceHeadings": [
+          "Galactic redshift"
+        ],
+        "specRefs": [
+          "8.17P"
+        ],
+        "opening": "Light obeys the Doppler effect like every other wave. When a source moves away, its light's wavelength increases towards the red end of the spectrum — redshift — and its frequency falls; when it approaches, the wavelength shortens towards blue — blueshift — and the frequency rises.",
+        "keyPoints": [
+          "When a light source moves away, its wavelength increases — redshift.",
+          "When a light source approaches, its wavelength decreases — blueshift.",
+          "An increase in wavelength is a decrease in frequency, and the reverse.",
+          "In visible light, red carries the longest wavelength and the smallest frequency.",
+          "The motorbike pitch analogy: receding sound drops in frequency, exactly like redshifted light."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Away = stretched = redder = lower frequency; towards = squeezed = bluer = higher frequency.",
+            "analogy": "Duck ripples again, but in light: the bow-wave bunches blue, the wake trails red.",
+            "examPointer": "In the visible spectrum, red = longest wavelength and lowest frequency — quote the pair."
+          },
+          "medium": {
+            "restatement": "One wave law does the work: fixed light speed forces the wavelength-frequency trade.",
+            "analogy": "A fixed-budget shopping trip: if each item (wavelength) costs more, fewer items (cycles per second) fit.",
+            "examPointer": "Tie the motorbike-pitch analogy to light explicitly when explaining."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NNfV9RDRtDq4fKCm::L1::Q1",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q2",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q3",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q4",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q5",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q6",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q7",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q8",
+          "rn_NNfV9RDRtDq4fKCm::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_NNfV9RDRtDq4fKCm::L2",
+        "title": "Redshift and the expanding universe",
+        "sourceHeadings": [
+          "The expanding Universe",
+          "Redshift diagram for a light spectrum"
+        ],
+        "specRefs": [
+          "8.18P"
+        ],
+        "opening": "Comparing the Sun's spectrum with a distant galaxy's shows the galaxy's spectral lines shifted towards red: the expansion of the universe stretches the light waves as they travel. Distant galaxies redshift more than nearby ones, so the greater the distance, the faster the galaxy flees — evidence that the universe is expanding and supports the Big Bang.",
+        "keyPoints": [
+          "Spectral lines from distant galaxies are shifted towards the red end of the spectrum.",
+          "The expansion of the universe stretches light waves, increasing their wavelength.",
+          "Distant galaxies show more redshift than nearby galaxies.",
+          "Greater distance goes with greater redshift — the most distant galaxies flee fastest.",
+          "This redshift-distance pattern supports the Big Bang theory and the expanding universe."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Distant lines shifted red → galaxies receding → further means faster → expanding universe.",
+            "analogy": "Ambulance siren for light: the whole sky's ambulances are driving away, and the far ones are speeding most.",
+            "examPointer": "Chain the logic: redshift → recession → distance-speed pattern → expansion → Big Bang support."
+          },
+          "medium": {
+            "restatement": "Expansion stretches light in flight, so the spectrum itself is the expansion's ruler.",
+            "analogy": "A tape measure being stretched while you read it: the markings (spectral lines) slide apart as the tape (space) lengthens.",
+            "examPointer": "Say the wavelengths increase because the universe's expansion stretches the light waves."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NNfV9RDRtDq4fKCm::L2::Q1",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q2",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q3",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q4",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q5",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q6",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q7",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q8",
+          "rn_NNfV9RDRtDq4fKCm::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-04",
+          "fig-05"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "redshift",
+          "definition": "The increase in observed wavelength when a light source moves away from the observer.",
+          "firstLesson": 1
+        },
+        {
+          "term": "blueshift",
+          "definition": "The decrease in observed wavelength when a light source approaches the observer.",
+          "firstLesson": 1
+        },
+        {
+          "term": "spectral lines",
+          "definition": "The dark or bright lines in a spectrum whose displacement reveals redshift.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9596878ce3ad-red-blue-shift.png",
+        "alt": "red-&-blue-shift, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Galactic redshift",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Approaching stars blue-shift; receding stars red-shift"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/712fbef243d2-8-4-1-light-doppler-shift.png",
+        "alt": "Light Doppler Shift, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Galactic redshift",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The forward observer sees blueshift, the trailing observer redshift"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5aa6926f28af-wavelength-of-spectrum.png",
+        "alt": "Wavelength of spectrum, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Galactic redshift",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Red carries the longest visible wavelength, blue the shortest"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/8699663fe9d0-8-2-1-comparing-the-light-spectrum-produced-from.png",
+        "alt": "Comparing the light spectrum produced from the Sun and a distant galaxy, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Redshift diagram for a light spectrum",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The distant galaxy's spectral lines sit redward of the Sun's"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/db279cf0ee08-hubbles-law.png",
+        "alt": "Hubbles-law, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "The expanding Universe",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Greater distance, greater redshift"
+      }
+    ]
+  }
+}

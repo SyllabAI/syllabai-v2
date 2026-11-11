@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_CPTftXDkhPysSmWM",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "ffde69f0a53831a85c522c6c8a28bc4c49147a536a8296a22e4e553f78670b07",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_CPTftXDkhPysSmWM",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q1",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "Induced fission of a uranium-235 nucleus begins when the nucleus…",
+      "misconceptionClass": "induced fission",
+      "options": [
+        {
+          "key": "A",
+          "text": "absorbs an incoming neutron",
+          "correct": true,
+          "explanation": "The captured neutron makes U-236, which is highly unstable.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "emits an alpha particle",
+          "correct": false,
+          "explanation": "Alpha emission is decay, not the fission trigger.",
+          "misconception": "decay confusion"
+        },
+        {
+          "key": "C",
+          "text": "absorbs an electron",
+          "correct": false,
+          "explanation": "Electrons do not induce nuclear fission.",
+          "misconception": "electron confusion"
+        },
+        {
+          "key": "D",
+          "text": "emits a gamma ray",
+          "correct": false,
+          "explanation": "Gamma emission changes energy, not stability enough to split.",
+          "misconception": "gamma confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q2",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "After absorbing a neutron, uranium-235 becomes…",
+      "misconceptionClass": "U-236 recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "plutonium-239",
+          "correct": false,
+          "explanation": "Plutonium forms by other capture chains, not this one.",
+          "misconception": "element swap"
+        },
+        {
+          "key": "B",
+          "text": "uranium-236, which splits almost immediately",
+          "correct": true,
+          "explanation": "235 + 1 neutron = 236, and the extra mass tips it over the edge.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "uranium-234",
+          "correct": false,
+          "explanation": "Absorption adds mass; it does not remove it.",
+          "misconception": "mass error"
+        },
+        {
+          "key": "D",
+          "text": "a stable isotope of uranium",
+          "correct": false,
+          "explanation": "U-236 is the opposite of stable — it splits at once.",
+          "misconception": "stability myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q3",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "Spontaneous fission is…",
+      "misconceptionClass": "spontaneous recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "fission started by control rods",
+          "correct": false,
+          "explanation": "Control rods absorb neutrons; they never start splits.",
+          "misconception": "rod confusion"
+        },
+        {
+          "key": "B",
+          "text": "impossible for uranium nuclei",
+          "correct": false,
+          "explanation": "It can happen, just very rarely.",
+          "misconception": "absolutism error"
+        },
+        {
+          "key": "C",
+          "text": "fission without extra energy added, and it is rare",
+          "correct": true,
+          "explanation": "Nuclei seldom split with nothing added — that is why reactors induce it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the everyday route inside reactors",
+          "correct": false,
+          "explanation": "Reactors induce fission with neutrons.",
+          "misconception": "reactor mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q4",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "Why must reactors induce fission in uranium-235?",
+      "misconceptionClass": "half-life reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "because uranium is too dense to split naturally",
+          "correct": false,
+          "explanation": "Density is irrelevant to the split rate.",
+          "misconception": "nonsense reason"
+        },
+        {
+          "key": "B",
+          "text": "because reactors add protons to the nucleus",
+          "correct": false,
+          "explanation": "Neutrons, not protons, are absorbed.",
+          "misconception": "particle swap"
+        },
+        {
+          "key": "C",
+          "text": "because uranium-235 is perfectly stable",
+          "correct": false,
+          "explanation": "It is unstable, just very slow to decay.",
+          "misconception": "stability myth"
+        },
+        {
+          "key": "D",
+          "text": "its 700-million-year half-life gives it low activity, so it releases energy far too slowly alone",
+          "correct": true,
+          "explanation": "The long half-life keeps spontaneous decay sluggish; neutron capture speeds things up.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q5",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "Which property makes uranium and plutonium isotopes useful reactor fuels?",
+      "misconceptionClass": "fissile recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "they are fissile — able to undergo fission under the right conditions",
+          "correct": true,
+          "explanation": "Fissile isotopes split when induced, which is exactly what fuel must do.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "they are completely inert",
+          "correct": false,
+          "explanation": "Fissile means reactive, not inert.",
+          "misconception": "opposite error"
+        },
+        {
+          "key": "C",
+          "text": "they have very short half-lives",
+          "correct": false,
+          "explanation": "U-235's half-life is 700 million years — long, not short.",
+          "misconception": "half-life error"
+        },
+        {
+          "key": "D",
+          "text": "they repel all neutrons",
+          "correct": false,
+          "explanation": "They capture neutrons — that is the point.",
+          "misconception": "opposite error"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q6",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "State what must be absorbed to induce fission in uranium-235.",
+      "misconceptionClass": "induced fission",
+      "kind": "recall",
+      "modelAnswer": "A neutron must be absorbed; the nucleus becomes uranium-236 and splits almost immediately.",
+      "keywords": [
+        "neutron",
+        "absorbed",
+        "uranium",
+        "splits"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q7",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "What is spontaneous fission?",
+      "misconceptionClass": "spontaneous recall",
+      "kind": "recall",
+      "modelAnswer": "Spontaneous fission is fission that happens without extra energy being put in, and it is rare.",
+      "keywords": [
+        "spontaneous",
+        "fission",
+        "energy",
+        "rare"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q8",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "Explain why uranium-235's long half-life makes induced fission necessary in power stations.",
+      "misconceptionClass": "half-life reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A 700-million-year half-life means very low activity, so uranium-235 trickles out energy far too slowly to run a station; absorbing a neutron builds the much less stable uranium-236, which splits straight away and delivers useful power.",
+      "keywords": [
+        "half-life",
+        "neutron",
+        "uranium",
+        "splits"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L1::Q9",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L1",
+      "stem": "A neutron strikes a uranium-235 nucleus. Name the isotope formed and state what it does next.",
+      "misconceptionClass": "U-236 recall",
+      "kind": "application",
+      "modelAnswer": "The nucleus becomes uranium-236, which is so unstable that it splits by fission almost immediately.",
+      "keywords": [
+        "uranium",
+        "isotope",
+        "unstable",
+        "splits"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q1",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "Which set correctly lists the products of one U-235 fission?",
+      "misconceptionClass": "products recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "two stable daughters with nothing else emitted",
+          "correct": false,
+          "explanation": "The daughters are radioactive and gamma rays also emerge.",
+          "misconception": "stability myth"
+        },
+        {
+          "key": "B",
+          "text": "two radioactive daughter nuclei and two or three neutrons",
+          "correct": true,
+          "explanation": "That is the standard product pair-plus-neutrons census.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "one daughter nucleus and one neutron",
+          "correct": false,
+          "explanation": "Two daughters and at least two neutrons emerge.",
+          "misconception": "count error"
+        },
+        {
+          "key": "D",
+          "text": "three daughter nuclei and no neutrons",
+          "correct": false,
+          "explanation": "Neutrons always accompany the split.",
+          "misconception": "count error"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q2",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "Alongside daughters and neutrons, the fission also emits…",
+      "misconceptionClass": "products recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "protons only",
+          "correct": false,
+          "explanation": "Protons stay bound in the daughters.",
+          "misconception": "particle mix-up"
+        },
+        {
+          "key": "B",
+          "text": "nothing else at all",
+          "correct": false,
+          "explanation": "Gamma rays are emitted too.",
+          "misconception": "omission error"
+        },
+        {
+          "key": "C",
+          "text": "gamma rays",
+          "correct": true,
+          "explanation": "Gamma emission accompanies the split.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "alpha particles as the main emission",
+          "correct": false,
+          "explanation": "Alphas are not the listed fission emission.",
+          "misconception": "alpha confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q3",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "The fission fragments shoot apart very quickly because…",
+      "misconceptionClass": "energy transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "air pressure pushes them apart",
+          "correct": false,
+          "explanation": "The nucleus is not moved by air.",
+          "misconception": "nonsense reason"
+        },
+        {
+          "key": "B",
+          "text": "gravity pulls the fragments together",
+          "correct": false,
+          "explanation": "Gravity would pull them together, not shoot them apart.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "C",
+          "text": "the reactor core heats them up",
+          "correct": false,
+          "explanation": "The speed comes from the split itself, not core heating.",
+          "misconception": "cause error"
+        },
+        {
+          "key": "D",
+          "text": "nuclear potential energy has been transferred to their kinetic energy",
+          "correct": true,
+          "explanation": "The stored nuclear energy becomes motion of the products.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q4",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "In the example U-235 fission, the two daughters are…",
+      "misconceptionClass": "daughters recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "barium-144 and krypton-89",
+          "correct": true,
+          "explanation": "That is the quoted daughter pair for induced fission of U-235.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "barium-89 and krypton-144",
+          "correct": false,
+          "explanation": "The mass numbers are swapped.",
+          "misconception": "number swap"
+        },
+        {
+          "key": "C",
+          "text": "lead-206 and helium-4",
+          "correct": false,
+          "explanation": "Those belong to alpha decay chains.",
+          "misconception": "decay mix-up"
+        },
+        {
+          "key": "D",
+          "text": "uranium-236 and hydrogen-1",
+          "correct": false,
+          "explanation": "U-236 is the pre-split nucleus, not a daughter.",
+          "misconception": "stage error"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q5",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "How many neutrons does a single U-235 fission release?",
+      "misconceptionClass": "neutron count",
+      "options": [
+        {
+          "key": "A",
+          "text": "none",
+          "correct": false,
+          "explanation": "Neutron emission is what sustains chain reactions.",
+          "misconception": "omission error"
+        },
+        {
+          "key": "B",
+          "text": "two or three",
+          "correct": true,
+          "explanation": "Each split releases a small number — two or three — of neutrons.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "exactly one",
+          "correct": false,
+          "explanation": "One neutron enters; more than one leaves.",
+          "misconception": "count error"
+        },
+        {
+          "key": "D",
+          "text": "five or six",
+          "correct": false,
+          "explanation": "That overcounts the small neutron yield.",
+          "misconception": "count error"
+        }
+      ]
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q6",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "State how many daughter nuclei and neutrons one U-235 fission produces.",
+      "misconceptionClass": "products recall",
+      "kind": "recall",
+      "modelAnswer": "Two daughter nuclei form, together with two or three neutrons.",
+      "keywords": [
+        "two",
+        "daughter",
+        "neutrons",
+        "form"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q7",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "Name the two daughter nuclei in the example U-235 split.",
+      "misconceptionClass": "daughters recall",
+      "kind": "recall",
+      "modelAnswer": "Barium-144 and krypton-89.",
+      "keywords": [
+        "barium",
+        "krypton",
+        "daughter",
+        "nuclei"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q8",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "Explain where the kinetic energy of the fission products comes from.",
+      "misconceptionClass": "energy transfer",
+      "kind": "explain-why",
+      "modelAnswer": "The parent nucleus stores nuclear potential energy; when it splits, that stored energy transfers to the motion of the daughters and neutrons, which is why they fly apart at high speed.",
+      "keywords": [
+        "potential",
+        "kinetic",
+        "energy",
+        "nucleus"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CPTftXDkhPysSmWM::L2::Q9",
+      "moduleId": "rn_CPTftXDkhPysSmWM::L2",
+      "stem": "Plutonium-239 (mass 239, atomic 94) fissions into palladium-112 (atomic 46) and cadmium-124 (atomic 48). Work out the mass and atomic numbers of the missing products.",
+      "misconceptionClass": "balance application",
+      "kind": "application",
+      "modelAnswer": "Mass: 239 − (112 + 124) = 3. Atomic: 94 − (46 + 48) = 0. A particle with mass 1 and atomic 0 is a neutron, so the missing products are three neutrons.",
+      "keywords": [
+        "neutrons",
+        "mass",
+        "atomic",
+        "particle"
+      ],
+      "options": []
+    }
+  ]
+}

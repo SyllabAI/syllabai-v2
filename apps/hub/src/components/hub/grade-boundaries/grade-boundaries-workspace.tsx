@@ -68,6 +68,7 @@ import {
   aggregateUms,
   averageBoundariesAcrossSeries,
   bestAggregationSelection,
+  describeAggregateQualification,
   gradeForMark,
   gradeFromAggregation,
   isRegionalVariant,
@@ -79,6 +80,7 @@ import {
   type AggregationUnit,
   type BoundaryRow,
 } from "@/lib/grade-boundaries-calc";
+import { QualificationGradingCard } from "./qualification-grading-card";
 import type {
   GradeBoundariesCourse,
   GradeBoundariesSeries,
@@ -134,6 +136,12 @@ export function GradeBoundariesWorkspace({
     calc?.mode === "aggregate-ums" &&
     !!calc.cashIn &&
     !!calc.required?.length;
+  // T-GB-GRADE-CARD: the "how this qualification is graded" payload for the
+  // modular IGCSE courses (null on every other shape — absent stays absent)
+  const gradingInfo = useMemo(
+    () => describeAggregateQualification(calc),
+    [calc],
+  );
 
   // group rows per session (a session can carry standard + R-variant rows);
   // T-GRADE-006: the list reads newest→oldest like MathsGenie's page — the
@@ -932,6 +940,9 @@ export function GradeBoundariesWorkspace({
               </span>
             </p>
           )}
+
+          {/* T-GB-GRADE-CARD: the grading law for the modular IGCSE courses */}
+          {gradingInfo && <QualificationGradingCard info={gradingInfo} />}
 
           {sep}
 

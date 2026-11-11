@@ -1,0 +1,195 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_4TGW9N7YpJ6fqy5W",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d2d640267c7d00a14d856a5c38737ddf4ddc0e4d1f3da4e47bbf59055fcb6196",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_4TGW9N7YpJ6fqy5W",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Fission and Fusion",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-3-fission-and-fusion/7-3-5-the-conditions-for-fusion",
+    "specAnchors": [
+      {
+        "code": "7.25",
+        "text": "know that fusion is the energy source for stars"
+      },
+      {
+        "code": "7.26",
+        "text": "explain why nuclear fusion does not happen at low temperatures and pressures, due to electrostatic repulsion of protons"
+      }
+    ],
+    "primer": {
+      "text": "Stars are hydrogen furnaces: in their cores deuterium and tritium fuse into helium, and the outward pressure of that released heat holds the star up against gravity. Getting two nuclei to fuse means beating electrostatic repulsion — so millions of degrees and crushing pressures are the entry price, found naturally only in star cores.",
+      "prerequisiteSubtopic": "Fission and Fusion"
+    },
+    "modules": [
+      {
+        "id": "rn_4TGW9N7YpJ6fqy5W::L1",
+        "title": "Fusion in stars",
+        "sourceHeadings": [
+          "Fusion reactions in stars",
+          "Forces acting on a stable star"
+        ],
+        "specRefs": [
+          "7.25"
+        ],
+        "opening": "A star is a huge ball of mostly hydrogen, and in its core hydrogen nuclei fuse into helium — deuterium plus tritium can yield helium-4 and a neutron. Fusion is the energy source for stars, and its heat supplies an outward pressure that stops the star collapsing under its own gravity.",
+        "keyPoints": [
+          "Stars are mostly hydrogen, and core fusion turns hydrogen into helium.",
+          "A deuterium nucleus plus a tritium nucleus can fuse into helium-4 and a neutron.",
+          "Fusion is the energy source that keeps stars shining.",
+          "Outward pressure from fusion heat balances gravity's inward pull in a stable star.",
+          "In larger, hotter stars helium can fuse into heavier elements."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Star fuel = hydrogen; star support = fusion pressure against gravity.",
+            "analogy": "A jet of water from a fountain holding a ball aloft: the spray (fusion pressure) balances the ball's weight (gravity).",
+            "examPointer": "Equilibrium wording earns marks: outward pressure versus inward gravity, not just 'gravity pulls'."
+          },
+          "medium": {
+            "restatement": "The D–T reaction ²H + ³H → ⁴He + n carries 5 mass units and 2 charge units through unchanged — conservation in action.",
+            "analogy": "A balanced see-saw: whatever mass sits on one side (the fuel nuclei) must reappear on the other (the products).",
+            "examPointer": "Balance-check questions are free marks: add top numbers, add bottom numbers, state both equalities."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q1",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q2",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q3",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q4",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q5",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q6",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q7",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q8",
+          "rn_4TGW9N7YpJ6fqy5W::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_4TGW9N7YpJ6fqy5W::L2",
+        "title": "The conditions for fusion",
+        "sourceHeadings": [
+          "Conditions for nuclear fusion"
+        ],
+        "specRefs": [
+          "7.26"
+        ],
+        "opening": "Two protons both carry positive charge, so they repel each other electrostatically — fusion only happens when nuclei slam together hard enough to beat that repulsion. That takes extremely high temperatures, so nuclei move very fast, and extremely high pressures, so they are squeezed close enough to collide; naturally, only star cores reach the millions of degrees required.",
+        "keyPoints": [
+          "Protons are positively charged, so they repel each other electrostatically.",
+          "Fusion needs nuclei moving fast enough to beat the repulsion and get extremely close.",
+          "Extremely high temperatures supply the kinetic energy; extremely high pressures squeeze nuclei together.",
+          "Millions of degrees are needed — found naturally only in star cores.",
+          "Higher temperature means faster nuclei and closer approaches; higher pressure means more collisions."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Hot and squeezed: speed beats repulsion, crowding supplies the collisions.",
+            "analogy": "Two magnets with like poles facing: you must shove them hard and fast to touch — gentle approaches always slide apart.",
+            "examPointer": "Always tie the barrier (electrostatic repulsion of protons) to the cure (high temperature and pressure) — one without the other drops marks."
+          },
+          "medium": {
+            "restatement": "Kinetic energy scales with temperature, so hotter nuclei approach closer against Coulomb repulsion; pressure raises collision frequency.",
+            "analogy": "Stadium crowd dynamics: only sprinting fans reach the middle of the pitch, and a fuller stadium means more of them try every second.",
+            "examPointer": "The exam answer must name the repulsion of protons as the reason, not just 'it is too cold'."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q1",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q2",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q3",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q4",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q5",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q6",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q7",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q8",
+          "rn_4TGW9N7YpJ6fqy5W::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electrostatic repulsion",
+          "definition": "The mutual repulsion of positively charged protons that fusion must overcome.",
+          "firstLesson": 2
+        },
+        {
+          "term": "deuterium",
+          "definition": "The hydrogen isotope with one proton and one neutron; a stellar fusion fuel.",
+          "firstLesson": 1
+        },
+        {
+          "term": "tritium",
+          "definition": "The heavier hydrogen isotope that fuses with deuterium into helium-4 plus a neutron.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Why is hydrogen fusion not currently possible on Earth?",
+        "steps": [
+          "Hydrogen nuclei carry positive charges, so two of them repel each other.",
+          "Overcoming that repulsion needs very high temperatures to give the nuclei enough energy.",
+          "The product shown, helium, is inert and not radioactive — waste is not the obstacle.",
+          "Hydrogen is abundant, and the energy output would be huge — supply and payoff are not the obstacles."
+        ],
+        "finalAnswer": "Hydrogen nuclei require very high temperatures to fuse together, which is why hydrogen fusion is not currently possible on Earth."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b290c58803c8-equilibrium-fusion-energy.png",
+        "alt": "equilibrium-fusion-energy",
+        "sourceHeading": "Forces acting on a stable star",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Outward fusion pressure balances inward gravity in a stable star"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/e84394bdc663-7-3-5-repulsion-between-protons.png",
+        "alt": "Repulsion between protons, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Conditions for nuclear fusion",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Positive hydrogen nuclei repel, blocking fusion in everyday conditions"
+      }
+    ]
+  }
+}

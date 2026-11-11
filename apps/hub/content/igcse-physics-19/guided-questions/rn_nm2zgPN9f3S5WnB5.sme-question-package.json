@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_nm2zgPN9f3S5WnB5",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "8f7810f1feba250b9db02c992e6ccc16639d0d1367b6a0873158d4de3a0d5e74",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_nm2zgPN9f3S5WnB5",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q1",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "Which change describes nuclear fusion?",
+      "misconceptionClass": "fusion definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "two small nuclei join to build a larger nucleus",
+          "correct": true,
+          "explanation": "Fusion is the merging of light nuclei.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "one big nucleus dividing into two smaller ones",
+          "correct": false,
+          "explanation": "That is fission, the opposite process.",
+          "misconception": "fission swap"
+        },
+        {
+          "key": "C",
+          "text": "a nucleus releases a gamma ray only",
+          "correct": false,
+          "explanation": "Gamma decay changes no nucleus at all.",
+          "misconception": "decay confusion"
+        },
+        {
+          "key": "D",
+          "text": "a neutron turns into a proton",
+          "correct": false,
+          "explanation": "That is beta decay inside a nucleus.",
+          "misconception": "beta confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q2",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "Deuterium and tritium nuclei fuse together. What do they form?",
+      "misconceptionClass": "fusion products",
+      "options": [
+        {
+          "key": "A",
+          "text": "barium and krypton",
+          "correct": false,
+          "explanation": "Those are fission daughters of uranium.",
+          "misconception": "fission product mix-up"
+        },
+        {
+          "key": "B",
+          "text": "a helium nucleus",
+          "correct": true,
+          "explanation": "Two hydrogen isotopes merge into helium, releasing energy.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "uranium",
+          "correct": false,
+          "explanation": "Fission fuels are heavy nuclei; fusion builds light ones up.",
+          "misconception": "fuel confusion"
+        },
+        {
+          "key": "D",
+          "text": "two separate hydrogen atoms",
+          "correct": false,
+          "explanation": "The nuclei join; they do not stay apart.",
+          "misconception": "no reaction"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q3",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "Where does nuclear fusion happen naturally?",
+      "misconceptionClass": "fusion location",
+      "options": [
+        {
+          "key": "A",
+          "text": "in the Earth's atmosphere",
+          "correct": false,
+          "explanation": "Atmospheric conditions are far too cool for fusion.",
+          "misconception": "location error"
+        },
+        {
+          "key": "B",
+          "text": "inside radioactive ore bodies",
+          "correct": false,
+          "explanation": "Ores decay, they do not fuse.",
+          "misconception": "decay confusion"
+        },
+        {
+          "key": "C",
+          "text": "inside stars",
+          "correct": true,
+          "explanation": "Star cores are hot and dense enough for fusion to run by itself.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "in today's nuclear power stations",
+          "correct": false,
+          "explanation": "Reactors currently use fission; fusion reactors are still in development.",
+          "misconception": "reactor mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q4",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "The three sources of nuclear energy are…",
+      "misconceptionClass": "sources recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "fusion, burning and evaporation",
+          "correct": false,
+          "explanation": "Burning and evaporation are chemical, not nuclear.",
+          "misconception": "chemical mix-up"
+        },
+        {
+          "key": "B",
+          "text": "fission, decay and combustion",
+          "correct": false,
+          "explanation": "Combustion is chemical energy, not nuclear.",
+          "misconception": "chemical mix-up"
+        },
+        {
+          "key": "C",
+          "text": "fusion, fission and photosynthesis",
+          "correct": false,
+          "explanation": "Photosynthesis stores light energy, not nuclear energy.",
+          "misconception": "category error"
+        },
+        {
+          "key": "D",
+          "text": "fusion, fission and radioactive decay",
+          "correct": true,
+          "explanation": "All three open the energy stored in nuclei.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q5",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "Fusing 1 kg of hydrogen releases roughly the energy of burning…",
+      "misconceptionClass": "fuel equivalence",
+      "options": [
+        {
+          "key": "A",
+          "text": "ten million kilograms of coal",
+          "correct": true,
+          "explanation": "The corpus equivalence for hydrogen fusion is about 10,000,000 kg of coal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "ten thousand kilograms of coal",
+          "correct": false,
+          "explanation": "That underplays the yield by a factor of a thousand.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "C",
+          "text": "one hundred kilograms of coal",
+          "correct": false,
+          "explanation": "Fusion outshines coal by many orders of magnitude.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "D",
+          "text": "one million kilograms of coal",
+          "correct": false,
+          "explanation": "The stated factor is ten million, not one million.",
+          "misconception": "scale error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q6",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "Name the three sources of nuclear energy.",
+      "misconceptionClass": "sources recall",
+      "kind": "recall",
+      "modelAnswer": "Nuclear fusion, nuclear fission and radioactive decay.",
+      "keywords": [
+        "fusion",
+        "fission",
+        "decay"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q7",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "State what forms when deuterium and tritium fuse.",
+      "misconceptionClass": "fusion products",
+      "kind": "recall",
+      "modelAnswer": "A helium nucleus forms, with a large release of energy.",
+      "keywords": [
+        "helium",
+        "deuterium",
+        "tritium",
+        "forms"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q8",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "Explain why stars can power themselves by fusion but Earth cannot rely on natural fusion.",
+      "misconceptionClass": "fusion conditions",
+      "kind": "explain-why",
+      "modelAnswer": "Star cores reach temperatures and pressures far beyond anything found naturally on Earth, so hydrogen nuclei there collide hard enough to merge, while everyday Earth conditions stay far too cool and roomy for fusion to run by itself.",
+      "keywords": [
+        "stars",
+        "temperatures",
+        "fusion",
+        "earth"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L1::Q9",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L1",
+      "stem": "A fusion trial consumes 2 kg of hydrogen. Using the coal equivalence, how many kilograms of coal would release the same energy?",
+      "misconceptionClass": "fuel equivalence",
+      "kind": "application",
+      "modelAnswer": "1 kg of hydrogen fused matches about 10,000,000 kg of coal, so 2 kg matches 2 × 10,000,000 = 20,000,000 kg of coal.",
+      "keywords": [
+        "hydrogen",
+        "coal",
+        "kg",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q1",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "Nuclear fission is best described as…",
+      "misconceptionClass": "fission definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "a nucleus releasing only gamma rays",
+          "correct": false,
+          "explanation": "Gamma emission leaves the nucleus unsplit.",
+          "misconception": "gamma confusion"
+        },
+        {
+          "key": "B",
+          "text": "one large nucleus splitting into two smaller nuclei",
+          "correct": true,
+          "explanation": "Fission divides a heavy parent into two daughters.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "two small nuclei joining into one larger nucleus",
+          "correct": false,
+          "explanation": "That is fusion.",
+          "misconception": "fusion swap"
+        },
+        {
+          "key": "D",
+          "text": "an atom losing an orbital electron",
+          "correct": false,
+          "explanation": "Electron loss is ionisation, not nuclear fission.",
+          "misconception": "ionisation confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q2",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "The fragments produced when a parent nucleus splits are called…",
+      "misconceptionClass": "fission naming",
+      "options": [
+        {
+          "key": "A",
+          "text": "sibling nuclei",
+          "correct": false,
+          "explanation": "The established term is daughters.",
+          "misconception": "naming error"
+        },
+        {
+          "key": "B",
+          "text": "beta particles",
+          "correct": false,
+          "explanation": "Beta particles are emitted electrons, not fragments.",
+          "misconception": "beta confusion"
+        },
+        {
+          "key": "C",
+          "text": "daughter nuclei",
+          "correct": true,
+          "explanation": "The split products carry the daughter name.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "parent nuclei",
+          "correct": false,
+          "explanation": "The parent is the nucleus that split, not the fragments.",
+          "misconception": "naming swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q3",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "Which machines generate electricity from fission today?",
+      "misconceptionClass": "fission use",
+      "options": [
+        {
+          "key": "A",
+          "text": "fusion power plants",
+          "correct": false,
+          "explanation": "Fusion reactors are in development, not yet commercial.",
+          "misconception": "fusion swap"
+        },
+        {
+          "key": "B",
+          "text": "coal-fired boilers",
+          "correct": false,
+          "explanation": "Coal burns chemically; no nuclei split.",
+          "misconception": "chemical mix-up"
+        },
+        {
+          "key": "C",
+          "text": "solar farms",
+          "correct": false,
+          "explanation": "Solar panels convert light, not nuclear energy.",
+          "misconception": "category error"
+        },
+        {
+          "key": "D",
+          "text": "nuclear power stations",
+          "correct": true,
+          "explanation": "Controlled fission is the working reactor technology.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q4",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "In fission, the large original nucleus is named the…",
+      "misconceptionClass": "fission naming",
+      "options": [
+        {
+          "key": "A",
+          "text": "parent nucleus",
+          "correct": true,
+          "explanation": "Parent is the established name for the splitting nucleus.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "daughter nucleus",
+          "correct": false,
+          "explanation": "Daughters are the two fragments produced.",
+          "misconception": "naming swap"
+        },
+        {
+          "key": "C",
+          "text": "empty nucleus",
+          "correct": false,
+          "explanation": "No such term exists in the topic.",
+          "misconception": "nonsense term"
+        },
+        {
+          "key": "D",
+          "text": "host isotope",
+          "correct": false,
+          "explanation": "The topic's word is parent.",
+          "misconception": "naming error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q5",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "Which statement about fission energy is correct?",
+      "misconceptionClass": "fission energy",
+      "options": [
+        {
+          "key": "A",
+          "text": "fission only powers weapons",
+          "correct": false,
+          "explanation": "Fission also generates electricity in power stations.",
+          "misconception": "weapons-only myth"
+        },
+        {
+          "key": "B",
+          "text": "energy stored in the nucleus is released when it splits",
+          "correct": true,
+          "explanation": "The split frees nuclear energy, often as kinetic energy of the products.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "energy is created from nothing",
+          "correct": false,
+          "explanation": "Energy is released from a store, never conjured.",
+          "misconception": "creation myth"
+        },
+        {
+          "key": "D",
+          "text": "fission absorbs more energy than it gives back",
+          "correct": false,
+          "explanation": "Fission is a net energy release.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q6",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "Define nuclear fission.",
+      "misconceptionClass": "fission definition",
+      "kind": "recall",
+      "modelAnswer": "Nuclear fission is the splitting of one large nucleus into two smaller nuclei, with the release of energy.",
+      "keywords": [
+        "fission",
+        "splitting",
+        "nucleus",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q7",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "State where fission is used to generate electricity.",
+      "misconceptionClass": "fission use",
+      "kind": "recall",
+      "modelAnswer": "Nuclear power stations use controlled fission to generate electricity.",
+      "keywords": [
+        "fission",
+        "power",
+        "stations",
+        "electricity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q8",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "Explain why fusion and fission both count as sources of nuclear energy.",
+      "misconceptionClass": "energy sources",
+      "kind": "explain-why",
+      "modelAnswer": "Both reactions release the energy stored inside nuclei: fusion frees it when small nuclei merge, fission frees it when a large nucleus is split, so either route taps the same nuclear store.",
+      "keywords": [
+        "fusion",
+        "fission",
+        "energy",
+        "nuclei"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nm2zgPN9f3S5WnB5::L2::Q9",
+      "moduleId": "rn_nm2zgPN9f3S5WnB5::L2",
+      "stem": "An engineer describes 'one heavy nucleus dividing into two lighter nuclei, with energy out'. Name the process and the fragment nuclei.",
+      "misconceptionClass": "fission naming",
+      "kind": "application",
+      "modelAnswer": "The process is nuclear fission, and the two lighter product nuclei are the daughter nuclei of the parent.",
+      "keywords": [
+        "fission",
+        "daughter",
+        "nuclei",
+        "parent"
+      ],
+      "options": []
+    }
+  ]
+}

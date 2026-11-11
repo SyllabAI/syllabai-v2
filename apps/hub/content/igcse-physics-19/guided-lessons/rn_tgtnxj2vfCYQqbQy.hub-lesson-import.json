@@ -1,0 +1,295 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_tgtnxj2vfCYQqbQy",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "a77910b9d529d1e87f63c9edb41f0b2973d6f2ada59f83c883755e50cec53f56",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_tgtnxj2vfCYQqbQy",
+    "topicTitle": "7. Radioactivity and Particles",
+    "subtopicTitle": "Fission and Fusion",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/7-radioactivity-and-particles/7-3-fission-and-fusion/7-3-3-nuclear-reactors",
+    "specAnchors": [
+      {
+        "code": "7.20",
+        "text": "describe how a chain reaction can be set up if the neutrons produced by one fission strike other U-235 nuclei"
+      },
+      {
+        "code": "7.21",
+        "text": "describe the role played by the control rods and moderator in the fission process"
+      },
+      {
+        "code": "7.22",
+        "text": "understand the role of shielding around a nuclear reactor"
+      }
+    ],
+    "primer": {
+      "text": "A reactor is fission kept on a leash: neutrons from each split find fresh U-235 nuclei and the chain keeps turning, control rods meter how many neutrons survive, the moderator slows them to the speed that splits uranium efficiently, and thick steel-and-concrete shielding soaks up the radiation so workers outside stay safe.",
+      "prerequisiteSubtopic": "Fission and Fusion"
+    },
+    "modules": [
+      {
+        "id": "rn_tgtnxj2vfCYQqbQy::L1",
+        "title": "Chain reactions",
+        "sourceHeadings": [
+          "Chain reactions",
+          "Nuclear chain reactions"
+        ],
+        "specRefs": [
+          "7.20"
+        ],
+        "opening": "One neutron induces a fission, and that fission releases two or three neutrons — each free to strike another U-235 nucleus and split it in turn. That self-feeding sequence is a chain reaction, and if the fissile material exceeds its critical mass the reaction accelerates into an uncontrolled release.",
+        "keyPoints": [
+          "Neutrons from one fission can strike other U-235 nuclei and trigger more fissions.",
+          "A chain reaction continues because each split hands neutrons on to the next generation.",
+          "One induced fission needs a single neutron but releases two or three.",
+          "Above the critical mass of fissile material the reaction rate accelerates uncontrollably."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "One neutron in, two-or-three out: the surplus neutrons feed the next splits.",
+            "analogy": "Popcorn popping: each bursting kernel flicks others hot enough to burst, and the pan goes from one pop to many in seconds.",
+            "examPointer": "Chain-reaction diagrams want neutrons drawn striking further U-235 nuclei — clarity beats artwork."
+          },
+          "medium": {
+            "restatement": "The neutron census grows 1 → 2–3 → 4–9 → …, so above the critical mass the fission rate compounds without bound.",
+            "analogy": "A rumour where every listener retells it to two friends — the audience doubles each round until the whole school has heard it.",
+            "examPointer": "Generation-counting questions are just powers of two — write the sequence out rather than jumping to the answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tgtnxj2vfCYQqbQy::L1::Q1",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q2",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q3",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q4",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q5",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q6",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q7",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q8",
+          "rn_tgtnxj2vfCYQqbQy::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_tgtnxj2vfCYQqbQy::L2",
+        "title": "Control rods and the moderator",
+        "sourceHeadings": [
+          "Control rods & moderators",
+          "Nuclear reactor diagram"
+        ],
+        "specRefs": [
+          "7.21"
+        ],
+        "opening": "A running reactor must hold both the number of free neutrons and their energy in check. Control rods made of neutron-absorbing material are lowered or raised to set the fission rate, while the moderator slows fast neutrons into thermal neutrons that react efficiently with the uranium fuel; in normal running exactly one neutron from each fission goes on to cause the next.",
+        "keyPoints": [
+          "Control rods absorb neutrons so the chain reaction runs at a steady, chosen rate.",
+          "Lowering the rods absorbs more neutrons and slows fission; raising them lets fission speed up.",
+          "The moderator slows fast neutrons into thermal neutrons that split uranium efficiently.",
+          "In normal running, exactly one neutron from each fission causes the next fission.",
+          "For an emergency shutdown the rods drop fully in and the reactions stop."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Rods ration the neutrons; the moderator slows them so each one counts.",
+            "analogy": "A turnstile and a walking pace: the rods admit only so many visitors per minute, and the moderator makes sure each walks slowly enough to buy a ticket.",
+            "examPointer": "Two-component questions want both roles named — rods absorb, moderator slows. Mixing them loses the marks."
+          },
+          "medium": {
+            "restatement": "Steady power means one neutron per fission seeds the next; rods trim the surplus and the moderator tunes the speed for efficient capture.",
+            "analogy": "Cruise control: the rods are the brake pedal, the moderator the gear that keeps the engine in its efficient band.",
+            "examPointer": "Shutdown = rods fully in; rate-up = rods raised; rate-down = rods lowered. Learn the three rod positions."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tgtnxj2vfCYQqbQy::L2::Q1",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q2",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q3",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q4",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q5",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q6",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q7",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q8",
+          "rn_tgtnxj2vfCYQqbQy::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_tgtnxj2vfCYQqbQy::L3",
+        "title": "Shielding the reactor",
+        "sourceHeadings": [
+          "Shielding in a nuclear reactor"
+        ],
+        "specRefs": [
+          "7.22"
+        ],
+        "opening": "Everything that leaves a fission is hazardous: the daughter nuclei and the emitted neutrons are radioactive. So the entire reactor is wrapped in shielding — a steel and concrete wall nearly two metres thick that absorbs the emissions and keeps the environment around the reactor safe for workers.",
+        "keyPoints": [
+          "Shielding surrounds the whole reactor and absorbs its hazardous radiation.",
+          "The daughter nuclei formed in fission, and the neutrons emitted, are radioactive.",
+          "A steel and concrete wall close to two metres thick keeps the surroundings safe for workers."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Thick steel and concrete soak up the reactor's radiation so nobody outside is exposed.",
+            "analogy": "A lead-lined apron at the dentist, scaled up to a wall that wraps the whole machine.",
+            "examPointer": "Quote the thickness as 'nearly two metres' and the materials as steel and concrete — both attract marks."
+          },
+          "medium": {
+            "restatement": "Fission products stay radioactive after the split, so the absorbing wall is the last line between the core and the workforce.",
+            "analogy": "A soundproofed rehearsal room: the noise (radiation) stays inside because the walls (steel and concrete) absorb it before it reaches the corridor.",
+            "examPointer": "Tie shielding to the radioactivity of daughters and neutrons — the causal chain earns the explanation mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_tgtnxj2vfCYQqbQy::L3::Q1",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q2",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q3",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q4",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q5",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q6",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q7",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q8",
+          "rn_tgtnxj2vfCYQqbQy::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-05"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "chain reaction",
+          "definition": "A self-feeding sequence in which neutrons from each fission trigger further fissions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "critical mass",
+          "definition": "The minimum amount of fissile material needed to sustain a chain reaction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "control rods",
+          "definition": "Neutron-absorbing rods whose depth in the core sets the fission rate.",
+          "firstLesson": 2
+        },
+        {
+          "term": "moderator",
+          "definition": "Material that slows fast neutrons into thermal neutrons that split uranium efficiently.",
+          "firstLesson": 2
+        },
+        {
+          "term": "shielding",
+          "definition": "Steel-and-concrete wall, nearly two metres thick, that absorbs the reactor's hazardous radiation.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": {
+        "prompt": "Complete the chain-reaction diagram for uranium-235: how does the drawing show the reaction spreading?",
+        "steps": [
+          "Draw the released neutrons striking further U-235 nuclei — it is the neutron strikes that cause the next fissions.",
+          "Show each struck nucleus splitting and releasing two or more neutrons of its own.",
+          "With each generation the neutron count rises, so more and more fissions follow."
+        ],
+        "finalAnswer": "The chain spreads generation by generation: each fission needs one neutron and releases two or more, so the number of reactions keeps growing."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/71e41d900cde-4-4-2-chain-reaction-analogy.png",
+        "alt": "Chain reaction analogy, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Nuclear chain reactions",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Each fission's neutrons can trigger further fissions, like links in a chain"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/fdeae314d2b3-4-4-3-chain-reaction-worked-example.png",
+        "alt": "Chain Reaction Worked Example, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Nuclear chain reactions",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A chain-reaction diagram task for uranium-235"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/998b27022364-chain-reaction.png",
+        "alt": "chain-reaction, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Nuclear chain reactions",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Completed chain: neutron count rises with every generation"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7d0158adf74f-8-4-6-nuclear-reactor-components.png",
+        "alt": "Nuclear Reactor Components, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Nuclear reactor diagram",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The reactor controls the chain and collects the heat to generate electricity"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/6be0956add3f-7-3-3-shielding.png",
+        "alt": "Shielding, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Shielding in a nuclear reactor",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Shielding absorbs the harmful radiation before it reaches workers"
+      }
+    ]
+  }
+}

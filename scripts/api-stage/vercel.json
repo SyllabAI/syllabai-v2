@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/v1/(.*)", "destination": "/api/index" },
+    { "source": "/actuator/health", "destination": "/api/index" }
+  ]
+}
