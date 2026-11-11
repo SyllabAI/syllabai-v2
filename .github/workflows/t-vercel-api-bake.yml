@@ -38,14 +38,21 @@
 #     are deliberately non-production strings.
 #   - no other environment touched.
 #
-# SCHEDULE: still removed (dispatch-only) — the 2026-11-11 incident stop
-# stands until the operator re-arms it; the floor is now safe to dispatch
-# by construction (empty deploys are structurally impossible from this
-# recipe: the stage carries its own vercel.json).
+# SCHEDULE: re-armed 2026-11-11 (operator order "re-arm the bake schedule",
+# trace 1a1cad986dc88415) at the original 03:30 UTC cadence — one hour behind
+# the hub floor's 02:30 UTC, as staggered from day one. The 2026-11-10
+# incident class is closed by construction: the stage carries its own
+# vercel.json (an empty deployment is structurally impossible from this
+# recipe), the boot gate blocks a bad build BEFORE the deploy, and the
+# post-deploy LIVE serving proof turns any silent regression into a red job.
+# A scheduled run at an already-current HEAD is a no-op read (the
+# state-aware skip).
 
 name: t-vercel-api-bake
 
 on:
+  schedule:
+    - cron: "30 3 * * *" # 03:30 UTC — staggered one hour after the hub floor
   workflow_dispatch: {}
 
 permissions:
