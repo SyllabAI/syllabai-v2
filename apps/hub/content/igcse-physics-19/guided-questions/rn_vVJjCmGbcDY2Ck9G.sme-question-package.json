@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_vVJjCmGbcDY2Ck9G",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "0abbff67caa26a5c015924b3a26fbaed20a2537beca7dd25ffeda714c7258daa",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_vVJjCmGbcDY2Ck9G",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q1",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "The distance travelled in one circular orbit equals…",
+      "misconceptionClass": "circumference recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the circumference of the orbit, 2πr",
+          "correct": true,
+          "explanation": "One lap of a circle covers 2πr.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the orbital radius r",
+          "correct": false,
+          "explanation": "The radius is one crossing, not the lap.",
+          "misconception": "length error"
+        },
+        {
+          "key": "C",
+          "text": "the diameter 2r",
+          "correct": false,
+          "explanation": "The diameter crosses the circle; the lap goes all the way round.",
+          "misconception": "length error"
+        },
+        {
+          "key": "D",
+          "text": "πr squared",
+          "correct": false,
+          "explanation": "That is an area formula, not a distance.",
+          "misconception": "formula mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q2",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "In the equation v = 2πr / T, the quantity T is…",
+      "misconceptionClass": "symbol recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "the circumference in metres",
+          "correct": false,
+          "explanation": "The circumference is 2πr.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "B",
+          "text": "the orbital period, in seconds",
+          "correct": true,
+          "explanation": "T times one full orbit.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the orbital radius in metres",
+          "correct": false,
+          "explanation": "That is r.",
+          "misconception": "symbol swap"
+        },
+        {
+          "key": "D",
+          "text": "the orbital speed in m/s",
+          "correct": false,
+          "explanation": "That is v.",
+          "misconception": "symbol swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q3",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "The orbital radius r is measured from…",
+      "misconceptionClass": "radius definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "the orbiting object to itself",
+          "correct": false,
+          "explanation": "That is meaningless.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "the orbited body's north pole only",
+          "correct": false,
+          "explanation": "The measurement is centre-to-object, not pole-specific.",
+          "misconception": "radius error"
+        },
+        {
+          "key": "C",
+          "text": "the centre of the orbited body to the orbiting object",
+          "correct": true,
+          "explanation": "The radius starts at the centre, not the surface.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the surface of the orbited body",
+          "correct": false,
+          "explanation": "Surface height must be added to the body's radius first.",
+          "misconception": "radius error"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q4",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "If the orbital period T doubles while r stays fixed, the orbital speed…",
+      "misconceptionClass": "equation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "doubles",
+          "correct": false,
+          "explanation": "Speed and period move oppositely here.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "B",
+          "text": "stays the same",
+          "correct": false,
+          "explanation": "Changing T with fixed r must change v.",
+          "misconception": "no effect myth"
+        },
+        {
+          "key": "C",
+          "text": "quadruples",
+          "correct": false,
+          "explanation": "There is no squaring in this relation.",
+          "misconception": "arithmetic error"
+        },
+        {
+          "key": "D",
+          "text": "halves, because v = 2πr / T",
+          "correct": true,
+          "explanation": "T sits in the denominator, so speed falls as T grows.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q5",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "The orbital period is defined as…",
+      "misconceptionClass": "period definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "the duration of one full orbit",
+          "correct": true,
+          "explanation": "One lap's worth of time.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the distance around the orbit",
+          "correct": false,
+          "explanation": "That is the circumference.",
+          "misconception": "definition swap"
+        },
+        {
+          "key": "C",
+          "text": "the speed along the orbit",
+          "correct": false,
+          "explanation": "That is the orbital speed.",
+          "misconception": "definition swap"
+        },
+        {
+          "key": "D",
+          "text": "the radius of the orbit",
+          "correct": false,
+          "explanation": "That is r.",
+          "misconception": "definition swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q6",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "Write the equation linking orbital speed, orbital radius and time period.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "Orbital speed v = 2πr / T, where r is the orbital radius and T the time period.",
+      "keywords": [
+        "orbital",
+        "speed",
+        "radius",
+        "period"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q7",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "State what distance an orbiting body covers in one orbit.",
+      "misconceptionClass": "circumference recall",
+      "kind": "recall",
+      "modelAnswer": "It covers the circumference of the circle, equal to 2πr.",
+      "keywords": [
+        "circumference",
+        "circle",
+        "orbit",
+        "covers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q8",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "Explain why the orbital speed formula divides 2πr by T.",
+      "misconceptionClass": "equation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Speed is distance divided by time; in one orbit the distance is the circumference 2πr and the time is the period T, so the average orbital speed must be 2πr divided by T.",
+      "keywords": [
+        "speed",
+        "distance",
+        "circumference",
+        "period"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L1::Q9",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L1",
+      "stem": "A satellite orbits at radius 7,000 km (7,000,000 m) with a period of 6,000 s. Calculate its orbital speed.",
+      "misconceptionClass": "speed calculation",
+      "kind": "application",
+      "modelAnswer": "v = 2πr / T = (2 × π × 7,000,000) / 6,000 ≈ 43,982,297 / 6,000 ≈ 7,330 m/s (3 s.f.).",
+      "keywords": [
+        "orbital",
+        "speed",
+        "radius",
+        "period"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q1",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "Hubble orbits 560 km above a 6400 km Earth. Its orbital radius is…",
+      "misconceptionClass": "radius building",
+      "options": [
+        {
+          "key": "A",
+          "text": "6960 m",
+          "correct": false,
+          "explanation": "The value is kilometres, not metres.",
+          "misconception": "unit error"
+        },
+        {
+          "key": "B",
+          "text": "6400 + 560 = 6960 km",
+          "correct": true,
+          "explanation": "Radius runs from Earth's centre: add the surface radius and the altitude.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "560 km",
+          "correct": false,
+          "explanation": "That is the altitude above the surface only.",
+          "misconception": "radius error"
+        },
+        {
+          "key": "D",
+          "text": "6400 km",
+          "correct": false,
+          "explanation": "That is Earth's radius without the altitude.",
+          "misconception": "radius error"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q2",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "Hubble's 96-minute period converts to…",
+      "misconceptionClass": "unit conversion",
+      "options": [
+        {
+          "key": "A",
+          "text": "96 s",
+          "correct": false,
+          "explanation": "Minutes must be multiplied by 60.",
+          "misconception": "conversion error"
+        },
+        {
+          "key": "B",
+          "text": "576,000 s",
+          "correct": false,
+          "explanation": "That multiplies by an extra hundred.",
+          "misconception": "conversion error"
+        },
+        {
+          "key": "C",
+          "text": "5760 s",
+          "correct": true,
+          "explanation": "96 × 60 = 5760 seconds.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "960 s",
+          "correct": false,
+          "explanation": "That drops a factor of six.",
+          "misconception": "conversion error"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q3",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "With r = 6,960,000 m and T = 5760 s, Hubble's speed is about…",
+      "misconceptionClass": "speed calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "759 m/s",
+          "correct": false,
+          "explanation": "A factor of ten low.",
+          "misconception": "arithmetic error"
+        },
+        {
+          "key": "B",
+          "text": "75,900 m/s",
+          "correct": false,
+          "explanation": "A factor of ten high.",
+          "misconception": "arithmetic error"
+        },
+        {
+          "key": "C",
+          "text": "6960 m/s",
+          "correct": false,
+          "explanation": "That substitutes the radius where the speed belongs.",
+          "misconception": "substitution error"
+        },
+        {
+          "key": "D",
+          "text": "7590 m/s",
+          "correct": true,
+          "explanation": "2π × 6,960,000 / 5760 ≈ 7592, quoted as 7590 to 3 s.f.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q4",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "Before substituting into v = 2πr / T, the radius in km must be…",
+      "misconceptionClass": "unit conversion",
+      "options": [
+        {
+          "key": "A",
+          "text": "multiplied by 1000 to give metres",
+          "correct": true,
+          "explanation": "1 km = 1000 m, and the equation expects metres.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "divided by 1000",
+          "correct": false,
+          "explanation": "That converts metres to kilometres, backwards.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "C",
+          "text": "left in km",
+          "correct": false,
+          "explanation": "Mixed units corrupt the result.",
+          "misconception": "unit error"
+        },
+        {
+          "key": "D",
+          "text": "squared",
+          "correct": false,
+          "explanation": "Nothing in this equation squares the radius.",
+          "misconception": "arithmetic error"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q5",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "A satellite at radius 7,000,000 m with T = 6000 s orbits at roughly…",
+      "misconceptionClass": "speed calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "7000 m/s",
+          "correct": false,
+          "explanation": "Close but not the computed value.",
+          "misconception": "arithmetic error"
+        },
+        {
+          "key": "B",
+          "text": "7330 m/s",
+          "correct": true,
+          "explanation": "2π × 7,000,000 / 6000 ≈ 7330 m/s.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "733 m/s",
+          "correct": false,
+          "explanation": "A factor of ten low.",
+          "misconception": "arithmetic error"
+        },
+        {
+          "key": "D",
+          "text": "73,300 m/s",
+          "correct": false,
+          "explanation": "A factor of ten high.",
+          "misconception": "arithmetic error"
+        }
+      ]
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q6",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "State the equation for average orbital speed.",
+      "misconceptionClass": "equation recall",
+      "kind": "recall",
+      "modelAnswer": "v = 2πr / T, with v in m/s, r in metres and T in seconds.",
+      "keywords": [
+        "orbital",
+        "speed",
+        "equation",
+        "seconds"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q7",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "Convert a period of 96 minutes into seconds.",
+      "misconceptionClass": "unit conversion",
+      "kind": "recall",
+      "modelAnswer": "96 minutes = 96 × 60 = 5760 seconds.",
+      "keywords": [
+        "minutes",
+        "seconds",
+        "5760",
+        "convert"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q8",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "Explain why the altitude above the surface is not itself the orbital radius.",
+      "misconceptionClass": "radius building",
+      "kind": "explain-why",
+      "modelAnswer": "The orbital radius runs from the centre of the orbited body, so the body's own radius must be added to the altitude: radius = body radius + height above the surface.",
+      "keywords": [
+        "radius",
+        "centre",
+        "altitude",
+        "surface"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vVJjCmGbcDY2Ck9G::L2::Q9",
+      "moduleId": "rn_vVJjCmGbcDY2Ck9G::L2",
+      "stem": "Calculate the orbital speed of a craft circling at radius 6,960,000 m with period 5760 s, quoting your answer to 3 significant figures.",
+      "misconceptionClass": "speed calculation",
+      "kind": "application",
+      "modelAnswer": "v = 2π × 6,960,000 / 5760 = 7592.18… ≈ 7590 m/s (3 s.f.).",
+      "keywords": [
+        "orbital",
+        "speed",
+        "radius",
+        "period"
+      ],
+      "options": []
+    }
+  ]
+}

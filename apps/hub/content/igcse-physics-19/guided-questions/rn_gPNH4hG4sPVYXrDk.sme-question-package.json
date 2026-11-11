@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_gPNH4hG4sPVYXrDk",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "2b800f28f106efd1e4b953df7a8125d22a61602cd66e9bbf308ca1d152404e6e",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_gPNH4hG4sPVYXrDk",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q1",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "Fusion produces a larger nucleus by…",
+      "misconceptionClass": "fusion definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "joining two small nuclei together",
+          "correct": true,
+          "explanation": "Two light nuclei merge into one heavier nucleus.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "splitting one large nucleus into two",
+          "correct": false,
+          "explanation": "That is fission.",
+          "misconception": "fission swap"
+        },
+        {
+          "key": "C",
+          "text": "absorbing extra electrons",
+          "correct": false,
+          "explanation": "Electrons are irrelevant to nuclear fusion.",
+          "misconception": "electron confusion"
+        },
+        {
+          "key": "D",
+          "text": "ejecting an alpha particle",
+          "correct": false,
+          "explanation": "Alpha emission is a decay mode, not fusion.",
+          "misconception": "decay confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q2",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "Which fuel do most stars fuse?",
+      "misconceptionClass": "stellar fuel",
+      "options": [
+        {
+          "key": "A",
+          "text": "carbon dioxide",
+          "correct": false,
+          "explanation": "That is a combustion chemical, not a nuclear fuel.",
+          "misconception": "chemical mix-up"
+        },
+        {
+          "key": "B",
+          "text": "hydrogen, which becomes helium",
+          "correct": true,
+          "explanation": "Hydrogen fusion to helium powers most stars.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "uranium",
+          "correct": false,
+          "explanation": "Uranium is a fission fuel, not a stellar fusion fuel.",
+          "misconception": "fuel swap"
+        },
+        {
+          "key": "D",
+          "text": "plutonium",
+          "correct": false,
+          "explanation": "Plutonium belongs to reactors, not stars.",
+          "misconception": "fuel swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q3",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "Where does the energy released in fusion come from?",
+      "misconceptionClass": "mass-energy",
+      "options": [
+        {
+          "key": "A",
+          "text": "chemical burning of the fuel",
+          "correct": false,
+          "explanation": "Fusion is nuclear, not chemical.",
+          "misconception": "chemical mix-up"
+        },
+        {
+          "key": "B",
+          "text": "the nuclei shrinking in volume",
+          "correct": false,
+          "explanation": "Volume change is not the energy source.",
+          "misconception": "nonsense reason"
+        },
+        {
+          "key": "C",
+          "text": "a small part of the particles' mass converted into energy",
+          "correct": true,
+          "explanation": "The fused nucleus has slightly less mass; the difference appears as energy.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "friction between the nuclei",
+          "correct": false,
+          "explanation": "Nuclei do not rub against each other.",
+          "misconception": "nonsense reason"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q4",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "Fusing 1 kg of hydrogen releases about as much energy as burning…",
+      "misconceptionClass": "fuel equivalence",
+      "options": [
+        {
+          "key": "A",
+          "text": "ten thousand kilograms of coal",
+          "correct": false,
+          "explanation": "That is a thousandfold underestimate.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "B",
+          "text": "one hundred kilograms of coal",
+          "correct": false,
+          "explanation": "Fusion's yield dwarfs chemical burning.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "C",
+          "text": "one billion kilograms of coal",
+          "correct": false,
+          "explanation": "That overstates the equivalence a hundredfold.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "D",
+          "text": "ten million kilograms of coal",
+          "correct": true,
+          "explanation": "The of-record equivalence is roughly 10,000,000 kg of coal.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q5",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "Why is fusion hard to sustain on Earth?",
+      "misconceptionClass": "fusion conditions",
+      "options": [
+        {
+          "key": "A",
+          "text": "it demands extremely high temperatures that are hard to reach and hold",
+          "correct": true,
+          "explanation": "Only extreme heat lets light nuclei overcome their repulsion.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "because hydrogen is a rare element",
+          "correct": false,
+          "explanation": "Hydrogen is abundant.",
+          "misconception": "abundance myth"
+        },
+        {
+          "key": "C",
+          "text": "because the waste stays dangerous for millennia",
+          "correct": false,
+          "explanation": "Fusion produces no long-lived waste products.",
+          "misconception": "waste myth"
+        },
+        {
+          "key": "D",
+          "text": "because it releases too little energy",
+          "correct": false,
+          "explanation": "Fusion's energy release is enormous.",
+          "misconception": "opposite error"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q6",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "Define nuclear fusion.",
+      "misconceptionClass": "fusion definition",
+      "kind": "recall",
+      "modelAnswer": "Nuclear fusion is the joining of two light nuclei to make a heavier nucleus, releasing energy.",
+      "keywords": [
+        "fusion",
+        "joining",
+        "nuclei",
+        "heavier"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q7",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "State what most stars fuse and what it becomes.",
+      "misconceptionClass": "stellar fuel",
+      "kind": "recall",
+      "modelAnswer": "Stars fuse hydrogen nuclei into helium, releasing energy.",
+      "keywords": [
+        "stars",
+        "hydrogen",
+        "helium",
+        "fuse"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q8",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "Explain how merging lighter nuclei can release energy at all.",
+      "misconceptionClass": "mass-energy",
+      "kind": "explain-why",
+      "modelAnswer": "The nucleus built by fusion has slightly less mass than the two nuclei that formed it; that missing mass is converted into energy, which is why fusion releases such enormous power.",
+      "keywords": [
+        "mass",
+        "converted",
+        "energy",
+        "nuclei"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L1::Q9",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L1",
+      "stem": "A fusion trial fuses 3 kg of hydrogen. Using the coal equivalence, how many kilograms of coal give the same energy?",
+      "misconceptionClass": "fuel equivalence",
+      "kind": "application",
+      "modelAnswer": "1 kg of hydrogen fused matches about 10,000,000 kg of coal, so 3 kg matches 3 × 10,000,000 = 30,000,000 kg of coal.",
+      "keywords": [
+        "hydrogen",
+        "coal",
+        "kg",
+        "energy"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q1",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "Which comparison of the two processes is correct?",
+      "misconceptionClass": "fusion fission contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "both processes split nuclei apart",
+          "correct": false,
+          "explanation": "Only fission splits.",
+          "misconception": "process swap"
+        },
+        {
+          "key": "B",
+          "text": "fusion joins small nuclei while fission splits large ones",
+          "correct": true,
+          "explanation": "Build-up versus break-down is the core contrast.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "fusion splits large nuclei while fission joins small ones",
+          "correct": false,
+          "explanation": "The two processes are swapped.",
+          "misconception": "process swap"
+        },
+        {
+          "key": "D",
+          "text": "both processes join nuclei together",
+          "correct": false,
+          "explanation": "Only fusion joins.",
+          "misconception": "process swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q2",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "Which product pattern follows each process?",
+      "misconceptionClass": "products contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "both make only neutrons",
+          "correct": false,
+          "explanation": "Neutrons accompany fission; fusion products are nuclei.",
+          "misconception": "pattern error"
+        },
+        {
+          "key": "B",
+          "text": "neither produces any new nuclei",
+          "correct": false,
+          "explanation": "Both transform nuclei — that is their point.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "fusion usually makes stable larger nuclei; fission makes radioactive daughters and neutrons",
+          "correct": true,
+          "explanation": "Fission fragments stay unstable; fusion products tend to be stable.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "fusion makes radioactive waste while fission makes stable nuclei",
+          "correct": false,
+          "explanation": "The patterns are reversed.",
+          "misconception": "pattern swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q3",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "Where does each process occur today?",
+      "misconceptionClass": "location contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "both in commercial power stations",
+          "correct": false,
+          "explanation": "Fusion reactors are not yet commercially viable.",
+          "misconception": "location error"
+        },
+        {
+          "key": "B",
+          "text": "both inside stars",
+          "correct": false,
+          "explanation": "Fission is a reactor process.",
+          "misconception": "location error"
+        },
+        {
+          "key": "C",
+          "text": "fusion in reactors, fission in stars",
+          "correct": false,
+          "explanation": "Both locations are swapped.",
+          "misconception": "location error"
+        },
+        {
+          "key": "D",
+          "text": "fusion in stars, fission in power reactors",
+          "correct": true,
+          "explanation": "Stellar cores fuse; terrestrial reactors fission.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q4",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "What does fission require that fusion does not?",
+      "misconceptionClass": "conditions contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "thermal neutrons to induce the split",
+          "correct": true,
+          "explanation": "Fission needs a neutron capture; fusion needs extreme heat and pressure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "temperatures of millions of degrees",
+          "correct": false,
+          "explanation": "That is fusion's demand, not fission's.",
+          "misconception": "condition swap"
+        },
+        {
+          "key": "C",
+          "text": "hydrogen isotopes as fuel",
+          "correct": false,
+          "explanation": "Hydrogen fuels fusion.",
+          "misconception": "fuel swap"
+        },
+        {
+          "key": "D",
+          "text": "pressures from gravitational collapse",
+          "correct": false,
+          "explanation": "Stellar pressure is a fusion condition.",
+          "misconception": "condition swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q5",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "Which is an advantage of future fusion reactors over fission reactors?",
+      "misconceptionClass": "fusion advantages",
+      "options": [
+        {
+          "key": "A",
+          "text": "they run at ordinary temperatures",
+          "correct": false,
+          "explanation": "Fusion needs extreme temperatures.",
+          "misconception": "condition error"
+        },
+        {
+          "key": "B",
+          "text": "their hydrogen fuel is abundant and no long-lived waste is produced",
+          "correct": true,
+          "explanation": "Water supplies the isotopes, and the products are not long-lived waste.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "they need uranium and plutonium ore",
+          "correct": false,
+          "explanation": "Those are fission fuels.",
+          "misconception": "fuel swap"
+        },
+        {
+          "key": "D",
+          "text": "they generate long-lived radioactive waste",
+          "correct": false,
+          "explanation": "Fusion avoids long-lived waste.",
+          "misconception": "opposite error"
+        }
+      ]
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q6",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "State one difference between the nuclei used in fusion and in fission.",
+      "misconceptionClass": "fusion fission contrast",
+      "kind": "recall",
+      "modelAnswer": "Fusion uses small nuclei such as hydrogen; fission uses large nuclei such as uranium.",
+      "keywords": [
+        "fusion",
+        "fission",
+        "hydrogen",
+        "uranium"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q7",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "State what fission produces that fusion does not.",
+      "misconceptionClass": "products contrast",
+      "kind": "recall",
+      "modelAnswer": "Fission produces radioactive daughter nuclei and two or three neutrons.",
+      "keywords": [
+        "fission",
+        "radioactive",
+        "daughters",
+        "neutrons"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q8",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "Explain why fusion fuel is considered more abundant than fission fuel.",
+      "misconceptionClass": "fuel abundance",
+      "kind": "explain-why",
+      "modelAnswer": "Fusion burns isotopes of hydrogen that can be taken from water, while fission depends on uranium and plutonium ores that are far scarcer to mine.",
+      "keywords": [
+        "hydrogen",
+        "water",
+        "uranium",
+        "abundant"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_gPNH4hG4sPVYXrDk::L2::Q9",
+      "moduleId": "rn_gPNH4hG4sPVYXrDk::L2",
+      "stem": "A student claims fission products are safe because they are stable. Correct the claim.",
+      "misconceptionClass": "products contrast",
+      "kind": "application",
+      "modelAnswer": "It is fusion that usually makes stable larger nuclei; fission daughters are usually unstable and radioactive, which is why reactor waste needs careful handling.",
+      "keywords": [
+        "fission",
+        "stable",
+        "radioactive",
+        "daughters"
+      ],
+      "options": []
+    }
+  ]
+}

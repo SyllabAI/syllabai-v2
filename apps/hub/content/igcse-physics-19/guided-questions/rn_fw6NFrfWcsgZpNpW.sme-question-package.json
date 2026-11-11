@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_fw6NFrfWcsgZpNpW",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "553911fa694e3ff5d5bea99584f2ea70d2e2d54d4b4052f171e7123997a1bdae",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_fw6NFrfWcsgZpNpW",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q1",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "Weight is defined as…",
+      "misconceptionClass": "weight definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "the gravitational pull acting on the object",
+          "correct": true,
+          "explanation": "Weight is a gravitational force, measured in newtons.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the amount of matter in an object",
+          "correct": false,
+          "explanation": "That is mass, which stays constant.",
+          "misconception": "mass weight swap"
+        },
+        {
+          "key": "C",
+          "text": "the object's speed while falling",
+          "correct": false,
+          "explanation": "Speed is not weight.",
+          "misconception": "category error"
+        },
+        {
+          "key": "D",
+          "text": "the push of the ground on the object",
+          "correct": false,
+          "explanation": "That is the normal contact force.",
+          "misconception": "force confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q2",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "Gravitational field strength is greater on a planet with…",
+      "misconceptionClass": "g variation",
+      "options": [
+        {
+          "key": "A",
+          "text": "a smaller mass",
+          "correct": false,
+          "explanation": "Smaller mass means weaker gravity.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "B",
+          "text": "greater mass",
+          "correct": true,
+          "explanation": "More massive planets attract more strongly per kilogram.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a faster day length",
+          "correct": false,
+          "explanation": "Rotation length does not set field strength here.",
+          "misconception": "nonsense factor"
+        },
+        {
+          "key": "D",
+          "text": "a thinner atmosphere",
+          "correct": false,
+          "explanation": "Atmosphere thickness is not the driver.",
+          "misconception": "nonsense factor"
+        }
+      ]
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q3",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "Compared with Earth, gravitational field strength on the Moon is…",
+      "misconceptionClass": "g variation",
+      "options": [
+        {
+          "key": "A",
+          "text": "identical, because mass is fixed",
+          "correct": false,
+          "explanation": "The object's mass is fixed; the field is not.",
+          "misconception": "mass weight swap"
+        },
+        {
+          "key": "B",
+          "text": "zero, because the Moon has no gravity",
+          "correct": false,
+          "explanation": "The Moon certainly has gravity.",
+          "misconception": "absolutism error"
+        },
+        {
+          "key": "C",
+          "text": "less, so lifting a mass there is easier",
+          "correct": true,
+          "explanation": "The Moon's weaker field makes lifting easier.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "greater, so lifting is harder",
+          "correct": false,
+          "explanation": "The Moon's field is weaker than Earth's.",
+          "misconception": "direction error"
+        }
+      ]
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q4",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "On the gas giants such as Jupiter, g is…",
+      "misconceptionClass": "g variation",
+      "options": [
+        {
+          "key": "A",
+          "text": "less than on Earth",
+          "correct": false,
+          "explanation": "Gas giants pull harder than Earth.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "B",
+          "text": "exactly 10 N/kg",
+          "correct": false,
+          "explanation": "10 N/kg is Earth's approximate value.",
+          "misconception": "value error"
+        },
+        {
+          "key": "C",
+          "text": "irrelevant to weight",
+          "correct": false,
+          "explanation": "Weight is exactly what g sets.",
+          "misconception": "concept error"
+        },
+        {
+          "key": "D",
+          "text": "more than on Earth, making lifting harder",
+          "correct": true,
+          "explanation": "Their greater mass gives stronger fields.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q5",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "An object taken from Earth to Jupiter keeps the same…",
+      "misconceptionClass": "mass weight contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "mass, though its weight increases",
+          "correct": true,
+          "explanation": "Mass never changes; weight follows the local field.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "weight, though its mass increases",
+          "correct": false,
+          "explanation": "Weight changes; mass does not.",
+          "misconception": "mass weight swap"
+        },
+        {
+          "key": "C",
+          "text": "mass and weight together",
+          "correct": false,
+          "explanation": "Weight must change when g changes.",
+          "misconception": "invariance myth"
+        },
+        {
+          "key": "D",
+          "text": "weight, though its mass decreases",
+          "correct": false,
+          "explanation": "Mass does not decrease on arrival.",
+          "misconception": "mass weight swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q6",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "Define weight.",
+      "misconceptionClass": "weight definition",
+      "kind": "recall",
+      "modelAnswer": "Weight is the gravitational pull acting on an object.",
+      "keywords": [
+        "weight",
+        "gravitational",
+        "pull",
+        "object"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q7",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "State the approximate gravitational field strength on Earth.",
+      "misconceptionClass": "g value",
+      "kind": "recall",
+      "modelAnswer": "On Earth's surface g is approximately 10 N/kg.",
+      "keywords": [
+        "earth",
+        "approximately",
+        "field",
+        "strength"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q8",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "Explain why the same person could not stand up easily on Jupiter but can on Earth.",
+      "misconceptionClass": "g variation",
+      "kind": "explain-why",
+      "modelAnswer": "Jupiter's much greater mass gives it a larger gravitational field strength, so the person's weight there is far bigger than on Earth — the pull is so strong a human could not fully stand.",
+      "keywords": [
+        "jupiter",
+        "mass",
+        "field",
+        "weight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fw6NFrfWcsgZpNpW::L1::Q9",
+      "moduleId": "rn_fw6NFrfWcsgZpNpW::L1",
+      "stem": "A 5 kg mass rests on Earth, where g is about 10 N/kg. State its weight and what happens to its mass on the Moon.",
+      "misconceptionClass": "mass weight contrast",
+      "kind": "application",
+      "modelAnswer": "Weight on Earth is 5 × 10 = 50 N; on the Moon the mass is still 5 kg while the weight becomes smaller because the Moon's field is weaker.",
+      "keywords": [
+        "weight",
+        "mass",
+        "moon",
+        "field"
+      ],
+      "options": []
+    }
+  ]
+}

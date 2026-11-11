@@ -1,0 +1,140 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_fw6NFrfWcsgZpNpW",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "553911fa694e3ff5d5bea99584f2ea70d2e2d54d4b4052f171e7123997a1bdae",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_fw6NFrfWcsgZpNpW",
+    "topicTitle": "8. Astrophysics",
+    "subtopicTitle": "Motion in the Universe",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/8-astrophysics/8-1-motion-in-the-universe/8-1-2-gravitational-field-strength",
+    "specAnchors": [
+      {
+        "code": "8.3",
+        "text": "understand why gravitational field strength, g , varies and know that it is different on other planets and the Moon from that on the Earth"
+      }
+    ],
+    "primer": {
+      "text": "Weight is the gravitational pull on an object, and how hard that pull is per kilogram — the field strength g — changes from world to world. A planet's greater mass means stronger gravity: Earth offers about 10 N/kg, the Moon less, the gas giants more, while the object's mass itself never changes.",
+      "prerequisiteSubtopic": "Motion in the Universe"
+    },
+    "modules": [
+      {
+        "id": "rn_fw6NFrfWcsgZpNpW::L1",
+        "title": "Gravitational field strength and weight",
+        "sourceHeadings": [
+          "Gravitational field strength"
+        ],
+        "specRefs": [
+          "8.3"
+        ],
+        "opening": "Weight is the gravitational pull acting on an object, and it depends on the local gravitational field strength g. A more massive planet pulls harder: g is about 10 N/kg on Earth, smaller on the Moon, and larger on the gas giants — so the same object weighs different amounts on different worlds while its mass stays the same.",
+        "keyPoints": [
+          "Weight is the gravitational pull acting on an object.",
+          "The greater a planet's mass, the greater its gravitational field strength.",
+          "On Earth's surface g is about 10 N/kg; the Moon's is less, the gas giants' more.",
+          "An object's mass is the same everywhere, but its weight changes with the field.",
+          "Weight is what keeps objects on the ground and satellites in orbit."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Same object, different worlds: mass fixed, weight tracks the local g.",
+            "analogy": "The same shopping bag feels heavier when someone helps you lift it less — the bag never changed, the pull did.",
+            "examPointer": "Mass in kg never travels; weight in N goes wherever the field sends it."
+          },
+          "medium": {
+            "restatement": "g is per-kilogram pull: roughly 10 N/kg on Earth, below it on the Moon, above it on the gas giants, scaling with planetary mass.",
+            "analogy": "A stronger magnet under the same iron filings: the filings (mass) are identical, the grip (field) is not.",
+            "examPointer": "Exam questions supply Earth's g — use it, and never quote g for other worlds from memory."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_fw6NFrfWcsgZpNpW::L1::Q1",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q2",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q3",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q4",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q5",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q6",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q7",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q8",
+          "rn_fw6NFrfWcsgZpNpW::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "weight",
+          "definition": "The gravitational pull acting on an object.",
+          "firstLesson": 1
+        },
+        {
+          "term": "gravitational field strength",
+          "definition": "The gravitational pull per kilogram, about 10 N/kg on Earth, varying between worlds.",
+          "firstLesson": 1
+        },
+        {
+          "term": "mass",
+          "definition": "The amount of matter in an object; unchanged from world to world.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/b86886e2f9de-5-1-4-weight-force.png",
+        "alt": "5-1-4-weight-force",
+        "sourceHeading": "Gravitational field strength",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Objects are pulled towards the centre of the Earth by its field"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/3ee2e4e6b09d-3-1-1-6-gravitational-field-strength-diagram.png",
+        "alt": "Gravitational field strength diagram, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Gravitational field strength",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Values of g across the objects of the Solar System"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/9fb6c07121a7-13-1-1-1-gravitational-field-strength.png",
+        "alt": "gravitational field strength, downloadable AS & A Level Physics revision notes",
+        "sourceHeading": "Gravitational field strength",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "On Jupiter the weight would be too great for a human to stand fully upright"
+      }
+    ]
+  }
+}
