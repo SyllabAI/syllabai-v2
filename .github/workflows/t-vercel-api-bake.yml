@@ -35,9 +35,15 @@
 name: t-vercel-api-bake
 
 on:
-  schedule:
-    - cron: "30 3 * * *" # 03:30 UTC — staggered one hour after the hub floor
   workflow_dispatch: {}
+  # 2026-11-11 INCIDENT STOP: the schedule is removed. Run-2 (2026-11-10
+  # 11:34Z, schedule) deployed THIS monorepo onto the syllabai-v2 project
+  # whose serving code is the Java core (SyllabAI/syllabai-core); the
+  # project's build settings are unset on the new account (the migration
+  # never carried them), so the deployment was EMPTY and api.syllab-ai.com
+  # 404s on every path. t-vercel-api-rollback restores the last serving
+  # build. The floor returns pointed at the right source with the right
+  # build config once the recipe of record is re-established.
 
 permissions:
   contents: read

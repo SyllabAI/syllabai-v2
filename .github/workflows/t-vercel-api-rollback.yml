@@ -1,0 +1,76 @@
+# T-VERCEL-API-ROLLBACK run-001 — emergency restore of the last serving API deployment.
+#
+# INCIDENT OF RECORD (2026-11-11): t-vercel-api-bake run-2 (schedule, 2026-11-10
+# 11:34Z) deployed THIS monorepo's source onto the syllabai-v2 project whose
+# real serving code is the Java core (SyllabAI/syllabai-core, /api/v1, Spring
+# error shapes on the live surface). The project's build settings on the new
+# account are ALL unset (t-vercel-api-diag run-001: framework None,
+# buildCommand None, outputDirectory None, rootDirectory None — the migration
+# recreated the project without them), so the bake produced an EMPTY
+# deployment: api.syllab-ai.com now serves Vercel's generic NOT_FOUND on every
+# path (first-hand probe, 2026-11-11 ~03:38Z).
+#
+# THIS WORKFLOW: promote (rollback) the newest READY production deployment
+# created BEFORE 2026-11-10 00:00Z — the last known-serving build (the
+# 2026-11-09 05:51:51Z dashboard redeploy; it 500s on /regions but serves the
+# rest of /api/v1). Instant promotion, no new build.
+#
+# COMPANION CHANGE (same PR): the 03:30Z schedule is REMOVED from
+# t-vercel-api-bake.yml (dispatch-only) — otherwise the floor would re-deploy
+# the empty build on its next trigger and re-break the platform.
+#
+# STRICT DISPOSITIONS (t-ops-plane class): VERCEL_BAKE_TOKEN never printed;
+# this workflow performs exactly ONE promotion and one read-only serving
+# probe; no other environment touched.
+
+name: t-vercel-api-rollback
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Find the last pre-incident serving deployment (read-only)
+        id: target
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+          PROJECT_ID: prj_vf1MQaCuuGHd83HaTA3uqDxETpb5
+        run: |
+          curl -sSf -H "Authorization: Bearer $VERCEL_BAKE_TOKEN" \
+            "https://api.vercel.com/v6/deployments?projectId=$PROJECT_ID&target=production&limit=20" \
+            | python3 -c "
+          import json, os, sys
+          CUT = 1794153600000  # 2026-11-10 00:00Z — before the first wrong bake
+          pick = None
+          for d in json.load(sys.stdin).get('deployments', []):
+              if d.get('state') == 'READY' and d.get('createdAt', 0) < CUT:
+                  pick = d
+                  break
+          if not pick:
+              print('NO pre-incident READY deployment found — refusing to act')
+              sys.exit(1)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('uid=' + pick.get('uid', '') + chr(10) + 'url=' + pick.get('url', '') + chr(10))
+          print('rollback target:', pick.get('uid'), '|', pick.get('url'), '| created', pick.get('createdAt'), '| meta sha', (pick.get('meta') or {}).get('githubCommitSha', '(none)'))
+          "
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Promote the last serving deployment (instant rollback)
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+          TARGET_URL: ${{ steps.target.outputs.url }}
+        run: vercel rollback "$TARGET_URL" --yes --token="$VERCEL_BAKE_TOKEN"
+        shell: bash
+
+      - name: Serving proof (read-only probe)
+        run: |
+          sleep 10
+          echo "--- /api/v1/auth/login (expect a JSON 400, not the Vercel NOT_FOUND page) ---"
+          curl -s -w "\nHTTP %{http_code}\n" -X POST -H "Content-Type: application/json" -d '{}' https://api.syllab-ai.com/api/v1/auth/login | head -c 300
