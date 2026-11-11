@@ -841,9 +841,14 @@ describe("run-002 repair — the sameSeedExceptBundle shared-code reuse law", ()
       schema: "syllabai-demo.content-bundle/2.0",
     });
 
+    // count contract of record = the OFFICIAL spine: the ADR-039 SME-picker
+    // layer rows (T-SME-SEL-W6-1 appended the layer to these two banks) are
+    // the hub corpus plane's UI-level navigation rows and the seeder's W2
+    // law extension SKIPS them fleet-wide (nothing lands, nothing dangles)
+    const official = (b: BundleCurriculum) => b.nodes.filter((n) => !n.code.includes("-SME-")).length;
     const store = newStore();
     const first = await seedBundleCurriculum(seedDeps(store), mechanics, src("cie-a-level-maths-20-mechanics"), ACTIVATOR);
-    expect(first.nodesCreated).toBe(mechanics.nodes.length);
+    expect(first.nodesCreated).toBe(official(mechanics));
     // the optionA identities of record: the version-scoped root + mechanics'
     // own tail-based UNIT (official T4 tail) — the pre-optionA order law
     // landed BOTH banks on 9709-S1 (the graft)
@@ -855,7 +860,7 @@ describe("run-002 repair — the sameSeedExceptBundle shared-code reuse law", ()
     // UNIT comes from its own official tail (T1), never the first bank's node
     const second = await seedBundleCurriculum(seedDeps(store), pure1, src("cie-a-level-maths-20-pure-1"), ACTIVATOR);
     expect(second.nodesReused).toBe(1); // 9709-2023-2025 (the root)
-    expect(second.nodesCreated).toBe(pure1.nodes.length - 1);
+    expect(second.nodesCreated).toBe(official(pure1) - 1);
     expect(second.edgesReused).toBe(0);
     expect(second.edgesCreated).toBe(pure1.edges.length);
     expect(second.alreadyActive).toBe(false);
