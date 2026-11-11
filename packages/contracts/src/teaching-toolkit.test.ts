@@ -263,6 +263,27 @@ describe("output schemas — structural fidelity pins", () => {
     expect(toolkitLevelScores(5)).toEqual({ advanced: 5, proficient: 4, basic: 3, emerging: 1 });
   });
 
+  it("rubricOutput parses the SCORELESS levels the v1.0 prompt demands (the computed-score law)", () => {
+    // The prompt tells the model "Do NOT include 'score' fields; they are
+    // computed by the app" — the wall must accept exactly that shape (the
+    // required-score pin made every obedient generation fail validation
+    // twice: the deterministic rubric 502). A present score still parses;
+    // the route overwrites it with toolkitLevelScores() post-wall.
+    const scoreless = {
+      ...rubricOutput,
+      rubric: {
+        criteria: rubricOutput.rubric.criteria.map((c) => ({
+          ...c,
+          levels: Object.fromEntries(
+            Object.entries(c.levels).map(([k, v]) => [k, { description: v.description, feedback: v.feedback }]),
+          ),
+        })),
+      },
+    };
+    const parsed = rubricOutputSchema.safeParse(scoreless);
+    expect(parsed.success).toBe(true);
+  });
+
   it("sowOutput parses the captured 12-field lesson card", () => {
     const parsed = sowOutputSchema.safeParse(sowOutput);
     expect(parsed.success).toBe(true);

@@ -263,7 +263,14 @@ export const lessonPlanOutputSchema = z.object({
 export type LessonPlanOutput = z.infer<typeof lessonPlanOutputSchema>;
 
 const rubricLevelSchema = z.object({
-  score: z.number().int(),
+  // the v1.0 prompt's capture law: "Do NOT include 'score' fields; they are
+  // computed by the app" — the model must never decide the score, so the
+  // field MUST parse as absent (requiring it here made every obedient
+  // generation fail the wall: rubric failed validation twice, 502,
+  // deterministic — first-hand prod evidence 2026-11-09 + 2026-11-11). The
+  // route's postProcess writes the computed toolkitLevelScores() into every
+  // level BEFORE the row persists, so stored documents always carry scores.
+  score: z.number().int().optional(),
   description: prose,
   feedback: prose,
 });
