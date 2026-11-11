@@ -1,0 +1,326 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "ial-biology-18",
+ "qual": "A Level (CIE)",
+ "source": {
+  "provider": "inherited (multi (freesciencelessons / doodlescience / cognito channel-only / amoeba-sisters / malmesbury))",
+  "label": "ial-biology-18",
+  "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-a-level-biology-25; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
+  "enumeratedUtc": "2026-11-09T05:12:35Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (inheritance lane)",
+  "ruledUtc": "2026-11-10T23:00:00Z",
+  "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+  "rowsApproved": 7,
+  "rowsRejected": 0,
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "inherited-external (from cie-a-level-biology-25)",
+    "task": "T-VIDEOMAP-P4 (inheritance lane)",
+    "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-10T23:00:00Z",
+    "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+    "rowsApproved": 7,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ],
+  "selfReviewNote": "Inherited rows derive deterministically from owner-approved parent rows; the containment map is committed and spot-checked (owner chat 2026-11-09 'approve and review yourself'). The parent lanes carry the title-only evidence rulings; below-threshold child specs stay honestly unmapped."
+ },
+ "videos": [
+  {
+   "id": "7PJGaweLeOk",
+   "title": "A Level Biology Revision \"The Endoplasmic Reticulum and Golgi Apparatus\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7PJGaweLeOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 331,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "cnfamzARDrs",
+   "title": "A Level Biology Revision \"The Structure and Function of the Nucleus\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=cnfamzARDrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 269,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "iFgAacVKCrc",
+   "title": "A Level Biology Revision \"Active and Passive Immunity\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=iFgAacVKCrc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 327,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "1Y4R-yD337g",
+   "title": "A Level Biology Revision \"ATP and Hydrogen Carriers\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1Y4R-yD337g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 297,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "_vZ0lefPg_0",
+   "title": "Circulatory System and Pathway of Blood Through the Heart",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=_vZ0lefPg_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 494,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pHGMKnTlUm8",
+   "title": "A Level Biology Revision \"Single and Double Circulatory Systems\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=pHGMKnTlUm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 350,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ZDZUAleWX78",
+   "title": "Gel Electrophoresis",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=ZDZUAleWX78",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum channel; NGSS vocabulary",
+   "durationS": 475,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "_vZ0lefPg_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7"
+   ],
+   "confidence": "low",
+   "evidence": "circulatory pathway named; closed-double-circulation wording not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pHGMKnTlUm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names single and double circulatory systems (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7PJGaweLeOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ER and Golgi apparatus structure (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cnfamzARDrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names nucleus structure and function (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "iFgAacVKCrc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title names active and passive immunity (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ZDZUAleWX78",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.18"
+   ],
+   "confidence": "medium",
+   "evidence": "title names gel electrophoresis (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "1Y4R-yD337g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.4"
+   ],
+   "confidence": "low",
+   "evidence": "carriers named; oxidative-phosphorylation chain not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 170,
+  "specPointsMapped": 5,
+  "specPointsUnmapped": 165,
+  "videosTotal": 7,
+  "videosMapped": 7,
+  "videosUnmapped": 0,
+  "mappingRows": 7,
+  "byConfidence": {
+   "high": 0,
+   "medium": 5,
+   "low": 2
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/ial-biology-18.json",
+   "sha256": "b4f7b194864eb8e323f9ab93285ac4134c762299f1f7bd6b6a0ab8708cdf0962"
+  },
+  "inheritanceMap": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/_p4/inheritance-map.json",
+   "task": "T-VIDEOMAP-P4 (inheritance lane)",
+   "reviewAppliedUtc": "2026-11-10T23:00:00Z"
+  },
+  "parentDraft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "course": "cie-a-level-biology-25",
+   "paths": [
+    "Videos/drafts/cie-a-level-biology-25/video-map.draft.external.json"
+   ],
+   "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.093Z"
+}

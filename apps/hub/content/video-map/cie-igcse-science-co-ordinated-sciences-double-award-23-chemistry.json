@@ -1,0 +1,566 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+ "qual": "IGCSE",
+ "source": {
+  "provider": "inherited (multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only))",
+  "label": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+  "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-igcse-chemistry-23; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
+  "enumeratedUtc": "2026-11-01T01:04:15Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (inheritance lane)",
+  "ruledUtc": "2026-11-10T23:00:00Z",
+  "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+  "rowsApproved": 14,
+  "rowsRejected": 0,
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "inherited-external (from cie-igcse-chemistry-23)",
+    "task": "T-VIDEOMAP-P4 (inheritance lane)",
+    "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-10T23:00:00Z",
+    "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+    "rowsApproved": 14,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ],
+  "selfReviewNote": "Inherited rows derive deterministically from owner-approved parent rows; the containment map is committed and spot-checked (owner chat 2026-11-09 'approve and review yourself'). The parent lanes carry the title-only evidence rulings; below-threshold child specs stay honestly unmapped."
+ },
+ "videos": [
+  {
+   "id": "nUzOXy9V-K0",
+   "title": "GCSE Chemistry Revision \"Elements, Compounds and Mixtures\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nUzOXy9V-K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 258,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "yOsMN89wIQc",
+   "title": "GCSE Chemistry Revision \"Relative Atomic Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yOsMN89wIQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "q49NwIrjaFw",
+   "title": "GCSE Chemistry Revision \"Relative Formula Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=q49NwIrjaFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 249,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "kMak1TQ3YgU",
+   "title": "GCSE Chemistry Revision \"Calculating Mass of a Number of Moles\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=kMak1TQ3YgU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 283,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "4HS6D0hTzdg",
+   "title": "GCSE Chemistry Revision \"Exothermic and Endothermic Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4HS6D0hTzdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "gnbuTl2ariI",
+   "title": "GCSE Chemistry Revision \"Oxidation and Reduction in Terms of Electrons\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gnbuTl2ariI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "G2TEfhwgq84",
+   "title": "GCSE Chemistry Revision \"Effect of Temperature on Rate\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=G2TEfhwgq84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 211,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "6WjC_Vi4roA",
+   "title": "GCSE Chemistry Revision \"Electrolysis of Aqueous Solutions 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=6WjC_Vi4roA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 282,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "jVkGKurtaiE",
+   "title": "GCSE Chemistry Revision \"Testing for Gases\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=jVkGKurtaiE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 146,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "7AWwjKbRa_o",
+   "title": "GCSE Chemistry Revision \"Cracking\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7AWwjKbRa_o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 285,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "bOiYLKX9ZRY",
+   "title": "GCSE Chemistry - Cracking Crude Oil & Alkenes",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=bOiYLKX9ZRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 390,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "CmANMHeeZgw",
+   "title": "GCSE Chemistry Revision \"Alkenes\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=CmANMHeeZgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 234,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "GhvevdJU_DM",
+   "title": "GCSE Chemistry Revision \"Addition Polymers\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GhvevdJU_DM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 251,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "EP0zfm_FVqc",
+   "title": "GCSE Chemistry - What is a Polymer? Polymers / Monomers / Their Properties Explained (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=EP0zfm_FVqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito's own channel (channel-only video, not surfaced on cognitoedu.org pages)",
+   "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "nUzOXy9V-K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "elements/compounds/mixtures differences = 2.1.1 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "yOsMN89wIQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "relative atomic mass = Ar-from-abundances (2.3.4) + Ar definition (3.2.1) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "q49NwIrjaFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "relative formula mass = the Mr definition of 3.2.2 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "kMak1TQ3YgU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "mass-from-moles = the mass/molar-amount relationship of 3.3.3 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "6WjC_Vi4roA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "electrolysis of aqueous solutions = the definition (4.1.1) + electrode products (4.1.3) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4HS6D0hTzdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C5.1.3",
+    "C5.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "exo/endothermic = pathway diagrams (5.1.3) + enthalpy-change transfer (5.1.4) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "G2TEfhwgq84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "temperature effect on rate = one factor of the 6.2.6 collision-theory explanation (partial) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gnbuTl2ariI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "oxidation/reduction in terms of electrons = the 6.4.6/6.4.7 definitions (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CmANMHeeZgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "alkenes = the C=C double-bond/unsaturated statement of 11.5.1 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7AWwjKbRa_o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "cracking = manufacture of alkenes by cracking of 11.5.2 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bOiYLKX9ZRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "Cognito channel-only: cracking crude oil & alkenes = 11.5.2 (alt to 7AWwjKbRa_o) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GhvevdJU_DM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.7.1"
+   ],
+   "confidence": "medium",
+   "evidence": "addition polymers = monomers-built-up definition of 11.8.1 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "EP0zfm_FVqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.7.1"
+   ],
+   "confidence": "medium",
+   "evidence": "Cognito channel-only: monomers into polymers = 11.8.1 (alt to GhvevdJU_DM) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jVkGKurtaiE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "testing for gases = the CIE gas tests of 12.5.3 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 181,
+  "specPointsMapped": 14,
+  "specPointsUnmapped": 167,
+  "videosTotal": 14,
+  "videosMapped": 14,
+  "videosUnmapped": 0,
+  "mappingRows": 14,
+  "byConfidence": {
+   "high": 0,
+   "medium": 14,
+   "low": 0
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry.json",
+   "sha256": "0670ab28159633dc3fa6f727037d59fc2437b738fa54d9d6ab134e33e014c37c"
+  },
+  "inheritanceMap": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/_p4/inheritance-map.json",
+   "task": "T-VIDEOMAP-P4 (inheritance lane)",
+   "reviewAppliedUtc": "2026-11-10T23:00:00Z"
+  },
+  "parentDraft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "course": "cie-igcse-chemistry-23",
+   "paths": [
+    "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external.json"
+   ],
+   "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.083Z"
+}

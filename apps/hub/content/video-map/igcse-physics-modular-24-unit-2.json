@@ -1,0 +1,2387 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "igcse-physics-modular-24-unit-2",
+ "qual": "IGCSE",
+ "source": {
+  "provider": "inherited (multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only))",
+  "label": "igcse-physics-modular-24-unit-2",
+  "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of igcse-physics-19; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
+  "enumeratedUtc": "2026-11-01T01:04:15Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (inheritance lane)",
+  "ruledUtc": "2026-11-10T23:00:00Z",
+  "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+  "rowsApproved": 64,
+  "rowsRejected": 0,
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "inherited-external (from igcse-physics-19)",
+    "task": "T-VIDEOMAP-P4 (inheritance lane)",
+    "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-10T23:00:00Z",
+    "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+    "rowsApproved": 64,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ],
+  "selfReviewNote": "Inherited rows derive deterministically from owner-approved parent rows; the containment map is committed and spot-checked (owner chat 2026-11-09 'approve and review yourself'). The parent lanes carry the title-only evidence rulings; below-threshold child specs stay honestly unmapped."
+ },
+ "videos": [
+  {
+   "id": "0f5iYCNCnow",
+   "title": "GCSE Physics Revision \"Transverse and Longitudinal Waves\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=0f5iYCNCnow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 253,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "ITe6snlZBp8",
+   "title": "GCSE Physics Revision \"Properties of Waves\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ITe6snlZBp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 261,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "Aucu7YshyQ0",
+   "title": "GCSE Physics Revision \"The Wave Equation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Aucu7YshyQ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 323,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "8K6gOST8pZk",
+   "title": "GCSE Physics Revision \"Reflection of Waves\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=8K6gOST8pZk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "wO49W5lsP0s",
+   "title": "GCSE Physics Revision \"Refraction of Waves\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=wO49W5lsP0s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 235,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "2fN_jvf4fw8",
+   "title": "GCSE Physics Revision \"Required practical 9: Reflection and Refraction\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=2fN_jvf4fw8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 212,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "u5vkYjV1V1A",
+   "title": "GCSE Physics Revision \"Electromagnetic Waves\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=u5vkYjV1V1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 227,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "L0iivb-acqU",
+   "title": "GCSE Physics Revision \"Uses of EM waves\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=L0iivb-acqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 259,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "bbcuFhD5zqc",
+   "title": "Refraction and Refractive Index | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=bbcuFhD5zqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK GCSE physics doodle channel",
+   "durationS": 82,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "WGWb2IQdnpo",
+   "title": "Total Internal Reflection | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=WGWb2IQdnpo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK GCSE physics doodle channel",
+   "durationS": 104,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "N_07EkzEhVQ",
+   "title": "GCSE Physics Revision \"Sound Waves\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=N_07EkzEhVQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 251,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "hKO3DpgiISk",
+   "title": "GCSE Physics Revision \"Particle Motion in Gases\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hKO3DpgiISk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 137,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "RuoZqmNiMEo",
+   "title": "GCSE Physics Revision \"Pressure in Gases\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=RuoZqmNiMEo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "sRyy7-jEu3Q",
+   "title": "GCSE Physics Revision \"Permanent and Induced Magnets\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=sRyy7-jEu3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 178,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "FodEDHaEY68",
+   "title": "GCSE Physics Revision \"Magnetic Fields\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=FodEDHaEY68",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 244,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "dMbWkodL12I",
+   "title": "GCSE Physics Revision  \"Electromagnets\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dMbWkodL12I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 241,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "GNLhSKZh-jM",
+   "title": "GCSE Physics Revision \"The Motor Effect\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GNLhSKZh-jM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 259,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "fiQ38p6vb8o",
+   "title": "GCSE Physics Revision \"The Electric Motor\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=fiQ38p6vb8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 177,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "NjgqJahwsG0",
+   "title": "GCSE Physics Revision \"The Generator Effect\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=NjgqJahwsG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 210,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "k1IivkRjd1U",
+   "title": "GCSE Physics Revision  \"The Alternator and Dynamo\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=k1IivkRjd1U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 287,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "M9ytpIMB5d8",
+   "title": "GCSE Physics Revision \"Transformers\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=M9ytpIMB5d8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 214,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "_16o6j6YlXY",
+   "title": "GCSE Physics Revision  \"Transformer Calculations\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=_16o6j6YlXY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 298,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "iNvGiTn64fQ",
+   "title": "GCSE Physics Revision \"The National Grid\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=iNvGiTn64fQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "dftq9xGXcf8",
+   "title": "GCSE Physics Revision \"Atomic Structure\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dftq9xGXcf8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 187,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "k8cLFDa8zmY",
+   "title": "GCSE Physics Revision \"Atomic and Mass Numbers\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=k8cLFDa8zmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 249,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "F_Y1-JieCrg",
+   "title": "GCSE Physics Revision \"Radioactivity\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=F_Y1-JieCrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 217,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "nW0S1C6wVrg",
+   "title": "GCSE Physics Revision \"Properties of Alpha, Beta and Gamma Radiation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nW0S1C6wVrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 166,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "xpSBhUpBXic",
+   "title": "GCSE Physics Revision \"Nuclear Equations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xpSBhUpBXic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 316,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "Z7394DMkfQs",
+   "title": "GCSE Physics Revision \"Background Radiation\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Z7394DMkfQs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 207,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "wj9BzGFao8k",
+   "title": "GCSE Physics Revision \"Half Life\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=wj9BzGFao8k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 263,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "teGu0VAPlOo",
+   "title": "GCSE Physics Revision \"Irradiation and Contamination\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=teGu0VAPlOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 309,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "YejvYYRjSUk",
+   "title": "GCSE Physics Revision \"Nuclear Radiation in Medicine\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=YejvYYRjSUk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 227,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "onkW8BF5I3Q",
+   "title": "GCSE Physics Revision \"Nuclear Fission and Nuclear Fusion\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=onkW8BF5I3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 217,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "mndRVjMovQk",
+   "title": "GCSE Physics Revision \"The Solar System\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=mndRVjMovQk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 230,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "okMA18ppu98",
+   "title": "GCSE Physics Revision \"Orbital Motion\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=okMA18ppu98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 193,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "V0Y1JlVuin4",
+   "title": "GCSE Physics Revision  \"Lifecycle of Stars\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=V0Y1JlVuin4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 232,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "C90DOE87TYc",
+   "title": "GCSE Physics Revision  \"Red-Shift\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=C90DOE87TYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 190,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "U-OUP_mXMCw",
+   "title": "The Big Bang Theory and Red-Shift | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=U-OUP_mXMCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "UK GCSE physics doodle channel",
+   "durationS": 80,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "qVP4iCt-FLg",
+   "title": "Wave Speed Equation - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=qVP4iCt-FLg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 185,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EmEmIudNvhM",
+   "title": "Time Period and Frequency of Waves - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=EmEmIudNvhM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 314,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X4MqYUNPnww",
+   "title": "Amplitude and Wavelength of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=X4MqYUNPnww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 129,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pVYfCKUYyfE",
+   "title": "Calculate the Speed of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=pVYfCKUYyfE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 165,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gGdwW7cVEYc",
+   "title": "Calculate the Wavelength of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=gGdwW7cVEYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 145,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p2tfX7U8SaI",
+   "title": "Frequency and Amplitude of a Wave - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=p2tfX7U8SaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MnTYZKHSUBk",
+   "title": "Reflection - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=MnTYZKHSUBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 315,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4n2S0AIDSDs",
+   "title": "Reflection Ray Diagram - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=4n2S0AIDSDs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 173,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_OPx3F1r-PM",
+   "title": "Measure the Angle of Refraction using a Protractor - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=_OPx3F1r-PM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 124,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k8oK67nlm3M",
+   "title": "Refraction and Snell's Law - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=k8oK67nlm3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5py3JxDZaZM",
+   "title": "Total Internal Reflection and Critical Angle - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=5py3JxDZaZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Zeo3UOk7_vA",
+   "title": "Optical Fibres - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Zeo3UOk7_vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 235,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l-nFHceQNEQ",
+   "title": "TIR in water - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=l-nFHceQNEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 191,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xVzHT5BP-Sw",
+   "title": "Measuring the Speed of Sound - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=xVzHT5BP-Sw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 177,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "R6I7Fh3hN3M",
+   "title": "Electromagnetic Waves: Wavelengths and Frequencies - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=R6I7Fh3hN3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 323,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_Ag_DKztFkg",
+   "title": "Permanent Magnets - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=_Ag_DKztFkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 396,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VFyppOI1-Fc",
+   "title": "The Parts of the Atom (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=VFyppOI1-Fc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-LDsSKidCfQ",
+   "title": "Representing Atoms (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=-LDsSKidCfQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 282,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rqlstLTRIb4",
+   "title": "Representing Atoms - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=rqlstLTRIb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 181,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Sq8CWusNry8",
+   "title": "Ions and Isotopes (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Sq8CWusNry8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 206,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "muXcZJP4sVA",
+   "title": "Alpha Decay Equations (with Primrose Kitten) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=muXcZJP4sVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 154,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GImej8WpwjU",
+   "title": "Beta Decay and its Nuclear Equations - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=GImej8WpwjU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 470,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iUxh0tQNVjQ",
+   "title": "Nuclear Energy Overview - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=iUxh0tQNVjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 225,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "r0aLfBPJbSo",
+   "title": "Fusion Reactors - Inside JET, the HOTTEST place in the Solar System! A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=r0aLfBPJbSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 907,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qENsPSk_tuE",
+   "title": "Orbital Speed - IGCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=qENsPSk_tuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 169,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KgWFFGSUVN0",
+   "title": "Redshift Calculations - IGCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=KgWFFGSUVN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 201,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "0f5iYCNCnow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "transverse and longitudinal waves = the 3.2 distinction (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ITe6snlZBp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3",
+    "5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "properties of waves = amplitude/frequency/wavelength definitions (3.3) + energy-without-matter (3.4) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "EmEmIudNvhM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3",
+    "5.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names time period and frequency of waves (definitions; f = 1/T) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "X4MqYUNPnww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names amplitude and wavelength of a wave (definitions worked example) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "p2tfX7U8SaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3"
+   ],
+   "confidence": "low",
+   "evidence": "title names frequency and amplitude of a wave (worked example) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Aucu7YshyQ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5",
+    "5.6"
+   ],
+   "confidence": "medium",
+   "evidence": "wave equation = v=flambda (3.5) + f=1/T (3.6) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "qVP4iCt-FLg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the wave speed equation (v = f lambda) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pVYfCKUYyfE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names calculating the speed of a wave (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gGdwW7cVEYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5"
+   ],
+   "confidence": "low",
+   "evidence": "title names calculating wavelength (worked example) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8K6gOST8pZk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.14",
+    "5.15",
+    "5.9"
+   ],
+   "confidence": "medium",
+   "evidence": "reflection of waves = all waves reflect/refract (3.9) + light transverse/reflect (3.14) + law of reflection (3.15) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wO49W5lsP0s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.14",
+    "5.16",
+    "5.9"
+   ],
+   "confidence": "medium",
+   "evidence": "refraction of waves = 3.9 + 3.14 + ray diagrams (3.16) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "u5vkYjV1V1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.10",
+    "5.11"
+   ],
+   "confidence": "medium",
+   "evidence": "electromagnetic waves = the continuous spectrum (3.10) + order by wavelength/frequency (3.11) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "R6I7Fh3hN3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title names EM wavelengths and frequencies (order of the EM spectrum) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "L0iivb-acqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.12"
+   ],
+   "confidence": "medium",
+   "evidence": "uses of EM waves = the 3.12 applications list (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MnTYZKHSUBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title names reflection (law of reflection) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2fN_jvf4fw8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.16",
+    "5.17"
+   ],
+   "confidence": "medium",
+   "evidence": "reflection/refraction RP = ray diagrams (3.16) + blocks/prisms practical (3.17) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4n2S0AIDSDs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.16"
+   ],
+   "confidence": "medium",
+   "evidence": "title names a reflection ray diagram worked example (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_OPx3F1r-PM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.16"
+   ],
+   "confidence": "low",
+   "evidence": "title names measuring the angle of refraction; ray-diagram clause partially evidenced (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bbcuFhD5zqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.18",
+    "5.19"
+   ],
+   "confidence": "medium",
+   "evidence": "refraction and refractive index = sin i / sin r (3.18) + glass-block investigation (3.19) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "k8oK67nlm3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.18"
+   ],
+   "confidence": "medium",
+   "evidence": "title names refraction and Snell's law (refractive index, angle of incidence and refraction) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WGWb2IQdnpo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.20",
+    "5.21"
+   ],
+   "confidence": "medium",
+   "evidence": "total internal reflection = optical fibres/prisms (3.20) + critical angle (3.21) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Zeo3UOk7_vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.20"
+   ],
+   "confidence": "medium",
+   "evidence": "title names optical fibres (TIR transmitting information) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "5py3JxDZaZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.21",
+    "5.22"
+   ],
+   "confidence": "medium",
+   "evidence": "title names total internal reflection and critical angle (meaning of c; sin c = 1/n) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "l-nFHceQNEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.21"
+   ],
+   "confidence": "low",
+   "evidence": "title names TIR in water; critical-angle clause partially evidenced (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "N_07EkzEhVQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.23",
+    "5.28P",
+    "5.29P"
+   ],
+   "confidence": "medium",
+   "evidence": "sound waves = longitudinal/reflected/refracted (3.23) + pitch-frequency (3.28P) + loudness-amplitude (3.29P) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "xVzHT5BP-Sw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.25P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names measuring the speed of sound (practical: investigate the speed of sound in air) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "hKO3DpgiISk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1",
+    "6.4",
+    "6.6"
+   ],
+   "confidence": "medium",
+   "evidence": "particle motion in gases = random motion/pressure on walls (5.15) + temperature-speed link (5.18) + qualitative p-V-T (5.20) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "RuoZqmNiMEo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.6"
+   ],
+   "confidence": "medium",
+   "evidence": "pressure in gases = qualitative relationship (5.20) + pV=pV calculations (5.22) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "sRyy7-jEu3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2",
+    "7.3",
+    "7.5"
+   ],
+   "confidence": "medium",
+   "evidence": "permanent and induced magnets = repel/attract (6.2) + hard/soft materials (6.3) + induced magnetism (6.5) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_Ag_DKztFkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2",
+    "7.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names permanent magnets (repel/attract; hard/soft magnetic materials) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "FodEDHaEY68",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.4",
+    "7.6",
+    "7.7"
+   ],
+   "confidence": "medium",
+   "evidence": "magnetic fields = field-line term (6.4) + field-pattern practical (6.6) + uniform field between two magnets (6.7) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dMbWkodL12I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.10P",
+    "7.8"
+   ],
+   "confidence": "medium",
+   "evidence": "electromagnets = current produces field (6.8) + construction (6.9P) + field patterns of wire/coil/solenoid (6.10P) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GNLhSKZh-jM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.12",
+    "7.13",
+    "7.14"
+   ],
+   "confidence": "medium",
+   "evidence": "motor effect = force on current-carrying wire (6.12) + left-hand rule (6.13) + magnitude/direction factors (6.14) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "fiQ38p6vb8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.12"
+   ],
+   "confidence": "medium",
+   "evidence": "electric motor = the application clause of 6.12 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NjgqJahwsG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.15",
+    "7.16"
+   ],
+   "confidence": "medium",
+   "evidence": "generator effect = induced voltage in conductor/coil (6.15) + rotating magnet/coil generation (6.16) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "k1IivkRjd1U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.16"
+   ],
+   "confidence": "medium",
+   "evidence": "alternator and dynamo = the rotation generation of 6.16 (alt) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "M9ytpIMB5d8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.17P"
+   ],
+   "confidence": "medium",
+   "evidence": "transformers = structure + changes AC voltage of 6.17P (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "iNvGiTn64fQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.18P"
+   ],
+   "confidence": "low",
+   "evidence": "national grid implies step-up/step-down transmission; the transformer explanation not title-evidenced (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_16o6j6YlXY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.19P",
+    "7.20P"
+   ],
+   "confidence": "medium",
+   "evidence": "transformer calculations = turns-ratio relationship (6.19P) + 100%-efficiency power (6.20P) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dftq9xGXcf8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2"
+   ],
+   "confidence": "medium",
+   "evidence": "atomic structure = protons/neutrons/electrons + nuclide symbols of 7.2 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VFyppOI1-Fc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names the parts of the atom (protons, neutrons, electrons) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-LDsSKidCfQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2",
+    "8.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names representing atoms (nuclide symbols; atomic/mass numbers) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "k8cLFDa8zmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3"
+   ],
+   "confidence": "medium",
+   "evidence": "atomic and mass numbers = the 7.3 terms (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "rqlstLTRIb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names a representing-atoms worked example (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Sq8CWusNry8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names ions and isotopes (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "F_Y1-JieCrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.4",
+    "8.5"
+   ],
+   "confidence": "medium",
+   "evidence": "radioactivity = alpha/beta/gamma as ionising radiations from unstable nuclei (7.4) + their nature (7.5) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nW0S1C6wVrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.5",
+    "8.6"
+   ],
+   "confidence": "medium",
+   "evidence": "properties of alpha/beta/gamma = nature/ranges (7.5) + penetration practical (7.6) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "xpSBhUpBXic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.7",
+    "8.8"
+   ],
+   "confidence": "medium",
+   "evidence": "nuclear equations = emission effects on atomic/mass numbers (7.7) + balancing (7.8) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "muXcZJP4sVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.7",
+    "8.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names alpha decay equations (effects on atomic/mass numbers; balancing nuclear equations) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GImej8WpwjU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.7",
+    "8.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names beta decay and its nuclear equations (A-level-titled; clauses match) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Z7394DMkfQs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.10"
+   ],
+   "confidence": "medium",
+   "evidence": "background radiation = the Earth/space sources of 7.10 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wj9BzGFao8k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.12",
+    "8.13"
+   ],
+   "confidence": "medium",
+   "evidence": "half-life = the definition (7.12) + activity calculations incl. graphical (7.13) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "YejvYYRjSUk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.14"
+   ],
+   "confidence": "medium",
+   "evidence": "radiation in medicine = the industry/medicine uses of 7.14 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "teGu0VAPlOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.15"
+   ],
+   "confidence": "medium",
+   "evidence": "irradiation and contamination = the 7.15 distinction (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "onkW8BF5I3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.17",
+    "8.18",
+    "8.19",
+    "8.20",
+    "8.23",
+    "8.24"
+   ],
+   "confidence": "medium",
+   "evidence": "fission vs fusion = the difference (7.23) + fusion as larger-nuclei creation with mass loss (7.24) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "iUxh0tQNVjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.17"
+   ],
+   "confidence": "low",
+   "evidence": "title names a nuclear energy overview; nuclear reactions as energy source partially evidenced (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "r0aLfBPJbSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.23",
+    "8.24",
+    "8.25"
+   ],
+   "confidence": "medium",
+   "evidence": "title names fusion reactors (fusion vs fission; fusion as energy source) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mndRVjMovQk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.4",
+    "9.5"
+   ],
+   "confidence": "medium",
+   "evidence": "the solar system = gravity causing orbits (8.4) + orbit differences of comets/moons/planets (8.5) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "okMA18ppu98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.6"
+   ],
+   "confidence": "medium",
+   "evidence": "orbital motion = the orbital-speed relationship of 8.6 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "qENsPSk_tuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names orbital speed (v = 2 pi r / T) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "V0Y1JlVuin4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.10",
+    "9.9"
+   ],
+   "confidence": "medium",
+   "evidence": "lifecycle of stars = Sun-mass evolution (8.9) + larger-mass evolution (8.10) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "C90DOE87TYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.13P",
+    "9.14P",
+    "9.17P",
+    "9.18P"
+   ],
+   "confidence": "medium",
+   "evidence": "red-shift = Big-Bang arguments (8.13P) + red-shift/CMB evidence (8.14P) + red-shift at different distances (8.17P) + expansion evidence (8.18P) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "U-OUP_mXMCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.13P",
+    "9.14P"
+   ],
+   "confidence": "medium",
+   "evidence": "Big Bang and red-shift = the theory + evidence (alt to C90DOE87TYc) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KgWFFGSUVN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.14P"
+   ],
+   "confidence": "medium",
+   "evidence": "title names redshift calculations (red-shift as Big Bang evidence) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 101,
+  "specPointsMapped": 70,
+  "specPointsUnmapped": 31,
+  "videosTotal": 64,
+  "videosMapped": 64,
+  "videosUnmapped": 0,
+  "mappingRows": 64,
+  "byConfidence": {
+   "high": 0,
+   "medium": 58,
+   "low": 6
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/igcse-physics-modular-24-unit-2.json",
+   "sha256": "16e2f2f1ce320311662fb75c0fd5a9f98c29cc6c5366ab123e8e7b09cd85e708"
+  },
+  "inheritanceMap": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/_p4/inheritance-map.json",
+   "task": "T-VIDEOMAP-P4 (inheritance lane)",
+   "reviewAppliedUtc": "2026-11-10T23:00:00Z"
+  },
+  "parentDraft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "course": "igcse-physics-19",
+   "paths": [
+    "Videos/drafts/igcse-physics-19/video-map.draft.external.json",
+    "Videos/drafts/igcse-physics-19/video-map.draft.external-p2e.json"
+   ],
+   "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.116Z"
+}
