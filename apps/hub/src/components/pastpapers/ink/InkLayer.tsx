@@ -18,9 +18,13 @@
  * mount/unmount is tracked by a structure-only MutationObserver
  * (childList; no geometry reads).
  *
- * GESTURE LAW: while ink mode is ON the canvas owns the page gesture
- * (touch-action: none — pen/stylus/finger all draw, one tap toggles it
- * off to scroll/select again). While OFF the layer renders nothing at
+ * GESTURE LAW (T-HUB-INK-TOUCH run-001, operator: "when it is on, cant
+ * scroll or pinch zoom the pdf viewer"): the layer OPENS in Browse
+ * (select) — the paper's own gestures stay native (the canvas's
+ * touch-action is pan-x pan-y pinch-zoom, so pan + pinch-zoom ride the
+ * paper); arming a draw-family tool hands the gesture to the canvas
+ * (touch-action: none — pen/stylus/finger all draw) until Select is
+ * picked again. While OFF the layer renders nothing at
  * all — the paper stays a clean paper (the RegionOverlay chrome law).
  *
  * PERF PIN (c): coalesced capture (≥1.2 css px), rAF-throttled repaint,
@@ -79,6 +83,8 @@ import {
   AlertTriangle,
   Check,
   ChevronDown,
+  ChevronsDownUp,
+  ChevronsUpDown,
   Compass,
   Eraser,
   Gauge,
@@ -220,7 +226,33 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // paper page (extracted live: all 18 buttons render with no gate, no
   // launcher). The old consent gate ("Ink" launcher) is gone; the sync
   // gate below (sourceUrl) is the only mount condition.
-  const [mode, setMode] = useState<InkToolMode>("pen");
+  // T-HUB-INK-TOUCH run-001 (operator: "THERE IS NO WAY TO DISABLE THE
+  // BOTTOM TOOLS BAR"): the collapse control is IN scope now — the row
+  // folds to a one-button pill (persisted per device), and the pill is
+  // the way back. And the paper OPENS in Browse (select), not pen —
+  // reading is the paper's first job; ink arms on an explicit pick.
+  const [mode, setMode] = useState<InkToolMode>("select");
+  // T-HUB-INK-TOUCH run-001: the collapsed posture — persisted per device
+  // (the token-read try/catch pattern; private mode keeps the default).
+  const [collapsed, setCollapsed] = useState(false);
+  useEffect(() => {
+    try {
+      setCollapsed(window.localStorage.getItem("syllabai-ink-toolbar-collapsed") === "1");
+    } catch {
+      /* private mode — the expanded default stands */
+    }
+  }, []);
+  const toggleCollapsed = useCallback(() => {
+    setCollapsed((c) => {
+      const next = !c;
+      try {
+        window.localStorage.setItem("syllabai-ink-toolbar-collapsed", next ? "1" : "0");
+      } catch {
+        /* private mode — session-only posture */
+      }
+      return next;
+    });
+  }, []);
   // T-MG-INK-10: the arm epoch — every explicit arming (toolbar click,
   // hint-card arm) bumps it; the hover chips key their per-arm spend on
   // it (a placement spends the chip until the next arming).
@@ -645,8 +677,20 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
       {/* toolbar — floats over the pane's bottom edge (the mobile A/B pill
           pattern; the pane's own search owns top-11 right-2, so ink takes
           the bottom-right corner); ALWAYS visible (T-MG-INK-11: MG's
-          annotator toolbar ships with no gate — parity law) */}
-      {(
+          annotator toolbar ships with no gate — parity law) unless the
+          user collapsed it (T-HUB-INK-TOUCH run-001: the pill below is
+          the way back) */}
+      {collapsed ? (
+        <Button
+          size="sm"
+          variant="secondary"
+          className="absolute bottom-3 right-2 z-40 size-9 rounded-lg border bg-background/95 p-0 shadow-md backdrop-blur"
+          aria-label="Show annotation tools"
+          onClick={toggleCollapsed}
+        >
+          <ChevronsUpDown className="size-4" aria-hidden />
+        </Button>
+      ) : (
         <div
           role="toolbar"
           aria-label="Ink annotations"
@@ -894,9 +938,21 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               )}
             </>
           ) : null}
-          {/* T-MG-INK-11: no "Close ink layer" — MG's toolbar has no
-              close/launch chrome at all (their Collapse-toolbar is the
-              recorded out-of-scope extra); the toolbar simply IS. */}
+          {/* T-HUB-INK-TOUCH run-001: the collapse control — MG's recorded
+              out-of-scope extra, pulled in scope by operator demand ("THERE
+              IS NO WAY TO DISABLE THE BOTTOM TOOLS BAR"). The row folds to
+              the one-button pill; the posture persists per device. No
+              "Close ink layer" — the surface itself never unmounts, only
+              the chrome folds. */}
+          <Button
+            size="sm"
+            variant="ghost"
+            className="size-8 px-0"
+            aria-label="Collapse annotation tools"
+            onClick={toggleCollapsed}
+          >
+            <ChevronsDownUp className="size-4" aria-hidden />
+          </Button>
         </div>
       )}
 
@@ -1806,7 +1862,17 @@ export function InkCanvas({
         aria-hidden="true"
         data-ink-page={page}
         className="pp-inkLayer absolute inset-0 z-30 h-full w-full"
-        style={{ touchAction: "none", cursor: toolCursor }}
+        style={{
+          // T-HUB-INK-TOUCH run-001 (operator: "when it is on, cant scroll
+          // or pinch zoom the pdf viewer"): the gesture follows the tool.
+          // Browse (select) returns the paper's own pan + pinch-zoom —
+          // taps still reach the canvas (tap-select, the ✕ affordance);
+          // every draw-family tool owns the gesture (touch-action: none)
+          // because a finger IS the pen there. Mouse shape-drag in select
+          // mode is untouched (touch-action gates TOUCH pans only).
+          touchAction: mode === "select" ? "pan-x pan-y pinch-zoom" : "none",
+          cursor: toolCursor,
+        }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endStroke}
