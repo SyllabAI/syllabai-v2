@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_3wZh9qRT7qFJn9QW",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b216f7cf9d66908586af04fc55961cdb1c2aff04aa4d8b017bfac7138ac4a0d8",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "afb7ef64ca9a9b2ceb40a2d273aa22bcdca0df63e3d67ba2c9d58b7ed5d72d96",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_3wZh9qRT7qFJn9QW",
@@ -17,10 +17,6 @@
       {
         "code": "4CH1-3.16",
         "text": "practical: investigate the effect of different solids on the catalytic decomposition of hydrogen peroxide solution"
-      },
-      {
-        "code": "4CH1-3.9",
-        "text": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a reaction"
       }
     ],
     "primer": {
@@ -36,8 +32,7 @@
           "Method:"
         ],
         "specRefs": [
-          "4CH1-3.16",
-          "4CH1-3.9"
+          "4CH1-3.16"
         ],
         "opening": "Hydrogen peroxide decomposes quietly on its own, but the right solid makes it fizz. This lesson sets out the aim, the collection apparatus and the six-step method that tests one candidate at a time.",
         "keyPoints": [
@@ -54,7 +49,7 @@
             "examPointer": "Name the fixed time, the collected gas and the one thing changed between runs, the solid."
           },
           "medium": {
-            "restatement": "Hydrogen peroxide sits in a sealed flask linked to an inverted measuring cylinder, a chosen solid catalyst is added, and the gas collected in a fixed time is recorded. Repeating with manganese(IV) oxide, lead(II) oxide, iron(III) oxide and copper(II) oxide lets the relative speeds be compared.",
+            "restatement": "Hydrogen peroxide sits in a sealed flask linked to an inverted measuring cylinder, a chosen solid catalyst is added, and the gas collected in a fixed time is recorded. Repeating with manganese(IV) oxide, copper(II) oxide, iron(III) oxide and lead(II) oxide lets the relative speeds be compared.",
             "analogy": "Each powder gets the same stopwatch and the same cylinder, so the only difference at the whistle is which helper joined the flask.",
             "examPointer": "Describe the collection set-up, the fixed-time reading and the list of candidate solids."
           }
@@ -79,6 +74,9 @@
           "rn_3wZh9qRT7qFJn9QW::L1::Q7",
           "rn_3wZh9qRT7qFJn9QW::L1::Q8",
           "rn_3wZh9qRT7qFJn9QW::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -130,7 +128,8 @@
           "rn_3wZh9qRT7qFJn9QW::L2::Q7",
           "rn_3wZh9qRT7qFJn9QW::L2::Q8",
           "rn_3wZh9qRT7qFJn9QW::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -177,10 +176,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f6b39eeb434c-investigating-effect-of-catalyst-on-rate-reactio.png",
         "alt": "Apparatus for Investigating effect of catalyst on rate reaction",
-        "sourceHeading": "Diagram:",
-        "caption": "Diagram showing the apparatus needed to investigate the effect of a catalyst on the rate of reaction",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim:",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the apparatus needed to investigate the effect of a catalyst on the rate of reaction"
       }
     ]
   }

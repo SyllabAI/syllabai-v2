@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_rHKCkt3PTXDBpmJG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d6edabd82dac57c8d76b3c7003a9aeb7ebcbddb7b6a2cef2e6b03f6624d5e01b",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "e135f57b8a2f61dedcd230d9d60479aa664563cc81aad5fb50909a3cf17bb1bd",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_rHKCkt3PTXDBpmJG",
   "subject": "igcse-chemistry",
@@ -55,67 +55,67 @@
       "options": [
         {
           "key": "A",
+          "text": "Insulation works only for gases",
+          "correct": false,
+          "explanation": "Covalent insulators work in every state, from solid plastics to insulating gases.",
+          "misconception": "state restriction invented"
+        },
+        {
+          "key": "B",
           "text": "They have no freely moving charged particles in solid, liquid or gaseous form",
           "correct": true,
           "explanation": "Melting or dissolving a covalent compound never frees ions, so no state offers a charge carrier.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Their electrons are removed during bonding",
           "correct": false,
           "explanation": "Covalent bonding shares electrons rather than removing them; the electrons simply stay bound.",
           "misconception": "electrons assumed discarded"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Their molecules are too large to move",
           "correct": false,
           "explanation": "Molecule size is irrelevant; the point is that nothing charged is free to move.",
           "misconception": "size blamed"
-        },
-        {
-          "key": "D",
-          "text": "Insulation works only for gases",
-          "correct": false,
-          "explanation": "Covalent insulators work in every state, from solid plastics to insulating gases.",
-          "misconception": "state restriction invented"
         }
       ]
     },
     {
       "id": "rn_rHKCkt3PTXDBpmJG::L1::Q3",
       "moduleId": "rn_rHKCkt3PTXDBpmJG::L1",
-      "stem": "Sulfur hexafluoride is a dense gas used to insulate electrical transformers. What property makes it suitable?",
+      "stem": "Sulfur hexafluoride is a dense gas that insulates electrical transformers — which covalent-compound property makes it suitable?",
       "misconceptionClass": "application reasoning",
       "options": [
         {
           "key": "A",
-          "text": "It is a covalent substance with no freely moving charged particles",
-          "correct": true,
-          "explanation": "The gas insulates precisely because its molecules offer no mobile charge to leak current.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It conducts electricity away from the transformer safely",
-          "correct": false,
-          "explanation": "An insulating surround must not conduct; draining charge is not its role.",
-          "misconception": "role reversed"
-        },
-        {
-          "key": "C",
           "text": "It is ionic, and ions hold the charge still",
           "correct": false,
           "explanation": "It is covalent; ionic compounds conduct when molten or dissolved, which would be a hazard here.",
           "misconception": "classification wrong"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Its density blocks electrons physically",
           "correct": false,
           "explanation": "Density is not the electrical reason; the absence of mobile charged particles is.",
           "misconception": "density credited"
+        },
+        {
+          "key": "C",
+          "text": "It is a covalent substance with no freely moving charged particles",
+          "correct": true,
+          "explanation": "The gas insulates precisely because its molecules offer no mobile charge to leak current.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It conducts electricity away from the transformer safely",
+          "correct": false,
+          "explanation": "An insulating surround must not conduct; draining charge is not its role.",
+          "misconception": "role reversed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Melting frees the ions from their fixed lattice positions, so they can move and carry charge",
-          "correct": true,
-          "explanation": "The ions are always charged; melting supplies the mobility that the solid state lacks.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Melting gives the ions their charge",
           "correct": false,
           "explanation": "The ions carry their charge in every state; only their freedom to move changes.",
           "misconception": "charge acquired on melting"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Melting releases electrons to carry the current",
           "correct": false,
           "explanation": "The mobile particles in a molten ionic compound are the ions themselves.",
           "misconception": "electron carrier assumed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The solid state has no ions at all",
           "correct": false,
           "explanation": "The solid lattice is made entirely of ions; they are just fixed in place.",
           "misconception": "lattice misdescribed"
+        },
+        {
+          "key": "D",
+          "text": "Melting frees the ions from their fixed lattice positions, so they can move and carry charge",
+          "correct": true,
+          "explanation": "The ions are always charged; melting supplies the mobility that the solid state lacks.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,6 @@
       "modelAnswer": "An electric current is a flow of charged particles, usually electrons but sometimes ions.",
       "keywords": [
         "flow",
-        "flows",
         "charged",
         "charge",
         "particles",
@@ -273,11 +272,9 @@
         "not",
         "move",
         "solution",
-        "aqueous",
         "conduct",
         "carry",
-        "charge",
-        "mobile"
+        "charge"
       ],
       "options": []
     },
@@ -289,31 +286,31 @@
       "options": [
         {
           "key": "A",
+          "text": "An electrode",
+          "correct": false,
+          "explanation": "Anions move towards electrodes but are not electrodes themselves.",
+          "misconception": "ion and electrode conflated"
+        },
+        {
+          "key": "B",
           "text": "A negatively charged ion",
           "correct": true,
           "explanation": "Anion is the name of record for the negative ion, as in Cl- or O2-.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A positively charged ion",
           "correct": false,
           "explanation": "The positive ion is the cation; the two names must not swap.",
           "misconception": "terms swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A neutral atom",
           "correct": false,
           "explanation": "An anion is charged by definition; neutral particles carry neither name.",
           "misconception": "charge requirement dropped"
-        },
-        {
-          "key": "D",
-          "text": "An electrode",
-          "correct": false,
-          "explanation": "Anions move towards electrodes but are not electrodes themselves.",
-          "misconception": "ion and electrode conflated"
         }
       ]
     },
@@ -325,67 +322,67 @@
       "options": [
         {
           "key": "A",
-          "text": "To the cathode, because it is negatively charged and opposite charges attract",
-          "correct": true,
-          "explanation": "The positive cation is pulled to the negative cathode by electrostatic attraction.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To the anode, because like charges attract",
-          "correct": false,
-          "explanation": "Like charges repel; the cation heads for the opposite charge, the negative cathode.",
-          "misconception": "like-charge attraction assumed"
-        },
-        {
-          "key": "C",
           "text": "Nowhere, cations stay still during electrolysis",
           "correct": false,
           "explanation": "Migration towards the electrodes is the whole basis of electrolysis.",
           "misconception": "mobility denied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "To both electrodes equally",
           "correct": false,
           "explanation": "Each ion responds to the electrode of opposite charge only.",
           "misconception": "selection mechanism misunderstood"
+        },
+        {
+          "key": "C",
+          "text": "To the cathode, because it is negatively charged and opposite charges attract",
+          "correct": true,
+          "explanation": "The positive cation is pulled to the negative cathode by electrostatic attraction.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To the anode, because like charges attract",
+          "correct": false,
+          "explanation": "Like charges repel; the cation heads for the opposite charge, the negative cathode.",
+          "misconception": "like-charge attraction assumed"
         }
       ]
     },
     {
       "id": "rn_rHKCkt3PTXDBpmJG::L2::Q3",
       "moduleId": "rn_rHKCkt3PTXDBpmJG::L2",
-      "stem": "Which list correctly pairs each ion with its name?",
+      "stem": "Which list correctly pairs each ion with its anion or cation name?",
       "misconceptionClass": "term application",
       "options": [
         {
           "key": "A",
-          "text": "Cl- and O2- are anions; K+ and Mg2+ are cations",
-          "correct": true,
-          "explanation": "The negative ions carry the anion name and the positive ions the cation name.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Cl- and K+ are anions; O2- and Mg2+ are cations",
           "correct": false,
           "explanation": "K+ is positive and therefore a cation; the pairing has mixed the charges up.",
           "misconception": "signs misread"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "All four are anions, since all are ions",
           "correct": false,
           "explanation": "The charge decides the name; positive ions are always cations.",
           "misconception": "name applied to all ions"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "All four are cations, since all are charged",
           "correct": false,
           "explanation": "The negative ions are anions; being charged alone does not make a cation.",
           "misconception": "name overgeneralised"
+        },
+        {
+          "key": "D",
+          "text": "Cl- and O2- are anions; K+ and Mg2+ are cations",
+          "correct": true,
+          "explanation": "The negative ions carry the anion name and the positive ions the cation name.",
+          "misconception": null
         }
       ]
     },
@@ -428,36 +425,36 @@
     {
       "id": "rn_rHKCkt3PTXDBpmJG::L2::Q5",
       "moduleId": "rn_rHKCkt3PTXDBpmJG::L2",
-      "stem": "When a metal conducts, and when a salt solution conducts, which particles move in each case?",
+      "stem": "When a metal conducts and when a salt solution conducts during electrolysis, which particles move in each case?",
       "misconceptionClass": "carrier contrast",
       "options": [
         {
           "key": "A",
+          "text": "Atoms move through both",
+          "correct": false,
+          "explanation": "Neither case involves whole atoms drifting; the carriers are electrons and ions.",
+          "misconception": "atomic carrier invented"
+        },
+        {
+          "key": "B",
           "text": "Electrons move through the metal; ions move through the solution",
           "correct": true,
           "explanation": "The exam hint draws exactly this contrast: electrons in the metal, ions in the solution carrying the electrons' work to the electrodes.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Ions move through both",
           "correct": false,
           "explanation": "A solid metal contains no mobile ions; its carriers are the delocalised electrons.",
           "misconception": "ionic carrier applied to metals"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Electrons move through both",
           "correct": false,
           "explanation": "In the solution the mobile particles are ions; electrons travel only the external circuit.",
           "misconception": "electronic carrier applied to solutions"
-        },
-        {
-          "key": "D",
-          "text": "Atoms move through both",
-          "correct": false,
-          "explanation": "Neither case involves whole atoms drifting; the carriers are electrons and ions.",
-          "misconception": "atomic carrier invented"
         }
       ]
     },
@@ -519,7 +516,6 @@
         "negatively",
         "cathode",
         "attract",
-        "attraction",
         "opposite",
         "positive"
       ],

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_vXPcH3vS8wv7BFkK",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d80d46eb8eb6a5540027a403c0731a1eae23110d0078865ab79e9633c804db5e",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "ca132bcb1a032c4a5ad5093ad78f34e34d738f9ebf23692d09e7dab5e0410eec",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_vXPcH3vS8wv7BFkK",
@@ -44,7 +44,7 @@
         ],
         "depthLayers": {
           "low": {
-            "restatement": "The actual yield is what the experiment records; the theoretical yield is what perfect conditions would give, worked out from the balanced equation and the reacting masses. Percentage yield puts the two side by side.",
+            "restatement": "The actual yield is what the experiment records; the theoretical yield is what perfect conditions would give, worked out using the balanced equation together with the reacting masses. Percentage yield puts the two side by side.",
             "analogy": "Think of a recipe that promises twelve cupcakes: what actually reaches the plate is the actual yield, and the promised dozen is the theoretical yield.",
             "examPointer": "Only the actual and percentage yields can be measured in the lab; the theoretical yield always comes from arithmetic on the balanced equation."
           },
@@ -74,7 +74,8 @@
           "rn_vXPcH3vS8wv7BFkK::L1::Q7",
           "rn_vXPcH3vS8wv7BFkK::L1::Q8",
           "rn_vXPcH3vS8wv7BFkK::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_vXPcH3vS8wv7BFkK::L2",
@@ -125,16 +126,12 @@
           "rn_vXPcH3vS8wv7BFkK::L2::Q7",
           "rn_vXPcH3vS8wv7BFkK::L2::Q8",
           "rn_vXPcH3vS8wv7BFkK::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
       "glossary": [
-        {
-          "term": "yield",
-          "definition": "The amount of product obtained from a reaction.",
-          "firstLesson": 1
-        },
         {
           "term": "actual yield",
           "definition": "The recorded amount of product a real experiment delivers.",
@@ -159,11 +156,6 @@
           "term": "side reaction",
           "definition": "An unwanted reaction in which a substance combines with a gas in the air or an impurity, consuming material.",
           "firstLesson": 1
-        },
-        {
-          "term": "reaction pathway",
-          "definition": "One possible route, made of a sequence of reactions, for manufacturing a required product.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {

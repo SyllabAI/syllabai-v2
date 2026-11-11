@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_9WM8QhSxmYpGhjqd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "3d08e5844d9aa46e83b02828df657be04a671cc33dc45b9f4b24e8b23948278e",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "ee226d7972f1cd1916884e9589d4901b82661f9853e24387dd09e7d16544818b",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_9WM8QhSxmYpGhjqd",
@@ -33,7 +33,7 @@
         "specRefs": [
           "4CH1-2.37"
         ],
-        "opening": "Only metals above hydrogen in the reactivity series react with dilute acids, and the more reactive the metal, the more vigorous the reaction. Potassium and sodium react dangerously fast, so they are never used in school glassware. In every such reaction the products are a salt and hydrogen gas, summarised as metal + acid giving salt + hydrogen.",
+        "opening": "Only metals sitting above hydrogen in the reactivity series react with dilute acids, and the more reactive the metal, the more vigorous the reaction. Potassium and sodium react dangerously fast, so they are never used in school glassware. In every such reaction the products are a salt and hydrogen gas, summarised as metal + acid giving salt + hydrogen.",
         "keyPoints": [
           "A metal must sit above hydrogen in the series to react with dilute acids.",
           "The more reactive the metal, the more vigorous its reaction with acid.",
@@ -73,7 +73,8 @@
           "rn_9WM8QhSxmYpGhjqd::L1::Q7",
           "rn_9WM8QhSxmYpGhjqd::L1::Q8",
           "rn_9WM8QhSxmYpGhjqd::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_9WM8QhSxmYpGhjqd::L2",
@@ -125,7 +126,8 @@
           "rn_9WM8QhSxmYpGhjqd::L2::Q7",
           "rn_9WM8QhSxmYpGhjqd::L2::Q8",
           "rn_9WM8QhSxmYpGhjqd::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -136,18 +138,8 @@
           "firstLesson": 1
         },
         {
-          "term": "base",
-          "definition": "A substance such as a metal oxide or hydroxide that neutralises an acid to salt and water.",
-          "firstLesson": 2
-        },
-        {
           "term": "neutralisation",
           "definition": "The acid-base reaction whose products are a salt and water.",
-          "firstLesson": 2
-        },
-        {
-          "term": "carbonate",
-          "definition": "A compound whose acid reaction gives a salt, carbon dioxide and water.",
           "firstLesson": 2
         },
         {
@@ -164,11 +156,6 @@
           "term": "chloride",
           "definition": "The salt family produced when hydrochloric acid reacts.",
           "firstLesson": 1
-        },
-        {
-          "term": "nitrate",
-          "definition": "The salt family produced when nitric acid reacts.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {

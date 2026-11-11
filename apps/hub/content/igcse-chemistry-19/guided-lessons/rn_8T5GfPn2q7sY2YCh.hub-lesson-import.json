@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_8T5GfPn2q7sY2YCh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "12b36590521dd6c3fe1c2f004689bc8b9fa36e15e90e651b099bc107718972f1",
-    "pinnedRef": "80afdb8e02b628754f0e522d257e54d046ba5b0f"
+    "sourceLayerSha256": "ca765b8af8169e5091565578e50110df16bcfa2b5ee4fa40d1f2c557518c01a6",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_8T5GfPn2q7sY2YCh",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-4.31C",
-        "text": "know that ethanol can be oxidised by: burning in air or oxygen (complete combustion); reaction with oxygen in the air to form ethanoic acid (microbial oxidation); heating with potassium dichromate(VI) in dilute sulfuric acid to form ethanoic acid"
+        "text": "know that ethanol can be oxidised by: • burning in air or oxygen (complete combustion) • reaction with oxygen in the air to form ethanoic acid (microbial oxidation) • heating with potassium dichromate(VI) in dilute sulfuric acid to form ethanoic acid"
       }
     ],
     "primer": {
@@ -91,7 +91,7 @@
         ],
         "opening": "The laboratory route to ethanoic acid heats ethanol under reflux with acidified potassium dichromate(VI). The equation hides the oxidiser behind the bracket symbol [O], and the flask itself tells the story as orange drains to green. This lesson unpacks the equation, the apparatus and the colour change.",
         "keyPoints": [
-          "Heating ethanol with potassium dichromate(VI) in dilute sulfuric acid produces ethanoic acid.",
+          "Ethanol heated in a mix of potassium dichromate(VI) and dilute sulfuric acid turns into ethanoic acid.",
           "The equation is written CH3CH2OH + [O] giving CH3COOH + H2O.",
           "The symbol [O] stands for oxygen supplied by the oxidising agent.",
           "A condenser above the flask stops volatile liquids escaping during the hour-long boil.",
@@ -99,7 +99,7 @@
         ],
         "depthLayers": {
           "low": {
-            "restatement": "Heating ethanol with potassium dichromate(VI) in dilute sulfuric acid makes ethanoic acid. The bracket [O] stands for the oxygen delivered, and the mixture changes from orange to green.",
+            "restatement": "Heating ethanol in a mix of potassium dichromate(VI) and dilute sulfuric acid turns it into ethanoic acid. The bracket [O] stands for the oxygen delivered, and the mixture changes from orange to green.",
             "analogy": "The dichromate behaves like a courier carrying oxygen atoms: it drops one off at the ethanol and fades from orange to green as payment for the delivery.",
             "examPointer": "Quote the colour change from orange to green; it is the classic observation mark for this reaction."
           },
@@ -180,22 +180,22 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b44045653d49-3-4-hydroxy-compounds-combustion-of-alcohols.png",
         "alt": "Equation to show the complete combustion of ethanol",
         "sourceHeading": "Combustion",
-        "caption": "The complete combustion of ethanol is as follows:",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The complete combustion of ethanol is as follows:"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/adff44b26934-10-2-10-heating-under-reflux-1.png",
         "alt": "Equipment showing ethanol being heated under reflux",
         "sourceHeading": "The oxidation of ethanol",
-        "caption": "Ethanol can be oxidised by heating it with potassium dichromate in sulfuric acid. The solution turns from orange to green during the reaction",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Ethanol can be oxidised by heating it with potassium dichromate in sulfuric acid. The solution turns from orange to green during the reaction"
       }
     ]
   }

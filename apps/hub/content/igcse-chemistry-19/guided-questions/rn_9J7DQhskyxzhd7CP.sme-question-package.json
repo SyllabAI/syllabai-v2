@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_9J7DQhskyxzhd7CP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4c9d8310dd0b4856c2d234f822702b7984ebf21a61a2abf8eaed93d50d99f039",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "1bf6b41e471fedebd67dd331bfa159b688ccb11e2eb9226d6ad35f06e896bc4c",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_9J7DQhskyxzhd7CP",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A spark plug made of platinum",
+          "correct": false,
+          "explanation": "The spark ignites fuel; it is the temperature and pressure that form NOx.",
+          "misconception": "part blamed"
+        },
+        {
+          "key": "B",
           "text": "The very high temperature and pressure reached there",
           "correct": true,
           "explanation": "Ordinary air is unreactive; only engine-level heat and pressure push the two gases together.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The cold of the exhaust pipe",
           "correct": false,
           "explanation": "Cold ends the chemistry; the reaction happens in the hot combustion chamber.",
           "misconception": "location mismatched"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The presence of water in the fuel line",
           "correct": false,
           "explanation": "Water plays no part in forming nitrogen oxides.",
           "misconception": "water invented"
-        },
-        {
-          "key": "D",
-          "text": "A spark plug made of platinum",
-          "correct": false,
-          "explanation": "The spark ignites fuel; it is the temperature and pressure that form NOx.",
-          "misconception": "part blamed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "SO2",
-          "correct": true,
-          "explanation": "One sulfur atom joins two oxygen atoms, the exact recipe for sulfur dioxide.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "SO3",
-          "correct": false,
-          "explanation": "The trioxide needs a further step; direct burning gives the dioxide.",
-          "misconception": "oxide overreached"
-        },
-        {
-          "key": "C",
           "text": "H2SO4",
           "correct": false,
           "explanation": "Sulfuric acid forms later in rainwater; the flame product is the dioxide gas.",
           "misconception": "end product rushed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "S2O",
           "correct": false,
           "explanation": "That formula matches neither the atom counts nor the named product.",
           "misconception": "formula invented"
+        },
+        {
+          "key": "C",
+          "text": "SO2",
+          "correct": true,
+          "explanation": "One sulfur atom joins two oxygen atoms, the exact recipe for sulfur dioxide.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "SO3",
+          "correct": false,
+          "explanation": "The trioxide needs a further step; direct burning gives the dioxide.",
+          "misconception": "oxide overreached"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the fuel carries sulfur impurities that burn with it",
-          "correct": true,
-          "explanation": "The combustion of the impurity is the route; no petrol molecule contains sulfur by design.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because nitrogen in air reacts with sulfur",
           "correct": false,
           "explanation": "Air nitrogen heads down the NOx route; the sulfur burns with oxygen instead.",
           "misconception": "reactant mismatched"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because the converter manufactures it from clean gases",
           "correct": false,
           "explanation": "Converters destroy pollutants; they do not create sulfur dioxide.",
           "misconception": "converter blamed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because sulfur dissolves from engine oil into the exhaust",
           "correct": false,
           "explanation": "The route is the burning fuel impurity, not oil leaching.",
           "misconception": "oil blamed"
+        },
+        {
+          "key": "D",
+          "text": "Because the fuel carries sulfur impurities that burn with it",
+          "correct": true,
+          "explanation": "The combustion of the impurity is the route; no petrol molecule contains sulfur by design.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "Nitric oxide, NO, and nitrogen dioxide, NO2, are the two engine-formed oxides of nitrogen.",
       "keywords": [
         "dioxide",
-        "nitric"
+        "nitric",
+        "nitrogen"
       ],
       "options": []
     },
@@ -212,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "The impurity burns as S + O2 -> SO2.",
       "keywords": [
-        "so2"
+        "so2",
+        "impurity",
+        "balanced"
       ],
       "options": []
     },
@@ -239,7 +242,8 @@
       "modelAnswer": "The same oxides of nitrogen: at such high temperatures air nitrogen reacts with oxygen to give NO and NO2, just as in an engine.",
       "keywords": [
         "nitrogen",
-        "oxides"
+        "oxides",
+        "temperatures"
       ],
       "options": []
     },
@@ -251,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Carbonic acid",
+          "correct": false,
+          "explanation": "Carbonic acid comes from carbon dioxide in water, a different gas.",
+          "misconception": "gas confused"
+        },
+        {
+          "key": "B",
           "text": "Sulfuric acid",
           "correct": true,
           "explanation": "The balanced route 2SO2 + O2 + 2H2O -> 2H2SO4 names the acid directly.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Nitric acid",
           "correct": false,
           "explanation": "Nitric acid belongs to the nitrogen dioxide route, not the sulfur one.",
           "misconception": "routes crossed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Hydrochloric acid",
           "correct": false,
           "explanation": "No chlorine is present anywhere in this story.",
           "misconception": "acid invented"
-        },
-        {
-          "key": "D",
-          "text": "Carbonic acid",
-          "correct": false,
-          "explanation": "Carbonic acid comes from carbon dioxide in water, a different gas.",
-          "misconception": "gas confused"
         }
       ]
     },
@@ -287,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A mixture of nitrous and nitric acids",
-          "correct": true,
-          "explanation": "The equation 2NO2 + H2O -> HNO2 + HNO3 delivers one of each acid.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Sulfuric acid only",
-          "correct": false,
-          "explanation": "Sulfuric acid is the sulfur dioxide route; NO2 makes the two nitrogen acids.",
-          "misconception": "routes crossed"
-        },
-        {
-          "key": "C",
           "text": "Nitrogen gas and hydrogen gas",
           "correct": false,
           "explanation": "The reaction makes acids, not free gases.",
           "misconception": "products misidentified"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Only nitric acid, with nothing else",
           "correct": false,
           "explanation": "The note is explicit that a mixture of nitrous and nitric acids forms.",
           "misconception": "mixture collapsed"
+        },
+        {
+          "key": "C",
+          "text": "A mixture of nitrous and nitric acids",
+          "correct": true,
+          "explanation": "The equation 2NO2 + H2O -> HNO2 + HNO3 delivers one of each acid.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Sulfuric acid only",
+          "correct": false,
+          "explanation": "Sulfuric acid is the sulfur dioxide route; NO2 makes the two nitrogen acids.",
+          "misconception": "routes crossed"
         }
       ]
     },
@@ -323,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Lightning strikes",
-          "correct": true,
-          "explanation": "The note records lightning as a natural trigger for nitrogen monoxide and dioxide formation.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Rainfall on limestone",
           "correct": false,
           "explanation": "That is a weathering story, not a nitrogen oxide source.",
           "misconception": "process swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Volcanic sulfur release",
           "correct": false,
           "explanation": "Volcanoes feed the sulfur family; lightning feeds the nitrogen one.",
           "misconception": "families crossed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Plant photosynthesis",
           "correct": false,
           "explanation": "Photosynthesis consumes carbon dioxide and releases oxygen; it makes no NOx.",
           "misconception": "biology confused"
+        },
+        {
+          "key": "D",
+          "text": "Lightning strikes",
+          "correct": true,
+          "explanation": "The note records lightning as a natural trigger for nitrogen monoxide and dioxide formation.",
+          "misconception": null
         }
       ]
     },
@@ -395,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "They never reach the ground at all",
+          "correct": false,
+          "explanation": "Falling as acid rain is the entire point of the formation story.",
+          "misconception": "cycle denied"
+        },
+        {
+          "key": "B",
           "text": "Cloud droplets grow heavier as they rise and cool, then fall as rain",
           "correct": true,
           "explanation": "The note tracks droplets growing with cooling until they are heavy enough to fall as acid rain.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The acids fall as dry powder from the clouds",
           "correct": false,
           "explanation": "The acids travel dissolved in water droplets, not as powder.",
           "misconception": "phase wrong"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They sink to the ground as heavy gas",
           "correct": false,
           "explanation": "The delivery is rainfall, not a gas pouring downhill.",
           "misconception": "mechanism misread"
-        },
-        {
-          "key": "D",
-          "text": "They never reach the ground at all",
-          "correct": false,
-          "explanation": "Falling as acid rain is the entire point of the formation story.",
-          "misconception": "cycle denied"
         }
       ]
     },
@@ -432,7 +436,8 @@
       "modelAnswer": "2SO2 + O2 + 2H2O -> 2H2SO4.",
       "keywords": [
         "h2so4",
-        "2h2so4"
+        "2h2so4",
+        "raindrops"
       ],
       "options": []
     },
@@ -445,7 +450,8 @@
       "modelAnswer": "A mixture of nitrous acid, HNO2, and nitric acid, HNO3.",
       "keywords": [
         "nitrous",
-        "nitric"
+        "nitric",
+        "dissolves"
       ],
       "options": []
     },
@@ -458,7 +464,8 @@
       "modelAnswer": "Acid rain corrodes carbonate rock because the acid reacts with the carbonate in the statue's surface and dissolves it away, while granite offers no carbonate for the droplets to attack.",
       "keywords": [
         "corrodes",
-        "dissolves"
+        "dissolves",
+        "carbonate"
       ],
       "options": []
     },
@@ -471,7 +478,8 @@
       "modelAnswer": "Lightning provides energy for nitrogen and oxygen in the air to combine, so nitrogen oxides still form; the NO2 then reacts with rain water to give nitrous and nitric acids.",
       "keywords": [
         "nitrogen",
-        "no2"
+        "no2",
+        "thunderstorm"
       ],
       "options": []
     }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_y85XYRv5QfgZFQxv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "fd355ff07c62531ab287f82bd9e4282a9916040cef4bafc38100bc483de2db9d",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "88a3c861d1e06405c3d46eb88fbb8ce388aca85cdaf75cea5965d9a4017e8a09",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_y85XYRv5QfgZFQxv",
@@ -36,7 +36,7 @@
         "opening": "A reaction profile is the energy level diagram grown a curve: it follows the energy as bonds strain, peak and settle. This lesson names the two features examiners want labelled, the enthalpy arrow and the energy hurdle.",
         "keyPoints": [
           "Reaction profiles show the relative energies of reactants and products and how energy changes as the reaction progresses.",
-          "The height difference between reactants and products represents the overall enthalpy change.",
+          "The height gap between reactants and products stands for the overall enthalpy change.",
           "For an exothermic reaction the enthalpy value is negative and the arrow points downwards.",
           "For an endothermic reaction the enthalpy value is positive and the arrow points upwards.",
           "The climb from reactants up to the peak of the curve marks the energy needed to start reacting."
@@ -89,7 +89,7 @@
         ],
         "opening": "A catalyst redraws the profile with a second, lower hump while the start and finish stay put. This lesson sketches that overlay and explains why the lower hump means a faster reaction.",
         "keyPoints": [
-          "Catalysts provide the reactants with an alternative pathway of lower activation energy.",
+          "Catalysts hand the reactants an alternative route of lower activation energy.",
           "A lower peak means a greater proportion of molecules have sufficient energy for an effective collision.",
           "The catalysed reaction finishes faster than the same reaction without the catalyst.",
           "The reactant and product levels on the profile are unchanged by adding a catalyst.",
@@ -127,6 +127,9 @@
           "rn_y85XYRv5QfgZFQxv::L2::Q7",
           "rn_y85XYRv5QfgZFQxv::L2::Q8",
           "rn_y85XYRv5QfgZFQxv::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -173,21 +176,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4244f166d353-o-w7kap-2-graphs-2-v2.png",
         "alt": "Reaction profiles for exothermic and endothermic reactions",
-        "sourceHeading": "Reaction profiles of exothermic and endothermic reactions",
-        "caption": "Reaction profiles show enthalpy change and activation energy for the reaction",
-        "binding": "unresolved",
+        "sourceHeading": "Reaction profiles",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Reaction profiles show enthalpy change and activation energy for the reaction"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4bb979764952-exo-reaction-profile-with-catalyst.png",
         "alt": "Reaction profile showing the effect of a catalyst on activation energy",
-        "sourceHeading": "Diagram showing the effect of a catalyst on activation energy",
-        "caption": "Catalysts lower the activation energy",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Catalysts and reaction profiles",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Catalysts lower the activation energy"
       }
     ]
   }

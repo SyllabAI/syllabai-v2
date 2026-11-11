@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_yj4y972FxCWnDnSg",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "c2762d8e0e4173f180a2c0d2138cb1a6a9d08202f455f5d18f395951b9f486b8",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "b94c72380a5aea10c1aed01604d2983e8263958c74df35202a8942f27384321f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_yj4y972FxCWnDnSg",
@@ -14,14 +14,6 @@
     "subtopicTitle": "Chemical Formulae, Equations, Calculations",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-7-practical-determine-the-formula-of-a-metal-oxide",
     "specAnchors": [
-      {
-        "code": "4CH1-1.31",
-        "text": "understand how the formulae of simple compounds can be obtained experimentally, including metal oxides, water and salts containing water of crystallisation"
-      },
-      {
-        "code": "4CH1-1.33",
-        "text": "calculate empirical and molecular formulae from experimental data"
-      },
       {
         "code": "4CH1-1.36",
         "text": "practical: know how to determine the formula of a metal oxide by combustion (e.g. magnesium oxide) or by reduction (e.g. copper(II) oxide)"
@@ -39,8 +31,6 @@
           "Practical: Determine the Formula of Magnesium Oxide"
         ],
         "specRefs": [
-          "4CH1-1.31",
-          "4CH1-1.33",
           "4CH1-1.36"
         ],
         "opening": "Magnesium ribbon burns in air inside a crucible, and the ribbon gains every gram of oxygen it bonds with. Weigh the crucible before and after, subtract carefully, and the masses of magnesium and oxygen fall out. Divide each by its relative atomic mass and the mole ratio writes the empirical formula.",
@@ -83,6 +73,9 @@
           "rn_yj4y972FxCWnDnSg::L1::Q7",
           "rn_yj4y972FxCWnDnSg::L1::Q8",
           "rn_yj4y972FxCWnDnSg::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -92,8 +85,7 @@
           "Practical: Determine the Formula of Copper(II)Oxide"
         ],
         "specRefs": [
-          "4CH1-1.36",
-          "4CH1-1.33"
+          "4CH1-1.36"
         ],
         "opening": "Copper oxide loses its oxygen to methane in a horizontal boiling tube: the gas strips oxygen away while the excess burns off safely. Weighing the tube before and after leaves two masses - oxide and leftover metal - and their mole ratio is the formula.",
         "keyPoints": [
@@ -135,6 +127,9 @@
           "rn_yj4y972FxCWnDnSg::L2::Q7",
           "rn_yj4y972FxCWnDnSg::L2::Q8",
           "rn_yj4y972FxCWnDnSg::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -144,11 +139,6 @@
           "term": "combustion",
           "definition": "Burning a substance in oxygen; here, the route that adds oxygen to magnesium to build its oxide.",
           "firstLesson": 1
-        },
-        {
-          "term": "reduction",
-          "definition": "The removal of oxygen from a compound; here, methane strips oxygen out of copper oxide.",
-          "firstLesson": 2
         },
         {
           "term": "crucible",
@@ -163,11 +153,6 @@
         {
           "term": "mole",
           "definition": "The counting unit for amounts of substance; a mass divided by the substance's relative atomic mass gives the number of moles.",
-          "firstLesson": 1
-        },
-        {
-          "term": "constant mass",
-          "definition": "An unchanged reading on further heating, showing the reaction has gone to completion.",
           "firstLesson": 1
         },
         {
@@ -192,17 +177,21 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bdb5379b2054-1-5-7-finding-the-formula-of-magnesium-oxide.png",
         "alt": "Diagram of apparatus needed to find the formula of magnesium oxide",
-        "sourceHeading": "Diagram:",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Practical: Determine the Formula of Magnesium Oxide",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1ae7b82306a1-1-5-7-finding-the-formula-of-copperiioxide.png",
         "alt": "Diagram to show the apparatus needed to determine the formula of copper(II) oxide",
-        "sourceHeading": "Diagram:",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Practical: Determine the Formula of Copper(II)Oxide",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

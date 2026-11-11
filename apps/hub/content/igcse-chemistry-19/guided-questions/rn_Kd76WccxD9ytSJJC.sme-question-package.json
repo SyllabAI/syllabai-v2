@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_Kd76WccxD9ytSJJC",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "81c83fc1e3b1b05c386fbce716c6b9fcdf9e7c1e802159764ec9fe8b28d46dd8",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "563f0cd1ebf04d6106a0290f20e4390018771170fdd843f6e92c0e82f89b9da6",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_Kd76WccxD9ytSJJC",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Sodium",
+          "correct": false,
+          "explanation": "Sodium reacts quickly with cold water, which is nothing like the slow-in-water pattern described.",
+          "misconception": "sodium's row misremembered"
+        },
+        {
+          "key": "B",
           "text": "Magnesium",
           "correct": true,
           "explanation": "That pair of behaviours is magnesium's signature row in the cold-water summary table.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Calcium",
           "correct": false,
           "explanation": "Calcium reacts less strongly than sodium in cold water, not slowly in water and fast in steam.",
           "misconception": "calcium's row misremembered"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Copper",
           "correct": false,
           "explanation": "Copper reacts with neither water nor steam in this scheme.",
           "misconception": "copper given magnesium's behaviour"
-        },
-        {
-          "key": "D",
-          "text": "Sodium",
-          "correct": false,
-          "explanation": "Sodium reacts quickly with cold water, which is nothing like the slow-in-water pattern described.",
-          "misconception": "sodium's row misremembered"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Calcium hydroxide and hydrogen",
-          "correct": true,
-          "explanation": "The equation Ca + 2H2O gives Ca(OH)2 + H2 names both products exactly.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Calcium oxide and hydrogen",
-          "correct": false,
-          "explanation": "The oxide forms from carbonates on heating; with water the hydroxide is the product.",
-          "misconception": "oxide and hydroxide swapped"
-        },
-        {
-          "key": "C",
           "text": "Calcium hydroxide and oxygen",
           "correct": false,
           "explanation": "Water's hydrogen is released as the gas, not its oxygen; oxygen is not produced here.",
           "misconception": "gas product misidentified"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Calcium carbonate and hydrogen",
           "correct": false,
           "explanation": "No carbon dioxide is available to make a carbonate; the metal hydroxide forms instead.",
           "misconception": "carbonate product invented"
+        },
+        {
+          "key": "C",
+          "text": "Calcium hydroxide and hydrogen",
+          "correct": true,
+          "explanation": "The equation Ca + 2H2O gives Ca(OH)2 + H2 names both products exactly.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Calcium oxide and hydrogen",
+          "correct": false,
+          "explanation": "The oxide forms from carbonates on heating; with water the hydroxide is the product.",
+          "misconception": "oxide and hydroxide swapped"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because each metal's vigour with water differs, and the observations rank them against each other",
-          "correct": true,
-          "explanation": "The series is built by comparing how vigorously each metal reacts, and water alone separates these four.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because they all react identically, so only their masses distinguish them",
           "correct": false,
           "explanation": "Identical reactions would give no ranking; it is the clear differences in vigour that order them.",
           "misconception": "uniform vigour assumed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because water dissolves each metal at a different rate",
           "correct": false,
           "explanation": "The metals do not simply dissolve; they react chemically, releasing hydrogen as they form hydroxides.",
           "misconception": "dissolution confused with reaction"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because the water temperature changes for each metal tested",
           "correct": false,
           "explanation": "The test keeps conditions comparable; only the metal changes between trials.",
           "misconception": "experimental control misjudged"
+        },
+        {
+          "key": "D",
+          "text": "Because each metal's vigour with water differs, and the observations rank them against each other",
+          "correct": true,
+          "explanation": "The series is built by comparing how vigorously each metal reacts, and water alone separates these four.",
+          "misconception": null
         }
       ]
     },
@@ -201,12 +201,10 @@
       "keywords": [
         "potassium",
         "violently",
-        "violence",
         "lithium",
         "less",
         "strongly",
         "quickly",
-        "fast",
         "water",
         "reacts"
       ],
@@ -249,8 +247,7 @@
         "more",
         "reactive",
         "order",
-        "vigour",
-        "vigor"
+        "vigour"
       ],
       "options": []
     },
@@ -270,7 +267,6 @@
         "reaction",
         "copper",
         "no",
-        "none",
         "above",
         "series"
       ],
@@ -284,31 +280,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Only metals below hydrogen",
+          "correct": false,
+          "explanation": "That inverts the rule; below-hydrogen metals cannot displace hydrogen from the acid.",
+          "misconception": "rule inverted"
+        },
+        {
+          "key": "B",
           "text": "Only those above hydrogen in the reactivity series",
           "correct": true,
           "explanation": "The above-hydrogen rule decides the whole set; metals below it, such as copper, silver and gold, do not react.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "All metals react with dilute acids",
           "correct": false,
           "explanation": "Copper's lack of reaction with dilute acids is exactly why it sits below hydrogen.",
           "misconception": "universal reactivity assumed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Only the Group 1 metals",
           "correct": false,
           "explanation": "Magnesium, zinc and iron all react with dilute acids; the rule is about position, not group membership.",
           "misconception": "scope narrowed wrongly"
-        },
-        {
-          "key": "D",
-          "text": "Only metals below hydrogen",
-          "correct": false,
-          "explanation": "That inverts the rule; below-hydrogen metals cannot displace hydrogen from the acid.",
-          "misconception": "rule inverted"
         }
       ]
     },
@@ -320,31 +316,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because their reactions with acids are explosive",
-          "correct": true,
-          "explanation": "Their position at the top of the series makes the acid reaction too violent to be safe, so gentler metals are used.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because they do not react with acids at all",
-          "correct": false,
-          "explanation": "The opposite is true: they react so vigorously that the reaction is dangerous.",
-          "misconception": "non-reaction mistaken for the hazard"
-        },
-        {
-          "key": "C",
           "text": "Because they dissolve the glass containers",
           "correct": false,
           "explanation": "Glass is unaffected; the hazard is the violence of the reaction itself.",
           "misconception": "container damage invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because they are too rare to use in schools",
           "correct": false,
           "explanation": "Availability is not the reason; the explosive vigour is.",
           "misconception": "cost substituted for safety"
+        },
+        {
+          "key": "C",
+          "text": "Because their reactions with acids are explosive",
+          "correct": true,
+          "explanation": "Their position at the top of the series makes the acid reaction too violent to be safe, so gentler metals are used.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because they do not react with acids at all",
+          "correct": false,
+          "explanation": "The opposite is true: they react so vigorously that the reaction is dangerous.",
+          "misconception": "non-reaction mistaken for the hazard"
         }
       ]
     },
@@ -356,31 +352,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Zinc sulfate and hydrogen",
-          "correct": true,
-          "explanation": "Metal plus acid gives salt plus hydrogen, and the salt of zinc with sulfuric acid is zinc sulfate.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Zinc chloride and hydrogen",
           "correct": false,
           "explanation": "Chloride salts come from hydrochloric acid; sulfuric acid makes the sulfate.",
           "misconception": "salt type mismatched to acid"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Zinc oxide and water",
           "correct": false,
           "explanation": "No water forms in an acid-metal reaction; the pattern is salt plus hydrogen only.",
           "misconception": "neutralisation products copied"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Zinc sulfate and oxygen",
           "correct": false,
           "explanation": "The gas released is hydrogen, which the metal displaces from the acid.",
           "misconception": "gas product misidentified"
+        },
+        {
+          "key": "D",
+          "text": "Zinc sulfate and hydrogen",
+          "correct": true,
+          "explanation": "Metal plus acid gives salt plus hydrogen, and the salt of zinc with sulfuric acid is zinc sulfate.",
+          "misconception": null
         }
       ]
     },
@@ -428,31 +424,31 @@
       "options": [
         {
           "key": "A",
+          "text": "They react only when powdered finely",
+          "correct": false,
+          "explanation": "Surface area speeds reactions up but cannot create one that the reactivity position forbids.",
+          "misconception": "rate factor mistaken for possibility"
+        },
+        {
+          "key": "B",
           "text": "They do not react, which is why they resist acids in everyday use",
           "correct": true,
           "explanation": "Below-hydrogen metals cannot displace hydrogen from the acid, so no salt-and-hydrogen reaction occurs.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "They react explosively, being dense metals",
           "correct": false,
           "explanation": "Density is irrelevant; position below hydrogen means no reaction at all with dilute acids.",
           "misconception": "density-based prediction invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They react only with sulfuric acid",
           "correct": false,
           "explanation": "Neither acid works; the position below hydrogen blocks both chloride and sulfate reactions.",
           "misconception": "acid-specific exception invented"
-        },
-        {
-          "key": "D",
-          "text": "They react only when powdered finely",
-          "correct": false,
-          "explanation": "Surface area speeds reactions up but cannot create one that the reactivity position forbids.",
-          "misconception": "rate factor mistaken for possibility"
         }
       ]
     },
@@ -484,7 +480,6 @@
       "keywords": [
         "magnesium",
         "sulfate",
-        "sulphate",
         "chloride",
         "salts",
         "salt"
@@ -501,7 +496,6 @@
       "keywords": [
         "explosive",
         "explosively",
-        "explode",
         "dangerous",
         "danger",
         "unsafe",
@@ -528,10 +522,8 @@
         "zinc",
         "slowly",
         "slow",
-        "slower",
         "copper",
         "no",
-        "none",
         "hydrogen",
         "below"
       ],

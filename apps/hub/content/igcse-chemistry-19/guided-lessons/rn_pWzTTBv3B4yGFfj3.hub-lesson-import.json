@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_pWzTTBv3B4yGFfj3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b95fc7cb702bd589099b2c292ff202a1e912962da0c9731f4d4a0671ede58738",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "c53961ddc995044b7a4a19609546c3c0443cfda1bea4407c72a231ea4f9699ca",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_pWzTTBv3B4yGFfj3",
@@ -17,10 +17,6 @@
       {
         "code": "4CH1-1.31",
         "text": "understand how the formulae of simple compounds can be obtained experimentally, including metal oxides, water and salts containing water of crystallisation"
-      },
-      {
-        "code": "4CH1-1.33",
-        "text": "calculate empirical and molecular formulae from experimental data"
       }
     ],
     "primer": {
@@ -78,7 +74,8 @@
           "rn_pWzTTBv3B4yGFfj3::L1::Q7",
           "rn_pWzTTBv3B4yGFfj3::L1::Q8",
           "rn_pWzTTBv3B4yGFfj3::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_pWzTTBv3B4yGFfj3::L2",
@@ -87,12 +84,11 @@
           "The formula of a hydrated salt"
         ],
         "specRefs": [
-          "4CH1-1.31",
-          "4CH1-1.33"
+          "4CH1-1.31"
         ],
         "opening": "Copper sulfate crystals are blue because they hold water; heat them and the blue gives way to a white powder as steam escapes. Weighing before and after captures the water's mass, and dividing each remaining mass by its relative formula mass exposes the ratio of salt to water - the x in the formula.",
         "keyPoints": [
-          "The aim is to determine the formula of hydrated copper sulfate, written CuSO4.xH2O.",
+          "The aim: work out the formula of hydrated copper sulfate, written CuSO4.xH2O.",
           "Heat gently and stir until the blue salt turns completely white, showing all the water has left.",
           "The water's mass is the hydrated mass minus the anhydrous mass left in the dish.",
           "Divide each mass by its own relative formula mass, then simplify the ratio of water to salt.",
@@ -131,6 +127,9 @@
           "rn_pWzTTBv3B4yGFfj3::L2::Q7",
           "rn_pWzTTBv3B4yGFfj3::L2::Q8",
           "rn_pWzTTBv3B4yGFfj3::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -160,16 +159,6 @@
           "term": "mass change",
           "definition": "The difference between the masses recorded before and after heating; in this method it is the water's mass.",
           "firstLesson": 1
-        },
-        {
-          "term": "anhydrous",
-          "definition": "Describes the salt left once every trace of its water has been driven off.",
-          "firstLesson": 2
-        },
-        {
-          "term": "relative formula mass",
-          "definition": "The total of the relative atomic masses in a formula; the number masses are divided by to reach moles.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -189,10 +178,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/aad49939ebf1-1-5-6-water-of-crystallisation.png",
         "alt": "Water of Crystallisation, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Diagram:",
-        "caption": "Heating a hydrated salt to remove the water of crystallisation",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "The formula of a hydrated salt",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Heating a hydrated salt to remove the water of crystallisation"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_YBWYstSRgM2QPzQq",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1e99fcbd299fdb504bbfaeca20c665754adc2138525b37ee7ff9846015564cf4",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "4bf00f536e57f1fe5e2bc143a4daf059fc0b94cd3d5141114a8eae00a9ded16b",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_YBWYstSRgM2QPzQq",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-1.10",
-        "text": "describe these experimental techniques for the separation of mixtures: simple distillation, fractional distillation, filtration, crystallisation, paper chromatography"
+        "text": "describe these experimental techniques for the separation of mixtures: • simple distillation • fractional distillation • filtration • crystallisation • paper chromatography."
       }
     ],
     "primer": {
@@ -107,7 +107,7 @@
             "examPointer": "Paper chromatography: pencil line above the solvent, higher solubility travels further."
           },
           "medium": {
-            "restatement": "Filtration works because only particles small enough to slip through the paper join the filtrate, while the large solid particles stay behind as residue. Crystallisation suits a solid far more soluble in hot solvent than in cold: evaporate the solvent until a cold rod test shows the solution is saturated, cool slowly so crystals grow as solubility falls, then filter, wash with cold distilled water and dry.",
+            "restatement": "Filtration works because only particles small enough to slip through the paper join the filtrate, while the large solid particles stay behind as residue. Crystallisation suits a solid whose solubility in hot solvent far exceeds its solubility in cold: evaporate the solvent until a cold rod test shows the solution is saturated, cool slowly so crystals grow as solubility falls, then filter, wash with cold distilled water and dry.",
             "analogy": "A sieve sorts pasta from water on size alone; chromatography is a race where each runner's grip on the track — their solubility — sets how far they get.",
             "examPointer": "Name the parts: filtrate passes, residue stays; crystals come from cooling a saturated solution."
           }
@@ -135,6 +135,7 @@
         ],
         "figureIds": [
           "fig-03",
+          "fig-04",
           "fig-05"
         ]
       }
@@ -162,23 +163,8 @@
           "firstLesson": 2
         },
         {
-          "term": "filtrate",
-          "definition": "The liquid that passes through the filter paper.",
-          "firstLesson": 2
-        },
-        {
-          "term": "residue",
-          "definition": "The solid left behind on the filter paper.",
-          "firstLesson": 2
-        },
-        {
           "term": "crystallisation",
           "definition": "Recovering a dissolved solid by evaporating solvent and cooling the solution so crystals grow.",
-          "firstLesson": 2
-        },
-        {
-          "term": "saturated solution",
-          "definition": "A solution holding all the dissolved solid it can at that temperature.",
           "firstLesson": 2
         }
       ],
@@ -198,53 +184,55 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9fe0ce5da8d5-simple-distillation-of-saltwater.png",
         "alt": "Diagram showing the distillation apparatus used to separate a mixture of salt and water",
         "sourceHeading": "Simple distillation",
-        "caption": "Diagram showing the distillation of a mixture of salt and water",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the distillation of a mixture of salt and water"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/da94c83c25ef-fractional-distillation-of-a-mixture-of-ethanol-.png",
         "alt": "Fractional distillation of a mixture of ethanol and water, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Fractional distillation apparatus",
-        "caption": "Fractional distillation of a mixture of ethanol and water",
-        "binding": "unresolved",
+        "sourceHeading": "Fractional distillation",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Fractional distillation of a mixture of ethanol and water"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/51160355edb3-1-1-5-filtration-of-sand-water-1.png",
         "alt": "Filtration of sand & water, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "The filtration process",
-        "caption": "Filtration of a mixture of sand and water",
-        "binding": "unresolved",
+        "sourceHeading": "Filtration",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Filtration of a mixture of sand and water"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4b5ec52fe17c-process-of-crystallisation.png",
         "alt": "Diagram, to show the process of crystalisation",
-        "sourceHeading": "The process of crystallisation",
-        "caption": "Diagram showing the process of crystallisation",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Filtration",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the process of crystallisation"
       },
       {
         "id": "fig-05",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/ce3cdf34aa9d-using-paper-chromatography-to-separate-soluble-m.png",
         "alt": "Diagram to show the method of chromatography",
         "sourceHeading": "Paper chromatography",
-        "caption": "Analysis of the composition of ink using paper chromatography",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Analysis of the composition of ink using paper chromatography"
       }
     ]
   }

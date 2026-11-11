@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_wDdXr5k7gknQ7xJp",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "0ce2173477a9339e8f1dbff81ff915ef21453dd1b9f6d23c83788479117d0ee7",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "f3ea083dcb54e6882594c2e65c140aa68874823ebaf87ff6fed8514eb2831031",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_wDdXr5k7gknQ7xJp",
@@ -25,10 +25,6 @@
       {
         "code": "4CH1-4.3",
         "text": "know what is meant by the terms homologous series, functional group and isomerism"
-      },
-      {
-        "code": "4CH1-4.5",
-        "text": "understand how to write the possible structural and displayed formulae of an organic molecule given its molecular formula"
       }
     ],
     "primer": {
@@ -49,7 +45,7 @@
         "opening": "Organic chemistry studies the compounds built around carbon, from fuels to plastics. Its simplest members contain just two elements, and that two-element rule is what this lesson pins down first.",
         "keyPoints": [
           "Organic chemistry studies carbon-containing compounds, their structures, their properties and their reactions.",
-          "Metal carbonates, carbon dioxide and carbon monoxide are excluded from organic chemistry by convention.",
+          "By convention, organic chemistry leaves out metal carbonates, carbon dioxide and carbon monoxide.",
           "A hydrocarbon is a compound whose molecules contain hydrogen and carbon atoms and no other element.",
           "The word only matters in the definition, so a molecule with oxygen present is not a hydrocarbon.",
           "Hydrocarbons matter because fuels such as petrol and natural gas are built from them."
@@ -61,7 +57,7 @@
             "examPointer": "When defining a hydrocarbon, state that hydrogen and carbon are the only elements present, or the marking point is lost."
           },
           "medium": {
-            "restatement": "Organic chemistry is the study of the structure, properties and reactions of carbon compounds, with metal carbonates, carbon dioxide and carbon monoxide left out by convention. A hydrocarbon is a compound of hydrogen and carbon with no third element allowed.",
+            "restatement": "Organic chemistry covers the structures, properties and reactions of carbon compounds, with metal carbonates, carbon dioxide and carbon monoxide left out by convention. A hydrocarbon contains hydrogen and carbon and no third element.",
             "analogy": "A hydrocarbon molecule is like a lego model built from exactly two brick colours; the moment a third colour appears, the model has left the hydrocarbon family for good.",
             "examPointer": "Quote the only-elements rule when defining a hydrocarbon, and expect a follow-up asking why carbon dioxide does not qualify."
           }
@@ -86,7 +82,8 @@
           "rn_wDdXr5k7gknQ7xJp::L1::Q7",
           "rn_wDdXr5k7gknQ7xJp::L1::Q8",
           "rn_wDdXr5k7gknQ7xJp::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_wDdXr5k7gknQ7xJp::L2",
@@ -96,8 +93,7 @@
           "Structural formulae"
         ],
         "specRefs": [
-          "4CH1-4.2",
-          "4CH1-4.5"
+          "4CH1-4.2"
         ],
         "opening": "One molecule can be written five different ways, and each way trades detail for convenience. This lesson walks through empirical, molecular, general, displayed and structural representations so you can pick the right one on demand.",
         "keyPoints": [
@@ -139,6 +135,11 @@
           "rn_wDdXr5k7gknQ7xJp::L2::Q7",
           "rn_wDdXr5k7gknQ7xJp::L2::Q8",
           "rn_wDdXr5k7gknQ7xJp::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
         ]
       },
       {
@@ -191,6 +192,10 @@
           "rn_wDdXr5k7gknQ7xJp::L3::Q7",
           "rn_wDdXr5k7gknQ7xJp::L3::Q8",
           "rn_wDdXr5k7gknQ7xJp::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04",
+          "fig-05"
         ]
       }
     ],
@@ -237,45 +242,55 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b46523d33944-10-1-2-the-molecular-formulae-of-butane-and-bute.png",
         "alt": "The Molecular Formulae of Butane and Butene, downloadable IB Chemistry revision notes",
-        "sourceHeading": "Molecular formula of butane",
-        "caption": "The molecular formula shows the actual number of atoms in a molecule",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Representing Organic Molecules",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The molecular formula shows the actual number of atoms in a molecule"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1d876e6efd95-10-1-2-the-structural-formulae-of-2-methylbutane.png",
         "alt": "The Structural Formulae of-2-methylbutane, downloadable IB Chemistry revision notes",
-        "sourceHeading": "Displayed formula of 2-methylbutane",
-        "caption": "The displayed formula must show every bond in the molecule",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Representing Organic Molecules",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The displayed formula must show every bond in the molecule"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/acb9ed5fb839-10-1-2-representing-condensed-structrual-formula.png",
         "alt": "Representing Condensed Structrual Formulae of Straight Chains, downloadable IB Chemistry revision notes",
-        "sourceHeading": "Structural formula of pentane",
-        "caption": "The structural formula of pentane makes it clear that there are five carbon atoms in the chain and no other functional groups",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Representing Organic Molecules",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The structural formula of pentane makes it clear that there are five carbon atoms in the chain and no other functional groups"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/07dfe5f531fa-14-1-3-names-and-structures-of-the-functional-gr.png",
         "alt": "Names and structures of the functional groups table, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Structures and Names of Common Functional Groups",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Homologous Series",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-05",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d26bb8fa1419-3-1-an-introduction-to-as-level-organic-chemistr.png",
         "alt": "An Introduction to AS Level Organic Chemistry Propene and Cyclopropane, downloadable AS & A Level Chemistry revision notes",
-        "sourceHeading": "Isomers of C<sub>3</sub>H<sub>6</sub>",
-        "caption": "Isomers of C***<sub>***3***</sub>***H***<sub>***6 ***</sub>***show the same molecular formula but different structures. Isomers can show similar physical and chemical properties or if they have different functional groups, the properties can be different.",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Isomerism",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Isomers of C***<sub>***3***</sub>***H***<sub>***6 ***</sub>***show the same molecular formula but different structures. Isomers can show similar physical and chemical properties or if they have different functional groups, the properties can be different."
       }
     ]
   }

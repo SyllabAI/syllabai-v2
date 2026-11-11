@@ -43,5 +43,14 @@
   ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/gates_r0.json",
   ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/scripts/ (census extractor + applier)"
  ],
- "boundaries": "title/label repair + KG regen only; zero code changes; zero census changes; structural residue filed as proposal (desk territory per run-016 boundary law); author does not self-merge — PR for the R0 desk; no force-push; fetch-first race-guard at push"
+ "boundaries": "title/label repair + KG regen only; zero code changes; zero census changes; structural residue filed as proposal (desk territory per run-016 boundary law); author does not self-merge — PR for the R0 desk; no force-push; fetch-first race-guard at push",
+ "postReview": {
+  "atUtc": "2026-11-11T19:45:46Z",
+  "trigger": "self-review before self-merge (operator order 'review+merge yourself', trace 1a1cc1aa04d81845)",
+  "finding": "hub CI red on the #931 head (76d9e352): kg-corpus.test.ts P5+G1 fail on cie-igcse-computer-science-23 — file 120n/210e/hier=116 vs index 120n/213e/88sp. This run's kg_export regen dropped the 3 hand-maintained spanning-tree edges (subject->sec7/sec9/sec10) that 700bb601 (run-016 CI-gate repair) restored per the mirror law; the receipt's G4 deep-equal was recompute-vs-recompute (deterministic re-export equals its own output) and structurally could not catch the drop",
+  "fix": "union of record = main's 213e byte-exact edge structure + this run's 11 repaired point statements (field census: exactly 11 statement deltas, 0 label deltas — point-node labels are codes, codes UNCHANGED); proof: the union byte-equals kg_export.export_course recompute on the post-run-017 curriculum except exactly those 3 hand edges ex-generatedUtc (script scripts/run018_review/kg_union_fix.py output of record); bun test kg-corpus 111 pass / 0 fail on the fixed tree",
+  "gatesAfterFix": "kg-corpus.test.ts 111/111 PASS (P1-P5 + G1 corpus-wide)",
+  "class": "sweep-invisible KG-regen regression of hand-maintained mirror-law edges — every future cs-23 kg_export regen drops the 3 edges until the exporter carries them; filed for desk as follow-up (same family as 700bb601); gates string above's 'G4 KG regen deep-equal' is qualified by this section",
+  "zeroInvention": "all 11 statements == curriculum titles post-run-017 (exporter recompute proof); 3 spot-checked rows (8.1.1a=(f), 1.1.2 (b)(iii), 3.1.1 (b)) found in official_0478_census_r0.json (sha-pinned 0478 PDF)"
+ }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_wTtM2fQVVjntRm64",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "827277abe3fa3d44d6360e5544d317bbb1912165d5869ea7b69c74679b61eccd",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "869cb7158d8aafedac76b86e3002a50747fe33db8900ba3dcf6d799dd1871354",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_wTtM2fQVVjntRm64",
@@ -40,7 +40,7 @@
         ],
         "opening": "Sorting elements into metals and non-metals does not need a laboratory full of equipment: two quick tests settle most cases. Pass a current through the element and see whether it conducts, then check how its oxide treats acid and alkali. Good conductivity and a basic oxide point to a metal, while poor conductivity and an acidic oxide point to a non-metal.",
         "keyPoints": [
-          "Electrical conductivity and the acid-base character of oxides are the working tests for this sorting.",
+          "Electrical conductivity plus the acid-base character of oxides are the working tests for this sorting.",
           "Metals hold one to three electrons in their outer shell, non-metals four to seven.",
           "Metallic bonding comes from metal atoms losing outer electrons; non-metals bond covalently by sharing them.",
           "Metals conduct well; non-metals are poor conductors, which makes the current test decisive.",
@@ -78,7 +78,8 @@
           "rn_wTtM2fQVVjntRm64::L1::Q7",
           "rn_wTtM2fQVVjntRm64::L1::Q8",
           "rn_wTtM2fQVVjntRm64::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_wTtM2fQVVjntRm64::L2",
@@ -139,11 +140,6 @@
     "assets": {
       "glossary": [
         {
-          "term": "malleable",
-          "definition": "Able to be bent and shaped without breaking; a typical property of solid metals.",
-          "firstLesson": 1
-        },
-        {
           "term": "lustrous",
           "definition": "Shiny and reflective in appearance; a characteristic physical mark of most metals.",
           "firstLesson": 1
@@ -185,11 +181,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3a09260ed3b6-the-periodic-table-2.png",
         "alt": "The periodic table showing the location of metals and non metals",
         "sourceHeading": "Metals and non-metals in the periodic table",
-        "caption": "Metals are on the left of the Periodic Table and non-metals on the right",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Metals are on the left of the Periodic Table and non-metals on the right"
       }
     ]
   }

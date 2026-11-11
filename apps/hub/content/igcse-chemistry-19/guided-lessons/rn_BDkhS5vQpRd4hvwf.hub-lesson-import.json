@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_BDkhS5vQpRd4hvwf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "49b73866ba12f7bb79543bfad1871d03e2543020ef3fbf3f319c0efb3719a045",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "f347466c654c62067fd5f3ef96a98a5f38a84530acbda48d2b88c76c2a2183ec",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_BDkhS5vQpRd4hvwf",
@@ -14,18 +14,6 @@
     "subtopicTitle": "Esters",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-7-esters/4-7-1-esters",
     "specAnchors": [
-      {
-        "code": "4CH1-4.38C",
-        "text": "know that esters contain the functional group"
-      },
-      {
-        "code": "4CH1-4.39C",
-        "text": "know that ethyl ethanoate is the ester produced when ethanol and ethanoic acid react in the presence of an acid catalyst"
-      },
-      {
-        "code": "4CH1-4.40C",
-        "text": "understand how to write the structural and displayed formulae of ethyl ethanoate"
-      },
       {
         "code": "4CH1-4.41C",
         "text": "understand how to write the structural and displayed formulae of an ester, given the name or formula of the alcohol and carboxylic acid from which it is formed and vice versa"
@@ -48,9 +36,7 @@
           "Diagram showing the formation of ethyl ethanoate"
         ],
         "specRefs": [
-          "4CH1-4.38C",
-          "4CH1-4.39C",
-          "4CH1-4.40C"
+          "4CH1-4.41C"
         ],
         "opening": "Alcohols and carboxylic acids join hands in an esterification reaction, releasing water as they bond. The product carries the -COO- link and, for the two smallest partners, the sweet oily liquid called ethyl ethanoate. This lesson draws the functional group and the equation that balances both products.",
         "keyPoints": [
@@ -200,43 +186,43 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c7d0647f74ec-8218-ester-functional-group.png",
         "alt": "Diagram to show the ester functional group",
         "sourceHeading": "Making esters",
-        "caption": "Esters are compounds with the functional group R-COO-R",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Esters are compounds with the functional group R-COO-R"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/13dbce47bc6d-preparing-ethyl-ethanoate.png",
         "alt": "Diagram to show the formation of ethyl ethanoate from ethanoic acid and ethanol",
         "sourceHeading": "Diagram showing the formation of ethyl ethanoate",
-        "caption": "During this esterification reaction, a molecule of water is also produced",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "During this esterification reaction, a molecule of water is also produced"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/144cdf1cac9a-parts-of-an-ester.png",
         "alt": "Diagram showing parts of an ester",
         "sourceHeading": "Naming Esters",
-        "caption": "Diagram showing the origin of each carbon chain in ester",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the origin of each carbon chain in ester"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c69d40377fe9-updated-ester-table.png",
         "alt": "Table showing the esters formed from different alcohols and carboxylic acids",
         "sourceHeading": "Examples of Esters Table",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

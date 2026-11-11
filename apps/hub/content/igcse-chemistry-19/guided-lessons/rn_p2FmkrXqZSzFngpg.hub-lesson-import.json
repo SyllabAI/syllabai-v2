@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_p2FmkrXqZSzFngpg",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a11b36c4c0bdc57f1a1a251bfa40fd61b7c6b27ed3e051605d2d86b73d5c1b99",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "327b3d91596f1e4a6a87b18a960499451a449c4fc45822774337eb91bf8c9f2d",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_p2FmkrXqZSzFngpg",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-2.34",
-        "text": "know the general rules for predicting the solubility of ionic compounds in water: common sodium, potassium and ammonium compounds are soluble; all nitrates are soluble; common chlorides are soluble, except those of silver and lead(II); common sulfates are soluble, except for those of barium, calcium and lead(II); common carbonates are insoluble, except for those of sodium, potassium and ammonium; common hydroxides are insoluble except for those of sodium, potassium and calcium (calcium hydroxide is slightly soluble)"
+        "text": "know the general rules for predicting the solubility of ionic compounds in water: • common sodium, potassium and ammonium compounds are soluble • all nitrates are soluble • common chlorides are soluble, except those of silver and lead(II) • common sulfates are soluble, except for those of barium, calcium and lead(II) • common carbonates are insoluble, except for those of sodium, potassium and ammonium • common hydroxides are insoluble except for those of sodium, potassium and calcium (calcium hydroxide is slightly soluble)."
       }
     ],
     "primer": {
@@ -28,8 +28,7 @@
         "id": "rn_p2FmkrXqZSzFngpg::L1",
         "title": "Solubility rules",
         "sourceHeadings": [
-          "Solubility rules",
-          "Solubility of the common salts"
+          "Solubility rules"
         ],
         "specRefs": [
           "4CH1-2.34"
@@ -74,7 +73,8 @@
           "rn_p2FmkrXqZSzFngpg::L1::Q7",
           "rn_p2FmkrXqZSzFngpg::L1::Q8",
           "rn_p2FmkrXqZSzFngpg::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_p2FmkrXqZSzFngpg::L2",
@@ -125,7 +125,8 @@
           "rn_p2FmkrXqZSzFngpg::L2::Q7",
           "rn_p2FmkrXqZSzFngpg::L2::Q8",
           "rn_p2FmkrXqZSzFngpg::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -146,29 +147,14 @@
           "firstLesson": 1
         },
         {
-          "term": "nitrate",
-          "definition": "The salt family whose members all dissolve in water.",
-          "firstLesson": 1
-        },
-        {
           "term": "chloride",
           "definition": "The salt family soluble except for silver chloride and lead(II) chloride.",
-          "firstLesson": 1
-        },
-        {
-          "term": "sulfate",
-          "definition": "The salt family soluble except for barium, calcium and lead(II) sulfates.",
           "firstLesson": 1
         },
         {
           "term": "carbonate",
           "definition": "The salt family insoluble except for sodium, potassium and ammonium carbonates.",
           "firstLesson": 1
-        },
-        {
-          "term": "hydroxide",
-          "definition": "The salt family insoluble except for sodium, potassium and ammonium, with calcium hydroxide only slightly soluble.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {

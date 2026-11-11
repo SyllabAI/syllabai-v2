@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_TsfqyK9BYMtN2Bfd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ba7cc43e8f1f6665e449a2a58692fc6437b6b54fbc48b59033b79c36bc5cc4df",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "ea49aef25bfe3e739e74e2100c802e01ad4cc1326798c37e3b087e55ea9e13a2",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_TsfqyK9BYMtN2Bfd",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Different tubes hold different volumes of solvent",
+          "correct": false,
+          "explanation": "Spot size is controlled by how the tube is used, and the concern is mixing samples, not volume.",
+          "misconception": "solvent volume confused with sample purity"
+        },
+        {
+          "key": "B",
           "text": "A used tube would carry traces of the previous dye into the next sample",
           "correct": true,
           "explanation": "Cross-contamination would plant foreign spots on the chromatogram and fake a match.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The tubes soften when reused, so spots would be too large",
           "correct": false,
           "explanation": "Tube softness is not the issue; the risk is dye traces, not tube shape.",
           "misconception": "material wear blamed instead of contamination"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Five tubes are supplied, so all five must be used",
           "correct": false,
           "explanation": "The count of tubes is beside the point; each sample needs its own clean tube.",
           "misconception": "procedural compliance mistaken for the reason"
-        },
-        {
-          "key": "D",
-          "text": "Different tubes hold different volumes of solvent",
-          "correct": false,
-          "explanation": "Spot size is controlled by how the tube is used, and the concern is mixing samples, not volume.",
-          "misconception": "solvent volume confused with sample purity"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "2-3 mm, so the separated dyes stay distinct",
-          "correct": true,
-          "explanation": "Tiny, concentrated spots separate into distinct marks that are easy to measure.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "5 mm, which keeps the pencil line safe",
-          "correct": false,
-          "explanation": "The limit is 2-3 mm and it guards spot separation, not the line.",
-          "misconception": "invented limit attached to the wrong risk"
-        },
-        {
-          "key": "C",
           "text": "1 cm, which keeps the solvent from escaping",
           "correct": false,
           "explanation": "Solvent loss is controlled by a lid on the beaker, not by spot size.",
           "misconception": "evaporation control confused with spot size"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "There is no limit; bigger spots give stronger colour",
           "correct": false,
           "explanation": "Oversized spots smear and merge, which spoils the measurements.",
           "misconception": "more sample assumed to mean better data"
+        },
+        {
+          "key": "C",
+          "text": "2-3 mm, so the separated dyes stay distinct",
+          "correct": true,
+          "explanation": "Tiny, concentrated spots separate into distinct marks that are easy to measure.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "5 mm, which keeps the pencil line safe",
+          "correct": false,
+          "explanation": "The limit is 2-3 mm and it guards spot separation, not the line.",
+          "misconception": "invented limit attached to the wrong risk"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "No more than 1 cm, so the start line stays above the solvent",
-          "correct": true,
-          "explanation": "Samples must start above the solvent, or they dissolve straight into it instead of climbing.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "About half the beaker, so the paper gets plenty of solvent",
           "correct": false,
           "explanation": "Deep solvent would cover the start line and end the run before it begins.",
           "misconception": "more solvent assumed to mean a better run"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Exactly level with the pencil line",
           "correct": false,
           "explanation": "Level with the line means the samples sit in the solvent, which dissolves them away.",
           "misconception": "touching the line treated as safe"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The depth does not matter as long as spots are small",
           "correct": false,
           "explanation": "Depth is the one factor that decides whether samples start above or below the solvent.",
           "misconception": "spot size mistaken for solvent control"
+        },
+        {
+          "key": "D",
+          "text": "No more than 1 cm, so the start line stays above the solvent",
+          "correct": true,
+          "explanation": "Samples must start above the solvent, or they dissolve straight into it instead of climbing.",
+          "misconception": null
         }
       ]
     },
@@ -163,7 +163,7 @@
       "options": [
         {
           "key": "A",
-          "text": "After the solvent has travelled at least three quarters of the way up",
+          "text": "Once the solvent has climbed roughly three quarters of the paper or more",
           "correct": true,
           "explanation": "That gives the dyes room to separate while leaving the front distance measurable.",
           "misconception": null
@@ -232,11 +232,8 @@
       "modelAnswer": "Because each colouring gets its own capillary tube so one sample cannot contaminate another — a shared tube would mix the samples, and the spots would no longer be each dye's own.",
       "keywords": [
         "contaminate",
-        "contaminated",
         "own",
-        "mix",
-        "mixed",
-        "mixing"
+        "mix"
       ],
       "options": []
     },
@@ -250,47 +247,44 @@
       "keywords": [
         "three",
         "quarters",
-        "wait",
-        "continue",
         "leave",
-        "undisturbed",
-        "more"
+        "undisturbed"
       ],
       "options": []
     },
     {
       "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q1",
       "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
-      "stem": "A student draws the start line with ball-point ink. What happens to the chromatogram?",
+      "stem": "A student draws the start line with ballpoint ink. What happens to the chromatogram?",
       "misconceptionClass": "ink start line error",
       "options": [
         {
           "key": "A",
+          "text": "The sample spots become larger than 2-3 mm",
+          "correct": false,
+          "explanation": "Spot size was fixed when sampling; the ink adds stray marks instead.",
+          "misconception": "two separate errors merged into one"
+        },
+        {
+          "key": "B",
           "text": "The ink's own dyes climb the paper and interfere with the dye spots",
           "correct": true,
           "explanation": "Ink is a dye mixture, so it produces extra marks that make the result hard to read.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Nothing, because ink and pencil mark the paper the same way",
           "correct": false,
           "explanation": "Pencil is insoluble; ink dyes dissolve and travel, so the two are not equivalent.",
           "misconception": "writing tools assumed interchangeable"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The paper dissolves where the ink sits",
           "correct": false,
           "explanation": "Paper stays intact; it is the ink that moves, not the paper that breaks down.",
           "misconception": "solvent damage blamed on the paper"
-        },
-        {
-          "key": "D",
-          "text": "The sample spots become larger than 2-3 mm",
-          "correct": false,
-          "explanation": "Spot size was fixed when sampling; the ink adds stray marks instead.",
-          "misconception": "two separate errors merged into one"
         }
       ]
     },
@@ -302,31 +296,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Neighbouring dyes merge or smear, so distances cannot be measured cleanly",
-          "correct": true,
-          "explanation": "Oversized spots spread into each other and blur the positions of their centres.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The dyes separate faster because more sample is moving",
-          "correct": false,
-          "explanation": "Extra sample does not speed the solvent; it widens the marks and muddies them.",
-          "misconception": "more sample assumed to speed the run"
-        },
-        {
-          "key": "C",
           "text": "The start line dissolves because bigger spots hold more water",
           "correct": false,
           "explanation": "The line's safety depends on being drawn in pencil, not on spot diameter.",
           "misconception": "unrelated cause attached to spot size"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The Rf values come out above 1",
           "correct": false,
           "explanation": "Spot size cannot push a spot past the solvent front, so Rf stays below 1.",
           "misconception": "measurement error blamed on the ratio bound"
+        },
+        {
+          "key": "C",
+          "text": "Neighbouring dyes merge or smear, so distances cannot be measured cleanly",
+          "correct": true,
+          "explanation": "Oversized spots spread into each other and blur the positions of their centres.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The dyes separate faster because more sample is moving",
+          "correct": false,
+          "explanation": "Extra sample does not speed the solvent; it widens the marks and muddies them.",
+          "misconception": "more sample assumed to speed the run"
         }
       ]
     },
@@ -338,31 +332,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The samples dissolve straight into the solvent and no separation happens",
-          "correct": true,
-          "explanation": "Samples must start above the liquid; underwater, they never climb the paper at all.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The run works normally but takes longer",
           "correct": false,
           "explanation": "Submerged samples never begin a climb; time is not the issue.",
           "misconception": "submersion mistaken for a slow start"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The spots travel further and give bigger Rf values",
           "correct": false,
           "explanation": "There is no travel at all, so there is nothing to measure.",
           "misconception": "distance inflated by extra solvent"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Only the unknown mixture U is affected",
           "correct": false,
           "explanation": "Every sample on the line is underwater and every one is lost.",
           "misconception": "error confined to one sample"
+        },
+        {
+          "key": "D",
+          "text": "The samples dissolve straight into the solvent and no separation happens",
+          "correct": true,
+          "explanation": "Samples must start above the liquid; underwater, they never climb the paper at all.",
+          "misconception": null
         }
       ]
     },
@@ -410,31 +404,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The result is void because U moved the same distance as B",
+          "correct": false,
+          "explanation": "Matching travel is exactly the evidence the practical is designed to produce.",
+          "misconception": "agreement mistaken for a fault"
+        },
+        {
+          "key": "B",
           "text": "The unknown mixture contains dye B",
           "correct": true,
           "explanation": "Same height and same Rf identify the same substance, and the visual comparison agrees.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "U is pure dye B and nothing else",
           "correct": false,
           "explanation": "One matching spot shows B is present; other spots in U would mean more components.",
           "misconception": "one match taken as the whole composition"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Colouring B must be a mixture of four dyes",
           "correct": false,
           "explanation": "B is a known single colouring; it is U whose composition is being probed.",
           "misconception": "direction of identification reversed"
-        },
-        {
-          "key": "D",
-          "text": "The result is void because U moved the same distance as B",
-          "correct": false,
-          "explanation": "Matching travel is exactly the evidence the practical is designed to produce.",
-          "misconception": "agreement mistaken for a fault"
         }
       ]
     },
@@ -479,11 +473,9 @@
       "keywords": [
         "dissolves",
         "dissolve",
-        "dissolved",
         "away",
         "climbs",
-        "climb",
-        "never"
+        "climb"
       ],
       "options": []
     },
@@ -500,7 +492,6 @@
         "other",
         "another",
         "mixture",
-        "both",
         "also"
       ],
       "options": []

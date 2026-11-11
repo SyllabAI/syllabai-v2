@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_HNXFQt7vM32g6PMv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "bb805685de5330511b09594fe290ba2efbe860174bd7f0d78f84e43f9ee0be63",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "9f194fb20c623fd24cf8a3a3a0a017fa9bd69ab9e8d6fd57a239fdd633edf71f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_HNXFQt7vM32g6PMv",
@@ -28,7 +28,7 @@
         "id": "rn_HNXFQt7vM32g6PMv::L1",
         "title": "Reading the axes and arrows",
         "sourceHeadings": [
-          "Energy level diagrams"
+          "Energy Level Diagrams"
         ],
         "specRefs": [
           "4CH1-3.5C"
@@ -38,7 +38,7 @@
           "An energy level diagram sets the energies of reactants and products side by side for comparison.",
           "Energy runs up the y-axis while the x-axis tracks how far the reaction has progressed.",
           "Arrows point downwards for exothermic reactions and upwards for endothermic ones.",
-          "The height difference between reactants and products represents the overall enthalpy change.",
+          "The height gap between reactants and products stands for the overall enthalpy change.",
           "Reactants sit above products in exothermic reactions and below them in endothermic ones."
         ],
         "depthLayers": {
@@ -174,12 +174,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/201994f03a81-exothermic-and-endothermic-reactions-v2.png",
         "alt": "Energy level diagrams for an exothermic and endothermic reaction",
-        "sourceHeading": "Energy level diagrams",
-        "caption": "Energy level diagram of an exothermic reaction and an endothermic reaction",
-        "binding": "content-overlap",
+        "sourceHeading": "Energy Level Diagrams",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Energy level diagram of an exothermic reaction and an endothermic reaction"
       }
     ]
   }

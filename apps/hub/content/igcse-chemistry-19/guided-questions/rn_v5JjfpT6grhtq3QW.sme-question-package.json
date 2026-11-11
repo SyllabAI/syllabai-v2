@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_v5JjfpT6grhtq3QW",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "df1f7a5627b4c149f41afad6467330e90ff0d6b7a9a8fb74478e5c7f8b14cf88",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "72a72bb45311f9b1c3d57e9567a71b8a08b7f3fdf83442130be105d3c50c5071",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_v5JjfpT6grhtq3QW",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "White",
+          "correct": false,
+          "explanation": "None of the three tested ions gives a white hydroxide here.",
+          "misconception": "colour invented"
+        },
+        {
+          "key": "B",
           "text": "Pale green",
           "correct": true,
           "explanation": "Iron(II) hydroxide precipitates pale green.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Orange-brown",
           "correct": false,
           "explanation": "That is iron(III)'s colour.",
           "misconception": "Fe3+ colour swapped in"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Light blue",
           "correct": false,
           "explanation": "That is copper(II)'s colour.",
           "misconception": "Cu2+ colour swapped in"
-        },
-        {
-          "key": "D",
-          "text": "White",
-          "correct": false,
-          "explanation": "None of the three tested ions gives a white hydroxide here.",
-          "misconception": "colour invented"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Copper(II)",
-          "correct": true,
-          "explanation": "Copper(II) hydroxide is the light blue solid.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Iron(II)",
-          "correct": false,
-          "explanation": "Iron(II) gives pale green.",
-          "misconception": "green-blue swap"
-        },
-        {
-          "key": "C",
           "text": "Iron(III)",
           "correct": false,
           "explanation": "Iron(III) gives orange-brown.",
           "misconception": "brown-blue swap"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Ammonium",
           "correct": false,
           "explanation": "Ammonium gives no coloured solid; its test releases ammonia gas.",
           "misconception": "gas-test cation given a solid"
+        },
+        {
+          "key": "C",
+          "text": "Copper(II)",
+          "correct": true,
+          "explanation": "Copper(II) hydroxide is the light blue solid.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Iron(II)",
+          "correct": false,
+          "explanation": "Iron(II) gives pale green.",
+          "misconception": "green-blue swap"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The hydroxide may be soluble, or too few ions are present",
-          "correct": true,
-          "explanation": "Both are the source's stated explanations for a blank result.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The solution is definitely pure water",
           "correct": false,
           "explanation": "A blank cannot certify the absence of everything; it only fails to show these solids.",
           "misconception": "overreach"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The test was performed wrongly",
           "correct": false,
           "explanation": "A correct test can still give a blank for the two stated reasons.",
           "misconception": "blame reflex"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The cation must be ammonium",
           "correct": false,
           "explanation": "Ammonium is one possibility among many and needs its own warm test to confirm.",
           "misconception": "wrong inference"
+        },
+        {
+          "key": "D",
+          "text": "The hydroxide may be soluble, or too few ions are present",
+          "correct": true,
+          "explanation": "Both are the source's stated explanations for a blank result.",
+          "misconception": null
         }
       ]
     },
@@ -200,9 +200,8 @@
       "modelAnswer": "A few drops of sodium hydroxide solution are added first, and any precipitate is noted.",
       "keywords": [
         "sodium",
-        "naoh",
         "drops",
-        "alkali"
+        "hydroxide"
       ],
       "options": []
     },
@@ -216,8 +215,7 @@
       "keywords": [
         "orange",
         "brown",
-        "hydroxide",
-        "rust"
+        "hydroxide"
       ],
       "options": []
     },
@@ -231,9 +229,7 @@
       "keywords": [
         "soluble",
         "few",
-        "dissolves",
-        "dissolved",
-        "trace"
+        "hydroxide"
       ],
       "options": []
     },
@@ -248,7 +244,6 @@
         "iron",
         "copper",
         "fe",
-        "cu",
         "ii"
       ],
       "options": []
@@ -261,31 +256,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Add sodium hydroxide in the dark",
+          "correct": false,
+          "explanation": "Light conditions are irrelevant to this test.",
+          "misconception": "invented condition"
+        },
+        {
+          "key": "B",
           "text": "Add sodium hydroxide and warm the mixture",
           "correct": true,
           "explanation": "Both the reagent and the warming are needed to release the gas.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Add sodium hydroxide and cool the mixture",
           "correct": false,
           "explanation": "Cooling would keep the ammonia dissolved instead of releasing it.",
           "misconception": "temperature inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Add acid and warm",
           "correct": false,
           "explanation": "Acid would protonate any ammonia made and stop the test working.",
           "misconception": "reagent swapped"
-        },
-        {
-          "key": "D",
-          "text": "Add sodium hydroxide in the dark",
-          "correct": false,
-          "explanation": "Light conditions are irrelevant to this test.",
-          "misconception": "invented condition"
         }
       ]
     },
@@ -297,31 +292,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Ammonia",
-          "correct": true,
-          "explanation": "Ammonia gas is the product the test looks for.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Hydrogen",
-          "correct": false,
-          "explanation": "Hydrogen is the metal-acid gas, not this one.",
-          "misconception": "metal-acid gas confusion"
-        },
-        {
-          "key": "C",
           "text": "Carbon dioxide",
           "correct": false,
           "explanation": "Carbon dioxide comes from carbonates, not from ammonium ions.",
           "misconception": "carbonate gas confusion"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Chlorine",
           "correct": false,
           "explanation": "Chlorine is a halogen gas unrelated to the ammonium test.",
           "misconception": "halogen gas confusion"
+        },
+        {
+          "key": "C",
+          "text": "Ammonia",
+          "correct": true,
+          "explanation": "Ammonia gas is the product the test looks for.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Hydrogen",
+          "correct": false,
+          "explanation": "Hydrogen is the metal-acid gas, not this one.",
+          "misconception": "metal-acid gas confusion"
         }
       ]
     },
@@ -333,31 +328,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It turns damp red litmus paper blue",
-          "correct": true,
-          "explanation": "That is ammonia's identifying result, linking back to the gas tests.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It bleaches damp blue litmus paper",
           "correct": false,
           "explanation": "Bleaching is chlorine's behaviour, not ammonia's.",
           "misconception": "chlorine behaviour transplanted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It gives a squeaky pop",
           "correct": false,
           "explanation": "The pop belongs to hydrogen.",
           "misconception": "hydrogen behaviour transplanted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It turns limewater cloudy",
           "correct": false,
           "explanation": "Cloudy limewater identifies carbon dioxide.",
           "misconception": "carbon dioxide behaviour transplanted"
+        },
+        {
+          "key": "D",
+          "text": "It turns damp red litmus paper blue",
+          "correct": true,
+          "explanation": "That is ammonia's identifying result, linking back to the gas tests.",
+          "misconception": null
         }
       ]
     },
@@ -405,31 +400,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Invalid, the test must be repeated with acid",
+          "correct": false,
+          "explanation": "Repeating with acid would ruin the test rather than validate it.",
+          "misconception": "invented protocol"
+        },
+        {
+          "key": "B",
           "text": "Still positive, small amounts give slight effects",
           "correct": true,
           "explanation": "The source notes that slight cloudiness can still indicate a positive result.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Negative, because cloudiness is never enough",
           "correct": false,
           "explanation": "A threshold that strict would contradict the source's guidance.",
           "misconception": "threshold invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Positive for copper(II) instead",
           "correct": false,
           "explanation": "Nothing points to a different cation; faintness is about amount, not identity.",
           "misconception": "cation swap"
-        },
-        {
-          "key": "D",
-          "text": "Invalid, the test must be repeated with acid",
-          "correct": false,
-          "explanation": "Repeating with acid would ruin the test rather than validate it.",
-          "misconception": "invented protocol"
         }
       ]
     },
@@ -443,9 +438,7 @@
       "keywords": [
         "warmed",
         "warm",
-        "heated",
-        "heat",
-        "released"
+        "sodium"
       ],
       "options": []
     },
@@ -475,8 +468,7 @@
         "faint",
         "weak",
         "confirms",
-        "produced",
-        "trace"
+        "produced"
       ],
       "options": []
     },

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_xT8XsdJtDX5gNFXj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "3c07eb925d3f860a9f12d1bc00976db55eb1b45be4b567d8386dfc04356b3ae3",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "fb3debec6e46b7bd0d5018dcb9bb03b71fe8dd38eb586631d541e9388619b531",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_xT8XsdJtDX5gNFXj",
@@ -16,11 +16,11 @@
     "specAnchors": [
       {
         "code": "4CH1-1.27",
-        "text": "know that the mole(mol) is the unit for the amount of a substance"
+        "text": "know that the mole (mol) is the unit for the amount of a substance"
       },
       {
         "code": "4CH1-1.28",
-        "text": "understand how to carry out calculations involving amount of substance, relative atomic mass $ (A_{r}) $ and relative formula mass $ (M_{r}) $"
+        "text": "understand how to carry out calculations involving amount of substance, relative atomic mass (Ar) and relative formula mass (Mr)"
       }
     ],
     "primer": {
@@ -78,7 +78,8 @@
           "rn_xT8XsdJtDX5gNFXj::L1::Q7",
           "rn_xT8XsdJtDX5gNFXj::L1::Q8",
           "rn_xT8XsdJtDX5gNFXj::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_xT8XsdJtDX5gNFXj::L2",
@@ -159,16 +160,6 @@
           "firstLesson": 1
         },
         {
-          "term": "formula unit",
-          "definition": "The particle counted for an ionic compound, matching the ratio of ions shown in its formula.",
-          "firstLesson": 1
-        },
-        {
-          "term": "relative formula mass (Mr)",
-          "definition": "The total of the relative atomic masses added across a compound's formula.",
-          "firstLesson": 2
-        },
-        {
           "term": "standard form",
           "definition": "A way of writing very large or very small numbers as a multiplier and a power of ten.",
           "firstLesson": 2
@@ -191,11 +182,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/2ab8fb07ba66-1-1-5-the-moles-mass-formula-triangle.png",
         "alt": "The Moles & Mass Formula Triangle",
         "sourceHeading": "Calculating moles and masses",
-        "caption": "Formula triangle for moles, mass and molar mass",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Formula triangle for moles, mass and molar mass"
       }
     ]
   }

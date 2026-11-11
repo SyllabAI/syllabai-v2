@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_R3ptwxGTTvdBFvyP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e5d084bbe79677d76c652fd890de3c7822d78197f51148576b7a6b4b7f0bf9dc",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "2dc8ae287f391d53c90bbeeb153a1d0877ec785a0a08ac4a281671275a28bb44",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_R3ptwxGTTvdBFvyP",
@@ -20,7 +20,7 @@
       },
       {
         "code": "4CH1-1.12",
-        "text": "understand how to use the calculation of Rf values to identify the components of a mixture"
+        "text": "understand how to use the calculation of R f values to identify the components of a mixture"
       }
     ],
     "primer": {
@@ -143,11 +143,6 @@
     "assets": {
       "glossary": [
         {
-          "term": "separation",
-          "definition": "Taking a mixture apart into its components by physical means.",
-          "firstLesson": 1
-        },
-        {
           "term": "chromatogram",
           "definition": "The visual output of a chromatography run: the paper with its separated spots after the run.",
           "firstLesson": 1
@@ -171,11 +166,6 @@
           "term": "Rf value",
           "definition": "The ratio of the distance moved by a substance to the distance moved by the solvent.",
           "firstLesson": 2
-        },
-        {
-          "term": "solvent",
-          "definition": "The liquid that travels up the paper and carries the substances with it.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -194,21 +184,21 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/23a624524aa6-chromatography-e2-80-93-pure-impure.png",
         "alt": "Chromatogram showing the separation of brown ink",
         "sourceHeading": "Interpreting chromatograms",
-        "caption": "Diagram showing the analysis of a mixture and pure substances using chromatography",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the analysis of a mixture and pure substances using chromatography"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8797d28f11b4-64942-using-rf-values-to-identify-mixture-compon.avif",
         "alt": "using-rf-values-to-identify-mixture-components",
         "sourceHeading": "Rf Values",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

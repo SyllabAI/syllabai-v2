@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_xq9jy75y43kDXkvx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "77292afe9b19c4a1bbf71bf198bc0d8e29a96a01abbd4466835d8306cd073ba6",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "952c8d893b528db03776551f1ffa15d31480c5e7a1075d0af0e27cf56deea1d8",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_xq9jy75y43kDXkvx",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because electrons are gained by oxygen",
+          "correct": false,
+          "explanation": "In oxygen language the defining event is oxygen leaving the metal compound.",
+          "misconception": "electron wording attached to the wrong species"
+        },
+        {
+          "key": "B",
           "text": "Because oxygen is removed from the metal compound",
           "correct": true,
           "explanation": "Loss of oxygen is the definition of reduction in oxygen language, which is exactly what extraction does to an oxide ore.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because the amount of metal gets smaller",
           "correct": false,
           "explanation": "The metal is gained, not lost; the name refers to oxygen removal, not to quantity.",
           "misconception": "reduction misread as shrinking quantity"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because the furnace temperature is lowered",
           "correct": false,
           "explanation": "Blast furnaces run hot; the chemical meaning of reduction has nothing to do with cooling.",
           "misconception": "everyday sense of reduce applied"
-        },
-        {
-          "key": "D",
-          "text": "Because electrons are gained by oxygen",
-          "correct": false,
-          "explanation": "In oxygen language the defining event is oxygen leaving the metal compound.",
-          "misconception": "electron wording attached to the wrong species"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Iron",
-          "correct": true,
-          "explanation": "Haematite is iron oxide, the ore fed into the blast furnace to make iron.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Aluminium",
-          "correct": false,
-          "explanation": "Aluminium's ore is bauxite, which contains aluminium oxide.",
-          "misconception": "the two named ores swapped"
-        },
-        {
-          "key": "C",
           "text": "Copper",
           "correct": false,
           "explanation": "Copper appears in the crust as compounds too, but haematite is specifically the iron ore.",
           "misconception": "generic metal substituted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Gold",
           "correct": false,
           "explanation": "Gold is unreactive and is found as the element, so it has no ore to name.",
           "misconception": "unreactive metal given an ore"
+        },
+        {
+          "key": "C",
+          "text": "Iron",
+          "correct": true,
+          "explanation": "Haematite is iron oxide, the ore fed into the blast furnace to make iron.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Aluminium",
+          "correct": false,
+          "explanation": "Aluminium's ore is bauxite, which contains aluminium oxide.",
+          "misconception": "the two named ores swapped"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Electrolysis, a blast furnace, or reaction with a more reactive material",
-          "correct": true,
-          "explanation": "These are exactly the three processes listed for extraction, chosen according to the metal's reactivity.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Filtration, distillation and crystallisation",
           "correct": false,
           "explanation": "Those are separation techniques for mixtures; extraction needs chemistry that removes oxygen or uses electricity.",
           "misconception": "separation methods substituted for extraction"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Dissolving, filtering and evaporating",
           "correct": false,
           "explanation": "These physical steps cannot reduce an oxide ore to the metal on their own.",
           "misconception": "physical processing confused with reduction chemistry"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Mining, crushing and sorting",
           "correct": false,
           "explanation": "These prepare the rock but do not release the metal from its compounds.",
           "misconception": "physical processing confused with reduction chemistry"
+        },
+        {
+          "key": "D",
+          "text": "Electrolysis, a blast furnace, or reaction with a more reactive material",
+          "correct": true,
+          "explanation": "These are exactly the three processes listed for extraction, chosen according to the metal's reactivity.",
+          "misconception": null
         }
       ]
     },
@@ -239,9 +239,6 @@
         "oxide",
         "oxygen",
         "reduction",
-        "reduced",
-        "loses",
-        "lost",
         "remove",
         "removing",
         "haematite",
@@ -260,7 +257,6 @@
         "gold",
         "native",
         "element",
-        "uncombined",
         "no",
         "compound",
         "extraction",
@@ -277,31 +273,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Zinc and copper",
+          "correct": false,
+          "explanation": "These metals are extracted from ores, so they do not occur usefully as elements.",
+          "misconception": "mid-series metals treated as native"
+        },
+        {
+          "key": "B",
           "text": "Gold and platinum",
           "correct": true,
           "explanation": "Both are chemically stable enough to exist as elements in the crust and can be mined directly.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Iron and aluminium",
           "correct": false,
           "explanation": "Both are reactive enough to need extraction from their oxide ores, haematite and bauxite.",
           "misconception": "reactive metals treated as native"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Sodium and potassium",
           "correct": false,
           "explanation": "These are among the most reactive metals and exist only in compounds.",
           "misconception": "most-reactive metals treated as native"
-        },
-        {
-          "key": "D",
-          "text": "Zinc and copper",
-          "correct": false,
-          "explanation": "These metals are extracted from ores, so they do not occur usefully as elements.",
-          "misconception": "mid-series metals treated as native"
         }
       ]
     },
@@ -313,31 +309,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Their chemical stability means they do not easily react with other substances",
-          "correct": true,
-          "explanation": "Without easy reaction there is nothing to convert them into compounds, so they remain uncombined.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "They are too dense to form compounds",
-          "correct": false,
-          "explanation": "Density plays no part in compound formation; reactivity does.",
-          "misconception": "physical property given a chemical role"
-        },
-        {
-          "key": "C",
           "text": "They were only discovered after ores were used up",
           "correct": false,
           "explanation": "Occurrence is set by chemistry, not by history or supply.",
           "misconception": "historical story invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The crust is too cold for them to react",
           "correct": false,
           "explanation": "Temperature is not the deciding factor; the metals simply have little tendency to react.",
           "misconception": "conditions blamed for low reactivity"
+        },
+        {
+          "key": "C",
+          "text": "They are chemically stable, so other substances rarely react with them",
+          "correct": true,
+          "explanation": "Without easy reaction there is nothing to convert them into compounds, so they remain uncombined.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "They are too dense to form compounds",
+          "correct": false,
+          "explanation": "Density plays no part in compound formation; reactivity does.",
+          "misconception": "physical property given a chemical role"
         }
       ]
     },
@@ -349,38 +345,38 @@
       "options": [
         {
           "key": "A",
-          "text": "M is more reactive than N",
-          "correct": true,
-          "explanation": "Only the more reactive metal can take oxygen away from the compound of a less reactive one.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "M is less reactive than N",
           "correct": false,
           "explanation": "The less reactive metal cannot wrest oxygen from a more reactive metal's compound.",
           "misconception": "reactivity direction reversed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "M and N have equal reactivity",
           "correct": false,
           "explanation": "Equal reactivity gives no driving force for the oxygen to move.",
           "misconception": "equilibrium assumed for extraction"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "N is above hydrogen in the reactivity series",
           "correct": false,
           "explanation": "The comparison that matters is between M and N themselves, not their position against hydrogen.",
           "misconception": "wrong reference point for the comparison"
+        },
+        {
+          "key": "D",
+          "text": "M is more reactive than N",
+          "correct": true,
+          "explanation": "Only the more reactive metal can take oxygen away from the compound of a less reactive one.",
+          "misconception": null
         }
       ]
     },
     {
       "id": "rn_xq9jy75y43kDXkvx::L2::Q4",
       "moduleId": "rn_xq9jy75y43kDXkvx::L2",
-      "stem": "Why does gold need neither a blast furnace nor electrolysis to be obtained?",
+      "stem": "Why does gold need neither a blast furnace nor any chemical extraction to be obtained?",
       "misconceptionClass": "no-extraction reasoning",
       "options": [
         {
@@ -421,31 +417,31 @@
       "options": [
         {
           "key": "A",
+          "text": "No exceptions exist; every metal needs extraction",
+          "correct": false,
+          "explanation": "Gold and platinum are clear exceptions found as the element.",
+          "misconception": "exception overlooked"
+        },
+        {
+          "key": "B",
           "text": "The unreactive metals, often found as the uncombined element",
           "correct": true,
           "explanation": "The rule covers most metals; the exception is the chemically stable few found as elements.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The most reactive metals, which refuse to form compounds",
           "correct": false,
           "explanation": "The most reactive metals form compounds most readily and always need extraction.",
           "misconception": "reactivity trend inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The transition metals, which are always native",
           "correct": false,
           "explanation": "Many transition metals, such as iron and copper, are extracted from ores.",
           "misconception": "blanket claim about a metal family"
-        },
-        {
-          "key": "D",
-          "text": "No exceptions exist; every metal needs extraction",
-          "correct": false,
-          "explanation": "Gold and platinum are clear exceptions found as the element.",
-          "misconception": "exception overlooked"
         }
       ]
     },
@@ -501,7 +497,6 @@
         "react",
         "reacting",
         "element",
-        "elements",
         "free",
         "compounds",
         "substances"
@@ -520,9 +515,7 @@
         "reactive",
         "less",
         "reduce",
-        "reduces",
         "displaced",
-        "displacement",
         "rule",
         "order",
         "m",

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_vfmJxw4VQgXKzXF3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1d4d5cc1d90126828ec044d26e9b5de2f3bdb8796780f293118d5c2ccc5221f5",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "33ac3460cf8967d357a5c202a2d785c8466b43a715092a49a98f1e418fe93074",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_vfmJxw4VQgXKzXF3",
@@ -77,6 +77,9 @@
           "rn_vfmJxw4VQgXKzXF3::L1::Q7",
           "rn_vfmJxw4VQgXKzXF3::L1::Q8",
           "rn_vfmJxw4VQgXKzXF3::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -88,11 +91,11 @@
         "specRefs": [
           "4CH1-1.45"
         ],
-        "opening": "A covalent bond holds because of electrical attraction: the shared pair of electrons is negatively charged, and both atomic nuclei are positively charged, so each nucleus pulls on the same pair. The bond is drawn as a short straight line between the two atoms, and the sharing lets each atom sit in a noble-gas-like arrangement that is more stable.",
+        "opening": "A covalent bond holds because of electrical attraction: the shared pair of electrons is negatively charged, and both atomic nuclei are positively charged, so each nucleus pulls on the same pair. The bond is drawn as one short straight line joining the two atoms, and the sharing lets each atom sit in a noble-gas-like arrangement that is more stable.",
         "keyPoints": [
           "The shared pair of electrons and both nuclei pull on each other with strong electrostatic attraction.",
           "The electrons in the pair carry a negative charge, and each nucleus carries a positive one, so attraction follows.",
-          "A covalent bond is drawn as a short straight line between the two atoms, such as H-H.",
+          "A covalent bond is drawn as one short straight line joining the two atoms, such as H-H.",
           "The shared electrons are best regarded as charge clouds in constant motion, not as points fixed in place.",
           "Sharing lets each atom reach an arrangement similar to a noble gas, which makes each atom more stable."
         ],
@@ -177,21 +180,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/579fbbeed97a-covalent-bonding-in-non-metals.png",
         "alt": "Covalent bonding in non-metals, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Covalent bonding",
-        "caption": "Two chlorine atoms share one electron each to form a covalent bond with a shared pair of electrons",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Formation of covalent bonds",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Two chlorine atoms share one electron each to form a covalent bond with a shared pair of electrons"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/fb1ccc341e28-4-1-4-hydrogen-molecular-orbital.png",
         "alt": "Hydrogen molecular orbital, downloadable IB Chemistry revision notes",
         "sourceHeading": "Electrostatic attractions",
-        "caption": "The attraction between the shared pair of electrons and the nuclei of the atoms involved in a covalent bond",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The attraction between the shared pair of electrons and the nuclei of the atoms involved in a covalent bond"
       }
     ]
   }

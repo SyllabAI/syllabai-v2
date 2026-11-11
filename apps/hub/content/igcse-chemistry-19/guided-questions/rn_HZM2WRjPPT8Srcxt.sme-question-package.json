@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_HZM2WRjPPT8Srcxt",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "41bceb6b64b0c18feca31c5a01ac14c7aadf50b80e8276aba994e1a4df6fed59",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "45a66923a6051a623008a61ec4362cf9cd16598b109a68e929ee8b3ba49cc2fc",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_HZM2WRjPPT8Srcxt",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A diluted solute",
+          "correct": false,
+          "explanation": "Dilute describes a solution with little solute, the opposite of saturated.",
+          "misconception": "reverses saturation and dilution"
+        },
+        {
+          "key": "B",
           "text": "A saturated solution",
           "correct": true,
           "explanation": "Saturation means no more solute can dissolve; the solution is full to its limit.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "An insoluble solution",
           "correct": false,
           "explanation": "Insoluble means a substance will not dissolve at all; saturation is about having dissolved the maximum already.",
           "misconception": "confuses insoluble with saturated"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A pure solvent",
           "correct": false,
           "explanation": "The solvent is only the liquid; saturation describes the state of the whole solution.",
           "misconception": "applies a component term to the whole mixture"
-        },
-        {
-          "key": "D",
-          "text": "A diluted solute",
-          "correct": false,
-          "explanation": "Dilute describes a solution with little solute, the opposite of saturated.",
-          "misconception": "reverses saturation and dilution"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Insoluble",
-          "correct": true,
-          "explanation": "A substance that will not dissolve is insoluble, exactly as the note's example records for sand.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Soluble",
-          "correct": false,
-          "explanation": "Soluble means able to dissolve; the sand demonstrably has not.",
-          "misconception": "reverses the term for a non-dissolving substance"
-        },
-        {
-          "key": "C",
           "text": "A solvent",
           "correct": false,
           "explanation": "The solvent is the liquid; the sand is the solid sitting in it.",
           "misconception": "uses the liquid's term for the solid"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Saturated",
           "correct": false,
           "explanation": "Saturation describes how much has dissolved in the solution, not a substance that refuses to dissolve.",
           "misconception": "applies a mixture-level term to a single substance"
+        },
+        {
+          "key": "C",
+          "text": "Insoluble",
+          "correct": true,
+          "explanation": "A substance that will not dissolve is insoluble, exactly as the note's example records for sand.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Soluble",
+          "correct": false,
+          "explanation": "Soluble means able to dissolve; the sand demonstrably has not.",
+          "misconception": "reverses the term for a non-dissolving substance"
         }
       ]
     },
@@ -127,38 +127,38 @@
       "options": [
         {
           "key": "A",
-          "text": "Solvent — the water in sea water",
-          "correct": true,
-          "explanation": "The water is the liquid doing the dissolving, which is the solvent's definition.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Solute — the water in sea water",
           "correct": false,
           "explanation": "The water does the dissolving; the salt, not the water, is the solute.",
           "misconception": "assigns the solvent's example to the solute"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Solution — the salt on its own",
           "correct": false,
           "explanation": "The solution is the whole mixture, salt and water together.",
           "misconception": "names only part of the mixture as the solution"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Saturated solution — fresh river water",
           "correct": false,
           "explanation": "The note's saturation example is sea water in the Dead Sea, water already holding its maximum salt.",
           "misconception": "treats any natural water as saturated"
+        },
+        {
+          "key": "D",
+          "text": "Solvent — the water in sea water",
+          "correct": true,
+          "explanation": "The water is the liquid doing the dissolving, which is the solvent's definition.",
+          "misconception": null
         }
       ]
     },
     {
       "id": "rn_HZM2WRjPPT8Srcxt::L1::Q5",
       "moduleId": "rn_HZM2WRjPPT8Srcxt::L1",
-      "stem": "Which statement about the four terms is true?",
+      "stem": "Which statement about the four dissolving terms — solute, solvent, solution, saturated — is true?",
       "misconceptionClass": "relational understanding of the term set",
       "options": [
         {
@@ -213,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "A solution.",
       "keywords": [
-        "solution"
+        "solution",
+        "dissolved",
+        "mixture"
       ],
       "options": []
     },
@@ -229,8 +231,6 @@
         "max",
         "holds",
         "hold",
-        "full",
-        "limit",
         "dissolved"
       ],
       "options": []
@@ -244,7 +244,8 @@
       "modelAnswer": "The tea is a saturated solution — it holds the maximum amount of dissolved solute the solvent can take.",
       "keywords": [
         "saturated",
-        "saturation"
+        "describing",
+        "solution"
       ],
       "options": []
     }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_BBGMYy3Yx9Nm4GV3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "62f0c7c8ca23f81f53951469ea314a5020003b6aa001d97f855bdc0d1e3d19f5",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "a7c93dcfe2eddaa650c843cded709170efff121049e899706c797ad85d3e3e01",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_BBGMYy3Yx9Nm4GV3",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "An ester and hydrogen",
+          "correct": false,
+          "explanation": "Ester-making needs an acid catalyst and an alcohol, not a carbonate.",
+          "misconception": "reaction crossed"
+        },
+        {
+          "key": "B",
           "text": "A salt, water and carbon dioxide",
           "correct": true,
           "explanation": "The carbonate supplies the carbon that leaves as the gas, and water forms alongside.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A salt and hydrogen",
           "correct": false,
           "explanation": "That pair is the metal pattern; carbonates never release hydrogen.",
           "misconception": "patterns crossed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A salt and oxygen",
           "correct": false,
           "explanation": "No oxygen gas is released in either pattern.",
           "misconception": "gas invented"
-        },
-        {
-          "key": "D",
-          "text": "An ester and hydrogen",
-          "correct": false,
-          "explanation": "Ester-making needs an acid catalyst and an alcohol, not a carbonate.",
-          "misconception": "reaction crossed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "In anoate",
-          "correct": true,
-          "explanation": "The oic acid ending converts to anoate when the acid becomes a salt.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "In ide",
-          "correct": false,
-          "explanation": "The ide ending belongs to simple salts such as sodium chloride.",
-          "misconception": "naming system crossed"
-        },
-        {
-          "key": "C",
           "text": "In oic acid",
           "correct": false,
           "explanation": "The oic acid ending marks the unreacted acid, not its salts.",
           "misconception": "acid kept in name"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "In yl",
           "correct": false,
           "explanation": "The yl ending belongs to the alcohol part of ester names.",
           "misconception": "ending borrowed"
+        },
+        {
+          "key": "C",
+          "text": "In anoate",
+          "correct": true,
+          "explanation": "The oic acid ending converts to anoate when the acid becomes a salt.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "In ide",
+          "correct": false,
+          "explanation": "The ide ending belongs to simple salts such as sodium chloride.",
+          "misconception": "naming system crossed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Magnesium ethanoate",
-          "correct": true,
-          "explanation": "The metal name fronts the anoate ending taken from ethanoic acid.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Magnesium ethanide",
           "correct": false,
           "explanation": "The ide ending is never used for these salts.",
           "misconception": "ending swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Magnesium methanoate",
           "correct": false,
           "explanation": "Methanoate salts trace back to methanoic acid, a one-carbon member.",
           "misconception": "acid swapped"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Magnesium oxide",
           "correct": false,
           "explanation": "The acid group survives inside the salt; only its hydrogen is replaced.",
           "misconception": "group destroyed"
+        },
+        {
+          "key": "D",
+          "text": "Magnesium ethanoate",
+          "correct": true,
+          "explanation": "The metal name fronts the anoate ending taken from ethanoic acid.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "A salt, water and carbon dioxide are produced.",
       "keywords": [
-        "dioxide"
+        "dioxide",
+        "carboxylic",
+        "carbonate"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "Every such salt name ends in anoate.",
       "keywords": [
-        "anoate"
+        "anoate",
+        "carboxylic",
+        "suffix"
       ],
       "options": []
     },
@@ -223,7 +227,9 @@
       "kind": "explain-why",
       "modelAnswer": "The gas is hydrogen — the metal displaces the acidic hydrogen from the COOH group of the acid.",
       "keywords": [
-        "hydrogen"
+        "hydrogen",
+        "displaces",
+        "magnesium"
       ],
       "options": []
     },
@@ -235,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "The salt is sodium methanoate, formed alongside water and carbon dioxide.",
       "keywords": [
-        "methanoate"
+        "methanoate",
+        "alongside",
+        "methanoic"
       ],
       "options": []
     },
@@ -247,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The second molecule acts as a catalyst",
+          "correct": false,
+          "explanation": "Neither acid molecule is recovered unchanged, so neither is a catalyst.",
+          "misconception": "catalyst misread"
+        },
+        {
+          "key": "B",
           "text": "The magnesium ion needs two ethanoate groups to balance its charge",
           "correct": true,
           "explanation": "Magnesium carries a 2+ charge, so two singly-charged ethanoate ions partner it.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One acid molecule is too heavy to react alone",
           "correct": false,
           "explanation": "Mass has nothing to do with it; charge balance drives the ratio.",
           "misconception": "mass blamed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Hydrogen only forms when acid is in excess",
           "correct": false,
           "explanation": "Hydrogen forms whatever the amount; the ratio is set by charges.",
           "misconception": "excess confused"
-        },
-        {
-          "key": "D",
-          "text": "The second molecule acts as a catalyst",
-          "correct": false,
-          "explanation": "Neither acid molecule is recovered unchanged, so neither is a catalyst.",
-          "misconception": "catalyst misread"
         }
       ]
     },
@@ -283,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Fizzing as carbon dioxide is released",
-          "correct": true,
-          "explanation": "The carbonate pattern always releases the gas, which shows as effervescence.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "A colour change from orange to green",
-          "correct": false,
-          "explanation": "That observation belongs to dichromate oxidations, not carbonates.",
-          "misconception": "observation crossed"
-        },
-        {
-          "key": "C",
           "text": "A smarting smell of the ester forming",
           "correct": false,
           "explanation": "No ester forms when a carbonate meets the acid.",
           "misconception": "reaction crossed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "A blue flame appearing above the mixture",
           "correct": false,
           "explanation": "Nothing burns in an acid-carbonate mixture.",
           "misconception": "combustion imagined"
+        },
+        {
+          "key": "C",
+          "text": "Fizzing as carbon dioxide is released",
+          "correct": true,
+          "explanation": "The carbonate pattern always releases the gas, which shows as effervescence.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A colour change from orange to green",
+          "correct": false,
+          "explanation": "That observation belongs to dichromate oxidations, not carbonates.",
+          "misconception": "observation crossed"
         }
       ]
     },
@@ -319,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "(CH3COO)2Mg",
-          "correct": true,
-          "explanation": "The bracket doubles the ethanoate group onto the single magnesium ion.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "CH3COOMg",
           "correct": false,
           "explanation": "Without the bracket the charges do not balance.",
           "misconception": "bracket dropped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "MgCOO",
           "correct": false,
           "explanation": "The methyl part of the group has been lost entirely.",
           "misconception": "group truncated"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Mg2CH3COO",
           "correct": false,
           "explanation": "The subscript sits on the wrong side; two groups partner one metal.",
           "misconception": "subscript misplaced"
+        },
+        {
+          "key": "D",
+          "text": "(CH3COO)2Mg",
+          "correct": true,
+          "explanation": "The bracket doubles the ethanoate group onto the single magnesium ion.",
+          "misconception": null
         }
       ]
     },
@@ -391,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "An unreacted piece of the carbonate",
+          "correct": false,
+          "explanation": "The carbonate has been broken apart; potassium now sits in the salt.",
+          "misconception": "reactant confused"
+        },
+        {
+          "key": "B",
           "text": "The potassium ion taking the place of the acidic hydrogen",
           "correct": true,
           "explanation": "Metals replace the acid hydrogen to build the salt, so K closes the chain.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A cooking abbreviation left in the formula",
           "correct": false,
           "explanation": "The letters are element symbols: carbon, oxygen, potassium.",
           "misconception": "symbol misread"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A carbon-oxygen-oxygen-potassium gas",
           "correct": false,
           "explanation": "The salt is a solid dissolved in water, not a gas.",
           "misconception": "phase misread"
-        },
-        {
-          "key": "D",
-          "text": "An unreacted piece of the carbonate",
-          "correct": false,
-          "explanation": "The carbonate has been broken apart; potassium now sits in the salt.",
-          "misconception": "reactant confused"
         }
       ]
     },
@@ -427,7 +435,9 @@
       "kind": "recall",
       "modelAnswer": "2CH3COOH + Mg gives (CH3COO)2Mg + H2.",
       "keywords": [
-        "mg"
+        "mg",
+        "magnesium",
+        "2ch3cooh"
       ],
       "options": []
     },
@@ -439,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "Potassium butanoate, water and carbon dioxide.",
       "keywords": [
-        "butanoate"
+        "butanoate",
+        "potassium",
+        "carbonate"
       ],
       "options": []
     },
@@ -451,7 +463,9 @@
       "kind": "explain-why",
       "modelAnswer": "Each ethanoate ion carries one negative charge, and magnesium forms 2+ ions, so two acid molecules are needed to satisfy the metal ion twice.",
       "keywords": [
-        "ion"
+        "ion",
+        "ethanoate",
+        "magnesium"
       ],
       "options": []
     },
@@ -463,7 +477,9 @@
       "kind": "application",
       "modelAnswer": "Each salt molecule is CH3CH2CH2COOK — potassium butanoate.",
       "keywords": [
-        "butanoate"
+        "butanoate",
+        "2ch3ch2ch2cooh",
+        "ch3ch2ch2cook"
       ],
       "options": []
     }

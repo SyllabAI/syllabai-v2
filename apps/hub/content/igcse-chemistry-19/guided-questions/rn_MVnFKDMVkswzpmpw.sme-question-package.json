@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_MVnFKDMVkswzpmpw",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a302cf1d44ddcb6e56ba6d63acc4d28075b815fd9548db73c04a75bbd6fc2b0b",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "e0453f5f9a2bafa20e5d7e85bb9d2b20beb45e1402c32b71d70cf0fb5a9c6587",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_MVnFKDMVkswzpmpw",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Nothing, hydrogen chloride is ionic",
+          "correct": false,
+          "explanation": "Hydrogen and chlorine are both non-metals, so they bond covalently by sharing.",
+          "misconception": "bond type misclassified"
+        },
+        {
+          "key": "B",
           "text": "One electron pair, one electron from the hydrogen and one from the chlorine",
           "correct": true,
           "explanation": "The single bond of HCl is one shared pair with one donor electron from each atom.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A pair of electrons both donated by the chlorine",
           "correct": false,
           "explanation": "Each atom contributes one electron to a normal covalent bond; neither atom donates the whole pair.",
           "misconception": "one-sided donation imagined"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "All seven of chlorine's outer electrons",
           "correct": false,
           "explanation": "Only one of chlorine's outer electrons enters the bond; the other six stay non-bonding.",
           "misconception": "full outer shell surrendered"
-        },
-        {
-          "key": "D",
-          "text": "Nothing, hydrogen chloride is ionic",
-          "correct": false,
-          "explanation": "Hydrogen and chlorine are both non-metals, so they bond covalently by sharing.",
-          "misconception": "bond type misclassified"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Four, because oxygen forms two covalent bonds and each bond carries one shared pair",
-          "correct": true,
-          "explanation": "Two shared pairs means four shared electrons in total across the double bond.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Two, one from each atom into a single pair",
-          "correct": false,
-          "explanation": "Two shared electrons would be one single bond; oxygen shares two pairs.",
-          "misconception": "single-pair count reused"
-        },
-        {
-          "key": "C",
           "text": "Sixteen, all of the electrons present",
           "correct": false,
           "explanation": "Only the four bonding electrons are shared; the remaining electrons stay non-bonding on their own atoms.",
           "misconception": "all electrons counted as shared"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Eight",
           "correct": false,
           "explanation": "Eight would be four pairs; the oxygen molecule carries exactly two shared pairs.",
           "misconception": "pair count doubled"
+        },
+        {
+          "key": "C",
+          "text": "Four, because oxygen forms two covalent bonds and each bond carries one shared pair",
+          "correct": true,
+          "explanation": "Two shared pairs means four shared electrons in total across the double bond.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Two, one from each atom into a single pair",
+          "correct": false,
+          "explanation": "Two shared electrons would be one single bond; oxygen shares two pairs.",
+          "misconception": "single-pair count reused"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Hydrogen, oxygen, nitrogen, the halogens and the hydrogen halides",
-          "correct": true,
-          "explanation": "The spec lists these diatomic families for dot-and-cross practice, alongside the named inorganic and organic molecules.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Only the halogens",
           "correct": false,
           "explanation": "The halogens are one family on the list; hydrogen, oxygen, nitrogen and the hydrogen halides are named too.",
           "misconception": "list shortened"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "All diatomic molecules in the Periodic Table",
           "correct": false,
           "explanation": "The requirement covers the named families, not every diatomic possibility.",
           "misconception": "scope widened"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Only hydrogen and oxygen",
           "correct": false,
           "explanation": "The full list runs from hydrogen through nitrogen, the halogens and the hydrogen halides.",
           "misconception": "examples mistaken for the list"
+        },
+        {
+          "key": "D",
+          "text": "Hydrogen, oxygen, nitrogen, the halogens and the hydrogen halides",
+          "correct": true,
+          "explanation": "The spec lists these diatomic families for dot-and-cross practice, alongside the named inorganic and organic molecules.",
+          "misconception": null
         }
       ]
     },
@@ -226,7 +226,6 @@
         "pair",
         "double",
         "three",
-        "3",
         "triple",
         "oxygen",
         "nitrogen",
@@ -243,11 +242,9 @@
       "modelAnswer": "Each shared pair in the drawing uses one electron from each atom, and keeping the donor symbols visible shows exactly which atom supplied each electron of the pair.",
       "keywords": [
         "one",
-        "1",
         "each",
         "atom",
         "electron",
-        "electrons",
         "pair",
         "shared",
         "donor",
@@ -267,7 +264,6 @@
       "keywords": [
         "single",
         "one",
-        "1",
         "pair",
         "shared",
         "two",
@@ -288,31 +284,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Two",
+          "correct": false,
+          "explanation": "Two bonds would leave one hydrogen unattached; the three hydrogens each need a bond.",
+          "misconception": "count misread from formula"
+        },
+        {
+          "key": "B",
           "text": "Three, one between the nitrogen and each hydrogen",
           "correct": true,
           "explanation": "Each N-H link is one shared pair, and the molecule carries three of them.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One",
           "correct": false,
           "explanation": "One bond would join nitrogen to a single hydrogen; the formula NH3 names three hydrogens.",
           "misconception": "formula read as one bond"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Four",
           "correct": false,
           "explanation": "Four bonds would suit methane's carbon; ammonia's nitrogen bonds to three hydrogens.",
           "misconception": "methane count transferred"
-        },
-        {
-          "key": "D",
-          "text": "Two",
-          "correct": false,
-          "explanation": "Two bonds would leave one hydrogen unattached; the three hydrogens each need a bond.",
-          "misconception": "count misread from formula"
         }
       ]
     },
@@ -324,31 +320,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Two double bonds, one between the carbon and each oxygen atom",
-          "correct": true,
-          "explanation": "Carbon shares two pairs with each oxygen, and the two oxygens are otherwise unconnected.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Two single bonds",
-          "correct": false,
-          "explanation": "Single bonds would leave carbon two pairs short of its four-bond pattern.",
-          "misconception": "bond order undercounted"
-        },
-        {
-          "key": "C",
           "text": "One double bond between the two oxygen atoms",
           "correct": false,
           "explanation": "The oxygens bond to the carbon, not to each other; carbon sits at the centre.",
           "misconception": "molecular skeleton misread"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "A triple bond and a single bond",
           "correct": false,
           "explanation": "The pattern at this level is two identical double bonds; mixed bond orders do not appear here.",
           "misconception": "bond orders mixed"
+        },
+        {
+          "key": "C",
+          "text": "Two double bonds, one between the carbon and each oxygen atom",
+          "correct": true,
+          "explanation": "Carbon shares two pairs with each oxygen, and the two oxygens are otherwise unconnected.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Two single bonds",
+          "correct": false,
+          "explanation": "Single bonds would leave carbon two pairs short of its four-bond pattern.",
+          "misconception": "bond order undercounted"
         }
       ]
     },
@@ -360,31 +356,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Methane, ethane, ethene, and organic molecules containing halogen atoms, up to two carbons",
-          "correct": true,
-          "explanation": "The spec caps the organic list at two carbon atoms and includes the halogen-substituted versions.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "All hydrocarbons",
           "correct": false,
           "explanation": "Longer chains sit beyond the stated cap of two carbon atoms.",
           "misconception": "scope unbounded"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Only methane",
           "correct": false,
           "explanation": "Methane is the smallest example; ethane, ethene and halogenated molecules are named too.",
           "misconception": "list collapsed to one example"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Benzene and other ring structures",
           "correct": false,
           "explanation": "Rings with more than two carbons fall outside the two-carbon cap.",
           "misconception": "wrong family chosen"
+        },
+        {
+          "key": "D",
+          "text": "Methane, ethane, ethene, and organic molecules containing halogen atoms, up to two carbons",
+          "correct": true,
+          "explanation": "The spec caps the organic list at two carbon atoms and includes the halogen-substituted versions.",
+          "misconception": null
         }
       ]
     },
@@ -432,31 +428,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Four pairs, eight electrons",
+          "correct": false,
+          "explanation": "Four pairs exceed any bond in this course; a double bond carries exactly two.",
+          "misconception": "count inflated"
+        },
+        {
+          "key": "B",
           "text": "Two pairs, four electrons, are shared between the two carbon atoms",
           "correct": true,
           "explanation": "A double bond is two shared pairs, so four electrons join the carbons.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One pair, two electrons",
           "correct": false,
           "explanation": "One pair makes a single bond, as in ethane; ethene's carbon link is double.",
           "misconception": "single-bond count reused"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Three pairs, six electrons",
           "correct": false,
           "explanation": "Three pairs would be a triple bond, which belongs to nitrogen among the named molecules.",
           "misconception": "bond order overshoot"
-        },
-        {
-          "key": "D",
-          "text": "Four pairs, eight electrons",
-          "correct": false,
-          "explanation": "Four pairs exceed any bond in this course; a double bond carries exactly two.",
-          "misconception": "count inflated"
         }
       ]
     },
@@ -469,7 +465,6 @@
       "modelAnswer": "Carbon dioxide shares two pairs with each oxygen atom, making two double bonds in the molecule.",
       "keywords": [
         "two",
-        "2",
         "pairs",
         "pair",
         "double",
@@ -477,8 +472,7 @@
         "bond",
         "oxygen",
         "carbon",
-        "dioxide",
-        "co2"
+        "dioxide"
       ],
       "options": []
     },
@@ -491,7 +485,6 @@
       "modelAnswer": "Methane has four single C-H bonds, and ethane adds a C-C single bond between its two carbon atoms.",
       "keywords": [
         "four",
-        "4",
         "single",
         "c-h",
         "ch",
@@ -499,7 +492,6 @@
         "bond",
         "ethane",
         "c-c",
-        "cc",
         "adds",
         "two",
         "carbon"
@@ -515,7 +507,6 @@
       "modelAnswer": "Ethene contains a C=C double bond: two shared pairs sit between its two carbon atoms, so the carbons are joined by two covalent bonds at once.",
       "keywords": [
         "c=c",
-        "cc",
         "double",
         "bond",
         "two",
@@ -540,13 +531,11 @@
       "keywords": [
         "up",
         "two",
-        "2",
         "carbon",
         "atoms",
         "halogen",
         "attached",
         "four",
-        "4",
         "single",
         "bonds",
         "bond",
