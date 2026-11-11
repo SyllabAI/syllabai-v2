@@ -51,6 +51,22 @@ const VideoEntry = z.object({
   identityMethod: z.string().nullish(),
 });
 
+/**
+ * P2F anchor granularity (docs/ANCHOR-GRANULARITY.md): a row may anchor at a
+ * coarser grain than a lesson — a spine TOPIC/SUBTOPIC code, the course
+ * itself (e.g. a paper-code-bound past-paper walkthrough), or (rarely) the
+ * subject. level:"lesson" rows are the classic P2B rows and omit the field
+ * entirely; anchor rows carry specs:[] and lessonRef:null — they are
+ * ZERO-WEIGHT enrichment and never count toward spec-point coverage
+ * (the accounting rule). Strings, not enums: an unknown level must not
+ * invalidate the whole file; the UI buckets the known levels and the
+ * builder already hard-fails unknown refs upstream.
+ */
+const Anchor = z.object({
+  level: z.string(),
+  ref: z.string(),
+});
+
 const MappingRow = z.object({
   video: z.string(),
   lessonRef: z.string().nullish(),
@@ -63,6 +79,10 @@ const MappingRow = z.object({
   reviewedUtc: z.string().nullish(),
   method: z.string().nullish(),
   boardMismatch: z.boolean().nullish(),
+  /** anchor-granularity extensions (absent on lesson rows) */
+  anchor: Anchor.nullish(),
+  kind: z.string().nullish(),
+  unitScope: z.string().nullish(),
 });
 
 const Coverage = z.object({
@@ -187,6 +207,63 @@ export const listVideoMapCourseSlugs = cache(async (): Promise<string[]> => {
     if (typeof slug === "string" && (await getVideoMap(slug))) out.push(slug);
   return out;
 });
+
+export type VideoMapAnchor = NonNullable<VideoMapRow["anchor"]>;
+
+/**
+ * A coarse-grained (non-lesson) anchor row — the P2F lane shapes. lesson
+ * rows never carry the field at the rest layer; a literal level:"lesson"
+ * row would also be excluded (defensive, unreachable from the builder).
+ */
+export function isAnchorRow(row: VideoMapRow): boolean {
+  return row.anchor != null && row.anchor.level !== "lesson";
+}
+
+export interface AnchorBuckets {
+  /** anchored to the course itself — paper-code-bound walkthroughs etc. */
+  course: VideoMapRow[];
+  /** anchored to a spine TOPIC or SUBTOPIC node */
+  topicArea: VideoMapRow[];
+  /** anchored to the SUBJECT node — board-agnostic technique, rare */
+  subject: VideoMapRow[];
+}
+
+/**
+ * Split anchor rows into the render buckets of the granularity spec §7.
+ * Rows with an unknown level land in no bucket — render what you can
+ * prove; the builder v2 hard-fails unknown levels upstream.
+ */
+export function anchorBuckets(map: VideoMapData): AnchorBuckets {
+  const buckets: AnchorBuckets = { course: [], topicArea: [], subject: [] };
+  for (const row of map.mappings) {
+    if (!row.anchor) continue;
+    if (row.anchor.level === "course") buckets.course.push(row);
+    else if (row.anchor.level === "topic" || row.anchor.level === "subtopic")
+      buckets.topicArea.push(row);
+    else if (row.anchor.level === "subject") buckets.subject.push(row);
+  }
+  return buckets;
+}
+
+const KIND_LABELS: Record<string, string> = {
+  "past-paper-walkthrough": "Past paper walkthrough",
+  "topic-revision": "Topic revision",
+  "exam-technique": "Exam technique",
+  teaching: "Teaching video",
+};
+
+/** kind slug → human chip label; unknown kinds pass through verbatim. */
+export function anchorKindLabel(kind: string | null | undefined): string | null {
+  if (!kind) return null;
+  return KIND_LABELS[kind] ?? kind;
+}
+
+/** "U5" → "Unit 5"; anything else verbatim. */
+export function formatUnitScope(scope: string | null | undefined): string | null {
+  if (!scope) return null;
+  const m = /^U(\d+)$/i.exec(scope.trim());
+  return m ? `Unit ${m[1]}` : scope.trim();
+}
 
 /** lessonUrl → watchUrl resolution (flags.videoMap.status law of record). */
 export function videoHref(
