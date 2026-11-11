@@ -1,0 +1,224 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-igcse-further-maths-additional-maths-25",
+ "qual": "IGCSE Additional Mathematics (CIE)",
+ "source": {
+  "provider": "cognito (Cognito Edu YouTube channel)",
+  "label": "cie-igcse-further-maths-additional-maths-25",
+  "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/announcement/non-teaching uploads excluded)",
+  "enumeratedUtc": "2026-11-10T03:03:19Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: cie-igcse-further-maths-additional-maths-25)",
+  "ruledUtc": "2026-11-11T14:41:20Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "Checked every mapping row of the 6-row draft against the cie-igcse-further-maths-additional-maths-25 spine, judging each of the 8 (video,spec) bindings independently. Rejected 5 spec-level bindings: both linear-inequality videos off 2.5.1/2.5.2 (spec 2.5 is quadratic inequalities; the example forms '–3 < x < 4' and 'x < 1 or x > 6' are solution-set shapes, not compound-linear topics) and the physics resultant-forces video off 13.3.2 (vector geometry ≠ force resultants). Kept the three rows whose titles name the spec's own body: sequence-type recognition for 12.3.1, nth-term-of-arithmetic as genuine partial for 12.4.1, and arc/sector naming 9.1.1's head clause.",
+  "rowsApproved": 3,
+  "rowsRejected": 5,
+  "rejects": [
+   {
+    "lessonRef": null,
+    "video": "u-YNzmlZWeg",
+    "spec": "2.5.1",
+    "reason": "'Solving Algebraic Inequalities with 1 Inequality Sign' is the GCSE linear-inequality lesson; spec 2.5 is 'Find the solution set for quadratic inequalities either graphically or algebraically' (2.5.1 '–3 < x < 4' is an example solution-set form). Same word 'inequalities', different topic (linear vs quadratic); the row's evidence even describes 'two inequality signs', mismatching this video. Keyword-adjacent; rejected at low."
+   },
+   {
+    "lessonRef": null,
+    "video": "u-YNzmlZWeg",
+    "spec": "2.5.2",
+    "reason": "Same video: 'x < 1 or x > 6' is the solution-set example shape of a quadratic inequality, not the topic of a single-sign linear-inequality lesson; quadratic-inequality work is not title-evidenced. Keyword-adjacent; rejected at low."
+   },
+   {
+    "lessonRef": null,
+    "video": "L_AfY1Bqosk",
+    "spec": "2.5.1",
+    "reason": "'Solving Algebraic Inequalities with 2 Inequality Signs' teaches compound linear inequalities (e.g. 1 < 2x+1 < 7); the resemblance to 2.5.1's '–3 < x < 4' example form is surface-only — the spec's distinctive content is quadratic inequalities solved graphically or algebraically. Keyword-adjacent; rejected at low."
+   },
+   {
+    "lessonRef": null,
+    "video": "L_AfY1Bqosk",
+    "spec": "2.5.2",
+    "reason": "Same video: compound-linear double inequalities are not the 'x < 1 or x > 6' quadratic solution-set topic of 2.5.2; no quadratic inequality work is title-evidenced. Keyword-adjacent; rejected at low."
+   },
+   {
+    "lessonRef": null,
+    "video": "Ry5-WEiTUs4",
+    "spec": "13.3.2",
+    "reason": "'GCSE Physics - Resolving Vectors & Scale Drawing | How to Find Resultant Forces' names force resultants and scale drawing; 13.3.2 is 'solving problems using vector geometry, with a diagram given in more complex cases' (equating like vectors, unknown scalars) — vector geometry is not named and the evidence itself concedes the video is physics-branded. Keyword-adjacent on 'vectors', bound to the wrong sub-clause of 13.3; rejected at low."
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "871OBfK5o2M",
+   "title": "GCSE Maths - Types of Number Sequences - Arithmetic vs Geometric (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=871OBfK5o2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 353,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RAjTpz3yQ3Q",
+   "title": "GCSE Maths -  How to Write Expressions for the nth term of Arithmetic Sequences (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=RAjTpz3yQ3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 375,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Wcv0f5PpTv0",
+   "title": "GCSE Maths - Area of a Sector and Length of an Arc of a Circle  (Circles Part 3) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Wcv0f5PpTv0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 339,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "u-YNzmlZWeg",
+   "title": "GCSE Maths - Solving Algebraic Inequalities with 1 Inequality Sign (Inequalities Part 2)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=u-YNzmlZWeg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L_AfY1Bqosk",
+   "title": "GCSE Maths - Solving Algebraic Inequalities with 2 Inequality Signs (Inequalities Part 3)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=L_AfY1Bqosk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 273,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ry5-WEiTUs4",
+   "title": "GCSE Physics - Resolving Vectors & Scale Drawing | How to Find Resultant Forces (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Ry5-WEiTUs4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
+   "durationS": 280,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "871OBfK5o2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names types of number sequences — arithmetic vs geometric (progression recognition and the difference between them)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "RAjTpz3yQ3Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "title names the nth term of arithmetic sequences (sum-of-terms formulas and geometric case not named)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "Wcv0f5PpTv0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title names area of a sector and length of an arc of a circle (radian measure not named)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-11T14:44:22Z"
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 77,
+  "specPointsMapped": 3,
+  "specPointsUnmapped": 74,
+  "videosTotal": 6,
+  "videosMapped": 3,
+  "videosUnmapped": 3,
+  "mappingRows": 3,
+  "byConfidence": {
+   "high": 0,
+   "medium": 1,
+   "low": 2
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-igcse-further-maths-additional-maths-25.json",
+   "sha256": "fcf41b8d2307c2e8c51ffdac1d864fd283d95c8c0b30dfcd2e95addfa1e4df67"
+  },
+  "draft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-further-maths-additional-maths-25/video-map.draft.external.json",
+   "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: cie-igcse-further-maths-additional-maths-25)",
+   "reviewAppliedUtc": "2026-11-11T14:41:20Z"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.047Z"
+}

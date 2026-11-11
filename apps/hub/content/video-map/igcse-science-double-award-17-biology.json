@@ -1,0 +1,429 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "igcse-science-double-award-17-biology",
+ "qual": "IGCSE",
+ "source": {
+  "provider": "inherited (multi (freesciencelessons, malmesbury-education, amoeba-sisters, cognito-ks3))",
+  "label": "igcse-science-double-award-17-biology",
+  "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of igcse-biology-19; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
+  "enumeratedUtc": "2026-10-31T19:19:49Z"
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P4 (inheritance lane)",
+  "ruledUtc": "2026-11-10T23:00:00Z",
+  "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+  "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+  "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+  "rowsApproved": 10,
+  "rowsRejected": 0,
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "inherited-external (from igcse-biology-19)",
+    "task": "T-VIDEOMAP-P4 (inheritance lane)",
+    "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-10T23:00:00Z",
+    "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
+    "rowsApproved": 10,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ],
+  "selfReviewNote": "Inherited rows derive deterministically from owner-approved parent rows; the containment map is committed and spot-checked (owner chat 2026-11-09 'approve and review yourself'). The parent lanes carry the title-only evidence rulings; below-threshold child specs stay honestly unmapped."
+ },
+ "videos": [
+  {
+   "id": "Lomr_t5Pdjs",
+   "title": "GCSE Biology Revision \"Inheritance of Sex\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Lomr_t5Pdjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE biology",
+   "durationS": 144,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "QekStThHD2M",
+   "title": "GCSE Biology Revision \"Cloning Plants\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=QekStThHD2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); cloning content generic",
+   "durationS": 175,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "nrbJl3R4YJU",
+   "title": "GCSE Biology Revision \"Modern Farming Methods\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nrbJl3R4YJU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel (Triple); farming methods generic",
+   "durationS": 264,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "1Dx7LDwINLU",
+   "title": "Biomolecules (Updated 2023)",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=1Dx7LDwINLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 469,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "ALFE2tNIY5c",
+   "title": "Dehydration Synthesis and Hydrolysis",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 368,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "QMBGMUgAqCs",
+   "title": "Angiosperm (Flowering Plants) Reproduction UPDATED",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=QMBGMUgAqCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 496,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "YbdkbCU20_M",
+   "title": "Fermentation",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=YbdkbCU20_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "us-intro",
+   "boardNote": "US-curriculum channel; NGSS vocabulary, concept animations",
+   "durationS": 514,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "UrTchvRUMW0",
+   "title": "KS3 Biology - Exercise, Smoking & Asthma",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=UrTchvRUMW0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel, KS3 tier — below IGCSE level",
+   "durationS": 300,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "als-gv_D7bc",
+   "title": "KS3 Biology - Human Reproductive Systems",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=als-gv_D7bc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel, KS3 tier — below IGCSE level",
+   "durationS": 318,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "BIf0sIKQm_E",
+   "title": "KS3 Biology - Fertilisation & Pregnancy",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=BIf0sIKQm_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ks3",
+   "boardNote": "Cognito's own channel, KS3 tier — below IGCSE level",
+   "durationS": 338,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "1Dx7LDwINLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Biomolecules' = elements/structure of carbohydrates, proteins, lipids (2.7); per-molecule element lists title-only; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ALFE2tNIY5c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B2.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Dehydration Synthesis and Hydrolysis' = large molecules built from smaller units (2.8); monomer-per-polymer naming title-only; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "UrTchvRUMW0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B2.49"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito's own channel, KS3 tier: title names Smoking = 2.49 topic, but video is below IGCSE level; lungs/circulatory clause detail unverified; only smoking candidate found (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "QMBGMUgAqCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Angiosperm (Flowering Plants) Reproduction' covers pollen tube, fertilisation, seed and fruit formation (3.4); clause order title-only; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "QekStThHD2M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "AQA 'Cloning Plants' includes tissue culture = micropropagation of 5.17B and commercial-quantity identical plants of 5.18B; explant/in-vitro detail title-only (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "als-gv_D7bc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B3.8"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito KS3 tier: title 'Human Reproductive Systems' = the structure/function of 3.8, but below IGCSE level; adaptation language unverified (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BIf0sIKQm_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B3.11",
+    "B3.12"
+   ],
+   "confidence": "low",
+   "evidence": "Cognito KS3 tier: title 'Fertilisation & Pregnancy' covers placenta nutrition (3.11) and amniotic protection (3.12) contextually, below IGCSE level; clause detail unverified (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Lomr_t5Pdjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B3.26",
+    "B3.27"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Inheritance of Sex' = the XX/XY sex-chromosome determination of 3.26 and the genetic-diagram offspring sex of 3.27; clause detail title-only (unverified) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nrbJl3R4YJU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B5.1",
+    "B5.2",
+    "B5.3",
+    "B5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "same title covers fertiliser use (5.3) and pest control incl. pesticides vs biological (5.4); pros/cons detail title-only (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "YbdkbCU20_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fermentation' = yeast anaerobic respiration incl. bread/food production (5.5); yoghurt is bacterial (separate spec 5.7) — not title-evidenced here; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 134,
+  "specPointsMapped": 15,
+  "specPointsUnmapped": 119,
+  "videosTotal": 10,
+  "videosMapped": 10,
+  "videosUnmapped": 0,
+  "mappingRows": 10,
+  "byConfidence": {
+   "high": 0,
+   "medium": 7,
+   "low": 3
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/igcse-science-double-award-17-biology.json",
+   "sha256": "887135bb114db8b9750611934034f2251bb00551dc0d519b95f329d2d950550a"
+  },
+  "inheritanceMap": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/_p4/inheritance-map.json",
+   "task": "T-VIDEOMAP-P4 (inheritance lane)",
+   "reviewAppliedUtc": "2026-11-10T23:00:00Z"
+  },
+  "parentDraft": {
+   "repo": "SyllabAI/syllabai-resources",
+   "course": "igcse-biology-19",
+   "paths": [
+    "Videos/drafts/igcse-biology-19/video-map.draft.external.json"
+   ],
+   "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  }
+ },
+ "generatedUtc": "2026-11-11T14:52:29.119Z"
+}
