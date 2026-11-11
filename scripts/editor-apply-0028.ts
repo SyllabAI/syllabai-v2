@@ -34,6 +34,13 @@
  *         application law (ADR §7) is ENFORCED by the grant set, not by
  *         hope: the app role can never UPDATE or DELETE a receipt.
  *     Idempotent re-grant by nature (GRANT is a no-op when present).
+ *     run-003 REINFORCEMENT (measured on the run-002 COW): this database
+ *     carries ALTER DEFAULT PRIVILEGES granting DML ON TABLES to the app
+ *     role (the NEON-DB-LOSS restore posture) — default privileges
+ *     materialize into a new table's ACL at CREATE time, so the driver
+ *     additionally REVOKEs every verb beyond the invariant set in the same
+ *     transaction and the wire proof NEGATIVELY proves the forbidden verbs
+ *     are denied (has_table_privilege).
  *   - post-verify AFTER the DDL: per-table invariant census (columns, PK,
  *     FK→users/proposals with ON DELETE cascade, indexes incl. the
  *     partial-open unique grant index, CHECK constraints, app-role DML
@@ -83,6 +90,17 @@ const MIGRATIONS = [
 		file: "packages/db/drizzle/0028_editor-planes.sql",
 		tables: ["editor_grants", "editor_edit_proposals", "editor_edit_receipts"],
 	},
+] as const;
+
+/** The full table-privilege verb universe (REVOKE candidates beyond an invariant set). */
+const ALL_TABLE_VERBS = [
+	"SELECT",
+	"INSERT",
+	"UPDATE",
+	"DELETE",
+	"TRUNCATE",
+	"REFERENCES",
+	"TRIGGER",
 ] as const;
 
 /** Per-table post-verify invariants (the committed migration file's census). */
@@ -274,6 +292,8 @@ try {
 
 	const rolePresent = await appRoleExists();
 	receipt.app_role_present = rolePresent;
+	receipt.environment_note =
+		"this database carries ALTER DEFAULT PRIVILEGES granting DML ON TABLES to the app role (the NEON-DB-LOSS restore posture, run-003-restore-method-r0.json) — the driver REVOKEs verbs beyond the invariant grant set in the apply transaction; the append-only receipts law is enforced by the final grant set and proven by the negative has_table_privilege wire proof";
 
 	// ── per-file decision: apply | already_applied | fail-closed partial ─────
 	const plan: Array<{ id: string; decision: string; existing: string[]; missing: string[] }> = [];
@@ -315,6 +335,27 @@ try {
 				for (const t of f.tables) {
 					const verbs = INVARIANTS[t].verbs.join(", ");
 					await tx.unsafe(`GRANT ${verbs} ON TABLE public."${t.replace(/"/g, '""')}" TO ${APP_ROLE}`);
+					// THE APPEND-ONLY REINFORCEMENT (run-003, measured not guessed): this
+					// database carries ALTER DEFAULT PRIVILEGES granting
+					// SELECT,INSERT,UPDATE,DELETE ON TABLES to the app role (the
+					// NEON-DB-LOSS restore posture, disclosed in
+					// .syllabai/receipts/NEON-DB-LOSS/run-003-restore-method-r0.json —
+					// "full DML on all tables + sequences + ALTER DEFAULT PRIVILEGES").
+					// Default privileges materialize INTO the new table's ACL at CREATE
+					// time, so a grants-only enforcement of the receipts append-only law
+					// is DEFEATED before the first GRANT runs (measured on the run-002
+					// COW, workflow run 42965315892: the fresh editor_edit_receipts held
+					// UPDATE/DELETE the driver never granted). REVOKE every verb beyond
+					// the invariant set, per table, in the SAME transaction, so the final
+					// grant set IS the law regardless of the default ACL.
+					const extraVerbs = ALL_TABLE_VERBS.filter(
+						(v) => !INVARIANTS[t].verbs.includes(v as never),
+					);
+					if (extraVerbs.length > 0) {
+						await tx.unsafe(
+							`REVOKE ${extraVerbs.join(", ")} ON TABLE public."${t.replace(/"/g, '""')}" FROM ${APP_ROLE}`,
+						);
+					}
 				}
 			}
 		});
@@ -352,6 +393,27 @@ try {
 			throw new Error(`app-role DML wire proof fail-closed: ${denied.length} denial(s) — first: ${denied[0]}`);
 		}
 		receipt.app_role_privilege_proof = `grants verified via has_table_privilege (no impersonation): editor_grants/editor_edit_proposals carry 4 DML verbs; editor_edit_receipts carries SELECT,INSERT ONLY (the append-only law)`;
+
+		// ── the append-only NEGATIVE wire proof (run-003): has_table_privilege
+		// reads the ACLs the planner consults (incl. anything default
+		// privileges materialized), so proving the FORBIDDEN verbs are DENIED
+		// is the honest end-to-end receipt of the append-only law. ────────────
+		const violated: string[] = [];
+		for (const t of files.flatMap((f) => f.tables)) {
+			for (const p of ALL_TABLE_VERBS) {
+				if (INVARIANTS[t].verbs.includes(p)) continue;
+				const holds = (await sql`SELECT has_table_privilege(${APP_ROLE}, ${`public.${t}`}, ${p}) AS ok`)[0]
+					?.ok as boolean;
+				if (holds) violated.push(`${APP_ROLE} still holds ${p} on public.${t}`);
+			}
+		}
+		if (violated.length > 0) {
+			receipt.app_role_append_only_proof = { violated };
+			throw new Error(
+				`append-only wire proof fail-closed: ${violated.length} violation(s) — first: ${violated[0]}`,
+			);
+		}
+		receipt.app_role_append_only_proof = `verified via has_table_privilege (no impersonation): the app role holds NO verb beyond the invariant grant set on any editor table (editor_edit_receipts: no UPDATE/DELETE — the append-only receipts law holds under the production default-privileges posture)`;
 	}
 
 	receipt.rollback = "DROP TABLE IF EXISTS editor_edit_receipts, editor_edit_proposals, editor_grants CASCADE; REVOKE the granted verbs FROM the app role (pure additive migration — no existing table or column touched)";

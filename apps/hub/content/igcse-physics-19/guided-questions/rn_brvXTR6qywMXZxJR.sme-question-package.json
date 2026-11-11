@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_brvXTR6qywMXZxJR",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "bbe9e3bac5777a89beec3d5c02b2b5eeb419fafdb62f3f9ab0910dbe32395885",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_brvXTR6qywMXZxJR",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q1",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "Which stars are the hottest?",
+      "misconceptionClass": "colour temperature",
+      "options": [
+        {
+          "key": "A",
+          "text": "blue stars",
+          "correct": true,
+          "explanation": "Blue signals the highest surface temperatures.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "red stars",
+          "correct": false,
+          "explanation": "Red is the coolest class.",
+          "misconception": "colour inversion"
+        },
+        {
+          "key": "C",
+          "text": "yellow stars like the Sun",
+          "correct": false,
+          "explanation": "Yellow sits between the extremes.",
+          "misconception": "middle error"
+        },
+        {
+          "key": "D",
+          "text": "white stars",
+          "correct": false,
+          "explanation": "White is hot but blue is hotter.",
+          "misconception": "ordering error"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q2",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "A red star's surface temperature is roughly…",
+      "misconceptionClass": "temperature values",
+      "options": [
+        {
+          "key": "A",
+          "text": "3 000 000 K",
+          "correct": false,
+          "explanation": "A thousand times too hot.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "B",
+          "text": "3000 K",
+          "correct": true,
+          "explanation": "Red stars sit near 3000 K.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "30 000 K",
+          "correct": false,
+          "explanation": "That is the blue-end value.",
+          "misconception": "value swap"
+        },
+        {
+          "key": "D",
+          "text": "300 K",
+          "correct": false,
+          "explanation": "Ten times too cool.",
+          "misconception": "scale error"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q3",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "The everyday intuition that red means hot is, for stars…",
+      "misconceptionClass": "colour inversion",
+      "options": [
+        {
+          "key": "A",
+          "text": "irrelevant, since colour shows size",
+          "correct": false,
+          "explanation": "Colour tracks temperature.",
+          "misconception": "category error"
+        },
+        {
+          "key": "B",
+          "text": "true only for white dwarfs",
+          "correct": false,
+          "explanation": "The inversion applies across star classes.",
+          "misconception": "scope error"
+        },
+        {
+          "key": "C",
+          "text": "backwards — red stars are the coolest",
+          "correct": true,
+          "explanation": "Star colours invert the hot-tap intuition.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "correct — red stars are hottest",
+          "correct": false,
+          "explanation": "Blue is the hot end for stars.",
+          "misconception": "colour inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q4",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "When a star expands into a red giant it becomes redder because it…",
+      "misconceptionClass": "expansion cooling",
+      "options": [
+        {
+          "key": "A",
+          "text": "heats up as it contracts",
+          "correct": false,
+          "explanation": "Expansion is the opposite of contraction.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "B",
+          "text": "gains new red fuel",
+          "correct": false,
+          "explanation": "Colour is physics, not fuel chemistry.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "moves closer to us",
+          "correct": false,
+          "explanation": "Distance does not change colour class.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "D",
+          "text": "cools as it expands",
+          "correct": true,
+          "explanation": "Expansion costs temperature, and cooler means redder.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q5",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "A white dwarf is white because it…",
+      "misconceptionClass": "contraction heating",
+      "options": [
+        {
+          "key": "A",
+          "text": "contracts and heats up, shifting its colour whiter",
+          "correct": true,
+          "explanation": "Shrinking concentrates energy and raises temperature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "has expanded and cooled",
+          "correct": false,
+          "explanation": "That describes the red giant route.",
+          "misconception": "stage swap"
+        },
+        {
+          "key": "C",
+          "text": "is covered in white gas",
+          "correct": false,
+          "explanation": "Colour comes from temperature, not coating.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "D",
+          "text": "reflects light from nearby stars",
+          "correct": false,
+          "explanation": "Stars emit their own light.",
+          "misconception": "emission error"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q6",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "State how stars can be classified.",
+      "misconceptionClass": "classification recall",
+      "kind": "recall",
+      "modelAnswer": "Astronomers classify stars by the colour of their light.",
+      "keywords": [
+        "astronomers",
+        "classify",
+        "colour",
+        "light"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q7",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "State which colour star is the coolest and which is the hottest.",
+      "misconceptionClass": "colour temperature",
+      "kind": "recall",
+      "modelAnswer": "Red stars are the coolest and blue stars the hottest.",
+      "keywords": [
+        "red",
+        "coolest",
+        "blue",
+        "hottest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q8",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "Explain why a star's colour changes as it expands or contracts.",
+      "misconceptionClass": "expansion cooling",
+      "kind": "explain-why",
+      "modelAnswer": "A star's colour is set by its surface temperature; astronomical objects shrink-and-warm while swell-and-cool, so expansion reddens the star while contraction whitens it.",
+      "keywords": [
+        "colour",
+        "temperature",
+        "expand",
+        "contract"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L1::Q9",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L1",
+      "stem": "Two stars are observed: one red, one blue. Rank their surface temperatures and justify with the corpus values.",
+      "misconceptionClass": "colour temperature",
+      "kind": "application",
+      "modelAnswer": "The blue star is hotter: red sits near 3000 K while blue reaches about 30 000 K, ten times hotter.",
+      "keywords": [
+        "blue",
+        "hotter",
+        "red",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q1",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "Warm objects primarily emit…",
+      "misconceptionClass": "emission basics",
+      "options": [
+        {
+          "key": "A",
+          "text": "nothing until they are red hot",
+          "correct": false,
+          "explanation": "All warm objects radiate something.",
+          "misconception": "absolutism error"
+        },
+        {
+          "key": "B",
+          "text": "infrared radiation",
+          "correct": true,
+          "explanation": "Warm bodies radiate infrared; hotter ones add visible light.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "gamma rays",
+          "correct": false,
+          "explanation": "Gamma emission needs nuclear-scale energies.",
+          "misconception": "spectrum error"
+        },
+        {
+          "key": "D",
+          "text": "radio waves only",
+          "correct": false,
+          "explanation": "Radio is the low-energy end, not the warm-body band.",
+          "misconception": "spectrum error"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q2",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "As a red giant forms, the star's surface…",
+      "misconceptionClass": "red giant colour",
+      "options": [
+        {
+          "key": "A",
+          "text": "stays at the same temperature",
+          "correct": false,
+          "explanation": "The surface temperature drops.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "B",
+          "text": "turns blue from the pressure",
+          "correct": false,
+          "explanation": "Blue is the hot signature.",
+          "misconception": "colour inversion"
+        },
+        {
+          "key": "C",
+          "text": "expands and cools, so the star reddens",
+          "correct": true,
+          "explanation": "Bigger and cooler equals redder.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "contracts and heats, so it whitens",
+          "correct": false,
+          "explanation": "That is the white dwarf transition.",
+          "misconception": "stage swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q3",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "The colour a star emits depends on…",
+      "misconceptionClass": "emission basics",
+      "options": [
+        {
+          "key": "A",
+          "text": "its distance from Earth",
+          "correct": false,
+          "explanation": "Distance changes brightness, not emitted colour.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "B",
+          "text": "its chemical paint",
+          "correct": false,
+          "explanation": "Stars are not painted.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "the size of its planets",
+          "correct": false,
+          "explanation": "Planets are irrelevant here.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "D",
+          "text": "how hot the star is",
+          "correct": true,
+          "explanation": "Temperature decides the emitted colour.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q4",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "A white dwarf whitens because it…",
+      "misconceptionClass": "white dwarf colour",
+      "options": [
+        {
+          "key": "A",
+          "text": "contracts and heats up",
+          "correct": true,
+          "explanation": "Compression drives the temperature and the colour whiter.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "expands and cools down",
+          "correct": false,
+          "explanation": "That reddens and dims.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "C",
+          "text": "stops emitting entirely",
+          "correct": false,
+          "explanation": "It still emits, just faintly.",
+          "misconception": "absolutism error"
+        },
+        {
+          "key": "D",
+          "text": "absorbs blue light from space",
+          "correct": false,
+          "explanation": "Its colour is self-emitted.",
+          "misconception": "emission error"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q5",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "Which sequence of colour matches cooling?",
+      "misconceptionClass": "colour ordering",
+      "options": [
+        {
+          "key": "A",
+          "text": "yellow → blue → red",
+          "correct": false,
+          "explanation": "Blue belongs at the hot end.",
+          "misconception": "ordering error"
+        },
+        {
+          "key": "B",
+          "text": "blue → white → yellow → red",
+          "correct": true,
+          "explanation": "From hottest to coolest the colours slide towards red.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "red → white → blue",
+          "correct": false,
+          "explanation": "That runs cool to hot.",
+          "misconception": "ordering error"
+        },
+        {
+          "key": "D",
+          "text": "blue → red → white",
+          "correct": false,
+          "explanation": "White sits between blue and red.",
+          "misconception": "ordering error"
+        }
+      ]
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q6",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "State what extremely hot objects emit that warm objects do not.",
+      "misconceptionClass": "emission basics",
+      "kind": "recall",
+      "modelAnswer": "Infrared comes from warm bodies; visible light joins in once a body is extremely hot.",
+      "keywords": [
+        "infrared",
+        "visible",
+        "light",
+        "warm"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q7",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "State the colour change when a star becomes a white dwarf.",
+      "misconceptionClass": "white dwarf colour",
+      "kind": "recall",
+      "modelAnswer": "The star contracts, heats up and becomes whiter.",
+      "keywords": [
+        "star",
+        "contracts",
+        "heats",
+        "whiter"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q8",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "Explain why the red giant stage makes a star look redder than before.",
+      "misconceptionClass": "red giant colour",
+      "kind": "explain-why",
+      "modelAnswer": "The star's outer layers expand, and expanding astronomical objects cool; the lower surface temperature shifts the emitted colour towards the red end of the spectrum.",
+      "keywords": [
+        "expand",
+        "cool",
+        "temperature",
+        "red"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_brvXTR6qywMXZxJR::L2::Q9",
+      "moduleId": "rn_brvXTR6qywMXZxJR::L2",
+      "stem": "A star is seen to redden over millions of years while growing larger. State what is happening to its surface temperature.",
+      "misconceptionClass": "red giant colour",
+      "kind": "application",
+      "modelAnswer": "The star is expanding and cooling: its surface temperature is falling, which is why the colour reddens.",
+      "keywords": [
+        "star",
+        "expanding",
+        "cooling",
+        "temperature"
+      ],
+      "options": []
+    }
+  ]
+}

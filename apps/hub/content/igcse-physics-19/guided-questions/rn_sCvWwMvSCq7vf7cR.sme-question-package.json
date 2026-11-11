@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sCvWwMvSCq7vf7cR",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "fca59e5d4f27b9be914c74c90f154e8deedf9d0ccecd4481c74699a06420f290",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_sCvWwMvSCq7vf7cR",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q1",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "On the HR diagram, surface temperature is plotted…",
+      "misconceptionClass": "axis direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "backwards, from hottest on the left to coolest on the right",
+          "correct": true,
+          "explanation": "The reversed x-axis is the diagram's famous quirk.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "normally, hottest on the right",
+          "correct": false,
+          "explanation": "The temperature axis runs backwards.",
+          "misconception": "axis inversion"
+        },
+        {
+          "key": "C",
+          "text": "not at all",
+          "correct": false,
+          "explanation": "Temperature is the x-axis.",
+          "misconception": "axis omission"
+        },
+        {
+          "key": "D",
+          "text": "as a colour bar only",
+          "correct": false,
+          "explanation": "Colour may decorate the axis, but temperature is plotted.",
+          "misconception": "axis error"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q2",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "The main sequence appears as…",
+      "misconceptionClass": "main sequence band",
+      "options": [
+        {
+          "key": "A",
+          "text": "a single point",
+          "correct": false,
+          "explanation": "It is a band of many stars.",
+          "misconception": "shape error"
+        },
+        {
+          "key": "B",
+          "text": "a band running from top left to bottom right where most stars lie",
+          "correct": true,
+          "explanation": "The diagonal band holds the majority of stars.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a cluster in the top right",
+          "correct": false,
+          "explanation": "Top right is the supergiant region.",
+          "misconception": "region swap"
+        },
+        {
+          "key": "D",
+          "text": "a strip along the very bottom",
+          "correct": false,
+          "explanation": "The bottom strip is white dwarfs' neighbourhood.",
+          "misconception": "region swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q3",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "Where do white dwarfs sit on the HR diagram?",
+      "misconceptionClass": "white dwarf region",
+      "options": [
+        {
+          "key": "A",
+          "text": "at the extreme top left",
+          "correct": false,
+          "explanation": "Top left holds the brightest hot main sequence stars.",
+          "misconception": "region swap"
+        },
+        {
+          "key": "B",
+          "text": "in the centre only",
+          "correct": false,
+          "explanation": "The centre belongs to the main sequence band.",
+          "misconception": "region error"
+        },
+        {
+          "key": "C",
+          "text": "below the main sequence, slightly to the left",
+          "correct": true,
+          "explanation": "Hot but dim — low luminosity, leftward temperature.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "above the main sequence on the right",
+          "correct": false,
+          "explanation": "That is the red giants' region.",
+          "misconception": "region swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q4",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "Red supergiants are found…",
+      "misconceptionClass": "supergiant region",
+      "options": [
+        {
+          "key": "A",
+          "text": "in the bottom left corner",
+          "correct": false,
+          "explanation": "Bottom left would be hot and dim — white dwarf territory.",
+          "misconception": "region swap"
+        },
+        {
+          "key": "B",
+          "text": "on the main sequence band only",
+          "correct": false,
+          "explanation": "They sit above the band.",
+          "misconception": "region error"
+        },
+        {
+          "key": "C",
+          "text": "below the main sequence",
+          "correct": false,
+          "explanation": "Nothing sits below but white dwarfs.",
+          "misconception": "region error"
+        },
+        {
+          "key": "D",
+          "text": "directly above the red giants, in the cool bright corner",
+          "correct": true,
+          "explanation": "Cool (right) and bright (top) is their home.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q5",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "Which stars are the coolest yet brightest?",
+      "misconceptionClass": "corner identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "red supergiants",
+          "correct": true,
+          "explanation": "Cool (red) and luminous (giant size) — top right.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "white dwarfs",
+          "correct": false,
+          "explanation": "Hot but dim.",
+          "misconception": "corner swap"
+        },
+        {
+          "key": "C",
+          "text": "small main sequence stars",
+          "correct": false,
+          "explanation": "Cool and dim — red dwarfs.",
+          "misconception": "corner swap"
+        },
+        {
+          "key": "D",
+          "text": "blue giants on the main sequence",
+          "correct": false,
+          "explanation": "Hot and bright, not cool.",
+          "misconception": "corner swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q6",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "State the two quantities an HR diagram plots.",
+      "misconceptionClass": "axes recall",
+      "kind": "recall",
+      "modelAnswer": "Luminosity on the y-axis and surface temperature on the x-axis.",
+      "keywords": [
+        "luminosity",
+        "temperature",
+        "axis",
+        "plots"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q7",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "State where most stars are found on the HR diagram.",
+      "misconceptionClass": "main sequence band",
+      "kind": "recall",
+      "modelAnswer": "Most stars lie on the main sequence, the band from top left to bottom right.",
+      "keywords": [
+        "most",
+        "stars",
+        "main",
+        "sequence"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q8",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "Explain why the main sequence band runs from top left to bottom right.",
+      "misconceptionClass": "main sequence band",
+      "kind": "explain-why",
+      "modelAnswer": "Main sequence stars trade temperature against luminosity: the hottest ones are also the brightest, so they sit top-left, while cooler, dimmer ones extend the band down to the bottom right.",
+      "keywords": [
+        "hottest",
+        "brightest",
+        "cooler",
+        "band"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L1::Q9",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L1",
+      "stem": "A star is plotted with temperature 20,000 K and luminosity 10,000 times the Sun's. Locate its region.",
+      "misconceptionClass": "corner identification",
+      "kind": "application",
+      "modelAnswer": "20,000 K sits far left (hot) and a luminosity of 10⁴ sits high up (bright), so the star lands on the upper main sequence among the large hot stars.",
+      "keywords": [
+        "temperature",
+        "luminosity",
+        "main",
+        "sequence"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q1",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "A star with luminosity 100 times the Sun's is plotted at…",
+      "misconceptionClass": "solar units",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.01",
+          "correct": false,
+          "explanation": "That is a hundredth, the wrong direction.",
+          "misconception": "direction error"
+        },
+        {
+          "key": "B",
+          "text": "100 on the luminosity axis",
+          "correct": true,
+          "explanation": "Solar units scale directly from the Sun's value of 1.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "1",
+          "correct": false,
+          "explanation": "That is the Sun itself.",
+          "misconception": "value error"
+        },
+        {
+          "key": "D",
+          "text": "10⁴",
+          "correct": false,
+          "explanation": "That is 10 000 times, not 100 times.",
+          "misconception": "power error"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q2",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "The Sun's own luminosity on the HR diagram is…",
+      "misconceptionClass": "solar units",
+      "options": [
+        {
+          "key": "A",
+          "text": "10⁴",
+          "correct": false,
+          "explanation": "That is a far brighter star.",
+          "misconception": "value error"
+        },
+        {
+          "key": "B",
+          "text": "undefined",
+          "correct": false,
+          "explanation": "The scale is defined by the Sun.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "1",
+          "correct": true,
+          "explanation": "Solar units take the Sun as the unit.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "0",
+          "correct": false,
+          "explanation": "The Sun shines; its value is not zero.",
+          "misconception": "value error"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q3",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "To plot a star at 20 000 K, you locate that temperature…",
+      "misconceptionClass": "axis direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "at the extreme right",
+          "correct": false,
+          "explanation": "The right end is coolest.",
+          "misconception": "axis inversion"
+        },
+        {
+          "key": "B",
+          "text": "nowhere, as it exceeds the axis",
+          "correct": false,
+          "explanation": "20 000 K lies within the plotted range.",
+          "misconception": "range error"
+        },
+        {
+          "key": "C",
+          "text": "halfway only if the star is red",
+          "correct": false,
+          "explanation": "Colour does not move the position.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "D",
+          "text": "towards the left side of the reversed temperature axis",
+          "correct": true,
+          "explanation": "Hotter sits further left.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q4",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "Star X has temperature 20 000 K and luminosity 10⁴ solar units. Its plotted point lies…",
+      "misconceptionClass": "plotting practice",
+      "options": [
+        {
+          "key": "A",
+          "text": "top left, among the hottest brightest main sequence stars",
+          "correct": true,
+          "explanation": "Hot (left) and bright (top) puts X in the upper main sequence.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "bottom right with the red dwarfs",
+          "correct": false,
+          "explanation": "That corner is cool and dim.",
+          "misconception": "region swap"
+        },
+        {
+          "key": "C",
+          "text": "top right with the supergiants",
+          "correct": false,
+          "explanation": "Top right is the cool bright region.",
+          "misconception": "region swap"
+        },
+        {
+          "key": "D",
+          "text": "bottom left with the white dwarfs",
+          "correct": false,
+          "explanation": "X is far too luminous for that region.",
+          "misconception": "region swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q5",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "A star shines 10 000 times brighter than the Sun. Its luminosity coordinate is…",
+      "misconceptionClass": "solar units",
+      "options": [
+        {
+          "key": "A",
+          "text": "divided by the Sun's radius",
+          "correct": false,
+          "explanation": "No radius enters this plot.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "converted to solar units: 10 000 × 1 = 10⁴",
+          "correct": true,
+          "explanation": "Solar units scale straight off the Sun's value of 1.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "left as a sentence in the margin",
+          "correct": false,
+          "explanation": "The axis needs a number.",
+          "misconception": "method error"
+        },
+        {
+          "key": "D",
+          "text": "plotted at 10 000 kelvin",
+          "correct": false,
+          "explanation": "Kelvin is the temperature axis, not luminosity.",
+          "misconception": "axis mix-up"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q6",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "State the luminosity value used for the Sun on the HR diagram.",
+      "misconceptionClass": "solar units",
+      "kind": "recall",
+      "modelAnswer": "The Sun's luminosity is 1 in solar units.",
+      "keywords": [
+        "sun",
+        "luminosity",
+        "solar",
+        "units"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q7",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "State the luminosity coordinate of a star 10 000 times the Sun's.",
+      "misconceptionClass": "solar units",
+      "kind": "recall",
+      "modelAnswer": "10 000 × 1 = 10 000, plotted as 10⁴.",
+      "keywords": [
+        "luminosity",
+        "solar",
+        "units",
+        "plotted"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q8",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "Explain how the reversed temperature axis changes where hot stars are plotted.",
+      "misconceptionClass": "axis direction",
+      "kind": "explain-why",
+      "modelAnswer": "Because temperature runs backwards, the hottest stars land on the left of the diagram, so a hot bright star such as one at 20 000 K plots towards the top left, not the top right.",
+      "keywords": [
+        "temperature",
+        "reversed",
+        "hot",
+        "left"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCvWwMvSCq7vf7cR::L2::Q9",
+      "moduleId": "rn_sCvWwMvSCq7vf7cR::L2",
+      "stem": "Plot Star X: surface temperature 20 000 K, luminosity 10 000 times the Sun. Give the coordinates.",
+      "misconceptionClass": "plotting practice",
+      "kind": "application",
+      "modelAnswer": "Temperature coordinate 20 000 K on the reversed axis; luminosity coordinate 10⁴ solar units (10 000 × 1); mark and label the point.",
+      "keywords": [
+        "temperature",
+        "luminosity",
+        "plot",
+        "solar"
+      ],
+      "options": []
+    }
+  ]
+}

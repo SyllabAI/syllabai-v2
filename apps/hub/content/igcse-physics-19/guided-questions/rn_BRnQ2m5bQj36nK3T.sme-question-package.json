@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_BRnQ2m5bQj36nK3T",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "7caa3175b2e85c08c9e7a1b74610a3d7682519fc718fc74a14ec29b8ac4e998a",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_BRnQ2m5bQj36nK3T",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q1",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "The universe is defined as…",
+      "misconceptionClass": "universe definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "a large collection of billions of galaxies",
+          "correct": true,
+          "explanation": "Galaxies are the building blocks of the universe.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "a large collection of billions of stars",
+          "correct": false,
+          "explanation": "That defines a galaxy, one level down.",
+          "misconception": "level swap"
+        },
+        {
+          "key": "C",
+          "text": "the planets orbiting the Sun",
+          "correct": false,
+          "explanation": "That describes a solar system, two levels down.",
+          "misconception": "level swap"
+        },
+        {
+          "key": "D",
+          "text": "a single large star",
+          "correct": false,
+          "explanation": "A star is far smaller than any galaxy.",
+          "misconception": "scale error"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q2",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "A galaxy is defined as…",
+      "misconceptionClass": "galaxy definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "the space between the stars",
+          "correct": false,
+          "explanation": "Galaxies are star collections, not the gaps.",
+          "misconception": "definition error"
+        },
+        {
+          "key": "B",
+          "text": "a large collection of billions of stars",
+          "correct": true,
+          "explanation": "Billions of stars bound together form a galaxy.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a large collection of billions of galaxies",
+          "correct": false,
+          "explanation": "That is the universe.",
+          "misconception": "level swap"
+        },
+        {
+          "key": "D",
+          "text": "one star and its planets",
+          "correct": false,
+          "explanation": "That is a planetary system.",
+          "misconception": "level swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q3",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "Rank star, galaxy and universe — which ordering of scale runs smallest to largest?",
+      "misconceptionClass": "hierarchy order",
+      "options": [
+        {
+          "key": "A",
+          "text": "universe → galaxy → star",
+          "correct": false,
+          "explanation": "That is largest to smallest.",
+          "misconception": "order error"
+        },
+        {
+          "key": "B",
+          "text": "star → universe → galaxy",
+          "correct": false,
+          "explanation": "The universe is the largest level, not the middle.",
+          "misconception": "order error"
+        },
+        {
+          "key": "C",
+          "text": "star → galaxy → universe",
+          "correct": true,
+          "explanation": "Stars collect into galaxies; galaxies collect into the universe.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "galaxy → star → universe",
+          "correct": false,
+          "explanation": "Stars are smaller than galaxies.",
+          "misconception": "order error"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q4",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "Stars are best described as…",
+      "misconceptionClass": "star definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "objects that orbit planets",
+          "correct": false,
+          "explanation": "Moons orbit planets; stars anchor systems.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "B",
+          "text": "collections of galaxies",
+          "correct": false,
+          "explanation": "Stars sit inside galaxies, not the reverse.",
+          "misconception": "level swap"
+        },
+        {
+          "key": "C",
+          "text": "objects made of rock and ice",
+          "correct": false,
+          "explanation": "That describes comets and asteroids.",
+          "misconception": "object mix-up"
+        },
+        {
+          "key": "D",
+          "text": "huge glowing spheres of gas, like the Sun",
+          "correct": true,
+          "explanation": "The Sun is a typical star.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q5",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "The universe is also the name for…",
+      "misconceptionClass": "universe definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "the entirety of space",
+          "correct": true,
+          "explanation": "Beyond the object count, 'universe' names all of space.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "only our galaxy",
+          "correct": false,
+          "explanation": "Our galaxy is one of billions.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "C",
+          "text": "the Earth's atmosphere",
+          "correct": false,
+          "explanation": "The atmosphere is a thin shell around one planet.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "D",
+          "text": "the Solar System alone",
+          "correct": false,
+          "explanation": "The Solar System is a single system inside one galaxy.",
+          "misconception": "scale error"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q6",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "Define the universe.",
+      "misconceptionClass": "universe definition",
+      "kind": "recall",
+      "modelAnswer": "Billions of galaxies, gathered together, make up the universe; the word also names the entirety of space.",
+      "keywords": [
+        "universe",
+        "billions",
+        "galaxies",
+        "space"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q7",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "Define a galaxy.",
+      "misconceptionClass": "galaxy definition",
+      "kind": "recall",
+      "modelAnswer": "A galaxy gathers billions of stars into one vast assembly.",
+      "keywords": [
+        "galaxy",
+        "gathers",
+        "billions",
+        "stars"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q8",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "Explain why a galaxy is not the same thing as the universe.",
+      "misconceptionClass": "hierarchy reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A galaxy is one collection of billions of stars, while the universe is the collection of billions of such galaxies — the universe contains many galaxies, so the two sit on different levels of scale.",
+      "keywords": [
+        "galaxy",
+        "universe",
+        "stars",
+        "collection"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L1::Q9",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L1",
+      "stem": "An alien astronomer counts from inside one galaxy. State the two nested collections its home galaxy belongs to.",
+      "misconceptionClass": "hierarchy reasoning",
+      "kind": "application",
+      "modelAnswer": "Its galaxy is one of the billions of galaxies in the collection of galaxies that forms the universe.",
+      "keywords": [
+        "galaxy",
+        "universe",
+        "billions",
+        "collection"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q1",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "Our Solar System lies inside…",
+      "misconceptionClass": "milky way",
+      "options": [
+        {
+          "key": "A",
+          "text": "no larger structure",
+          "correct": false,
+          "explanation": "The galaxy contains the Solar System.",
+          "misconception": "containment error"
+        },
+        {
+          "key": "B",
+          "text": "the Milky Way galaxy",
+          "correct": true,
+          "explanation": "The Milky Way is our home galaxy.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the Andromeda galaxy",
+          "correct": false,
+          "explanation": "Andromeda is a different galaxy.",
+          "misconception": "galaxy swap"
+        },
+        {
+          "key": "D",
+          "text": "a nebula in the Sun",
+          "correct": false,
+          "explanation": "The Sun is a star, not a place that contains us.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q2",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "What sits at the centre of our Solar System?",
+      "misconceptionClass": "solar system",
+      "options": [
+        {
+          "key": "A",
+          "text": "the Moon",
+          "correct": false,
+          "explanation": "The Moon orbits the Earth.",
+          "misconception": "role swap"
+        },
+        {
+          "key": "B",
+          "text": "the Milky Way's centre",
+          "correct": false,
+          "explanation": "The galaxy's centre lies far outside the Solar System.",
+          "misconception": "level error"
+        },
+        {
+          "key": "C",
+          "text": "the Sun, a star",
+          "correct": true,
+          "explanation": "Planets orbit the central star, the Sun.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "the Earth",
+          "correct": false,
+          "explanation": "The Earth is a planet that orbits the Sun.",
+          "misconception": "role swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q3",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "The Earth is which planet of the Solar System?",
+      "misconceptionClass": "planet order",
+      "options": [
+        {
+          "key": "A",
+          "text": "the fourth of nine",
+          "correct": false,
+          "explanation": "Both the position and the count are wrong.",
+          "misconception": "count error"
+        },
+        {
+          "key": "B",
+          "text": "the second of eight",
+          "correct": false,
+          "explanation": "Venus is second; Earth is third.",
+          "misconception": "order error"
+        },
+        {
+          "key": "C",
+          "text": "the fifth of eight",
+          "correct": false,
+          "explanation": "Jupiter is fifth.",
+          "misconception": "order error"
+        },
+        {
+          "key": "D",
+          "text": "the third of eight",
+          "correct": true,
+          "explanation": "Earth is planet three of eight.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q4",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "In a planetary system, the planets…",
+      "misconceptionClass": "planetary system",
+      "options": [
+        {
+          "key": "A",
+          "text": "orbit around a star at the centre",
+          "correct": true,
+          "explanation": "The central star anchors the system.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "orbit around each other",
+          "correct": false,
+          "explanation": "Planets orbit the star, not one another.",
+          "misconception": "orbit error"
+        },
+        {
+          "key": "C",
+          "text": "sit motionless in space",
+          "correct": false,
+          "explanation": "Orbiting means moving around the centre.",
+          "misconception": "motion error"
+        },
+        {
+          "key": "D",
+          "text": "orbit around the galaxy's edge",
+          "correct": false,
+          "explanation": "The planetary system's centre is its star.",
+          "misconception": "level error"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q5",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "Which statement about the Milky Way is correct?",
+      "misconceptionClass": "milky way",
+      "options": [
+        {
+          "key": "A",
+          "text": "it is smaller than the Solar System",
+          "correct": false,
+          "explanation": "A galaxy vastly exceeds any solar system.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "B",
+          "text": "our Solar System is one part of it",
+          "correct": true,
+          "explanation": "The Milky Way contains billions of stars, the Sun included.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "it contains only our Sun and its planets",
+          "correct": false,
+          "explanation": "The galaxy holds billions of stars.",
+          "misconception": "scale error"
+        },
+        {
+          "key": "D",
+          "text": "it is the universe's only galaxy",
+          "correct": false,
+          "explanation": "Billions of galaxies exist.",
+          "misconception": "uniqueness myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q6",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "State which galaxy contains our Solar System.",
+      "misconceptionClass": "milky way",
+      "kind": "recall",
+      "modelAnswer": "The Milky Way galaxy contains our Solar System.",
+      "keywords": [
+        "milky",
+        "galaxy",
+        "contains",
+        "solar"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q7",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "State the Earth's position among the Solar System's planets.",
+      "misconceptionClass": "planet order",
+      "kind": "recall",
+      "modelAnswer": "It comes third among the eight planets.",
+      "keywords": [
+        "third",
+        "eight",
+        "planets",
+        "earth"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q8",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "Explain why the Sun, not the Earth, is the centre of our system.",
+      "misconceptionClass": "planetary system",
+      "kind": "explain-why",
+      "modelAnswer": "A planetary system is organised around its central star: the Sun is that star, and the Earth is one of the planets orbiting it, so the Sun sits at the centre.",
+      "keywords": [
+        "sun",
+        "star",
+        "planets",
+        "orbiting"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BRnQ2m5bQj36nK3T::L2::Q9",
+      "moduleId": "rn_BRnQ2m5bQj36nK3T::L2",
+      "stem": "A quiz lists 'Milky Way, Sun, universe, Earth, Solar System'. Order them from smallest to largest.",
+      "misconceptionClass": "hierarchy reasoning",
+      "kind": "application",
+      "modelAnswer": "Earth (a planet) → Solar System (planets orbiting the Sun) → Milky Way (the galaxy holding that system) → universe (the collection of billions of galaxies).",
+      "keywords": [
+        "earth",
+        "solar",
+        "milky",
+        "universe"
+      ],
+      "options": []
+    }
+  ]
+}

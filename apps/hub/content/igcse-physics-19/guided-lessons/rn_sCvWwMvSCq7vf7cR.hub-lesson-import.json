@@ -1,0 +1,224 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sCvWwMvSCq7vf7cR",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "fca59e5d4f27b9be914c74c90f154e8deedf9d0ccecd4481c74699a06420f290",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_sCvWwMvSCq7vf7cR",
+    "topicTitle": "8. Astrophysics",
+    "subtopicTitle": "Stellar Evolution",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/8-astrophysics/8-2-stellar-evolution/8-2-5-hertzsprung-russell-diagrams",
+    "specAnchors": [
+      {
+        "code": "8.12P",
+        "text": "draw the main components of the Hertzsprung–Russell diagram (HR diagram)"
+      }
+    ],
+    "primer": {
+      "text": "The HR diagram plots luminosity against surface temperature — with temperature running backwards, hottest on the left. Its main band is the main sequence; white dwarfs sit below it, red giants above right, red supergiants above those. Read the corners and every star class falls into place.",
+      "prerequisiteSubtopic": "Stellar Evolution"
+    },
+    "modules": [
+      {
+        "id": "rn_sCvWwMvSCq7vf7cR::L1",
+        "title": "Reading the HR diagram",
+        "sourceHeadings": [
+          "Hertzsprung-Russell diagrams"
+        ],
+        "specRefs": [
+          "8.12P"
+        ],
+        "opening": "The Hertzsprung–Russell diagram plots luminosity on the y-axis (usually in solar units, Sun = 1) against surface temperature on the x-axis, which runs backwards — hot on the left, cool on the right. Most stars lie on the main sequence band from top left to bottom right; white dwarfs sit below it, red giants above its right end, and red supergiants directly above the giants.",
+        "keyPoints": [
+          "The HR diagram plots luminosity (y-axis) against surface temperature (x-axis).",
+          "Surface temperature is plotted backwards, hottest on the left, coolest on the right.",
+          "Most stars lie on the main sequence band from top left to bottom right.",
+          "White dwarfs sit below the main sequence; red giants above its right side; red supergiants above the giants.",
+          "The hottest brightest stars are large main sequence stars; the coolest brightest are red supergiants."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Luminosity up the side, temperature backwards along the bottom, and a diagonal main sequence band.",
+            "analogy": "A map of a city at night: the diagonal avenue (main sequence) carries most of the lights, with quiet side streets (white dwarfs) and a bright red district (supergiants).",
+            "examPointer": "Draw the reversed x-axis first — forgetting the temperature inversion is the classic error."
+          },
+          "medium": {
+            "restatement": "Region-by-region: band diagonal, dwarfs below-left, giants above-right, supergiants above them.",
+            "analogy": "A seating plan: the crowd on the diagonal, VIPs glowing above, quiet corners below.",
+            "examPointer": "Practise drawing the four labelled regions from memory — the spec asks you to draw the main components."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sCvWwMvSCq7vf7cR::L1::Q1",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q2",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q3",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q4",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q5",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q6",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q7",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q8",
+          "rn_sCvWwMvSCq7vf7cR::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
+        ]
+      },
+      {
+        "id": "rn_sCvWwMvSCq7vf7cR::L2",
+        "title": "Plotting stars on the HR diagram",
+        "sourceHeadings": [
+          "The Hertzsprung-Russell diagram"
+        ],
+        "specRefs": [
+          "8.12P"
+        ],
+        "opening": "Plotting on the HR diagram is a two-step lookup: convert the star's luminosity into solar units (the Sun's luminosity is 1, so 10 000 times the Sun is 10⁴), then find the surface temperature on the reversed axis and mark the crossing point.",
+        "keyPoints": [
+          "The Sun's luminosity is 1 in solar units.",
+          "A star 10 000 times the Sun's luminosity is plotted at 10⁴.",
+          "Locate the surface temperature on the reversed x-axis, then the luminosity on the y-axis.",
+          "Mark and label the plotted point where the two values cross."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Convert to solar units, find the reversed-axis temperature, mark the crossing.",
+            "analogy": "Grid references: read along the bottom (temperature, backwards) then up the side (luminosity).",
+            "examPointer": "The Sun = 1 convention turns '10 000 times the Sun' into a clean 10⁴ — show that multiplication in your working."
+          },
+          "medium": {
+            "restatement": "Plotting is arithmetic plus orientation: 10⁴ solar units, 20 000 K, upper main sequence.",
+            "analogy": "Dropping a pin on a map: coordinates first, label afterwards.",
+            "examPointer": "Label the plotted star — unlabelled points lose the mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sCvWwMvSCq7vf7cR::L2::Q1",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q2",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q3",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q4",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q5",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q6",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q7",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q8",
+          "rn_sCvWwMvSCq7vf7cR::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "main sequence",
+          "definition": "The diagonal band on the HR diagram where most stars, including the Sun, lie.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solar units",
+          "definition": "Luminosity units on the HR diagram with the Sun defined as 1.",
+          "firstLesson": 2
+        },
+        {
+          "term": "white dwarf",
+          "definition": "The hot, dim region below the main sequence on the HR diagram.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "On an HR diagram, where do regions A (below the main sequence, left), B (the diagonal band), C (top right) and D (above the band's right end) lie, and where is a star of 20 000 K and 10⁴ solar luminosities plotted?",
+        "steps": [
+          "Identify region A as the white dwarf stars, below and slightly left of the main sequence.",
+          "Identify region B as the main sequence band itself, from top left to bottom right.",
+          "Identify region C as the red supergiants and region D as the red giants above the band's right end.",
+          "Convert the luminosity: 10 000 × 1 = 10 000 = 10⁴ solar units, then locate 20 000 K on the reversed axis and plot the point."
+        ],
+        "finalAnswer": "A = white dwarfs, B = main sequence, C = red supergiants, D = red giants; Star X plots at 20 000 K and 10⁴ solar luminosity on the upper main sequence."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/5ff6adc13fed-8-2-5-hertzsprung-russell-diagram.png",
+        "alt": "Hertzsprung-Russell Diagram, downloadable IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Hertzsprung-Russell diagrams",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The HR diagram displays star properties and their life cycles"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/71e683af2b17-10-4-we-hertzsprung-russell-quest-image-edexcel-.png",
+        "alt": "10-4-we-hertzsprung-russell-quest-image_edexcel-al-physics-rn",
+        "sourceHeading": "Hertzsprung-Russell diagrams",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "An HR diagram classification task with four regions"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/1dbd28ab4857-10-4-we-hertzsprung-russell-step-1-edexcel-al-ph.png",
+        "alt": "10-4-we-hertzsprung-russell-step-1_edexcel-al-physics-rn",
+        "sourceHeading": "Hertzsprung-Russell diagrams",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Step one: read the Sun's luminosity from the axis"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/7381e5265e27-10-4-we-hertzsprung-russell-step-2-edexcel-al-ph.png",
+        "alt": "10-4-we-hertzsprung-russell-step-2_edexcel-al-physics-rn",
+        "sourceHeading": "Hertzsprung-Russell diagrams",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Step two: locate 20 000 K and 10⁴ solar luminosities"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/21d66b8a6705-10-4-we-hertzsprung-russell-step-3-edexcel-al-ph.png",
+        "alt": "10-4-we-hertzsprung-russell-step-3_edexcel-al-physics-rn",
+        "sourceHeading": "Hertzsprung-Russell diagrams",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Step three: plot and label Star X"
+      }
+    ]
+  }
+}

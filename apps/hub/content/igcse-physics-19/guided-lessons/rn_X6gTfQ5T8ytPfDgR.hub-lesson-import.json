@@ -1,0 +1,181 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_X6gTfQ5T8ytPfDgR",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "b071943e901b603639d61d905565044ebb0c8703977dc7683e21bdad05cd75d0",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "lesson": {
+    "id": "igcse-physics::rn_X6gTfQ5T8ytPfDgR",
+    "topicTitle": "8. Astrophysics",
+    "subtopicTitle": "Cosmology",
+    "sourceUrl": "https://www.savemyexams.com/igcse/physics/edexcel/19/revision-notes/8-astrophysics/8-3-cosmology/8-3-2-doppler-shift",
+    "specAnchors": [
+      {
+        "code": "8.15P",
+        "text": "describe that if a wave source is moving relative to an observer, there will be a change in the observed frequency and wavelength"
+      },
+      {
+        "code": "8.16P",
+        "text": "use the equation relating to change in wavelength, reference wavelength, velocity of a galaxy and the speed of light: change in wavelength velocity of a galaxy = reference wavelength speed of light λ − λ 0 Δλ v = = λ 0 λ 0 c"
+      }
+    ],
+    "primer": {
+      "text": "Move a wave source and its wavefronts distort: ahead they squash (shorter wavelength, higher frequency), behind they stretch (longer wavelength, lower frequency) — the Doppler effect. For light the shift is quantified by Δλ/λ₀ = v/c, so a galaxy's receding speed falls straight out of its stretched spectrum.",
+      "prerequisiteSubtopic": "Cosmology"
+    },
+    "modules": [
+      {
+        "id": "rn_X6gTfQ5T8ytPfDgR::L1",
+        "title": "The Doppler effect",
+        "sourceHeadings": [
+          "Doppler shift"
+        ],
+        "specRefs": [
+          "8.15P"
+        ],
+        "opening": "A stationary wave source spreads its wavefronts symmetrically; a moving source does not. In front of the source the waves bunch up — wavelength decreases and frequency rises — while behind it they stretch out, with wavelength increasing and frequency falling. This is the Doppler effect.",
+        "keyPoints": [
+          "A stationary source spreads wavefronts symmetrically; a moving source distorts them.",
+          "In front of a moving source the wavelength decreases and the frequency increases.",
+          "Behind the source the wavelength increases and the frequency decreases.",
+          "This wavelength-and-frequency change from relative motion is the Doppler effect.",
+          "Δλ means the change in wavelength."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Moving source: bunches ahead (shorter λ, higher f), stretches behind (longer λ, lower f).",
+            "analogy": "A duck paddling across a pond: ripples crowd at the bow and spread out at the stern.",
+            "examPointer": "Pair every wavelength answer with its frequency partner — they always move oppositely."
+          },
+          "medium": {
+            "restatement": "Relative motion redistributes the wavefronts; Δλ names the wavelength change.",
+            "analogy": "A runner throwing balls at fixed intervals: a moving thrower's balls land closer together ahead and further apart behind.",
+            "examPointer": "'Relative to an observer' is the required phrase — motion alone does nothing without the observation frame."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q1",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q2",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q3",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q4",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q5",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q6",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q7",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q8",
+          "rn_X6gTfQ5T8ytPfDgR::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_X6gTfQ5T8ytPfDgR::L2",
+        "title": "The Doppler equation for light",
+        "sourceHeadings": [
+          "Calculating Doppler shift of light"
+        ],
+        "specRefs": [
+          "8.16P"
+        ],
+        "opening": "For light the Doppler shift obeys (λ − λ₀)/λ₀ = Δλ/λ₀ = v/c, where λ is the observed wavelength, λ₀ the reference wavelength, v the galaxy's velocity and c the speed of light. Both sides are ratios of same-unit quantities, so the shift has no units, and the equation converts a stretched spectrum directly into a recession speed.",
+        "keyPoints": [
+          "The Doppler equation is (λ − λ₀)/λ₀ = Δλ/λ₀ = v/c.",
+          "λ is the observed wavelength and λ₀ the reference wavelength, both in metres.",
+          "v is the velocity of a galaxy and c the speed of light, both in m/s.",
+          "Δλ = λ − λ₀, the change in wavelength.",
+          "Both sides of the equation are ratios, so the Doppler shift has no units."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Δλ/λ₀ = v/c: stretched spectrum over reference wavelength equals speed over light-speed.",
+            "analogy": "A percentage: the stretch is 'how many percent longer' the wave has become, and the galaxy's speed is that same percentage of light-speed.",
+            "examPointer": "The equation sheet provides it — your job is keeping λ and λ₀ the right way round."
+          },
+          "medium": {
+            "restatement": "Worked chain: 485 − 435 = 50 nm; v = (3 × 10⁸) × 50/435 ≈ 3.4 × 10⁷ m/s; dimensionless by construction.",
+            "analogy": "Recipe scaling: the same 'fraction of the original' works whether the dish serves two or two million.",
+            "examPointer": "Quote v to 2 significant figures for the corpus case: 3.4 × 10⁷ m/s."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q1",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q2",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q3",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q4",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q5",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q6",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q7",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q8",
+          "rn_X6gTfQ5T8ytPfDgR::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "doppler effect",
+          "definition": "The shift in observed frequency and wavelength caused by a source's motion relative to the observer.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reference wavelength",
+          "definition": "λ₀ — the wavelength emitted by the stationary source, used as the comparison.",
+          "firstLesson": 2
+        },
+        {
+          "term": "recession speed",
+          "definition": "The galaxy's velocity away from the observer, computed from the Doppler shift.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Light emitted from a star has a wavelength of 435 × 10⁻⁹ m. A distant galaxy emits the same light but its wavelength is 485 × 10⁻⁹ m. Calculate the speed at which the galaxy is moving relative to Earth (c = 3 × 10⁸ m/s).",
+        "steps": [
+          "Identify the wavelengths: λ = 485 × 10⁻⁹ m (observed) and λ₀ = 435 × 10⁻⁹ m (reference).",
+          "Rearrange the equation for v: v = c × (λ − λ₀)/λ₀.",
+          "Substitute: v = (3 × 10⁸) × (485 − 435) × 10⁻⁹ / (435 × 10⁻⁹).",
+          "Evaluate: v = (3 × 10⁸) × 50/435 ≈ 3.4 × 10⁷ m/s."
+        ],
+        "finalAnswer": "The galaxy is moving away from Earth at about 3.4 × 10⁷ m/s."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-physics-19/assets/425fe9e83469-doppler-effect-1.png",
+        "alt": "doppler-effect, IGCSE & GCSE Physics revision notes",
+        "sourceHeading": "Doppler shift",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Wavefronts bunch ahead of the moving source and stretch behind it"
+      }
+    ]
+  }
+}

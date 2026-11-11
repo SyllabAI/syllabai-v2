@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_CkXqQm5SjVpzmjSM",
+    "corpusVersion": "sme-revision-notes-igcse-physics-19-2026-09-17",
+    "sourceLayerSha256": "d3ba59acc2c930fc1780832973118016877846de99f9bc0a8e463a306b3b95ff",
+    "pinnedRef": "cc306b3975b614565c1a0f18cb3bd1ca9682142d"
+  },
+  "packageId": "igcse-physics::rn_CkXqQm5SjVpzmjSM",
+  "subject": "igcse-physics",
+  "questions": [
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q1",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "Luminosity is…",
+      "misconceptionClass": "luminosity definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "the light energy a star pours out each second",
+          "correct": true,
+          "explanation": "Luminosity is the star's power output in light.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the star's distance from Earth",
+          "correct": false,
+          "explanation": "Distance affects apparent brightness, not luminosity.",
+          "misconception": "quantity swap"
+        },
+        {
+          "key": "C",
+          "text": "the light reflected off the star",
+          "correct": false,
+          "explanation": "Stars emit light; they do not reflect it.",
+          "misconception": "emission error"
+        },
+        {
+          "key": "D",
+          "text": "the star's temperature",
+          "correct": false,
+          "explanation": "Temperature relates to colour, not luminosity directly.",
+          "misconception": "quantity swap"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q2",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "Apparent magnitude depends on…",
+      "misconceptionClass": "apparent magnitude",
+      "options": [
+        {
+          "key": "A",
+          "text": "the star's colour only",
+          "correct": false,
+          "explanation": "Colour is not the magnitude driver here.",
+          "misconception": "factor error"
+        },
+        {
+          "key": "B",
+          "text": "the star's luminosity and its distance from Earth",
+          "correct": true,
+          "explanation": "Both factors set how bright the star looks.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "luminosity only",
+          "correct": false,
+          "explanation": "Distance also matters.",
+          "misconception": "factor omission"
+        },
+        {
+          "key": "D",
+          "text": "distance only",
+          "correct": false,
+          "explanation": "The star's own power matters too.",
+          "misconception": "factor omission"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q3",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "On the magnitude scale, a brighter star has…",
+      "misconceptionClass": "scale direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "the same magnitude always",
+          "correct": false,
+          "explanation": "Magnitudes differ star to star.",
+          "misconception": "constancy myth"
+        },
+        {
+          "key": "B",
+          "text": "no magnitude at all",
+          "correct": false,
+          "explanation": "Every star has one.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "C",
+          "text": "a lower magnitude",
+          "correct": true,
+          "explanation": "The scale runs back to front: brighter = lower number.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a higher magnitude",
+          "correct": false,
+          "explanation": "Higher means dimmer.",
+          "misconception": "scale inversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q4",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "A distant star looks fainter than a nearby twin mainly because…",
+      "misconceptionClass": "distance dimming",
+      "options": [
+        {
+          "key": "A",
+          "text": "it truly emits less light",
+          "correct": false,
+          "explanation": "With equal luminosity, distance is the difference.",
+          "misconception": "cause error"
+        },
+        {
+          "key": "B",
+          "text": "Earth's atmosphere blocks it more",
+          "correct": false,
+          "explanation": "Distance, not atmosphere, is the listed factor.",
+          "misconception": "cause error"
+        },
+        {
+          "key": "C",
+          "text": "its magnitude is higher by definition",
+          "correct": false,
+          "explanation": "That restates the observation, not the cause.",
+          "misconception": "circular error"
+        },
+        {
+          "key": "D",
+          "text": "its light has travelled further to reach us",
+          "correct": true,
+          "explanation": "More distant stars usually look fainter.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q5",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "Which pair makes a bright far star look identical to a dim near star?",
+      "misconceptionClass": "comparison trap",
+      "options": [
+        {
+          "key": "A",
+          "text": "higher luminosity but greater distance",
+          "correct": true,
+          "explanation": "More power spread over more distance can match a weak nearby glow.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "lower luminosity and greater distance",
+          "correct": false,
+          "explanation": "That star would look fainter still.",
+          "misconception": "logic error"
+        },
+        {
+          "key": "C",
+          "text": "higher luminosity and smaller distance",
+          "correct": false,
+          "explanation": "That would look brighter, not equal.",
+          "misconception": "logic error"
+        },
+        {
+          "key": "D",
+          "text": "equal luminosity and equal distance",
+          "correct": false,
+          "explanation": "Then they would simply look the same by identity.",
+          "misconception": "trivial option"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q6",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "Define luminosity.",
+      "misconceptionClass": "luminosity definition",
+      "kind": "recall",
+      "modelAnswer": "Luminosity counts all the light energy a star pours out each second.",
+      "keywords": [
+        "luminosity",
+        "light",
+        "energy",
+        "second"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q7",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "Define apparent magnitude.",
+      "misconceptionClass": "apparent magnitude",
+      "kind": "recall",
+      "modelAnswer": "Apparent magnitude is how bright a star looks to us here on Earth.",
+      "keywords": [
+        "apparent",
+        "magnitude",
+        "brightness",
+        "earth"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q8",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "Explain why apparent magnitude alone cannot compare stars fairly.",
+      "misconceptionClass": "comparison trap",
+      "kind": "explain-why",
+      "modelAnswer": "Apparent brightness mixes two effects — the star's own luminosity and its distance from Earth — so a bright far star can look the same as a dim nearby one, making direct comparison unfair.",
+      "keywords": [
+        "luminosity",
+        "distance",
+        "brightness",
+        "compare"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L1::Q9",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L1",
+      "stem": "Two stars show equal apparent magnitudes. One is twice as far away. Compare their luminosities.",
+      "misconceptionClass": "comparison trap",
+      "kind": "application",
+      "modelAnswer": "For the farther star to look equally bright despite the extra distance, its luminosity must be higher than its nearer twin's.",
+      "keywords": [
+        "apparent",
+        "magnitude",
+        "distance",
+        "luminosity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q1",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "Absolute magnitude measures brightness…",
+      "misconceptionClass": "absolute magnitude",
+      "options": [
+        {
+          "key": "A",
+          "text": "after averaging over a year",
+          "correct": false,
+          "explanation": "Time averaging is not the fix.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "as if every star sat at the same standard distance",
+          "correct": true,
+          "explanation": "Standardising distance removes the bias.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "as seen from Earth",
+          "correct": false,
+          "explanation": "That is apparent magnitude.",
+          "misconception": "definition swap"
+        },
+        {
+          "key": "D",
+          "text": "at the star's surface",
+          "correct": false,
+          "explanation": "No such scale is used here.",
+          "misconception": "definition error"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q2",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "The standard distance for absolute magnitude is…",
+      "misconceptionClass": "standard distance",
+      "options": [
+        {
+          "key": "A",
+          "text": "32.6 parsecs",
+          "correct": false,
+          "explanation": "32.6 belongs to light-years.",
+          "misconception": "value swap"
+        },
+        {
+          "key": "B",
+          "text": "the Moon's orbital distance",
+          "correct": false,
+          "explanation": "Nowhere near the standard.",
+          "misconception": "value error"
+        },
+        {
+          "key": "C",
+          "text": "10 parsecs",
+          "correct": true,
+          "explanation": "Ten parsecs is the quoted standard.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "10 light-seconds",
+          "correct": false,
+          "explanation": "Wrong unit of distance scale.",
+          "misconception": "value error"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q3",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "Why do astronomers need absolute magnitude?",
+      "misconceptionClass": "absolute magnitude",
+      "options": [
+        {
+          "key": "A",
+          "text": "because stars change colour",
+          "correct": false,
+          "explanation": "Colour is a separate property.",
+          "misconception": "reason error"
+        },
+        {
+          "key": "B",
+          "text": "because telescopes are imperfect",
+          "correct": false,
+          "explanation": "Instrument quality is not the issue.",
+          "misconception": "reason error"
+        },
+        {
+          "key": "C",
+          "text": "because luminosity cannot be measured at all",
+          "correct": false,
+          "explanation": "Luminosity underlies the scale.",
+          "misconception": "reason error"
+        },
+        {
+          "key": "D",
+          "text": "because apparent brightness is distorted by distance",
+          "correct": true,
+          "explanation": "Distance biases what we see; standardising fixes the comparison.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q4",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "A star with high luminosity but large distance will have…",
+      "misconceptionClass": "comparison trap",
+      "options": [
+        {
+          "key": "A",
+          "text": "a higher apparent magnitude but a lower absolute magnitude than a dim near star",
+          "correct": true,
+          "explanation": "Distance dims the view (apparent) while the standard distance honours the power (absolute).",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "lower magnitudes on both scales",
+          "correct": false,
+          "explanation": "The apparent magnitude rises with distance.",
+          "misconception": "logic error"
+        },
+        {
+          "key": "C",
+          "text": "higher magnitudes on both scales",
+          "correct": false,
+          "explanation": "The absolute scale rewards its true power.",
+          "misconception": "logic error"
+        },
+        {
+          "key": "D",
+          "text": "no magnitude at all",
+          "correct": false,
+          "explanation": "Magnitudes exist for every star.",
+          "misconception": "nonsense option"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q5",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "Which statement about the magnitude scales is right?",
+      "misconceptionClass": "scale direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "neither scale has numbers",
+          "correct": false,
+          "explanation": "Both are numeric scales.",
+          "misconception": "nonsense option"
+        },
+        {
+          "key": "B",
+          "text": "on both scales, brighter stars carry lower numbers",
+          "correct": true,
+          "explanation": "Back-to-front numbering applies to both apparent and absolute.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "brighter stars carry higher numbers",
+          "correct": false,
+          "explanation": "That inverts the scale.",
+          "misconception": "scale inversion"
+        },
+        {
+          "key": "D",
+          "text": "the scales run in opposite directions",
+          "correct": false,
+          "explanation": "Both run bright-to-low.",
+          "misconception": "scale error"
+        }
+      ]
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q6",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "Define absolute magnitude.",
+      "misconceptionClass": "absolute magnitude",
+      "kind": "recall",
+      "modelAnswer": "It measures how bright each star would appear if all were placed a common distance from the Earth.",
+      "keywords": [
+        "absolute",
+        "magnitude",
+        "bright",
+        "distance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q7",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "State the standard distance used for absolute magnitude.",
+      "misconceptionClass": "standard distance",
+      "kind": "recall",
+      "modelAnswer": "Ten parsecs — about 32.6 light-years, roughly 3.04 × 10¹⁴ km.",
+      "keywords": [
+        "parsecs",
+        "standard",
+        "distance",
+        "light-years"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q8",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "Explain how absolute magnitude makes star comparisons fair.",
+      "misconceptionClass": "absolute magnitude",
+      "kind": "explain-why",
+      "modelAnswer": "It imagines every star moved to the same standard distance from Earth, so distance stops distorting the comparison and brightness differences reflect the stars' real luminosities.",
+      "keywords": [
+        "standard",
+        "distance",
+        "luminosities",
+        "comparison"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CkXqQm5SjVpzmjSM::L2::Q9",
+      "moduleId": "rn_CkXqQm5SjVpzmjSM::L2",
+      "stem": "Star A looks dimmer than star B from Earth but has the higher absolute magnitude. State which star is more luminous.",
+      "misconceptionClass": "comparison trap",
+      "kind": "application",
+      "modelAnswer": "Star A is more luminous: at the standard distance its greater power would outshine B, so B only looks brighter because it is nearer.",
+      "keywords": [
+        "absolute",
+        "magnitude",
+        "luminous",
+        "distance"
+      ],
+      "options": []
+    }
+  ]
+}
