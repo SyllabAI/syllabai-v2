@@ -1,0 +1,25 @@
+version: 1
+task:
+  id: T-REASON-WALL-2
+  title: "The toolkit generation wall part 2 — the bridge reasoning effort LOW -> MEDIUM (gpt-oss-20b lazily truncates the big JSON contracts at LOW; finish=stop hides it from the truncation detector)"
+  owner: "Super Z (zai-web session web-5e612468-7ecd-499d-8b14-7c05e8412405, chat 97a19c8c-d041-4ae2-9754-07fef634fc42)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-REASON-WALL (sibling of T-REASON-WALL-1 / #918 — whose allowance fixed the teach-me review seam but NOT the toolkit wall)
+  wave: ai-wall-fixes
+  deps: [T-REASON-WALL-1]
+  scope:
+    allowed:
+      - apps/api/src/services/llmchain/bridges.ts (chainAsToolkitGenerator: reasoningEffort low -> medium + the evidence law comment — the ONE-LINE fix of record)
+      - apps/api/test/llmchain/bridges.test.ts (+the toolkit generate contract pin: temp 0.5 / effort MEDIUM / 8000+allowance; the UNPARSEABLE brace-less pin; the PROVIDER_UNAVAILABLE pin)
+      - .syllabai/tasks/T-REASON-WALL-2.yaml + .syllabai/receipts/T-REASON-WALL-2/run-001.md + both worklogs (append-only)
+    forbidden:
+      - the toolkit route / prompts / prompt_versions rows (v1.0 templates stay byte-identical — verified first-hand against the PROD DB, T-DBPROBE-PROMPT-1 #935)
+      - the marking candidate generators (their LOW law is CORRECT — small docs, verified green in prod)
+      - the teach-me files (its seam is FIXED by #918 — A7 200/21.36s post-bake)
+      - the gemini member
+  evidence:
+    - "T-DBPROBE-TOOLKIT-1 run-001 (CI vantage, workflow 43090340425): [groq-direct] 1.5s len=6419 braces=true parse FAIL 'Expected ''}''' — a TRUNCATED document at finish=stop; [CHAIN.generate rubric] rides groq -> the SAME truncated doc -> the bridge UNPARSEABLE -> self-heal retry -> the exact prod 502; [openrouter-direct] 200-EMPTY len=0; [gemini-direct] 503 high-demand."
+    - "T-DBPROBE-TOOLKIT-1 run-002 (workflow 43090842886): rubric effort=LOW -> parse FAIL (deterministic contrast); rubric effort=MEDIUM -> parse OK 3.62s (THE FIX, proven); sow effort=LOW -> parse FAIL 'Expected '']'''; sow effort=MEDIUM -> 429 TPM 8000 (the org free-tier quota — one generation fits, bursts may 429 into the chain's honest cooldown)."
+    - "Prod forensics (T-DBPROBE-PROMPT-1 #935): post-bake FAILED rows all 'UNPARSEABLE_OUTPUT on both attempts' model=null (2.2-3.1s; lesson-plan 62.7s) — the bridge refused the raw text BEFORE the zod wall; the 11-09/11-11 rows carried real (short/wrong-shape) groq documents — the lazy-truncation class existed across the model snapshots."
+    - "The teach-me seam is GREEN post-#918 (A7 review 200/21.36s vs the pre-fix 409 LLM_SHAPE_DRIFT/108.88s) — the allowance law stands; this lane closes the REMAINING toolkit wall."
