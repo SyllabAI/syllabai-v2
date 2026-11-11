@@ -42,7 +42,7 @@ jobs:
               print('fewer than two production deployments — refusing')
               sys.exit(1)
           prev = deps[1]
-          if prev.get('createdAt', 0) >= 1794153600000:
+          if prev.get('createdAt', 0) >= 1794268800000:  # 2026-11-10 00:00Z — run-001's 1794153600000 was Nov 8 16:00Z, a bad constant (receipt)
               print('REFUSING: the previous deployment is itself from the empty-bake era')
               sys.exit(1)
           if prev.get('state') != 'READY':

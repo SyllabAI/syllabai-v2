@@ -2058,3 +2058,9 @@ Stage Summary:
 
 - The pick (newest READY before 2026-11-10 00:00Z) = dpl_8FRDnLyZ9ScLD2cuLtrThnrDUAdP (syllabai-v2-qip6hfk8h-*, created Nov 8 09:38Z) — and the promotion was REFUSED by Vercel: "To rollback further than the previous production deployment, upgrade to pro. (402)". The Hobby plan promotes ONLY the immediately-previous production deployment.
 - run-002 law: print the full deployment list for the record, target EXACTLY index 1 (the previous production deployment), refuse if it is itself from the empty-bake era (>= 2026-11-10 00:00Z) or not READY, promote, then the serving probe (/api/v1/auth/login must answer JSON 400, not the NOT_FOUND page).
+
+
+## T-VERCEL-API-ROLLBACK run-002 receipt (2026-11-11 05:38Z) — the list of record + the constant bug
+
+- The production list of record (newest first): [0] dpl_DcD15gza4DVFFtJ4qL6m3dkkayHA READY 2026-11-10T11:34:50.583Z sha 0806e132d3 (the empty bake, built from THIS repo's main); [1] dpl_6c41MW5nZR3v7yDAhXgVwfgreZZL READY 2026-11-09T05:51:51.871Z sha none (the dashboard Redeploy — the stale-but-SERVING build); [2..] the older manual builds (Nov 8 09:29Z, Nov 7, Nov 6, Nov 5). The pre-bake serving build of record = [1].
+- The refusal was a FALSE ALARM: my era-cut constant 1794153600000 is 2026-11-08 16:00Z, not Nov 10 00:00Z (correct: 1794268800000). run-003 fixes the constant and promotes [1] — the previous production deployment, which the Hobby plan allows (run-001's 402 law).
