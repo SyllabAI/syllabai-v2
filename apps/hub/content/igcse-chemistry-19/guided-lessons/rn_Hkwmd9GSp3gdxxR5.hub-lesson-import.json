@@ -1,18 +1,18 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_Hkwmd9GSp3gdxxR5",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "c00abdb3556a787302cb15e638fc69d887e4450e4209a71c69905824dbcff6c1",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "0e8a8ff71d5e7dade247b2bc08a56587468fc0d808fe5c6cb9c736e3ba5c637f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_Hkwmd9GSp3gdxxR5",
     "topicTitle": "1. Principles of Chemistry",
     "subtopicTitle": "Chemical Formulae, Equations, Calculations",
-    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-8-empirical-molecular-formulae",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-8-empirical--molecular-formulae",
     "specAnchors": [
       {
         "code": "4CH1-1.32",
@@ -21,10 +21,6 @@
       {
         "code": "4CH1-1.33",
         "text": "calculate empirical and molecular formulae from experimental data"
-      },
-      {
-        "code": "4CH1-1.31",
-        "text": "understand how the formulae of simple compounds can be obtained experimentally, including metal oxides, water and salts containing water of crystallisation"
       }
     ],
     "primer": {
@@ -46,7 +42,7 @@
         "opening": "Two formulae describe the same compound at two levels of detail: the molecular formula counts every atom, while the empirical formula compresses that count to its simplest whole-number ratio. Organic molecules often differ between the two, and ionic compounds are always written in empirical form.",
         "keyPoints": [
           "The molecular formula gives how many atoms of each type sit in one molecule.",
-          "The empirical formula is the simplest whole-number ratio of the atoms of each element present.",
+          "The empirical formula gives the simplest whole-number ratio in which the atoms of each element are present.",
           "Ethanoic acid shows the gap: molecular C2H4O2 against empirical CH2O.",
           "Ionic compounds are always written as empirical formulae; organic molecules often differ between the two forms.",
           "Empirical working is methodical: element, value, relative atomic mass, moles, then ratio."
@@ -83,7 +79,8 @@
           "rn_Hkwmd9GSp3gdxxR5::L1::Q7",
           "rn_Hkwmd9GSp3gdxxR5::L1::Q8",
           "rn_Hkwmd9GSp3gdxxR5::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_Hkwmd9GSp3gdxxR5::L2",
@@ -93,8 +90,7 @@
           "Deducing formulae of hydrated salts"
         ],
         "specRefs": [
-          "4CH1-1.33",
-          "4CH1-1.31"
+          "4CH1-1.33"
         ],
         "opening": "The molecular formula asks one question: how many empirical units fit inside the real molecule? Divide the compound's relative formula mass by the empirical formula's own mass and the answer is the multiplier. The same table, fed salt and water instead of elements, then extends to hydrated salts.",
         "keyPoints": [
@@ -137,7 +133,8 @@
           "rn_Hkwmd9GSp3gdxxR5::L2::Q7",
           "rn_Hkwmd9GSp3gdxxR5::L2::Q8",
           "rn_Hkwmd9GSp3gdxxR5::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -161,16 +158,6 @@
           "term": "ionic compound",
           "definition": "A compound of ions whose written formula is always the empirical form.",
           "firstLesson": 1
-        },
-        {
-          "term": "relative formula mass",
-          "definition": "The total of the relative atomic masses in a formula.",
-          "firstLesson": 2
-        },
-        {
-          "term": "hydrated salt",
-          "definition": "A crystallised salt containing water molecules as part of its structure.",
-          "firstLesson": 2
         },
         {
           "term": "water of crystallisation",

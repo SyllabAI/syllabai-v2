@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_V3hNWh6QWrbCRHrX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "107deef1eb0125ca76ed2421dd85b40ce1f1ef7326d906274e29219904a010dd",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "8802f13a2ec7adb5fd6965b27aa15b37f3e71c66b20af68220b850e0b7c3bd3f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_V3hNWh6QWrbCRHrX",
@@ -83,7 +83,8 @@
           "rn_V3hNWh6QWrbCRHrX::L1::Q7",
           "rn_V3hNWh6QWrbCRHrX::L1::Q8",
           "rn_V3hNWh6QWrbCRHrX::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_V3hNWh6QWrbCRHrX::L2",
@@ -135,7 +136,8 @@
           "rn_V3hNWh6QWrbCRHrX::L2::Q7",
           "rn_V3hNWh6QWrbCRHrX::L2::Q8",
           "rn_V3hNWh6QWrbCRHrX::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_V3hNWh6QWrbCRHrX::L3",
@@ -187,6 +189,9 @@
           "rn_V3hNWh6QWrbCRHrX::L3::Q7",
           "rn_V3hNWh6QWrbCRHrX::L3::Q8",
           "rn_V3hNWh6QWrbCRHrX::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -233,9 +238,11 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c2cdb7aab5f7-3-2-hydrocarbons-toxic-effect-co-1.png",
         "alt": "Diagram showing haemoglobin in red blood cells carrying oxygen and carbon dioxide. Carbon monoxide binds tightly, preventing oxygen transport.",
-        "sourceHeading": "The detailed explanation",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "How carbon monoxide affects the body",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

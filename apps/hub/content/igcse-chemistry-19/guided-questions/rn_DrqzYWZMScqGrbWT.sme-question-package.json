@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_DrqzYWZMScqGrbWT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "41a524d73d0d0986af7934fa9a751f444b29fb2fd9cd1df879d6496201242179",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "4ba00dc5427d086f280a6612e9407d79028a0cd34a8e1dfdec4fc8c53e77fcf4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_DrqzYWZMScqGrbWT",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Above 2000 degrees Celsius",
+          "correct": false,
+          "explanation": "That overshoots the industrial range by far and wastes energy.",
+          "misconception": "range inflated"
+        },
+        {
+          "key": "B",
           "text": "Around 600 to 700 degrees Celsius",
           "correct": true,
           "explanation": "The spec wording fixes the range at 600-700 degrees, hot enough to vaporise the chains.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Around 100 to 200 degrees Celsius",
           "correct": false,
           "explanation": "That is far too cool to vaporise long chains and crack them.",
           "misconception": "range too low"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Room temperature with a strong catalyst",
           "correct": false,
           "explanation": "No catalyst lets cracking run cold; heat is part of the condition set.",
           "misconception": "heat optional claimed"
-        },
-        {
-          "key": "D",
-          "text": "Above 2000 degrees Celsius",
-          "correct": false,
-          "explanation": "That overshoots the industrial range by far and wastes energy.",
-          "misconception": "range inflated"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Its surface provides the contact at which covalent bonds break",
-          "correct": true,
-          "explanation": "Molecules meeting the hot catalyst surface undergo the bond-breaking that splits them.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It dissolves the hydrocarbons into a solution",
-          "correct": false,
-          "explanation": "Nothing dissolves; the reaction happens on the solid surface in the vapour phase.",
-          "misconception": "dissolving imagined"
-        },
-        {
-          "key": "C",
           "text": "It burns the hydrocarbons to carbon dioxide",
           "correct": false,
           "explanation": "Cracking is decomposition, not burning; no oxygen takes part.",
           "misconception": "combustion confused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It cools the vapours to condense them",
           "correct": false,
           "explanation": "The catalyst is hot, not cold, and the products stay vapours until collected.",
           "misconception": "temperature inverted"
+        },
+        {
+          "key": "C",
+          "text": "Its surface provides the contact at which covalent bonds break",
+          "correct": true,
+          "explanation": "Molecules meeting the hot catalyst surface undergo the bond-breaking that splits them.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It dissolves the hydrocarbons into a solution",
+          "correct": false,
+          "explanation": "Nothing dissolves; the reaction happens on the solid surface in the vapour phase.",
+          "misconception": "dissolving imagined"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A mixture of shorter alkanes and alkenes",
-          "correct": true,
-          "explanation": "The random break-up yields both single-bonded alkanes and double-bonded alkenes.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Only alkanes, because the chains stay saturated",
           "correct": false,
           "explanation": "The double-bonded alkenes are a headline product of every cracking run.",
           "misconception": "alkenes denied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Only alkenes, because all bonds break",
           "correct": false,
           "explanation": "Shorter alkanes always accompany the alkenes in the product mixture.",
           "misconception": "alkanes denied"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Carbon dioxide and water",
           "correct": false,
           "explanation": "Those are combustion products; cracking makes hydrocarbons, not oxides.",
           "misconception": "products from another note"
+        },
+        {
+          "key": "D",
+          "text": "A mixture of shorter alkanes and alkenes",
+          "correct": true,
+          "explanation": "The random break-up yields both single-bonded alkanes and double-bonded alkenes.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "Kerosene and diesel oil are the usual feedstocks for cracking.",
       "keywords": [
         "kerosene",
-        "diesel"
+        "diesel",
+        "feedstocks"
       ],
       "options": []
     },
@@ -213,7 +214,8 @@
       "modelAnswer": "Around 600 to 700 degrees Celsius, hot enough to vaporise the hydrocarbons.",
       "keywords": [
         "600",
-        "700"
+        "700",
+        "hydrocarbons"
       ],
       "options": []
     },
@@ -226,7 +228,8 @@
       "modelAnswer": "The vaporised hydrocarbons pass over the hot powdered alumina or silica, whose surface breaks the covalent bonds, so thermal decomposition follows and the chains split.",
       "keywords": [
         "breaks",
-        "bonds"
+        "bonds",
+        "decomposition"
       ],
       "options": []
     },
@@ -239,7 +242,8 @@
       "modelAnswer": "The random bond-breaking is a thermal decomposition that delivers a mixture of shorter alkanes and alkenes, so both families appear every time.",
       "keywords": [
         "alkanes",
-        "alkenes"
+        "alkenes",
+        "decomposition"
       ],
       "options": []
     },
@@ -251,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "How much crude oil remains underground",
+          "correct": false,
+          "explanation": "Reserves are a separate idea; supply here means refining output.",
+          "misconception": "reserves confused"
+        },
+        {
+          "key": "B",
           "text": "How much of a fraction refining the crude oil can produce",
           "correct": true,
           "explanation": "Supply is fixed by the refining yield of each chain-length group.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "How much customers want to buy",
           "correct": false,
           "explanation": "That is demand; supply is the amount refining delivers.",
           "misconception": "terms swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "How hot the column must be",
           "correct": false,
           "explanation": "Temperature is a process condition, not the supply quantity.",
           "misconception": "condition confused"
-        },
-        {
-          "key": "D",
-          "text": "How much crude oil remains underground",
-          "correct": false,
-          "explanation": "Reserves are a separate idea; supply here means refining output.",
-          "misconception": "reserves confused"
         }
       ]
     },
@@ -287,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because demand for some fractions outstrips their supply from refining",
-          "correct": true,
-          "explanation": "The gap between what refining yields and what customers want is closed by cracking surplus fractions.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because supply and demand match perfectly for every fraction",
-          "correct": false,
-          "explanation": "If they matched, no cracking would ever be needed; the mismatch is the whole reason.",
-          "misconception": "balance assumed"
-        },
-        {
-          "key": "C",
           "text": "Because cracking makes fractions burn more cleanly",
           "correct": false,
           "explanation": "Cleaner burning is not the balancing mechanism; product mix is.",
           "misconception": "greenwashing claimed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the column cannot run without cracking first",
           "correct": false,
           "explanation": "Distillation runs first and delivers the fractions; cracking comes after.",
           "misconception": "order inverted"
+        },
+        {
+          "key": "C",
+          "text": "Because demand for some fractions outstrips their supply from refining",
+          "correct": true,
+          "explanation": "The gap between what refining yields and what customers want is closed by cracking surplus fractions.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because supply and demand match perfectly for every fraction",
+          "correct": false,
+          "explanation": "If they matched, no cracking would ever be needed; the mismatch is the whole reason.",
+          "misconception": "balance assumed"
         }
       ]
     },
@@ -323,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Fuel oil and bitumen",
-          "correct": true,
-          "explanation": "The note names these heavy fractions as the surplus ones sent for cracking and modification.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Petrol and kerosene",
           "correct": false,
           "explanation": "Those are the short-chain products in demand, not the surplus feed.",
           "misconception": "roles swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Refinery gas and gasoline",
           "correct": false,
           "explanation": "Light fractions are demanded, not surplus; they are never the cracking feed here.",
           "misconception": "light end blamed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "No fraction is ever surplus",
           "correct": false,
           "explanation": "The supply-demand chart shows clear surplus at the heavy end.",
           "misconception": "surplus denied"
+        },
+        {
+          "key": "D",
+          "text": "Fuel oil and bitumen",
+          "correct": true,
+          "explanation": "The note names these heavy fractions as the surplus ones sent for cracking and modification.",
+          "misconception": null
         }
       ]
     },
@@ -395,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Both, depending on the catalyst colour",
+          "correct": false,
+          "explanation": "Catalyst appearance has no bearing on the energy direction.",
+          "misconception": "nonsense criterion"
+        },
+        {
+          "key": "B",
           "text": "Endothermic, because breaking bonds needs heat input",
           "correct": true,
           "explanation": "Cracking absorbs the heat supplied by the hot conditions, classifying it as endothermic.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Exothermic, because the furnace feels hot",
           "correct": false,
           "explanation": "The furnace is hot because we heat it; the reaction itself takes heat in.",
           "misconception": "source heat misattributed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Neither, because no bonds are involved",
           "correct": false,
           "explanation": "Covalent bonds are broken, which is exactly why energy is absorbed.",
           "misconception": "bond energy denied"
-        },
-        {
-          "key": "D",
-          "text": "Both, depending on the catalyst colour",
-          "correct": false,
-          "explanation": "Catalyst appearance has no bearing on the energy direction.",
-          "misconception": "nonsense criterion"
         }
       ]
     },
@@ -432,7 +436,8 @@
       "modelAnswer": "Supply is how much of a fraction refining the crude oil can produce.",
       "keywords": [
         "refining",
-        "produce"
+        "produce",
+        "balancing"
       ],
       "options": []
     },
@@ -459,7 +464,8 @@
       "modelAnswer": "Because what refining supplies does not match what customers demand: long-chain fractions pile up in surplus while short-chain fuels such as petrol, kerosene and diesel are wanted in larger amounts, so cracking must convert the excess.",
       "keywords": [
         "demand",
-        "supplies"
+        "supplies",
+        "proportions"
       ],
       "options": []
     },
@@ -471,7 +477,9 @@
       "kind": "application",
       "modelAnswer": "Crack the surplus fuel oil: heating the vapours to 600-700 degrees Celsius over the hot catalyst gives shorter alkanes and alkenes, easing the petrol shortfall.",
       "keywords": [
-        "crack"
+        "crack",
+        "overflowing",
+        "shortfall"
       ],
       "options": []
     }

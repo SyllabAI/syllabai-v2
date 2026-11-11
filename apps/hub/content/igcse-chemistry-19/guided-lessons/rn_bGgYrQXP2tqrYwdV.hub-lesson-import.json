@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_bGgYrQXP2tqrYwdV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "69bb04f19453441fb7999928a615c65daf1ae181afdfd125f5db4e0bb449459e",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "24d1bc02ccb455db92bcaf466a7703ddc27f9b8c89dcf9f5e45c9df4de76cdfb",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_bGgYrQXP2tqrYwdV",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Synthetic polymers",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-8-synthetic-polymers/4-8-3-condensation-polymers",
     "specAnchors": [
-      {
-        "code": "4CH1-4.48C",
-        "text": "know that condensation polymerisation, in which a dicarboxylic acid reacts with a diol, produces a polyester and water"
-      },
       {
         "code": "4CH1-4.49C",
         "text": "understand how to write the structural and displayed formula of a polyester, showing the repeat unit, given the formulae of the monomers from which it is formed including the reaction of ethanedioic acid and ethanediol:"
@@ -36,10 +32,10 @@
         "id": "rn_bGgYrQXP2tqrYwdV::L1",
         "title": "Condensation versus addition",
         "sourceHeadings": [
-          "Condensation polymers"
+          "Condensation Polymers"
         ],
         "specRefs": [
-          "4CH1-4.48C"
+          "4CH1-4.49C"
         ],
         "opening": "Addition polymers form from one monomer alone; condensation polymers are built by two different monomers that release a small molecule, usually water, every time they link. This lesson sets the two mechanisms side by side and shows where the water comes from.",
         "keyPoints": [
@@ -92,7 +88,6 @@
           "Deducing the monomers from a polyester"
         ],
         "specRefs": [
-          "4CH1-4.48C",
           "4CH1-4.49C"
         ],
         "opening": "A dicarboxylic acid with -COOH at both ends meets a diol with -OH at both ends, and the chain that results is a polyester such as terylene. This lesson also runs the film backwards: adding water across the ester links, known as hydrolysis, recovers the monomers.",
@@ -156,7 +151,7 @@
         ],
         "opening": "Not every polyester outlives the planet that made it. Biopolyesters are synthesised from sugars and plant oils with the help of micro-organisms, and their ester, amide and ether groups let them biodegrade once their job is done. This lesson closes the corpus with the greenest member of the family.",
         "keyPoints": [
-          "Biopolyesters are synthesised from sugars and plant oils using micro-organisms.",
+          "Micro-organisms synthesise biopolyesters from sugars and plant oils.",
           "They biodegrade naturally in the environment once their job is done.",
           "Their chains contain ester, amide and ether functional groups.",
           "Those groups give the polymers their biodegradable character.",
@@ -226,11 +221,6 @@
           "term": "hydrolysis",
           "definition": "Adding water to break a polyester back down into its two monomers.",
           "firstLesson": 2
-        },
-        {
-          "term": "biopolyester",
-          "definition": "A polyester synthesised from sugars and plant oils by micro-organisms, able to biodegrade after use.",
-          "firstLesson": 3
         }
       ],
       "workedExample": {
@@ -249,75 +239,75 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a65004b6b505-forming-terylene.png",
         "alt": "Condensation polymerisation",
         "sourceHeading": "Condensation polymers",
-        "caption": "The condensation reaction in which the polyester terylene is produced",
-        "binding": "content-overlap",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The condensation reaction in which the polyester terylene is produced"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/383584fd4523-terylene.png",
         "alt": "The repeat unit terylene",
         "sourceHeading": "Condensation polymers",
-        "caption": "Diagram showing a section of the polyester terylene",
-        "binding": "content-overlap",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing a section of the polyester terylene"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/be66ed223ee6-deducing-monomers-from-a-polyester-image-1-2.png",
         "alt": "deducing-monomers-from-a-polyester-image-1-2",
         "sourceHeading": "Deducing the monomers from a polyester",
-        "caption": "Diagram showing a section of the polyester polybutylene terephthalate, PBT",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing a section of the polyester polybutylene terephthalate, PBT"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/ef3ae0ecfafb-deducing-monomers-from-a-polyester-image-2-2.png",
         "alt": "Deducing monomers from a polyester",
         "sourceHeading": "Deducing the monomers from a polyester",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-05",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/fb81d5bdddbf-deducing-monomers-from-a-polyester-image-3-2.png",
         "alt": "deducing-monomers-from-a-polyester-image-3-2",
         "sourceHeading": "Deducing the monomers from a polyester",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-06",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9f11962516c8-deducing-monomers-from-a-polyester-image-4-2.png",
         "alt": "deducing-monomers-from-a-polyester-image-4-2",
         "sourceHeading": "Deducing the monomers from a polyester",
-        "caption": "A diagram to show the two monomers used to form the polyester*** ***polybutylene terephthalate, PBT",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "A diagram to show the two monomers used to form the polyester*** ***polybutylene terephthalate, PBT"
       },
       {
         "id": "fig-07",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/648fd7f1026f-biopolyesters.png",
         "alt": "Diagram of biopolysters",
         "sourceHeading": "Biopolyesters",
-        "caption": "The biodegradation of a bottle made of biopolyesters",
-        "binding": "heading-unique",
         "moduleIds": [
           "L3"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The biodegradation of a bottle made of biopolyesters"
       }
     ]
   }

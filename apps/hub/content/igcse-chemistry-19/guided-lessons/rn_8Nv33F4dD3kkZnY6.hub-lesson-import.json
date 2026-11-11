@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_8Nv33F4dD3kkZnY6",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e409cdb01de30f7c3b105ecfcc5ea0f3c4369efc818688c79fdaaca00f61657e",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "670a4fa16274baac0fe2bbf1ee3fd6e9a4a8e7a7072930c8510a7d2936cd552e",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_8Nv33F4dD3kkZnY6",
@@ -15,12 +15,8 @@
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-6-ionic-bonding/1-6-2-common-ions",
     "specAnchors": [
       {
-        "code": "4CH1-1.37",
-        "text": "understand how ions are formed by electron loss or gain"
-      },
-      {
         "code": "4CH1-1.38",
-        "text": "know the charges of these ions: • metals in Groups 1, 2 and 3 • non-metals in Groups 5, 6 and 7 • Ag+, Cu2+, Fe2+, Fe3+, Pb2+, Zn2+ • hydrogen (H+), hydroxide (OH–), ammonium (NH4+), carbonate (CO3 2–), nitrate (NO3-), sulfate (SO4 2–)."
+        "text": "know the charges of these ions: • metals in Groups 1, 2 and 3 • non-metals in Groups 5, 6 and 7 • Ag + , Cu 2+ , Fe 2+ , Fe 3+ , Pb 2+ , Zn 2+ • hydrogen (H + ), hydroxide (OH – ), ammonium (NH 4 + ), carbonate (CO 3 2– ), nitrate (NO 3 - ), sulfate (SO 4 2– )."
       }
     ],
     "primer": {
@@ -35,7 +31,7 @@
           "How to deduce the charge of an ion"
         ],
         "specRefs": [
-          "4CH1-1.37"
+          "4CH1-1.38"
         ],
         "opening": "A group number plus one look at the outer shell settles most charges: count the outer electrons, then decide whether giving them away or topping up is easier. Fewer than four outer electrons points to donating and a positive ion; more than four points to receiving and a negative one.",
         "keyPoints": [
@@ -77,7 +73,8 @@
           "rn_8Nv33F4dD3kkZnY6::L1::Q7",
           "rn_8Nv33F4dD3kkZnY6::L1::Q8",
           "rn_8Nv33F4dD3kkZnY6::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_8Nv33F4dD3kkZnY6::L2",
@@ -92,10 +89,10 @@
         "opening": "The exam expects a memorised table: groups 1 to 3 give their metal ions at 1+, 2+ and 3+, the named metals carry set charges such as Fe2+ and Fe3+, and the compound ions - hydroxide, ammonium, carbonate, nitrate, sulfate - ride their own fixed charges. Group 5, 6 and 7 non-metals take 3-, 2- and 1-.",
         "keyPoints": [
           "Metals in groups 1, 2 and 3 form ions of 1+, 2+ and 3+ respectively.",
-          "Non-metals in groups 5, 6 and 7 form ions of 3-, 2- and 1- respectively.",
+          "Group 5, 6 and 7 non-metals make ions of 3-, 2- and 1- respectively.",
           "Silver carries 1+, copper(II), lead(II) and zinc carry 2+, and iron appears as both 2+ and 3+.",
           "Hydrogen rides as H+ alongside the metal ions.",
-          "The compound ions to know are hydroxide OH-, ammonium NH4+, carbonate CO3 2-, nitrate NO3- and sulfate SO4 2-."
+          "The compound ions to know: hydroxide OH-, ammonium NH4+, carbonate CO3 2-, sulfate SO4 2- and nitrate NO3-."
         ],
         "depthLayers": {
           "low": {
@@ -129,7 +126,8 @@
           "rn_8Nv33F4dD3kkZnY6::L2::Q7",
           "rn_8Nv33F4dD3kkZnY6::L2::Q8",
           "rn_8Nv33F4dD3kkZnY6::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -157,16 +155,6 @@
         {
           "term": "carbonate",
           "definition": "The negative compound ion CO3 2-, charge 2-.",
-          "firstLesson": 2
-        },
-        {
-          "term": "nitrate",
-          "definition": "The negative compound ion NO3-, charge 1-.",
-          "firstLesson": 2
-        },
-        {
-          "term": "sulfate",
-          "definition": "The negative compound ion SO4 2-, charge 2-.",
           "firstLesson": 2
         }
       ],

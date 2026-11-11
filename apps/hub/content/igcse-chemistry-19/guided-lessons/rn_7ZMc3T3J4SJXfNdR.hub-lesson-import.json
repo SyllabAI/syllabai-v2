@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_7ZMc3T3J4SJXfNdR",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "12470a0e54d5d689de6d2f3197738d2400f4c70ed6e1393cdd302238af8b5ba6",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "eecc24a26a704e68093431ef9f149bbc640cc57e254a379557f29630028da926",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_7ZMc3T3J4SJXfNdR",
@@ -17,10 +17,6 @@
       {
         "code": "4CH1-4.39C",
         "text": "know that ethyl ethanoate is the ester produced when ethanol and ethanoic acid react in the presence of an acid catalyst"
-      },
-      {
-        "code": "4CH1-4.43C",
-        "text": "practical: prepare a sample of an ester such as ethyl ethanoate"
       }
     ],
     "primer": {
@@ -36,7 +32,6 @@
           "Method:"
         ],
         "specRefs": [
-          "4CH1-4.43C",
           "4CH1-4.39C"
         ],
         "opening": "The practical makes a small sample of ethyl ethanoate from its two parents and the acid catalyst. Ethanol is flammable, so the heating stays gentle: a water bath or electric heater instead of a flame, and the ester is distilled off the moment it forms.",
@@ -79,6 +74,9 @@
           "rn_7ZMc3T3J4SJXfNdR::L1::Q7",
           "rn_7ZMc3T3J4SJXfNdR::L1::Q8",
           "rn_7ZMc3T3J4SJXfNdR::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -88,7 +86,7 @@
           "Result:"
         ],
         "specRefs": [
-          "4CH1-4.43C"
+          "4CH1-4.39C"
         ],
         "opening": "The collected distillate is more than ester: acids and ethanol travel over with it. Washing follows, first with sodium carbonate solution until the fizzing stops, then with calcium chloride solution to catch the ethanol, leaving the sweet ester behind.",
         "keyPoints": [
@@ -105,7 +103,7 @@
             "examPointer": "Match each wash to what it removes; the pairing is a standard practical question."
           },
           "medium": {
-            "restatement": "The raw distillate carries small quantities of ethanoic acid, sulfuric acid and ethanol alongside the ester. Sodium carbonate is added until no further carbon dioxide escapes, showing the acids are gone, and calcium chloride solution then strips out the ethanol.",
+            "restatement": "The raw distillate carries small amounts of ethanoic acid, sulfuric acid and ethanol alongside the ester. Sodium carbonate is added until no further carbon dioxide escapes, showing the acids are gone, and calcium chloride solution then strips out the ethanol.",
             "analogy": "Purifying runs like a two-question quiz: does it still fizz, and has the ethanol gone; each wash answers one question before the sample is clean.",
             "examPointer": "Quote the fizzing test as evidence the acidic impurities have gone; the observation carries the mark."
           }
@@ -130,7 +128,8 @@
           "rn_7ZMc3T3J4SJXfNdR::L2::Q7",
           "rn_7ZMc3T3J4SJXfNdR::L2::Q8",
           "rn_7ZMc3T3J4SJXfNdR::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -177,10 +176,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/18021442a18c-4-7-2-preparation-of-ethyl-ethanoate.png",
         "alt": "Equipment for the preparation of ethyl ethanoate",
-        "sourceHeading": "Diagram:",
-        "caption": "The preparation of ethyl ethanoate",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Practical: Preparation of ethyl ethanoate",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The preparation of ethyl ethanoate"
       }
     ]
   }

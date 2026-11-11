@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_sf7s7s6bQ2cZv29s",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "0891660da4c159b9e68e562cc018c60e85f2f142d4a135755ca76e5ca2127efb",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "0a221f2ae5d99cf5630b75d31e42bf90927a7f7813d740b237825db25ed2d3fc",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_sf7s7s6bQ2cZv29s",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Magnetism and low cost",
+          "correct": false,
+          "explanation": "Copper is not magnetic and cost is not the listed property set.",
+          "misconception": "irrelevant properties chosen"
+        },
+        {
+          "key": "B",
           "text": "Unreactive with water, non-toxic and malleable",
           "correct": true,
           "explanation": "These are exactly the three properties listed for water pipes.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Low density and high strength",
           "correct": false,
           "explanation": "Those are aircraft properties for aluminium; pipes need chemical stability and workability.",
           "misconception": "aluminium properties transferred to copper pipes"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Hardness and a high melting point",
           "correct": false,
           "explanation": "Neither property is the listed reason; the pipe must not react with water and must be safe and workable.",
           "misconception": "plausible properties invented"
-        },
-        {
-          "key": "D",
-          "text": "Magnetism and low cost",
-          "correct": false,
-          "explanation": "Copper is not magnetic and cost is not the listed property set.",
-          "misconception": "irrelevant properties chosen"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Both are very good conductors of heat",
-          "correct": true,
-          "explanation": "Heat conduction is listed for both metals in the saucepan row.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Both are ductile enough to be drawn into wires",
-          "correct": false,
-          "explanation": "Ductility is the wiring property; saucepans need heat conduction.",
-          "misconception": "wiring property applied to cookware"
-        },
-        {
-          "key": "C",
           "text": "Both are strongly magnetic",
           "correct": false,
           "explanation": "Neither metal is magnetic, and magnetism has no role in cooking.",
           "misconception": "invented shared property"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Both are the cheapest metals on sale",
           "correct": false,
           "explanation": "Cost is not the listed property; conduction of heat is.",
           "misconception": "cost substituted for the property"
+        },
+        {
+          "key": "C",
+          "text": "Both are very good conductors of heat",
+          "correct": true,
+          "explanation": "Heat conduction is listed for both metals in the saucepan row.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Both are ductile enough to be drawn into wires",
+          "correct": false,
+          "explanation": "Ductility is the wiring property; saucepans need heat conduction.",
+          "misconception": "wiring property applied to cookware"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It is non-toxic and resists corrosion and acidic foodstuffs",
-          "correct": true,
-          "explanation": "The food-can row lists non-toxic behaviour plus resistance to corrosion and acidic foods.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It conducts electricity so it keeps food warm",
           "correct": false,
           "explanation": "Conductivity does not keep food warm and is not the listed reason.",
           "misconception": "conduction misapplied to storage"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It is denser than most metals so it seals tightly",
           "correct": false,
           "explanation": "Aluminium is prized for low density; the can property is chemical resistance.",
           "misconception": "density claim inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It is magnetic so cans are easy to sort",
           "correct": false,
           "explanation": "Sorting convenience is not the listed reason and aluminium is not magnetic.",
           "misconception": "recycling habit mistaken for the property"
+        },
+        {
+          "key": "D",
+          "text": "It is non-toxic and resists corrosion and acidic foodstuffs",
+          "correct": true,
+          "explanation": "The food-can row lists non-toxic behaviour plus resistance to corrosion and acidic foods.",
+          "misconception": null
         }
       ]
     },
@@ -202,10 +202,7 @@
         "low",
         "density",
         "high",
-        "strength",
-        "strong",
-        "light",
-        "lightweight"
+        "strength"
       ],
       "options": []
     },
@@ -220,7 +217,6 @@
         "copper",
         "conductivity",
         "conducts",
-        "ductile",
         "ductility",
         "wiring",
         "standard"
@@ -241,7 +237,6 @@
         "food",
         "foodstuffs",
         "react",
-        "reaction",
         "shrugs",
         "survives",
         "cans"
@@ -257,8 +252,6 @@
       "modelAnswer": "Aluminium conducts electricity very well, and the cable carries an electric current along the overhead line.",
       "keywords": [
         "conducts",
-        "conducting",
-        "conductor",
         "electricity",
         "current",
         "aluminium",
@@ -276,31 +269,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Pure iron, because alloys weaken metals",
+          "correct": false,
+          "explanation": "Car panels use mild steel; alloying is done deliberately to tune properties, not always to weaken.",
+          "misconception": "alloying misunderstood"
+        },
+        {
+          "key": "B",
           "text": "Mild steel, because it is soft and malleable",
           "correct": true,
           "explanation": "Body panels must be pressed into shape, which needs the soft, workable character of low-carbon mild steel.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "High-carbon steel, because panels must be hard",
           "correct": false,
           "explanation": "Hardness suits chisels and tools; panels need to be shaped, which mild steel does best.",
           "misconception": "tool steel applied to panels"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Stainless steel, because panels must not rust",
           "correct": false,
           "explanation": "Corrosion resistance is the stainless property for cutlery and sinks; panels use mild steel's workability.",
           "misconception": "stainless property applied to panels"
-        },
-        {
-          "key": "D",
-          "text": "Pure iron, because alloys weaken metals",
-          "correct": false,
-          "explanation": "Car panels use mild steel; alloying is done deliberately to tune properties, not always to weaken.",
-          "misconception": "alloying misunderstood"
         }
       ]
     },
@@ -312,31 +305,31 @@
       "options": [
         {
           "key": "A",
-          "text": "High-carbon steel, which is hard",
-          "correct": true,
-          "explanation": "Cutting edges need hardness, and the 0.5-1.4% carbon content provides exactly that.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Mild steel, which is soft and malleable",
-          "correct": false,
-          "explanation": "A soft chisel would deform on impact; hardness is the required property.",
-          "misconception": "panel steel applied to tools"
-        },
-        {
-          "key": "C",
           "text": "Stainless steel, which resists corrosion",
           "correct": false,
           "explanation": "Corrosion resistance matters for cutlery and sinks; chisels need hardness.",
           "misconception": "stainless property applied to tools"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Pure iron, which is ductile",
           "correct": false,
           "explanation": "Ductility helps shaping, not edge retention; the hard high-carbon steel is chosen.",
           "misconception": "iron property misapplied"
+        },
+        {
+          "key": "C",
+          "text": "High-carbon steel, which is hard",
+          "correct": true,
+          "explanation": "Cutting edges need hardness, and the 0.5-1.4% carbon content provides exactly that.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Mild steel, which is soft and malleable",
+          "correct": false,
+          "explanation": "A soft chisel would deform on impact; hardness is the required property.",
+          "misconception": "panel steel applied to tools"
         }
       ]
     },
@@ -348,31 +341,31 @@
       "options": [
         {
           "key": "A",
-          "text": "20% chromium and 10% nickel, for cutlery, sinks and chemical plants",
-          "correct": true,
-          "explanation": "These are exactly the stainless row's composition and uses, prized for strength and corrosion resistance.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "0.25% carbon, for car body panels",
           "correct": false,
           "explanation": "That is mild steel's composition and use, not stainless.",
           "misconception": "mild steel row copied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "0.5-1.4% carbon, for chisels",
           "correct": false,
           "explanation": "That is high-carbon steel, the tool alloy.",
           "misconception": "high-carbon row copied"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "10% copper, for water pipes",
           "correct": false,
           "explanation": "No copper appears in the steel table; pipes are copper's own use.",
           "misconception": "metals mixed up"
+        },
+        {
+          "key": "D",
+          "text": "20% chromium and 10% nickel, for cutlery, sinks and chemical plants",
+          "correct": true,
+          "explanation": "These are exactly the stainless row's composition and uses, prized for strength and corrosion resistance.",
+          "misconception": null
         }
       ]
     },
@@ -420,31 +413,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The temperature at which each steel is used",
+          "correct": false,
+          "explanation": "Service temperature is not the classification; the alloy content is.",
+          "misconception": "service condition confused with composition"
+        },
+        {
+          "key": "B",
           "text": "The elements alloyed with the iron, especially the carbon content",
           "correct": true,
           "explanation": "Mild, high-carbon and stainless differ by what is mixed in and how much, which sets soft, hard or corrosion-resistant behaviour.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The furnace in which each steel was made",
           "correct": false,
           "explanation": "The type is defined by composition, not by which furnace produced it.",
           "misconception": "process blamed for composition"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The country where the steel was produced",
           "correct": false,
           "explanation": "Origin plays no part; composition decides the type.",
           "misconception": "irrelevant variable chosen"
-        },
-        {
-          "key": "D",
-          "text": "The temperature at which each steel is used",
-          "correct": false,
-          "explanation": "Service temperature is not the classification; the alloy content is.",
-          "misconception": "service condition confused with composition"
         }
       ]
     },
@@ -481,7 +474,6 @@
         "20",
         "10",
         "corrosion",
-        "resistant",
         "resistance",
         "strength",
         "stainless"

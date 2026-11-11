@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_TsfqyK9BYMtN2Bfd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ba7cc43e8f1f6665e449a2a58692fc6437b6b54fbc48b59033b79c36bc5cc4df",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "ea49aef25bfe3e739e74e2100c802e01ad4cc1326798c37e3b087e55ea9e13a2",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_TsfqyK9BYMtN2Bfd",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Elements, Compounds & Mixtures",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-2-elements-compounds-and-mixtures/1-2-5-practical-investigating-paper-chromatography",
     "specAnchors": [
-      {
-        "code": "4CH1-1.10",
-        "text": "describe these experimental techniques for the separation of mixtures: simple distillation, fractional distillation, filtration, crystallisation, paper chromatography"
-      },
       {
         "code": "4CH1-1.13",
         "text": "practical: investigate paper chromatography using inks/food colourings"
@@ -32,8 +28,8 @@
         "id": "rn_TsfqyK9BYMtN2Bfd::L1",
         "title": "Apparatus and Method",
         "sourceHeadings": [
-          "Apparatus",
-          "Method"
+          "Apparatus:",
+          "Method:"
         ],
         "specRefs": [
           "4CH1-1.13"
@@ -54,7 +50,7 @@
             "examPointer": "Method marks reward order and reasons - pencil first, small spots, shallow solvent, then measure from the start line to the centre of each spot."
           },
           "medium": {
-            "restatement": "A pencil start line 2 cm from the bottom carries spots of colourings A to D and the unknown U, each placed with a fresh capillary tube and kept within 2-3 mm. The paper stands in water no deeper than 1 cm, clipped to a wooden spill, and the solvent climbs undisturbed until it is at least three quarters of the way up before the wet edge is marked.",
+            "restatement": "A pencil start line 2 cm from the bottom carries spots of colourings A to D and the unknown U, each placed with a fresh capillary tube and kept within 2-3 mm. The paper stands in water no deeper than 1 cm, clipped to a wooden spill, and the solvent climbs undisturbed until it reaches roughly the three-quarter mark before the wet edge is marked.",
             "analogy": "Treat the start line as a race grid and the solvent front as the finish judge: the race is only fair if every runner starts on the grid, stays in lane, and the clock stops at a marked line.",
             "examPointer": "For each step, give the reason as well as the action - pencil so the line cannot run, small spots so dyes stay distinct, shallow water so samples begin above the solvent."
           }
@@ -89,10 +85,9 @@
         "title": "Common Errors and Results",
         "sourceHeadings": [
           "Common errors & sources of inaccuracy",
-          "Results"
+          "Results:"
         ],
         "specRefs": [
-          "4CH1-1.10",
           "4CH1-1.13"
         ],
         "opening": "Most lost marks in this practical come from five avoidable slips: an ink start line, oversized spots, solvent above the line, letting the front run off the paper, and leaving the beaker open. Each has a simple fix, and the results table turns a clean run into Rf values. When the unknown's Rf matches a known colouring, that dye is named.",
@@ -136,16 +131,12 @@
           "rn_TsfqyK9BYMtN2Bfd::L2::Q7",
           "rn_TsfqyK9BYMtN2Bfd::L2::Q8",
           "rn_TsfqyK9BYMtN2Bfd::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
       "glossary": [
-        {
-          "term": "separation",
-          "definition": "Taking a mixture apart into its components by physical means.",
-          "firstLesson": 1
-        },
         {
           "term": "chromatography paper",
           "definition": "The absorbent paper on which the dyes are spotted and separated.",
@@ -170,11 +161,6 @@
           "term": "Rf value",
           "definition": "The distance moved by a spot divided by the distance moved by the solvent.",
           "firstLesson": 2
-        },
-        {
-          "term": "evaporation",
-          "definition": "Solvent turning to vapour from the wet paper; slowed by a lid on the beaker.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -192,11 +178,11 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f14cefa5953b-paper-chromatography-new.png",
         "alt": "paper-chromatography-new",
-        "sourceHeading": "Diagram of the apparatus needed for paper chromatography",
-        "binding": "unresolved",
+        "sourceHeading": "Apparatus:",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

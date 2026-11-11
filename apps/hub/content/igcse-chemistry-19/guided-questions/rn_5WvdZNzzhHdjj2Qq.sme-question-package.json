@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_5WvdZNzzhHdjj2Qq",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a7b34ebaba64f3e63bea35334ddaef7edcee6e4899e8056c83add19df16168d9",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "d9ba9eeb41ed7c0530afacadacbae67a795fd9bb64614e41d49d6e871edf12a9",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_5WvdZNzzhHdjj2Qq",
   "subject": "igcse-chemistry",
@@ -55,67 +55,67 @@
       "options": [
         {
           "key": "A",
+          "text": "Hydrogen, helium and neon",
+          "correct": false,
+          "explanation": "None of these is named as a greenhouse gas; hydrogen is barely present in air and the others are noble gases.",
+          "misconception": "noble gases misclassified"
+        },
+        {
+          "key": "B",
           "text": "Carbon dioxide, methane and water vapour",
           "correct": true,
           "explanation": "These three are the greenhouse gases named in the note, each able to absorb and store outgoing energy.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Nitrogen, oxygen and argon",
           "correct": false,
           "explanation": "Those are the main components of air, but they are not the heat-trapping gases named here.",
           "misconception": "abundant gases confused with greenhouse gases"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Chlorine, bromine and iodine",
           "correct": false,
           "explanation": "The halogens are reactive non-metals from another topic and are not atmospheric greenhouse gases.",
           "misconception": "halogens misplaced into the atmosphere"
-        },
-        {
-          "key": "D",
-          "text": "Hydrogen, helium and neon",
-          "correct": false,
-          "explanation": "None of these is named as a greenhouse gas; hydrogen is barely present in air and the others are noble gases.",
-          "misconception": "noble gases misclassified"
         }
       ]
     },
     {
       "id": "rn_5WvdZNzzhHdjj2Qq::L1::Q3",
       "moduleId": "rn_5WvdZNzzhHdjj2Qq::L1",
-      "stem": "What happens to short wavelength radiation from the sun when it strikes the Earth's surface?",
+      "stem": "What happens to short-wavelength radiation from the sun when it reaches the Earth's surface?",
       "misconceptionClass": "mechanism recall",
       "options": [
         {
           "key": "A",
-          "text": "Some is absorbed and some is re-emitted as long wavelength radiation",
-          "correct": true,
-          "explanation": "The surface takes in part of the incoming energy and sends energy back out at a longer wavelength.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "All of it reflects straight back into space unchanged",
-          "correct": false,
-          "explanation": "If everything reflected, the surface would not warm; the absorption and re-emission steps are what drive the effect.",
-          "misconception": "surface treated as a perfect mirror"
-        },
-        {
-          "key": "C",
           "text": "It turns into oxygen through the reaction",
           "correct": false,
           "explanation": "No gas is made from light at the surface; the energy simply changes wavelength on re-emission.",
           "misconception": "energy-to-matter conversion invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It is stored forever inside the ground",
           "correct": false,
           "explanation": "The surface re-emits the energy; the trapping happens in the atmosphere, not underground.",
           "misconception": "storage location misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Some is absorbed and some is re-emitted as long wavelength radiation",
+          "correct": true,
+          "explanation": "The surface takes in part of the incoming energy and sends energy back out at a longer wavelength.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "All of it reflects straight back into space unchanged",
+          "correct": false,
+          "explanation": "If everything reflected, the surface would not warm; the absorption and re-emission steps are what drive the effect.",
+          "misconception": "surface treated as a perfect mirror"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "They absorb and store much of it, trapping the energy inside the atmosphere",
-          "correct": true,
-          "explanation": "This absorption and storage is exactly what keeps the trapped warmth in place around the planet.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "They speed it up so it escapes faster into space",
           "correct": false,
           "explanation": "The opposite happens; the gases slow the energy's departure by absorbing and storing it.",
           "misconception": "effect direction reversed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "They change it into visible light",
           "correct": false,
           "explanation": "No wavelength conversion is claimed; the gases absorb and store the energy as it is.",
           "misconception": "conversion step invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "They have no effect on it at all",
           "correct": false,
           "explanation": "If they had no effect there would be no greenhouse effect and no trapped warmth.",
           "misconception": "mechanism denied entirely"
+        },
+        {
+          "key": "D",
+          "text": "They absorb and store much of it, trapping the energy inside the atmosphere",
+          "correct": true,
+          "explanation": "This absorption and storage is exactly what keeps the trapped warmth in place around the planet.",
+          "misconception": null
         }
       ]
     },
@@ -201,11 +201,9 @@
       "keywords": [
         "carbon",
         "dioxide",
-        "co2",
         "methane",
         "water",
-        "vapour",
-        "vapor"
+        "vapour"
       ],
       "options": []
     },
@@ -231,13 +229,12 @@
       "stem": "A student claims the greenhouse effect is purely harmful and should be eliminated. Give the correct verdict and justify it with what the effect does for the planet.",
       "misconceptionClass": "greenhouse necessity reasoning",
       "kind": "explain-why",
-      "modelAnswer": "Greenhouse gases keep temperatures on Earth high enough to support life; without this natural warming the planet would be too cold for living things to survive.",
+      "modelAnswer": "Greenhouse gases hold temperatures on Earth at levels high enough for life; without this natural warming the planet would be too cold for living things to survive.",
       "keywords": [
         "temperatures",
         "temperature",
         "high",
         "enough",
-        "support",
         "life",
         "warm",
         "warming",
@@ -255,14 +252,9 @@
       "modelAnswer": "The surface re-emits the energy as long wavelength radiation, and greenhouse gases absorb and store much of it, trapping the energy in the atmosphere so it warms the planet.",
       "keywords": [
         "absorb",
-        "absorbs",
-        "absorbed",
         "store",
-        "stores",
         "storing",
         "trap",
-        "traps",
-        "trapped",
         "trapping",
         "long",
         "wavelength",
@@ -279,31 +271,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Photosynthesis in green plants",
+          "correct": false,
+          "explanation": "Photosynthesis removes carbon dioxide from the air; it is the counter-process, not a source.",
+          "misconception": "sink mistaken for source"
+        },
+        {
+          "key": "B",
           "text": "Combustion of wood and fossil fuels",
           "correct": true,
           "explanation": "Burning wood and fossil fuels joins their carbon to oxygen, releasing carbon dioxide.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Evaporation of sea water",
           "correct": false,
           "explanation": "Evaporation moves water vapour into the air; it carries no carbon into the atmosphere.",
           "misconception": "water cycle confused with carbon sources"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Lightning fixing nitrogen",
           "correct": false,
           "explanation": "Lightning oxides nitrogen, which concerns nitrogen compounds, not carbon dioxide.",
           "misconception": "nitrogen chemistry misplaced"
-        },
-        {
-          "key": "D",
-          "text": "Photosynthesis in green plants",
-          "correct": false,
-          "explanation": "Photosynthesis removes carbon dioxide from the air; it is the counter-process, not a source.",
-          "misconception": "sink mistaken for source"
         }
       ]
     },
@@ -315,31 +307,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Through the respiration of plants and animals",
-          "correct": true,
-          "explanation": "Respiration releases carbon dioxide, so every breathing organism feeds this source.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Through the digestion of rocks by burrowing animals",
-          "correct": false,
-          "explanation": "No such route exists; the living-world contribution named is respiration.",
-          "misconception": "source invented"
-        },
-        {
-          "key": "C",
           "text": "Through decay releasing pure carbon powder",
           "correct": false,
           "explanation": "The named contribution is respiration; carbon powder is not what living things release.",
           "misconception": "product misidentified"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Living things contribute nothing to atmospheric carbon dioxide",
           "correct": false,
           "explanation": "Respiration by plants and animals is one of the three source families named.",
           "misconception": "source denied"
+        },
+        {
+          "key": "C",
+          "text": "Through the respiration of plants and animals",
+          "correct": true,
+          "explanation": "Respiration releases carbon dioxide, so every breathing organism feeds this source.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Through the digestion of rocks by burrowing animals",
+          "correct": false,
+          "explanation": "No such route exists; the living-world contribution named is respiration.",
+          "misconception": "source invented"
         }
       ]
     },
@@ -351,31 +343,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because it absorbs and stores the outgoing long wavelength energy very effectively",
-          "correct": true,
-          "explanation": "Effectiveness per molecule matters more than abundance; a small share of an efficient absorber traps much heat.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because its molecules are the largest in the atmosphere",
           "correct": false,
           "explanation": "Molecule size is not the mechanism; the ability to absorb and store outgoing energy is.",
           "misconception": "size-based reasoning invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because it is heavier than nitrogen and sinks onto cities",
           "correct": false,
           "explanation": "Gases mix through the atmosphere; the warming is global trapping, not local pooling.",
           "misconception": "pooling model invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because it burns when ignited",
           "correct": false,
           "explanation": "Carbon dioxide does not burn; it is already the fully burnt oxide of carbon.",
           "misconception": "reactivity misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Because it absorbs and stores the outgoing long wavelength energy very effectively",
+          "correct": true,
+          "explanation": "Effectiveness per molecule matters more than abundance; a small share of an efficient absorber traps much heat.",
+          "misconception": null
         }
       ]
     },
@@ -387,7 +379,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Thermal decomposition of carbonate rocks and the effect of acids on carbonates",
+          "text": "Carbonate rocks breaking down under heat, and acids attacking carbonates",
           "correct": true,
           "explanation": "Both routes break carbonates and free their carbon as carbon dioxide.",
           "misconception": null
@@ -423,31 +415,31 @@
       "options": [
         {
           "key": "A",
+          "text": "They have no consequence because the share is tiny",
+          "correct": false,
+          "explanation": "The small share does not prevent a warming consequence; the specification names climate change.",
+          "misconception": "share size used to dismiss effect"
+        },
+        {
+          "key": "B",
           "text": "They may contribute to climate change",
           "correct": true,
           "explanation": "The of-record wording says the rising level may contribute to climate change, matching the extra trapped heat.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "They will thicken the ozone layer",
           "correct": false,
           "explanation": "Ozone is a separate issue; carbon dioxide's named consequence concerns climate.",
           "misconception": "ozone confusion again"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They will make the air toxic to breathe",
           "correct": false,
           "explanation": "The air stays breathable; the concern is trapped heat and climate, not direct toxicity at these levels.",
           "misconception": "consequence exaggerated wrongly"
-        },
-        {
-          "key": "D",
-          "text": "They have no consequence because the share is tiny",
-          "correct": false,
-          "explanation": "The small share does not prevent a warming consequence; the specification names climate change.",
-          "misconception": "share size used to dismiss effect"
         }
       ]
     },
@@ -460,7 +452,6 @@
       "modelAnswer": "Combustion of wood and fossil fuels, and respiration of plants and animals, both add carbon dioxide to the atmosphere.",
       "keywords": [
         "combustion",
-        "burning",
         "fossil",
         "fuels",
         "fuel",
@@ -480,8 +471,6 @@
       "modelAnswer": "Carbonate rocks breaking down with heat, and acids acting on carbonates, both free carbon dioxide gas.",
       "keywords": [
         "heat",
-        "heated",
-        "heating",
         "acids",
         "acid",
         "carbonate",
@@ -501,7 +490,6 @@
       "modelAnswer": "Carbon dioxide and methane are present only in small amounts, yet they trap extra heat energy in the atmosphere, so even a little of these gases has a big warming role.",
       "keywords": [
         "trap",
-        "traps",
         "trapping",
         "extra",
         "heat",
@@ -510,8 +498,7 @@
         "amounts",
         "amount",
         "warming",
-        "big",
-        "large"
+        "big"
       ],
       "options": []
     },
@@ -524,10 +511,7 @@
       "modelAnswer": "Burning more fuel releases more carbon dioxide, so atmospheric carbon dioxide levels rise, and rising carbon dioxide may help drive climate change.",
       "keywords": [
         "rise",
-        "rises",
         "rising",
-        "increase",
-        "increases",
         "increasing",
         "climate",
         "change",

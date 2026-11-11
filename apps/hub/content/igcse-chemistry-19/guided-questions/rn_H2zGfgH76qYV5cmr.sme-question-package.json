@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_H2zGfgH76qYV5cmr",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "99754d9b9179a8128e83b765823a0dc12725a1e4b82ed470a0998049ad257c54",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "3b1ae9cb9b69bb108f329636a1bb727e8aed8936b24da9a4f8992ff1c56f3106",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_H2zGfgH76qYV5cmr",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "C3H8",
+          "correct": false,
+          "explanation": "The carbon count must equal n, which is four here.",
+          "misconception": "subscript misplaced"
+        },
+        {
+          "key": "B",
           "text": "C4H8",
           "correct": true,
           "explanation": "Substituting into CnH2n gives eight hydrogens for four carbons, matching but-1-ene.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "C4H10",
           "correct": false,
           "explanation": "That is the alkane count; the double bond costs two hydrogens.",
           "misconception": "alkane formula used"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "C4H6",
           "correct": false,
           "explanation": "Two double bonds would be needed for six; an alkene carries one.",
           "misconception": "over-unsaturated"
-        },
-        {
-          "key": "D",
-          "text": "C3H8",
-          "correct": false,
-          "explanation": "The carbon count must equal n, which is four here.",
-          "misconception": "subscript misplaced"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because their C=C double bond can open to add more atoms",
-          "correct": true,
-          "explanation": "Spare bonding capacity at the double bond is exactly what unsaturated records.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because they contain fewer carbon atoms than alkanes",
-          "correct": false,
-          "explanation": "Chain length is not the test; bonding capacity is.",
-          "misconception": "count confused"
-        },
-        {
-          "key": "C",
           "text": "Because they are diluted with water in storage",
           "correct": false,
           "explanation": "Nothing about solutions enters the definition.",
           "misconception": "solution meaning imported"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because they cannot react with anything",
           "correct": false,
           "explanation": "The opposite holds: the openable bond makes them more reactive.",
           "misconception": "reactivity inverted"
+        },
+        {
+          "key": "C",
+          "text": "Because their C=C double bond can open to add more atoms",
+          "correct": true,
+          "explanation": "Spare bonding capacity at the double bond is exactly what unsaturated records.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because they contain fewer carbon atoms than alkanes",
+          "correct": false,
+          "explanation": "Chain length is not the test; bonding capacity is.",
+          "misconception": "count confused"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Each carbon ends with four single bonds instead of one double and two singles",
-          "correct": true,
-          "explanation": "Opening the double bond converts the spare capacity into two new single bonds.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Each carbon keeps the double bond and adds new bonds anyway",
           "correct": false,
           "explanation": "Opening means the double bond is gone; it cannot persist and add too.",
           "misconception": "bond conserved wrongly"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Each carbon loses one bond entirely",
           "correct": false,
           "explanation": "Bonds are replaced, not destroyed; four remain at each carbon.",
           "misconception": "bond loss claimed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The carbons separate into free atoms",
           "correct": false,
           "explanation": "The chain stays intact; only the bond type changes.",
           "misconception": "fragmentation imagined"
+        },
+        {
+          "key": "D",
+          "text": "Each carbon ends with four single bonds instead of one double and two singles",
+          "correct": true,
+          "explanation": "Opening the double bond converts the spare capacity into two new single bonds.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "The alkenes follow CnH2n, two hydrogens fewer than the alkane recipe.",
       "keywords": [
-        "cnh2n"
+        "cnh2n",
+        "hydrogens",
+        "alkenes"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "Every alkene carries a C=C double bond as its functional group.",
       "keywords": [
-        "double"
+        "double",
+        "functional",
+        "carries"
       ],
       "options": []
     },
@@ -224,7 +228,8 @@
       "modelAnswer": "The C=C double bond can open, letting each carbon form one more single bond with the incoming atoms, whereas an alkane's bonds are already saturated and cannot open, so the alkene is much more reactive.",
       "keywords": [
         "open",
-        "reactive"
+        "reactive",
+        "saturated"
       ],
       "options": []
     },
@@ -236,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "Substituting n = 6 into CnH2n gives C6H12.",
       "keywords": [
-        "c6h12"
+        "c6h12",
+        "substituting",
+        "molecular"
       ],
       "options": []
     },
@@ -248,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "C4H8",
+          "correct": false,
+          "explanation": "Four carbons belongs to but-1-ene, not propene.",
+          "misconception": "rung skipped"
+        },
+        {
+          "key": "B",
           "text": "C3H6",
           "correct": true,
           "explanation": "With n = 3 the alkene recipe gives six hydrogens, and the table lists propene as C3H6.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "C3H8",
           "correct": false,
           "explanation": "That is propane, the three-carbon alkane with no double bond.",
           "misconception": "alkane formula used"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "C2H4",
           "correct": false,
           "explanation": "Two carbons is ethene, one rung below propene.",
           "misconception": "rung miscounted"
-        },
-        {
-          "key": "D",
-          "text": "C4H8",
-          "correct": false,
-          "explanation": "Four carbons belongs to but-1-ene, not propene.",
-          "misconception": "rung skipped"
         }
       ]
     },
@@ -284,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Between the second and third carbon atoms",
-          "correct": true,
-          "explanation": "The 2 in pent-2-ene marks the first carbon of the double bond, counting from the nearer end.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Between the first and second carbon atoms",
-          "correct": false,
-          "explanation": "That position would be pent-1-ene, one number lower.",
-          "misconception": "number misread"
-        },
-        {
-          "key": "C",
           "text": "Between the fourth and fifth carbon atoms",
           "correct": false,
           "explanation": "Counting from the nearer end would name that bond pent-1-ene as well.",
           "misconception": "counting direction wrong"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Pentene has no double bond",
           "correct": false,
           "explanation": "Every alkene by definition carries the C=C bond.",
           "misconception": "definition missed"
+        },
+        {
+          "key": "C",
+          "text": "Between the second and third carbon atoms",
+          "correct": true,
+          "explanation": "The 2 in pent-2-ene marks the first carbon of the double bond, counting from the nearer end.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Between the first and second carbon atoms",
+          "correct": false,
+          "explanation": "That position would be pent-1-ene, one number lower.",
+          "misconception": "number misread"
         }
       ]
     },
@@ -320,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The double bond uses two bonding capacities that hydrogens would otherwise fill",
-          "correct": true,
-          "explanation": "The C=C bond consumes one bond from each carbon, leaving room for two fewer hydrogens.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Ethene has lost two hydrogen atoms over time",
           "correct": false,
           "explanation": "Formulae are structural facts, not decay records.",
           "misconception": "history imagined"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because ethene carries two oxygen atoms",
           "correct": false,
           "explanation": "No oxygen exists in any alkene formula.",
           "misconception": "element invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because ethene is an alkane in disguise",
           "correct": false,
           "explanation": "The double bond places it firmly in the alkene family.",
           "misconception": "family misnamed"
+        },
+        {
+          "key": "D",
+          "text": "The double bond uses two bonding capacities that hydrogens would otherwise fill",
+          "correct": true,
+          "explanation": "The C=C bond consumes one bond from each carbon, leaving room for two fewer hydrogens.",
+          "misconception": null
         }
       ]
     },
@@ -392,30 +399,30 @@
       "options": [
         {
           "key": "A",
+          "text": "Drawing displayed formulae",
+          "correct": false,
+          "explanation": "Drawing up to four carbons is explicitly required.",
+          "misconception": "requirement inverted"
+        },
+        {
+          "key": "B",
           "text": "Cis/trans or E/Z notation",
           "correct": true,
           "explanation": "The spec wording excludes cis/trans and E/Z labels from the requirement.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The stem-suffix naming system",
           "correct": false,
           "explanation": "The naming system is required and examined.",
           "misconception": "requirement inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The general formula CnH2n",
           "correct": false,
           "explanation": "The general formula is a required know item for alkenes.",
-          "misconception": "requirement inverted"
-        },
-        {
-          "key": "D",
-          "text": "Drawing displayed formulae",
-          "correct": false,
-          "explanation": "Drawing up to four carbons is explicitly required.",
           "misconception": "requirement inverted"
         }
       ]
@@ -423,12 +430,14 @@
     {
       "id": "rn_H2zGfgH76qYV5cmr::L2::Q6",
       "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
-      "stem": "Give the molecular formula of but-1-ene.",
+      "stem": "Give the molecular formula of the alkene but-1-ene.",
       "misconceptionClass": "but-1-ene formula recall",
       "kind": "recall",
       "modelAnswer": "But-1-ene is C4H8.",
       "keywords": [
-        "c4h8"
+        "c4h8",
+        "molecular",
+        "formula"
       ],
       "options": []
     },
@@ -441,7 +450,8 @@
       "modelAnswer": "Between the second and third carbon atoms of the chain.",
       "keywords": [
         "second",
-        "third"
+        "third",
+        "carbon"
       ],
       "options": []
     },
@@ -453,7 +463,9 @@
       "kind": "explain-why",
       "modelAnswer": "Two of the links a saturated chain would spend on hydrogens are taken up by the carbon-carbon double bond, so the family carries two fewer hydrogens: CnH2n instead of CnH2n+2.",
       "keywords": [
-        "double"
+        "double",
+        "saturated",
+        "hydrogens"
       ],
       "options": []
     },
@@ -466,7 +478,8 @@
       "modelAnswer": "Drawn with one line between those carbons the picture reads as the alkane butane; the correct displayed formula must show the double bond as two parallel lines.",
       "keywords": [
         "alkane",
-        "butane"
+        "butane",
+        "represents"
       ],
       "options": []
     }

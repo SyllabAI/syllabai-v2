@@ -1,0 +1,49 @@
+# T-DBPROBE-TOOLKIT-1 run-001 — the REAL chain composition (buildLlmChain boot
+# law, groq -> gemini -> openrouter, prod model pins) firing the EXACT toolkit
+# rubric request from the runner vantage, with per-member DIRECT calls to
+# bisect the failover assembly.
+#
+# WHY: the toolkit walls persist post-#918-bake while the throwaway-function
+# diag proves groq returns COMPLETE JSON for the byte-same prompt+wire from
+# iad1; the direct-vs-chain bisect from a second US vantage closes the
+# assembly-vs-provider question.
+#
+# KEY-SAFETY: secrets ride the env-boot law names (SYLLABAI_*_API_KEY); never
+# printed. Spend = one generation per leg (4 legs). READ-ONLY (no DB).
+# OPERATOR GATE: workflow_dispatch ONLY — inert until dispatched.
+
+name: t-dbprobe-toolkit-chain
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SYLLABAI_LLM_GROQ_MODEL: openai/gpt-oss-20b
+      SYLLABAI_LLM_GEMINI_MODEL: gemini-3.8-flash
+      SYLLABAI_LLM_OPENROUTER_MODEL: nvidia/nemotron-3-ultra-550b-a55b:free
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install (frozen)
+        run: bun install --frozen-lockfile
+
+      - name: Real-chain composition probe (groq -> gemini -> openrouter + direct members)
+        env:
+          SYLLABAI_GROQ_API_KEY: ${{ secrets.SYLLABAI_GROQ_API_KEY }}
+          SYLLABAI_GEMINI_API_KEY: ${{ secrets.SYLLABAI_GEMINI_API_KEY }}
+          SYLLABAI_OPENROUTER_API_KEY: ${{ secrets.SYLLABAI_OPENROUTER_API_KEY }}
+        run: |
+          set -eu
+          if [ -z "$SYLLABAI_GROQ_API_KEY" ]; then echo "SYLLABAI_GROQ_API_KEY secret not set — abort"; exit 1; fi
+          bun scripts/dbprobe/toolkit-chain-probe.ts

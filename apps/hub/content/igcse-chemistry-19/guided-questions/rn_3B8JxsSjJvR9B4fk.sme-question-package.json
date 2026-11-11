@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_3B8JxsSjJvR9B4fk",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "db193afbac15ad776f1682efd676fab8d2a12db68e12e7629c46ef856e220b24",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "d6f913e8205b43b6ace6865676455957900809f6f1d3c73f772a787dd6e007f6",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_3B8JxsSjJvR9B4fk",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To dissolve the calcium chloride faster",
+          "correct": false,
+          "explanation": "The calcium chloride sits in the dry tube; the boiled water belongs to the oil-sealed tube's design.",
+          "misconception": "apparatus roles mixed"
+        },
+        {
+          "key": "B",
           "text": "To remove any dissolved oxygen from the water",
           "correct": true,
           "explanation": "Boiling drives the dissolved air out, so that tube can withhold oxygen while still supplying water.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To kill any bacteria that might rust the nail",
           "correct": false,
           "explanation": "Rusting is a chemical process needing oxygen and water; bacteria play no part in the design.",
           "misconception": "biological cause invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To warm the nail so rusting speeds up",
           "correct": false,
           "explanation": "The point is removing a ingredient, not accelerating anything; the tube must show no rust.",
           "misconception": "purpose inverted"
-        },
-        {
-          "key": "D",
-          "text": "To dissolve the calcium chloride faster",
-          "correct": false,
-          "explanation": "The calcium chloride sits in the dry tube; the boiled water belongs to the oil-sealed tube's design.",
-          "misconception": "apparatus roles mixed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It is a drying agent that absorbs water molecules present due to moisture",
-          "correct": true,
-          "explanation": "By soaking up every trace of moisture it withholds the water requirement from that nail.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It supplies oxygen to speed the rusting",
-          "correct": false,
-          "explanation": "The tube is meant to stay rust-free; the calcium chloride removes water rather than adding anything.",
-          "misconception": "role inverted"
-        },
-        {
-          "key": "C",
           "text": "It sticks the nail to the tube's base",
           "correct": false,
           "explanation": "Fixing the nail is incidental; the design purpose is drying the air.",
           "misconception": "incidental feature promoted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It colours the tube so the result is easier to see",
           "correct": false,
           "explanation": "No colour indicator is involved; the drying is what matters.",
           "misconception": "indicator role invented"
+        },
+        {
+          "key": "C",
+          "text": "It is a drying agent that absorbs water molecules present due to moisture",
+          "correct": true,
+          "explanation": "By soaking up every trace of moisture it withholds the water requirement from that nail.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It supplies oxygen to speed the rusting",
+          "correct": false,
+          "explanation": "The tube is meant to stay rust-free; the calcium chloride removes water rather than adding anything.",
+          "misconception": "role inverted"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The oil forms a barrier that stops oxygen reaching the water and the nail",
-          "correct": true,
-          "explanation": "With oxygen shut out, one of the two requirements is missing, so no rust forms.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The oil feeds the nail and keeps it strong",
           "correct": false,
           "explanation": "Oil does not nourish iron; it simply blocks the air from the water beneath.",
           "misconception": "protective fiction invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Boiled water is too pure to react with iron",
           "correct": false,
           "explanation": "Purity is not the point; boiled water's job is lacking dissolved oxygen, and the oil keeps it that way.",
           "misconception": "purity explanation substituted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The nail is a special rust-proof sample",
           "correct": false,
           "explanation": "All three nails are ordinary iron; the conditions, not the nails, differ.",
           "misconception": "sample difference invented"
+        },
+        {
+          "key": "D",
+          "text": "The oil forms a barrier that stops oxygen reaching the water and the nail",
+          "correct": true,
+          "explanation": "With oxygen shut out, one of the two requirements is missing, so no rust forms.",
+          "misconception": null
         }
       ]
     },
@@ -204,9 +204,7 @@
         "both",
         "air",
         "moisture",
-        "present",
-        "need",
-        "needs"
+        "present"
       ],
       "options": []
     },
@@ -222,7 +220,6 @@
         "agent",
         "absorbs",
         "absorb",
-        "absorbing",
         "water",
         "calcium",
         "chloride",
@@ -266,13 +263,10 @@
         "rust",
         "rusts",
         "flakes",
-        "flaking",
         "fresh",
         "iron",
         "weakens",
-        "exposed",
-        "continue",
-        "continues"
+        "exposed"
       ],
       "options": []
     },
@@ -284,31 +278,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Storing the iron in salt water",
+          "correct": false,
+          "explanation": "Salt water supplies both requirements and would promote rusting, not prevent it.",
+          "misconception": "condition reversed"
+        },
+        {
+          "key": "B",
           "text": "Paint, oil, grease and electroplating",
           "correct": true,
           "explanation": "These four are the common barriers named, each physically separating iron from air and water.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Zinc bars welded to the surface",
           "correct": false,
           "explanation": "Zinc bars are sacrificial protection, a different prevention family from coatings.",
           "misconception": "prevention families mixed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Heating the iron until it glows",
           "correct": false,
           "explanation": "Heat is not a barrier; it changes nothing about air and water reaching the surface afterwards.",
           "misconception": "treatment confused with barrier"
-        },
-        {
-          "key": "D",
-          "text": "Storing the iron in salt water",
-          "correct": false,
-          "explanation": "Salt water supplies both requirements and would promote rusting, not prevent it.",
-          "misconception": "condition reversed"
         }
       ]
     },
@@ -320,31 +314,31 @@
       "options": [
         {
           "key": "A",
-          "text": "If the coating is scratched or washed away, the iron is exposed and rusts again",
-          "correct": true,
-          "explanation": "A barrier only works while it is intact; any breach lets both requirements back in.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "They only work in dry climates",
-          "correct": false,
-          "explanation": "Barriers work anywhere while whole; location is not the failure mode named.",
-          "misconception": "climate excuse invented"
-        },
-        {
-          "key": "C",
           "text": "They make the iron too heavy to use",
           "correct": false,
           "explanation": "Coatings add negligible weight; the real weakness is damage to the coating.",
           "misconception": "weight objection invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "They react chemically with the iron and weaken it",
           "correct": false,
           "explanation": "Barriers are physical separations, not chemical treatments of the iron itself.",
           "misconception": "mechanism misstated"
+        },
+        {
+          "key": "C",
+          "text": "If the coating is scratched or washed away, the iron is exposed and rusts again",
+          "correct": true,
+          "explanation": "A barrier only works while it is intact; any breach lets both requirements back in.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "They only work in dry climates",
+          "correct": false,
+          "explanation": "Barriers work anywhere while whole; location is not the failure mode named.",
+          "misconception": "climate excuse invented"
         }
       ]
     },
@@ -356,31 +350,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because porous rust lets air and water reach fresh metal underneath the break",
-          "correct": true,
-          "explanation": "The rust itself does not seal the wound; it conducts both requirements inward, so corrosion continues below.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because paint poisons the iron at the scratch",
           "correct": false,
           "explanation": "Paint is inert to the iron; the problem is exposure, not poisoning.",
           "misconception": "chemical harm invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because the scratch makes the structure heavier",
           "correct": false,
           "explanation": "Weight is irrelevant; the issue is ongoing corrosion at and beneath the breach.",
           "misconception": "irrelevant effect cited"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because iron repairs its own paint layer",
           "correct": false,
           "explanation": "Iron does no such thing; the exposed spot keeps rusting until treated.",
           "misconception": "self-repair assumed"
+        },
+        {
+          "key": "D",
+          "text": "Because porous rust lets air and water reach fresh metal underneath the break",
+          "correct": true,
+          "explanation": "The rust itself does not seal the wound; it conducts both requirements inward, so corrosion continues below.",
+          "misconception": null
         }
       ]
     },
@@ -428,31 +422,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Iron is the only metal that ever corrodes",
+          "correct": false,
+          "explanation": "Corrosion is general to metals; rusting is the specific case of iron, as the exam hint stresses.",
+          "misconception": "uniqueness overstated"
+        },
+        {
+          "key": "B",
           "text": "Unlike some other metals, iron keeps corroding internally because its rust is porous",
           "correct": true,
           "explanation": "Some metals form tight protective layers, but iron's flaky porous rust leaves the metal below exposed.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "All metals rust identically once scratched",
           "correct": false,
           "explanation": "The note's contrast says otherwise: some metals' layers protect, while iron's rust does not.",
           "misconception": "uniformity assumed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Other metals rust faster because they are heavier",
           "correct": false,
           "explanation": "Mass is not the driver; the difference lies in whether the corrosion product seals the surface.",
           "misconception": "mass reasoning imported"
-        },
-        {
-          "key": "D",
-          "text": "Iron is the only metal that ever corrodes",
-          "correct": false,
-          "explanation": "Corrosion is general to metals; rusting is the specific case of iron, as the exam hint stresses.",
-          "misconception": "uniqueness overstated"
         }
       ]
     },
@@ -490,9 +484,7 @@
         "keeping",
         "air",
         "reach",
-        "stops",
-        "prevent",
-        "prevents"
+        "prevent"
       ],
       "options": []
     },
@@ -509,7 +501,6 @@
         "continues",
         "continue",
         "internally",
-        "inside",
         "coating",
         "rust",
         "broken",
@@ -549,31 +540,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because zinc is more reactive than iron and loses its electrons more easily",
-          "correct": true,
-          "explanation": "Higher reactivity means preferential oxidation, so the zinc corrodes first and the iron survives.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because zinc is less reactive than iron and stays untouched",
-          "correct": false,
-          "explanation": "A less reactive partner would leave the iron to corrode first, defeating the design.",
-          "misconception": "reactivity order inverted"
-        },
-        {
-          "key": "C",
           "text": "Because zinc is cheaper than any other metal",
           "correct": false,
           "explanation": "Cost is not the criterion named; the choice is grounded in the reactivity series.",
           "misconception": "economic reason substituted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because zinc never corrodes at all",
           "correct": false,
           "explanation": "Zinc corrodes deliberately and must be replaced; that is exactly the sacrifice.",
           "misconception": "immortality assumed"
+        },
+        {
+          "key": "C",
+          "text": "Because zinc is more reactive than iron and loses its electrons more easily",
+          "correct": true,
+          "explanation": "Higher reactivity means preferential oxidation, so the zinc corrodes first and the iron survives.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because zinc is less reactive than iron and stays untouched",
+          "correct": false,
+          "explanation": "A less reactive partner would leave the iron to corrode first, defeating the design.",
+          "misconception": "reactivity order inverted"
         }
       ]
     },
@@ -585,31 +576,31 @@
       "options": [
         {
           "key": "A",
-          "text": "They corrode and must be replaced before they completely disappear",
-          "correct": true,
-          "explanation": "The zinc is consumed doing its job, so continued protection depends on timely replacement.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "They last forever without maintenance",
           "correct": false,
           "explanation": "The zinc is being sacrificed continuously; without replacement the protection ends.",
           "misconception": "maintenance-free claim"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "They transfer strength to the ship's hull",
           "correct": false,
           "explanation": "The protection is electrochemical, not mechanical; no strength is transferred.",
           "misconception": "mechanical fiction invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "They sink to the seabed once rusted",
           "correct": false,
           "explanation": "The bars stay attached while corroding; their loss is by consumption, not by falling off.",
           "misconception": "detachment assumed"
+        },
+        {
+          "key": "D",
+          "text": "They corrode and must be replaced before they completely disappear",
+          "correct": true,
+          "explanation": "The zinc is consumed doing its job, so continued protection depends on timely replacement.",
+          "misconception": null
         }
       ]
     },
@@ -657,31 +648,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It forms when zinc reacts with oxygen and carbon dioxide in air, protecting the iron by the barrier method",
+          "text": "It has no role; it is an impurity",
+          "correct": false,
+          "explanation": "The compound is the protective product of zinc's reaction with air, a designed feature of the coating.",
+          "misconception": "impurity dismissal"
+        },
+        {
+          "key": "B",
+          "text": "It forms as zinc combines with oxygen and carbon dioxide from the air, protecting the iron by the barrier method",
           "correct": true,
           "explanation": "The zinc carbonate layer is the coat's hardened outer skin, keeping air and water away from the metal beneath.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It dissolves the iron underneath the coating",
           "correct": false,
           "explanation": "The compound protects rather than attacks; its role is barrier, not corrosion.",
           "misconception": "role inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It is the molten zinc used for dipping",
           "correct": false,
           "explanation": "The dip bath is metallic zinc; ZnCO3 forms afterwards on the surface in air.",
           "misconception": "materials confused"
-        },
-        {
-          "key": "D",
-          "text": "It has no role; it is an impurity",
-          "correct": false,
-          "explanation": "The compound is the protective product of zinc's reaction with air, a designed feature of the coating.",
-          "misconception": "impurity dismissal"
         }
       ]
     },
@@ -693,31 +684,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the exposed zinc around the scratch still protects the iron sacrificially",
-          "correct": true,
-          "explanation": "The zinc beside the breach is more reactive than iron, so it corrodes in the iron's place even where the barrier is gone.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because the scratch closes itself as the metal cools",
-          "correct": false,
-          "explanation": "Metals do not self-heal scratches; the protection comes from the zinc's chemistry.",
-          "misconception": "self-repair assumed"
-        },
-        {
-          "key": "C",
           "text": "Because the bucket is also painted underneath",
           "correct": false,
           "explanation": "No second coating is needed in the explanation; zinc's sacrifice suffices.",
           "misconception": "extra layer invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It does rust, because galvanising stops working once scratched",
           "correct": false,
           "explanation": "That describes plain barrier coatings; galvanising keeps protecting through its sacrificial action.",
           "misconception": "protection wrongly cancelled"
+        },
+        {
+          "key": "C",
+          "text": "Because the exposed zinc around the scratch still protects the iron sacrificially",
+          "correct": true,
+          "explanation": "The zinc beside the breach is more reactive than iron, so it corrodes in the iron's place even where the barrier is gone.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because the scratch closes itself as the metal cools",
+          "correct": false,
+          "explanation": "Metals do not self-heal scratches; the protection comes from the zinc's chemistry.",
+          "misconception": "self-repair assumed"
         }
       ]
     },
@@ -738,9 +729,7 @@
         "corrode",
         "first",
         "oxidises",
-        "oxidizes",
-        "sacrificed",
-        "protects"
+        "sacrificed"
       ],
       "options": []
     },
@@ -754,9 +743,7 @@
       "keywords": [
         "replaced",
         "replace",
-        "renewed",
         "corrode",
-        "corroded",
         "corrode",
         "completely",
         "zinc",
@@ -776,14 +763,11 @@
         "electrons",
         "electron",
         "loses",
-        "lost",
         "oxidised",
-        "oxidized",
         "easily",
         "corrodes",
         "corrode",
         "first",
-        "instead",
         "place"
       ],
       "options": []

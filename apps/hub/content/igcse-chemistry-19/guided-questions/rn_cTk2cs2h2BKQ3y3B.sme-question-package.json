@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_cTk2cs2h2BKQ3y3B",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8593b4c5f8b1a7ea2150fd4e2f23ff86e9847c0275250332b48a5d00b6995802",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "e20bd05a9818e2b04d6e72a59aaf94e013db2a82efc19ba49f634b2d592de356",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_cTk2cs2h2BKQ3y3B",
   "subject": "igcse-chemistry",
@@ -55,67 +55,67 @@
       "options": [
         {
           "key": "A",
+          "text": "It depends on pressure instead",
+          "correct": false,
+          "explanation": "Pressure governs gas solubility; solids respond to temperature.",
+          "misconception": "pressure swapped in for temperature"
+        },
+        {
+          "key": "B",
           "text": "It increases",
           "correct": true,
           "explanation": "A warmer solvent usually holds more solid in solution.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It decreases",
           "correct": false,
           "explanation": "That is the gas trend; solids nearly always dissolve more when warmed.",
           "misconception": "gas trend copied onto solids"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It stays exactly the same",
           "correct": false,
           "explanation": "Only a few salts are nearly flat; the general rule is a rise.",
           "misconception": "flat trend overgeneralised"
-        },
-        {
-          "key": "D",
-          "text": "It depends on pressure instead",
-          "correct": false,
-          "explanation": "Pressure governs gas solubility; solids respond to temperature.",
-          "misconception": "pressure swapped in for temperature"
         }
       ]
     },
     {
       "id": "rn_cTk2cs2h2BKQ3y3B::L1::Q3",
       "moduleId": "rn_cTk2cs2h2BKQ3y3B::L1",
-      "stem": "A fizzy drink goes flat faster when left warm than when chilled. Which trend explains this?",
+      "stem": "A fizzy drink goes flat faster when left warm than when chilled — which gas solubility trend explains this?",
       "misconceptionClass": "gas temperature trend",
       "options": [
         {
           "key": "A",
-          "text": "Gases become less soluble as temperature rises",
-          "correct": true,
-          "explanation": "Warmer liquids hold less dissolved gas, so the drink loses its fizz sooner.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Gases become more soluble as temperature rises",
-          "correct": false,
-          "explanation": "The trend runs the opposite way for gases.",
-          "misconception": "solid trend copied onto gases"
-        },
-        {
-          "key": "C",
           "text": "Gas solubility does not depend on temperature",
           "correct": false,
           "explanation": "Temperature clearly changes how much gas stays dissolved.",
           "misconception": "temperature independence assumed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The gas escapes because the liquid expands when warm",
           "correct": false,
           "explanation": "The cause is falling solubility, not the liquid taking up more room.",
           "misconception": "expansion story invented"
+        },
+        {
+          "key": "C",
+          "text": "Gases become less soluble as temperature rises",
+          "correct": true,
+          "explanation": "Warmer liquids hold less dissolved gas, so the drink loses its fizz sooner.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Gases become more soluble as temperature rises",
+          "correct": false,
+          "explanation": "The trend runs the opposite way for gases.",
+          "misconception": "solid trend copied onto gases"
         }
       ]
     },
@@ -126,13 +126,6 @@
       "misconceptionClass": "pressure effect",
       "options": [
         {
-          "key": "B",
-          "text": "The gas becomes more soluble",
-          "correct": true,
-          "explanation": "Higher pressure pushes more gas into solution.",
-          "misconception": null
-        },
-        {
           "key": "A",
           "text": "The gas becomes less soluble",
           "correct": false,
@@ -140,18 +133,25 @@
           "misconception": "trend inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Pressure changes nothing for gases",
           "correct": false,
           "explanation": "Pressure is one of the two stated controls on gas solubility.",
           "misconception": "pressure dismissed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Pressure only affects solids",
           "correct": false,
           "explanation": "The pressure rule belongs to gases; solids follow temperature.",
           "misconception": "medium mismatch"
+        },
+        {
+          "key": "D",
+          "text": "The gas becomes more soluble",
+          "correct": true,
+          "explanation": "Higher pressure pushes more gas into solution.",
+          "misconception": null
         }
       ]
     },
@@ -162,21 +162,21 @@
       "misconceptionClass": "saturation state",
       "options": [
         {
-          "key": "C",
+          "key": "A",
           "text": "A saturated solution",
           "correct": true,
           "explanation": "When no more solid will dissolve, the solution is saturated at that temperature.",
           "misconception": null
         },
         {
-          "key": "A",
+          "key": "B",
           "text": "An unsaturated solution",
           "correct": false,
           "explanation": "Leftover solid means the dissolving limit has been reached.",
           "misconception": "saturation state reversed"
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A pure solvent",
           "correct": false,
           "explanation": "The liquid already holds dissolved solute, so it is a solution.",
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "The solvent.",
       "keywords": [
-        "solvent"
+        "solvent",
+        "dissolving",
+        "liquid"
       ],
       "options": []
     },
@@ -229,8 +231,6 @@
         "extents",
         "extent",
         "specific",
-        "vary",
-        "varies",
         "substances"
       ],
       "options": []
@@ -245,8 +245,7 @@
       "keywords": [
         "pressure",
         "cold",
-        "colder",
-        "cooler"
+        "colder"
       ],
       "options": []
     },
@@ -258,31 +257,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Temperature of the water bath",
+          "correct": false,
+          "explanation": "Temperature belongs on the horizontal axis.",
+          "misconception": "axes swapped"
+        },
+        {
+          "key": "B",
           "text": "Mass of solute per 100 grams of water",
           "correct": true,
           "explanation": "The curve is drawn from solubility values in grams per 100 grams of water.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Mass of solute per litre of solution",
           "correct": false,
           "explanation": "The plotting unit is a fixed mass of water, not a volume of solution.",
           "misconception": "volume unit imported"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Total mass of the saturated solution",
           "correct": false,
           "explanation": "Only the dissolved solute is counted, not the solution as a whole.",
           "misconception": "whole-mass misread"
-        },
-        {
-          "key": "D",
-          "text": "Temperature of the water bath",
-          "correct": false,
-          "explanation": "Temperature belongs on the horizontal axis.",
-          "misconception": "axes swapped"
         }
       ]
     },
@@ -293,6 +292,20 @@
       "misconceptionClass": "data gathering",
       "options": [
         {
+          "key": "A",
+          "text": "By weighing the water before and after the solid is added",
+          "correct": false,
+          "explanation": "The change to record is the mass of solid taken up, not of water.",
+          "misconception": "measured quantity misidentified"
+        },
+        {
+          "key": "B",
+          "text": "By dividing the total mass of solution by its temperature",
+          "correct": false,
+          "explanation": "No such division produces a solubility value.",
+          "misconception": "meaningless operation invented"
+        },
+        {
           "key": "C",
           "text": "By finding the maximum mass that dissolves in 100 grams of water at one temperature",
           "correct": true,
@@ -300,25 +313,11 @@
           "misconception": null
         },
         {
-          "key": "A",
+          "key": "D",
           "text": "By timing how long a fixed mass takes to disappear",
           "correct": false,
           "explanation": "Dissolving speed is a rate, while the curve records how much can dissolve.",
           "misconception": "rate confused with extent"
-        },
-        {
-          "key": "B",
-          "text": "By weighing the water before and after the solid is added",
-          "correct": false,
-          "explanation": "The change to record is the mass of solid taken up, not of water.",
-          "misconception": "measured quantity misidentified"
-        },
-        {
-          "key": "D",
-          "text": "By dividing the total mass of solution by its temperature",
-          "correct": false,
-          "explanation": "No such division produces a solubility value.",
-          "misconception": "meaningless operation invented"
         }
       ]
     },
@@ -329,13 +328,6 @@
       "misconceptionClass": "proportional scaling",
       "options": [
         {
-          "key": "B",
-          "text": "13.6 grams",
-          "correct": true,
-          "explanation": "One fifth of the water holds one fifth of the mass, so 68 scaled to 20 grams gives 13.6.",
-          "misconception": null
-        },
-        {
           "key": "A",
           "text": "68 grams",
           "correct": false,
@@ -343,18 +335,25 @@
           "misconception": "no scaling applied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "3.4 grams",
           "correct": false,
           "explanation": "Dividing 68 by 20 inverts the ratio instead of scaling it.",
           "misconception": "ratio inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "136 grams",
           "correct": false,
           "explanation": "That doubles the value instead of taking one fifth of it.",
           "misconception": "wrong factor applied"
+        },
+        {
+          "key": "D",
+          "text": "13.6 grams",
+          "correct": true,
+          "explanation": "One fifth of the water holds one fifth of the mass, so 68 scaled to 20 grams gives 13.6.",
+          "misconception": null
         }
       ]
     },
@@ -365,28 +364,28 @@
       "misconceptionClass": "cooling crystallisation",
       "options": [
         {
-          "key": "D",
+          "key": "A",
           "text": "54 grams",
           "correct": true,
           "explanation": "The difference between the two solubilities leaves the solution as crystals on cooling.",
           "misconception": null
         },
         {
-          "key": "A",
+          "key": "B",
           "text": "118 grams",
           "correct": false,
           "explanation": "The solution keeps holding 64 grams even when cold, so not everything drops out.",
           "misconception": "whole content assumed to crystallise"
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "64 grams",
           "correct": false,
           "explanation": "That is the mass still dissolved at the end, not the mass deposited.",
           "misconception": "final solubility misread as deposited mass"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "182 grams",
           "correct": false,
           "explanation": "The two values must be subtracted, not added.",
@@ -402,31 +401,31 @@
       "options": [
         {
           "key": "A",
+          "text": "All salts flatten at high temperature",
+          "correct": false,
+          "explanation": "Most salts keep rising; flattening is the rare case.",
+          "misconception": "overgeneralisation"
+        },
+        {
+          "key": "B",
           "text": "Sodium chloride",
           "correct": true,
           "explanation": "Common salt shows very little change in solubility as temperature rises.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Potassium nitrate, which climbs steeply",
           "correct": false,
           "explanation": "A steeply climbing curve is the opposite of a flat one.",
           "misconception": "steep curve mistaken for flat"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Lead(II) nitrate, which falls on cooling",
           "correct": false,
           "explanation": "Its curve falls when cooled but is not flat across the range.",
           "misconception": "falling section misread as whole curve"
-        },
-        {
-          "key": "D",
-          "text": "All salts flatten at high temperature",
-          "correct": false,
-          "explanation": "Most salts keep rising; flattening is the rare case.",
-          "misconception": "overgeneralisation"
         }
       ]
     },
@@ -455,7 +454,6 @@
         "maximum",
         "max",
         "saturated",
-        "saturation",
         "most"
       ],
       "options": []
@@ -472,7 +470,6 @@
         "read",
         "any",
         "chosen",
-        "predict",
         "without"
       ],
       "options": []
@@ -489,7 +486,6 @@
         "crystal",
         "crystallise",
         "crystallises",
-        "cooler",
         "less",
         "excess"
       ],

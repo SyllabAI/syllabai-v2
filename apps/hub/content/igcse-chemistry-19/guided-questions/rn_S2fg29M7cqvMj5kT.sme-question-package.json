@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_S2fg29M7cqvMj5kT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "92b3ea666a8c4c4b4c1eee4a7e92eca3ae59a00ad0bc82fd17775b3f3c8fe374",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "fba478a34e271c52b88a37c0bec839f5e1c846ab139ff94ff64432e70b1887db",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_S2fg29M7cqvMj5kT",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because the oxides formed are always hot solids",
+          "correct": false,
+          "explanation": "Oxides can be solids, liquids or gases; the exothermic label refers to heat released, not to the product's state.",
+          "misconception": "product state confused with energy change"
+        },
+        {
+          "key": "B",
           "text": "Because they give out heat to the surroundings",
           "correct": true,
           "explanation": "Exothermic means energy leaves the reaction for the surroundings, and every combustion warms what is around it.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because they need a flame to start them",
           "correct": false,
           "explanation": "A flame may be needed for ignition, but the classification describes the energy given out during the reaction itself.",
           "misconception": "ignition confused with energy outcome"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because oxygen is a cold gas that must be heated",
           "correct": false,
           "explanation": "The temperature of a reactant does not define the energy change; the heat given out does.",
           "misconception": "reactant temperature mistaken for the classification"
-        },
-        {
-          "key": "D",
-          "text": "Because the oxides formed are always hot solids",
-          "correct": false,
-          "explanation": "Oxides can be solids, liquids or gases; the exothermic label refers to heat released, not to the product's state.",
-          "misconception": "product state confused with energy change"
         }
       ]
     },
@@ -91,30 +91,30 @@
       "options": [
         {
           "key": "A",
-          "text": "As oxidation reactions",
-          "correct": true,
-          "explanation": "The burning substance gains oxygen, which is exactly the definition of oxidation.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "As neutralisation reactions",
-          "correct": false,
-          "explanation": "Neutralisation pairs an acid with a base; no acid or base is required for combustion.",
-          "misconception": "reaction families mixed"
-        },
-        {
-          "key": "C",
           "text": "As displacement reactions",
           "correct": false,
           "explanation": "Displacement swaps one element for another in a compound; combustion simply adds oxygen.",
           "misconception": "reaction families mixed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "As thermal decomposition reactions",
           "correct": false,
           "explanation": "Decomposition breaks one substance into others using heat; combustion builds oxides and releases heat.",
+          "misconception": "reaction families mixed"
+        },
+        {
+          "key": "C",
+          "text": "As oxidation reactions",
+          "correct": true,
+          "explanation": "The burning substance gains oxygen, which is exactly the definition of oxidation.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "As neutralisation reactions",
+          "correct": false,
+          "explanation": "Neutralisation pairs an acid with a base; no acid or base is required for combustion.",
           "misconception": "reaction families mixed"
         }
       ]
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Combustion, oxidation and exothermic",
-          "correct": true,
-          "explanation": "Hydrogen burns in oxygen (combustion), gains oxygen (oxidation), and releases heat (exothermic), so all three labels fit.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Combustion only, because water is the product",
           "correct": false,
           "explanation": "The product does not limit the classification; the gain of oxygen and the heat release both still apply.",
           "misconception": "single-label thinking"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Endothermic and oxidation",
           "correct": false,
           "explanation": "Hydrogen combustion is famously exothermic; endothermic would mean it absorbed heat instead.",
           "misconception": "energy direction reversed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Displacement and neutralisation",
           "correct": false,
           "explanation": "Neither family describes adding oxygen to an element; both labels are wrong here.",
           "misconception": "reaction families mixed"
+        },
+        {
+          "key": "D",
+          "text": "Combustion, oxidation and exothermic",
+          "correct": true,
+          "explanation": "Hydrogen burns in oxygen (combustion), gains oxygen (oxidation), and releases heat (exothermic), so all three labels fit.",
+          "misconception": null
         }
       ]
     },
@@ -221,7 +221,6 @@
         "magnesium",
         "hydrogen",
         "sulfur",
-        "sulphur",
         "oxygen",
         "three"
       ],
@@ -242,7 +241,6 @@
         "gain",
         "gains",
         "oxidation",
-        "gives",
         "out",
         "both"
       ],
@@ -278,31 +276,31 @@
       "options": [
         {
           "key": "A",
+          "text": "No flame, but the metal slowly tarnishes",
+          "correct": false,
+          "explanation": "Slow tarnish is ordinary oxidation in air; combustion of magnesium is fast, bright and fierce.",
+          "misconception": "slow oxidation confused with combustion"
+        },
+        {
+          "key": "B",
           "text": "An intense white flame with white powder produced",
           "correct": true,
           "explanation": "Magnesium burns with a fierce white flame and leaves the white powder magnesium oxide.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A blue flame with a colourless gas produced",
           "correct": false,
           "explanation": "That pair describes sulfur; magnesium's signature is the white flame and white solid.",
           "misconception": "sulfur's observations given to magnesium"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A pale green flame with a dense gas produced",
           "correct": false,
           "explanation": "No such combustion is on the list; pale green in solution belongs to chlorine chemistry, not burning magnesium.",
           "misconception": "observation borrowed from another topic"
-        },
-        {
-          "key": "D",
-          "text": "No flame, but the metal slowly tarnishes",
-          "correct": false,
-          "explanation": "Slow tarnish is ordinary oxidation in air; combustion of magnesium is fast, bright and fierce.",
-          "misconception": "slow oxidation confused with combustion"
         }
       ]
     },
@@ -314,31 +312,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Water",
-          "correct": true,
-          "explanation": "Hydrogen plus oxygen forms H2O, and the balanced equation is 2H2 + O2 → 2H2O.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Hydrogen oxide powder",
-          "correct": false,
-          "explanation": "Hydrogen's oxide is water itself, a liquid turned to vapour in the hot flame, not a powder.",
-          "misconception": "state of the product misjudged"
-        },
-        {
-          "key": "C",
           "text": "Oxygen gas, because hydrogen acts as a catalyst",
           "correct": false,
           "explanation": "Hydrogen is a reactant here, not a catalyst; both elements are consumed making water.",
           "misconception": "role of reactant misread"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Hydrogen peroxide",
           "correct": false,
           "explanation": "H2O2 is a different compound with an extra oxygen; burning hydrogen gives plain water.",
           "misconception": "product formula over-oxygenated"
+        },
+        {
+          "key": "C",
+          "text": "Water",
+          "correct": true,
+          "explanation": "Hydrogen plus oxygen forms H2O, and the balanced equation is 2H2 + O2 → 2H2O.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Hydrogen oxide powder",
+          "correct": false,
+          "explanation": "Hydrogen's oxide is water itself, a liquid turned to vapour in the hot flame, not a powder.",
+          "misconception": "state of the product misjudged"
         }
       ]
     },
@@ -350,31 +348,31 @@
       "options": [
         {
           "key": "A",
-          "text": "S (s) + O2 (g) → SO2 (g)",
-          "correct": true,
-          "explanation": "One sulfur atom joins one oxygen molecule to give one sulfur dioxide molecule, already balanced as written.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "S (s) + O2 (g) → SO3 (g)",
           "correct": false,
           "explanation": "Sulfur trioxide needs an extra step with a catalyst; direct combustion of sulfur gives the dioxide.",
           "misconception": "oxide chosen one oxygen too rich"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "2S (s) + O2 (g) → 2SO2 (g)",
           "correct": false,
           "explanation": "This would need two oxygens on the left to balance; as written the atoms do not match.",
           "misconception": "balancing coefficients wrong"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "S (s) + O (g) → SO (g)",
           "correct": false,
           "explanation": "Oxygen exists as diatomic O2 molecules; equations must use the molecular form of the element.",
           "misconception": "diatomic nature of oxygen ignored"
+        },
+        {
+          "key": "D",
+          "text": "S (s) + O2 (g) → SO2 (g)",
+          "correct": true,
+          "explanation": "One sulfur atom joins one oxygen molecule to give one sulfur dioxide molecule, already balanced as written.",
+          "misconception": null
         }
       ]
     },
@@ -422,31 +420,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Add heat on the right-hand side to balance the energy",
+          "correct": false,
+          "explanation": "Energy terms are not atoms; balancing counts atoms of each element, not heat.",
+          "misconception": "energy confused with atom count"
+        },
+        {
+          "key": "B",
           "text": "Balance it as 2Mg + O2 → 2MgO so the oxygen atoms match on both sides",
           "correct": true,
           "explanation": "Two oxygen atoms enter from O2, so two MgO units must leave, requiring two magnesium atoms.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Change O2 to O, because equations use single atoms",
           "correct": false,
           "explanation": "Oxygen exists as diatomic molecules; the O2 must stay and the coefficients do the balancing.",
           "misconception": "diatomic oxygen rewritten as single atoms"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It is already balanced and needs no correction",
           "correct": false,
           "explanation": "One O2 supplies two oxygens but only one MgO accepts them, so the equation as written is unbalanced.",
           "misconception": "unbalanced equation accepted"
-        },
-        {
-          "key": "D",
-          "text": "Add heat on the right-hand side to balance the energy",
-          "correct": false,
-          "explanation": "Energy terms are not atoms; balancing counts atoms of each element, not heat.",
-          "misconception": "energy confused with atom count"
         }
       ]
     },
@@ -479,13 +477,10 @@
         "blue",
         "flame",
         "sulfur",
-        "sulphur",
         "dioxide",
         "so2",
         "poisonous",
         "colourless",
-        "colorless",
-        "toxic",
         "gas"
       ],
       "options": []
@@ -507,8 +502,7 @@
         "four",
         "two",
         "conserve",
-        "conserves",
-        "conserved"
+        "conserves"
       ],
       "options": []
     },
@@ -528,7 +522,6 @@
         "blue",
         "so2",
         "sulfur",
-        "sulphur",
         "dioxide",
         "oxide"
       ],

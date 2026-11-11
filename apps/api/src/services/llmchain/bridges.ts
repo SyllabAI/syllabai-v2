@@ -667,9 +667,19 @@ export function chainAsToolkitGenerator(chain: FailoverLlmChain): ToolkitGenerat
           user,
           temperature: TOOLKIT_TEMPERATURE,
           maxTokens: TOOLKIT_MAX_TOKENS,
-          // structured document writing — LOW keeps the thinking budget
-          // (and the 12–22 s wall clock) bounded, the candidate-generator law
-          reasoningEffort: "low" as const,
+          // structured document writing — MEDIUM, T-REASON-WALL-2 (2026-11-12):
+          // gpt-oss-20b at effort LOW LAZILY TRUNCATES the toolkit's big JSON
+          // contracts mid-document (finish=stop, NOT length — the truncation
+          // detector cannot see it; the bridge then refuses UNPARSEABLE and
+          // the self-heal retry reproduces the same short document: the
+          // deterministic 502 wall, first-hand CI probe verdict). At MEDIUM
+          // the same byte-same prompt+wire completes (parse OK, 3.6 s). The
+          // old LOW bound was the candidate-generator law (small marking
+          // docs — marking stays LOW); these documents are 4-6k tokens.
+          // TPM note: groq's gpt-oss-20b free tier rides 8000 TPM per org —
+          // one generation fits; rapid successive generations may 429 into
+          // the chain's honest cooldown/failover.
+          reasoningEffort: "medium" as const,
         });
       } catch {
         // chain exhaustion/transport: the honest provider-unavailable refusal

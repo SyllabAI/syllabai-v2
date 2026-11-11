@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_TWGVV6RXN3Ktqb9h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d6aead1e4b1a844b27f0cad72d0ee181c76b5d30a1be75a7f8710bad523c9ac5",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "ed1bbed6935e08a1f46ac1b0d05dac930cec72b32041303e4c8294e238123db7",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_TWGVV6RXN3Ktqb9h",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Copper can be split if heated gently enough",
+          "correct": false,
+          "explanation": "No physical method, gentle or harsh, divides an element into simpler substances.",
+          "misconception": "physical means invented"
+        },
+        {
+          "key": "B",
           "text": "Cannot be split refers to separating it into simpler substances, not to chemical change",
           "correct": true,
           "explanation": "Copper stays an element only while unbonded; it readily takes part in reactions that build compounds.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Copper is actually a compound, so the claim fails twice",
           "correct": false,
           "explanation": "Copper holds one proton count throughout, which is exactly what an element is.",
           "misconception": "element mistaken for compound"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Splitting and reacting are the same process described in two words",
           "correct": false,
           "explanation": "Splitting means separating into simpler parts; reacting means bonding to build new substances.",
           "misconception": "vocabulary conflation"
-        },
-        {
-          "key": "D",
-          "text": "Copper can be split if heated gently enough",
-          "correct": false,
-          "explanation": "No physical method, gentle or harsh, divides an element into simpler substances.",
-          "misconception": "physical means invented"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The two elements are chemically combined into one fixed substance",
-          "correct": true,
-          "explanation": "Chemical bonds join the carbon to the oxygen, which is precisely the compound criterion.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It contains two different substances floating loosely together",
-          "correct": false,
-          "explanation": "The carbon and oxygen are bonded into one substance, not floating separately.",
-          "misconception": "mixture confused with compound"
-        },
-        {
-          "key": "C",
           "text": "It is made of molecules, and every molecule is a compound",
           "correct": false,
           "explanation": "An oxygen molecule pairs two identical atoms and stays an element, so molecule does not imply compound.",
           "misconception": "molecule equated with compound"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because it is a gas at room temperature",
           "correct": false,
           "explanation": "State of matter has no bearing on class; gases can be elements, compounds or mixtures.",
           "misconception": "state-based classification"
+        },
+        {
+          "key": "C",
+          "text": "The two elements are chemically combined into one fixed substance",
+          "correct": true,
+          "explanation": "Chemical bonds join the carbon to the oxygen, which is precisely the compound criterion.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It contains two different substances floating loosely together",
+          "correct": false,
+          "explanation": "The carbon and oxygen are bonded into one substance, not floating separately.",
+          "misconception": "mixture confused with compound"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A compound, because three elements are chemically combined within it",
-          "correct": true,
-          "explanation": "Copper, sulfur and oxygen are bonded into one substance, which is the compound definition at work.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "An element, because the name begins with copper",
           "correct": false,
           "explanation": "The name borrows from copper, but the substance holds three elements bonded together.",
           "misconception": "name-based classification"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "A mixture, because it contains several substances",
           "correct": false,
           "explanation": "It is one bonded substance, not several substances placed side by side.",
           "misconception": "multi-element read as mixture"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "None of the three, because salts sit outside the classes",
           "correct": false,
           "explanation": "The three classes cover every substance; a pure salt sits inside the compound class.",
           "misconception": "categories thought non-exhaustive"
+        },
+        {
+          "key": "D",
+          "text": "A compound, because three elements are chemically combined within it",
+          "correct": true,
+          "explanation": "Copper, sulfur and oxygen are bonded into one substance, which is the compound definition at work.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "118 elements (for example copper, iron and magnesium).",
       "keywords": [
-        "118"
+        "118",
+        "magnesium",
+        "elements"
       ],
       "options": []
     },
@@ -236,8 +238,7 @@
         "bonds",
         "bonded",
         "physical",
-        "cannot",
-        "never"
+        "cannot"
       ],
       "options": []
     },
@@ -250,7 +251,8 @@
       "modelAnswer": "Sample A is an element (all its atoms hold the same number of protons); sample B is a compound (two or more different elements joined by chemical bonds).",
       "keywords": [
         "element",
-        "compound"
+        "compound",
+        "chemically"
       ],
       "options": []
     },
@@ -262,31 +264,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A compound, because the sand dissolves into the water",
+          "correct": false,
+          "explanation": "The sand does not dissolve here; and even dissolving leaves a mixture, never a compound.",
+          "misconception": "dissolving mistaken for reacting"
+        },
+        {
+          "key": "B",
           "text": "A mixture — the sand and the water are not chemically combined",
           "correct": true,
           "explanation": "Two substances sharing a space with no bonds between them form a mixture.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A compound — two substances have combined into one",
           "correct": false,
           "explanation": "Combining without chemical bonds is mixing, not compound formation.",
           "misconception": "combine taken as bonding"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "An element — only one kind of liquid is visible",
           "correct": false,
           "explanation": "Visibility decides nothing about class; two substances are present even if one is hidden from view.",
           "misconception": "appearance-based classification"
-        },
-        {
-          "key": "D",
-          "text": "A compound, because the sand dissolves into the water",
-          "correct": false,
-          "explanation": "The sand does not dissolve here; and even dissolving leaves a mixture, never a compound.",
-          "misconception": "dissolving mistaken for reacting"
         }
       ]
     },
@@ -298,31 +300,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Mixtures hold no chemical bonds to break, so physical methods suffice",
-          "correct": true,
-          "explanation": "Physical methods cannot break chemical bonds, which is why compounds resist every one of them.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Physical methods are simply too weak to disturb a compound",
-          "correct": false,
-          "explanation": "Strength is not the issue; no physical process targets the bonds inside a compound.",
-          "misconception": "force-based reasoning"
-        },
-        {
-          "key": "C",
           "text": "Compounds separate when heated to a high enough temperature",
           "correct": false,
           "explanation": "Decomposition by heat is a chemical change, not a physical separation.",
           "misconception": "temperature as separator"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Filtration works on compounds provided the filter paper is fine enough",
           "correct": false,
           "explanation": "Filter fineness cannot undo chemical combination.",
           "misconception": "instrument capability imagined"
+        },
+        {
+          "key": "C",
+          "text": "Mixtures hold no chemical bonds to break, so physical methods suffice",
+          "correct": true,
+          "explanation": "Physical methods cannot break chemical bonds, which is why compounds resist every one of them.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Physical methods are simply too weak to disturb a compound",
+          "correct": false,
+          "explanation": "Strength is not the issue; no physical process targets the bonds inside a compound.",
+          "misconception": "force-based reasoning"
         }
       ]
     },
@@ -334,31 +336,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A compound — one kind of chemically combined atom pair, repeated",
-          "correct": true,
-          "explanation": "Identical bonded pairs of two different atoms depict a single compound.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "A mixture of two elements",
           "correct": false,
           "explanation": "The spheres are bonded in pairs, not loose, and each pair holds two different atoms.",
           "misconception": "pair count misread as mixture"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "An element, because every unit looks the same",
           "correct": false,
           "explanation": "Sameness of unit with two different atom types is the compound signature.",
           "misconception": "uniformity read as element"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "A mixture of two compounds",
           "correct": false,
           "explanation": "Only one kind of unit is present, so nothing is mixed.",
           "misconception": "molecule count misread"
+        },
+        {
+          "key": "D",
+          "text": "A compound — one kind of chemically combined atom pair, repeated",
+          "correct": true,
+          "explanation": "Identical bonded pairs of two different atoms depict a single compound.",
+          "misconception": null
         }
       ]
     },
@@ -406,31 +408,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Call any white powder a mixture to be safe",
+          "correct": false,
+          "explanation": "Classification is decided by structure, not hedging; many white powders are pure compounds.",
+          "misconception": "default-to-mixture habit"
+        },
+        {
+          "key": "B",
           "text": "Ask two questions: are all atoms the same kind, and are different atoms chemically joined",
           "correct": true,
           "explanation": "Same atoms means element; different atoms bonded means compound; different substances unbonded means mixture.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Name its state of matter first, since class depends on it",
           "correct": false,
           "explanation": "Solid, liquid or gas, the three classes apply equally; state is irrelevant.",
           "misconception": "state-first habit"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Guess element whenever the sample has a single colour",
           "correct": false,
           "explanation": "Colour carries no class information at all.",
           "misconception": "surface feature substituted"
-        },
-        {
-          "key": "D",
-          "text": "Call any white powder a mixture to be safe",
-          "correct": false,
-          "explanation": "Classification is decided by structure, not hedging; many white powders are pure compounds.",
-          "misconception": "default-to-mixture habit"
         }
       ]
     },
@@ -461,7 +463,6 @@
         "sand",
         "oil",
         "sulfur",
-        "sulphur",
         "iron"
       ],
       "options": []
@@ -476,8 +477,7 @@
       "keywords": [
         "elements",
         "compounds",
-        "both",
-        "either"
+        "both"
       ],
       "options": []
     },

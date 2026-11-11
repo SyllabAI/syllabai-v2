@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_bGgYrQXP2tqrYwdV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "69bb04f19453441fb7999928a615c65daf1ae181afdfd125f5db4e0bb449459e",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "24d1bc02ccb455db92bcaf466a7703ddc27f9b8c89dcf9f5e45c9df4de76cdfb",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_bGgYrQXP2tqrYwdV",
   "subject": "igcse-chemistry",
@@ -55,30 +55,30 @@
       "options": [
         {
           "key": "A",
+          "text": "Oxygen gas",
+          "correct": false,
+          "explanation": "Oxygen atoms leave inside the water molecule, not as free gas.",
+          "misconception": "product misread"
+        },
+        {
+          "key": "B",
           "text": "Water",
           "correct": true,
           "explanation": "An -H from one end and an -OH from the other combine and leave as water.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Carbon dioxide",
           "correct": false,
           "explanation": "No carbonate is involved, so no carbon dioxide is released.",
           "misconception": "gas invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Hydrogen gas",
           "correct": false,
           "explanation": "The hydrogens leave inside water, not as hydrogen gas.",
-          "misconception": "product misread"
-        },
-        {
-          "key": "D",
-          "text": "Oxygen gas",
-          "correct": false,
-          "explanation": "Oxygen atoms leave inside the water molecule, not as free gas.",
           "misconception": "product misread"
         }
       ]
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Two, one at each end",
-          "correct": true,
-          "explanation": "Two-ended monomers are what allow the long alternating chain to grow.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "One, in the middle",
-          "correct": false,
-          "explanation": "A single group could never join two neighbours at once.",
-          "misconception": "geometry misread"
-        },
-        {
-          "key": "C",
           "text": "None",
           "correct": false,
           "explanation": "The reacting groups are the whole point of the mechanism.",
           "misconception": "groups denied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Four or more",
           "correct": false,
           "explanation": "Crosslinking networks are a different idea; here each monomer carries two.",
           "misconception": "count invented"
+        },
+        {
+          "key": "C",
+          "text": "Two, one at each end",
+          "correct": true,
+          "explanation": "Two-ended monomers are what allow the long alternating chain to grow.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "One, in the middle",
+          "correct": false,
+          "explanation": "A single group could never join two neighbours at once.",
+          "misconception": "geometry misread"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A water molecule per linkage",
-          "correct": true,
-          "explanation": "Every new bond pays for itself with one small water molecule.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Hydrogen chloride every time",
           "correct": false,
           "explanation": "The spec case pairs a dicarboxylic acid with a diol, releasing water.",
           "misconception": "product swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Carbon dioxide",
           "correct": false,
           "explanation": "No decarboxylation occurs in this polymer route.",
           "misconception": "product invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "None, both routes share products",
           "correct": false,
           "explanation": "The second product is exactly what separates the two mechanisms.",
           "misconception": "difference denied"
+        },
+        {
+          "key": "D",
+          "text": "A water molecule per linkage",
+          "correct": true,
+          "explanation": "Every new bond pays for itself with one small water molecule.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "The small molecule is H2O — water.",
       "keywords": [
-        "h2o"
+        "h2o",
+        "polymerisations",
+        "condensation"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "Addition polymerisation forms the polymer molecule only, while condensation also releases a small molecule such as water.",
       "keywords": [
-        "only"
+        "only",
+        "polymerisation",
+        "condensation"
       ],
       "options": []
     },
@@ -223,7 +227,9 @@
       "kind": "explain-why",
       "modelAnswer": "A group at each end lets one monomer link to the next monomer on either side, so the chain can keep growing in both directions.",
       "keywords": [
-        "chain"
+        "chain",
+        "condensation",
+        "directions"
       ],
       "options": []
     },
@@ -235,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "One water molecule forms for every ester linkage made, so 150 ester linkages release 150 water molecules.",
       "keywords": [
-        "one"
+        "one",
+        "molecules",
+        "molecule"
       ],
       "options": []
     },
@@ -247,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A diol",
+          "correct": false,
+          "explanation": "The diol is one of its monomers, not the product.",
+          "misconception": "reactant confused"
+        },
+        {
+          "key": "B",
           "text": "A polyester made from a dicarboxylic acid and a diol",
           "correct": true,
           "explanation": "The named example of the condensation route in this specification.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "An addition polymer of ethene",
           "correct": false,
           "explanation": "That describes polyethene, a different polymer from a different mechanism.",
           "misconception": "routes crossed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A carboxylic acid",
           "correct": false,
           "explanation": "Terylene is the polymer built from the acid, not the acid itself.",
           "misconception": "level confused"
-        },
-        {
-          "key": "D",
-          "text": "A diol",
-          "correct": false,
-          "explanation": "The diol is one of its monomers, not the product.",
-          "misconception": "reactant confused"
         }
       ]
     },
@@ -283,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "From the -COOH group of the dicarboxylic acid",
-          "correct": true,
-          "explanation": "The acid side surrenders its hydroxyl when the link closes.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "From the diol",
-          "correct": false,
-          "explanation": "The diol side contributes the H instead.",
-          "misconception": "donors swapped"
-        },
-        {
-          "key": "C",
           "text": "From the surrounding air",
           "correct": false,
           "explanation": "The water is assembled entirely from the two monomers.",
           "misconception": "source invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "From a catalyst",
           "correct": false,
           "explanation": "No catalyst supplies atoms to the product here.",
           "misconception": "role invented"
+        },
+        {
+          "key": "C",
+          "text": "From the -COOH group of the dicarboxylic acid",
+          "correct": true,
+          "explanation": "The acid side surrenders its hydroxyl when the link closes.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "From the diol",
+          "correct": false,
+          "explanation": "The diol side contributes the H instead.",
+          "misconception": "donors swapped"
         }
       ]
     },
@@ -319,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "From the -OH group of the diol",
-          "correct": true,
-          "explanation": "The alcohol side gives up a hydrogen to build the water.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "From the acid's -COOH",
           "correct": false,
           "explanation": "The acid has already given its -OH; its remaining hydrogen stays on the carboxyl carbon.",
           "misconception": "donors swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "From the ester link",
           "correct": false,
           "explanation": "The link is what forms after the water has left.",
           "misconception": "order reversed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "From the air",
           "correct": false,
           "explanation": "Nothing is borrowed from the atmosphere in this reaction.",
           "misconception": "source invented"
+        },
+        {
+          "key": "D",
+          "text": "From the -OH group of the diol",
+          "correct": true,
+          "explanation": "The alcohol side gives up a hydrogen to build the water.",
+          "misconception": null
         }
       ]
     },
@@ -391,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The O-H bonds of the added water",
+          "correct": false,
+          "explanation": "The water is the tool, not the thing being cut.",
+          "misconception": "tool confused with target"
+        },
+        {
+          "key": "B",
           "text": "The C-O single bond in each ester link",
           "correct": true,
           "explanation": "Cutting there separates the acid-derived and alcohol-derived sections cleanly.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The C=O double bond",
           "correct": false,
           "explanation": "The double bond stays intact; only the single C-O is cut.",
           "misconception": "bond mischosen"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The carbon-carbon bonds of the chain",
           "correct": false,
           "explanation": "Cutting the backbone would shred the monomers, not recover them.",
           "misconception": "backbone attacked"
-        },
-        {
-          "key": "D",
-          "text": "The O-H bonds of the added water",
-          "correct": false,
-          "explanation": "The water is the tool, not the thing being cut.",
-          "misconception": "tool confused with target"
         }
       ]
     },
@@ -427,7 +435,9 @@
       "kind": "recall",
       "modelAnswer": "A dicarboxylic acid carries a COOH group at either end.",
       "keywords": [
-        "cooh"
+        "cooh",
+        "dicarboxylic",
+        "functional"
       ],
       "options": []
     },
@@ -439,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "Such a monomer is a diol.",
       "keywords": [
-        "diol"
+        "diol",
+        "monomer",
+        "carries"
       ],
       "options": []
     },
@@ -451,7 +463,9 @@
       "kind": "explain-why",
       "modelAnswer": "Each COOH group reacts with one OH group, and that single pairing releases one water as the ester link closes.",
       "keywords": [
-        "pairing"
+        "pairing",
+        "dicarboxylic",
+        "polyester"
       ],
       "options": []
     },
@@ -463,7 +477,9 @@
       "kind": "application",
       "modelAnswer": "The process is hydrolysis — water is added back to break the ester links into the monomers.",
       "keywords": [
-        "hydrolysis"
+        "hydrolysis",
+        "polyester",
+        "monomers"
       ],
       "options": []
     },
@@ -475,31 +491,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Sugars and plant oils",
-          "correct": true,
-          "explanation": "Those renewable feedstocks, processed by microbes, build the green polymers.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Crude oil only",
-          "correct": false,
-          "explanation": "Oil-based feedstocks describe ordinary polymers, not the biopolyester family.",
-          "misconception": "feedstock crossed"
-        },
-        {
-          "key": "C",
           "text": "Limestone and sea water",
           "correct": false,
           "explanation": "Neither mineral source appears in the biopolyester recipe.",
           "misconception": "source invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Recycled addition polymers",
           "correct": false,
           "explanation": "Recycling is a disposal strategy, not the synthesis route here.",
           "misconception": "routes crossed"
+        },
+        {
+          "key": "C",
+          "text": "Sugars and plant oils",
+          "correct": true,
+          "explanation": "Those renewable feedstocks, processed by microbes, build the green polymers.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Crude oil only",
+          "correct": false,
+          "explanation": "Oil-based feedstocks describe ordinary polymers, not the biopolyester family.",
+          "misconception": "feedstock crossed"
         }
       ]
     },
@@ -511,31 +527,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Micro-organisms",
-          "correct": true,
-          "explanation": "The microbes carry out the synthesis alongside their usual chemistry.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "High pressure alone",
           "correct": false,
           "explanation": "Pressure is not the named agent of this synthesis.",
           "misconception": "agent invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Electric currents",
           "correct": false,
           "explanation": "Electrolysis plays no part in building these chains.",
           "misconception": "agent invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Open flames",
           "correct": false,
           "explanation": "Flames destroy organic feedstocks rather than polymerising them.",
           "misconception": "agent invented"
+        },
+        {
+          "key": "D",
+          "text": "Micro-organisms",
+          "correct": true,
+          "explanation": "The microbes carry out the synthesis alongside their usual chemistry.",
+          "misconception": null
         }
       ]
     },
@@ -583,30 +599,30 @@
       "options": [
         {
           "key": "A",
+          "text": "They melt at zero degrees",
+          "correct": false,
+          "explanation": "No melting point claim is made in the spec.",
+          "misconception": "property invented"
+        },
+        {
+          "key": "B",
           "text": "They are biodegradable",
           "correct": true,
           "explanation": "That single word is the spec's whole point for this family.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "They conduct electricity",
           "correct": false,
           "explanation": "Conductivity is not the distinguishing property here.",
           "misconception": "property invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They are magnetic",
           "correct": false,
           "explanation": "Magnetism plays no part in the distinction.",
-          "misconception": "property invented"
-        },
-        {
-          "key": "D",
-          "text": "They melt at zero degrees",
-          "correct": false,
-          "explanation": "No melting point claim is made in the spec.",
           "misconception": "property invented"
         }
       ]
@@ -614,36 +630,36 @@
     {
       "id": "rn_bGgYrQXP2tqrYwdV::L3::Q5",
       "moduleId": "rn_bGgYrQXP2tqrYwdV::L3",
-      "stem": "Which statement matches the specification exactly?",
+      "stem": "Which statement about biopolyesters matches the specification exactly?",
       "misconceptionClass": "spec statement",
       "options": [
         {
           "key": "A",
-          "text": "Some polyesters, known as biopolyesters, are biodegradable",
-          "correct": true,
-          "explanation": "The word some is load-bearing: only the biopolyester branch degrades.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "All polyesters are biodegradable",
-          "correct": false,
-          "explanation": "Overclaiming drops the qualifier that keeps the statement true.",
-          "misconception": "scope widened"
-        },
-        {
-          "key": "C",
           "text": "No polyester is biodegradable",
           "correct": false,
           "explanation": "The biopolyester branch is the counterexample that survives.",
           "misconception": "scope narrowed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Biopolyesters are addition polymers",
           "correct": false,
           "explanation": "They belong to the condensation family discussed in this note.",
           "misconception": "family crossed"
+        },
+        {
+          "key": "C",
+          "text": "Some polyesters, known as biopolyesters, are biodegradable",
+          "correct": true,
+          "explanation": "The word some is load-bearing: only the biopolyester branch degrades.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "All polyesters are biodegradable",
+          "correct": false,
+          "explanation": "Overclaiming drops the qualifier that keeps the statement true.",
+          "misconception": "scope widened"
         }
       ]
     },
@@ -655,7 +671,9 @@
       "kind": "recall",
       "modelAnswer": "Biopolyesters are synthesised from sugars and plant oils.",
       "keywords": [
-        "sugars"
+        "sugars",
+        "biopolyesters",
+        "synthesised"
       ],
       "options": []
     },
@@ -667,7 +685,9 @@
       "kind": "recall",
       "modelAnswer": "The chains contain ester, amide and ether functional groups.",
       "keywords": [
-        "amide"
+        "amide",
+        "biopolyester",
+        "functional"
       ],
       "options": []
     },
@@ -679,7 +699,9 @@
       "kind": "explain-why",
       "modelAnswer": "The ester, amide and ether groups along the biopolyester chain give it its biodegradable character, which addition polymers lack because their carbon-carbon backbone is inert.",
       "keywords": [
-        "biodegradable"
+        "biodegradable",
+        "biopolyester",
+        "environment"
       ],
       "options": []
     },
@@ -691,7 +713,9 @@
       "kind": "application",
       "modelAnswer": "Biopolyesters meet the requirement — they biodegrade naturally in the environment once their job is done.",
       "keywords": [
-        "biopolyesters"
+        "biopolyesters",
+        "requirement",
+        "environment"
       ],
       "options": []
     }

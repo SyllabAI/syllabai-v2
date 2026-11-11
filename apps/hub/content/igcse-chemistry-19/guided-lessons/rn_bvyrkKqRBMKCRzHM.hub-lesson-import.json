@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_bvyrkKqRBMKCRzHM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a482c43be0cfa7b8cce35c9d03400ae5e8830a9aad89ac80c84a710683893575",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "9484e4876c7beb1e946c4b73e22cd8fe346acee75bf4dab0ff78f0469e795ad1",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_bvyrkKqRBMKCRzHM",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-4.47",
-        "text": "explain problems in the disposal of addition polymers, including: their inertness and inability to biodegrade; the production of toxic gases when they are burned"
+        "text": "explain problems in the disposal of addition polymers, including: • their inertness and inability to biodegrade • the production of toxic gases when they are burned."
       }
     ],
     "primer": {
@@ -92,7 +92,7 @@
         "keyPoints": [
           "Burning polymers releases a lot of heat energy.",
           "It also produces carbon dioxide, a greenhouse gas linked to climate change.",
-          "Polymers containing chlorine, such as PVC, release toxic hydrogen chloride when burned.",
+          "Polymers containing chlorine, PVC among them, give off toxic hydrogen chloride when burned.",
           "Incomplete combustion during incineration produces carbon monoxide.",
           "Carbon monoxide is toxic because it reduces the blood's capacity to carry oxygen."
         ],
@@ -103,7 +103,7 @@
             "examPointer": "Keep the three hazards separate: dioxide for climate, hydrogen chloride for PVC, monoxide for incomplete burning."
           },
           "medium": {
-            "restatement": "Incineration recovers a lot of heat energy but emits carbon dioxide, the greenhouse gas driving climate change. Polymers containing chlorine, such as PVC, release toxic hydrogen chloride gas, and any incomplete combustion adds carbon monoxide, which lowers the capacity of blood to carry oxygen.",
+            "restatement": "Incineration recovers a lot of heat energy but emits carbon dioxide, the greenhouse gas driving climate change. Polymers containing chlorine, PVC among them, give off toxic hydrogen chloride gas, and any incomplete combustion adds carbon monoxide, which lowers how much oxygen the blood can carry.",
             "analogy": "Think of the flue as a three-lane exit: one lane carries the climate bill, one carries chlorine's poison, and one carries the silent gas that crowds oxygen out of the blood.",
             "examPointer": "Match each toxic gas to its trigger: hydrogen chloride needs chlorine in the polymer, monoxide needs incomplete combustion."
           }
@@ -128,7 +128,8 @@
           "rn_bvyrkKqRBMKCRzHM::L2::Q7",
           "rn_bvyrkKqRBMKCRzHM::L2::Q8",
           "rn_bvyrkKqRBMKCRzHM::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -175,11 +176,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/879faa3aeca2-disposal-of-polymers.png",
         "alt": "Disposal of polymers, Edexcel IGCSE Chemistry",
         "sourceHeading": "Disposal of polymers",
-        "caption": "Disposal of addition polymers is an environmental problem",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Disposal of addition polymers is an environmental problem"
       }
     ]
   }

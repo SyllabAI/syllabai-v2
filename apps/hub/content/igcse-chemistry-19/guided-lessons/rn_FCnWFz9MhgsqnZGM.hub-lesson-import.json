@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_FCnWFz9MhgsqnZGM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2c55847dc50598c5648dbdadea7665f9cfc0a6dc78d2ba298a6c9612fc0feb01",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "02630f64a3479e4e2ec4e5291023011c50add0a37157014a2decf4a8c91c573b",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_FCnWFz9MhgsqnZGM",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Ionic Bonding",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-6-ionic-bonding/1-6-4-ionic-bonds-dot-and-cross-diagrams",
     "specAnchors": [
-      {
-        "code": "4CH1-1.37",
-        "text": "understand how ions are formed by electron loss or gain"
-      },
       {
         "code": "4CH1-1.40",
         "text": "draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer, limited to combinations of elements from Groups 1, 2, 3 and 5, 6, 7 only outer electrons need be shown"
@@ -36,14 +32,13 @@
           "Sodium chloride dot and cross diagram"
         ],
         "specRefs": [
-          "4CH1-1.37",
           "4CH1-1.40"
         ],
         "opening": "A dot-and-cross diagram draws the outer electrons of each atom, using a different symbol for each atom involved. When a metal reacts with a non-metal, electrons move across from the metal to the non-metal, and square brackets around each ion carry its charge. Sodium chloride is the standard example: one electron passes from sodium to chlorine.",
         "keyPoints": [
           "In a dot-and-cross diagram each atom's outer electrons get their own symbol, dots for one atom and crosses for the other.",
           "Sodium is a Group 1 metal, so it loses its single outer electron to reach a full outer shell.",
-          "Chlorine is a Group 7 non-metal, so it gains that electron to complete its own outer shell.",
+          "Chlorine, a Group 7 non-metal, gains that electron to complete its own outer shell.",
           "The transfer produces a 1+ sodium ion and a 1- chloride ion, giving the formula NaCl.",
           "Large square brackets enclose each ion, with the charge written outside at the top right in superscript."
         ],
@@ -79,6 +74,9 @@
           "rn_FCnWFz9MhgsqnZGM::L1::Q7",
           "rn_FCnWFz9MhgsqnZGM::L1::Q8",
           "rn_FCnWFz9MhgsqnZGM::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -130,6 +128,9 @@
           "rn_FCnWFz9MhgsqnZGM::L2::Q7",
           "rn_FCnWFz9MhgsqnZGM::L2::Q8",
           "rn_FCnWFz9MhgsqnZGM::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -171,19 +172,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/294b444066c4-ionic-bonding-e2-80-93-sodium-chloride.png",
         "alt": "Ionic bonding – Sodium Chloride, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Dot and cross diagram for sodium chloride",
-        "caption": "Sodium loses one electron, and chlorine gains one electron.",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Sodium chloride dot and cross diagram",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Sodium loses one electron, and chlorine gains one electron."
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/421cdd8d4579-magnesium-oxide-dot-cross-diagram.png",
         "alt": "Magnesium Oxide dot & cross diagram, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Dot and cross diagram for magnesium oxide",
-        "caption": "Magnesium loses two electrons and oxygen gains two electrons.",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Magnesium oxide dot and cross diagram",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Magnesium loses two electrons and oxygen gains two electrons."
       }
     ]
   }

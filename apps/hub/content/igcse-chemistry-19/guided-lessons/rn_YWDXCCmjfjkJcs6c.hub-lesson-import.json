@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_YWDXCCmjfjkJcs6c",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "88fff20a72ef47facc469cabc855b07fbf89b5eeb5384390698c5178069ef610",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "8a809b47b62e9f4b6e5f1f4ca3b7e12c50be36b8a04936ec211c0251da04930f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_YWDXCCmjfjkJcs6c",
@@ -131,7 +131,8 @@
           "rn_YWDXCCmjfjkJcs6c::L2::Q7",
           "rn_YWDXCCmjfjkJcs6c::L2::Q8",
           "rn_YWDXCCmjfjkJcs6c::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -178,11 +179,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/33049bad4b31-copper-sulfate-crystals.png",
         "alt": "copper sulfate crystals",
         "sourceHeading": "Chemical test for water",
-        "caption": "Copper sulfate turns a light blue colour in the presence of water",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Copper sulfate turns a light blue colour in the presence of water"
       }
     ]
   }

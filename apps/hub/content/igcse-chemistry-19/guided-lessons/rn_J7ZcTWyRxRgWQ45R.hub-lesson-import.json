@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_J7ZcTWyRxRgWQ45R",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4f5d835d390c2ff363495b5de29bcac844c3d062ec0fdcfc55eac180cb105847",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "65607a29d3ceb3add53b7fce340ffc21c5edd3ae6755d8bbd0c6cf419efbdc5c",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_J7ZcTWyRxRgWQ45R",
@@ -73,7 +73,8 @@
           "rn_J7ZcTWyRxRgWQ45R::L1::Q7",
           "rn_J7ZcTWyRxRgWQ45R::L1::Q8",
           "rn_J7ZcTWyRxRgWQ45R::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_J7ZcTWyRxRgWQ45R::L2",
@@ -124,6 +125,10 @@
           "rn_J7ZcTWyRxRgWQ45R::L2::Q7",
           "rn_J7ZcTWyRxRgWQ45R::L2::Q8",
           "rn_J7ZcTWyRxRgWQ45R::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       }
     ],
@@ -173,18 +178,22 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9e15fc97f925-5rmsbva-copperii-chloride-swap-and-drop.png",
         "alt": "~5RmSBVa_copperii-chloride-swap-and-drop",
-        "sourceHeading": "Determining the formula of copper(II) chloride",
-        "caption": "The charges swap from element to element and drop down. The positive and negative signs are removed and there is no need for the number 1.",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "The swap-and-drop method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The charges swap from element to element and drop down. The positive and negative signs are removed and there is no need for the number 1."
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f62b6786841c-d5o2dgjs-ironiii-chloride-swap-and-drop.png",
         "alt": "d5o2dGJS_ironiii-chloride-swap-and-drop",
-        "sourceHeading": "Determining the formula of copper(II) chloride",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "The swap-and-drop method",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

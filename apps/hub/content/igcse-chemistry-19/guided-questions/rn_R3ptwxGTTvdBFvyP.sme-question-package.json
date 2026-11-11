@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_R3ptwxGTTvdBFvyP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e5d084bbe79677d76c652fd890de3c7822d78197f51148576b7a6b4b7f0bf9dc",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "2dc8ae287f391d53c90bbeeb153a1d0877ec785a0a08ac4a281671275a28bb44",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_R3ptwxGTTvdBFvyP",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The chromatogram is faulty and should be repeated",
+          "correct": false,
+          "explanation": "The result is exactly what a mixture of three dyes looks like.",
+          "misconception": "evidence dismissed"
+        },
+        {
+          "key": "B",
           "text": "The brown ink is a mixture of the red, yellow and blue inks",
           "correct": true,
           "explanation": "Level dots mean identical substances, and three of them make up the brown.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The brown ink is pure, since its dots are level",
           "correct": false,
           "explanation": "Three dots is three substances — the very picture of a mixture here.",
           "misconception": "alignment overread as purity"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The inks reacted to make brown during the run",
           "correct": false,
           "explanation": "No reaction occurs; the brown was mixed before it reached the paper.",
           "misconception": "reaction invented"
-        },
-        {
-          "key": "D",
-          "text": "The chromatogram is faulty and should be repeated",
-          "correct": false,
-          "explanation": "The result is exactly what a mixture of three dyes looks like.",
-          "misconception": "evidence dismissed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "So unknown spots that line up with it can be identified by matching",
-          "correct": true,
-          "explanation": "A level line between reference and unknown means the same substance.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To make the chromatogram look complete",
-          "correct": false,
-          "explanation": "The reference has a working role, not a decorative one.",
-          "misconception": "decorative assumption"
-        },
-        {
-          "key": "C",
           "text": "To use up spare space on the paper",
           "correct": false,
           "explanation": "Space is not the concern; identification is.",
           "misconception": "trivial rationale"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because every valid chromatogram must contain four spots",
           "correct": false,
           "explanation": "There is no spot-count rule; references exist to match against.",
           "misconception": "rule invented"
+        },
+        {
+          "key": "C",
+          "text": "So unknown spots that line up with it can be identified by matching",
+          "correct": true,
+          "explanation": "A level line between reference and unknown means the same substance.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To make the chromatogram look complete",
+          "correct": false,
+          "explanation": "The reference has a working role, not a decorative one.",
+          "misconception": "decorative assumption"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The samples are the same substance",
-          "correct": true,
-          "explanation": "Identical substances produce identical chromatograms.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "One sample is purer than the other",
           "correct": false,
           "explanation": "Same spots, same purity picture; nothing distinguishes them.",
           "misconception": "purity ranking invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The solvent was different for each",
           "correct": false,
           "explanation": "A different solvent would shift the heights.",
           "misconception": "condition mismatch assumed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The samples are mixtures of the same colour",
           "correct": false,
           "explanation": "Height matching identifies substances regardless of colour.",
           "misconception": "colour-based reasoning"
+        },
+        {
+          "key": "D",
+          "text": "The samples are the same substance",
+          "correct": true,
+          "explanation": "Identical substances produce identical chromatograms.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,6 @@
       "modelAnswer": "A pure substance produces one spot; an impure sample produces more than one.",
       "keywords": [
         "one",
-        "1",
         "more",
         "impure",
         "pure"
@@ -217,7 +216,6 @@
       "keywords": [
         "separates",
         "separate",
-        "separated",
         "spots",
         "spot",
         "components",
@@ -236,9 +234,7 @@
         "black",
         "white",
         "colour",
-        "color",
         "height",
-        "level",
         "horizontal",
         "alignment"
       ],
@@ -266,31 +262,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The mass of substance dissolved in the solvent",
+          "correct": false,
+          "explanation": "No mass enters the calculation.",
+          "misconception": "quantity confused"
+        },
+        {
+          "key": "B",
           "text": "Distance moved by the substance divided by distance moved by the solvent",
           "correct": true,
           "explanation": "Both distances are measured from the baseline.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Distance moved by the solvent divided by distance moved by the substance",
           "correct": false,
           "explanation": "That inverts the ratio and pushes values above one.",
           "misconception": "ratio inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The time the substance takes to climb the paper",
           "correct": false,
           "explanation": "Rf is about distances, not times.",
           "misconception": "time substituted"
-        },
-        {
-          "key": "D",
-          "text": "The mass of substance dissolved in the solvent",
-          "correct": false,
-          "explanation": "No mass enters the calculation.",
-          "misconception": "quantity confused"
         }
       ]
     },
@@ -302,31 +298,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The substance cannot travel further than the solvent that carries it",
-          "correct": true,
-          "explanation": "The solvent front sets the maximum distance, so the ratio stays below one.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Values above one are simply rounded down",
-          "correct": false,
-          "explanation": "The bound is physical, not a rounding convention.",
-          "misconception": "rounding as physics"
-        },
-        {
-          "key": "C",
           "text": "Because Rf is measured in centimetres",
           "correct": false,
           "explanation": "Rf has no units at all.",
           "misconception": "unit confusion"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "One is the maximum solubility allowed",
           "correct": false,
           "explanation": "Solubility does not cap the ratio; the geometry of the run does.",
           "misconception": "solubility cap"
+        },
+        {
+          "key": "C",
+          "text": "The substance cannot travel further than the solvent that carries it",
+          "correct": true,
+          "explanation": "The solvent front sets the maximum distance, so the ratio stays below one.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Values above one are simply rounded down",
+          "correct": false,
+          "explanation": "The bound is physical, not a rounding convention.",
+          "misconception": "rounding as physics"
         }
       ]
     },
@@ -338,31 +334,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The Rf value can change, because it depends on the solvent used",
-          "correct": true,
-          "explanation": "The value is constant only for a given substance in a given solvent.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The Rf stays 0.4 in every solvent",
           "correct": false,
           "explanation": "Changing the solvent changes the value.",
           "misconception": "universality assumed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Rf doubles when the solvent changes",
           "correct": false,
           "explanation": "There is no fixed scaling between solvents.",
           "misconception": "linear rule invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Rf becomes meaningless after the first run",
           "correct": false,
           "explanation": "Each run gives a valid value for its own solvent.",
           "misconception": "one-run validity"
+        },
+        {
+          "key": "D",
+          "text": "The Rf value can change, because it depends on the solvent used",
+          "correct": true,
+          "explanation": "The value is constant only for a given substance in a given solvent.",
+          "misconception": null
         }
       ]
     },
@@ -374,7 +370,7 @@
       "options": [
         {
           "key": "A",
-          "text": "From the baseline to the centre of the dot, and to the solvent front",
+          "text": "Baseline to the middle of each spot, and baseline to the solvent front",
           "correct": true,
           "explanation": "Baseline to centre for the substance; baseline to front for the solvent.",
           "misconception": null
@@ -410,31 +406,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because the solvent records its own fingerprint",
+          "correct": false,
+          "explanation": "The identification reads the spots, not the solvent.",
+          "misconception": "solvent fingerprint"
+        },
+        {
+          "key": "B",
           "text": "Because a substance's Rf under the same conditions matches a known value in the tables",
           "correct": true,
           "explanation": "Same substance, same solvent, same value — the match names the component.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because every substance has a unique Rf across all solvents",
           "correct": false,
           "explanation": "The value is unique only within a fixed solvent; the table must match conditions.",
           "misconception": "universal uniqueness"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because higher spots always mean bigger molecules",
           "correct": false,
           "explanation": "Travel reflects solubility in the solvent, not molecular size rules of thumb.",
           "misconception": "size heuristic"
-        },
-        {
-          "key": "D",
-          "text": "Because the solvent records its own fingerprint",
-          "correct": false,
-          "explanation": "The identification reads the spots, not the solvent.",
-          "misconception": "solvent fingerprint"
         }
       ]
     },
@@ -461,14 +457,11 @@
       "stem": "State what exam mark schemes reward in Rf measurements.",
       "misconceptionClass": "ruler work",
       "kind": "recall",
-      "modelAnswer": "Careful ruler work on both distances — measured from the baseline to the centre of each dot or front.",
+      "modelAnswer": "Careful ruler work on both distances — measured from the pencil baseline to the centre of each dot or front.",
       "keywords": [
         "ruler",
         "careful",
-        "precise",
-        "centre",
-        "center",
-        "accurate"
+        "centre"
       ],
       "options": []
     },
@@ -484,7 +477,6 @@
         "further",
         "less",
         "below",
-        "smaller",
         "never",
         "distance"
       ],
@@ -501,8 +493,7 @@
         "p",
         "0.52",
         "table",
-        "compare",
-        "comparing"
+        "compare"
       ],
       "options": []
     }

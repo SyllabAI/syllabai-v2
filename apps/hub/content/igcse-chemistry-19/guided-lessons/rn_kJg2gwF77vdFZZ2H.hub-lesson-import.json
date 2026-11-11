@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_kJg2gwF77vdFZZ2H",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "0e7771addf58886c501cd7952ce6ac4d293c3f7f22eec0d2749b5fe7849622c4",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "7baafcd5967363bd06d39c34399a192505b6e1960968de39bde4596fc5c2881b",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_kJg2gwF77vdFZZ2H",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-2.48",
-        "text": "describe tests for these anions: Cl–, Br– and I– using acidified silver nitrate solution; SO4 2– using acidified barium chloride solution; CO3 2– using hydrochloric acid and identifying the gas evolved"
+        "text": "describe tests for these anions: • Cl – , Br – and I – using acidified silver nitrate solution • SO 4 2– using acidified barium chloride solution • CO 3 2– using hydrochloric acid and identifying the gas evolved."
       }
     ],
     "primer": {
@@ -74,6 +74,9 @@
           "rn_kJg2gwF77vdFZZ2H::L1::Q7",
           "rn_kJg2gwF77vdFZZ2H::L1::Q8",
           "rn_kJg2gwF77vdFZZ2H::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -125,6 +128,9 @@
           "rn_kJg2gwF77vdFZZ2H::L2::Q7",
           "rn_kJg2gwF77vdFZZ2H::L2::Q8",
           "rn_kJg2gwF77vdFZZ2H::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       },
       {
@@ -146,7 +152,7 @@
         ],
         "depthLayers": {
           "low": {
-            "restatement": "Acidify the sample with dilute hydrochloric acid, add a few drops of barium chloride solution, and a white precipitate means sulfate ions.",
+            "restatement": "Acidify the sample using dilute hydrochloric acid, introduce a few drops of barium chloride solution, and a white precipitate means sulfate ions.",
             "analogy": "It works like a clarifying agent dropped into muddy water: only sulfate and barium lock together into an insoluble solid, and the white settling is the confirmation.",
             "examPointer": "Explain why acid comes first: it removes carbonate impurities, which would otherwise form their own white precipitate and give a false positive."
           },
@@ -176,6 +182,9 @@
           "rn_kJg2gwF77vdFZZ2H::L3::Q7",
           "rn_kJg2gwF77vdFZZ2H::L3::Q8",
           "rn_kJg2gwF77vdFZZ2H::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
         ]
       }
     ],
@@ -205,11 +214,6 @@
           "term": "halide ion",
           "definition": "The negative ion formed by a Group 7 element, such as chloride, bromide or iodide.",
           "firstLesson": 2
-        },
-        {
-          "term": "acidify",
-          "definition": "To add dilute acid to a sample before testing, removing interfering ions or releasing the gas needed.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -227,28 +231,34 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d65f6d5545fd-40058-test-for-carbon-dioxide.png",
         "alt": "The diagram shows carbon dioxide being bubbled through limewater, and the limewater turning milky / cloudy to confirm the presence of carbon dioxide",
-        "sourceHeading": "Testing for carbonate ions",
-        "caption": "Limewater turns milky in the presence of carbon dixoide caused by the formation of insoluble calcium carbonate",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Test for carbonate ions",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Limewater turns milky in the presence of carbon dixoide caused by the formation of insoluble calcium carbonate"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6ff6156483ea-45106-the-silver-halide-precipitates.png",
         "alt": "The diagram shows chloride ions forming a whilte precipitate, bromide ions forming a cream precipitate and iodide ions forming a yellow precipitate",
-        "sourceHeading": "Testing for halide ions",
-        "caption": "Each silver halide produces a precipitate of a different colour",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Test for halide ions",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Each silver halide produces a precipitate of a different colour"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bab89e9c2673-12032-sulfate-ion-test.png",
         "alt": "The diagram shows barium chloride solution being added to a sample, which forms a white precipitate if sulfate ions are present",
-        "sourceHeading": "Testing for sulfate ions",
-        "caption": "A white precipitate of barium sulfate is a positive result for the presence of sulfate ions",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Test for sulfate ions",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "A white precipitate of barium sulfate is a positive result for the presence of sulfate ions"
       }
     ]
   }

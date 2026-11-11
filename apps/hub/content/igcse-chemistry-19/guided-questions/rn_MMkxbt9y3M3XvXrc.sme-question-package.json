@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_MMkxbt9y3M3XvXrc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8da00f2ac1ea6b5474ae677bbb7732dcbb7bfc2b298ae334b53a8bd09f903d5b",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "a84c897c86a402936f481093175136ac25691e675d4d53f19dcd5a70f2b40316",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_MMkxbt9y3M3XvXrc",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Iron and oxygen",
+          "correct": false,
+          "explanation": "Iron and oxygen make an oxide, which is a compound, not the steel mixture.",
+          "misconception": "compound mistaken for alloy"
+        },
+        {
+          "key": "B",
           "text": "Iron and carbon",
           "correct": true,
           "explanation": "The note gives steel as the example of a metal mixed with the non-metal carbon.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Copper and zinc",
           "correct": false,
           "explanation": "That pair makes brass, the other named alloy.",
           "misconception": "brass and steel swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Iron and nickel only",
           "correct": false,
           "explanation": "Nickel appears in stainless steel, but steel in general is iron with carbon.",
           "misconception": "stainless composition generalised"
-        },
-        {
-          "key": "D",
-          "text": "Iron and oxygen",
-          "correct": false,
-          "explanation": "Iron and oxygen make an oxide, which is a compound, not the steel mixture.",
-          "misconception": "compound mistaken for alloy"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "70% copper and 30% zinc",
-          "correct": true,
-          "explanation": "These are the exact figures the note quotes for brass.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "70% zinc and 30% copper",
-          "correct": false,
-          "explanation": "The shares are swapped; copper is the larger part of brass.",
-          "misconception": "percentages reversed"
-        },
-        {
-          "key": "C",
           "text": "70% iron and 30% carbon",
           "correct": false,
           "explanation": "That would be a very high-carbon steel, not brass.",
           "misconception": "steel composition reused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "20% chromium and 10% nickel",
           "correct": false,
           "explanation": "Those are the stainless steel additions, not brass.",
           "misconception": "stainless composition reused"
+        },
+        {
+          "key": "C",
+          "text": "70% copper and 30% zinc",
+          "correct": true,
+          "explanation": "These are the exact figures the note quotes for brass.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "70% zinc and 30% copper",
+          "correct": false,
+          "explanation": "The shares are swapped; copper is the larger part of brass.",
+          "misconception": "percentages reversed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Their enhanced properties, such as being stronger, harder and more corrosion-resistant, fit demanding jobs",
-          "correct": true,
-          "explanation": "The mixture's properties can be very different from the ingredients, which is exactly what makes alloys useful.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "They are always cheaper to extract from ores",
           "correct": false,
           "explanation": "Extraction applies to the metal, not the alloy; usefulness comes from the enhanced properties.",
           "misconception": "extraction economics credited"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "They are lighter than every pure metal",
           "correct": false,
           "explanation": "Weight is not the general claim; strength, hardness and resistance are.",
           "misconception": "overgeneralised claim chosen"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "They conduct electricity better than pure metals",
           "correct": false,
           "explanation": "Conductivity is not the listed enhancement; alloying usually harms conduction.",
           "misconception": "wrong property credited"
+        },
+        {
+          "key": "D",
+          "text": "Their enhanced properties, such as being stronger, harder and more corrosion-resistant, fit demanding jobs",
+          "correct": true,
+          "explanation": "The mixture's properties can be very different from the ingredients, which is exactly what makes alloys useful.",
+          "misconception": null
         }
       ]
     },
@@ -197,7 +197,7 @@
       "stem": "Define an alloy in terms of the substances it combines.",
       "misconceptionClass": "alloy definition recall",
       "kind": "recall",
-      "modelAnswer": "An alloy is a mixture of a metal with one or more other elements — usually other metals, or a non-metal such as carbon.",
+      "modelAnswer": "An alloy: a mixture of a metal with one or more other elements — usually other metals, or a non-metal such as carbon.",
       "keywords": [
         "mixture",
         "metal",
@@ -237,11 +237,8 @@
         "stronger",
         "harder",
         "resist",
-        "resistant",
         "corrosion",
         "temperatures",
-        "useful",
-        "strength",
         "withstand",
         "last"
       ],
@@ -256,7 +253,6 @@
       "modelAnswer": "An alloy fits: many alloys resist corrosion, so a steel frame (iron mixed with carbon) withstands wet weather far better than a pure metal would.",
       "keywords": [
         "corrosion",
-        "resistant",
         "resist",
         "rust",
         "rusting",
@@ -275,31 +271,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Alloys contain fewer free electrons, so they are stiffer",
+          "correct": false,
+          "explanation": "Electron count governs conduction, not hardness; the layer-sliding story is the answer.",
+          "misconception": "electron reasoning misapplied"
+        },
+        {
+          "key": "B",
           "text": "Different-sized atoms distort the layers, making them difficult to slide",
           "correct": true,
           "explanation": "The distorted, jammed layers are exactly why the alloy resists deformation and so feels harder.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Alloy atoms are larger, so the metal is more dense",
           "correct": false,
           "explanation": "Density is not the mechanism; the sliding of layers is.",
           "misconception": "density credited for hardness"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Alloying forms strong new chemical bonds between metals",
           "correct": false,
           "explanation": "An alloy is a mixture, so no new compound or bond type is required for the hardness.",
           "misconception": "bonding invented for mixtures"
-        },
-        {
-          "key": "D",
-          "text": "Alloys contain fewer free electrons, so they are stiffer",
-          "correct": false,
-          "explanation": "Electron count governs conduction, not hardness; the layer-sliding story is the answer.",
-          "misconception": "electron reasoning misapplied"
         }
       ]
     },
@@ -311,31 +307,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Unevenly sized particles arranged in distorted rows",
-          "correct": true,
-          "explanation": "Mixed sizes and bent rows are the visual signature of the distorted alloy lattice.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Identical particles in perfectly straight rows",
-          "correct": false,
-          "explanation": "That is the pure metal, whose regular layers slide easily.",
-          "misconception": "pure metal pattern chosen"
-        },
-        {
-          "key": "C",
           "text": "Identical particles in a jumbled gas-like spread",
           "correct": false,
           "explanation": "Alloys are solid lattices with distortion, not random spreads.",
           "misconception": "state of matter confused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Paired particles joined by visible bonds",
           "correct": false,
           "explanation": "Molecules with bonds describe compounds, not the mixture structure of an alloy.",
           "misconception": "compound diagram chosen"
+        },
+        {
+          "key": "C",
+          "text": "Unevenly sized particles arranged in distorted rows",
+          "correct": true,
+          "explanation": "Mixed sizes and bent rows are the visual signature of the distorted alloy lattice.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Identical particles in perfectly straight rows",
+          "correct": false,
+          "explanation": "That is the pure metal, whose regular layers slide easily.",
+          "misconception": "pure metal pattern chosen"
         }
       ]
     },
@@ -347,31 +343,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Their identical atoms form regular layers that slide over each other easily",
-          "correct": true,
-          "explanation": "Smooth, regular planes slip under force, which is why pure metals deform readily.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Their atoms are too small to touch",
           "correct": false,
           "explanation": "Atoms in a metal are closely packed; softness comes from layer sliding.",
           "misconception": "invented spacing claim"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "They contain no electrons",
           "correct": false,
           "explanation": "Metals are full of delocalised electrons; this has nothing to do with softness.",
           "misconception": "electron claim invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Their layers are distorted by impurities",
           "correct": false,
           "explanation": "Distortion is the alloy story; pure metals have the undistorted layers.",
           "misconception": "alloy story applied to pure metals"
+        },
+        {
+          "key": "D",
+          "text": "Their identical atoms form regular layers that slide over each other easily",
+          "correct": true,
+          "explanation": "Smooth, regular planes slip under force, which is why pure metals deform readily.",
+          "misconception": null
         }
       ]
     },
@@ -419,31 +415,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Copper's layers slide more easily when zinc is present",
+          "correct": false,
+          "explanation": "That would make brass softer, which contradicts the observation.",
+          "misconception": "mechanism direction reversed"
+        },
+        {
+          "key": "B",
           "text": "Zinc atoms of a different size distort copper's layers, so they cannot slide easily",
           "correct": true,
           "explanation": "Applying the general mechanism to brass: the zinc atoms jam the copper lattice's slip planes.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Zinc donates extra electrons that stiffen the copper",
           "correct": false,
           "explanation": "Electron donation is not the mechanism; distorted layers are.",
           "misconception": "electron story invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Brass is a compound of copper and zinc with new bonds",
           "correct": false,
           "explanation": "Brass is a mixture; hardness comes from lattice distortion, not new bonding.",
           "misconception": "mixture called a compound"
-        },
-        {
-          "key": "D",
-          "text": "Copper's layers slide more easily when zinc is present",
-          "correct": false,
-          "explanation": "That would make brass softer, which contradicts the observation.",
-          "misconception": "mechanism direction reversed"
         }
       ]
     },
@@ -497,10 +493,8 @@
         "size",
         "distort",
         "distorted",
-        "distortion",
         "layers",
         "slide",
-        "sliding",
         "harder",
         "slip"
       ],
@@ -521,8 +515,7 @@
         "sizes",
         "particles",
         "diagram",
-        "alloy",
-        "irregular"
+        "alloy"
       ],
       "options": []
     }

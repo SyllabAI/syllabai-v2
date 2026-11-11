@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_4SgDJv8rKxpQQSBh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d146334927c6e9a233179ca067bad91d8658eadabcc02320e03d449fd4f801e9",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "739fe22c96ca5b96ed6fbe81898c14c68b507bdb08e2102a13784f78d40cc2bb",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_4SgDJv8rKxpQQSBh",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Metallic bonds",
+          "correct": false,
+          "explanation": "Metallic bonding involves metal atoms, not organic monomers.",
+          "misconception": "bond type invented"
+        },
+        {
+          "key": "B",
           "text": "Covalent bonds",
           "correct": true,
           "explanation": "The note states adjacent units connect via covalent bonds.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Ionic bonds",
           "correct": false,
           "explanation": "Ionic bonding needs ions; polymers are covalently linked molecules.",
           "misconception": "bond type swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Hydrogen bonds",
           "correct": false,
           "explanation": "Attractions between molecules are not the links that build the chain.",
           "misconception": "intermolecular confused with chain links"
-        },
-        {
-          "key": "D",
-          "text": "Metallic bonds",
-          "correct": false,
-          "explanation": "Metallic bonding involves metal atoms, not organic monomers.",
-          "misconception": "bond type invented"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Synthetic polymers are manufactured, and nature also produces its own polymers",
-          "correct": true,
-          "explanation": "Both sources exist: factories make plastics and nylon, while nature makes biological polymers.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "All polymers are manufactured in industry",
-          "correct": false,
-          "explanation": "Nature also produces polymers, called natural or biological.",
-          "misconception": "single-source claim"
-        },
-        {
-          "key": "C",
           "text": "All polymers are found ready-made in nature",
           "correct": false,
           "explanation": "Many, such as plastics and nylon, are manufactured.",
           "misconception": "source inverted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Natural and synthetic polymers have no shared name",
           "correct": false,
           "explanation": "Both are polymers; the labels only record where they come from.",
           "misconception": "family split invented"
+        },
+        {
+          "key": "C",
+          "text": "Synthetic polymers are manufactured, and nature also produces its own polymers",
+          "correct": true,
+          "explanation": "Both sources exist: factories make plastics and nylon, while nature makes biological polymers.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "All polymers are manufactured in industry",
+          "correct": false,
+          "explanation": "Nature also produces polymers, called natural or biological.",
+          "misconception": "single-source claim"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "High pressures and a catalyst",
-          "correct": true,
-          "explanation": "Those are the note's two stated requirements.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Very low temperatures",
           "correct": false,
           "explanation": "Low temperature is not stated; pressure and catalyst are.",
           "misconception": "condition invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Strong acids as the catalyst",
           "correct": false,
           "explanation": "The note names a catalyst without specifying an acid.",
           "misconception": "specificity invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Sunlight and exposure to air",
           "correct": false,
           "explanation": "Neither appears in the note's conditions.",
           "misconception": "photo-chemistry confused"
+        },
+        {
+          "key": "D",
+          "text": "High pressures and a catalyst",
+          "correct": true,
+          "explanation": "Those are the note's two stated requirements.",
+          "misconception": null
         }
       ]
     },
@@ -197,10 +197,11 @@
       "stem": "State the term for a large molecule of high relative molecular mass built from many joined monomers.",
       "misconceptionClass": "polymer definition",
       "kind": "recall",
-      "modelAnswer": "A polymer.",
+      "modelAnswer": "A polymer: many monomers joined into one large molecule.",
       "keywords": [
         "polymer",
-        "polymers"
+        "polymers",
+        "monomers"
       ],
       "options": []
     },
@@ -214,7 +215,7 @@
       "keywords": [
         "addition",
         "polymerisation",
-        "polymerization"
+        "reaction"
       ],
       "options": []
     },
@@ -228,12 +229,10 @@
       "keywords": [
         "repeat",
         "unit",
-        "units",
         "covalent",
         "bond",
         "bonds",
-        "neighbours",
-        "neighbors"
+        "neighbours"
       ],
       "options": []
     },
@@ -247,9 +246,7 @@
       "keywords": [
         "synthetic",
         "manufactured",
-        "man",
-        "made",
-        "manmade"
+        "man"
       ],
       "options": []
     },
@@ -261,31 +258,31 @@
       "options": [
         {
           "key": "A",
+          "text": "An O-H group",
+          "correct": false,
+          "explanation": "A hydroxyl group is another possible rider, not the entry ticket.",
+          "misconception": "attached group confused with requirement"
+        },
+        {
+          "key": "B",
           "text": "A C=C double bond",
           "correct": true,
           "explanation": "Only monomers containing a C=C bond take part in addition polymerisation.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A C-C single bond",
           "correct": false,
           "explanation": "Single bonds cannot open to link; the double bond is the requirement.",
           "misconception": "bond order confused"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A chlorine atom attached",
           "correct": false,
           "explanation": "Chlorine is one possible attached group, not the requirement.",
           "misconception": "example treated as rule"
-        },
-        {
-          "key": "D",
-          "text": "An O-H group",
-          "correct": false,
-          "explanation": "A hydroxyl group is another possible rider, not the entry ticket.",
-          "misconception": "attached group confused with requirement"
         }
       ]
     },
@@ -297,31 +294,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It breaks and forms the bond with the adjacent monomer",
-          "correct": true,
-          "explanation": "One bond of the pair opens outward to link the chain.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It strengthens and shortens",
-          "correct": false,
-          "explanation": "The bond is consumed in linking, not reinforced.",
-          "misconception": "fate inverted"
-        },
-        {
-          "key": "C",
           "text": "It turns the molecule into an ion",
           "correct": false,
           "explanation": "No ions form; the electrons go into a new covalent bond.",
           "misconception": "ionic picture imported"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It disappears completely without doing anything",
           "correct": false,
           "explanation": "The broken bond becomes the link to the neighbour.",
           "misconception": "conservation missed"
+        },
+        {
+          "key": "C",
+          "text": "It breaks and forms the bond with the adjacent monomer",
+          "correct": true,
+          "explanation": "One bond of the pair opens outward to link the chain.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It strengthens and shortens",
+          "correct": false,
+          "explanation": "The bond is consumed in linking, not reinforced.",
+          "misconception": "fate inverted"
         }
       ]
     },
@@ -333,31 +330,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Single bonds only",
-          "correct": true,
-          "explanation": "The opened double bonds all become single bonds in the chain.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Double bonds throughout",
           "correct": false,
           "explanation": "Each monomer's double bond opened to join the chain.",
           "misconception": "structure unchanged assumed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Alternating single and double bonds",
           "correct": false,
           "explanation": "No double bonds remain in an addition polymer's backbone.",
           "misconception": "alternation invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "No bonds between the units",
           "correct": false,
           "explanation": "Covalent bonds join every adjacent unit.",
           "misconception": "chain link denied"
+        },
+        {
+          "key": "D",
+          "text": "Single bonds only",
+          "correct": true,
+          "explanation": "The opened double bonds all become single bonds in the chain.",
+          "misconception": null
         }
       ]
     },
@@ -405,31 +402,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Propane",
+          "correct": false,
+          "explanation": "Propane is a small alkane, not a polymer of propene.",
+          "misconception": "family confused"
+        },
+        {
+          "key": "B",
           "text": "Polypropene",
           "correct": true,
           "explanation": "The note gives exactly this pairing as an example.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Propenide",
           "correct": false,
           "explanation": "The -ide suffix does not make polymer names.",
           "misconception": "naming family swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Polyethene",
           "correct": false,
           "explanation": "Polyethene comes from ethene, a different monomer.",
           "misconception": "monomer misread"
-        },
-        {
-          "key": "D",
-          "text": "Propane",
-          "correct": false,
-          "explanation": "Propane is a small alkane, not a polymer of propene.",
-          "misconception": "family confused"
         }
       ]
     },
@@ -442,7 +439,8 @@
       "modelAnswer": "Polyethene.",
       "keywords": [
         "polyethene",
-        "polythene"
+        "polymerisation",
+        "polymer"
       ],
       "options": []
     },
@@ -471,7 +469,6 @@
       "keywords": [
         "breaks",
         "break",
-        "broken",
         "single",
         "double"
       ],
@@ -486,7 +483,8 @@
       "modelAnswer": "Polychloroethene — the rule puts poly- in front of the monomer's name, chloroethene, in brackets.",
       "keywords": [
         "polychloroethene",
-        "chloroethene"
+        "chloroethene",
+        "systematic"
       ],
       "options": []
     },
@@ -498,31 +496,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It becomes a single bond in the repeat unit",
-          "correct": true,
-          "explanation": "The note's rule: double in the monomer, single in the repeat unit.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It stays a double bond",
-          "correct": false,
-          "explanation": "Keeping the double bond is the classic error; polymerisation consumed it.",
-          "misconception": "no-change assumption"
-        },
-        {
-          "key": "C",
           "text": "It becomes a triple bond",
           "correct": false,
           "explanation": "Nothing in this transformation produces a triple bond.",
           "misconception": "invented change"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It moves to the other end of the molecule",
           "correct": false,
           "explanation": "The bond changes order in place; it does not migrate.",
           "misconception": "migration imagined"
+        },
+        {
+          "key": "C",
+          "text": "It becomes a single bond in the repeat unit",
+          "correct": true,
+          "explanation": "The note's rule: double in the monomer, single in the repeat unit.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It stays a double bond",
+          "correct": false,
+          "explanation": "Keeping the double bond is the classic error; polymerisation consumed it.",
+          "misconception": "no-change assumption"
         }
       ]
     },
@@ -534,31 +532,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A bond extending outside each bracket",
-          "correct": true,
-          "explanation": "The extension or continuation bonds show the chain carrying on.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Nothing beyond the brackets",
           "correct": false,
           "explanation": "Bare brackets lose the mark; the bonds must extend outside.",
           "misconception": "end bonds omitted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "A duplicate of the whole unit",
           "correct": false,
           "explanation": "The subscript n already says the unit repeats.",
           "misconception": "repetition over-drawn"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "A capital N in the top corner",
           "correct": false,
           "explanation": "The marker is a small subscript n at the bottom right.",
           "misconception": "subscript misplaced"
+        },
+        {
+          "key": "D",
+          "text": "A bond extending outside each bracket",
+          "correct": true,
+          "explanation": "The extension or continuation bonds show the chain carrying on.",
+          "misconception": null
         }
       ]
     },
@@ -606,31 +604,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Leave the end bonds attached to the monomer",
+          "correct": false,
+          "explanation": "The end bonds belong to the repeat unit only.",
+          "misconception": "end bonds kept"
+        },
+        {
+          "key": "B",
           "text": "Change the single bond back to a double bond, remove the end bonds and the subscript n",
           "correct": true,
           "explanation": "That is the note's three-part reverse procedure.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Change the single bond to a triple bond",
           "correct": false,
           "explanation": "The monomer's bond is double, not triple.",
           "misconception": "overshoot change"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Add a second subscript n in front of the monomer",
           "correct": false,
           "explanation": "The n is removed from the bracket and may be written before the monomer, not added twice.",
           "misconception": "subscript duplicated"
-        },
-        {
-          "key": "D",
-          "text": "Leave the end bonds attached to the monomer",
-          "correct": false,
-          "explanation": "The end bonds belong to the repeat unit only.",
-          "misconception": "end bonds kept"
         }
       ]
     },
@@ -642,31 +640,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Reopen a double bond between the two carbons the brackets enclose, keeping the attached groups in place",
-          "correct": true,
-          "explanation": "The monomer is the repeat unit with the double bond restored.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Add two extra carbons to the chain",
-          "correct": false,
-          "explanation": "No carbons are added; the unit already holds the monomer's skeleton.",
-          "misconception": "skeleton growth invented"
-        },
-        {
-          "key": "C",
           "text": "Break the chain into separate single atoms",
           "correct": false,
           "explanation": "The monomer stays a whole molecule.",
           "misconception": "fragmentation imagined"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Replace the attached groups with hydrogen",
           "correct": false,
           "explanation": "The attached groups, such as chlorine, stay exactly where they are.",
           "misconception": "groups stripped"
+        },
+        {
+          "key": "C",
+          "text": "Reopen a double bond between the two carbons the brackets enclose, keeping the attached groups in place",
+          "correct": true,
+          "explanation": "The monomer is the repeat unit with the double bond restored.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Add two extra carbons to the chain",
+          "correct": false,
+          "explanation": "No carbons are added; the unit already holds the monomer's skeleton.",
+          "misconception": "skeleton growth invented"
         }
       ]
     },
@@ -680,9 +678,7 @@
       "keywords": [
         "same",
         "order",
-        "keep",
-        "kept",
-        "unchanged"
+        "keep"
       ],
       "options": []
     },
@@ -709,12 +705,8 @@
       "kind": "explain-why",
       "modelAnswer": "Because drawing the repeat unit changed the monomer's double bond to a single bond and added the two end bonds; reversing those steps, and removing the end bonds and the n, gives back the original monomer.",
       "keywords": [
-        "reverse",
         "reversing",
-        "reversed",
         "back",
-        "undo",
-        "undone",
         "original"
       ],
       "options": []

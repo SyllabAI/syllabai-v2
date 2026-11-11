@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_bvyrkKqRBMKCRzHM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a482c43be0cfa7b8cce35c9d03400ae5e8830a9aad89ac80c84a710683893575",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "9484e4876c7beb1e946c4b73e22cd8fe346acee75bf4dab0ff78f0469e795ad1",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_bvyrkKqRBMKCRzHM",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It is magnetic",
+          "correct": false,
+          "explanation": "Magnetism is irrelevant to polymer chemistry.",
+          "misconception": "meaning invented"
+        },
+        {
+          "key": "B",
           "text": "It is chemically unreactive",
           "correct": true,
           "explanation": "Inert means the substance resists chemical attack, which is why it persists.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It is radioactive",
           "correct": false,
           "explanation": "Radioactivity has nothing to do with the disposal problem here.",
           "misconception": "meaning invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It is highly flammable",
           "correct": false,
           "explanation": "Flammability is a separate hazard discussed under incineration.",
           "misconception": "hazard crossed"
-        },
-        {
-          "key": "D",
-          "text": "It is magnetic",
-          "correct": false,
-          "explanation": "Magnetism is irrelevant to polymer chemistry.",
-          "misconception": "meaning invented"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The polymers are non-biodegradable because their strong bonds resist attack",
-          "correct": true,
-          "explanation": "Inertness blocks the microbial chemistry that biodegradation depends on.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Decomposers simply refuse to eat plastic",
-          "correct": false,
-          "explanation": "Preference is not the mechanism; the bonds resist the chemistry.",
-          "misconception": "choice blamed"
-        },
-        {
-          "key": "C",
           "text": "Landfill sites are too cold for any life",
           "correct": false,
           "explanation": "Life thrives in landfill; the polymer itself is the obstacle.",
           "misconception": "environment blamed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The polymer molecules are too small to see",
           "correct": false,
           "explanation": "Visibility is irrelevant; molecules are always invisible.",
           "misconception": "scale confused"
+        },
+        {
+          "key": "C",
+          "text": "The polymers are non-biodegradable because their strong bonds resist attack",
+          "correct": true,
+          "explanation": "Inertness blocks the microbial chemistry that biodegradation depends on.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Decomposers simply refuse to eat plastic",
+          "correct": false,
+          "explanation": "Preference is not the mechanism; the bonds resist the chemistry.",
+          "misconception": "choice blamed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Sites fill up quickly because the buried polymer never breaks down",
-          "correct": true,
-          "explanation": "Permanent burial consumes space that natural decay would eventually free.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Polymers dissolve into the soil over time",
           "correct": false,
           "explanation": "Inert polymers neither dissolve nor decay in the soil.",
           "misconception": "fate invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Polymers evaporate from the site within years",
           "correct": false,
           "explanation": "Solid polymers do not evaporate at landfill temperatures.",
           "misconception": "fate invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Landfill naturally turns polymers into compost",
           "correct": false,
           "explanation": "Composting requires biodegradable material, which these polymers are not.",
           "misconception": "process invented"
+        },
+        {
+          "key": "D",
+          "text": "Sites fill up quickly because the buried polymer never breaks down",
+          "correct": true,
+          "explanation": "Permanent burial consumes space that natural decay would eventually free.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "The polymer is described as inert.",
       "keywords": [
-        "inert"
+        "inert",
+        "unreactiveness",
+        "described"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "The backbone bonds join carbon atoms to carbon atoms — strong carbon-carbon bonds.",
       "keywords": [
-        "carbon"
+        "carbon",
+        "polymer's",
+        "backbone"
       ],
       "options": []
     },
@@ -223,7 +227,9 @@
       "kind": "explain-why",
       "modelAnswer": "Decomposers cannot break the polymer down because its strong carbon-carbon bonds make it inert, so it cannot biodegrade.",
       "keywords": [
-        "decomposers"
+        "decomposers",
+        "biodegrade",
+        "addition"
       ],
       "options": []
     },
@@ -235,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "Landfill disposal takes up valuable land and the sites fill up quickly, so a bigger site only delays the same problem.",
       "keywords": [
-        "valuable"
+        "valuable",
+        "consequence",
+        "considers"
       ],
       "options": []
     },
@@ -247,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Methane",
+          "correct": false,
+          "explanation": "Methane is not listed among the combustion products here.",
+          "misconception": "gas invented"
+        },
+        {
+          "key": "B",
           "text": "Carbon dioxide",
           "correct": true,
           "explanation": "The combustion of the carbon backbone releases it, contributing to climate change.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Hydrogen chloride",
           "correct": false,
           "explanation": "That gas is toxic rather than a greenhouse gas, and needs chlorine in the polymer.",
           "misconception": "hazard swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Carbon monoxide",
           "correct": false,
           "explanation": "Monoxide comes from incomplete burning and is toxic, not a greenhouse driver.",
           "misconception": "hazard swapped"
-        },
-        {
-          "key": "D",
-          "text": "Methane",
-          "correct": false,
-          "explanation": "Methane is not listed among the combustion products here.",
-          "misconception": "gas invented"
         }
       ]
     },
@@ -283,30 +291,30 @@
       "options": [
         {
           "key": "A",
-          "text": "PVC, which contains chlorine",
-          "correct": true,
-          "explanation": "Chlorine in the chain leaves as hydrogen chloride gas on burning.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Polyethene, which contains only carbon and hydrogen",
-          "correct": false,
-          "explanation": "Without chlorine there is nothing to make hydrogen chloride.",
-          "misconception": "composition ignored"
-        },
-        {
-          "key": "C",
           "text": "Poly(ethanol)",
           "correct": false,
           "explanation": "Its hydroxyl groups do not supply chlorine either.",
           "misconception": "composition ignored"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Terylene, a polyester",
           "correct": false,
           "explanation": "Polyesters carry oxygen but no chlorine, so no hydrogen chloride forms.",
+          "misconception": "composition ignored"
+        },
+        {
+          "key": "C",
+          "text": "PVC, which contains chlorine",
+          "correct": true,
+          "explanation": "Chlorine in the chain leaves as hydrogen chloride gas on burning.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Polyethene, which contains only carbon and hydrogen",
+          "correct": false,
+          "explanation": "Without chlorine there is nothing to make hydrogen chloride.",
           "misconception": "composition ignored"
         }
       ]
@@ -319,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Carbon monoxide",
-          "correct": true,
-          "explanation": "Limited oxygen supply leaves carbon only partly oxidised, producing the toxic gas.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Carbon dioxide",
           "correct": false,
           "explanation": "The dioxide is the complete-combustion product; incompleteness gives the monoxide.",
           "misconception": "combustion flipped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Hydrogen chloride",
           "correct": false,
           "explanation": "That gas tracks chlorine content, not oxygen supply.",
           "misconception": "hazard swapped"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Steam",
           "correct": false,
           "explanation": "Steam forms whenever hydrogen burns and is not the toxic concern.",
           "misconception": "harmless gas blamed"
+        },
+        {
+          "key": "D",
+          "text": "Carbon monoxide",
+          "correct": true,
+          "explanation": "Limited oxygen supply leaves carbon only partly oxidised, producing the toxic gas.",
+          "misconception": null
         }
       ]
     },
@@ -355,7 +363,7 @@
       "options": [
         {
           "key": "A",
-          "text": "It reduces the capacity of the blood to carry oxygen",
+          "text": "It stops the blood carrying as much oxygen as it should",
           "correct": true,
           "explanation": "The gas binds where oxygen should travel, quietly starving the body of it.",
           "misconception": null
@@ -391,31 +399,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Polymers release a lot of heat energy when they burn",
+          "text": "Incineration needs no fuel to run",
+          "correct": false,
+          "explanation": "The polymer itself burns, but the claim of needing no fuel misses the point.",
+          "misconception": "logic muddled"
+        },
+        {
+          "key": "B",
+          "text": "Burning polymers gives out a great deal of heat energy",
           "correct": true,
           "explanation": "That heat can be recovered, which is why burning remains in the disposal mix.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Burning makes the polymers biodegradable",
           "correct": false,
           "explanation": "Burning destroys the polymer; it never improves biodegradability.",
           "misconception": "benefit invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Incineration produces no gases at all",
           "correct": false,
           "explanation": "The method is precisely the source of several hazardous gases.",
           "misconception": "hazard denied"
-        },
-        {
-          "key": "D",
-          "text": "Incineration needs no fuel to run",
-          "correct": false,
-          "explanation": "The polymer itself burns, but the claim of needing no fuel misses the point.",
-          "misconception": "logic muddled"
         }
       ]
     },
@@ -427,7 +435,9 @@
       "kind": "recall",
       "modelAnswer": "Burning polymers releases carbon dioxide, a greenhouse gas.",
       "keywords": [
-        "dioxide"
+        "dioxide",
+        "greenhouse",
+        "polymers"
       ],
       "options": []
     },
@@ -439,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "Hydrogen chloride is released when polymers containing chlorine, such as PVC, are burned.",
       "keywords": [
-        "chloride"
+        "chloride",
+        "incinerated",
+        "containing"
       ],
       "options": []
     },
@@ -451,7 +463,9 @@
       "kind": "explain-why",
       "modelAnswer": "Carbon monoxide is toxic because it reduces the blood's capacity to carry oxygen around the body.",
       "keywords": [
-        "oxygen"
+        "oxygen",
+        "incinerator",
+        "dangerous"
       ],
       "options": []
     },
@@ -463,7 +477,9 @@
       "kind": "application",
       "modelAnswer": "Burning polymers releases a lot of heat energy, which warms the greenhouses; incomplete combustion also produces toxic carbon monoxide.",
       "keywords": [
-        "monoxide"
+        "monoxide",
+        "greenhouses",
+        "incomplete"
       ],
       "options": []
     }

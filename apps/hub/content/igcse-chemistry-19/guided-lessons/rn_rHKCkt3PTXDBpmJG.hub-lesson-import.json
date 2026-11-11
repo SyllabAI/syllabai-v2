@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_rHKCkt3PTXDBpmJG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d6edabd82dac57c8d76b3c7003a9aeb7ebcbddb7b6a2cef2e6b03f6624d5e01b",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "e135f57b8a2f61dedcd230d9d60479aa664563cc81aad5fb50909a3cf17bb1bd",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_rHKCkt3PTXDBpmJG",
@@ -85,6 +85,7 @@
           "rn_rHKCkt3PTXDBpmJG::L1::Q9"
         ],
         "figureIds": [
+          "fig-01",
           "fig-02"
         ]
       },
@@ -112,7 +113,7 @@
             "examPointer": "Anchor the memory aid: cations pair with cathodes, anions with anodes, and both pairings are opposite-charge attractions."
           },
           "medium": {
-            "restatement": "The vocabulary of record: anion names the negative ion and cation the positive ion. Under electrolysis the electrodes impose opposite potentials, so each ion migrates towards the electrode of opposite charge, cations to the cathode and anions to the anode, while electrons carry the return current from anode to cathode outside the electrolyte.",
+            "restatement": "The vocabulary of record: anion names the negative ion and cation the positive ion. Under electrolysis the electrodes impose opposite potentials, so each ion migrates towards the electrode of opposite charge — cations head to the cathode, anions to the anode — while electrons carry the return current from anode to cathode outside the electrolyte.",
             "analogy": "Picture a sorting machine with two chutes of opposite polarity: every item is pulled to the chute that cancels its charge, and the conveyor belt carries the overflow around the back.",
             "examPointer": "In a metal the moving charge is electrons; in a salt solution it is the ions moving to the electrodes while carrying the electrons; name the right carrier for each setting."
           }
@@ -137,6 +138,9 @@
           "rn_rHKCkt3PTXDBpmJG::L2::Q7",
           "rn_rHKCkt3PTXDBpmJG::L2::Q8",
           "rn_rHKCkt3PTXDBpmJG::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
         ]
       }
     ],
@@ -183,30 +187,34 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a96fee7014b1-electrical-wire-insulated.png",
         "alt": "Diagram of an insulated electrical wire",
-        "sourceHeading": "Covalent compounds are used as insulating materials",
-        "caption": "Covalent compounds are unable to conduct due to having no freely moving charged particles",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Conductivity of covalent compounds",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Covalent compounds are unable to conduct due to having no freely moving charged particles"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7418c58b0248-molten-ionic-substances-conduct-electricity-1.png",
         "alt": "Molten ionic substances conduct electricity, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Conductivity of ionic compounds",
-        "caption": "They cannot conduct electricity in the solid state as the ions are in fixed positions within the lattice and are unable to move",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "They cannot conduct electricity in the solid state as the ions are in fixed positions within the lattice and are unable to move"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4920e1930d50-transfer-of-charge.png",
         "alt": "Electrolysis apparatus set up",
-        "sourceHeading": "Diagram showing the direction of movement of electrons and ions in the electrolysis of NaCl",
-        "caption": "Cations are attracted to the cathode and anions to the anode due to their opposite charges",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Cations and anions",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Cations are attracted to the cathode and anions to the anode due to their opposite charges"
       }
     ]
   }

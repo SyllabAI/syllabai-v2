@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_TWGVV6RXN3Ktqb9h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d6aead1e4b1a844b27f0cad72d0ee181c76b5d30a1be75a7f8710bad523c9ac5",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "ed1bbed6935e08a1f46ac1b0d05dac930cec72b32041303e4c8294e238123db7",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_TWGVV6RXN3Ktqb9h",
@@ -74,7 +74,8 @@
           "rn_TWGVV6RXN3Ktqb9h::L1::Q7",
           "rn_TWGVV6RXN3Ktqb9h::L1::Q8",
           "rn_TWGVV6RXN3Ktqb9h::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_TWGVV6RXN3Ktqb9h::L2",
@@ -150,16 +151,6 @@
           "firstLesson": 1
         },
         {
-          "term": "mixture",
-          "definition": "Two or more substances sharing a space without chemical bonds between them.",
-          "firstLesson": 2
-        },
-        {
-          "term": "filtration",
-          "definition": "A physical method that separates an insoluble solid from a liquid by passing the mixture through paper.",
-          "firstLesson": 2
-        },
-        {
           "term": "evaporation",
           "definition": "A physical method that separates a dissolved solid from its liquid by turning the liquid to gas.",
           "firstLesson": 2
@@ -187,11 +178,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/80d3f7b47f5f-elements-compounds-mixtures.png",
         "alt": "A diagram to show the difference between elements, compounds and mixtures",
         "sourceHeading": "Particle diagram showing elements, compounds and mixtures",
-        "caption": "All substances can be classified as an element, compound or mixture",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "All substances can be classified as an element, compound or mixture"
       }
     ]
   }

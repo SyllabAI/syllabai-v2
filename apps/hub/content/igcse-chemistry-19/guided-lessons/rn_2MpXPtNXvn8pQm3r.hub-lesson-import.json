@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_2MpXPtNXvn8pQm3r",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ec89145944589dd5b8828b153922bd02aba048f1ef6b61ea596cc2d2b6af80e4",
-    "pinnedRef": "80afdb8e02b628754f0e522d257e54d046ba5b0f"
+    "sourceLayerSha256": "5eed9d24c0f49cf3b711a2c54066abc1103f60ecab3f6fef476603aae14900ed",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_2MpXPtNXvn8pQm3r",
@@ -32,7 +32,7 @@
         "id": "rn_2MpXPtNXvn8pQm3r::L1",
         "title": "The hydroxyl group that defines the family",
         "sourceHeadings": [
-          "Alcohols",
+          "The Alcohols",
           "A molecule of ethanol"
         ],
         "specRefs": [
@@ -80,15 +80,18 @@
           "rn_2MpXPtNXvn8pQm3r::L1::Q9"
         ],
         "figureIds": [
-          "fig-01"
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
         ]
       },
       {
         "id": "rn_2MpXPtNXvn8pQm3r::L2",
         "title": "The first four alcohols",
         "sourceHeadings": [
-          "Alcohols",
-          "A molecule of ethanol"
+          "Alcohols"
         ],
         "specRefs": [
           "4CH1-4.30C"
@@ -134,12 +137,7 @@
           "rn_2MpXPtNXvn8pQm3r::L2::Q8",
           "rn_2MpXPtNXvn8pQm3r::L2::Q9"
         ],
-        "figureIds": [
-          "fig-02",
-          "fig-03",
-          "fig-04",
-          "fig-05"
-        ]
+        "figureIds": []
       }
     ],
     "assets": {
@@ -186,55 +184,55 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/56b09b8503b8-alcohol-functional-group-1.png",
         "alt": "Diagram to show the OH functional group of an alcohol",
         "sourceHeading": "A molecule of ethanol",
-        "caption": "Diagram of the side chain and -OH group in ethanol which characterises its chemistry",
-        "binding": "content-overlap",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram of the side chain and -OH group in ethanol which characterises its chemistry"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/71118e3fbf2b-methanol.png",
         "alt": "methanol-",
         "sourceHeading": "A molecule of ethanol",
-        "caption": "Displayed formula — Methanol",
-        "binding": "content-overlap",
         "moduleIds": [
-          "L2"
-        ]
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Displayed formula — Methanol"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3f6c4a4a57f2-screenshot-2024-02-18-191221.png",
         "alt": "screenshot-2024-02-18-191221",
         "sourceHeading": "A molecule of ethanol",
-        "caption": "Displayed formula — Ethanol",
-        "binding": "content-overlap",
         "moduleIds": [
-          "L2"
-        ]
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Displayed formula — Ethanol"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/16c62b2a8b09-propanol-displayed.png",
         "alt": "propanol-displayed",
         "sourceHeading": "A molecule of ethanol",
-        "caption": "Displayed formula — Propan-1-ol",
-        "binding": "content-overlap",
         "moduleIds": [
-          "L2"
-        ]
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Displayed formula — Propan-1-ol"
       },
       {
         "id": "fig-05",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/2959bb774061-butanol.png",
         "alt": "butanol",
         "sourceHeading": "A molecule of ethanol",
-        "caption": "Displayed formula — Butan-1-ol",
-        "binding": "content-overlap",
         "moduleIds": [
-          "L2"
-        ]
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Displayed formula — Butan-1-ol"
       }
     ]
   }

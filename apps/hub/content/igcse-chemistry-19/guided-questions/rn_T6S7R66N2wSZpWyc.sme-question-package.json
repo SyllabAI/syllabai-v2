@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_T6S7R66N2wSZpWyc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "21b7d69a9f92bbe3bfc92ce4285ca3caf15f58bdde136f4072e1bed94c68250f",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "df5177acd37dc7a5cf65677b28242c6dd9605004fdcba3878925f8a85ff70f08",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_T6S7R66N2wSZpWyc",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The paper must stay dry to work",
+          "correct": false,
+          "explanation": "Litmus paper needs to be damp for the gas to dissolve into it.",
+          "misconception": "dampness role inverted"
+        },
+        {
+          "key": "B",
           "text": "Traces of sodium hydroxide on the glass would also turn the paper blue",
           "correct": true,
           "explanation": "The alkali solution itself would give a blue result, so contact would fake a positive.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The glass would cut the paper",
           "correct": false,
           "explanation": "The concern is chemical, not mechanical.",
           "misconception": "mechanical distraction"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Sodium hydroxide would bleach the paper white",
           "correct": false,
           "explanation": "Bleaching is chlorine's behaviour; sodium hydroxide turns litmus blue.",
           "misconception": "chlorine behaviour transplanted"
-        },
-        {
-          "key": "D",
-          "text": "The paper must stay dry to work",
-          "correct": false,
-          "explanation": "Litmus paper needs to be damp for the gas to dissolve into it.",
-          "misconception": "dampness role inverted"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Turns it red, then bleaches it white",
-          "correct": true,
-          "explanation": "Red first as acids form, then white as the bleach takes hold.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Turns it blue, then bleaches it red",
-          "correct": false,
-          "explanation": "The paper already starts blue, and the sequence is reversed nonsense.",
-          "misconception": "sequence scrambled"
-        },
-        {
-          "key": "C",
           "text": "Bleaches it white with no colour change first",
           "correct": false,
           "explanation": "The red stage is part of the mark; skipping it loses the sequence.",
           "misconception": "red stage dropped"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Turns it green, then blue",
           "correct": false,
           "explanation": "Neither colour belongs to the chlorine test.",
           "misconception": "invented colours"
+        },
+        {
+          "key": "C",
+          "text": "Turns it red, then bleaches it white",
+          "correct": true,
+          "explanation": "Red first as acids form, then white as the bleach takes hold.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Turns it blue, then bleaches it red",
+          "correct": false,
+          "explanation": "The paper already starts blue, and the sequence is reversed nonsense.",
+          "misconception": "sequence scrambled"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Acids form when chlorine reacts with the water on the paper",
-          "correct": true,
-          "explanation": "The damp paper supplies water, and the acids made turn blue litmus red before bleaching follows.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The chlorine itself is an alkali",
           "correct": false,
           "explanation": "An alkali would turn red litmus blue, which is ammonia's behaviour.",
           "misconception": "chemistry inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The paper dries out during the test",
           "correct": false,
           "explanation": "Drying is not the mechanism; reaction with water is.",
           "misconception": "physical explanation wrong"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Ammonia is also present",
           "correct": false,
           "explanation": "No second gas is needed to explain the red stage.",
           "misconception": "gas confusion"
+        },
+        {
+          "key": "D",
+          "text": "Acids form when chlorine reacts with the water on the paper",
+          "correct": true,
+          "explanation": "The damp paper supplies water, and the acids made turn blue litmus red before bleaching follows.",
+          "misconception": null
         }
       ]
     },
@@ -215,7 +215,6 @@
       "keywords": [
         "white",
         "bleaches",
-        "bleaching",
         "bleach",
         "then"
       ],
@@ -247,7 +246,8 @@
       "modelAnswer": "Gas X is ammonia and gas Y is chlorine.",
       "keywords": [
         "ammonia",
-        "chlorine"
+        "chlorine",
+        "identify"
       ],
       "options": []
     },
@@ -259,31 +259,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Copper(II) sulfate solution",
+          "correct": false,
+          "explanation": "That is the water-test reagent, unrelated to limewater.",
+          "misconception": "water-test reagent intrudes"
+        },
+        {
+          "key": "B",
           "text": "Calcium hydroxide solution",
           "correct": true,
           "explanation": "Limewater is the common name for dissolved calcium hydroxide.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Sodium hydroxide solution",
           "correct": false,
           "explanation": "Sodium hydroxide is an alkali reagent but not limewater.",
           "misconception": "alkali swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Calcium carbonate suspension",
           "correct": false,
           "explanation": "Calcium carbonate is the white solid made during the test, not the starting liquid.",
           "misconception": "product confused with reagent"
-        },
-        {
-          "key": "D",
-          "text": "Copper(II) sulfate solution",
-          "correct": false,
-          "explanation": "That is the water-test reagent, unrelated to limewater.",
-          "misconception": "water-test reagent intrudes"
         }
       ]
     },
@@ -295,31 +295,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The limewater turns cloudy white",
-          "correct": true,
-          "explanation": "Insoluble calcium carbonate forming in the liquid makes it cloudy.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The limewater turns clear again",
-          "correct": false,
-          "explanation": "The starting liquid is already clear; the change is towards cloudiness.",
-          "misconception": "change direction reversed"
-        },
-        {
-          "key": "C",
           "text": "The limewater turns blue",
           "correct": false,
           "explanation": "Blue belongs to litmus and copper compounds, not to limewater.",
           "misconception": "litmus colour misplaced"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The limewater fizzes",
           "correct": false,
           "explanation": "The gas is being bubbled in already; the observation is the cloudiness.",
           "misconception": "observation misassigned"
+        },
+        {
+          "key": "C",
+          "text": "The limewater turns cloudy white",
+          "correct": true,
+          "explanation": "Insoluble calcium carbonate forming in the liquid makes it cloudy.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The limewater turns clear again",
+          "correct": false,
+          "explanation": "The starting liquid is already clear; the change is towards cloudiness.",
+          "misconception": "change direction reversed"
         }
       ]
     },
@@ -331,31 +331,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Other gases such as nitrogen also extinguish a splint",
-          "correct": true,
-          "explanation": "Extinguishing a flame is shared behaviour, so it cannot name the gas.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Splints never go out in any gas",
           "correct": false,
           "explanation": "Splints do go out in unreactive gases; that is exactly the problem.",
           "misconception": "false premise"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Only hydrogen extinguishes splints",
           "correct": false,
           "explanation": "Hydrogen is the gas that pops, not the one that merely goes out.",
           "misconception": "gas swap"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Carbon dioxide relights splints",
           "correct": false,
           "explanation": "Relighting belongs to oxygen; carbon dioxide extinguishes.",
           "misconception": "test inverted"
+        },
+        {
+          "key": "D",
+          "text": "Other gases such as nitrogen also extinguish a splint",
+          "correct": true,
+          "explanation": "Extinguishing a flame is shared behaviour, so it cannot name the gas.",
+          "misconception": null
         }
       ]
     },
@@ -403,31 +403,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The limewater must have been pure water",
+          "correct": false,
+          "explanation": "Blaming the reagent is not justified when the method was followed.",
+          "misconception": "excuse invented"
+        },
+        {
+          "key": "B",
           "text": "X is not carbon dioxide",
           "correct": true,
           "explanation": "A clear result rules out carbon dioxide, though it names nothing instead.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "X is definitely nitrogen",
           "correct": false,
           "explanation": "A negative carbon dioxide test does not confirm any other specific gas.",
           "misconception": "single-cause overreach"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "X is definitely hydrogen",
           "correct": false,
           "explanation": "Hydrogen has its own splint test; nothing here proves it.",
           "misconception": "unjustified identity"
-        },
-        {
-          "key": "D",
-          "text": "The limewater must have been pure water",
-          "correct": false,
-          "explanation": "Blaming the reagent is not justified when the method was followed.",
-          "misconception": "excuse invented"
         }
       ]
     },
@@ -456,8 +456,7 @@
       "keywords": [
         "cloudy",
         "white",
-        "milky",
-        "cloudiness"
+        "bubbling"
       ],
       "options": []
     },
@@ -471,7 +470,6 @@
       "keywords": [
         "nitrogen",
         "extinguish",
-        "extinguishes",
         "shared",
         "property",
         "flame"
@@ -487,7 +485,6 @@
       "modelAnswer": "The cloudy sample shows carbon dioxide is present; the clear one shows that gas is not carbon dioxide (a negative result).",
       "keywords": [
         "present",
-        "absent",
         "dioxide",
         "negative"
       ],
@@ -501,31 +498,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A burning splint at the tube mouth",
-          "correct": true,
-          "explanation": "The flame meets the gas at the opening and gives the pop.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "A glowing splint inside the tube",
-          "correct": false,
-          "explanation": "That arrangement is the oxygen test.",
-          "misconception": "oxygen test swapped in"
-        },
-        {
-          "key": "C",
           "text": "A wet splint anywhere",
           "correct": false,
           "explanation": "A wet splint would not light anything.",
           "misconception": "invented condition"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "An extinguished splint at the mouth",
           "correct": false,
           "explanation": "An extinguished splint cannot ignite the hydrogen.",
           "misconception": "splint state confused"
+        },
+        {
+          "key": "C",
+          "text": "A burning splint at the tube mouth",
+          "correct": true,
+          "explanation": "The flame meets the gas at the opening and gives the pop.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A glowing splint inside the tube",
+          "correct": false,
+          "explanation": "That arrangement is the oxygen test.",
+          "misconception": "oxygen test swapped in"
         }
       ]
     },
@@ -537,31 +534,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A squeaky pop",
-          "correct": true,
-          "explanation": "The rapid burn of hydrogen with air makes the characteristic squeaky pop.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "A dull thud",
           "correct": false,
           "explanation": "No thud is part of any gas test on the syllabus.",
           "misconception": "sound invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Complete silence",
           "correct": false,
           "explanation": "Silence would suggest the gas is not hydrogen.",
           "misconception": "no-reaction claim"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "A hissing whistle",
           "correct": false,
           "explanation": "Hissing is not the recorded positive result.",
           "misconception": "sound invented"
+        },
+        {
+          "key": "D",
+          "text": "A squeaky pop",
+          "correct": true,
+          "explanation": "The rapid burn of hydrogen with air makes the characteristic squeaky pop.",
+          "misconception": null
         }
       ]
     },
@@ -609,31 +606,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Melts the tube",
+          "correct": false,
+          "explanation": "No such effect occurs in the test.",
+          "misconception": "absurd effect"
+        },
+        {
+          "key": "B",
           "text": "Relights",
           "correct": true,
           "explanation": "Pure oxygen rekindles the ember into a flame.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Goes out immediately",
           "correct": false,
           "explanation": "That is what happens in gases like nitrogen, not oxygen.",
           "misconception": "opposite result"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Turns the flame green",
           "correct": false,
           "explanation": "Flame colours belong to flame tests, not to this gas test.",
           "misconception": "flame-test colour intrudes"
-        },
-        {
-          "key": "D",
-          "text": "Melts the tube",
-          "correct": false,
-          "explanation": "No such effect occurs in the test.",
-          "misconception": "absurd effect"
         }
       ]
     },
@@ -645,31 +642,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A ligHted splint has an H for hydrogen, a glOwing splint an O for oxygen",
-          "correct": true,
-          "explanation": "The embedded letters map each splint to its gas.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Burning means oxygen, glowing means hydrogen",
-          "correct": false,
-          "explanation": "The mapping is exactly reversed from the tests.",
-          "misconception": "hook reversed"
-        },
-        {
-          "key": "C",
           "text": "Both splints test for the same gas",
           "correct": false,
           "explanation": "The whole point of the pair is that the gases differ.",
           "misconception": "distinction denied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The sound, not the splint, decides oxygen",
           "correct": false,
           "explanation": "The sound belongs to hydrogen; oxygen is decided by the relight.",
           "misconception": "sound attributed wrongly"
+        },
+        {
+          "key": "C",
+          "text": "A ligHted splint has an H for hydrogen, a glOwing splint an O for oxygen",
+          "correct": true,
+          "explanation": "The embedded letters map each splint to its gas.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Burning means oxygen, glowing means hydrogen",
+          "correct": false,
+          "explanation": "The mapping is exactly reversed from the tests.",
+          "misconception": "hook reversed"
         }
       ]
     },
@@ -683,7 +680,6 @@
       "keywords": [
         "squeaky",
         "pop",
-        "bang",
         "mouth"
       ],
       "options": []
@@ -698,9 +694,7 @@
       "keywords": [
         "relight",
         "relights",
-        "relighting",
-        "bursts",
-        "flame"
+        "relighting"
       ],
       "options": []
     },
@@ -714,7 +708,6 @@
       "keywords": [
         "air",
         "oxygen",
-        "outside",
         "combustion",
         "support"
       ],
@@ -731,8 +724,7 @@
         "pop",
         "squeaky",
         "water",
-        "burning",
-        "burns"
+        "burning"
       ],
       "options": []
     }

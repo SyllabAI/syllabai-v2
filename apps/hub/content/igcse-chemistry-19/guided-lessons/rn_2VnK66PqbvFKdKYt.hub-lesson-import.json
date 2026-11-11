@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_2VnK66PqbvFKdKYt",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b35232ce00c5f7be3507196201bacbec9e82a6d7f1ddcbd9c8039b1681a8fed9",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "16aeb58ae5b3e8df07e0a5614bfef0b3b5b19f384c84d55c4819aa28658b339a",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_2VnK66PqbvFKdKYt",
@@ -16,11 +16,11 @@
     "specAnchors": [
       {
         "code": "4CH1-1.1",
-        "text": "understand the three states of matter in terms of the arrangement, movement & energy of the particles"
+        "text": "understand the three states of matter in terms of the arrangement, movement and energy of the particles"
       },
       {
         "code": "4CH1-1.2",
-        "text": "understand the interconversions between the three states of matter in terms of: the names of the interconversions, how they are achieved, the changes in arrangement, movement & energy of the particles"
+        "text": "understand the interconversions between the three states of matter in terms of: • the names of the interconversions • how they are achieved • the changes in arrangement, movement and energy of the particles."
       }
     ],
     "primer": {
@@ -160,23 +160,8 @@
           "firstLesson": 1
         },
         {
-          "term": "vibration",
-          "definition": "Rapid back-and-forth movement of a particle about a fixed position, as in solids.",
-          "firstLesson": 1
-        },
-        {
           "term": "evaporation",
           "definition": "The change from liquid to gas at the surface, across a range of temperatures below the boiling point.",
-          "firstLesson": 2
-        },
-        {
-          "term": "condensation",
-          "definition": "The change from gas to liquid on cooling, when particles lack the energy to bounce apart again.",
-          "firstLesson": 2
-        },
-        {
-          "term": "sublimation",
-          "definition": "The direct change from solid to gas, shown by only a few solids such as iodine.",
           "firstLesson": 2
         },
         {
@@ -201,45 +186,45 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/263ab5cb97bf-solid.png",
         "alt": "Diagram showing the regular arrangement of a solid in rows and columns",
-        "sourceHeading": "Summary of the properties of the three states of matter",
-        "caption": "Solid — Diagram",
-        "binding": "unresolved",
+        "sourceHeading": "States of matter",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Solid — Diagram"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3f6e693e61a8-liquid.png",
         "alt": "Diagram showing how the particles in a liquid are arranged randomly and close together but not all touching",
-        "sourceHeading": "Summary of the properties of the three states of matter",
-        "caption": "Liquid — Diagram",
-        "binding": "unresolved",
+        "sourceHeading": "States of matter",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Liquid — Diagram"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f82561bc2aff-gas.png",
         "alt": "Diagram showing how the particles in a  gas are far apart and moving quickly and randomly",
-        "sourceHeading": "Summary of the properties of the three states of matter",
-        "caption": "Gas — Diagram",
-        "binding": "unresolved",
+        "sourceHeading": "States of matter",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Gas — Diagram"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/74c3504eeb9c-changing-state-igcse-and-gcse-chemistry-revision.png",
         "alt": "Diagram showing the changes of state",
         "sourceHeading": "Changing states of matter",
-        "caption": "State changes require a change in the energy of the particles",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "State changes require a change in the energy of the particles"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_NdJGQM8BqHmTy7Vg",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b9ae24861c44e9534d696102a605b063198e41e2fe8799b7b8259556bc32966c",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "df809136e8b147fa64da6fa3fe7cf69259a62d4450065c097ef9d09fccdd1bfb",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_NdJGQM8BqHmTy7Vg",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The state of the compound at room temperature",
+          "correct": false,
+          "explanation": "State is a physical property; the suffix records the functional group instead.",
+          "misconception": "state encoded"
+        },
+        {
+          "key": "B",
           "text": "Which functional group the compound carries",
           "correct": true,
           "explanation": "The end part of the name names the reactive group, such as ene for a C=C bond.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "How many carbon atoms are in the chain",
           "correct": false,
           "explanation": "Carbon counting belongs to the stem at the front of the name.",
           "misconception": "roles swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The boiling point of the compound",
           "correct": false,
           "explanation": "Physical data never appears in the name; the suffix is structural information.",
           "misconception": "data in name"
-        },
-        {
-          "key": "D",
-          "text": "The state of the compound at room temperature",
-          "correct": false,
-          "explanation": "State is a physical property; the suffix records the functional group instead.",
-          "misconception": "state encoded"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Ethene",
-          "correct": true,
-          "explanation": "Eth gives two carbons and ene gives the double bond, so the assembly is ethene.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Methene",
-          "correct": false,
-          "explanation": "One carbon cannot carry a C=C bond, and meth is the wrong stem for two carbons.",
-          "misconception": "stem miscounted"
-        },
-        {
-          "key": "C",
           "text": "Ethane",
           "correct": false,
           "explanation": "The suffix ane means no special group; the double bond demands ene.",
           "misconception": "suffix mismatched"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Ethanediol",
           "correct": false,
           "explanation": "That name points to an alcohol-family compound, not a 2-carbon alkene.",
           "misconception": "family swapped"
+        },
+        {
+          "key": "C",
+          "text": "Ethene",
+          "correct": true,
+          "explanation": "Eth gives two carbons and ene gives the double bond, so the assembly is ethene.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Methene",
+          "correct": false,
+          "explanation": "One carbon cannot carry a C=C bond, and meth is the wrong stem for two carbons.",
+          "misconception": "stem miscounted"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "4 carbon atoms, the alcohol family",
-          "correct": true,
-          "explanation": "The stem but counts four carbons and the suffix anol places it in the alcohol family.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "4 carbon atoms, the alkene family",
           "correct": false,
           "explanation": "Alkenes carry the suffix ene; anol signals the alcohol group instead.",
           "misconception": "suffix misread"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "3 carbon atoms, the alcohol family",
           "correct": false,
           "explanation": "Three carbons would be propanol; but always means four.",
           "misconception": "stem miscounted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "5 carbon atoms, the alkane family",
           "correct": false,
           "explanation": "Five carbons is pent, and alkanes end in ane, neither of which matches butanol.",
           "misconception": "both parts wrong"
+        },
+        {
+          "key": "D",
+          "text": "4 carbon atoms, the alcohol family",
+          "correct": true,
+          "explanation": "The stem but counts four carbons and the suffix anol places it in the alcohol family.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "Hex counts six carbon atoms.",
       "keywords": [
         "six",
-        "6"
+        "6",
+        "signalled"
       ],
       "options": []
     },
@@ -212,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "The suffix -anol marks the alcohol family, as in methanol.",
       "keywords": [
-        "anol"
+        "anol",
+        "alcohol",
+        "signals"
       ],
       "options": []
     },
@@ -225,7 +228,8 @@
       "modelAnswer": "The stem meth counts one carbon atom and the suffix -anol shows the alcohol group, so the single name encodes both facts at once.",
       "keywords": [
         "meth",
-        "suffix"
+        "suffix",
+        "molecule"
       ],
       "options": []
     },
@@ -237,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "Hexene - hex for the six carbons, -ene for the double bond.",
       "keywords": [
-        "hexene"
+        "hexene",
+        "straight",
+        "molecule"
       ],
       "options": []
     },
@@ -249,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To rank the atoms by reactivity",
+          "correct": false,
+          "explanation": "Numbering locates groups; it does not rank them.",
+          "misconception": "ranking imagined"
+        },
+        {
+          "key": "B",
           "text": "To record exactly which carbon carries the functional group",
           "correct": true,
           "explanation": "The number in the name is the address of the reactive group on the chain.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To count the total number of atoms in the molecule",
           "correct": false,
           "explanation": "Total counting is the stem job; numbering is about position along the chain.",
           "misconception": "count confused with position"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To show the order in which the atoms were discovered",
           "correct": false,
           "explanation": "Discovery order never enters the naming system.",
           "misconception": "history in name"
-        },
-        {
-          "key": "D",
-          "text": "To rank the atoms by reactivity",
-          "correct": false,
-          "explanation": "Numbering locates groups; it does not rank them.",
-          "misconception": "ranking imagined"
         }
       ]
     },
@@ -285,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The prefix di- is added to the second part of the name",
-          "correct": true,
-          "explanation": "Two identical groups are flagged with di- before the suffix part of the name.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The suffix is deleted because groups cancel out",
-          "correct": false,
-          "explanation": "Groups never cancel; both must be reflected in the name.",
-          "misconception": "cancellation imagined"
-        },
-        {
-          "key": "C",
           "text": "The stem is doubled instead of the suffix",
           "correct": false,
           "explanation": "The doubling convention attaches to the second part of the name, not the stem.",
           "misconception": "wrong half doubled"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The name is left unchanged because groups share one position",
           "correct": false,
           "explanation": "Two groups need two positions recorded; silence would misdescribe the molecule.",
           "misconception": "omission accepted"
+        },
+        {
+          "key": "C",
+          "text": "The prefix di- is added to the second part of the name",
+          "correct": true,
+          "explanation": "Two identical groups are flagged with di- before the suffix part of the name.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The suffix is deleted because groups cancel out",
+          "correct": false,
+          "explanation": "Groups never cancel; both must be reflected in the name.",
+          "misconception": "cancellation imagined"
         }
       ]
     },
@@ -321,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The same rules applied to each structure produce different, correct names",
-          "correct": true,
-          "explanation": "Because the rules encode chain length and group position, each arrangement earns its own name.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Isomers all share one name because their formula matches",
           "correct": false,
           "explanation": "A shared molecular formula does not force a shared name; arrangement changes the name.",
           "misconception": "formula decides name"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Isomers are named by adding numbers chosen at random",
           "correct": false,
           "explanation": "Position numbers follow fixed rules about where the group sits, never randomness.",
           "misconception": "arbitrary numbering"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Isomers cannot be named, so they are labelled A and B",
           "correct": false,
           "explanation": "The naming system handles isomers precisely; letter labels are not part of it.",
           "misconception": "system refused"
+        },
+        {
+          "key": "D",
+          "text": "The same rules applied to each structure produce different, correct names",
+          "correct": true,
+          "explanation": "Because the rules encode chain length and group position, each arrangement earns its own name.",
+          "misconception": null
         }
       ]
     },
@@ -393,31 +399,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Name simple straight-chain compounds and unbranched isomers with up to six carbons",
+          "text": "Write trade names instead of systematic names",
+          "correct": false,
+          "explanation": "The specification expects IUPAC systematic names, not trade labels.",
+          "misconception": "system swapped"
+        },
+        {
+          "key": "B",
+          "text": "Name straight-chain compounds, unbranched isomers, and chains of up to six carbons",
           "correct": true,
           "explanation": "The expectation covers straightforward chains and unbranched isomers within six carbons.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Generate any branched name from scratch, however complex",
           "correct": false,
           "explanation": "Branched names may appear in questions, but you are not usually asked to build them yourself.",
           "misconception": "scope inflated"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Name only the first two members of each family",
           "correct": false,
           "explanation": "The ceiling is six carbons, not two; meth and eth are just the first stems.",
           "misconception": "scope deflated"
-        },
-        {
-          "key": "D",
-          "text": "Write trade names instead of systematic names",
-          "correct": false,
-          "explanation": "The specification expects IUPAC systematic names, not trade labels.",
-          "misconception": "system swapped"
         }
       ]
     },
@@ -429,7 +435,9 @@
       "kind": "recall",
       "modelAnswer": "The prefix di- is attached to the second part of the name for two identical groups.",
       "keywords": [
-        "di"
+        "di",
+        "functional",
+        "identical"
       ],
       "options": []
     },
@@ -441,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "They give the position of the functional group or side chain along the carbon chain.",
       "keywords": [
-        "position"
+        "position",
+        "functional",
+        "numbers"
       ],
       "options": []
     },
@@ -454,7 +464,8 @@
       "modelAnswer": "The same rules are applied to each different structure in turn, so every isomer receives a name that reflects its own arrangement of atoms.",
       "keywords": [
         "structure",
-        "different"
+        "different",
+        "arrangement"
       ],
       "options": []
     },
@@ -467,7 +478,8 @@
       "modelAnswer": "But counts four carbons, and the 2 says a chlorine atom (the chloro group) sits on carbon number 2.",
       "keywords": [
         "four",
-        "chlorine"
+        "chlorine",
+        "chlorobutane"
       ],
       "options": []
     }

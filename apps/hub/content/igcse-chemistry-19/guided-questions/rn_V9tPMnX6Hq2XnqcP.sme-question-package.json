@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_V9tPMnX6Hq2XnqcP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5cbda8faa49d03a3a09aa74e6c843764164fd43275b145e0b4d372925fcaeeb6",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "7affbc6e944e6f6d55fb972a2bd2d4688de38403b9186f157b37fd54fa9217bb",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_V9tPMnX6Hq2XnqcP",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A charge that grows larger further down the group",
+          "correct": false,
+          "explanation": "Every alkali metal forms the same 1+ ion; what changes down the group is how easily that ion forms.",
+          "misconception": "trend in reactivity mistaken for trend in charge"
+        },
+        {
+          "key": "B",
           "text": "A 1+ charge",
           "correct": true,
           "explanation": "Losing the single negatively charged outer electron leaves one more proton than electron, so the ion carries a single positive charge.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A 1- charge",
           "correct": false,
           "explanation": "A negative ion forms by gaining electrons; Group 1 atoms lose their outer electron instead, so the ion is positive.",
           "misconception": "gain and loss of electrons confused"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "No charge, because the atom keeps all its electrons",
           "correct": false,
           "explanation": "Reaction is only possible because the outer electron is lost; keeping every electron would leave a neutral atom with an incomplete shell.",
           "misconception": "ion formation not linked to electron loss"
-        },
-        {
-          "key": "D",
-          "text": "A charge that grows larger further down the group",
-          "correct": false,
-          "explanation": "Every alkali metal forms the same 1+ ion; what changes down the group is how easily that ion forms.",
-          "misconception": "trend in reactivity mistaken for trend in charge"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The shell underneath is already full, so the ion has a noble gas configuration",
-          "correct": true,
-          "explanation": "Removing the lone outer electron promotes the complete shell below to the outside, matching the electron arrangement of a noble gas.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The ion has lost all of its electrons",
-          "correct": false,
-          "explanation": "Only the outer electron is lost; the filled inner shells remain, and it is their completeness that makes the ion stable.",
-          "misconception": "ion assumed to be a bare nucleus"
-        },
-        {
-          "key": "C",
           "text": "The ion gains extra protons to balance the charge",
           "correct": false,
           "explanation": "The proton count never changes during ordinary reactions; stability comes from the full outer shell, not from new protons.",
           "misconception": "nuclear change assumed during ion formation"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Stability comes from the ion being smaller than the atom",
           "correct": false,
           "explanation": "The 1+ ion is indeed smaller, but that is a consequence of losing a shell; the stability itself comes from the full outer shell.",
           "misconception": "size change mistaken for the cause of stability"
+        },
+        {
+          "key": "C",
+          "text": "The shell underneath is already full, so the ion has a noble gas configuration",
+          "correct": true,
+          "explanation": "Removing the lone outer electron promotes the complete shell below to the outside, matching the electron arrangement of a noble gas.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The ion has lost all of its electrons",
+          "correct": false,
+          "explanation": "Only the outer electron is lost; the filled inner shells remain, and it is their completeness that makes the ion stable.",
+          "misconception": "ion assumed to be a bare nucleus"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Reactivity increases as you go down Group 1",
-          "correct": true,
-          "explanation": "Lithium, then sodium, then potassium react more and more vigorously, so reactivity climbs on descending the group.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Reactivity decreases as you go down Group 1",
           "correct": false,
           "explanation": "This is the Group 7 pattern; Group 1 behaves in the opposite way because it loses rather than gains electrons.",
           "misconception": "Group 7 trend copied onto Group 1"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "All Group 1 metals are equally reactive",
           "correct": false,
           "explanation": "The shared one-outer-electron pattern makes their reactions similar in type, but the vigour clearly changes down the group.",
           "misconception": "similarity of reaction type read as equal vigour"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Reactivity depends only on how much metal is used",
           "correct": false,
           "explanation": "The trend is fixed by electron arrangement; the amount of metal changes how long a reaction lasts, not its position in the trend.",
           "misconception": "quantity confused with intrinsic reactivity"
+        },
+        {
+          "key": "D",
+          "text": "Reactivity increases as you go down Group 1",
+          "correct": true,
+          "explanation": "Lithium, then sodium, then potassium react more and more vigorously, so reactivity climbs on descending the group.",
+          "misconception": null
         }
       ]
     },
@@ -204,12 +204,8 @@
         "single",
         "outer",
         "electron",
-        "electrons",
         "1+",
-        "plus",
-        "ion",
-        "lost",
-        "loses"
+        "ion"
       ],
       "options": []
     },
@@ -228,8 +224,7 @@
         "full",
         "shell",
         "outermost",
-        "stable",
-        "stability"
+        "stable"
       ],
       "options": []
     },
@@ -249,7 +244,6 @@
         "similar",
         "same",
         "lose",
-        "loses",
         "noble",
         "configuration"
       ],
@@ -269,13 +263,11 @@
         "electrons",
         "more",
         "vigorously",
-        "vigour",
         "vigor",
         "increases",
         "down",
         "group",
-        "1+",
-        "reactive"
+        "1+"
       ],
       "options": []
     },
@@ -287,31 +279,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It doubles at each successive element",
+          "correct": false,
+          "explanation": "Shell counts grow one at a time down the group; doubling would give atom sizes far beyond anything observed.",
+          "misconception": "exaggerated growth pattern invented"
+        },
+        {
+          "key": "B",
           "text": "It rises by one shell at each successive element",
           "correct": true,
           "explanation": "Lithium has two shells, sodium three and potassium four, so each step down the group adds one complete shell.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It stays the same, because all Group 1 atoms look alike",
           "correct": false,
           "explanation": "The atoms share one outer electron but not the same shell count; the growing size down the group is caused by the added shells.",
           "misconception": "group similarity read as identical structure"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It falls by one shell at each successive element",
           "correct": false,
           "explanation": "Atoms get larger, not smaller, down the group, because each element occupies a further period with an extra shell.",
           "misconception": "trend direction reversed"
-        },
-        {
-          "key": "D",
-          "text": "It doubles at each successive element",
-          "correct": false,
-          "explanation": "Shell counts grow one at a time down the group; doubling would give atom sizes far beyond anything observed.",
-          "misconception": "exaggerated growth pattern invented"
         }
       ]
     },
@@ -323,31 +315,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It sits further from the nucleus, so the attraction it feels is weaker",
-          "correct": true,
-          "explanation": "Potassium's extra shell places its outer electron further out, and electrostatic attraction weakens with distance, so the electron is lost more easily.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Potassium's nucleus has a smaller positive charge",
-          "correct": false,
-          "explanation": "Potassium actually has more protons than sodium; the easier loss comes from the greater distance, not a weaker nuclear charge.",
-          "misconception": "proton count misread down the group"
-        },
-        {
-          "key": "C",
           "text": "Potassium has fewer electron shells than sodium",
           "correct": false,
           "explanation": "Potassium has one more shell than sodium, which is exactly why its outer electron sits further out.",
           "misconception": "shell order inverted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Potassium atoms weigh less, so they react faster",
           "correct": false,
           "explanation": "Potassium atoms are heavier than sodium atoms; reactivity follows electron distance, not atomic mass.",
           "misconception": "mass-based reasoning about reactivity"
+        },
+        {
+          "key": "C",
+          "text": "It sits further from the nucleus, so the attraction it feels is weaker",
+          "correct": true,
+          "explanation": "Potassium's extra shell places its outer electron further out, and electrostatic attraction weakens with distance, so the electron is lost more easily.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Potassium's nucleus has a smaller positive charge",
+          "correct": false,
+          "explanation": "Potassium actually has more protons than sodium; the easier loss comes from the greater distance, not a weaker nuclear charge.",
+          "misconception": "proton count misread down the group"
         }
       ]
     },
@@ -359,31 +351,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It decreases, because the weaker attraction is easier to overcome",
-          "correct": true,
-          "explanation": "With the outer electron further from the nucleus, less energy is needed to overcome the attraction, so removal becomes easier.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It increases, because the atoms are heavier",
           "correct": false,
           "explanation": "Mass does not set the removal energy; the distance of the outer electron from the nucleus does.",
           "misconception": "mass substituted for attraction"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It stays constant across the group",
           "correct": false,
           "explanation": "A constant removal energy would give equal reactivity, but the vigour of the reactions clearly rises down the group.",
           "misconception": "flat trend assumed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It first rises and then falls",
           "correct": false,
           "explanation": "The trend is a steady fall down the group; each added shell weakens the hold on the outer electron a little more.",
           "misconception": "non-monotonic trend invented"
+        },
+        {
+          "key": "D",
+          "text": "It decreases, because the weaker attraction is easier to overcome",
+          "correct": true,
+          "explanation": "With the outer electron further from the nucleus, less energy is needed to overcome the attraction, so removal becomes easier.",
+          "misconception": null
         }
       ]
     },
@@ -431,31 +423,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Lower melting points, so the metals melt first and react faster",
+          "correct": false,
+          "explanation": "Melting points do fall down the group, but they are not the cause of the reactivity trend; electron distance is.",
+          "misconception": "physical property mistaken for the cause"
+        },
+        {
+          "key": "B",
           "text": "More shells, greater distance from the nucleus, weaker attraction, easier electron loss",
           "correct": true,
           "explanation": "This chain runs from the electron arrangement to the energy outcome, which is exactly what the specification asks you to explain.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "More protons, stronger attraction, harder electron loss",
           "correct": false,
           "explanation": "That chain would predict falling reactivity; the added shells outpace the added charge, so distance dominates the outcome.",
           "misconception": "nuclear charge reasoning used instead of distance"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Larger atoms, more collisions, faster reactions",
           "correct": false,
           "explanation": "Collision frequency is about reacting mixtures, not about how easily a single atom loses its outer electron.",
           "misconception": "collision theory misapplied to electron loss"
-        },
-        {
-          "key": "D",
-          "text": "Lower melting points, so the metals melt first and react faster",
-          "correct": false,
-          "explanation": "Melting points do fall down the group, but they are not the cause of the reactivity trend; electron distance is.",
-          "misconception": "physical property mistaken for the cause"
         }
       ]
     },
@@ -472,8 +464,6 @@
         "one",
         "rises",
         "rise",
-        "increases",
-        "increase",
         "down",
         "group",
         "occupied"
@@ -486,14 +476,11 @@
       "stem": "What happens to the amount of energy needed to remove the outer electron on descending Group 1?",
       "misconceptionClass": "ionisation energy recall",
       "kind": "recall",
-      "modelAnswer": "Less energy is needed to overcome the weaker attraction, so the outer electron is lost more easily down the group.",
+      "modelAnswer": "Less energy is needed to overcome the weaker attraction, so losing the outer electron becomes easier down the group.",
       "keywords": [
         "less",
         "energy",
         "needed",
-        "lost",
-        "loses",
-        "easily",
         "easier",
         "more",
         "weaker"
@@ -518,8 +505,7 @@
         "attraction",
         "less",
         "energy",
-        "easily",
-        "easier"
+        "easily"
       ],
       "options": []
     },
