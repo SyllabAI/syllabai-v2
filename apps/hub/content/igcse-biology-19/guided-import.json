@@ -1,0 +1,58 @@
+{
+  "format": "guided-import-index/1.0",
+  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=bio-stagea-v33)",
+  "imported_at_utc": "2026-11-11T20:23:36Z",
+  "operator_trace": "1a1cbe5f60023dd5",
+  "upstream": {
+    "repo": "SyllabAI/syllabai-resources",
+    "namespace": "integration/",
+    "commit": "e7ce875d8b67ca8b921ffd447f9a7b143ff490ad",
+    "manifest": "hub-import-manifest-v33.json",
+    "manifest_sha256": "4b3e27d61de8194f5cb409ef91bbe68b48bd4e896587e32d59560c6873c196c6",
+    "manifest_version": 33,
+    "int0_pin": "7378f2498a76501a907a0bda9724237bd4486663",
+    "adapter": "guided-lesson-0.7--hub-lesson-import-1.6"
+  },
+  "target_schemas": [
+    "hub/lesson-import/1.6",
+    "sme-question-package/1.3"
+  ],
+  "counts": {
+    "notes": 1,
+    "lessons": 2,
+    "checks": 18,
+    "keyPoints": 10,
+    "distractors": 30,
+    "glossaryTerms": 4,
+    "figures": 11,
+    "figures_module_mapped": 7,
+    "figures_note_level": 4,
+    "workedExamples_populated": 0,
+    "workedExamples_null": 1,
+    "authored_chars_conserved": 14664
+  },
+  "conservation": {
+    "authored_stream_sha256": "3e7cb027b176b803da6e0e9f5553cb5ad660ddc6dc515225e949ee4f56598306",
+    "authored_chars": 14664
+  },
+  "landing": {
+    "lessons_rel": "igcse-biology-19/guided-lessons",
+    "questions_rel": "igcse-biology-19/guided-questions",
+    "lesson_files": 1,
+    "question_files": 1,
+    "byte_exact": true,
+    "additive_only": true
+  },
+  "notes": [
+    {
+      "noteId": "rn_qRXSsjyzyZsJnc7k",
+      "wave": "bio-stagea",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_qRXSsjyzyZsJnc7k.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_qRXSsjyzyZsJnc7k.sme-question-package.json",
+      "lessonSha256": "fc3b6a518c93baa278a37ab1a974d73b715639ecd34faed2783d4a836a8592c3",
+      "packageSha256": "566aa604d7862ad405ae043eff3efe1cada1531d0c3a25311bdf64ecb4cf3bef",
+      "streamSha256": "3e7cb027b176b803da6e0e9f5553cb5ad660ddc6dc515225e949ee4f56598306",
+      "streamChars": 14664
+    }
+  ]
+}

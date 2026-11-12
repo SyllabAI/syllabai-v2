@@ -1,0 +1,132 @@
+{
+ "artifact": "rn11-run-017-apply-manifest-r0",
+ "law": "evidence-first: new title bytes ONLY from official_0478_census_r0.json (sha-pinned 0478 PDF); partition law for 8.1.4/8.1.1a; codes UNCHANGED (structural re-code = desk territory); manifest counts untouched (title-only pass, 88/88); KG regen per run-016 law with deep-equal gate",
+ "repairs": [
+  {
+   "code": "1.1.2",
+   "old": "(a) \u0007Understand the denary, binary and hexadecimal number systems (ii) positive denary and positive hexadecimal (iii) positive hexadecimal and positive binary: • (b) Convert between • (i) positive denary and positive binary",
+   "new": "(a) Understand the denary, binary and hexadecimal number systems (b) Convert between (i) positive denary and positive binary (ii) positive denary and positive hexadecimal (iii) positive hexadecimal and positive binary",
+   "oldSha": "065479d6dffffab7958e8db9686f7633da50228d5ecfd5954061742976de50ef",
+   "newSha": "0430f6b473654f06fc7a8e1b8ff17d7bdfbdb7a93f19e30342bb6faa3a05171d",
+   "composed": true,
+   "censusSource": "rows['1.1.2']"
+  },
+  {
+   "code": "1.1.4",
+   "old": "(a) Add two positive 8-bit binary integers it occurs in binary addition: • (b) \u0007Understand the concept of overflow and why",
+   "new": "(a) Add two positive 8-bit binary integers (b) Understand the concept of overflow and why it occurs in binary addition",
+   "oldSha": "30d1ae377a8de144c5081489beaec9d3f334012037b32420bf96b4d7eddffc7a",
+   "newSha": "bdf1cf9f9a97c474b6ca92483f3a8bcda5bffc1eb423562a7c4c58f78484643c",
+   "composed": true,
+   "censusSource": "rows['1.1.4']"
+  },
+  {
+   "code": "2.1.1",
+   "old": "(a) \u0007Understand that data is broken down into packets to be transmitted: • (b) Describe the structure of a packet • (c) Describe the process of packet switching",
+   "new": "(a) Understand that data is broken down into packets to be transmitted (b) Describe the structure of a packet (c) Describe the process of packet switching",
+   "oldSha": "49cd9ad8ad0b4c6dd8d5478021d7ec7deef96b654e3aae49e1e46625a9bd527d",
+   "newSha": "a759c8ebe4fd064ae6a054548a3c2079797248d8d940a7444d4482a61c35a5ba",
+   "composed": true,
+   "censusSource": "rows['2.1.1']"
+  },
+  {
+   "code": "2.1.2",
+   "old": "(a) \u0007Describe how data is transmitted from one device to another using different methods of data transmission transmission, for a given scenario: • (b) \u0007Explain the suitability of each method of data",
+   "new": "(a) Describe how data is transmitted from one device to another using different methods of data transmission (b) Explain the suitability of each method of data transmission, for a given scenario",
+   "oldSha": "ef473e2706906c86d59e0e719f1cb374ea5b33109fd2d10e991f6bb6ab772ab2",
+   "newSha": "e832f6d22c7df152c293bd4a8eea106d260494cc1563522a27f03c10f73e558b",
+   "composed": true,
+   "censusSource": "rows['2.1.2']"
+  },
+  {
+   "code": "3.1.1",
+   "old": "(a) \u0007Understand the role of the central processing unit (CPU) in a computer microprocessor: • (b) \u0007Understand what is meant by a",
+   "new": "(a) Understand the role of the central processing unit (CPU) in a computer (b) Understand what is meant by a microprocessor",
+   "oldSha": "94547131b0117375e6616b342cdc367666ad7c65341713290ca1e687a2167ae7",
+   "newSha": "ec0bc38b82e7863acad0884a2360e2f1d6feb80e9b9d26b9f71e2c50ce16e966",
+   "composed": true,
+   "censusSource": "rows['3.1.1']"
+  },
+  {
+   "code": "3.1.2",
+   "old": "(a) \u0007Understand the purpose of the components in a CPU, in a computer that has a Von Neumann architecture fetch–decode–execute (FDE) cycle including the role of each component in the process: • (b) \u0007Describe the process of the",
+   "new": "(a) Understand the purpose of the components in a CPU, in a computer that has a Von Neumann architecture (b) Describe the process of the fetch–decode–execute (FDE) cycle including the role of each component in the process",
+   "oldSha": "c0ca98fc82826c0b3cbb70a79ed575785253ca85da6f0f7d70dd815da2745542",
+   "newSha": "3a20cbbcab81387cf320860facea97b4cad09fab5a863bc4ea455922ae685000",
+   "composed": true,
+   "censusSource": "rows['3.1.2']"
+  },
+  {
+   "code": "3.2.3",
+   "old": "(a) \u0007Understand what is meant by a sensor and the purposes of sensors sensor and understand when each sensor would be used, including selecting the most suitable sensor for a given context: • (b) \u0007Identify the type of data captured by each",
+   "new": "(a) Understand what is meant by a sensor and the purposes of sensors (b) Identify the type of data captured by each sensor and understand when each sensor would be used, including selecting the most suitable sensor for a given context",
+   "oldSha": "d3cc159df8e1490014d5f27f8cdfa0d5662a1cd6f365f29b204f4b6b19033f2e",
+   "newSha": "052a8858d53051f28536772c8517faa86c29c0146cbb580b85f4b47a2c1eec9e",
+   "composed": true,
+   "censusSource": "rows['3.2.3']"
+  },
+  {
+   "code": "3.4.3",
+   "old": "(a) \u0007Understand what is meant by and the purpose of an internet protocol (IP) address IP address: • (b) \u0007Understand that there are different types of",
+   "new": "(a) Understand what is meant by and the purpose of an internet protocol (IP) address (b) Understand that there are different types of IP address",
+   "oldSha": "1306500f894134bf47ff79aae241cd47e88d8659fbc2729e97f362ea40a94edc",
+   "newSha": "075359d39486f092be3202b5726001b2060e7a6f8f95d6e0dde8aae6ac638a06",
+   "composed": true,
+   "censusSource": "rows['3.4.3']"
+  },
+  {
+   "code": "6.3.5",
+   "old": "(a) \u0007Understand the need for validation checks to be made on input data and the different types of validation check to be made on input data and the different types of verification check: • (b) \u0007Understand the need for verification checks",
+   "new": "(a) Understand the need for validation checks to be made on input data and the different types of validation check (b) Understand the need for verification checks to be made on input data and the different types of verification check",
+   "oldSha": "1d11fa65af4652cc4dfb14ed5877640f9fd18f0d6d9d34305ab34902ad78d7eb",
+   "newSha": "4a9b954d4873d18f757acc2eec8cda38f04cd4050a3ac9fd265dc200b2d4140e",
+   "composed": true,
+   "censusSource": "rows['7.5'] (official row 7.5; code 6.3.5 mis-map disclosed)"
+  },
+  {
+   "code": "8.1.1a",
+   "old": "(f) \u0007Understand and use arithmetic, logical and Boolean operators 5 Understand and use nested statements 6 (a) \u0007Understand what is meant by procedures, functions and parameters with or without parameters 7 Understand and use library routines: • (b) \u0007Define and use procedures and functions, • (c) \u0007Understand and use local and global variables",
+   "new": "Understand and use arithmetic, logical and Boolean operators",
+   "oldSha": "a5790eb951bd5e95684a59754431964bbf8016133921c2b66997cb17ce4ecbc1",
+   "newSha": "aaaf6584d9b208a535346dd926a9e1e6d02fffea38d66bb8a596aed571009a54",
+   "composed": true,
+   "censusSource": "subRows['8.1.4f'] (official 8.1.4(f); partition law)"
+  },
+  {
+   "code": "8.1.4",
+   "old": "(a) Understand and use the concept of sequence (d)\u0007 \u0007Understand and use the concepts of totalling and counting handling: • (b) Understand and use the concept of selection • (c) Understand and use the concept of iteration • (e) \u0007Understand and use the concept of string",
+   "new": "(a) Understand and use the concept of sequence (b) Understand and use the concept of selection (c) Understand and use the concept of iteration (d) Understand and use the concepts of totalling and counting (e) Understand and use the concept of string handling",
+   "oldSha": "8b52fa1039ee95833ecb2f81381b102cc80dffc1940a02c056912087adf133a6",
+   "newSha": "1ad6a108fa2692d7f8b3aa35a34ef7a618ddef8e79c0ef7a88ff984f46412ead",
+   "composed": true,
+   "censusSource": "rows['8.1.4'] minus (f) tail (partition law)"
+  }
+ ],
+ "files": [
+  {
+   "file": "apps/hub/content/cie-igcse-computer-science-23/curriculum.json",
+   "oldSha": "78f759efdbab3d45647f14a535523d3aabc7bc8740a56b403a26591e79211805",
+   "newSha": "ca84fbe6a57b41f9797c7c2eeaf05721bf894515bea417e6b9261956fc456797",
+   "sites": 11
+  },
+  {
+   "file": "apps/hub/spines/cie-igcse-computer-science-23.json",
+   "oldSha": "064f83c0e826f41a31bdb219be29296e7a20cfb3d9db96f1013112a2ae53127f",
+   "newSha": "4081efcf754df47e4bffdc34cb2318a142acf535f5553caeb40f2999d27432f3",
+   "sites": 11
+  },
+  {
+   "file": "apps/hub/public/kg/data/cie-igcse-computer-science-23.json",
+   "oldSha": "242f180bfc888d93be13c3a03ababf02c861279b5863e53c60deaae9cba1e38d",
+   "newSha": "a735abf8f147ef16fbc94547865a86cd713ea6b1de056d3c8a06c96f09ef261b",
+   "disposition": "KG-REGEN-OK (exporter-compatible, deep-equal ex-generatedUtc)"
+  }
+ ],
+ "notTouched": {
+  "manifest.json": "counts unchanged (88 specPoints) — title-only pass",
+  "prerequisites.json": "references point CODES (load-bearing for the structural proposal) — untouched",
+  "notes/questions/flashcards/concept-graph/learner-sim": "no point-title mirrors (verified in the survey)",
+  "content-maps": "no point titles",
+  "ugm-resources.json": "does not exist for cs-23 (UGM re-serve law not applicable)"
+ }
+}

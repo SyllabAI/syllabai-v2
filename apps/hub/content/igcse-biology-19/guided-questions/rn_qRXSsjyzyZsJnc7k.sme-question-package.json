@@ -1,0 +1,491 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_qRXSsjyzyZsJnc7k",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "4cca72bed960c1ba2fdc5ea5c1a242f4a7f7132fa6d06e1bd9e7bc6fc3e1096e",
+    "pinnedRef": "7378f2498a76501a907a0bda9724237bd4486663"
+  },
+  "packageId": "igcse-biology::rn_qRXSsjyzyZsJnc7k",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q1",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "Which set completes the acronym MRS C GREN, the checklist of the eight processes every living organism carries out?",
+      "misconceptionClass": "mrs-c-gren recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Movement, then respiration, then sensitivity, then control, then growth, then reproduction, then excretion and finally nutrition",
+          "correct": true,
+          "explanation": "These are the eight characteristics of life the note lists in order.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Movement, respiration, sensitivity, consumption, growth, reproduction, excretion, nutrition",
+          "correct": false,
+          "explanation": "The C stands for control (homeostasis), not consumption.",
+          "misconception": "control misremembered as consumption"
+        },
+        {
+          "key": "C",
+          "text": "Movement, respiration, sensitivity, control, germination, reproduction, excretion, nutrition",
+          "correct": false,
+          "explanation": "Germination is a stage in plant growth, not one of the eight processes.",
+          "misconception": "germination substituted for growth"
+        },
+        {
+          "key": "D",
+          "text": "Motion, respiration, sensitivity, control, growth, recycling, excretion, nutrition",
+          "correct": false,
+          "explanation": "Motion is not the listed term and recycling is not a life process.",
+          "misconception": "list words swapped for near-synonyms"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q2",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "A student observes a particle that reproduces inside host cells but never respires, excretes or grows. How should it be classified?",
+      "misconceptionClass": "virus classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dead, because it cannot move on its own",
+          "correct": false,
+          "explanation": "Dead implies it was once a complete living organism; a virus never satisfies the full checklist.",
+          "misconception": "non-living confused with dead"
+        },
+        {
+          "key": "B",
+          "text": "Non-living, because reproduction alone does not satisfy every characteristic of life",
+          "correct": true,
+          "explanation": "Something is living only if it carries out all eight processes; viruses are the note's example.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Living, because reproduction is the process that defines life",
+          "correct": false,
+          "explanation": "Reproduction is one necessary process among eight, not a sufficient one.",
+          "misconception": "one process treated as sufficient"
+        },
+        {
+          "key": "D",
+          "text": "Living, because it responds to its host cells",
+          "correct": false,
+          "explanation": "Hijacking a host cell is not sensitivity in the characteristic-of-life sense.",
+          "misconception": "host interaction misread as sensitivity"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q3",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "Which list gives the waste products that animals excrete?",
+      "misconceptionClass": "animal excretion products",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon dioxide, glucose and urea",
+          "correct": false,
+          "explanation": "Glucose is the respiratory substrate, not a waste product.",
+          "misconception": "substrate misremembered as waste"
+        },
+        {
+          "key": "B",
+          "text": "Carbon dioxide, water and faeces",
+          "correct": false,
+          "explanation": "Faeces are egested, not excreted — they never come from cell chemical reactions.",
+          "misconception": "egestion confused with excretion"
+        },
+        {
+          "key": "C",
+          "text": "Carbon dioxide, water and urea",
+          "correct": true,
+          "explanation": "These are the three animal excretory products the note lists, from respiration and protein breakdown.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Oxygen, water and urea",
+          "correct": false,
+          "explanation": "Oxygen is a plant waste product from photosynthesis, not an animal one.",
+          "misconception": "plant waste reassigned to animals"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q4",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "Which pairing of organism and excretory waste is correct?",
+      "misconceptionClass": "plant excretion",
+      "options": [
+        {
+          "key": "A",
+          "text": "Plants excrete urea from protein breakdown",
+          "correct": false,
+          "explanation": "Urea is the animal waste from deaminating proteins; plants do not make it.",
+          "misconception": "animal pathway transferred to plants"
+        },
+        {
+          "key": "B",
+          "text": "Animals excrete oxygen from respiration",
+          "correct": false,
+          "explanation": "Respiration consumes oxygen; animals excrete carbon dioxide from it.",
+          "misconception": "respiration gas roles reversed"
+        },
+        {
+          "key": "C",
+          "text": "Plants excrete carbon dioxide only at night",
+          "correct": false,
+          "explanation": "Respiration runs day and night; the net gas seen by day is oxygen from photosynthesis.",
+          "misconception": "timing overgeneralised"
+        },
+        {
+          "key": "D",
+          "text": "Plants excrete oxygen from photosynthesis during daylight",
+          "correct": true,
+          "explanation": "The note lists oxygen from photosynthesis and carbon dioxide from respiration as plant wastes.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q5",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "Which statement about respiration is true for every living organism?",
+      "misconceptionClass": "respiration definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is a chemical process that releases energy from glucose",
+          "correct": true,
+          "explanation": "Respiration runs in all living cells, releasing energy from glucose via ATP.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is the same process as gas exchange",
+          "correct": false,
+          "explanation": "Gas exchange moves the gases; respiration uses the oxygen to release energy — the note's own hint.",
+          "misconception": "gas exchange equated with respiration"
+        },
+        {
+          "key": "C",
+          "text": "It happens only in animals with lungs",
+          "correct": false,
+          "explanation": "All living organisms respire, plant and microbe included.",
+          "misconception": "respiration limited to lungs"
+        },
+        {
+          "key": "D",
+          "text": "It builds glucose from carbon dioxide and water",
+          "correct": false,
+          "explanation": "That is photosynthesis; respiration breaks glucose down.",
+          "misconception": "photosynthesis confused with respiration"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q6",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "State the word equation for aerobic respiration.",
+      "misconceptionClass": "aerobic equation recall",
+      "kind": "recall",
+      "modelAnswer": "Glucose + oxygen -> carbon dioxide + water (with energy transferred as ATP).",
+      "keywords": [
+        "glucose",
+        "oxygen",
+        "carbon dioxide",
+        "ATP"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q7",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "Name the nutrition route of plants and the nutrition route of animals, as the note contrasts them.",
+      "misconceptionClass": "nutrition routes",
+      "kind": "recall",
+      "modelAnswer": "Plants make their own food by photosynthesis; animals consume other organisms and break food down by digestion.",
+      "keywords": [
+        "photosynthesis",
+        "consume",
+        "digestion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q8",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "Students often mix up excretion and egestion. Explain the difference the note draws, in terms of where the waste comes from.",
+      "misconceptionClass": "excretion vs egestion",
+      "kind": "explain-why",
+      "modelAnswer": "Excretion removes toxic waste made by chemical reactions inside cells, such as carbon dioxide and urea; egestion passes out faeces, which are the remains of food never absorbed during digestion.",
+      "keywords": [
+        "excretion",
+        "egestion",
+        "faeces",
+        "chemical reactions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L1::Q9",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L1",
+      "stem": "A pond appears to contain only inert gravel, yet the water carries single-celled organisms. Which processes would you look for to decide they are living, and what conclusion follows if even one process is absent?",
+      "misconceptionClass": "characteristics applied",
+      "kind": "application",
+      "modelAnswer": "Look for all eight MRS C GREN processes — nutrition, respiration, excretion, sensitivity, movement, control, growth and reproduction; if any one is absent the particle is non-living rather than living.",
+      "keywords": [
+        "MRS C GREN",
+        "non-living",
+        "processes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q1",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "Which signalling method does the human nervous system use to respond to stimuli?",
+      "misconceptionClass": "nervous signalling",
+      "options": [
+        {
+          "key": "A",
+          "text": "Muscle contraction only",
+          "correct": false,
+          "explanation": "Muscles are effectors; the signalling method is electrical impulses.",
+          "misconception": "effector confused with signalling"
+        },
+        {
+          "key": "B",
+          "text": "Electrical impulses travelling through receptors, neurones and effectors",
+          "correct": true,
+          "explanation": "The note describes the nervous system's electrical signalling via receptors, neurones and effectors.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Hormones carried in the blood",
+          "correct": false,
+          "explanation": "Hormones are the endocrine system's chemical messengers, not the nervous system's.",
+          "misconception": "endocrine credited to nervous"
+        },
+        {
+          "key": "D",
+          "text": "Diffusion of chemicals through the air",
+          "correct": false,
+          "explanation": "Responses are signalled inside the body, not by air diffusion.",
+          "misconception": "chemical signalling misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q2",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "A shoot grows towards the light while a root grows down into the soil. Which pair of responses names this?",
+      "misconceptionClass": "tropism pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Phototropism in both, because both track a stimulus",
+          "correct": false,
+          "explanation": "The root's trigger is gravity, not light.",
+          "misconception": "gravity stimulus ignored"
+        },
+        {
+          "key": "B",
+          "text": "Geotropism in both, because both respond to the earth",
+          "correct": false,
+          "explanation": "The shoot's trigger is light.",
+          "misconception": "light stimulus ignored"
+        },
+        {
+          "key": "C",
+          "text": "Phototropism in the shoot and geotropism in the root",
+          "correct": true,
+          "explanation": "Phototropism is the response to light; geotropism is the response to gravity.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Geotropism in the shoot and phototropism in the root",
+          "correct": false,
+          "explanation": "The two responses are swapped.",
+          "misconception": "responses swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q3",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "Which processes make up the plant's asexual reproduction routes named in the note?",
+      "misconceptionClass": "asexual plant routes",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pollination and fertilisation",
+          "correct": false,
+          "explanation": "Those belong to sexual reproduction in plants.",
+          "misconception": "sexual routes misassigned"
+        },
+        {
+          "key": "B",
+          "text": "Mitosis and meiosis",
+          "correct": false,
+          "explanation": "Mitosis is the cell process behind asexual reproduction; meiosis makes gametes for sexual reproduction.",
+          "misconception": "meiosis misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Germination and dispersal",
+          "correct": false,
+          "explanation": "Those are growth and spreading stages, not asexual reproduction routes.",
+          "misconception": "life-stage terms misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Natural runners and artificial cuttings",
+          "correct": true,
+          "explanation": "The note lists runners as the natural route and cuttings as the artificial one.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q4",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "Why is transpiration counted among a plant's control (homeostasis) mechanisms?",
+      "misconceptionClass": "transpiration control",
+      "options": [
+        {
+          "key": "A",
+          "text": "Evaporating water from the stomata carries heat out, holding the leaf near its optimum",
+          "correct": true,
+          "explanation": "The note's control section credits transpiration's evaporation with maintaining a suitable temperature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Transpiration pulls minerals up from the roots",
+          "correct": false,
+          "explanation": "That is the transport role of transpiration, not temperature control.",
+          "misconception": "transport role confused with control"
+        },
+        {
+          "key": "C",
+          "text": "Transpiration closes the stomata at night",
+          "correct": false,
+          "explanation": "Stomatal closing is a separate response; the control benefit is evaporative heat loss.",
+          "misconception": "stomatal timing miscredited"
+        },
+        {
+          "key": "D",
+          "text": "Transpiration produces glucose for growth",
+          "correct": false,
+          "explanation": "Glucose comes from photosynthesis.",
+          "misconception": "photosynthesis miscredited"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q5",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "Which statement about sexual reproduction is correct?",
+      "misconceptionClass": "sexual reproduction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gametes are made by mitosis in animals",
+          "correct": false,
+          "explanation": "The note names sperm and egg as the gametes without mitosis claims; mitosis is the asexual example.",
+          "misconception": "mitosis role misplaced"
+        },
+        {
+          "key": "B",
+          "text": "Gametes fuse, so the offspring carries DNA from both parents",
+          "correct": true,
+          "explanation": "The note: male and female gametes fuse and the offspring's DNA combines maternal and paternal DNA.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "One parent produces an exact clone",
+          "correct": false,
+          "explanation": "That describes asexual reproduction.",
+          "misconception": "asexual traits transferred"
+        },
+        {
+          "key": "D",
+          "text": "The offspring's DNA is identical to the parent's",
+          "correct": false,
+          "explanation": "Fusion of two gametes mixes DNA.",
+          "misconception": "clone claim applied to sexual"
+        }
+      ]
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q6",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "Define homeostasis as the note introduces it.",
+      "misconceptionClass": "homeostasis definition",
+      "kind": "recall",
+      "modelAnswer": "Homeostasis is the control of an organism's internal environment to keep conditions within required limits.",
+      "keywords": [
+        "homeostasis",
+        "internal environment",
+        "required limits"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q7",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "State the optimum human body temperature and the two cooling mechanisms the note lists for returning to it.",
+      "misconceptionClass": "thermoregulation recall",
+      "kind": "recall",
+      "modelAnswer": "37 degrees Celsius; sweating and vasodilation bring a raised temperature back down.",
+      "keywords": [
+        "37",
+        "sweating",
+        "vasodilation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q8",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "Explain why osmoregulation is described as another homeostatic mechanism in humans, alongside thermoregulation.",
+      "misconceptionClass": "homeostasis breadth",
+      "kind": "explain-why",
+      "modelAnswer": "Both hold an internal condition within required limits — thermoregulation holds body temperature near 37 degrees Celsius, while osmoregulation controls water levels; each is a control process keeping the internal environment stable.",
+      "keywords": [
+        "osmoregulation",
+        "thermoregulation",
+        "water levels",
+        "internal environment"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qRXSsjyzyZsJnc7k::L2::Q9",
+      "moduleId": "rn_qRXSsjyzyZsJnc7k::L2",
+      "stem": "A sunflower changes its orientation to track the sun through the day. Identify the two life processes this shows and justify each from the note's definitions.",
+      "misconceptionClass": "processes identified",
+      "kind": "application",
+      "modelAnswer": "Movement — the plant changes its orientation, the note's stated plant form of movement; and sensitivity — tracking the sun is a response to a stimulus in the surroundings.",
+      "keywords": [
+        "movement",
+        "sensitivity",
+        "orientation",
+        "stimulus"
+      ],
+      "options": []
+    }
+  ]
+}
