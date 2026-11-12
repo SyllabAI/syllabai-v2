@@ -41,33 +41,44 @@ def main():
     res['head'] = head
 
     # B4 commit chain
+    HEAD_EXPECT_SUFFIX = ('4008f20a', 'dfa73a15', '1bd910fe', '7dd58793', 'd4027d3b')
     chain = [l.split()[0][:8] for l in git('log', '--oneline', '--first-parent', f'{BASE}..HEAD').splitlines()]
     res['B4_chain'] = chain
-    assert chain[:2] == list(HEAD_EXPECT_SUFFIX[:2]) or chain[0] in HEAD_EXPECT_SUFFIX, chain
-    assert len(chain) == 3, f'expected 3 branch commits (artifacts, receipts, union), got {chain}'
+    assert chain == list(HEAD_EXPECT_SUFFIX), chain
+    assert len(chain) == 5, f'expected 5 branch commits (artifacts, receipts, union1, postReview, union2), got {chain}'
     parents = git('show', '-s', '--format=%P', head).split()
-    assert len(parents) == 2, 'union commit must be 2-parent'
-    assert parents[0].startswith(HEAD_EXPECT_SUFFIX[1]) and parents[1] == 'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae', parents
-    print('B4 PASS: chain', chain, '| union parents', [p[:8] for p in parents])
+    assert len(parents) == 2, 'union2 commit must be 2-parent'
+    assert parents[0].startswith('7dd58793') and parents[1] == '493aa4748a6b12517118db72ab8e8c741eaf7e3c', parents
+    p1 = git('show', '-s', '--format=%P', '1bd910fe').split()
+    assert len(p1) == 2 and p1[0].startswith('dfa73a15') and p1[1] == 'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae', p1
+    print('B4 PASS: chain', chain, '| union1 parents', [p[:8] for p in p1], '| union2 parents', [p[:8] for p in parents])
 
-    # B1 net diff path set — PR view (merge-base..HEAD) + branch-own commits scope
-    MAIN_ADV = 'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae'
-    names = set(git('diff', '--name-only', f'{MAIN_ADV}..HEAD').splitlines())
-    assert names == DECLARED_PATHS, f'PR path-set drift: extra={names-DECLARED_PATHS} missing={DECLARED_PATHS-names}'
+    # B1 net diff path set — PR view (main tip..HEAD) + branch-own commits scope
+    MAIN_TIP = '493aa4748a6b12517118db72ab8e8c741eaf7e3c'
+    PR_PATHS = DECLARED_PATHS | {'.syllabai/receipts/RN-DEBRIS-11/run-022-postReview.json',
+                                 '.syllabai/lane-artifacts/RN-DEBRIS-11/run-022/scripts/rn22_review_battery.py'}
+    names = set(git('diff', '--name-only', f'{MAIN_TIP}..HEAD').splitlines())
+    assert names == PR_PATHS, f'PR path-set drift: extra={names-PR_PATHS} missing={PR_PATHS-names}'
     own1 = set(git('show', '--name-only', '--format=', HEAD_EXPECT_SUFFIX[0]).split())
     own2 = set(git('show', '--name-only', '--format=', HEAD_EXPECT_SUFFIX[1]).split())
-    assert own1 <= DECLARED_PATHS and own2 <= DECLARED_PATHS, f'branch-own commit scope drift: {own1 | own2 - DECLARED_PATHS}'
+    assert own1 <= PR_PATHS and own2 <= PR_PATHS, f'branch-own commit scope drift: {own1 | own2 - PR_PATHS}'
+    own4 = set(git('show', '--name-only', '--format=', '7dd58793').split())
+    assert own4 <= PR_PATHS, f'postReview commit scope drift: {own4 - PR_PATHS}'
     content = [p for p in names if p.startswith(('apps/', 'packages/', 'docs/', 'golden/', 'public/kg/'))]
     assert not content, f'content bytes touched: {content}'
-    # the union's own delta vs dfa73a15 == exactly main's advance (theirs-verbatim union, no invention)
-    union_delta = set(git('diff', '--name-only', f'{HEAD_EXPECT_SUFFIX[1]}..HEAD').splitlines())
-    main_delta = set(git('diff', '--name-only', f'{BASE}..{MAIN_ADV}').splitlines())
-    assert union_delta == main_delta, f'union delta != main advance: {union_delta ^ main_delta}'
-    st = git('diff', '--shortstat', f'{MAIN_ADV}..HEAD').strip()
-    res['B1'] = {'prPaths': sorted(names), 'shortstat': st, 'mainAdvancePaths': sorted(main_delta),
-                 'branchOwnCommitsScope': 'declared-only', 'unionDelta == mainAdvance': True}
+    # union1's own delta vs dfa73a15 == exactly main's first advance (theirs-verbatim, no invention)
+    union1_delta = set(git('diff', '--name-only', f'{HEAD_EXPECT_SUFFIX[1]}..1bd910fe').splitlines())
+    adv1 = set(git('diff', '--name-only', f'{BASE}..a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae').splitlines())
+    assert union1_delta == adv1, f'union1 delta != first advance: {union1_delta ^ adv1}'
+    # union2's own delta vs 7dd58793 == exactly main's second advance
+    union2_delta = set(git('diff', '--name-only', f'7dd58793..HEAD').splitlines())
+    adv2 = set(git('diff', '--name-only', f'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae..{MAIN_TIP}').splitlines())
+    assert union2_delta == adv2, f'union2 delta != second advance: {union2_delta ^ adv2}'
+    st = git('diff', '--shortstat', f'{MAIN_TIP}..HEAD').strip()
+    res['B1'] = {'prPaths': sorted(names), 'shortstat': st,
+                 'branchOwnCommitsScope': 'declared-only', 'union1Delta == advance1': True, 'union2Delta == advance2': True}
     print(f'B1 PASS: PR net diff == exactly the {len(names)} declared bookkeeping paths ({st}); '
-          f'branch-own commits declared-only; union delta == main advance byte-lawful; zero content/src/docs bytes')
+          f'branch-own commits declared-only; both union deltas byte-lawful; zero content/src/docs bytes')
 
     # B2 artifacts parse + gates re-run
     run = CLONE / '.syllabai/lane-artifacts/RN-DEBRIS-11/run-022'
