@@ -63,12 +63,15 @@
  * leg-04 capture posture is zero-key/TEST). Tests wire deterministic fakes
  * via the injected fetchImpl — never real adapters over real HTTP.
  *
- * Media routing (HUB-ANSWER-BOX wave 3, frozen FailoverLlmChain javadoc): a
- * request carrying media is offered ONLY to members that declare
- * supportsMedia() — when no vision-capable member is available the request
- * fails with the DISTINCT frozen message ("no vision-capable LLM provider
- * available in chain") instead of degrading into a text-only hallucination
- * of an image the provider never saw.
+ * Media routing (HUB-ANSWER-BOX wave 3, frozen FailoverLlmChain javadoc;
+ * VISION-FB amendment 2026-11-12): a request carrying media is offered ONLY
+ * to members that declare supportsMedia() — when no vision-capable member is
+ * available the request fails with the DISTINCT frozen message ("no
+ * vision-capable LLM provider available in chain") instead of degrading into
+ * a text-only hallucination of an image the provider never saw. The
+ * vision-capable set of record: the gemini family (the primary), then the
+ * optional groq-vision / openrouter-vision tail (free vision models on the
+ * OpenAI-compatible wire) — media walks that order through the failover loop.
  *
  * Streaming (tutor SSE tranche): FailoverLlmChain.stream matches the frozen
  * law EXACTLY up to the first token — an error arriving before any delta
@@ -401,6 +404,25 @@ const YML_COOLDOWN_SECONDS = 60; // literal
 const YML_FAILURE_THRESHOLD = 3; // literal
 const YML_DAILY_BUDGET_DEFAULT = 1000; // ${SYLLABAI_LLM_DAILY_BUDGET:1000}
 
+/**
+ * The VISION-FB layer (operator directive 2026-11-12: "Add gemini and option
+ * for groq, openrouter free model fallback") — the optional vision slots for
+ * the OpenAI-compatible providers, riding the SAME provider keys and free
+ * vision models. gemini stays the PRIMARY vision member of record (§26.1);
+ * groq-vision / openrouter-vision append at the chain tail as the fallbacks.
+ * Pins of record:
+ *   - groq: Llama 4 Scout (multimodal, 17B/16 experts, GroqDocs model card;
+ *     re-pin via SYLLABAI_LLM_GROQ_VISION_MODEL if the free inventory rotates
+ *     — the sandbox could not probe Groq's catalog directly, IP-gated egress)
+ *   - openrouter: nvidia/nemotron-3.5-super-vl:free (text+image→text,
+ *     prompt pricing 0 — first-hand catalog probe 2026-11-12, the same
+ *     nemotron family as the frozen text pin)
+ */
+const CODE_DEFAULT_GROQ_VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct";
+const CODE_DEFAULT_OPENROUTER_VISION_MODEL = "nvidia/nemotron-3.5-super-vl:free";
+const YML_GROQ_VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"; // literal
+const YML_OPENROUTER_VISION_MODEL = "nvidia/nemotron-3.5-super-vl:free"; // literal
+
 function envBool(v: string | undefined): boolean | undefined {
   if (v == null || v.trim() === "") return undefined;
   return v.trim().toLowerCase() === "true";
@@ -418,9 +440,24 @@ function parseNonNegative(v: string): number | undefined {
 
 export interface LlmChainPropertiesPort {
   mode: "PRODUCTION" | "TEST" | "LIVE";
-  groq: { enabled: boolean; apiKeys: string[]; baseUrl: string; model: string };
+  groq: {
+    enabled: boolean;
+    apiKeys: string[];
+    baseUrl: string;
+    model: string;
+    /** the optional vision slot (VISION-FB): off → no vision member at all. */
+    visionEnabled: boolean;
+    visionModel: string;
+  };
   gemini: { enabled: boolean; apiKeys: string[]; model: string };
-  openRouter: { enabled: boolean; apiKeys: string[]; baseUrl: string; model: string };
+  openRouter: {
+    enabled: boolean;
+    apiKeys: string[];
+    baseUrl: string;
+    model: string;
+    visionEnabled: boolean;
+    visionModel: string;
+  };
   chain: {
     timeoutSeconds: number;
     cooldownSeconds: number;
@@ -488,6 +525,8 @@ export function readLlmChainProperties(env: Record<string, string | undefined>):
   const mode =
     modeRaw === "test" ? ("TEST" as const) : modeRaw === "live" ? ("LIVE" as const) : ("PRODUCTION" as const);
   const ymlGroqModel = envStr(env.SYLLABAI_GROQ_MODEL) ?? YML_GROQ_MODEL_DEFAULT;
+  const ymlGroqVisionModel = envStr(env.SYLLABAI_GROQ_VISION_MODEL) ?? YML_GROQ_VISION_MODEL;
+  const ymlOpenRouterVisionModel = envStr(env.SYLLABAI_OPENROUTER_VISION_MODEL) ?? YML_OPENROUTER_VISION_MODEL;
   const ymlBudget =
     env.SYLLABAI_LLM_DAILY_BUDGET != null && env.SYLLABAI_LLM_DAILY_BUDGET.trim() !== ""
       ? (parseNonNegative(env.SYLLABAI_LLM_DAILY_BUDGET) ?? YML_DAILY_BUDGET_DEFAULT)
@@ -502,6 +541,10 @@ export function readLlmChainProperties(env: Record<string, string | undefined>):
       ),
       baseUrl: resolveString(env.SYLLABAI_LLM_GROQ_BASE_URL, YML_GROQ_BASE_URL, CODE_DEFAULT_GROQ_BASE_URL),
       model: resolveString(env.SYLLABAI_LLM_GROQ_MODEL, ymlGroqModel, CODE_DEFAULT_GROQ_MODEL),
+      // the VISION-FB slot: enabled bridges default true, model rides the
+      // three-layer law like every other model (relaxed binding > yml > record)
+      visionEnabled: resolveBool(env.SYLLABAI_LLM_GROQ_VISION_ENABLED, env.SYLLABAI_GROQ_VISION_ENABLED, true),
+      visionModel: resolveString(env.SYLLABAI_LLM_GROQ_VISION_MODEL, ymlGroqVisionModel, CODE_DEFAULT_GROQ_VISION_MODEL),
     },
     gemini: {
       enabled: resolveBool(env.SYLLABAI_LLM_GEMINI_ENABLED, env.SYLLABAI_GEMINI_ENABLED, true),
@@ -526,6 +569,16 @@ export function readLlmChainProperties(env: Record<string, string | undefined>):
         env.SYLLABAI_LLM_OPENROUTER_MODEL,
         YML_OPENROUTER_MODEL,
         CODE_DEFAULT_OPENROUTER_MODEL,
+      ),
+      visionEnabled: resolveBool(
+        env.SYLLABAI_LLM_OPENROUTER_VISION_ENABLED,
+        env.SYLLABAI_OPENROUTER_VISION_ENABLED,
+        true,
+      ),
+      visionModel: resolveString(
+        env.SYLLABAI_LLM_OPENROUTER_VISION_MODEL,
+        ymlOpenRouterVisionModel,
+        CODE_DEFAULT_OPENROUTER_VISION_MODEL,
       ),
     },
     chain: {
@@ -564,6 +617,21 @@ export function readLlmChainProperties(env: Record<string, string | undefined>):
  * when ONE provider's quota dies. Single-key boots are byte-identical
  * (the pool of one); the daily budget becomes per KEY (per-member),
  * which is the truer free-tier grain — disclosed in the DC8 card.
+ *
+ * VISION-FB AMENDMENT OF RECORD (operator directive 2026-11-12: "Add gemini
+ * and option for groq, openrouter free model fallback"): gemini stays the
+ * PRIMARY vision member of record (§26.1); groq and openrouter gain OPTIONAL
+ * vision slots — OpenAI-compatible members constructed mediaCapable=true on
+ * free vision models, riding the SAME provider keys and health laws. The
+ * vision members append at the chain TAIL: the text order stays exactly the
+ * frozen §26.1 loop, while the media routing filter (insertion order over
+ * supportsMedia() members) now walks gemini → groq-vision → openrouter-vision
+ * — the vision member of record first, the free-model fallbacks after it.
+ * The slots ride the provider's own enabled flag AND their own
+ * SYLLABAI_LLM_*_VISION_ENABLED (default true); the model re-pins via
+ * SYLLABAI_LLM_*_VISION_MODEL. A slot whose provider is disabled or keyless
+ * registers the dormant member exactly like its provider (the report stays
+ * the drift signal).
  */
 export function buildLlmChain(
   env: Record<string, string | undefined> = process.env,
@@ -645,6 +713,37 @@ export function buildLlmChain(
         ),
       props.openRouter.model,
       false,
+    ),
+    // ── the vision tail (VISION-FB amendment of record — see the javadoc):
+    // appended AFTER the three §26.1 providers so text order is untouched and
+    // media order becomes gemini → groq-vision → openrouter-vision. ──────────
+    ...register(
+      "groq-vision",
+      props.groq.enabled && props.groq.visionEnabled,
+      props.groq.apiKeys,
+      (key, memberName_) =>
+        new OpenAiCompatibleChainMember(
+          memberName_,
+          { apiKey: key, baseUrl: props.groq.baseUrl, model: props.groq.visionModel },
+          memberOpts,
+          true, // mediaCapable — the fallback transcription slot
+        ),
+      props.groq.visionModel,
+      true,
+    ),
+    ...register(
+      "openrouter-vision",
+      props.openRouter.enabled && props.openRouter.visionEnabled,
+      props.openRouter.apiKeys,
+      (key, memberName_) =>
+        new OpenAiCompatibleChainMember(
+          memberName_,
+          { apiKey: key, baseUrl: props.openRouter.baseUrl, model: props.openRouter.visionModel },
+          memberOpts,
+          true,
+        ),
+      props.openRouter.visionModel,
+      true,
     ),
   ]);
 }
