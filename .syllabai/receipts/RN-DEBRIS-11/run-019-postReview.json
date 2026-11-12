@@ -1,0 +1,23 @@
+{
+ "receipt": "rn11-run-019-postReview",
+ "family": "RN-DEBRIS-11",
+ "run": "019-postReview",
+ "kind": "self-review record before self-merge (PR #943) — the run-018 postReview flow",
+ "operatorOrder": "#943 self-merged",
+ "operatorTrace": "1a1ce6f0cd5820dd",
+ "generatedUtc": "2026-11-12",
+ "selfReviewFindings": {
+  "netDiff": "PR #943 files vs base 66ee3366: exactly the 4 filing paths — structural_filing_r0.json +292, run-019-structural-filing-r0.json +19, .syllabai/worklog.md +6, worklog.md +6 (API files assert); zero content/src/docs bytes",
+  "gates": "G0-G4 of record (rn19_filing_build.py, exits unmasked); worklog append-only byte law re-asserted at both worklogs",
+  "ciEvidence": "at fad826b1: verify SUCCESS, hub SUCCESS, Vercel Preview Comments SUCCESS (check-runs API); the postReview head goes to the sha-pinned PUT only after verify+hub success at THAT head (exit unmasked)",
+  "filingSpotCheck": "D1 21 points T7x12/T9x4/T10x5 (codes re-asserted vs the run-016 proposal); D2 5 byte-exact 8.1.x titles + 8.1.4f (vs the run-017 census subRows); D6 3 byte-exact 1.3.x titles (vs the run-018 adjudication PROPOSAL pins); D3/D4/D5 evidence pointers resolve in-tree",
+  "nothingApplied": "the filing packages desk decisions; it changes zero curriculum/spine/KG bytes — self-merge lands a filing, not a repair"
+ },
+ "raceGuardSync2": {
+  "window": "origin/main 66ee3366 -> f379233d during the open PR",
+  "mainDelta": "adr-044 run-006 enforcement-vantage ladder (ops script + workflow only: .github/workflows/editor-db-apply-0028.yml + scripts/editor-apply-0028.ts) — disjoint from the filing paths; clean auto-merge 8f63255e; both worklogs untouched by main (union state preserved byte-exact)",
+  "law": "fetch-first, no force, no rebase"
+ },
+ "mergePlan": "sha-pinned PUT /repos/SyllabAI/syllabai-v2/pulls/943/merge (merge_method=merge, sha=<the postReview head>) after verify+hub success at that head; on base move: re-sync, re-verify, re-pin; merge commit of record with the self-merge disclosure; no squash, no force",
+ "boundaries": "bookkeeping-only; zero content/src/docs bytes"
+}
