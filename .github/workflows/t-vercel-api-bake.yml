@@ -152,16 +152,55 @@ jobs:
           vercel link --yes --project "$API_PROJECT_NAME" --token="$VERCEL_BAKE_TOKEN"
 
       - name: Bake production (CLI deploy FROM THE GATED STAGE; source-tagged with main HEAD)
+        id: bake
         if: steps.prod.outputs.sha != steps.head.outputs.sha
         env:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
         run: |
           SHA="$(git rev-parse HEAD)"
           cd "$STAGE_DIR"
-          vercel deploy --prod --yes \
+          OUT="$(vercel deploy --prod --yes \
             --meta "githubCommitSha=$SHA" \
             --meta "githubCommitRef=main" \
-            --token="$VERCEL_BAKE_TOKEN"
+            --token="$VERCEL_BAKE_TOKEN")"
+          echo "$OUT"
+          URL="$(echo "$OUT" | grep -Eo 'https://syllabai-v2-[a-z0-9]+-[a-z0-9]+\.vercel\.app' | tail -1)"
+          if [ -z "$URL" ]; then echo "BAKE RED: no deployment URL in CLI output"; exit 1; fi
+          echo "baked deployment: $URL"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Promote onto the production domain (sticky-rollback law)
+        if: steps.bake.outputs.url != ''
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+        run: |
+          # run-002 receipt (2026-11-12): after the 2026-11-11 recovery the
+          # production domain was pinned by `vercel rollback` — and a Vercel
+          # rollback is STICKY: the newer READY production deployment
+          # (syllabai-v2-b0bkd6whv, READY @ the merge commit, first-hand
+          # probed 200 on its own URL) did NOT take api.syllab-ai.com
+          # automatically; the domain kept serving the pinned old build.
+          # Promotion forward is therefore an explicit bake step, idempotent
+          # (promoting an already-aliased deployment is a no-op success).
+          # Boot check on the deployment's OWN url first (real project env —
+          # the stage gate uses dummy envs): never promote a deployment that
+          # does not boot (the run-001 FUNCTION_INVOCATION_FAILED class).
+          sleep 5
+          OK=""
+          for i in 1 2 3 4 5 6; do
+            C=$(curl -s -o /tmp/boot.json -w "%{http_code}" "${{ steps.bake.outputs.url }}/actuator/health" || true)
+            if [ "$C" = "200" ] && grep -q '"status":"UP"' /tmp/boot.json; then
+              echo "boot GREEN on the baked deployment: ${{ steps.bake.outputs.url }}"
+              OK=1; break
+            fi
+            echo "boot probe $i: HTTP $C"
+            sleep 10
+          done
+          if [ -z "$OK" ]; then
+            echo "PROMOTE RED: the baked deployment does not boot on its own URL — refusing to promote"
+            exit 1
+          fi
+          vercel promote "${{ steps.bake.outputs.url }}" --yes --token="$VERCEL_BAKE_TOKEN"
 
       - name: Post-deploy serving proof (promotion sha + read-only live probe)
         if: steps.prod.outputs.sha != steps.head.outputs.sha
