@@ -271,6 +271,42 @@ export function smeRowOfQuestionSet(
   return first;
 }
 
+/**
+ * ADR-039 wave 8 — SME picker row for a REVISION NOTE: the row whose code
+ * embeds the note's corpus topicSlug, the same deterministic join the sets
+ * use (audited corpus-wide: on the 27 layered courses every note's topicSlug
+ * is a live picker topic slug — 1,479 officially-placed notes match their
+ * SME rows verbatim and the 598 unplaced ones bridge; zero leftovers). The
+ * trailing-hyphen normalization (strip ONE trailing "-" when the exact slug
+ * misses) is the wave-6 pinned variant law — it fires only where a corpus
+ * variant exists (AS PS1 "representation-of-data-", 4 notes). Duplicate
+ * suffixes disambiguate by the note's sectionSlug against smeSectionSlug
+ * (the wave-7 law). SELECTOR-VIEW ONLY: the sidebar, loose-notes and every
+ * other surface keep subtopicOfNote's official homes (this function never
+ * mutates them); courses without an SME layer return null.
+ */
+export function smeRowOfNote(note: RevisionNote, index: SpecTreeIndex): string | null {
+  const secs = index.tree.smeSections;
+  if (!secs || secs.length === 0 || !note.topicSlug) return null;
+  const slugs = [note.topicSlug];
+  if (note.topicSlug.endsWith("-")) slugs.push(note.topicSlug.slice(0, -1));
+  for (const slug of slugs) {
+    const want = `:${slug}`;
+    let first: string | null = null;
+    for (const sec of secs) {
+      for (const row of sec.subtopics) {
+        if (!row.code.endsWith(want)) continue;
+        if (first === null) first = row.code;
+        if (note.sectionSlug && sec.smeSectionSlug === note.sectionSlug) {
+          return row.code;
+        }
+      }
+    }
+    if (first !== null) return first;
+  }
+  return null;
+}
+
 /** "4CH1-1.10" sorts after "4CH1-1.9" — numeric, not lexical. */
 export function bySpecPointOrder(a: string, b: string): number {
   const [as, an] = a.split(".");
