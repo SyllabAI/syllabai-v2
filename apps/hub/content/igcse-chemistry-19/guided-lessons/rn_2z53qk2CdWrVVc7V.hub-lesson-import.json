@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_2z53qk2CdWrVVc7V",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "3d008dd076b42402adb7041c4218998b4c68edc5ff53765efd9a98624dcd9271",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "a570339001a0f6ea10352a253c7508978458e540718296a021c24f84cc7a7462",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_2z53qk2CdWrVVc7V",
@@ -15,16 +15,8 @@
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-6-carboxylic-acids/4-6-1-carboxylic-acids",
     "specAnchors": [
       {
-        "code": "4CH1-4.34C",
-        "text": "know that carboxylic acids contain the functional group"
-      },
-      {
         "code": "4CH1-4.35C",
         "text": "understand how to draw structural and displayed formulae for unbranched-chain carboxylic acids with up to four carbon atoms in the molecule, and name each compound"
-      },
-      {
-        "code": "4CH1-4.37C",
-        "text": "know that vinegar is an aqueous solution containing ethanoic acid"
       }
     ],
     "primer": {
@@ -40,7 +32,7 @@
           "Carboxylic acid functional group"
         ],
         "specRefs": [
-          "4CH1-4.34C"
+          "4CH1-4.35C"
         ],
         "opening": "Carboxylic acids are the family whose members carry the -COOH group at the end of a chain. This lesson fixes the functional group, the general formula and the trap inside the letter n, which counts only the alkyl chain and never the whole molecule.",
         "keyPoints": [
@@ -94,8 +86,7 @@
           "Naming carboxylic acids"
         ],
         "specRefs": [
-          "4CH1-4.35C",
-          "4CH1-4.37C"
+          "4CH1-4.35C"
         ],
         "opening": "Names follow the pattern alkan plus oic acid, so counting carbons is the whole skill. This lesson draws and names the first four unbranched members, then meets the most familiar one in the kitchen: vinegar, a watery mixture of ethanoic acid.",
         "keyPoints": [
@@ -103,7 +94,7 @@
           "The first four members are methanoic, ethanoic, propanoic and butanoic acid.",
           "Their formulae run HCOOH, CH3COOH, CH3CH2COOH and CH3CH2CH2COOH.",
           "Drawing an unbranched member means a straight chain with the -COOH at one end.",
-          "Vinegar is an aqueous solution of ethanoic acid at about 5 percent by volume."
+          "Vinegar consists of ethanoic acid dissolved in water, at about 5 percent by volume."
         ],
         "depthLayers": {
           "low": {
@@ -188,22 +179,22 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/564465104530-28940-carboxylic-acid-functional-group.png",
         "alt": "Diagram of the general structure of a carboxylic acid",
         "sourceHeading": "Carboxylic acid functional group",
-        "caption": "Diagram of the general structure of a carboxylic acid. The R- represents a varying hydrocarbon chain",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram of the general structure of a carboxylic acid. The R- represents a varying hydrocarbon chain"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/dcecb4049a1c-carboxylic-acids-the-first-four-1.png",
         "alt": "Diagram showing the displayed formula of the first four carboxylic acids",
         "sourceHeading": "Naming carboxylic acids",
-        "caption": "The structures and formulae of the first four carboxylic acids",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The structures and formulae of the first four carboxylic acids"
       }
     ]
   }

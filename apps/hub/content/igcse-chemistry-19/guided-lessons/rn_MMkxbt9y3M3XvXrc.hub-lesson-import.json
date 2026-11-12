@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_MMkxbt9y3M3XvXrc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8da00f2ac1ea6b5474ae677bbb7732dcbb7bfc2b298ae334b53a8bd09f903d5b",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "a84c897c86a402936f481093175136ac25691e675d4d53f19dcd5a70f2b40316",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_MMkxbt9y3M3XvXrc",
@@ -17,10 +17,6 @@
       {
         "code": "4CH1-2.26C",
         "text": "know that an alloy is a mixture of a metal and one or more elements, usually other metals or carbon"
-      },
-      {
-        "code": "4CH1-2.27C",
-        "text": "explain why alloys are harder than pure metals"
       }
     ],
     "primer": {
@@ -39,7 +35,7 @@
         ],
         "opening": "Alloys are mixtures: a metal combined with one or more other elements, usually other metals or carbon. Steel, for example, is iron mixed with carbon. The blend often behaves very differently from the metals inside it: it can be stronger and harder, and it resists corrosion and extreme temperatures better. These enhanced properties are why alloys often beat pure metals in real uses.",
         "keyPoints": [
-          "Alloys are mixtures: either several metals together, or a metal with a non-metal such as carbon.",
+          "Alloys are mixtures: several metals together, or a metal mixed with a non-metal such as carbon.",
           "Steel is made from iron mixed with carbon.",
           "Alloys are often stronger and harder than the metals they contain.",
           "Many alloys resist corrosion or withstand extreme temperatures.",
@@ -77,7 +73,8 @@
           "rn_MMkxbt9y3M3XvXrc::L1::Q7",
           "rn_MMkxbt9y3M3XvXrc::L1::Q8",
           "rn_MMkxbt9y3M3XvXrc::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_MMkxbt9y3M3XvXrc::L2",
@@ -86,7 +83,7 @@
           "Alloy structure"
         ],
         "specRefs": [
-          "4CH1-2.27C"
+          "4CH1-2.26C"
         ],
         "opening": "Pure metals pack their atoms into neat, regular rows, and those rows slide easily over one another when a force is applied. Alloying spoils the pattern: atoms of different sizes distort the regular arrangement, so the layers can no longer slip smoothly. That is why alloys are harder than the pure metals they come from.",
         "keyPoints": [
@@ -179,11 +176,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8fe0937b7071-structure-of-alloy.png",
         "alt": "Diagram to show the structure of an alloy",
         "sourceHeading": "Alloy structure",
-        "caption": "The regular arrangement of a metal lattice structure is distorted in alloys",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The regular arrangement of a metal lattice structure is distorted in alloys"
       }
     ]
   }

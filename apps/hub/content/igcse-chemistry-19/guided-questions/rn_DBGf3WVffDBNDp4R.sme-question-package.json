@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_DBGf3WVffDBNDp4R",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d664187abc8bf3c2d2923a550f84b967986df53bb59ab534b3148ba2d669518f",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "9ffcc7f2378718efa6e21415421287a4d3cd4207a717e53ce1182a06b3cfbaf7",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_DBGf3WVffDBNDp4R",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Ethene and bromine unchanged",
+          "correct": false,
+          "explanation": "The addition is fast and complete at room temperature.",
+          "misconception": "reactivity denied"
+        },
+        {
+          "key": "B",
           "text": "Dibromoethane, with one bromine on each carbon",
           "correct": true,
           "explanation": "C2H4Br2 carries one bromine per carbon across the opened double bond.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Bromoethane and hydrogen bromide",
           "correct": false,
           "explanation": "That pair would be a substitution pattern; no hydrogen leaves ethene here.",
           "misconception": "substitution products used"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Ethanol and water",
           "correct": false,
           "explanation": "Oxygen compounds belong to other chemistry entirely.",
           "misconception": "families crossed"
-        },
-        {
-          "key": "D",
-          "text": "Ethene and bromine unchanged",
-          "correct": false,
-          "explanation": "The addition is fast and complete at room temperature.",
-          "misconception": "reactivity denied"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because the openable double bond reacts without any light trigger",
-          "correct": true,
-          "explanation": "The C=C provides the reactive handle that alkanes lack, so no UV initiation is needed.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because UV light would stop the reaction",
-          "correct": false,
-          "explanation": "UV is simply unnecessary here, not an inhibitor.",
-          "misconception": "role inverted"
-        },
-        {
-          "key": "C",
           "text": "Because bromine produces its own light",
           "correct": false,
           "explanation": "Bromine water is just orange; no self-illumination exists.",
           "misconception": "nonsense criterion"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the reaction only happens in darkness",
           "correct": false,
           "explanation": "Light presence is irrelevant; the double bond does the work.",
           "misconception": "condition invented"
+        },
+        {
+          "key": "C",
+          "text": "Because the openable double bond reacts without any light trigger",
+          "correct": true,
+          "explanation": "The C=C provides the reactive handle that alkanes lack, so no UV initiation is needed.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because UV light would stop the reaction",
+          "correct": false,
+          "explanation": "UV is simply unnecessary here, not an inhibitor.",
+          "misconception": "role inverted"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "One, the dibromoalkane or equivalent dihalide",
-          "correct": true,
-          "explanation": "Everything that enters ends up inside the single addition product.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Two, as in the alkane substitution",
           "correct": false,
           "explanation": "Two products signal substitution; addition merges everything into one.",
           "misconception": "counts swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Three, one per bond broken",
           "correct": false,
           "explanation": "Only the double bond converts to singles; no third product appears.",
           "misconception": "count invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It depends on the alkene chain length",
           "correct": false,
           "explanation": "Chain length changes the formula, never the single-product pattern.",
           "misconception": "variable count claimed"
+        },
+        {
+          "key": "D",
+          "text": "One, the dibromoalkane or equivalent dihalide",
+          "correct": true,
+          "explanation": "Everything that enters ends up inside the single addition product.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "The double bond opens and bromine adds across it to give dibromoethane, with one bromine atom on each of the two carbons.",
       "keywords": [
-        "dibromoethane"
+        "dibromoethane",
+        "reaction",
+        "bromine"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "Alkenes undergo addition reactions, with atoms adding across the C=C double bond.",
       "keywords": [
-        "addition"
+        "addition",
+        "reactions",
+        "reaction"
       ],
       "options": []
     },
@@ -224,7 +228,8 @@
       "modelAnswer": "Both bromine atoms join the molecule, one bonding to each of the two carbons of the old double bond, so a single dibromoalkane molecule is the only product.",
       "keywords": [
         "carbons",
-        "both"
+        "both",
+        "dibromoalkane"
       ],
       "options": []
     },
@@ -236,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "The halogen adds across the C=C in the same way, giving dichloropropane with one chlorine on each double-bond carbon.",
       "keywords": [
-        "dichloropropane"
+        "dichloropropane",
+        "chlorine",
+        "halogen"
       ],
       "options": []
     },
@@ -248,31 +255,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because it is safer and easier to handle than bromine",
+          "text": "Because bromine is colourless on its own",
+          "correct": false,
+          "explanation": "Bromine is strongly coloured; that is where the test colour comes from.",
+          "misconception": "colour misattributed"
+        },
+        {
+          "key": "B",
+          "text": "Because it is less hazardous and simpler to handle than bromine",
           "correct": true,
           "explanation": "The note gives safety and ease of handling as the reasons for the aqueous form.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because pure bromine cannot react with alkenes",
           "correct": false,
           "explanation": "Pure bromine reacts even faster; the water form is chosen for safety.",
           "misconception": "reactivity inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because water is needed as a catalyst",
           "correct": false,
           "explanation": "Water is a solvent here, not a catalyst.",
           "misconception": "role misassigned"
-        },
-        {
-          "key": "D",
-          "text": "Because bromine is colourless on its own",
-          "correct": false,
-          "explanation": "Bromine is strongly coloured; that is where the test colour comes from.",
-          "misconception": "colour misattributed"
         }
       ]
     },
@@ -284,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The solution stays orange",
-          "correct": true,
-          "explanation": "With no C=C bond available, the bromine remains free in solution and coloured.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The solution decolourises immediately",
-          "correct": false,
-          "explanation": "Decolourising is the alkene outcome; the alkane cannot accept the bromine.",
-          "misconception": "outcomes swapped"
-        },
-        {
-          "key": "C",
           "text": "The mixture turns blue",
           "correct": false,
           "explanation": "No blue species forms in this test at any point.",
           "misconception": "colour invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The bromine water boils off",
           "correct": false,
           "explanation": "Gentle shaking causes no boiling; the observation is about colour.",
           "misconception": "observation invented"
+        },
+        {
+          "key": "C",
+          "text": "The solution stays orange",
+          "correct": true,
+          "explanation": "With no C=C bond available, the bromine remains free in solution and coloured.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The solution decolourises immediately",
+          "correct": false,
+          "explanation": "Decolourising is the alkene outcome; the alkane cannot accept the bromine.",
+          "misconception": "outcomes swapped"
         }
       ]
     },
@@ -320,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The bromine atoms add across the C=C bond, leaving no free bromine in solution",
-          "correct": true,
-          "explanation": "Consumed bromine cannot colour the solution, so the orange fades away.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The alkene bleaches the water by dilution",
           "correct": false,
           "explanation": "Dilution does not consume the bromine; the addition reaction does.",
           "misconception": "dilution claimed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The alkene burns the bromine away",
           "correct": false,
           "explanation": "Nothing burns; no oxygen or flame is involved.",
           "misconception": "combustion imported"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The colour sinks to the bottom as a solid",
           "correct": false,
           "explanation": "The bromine becomes bonded into the organic molecule, not a precipitate.",
           "misconception": "precipitate imagined"
+        },
+        {
+          "key": "D",
+          "text": "Both bromine atoms attach themselves across the C=C bond, leaving no free bromine in solution",
+          "correct": true,
+          "explanation": "Consumed bromine cannot colour the solution, so the orange fades away.",
+          "misconception": null
         }
       ]
     },
@@ -392,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because alkanes repel bromine strongly",
+          "correct": false,
+          "explanation": "Alkanes do not repel bromine; they simply offer no bond to react with.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
           "text": "The double bond has high electron density that invites attack and can open",
           "correct": true,
           "explanation": "The exam hint ties alkene reactivity to the electron-rich, openable double bond.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because alkenes are smaller molecules",
           "correct": false,
           "explanation": "Size is not the driver; the bonding is.",
           "misconception": "size blamed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because alkenes dissolve bromine water better",
           "correct": false,
           "explanation": "Solubility is not the chemistry; addition across C=C is.",
           "misconception": "solubility blamed"
-        },
-        {
-          "key": "D",
-          "text": "Because alkanes repel bromine strongly",
-          "correct": false,
-          "explanation": "Alkanes do not repel bromine; they simply offer no bond to react with.",
-          "misconception": "mechanism invented"
         }
       ]
     },
@@ -428,7 +435,9 @@
       "kind": "recall",
       "modelAnswer": "Bromine water is an orange solution that is safer to handle than bromine itself.",
       "keywords": [
-        "safer"
+        "safer",
+        "solution",
+        "bromine"
       ],
       "options": []
     },
@@ -440,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "It stays orange, because the alkane offers no C=C bond for the bromine to add across.",
       "keywords": [
-        "orange"
+        "orange",
+        "because",
+        "bromine"
       ],
       "options": []
     },
@@ -452,7 +463,9 @@
       "kind": "explain-why",
       "modelAnswer": "The bromine atoms bond to the two carbons of the double bond, so no free bromine remains dissolved in the water and the orange colour disappears.",
       "keywords": [
-        "free"
+        "free",
+        "disappears",
+        "dissolved"
       ],
       "options": []
     },
@@ -465,7 +478,8 @@
       "modelAnswer": "Shake a little bromine water with each: the alkane leaves the mixture orange, while the alkene decolourises it as bromine adds across its C=C, so the tube that fades identifies hexene.",
       "keywords": [
         "fades",
-        "decolourises"
+        "decolourises",
+        "identifies"
       ],
       "options": []
     }

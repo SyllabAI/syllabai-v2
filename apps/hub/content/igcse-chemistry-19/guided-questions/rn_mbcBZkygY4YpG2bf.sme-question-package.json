@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_mbcBZkygY4YpG2bf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ecdfbd30b3785a81c9aec5b37e6b9dc0d4b02c668e533c1e1b0a52f6982a3353",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "6dd6c52fa0a8d623b052bdddd52b38631721ecd02b12cb6126fd81bf565358c9",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_mbcBZkygY4YpG2bf",
   "subject": "igcse-chemistry",
@@ -14,7 +14,7 @@
     {
       "id": "rn_mbcBZkygY4YpG2bf::L1::Q1",
       "moduleId": "rn_mbcBZkygY4YpG2bf::L1",
-      "stem": "What is an ion?",
+      "stem": "What is an ion, in terms of atoms and electric charge?",
       "misconceptionClass": "definition error",
       "options": [
         {
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To become electrically neutral",
+          "correct": false,
+          "explanation": "Neutral is the starting point; the whole point of the trade is ending up charged.",
+          "misconception": "direction of change reversed"
+        },
+        {
+          "key": "B",
           "text": "To reach a full outer shell of electrons",
           "correct": true,
           "explanation": "The full outer shell is the stable target; the charge is the side effect.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To turn into a noble gas element",
           "correct": false,
           "explanation": "The electronic structure matches a noble gas, but the particle stays the same element.",
           "misconception": "element identity confused"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To balance the protons in the nucleus",
           "correct": false,
           "explanation": "The proton count never changes during ion forming.",
           "misconception": "proton balancing invented"
-        },
-        {
-          "key": "D",
-          "text": "To become electrically neutral",
-          "correct": false,
-          "explanation": "Neutral is the starting point; the whole point of the trade is ending up charged.",
-          "misconception": "direction of change reversed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Neon",
-          "correct": true,
-          "explanation": "Sodium at 2,8,1 drops to 2,8 - neon's own arrangement.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Helium",
-          "correct": false,
-          "explanation": "Helium holds only 2 electrons; sodium's ion keeps two full shells beneath.",
-          "misconception": "smallest noble gas chosen"
-        },
-        {
-          "key": "C",
           "text": "Argon",
           "correct": false,
           "explanation": "Argon sits at 2,8,8; sodium's ion has one shell fewer than that.",
           "misconception": "same-period noble gas chosen"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Krypton",
           "correct": false,
           "explanation": "Krypton is two shells larger still; nothing in sodium's loss reaches it.",
           "misconception": "random noble gas picked"
+        },
+        {
+          "key": "C",
+          "text": "Neon",
+          "correct": true,
+          "explanation": "Sodium at 2,8,1 drops to 2,8 - neon's own arrangement.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Helium",
+          "correct": false,
+          "explanation": "Helium holds only 2 electrons; sodium's ion keeps two full shells beneath.",
+          "misconception": "smallest noble gas chosen"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "All metals lose electrons; all non-metals gain them",
-          "correct": true,
-          "explanation": "The note states the rule without exceptions: metals lose, non-metals gain.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Metals gain and non-metals lose",
           "correct": false,
           "explanation": "Backwards - the losing side is always the metal.",
           "misconception": "roles reversed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Both lose electrons at the same time",
           "correct": false,
           "explanation": "If both lost, neither could accept; the exchange needs one giver and one taker.",
           "misconception": "one-way traffic assumed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Only some metals take part",
           "correct": false,
           "explanation": "The rule is all metals - there are no bystander metals here.",
           "misconception": "scope narrowed"
+        },
+        {
+          "key": "D",
+          "text": "All metals lose electrons; all non-metals gain them",
+          "correct": true,
+          "explanation": "The note states the rule without exceptions: metals lose, non-metals gain.",
+          "misconception": null
         }
       ]
     },
@@ -214,11 +214,9 @@
       "modelAnswer": "Every metal atom loses electrons and becomes a positive ion; every non-metal gains electrons and becomes a negative ion.",
       "keywords": [
         "metal",
-        "metals",
         "loses",
         "lose",
         "positive",
-        "nonmetal",
         "non-metal",
         "gains",
         "gain",
@@ -267,31 +265,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A neutral atom with a full outer shell",
+          "correct": false,
+          "explanation": "A full outer shell often follows ion forming, but the particle is charged, not neutral.",
+          "misconception": "charge dropped"
+        },
+        {
+          "key": "B",
           "text": "A negative ion with more electrons than protons",
           "correct": true,
           "explanation": "Gaining electrons tips the balance negative; the extra electrons make the anion.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A positive ion with more protons than electrons",
           "correct": false,
           "explanation": "That describes a cation - the name swap catches learners who mix the two labels.",
           "misconception": "cation and anion names swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "An atom that has gained protons",
           "correct": false,
           "explanation": "Protons never transfer between atoms; only electrons move when ions form.",
           "misconception": "protons assumed mobile"
-        },
-        {
-          "key": "D",
-          "text": "A neutral atom with a full outer shell",
-          "correct": false,
-          "explanation": "A full outer shell often follows ion forming, but the particle is charged, not neutral.",
-          "misconception": "charge dropped"
         }
       ]
     },
@@ -303,31 +301,31 @@
       "options": [
         {
           "key": "A",
-          "text": "They lose electrons and become positive ions",
-          "correct": true,
-          "explanation": "Every metal loses electrons; shedding them leaves more protons than electrons.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "They gain electrons and become negative ions",
-          "correct": false,
-          "explanation": "That is the non-metal route; metals sit on the losing side.",
-          "misconception": "metal and non-metal roles reversed"
-        },
-        {
-          "key": "C",
           "text": "They share electrons with non-metals",
           "correct": false,
           "explanation": "Sharing belongs to covalent bonding, a different subtopic.",
           "misconception": "covalent behaviour imported"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "They stay neutral because metals are stable",
           "correct": false,
           "explanation": "Metals do not keep their outer electrons; they hand them over and charge up.",
           "misconception": "reactivity misread as stability"
+        },
+        {
+          "key": "C",
+          "text": "They lose electrons and become positive ions",
+          "correct": true,
+          "explanation": "Every metal loses electrons; shedding them leaves more protons than electrons.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "They gain electrons and become negative ions",
+          "correct": false,
+          "explanation": "That is the non-metal route; metals sit on the losing side.",
+          "misconception": "metal and non-metal roles reversed"
         }
       ]
     },
@@ -339,31 +337,31 @@
       "options": [
         {
           "key": "A",
-          "text": "2+",
-          "correct": true,
-          "explanation": "Each lost electron adds one positive unit: two electrons lost, so 2+.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "2-",
           "correct": false,
           "explanation": "The negative sign belongs to gains; losing electrons cannot leave a negative charge.",
           "misconception": "gain/loss sign inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "1+",
           "correct": false,
           "explanation": "The count is two lost electrons, not one; the charge counts every electron moved.",
           "misconception": "one electron assumed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "0",
           "correct": false,
           "explanation": "Losing electrons always leaves a charge; neutrality belonged to the atom before the loss.",
           "misconception": "charge ignored"
+        },
+        {
+          "key": "D",
+          "text": "2+",
+          "correct": true,
+          "explanation": "Each lost electron adds one positive unit: two electrons lost, so 2+.",
+          "misconception": null
         }
       ]
     },
@@ -411,31 +409,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It loses its whole outer shell",
+          "correct": false,
+          "explanation": "Shells are not discarded; electrons are transferred one or two at a time.",
+          "misconception": "shell removal invented"
+        },
+        {
+          "key": "B",
           "text": "It gains 1 electron and becomes Cl-",
           "correct": true,
           "explanation": "Non-metals gain; one electron in gives the chloride ion its 1- charge.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It loses 1 electron and becomes Cl+",
           "correct": false,
           "explanation": "Losing is the metal behaviour; chlorine takes the gaining route.",
           "misconception": "metal behaviour applied to a non-metal"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It gains 7 electrons",
           "correct": false,
           "explanation": "Filling the shell needs one electron, not seven; the last shell is one short.",
           "misconception": "gap size miscounted"
-        },
-        {
-          "key": "D",
-          "text": "It loses its whole outer shell",
-          "correct": false,
-          "explanation": "Shells are not discarded; electrons are transferred one or two at a time.",
-          "misconception": "shell removal invented"
         }
       ]
     },
@@ -500,10 +498,8 @@
       "modelAnswer": "Aluminium is the cation at 3+ (a Group 3 metal donating its three outer electrons); sulfur is the anion at 2- (a Group 6 non-metal receiving two electrons).",
       "keywords": [
         "aluminium",
-        "aluminum",
         "cation",
         "sulfur",
-        "sulphur",
         "anion"
       ],
       "options": []

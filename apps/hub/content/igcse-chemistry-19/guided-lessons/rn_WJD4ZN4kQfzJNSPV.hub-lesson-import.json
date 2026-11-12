@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_WJD4ZN4kQfzJNSPV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cefbde0ee618b67a47c34ebe30f2a29011d36b4aa4011290aa7d6295f43d37e7",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "e849dc8f2b72c1d6f82a1b48c98df7625eed855988598b7ae9633e4da4b7885f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_WJD4ZN4kQfzJNSPV",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Gases in the Atmosphere",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-3-gases-in-the-atmosphere/2-3-2-practical-determine-the--of-oxygen-in-air",
     "specAnchors": [
-      {
-        "code": "4CH1-2.10",
-        "text": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals (e.g. iron) and non-metals (e.g. phosphorus) with air"
-      },
       {
         "code": "4CH1-2.14",
         "text": "practical: determine the approximate percentage by volume of oxygen in air using a metal or a non-metal"
@@ -36,8 +32,7 @@
           "Method"
         ],
         "specRefs": [
-          "4CH1-2.14",
-          "4CH1-2.10"
+          "4CH1-2.14"
         ],
         "opening": "This practical determines how much of the air is oxygen, using the oxidation of iron as the measuring reaction. A piece of iron wool sits at the bottom of a burette filled with water, and the tube stands upside down in a trough, held upright by a clamp. Over several days the iron slowly uses up the oxygen inside, and the water level climbs to record exactly how much gas has gone.",
         "keyPoints": [
@@ -79,6 +74,9 @@
           "rn_WJD4ZN4kQfzJNSPV::L1::Q7",
           "rn_WJD4ZN4kQfzJNSPV::L1::Q8",
           "rn_WJD4ZN4kQfzJNSPV::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -89,7 +87,6 @@
           "Calculation"
         ],
         "specRefs": [
-          "4CH1-2.10",
           "4CH1-2.14"
         ],
         "opening": "The recorded readings are the 3.8 mL between the 50 mL mark and the tap, an initial water level of 2.6 mL and a final water level of 12.7 mL. From these, the starting air volume, the final air volume and the oxygen volume follow in turn. Dividing the oxygen volume by the starting air volume and scaling up gives the percentage of oxygen in the air.",
@@ -132,7 +129,8 @@
           "rn_WJD4ZN4kQfzJNSPV::L2::Q7",
           "rn_WJD4ZN4kQfzJNSPV::L2::Q8",
           "rn_WJD4ZN4kQfzJNSPV::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -180,10 +178,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7034d031be6a-investigating-percentage-of-oxygen-in-air.png",
         "alt": "Investigating-Percentage-of-Oxygen-in-Air, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Apparatus to measure the percentage of oxygen in the atmosphere",
-        "caption": "Apparatus to determine the percentage of oxygen in the air",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Apparatus to determine the percentage of oxygen in the air"
       }
     ]
   }

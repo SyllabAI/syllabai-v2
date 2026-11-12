@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_8Nv33F4dD3kkZnY6",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e409cdb01de30f7c3b105ecfcc5ea0f3c4369efc818688c79fdaaca00f61657e",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "670a4fa16274baac0fe2bbf1ee3fd6e9a4a8e7a7072930c8510a7d2936cd552e",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_8Nv33F4dD3kkZnY6",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It does nothing, being already stable",
+          "correct": false,
+          "explanation": "A shell short of a full set is not complete, so the atom reacts.",
+          "misconception": "stability assumed"
+        },
+        {
+          "key": "B",
           "text": "It donates the electrons and becomes a positive ion",
           "correct": true,
           "explanation": "Fewer than four means giving is easier, and giving leaves a positive charge.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It receives electrons and becomes a negative ion",
           "correct": false,
           "explanation": "Receiving suits atoms already past four; this atom sits below the hinge.",
           "misconception": "hinge rule reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It shares electrons to fill the shell",
           "correct": false,
           "explanation": "Sharing belongs to covalent bonding; charge deduction here assumes transfer.",
           "misconception": "covalent sharing imported"
-        },
-        {
-          "key": "D",
-          "text": "It does nothing, being already stable",
-          "correct": false,
-          "explanation": "A shell short of a full set is not complete, so the atom reacts.",
-          "misconception": "stability assumed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "2+",
-          "correct": true,
-          "explanation": "Two outer electrons donated leaves the ion two units positive.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "2-",
-          "correct": false,
-          "explanation": "The negative sign belongs to receivers; group 2 metals donate.",
-          "misconception": "sign flipped"
-        },
-        {
-          "key": "C",
           "text": "1+",
           "correct": false,
           "explanation": "That is group 1's charge; group 2 donates two electrons.",
           "misconception": "group 1 charge copied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "3+",
           "correct": false,
           "explanation": "Three is the group 3 pattern; this row donates only two.",
           "misconception": "group 3 charge copied"
+        },
+        {
+          "key": "C",
+          "text": "2+",
+          "correct": true,
+          "explanation": "Two outer electrons donated leaves the ion two units positive.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "2-",
+          "correct": false,
+          "explanation": "The negative sign belongs to receivers; group 2 metals donate.",
+          "misconception": "sign flipped"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "2-",
-          "correct": true,
-          "explanation": "Six outer electrons means two short of a full shell, so two arrive and the charge is 2-.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "2+",
           "correct": false,
           "explanation": "Non-metals receive rather than donate, so the sign stays negative.",
           "misconception": "metal behaviour applied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "6-",
           "correct": false,
           "explanation": "The group number is not the charge; only the gap to a full shell counts.",
           "misconception": "group number read as charge"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "1-",
           "correct": false,
           "explanation": "That is group 7's pattern; group 6 needs two electrons.",
           "misconception": "group 7 pattern copied"
+        },
+        {
+          "key": "D",
+          "text": "2-",
+          "correct": true,
+          "explanation": "Six outer electrons means two short of a full shell, so two arrive and the charge is 2-.",
+          "misconception": null
         }
       ]
     },
@@ -203,7 +203,6 @@
         "more",
         "one",
         "element",
-        "elements",
         "formula",
         "learned",
         "learn"
@@ -221,7 +220,6 @@
         "positive",
         "donate",
         "donates",
-        "donated",
         "outer"
       ],
       "options": []
@@ -236,8 +234,6 @@
       "keywords": [
         "receives",
         "receive",
-        "gains",
-        "gain",
         "seven",
         "7",
         "extra",
@@ -267,31 +263,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Ag-",
+          "correct": false,
+          "explanation": "Silver is a metal, and metals appear on the positive side only.",
+          "misconception": "metal placed on negative side"
+        },
+        {
+          "key": "B",
           "text": "Ag+",
           "correct": true,
           "explanation": "Silver sits outside the group rules with its own fixed charge of 1+.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Ag2+",
           "correct": false,
           "explanation": "A 2+ pattern from nearby metals does not transfer to silver.",
           "misconception": "2+ pattern over-applied"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Ag3+",
           "correct": false,
           "explanation": "No table row gives silver a 3+; its charge is fixed at 1+.",
           "misconception": "charge invented"
-        },
-        {
-          "key": "D",
-          "text": "Ag-",
-          "correct": false,
-          "explanation": "Silver is a metal, and metals appear on the positive side only.",
-          "misconception": "metal placed on negative side"
         }
       ]
     },
@@ -303,31 +299,31 @@
       "options": [
         {
           "key": "A",
-          "text": "2+ and 3+",
-          "correct": true,
-          "explanation": "Iron(II) is Fe2+ and iron(III) is Fe3+; both rows are assumed knowledge.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "1+ and 2+",
-          "correct": false,
-          "explanation": "No row shows iron at 1+; the pair is 2+ with 3+.",
-          "misconception": "wrong pair recalled"
-        },
-        {
-          "key": "C",
           "text": "2+ only",
           "correct": false,
           "explanation": "Dropping the iron(III) row loses half the pair.",
           "misconception": "one row only"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "2- and 3-",
           "correct": false,
           "explanation": "Negative signs belong to the non-metal and compound-ion side.",
           "misconception": "sign flipped"
+        },
+        {
+          "key": "C",
+          "text": "2+ and 3+",
+          "correct": true,
+          "explanation": "Iron(II) is Fe2+ and iron(III) is Fe3+; both rows are assumed knowledge.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "1+ and 2+",
+          "correct": false,
+          "explanation": "No row shows iron at 1+; the pair is 2+ with 3+.",
+          "misconception": "wrong pair recalled"
         }
       ]
     },
@@ -339,31 +335,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Zn2+",
-          "correct": true,
-          "explanation": "The table lists Zinc(II) at 2+, one fixed charge.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Zn+",
           "correct": false,
           "explanation": "Zinc does not follow the group 1 pattern; it is a named metal at 2+.",
           "misconception": "group pattern misapplied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Zn3+",
           "correct": false,
           "explanation": "That is the group 3 pattern, not zinc's.",
           "misconception": "group 3 pattern copied"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Zn2-",
           "correct": false,
           "explanation": "Zinc sits on the positive side; the negative sign cannot apply.",
           "misconception": "sign flipped"
+        },
+        {
+          "key": "D",
+          "text": "Zn2+",
+          "correct": true,
+          "explanation": "The table lists Zinc(II) at 2+, one fixed charge.",
+          "misconception": null
         }
       ]
     },
@@ -411,31 +407,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Ammonium NH4 2+ and carbonate CO3-",
+          "correct": false,
+          "explanation": "Ammonium carries a single positive charge, and carbonate carries 2-, so both halves are wrong here.",
+          "misconception": "both rows misremembered"
+        },
+        {
+          "key": "B",
           "text": "Ammonium NH4+ and carbonate CO3 2-",
           "correct": true,
           "explanation": "Both rows come straight from the tables: ammonium positive at 1+, carbonate negative at 2-.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Ammonium NH4- and carbonate CO3 2+",
           "correct": false,
           "explanation": "Both signs are backwards: ammonium is the positive one, carbonate the negative.",
           "misconception": "charges swapped between the pair"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Ammonium NH3+ and carbonate CO3-",
           "correct": false,
           "explanation": "The ammonium subscript is 4, and carbonate's charge is 2-, not 1-.",
           "misconception": "subscript and charge dropped"
-        },
-        {
-          "key": "D",
-          "text": "Ammonium NH4 2+ and carbonate CO3-",
-          "correct": false,
-          "explanation": "Ammonium carries a single positive charge, and carbonate carries 2-, so both halves are wrong here.",
-          "misconception": "both rows misremembered"
         }
       ]
     },
@@ -445,14 +441,13 @@
       "stem": "Name the five compound ions the table says to know, with their charges.",
       "misconceptionClass": "compound ion table recall",
       "kind": "recall",
-      "modelAnswer": "Hydroxide OH-, ammonium NH4+, carbonate CO3 2-, nitrate NO3- and sulfate SO4 2-.",
+      "modelAnswer": "Hydroxide OH-, ammonium NH4+, carbonate CO3 2-, sulfate SO4 2- and nitrate NO3-.",
       "keywords": [
         "hydroxide",
         "ammonium",
         "carbonate",
         "nitrate",
         "sulfate",
-        "sulphate",
         "oh",
         "nh4",
         "co3",
@@ -470,7 +465,8 @@
       "modelAnswer": "H+, alongside the metal ions.",
       "keywords": [
         "h+",
-        "hydrogen"
+        "hydrogen",
+        "alongside"
       ],
       "options": []
     },

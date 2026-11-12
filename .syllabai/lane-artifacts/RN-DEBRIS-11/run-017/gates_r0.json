@@ -1,0 +1,37 @@
+{
+ "artifact": "rn11-run-017-gates-r0",
+ "base": "origin/main d89ad574 (fetch-first race-guard; run-017 number collision-free at tip — runs 001-016 of record; no lane branch of record for 017)",
+ "gates": {
+  "G0_fileScope": {
+   "data": [
+    "apps/hub/content/cie-igcse-computer-science-23/curriculum.json",
+    "apps/hub/spines/cie-igcse-computer-science-23.json",
+    "apps/hub/public/kg/data/cie-igcse-computer-science-23.json"
+   ],
+   "diffShape": "22 title sites exactly: numstat 11/11 (curriculum, indent=1 preserved) + 1/1 (spine, compact single-line) + 1/1 (KG, compact single-line); zero non-title bytes",
+   "notTouched": ["manifest.json (counts 88/88 unchanged — title-only law)", "prerequisites.json (code-anchored, untouched)", "notes/questions/flashcards/concept-graph/learner-sim/content-maps (no point-title mirrors — verified)", "_validation.json (validator refreshed, byte-identical to HEAD, fails=[])"]
+  },
+  "G1_serializers": "curriculum indent=1 + newline (run-016 dump law); spine & KG compact single-line with trailing-newline preserved; byte-exactness PROVEN: output == pre-apply bytes with exactly the 11 title strings swapped (assert exp==out both planes)",
+  "G2_titleSites": "11 codes x 2 planes; old/new sha256 per site in apply_manifest_r0.json; pre-state planes byte-equal (sweep-invisible class confirmed live)",
+  "G3_structure": "content nodes 120/120, spine nodes 120/120, SPEC_POINTs 88/88, edges unchanged, TOPIC/SUBTOPIC census unchanged; manifest counts untouched",
+  "G4_kgRegen": "kg_export.export_course regen: 120 nodes / 210 edges / 88 points; deep-equal ex-generatedUtc PASS; all 11 official titles carried in points[].text",
+  "G6_sweeps": "control-char sweep across all 88+88 point titles post-apply: 0 hits (the 11 BEL carriers eliminated); notes-vocabulary leak detectors ('Including', 'Limited to', 'e.g.', 'i.e.', 'such as', 'Candidates will not', 'A packet of data contains', 'See section 4') on the 11 new titles: 0 hits",
+  "G7_collision": "run-017 free of record at base tip d89ad574 (receipts run-001..run-016; re-verified post-fetch this run)",
+  "GV1_validators": {
+   "validate_spines.py": "exit 0 UNMASKED (statement_diff_count 0)",
+   "validate_cie_bundles.ts": "exit 0 (CIE VALIDATOR PASSED)",
+   "validate_gradeb_bundle.ts": "exit 0 (after bun install --frozen-lockfile in the recycled sandbox — the first exit 1 was module resolution 'Cannot find package zod', not a validation failure; same disclosure class as run-016)",
+   "verify_corpus_23a.ts": "exit 0 — CORPUS GATE PASSED",
+   "verify_flashcard_sync_courses.ts": "exit 0",
+   "verify_subject_identity.ts": "exit 0 — PASS 106/106"
+  }
+ },
+ "antiTruncationAsserts": [
+  "census artifact is the ONLY new-title byte source (apply refuses without it)",
+  "pre-state: all 11 old titles byte-matched live + BEL present on the 10 interleave carriers + planes byte-equal",
+  "post-state: all 11 new titles byte-match census on both planes and in KG points[].text",
+  "byte-exact scope: written bytes == pre-apply bytes + exactly the 11 title swaps (both planes)",
+  "structure: zero node/edge/count drift",
+  "GV1 six validator exits captured direct (no pipeline masking — run-016 lane lesson honored)"
+ ]
+}

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_gBGX339WBpwyCrFF",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "428b79fbc55b241dcf9d565b831fca6944c4b48f94659e9455722360e6cd8138",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "edbb05ff1322c107cad1a4f84e9f4bbe656a193ce8c02ea78f036ba6a15bc374",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_gBGX339WBpwyCrFF",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-2.16",
-        "text": "understand how metals can be arranged in a reactivity series based on their displacement reactions between: metals and metal oxides; metals and aqueous solutions of metal salts"
+        "text": "understand how metals can be arranged in a reactivity series based on their displacement reactions between: • metals and metal oxides • metals and aqueous solutions of metal salts."
       }
     ],
     "primer": {
@@ -74,7 +74,8 @@
           "rn_gBGX339WBpwyCrFF::L1::Q7",
           "rn_gBGX339WBpwyCrFF::L1::Q8",
           "rn_gBGX339WBpwyCrFF::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_gBGX339WBpwyCrFF::L2",
@@ -126,6 +127,9 @@
           "rn_gBGX339WBpwyCrFF::L2::Q7",
           "rn_gBGX339WBpwyCrFF::L2::Q8",
           "rn_gBGX339WBpwyCrFF::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -173,10 +177,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6a40153e8404-magnesium-copper-displacement-igcse-and-gcse-che.png",
         "alt": "Magnesium-copper displacement, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Displacement reaction between magnesium and copper(II) sulfate",
-        "caption": "Diagram showing the colour change when magnesium displaces copper from copper(II) sulfate",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Displacement reactions between metals & aqueous solutions of metal salts",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the colour change when magnesium displaces copper from copper(II) sulfate"
       }
     ]
   }

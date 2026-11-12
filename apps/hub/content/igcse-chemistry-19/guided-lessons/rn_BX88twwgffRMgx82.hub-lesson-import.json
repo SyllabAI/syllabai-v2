@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_BX88twwgffRMgx82",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9b83fbbb989a2bd769da23fa1d67d7157a2e022b7b379ac494b47dc18b860817",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "98eca681d518a548aafaf1aa30e5aecbcf25fa11fc882657515dbd4618beabf3",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_BX88twwgffRMgx82",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Reactivity Series",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-6-practical-investigate-metals-reacting-with-acids",
     "specAnchors": [
-      {
-        "code": "4CH1-2.15",
-        "text": "understand how metals can be arranged in a reactivity series based on their reactions with: water; dilute hydrochloric or sulfuric acid"
-      },
       {
         "code": "4CH1-2.21",
         "text": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)"
@@ -38,7 +34,7 @@
         "specRefs": [
           "4CH1-2.21"
         ],
-        "opening": "This practical investigates the reactions between dilute hydrochloric and sulfuric acids and the metals magnesium, iron and zinc. Equal volumes of acid go into three test tubes, a small piece of each metal is added, and any gas given off is tested with a lighted splint. Safety glasses are worn throughout because the acids are being handled directly.",
+        "opening": "This practical investigates how dilute hydrochloric and sulfuric acids react with the metals magnesium, iron and zinc. Equal volumes of acid go into three test tubes, a small piece of each metal is added, and any gas given off is tested with a lighted splint. Safety glasses are worn throughout because the acids are being handled directly.",
         "keyPoints": [
           "Five cm3 of dilute acid is measured into each of three test tubes.",
           "A length of magnesium ribbon, iron filings and zinc turnings go into separate tubes.",
@@ -78,6 +74,9 @@
           "rn_BX88twwgffRMgx82::L1::Q7",
           "rn_BX88twwgffRMgx82::L1::Q8",
           "rn_BX88twwgffRMgx82::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -88,7 +87,6 @@
           "Conclusion"
         ],
         "specRefs": [
-          "4CH1-2.15",
           "4CH1-2.21"
         ],
         "opening": "The results show magnesium dissolving quickly with rapid bubbling and heat, zinc reacting steadily, and iron giving only slow bubbles, with the same story in both acids. Ranking the vigour of the reactions places the metals as Mg > Zn > Fe. In every positive reaction the products are hydrogen gas and a solution of the metal salt.",
@@ -131,7 +129,8 @@
           "rn_BX88twwgffRMgx82::L2::Q7",
           "rn_BX88twwgffRMgx82::L2::Q8",
           "rn_BX88twwgffRMgx82::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -177,10 +176,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/fb3be7dc9536-2-4-6-investigating-acids-with-metals-diagram.png",
         "alt": "Investigating Acids with Metals Diagram, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Mg, Fe and Zn reacting with acid",
-        "caption": "Investigating the reactions of dilute acids with metals",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Practical: Investigate Metals reacting with acids",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Investigating the reactions of dilute acids with metals"
       }
     ]
   }

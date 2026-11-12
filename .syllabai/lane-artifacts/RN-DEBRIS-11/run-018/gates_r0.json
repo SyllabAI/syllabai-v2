@@ -1,0 +1,51 @@
+{
+ "artifact": "rn11-run-018-gates-r0",
+ "base": "lane/rn-debris-11-run-017 tip 76d9e352 (stacked per the run-013→014 lane precedent; PR #931 open, desk-pending; that tip already carries the race-guard sync of origin/main 28c64e41 — re-fetched this run, main unmoved). Run-018 collision-free of record: origin/main receipts run-001..run-016 + run-017 on the open #931; re-verified post-fetch (RN-DEBRIS-11 namespace zero-collision across the other lanes' branches too: run-017-symbol-loss-tranche2/-r2 and t-oeq-mathsb/run-018|019 wrote zero files into .syllabai/receipts/RN-DEBRIS-11/)",
+ "gates": {
+  "G0_fileScope": {
+   "data": [
+    "apps/hub/content/cie-a-level-maths-20-pure-1/curriculum.json",
+    "apps/hub/content/cie-a-level-maths-20-pure-1/ugm-resources.json",
+    "apps/hub/content/cie-as-maths-20-pure-1/curriculum.json",
+    "apps/hub/content/cie-as-maths-20-pure-1/ugm-resources.json",
+    "apps/hub/spines/cie-a-level-maths-20-pure-1.json",
+    "apps/hub/spines/cie-as-maths-20-pure-1.json",
+    "apps/hub/public/kg/data/cie-a-level-maths-20-pure-1.json",
+    "apps/hub/public/kg/data/cie-as-maths-20-pure-1.json"
+   ],
+   "diffShape": "numstat 21/21 x2 (curriculum, indent=1 preserved) + 21/21 + 20/20 (ugm-resources officialText, indent=1 preserved) + 1/1 x2 (spine, compact single-line) + 1/1 x2 (KG, compact single-line); zero non-title bytes; the 8 files are exactly the git-grep family of record (repo-wide probes 'use y a completed square form' and 'r represents the circle with centre' hit these 8 + the T-UGM-AS-PURE-1 receipt quote, which is append-only history)",
+   "notTouched": [
+    "manifest.json (counts 33/33 x2 unchanged — title-only law)",
+    "prerequisites.json (code-anchored, untouched)",
+    "notes/questions/flashcards/concept-graph/learner-sim/placement-backfill (mirror survey: zero old-title hits)",
+    "spine meta (resourcesSha unchanged — title-only pass)",
+    "debris rows 1.3.1a/1.3.2a (proposal = NOT applied, byte-verified post-apply)"
+   ]
+  },
+  "G1_serializers": "curriculum + ugm-resources indent=1 + newline (run-016 dump law); spine & KG compact single-line with trailing newline preserved; byte-exactness PROVEN: output == pre-apply bytes with exactly the 21 title swaps (both curricula + both spines) / officialText byte-true serve-law rewrites (both UGM planes) — asserted exp==out in the applier",
+  "G2_titleSites": "21 carrier codes x (content + spine) per course + UGM officialText sites (21 a-level / 20 as — the delta: a-level UGM 1.5.2 officialText was the generator-era '30°' variant, set byte-true to the content plane's '30 °' convention per the serve law); old/new sha256 per site in apply_manifest_r0.json; pre-state: content==spine byte-equal 33/33 per course AND cross-course byte-equal (both-planes both-courses sweep-invisible class confirmed live)",
+  "G3_structure": "content nodes 43/43, spine nodes 43/43, SPEC_POINTs 33/33 per course, edges unchanged; UGM specPoints 30/30 (a-suffix debris unserved by design); manifest counts untouched",
+  "G4_kgRegen": "kg_export.export_course regen x2: 43 nodes / 88 edges / 33 points each; deep-equal ex-generatedUtc PASS; all 21 official titles carried in points[].text; KG pre-counts == post-counts (43n/88e/33pts)",
+  "G6_sweeps": "control-char sweep across all 33+33 point titles (content+spine) and 33+33 KG texts post-apply: 0 hits; notes-vocabulary leak detectors ('Including', 'e.g.', 'Questions may', 'Sketches should', 'No specialised', 'Knowledge of', 'Only an informal', 'By factorising', 'A volume of revolution may') on the 21 new titles: 0 hits; single-space joins asserted in the adjudication",
+  "G7_collision": "run-018 free of record (see base); receipts append-only",
+  "G8_originDisclosures": "corpus titles byte-true to the upstream parse 26/33 (the parse is the interleave-defected ORIGIN — 29/33 at the parse level with 4 fleet-improved vintages; authoritative wording = the sha-pinned PDF); UGM a-level officialText variants = REWORDED class (order-swaps disclosed, e.g. 1.5.4 'tan θ ≡ sin θ / cos θ') — wording authority DISCARDed, glyph corroboration only; 1.5.2 '30 °' whitespace convention NOT repaired (run-015 content-plane convention, disclosed non-target)",
+  "GV1_validators": {
+   "validate_spines.py": "exit 0 UNMASKED (statement_diff_count 0)",
+   "validate_cie_bundles.ts": "exit 0 (CIE VALIDATOR PASSED — includes 'PASS pure-1 bank size intact (67)')",
+   "validate_gradeb_bundle.ts": "exit 0 (node_modules intact this round — no bun-install disclosure needed)",
+   "verify_corpus_23a.ts": "exit 0 — CORPUS GATE PASSED",
+   "verify_flashcard_sync_courses.ts": "exit 0",
+   "verify_subject_identity.ts": "exit 0 — PASS 106/106"
+  }
+ },
+ "antiTruncationAsserts": [
+  "census + adjudication artifacts are the ONLY new-title byte sources (apply refuses without them)",
+  "census: 8 subtopics / 34 rows (5/5/5/2/5/4/4/4) structure-asserted vs the sha-pinned PDF (pins re-verified byte-exact pre-extraction)",
+  "anti-invention: every prose word of all 34 assembled rows covered by the pinned statement-column tokens (word-level assert); float tokens (½ stack of 1.4.2, ⁿ of 1.6.1) pinned verbatim in the census artifact",
+  "pre-state: all 21 old titles byte-matched live on BOTH courses BOTH planes + planes byte-equal + cross-course byte-equal",
+  "post-state: all 21 new titles byte-match the adjudication on both planes, UGM officialText (served codes) and KG points[].text",
+  "byte-exact scope: written bytes == pre-apply bytes + exactly the title swaps (curriculum/spine) and serve-law officialText rewrites (UGM)",
+  "structure: zero node/edge/count drift; debris rows 1.3.1a/1.3.2a byte-untouched (proposal rows)",
+  "GV1 six validator exits captured direct (no pipeline masking — run-016 lane lesson honored)"
+ ]
+}

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_cTk2cs2h2BKQ3y3B",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8593b4c5f8b1a7ea2150fd4e2f23ff86e9847c0275250332b48a5d00b6995802",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "e20bd05a9818e2b04d6e72a59aaf94e013db2a82efc19ba49f634b2d592de356",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_cTk2cs2h2BKQ3y3B",
@@ -14,10 +14,6 @@
     "subtopicTitle": "States of Matter",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-1-states-of-matter/1-1-4-solubility",
     "specAnchors": [
-      {
-        "code": "4CH1-1.4",
-        "text": "know what is meant by the terms: • solvent • solute • solution • saturated solution."
-      },
       {
         "code": "4CH1-1.5C",
         "text": "know what is meant by the term solubility in the units g per 100 g of solvent"
@@ -39,7 +35,6 @@
           "Solubility"
         ],
         "specRefs": [
-          "4CH1-1.4",
           "4CH1-1.5C"
         ],
         "opening": "Stir sugar into tea and it seems to vanish, but chemists can say exactly how much will dissolve. Solubility is the measurement of how much of a substance dissolves in a given volume of liquid, expressed in grams per 100 grams of solvent. The substance doing the dissolving is the solvent; the solid that disappears into it is the solute.",
@@ -139,7 +134,8 @@
           "rn_cTk2cs2h2BKQ3y3B::L2::Q7",
           "rn_cTk2cs2h2BKQ3y3B::L2::Q8",
           "rn_cTk2cs2h2BKQ3y3B::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -168,16 +164,6 @@
           "term": "saturated solution",
           "definition": "A solution holding the maximum dissolved mass possible at that temperature, with any extra solid left undissolved.",
           "firstLesson": 1
-        },
-        {
-          "term": "solubility curve",
-          "definition": "A graph of solubility in grams per 100 grams of water plotted against temperature.",
-          "firstLesson": 2
-        },
-        {
-          "term": "crystallisation",
-          "definition": "The formation of solid crystals from a solution, typically on cooling.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -195,11 +181,11 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8f9dfc68f8ce-salt-solubility-curves.png",
         "alt": "A graph to show the solubility curves of three different salts",
-        "sourceHeading": "Solubility curve for three salts",
-        "binding": "unresolved",
+        "sourceHeading": "Solubility",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_GkJG52NCN98ShGRm",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7848975b9efb4ec98e7d6b4178e1904fc37c522f723f05676f39a9c0e191b7b9",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "39edb09bce6c96d38de9ac0abf6fa09ce8ddba93f6583988764c8aea2562cab3",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_GkJG52NCN98ShGRm",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Metallic lattices",
+          "correct": false,
+          "explanation": "Metallic lattices describe metals with delocalised electrons, not covalent networks of non-metals.",
+          "misconception": "metallic term borrowed"
+        },
+        {
+          "key": "B",
           "text": "Giant lattices, or macromolecules",
           "correct": true,
           "explanation": "Both names appear of record: the structure is a giant lattice, and the exam hint adds macromolecule.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Simple molecules",
           "correct": false,
           "explanation": "Simple molecular structures are the opposite case: small separate molecules with weak forces between them.",
           "misconception": "opposite category confused"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Ionic lattices",
           "correct": false,
           "explanation": "Ionic lattices hold charged ions; giant covalent structures hold neutral atoms bonded covalently.",
           "misconception": "ionic term borrowed"
-        },
-        {
-          "key": "D",
-          "text": "Metallic lattices",
-          "correct": false,
-          "explanation": "Metallic lattices describe metals with delocalised electrons, not covalent networks of non-metals.",
-          "misconception": "metallic term borrowed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The bonded network repeats with a fixed ratio of atoms in the overall structure",
-          "correct": true,
-          "explanation": "Each repeat unit contains the same atom ratio, which the network then extends uniformly.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The ratio changes as the crystal grows larger",
-          "correct": false,
-          "explanation": "Growth extends the same repeating pattern; the ratio stays fixed throughout.",
-          "misconception": "ratio imagined to drift"
-        },
-        {
-          "key": "C",
           "text": "The ratio is always one atom to one atom",
           "correct": false,
           "explanation": "Ratios vary by substance; the point is that the ratio is fixed, not that it equals one-to-one.",
           "misconception": "ratio value overgeneralised"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Only the surface atoms follow a ratio",
           "correct": false,
           "explanation": "The fixed ratio governs the whole network, not just its boundary.",
           "misconception": "bulk-surface distinction invented"
+        },
+        {
+          "key": "C",
+          "text": "The bonded network repeats with one unchanging atom ratio across the whole structure",
+          "correct": true,
+          "explanation": "Each repeat unit contains the same atom ratio, which the network then extends uniformly.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The ratio changes as the crystal grows larger",
+          "correct": false,
+          "explanation": "Growth extends the same repeating pattern; the ratio stays fixed throughout.",
+          "misconception": "ratio imagined to drift"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Diamond and graphite",
-          "correct": true,
-          "explanation": "Both are carbon allotropes whose covalent bonding extends through the entire solid.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Oxygen and water",
           "correct": false,
           "explanation": "Both are simple molecular substances with weak forces between small molecules.",
           "misconception": "molecular examples misfiled"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Sodium chloride and magnesium oxide",
           "correct": false,
           "explanation": "Both are ionic compounds with giant ionic lattices, not covalent networks.",
           "misconception": "ionic examples misfiled"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Copper and zinc",
           "correct": false,
           "explanation": "Both are metals with metallic bonding and delocalised electrons.",
           "misconception": "metallic examples misfiled"
+        },
+        {
+          "key": "D",
+          "text": "Diamond and graphite",
+          "correct": true,
+          "explanation": "Both are carbon allotropes whose covalent bonding extends through the entire solid.",
+          "misconception": null
         }
       ]
     },
@@ -197,7 +197,7 @@
       "stem": "Describe the melting behaviour and the building blocks of substances with giant covalent structures.",
       "misconceptionClass": "giant covalent definition recall",
       "kind": "recall",
-      "modelAnswer": "They are solids that melt at high temperatures, built from huge numbers of non-metal atoms bonded to other non-metal atoms.",
+      "modelAnswer": "They are solids that melt at high temperatures, built from huge numbers of non-metal atoms each bonded to further non-metal atoms.",
       "keywords": [
         "solids",
         "solid",
@@ -209,11 +209,9 @@
         "huge",
         "numbers",
         "non-metal",
-        "nonmetal",
         "atoms",
         "atom",
-        "bonded",
-        "bonding"
+        "bonded"
       ],
       "options": []
     },
@@ -229,9 +227,7 @@
         "graphite",
         "examples",
         "example",
-        "two",
-        "2",
-        "carbon"
+        "two"
       ],
       "options": []
     },
@@ -285,31 +281,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It contains metallic bonds that resist damage",
+          "correct": false,
+          "explanation": "Diamond is covalently bonded throughout; no metallic bonding is present.",
+          "misconception": "bond type misclassified"
+        },
+        {
+          "key": "B",
           "text": "Each carbon atom is bonded to four others by very strong covalent bonds in a rigid network",
           "correct": true,
           "explanation": "The four-bonded network leaves no weak direction, so the crystal resists scratching and cutting.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Its layers slide over each other under pressure",
           "correct": false,
           "explanation": "Sliding layers describe graphite; diamond has no such planes.",
           "misconception": "graphite property transferred"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Its carbon atoms are unusually heavy",
           "correct": false,
           "explanation": "All carbon atoms are identical; hardness follows the bonding, not the mass.",
           "misconception": "mass linked to hardness"
-        },
-        {
-          "key": "D",
-          "text": "It contains metallic bonds that resist damage",
-          "correct": false,
-          "explanation": "Diamond is covalently bonded throughout; no metallic bonding is present.",
-          "misconception": "bond type misclassified"
         }
       ]
     },
@@ -321,31 +317,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Graphite has one delocalised electron per carbon that moves along its layers, while diamond's four-bonded carbons leave no electrons free",
-          "correct": true,
-          "explanation": "The fourth outer electron in graphite is unbonded and mobile; diamond uses all four in bonds.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Graphite's bonds are weaker, so electrons escape",
-          "correct": false,
-          "explanation": "Conduction follows from delocalised electrons, not from broken or weak bonds.",
-          "misconception": "weakness credited for conduction"
-        },
-        {
-          "key": "C",
           "text": "Diamond's electrons are negative, while graphite's are positive",
           "correct": false,
           "explanation": "Electrons are negative in every substance; the difference is mobility.",
           "misconception": "charge signs invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Diamond conducts only when molten",
           "correct": false,
           "explanation": "Diamond's network has no mobile electrons in any state at this level.",
           "misconception": "state condition invented"
+        },
+        {
+          "key": "C",
+          "text": "Graphite has one delocalised electron per carbon that moves along its layers, while diamond's four-bonded carbons leave no electrons free",
+          "correct": true,
+          "explanation": "The fourth outer electron in graphite is unbonded and mobile; diamond uses all four in bonds.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Graphite's bonds are weaker, so electrons escape",
+          "correct": false,
+          "explanation": "Conduction follows from delocalised electrons, not from broken or weak bonds.",
+          "misconception": "weakness credited for conduction"
         }
       ]
     },
@@ -357,31 +353,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Its layers slide over each other because only weak forces act between the layers",
-          "correct": true,
-          "explanation": "The strong bonds lie within each hexagonal layer; between layers the forces are weak, so planes slip.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Its carbon atoms are joined by weak covalent bonds",
           "correct": false,
           "explanation": "The covalent bonds within each layer are strong; the weakness lies between the layers.",
           "misconception": "bond strength mislocated"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Its delocalised electrons push the layers apart",
           "correct": false,
           "explanation": "The electrons enable conduction; sliding follows from weak inter-layer forces.",
           "misconception": "electrons credited with sliding"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It melts at room temperature into a slippery liquid",
           "correct": false,
           "explanation": "Graphite is a high-melting solid; its slipperiness belongs to the solid itself.",
           "misconception": "state confused"
+        },
+        {
+          "key": "D",
+          "text": "Its layers slide over each other because only weak forces act between the layers",
+          "correct": true,
+          "explanation": "The strong bonds lie within each hexagonal layer; between layers the forces are weak, so planes slip.",
+          "misconception": null
         }
       ]
     },
@@ -429,31 +425,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It is pure carbon in the fullerene form",
+          "correct": false,
+          "explanation": "Pencil marks come from layered graphite, not from buckyball fullerene.",
+          "misconception": "allotrope misidentified"
+        },
+        {
+          "key": "B",
           "text": "Pencil lead is graphite, with nothing in common with the metal lead",
           "correct": true,
           "explanation": "The writing material is graphite, whose layers flake onto the page; the metal lead is unrelated.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It is a soft alloy of lead and graphite",
           "correct": false,
           "explanation": "No lead enters the pencil core; the name is purely historical.",
           "misconception": "alloy invented"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It is diamond dust in a binder",
           "correct": false,
           "explanation": "Diamond is the hard allotrope; pencils need the soft, flaking layers of graphite.",
           "misconception": "allotrope swapped"
-        },
-        {
-          "key": "D",
-          "text": "It is pure carbon in the fullerene form",
-          "correct": false,
-          "explanation": "Pencil marks come from layered graphite, not from buckyball fullerene.",
-          "misconception": "allotrope misidentified"
         }
       ]
     },
@@ -487,7 +483,6 @@
       "modelAnswer": "Each carbon in graphite bonds to three others, forming layers of hexagons, and one electron per atom is left free.",
       "keywords": [
         "three",
-        "3",
         "bonds",
         "bond",
         "layers",
@@ -495,7 +490,6 @@
         "hexagons",
         "hexagon",
         "one",
-        "1",
         "free",
         "electron",
         "electrons"
@@ -513,7 +507,6 @@
         "layers",
         "layer",
         "slide",
-        "slides",
         "slippery",
         "soft",
         "delocalised",
@@ -541,7 +534,6 @@
         "tools",
         "tool",
         "four",
-        "4",
         "tetrahedral",
         "strong",
         "bonds",

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_w25KHshCMNQWwftj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4af9f8912aa3a4d9093f46e9b5558f77d7be6a4964ce89d187dac585b931c02c",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "f360306e878197e4bf930b4b2f4b64713864d547e3b4220863f29e3a02b72f23",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_w25KHshCMNQWwftj",
@@ -36,8 +36,8 @@
         ],
         "opening": "Mixing two solutions and watching the thermometer is the simplest energy measurement in chemistry. This lesson shows the insulated set-up that keeps the heat in and the working assumptions that let the numbers be trusted.",
         "keyPoints": [
-          "The energy produced by a reaction in solution is found by measuring the temperature change when the solutions are mixed.",
-          "The solutions are mixed in an insulated container to prevent heat loss to the surroundings.",
+          "The energy released by a reaction in solution is found by measuring how much the temperature changes as the solutions mix.",
+          "The solutions are mixed inside an insulated container so heat cannot escape to the surroundings.",
           "Solution calorimetry suits neutralisation reactions, dissolving solids in water and displacement reactions.",
           "A simple calorimeter can be a polystyrene cup, a vacuum flask or a metal can.",
           "Assumptions include a specific heat capacity of 4.18 J/g/°C, a density of 1 g/cm3 and negligible heat losses."
@@ -94,7 +94,7 @@
           "Combustion calorimetry uses the heat released by a burning fuel to raise the heat content of water.",
           "A fixed volume of water is heated in a copper can while a spirit burner with the fuel is weighed before and after.",
           "The flame is extinguished once the water has risen by about 20 °C and the final temperature is recorded.",
-          "The main sources of error are heat losses and incomplete combustion of the fuel.",
+          "Heat losses and incomplete combustion of the fuel are the chief sources of error.",
           "A lid over the calorimeter and shielding from draughts reduce the heat lost to the surroundings."
         ],
         "depthLayers": {
@@ -129,6 +129,9 @@
           "rn_w25KHshCMNQWwftj::L2::Q7",
           "rn_w25KHshCMNQWwftj::L2::Q8",
           "rn_w25KHshCMNQWwftj::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -176,20 +179,22 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b9fb5c85577b-18446-1-5-chemical-energetics-calorime.png",
         "alt": "Apparatus used to find the energy released when two solutions are mixed together",
         "sourceHeading": "A simple calorimeter",
-        "caption": "A polystyrene cup can act as a calorimeter to find enthalpy changes in a chemical reaction",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "A polystyrene cup can act as a calorimeter to find enthalpy changes in a chemical reaction"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/dd682762e179-50507-5-1-4-simple-calorimeter-1.png",
         "alt": "Simple Calorimeter_1, downloadable IB Chemistry revision notes",
-        "sourceHeading": "Diagram to show the set up of calorimetry equipment",
-        "caption": "A lid is used to prevent heat loss",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Enthalpy of combustion experiments",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "A lid is used to prevent heat loss"
       }
     ]
   }

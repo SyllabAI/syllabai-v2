@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_5g8Dd6y89tkCVJsN",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1ea4ca3ea4c1a8e8be424f81517a0b3314efa042c32d2bca21ff25f4fef43348",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "263bd98ef77fa6d6372cc253d56d694ad348389895dc351cdc6c358dd0b764c7",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_5g8Dd6y89tkCVJsN",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A conical flask for both",
+          "correct": false,
+          "explanation": "The flask holds the reaction; it does not measure anything.",
+          "misconception": "container confused with measuring device"
+        },
+        {
+          "key": "B",
           "text": "A pipette for the alkali and a burette for the acid",
           "correct": true,
           "explanation": "That is the standard allocation in the source method.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A burette for the alkali and a pipette for the acid",
           "correct": false,
           "explanation": "The roles can be swapped in principle, but the method of record puts the alkali in the flask by pipette and the acid in the burette.",
           "misconception": "apparatus roles swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A measuring cylinder for both",
           "correct": false,
           "explanation": "A cylinder is too imprecise for the exact ratio this preparation needs.",
           "misconception": "precision loss accepted"
-        },
-        {
-          "key": "D",
-          "text": "A conical flask for both",
-          "correct": false,
-          "explanation": "The flask holds the reaction; it does not measure anything.",
-          "misconception": "container confused with measuring device"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "To show when the acid and alkali have exactly reacted",
-          "correct": true,
-          "explanation": "The colour change marks the neutral point of the titration.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To colour the final crystals",
-          "correct": false,
-          "explanation": "The indicator is deliberately absent from the real batch, so it colours nothing.",
-          "misconception": "cosmetic role invented"
-        },
-        {
-          "key": "C",
           "text": "To speed up the reaction",
           "correct": false,
           "explanation": "Indicators do not change reaction speeds; they report pH.",
           "misconception": "catalyst fiction"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "To keep the solution alkaline",
           "correct": false,
           "explanation": "The indicator is a reporter, not a reactant, and keeps nothing alkaline.",
           "misconception": "chemistry role invented"
+        },
+        {
+          "key": "C",
+          "text": "To show when the acid and alkali have exactly reacted",
+          "correct": true,
+          "explanation": "The colour change marks the neutral point of the titration.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To colour the final crystals",
+          "correct": false,
+          "explanation": "The indicator is deliberately absent from the real batch, so it colours nothing.",
+          "misconception": "cosmetic role invented"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Phenolphthalein",
-          "correct": true,
-          "explanation": "The source names phenolphthalein or methyl orange as the choices.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Anhydrous copper(II) sulfate",
           "correct": false,
           "explanation": "That powder tests for water; it is not an acid-alkali indicator.",
           "misconception": "another chemical test borrowed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Sodium hydroxide solution",
           "correct": false,
           "explanation": "Sodium hydroxide is the alkali reactant itself, not an indicator.",
           "misconception": "reagent named as indicator"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Limewater",
           "correct": false,
           "explanation": "Limewater is the carbon dioxide test reagent, not an indicator here.",
           "misconception": "reagent named as indicator"
+        },
+        {
+          "key": "D",
+          "text": "Phenolphthalein",
+          "correct": true,
+          "explanation": "The source names phenolphthalein or methyl orange as the choices.",
+          "misconception": null
         }
       ]
     },
@@ -200,9 +200,8 @@
       "modelAnswer": "A pipette measures a fixed volume of the alkali into the conical flask.",
       "keywords": [
         "pipette",
-        "pipettes",
-        "volumetric",
-        "fixed"
+        "fixed",
+        "measures"
       ],
       "options": []
     },
@@ -215,7 +214,6 @@
       "modelAnswer": "The starting reading is subtracted from the final reading; the difference between the two burette values is the volume of acid added.",
       "keywords": [
         "starting",
-        "initial",
         "final",
         "difference",
         "subtracted"
@@ -250,10 +248,7 @@
       "keywords": [
         "larger",
         "high",
-        "beyond",
-        "pale",
-        "overshoot",
-        "extra"
+        "flask"
       ],
       "options": []
     },
@@ -265,31 +260,31 @@
       "options": [
         {
           "key": "A",
+          "text": "So the volumes can be measured again",
+          "correct": false,
+          "explanation": "The volumes are already known from the first run.",
+          "misconception": "purpose misread"
+        },
+        {
+          "key": "B",
           "text": "So the salt is not contaminated with indicator dye",
           "correct": true,
           "explanation": "Any indicator left in would colour the product and count as an impurity.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because the indicator stops crystals forming",
           "correct": false,
           "explanation": "Indicators do not block crystallisation; the reason is purity, not mechanics.",
           "misconception": "crystallisation interference fiction"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because the indicator is expensive",
           "correct": false,
           "explanation": "Costs are irrelevant; only a few drops are used anyway.",
           "misconception": "cost reasoning invented"
-        },
-        {
-          "key": "D",
-          "text": "So the volumes can be measured again",
-          "correct": false,
-          "explanation": "The volumes are already known from the first run.",
-          "misconception": "purpose misread"
         }
       ]
     },
@@ -301,31 +296,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Saturated, with some water still present",
-          "correct": true,
-          "explanation": "Heating stops at the saturated stage so crystals can form on standing.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Completely dry, with all water gone",
-          "correct": false,
-          "explanation": "Heating to dryness would overheat the salt and spoil the water of crystallisation.",
-          "misconception": "overheating to dryness"
-        },
-        {
-          "key": "C",
           "text": "Still dilute, with all the original water",
           "correct": false,
           "explanation": "No crystals could form from a solution that never concentrated.",
           "misconception": "no evaporation claimed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Frozen, because crystals need cold",
           "correct": false,
           "explanation": "Crystals grow from solution on cooling, not from a frozen block.",
           "misconception": "temperature confusion"
+        },
+        {
+          "key": "C",
+          "text": "Saturated, with some water still present",
+          "correct": true,
+          "explanation": "Heating stops at the saturated stage so crystals can form on standing.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Completely dry, with all water gone",
+          "correct": false,
+          "explanation": "Heating to dryness would overheat the salt and spoil the water of crystallisation.",
+          "misconception": "overheating to dryness"
         }
       ]
     },
@@ -337,31 +332,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Some salts need water of crystallisation, and full dryness risks decomposition",
-          "correct": true,
-          "explanation": "Both halves are the source's stated reasons for the partial evaporation.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Water makes the crystals heavier to sell",
           "correct": false,
           "explanation": "Commercial reasoning plays no part in the chemistry.",
           "misconception": "nonsense economics"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Water is needed to dissolve the burette",
           "correct": false,
           "explanation": "The burette is not part of the crystallisation stage at all.",
           "misconception": "apparatus reasoning misplaced"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Dry salts are always dangerous",
           "correct": false,
           "explanation": "Dryness is not itself a hazard here; decomposition is the stated risk.",
           "misconception": "hazard invented"
+        },
+        {
+          "key": "D",
+          "text": "Some salts need water of crystallisation, and full dryness risks decomposition",
+          "correct": true,
+          "explanation": "Both halves are the source's stated reasons for the partial evaporation.",
+          "misconception": null
         }
       ]
     },
@@ -404,36 +399,36 @@
     {
       "id": "rn_5g8Dd6y89tkCVJsN::L2::Q5",
       "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
-      "stem": "Which method does this whole preparation rely on?",
+      "stem": "Which preparation method relies on the measured volumes being repeated?",
       "misconceptionClass": "method family",
       "options": [
         {
           "key": "A",
+          "text": "Heating a metal with sulfur directly",
+          "correct": false,
+          "explanation": "No direct element-plus-element synthesis appears here.",
+          "misconception": "unrelated synthesis imagined"
+        },
+        {
+          "key": "B",
           "text": "Titration between an acid and an alkali",
           "correct": true,
           "explanation": "The measured reacting volumes come from the titration technique.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Filtration of an insoluble base",
           "correct": false,
           "explanation": "No insoluble solid exists in this method to filter.",
           "misconception": "wrong method family"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Precipitation from two soluble salts",
           "correct": false,
           "explanation": "That is the insoluble-salt preparation, a different method.",
           "misconception": "insoluble-salt method borrowed"
-        },
-        {
-          "key": "D",
-          "text": "Heating a metal with sulfur directly",
-          "correct": false,
-          "explanation": "No direct element-plus-element synthesis appears here.",
-          "misconception": "unrelated synthesis imagined"
         }
       ]
     },
@@ -446,9 +441,8 @@
       "modelAnswer": "The indicator is left out, so the repeat mixture contains only the salt and water formed by the reaction.",
       "keywords": [
         "indicator",
-        "omitted",
-        "excluded",
-        "colourless"
+        "left",
+        "repeat"
       ],
       "options": []
     },
@@ -462,7 +456,6 @@
       "keywords": [
         "decant",
         "decanted",
-        "decanting",
         "poured",
         "pour",
         "above"
@@ -475,12 +468,10 @@
       "stem": "Explain why heating is stopped while some water still remains with the crystals.",
       "misconceptionClass": "water of crystallisation explain",
       "kind": "explain-why",
-      "modelAnswer": "Some water is left behind to allow for water of crystallisation; heating to dryness would overheat the salt and could make it decompose.",
+      "modelAnswer": "A little water is deliberately kept so the crystals can hold their water of crystallisation; heating to dryness would overheat the salt and could make it decompose.",
       "keywords": [
         "crystallisation",
         "decompose",
-        "decomposes",
-        "decomposition",
         "overheat",
         "overheating"
       ],
@@ -497,7 +488,6 @@
         "driven",
         "lost",
         "decomposed",
-        "overheated",
         "saturated"
       ],
       "options": []

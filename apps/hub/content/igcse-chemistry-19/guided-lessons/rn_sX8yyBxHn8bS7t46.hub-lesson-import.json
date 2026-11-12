@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_sX8yyBxHn8bS7t46",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2dfba41a51a3184c6e91edba95542c089940627fc5bb1cff2536449ea65d9428",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "7f260071f99167293d18a8a046cc3cfb8cc57a702431fb40ae12e0446e4480cf",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_sX8yyBxHn8bS7t46",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-2.20",
-        "text": "understand the terms: oxidation; reduction; redox; oxidising agent"
+        "text": "understand the terms: • oxidation • reduction • redox • oxidising agent • reducing agent in terms of gain or loss of oxygen and loss or gain of electrons."
       }
     ],
     "primer": {
@@ -34,7 +34,7 @@
         "specRefs": [
           "4CH1-2.20"
         ],
-        "opening": "When metals react with oxygen, the change can be given a name: oxidation covers any reaction in which a substance gains oxygen, and reduction is the reverse, in which oxygen is lost. In the displacement of copper from copper(II) oxide by zinc, zinc takes the oxygen, so the oxide is reduced while zinc is oxidised. Because one change cannot happen without the other, the pair is called a redox reaction.",
+        "opening": "When metals react with oxygen, the change can be given a name: oxidation covers any reaction where a substance takes in oxygen, and reduction is the reverse, in which oxygen is lost. In the displacement of copper from copper(II) oxide by zinc, zinc takes the oxygen, so the oxide is reduced while zinc is oxidised. Because one change cannot happen without the other, the pair is called a redox reaction.",
         "keyPoints": [
           "Oxidation covers every reaction in which a substance gains oxygen.",
           "Reduction is the opposite change, in which a substance loses oxygen.",
@@ -74,6 +74,10 @@
           "rn_sX8yyBxHn8bS7t46::L1::Q7",
           "rn_sX8yyBxHn8bS7t46::L1::Q8",
           "rn_sX8yyBxHn8bS7t46::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -125,7 +129,8 @@
           "rn_sX8yyBxHn8bS7t46::L2::Q7",
           "rn_sX8yyBxHn8bS7t46::L2::Q8",
           "rn_sX8yyBxHn8bS7t46::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -154,11 +159,6 @@
           "term": "reducing agent",
           "definition": "The substance that removes oxygen, or gives electrons, and is itself oxidised.",
           "firstLesson": 1
-        },
-        {
-          "term": "spectator ion",
-          "definition": "An ion present on both sides of an ionic equation that takes no part in the reaction.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -178,19 +178,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d36c1937612f-oxidation-and-reduction-electrons.png",
         "alt": "oxidation-and-reduction-electrons",
-        "sourceHeading": "The redox reaction between Fe and Cu<sup>2+</sup>",
-        "caption": "The Fe atom is oxidised (loses electrons) and the Cu***<sup>***2+***</sup>*** ion is reduced (gains electrons). Cu***<sup>***2+ ***</sup>***is the oxidising agent",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Oxidising agents in terms of electrons",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The Fe atom is oxidised (loses electrons) and the Cu***<sup>***2+***</sup>*** ion is reduced (gains electrons). Cu***<sup>***2+ ***</sup>***is the oxidising agent"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d4df00a71f5e-oilrig.png",
         "alt": "OILRIG, downloadable AS & A Level Biology revision notes",
-        "sourceHeading": "The redox reaction between Fe and Cu<sup>2+</sup>",
-        "caption": "'OIL RIG' is a useful mnemonic to help remember the definitions of oxidation and reduction",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Oxidising agents in terms of electrons",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "'OIL RIG' is a useful mnemonic to help remember the definitions of oxidation and reduction"
       }
     ]
   }

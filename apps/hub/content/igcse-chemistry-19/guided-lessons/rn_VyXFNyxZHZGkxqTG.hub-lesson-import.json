@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_VyXFNyxZHZGkxqTG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "bf9f47c8ccc3801f76be03c0686560966996d16ddabba31bb3e7787741a6bc19",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "7ecb2bb8715cc3f6bbfc7967bbb03c5978ad2b63dee9456d901f193750618a45",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_VyXFNyxZHZGkxqTG",
@@ -14,14 +14,6 @@
     "subtopicTitle": "Chemical Formulae, Equations, Calculations",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-4-calculate-reacting-masses",
     "specAnchors": [
-      {
-        "code": "4CH1-1.25",
-        "text": "write word equations and balanced chemical equations (including state symbols): for reactions studied in this specification, and for unfamiliar reactions where suitable information is provided"
-      },
-      {
-        "code": "4CH1-1.28",
-        "text": "understand how to carry out calculations involving amount of substance, relative atomic mass (Ar) and relative formula mass (Mr)"
-      },
       {
         "code": "4CH1-1.29",
         "text": "calculate reacting masses using experimental data and chemical equations"
@@ -40,7 +32,6 @@
           "Reacting mass calculations"
         ],
         "specRefs": [
-          "4CH1-1.28",
           "4CH1-1.29"
         ],
         "opening": "A chemical equation is more than a description - its balancing numbers are a recipe for masses. Take the mass the question gives, divide by the relative formula mass to reach moles, then use the ratio of the balancing numbers to step from one substance to the other, and multiply back into a mass. Every phrase from 'calculate the mass' to 'maximum mass' signals this same route.",
@@ -83,7 +74,8 @@
           "rn_VyXFNyxZHZGkxqTG::L1::Q7",
           "rn_VyXFNyxZHZGkxqTG::L1::Q8",
           "rn_VyXFNyxZHZGkxqTG::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_VyXFNyxZHZGkxqTG::L2",
@@ -92,7 +84,6 @@
           "Balancing Equations using Reacting Masses"
         ],
         "specRefs": [
-          "4CH1-1.25",
           "4CH1-1.29"
         ],
         "opening": "Measured masses can reverse the usual flow: instead of using an equation to predict masses, the masses reveal the equation. Change every mass into moles, divide through by the smallest value, and the whole-number ratio that emerges is the set of balancing numbers. Add state symbols at the end if the physical states are known.",
@@ -110,7 +101,7 @@
             "examPointer": "Check the finished equation balances atom-for-atom; if it does not, the ratio step slipped somewhere."
           },
           "medium": {
-            "restatement": "The same data finished the other way round: CO2 totals 12 + (2 x 16) = 44, so 4.4 g is 0.1 mol, and zinc at 13 / 65 = 0.2 mol completes the 0.1 : 0.2 : 0.1 : 0.2 set before simplifying.",
+            "restatement": "The same data finished the other way round: CO2 totals 12 + (2 x 16) = 44, so 4.4 g is 0.1 mol, and zinc at 13 / 65 = 0.2 mol completes the mole set 0.1, 0.2, 0.1 and 0.2 before simplifying.",
             "analogy": "Treat the four mole values as four measuring jugs: pour them into the smallest jug as your unit, and each fills a whole number of times - that count is its balancing number.",
             "examPointer": "Quote each Mr before dividing; showing 81 for ZnO and 44 for CO2 earns the method marks even ahead of the ratio."
           }
@@ -135,7 +126,8 @@
           "rn_VyXFNyxZHZGkxqTG::L2::Q7",
           "rn_VyXFNyxZHZGkxqTG::L2::Q8",
           "rn_VyXFNyxZHZGkxqTG::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -151,11 +143,6 @@
           "firstLesson": 1
         },
         {
-          "term": "reacting masses",
-          "definition": "The masses of substances that take part in a reaction, linked to each other through the balanced equation's ratio.",
-          "firstLesson": 1
-        },
-        {
           "term": "balanced equation",
           "definition": "A chemical equation whose atom counts match on both sides, written with the balancing numbers the reaction demands.",
           "firstLesson": 1
@@ -163,11 +150,6 @@
         {
           "term": "experimental data",
           "definition": "Measured values, such as reacting masses, taken from an experiment and used as the input to a calculation.",
-          "firstLesson": 2
-        },
-        {
-          "term": "state symbols",
-          "definition": "The bracketed letters - (s), (l), (g) or (aq) - added after a formula to show its physical state.",
           "firstLesson": 2
         },
         {

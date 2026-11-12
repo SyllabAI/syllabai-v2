@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_by5FDNfkqdBCkmXb",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "073608d3633a536506cf6468e65edeceeb0bbcc3c12ee94efb603bcb3c644d7d",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "96a326bf4619a7191a4e684b31990ea3a7712e8fbd7d0474b5fdabdb3dfeb9fd",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_by5FDNfkqdBCkmXb",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Nothing is released; the acid stays whole",
+          "correct": false,
+          "explanation": "Ionising means splitting apart, which is how the protons end up free.",
+          "misconception": "ionisation denied"
+        },
+        {
+          "key": "B",
           "text": "The hydrogen ion, H+, which is a proton",
           "correct": true,
           "explanation": "Ionising releases H+ ions, and each one is exactly a proton.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The hydroxide ion, OH-",
           "correct": false,
           "explanation": "Hydroxide ions come from bases, never from acids.",
           "misconception": "opposite ion chosen"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The electron",
           "correct": false,
           "explanation": "Electrons are not released into solution by acids; protons are.",
           "misconception": "redox particle imported"
-        },
-        {
-          "key": "D",
-          "text": "Nothing is released; the acid stays whole",
-          "correct": false,
-          "explanation": "Ionising means splitting apart, which is how the protons end up free.",
-          "misconception": "ionisation denied"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "H+ and Cl-",
-          "correct": true,
-          "explanation": "The note's example equation shows hydrochloric acid giving one hydrogen ion and one chloride ion.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Na+ and OH-",
-          "correct": false,
-          "explanation": "Those are the ions of sodium hydroxide, the base example.",
-          "misconception": "base example copied"
-        },
-        {
-          "key": "C",
           "text": "H- and Cl+",
           "correct": false,
           "explanation": "The charges are reversed; hydrogen carries the positive charge here.",
           "misconception": "charges flipped"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "H2 and Cl2",
           "correct": false,
           "explanation": "Those are gases, not the ions formed when the acid dissolves.",
           "misconception": "molecules confused with ions"
+        },
+        {
+          "key": "C",
+          "text": "H+ and Cl-",
+          "correct": true,
+          "explanation": "The note's example equation shows hydrochloric acid giving one hydrogen ion and one chloride ion.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Na+ and OH-",
+          "correct": false,
+          "explanation": "Those are the ions of sodium hydroxide, the base example.",
+          "misconception": "base example copied"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "They all contain the same reactive particle, the hydrogen ion",
-          "correct": true,
-          "explanation": "Because every acid releases H+, the chemistry of the solution is the chemistry of that one ion.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "They all contain chloride ions",
           "correct": false,
           "explanation": "Only hydrochloric acid makes chloride ions; other acids release different partners.",
           "misconception": "one acid generalised"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "They all have the same colour",
           "correct": false,
           "explanation": "Colour is irrelevant; the shared particle explains the shared behaviour.",
           "misconception": "appearance confused with chemistry"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "They all come from the same laboratory bottle",
           "correct": false,
           "explanation": "Origin is irrelevant; the shared hydrogen ion is the reason.",
           "misconception": "silly literalism chosen"
+        },
+        {
+          "key": "D",
+          "text": "They all contain the same reactive particle, the hydrogen ion",
+          "correct": true,
+          "explanation": "Because every acid releases H+, the chemistry of the solution is the chemistry of that one ion.",
+          "misconception": null
         }
       ]
     },
@@ -201,8 +201,7 @@
       "keywords": [
         "proton",
         "donor",
-        "donates",
-        "donate"
+        "acid"
       ],
       "options": []
     },
@@ -220,8 +219,7 @@
         "hydrogen",
         "chloride",
         "ions",
-        "ionises",
-        "ionize"
+        "ionises"
       ],
       "options": []
     },
@@ -239,9 +237,7 @@
         "same",
         "particle",
         "electron",
-        "lost",
-        "one",
-        "identical"
+        "lost"
       ],
       "options": []
     },
@@ -275,31 +271,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A substance that makes no ions",
+          "correct": false,
+          "explanation": "Dissolved bases do ionise, releasing the hydroxide ions that accept protons.",
+          "misconception": "ionisation denied"
+        },
+        {
+          "key": "B",
           "text": "A proton acceptor",
           "correct": true,
           "explanation": "Taking protons in is the defining behaviour of a base.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A proton donor",
           "correct": false,
           "explanation": "Donating is the acid's role; the base receives.",
           "misconception": "roles swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "An electron acceptor",
           "correct": false,
           "explanation": "Electron transfer belongs to redox chemistry, not acid-base work.",
           "misconception": "redox vocabulary imported"
-        },
-        {
-          "key": "D",
-          "text": "A substance that makes no ions",
-          "correct": false,
-          "explanation": "Dissolved bases do ionise, releasing the hydroxide ions that accept protons.",
-          "misconception": "ionisation denied"
         }
       ]
     },
@@ -311,31 +307,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The hydroxide ion, OH-",
-          "correct": true,
-          "explanation": "The base releases OH- ions precisely so that they can accept the incoming protons.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The sodium ion, Na+",
-          "correct": false,
-          "explanation": "Na+ is a spectator here; the hydroxide does the accepting.",
-          "misconception": "spectator ion credited"
-        },
-        {
-          "key": "C",
           "text": "The chloride ion, Cl-",
           "correct": false,
           "explanation": "Chloride belongs to the acid's side and takes no part in accepting the proton.",
           "misconception": "wrong partner credited"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The water molecules",
           "correct": false,
           "explanation": "Water is formed by the transfer; the hydroxide ion is the acceptor that makes it.",
           "misconception": "product confused with acceptor"
+        },
+        {
+          "key": "C",
+          "text": "The hydroxide ion, OH-",
+          "correct": true,
+          "explanation": "The base releases OH- ions precisely so that they can accept the incoming protons.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The sodium ion, Na+",
+          "correct": false,
+          "explanation": "Na+ is a spectator here; the hydroxide does the accepting.",
+          "misconception": "spectator ion credited"
         }
       ]
     },
@@ -347,31 +343,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Na+ and OH-",
-          "correct": true,
-          "explanation": "The note's example shows sodium hydroxide giving one sodium ion and one hydroxide ion.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "H+ and Cl-",
           "correct": false,
           "explanation": "Those are hydrochloric acid's ions.",
           "misconception": "acid example copied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Na- and OH+",
           "correct": false,
           "explanation": "The charges are reversed; sodium is positive and hydroxide negative.",
           "misconception": "charges flipped"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "NaO and H",
           "correct": false,
           "explanation": "That split is not how the hydroxide ion comes apart; it stays whole as OH-.",
           "misconception": "hydroxide ion broken up"
+        },
+        {
+          "key": "D",
+          "text": "Na+ and OH-",
+          "correct": true,
+          "explanation": "The note's example shows sodium hydroxide giving one sodium ion and one hydroxide ion.",
+          "misconception": null
         }
       ]
     },
@@ -419,31 +415,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Cl- donates a proton to OH-",
+          "correct": false,
+          "explanation": "Cl- is not a proton carrier; the donor is the acid's H+.",
+          "misconception": "donor misidentified"
+        },
+        {
+          "key": "B",
           "text": "HCl donates a proton and the OH- ion accepts it",
           "correct": true,
           "explanation": "The acid's H+ hands over to the base's hydroxide, and water is the result.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "NaOH donates a proton and Cl- accepts it",
           "correct": false,
           "explanation": "Sodium hydroxide has no proton to donate; hydroxide accepts protons.",
           "misconception": "roles fully reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Na+ donates a proton to H+",
           "correct": false,
           "explanation": "Na+ carries no proton to give; it watches the transfer happen.",
           "misconception": "spectator given a role"
-        },
-        {
-          "key": "D",
-          "text": "Cl- donates a proton to OH-",
-          "correct": false,
-          "explanation": "Cl- is not a proton carrier; the donor is the acid's H+.",
-          "misconception": "donor misidentified"
         }
       ]
     },
@@ -457,7 +453,6 @@
       "keywords": [
         "proton",
         "acceptor",
-        "accepts",
         "accept"
       ],
       "options": []
@@ -490,7 +485,6 @@
         "hydroxide",
         "oh",
         "accept",
-        "accepts",
         "protons",
         "proton",
         "ions",
@@ -508,7 +502,6 @@
       "modelAnswer": "The acid played the donor role, giving protons (H+), and the hydroxide ions played the acceptor role: each OH- that accepted an H+ has become a water molecule, H2O.",
       "keywords": [
         "donor",
-        "donated",
         "acceptor",
         "accepted",
         "water",

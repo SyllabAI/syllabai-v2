@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_RvgxXR36425BFMcx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "691b34599910d5766bb0156efa82bd13ba8ad76b6a83caf711e1aac6f774fa1c",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "61b9f6e18b77848473658a0eb312e6e51cb74238b639f29b4e13ca82774f0514",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_RvgxXR36425BFMcx",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Elements, Compounds & Mixtures",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-2-elements-compounds-and-mixtures/1-2-2-pure-substance-vs-mixture",
     "specAnchors": [
-      {
-        "code": "4CH1-1.8",
-        "text": "understand how to classify a substance as an element, compound or mixture"
-      },
       {
         "code": "4CH1-1.9",
         "text": "understand that a pure substance has a fixed melting and boiling point, but that a mixture may melt or boil over a range of temperatures"
@@ -35,7 +31,6 @@
           "Pure Substance vs Mixture"
         ],
         "specRefs": [
-          "4CH1-1.8",
           "4CH1-1.9"
         ],
         "opening": "In everyday talk, pure suggests something natural or untouched. Chemistry means something sharper: a pure substance is one single element or one single compound, with no other substances present. Pure water holds only water molecules; drinking water also carries dissolved ions and added chlorine, so it counts as a mixture even though it looks clean.",
@@ -79,6 +74,9 @@
           "rn_RvgxXR36425BFMcx::L1::Q7",
           "rn_RvgxXR36425BFMcx::L1::Q8",
           "rn_RvgxXR36425BFMcx::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -131,7 +129,8 @@
           "rn_RvgxXR36425BFMcx::L2::Q7",
           "rn_RvgxXR36425BFMcx::L2::Q8",
           "rn_RvgxXR36425BFMcx::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -157,18 +156,8 @@
           "firstLesson": 2
         },
         {
-          "term": "boiling point",
-          "definition": "The fixed temperature at which a pure substance turns from liquid to gas.",
-          "firstLesson": 2
-        },
-        {
           "term": "melting point apparatus",
           "definition": "A laboratory device that heats a tiny sample slowly to reveal its exact melting point.",
-          "firstLesson": 2
-        },
-        {
-          "term": "impurity",
-          "definition": "Any substance mixed into a sample that lowers its purity.",
           "firstLesson": 2
         }
       ],
@@ -187,10 +176,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/34fd1ff08024-pure-v-impure.png",
         "alt": "Pure V Impure",
-        "sourceHeading": "Pure substance v mixture",
-        "caption": "Pure water consists of only H***<sub>***2***</sub>***O molecules whereas tap water is a mixture",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Pure Substance vs Mixture",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Pure water consists of only H***<sub>***2***</sub>***O molecules whereas tap water is a mixture"
       }
     ]
   }

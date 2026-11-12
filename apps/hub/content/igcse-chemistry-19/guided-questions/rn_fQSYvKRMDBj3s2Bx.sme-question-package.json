@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_fQSYvKRMDBj3s2Bx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f31a95345b9168db659e61270427f3bf10a26a43466c66d57e6b0a6784cd9d69",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "f4eaf5f9f1b37718ec86d19cdcb8a4d064e6a44da2414e856846338d75a2dd1a",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_fQSYvKRMDBj3s2Bx",
   "subject": "igcse-chemistry",
@@ -55,67 +55,67 @@
       "options": [
         {
           "key": "A",
+          "text": "The acid stops bubbling when heated",
+          "correct": false,
+          "explanation": "Warming causes no bubbling here; the endpoint is the undissolved solid.",
+          "misconception": "boiling confused with reacting"
+        },
+        {
+          "key": "B",
           "text": "Some solid stops dissolving and a suspension remains however much you stir",
           "correct": true,
           "explanation": "The note defines the endpoint as the base stopping dissolving with a suspension left in the acid.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The solution turns from blue to colourless",
           "correct": false,
           "explanation": "The solution turns blue as the salt forms; colour is not the endpoint signal.",
           "misconception": "colour change misread"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The mixture stops fizzing",
           "correct": false,
           "explanation": "This reaction is not gas-evolving; fizzing belongs to the carbonate and acid test.",
           "misconception": "wrong reaction signature"
-        },
-        {
-          "key": "D",
-          "text": "The acid stops bubbling when heated",
-          "correct": false,
-          "explanation": "Warming causes no bubbling here; the endpoint is the undissolved solid.",
-          "misconception": "boiling confused with reacting"
         }
       ]
     },
     {
       "id": "rn_fQSYvKRMDBj3s2Bx::L1::Q3",
       "moduleId": "rn_fQSYvKRMDBj3s2Bx::L1",
-      "stem": "What is the purpose of the filtration step?",
+      "stem": "What is the purpose of the filtering step?",
       "misconceptionClass": "step-purpose reasoning",
       "options": [
         {
           "key": "A",
-          "text": "To remove the excess, unreacted copper(II) oxide from the salt solution",
-          "correct": true,
-          "explanation": "The solid caught on the paper is the leftover base; the filtrate is the salt solution.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To remove unreacted acid from the solution",
-          "correct": false,
-          "explanation": "The acid was already consumed by the excess base before filtering.",
-          "misconception": "acid location confused"
-        },
-        {
-          "key": "C",
           "text": "To separate the blue salt from the water",
           "correct": false,
           "explanation": "The salt stays dissolved in the filtrate; crystallisation comes later.",
           "misconception": "premature separation"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "To purify the crystals before drying",
           "correct": false,
           "explanation": "No crystals exist yet; filtration happens well before evaporation.",
           "misconception": "stage order scrambled"
+        },
+        {
+          "key": "C",
+          "text": "To remove the excess, unreacted copper(II) oxide from the salt solution",
+          "correct": true,
+          "explanation": "The solid caught on the paper is the leftover base; the filtrate is the salt solution.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To remove unreacted acid from the solution",
+          "correct": false,
+          "explanation": "The acid was already consumed by the excess base before filtering.",
+          "misconception": "acid location confused"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Gentle warming speeds up the reaction between the acid and the base",
-          "correct": true,
-          "explanation": "Warmer particles react faster, so the base dissolves and reacts sooner.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "To evaporate the acid before mixing",
           "correct": false,
           "explanation": "Evaporating the acid would be dangerous and would defeat the reaction.",
           "misconception": "stage imported early"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "To melt the copper(II) oxide",
           "correct": false,
           "explanation": "Copper(II) oxide stays solid; the warming serves the reaction rate of the acid.",
           "misconception": "state change imagined"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "To make the filtrate easier to filter",
           "correct": false,
           "explanation": "Filtration ease is not the reason; the warming is about reaction speed.",
           "misconception": "downstream effect claimed"
+        },
+        {
+          "key": "D",
+          "text": "Gentle warming speeds up the reaction between the acid and the base",
+          "correct": true,
+          "explanation": "Warmer particles react faster, so the base dissolves and reacts sooner.",
+          "misconception": null
         }
       ]
     },
@@ -201,7 +201,6 @@
       "keywords": [
         "oxide",
         "sulfuric",
-        "sulphuric",
         "acid",
         "copper"
       ],
@@ -235,10 +234,7 @@
         "excess",
         "filter",
         "filtering",
-        "filtered",
-        "filtration",
         "pure",
-        "purity",
         "contaminate"
       ],
       "options": []
@@ -254,7 +250,6 @@
         "slower",
         "slow",
         "slowly",
-        "less",
         "rate",
         "speed"
       ],
@@ -268,31 +263,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Gently, in a water bath or with an electric heater, until the solution is saturated",
+          "text": "The evaporating basin is heated directly over the Bunsen flame",
+          "correct": false,
+          "explanation": "The method calls for a water bath or electric heater at this stage.",
+          "misconception": "heating method swapped"
+        },
+        {
+          "key": "B",
+          "text": "Gently, using a water bath or an electric heater, until the solution is saturated",
           "correct": true,
           "explanation": "The method specifies gentle evaporation; the Bunsen was only for the initial warming of the acid.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Fiercely with a Bunsen burner until it boils dry",
           "correct": false,
           "explanation": "Boiling dry would spatter the salt and is never the method.",
           "misconception": "heating overdone"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It is not heated; the solution is simply left in sunlight",
           "correct": false,
           "explanation": "The method requires controlled heating to reach saturation.",
           "misconception": "heating denied"
-        },
-        {
-          "key": "D",
-          "text": "The evaporating basin is heated directly over the Bunsen flame",
-          "correct": false,
-          "explanation": "The method calls for a water bath or electric heater at this stage.",
-          "misconception": "heating method swapped"
         }
       ]
     },
@@ -304,31 +299,31 @@
       "options": [
         {
           "key": "A",
-          "text": "That the solution is saturated: crystals forming on the rod show no more salt can dissolve",
-          "correct": true,
-          "explanation": "A cold surface triggers crystallisation only when the solution is saturated.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "That the solution is still too dilute to use",
-          "correct": false,
-          "explanation": "Crystals on the rod mean saturation has been reached, not failure.",
-          "misconception": "signal inverted"
-        },
-        {
-          "key": "C",
           "text": "That the solution has become dangerously concentrated",
           "correct": false,
           "explanation": "Saturation is the desired state before crystallisation, not a hazard signal.",
           "misconception": "safety frame imposed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "That the rod has been contaminated with base",
           "correct": false,
           "explanation": "The test reports the state of the solution, not the cleanliness of the rod.",
           "misconception": "foreign cause invented"
+        },
+        {
+          "key": "C",
+          "text": "That the solution is saturated: crystals forming on the rod show no more salt can dissolve",
+          "correct": true,
+          "explanation": "A cold surface triggers crystallisation only when the solution is saturated.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "That the solution is still too dilute to use",
+          "correct": false,
+          "explanation": "Crystals on the rod mean saturation has been reached, not failure.",
+          "misconception": "signal inverted"
         }
       ]
     },
@@ -340,31 +335,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because during evaporation and crystallisation the acid would become dangerously concentrated",
-          "correct": true,
-          "explanation": "The practical tip places the danger exactly in this stage, which is why the base was added in excess.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because acid would make the crystals green instead of blue",
           "correct": false,
           "explanation": "The risk named is concentration and danger, not a colour change.",
           "misconception": "colour consequence invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because acid would stop the water evaporating",
           "correct": false,
           "explanation": "Evaporation is unaffected; the danger is the concentrated acid itself.",
           "misconception": "physical effect invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because the filter paper would dissolve in acid",
           "correct": false,
           "explanation": "Filtration is already complete; the concern is the evaporation stage.",
           "misconception": "stage misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Because during evaporation and crystallisation the acid would become dangerously concentrated",
+          "correct": true,
+          "explanation": "The practical tip places the danger exactly in this stage, which is why the base was added in excess.",
+          "misconception": null
         }
       ]
     },
@@ -412,31 +407,31 @@
       "options": [
         {
           "key": "A",
+          "text": "They are scraped from the filter paper",
+          "correct": false,
+          "explanation": "Filtration belonged to the earlier stage; the crystals grow in the basin.",
+          "misconception": "stage order scrambled"
+        },
+        {
+          "key": "B",
           "text": "The excess solution is decanted off and the crystals are left to dry",
           "correct": true,
           "explanation": "The method's last steps are decanting the excess solution and letting the crystals dry.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "They are heated strongly with a Bunsen burner until bone dry",
           "correct": false,
           "explanation": "Strong heating would drive off the water of crystallisation and spoil the hydrated crystals.",
           "misconception": "hydration destroyed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They are rinsed thoroughly with water",
           "correct": false,
           "explanation": "Rinsing would dissolve the crystals you just made.",
           "misconception": "self-defeating step"
-        },
-        {
-          "key": "D",
-          "text": "They are scraped from the filter paper",
-          "correct": false,
-          "explanation": "Filtration belonged to the earlier stage; the crystals grow in the basin.",
-          "misconception": "stage order scrambled"
         }
       ]
     },
@@ -449,8 +444,6 @@
       "modelAnswer": "To evaporate water and make the solution saturated.",
       "keywords": [
         "evaporate",
-        "evaporates",
-        "evaporating",
         "evaporation",
         "water",
         "saturated",
@@ -468,9 +461,7 @@
       "keywords": [
         "decanted",
         "decant",
-        "decanting",
-        "poured",
-        "pour"
+        "excess"
       ],
       "options": []
     },
@@ -483,15 +474,9 @@
       "modelAnswer": "So the solution can dry out and the dissolved copper(II) sulfate can crystallise — leaving it warm lets good crystals form as the water leaves.",
       "keywords": [
         "crystallise",
-        "crystallises",
-        "crystallised",
-        "crystallising",
         "crystals",
         "crystal",
-        "dry",
-        "dries",
-        "dried",
-        "drying"
+        "dry"
       ],
       "options": []
     },

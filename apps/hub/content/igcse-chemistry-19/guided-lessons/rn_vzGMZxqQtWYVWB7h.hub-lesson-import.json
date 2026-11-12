@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_vzGMZxqQtWYVWB7h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ae849d78ef74a2d51f13ed68c8d4e36cf1a8f86e2357ee16d01a648eb10ef628",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "8239a344b0d964b5387f6e06b5a75962fa532b0239cb374dcd60ae27bb4785f1",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_vzGMZxqQtWYVWB7h",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Atomic Structure",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-3-atomic-structure/1-3-2-calculate-relative-atomic-mass",
     "specAnchors": [
-      {
-        "code": "4CH1-1.16",
-        "text": "know what is meant by the terms atomic number, mass number, isotopes and relative atomic mass (Ar)"
-      },
       {
         "code": "4CH1-1.17",
         "text": "be able to calculate the relative atomic mass of an element (Ar) from isotopic abundances"
@@ -32,10 +28,9 @@
         "id": "rn_vzGMZxqQtWYVWB7h::L1",
         "title": "Calculating Relative Atomic Mass",
         "sourceHeadings": [
-          "Calculating relative atomic mass"
+          "Calculate Relative Atomic Mass"
         ],
         "specRefs": [
-          "4CH1-1.16",
           "4CH1-1.17"
         ],
         "opening": "An element's relative atomic mass is not the mass of any one atom; it is an average blended from all the element's isotopes. Each isotope contributes in proportion to how common it is. This lesson sets up that weighting idea and the equation that carries it out.",
@@ -79,7 +74,8 @@
           "rn_vzGMZxqQtWYVWB7h::L1::Q7",
           "rn_vzGMZxqQtWYVWB7h::L1::Q8",
           "rn_vzGMZxqQtWYVWB7h::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_vzGMZxqQtWYVWB7h::L2",
@@ -131,16 +127,12 @@
           "rn_vzGMZxqQtWYVWB7h::L2::Q7",
           "rn_vzGMZxqQtWYVWB7h::L2::Q8",
           "rn_vzGMZxqQtWYVWB7h::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
       "glossary": [
-        {
-          "term": "isotope",
-          "definition": "Atoms of the same element with equal proton counts but different neutron counts.",
-          "firstLesson": 1
-        },
         {
           "term": "mass number",
           "definition": "The number of protons and neutrons in the nucleus of an atom.",
@@ -159,11 +151,6 @@
         {
           "term": "weighted average",
           "definition": "An average in which each value counts in proportion to how common it is.",
-          "firstLesson": 1
-        },
-        {
-          "term": "numerator",
-          "definition": "The top line of the fraction, holding the summed percentage-times-mass terms.",
           "firstLesson": 1
         },
         {

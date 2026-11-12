@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_x5m8QBWxtKvxQ9sx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7649fc38478e9db2837ca086f7187ebb7b09e7c86af0d1ccc4bc4cf75e71b3f6",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "21e4ac33f66d6bd623355ec650e2f4b2d0f5ab00fc420d9357c8861740b573f4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_x5m8QBWxtKvxQ9sx",
@@ -74,6 +74,9 @@
           "rn_x5m8QBWxtKvxQ9sx::L1::Q7",
           "rn_x5m8QBWxtKvxQ9sx::L1::Q8",
           "rn_x5m8QBWxtKvxQ9sx::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -90,7 +93,7 @@
         "keyPoints": [
           "The law of conservation of energy says energy cannot be created or destroyed, only transferred.",
           "When energy moves to the surroundings, the products must hold less energy than the reactants by that amount.",
-          "Examples of exothermic reactions include neutralisation and combustion, which always give energy out.",
+          "Exothermic reactions include neutralisation and combustion, both of which always give energy out.",
           "The heat content of the system falls in exothermic reactions and rises in endothermic ones.",
           "Temperature changes recorded in a table of results classify each reaction as exothermic or endothermic."
         ],
@@ -126,6 +129,9 @@
           "rn_x5m8QBWxtKvxQ9sx::L2::Q7",
           "rn_x5m8QBWxtKvxQ9sx::L2::Q8",
           "rn_x5m8QBWxtKvxQ9sx::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -172,19 +178,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1be5bab666f8-exothermic-reaction.png",
         "alt": "Exothermic- reaction, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Exothermic reaction diagram",
-        "caption": "In exothermic reactions, the temperature of the surroundings increases and the heat content of the system falls",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Exothermic reactions",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "In exothermic reactions, the temperature of the surroundings increases and the heat content of the system falls"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/5beb7463aa36-endothermic-reaction.png",
         "alt": "Endothermic- reaction, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Endothermic reaction diagram",
-        "caption": "In endothermic reactions, the temperature of the surroundings falls and the heat content of the system increases",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Endothermic reactions",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "In endothermic reactions, the temperature of the surroundings falls and the heat content of the system increases"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_t68QRDhwR6r5gxYX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "70fefa0fd4527da0cd527a632f2a9e3d06a3a303e9e541e28dd37d38d3d57fbe",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "f127faff8105da3fc935190cd0dc023e8a20858e574b5f41c6a55f695024dfa4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_t68QRDhwR6r5gxYX",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Both show the forward reaction twice",
+          "correct": false,
+          "explanation": "The two halves point opposite ways.",
+          "misconception": "misreading"
+        },
+        {
+          "key": "B",
           "text": "One half shows the forward reaction and the other the reverse reaction",
           "correct": true,
           "explanation": "The two arrowheads record both directions happening at once.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One shows a fast reaction and one a slow reaction",
           "correct": false,
           "explanation": "The arrows carry direction, not speed.",
           "misconception": "speed misread"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "One shows the reaction is exothermic",
           "correct": false,
           "explanation": "Energy direction is not what the symbol encodes.",
           "misconception": "energy misread"
-        },
-        {
-          "key": "D",
-          "text": "Both show the forward reaction twice",
-          "correct": false,
-          "explanation": "The two halves point opposite ways.",
-          "misconception": "misreading"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The reactants, rebuilt from the products",
-          "correct": true,
-          "explanation": "The reverse direction runs products back to the starting chemicals.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "New products never seen before",
-          "correct": false,
-          "explanation": "The reverse route leads back to the original reactants.",
-          "misconception": "invented products"
-        },
-        {
-          "key": "C",
           "text": "Only energy",
           "correct": false,
           "explanation": "Chemicals, not just energy, are reformed.",
           "misconception": "energy only"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "A catalyst",
           "correct": false,
           "explanation": "Catalysts are not formed by reactions at all.",
           "misconception": "role confusion"
+        },
+        {
+          "key": "C",
+          "text": "The reactants, rebuilt from the products",
+          "correct": true,
+          "explanation": "The reverse direction runs products back to the starting chemicals.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "New products never seen before",
+          "correct": false,
+          "explanation": "The reverse route leads back to the original reactants.",
+          "misconception": "invented products"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "By changing the reaction conditions, such as the temperature",
-          "correct": true,
-          "explanation": "Conditions steer the balance between the two directions.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "By rewriting the equation",
           "correct": false,
           "explanation": "Paper changes nothing in the flask.",
           "misconception": "notation myth"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The direction is fixed forever",
           "correct": false,
           "explanation": "Reversibility means the direction responds to conditions.",
           "misconception": "fixed myth"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "By adding a catalyst to the products only",
           "correct": false,
           "explanation": "Catalysts change pace, not direction.",
           "misconception": "catalyst myth"
+        },
+        {
+          "key": "D",
+          "text": "By changing the reaction conditions, such as the temperature",
+          "correct": true,
+          "explanation": "Conditions steer the balance between the two directions.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "A symbol with two half arrowheads, one pointing each way, indicates that the reaction is reversible.",
       "keywords": [
         "half",
-        "arrowheads"
+        "arrowheads",
+        "reversible"
       ],
       "options": []
     },
@@ -213,7 +214,8 @@
       "modelAnswer": "The reverse reaction forms the reactants while the forward reaction forms the products.",
       "keywords": [
         "reverse",
-        "forward"
+        "forward",
+        "reversible"
       ],
       "options": []
     },
@@ -254,31 +256,31 @@
       "options": [
         {
           "key": "A",
+          "text": "They condense into a liquid",
+          "correct": false,
+          "explanation": "They reform a solid, not a liquid.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "B",
           "text": "They recombine to form solid ammonium chloride again",
           "correct": true,
           "explanation": "Cooling runs the reverse reaction, rebuilding the white solid.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "They escape as permanent gases",
           "correct": false,
           "explanation": "The reverse reaction returns them to the solid.",
           "misconception": "completion misread"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They turn into water and nitrogen",
           "correct": false,
           "explanation": "No such products appear in this reaction.",
           "misconception": "invented products"
-        },
-        {
-          "key": "D",
-          "text": "They condense into a liquid",
-          "correct": false,
-          "explanation": "They reform a solid, not a liquid.",
-          "misconception": "state confusion"
         }
       ]
     },
@@ -290,31 +292,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because water of crystallisation is held in its structure",
-          "correct": true,
-          "explanation": "The stored water gives the crystals their blue colour.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because copper is always blue",
-          "correct": false,
-          "explanation": "The anhydrous form of the same salt is white.",
-          "misconception": "element myth"
-        },
-        {
-          "key": "C",
           "text": "Because it contains dissolved oxygen",
           "correct": false,
           "explanation": "Oxygen is not the colour source here.",
           "misconception": "invented cause"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because it was heated",
           "correct": false,
           "explanation": "Heating drives the colour away, not in.",
           "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "Because water of crystallisation is held in its structure",
+          "correct": true,
+          "explanation": "The stored water gives the crystals their blue colour.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because copper is always blue",
+          "correct": false,
+          "explanation": "The anhydrous form of the same salt is white.",
+          "misconception": "element myth"
         }
       ]
     },
@@ -326,31 +328,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Endothermic, because energy is taken in to remove the water",
-          "correct": true,
-          "explanation": "Driving the water out consumes heat.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Exothermic, because heat is given off while drying",
           "correct": false,
           "explanation": "That is the rehydration step.",
           "misconception": "direction swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "No energy change occurs",
           "correct": false,
           "explanation": "Removing bound water requires energy.",
           "misconception": "no-change myth"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The change depends on the colour",
           "correct": false,
           "explanation": "Colour records the state, not the energy flow.",
           "misconception": "colour conflated"
+        },
+        {
+          "key": "D",
+          "text": "Endothermic, because taking the water out demands energy input",
+          "correct": true,
+          "explanation": "Driving the water out consumes heat.",
+          "misconception": null
         }
       ]
     },
@@ -398,30 +400,30 @@
       "options": [
         {
           "key": "A",
+          "text": "NH4Cl (s) forming N2 (g) and H2 (g), with a double arrow",
+          "correct": false,
+          "explanation": "Those are not the products of this decomposition.",
+          "misconception": "wrong products"
+        },
+        {
+          "key": "B",
           "text": "NH4Cl (s) between NH3 (g) and HCl (g) with a double arrow",
           "correct": true,
           "explanation": "The solid and the two gases face each other across the two-way arrow.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "NH4Cl (s) forming NH3 (g) only, with a single arrow",
           "correct": false,
           "explanation": "HCl is missing and the arrow is one-way.",
           "misconception": "incomplete equation"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "NH3 (g) plus HCl (g) forming water, with a single arrow",
           "correct": false,
           "explanation": "No water forms in this reaction.",
-          "misconception": "wrong products"
-        },
-        {
-          "key": "D",
-          "text": "NH4Cl (s) forming N2 (g) and H2 (g), with a double arrow",
-          "correct": false,
-          "explanation": "Those are not the products of this decomposition.",
           "misconception": "wrong products"
         }
       ]
@@ -449,7 +451,8 @@
       "modelAnswer": "Hydrated copper(II) sulfate is blue and holds water inside its crystal structure.",
       "keywords": [
         "blue",
-        "water"
+        "water",
+        "structure"
       ],
       "options": []
     },

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_ZWrmDYtNGnmFycPM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5b53888f7f97a6fc6dc5289183823a208bf862ffbbf1184b1a09b1b83e4c3c55",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "2db6e6c64507a14adb30f65505fa8e445dca783bbb7e0f2fa2e0a1a27c5ddf31",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_ZWrmDYtNGnmFycPM",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Acids, Alkalis & Titrations",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-6-acids-alkalis-and-titrations/2-6-2-acids-alkalis-and-neutralisation",
     "specAnchors": [
-      {
-        "code": "4CH1-2.29",
-        "text": "understand how to use the pH scale, from 0–14, can be used to classify solutions as strongly acidic (0–3), weakly acidic (4–6), neutral (7), weakly alkaline (8–10) and strongly alkaline (11–14)"
-      },
       {
         "code": "4CH1-2.31",
         "text": "know that acids in aqueous solution are a source of hydrogen ions and alkalis in a aqueous solution are a source of hydroxide ions"
@@ -39,8 +35,7 @@
           "Acids & alkalis"
         ],
         "specRefs": [
-          "4CH1-2.31",
-          "4CH1-2.29"
+          "4CH1-2.31"
         ],
         "opening": "Dissolve an acid in water and it releases hydrogen ions, H+, and it is these ions that make the solution acidic. Alkalis dissolved in water release hydroxide ions, OH-, which make the solution alkaline. The pH scale is a measure of how much hydrogen ion is present, which is why stronger acids sit lower on the scale.",
         "keyPoints": [
@@ -59,7 +54,7 @@
           "medium": {
             "restatement": "In aqueous solution the acid's molecules have released hydrogen ions while the alkali has released hydroxide ions, and each ion type defines the acidity or alkalinity of the mixture. Because the pH scale measures the hydrogen ion amount, a concentrated strong acid reads low while an alkaline solution with plentiful hydroxide reads high.",
             "analogy": "Picture a scoreboard where hydrogen ions score for the acid side and hydroxide ions score for the alkali side; pH is simply the running total displayed.",
-            "examPointer": "Definition questions often quote the spec wording: acids are a source of hydrogen ions and alkalis a source of hydroxide ions, both in aqueous solution."
+            "examPointer": "Definition questions often quote the spec wording: acids act as a source of hydrogen ions and alkalis as a source of hydroxide ions, both in aqueous solution."
           }
         },
         "gatePolicy": {
@@ -82,7 +77,8 @@
           "rn_ZWrmDYtNGnmFycPM::L1::Q7",
           "rn_ZWrmDYtNGnmFycPM::L1::Q8",
           "rn_ZWrmDYtNGnmFycPM::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_ZWrmDYtNGnmFycPM::L2",
@@ -157,11 +153,6 @@
           "firstLesson": 1
         },
         {
-          "term": "aqueous solution",
-          "definition": "A solution in which the solvent is water.",
-          "firstLesson": 1
-        },
-        {
           "term": "neutralisation",
           "definition": "The reaction in which an acid's hydrogen ions meet an alkali's hydroxide ions to form water.",
           "firstLesson": 2
@@ -188,10 +179,10 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7303a3f65744-1-7-equilibria-neutralisation-reaction-of-hcl-an.png",
         "alt": "Equilibria Neutralisation Reaction of HCl and NaOH, downloadable AS & A Level Chemistry revision notes",
         "sourceHeading": "Neutralisation",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

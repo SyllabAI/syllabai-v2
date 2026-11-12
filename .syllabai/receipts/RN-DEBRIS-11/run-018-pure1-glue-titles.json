@@ -1,0 +1,54 @@
+{
+ "receipt": "rn11-run-018-pure1-glue-titles",
+ "family": "RN-DEBRIS-11",
+ "run": "018",
+ "lane": "the 9709 pure-1 glue/interleave title pass — run-017's proposal-map F5 discharged (the run-013 FLEET OBSERVATION class, run-016 re-affirmed): cie-a-level-maths-20-pure-1 + cie-as-maths-20-pure-1 both-planes both-courses point titles",
+ "operatorOrder": "run-018",
+ "operatorTrace": "1a1cbeb33be7a441",
+ "generatedUtc": "2026-11-12",
+ "mode": "apply+verify",
+ "base": "lane/rn-debris-11-run-017 tip 76d9e352 (stacked per the run-013→014 precedent; #931 desk-pending; tip carries the race-guard sync of origin/main 28c64e41, re-fetched unmoved this run); run-018 zero-collision re-verified post-fetch",
+ "defectOfRecord": {
+  "class": "9709 pure-1 point titles carry the same r5-era two-column interleave class run-017 discharged on cs-23 — sweep-invisible: content == spine byte-equal 33/33 per course, and the AS course's planes are byte-equal to the a-level course's (the mirror sweep compares planes, so equality hides the defect). The corpus is byte-true to the upstream parse for 26/33 rows — the parse itself is the defected origin (its statement/notes columns are interleaved at wrap boundaries; its P1 codes even DUPLICATE — 1.3.1 x2, 1.3.2 x2, 1.4.1 x2 — the corpus's a-suffix codes are the fleet's de-duplication of those duplicates).",
+  "census": "official P1 topic-1 census of record = 8 subtopics / 34 rows (1.1=5, 1.2=5, 1.3=5, 1.4=2, 1.5=5, 1.6=4, 1.7=4, 1.8=4) vs corpus 33 rows. Dispositions: 21 REPAIR (title-only, codes unchanged — 1.1.1-1.1.5, 1.2.2, 1.2.4, 1.2.5, 1.3.1, 1.3.2, 1.4.1a, 1.5.1, 1.5.3, 1.5.4, 1.6.1, 1.6.3, 1.6.4, 1.7.1, 1.7.2, 1.8.1, 1.8.4), 10 NO-REPAIR (byte-clean of the garbage class: 1.2.1, 1.2.3, 1.4.1, 1.5.2, 1.5.5, 1.6.2, 1.7.3, 1.7.4, 1.8.2, 1.8.3), 3 PROPOSAL (official 1.3.3/1.3.4/1.3.5 — no dedicated corpus rows, their fragments surface inside the 1.3.2a blob; plus non-row debris 1.3.1a)",
+  "origin": "r5-era upstream extraction interleaved the PDF's statement/notes columns (run-017 origin law, second family); the a-suffix codes are parse-vintage artifacts retained for anchor continuity (run-012 law)"
+ },
+ "evidenceOfRecord": {
+  "officialDocs": [
+   {
+    "pdf": "9709-2023-2025-syllabus.pdf (597421-2023-2025-syllabus.pdf)",
+    "sha256": "3a7a3769…6256",
+    "sha1": "997e5a9f…2e32",
+    "continuity": "== run-009/016 pins of record, re-verified byte-exact BEFORE extraction; source syllabai-resources @ 4e3a1c6843b0 (sparse blobless clone, re-provisioned this run — the sandbox recycle had evicted the run-009 cache), Official-Specifications/cie-a-level-maths-2023-2025/597421-2023-2025-syllabus.pdf"
+   }
+  ],
+  "extraction": "run-009/013/016/017 law family (pdftotext -layout; per-block notes gutter = the column of 'Notes and examples' in that block's header; statement text lives LEFT of the gutter, notes EXCLUDED — statement-only law; wrapped-continuation join; running-header/footer dedupe; CTRL strip; FLOAT capture for the stacked-fraction/superscript tokens pdftotext emits on their own lines — the ½ stack of 1.4.2, the ⁿ of 1.6.1 — with statement-column-only token pinning)",
+  "asserts": "census structure (8 subtopics, 5/5/5/2/5/4/4/4 rows); anti-invention word-level cover (every prose word of all 34 assembled rows present in the row's pinned statement tokens); notes-vocabulary leak detectors; no control chars; single-space joins",
+  "crossChecks": [
+   "upstream parse (same PDF, independent extractor, defected origin): 26/33 corpus titles byte-true — origin disclosure, corroboration only",
+   "corpus glyph convention corroborations: θ/²/≡ from the corpus's own clean same-row fragments (1.5.4), ⁿ from the 0606 fleet precedent '(a + b)ⁿ' (run-013 composed law), ⁻¹ from corpus 1.5.3",
+   "UGM a-level officialText variants identified as REWORDED class (order-swaps, e.g. 1.5.4 'tan θ ≡ sin θ / cos θ' vs official 'sinθ/cosθ ≡ tanθ') — wording authority DISCARDed, glyph corroboration only",
+   "official 1.3 census 5 rows vs corpus 4 (1.3.2a blob) — the coverage gap of record",
+   "official 1.4 census 2 rows == corpus 2 (1.4.1a is the dedicated carrier of official 1.4.2 — title repaired in place, code retained per the run-012 frozen-anchor law)"
+  ]
+ },
+ "repairOfRecord": "21 titles x 2 courses (content curriculum + hub spine, codes UNCHANGED) + UGM officialText byte-true serve law (21 sites a-level incl. the generator-era 1.5.2 variant, 20 sites as) + KG regen via kg_export.export_course (43n/88e/33pts x2, deep-equal ex-generatedUtc PASS, 21 official titles carried) — manifest counts untouched (33/33 x2); zero src/ bytes; glyph work disclosed per row in adjudication_r0.json (composed=9: ² restores x2, subscripts ₁, s = rθ / A = ½r²θ assembly, sinθ/cosθ fraction, dy/dx + d²y/dx² fractions, ⁿ restores x3)",
+ "proposals": "PROPOSAL-OF-RECORD (NOT applied — desk territory per the run-016 boundary law): P1 coverage split — official 1.3.3/1.3.4/1.3.5 absent as dedicated rows (byte-exact titles pinned in adjudication_r0.json for the desk's add; census-changing) + 1.3.1a/1.3.2a disposition (non-row debris; 1.3.1a carries the head of official 1.3.3); P2 the a-suffix codes are parse-vintage artifacts (1.4.1a retained per the run-012 law, disclosed; 1.3.1a/1.3.2a fold into P1)",
+ "gates": "ALL GREEN — see run-018/gates_r0.json (G0 file scope = exactly the 8-file family of record; G1 serializers byte-exact; G2 old/new sha256 per site; G3 structure 43n/33pts unchanged; G4 KG regen deep-equal x2; G6 CTRL 0 + leak detectors 0; G7 collision-free; G8 origin disclosures; GV1 six validators exit 0 UNMASKED)",
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/official_9709_p1_census_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/adjudication_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/apply_manifest_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/gates_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/scripts/ (census extractor + adjudication + applier + fetch script)"
+ ],
+ "boundaries": "title/label repair + UGM byte-true serve + KG regen only; zero code changes; zero census changes (debris rows byte-untouched, coverage gap = proposal); structural residue filed as proposal (desk territory per the run-016 boundary law); author does not self-merge — PR for the R0 desk; no force-push; fetch-first race-guard at push",
+ "postReview": {
+  "atUtc": "2026-11-11T20:22:36Z",
+  "trigger": "self-review before self-merge (operator order 'review+merge yourself', trace 1a1cc1aa04d81845)",
+  "finding": "hub CI red on this PR's head (ddb11e82) — INHERITED, not of this run's changeset: the stacked run-017 base's cs-23 KG regen (a5d3c791) had dropped 700bb601's 3 hand-maintained spanning-tree edges (subject->sec7/sec9/sec10); kg-corpus P5+G1 fail (file 120n/210e/hier=116 vs index 213e). Census+verify green throughout; BOTH pure-1 KG files of this run passed G1/P5 at their new counts — this run's own 8-file changeset clean",
+  "resolution": "repaired on the run-017 lane (ec328cdc union: main's 213e byte-exact edge structure + the 11 repaired statements; union byte-equals kg_export.export_course recompute on the post-run-017 curriculum except exactly those 3 hand edges ex-generatedUtc; kg-corpus 111/111) and landed FIRST as #931 (merge 1fb70f30); this branch then race-guard-synced origin/main (534440a5): cs-23 files resolve-to-theirs verified byte-exact vs main, pure-1 files byte-unchanged, kg-corpus 111/111 on the synced tree",
+  "landing": "self-review + self-merge authorized by operator order 'review+merge yourself' (trace 1a1cc1aa04d81845) — overrides this receipt's original author-no-self-merge boundary for this lane's landing; #933 merges after green CI on the amended head",
+  "class": "same sweep-invisible family as 700bb601: hand-maintained mirror-law KG edges are dropped by every deterministic kg_export regen until the exporter carries them — desk follow-up territory"
+ }
+}

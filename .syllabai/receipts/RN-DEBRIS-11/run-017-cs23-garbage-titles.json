@@ -1,0 +1,56 @@
+{
+ "receipt": "rn11-run-017-cs23-garbage-titles",
+ "family": "RN-DEBRIS-11",
+ "run": "017",
+ "lane": "the cs-23 both-planes-garbage point-title pass — run-016 newFindings[0] discharged (1.1.2 BEL mangling, 8.1.1a multi-row blob, 6.3.1a-fragment class surveyed) + the T8.1 mis-map suspicion (newFindings[1]) CONFIRMED and repaired per the partition law",
+ "operatorOrder": "run-017 (cs-23 garbage-title queue, evidence pass first, per the lane standard)",
+ "operatorTrace": "1a1cbbb3fb72ac61",
+ "generatedUtc": "2026-11-12",
+ "mode": "apply+verify",
+ "base": "origin/main d89ad574 (fetch-first race-guard; run-017 collision-free; desk waves T-HUB-AUDITFIX-1 run-007 / t-reason-wall-1 / adr-044 / video-map P4 landed in the same advance — zero overlap, path-scoped to 3 cs-23 data files)",
+ "defectOfRecord": {
+  "class": "cs-23 both-planes-garbage point titles — sweep-invisible (content and spine byte-equal garbage; the run-015 mirror sweep compares planes, so equality hides the defect)",
+  "census": "11 rows of record: 10 mangled-interleave carriers (1.1.2, 1.1.4, 2.1.1, 2.1.2, 3.1.1, 3.1.2, 3.2.3, 3.4.3, 6.3.5, 8.1.4 — BEL \\u0007 glyph + two-column interleave + notes-glue) + 1 multi-row blob (8.1.1a — carries official 8.1.4(f)'s statement plus interleave debris of official rows 8.1.5/8.1.6a/8.1.6b/8.1.6c/8.1.7); plus the surveyed non-BEL fragment class 6.3.1a/6.3.2a/6.3.3a (official 'See section 4' pointer bullets) and 6.3.4 (official advisory sentence) — titles doc-verbatim, disposition = structural proposal",
+  "origin": "r5-era upstream extraction kept the PDF's BEL bold-marker glyph and interleaved statement/notes columns; the same glyph class was pinned in run-013's upstream titles (RS-23 \\u0007 rows)"
+ },
+ "evidenceOfRecord": {
+  "officialDocs": [
+   {
+    "pdf": "0478-2023-2025-syllabus.pdf (595424-2023-2025-syllabus.pdf)",
+    "sha256": "48cd6cf0…cbdb4",
+    "sha1": "bee666fb…2b20",
+    "continuity": "== run-016 pins of record, re-verified byte-exact BEFORE extraction; sha1 == upstream spec.json pin; fetched at syllabai-resources @ 4e3a1c6843b0 (sparse blobless clone); official source cambridgeinternational.org/Images/595424-2023-2025-syllabus.pdf"
+   }
+  ],
+  "extraction": "run-009/010/013/016 law family (pdftotext -layout; gutter column split — statement text lives left of the notes gutter and its continuation indent is shallow; bullet/dash-led and deep-indented lines are notes, EXCLUDED statement-only law; wrapped-continuation join; '(continued)'/running-header/footer dedupe; CTRL strip — the BEL bold-marker glyph; tabs normalized; lettered + roman markers preserved doc-verbatim; section signature law — header followed by the 'Candidates should be able to:' marker within 4 lines, TOC/running-header repeats excluded)",
+  "asserts": "structure asserts per target row (expected letters/romans); notes-vocabulary leak detectors; no control chars; single-space joins; gutter census (min mid-line bullet column 70 >= 55 in parsed ranges)",
+  "crossChecks": [
+   "official 7 census 9 numbered rows == run-016's crossCheck of record (T7 9 rows -> 12 points with lettered rows)",
+   "official 8.1 census 8 numbered rows, lettered rows 4(a)-(f) and 6(a)-(c) == run-016's finding",
+   "official 6.3 = exactly 3 rows (AI) — corpus rows 6.3.4a-6.3.9 carry section-7 rows verbatim (mis-filed, structural proposal F4)",
+   "corpus 8.1.4/8.1.1a partition official row 8.1.4: (a)-(e) vs (f) — no duplication, no invention"
+  ]
+ },
+ "repairOfRecord": "11 titles x 2 planes (content curriculum + hub spine) + KG regen via kg_export.export_course (120n/210e/88pts, deep-equal ex-generatedUtc PASS, 11 official titles carried) — codes UNCHANGED (structural re-code = desk territory, filed in the proposal map); partition law: 8.1.4 <- official (a)-(e), 8.1.1a <- official (f) 'Understand and use arithmetic, logical and Boolean operators' (its anchor of record per run-016's own finding; prereq concept C47-CON-OPERATORS anchors 8.1.1a — semantics preserved); 6.3.5 title repaired to official row 7.5 (mis-map disclosed); manifest counts untouched (88/88); zero src/ bytes",
+ "dispositions": {
+  "structuralResidue": "PROPOSAL-MAP-OF-RECORD (structural_proposal_map_r0.json, NOT applied): F1 8.1.1a re-code -> 8.1.4f; F2 coverage gap — official 8.1.5/8.1.6a/8.1.6b/8.1.6c/8.1.7 absent from corpus (subtopic-hung, kg_export-compatible, census-changing = desk-owned); F3 non-row debris 6.3.1a/6.3.2a/6.3.3a/6.3.4 (prereq concepts load-bearing on the codes); F4 6.3.4a-6.3.9 mis-filed section-7 rows (re-parent to T7 blocked by the kg_export v1.6 topic-level-point law of record; overlaps run-016's proposal rows 7.4-7.9 — reconciliation is a desk call); F5 pure-1 glue-row family still queued (own candidate)"
+ },
+ "gates": "ALL GREEN — see run-017/gates_r0.json (G0 file scope 22 title sites exactly; G1 serializers byte-exact scope proof; G2 old/new shas; G3 structure 120/88 unchanged; G4 KG regen deep-equal; G6 CTRL sweep 0 + leak detectors 0; G7 collision; GV1 six validators exit 0 UNMASKED — gradeb after bun install, module-resolution disclosure per run-016 class)",
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/official_0478_census_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/apply_manifest_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/structural_proposal_map_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/gates_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/scripts/ (census extractor + applier)"
+ ],
+ "boundaries": "title/label repair + KG regen only; zero code changes; zero census changes; structural residue filed as proposal (desk territory per run-016 boundary law); author does not self-merge — PR for the R0 desk; no force-push; fetch-first race-guard at push",
+ "postReview": {
+  "atUtc": "2026-11-11T19:45:46Z",
+  "trigger": "self-review before self-merge (operator order 'review+merge yourself', trace 1a1cc1aa04d81845)",
+  "finding": "hub CI red on the #931 head (76d9e352): kg-corpus.test.ts P5+G1 fail on cie-igcse-computer-science-23 — file 120n/210e/hier=116 vs index 120n/213e/88sp. This run's kg_export regen dropped the 3 hand-maintained spanning-tree edges (subject->sec7/sec9/sec10) that 700bb601 (run-016 CI-gate repair) restored per the mirror law; the receipt's G4 deep-equal was recompute-vs-recompute (deterministic re-export equals its own output) and structurally could not catch the drop",
+  "fix": "union of record = main's 213e byte-exact edge structure + this run's 11 repaired point statements (field census: exactly 11 statement deltas, 0 label deltas — point-node labels are codes, codes UNCHANGED); proof: the union byte-equals kg_export.export_course recompute on the post-run-017 curriculum except exactly those 3 hand edges ex-generatedUtc (script scripts/run018_review/kg_union_fix.py output of record); bun test kg-corpus 111 pass / 0 fail on the fixed tree",
+  "gatesAfterFix": "kg-corpus.test.ts 111/111 PASS (P1-P5 + G1 corpus-wide)",
+  "class": "sweep-invisible KG-regen regression of hand-maintained mirror-law edges — every future cs-23 kg_export regen drops the 3 edges until the exporter carries them; filed for desk as follow-up (same family as 700bb601); gates string above's 'G4 KG regen deep-equal' is qualified by this section",
+  "zeroInvention": "all 11 statements == curriculum titles post-run-017 (exporter recompute proof); 3 spot-checked rows (8.1.1a=(f), 1.1.2 (b)(iii), 3.1.1 (b)) found in official_0478_census_r0.json (sha-pinned 0478 PDF)"
+ }
+}

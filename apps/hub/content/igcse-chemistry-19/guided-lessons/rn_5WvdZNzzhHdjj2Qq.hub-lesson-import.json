@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_5WvdZNzzhHdjj2Qq",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a7b34ebaba64f3e63bea35334ddaef7edcee6e4899e8056c83add19df16168d9",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "d9ba9eeb41ed7c0530afacadacbae67a795fd9bb64614e41d49d6e871edf12a9",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_5WvdZNzzhHdjj2Qq",
@@ -33,9 +33,9 @@
         "specRefs": [
           "4CH1-2.13"
         ],
-        "opening": "Greenhouse gases maintain temperatures on Earth high enough to support life, and this warming is known as the greenhouse effect. Three greenhouse gases of record are carbon dioxide, methane and water vapour. The mechanism is a two-step exchange: short wavelength radiation arrives from the sun, and the warmed surface re-emits it as long wavelength radiation that greenhouse gases trap and store.",
+        "opening": "Greenhouse gases maintain temperatures on Earth at levels high enough for life, and this warming carries the name greenhouse effect. Three greenhouse gases of record are carbon dioxide, methane and water vapour. The mechanism is a two-step exchange: short wavelength radiation arrives from the sun, and the warmed surface re-emits it as long wavelength radiation that greenhouse gases trap and store.",
         "keyPoints": [
-          "Greenhouse gases keep temperatures on Earth high enough to support life.",
+          "Greenhouse gases hold temperatures on Earth at levels high enough for life to survive.",
           "This natural warming of the planet is known as the greenhouse effect.",
           "Three greenhouse gases are carbon dioxide, methane and water vapour.",
           "Short wavelength radiation from the sun strikes the surface and some is re-emitted as long wavelength radiation.",
@@ -127,7 +127,8 @@
           "rn_5WvdZNzzhHdjj2Qq::L2::Q7",
           "rn_5WvdZNzzhHdjj2Qq::L2::Q8",
           "rn_5WvdZNzzhHdjj2Qq::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -174,12 +175,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/55e00df8ebb1-the-greenhouse-effect.png",
         "alt": "The Greenhouse effect, IGCSE & GCSE Biology revision notes",
-        "sourceHeading": "The greenhouse effect",
-        "caption": "Greenhouse gases trap some of the Sun's radiation causing the Earth to warm up",
-        "binding": "unresolved",
+        "sourceHeading": "What is the greenhouse effect?",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Greenhouse gases trap some of the Sun's radiation causing the Earth to warm up"
       }
     ]
   }

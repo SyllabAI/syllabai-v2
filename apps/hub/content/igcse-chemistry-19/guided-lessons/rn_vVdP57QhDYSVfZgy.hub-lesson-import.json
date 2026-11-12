@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_vVdP57QhDYSVfZgy",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "44380407b7fce67a947cccf79453afd479587db4aed3766d4beba02636b19879",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "5c1de93d92865187fe02167962274894fa32fec45400799e05634987608ef752",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_vVdP57QhDYSVfZgy",
@@ -15,12 +15,8 @@
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-8-chemical-tests/2-8-2-flame-tests",
     "specAnchors": [
       {
-        "code": "4CH1-2.45",
-        "text": "describe how to carry out a flame test"
-      },
-      {
         "code": "4CH1-2.46",
-        "text": "know the colours formed in flame tests for these cations: Li+ is red; Na+ is yellow; K+ is lilac; Ca2+ is orange-red; Cu2+ is blue-green"
+        "text": "know the colours formed in flame tests for these cations: • Li + is red • Na + is yellow • K + is lilac • Ca 2+ is orange-red • Cu 2+ is blue-green."
       }
     ],
     "primer": {
@@ -32,10 +28,10 @@
         "id": "rn_vVdP57QhDYSVfZgy::L1",
         "title": "How to carry out a flame test",
         "sourceHeadings": [
-          "Flame tests"
+          "Flame Tests"
         ],
         "specRefs": [
-          "4CH1-2.45"
+          "4CH1-2.46"
         ],
         "opening": "A flame test identifies which metal cation is present by the colour the sample paints onto a Bunsen flame. The wire loop is cleaned in dilute acid and burned clean in the blue flame first, because any leftover ions would add their own colours and mask the one you need to see. Only then is the loop dipped into the sample and held at the flame's edge.",
         "keyPoints": [
@@ -179,23 +175,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/ab92bee4b88a-identifying-metal-cations.png",
         "alt": "Identifying Metal Cations, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Flame tests",
-        "caption": "Diagram showing the technique for carrying out a flame test",
-        "binding": "content-overlap",
+        "sourceHeading": "Flame Tests",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the technique for carrying out a flame test"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7a1f64dfaa45-colours-of-metal-cations.png",
         "alt": "Colours of metal cations, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Flame tests",
-        "caption": "Diagram showing the colours formed in the flame test for metal ions",
-        "binding": "content-overlap",
+        "sourceHeading": "Flame Tests",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the colours formed in the flame test for metal ions"
       }
     ]
   }

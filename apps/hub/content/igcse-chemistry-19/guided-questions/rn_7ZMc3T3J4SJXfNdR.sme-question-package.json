@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_7ZMc3T3J4SJXfNdR",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "12470a0e54d5d689de6d2f3197738d2400f4c70ed6e1393cdd302238af8b5ba6",
-    "pinnedRef": "45d591243caebd614a663023e30df3c85de2468e"
+    "sourceLayerSha256": "eecc24a26a704e68093431ef9f149bbc640cc57e254a379557f29630028da926",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_7ZMc3T3J4SJXfNdR",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Bunsen flames are banned in all school practicals",
+          "correct": false,
+          "explanation": "Flames are used where safe; here the flammable ethanol rules one out.",
+          "misconception": "overgeneralised rule"
+        },
+        {
+          "key": "B",
           "text": "Ethanol is flammable, so a naked flame is unsafe",
           "correct": true,
           "explanation": "A water bath or electric heater gives gentle heat without ignition risk.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The ester would burn away to nothing",
           "correct": false,
           "explanation": "The concern is igniting the ethanol vapour, not destroying the product.",
           "misconception": "risk misplaced"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The catalyst only works when cold",
           "correct": false,
           "explanation": "The method explicitly heats the mixture; only the heat source changes.",
           "misconception": "condition invented"
-        },
-        {
-          "key": "D",
-          "text": "Bunsen flames are banned in all school practicals",
-          "correct": false,
-          "explanation": "Flames are used where safe; here the flammable ethanol rules one out.",
-          "misconception": "overgeneralised rule"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Removing it stops the reverse reaction turning it back into reactants",
-          "correct": true,
-          "explanation": "Taking the product away shifts the reaction in its favour and protects the yield.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To make its smell stronger in the sample",
-          "correct": false,
-          "explanation": "The distillation protects the yield; the smell is only a later check.",
-          "misconception": "purpose swapped"
-        },
-        {
-          "key": "C",
           "text": "To save heating time and electricity",
           "correct": false,
           "explanation": "Economy is not the chemical reason; the reverse reaction is.",
           "misconception": "economics blamed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "To keep the ester dissolved in the acid",
           "correct": false,
           "explanation": "The opposite is true: the method removes it from the mixture entirely.",
           "misconception": "outcome reversed"
+        },
+        {
+          "key": "C",
+          "text": "Removing it stops the reverse reaction turning it back into reactants",
+          "correct": true,
+          "explanation": "Taking the product away shifts the reaction in its favour and protects the yield.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To make its smell stronger in the sample",
+          "correct": false,
+          "explanation": "The distillation protects the yield; the smell is only a later check.",
+          "misconception": "purpose swapped"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Their low boiling points make them the first to evaporate",
-          "correct": true,
-          "explanation": "Volatility puts the ester at the front of the queue when the mixture warms.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "They are the heaviest liquids present",
           "correct": false,
           "explanation": "Low boiling points, not heavy mass, decide who leaves first.",
           "misconception": "mass blamed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "They are solids that melt early",
           "correct": false,
           "explanation": "Esters here are oily liquids from the start.",
           "misconception": "phase invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "They dissolve the water first",
           "correct": false,
           "explanation": "Water is the by-product and plays no part in the exit order.",
           "misconception": "mechanism invented"
+        },
+        {
+          "key": "D",
+          "text": "Their low boiling points make them the first to evaporate",
+          "correct": true,
+          "explanation": "Volatility puts the ester at the front of the queue when the mixture warms.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "Concentrated sulfuric acid is the catalyst added to the ethanoic acid and ethanol.",
       "keywords": [
-        "sulfuric"
+        "sulfuric",
+        "concentrated",
+        "preparing"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "The ester is distilled off as soon as it forms and collected by condensation.",
       "keywords": [
-        "distilled"
+        "distilled",
+        "condensation",
+        "collected"
       ],
       "options": []
     },
@@ -223,7 +227,9 @@
       "kind": "explain-why",
       "modelAnswer": "Removing the ester stops the reverse reaction from turning it back into the reactants, so more ester accumulates.",
       "keywords": [
-        "reverse"
+        "reverse",
+        "accumulates",
+        "distilling"
       ],
       "options": []
     },
@@ -235,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "Ethanol is flammable, so a naked Bunsen flame risks ignition; a water bath or electric heater is the safer choice.",
       "keywords": [
-        "flammable"
+        "flammable",
+        "equipment",
+        "ignition"
       ],
       "options": []
     },
@@ -247,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "By weighing the whole flask",
+          "correct": false,
+          "explanation": "Mass alone cannot confirm which substances are present.",
+          "misconception": "test mismatch"
+        },
+        {
+          "key": "B",
           "text": "By smelling the distillate",
           "correct": true,
           "explanation": "The sweet smell of the ester is the quick qualitative check the method names.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "By tasting it",
           "correct": false,
           "explanation": "Laboratory chemicals are never tasted, whatever they smell like.",
           "misconception": "unsafe technique"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "By burning a little of it",
           "correct": false,
           "explanation": "Igniting a flammable distillate is not part of this method.",
           "misconception": "unsafe technique"
-        },
-        {
-          "key": "D",
-          "text": "By weighing the whole flask",
-          "correct": false,
-          "explanation": "Mass alone cannot confirm which substances are present.",
-          "misconception": "test mismatch"
         }
       ]
     },
@@ -283,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "To remove the acidic impurities",
-          "correct": true,
-          "explanation": "The carbonate neutralises both acids until none remain to fizz.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To add flavour to the ester",
-          "correct": false,
-          "explanation": "Flavouring happens in food factories, not in this purification.",
-          "misconception": "purpose invented"
-        },
-        {
-          "key": "C",
           "text": "To dry the ester",
           "correct": false,
           "explanation": "Drying agents are different substances; the carbonate targets acids.",
           "misconception": "agent mismatch"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "To catalyse the reaction further",
           "correct": false,
           "explanation": "The reaction is already over; the carbonate works on impurities.",
           "misconception": "stage confused"
+        },
+        {
+          "key": "C",
+          "text": "To remove the acidic impurities",
+          "correct": true,
+          "explanation": "The carbonate neutralises both acids until none remain to fizz.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To add flavour to the ester",
+          "correct": false,
+          "explanation": "Flavouring happens in food factories, not in this purification.",
+          "misconception": "purpose invented"
         }
       ]
     },
@@ -319,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Carbon dioxide released as the carbonate meets the acids",
-          "correct": true,
-          "explanation": "Carbonate plus acid always releases the gas, and the fizzing shows it leaving.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Hydrogen escaping from the ester",
           "correct": false,
           "explanation": "No hydrogen is produced by this neutralisation.",
           "misconception": "gas swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Oxygen bubbling out of solution",
           "correct": false,
           "explanation": "Oxygen is not generated in an acid-carbonate reaction.",
           "misconception": "gas swapped"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Ester vapour escaping early",
           "correct": false,
           "explanation": "The distillate is already liquid; the bubbles are gas from the neutralisation.",
           "misconception": "source misread"
+        },
+        {
+          "key": "D",
+          "text": "Carbon dioxide released as the carbonate meets the acids",
+          "correct": true,
+          "explanation": "Carbonate plus acid always releases the gas, and the fizzing shows it leaving.",
+          "misconception": null
         }
       ]
     },
@@ -391,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Sodium chloride only",
+          "correct": false,
+          "explanation": "No chloride salts are involved before the washing stage.",
+          "misconception": "salt invented"
+        },
+        {
+          "key": "B",
           "text": "Ethanoic acid, sulfuric acid and ethanol",
           "correct": true,
           "explanation": "All three travel over with the volatile ester during the distillation.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Water only",
           "correct": false,
           "explanation": "The method names three specific travellers, not just water.",
           "misconception": "list truncated"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Magnesium and hydrogen",
           "correct": false,
           "explanation": "Neither metal nor its gas plays any part in this practical.",
           "misconception": "reaction crossed"
-        },
-        {
-          "key": "D",
-          "text": "Sodium chloride only",
-          "correct": false,
-          "explanation": "No chloride salts are involved before the washing stage.",
-          "misconception": "salt invented"
         }
       ]
     },
@@ -427,7 +435,9 @@
       "kind": "recall",
       "modelAnswer": "Sodium carbonate solution removes the acidic impurities from the distillate.",
       "keywords": [
-        "carbonate"
+        "carbonate",
+        "impurities",
+        "distillate"
       ],
       "options": []
     },
@@ -439,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "Calcium chloride solution removes the leftover ethanol.",
       "keywords": [
-        "calcium"
+        "calcium",
+        "chloride",
+        "solution"
       ],
       "options": []
     },
@@ -451,7 +463,9 @@
       "kind": "explain-why",
       "modelAnswer": "The fizzing is carbon dioxide escaping as the carbonate neutralises the acid impurities; it stops when no acid remains to react.",
       "keywords": [
-        "dioxide"
+        "dioxide",
+        "neutralises",
+        "impurities"
       ],
       "options": []
     },
@@ -463,7 +477,9 @@
       "kind": "application",
       "modelAnswer": "The sweet smell confirms that an ester has formed — the sample contains ethyl ethanoate.",
       "keywords": [
-        "ester"
+        "ester",
+        "observation",
+        "ethanoate"
       ],
       "options": []
     }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_qb9TBhB6VmnFGjvf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "6eeafba2ad4df1210c6f5057390ffda7f031d81bfd235ad11cf7fb0854910842",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "33d95971c0456b6e0aab3116c3e18b60f04291ed33d84e66b4b7bd715b6fd409",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_qb9TBhB6VmnFGjvf",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because filtration only works on acids",
+          "correct": false,
+          "explanation": "Filtration separates any solid from any liquid, whatever the chemistry.",
+          "misconception": "apparatus fiction"
+        },
+        {
+          "key": "B",
           "text": "Because the method collects the salt as a solid precipitate",
           "correct": true,
           "explanation": "A soluble product would stay dissolved and there would be nothing solid to collect.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because soluble salts are too dangerous to make",
           "correct": false,
           "explanation": "Solubility is not a hazard classification; soluble salts are made by other methods routinely.",
           "misconception": "hazard invention"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because insoluble salts react faster",
           "correct": false,
           "explanation": "Rate has nothing to do with the requirement; collection does.",
           "misconception": "rate fiction"
-        },
-        {
-          "key": "D",
-          "text": "Because filtration only works on acids",
-          "correct": false,
-          "explanation": "Filtration separates any solid from any liquid, whatever the chemistry.",
-          "misconception": "apparatus fiction"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The insoluble salt that forms",
-          "correct": true,
-          "explanation": "In the stated pattern, AD is the insoluble product and CB is the soluble one.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The soluble salt left behind",
-          "correct": false,
-          "explanation": "That role belongs to CB in the pattern.",
-          "misconception": "product roles swapped"
-        },
-        {
-          "key": "C",
           "text": "The original soluble salt unchanged",
           "correct": false,
           "explanation": "AD is a new substance built from one ion of each reactant.",
           "misconception": "no-reaction reading"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The water formed by neutralisation",
           "correct": false,
           "explanation": "No neutralisation frame applies; the partners simply swap.",
           "misconception": "neutralisation frame imposed"
+        },
+        {
+          "key": "C",
+          "text": "The insoluble salt that forms",
+          "correct": true,
+          "explanation": "In the stated pattern, AD is the insoluble product and CB is the soluble one.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The soluble salt left behind",
+          "correct": false,
+          "explanation": "That role belongs to CB in the pattern.",
+          "misconception": "product roles swapped"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Double decomposition",
-          "correct": true,
-          "explanation": "The exam hint names double decomposition as the alternative term.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Single replacement",
           "correct": false,
           "explanation": "Two partners swap here, not one, so single replacement misdescribes it.",
           "misconception": "wrong classification family"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Thermal decomposition",
           "correct": false,
           "explanation": "Nothing is heated apart in this reaction; it happens on mixing.",
           "misconception": "heat association"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Neutralisation",
           "correct": false,
           "explanation": "No acid or alkali is required, so neutralisation is the wrong frame.",
           "misconception": "acid-alkali frame imposed"
+        },
+        {
+          "key": "D",
+          "text": "Double decomposition",
+          "correct": true,
+          "explanation": "The exam hint names double decomposition as the alternative term.",
+          "misconception": null
         }
       ]
     },
@@ -201,9 +201,7 @@
       "keywords": [
         "swap",
         "swaps",
-        "swapped",
-        "exchange",
-        "exchanged"
+        "soluble"
       ],
       "options": []
     },
@@ -217,7 +215,7 @@
       "keywords": [
         "double",
         "decomposition",
-        "decompose"
+        "reaction"
       ],
       "options": []
     },
@@ -232,7 +230,6 @@
         "dissolved",
         "solution",
         "stays",
-        "remains",
         "filtered",
         "solid"
       ],
@@ -261,31 +258,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To dissolve any leftover solid",
+          "correct": false,
+          "explanation": "The excess creates solid, it does not dissolve it.",
+          "misconception": "opposite effect claimed"
+        },
+        {
+          "key": "B",
           "text": "To obtain the maximum amount of precipitate",
           "correct": true,
           "explanation": "The surplus drives as much of the first salt as possible into the solid.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To make the precipitate purer",
           "correct": false,
           "explanation": "Purity comes from washing; the excess is about yield.",
           "misconception": "purity purpose misassigned"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To speed up filtration",
           "correct": false,
           "explanation": "Filtration speed is unaffected by how much reactant was in excess.",
           "misconception": "rate purpose invented"
-        },
-        {
-          "key": "D",
-          "text": "To dissolve any leftover solid",
-          "correct": false,
-          "explanation": "The excess creates solid, it does not dissolve it.",
-          "misconception": "opposite effect claimed"
         }
       ]
     },
@@ -297,31 +294,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Removing traces of the other solutions clinging to the residue",
-          "correct": true,
-          "explanation": "The wash carries away the soluble by-product and leftover reactants from the solid.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Dissolving the precipitate for recrystallisation",
-          "correct": false,
-          "explanation": "The precipitate is insoluble by design, so it cannot be redissolved this way.",
-          "misconception": "method confusion"
-        },
-        {
-          "key": "C",
           "text": "Adding water of crystallisation",
           "correct": false,
           "explanation": "Water of crystallisation belongs to soluble-salt crystals, not to this washing step.",
           "misconception": "concept misapplied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Cooling the residue for storage",
           "correct": false,
           "explanation": "Cooling is not the purpose; cleaning the solid is.",
           "misconception": "purpose invented"
+        },
+        {
+          "key": "C",
+          "text": "Removing traces of the other solutions clinging to the residue",
+          "correct": true,
+          "explanation": "The wash carries away the soluble by-product and leftover reactants from the solid.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Dissolving the precipitate for recrystallisation",
+          "correct": false,
+          "explanation": "The precipitate is insoluble by design, so it cannot be redissolved this way.",
+          "misconception": "method confusion"
         }
       ]
     },
@@ -333,31 +330,31 @@
       "options": [
         {
           "key": "A",
-          "text": "All nitrates are soluble",
-          "correct": true,
-          "explanation": "The universal solubility of nitrates lets silver and lead(II) nitrates be used as the soluble reactants.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "All nitrates are insoluble",
           "correct": false,
           "explanation": "That would make them useless here, since the reactants must dissolve.",
           "misconception": "rule inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Nitrates are always coloured",
           "correct": false,
           "explanation": "Colour is irrelevant to the method; solubility is what matters.",
           "misconception": "colour fiction"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Nitrates never react",
           "correct": false,
           "explanation": "They are the reacting species; being inert would defeat the purpose.",
           "misconception": "inertness fiction"
+        },
+        {
+          "key": "D",
+          "text": "All nitrates are soluble",
+          "correct": true,
+          "explanation": "The universal solubility of nitrates lets silver and lead(II) nitrates be used as the soluble reactants.",
+          "misconception": null
         }
       ]
     },
@@ -405,31 +402,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The filter paper itself",
+          "correct": false,
+          "explanation": "The paper is the apparatus, not what sits on it.",
+          "misconception": "literal misreading"
+        },
+        {
+          "key": "B",
           "text": "The insoluble salt, which is the product",
           "correct": true,
           "explanation": "The caught solid is the wanted salt; the liquid through the paper is the rest.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The soluble salt by-product dissolved in water",
           "correct": false,
           "explanation": "A dissolved substance passes through the paper as filtrate; it cannot be the residue.",
           "misconception": "filtrate and residue swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The excess unreacted acid",
           "correct": false,
           "explanation": "No acid appears in this preparation at all.",
           "misconception": "wrong method frame"
-        },
-        {
-          "key": "D",
-          "text": "The filter paper itself",
-          "correct": false,
-          "explanation": "The paper is the apparatus, not what sits on it.",
-          "misconception": "literal misreading"
         }
       ]
     },
@@ -444,7 +441,6 @@
         "slight",
         "excess",
         "beyond",
-        "stops",
         "until"
       ],
       "options": []
@@ -460,8 +456,7 @@
         "distilled",
         "traces",
         "contaminating",
-        "residue",
-        "pure"
+        "residue"
       ],
       "options": []
     },
@@ -476,8 +471,7 @@
         "limiting",
         "every",
         "largest",
-        "partner",
-        "fully"
+        "partner"
       ],
       "options": []
     },

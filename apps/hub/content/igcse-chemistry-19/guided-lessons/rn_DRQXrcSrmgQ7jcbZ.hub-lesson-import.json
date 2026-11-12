@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_DRQXrcSrmgQ7jcbZ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b1b59ca9691d2ed8d05f355d3f0e3f0584b8468bb03431021d05a079677adb51",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "9b33951cb685dfe73dc4a55579b382171dafed6727f6e3ba049f82fda985daac",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_DRQXrcSrmgQ7jcbZ",
@@ -20,7 +20,7 @@
       },
       {
         "code": "4CH1-3.22C",
-        "text": "know the effect of changing either temperature or pressure on the position of equilibrium in a reversible reaction: an increase (or decrease) in temperature shifts the position of equilibrium in the direction of the endothermic (or exothermic) reaction; an increase (or decrease) in pressure shifts the position of equilibrium in the direction that produces fewer (or more) moles of gas References to Le Chatelier's principle are not required"
+        "text": "know the effect of changing either temperature or pressure on the position of equilibrium in a reversible reaction: • an increase (or decrease) in temperature shifts the position of equilibrium in the direction of the endothermic (or exothermic) reaction • an increase (or decrease) in pressure shifts the position of equilibrium in the direction that produces fewer (or more) moles of gas References to Le Chatelier's principle are not required"
       }
     ],
     "primer": {
@@ -78,7 +78,8 @@
           "rn_DRQXrcSrmgQ7jcbZ::L1::Q7",
           "rn_DRQXrcSrmgQ7jcbZ::L1::Q8",
           "rn_DRQXrcSrmgQ7jcbZ::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_DRQXrcSrmgQ7jcbZ::L2",
@@ -129,7 +130,8 @@
           "rn_DRQXrcSrmgQ7jcbZ::L2::Q7",
           "rn_DRQXrcSrmgQ7jcbZ::L2::Q8",
           "rn_DRQXrcSrmgQ7jcbZ::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_DRQXrcSrmgQ7jcbZ::L3",
@@ -180,6 +182,9 @@
           "rn_DRQXrcSrmgQ7jcbZ::L3::Q7",
           "rn_DRQXrcSrmgQ7jcbZ::L3::Q8",
           "rn_DRQXrcSrmgQ7jcbZ::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -228,10 +233,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/434c8b7fecc8-effect-catalyst-on-equilibrium-position.png",
         "alt": "Graph to show a catalyst increasing the rate of the forward and reverse reaction",
-        "sourceHeading": "Diagram showing the effect of catalyst on equilibrium position",
-        "caption": "A catalyst increases the rate of the forwards and reverse reaction but does not alter the position of equilibrium",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "The effect of catalysts on equilibrium",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "A catalyst increases the rate of the forwards and reverse reaction but does not alter the position of equilibrium"
       }
     ]
   }

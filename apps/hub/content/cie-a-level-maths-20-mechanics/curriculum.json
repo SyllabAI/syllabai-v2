@@ -321,6 +321,171 @@
    ],
    "provenanceTier": "RULE_DERIVED",
    "order": 22
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S1",
+   "family": "TOPIC",
+   "title": "Mechanics Toolkit",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/maths/cie/20/mechanics/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 23
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S2",
+   "family": "TOPIC",
+   "title": "Kinematics (Straight Line Motion)",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/maths/cie/20/mechanics/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 24
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S3",
+   "family": "TOPIC",
+   "title": "Forces & Equilibrium",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/maths/cie/20/mechanics/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 25
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S4",
+   "family": "TOPIC",
+   "title": "Energy, Work & Power",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/maths/cie/20/mechanics/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 26
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S5",
+   "family": "TOPIC",
+   "title": "Momentum",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/maths/cie/20/mechanics/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 27
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S1:quantities-units-and-modelling",
+   "family": "SUBTOPIC",
+   "title": "Quantities, Units & Modelling",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Quantities, Units & Modelling\" (slug quantities-units-and-modelling) under section \"Mechanics Toolkit\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S1"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S2:kinematics-graphs",
+   "family": "SUBTOPIC",
+   "title": "Kinematics Graphs",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Kinematics Graphs\" (slug kinematics-graphs) under section \"Kinematics (Straight Line Motion)\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S2"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S2:variable-acceleration",
+   "family": "SUBTOPIC",
+   "title": "Variable Acceleration",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Variable Acceleration\" (slug variable-acceleration) under section \"Kinematics (Straight Line Motion)\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S2"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S2:constant-acceleration",
+   "family": "SUBTOPIC",
+   "title": "Constant Acceleration",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Constant Acceleration\" (slug constant-acceleration) under section \"Kinematics (Straight Line Motion)\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S2"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S3:forces",
+   "family": "SUBTOPIC",
+   "title": "Forces",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Forces\" (slug forces) under section \"Forces & Equilibrium\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S3"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S3:newtons-second-law",
+   "family": "SUBTOPIC",
+   "title": "Newton's Second Law",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Newton's Second Law\" (slug newtons-second-law) under section \"Forces & Equilibrium\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S3"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S3:resolving-forces-inclined-planes-and-friction",
+   "family": "SUBTOPIC",
+   "title": "Resolving Forces, Inclined Planes & Friction",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Resolving Forces, Inclined Planes & Friction\" (slug resolving-forces-inclined-planes-and-friction) under section \"Forces & Equilibrium\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S3"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S4:work-and-energy",
+   "family": "SUBTOPIC",
+   "title": "Work & Energy",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Work & Energy\" (slug work-and-energy) under section \"Energy, Work & Power\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S4"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S4:power",
+   "family": "SUBTOPIC",
+   "title": "Power",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Power\" (slug power) under section \"Energy, Work & Power\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S4"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-maths-20-mechanics-SME-S5:momentum-and-collisions",
+   "family": "SUBTOPIC",
+   "title": "Momentum & Collisions",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Momentum & Collisions\" (slug momentum-and-collisions) under section \"Momentum\"; sets file in 1:1 by their corpus topicSlug.",
+   "parents": [
+    "cie-a-level-maths-20-mechanics-SME-S5"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
   }
  ],
  "edges": [

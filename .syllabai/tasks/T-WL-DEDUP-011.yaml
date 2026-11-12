@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-WL-DEDUP-011
+  title: 'Worklog ledger hygiene: remove the byte-exact duplicate RN-DEBRIS-11 run-011 receipt block from .syllabai/worklog.md (dup born in the t-tutor-exp/run-002 union-merge sync 4487d4c0, landed into main by the PR #697 merge f6dc00c7)'
+  owner: Super Z (zai-web session web-5bb24618-70fe-4752-b108-4a726e477ef4, chat 0fe43d89-ff92-4e81-857a-1b1c6040a895,
+    dispatch traces 1a1cbdbe3ecd33b1 + 1a1cc2b9722727a5)
+  status: 'run-001 THIS BRANCH — PR of record'
+  priority: P3
+  band: T-WL-DEDUP (append-only-ledger hygiene band; evidence = duplicate-heading census at main tip 714da724 — the run-011 block present twice byte-exact, 5573 bytes each, L1827-1837 + L1848-1858)
+  wave: wl-dedup
+  deps: []
+  scope:
+    allowed:
+    - .syllabai/worklog.md (exactly ONE deletion: the byte-exact duplicate run-011 block — L1848-1858 at 714da724, 5573 bytes incl. separator; PLUS the append-only run-001 receipt section at this ledger's tail)
+    - worklog.md (append-only run-001 receipt section at tail only — the root ledger carries 0 duplicate headings, no deletion there)
+    - .syllabai/tasks/T-WL-DEDUP-011.yaml + .syllabai/receipts/T-WL-DEDUP-011/**
+    forbidden:
+    - any other worklog byte: the census found 48 distinct duplicated '## ' heading lines in .syllabai/worklog.md (x2..x4 classes) — DISCLOSED report-only for a follow-up census+dedup card, NOT touched by this run (the operator order names the run-011 block only)
+    - any rebase / history rewrite / force push (the deletion is a forward commit; provenance stays in git history; the append-only law is honored by ordering — the task card IS the operator order)
+    - any code / content / DB / other receipt bytes outside this card's own artifacts
+    - self-merge (PR of record; house law)

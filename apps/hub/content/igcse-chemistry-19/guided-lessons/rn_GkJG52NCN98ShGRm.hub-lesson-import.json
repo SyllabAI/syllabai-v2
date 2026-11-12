@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_GkJG52NCN98ShGRm",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7848975b9efb4ec98e7d6b4178e1904fc37c522f723f05676f39a9c0e191b7b9",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "39edb09bce6c96d38de9ac0abf6fa09ce8ddba93f6583988764c8aea2562cab3",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_GkJG52NCN98ShGRm",
@@ -20,7 +20,7 @@
       },
       {
         "code": "4CH1-1.50",
-        "text": "explain how the structures of diamond, graphite and C60 fullerene influence their physical properties, including electrical conductivity and hardness"
+        "text": "explain how the structures of diamond, graphite and C 60 fullerene influence their physical properties, including electrical conductivity and hardness"
       }
     ],
     "primer": {
@@ -77,7 +77,8 @@
           "rn_GkJG52NCN98ShGRm::L1::Q7",
           "rn_GkJG52NCN98ShGRm::L1::Q8",
           "rn_GkJG52NCN98ShGRm::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_GkJG52NCN98ShGRm::L2",
@@ -128,6 +129,10 @@
           "rn_GkJG52NCN98ShGRm::L2::Q7",
           "rn_GkJG52NCN98ShGRm::L2::Q8",
           "rn_GkJG52NCN98ShGRm::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       }
     ],
@@ -176,17 +181,21 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e66a005131b0-diamond-structure.png",
         "alt": "Diamond structure, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "The bonding and structure in diamond",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Diamond and graphite",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4d8e2b444cc1-13344-graphite-structure.jpg",
         "alt": "Diagram of graphite structure showing layers with carbon atoms forming three covalent bonds each, weak attraction forces, and delocalised electrons.",
-        "sourceHeading": "Bonding and structure in graphite",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Diamond and graphite",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

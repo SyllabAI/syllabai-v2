@@ -1,0 +1,39 @@
+{
+ "artifact": "rn11-run-017-structural-proposal-map-r0",
+ "status": "PROPOSAL-MAP-OF-RECORD (evidence-pinned; NOT applied — desk territory)",
+ "law": "run-016 boundary law: title/label repairs + mirror restoration are lane work; structural re-code/re-parent/deletion of corpus rows is desk territory; run-009 precedent: title maps are repair-pass work; zero-invention pins in official_0478_census_r0.json",
+ "scopeNote": "run-017 repaired the 11 garbage TITLES in place (codes unchanged). This map files the structural residue the title pass surfaced, for the desk to disposition.",
+ "findings": [
+  {
+   "id": "F1_811a_code_off_official",
+   "finding": "corpus code 8.1.1a does not exist officially: official 8.1 row 1 ('Declare and use variables and constants') has NO lettered sub-rows; 8.1.1a carries official 8.1.4(f)'s statement (title repaired this run; run-016 newFindings[1] mis-map suspicion CONFIRMED)",
+   "evidence": "census rows['8.1.4'] letters a-f; subRows['8.1.4f']; corpus 8.1.1a pre-apply title (apply_manifest_r0.json rows[8])",
+   "proposal": "re-code 8.1.1a -> 8.1.4f (sub-row of row 8.1.4) or fold into 8.1.4; subtopic-hung under SUB8.1 either way (kg_export-compatible)"
+  },
+  {
+   "id": "F2_81_coverage_gap",
+   "finding": "official 8.1 rows 5, 6(a), 6(b), 6(c), 7 are ABSENT from the corpus (8.1 jumps 8.1.4 -> 8.1.8); their statements surfaced inside the old 8.1.1a blob as interleave debris",
+   "evidence": "census subRows: 8.1.5 'Understand and use nested statements', 8.1.6a 'Understand what is meant by procedures, functions and parameters', 8.1.6b 'Define and use procedures and functions, with or without parameters', 8.1.6c 'Understand and use local and global variables', 8.1.7 'Understand and use library routines'; official 8.1 census = 8 numbered rows (17 points with the fleet lettered-row law) vs corpus 6",
+   "proposal": "add the 5 missing official rows under SUB8.1 (all subtopic-hung — kg_export-compatible; census-changing, so desk-owned); byte-exact titles already pinned in census subRows"
+  },
+  {
+   "id": "F3_nonrow_debris_under_63",
+   "finding": "4 corpus rows under SUB6.3 are NOT official outcome rows: 6.3.1a/6.3.2a/6.3.3a are the 'See section 4 for the:' pointer bullets (flowchart symbols / logic gate symbols / pseudocode format — appendix pointers), 6.3.4 is the inter-section advisory sentence ('Students are advised to program solutions…')",
+   "evidence": "official 6.3 = exactly 3 numbered rows (census cross-check, run-016 evidence + this run's raw dumps); the 4 texts are doc-verbatim non-row text",
+   "proposal": "disposition: remove as non-rows OR re-file as non-point metadata — DESK CALL. CAUTION: prerequisites.json concept anchors are load-bearing on these codes (C47-CON-FLOWCHART-SYMBOLS->6.3.1a, C47-CON-LOGIC-GATE-SYMBOLS->6.3.2a, C47-CON-PSEUDOCODE-FORMAT->6.3.3a) — removal requires a prereq re-anchor pass in the same change",
+   "prereqLoadBearing": ["6.3.1a", "6.3.2a", "6.3.3a"]
+  },
+  {
+   "id": "F4_63_to_7_misfiling",
+   "finding": "corpus rows 6.3.4a, 6.3.5, 6.3.6, 6.3.7, 6.3.8, 6.3.9 carry official section 7 rows verbatim (7.4, 7.5, 7.6, 7.7, 7.8, 7.9) mis-filed under SUB6.3; official 6.3 (AI) ends at row 3",
+   "evidence": "census rows['7.5']; corpus titles 6.3.4a/6.3.6-6.3.9 byte-equal official 7.4/7.6-7.9 statements; 6.3.5 title repaired this run to official 7.5",
+   "proposal": "re-parent/re-code to topic-level T7 (7.4..7.9 + lettered) — BLOCKED by the kg_export v1.6 topic-level-point law of record (run-016 blocker: 'SPEC_POINT 7.1 has 0 SUBTOPIC parents'); overlaps run-016's topic_level_points_proposal_r0.json rows 7.4-7.9 — if the desk extends the exporter law, these six corpus rows are the natural in-place carriers (they would DUPLICATE the proposal rows unless reconciled); decision belongs to the desk"
+  },
+  {
+   "id": "F5_pure1_glue_family_still_queued",
+   "finding": "the 9709 pure-1 glue-row family (run-013 disclosure re-affirmed, both-planes class) remains its own candidate run",
+   "proposal": "out of run-017 scope by the operator order (cs-23 garbage-title queue); still queued"
+  }
+ ],
+ "exporterLawContext": "kg_export v1.6: every SPEC_POINT must hang under exactly one SUBTOPIC; the 106-course fleet is universally SUBTOPIC-hung; the official 0478 T7/T9/T10 carry NO subtopic layer (run-016 receipt); F2 is subtopic-hung and therefore NOT exporter-blocked — it is census-changing content-plane growth, filed here because run-016's boundary law kept census changes on the spine-mirror side only"
+}
