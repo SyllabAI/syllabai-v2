@@ -21,11 +21,12 @@ from pathlib import Path
 
 CLONE = Path('/home/z/my-project/work/rn22/clone')
 BASE = '0cb0161809765d871b34c1f3e12136f188463184'
-MAIN_TIP = '1364f095f19f83b7fd1fd59d557bbd195ac10d1a'
+MAIN_TIP = '231975d9675d5053fdcd7ec71dcaf3e77f543b0c'
+ADV5 = MAIN_TIP                                      # 1364f095..231975d9 (the closeout)
 ADV1 = 'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae'   # 0cb01618..a87f9ace  (#952/#962)
 ADV2 = '493aa4748a6b12517118db72ab8e8c741eaf7e3c'   # a87f9ace..493aa474 (#964)
 ADV3 = '387e5e019ba9ac6a465a8c2cf1af3146213dbe1f'   # 493aa474..387e5e01 (#954)
-ADV4 = MAIN_TIP                                      # 387e5e01..1364f095 (#958/#963/#966/#967/#968 + bake-probe receipt)
+ADV4 = '1364f095f19f83b7fd1fd59d557bbd195ac10d1a'    # 387e5e01..1364f095 (#958/#963/#966/#967/#968 + bake-probe receipt)
 OWN_ARTIFACTS, OWN_RECEIPTS, OWN_POSTREVIEW = '4008f20a', 'dfa73a15', '7dd58793'
 DECLARED_PATHS = {
     '.syllabai/lane-artifacts/RN-DEBRIS-11/run-022/adjudication_r0.json',
@@ -56,25 +57,34 @@ def main():
     # (refresh3/pr3 below), not by sha — no self-reference.
     chain = [l.split()[0][:8] for l in git('log', '--oneline', '--first-parent', f'{BASE}..HEAD').splitlines()]
     res['B4_chain'] = chain
-    assert chain[0] == head[:8] and chain[2:] == ['c3ffd0c2', '5b395d53', '230945a3', 'db04e533', 'd4027d3b',
-                                                  '7dd58793', '1bd910fe', 'dfa73a15', '4008f20a'], chain
-    assert len(chain) == 11, f'expected 11 first-parent commits, got {len(chain)}'
-    for sha, p0, p1 in (('c3ffd0c2', '5b395d53', MAIN_TIP),
+    assert chain[0] == head[:8] and chain[2:] == ['28242a3b', '67d5eebd', 'c3ffd0c2', '5b395d53',
+                                                  '230945a3', 'db04e533', 'd4027d3b', '7dd58793', '1bd910fe',
+                                                  'dfa73a15', '4008f20a'], chain
+    assert len(chain) == 13, f'expected 13 first-parent commits, got {len(chain)}'
+    for sha, p0, p1 in (('e69a2da6', '28242a3b', ADV5),
+                        ('c3ffd0c2', '5b395d53', ADV4),
                         ('5b395d53', '230945a3', ADV3),
                         ('d4027d3b', '7dd58793', ADV2),
                         ('1bd910fe', 'dfa73a15', ADV1)):
         ps = git('show', '-s', '--format=%P', sha).split()
         assert len(ps) == 2 and ps[0].startswith(p0) and ps[1] == p1, f'union {sha}: {ps}'
-    refresh3 = git('diff', '--name-only', f'{chain[2]}..{chain[1]}').splitlines()
-    refresh2 = git('diff', '--name-only', 'd4027d3b..db04e533').splitlines()
-    assert refresh3 == [BATTERY], f'battery-refresh-2 scope drift: {refresh3}'
-    assert refresh2 == [BATTERY], f'battery-refresh-1 scope drift: {refresh2}'
-    pr3 = git('diff', '--name-only', f'{chain[1]}..{chain[0]}').splitlines()
-    # of record: 230945a3 updated the battery v1 AND the postReview receipt in one commit
-    pr2 = set(git('diff', '--name-only', 'db04e533..230945a3').splitlines())
+    # scope law, by position (no self-referential shas):
+    #   chain[0] update-4 = {battery re-anchor + postReview-4}   (the 230945a3 combined pattern)
+    #   chain[2] postReview-3 = [POSTREVIEW] vs chain[3]
+    #   chain[3] battery-v2   = [BATTERY]    vs chain[4]
+    #   chain[6] 230945a3     = {BATTERY, POSTREVIEW} vs chain[7]
+    #   chain[7] db04e533     = [BATTERY]    vs chain[8]
+    up4 = set(git('diff', '--name-only', f'{chain[1]}..{chain[0]}').splitlines())
+    assert up4 == {BATTERY, POSTREVIEW}, f'update-4 scope drift: {up4}'
+    pr3 = git('diff', '--name-only', f'{chain[3]}..{chain[2]}').splitlines()
+    ref2 = git('diff', '--name-only', f'{chain[4]}..{chain[3]}').splitlines()
+    pr2 = set(git('diff', '--name-only', f'{chain[7]}..{chain[6]}').splitlines())
+    ref1 = git('diff', '--name-only', f'{chain[8]}..{chain[7]}').splitlines()
     assert pr3 == [POSTREVIEW], f'postReview-3 scope drift: {pr3}'
+    assert ref2 == [BATTERY], f'battery-refresh-2 scope drift: {ref2}'
     assert pr2 == {BATTERY, POSTREVIEW}, f'postReview-2 scope drift: {pr2}'
-    print('B4 PASS: 11-commit first-parent chain; all four unions 2-parent with pinned parents; '
+    assert ref1 == [BATTERY], f'battery-refresh-1 scope drift: {ref1}'
+    print('B4 PASS: 13-commit first-parent chain; all five unions 2-parent with pinned parents; '
           'battery-refresh commits touch the battery script only; postReview commits touch the receipt only')
 
     # B1 net diff path set — main tip..HEAD == the 11 declared bookkeeping paths
@@ -88,14 +98,15 @@ def main():
     assert not content, f'content bytes touched: {content}'
     # every union's own delta (vs its FIRST parent, the lane head) == exactly that round's main advance
     for u, fp, a0, a1 in (('1bd910fe', 'dfa73a15', BASE, ADV1), ('d4027d3b', '7dd58793', ADV1, ADV2),
-                          ('5b395d53', '230945a3', ADV2, ADV3), ('c3ffd0c2', '5b395d53', ADV3, ADV4)):
+                          ('5b395d53', '230945a3', ADV2, ADV3), ('c3ffd0c2', '5b395d53', ADV3, ADV4),
+                          ('e69a2da6', '28242a3b', ADV4, ADV5)):
         ud = set(git('diff', '--name-only', f'{fp}..{u}').splitlines())
         adv = set(git('diff', '--name-only', f'{a0}..{a1}').splitlines())
         assert ud == adv, f'union-{u[:4]} delta != advance: {ud ^ adv}'
     st = git('diff', '--shortstat', f'{MAIN_TIP}..HEAD').strip()
-    res['B1'] = {'prPaths': sorted(names), 'shortstat': st, 'unions': '4/4 delta == own advance (theirs-verbatim)'}
+    res['B1'] = {'prPaths': sorted(names), 'shortstat': st, 'unions': '5/5 delta == own advance (theirs-verbatim)'}
     print(f'B1 PASS: PR net diff == exactly the {len(names)} declared bookkeeping paths ({st}); '
-          f'zero content/src/docs bytes; all four union deltas byte-lawful')
+          f'zero content/src/docs bytes; all five union deltas byte-lawful')
 
     # B2 artifacts parse + gates re-run
     run = CLONE / '.syllabai/lane-artifacts/RN-DEBRIS-11/run-022'
@@ -123,7 +134,7 @@ def main():
         assert suffix.rstrip(b'\n').endswith(b'fetch-first race-guard at push.'), f'{wl}: run-022 entry not at tail'
         for marker in (b'<<<<<<<', b'>>>>>>>', b'======='):
             assert not [l for l in suffix.splitlines(True) if l.startswith(marker)], f'{wl}: marker line in suffix'
-    res['B3'] = 'both worklogs: theirs-verbatim prefix vs main tip 1364f095 + the run-022 entry byte-identical exactly once at each tail, zero unparented markers'
+    res['B3'] = f'both worklogs: theirs-verbatim prefix vs main tip {MAIN_TIP[:8]} + the run-022 entry byte-identical exactly once at each tail, zero unparented markers'
     print('B3 PASS:', res['B3'])
 
     # B5 CI on head
