@@ -1,0 +1,44 @@
+{
+  "task": "T-COPYFIX-001",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "operator_order": {
+    "orders": [
+      "We dont need quota in syllabai for now.",
+      "You do it"
+    ],
+    "channel": "zai-web",
+    "session": "web-7b4a27df-7d97-438a-849c-05a9c0003aa8",
+    "chat": "0fade780-1ab5-4951-bfd9-13f43e897f40",
+    "trace": "1a1d0ec707d8c619"
+  },
+  "change": {
+    "file": "apps/hub/src/components/hub/teach-genie/picker.tsx",
+    "line": 268,
+    "before": "Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts. Quota: 3 sessions a day.",
+    "after": "Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts.",
+    "bytes_removed": 25,
+    "occurrences_replaced": 1
+  },
+  "evidence": {
+    "live_demo": "2026-11-13: picker footer rendered the stale sentence on https://www.syllab-ai.com/courses/igcse-chemistry-19/teach-genie (demo student session, note 'The Three States of Matter')",
+    "cap_of_record": "quota.dailySessionCap = 999 (T-TEACHGENIE-007, 2026-11-06)"
+  },
+  "pins_checked": {
+    "tests": [
+      "apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts",
+      "apps/hub/src/components/hub/teach-genie/note-picker-laws.test.ts"
+    ],
+    "result": "no quota/footer-copy pins in either law test; no golden case pins the picker footer copy"
+  },
+  "scope_disclosures": [
+    "409 QUOTA_EXCEEDED client handling kept (dead path at cap 999; restore-path safety net)",
+    "landing.tsx UTC-day history grouping kept (same rationale)",
+    "the AI_SUGGESTED / ratification sentence left byte-identical (conditional copy = separate decision, not this lane)",
+    "tsc/eslint/battery gates not run in the authoring sandbox (string-literal-only edit; no type or import surface touched) — CI is the gate of record on the PR head"
+  ],
+  "reversibility": "re-add the sentence in picker.tsx, or set quota.dailySessionCap in apps/api/src/teach-me/config.ts — both one-line",
+  "branch": "t-copyfix-001/run-001",
+  "base": "main f3ce38df0c2fdb7bea91d5fe4764845fad3b6365",
+  "author_merge": false
+}
