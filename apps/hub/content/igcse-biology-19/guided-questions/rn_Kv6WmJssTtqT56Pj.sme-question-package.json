@@ -1,0 +1,492 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Kv6WmJssTtqT56Pj",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "89b237c35d8a13e54cc529816f8c5382130cad08364094682a7e7bcb5d0c20d4",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "packageId": "igcse-biology::rn_Kv6WmJssTtqT56Pj",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q1",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "Which gland releases ADH?",
+      "misconceptionClass": "source recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The pituitary gland",
+          "correct": true,
+          "explanation": "The pituitary releases ADH on hypothalamic instruction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The pancreas",
+          "correct": false,
+          "explanation": "The pancreas releases insulin, not ADH.",
+          "misconception": "source swapped"
+        },
+        {
+          "key": "C",
+          "text": "The adrenal gland",
+          "correct": false,
+          "explanation": "That gland releases adrenaline.",
+          "misconception": "source swapped"
+        },
+        {
+          "key": "D",
+          "text": "The ovaries",
+          "correct": false,
+          "explanation": "Ovaries release oestrogen and progesterone.",
+          "misconception": "source swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q2",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "Which cells detect that the blood is too concentrated?",
+      "misconceptionClass": "detector identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Taste receptors on the tongue",
+          "correct": false,
+          "explanation": "External taste has nothing to do with blood monitoring.",
+          "misconception": "role misplaced"
+        },
+        {
+          "key": "B",
+          "text": "Osmoreceptors in the hypothalamus",
+          "correct": true,
+          "explanation": "Hypothalamic osmoreceptors monitor blood solute concentration.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Collecting-duct cells themselves",
+          "correct": false,
+          "explanation": "Duct cells obey ADH; they do not sense the blood first.",
+          "misconception": "role misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Retinal receptor cells",
+          "correct": false,
+          "explanation": "Those detect light, not solutes.",
+          "misconception": "role misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q3",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "What does ADH change in the nephron?",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The number of nephrons",
+          "correct": false,
+          "explanation": "Nephron count is fixed.",
+          "misconception": "effect invented"
+        },
+        {
+          "key": "B",
+          "text": "The salt content of sweat",
+          "correct": false,
+          "explanation": "Sweat glands are unrelated to ADH here.",
+          "misconception": "effect invented"
+        },
+        {
+          "key": "C",
+          "text": "The permeability of the collecting ducts to water",
+          "correct": true,
+          "explanation": "ADH makes the collecting ducts more or less water-permeable.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The width of the urethra",
+          "correct": false,
+          "explanation": "No such effect is described.",
+          "misconception": "effect invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q4",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "After drinking a large volume of water, what happens?",
+      "misconceptionClass": "feedback direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "More ADH is released, producing concentrated urine",
+          "correct": false,
+          "explanation": "That response would worsen the dilution.",
+          "misconception": "response inverted"
+        },
+        {
+          "key": "B",
+          "text": "The hypothalamus stops working",
+          "correct": false,
+          "explanation": "Monitoring continues either way.",
+          "misconception": "extreme claimed"
+        },
+        {
+          "key": "C",
+          "text": "The collecting ducts vanish temporarily",
+          "correct": false,
+          "explanation": "Structures persist; only permeability changes.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "D",
+          "text": "Less ADH is released, so a large volume of dilute urine forms",
+          "correct": true,
+          "explanation": "Dilute blood suppresses ADH and reabsorption falls.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q5",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "Which urine output matches a dehydrated person?",
+      "misconceptionClass": "outcome prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "A small volume of concentrated urine",
+          "correct": true,
+          "explanation": "More reabsorption shrinks and concentrates the urine.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Urine of unchanged concentration",
+          "correct": false,
+          "explanation": "The whole point of ADH is to shift concentration.",
+          "misconception": "change denied"
+        },
+        {
+          "key": "C",
+          "text": "A large volume of very dilute urine",
+          "correct": false,
+          "explanation": "That wastes water the body needs.",
+          "misconception": "outcome inverted"
+        },
+        {
+          "key": "D",
+          "text": "No urine at all",
+          "correct": false,
+          "explanation": "Production continues, just reduced.",
+          "misconception": "extreme claimed"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q6",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "Give the full name and the source gland of ADH.",
+      "misconceptionClass": "naming recall",
+      "kind": "recall",
+      "modelAnswer": "Antidiuretic hormone, released by the pituitary gland.",
+      "keywords": [
+        "antidiuretic hormone",
+        "pituitary gland",
+        "ADH"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q7",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "State the two urine changes when blood water is too low.",
+      "misconceptionClass": "outcome recall",
+      "kind": "recall",
+      "modelAnswer": "A smaller volume of urine that is more concentrated.",
+      "keywords": [
+        "smaller volume",
+        "more concentrated",
+        "urine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q8",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "Explain why concentrated blood leads to concentrated urine.",
+      "misconceptionClass": "chain reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Concentrated blood means water is scarce; hypothalamic osmoreceptors detect this and the pituitary releases more ADH, which raises the collecting ducts' permeability, so more of the filtrate's water returns to the blood — leaving less water behind, hence a small, concentrated urine.",
+      "keywords": [
+        "osmoreceptors",
+        "ADH",
+        "permeability",
+        "reabsorption"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L1::Q9",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L1",
+      "stem": "An athlete drinks nothing during a marathon and sweats heavily. Predict the ADH signal, the duct response and the urine.",
+      "misconceptionClass": "dehydration application",
+      "kind": "application",
+      "modelAnswer": "Blood water falls, so hypothalamic osmoreceptors signal for maximal ADH release; the collecting ducts become highly permeable and reabsorb as much water as possible; the athlete produces only a small volume of concentrated urine.",
+      "keywords": [
+        "osmoreceptors",
+        "ADH",
+        "permeable",
+        "concentrated urine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q1",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "What does FSH cause in the ovary?",
+      "misconceptionClass": "FSH role",
+      "options": [
+        {
+          "key": "A",
+          "text": "Production of adrenaline",
+          "correct": false,
+          "explanation": "Adrenaline belongs to a different gland entirely.",
+          "misconception": "hormone confused"
+        },
+        {
+          "key": "B",
+          "text": "An egg to start maturing",
+          "correct": true,
+          "explanation": "FSH causes an egg to begin maturing in the ovary.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Immediate release of the egg",
+          "correct": false,
+          "explanation": "Release (ovulation) is LH's doing.",
+          "misconception": "role swapped"
+        },
+        {
+          "key": "D",
+          "text": "Thickening of the uterus lining",
+          "correct": false,
+          "explanation": "That is oestrogen's job.",
+          "misconception": "role swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q2",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "Which event triggers LH release?",
+      "misconceptionClass": "LH trigger",
+      "options": [
+        {
+          "key": "A",
+          "text": "The egg already having been released",
+          "correct": false,
+          "explanation": "LH causes the release, not follows it.",
+          "misconception": "sequence inverted"
+        },
+        {
+          "key": "B",
+          "text": "Low blood water content",
+          "correct": false,
+          "explanation": "That triggers ADH, not LH.",
+          "misconception": "hormone confused"
+        },
+        {
+          "key": "C",
+          "text": "Oestrogen levels reaching their peak",
+          "correct": true,
+          "explanation": "The oestrogen peak stimulates the pituitary to release LH.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Progesterone falling to zero",
+          "correct": false,
+          "explanation": "Progesterone is not the LH trigger named here.",
+          "misconception": "trigger invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q3",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "What does LH cause?",
+      "misconceptionClass": "LH role",
+      "options": [
+        {
+          "key": "A",
+          "text": "Egg maturation only",
+          "correct": false,
+          "explanation": "Maturation is FSH's role.",
+          "misconception": "role swapped"
+        },
+        {
+          "key": "B",
+          "text": "Uterus lining breakdown",
+          "correct": false,
+          "explanation": "Menstruation is not LH's named effect.",
+          "misconception": "role invented"
+        },
+        {
+          "key": "C",
+          "text": "Insulin secretion",
+          "correct": false,
+          "explanation": "That belongs to the pancreas.",
+          "misconception": "hormone confused"
+        },
+        {
+          "key": "D",
+          "text": "Ovulation and progesterone production",
+          "correct": true,
+          "explanation": "LH releases the egg and stimulates progesterone output.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q4",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "Which hormone maintains the uterus lining during pregnancy?",
+      "misconceptionClass": "progesterone role",
+      "options": [
+        {
+          "key": "A",
+          "text": "Progesterone",
+          "correct": true,
+          "explanation": "Progesterone maintains the thick lining for possible pregnancy.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "FSH",
+          "correct": false,
+          "explanation": "FSH matures eggs.",
+          "misconception": "hormone swapped"
+        },
+        {
+          "key": "C",
+          "text": "ADH",
+          "correct": false,
+          "explanation": "ADH manages blood water.",
+          "misconception": "hormone swapped"
+        },
+        {
+          "key": "D",
+          "text": "Adrenaline",
+          "correct": false,
+          "explanation": "Adrenaline readies the body for danger.",
+          "misconception": "hormone swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q5",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "In which gland are FSH and LH both produced?",
+      "misconceptionClass": "shared source",
+      "options": [
+        {
+          "key": "A",
+          "text": "The liver",
+          "correct": false,
+          "explanation": "The liver stores glucose here, not hormones.",
+          "misconception": "source invented"
+        },
+        {
+          "key": "B",
+          "text": "The pituitary gland",
+          "correct": true,
+          "explanation": "Both are pituitary hormones.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The ovaries",
+          "correct": false,
+          "explanation": "Ovaries make oestrogen and progesterone.",
+          "misconception": "source swapped"
+        },
+        {
+          "key": "D",
+          "text": "The hypothalamus",
+          "correct": false,
+          "explanation": "The hypothalamus detects; the pituitary releases.",
+          "misconception": "source swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q6",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "State the source and role of FSH.",
+      "misconceptionClass": "FSH recall",
+      "kind": "recall",
+      "modelAnswer": "Released by the pituitary gland; it causes an egg to mature and stimulates oestrogen release.",
+      "keywords": [
+        "pituitary gland",
+        "egg",
+        "mature",
+        "oestrogen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q7",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "State the source and role of LH.",
+      "misconceptionClass": "LH recall",
+      "kind": "recall",
+      "modelAnswer": "Released by the pituitary gland; it causes ovulation and stimulates progesterone production.",
+      "keywords": [
+        "pituitary gland",
+        "ovulation",
+        "progesterone"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q8",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "Explain why the oestrogen peak matters for the cycle's timing.",
+      "misconceptionClass": "feedback reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The oestrogen peak is the signal that the egg is ready: it stimulates the pituitary to release LH, and LH triggers ovulation — so the peak converts the ovary's readiness into the precise moment of release, timing the cycle correctly.",
+      "keywords": [
+        "oestrogen",
+        "pituitary",
+        "LH",
+        "ovulation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Kv6WmJssTtqT56Pj::L2::Q9",
+      "moduleId": "rn_Kv6WmJssTtqT56Pj::L2",
+      "stem": "A fertility drug boosts FSH levels. Predict the chain of hormonal events that follows.",
+      "misconceptionClass": "cycle application",
+      "kind": "application",
+      "modelAnswer": "Extra FSH matures more eggs and pushes the ovaries to release more oestrogen; the elevated oestrogen stimulates the pituitary to release LH, which can trigger ovulation — and the ovary responds by producing progesterone afterwards.",
+      "keywords": [
+        "FSH",
+        "oestrogen",
+        "LH",
+        "ovulation"
+      ],
+      "options": []
+    }
+  ]
+}
