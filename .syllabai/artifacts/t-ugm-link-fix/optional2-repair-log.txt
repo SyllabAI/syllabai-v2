@@ -1,0 +1,44 @@
+derived thames       TRUE=https://www.gov.uk/government/news/thames-water-fined-23-million-for-foreseeable-pollution
+derived reuters      TRUE=https://uk.reuters.com/article/uk-liberty-global-m-a-vodafone/german-broadband-group-urges-eu-to-block-vodafone-liberty-deal-idUKKCN1NC0Z2
+derived wapo         TRUE=https://www.washingtonpost.com/business/economy/investigation-of-generic-cartel-expands-to-300-drugs/2018/12/09/fb900e80-f708-11e8-863c-9e2f864d47e7_story.html?noredirect=on&utm_term=.3c2a12983985
+derived tanzania     TRUE=https://www.tanzaniainvest.com/telecoms/tanzania-add-50000-mobile-subcriptions-in-6-months
+derived limerick     TRUE=https://www.limerickleader.ie/video/home/348948/watch-irish-artisan-charcoal-company-in-limerick-blazing-a-trail-with-unique-product.html
+derived wwd          TRUE=https://wwd.com/business-news/technology/savant-data-systems-dubai-retail-report-10956883/
+derived broadband    TRUE=https://www.broadbandchoices.co.uk/guides/broadband/hull-broadband
+derived hrmagazine   TRUE=https://www.hrmagazine.co.uk/content/news/morrisons-is-the-first-uk-supermarket-to-pay-minimum-10-an-hour
+derived guardian     TRUE=https://www.theguardian.com/education/2019/oct/05/science-and-language-teachers-to-get-9000-staying-on-bonus
+derived conversation TRUE=http://theconversation.com/south-africa-has-a-new-trade-union-federation-can-it-break-the-mould-76609
+derived insider      TRUE=https://www.businessinsider.in/Nearly-half-of-Narendra-Modis-1-4-trillion-new-infrastructure-promise-may-be-already-approved-projects/Existing-promises/slideshow/68795905.cms
+derived bloomberg    TRUE=https://www.bloomberg.com/news/articles/2019-12-31/india-plans-1-5-trillion-infrastructure-spending-to-spur-growth
+derived edmonton     TRUE=https://edmontonjournal.com/news/politics/covid-19-jason-kenney-announces-infrastructure-spending-to-counter-job-losses/
+derived diplomat     TRUE=https://thediplomat.com/2020/03/vietnams-big-air-pollution-challenge/
+derived nbcnews      TRUE=https://www.nbcnews.com/news/us-news/economic-boom-spikes-carbon-emissions-despite-green-tech-gains-n956336
+derived mmr          TRUE=https://www.gov.uk/government/publications/mmr-catch-up-for-10-to-11-year-old-children-information-for-gps
+derived dw           TRUE=https://www.dw.com/en/eu-mercosur-free-trade-deal-what-you-need-to-know/a-49414103
+derived npr         TRUE=https://www.npr.org/2019/10/07/767983664/unilever-vows-to-reduce-plastic-packaging-use-by-2025?t=1573738349481
+probe   thames       -> 200
+probe   reuters      -> 401
+probe   wapo         -> 000
+probe   tanzania     -> 000
+probe   limerick     -> 200
+probe   wwd          -> 200
+probe   broadband    -> 403
+probe   hrmagazine   -> 403
+probe   guardian     -> 200
+probe   conversation -> 200
+probe   insider      -> 000
+probe   bloomberg    -> 403
+probe   edmonton     -> 200
+probe   diplomat     -> 200
+probe   nbcnews      -> 200
+probe   mmr          -> 200
+probe   dw           -> 200
+probe   npr          -> 200
+construct bodies replaced in raw text: 18
+image alt newline fixes: 3
+econ-q U+2010 normalized: 22 -> 0
+U+2010 already normalized: cie-a-level-business-23/notes.json
+U+2010 already normalized: cie-igcse-business-23/questions.json
+U+2010 already normalized: cie-igcse-business-25/questions.json
+per-URL post-check: all 18 repaired targets present exactly once
+econ questions written; econ-q orphan census = 0; relativeImages untouched
