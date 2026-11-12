@@ -21,6 +21,11 @@
    "provider": "physics-online (PhysicsOnline YouTube channel — unmapped remainder)",
    "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 1,081 public uploads, +1 net vs the P2E enumeration of 1,080 on 2026-11-10; the P2E lane cached only its 303-drafted subset, so the delta video is not individually identified) + oEmbed identity sweep 113/113 on the routed pool (473/473 live overall, author Physics Online) + marker routing (A-level / GCSE markers, GCSE and unmarked videos cross-spine-routed by distinctive-token idf overlap) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
    "enumeratedUtc": "2026-11-12T09:56:37Z"
+  },
+  "p7": {
+   "provider": "multi (doodlescience, freesciencelessons)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
   }
  },
  "review": {
@@ -29,7 +34,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 16 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 214,
+  "rowsApproved": 233,
   "rowsRejected": 1,
   "rejects": [
    {
@@ -592,6 +597,53 @@
       "video": "Em4YDr749jA",
       "reason": "self-review full-row drop: OCR multiple-choice paper content — paper sewage",
       "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 19 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 19,
+    "rowsRejected": 7,
+    "rejects": [
+     {
+      "video": "0ML3u5KQOw8",
+      "reason": "self-review drop: hazards of radiation (Doodle): the 4.4.1 bind matched the token hazards on an ELECTRICAL-hazards spec — keyword-adjacent; the honest radiation-hazard spec was not bound",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "AZ1DY6QYRO4",
+      "reason": "self-review drop: correcting vision: the eye-vision-lens content has no clear 0625-23 spine spec; the 3.3.3 EM-region bind is keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "lA8USjDkcXk",
+      "reason": "self-review drop: the UK energy mix: the honest 0625 energy-resources spec was not bound; the 1.4.4 density/float bind is nonsense adjacency",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "vJgBIvuLvgY",
+      "reason": "self-review drop: heating and cooling graphs: the honest 0625 state-change-graph spec was not bound; the 2.2.5 evaporation bind names a different phenomenon",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "09aDQcci_tQ",
+      "reason": "no honest binding: best candidate \"\u0007Define momentum as mass × velocity; recall and use the equa\" (1.6.1) binds only on generic vocabulary: velocity",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "BjkHqNC8E_I",
+      "reason": "no honest binding: best candidate \"\u0007Use decay equations, using nuclide notation, to show the em\" (5.2.5a) binds only on generic vocabulary: ray",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "wsVLU9A2TJM",
+      "reason": "no honest binding: best candidate \"\u0007Define resultant force as the change in momentum per unit t\" (1.6.4) binds only on generic vocabulary: momentum",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
      }
     ]
    }
@@ -3895,6 +3947,291 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "0ASldDQmIOQ",
+   "title": "GCSE Physics Revision \"Alpha-Scattering and the Nuclear Model\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=0ASldDQmIOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "1DqWMHyRhYg",
+   "title": "GCSE Physics Revision \"Loudspeakers and Headphones\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1DqWMHyRhYg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 135,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "1ebd-OqwEGk",
+   "title": "Converging Lenses | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=1ebd-OqwEGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 109,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9FKrxyRsl0w",
+   "title": "Diodes, LEDs, Thermistors and LDRs | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=9FKrxyRsl0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 82,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9LkLj8TS9VI",
+   "title": "Transverse and Longitudinal Waves | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=9LkLj8TS9VI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 114,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "AqVJ4b5tkwo",
+   "title": "GCSE Physics Revision \"Seismic Waves\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=AqVJ4b5tkwo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 262,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "GTdgI-0KckA",
+   "title": "GCSE Physics Revision \"Cooling of Buildings\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GTdgI-0KckA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "KNUcS4NaqDw",
+   "title": "GCSE Physics Revision \"Convex Lenses\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=KNUcS4NaqDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 292,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "LDgMptQ5KPU",
+   "title": "Diverging Lenses | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=LDgMptQ5KPU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 73,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "M6iI5T3Yzbo",
+   "title": "Newton's Second Law of Motion (F=ma) | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=M6iI5T3Yzbo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 75,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "SvVQAg_oA2A",
+   "title": "GCSE Physics Revision \"Black Body Radiation\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=SvVQAg_oA2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 231,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "UNmv6H-f180",
+   "title": "GCSE Physics Revision \"Required Practical 8: Ripple Tank\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UNmv6H-f180",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 247,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "fwVGtrgkDBA",
+   "title": "Ultrasound | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=fwVGtrgkDBA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 111,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "goc68ImsJ0A",
+   "title": "AC and DC supply | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=goc68ImsJ0A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 88,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "i1A1D6EnS-8",
+   "title": "Atomic Structure | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=i1A1D6EnS-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 116,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "r7LHcx9MNhI",
+   "title": "U-Values and Specific Heat Capacity | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=r7LHcx9MNhI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 101,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "sxI-OeQf6N0",
+   "title": "Circular Motion | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=sxI-OeQf6N0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 113,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "xmE54tohTsc",
+   "title": "GCSE Physics Revision \"Concave Lenses\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xmE54tohTsc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 169,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "zsb4ZEQLFxQ",
+   "title": "Evaporation and Condensation | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=zsb4ZEQLFxQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 79,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -7211,20 +7548,315 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
    "reviewedUtc": "2026-11-12T09:56:37Z",
    "boardMismatch": true
+  },
+  {
+   "video": "0ASldDQmIOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.3a",
+    "5.2.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Physics Revision \"Alpha-Scattering and the Nuclear Model\"' -> 5.1.3a '\u0007Describe how the scattering of alpha (α) part' via distinctive token(s) alpha, scattering; 5.2.2a '\u0007Identify alpha ( α ), beta ( β ) and gamma ( ' via distinctive token(s) alpha",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1DqWMHyRhYg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.3a"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Physics Revision \"Loudspeakers and Headphones\" (Triple)' -> 4.5.3a '\u0007Describe how the magnetic effect of a current' via distinctive token(s) loudspeaker",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1ebd-OqwEGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Converging Lenses' names the thin-converging/diverging-lens-action spec 3.2.1b; the 3.2.9 optical-fibre bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9FKrxyRsl0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1",
+    "4.3.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Diodes, LEDs, Thermistors and LDRs | GCSE Physics | Doodle Science' -> 4.3.1 '\u0007Draw and interpret circuit diagrams containin' via distinctive token(s) ldr, thermistor; 4.3.2a '\u0007Draw and interpret circuit diagrams containin' via distinctive token(s) diode, led",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9LkLj8TS9VI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.5",
+    "3.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Transverse and Longitudinal Waves | GCSE Physics | Doodle Science' -> 3.1.5 '\u0007Know that for a transverse wave, the directio' via distinctive token(s) transverse; 3.4.2 '\u0007Describe the longitudinal nature of sound wav' via distinctive token(s) longitudinal",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "AqVJ4b5tkwo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.6",
+    "3.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Physics Revision \"Seismic Waves\" (Triple)' -> 3.1.6 '\u0007Know that for a longitudinal wave, the direct' via distinctive token(s) seismic; 3.1.5 '\u0007Know that for a transverse wave, the directio' via distinctive token(s) seismic",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GTdgI-0KckA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Cooling of Buildings' partially names the evaporation-causes-cooling spec 2.2.5 (cooling context — partial, disclosed); the 5.2.2 greenhouse bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KNUcS4NaqDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Convex Lenses' names the thin-lens-action spec 3.2.1b; the 3.2.9/3.2.5 binds are adjacent, trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LDgMptQ5KPU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1b",
+    "3.2.5a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Diverging Lenses | GCSE Physics | Doodle Science' -> 3.2.1b '\u0007Describe the action of thin converging and th' via distinctive token(s) diverging, lense; 3.2.5a '\u0007Know that a virtual image is formed when dive' via distinctive token(s) diverging",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "M6iI5T3Yzbo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title \"Newton's Second Law of Motion (F=ma)\" names the F=ma spec 1.5.11 directly; the 6.2.10 Hubble bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "SvVQAg_oA2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Black Body Radiation' partially names the surface-colour emission/absorption spec 2.3.3 (black surfaces — genuine partial, disclosed); the 3.3.4 EM-harm bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UNmv6H-f180",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Physics Revision \"Required Practical 8: Ripple Tank\"' -> 3.1.8 'Describe the use of a ripple tank to show: a c' via distinctive token(s) ripple, tank",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "fwVGtrgkDBA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.9",
+    "3.4.12"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Ultrasound | GCSE Physics | Doodle Science' -> 3.4.9 '\u0007Define ultrasound as sound with a frequency h' via distinctive token(s) ultrasound; 3.4.12 '\u0007Describe the uses of ultrasound in non- destr' via distinctive token(s) ultrasound",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "goc68ImsJ0A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1",
+    "4.2.1d"
+   ],
+   "confidence": "low",
+   "evidence": "title 'AC and DC supply | GCSE Physics | Doodle Science' -> 4.4.1 'State the hazards of: extension leads, single ' via distinctive token(s) supply; 4.2.1d '\u0007Understand that electric circuits transfer en' via distinctive token(s) supply",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "i1A1D6EnS-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.3",
+    "5.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Atomic Structure | GCSE Physics | Doodle Science' -> 5.1.3 '\u0007Define the terms proton number (atomic number' via distinctive token(s) atomic; 5.1.1 '\u0007Describe the structure of an atom in terms of' via distinctive token(s) structure",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "r7LHcx9MNhI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.4a",
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'U-Values and Specific Heat Capacity | GCSE Physics | Doodle Science' -> 2.2.4a '\u0007Describe experiments to measure the specific ' via distinctive token(s) capacity, heat, specific; 2.2.2 '\u0007Describe some of the everyday applications an' via distinctive token(s) capacity, heat, specific",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "sxI-OeQf6N0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.12",
+    "6.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Circular Motion | GCSE Physics | Doodle Science' -> 1.5.12 '\u0007Describe, qualitatively, motion in a circular' via distinctive token(s) circular; 6.1.7 '\u0007Know that planets, minor planets and comets h' via distinctive token(s) circular",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "xmE54tohTsc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Concave Lenses' names the thin-diverging-lens half of spec 3.2.1b; the 3.2.9/3.2.5 binds are adjacent, trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "zsb4ZEQLFxQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Evaporation and Condensation | GCSE Physics | Doodle Science' -> 2.2.3 '\u0007Describe condensation and solidification in t' via distinctive token(s) condensation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 294,
-  "specPointsMapped": 162,
-  "specPointsUnmapped": 132,
-  "videosTotal": 214,
-  "videosMapped": 214,
+  "specPointsMapped": 169,
+  "specPointsUnmapped": 125,
+  "videosTotal": 233,
+  "videosMapped": 233,
   "videosUnmapped": 0,
-  "mappingRows": 214,
+  "mappingRows": 233,
   "byConfidence": {
    "high": 0,
-   "medium": 168,
-   "low": 46
+   "medium": 175,
+   "low": 58
   }
  },
  "inputs": {
@@ -7255,7 +7887,13 @@
    "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p6.json",
    "task": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)",
    "reviewAppliedUtc": "2026-11-12T09:56:37Z"
+  },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.369Z"
+ "generatedUtc": "2026-11-12T18:17:37.413Z"
 }

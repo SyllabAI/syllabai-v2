@@ -8,6 +8,7 @@
 import { describe, expect, test } from "bun:test";
 import {
   courseLevelAnchor,
+  distinctLevels,
   groupDirectory,
   stageRank,
   STAGE_ORDER,
@@ -159,5 +160,41 @@ describe("courseLevelAnchor", () => {
     expect(courseLevelAnchor("A--Level")).toBe("courses-a-level");
     // every id keeps the courses- prefix — no bare-name collisions
     expect(courseLevelAnchor("x").startsWith("courses-")).toBe(true);
+  });
+});
+
+describe("distinctLevels (T-HUB-COURSES-IA-1 level filter chips)", () => {
+  test("present levels only, in the ladder's own order, with counts", () => {
+    const out = distinctLevels([
+      row({ slug: "a", subject: "Chemistry", level: "IAL" }),
+      row({ slug: "b", subject: "Chemistry", level: "IGCSE" }),
+      row({ slug: "c", subject: "Chemistry", level: "IGCSE" }),
+      row({ slug: "d", subject: "Chemistry", level: "A-Level" }),
+      row({ slug: "e", subject: "Chemistry", level: "AS" }),
+    ]);
+    expect(out).toEqual([
+      ["IGCSE", 2],
+      ["AS", 1],
+      ["A-Level", 1],
+      ["IAL", 1],
+    ]);
+  });
+
+  test("absent levels never offer a chip; unknown levels trail by count then alpha", () => {
+    const out = distinctLevels([
+      row({ slug: "a", subject: "Chemistry", level: "GCSE" }),
+      row({ slug: "b", subject: "Chemistry", level: "GCSE" }),
+      row({ slug: "c", subject: "Chemistry", level: "AS" }),
+      row({ slug: "d", subject: "Chemistry", level: "IB" }),
+    ]);
+    expect(out).toEqual([
+      ["AS", 1],
+      ["GCSE", 2],
+      ["IB", 1],
+    ]);
+  });
+
+  test("empty registry offers no chips", () => {
+    expect(distinctLevels([])).toEqual([]);
   });
 });

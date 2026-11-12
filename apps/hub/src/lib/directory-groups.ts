@@ -144,3 +144,24 @@ export function groupDirectory<T extends DirectoryCourse>(
 export function courseLevelAnchor(level: string): string {
   return `courses-${level.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}`;
 }
+
+/**
+ * T-HUB-COURSES-IA-1: the level filter chips' derivation — the distinct
+ * registry levels with their course counts, in the SAME ladder order the
+ * sections render (STAGE_ORDER first; unknown levels trail by course
+ * count then alphabetically — groupDirectory's own sort law, mirrored).
+ * Present levels only: a filtered registry offers exactly the levels it
+ * can actually show (the jump-nav's render-what-you-prove law). Pure and
+ * client-safe; pinned in directory-groups.test.ts.
+ */
+export function distinctLevels<T extends DirectoryCourse>(
+  courses: readonly T[],
+): Array<[level: string, count: number]> {
+  const counts = new Map<string, number>();
+  for (const c of courses) counts.set(c.level, (counts.get(c.level) ?? 0) + 1);
+  return [...counts.entries()].sort((a, b) => {
+    const byStage = stageRank(a[0]) - stageRank(b[0]);
+    if (byStage !== 0) return byStage;
+    return b[1] - a[1] || a[0].localeCompare(b[0]);
+  });
+}

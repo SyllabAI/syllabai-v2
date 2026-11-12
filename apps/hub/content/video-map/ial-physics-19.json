@@ -7,6 +7,11 @@
   "label": "ial-physics-19",
   "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-a-level-physics-25; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
   "enumeratedUtc": "2026-11-09T05:12:35Z",
+  "p7": {
+   "provider": "multi (malmesbury-education)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
+  },
   "p2f": {
    "provider": "Edexcel-native channels: Exam Essentials, Sergei's Chemistry, Allery Chemistry, Omar's Biology Lab, A-star Solution, MedDude",
    "method": "yt-dlp flat enumeration + machine-verified Edexcel paper-code binding (method paper-code, confidence high, boardMismatch false) + idf topic-title containment (>= 0.55, >= 3 informative tokens, P4 rule) for topic anchors; oEmbed identity sweep with thumbnail-liveness fallback; sewage filter (promos, results-day, shorts/vlog); evidence posture title-only",
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 42,
+  "rowsApproved": 43,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -33,6 +38,28 @@
     "rowsApproved": 10,
     "rowsRejected": 0,
     "rejects": []
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 1 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 1,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "video": "MKcD61i121o",
+      "reason": "no honest binding: best candidate \"understand the terms ‘threshold frequency’ and ‘work functio\" (60) binds only on generic vocabulary: work",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "pWfyGwEuhyA",
+      "reason": "no honest binding: best candidate \"be able to use the equation ∑ F = ma , and understand how to\" (9) binds only on generic vocabulary: law",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     }
+    ]
    },
    {
     "lane": "external-channels-p2f (edexcel-native anchors)",
@@ -208,6 +235,21 @@
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "X31bjQpjb9s",
+   "title": "Motor Effect F=BIL - Physics A-level Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=X31bjQpjb9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 275,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   },
   {
    "id": "3M5IhW9wZRc",
@@ -892,6 +934,21 @@
    }
   },
   {
+   "video": "X31bjQpjb9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "107"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Motor Effect F=BIL - Physics A-level Practical' names the F=BIl(sin theta) force-on-conductor spec 107 directly; the 62 photoelectric bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
    "anchor": {
     "level": "course",
     "ref": "ial-physics-19"
@@ -1502,15 +1559,15 @@
  ],
  "coverage": {
   "specPointsTotal": 171,
-  "specPointsMapped": 6,
-  "specPointsUnmapped": 165,
-  "videosTotal": 42,
-  "videosMapped": 42,
+  "specPointsMapped": 7,
+  "specPointsUnmapped": 164,
+  "videosTotal": 43,
+  "videosMapped": 43,
   "videosUnmapped": 0,
-  "mappingRows": 42,
+  "mappingRows": 43,
   "byConfidence": {
    "high": 32,
-   "medium": 9,
+   "medium": 10,
    "low": 1
   }
  },
@@ -1534,6 +1591,12 @@
    ],
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-physics-19/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
+  },
   "p2f": {
    "repo": "SyllabAI/syllabai-resources",
    "path": "Videos/drafts/ial-physics-19/video-map.draft.external-p2f.json",
@@ -1541,5 +1604,5 @@
    "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.510Z"
+ "generatedUtc": "2026-11-12T18:17:37.580Z"
 }

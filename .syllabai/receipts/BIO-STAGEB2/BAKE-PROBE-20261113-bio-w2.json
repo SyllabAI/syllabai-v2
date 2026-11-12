@@ -1,0 +1,29 @@
+{
+ "format": "bake-probe-receipt/0.1",
+ "lane": "BIO-STAGEB2",
+ "generated_at_utc": "2026-11-12T18:40:00Z",
+ "operator_trace": "1a1cf153da1c3e61",
+ "subject": "post-merge bake probe + live spot-check for the wave-2 hub landing (PR #964 merge 493aa474)",
+ "targets": [
+  {
+   "note": "rn_fc4RtMw8kkGWFTrq (wave-2)",
+   "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-biology-19/guided-lessons/rn_fc4RtMw8kkGWFTrq"
+  },
+  {
+   "note": "rn_CGsRy4NGjCQRGgXs (wave-1 calibration)",
+   "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-biology-19/guided-lessons/rn_CGsRy4NGjCQRGgXs"
+  },
+  {
+   "note": "rn_qRXSsjyzyZsJnc7k (stage-A pilot calibration)",
+   "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-biology-19/guided-lessons/rn_qRXSsjyzyZsJnc7k"
+  }
+ ],
+ "poll_window_utc": "2026-11-12T18:29Z-18:35Z (5 attempts x 3 targets, 60s apart)",
+ "result": "HTTP 402 on EVERY target INCLUDING both calibration notes (body 32 bytes, DEPLOYMENT_DISABLED) \u2014 the wave-1 receipt class (BAKE-PROBE-20261112-chem-bio-biow1.json): account-level production disable, allowance-cap; self-heal floor = the standing bake once the plane restores",
+ "disclosures": [
+  "the 402 hits the calibration notes too \u2014 plane-level, NOT a wave-2 content defect (a content defect would 404/200-mismatch on wave-2 only while calibrations render)",
+  "static-build pickup proof of record: the CI hub gate (next build incl. the content plane) GREEN on both the PR head d0e1e2cb and the merge commit 493aa474; the runner's G-V loader-path + static-build pickup probes also GREEN locally at landing",
+  "occurrence-aware spot-check (authored stem x>=1, 'Your answer' counts, 2.1B 0-hit) DEFERRED to plane restore \u2014 rides the wave-1 open item of the same class",
+  "bookkeeping-only: .syllabai/** bytes; zero content/source bytes in this commit"
+ ]
+}

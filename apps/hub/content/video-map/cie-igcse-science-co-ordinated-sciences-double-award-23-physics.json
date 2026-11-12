@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 161,
+  "rowsApproved": 173,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 161,
+    "rowsApproved": 173,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2511,6 +2511,186 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "0ASldDQmIOQ",
+   "title": "GCSE Physics Revision \"Alpha-Scattering and the Nuclear Model\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=0ASldDQmIOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9FKrxyRsl0w",
+   "title": "Diodes, LEDs, Thermistors and LDRs | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=9FKrxyRsl0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 82,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9LkLj8TS9VI",
+   "title": "Transverse and Longitudinal Waves | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=9LkLj8TS9VI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 114,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "AqVJ4b5tkwo",
+   "title": "GCSE Physics Revision \"Seismic Waves\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=AqVJ4b5tkwo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 262,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "GTdgI-0KckA",
+   "title": "GCSE Physics Revision \"Cooling of Buildings\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GTdgI-0KckA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "M6iI5T3Yzbo",
+   "title": "Newton's Second Law of Motion (F=ma) | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=M6iI5T3Yzbo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 75,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "SvVQAg_oA2A",
+   "title": "GCSE Physics Revision \"Black Body Radiation\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=SvVQAg_oA2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 231,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "UNmv6H-f180",
+   "title": "GCSE Physics Revision \"Required Practical 8: Ripple Tank\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UNmv6H-f180",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 247,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "fwVGtrgkDBA",
+   "title": "Ultrasound | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=fwVGtrgkDBA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 111,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "goc68ImsJ0A",
+   "title": "AC and DC supply | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=goc68ImsJ0A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 88,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "i1A1D6EnS-8",
+   "title": "Atomic Structure | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=i1A1D6EnS-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 116,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "zsb4ZEQLFxQ",
+   "title": "Evaporation and Condensation | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=zsb4ZEQLFxQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 79,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -2993,6 +3173,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Newton's 3rd Law | How it Relates to F = ma' = recall and use F = ma (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "M6iI5T3Yzbo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.5.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title \"Newton's Second Law of Motion (F=ma)\" names the F=ma spec 1.5.11 directly; the 6.2.10 Hubble bind is nonsense adjacency (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3948,6 +4148,46 @@
    }
   },
   {
+   "video": "zsb4ZEQLFxQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Evaporation and Condensation | GCSE Physics | Doodle Science' -> 2.2.3 '\u0007Describe condensation and solidification in t' via distinctive token(s) condensation (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GTdgI-0KckA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Cooling of Buildings' partially names the evaporation-causes-cooling spec 2.2.5 (cooling context — partial, disclosed); the 5.2.2 greenhouse bind is nonsense adjacency (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "7eOqj-PCjAs",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4090,6 +4330,26 @@
    }
   },
   {
+   "video": "SvVQAg_oA2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.3.2b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Black Body Radiation' partially names the surface-colour emission/absorption spec 2.3.3 (black surfaces — genuine partial, disclosed); the 3.3.4 EM-harm bind is nonsense adjacency (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "EmEmIudNvhM",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4191,6 +4451,26 @@
    }
   },
   {
+   "video": "UNmv6H-f180",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Physics Revision \"Required Practical 8: Ripple Tank\"' -> 3.1.8 'Describe the use of a ripple tank to show: a c' via distinctive token(s) ripple, tank (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "0f5iYCNCnow",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4263,6 +4543,47 @@
    ],
    "confidence": "low",
    "evidence": "title 'Seismic Waves - GCSE Physics' -> 3.1.6 '\u0007Know that for a longitudinal wave, the direct' via distinctive token(s) seismic; 3.1.5 '\u0007Know that for a transverse wave, the directio' via distinctive token(s) seismic (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9LkLj8TS9VI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Transverse and Longitudinal Waves | GCSE Physics | Doodle Science' -> 3.1.5 '\u0007Know that for a transverse wave, the directio' via distinctive token(s) transverse; 3.4.2 '\u0007Describe the longitudinal nature of sound wav' via distinctive token(s) longitudinal (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "AqVJ4b5tkwo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.1.6",
+    "P3.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Physics Revision \"Seismic Waves\" (Triple)' -> 3.1.6 '\u0007Know that for a longitudinal wave, the direct' via distinctive token(s) seismic; 3.1.5 '\u0007Know that for a transverse wave, the directio' via distinctive token(s) seismic (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4643,6 +4964,26 @@
    }
   },
   {
+   "video": "fwVGtrgkDBA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.4.7"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Ultrasound | GCSE Physics | Doodle Science' -> 3.4.9 '\u0007Define ultrasound as sound with a frequency h' via distinctive token(s) ultrasound; 3.4.12 '\u0007Describe the uses of ultrasound in non- destr' via distinctive token(s) ultrasound (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "_Ag_DKztFkg",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4817,6 +5158,27 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Charge is Transferred by a Toaster' names the current-as-charge-flow content of 4.2.1a (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "goc68ImsJ0A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P4.2.1d",
+    "P4.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'AC and DC supply | GCSE Physics | Doodle Science' -> 4.4.1 'State the hazards of: extension leads, single ' via distinctive token(s) supply; 4.2.1d '\u0007Understand that electric circuits transfer en' via distinctive token(s) supply (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -5177,6 +5539,28 @@
    ],
    "confidence": "low",
    "evidence": "title 'LDRs and Thermistors' names components whose circuit-diagram symbols/appearance appear in 4.3.1; behaviour detail exceeds the spec, disclosed (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9FKrxyRsl0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P4.3.1",
+    "P4.3.2",
+    "P4.3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Diodes, LEDs, Thermistors and LDRs | GCSE Physics | Doodle Science' -> 4.3.1 '\u0007Draw and interpret circuit diagrams containin' via distinctive token(s) ldr, thermistor; 4.3.2a '\u0007Draw and interpret circuit diagrams containin' via distinctive token(s) diode, led (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -5559,6 +5943,26 @@
    }
   },
   {
+   "video": "i1A1D6EnS-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Atomic Structure | GCSE Physics | Doodle Science' -> 5.1.3 '\u0007Define the terms proton number (atomic number' via distinctive token(s) atomic; 5.1.1 '\u0007Describe the structure of an atom in terms of' via distinctive token(s) structure (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "kruNcVBBP7E",
    "lessonRef": null,
    "lessonUrl": null,
@@ -5587,6 +5991,27 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Development of the model of the atom' = alpha particle scattering supports the nuclear model (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0ASldDQmIOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.1.7",
+    "P5.2.1a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Physics Revision \"Alpha-Scattering and the Nuclear Model\"' -> 5.1.3a '\u0007Describe how the scattering of alpha (α) part' via distinctive token(s) alpha, scattering; 5.2.2a '\u0007Identify alpha ( α ), beta ( β ) and gamma ( ' via distinctive token(s) alpha (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -5812,16 +6237,16 @@
  ],
  "coverage": {
   "specPointsTotal": 221,
-  "specPointsMapped": 110,
-  "specPointsUnmapped": 111,
-  "videosTotal": 161,
-  "videosMapped": 161,
+  "specPointsMapped": 114,
+  "specPointsUnmapped": 107,
+  "videosTotal": 173,
+  "videosMapped": 173,
   "videosUnmapped": 0,
-  "mappingRows": 161,
+  "mappingRows": 173,
   "byConfidence": {
    "high": 0,
-   "medium": 126,
-   "low": 35
+   "medium": 131,
+   "low": 42
   }
  },
  "inputs": {
@@ -5845,5 +6270,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.426Z"
+ "generatedUtc": "2026-11-12T18:17:37.477Z"
 }

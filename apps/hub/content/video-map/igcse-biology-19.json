@@ -13,6 +13,11 @@
    "provider": "multi (freesciencelessons, malmesbury-education, amoeba-sisters, cognito-ks3)",
    "method": "yt-dlp flat channel enumeration + oEmbed identity sweep (27/27 verified) + LLM title-to-spec adjudication; no transcripts/descriptions available from sandbox (watch pages consent-walled, per-video extraction bot-walled) — evidence is TITLE-ONLY and rows carry confidence accordingly",
    "enumeratedUtc": "2026-10-31T19:19:49Z"
+  },
+  "p7": {
+   "provider": "multi (amoeba-sisters, freesciencelessons)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
   }
  },
  "review": {
@@ -21,7 +26,7 @@
   "ruling": "'approve all except 4.16' — owner chat, 2026-11-01",
   "reviewer": "owner (chat ruling 2026-11-01)",
   "evidenceBasis": "Page keyPoints + oEmbed identity sweep (73/73 official titles, caption-validation.json) — transcript re-validation closed after 30 logged paths (caption-validation.md); medium rows are topic-consistent but clause-level unverified.",
-  "rowsApproved": 129,
+  "rowsApproved": 165,
   "rowsRejected": 4,
   "rejects": [
    {
@@ -103,6 +108,138 @@
       "spec": "2.55B",
       "reason": "Amoeba '(OLD VIDEO) Plant Structure and Adaptations' — root-hair water absorption (2.55B) not title-evidenced, video marked OLD by the channel. Keyword-adjacent hit.",
       "lane": "T-VIDEOMAP-P2B"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 36 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 36,
+    "rowsRejected": 24,
+    "rejects": [
+     {
+      "video": "0iSuyY3a9L0",
+      "reason": "self-review drop: AQA testing-medicines (clinical trials/placebos) is not the 4BI1 content; the 2.6B bind cannot be reconciled with the title content",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "4Eo7JtRA7lg",
+      "reason": "self-review drop: cellular respiration: the honest 4BI1 targets (2.42-2.44 respiration) were not bound; the pre-pass binds (1.4 pathogen, 2.3 organelle functions) are keyword-adjacent garbage",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "5j8j7BhCCEg",
+      "reason": "self-review drop: body-tissues (4 US types) binds no 4BI1 spec; 1.4 pathogen and 5.17B micropropagation matched the token tissue — keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "7xeFP0SEDdc",
+      "reason": "self-review drop: amoeba playlist-stroll survey; the 2.28 peristalsis bind matched the token food loosely — survey reject class",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "EIPmKuwhnRs",
+      "reason": "self-review drop: human-body-systems survey; the binds (3.32 diploid, 1.2 eukaryote) are nonsense adjacency",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "KvK7EJimAH8",
+      "reason": "self-review drop: AQA adaptations (extremophiles) has no direct 4BI1 spec; the 2.61 red-blood-cell bind is a specific-cell slice, not the title content",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "QYWNXp36O48",
+      "reason": "self-review drop: communicable/non-communicable disease: the 2.17 bind is the diffusion/osmosis practical — nonsense adjacency",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "_Bf5WKEMB5o",
+      "reason": "self-review drop: plant hormones (auxin): the honest 4BI1 auxin targets were not bound; the 2.95B/2.94 binds are the human FSH/LH specs — nonsense adjacency",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "t0wpYygMbJg",
+      "reason": "self-review drop: AQA bacterial-division (binary fission) has no 4BI1 spec; the binds (3.39 antibiotic resistance, 3.30 meiosis) are keyword-adjacent garbage",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "t2Gi-kzZpZM",
+      "reason": "self-review drop: sizes of cells (orders of magnitude): no 4BI1 spec; both binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "vSsGHhtMJZs",
+      "reason": "self-review drop: cellular respiration misbind (1.4 pathogen is nonsense adjacency); the honest respiration specs were not bound by the pre-pass",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "02Mx7s8gIig",
+      "reason": "no honest binding: best candidate \"understand the methods used to farm large numbers of fish to\" (5.9B) binds only on generic vocabulary: disease",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "4R2eNs9iphw",
+      "reason": "no honest binding: best candidate \"know the similarities and differences in the structure of pl\" (2.4) binds only on generic vocabulary: animal, cell",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "5wSfCZESRHU",
+      "reason": "no honest binding: best candidate \"understand the methods used to farm large numbers of fish to\" (5.9B) binds only on generic vocabulary: disease",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "8UAl5C2frNQ",
+      "reason": "no honest binding: best candidate \"know the similarities and differences in the structure of pl\" (2.4) binds only on generic vocabulary: cell, plant",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "8m6hHRlKwxY",
+      "reason": "no honest binding: best candidate \"understand that the nucleus of a cell contains chromosomes o\" (3.15) binds only on generic vocabulary: chromosome, gene",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "H6DrSG_KQjo",
+      "reason": "no honest binding: best candidate \"understand the methods used to farm large numbers of fish to\" (5.9B) binds only on generic vocabulary: disease",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Ptmlvtei8hw",
+      "reason": "no honest binding: best candidate \"understand how vaccination results in the manufacture of mem\" (2.63B) binds only on generic vocabulary: cell, transport",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "VHnS8HUtu44",
+      "reason": "no honest binding: best candidate \"understand the methods used to farm large numbers of fish to\" (5.9B) binds only on generic vocabulary: disease",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "fEo21LbnJJM",
+      "reason": "no honest binding: best candidate \"understand that plants respond to stimuli\" (2.83) binds only on generic vocabulary: plant, response",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "mZLSJOVI4l8",
+      "reason": "no honest binding: best candidate \"know the similarities and differences in the structure of pl\" (2.4) binds only on generic vocabulary: animal, cell",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "nc_kbfjhiUo",
+      "reason": "no honest binding: best candidate \"describe the role of ADH in regulating the water content of \" (2.78B) binds only on generic vocabulary: blood",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "t7mp8JG2Q4U",
+      "reason": "no honest binding: best candidate \"know the similarities and differences in the structure of pl\" (2.4) binds only on generic vocabulary: cell, plant",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "wUm71FPuVCQ",
+      "reason": "no honest binding: best candidate \"understand how vaccination results in the manufacture of mem\" (2.63B) binds only on generic vocabulary: pathogen",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
      }
     ]
    }
@@ -1358,6 +1495,546 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-10-31T19:19:49Z"
+  },
+  {
+   "id": "-oVavgmveyY",
+   "title": "Food Webs and Energy Pyramids: Bedrocks of Biodiversity",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=-oVavgmveyY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 349,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "2BR1zdMBhY4",
+   "title": "GCSE Biology Revision \"Plant Tissues\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=2BR1zdMBhY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "2waYa0ZwoXg",
+   "title": "GCSE Biology Revision \"Darwin and Natural Selection\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=2waYa0ZwoXg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 241,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "4CxNeiAICmc",
+   "title": "GCSE Biology Revision \"Hormones to Treat Infertility\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4CxNeiAICmc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 189,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "5VW5-VXlWic",
+   "title": "GCSE Biology Revision \"Absorption in the Small Intestine\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=5VW5-VXlWic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 148,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "6fhbbFd4icY",
+   "title": "(OLD VIDEO) Homeostasis (and the Cell Membrane King)",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=6fhbbFd4icY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "6utMftGxuaI",
+   "title": "GCSE Biology Revision \"Decomposition\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=6utMftGxuaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 224,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "7RraYCKvTXc",
+   "title": "GCSE Biology Revision \"Evolution by Natural Selection\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7RraYCKvTXc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 251,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "7VM9YxmULuo",
+   "title": "Natural Selection",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=7VM9YxmULuo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 443,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "7hu6vDP2a4Q",
+   "title": "GCSE Biology Revision \"Global Warming\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=7hu6vDP2a4Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Fh9b6a-3DLQ",
+   "title": "GCSE Biology Revision \"Sexual and Asexual Reproduction\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Fh9b6a-3DLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 219,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Fuv76dJKBkE",
+   "title": "GCSE Biology Revision \"The Brain\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Fuv76dJKBkE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "K5zFxfbmC1M",
+   "title": "GCSE Biology Revision \"Measles and HIV\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=K5zFxfbmC1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 219,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "LeH5FUKSPzU",
+   "title": "GCSE Biology Revision \"Required Practical 10: Decay\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=LeH5FUKSPzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "S45_3wWL-Xk",
+   "title": "GCSE Biology Revision \"Homeostasis\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=S45_3wWL-Xk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 237,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "TQ_iCf8mzMA",
+   "title": "GCSE Biology Revision \"DNA and the Genome\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=TQ_iCf8mzMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 209,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "VzDMG7ke69g",
+   "title": "Meiosis (Older Video 2017 )",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=VzDMG7ke69g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 464,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "_LoPYfhTgeI",
+   "title": "GCSE Biology Revision \"Variation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=_LoPYfhTgeI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 182,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "aGWP3Xbk0OY",
+   "title": "GCSE Biology Revision \"Malaria\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=aGWP3Xbk0OY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "bpYaKM2hVFY",
+   "title": "GCSE Biology Revision \"The Heart and Circulation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=bpYaKM2hVFY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 283,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "dRFQ8rZCK6Q",
+   "title": "GCSE Biology Revision \"Food Chains and Predator-Prey Cycles\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=dRFQ8rZCK6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 309,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "e1RUivE3H1k",
+   "title": "GCSE Biology Revision \"The Digestive System\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=e1RUivE3H1k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 253,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "fcGDUcGjcyk",
+   "title": "Asexual and Sexual Reproduction",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=fcGDUcGjcyk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 310,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "kIfMwZU8nk4",
+   "title": "GCSE Biology Revision \"Biotic and Abiotic Factors\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=kIfMwZU8nk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 250,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "kpk5wswBPPw",
+   "title": "Comparing Cell Types Review: Animal, Plant, Bacterial, Archaeal, Fungal, and \"Protist\" Cells",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=kpk5wswBPPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 542,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "pv3Kj0UjiLE",
+   "title": "Alleles and Genes",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=pv3Kj0UjiLE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 487,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "qLSkcs8AYxc",
+   "title": "GCSE Biology Revision \"Required Practical 5: Effect of pH on Amylase\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=qLSkcs8AYxc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "rJtlaTSL8ps",
+   "title": "GCSE Biology Revision \"Surface Area to Volume Ratio\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=rJtlaTSL8ps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "reVLRjZIh3c",
+   "title": "GCSE Biology Revision \"Alleles\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=reVLRjZIh3c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 273,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "sgh1OWm0oTQ",
+   "title": "GCSE Biology Revision \"Pyramids of Biomass\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=sgh1OWm0oTQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 292,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "srpl5YRw-_U",
+   "title": "Ecology Review: Food Chains & Webs, Relationships, Nitrogen & Carbon Cycles, Effects on Biodiversity",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=srpl5YRw-_U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 992,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "uQt5bRIkD4g",
+   "title": "GCSE Biology Revision \"Antibiotics\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=uQt5bRIkD4g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 184,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "w5SRMZlYR4w",
+   "title": "GCSE Biology Revision \"Meiosis and Fertilisation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=w5SRMZlYR4w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "wky7R3zYtTQ",
+   "title": "GCSE Biology Revision \"Family Trees\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=wky7R3zYtTQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 287,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "xO2XlIMnLuM",
+   "title": "GCSE Biology Revision \"Exercise\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xO2XlIMnLuM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 200,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "ypHpbHfDJsA",
+   "title": "GCSE Biology Revision \"Digestive Enzymes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ypHpbHfDJsA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 266,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -3255,20 +3932,569 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "video": "-oVavgmveyY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Food Webs and Energy Pyramids: Bedrocks of Biodiversity' -> 4.7 'understand the concepts of food chains, food w' via distinctive token(s) pyramid, web",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "2BR1zdMBhY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Plant Tissues' names the levels-of-organisation spec 2.1 partially (tissues/organs); the 5.17B micropropagation bind matched the token tissue (tissue culture != plant tissues) — keyword-adjacent",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "2waYa0ZwoXg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.38"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Darwin and Natural Selection' names Darwin's theory spec 3.38 directly; the 3.7 asexual-plant bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4CxNeiAICmc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.95B",
+    "2.94"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Hormones to Treat Infertility\"' -> 2.95B 'understand the sources, roles and effects of t' via distinctive token(s) hormone; 2.94 'understand the sources, roles and effects of t' via distinctive token(s) hormone",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "5VW5-VXlWic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.32",
+    "2.27"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Absorption in the Small Intestine\"' -> 2.32 'understand how the small intestine is adapted ' via distinctive token(s) absorption, intestine; 2.27 'describe the structure and function of the hum' via distinctive token(s) intestine",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6fhbbFd4icY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.81"
+   ],
+   "confidence": "low",
+   "evidence": "title '(OLD VIDEO) Homeostasis (and the Cell Membrane King)' -> 2.81 'understand that homeostasis is the maintenance' via distinctive token(s) homeostasi",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6utMftGxuaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Decomposition' names the carbon-cycle spec 4.10 (decomposers named in-spec); the 4.9 bind (10% energy transfer) is a different spec — trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7RraYCKvTXc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.38"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Evolution by Natural Selection' names spec 3.38 directly; the 3.7 bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7VM9YxmULuo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.38"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Natural Selection' names spec 3.38; the 3.7 bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7hu6vDP2a4Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Global Warming\"' -> 4.15 'understand how an increase in greenhouse gases' via distinctive token(s) global, warming",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Fh9b6a-3DLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1",
+    "3.29"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Sexual and Asexual Reproduction\"' -> 3.1 'understand the differences between sexual and ' via distinctive token(s) asexual, sexual; 3.29 'understand that mitosis occurs during growth, ' via distinctive token(s) asexual",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Fuv76dJKBkE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.87"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"The Brain\" (Triple)' -> 2.87 'understand that the central nervous system con' via distinctive token(s) brain",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "K5zFxfbmC1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Measles and HIV\"' -> 1.4 'understand the term pathogen and know that pat' via distinctive token(s) hiv",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LeH5FUKSPzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Required Practical 10: Decay' — the decay practical demonstrates decomposer action; bound on the carbon-cycle spec 4.10 as a genuine partial (the AQA rate-of-decay procedure itself has no 4BI1 spec)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "S45_3wWL-Xk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.81"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Homeostasis\"' -> 2.81 'understand that homeostasis is the maintenance' via distinctive token(s) homeostasi",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TQ_iCf8mzMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.14"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"DNA and the Genome\"' -> 3.14 'understand that the genome is the entire DNA o' via distinctive token(s) genome",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "VzDMG7ke69g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.30"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Meiosis (Older Video 2017 )' -> 3.30 'understand how division of a cell by meiosis p' via distinctive token(s) meiosi",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "_LoPYfhTgeI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.33",
+    "3.31"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Variation\"' -> 3.33 'understand that variation within a species can' via distinctive token(s) variation; 3.31 'understand how random fertilisation produces g' via distinctive token(s) variation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "aGWP3Xbk0OY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Malaria\"' -> 1.2 'describe the common features shown by eukaryot' via distinctive token(s) malaria",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bpYaKM2hVFY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.69"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"The Heart and Circulation\"' -> 2.69 'understand the general structure of the circul' via distinctive token(s) circulation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "dRFQ8rZCK6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8",
+    "4.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Food Chains and Predator-Prey Cycles\"' -> 4.8 'understand the transfer of substances and ener' via distinctive token(s) chain; 4.7 'understand the concepts of food chains, food w' via distinctive token(s) chain",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "e1RUivE3H1k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.29"
+   ],
+   "confidence": "low",
+   "evidence": "title 'The Digestive System' names the digestive-enzymes spec 2.29; the 1.2 eukaryote bind is keyword-adjacent",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "fcGDUcGjcyk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1",
+    "3.29"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Asexual and Sexual Reproduction' -> 3.1 'understand the differences between sexual and ' via distinctive token(s) asexual, sexual; 3.29 'understand that mitosis occurs during growth, ' via distinctive token(s) asexual",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kIfMwZU8nk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Biotic and Abiotic Factors\"' -> 4.5 'understand how abiotic and biotic factors affe' via distinctive token(s) abiotic, biotic",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kpk5wswBPPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2",
+    "1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Comparing Cell Types Review: Animal, Plant, Bacterial, Archaeal, Funga' -> 1.2 'describe the common features shown by eukaryot' via distinctive token(s) fungal; 1.4 'understand the term pathogen and know that pat' via distinctive token(s) type",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pv3Kj0UjiLE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.19"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Alleles and Genes' -> 3.19 'understand how genes exist in alternative form' via distinctive token(s) allele",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "qLSkcs8AYxc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.29"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Required Practical 5: Effect of pH on Amylase' — amylase is a digestive enzyme; bound on spec 2.29 as a genuine partial (the pH-procedure itself has no 4BI1 spec); the 5.8 fermenter bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "rJtlaTSL8ps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.16"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Surface Area to Volume Ratio\"' -> 2.16 'understand how factors affect the rate of move' via distinctive token(s) area, ratio, surface, volume",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "reVLRjZIh3c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.19"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Alleles\"' -> 3.19 'understand how genes exist in alternative form' via distinctive token(s) allele",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "sgh1OWm0oTQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Pyramids of Biomass\" (Triple)' -> 4.7 'understand the concepts of food chains, food w' via distinctive token(s) biomas, pyramid",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "srpl5YRw-_U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.7",
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Ecology Review: Food Chains & Webs, Relationships, Nitrogen & Carbon C' -> 4.7 'understand the concepts of food chains, food w' via distinctive token(s) chain, web; 4.8 'understand the transfer of substances and ener' via distinctive token(s) chain",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uQt5bRIkD4g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.39"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Antibiotics\"' -> 3.39 'understand how resistance to antibiotics can i' via distinctive token(s) antibiotic",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "w5SRMZlYR4w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.30"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Meiosis and Fertilisation\"' -> 3.30 'understand how division of a cell by meiosis p' via distinctive token(s) meiosi",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wky7R3zYtTQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.24"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Biology Revision \"Family Trees\"' -> 3.24 'understand how to interpret family pedigrees' via distinctive token(s) family",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "xO2XlIMnLuM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.66",
+    "2.50"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Biology Revision \"Exercise\"' -> 2.66 'explain how the heart rate changes during exer' via distinctive token(s) exercise; 2.50 'practical: investigate breathing in humans, in' via distinctive token(s) exercise",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ypHpbHfDJsA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.29"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Digestive Enzymes' names spec 2.29 directly; the 1.2 bind is keyword-adjacent",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 176,
   "specPointsMapped": 162,
   "specPointsUnmapped": 14,
-  "videosTotal": 98,
-  "videosMapped": 94,
+  "videosTotal": 134,
+  "videosMapped": 130,
   "videosUnmapped": 4,
-  "mappingRows": 129,
+  "mappingRows": 165,
   "byConfidence": {
    "high": 73,
-   "medium": 49,
-   "low": 7
+   "medium": 63,
+   "low": 29
   }
  },
  "inputs": {
@@ -3281,7 +4507,13 @@
    "path": "Videos/drafts/igcse-biology-19/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2B",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-biology-19/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.323Z"
+ "generatedUtc": "2026-11-12T18:17:37.418Z"
 }

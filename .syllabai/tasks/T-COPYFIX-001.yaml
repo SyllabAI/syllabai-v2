@@ -1,0 +1,19 @@
+version: 1
+task:
+  id: T-COPYFIX-001
+  title: 'Stale quota copy removal — the Teach SillyAI picker footer says "Quota: 3 sessions a day" while quota.dailySessionCap has been 999 since T-TEACHGENIE-007; the quota sentence is dropped, the AI_SUGGESTED sentence stays byte-identical'
+  owner: 'Super Z (zai-web session web-7b4a27df-7d97-438a-849c-05a9c0003aa8, chat 0fade780-1ab5-4951-bfd9-13f43e897f40, dispatch trace 1a1d0ec707d8c619 — live operator orders "We dont need quota in syllabai for now." + "You do it", 2026-11-13)'
+  status: 'run-001 (single-sentence copy removal in picker.tsx only) — PR of record, branch t-copyfix-001/run-001 from main f3ce38df'
+  priority: P2
+  band: T-COPYFIX (learner-visible truth copy; zero engine bytes)
+  deps: [T-TEACHGENIE-007]
+  scope:
+    allowed:
+    - apps/hub/src/components/hub/teach-genie/picker.tsx (line 268 footer copy ONLY: drop " Quota: 3 sessions a day.")
+    - .syllabai/tasks/T-COPYFIX-001.yaml + .syllabai/receipts/T-COPYFIX-001/** + .syllabai/worklog.md (append-only)
+    forbidden:
+    - any apps/api byte (config quota.dailySessionCap stays 999 — de-facto no-quota is a config state, not a code state)
+    - the 409 QUOTA_EXCEEDED client handling + the landing UTC-day history grouping (kept as dead-path safety nets / restore path)
+    - the AI_SUGGESTED / ratification sentence in the same footer (conditional copy is a SEPARATE decision, not this lane)
+    - packages/**, packages/db, flags, prompts, laws, contracts
+  notes: 'LIVE EVIDENCE: demo picker footer rendered the stale sentence on 2026-11-13 while the server cap is 999 (T-TEACHGENIE-007, 2026-11-06) — the copy states a quota the engine no longer enforces. REVERSIBILITY: quota reinstatement remains config-only per the T-TEACHGENIE-007 restore path.'

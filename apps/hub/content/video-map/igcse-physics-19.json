@@ -16,6 +16,11 @@
    "provider": "physics-online (PhysicsOnline YouTube channel — unmapped remainder)",
    "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 1,081 public uploads, +1 net vs the P2E enumeration of 1,080 on 2026-11-10; the P2E lane cached only its 303-drafted subset, so the delta video is not individually identified) + oEmbed identity sweep 113/113 on the routed pool (473/473 live overall, author Physics Online) + marker routing (A-level / GCSE markers, GCSE and unmarked videos cross-spine-routed by distinctive-token idf overlap) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
    "enumeratedUtc": "2026-11-12T09:56:37Z"
+  },
+  "p7": {
+   "provider": "multi (doodlescience, freesciencelessons)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. Strong sweep: 101/102 mappings pass; the single reject trims two application clauses that the generic static-electricity video does not name.",
-  "rowsApproved": 216,
+  "rowsApproved": 235,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -405,6 +410,73 @@
       "video": "Uh1yBPLfcIs",
       "reason": "self-review full-row drop: LIGO gravitational waves: not a 4PH1 spec",
       "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 19 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 19,
+    "rowsRejected": 11,
+    "rejects": [
+     {
+      "video": "_W3VbonFNcw",
+      "reason": "self-review drop: Newton's FIRST law: the honest 4PH1 inertia spec was not bound; the 1.29P Newton's-THIRD-law bind is a misbind and 1.23 is Hooke's law — nonsense adjacency",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "gj1tu8bTKjI",
+      "reason": "self-review drop: energy transfer by appliances (E=Pt content): the honest 4PH1 power/energy spec was not bound; the 2.2 insulation bind is keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "3qCmEHRFRH8",
+      "reason": "no honest binding: best candidate \"explain that all waves can be reflected and refracted\" (3.9) binds only on generic vocabulary: propertie, wave",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "4h03dLkL4-U",
+      "reason": "no honest binding: best candidate \"calculate the currents, voltages and resistances of two resi\" (2.19) binds only on generic vocabulary: resistance",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "8RI2_gJy0L0",
+      "reason": "no honest binding: best candidate \"explain that gravitational force: • causes moons to orbit pl\" (8.4) binds only on generic vocabulary: force",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "OyGG1Lm6L2Y",
+      "reason": "no honest binding: best candidate \"use the relationship between power, work done (energy transf\" (4.17) binds only on generic vocabulary: power, work",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "VOMNGlasL-0",
+      "reason": "no honest binding: best candidate \"determine acceleration from the gradient of a velocity−time \" (1.8) binds only on generic vocabulary: acceleration",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "YsZeZotYVag",
+      "reason": "no honest binding: best candidate \"calculate the currents, voltages and resistances of two resi\" (2.19) binds only on generic vocabulary: resistance",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "ar3-Ps04AJI",
+      "reason": "no honest binding: best candidate \"describe the energy transfers involved in generating electri\" (4.18P) binds only on generic vocabulary: nuclear, power",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "m_3JrA-sDEg",
+      "reason": "no honest binding: best candidate \"calculate the currents, voltages and resistances of two resi\" (2.19) binds only on generic vocabulary: resistance",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "rPbx_XrrKLQ",
+      "reason": "no honest binding: best candidate \"know that an electric current in a conductor produces a magn\" (6.8) binds only on generic vocabulary: electric, field",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
      }
     ]
    }
@@ -3699,6 +3771,291 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "0JzscbSaabM",
+   "title": "GCSE Physics Revision \"Visible Light\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=0JzscbSaabM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 252,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "1U4AVzaH6E8",
+   "title": "Electrical Appliances | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=1U4AVzaH6E8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 74,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9W6S3FA-C6U",
+   "title": "Renewable Energy Resources: Part 2 | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=9W6S3FA-C6U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 78,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "AiXhR2eZxgo",
+   "title": "GCSE Physics Revision \"Force and Braking\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=AiXhR2eZxgo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 219,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Bh2KN0q5H7Q",
+   "title": "Transformers and the National Grid | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=Bh2KN0q5H7Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 75,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "CaNrfGfrOrE",
+   "title": "Half-Life | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=CaNrfGfrOrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 102,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "EEj8hMBPTi0",
+   "title": "Transformers | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=EEj8hMBPTi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 167,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "FDHOdlnrIKI",
+   "title": "Series and Parallel Circuits | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=FDHOdlnrIKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 81,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "MhEGS1zsApo",
+   "title": "Renewable Energy Resources: Part 1 | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=MhEGS1zsApo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 108,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "PG8wV022Eu0",
+   "title": "GCSE Physics Revision \"Vector Diagrams\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=PG8wV022Eu0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "SCg81A6kwg0",
+   "title": "Non-Renewable Energy Resources | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=SCg81A6kwg0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 83,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "UsZsns63Km4",
+   "title": "GCSE Physics Revision \"The Microphone\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UsZsns63Km4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 117,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "V1cTPQxN4K0",
+   "title": "GCSE Physics Revision \"Electromagnetic Devices\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=V1cTPQxN4K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 187,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "dnebaW-a338",
+   "title": "Hooke's Law | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=dnebaW-a338",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 77,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "drMKdcMq3o0",
+   "title": "GCSE Physics Revision \"Vehicle Stopping Distance\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=drMKdcMq3o0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 227,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "fRwq8cRCko0",
+   "title": "Resultant Forces | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=fRwq8cRCko0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 91,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "nC_J3gRQHi8",
+   "title": "Moments | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=nC_J3gRQHi8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 113,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "pjK_3RuiCXk",
+   "title": "Centre of Mass | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=pjK_3RuiCXk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 111,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "tFe7K0H9e3E",
+   "title": "Calculating Power and Fuses | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=tFe7K0H9e3E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 86,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -7020,20 +7377,314 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
    "reviewedUtc": "2026-11-12T09:56:37Z",
    "boardMismatch": true
+  },
+  {
+   "video": "0JzscbSaabM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.12",
+    "3.10"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Physics Revision \"Visible Light\" (Triple)' -> 3.12 'explain some of the uses of electromagnetic ra' via distinctive token(s) visible; 3.10 'know that light is part of a continuous electr' via distinctive token(s) visible",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1U4AVzaH6E8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Electrical Appliances' partially names the home-safety spec 2.2 (insulation/double insulation of appliances); the 6.18P transformer bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9W6S3FA-C6U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.19P"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Renewable Energy Resources: Part 2 | GCSE Physics | Doodle Science' -> 4.19P 'describe the advantages and disadvantages of m' via distinctive token(s) renewable",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "AiXhR2eZxgo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.19"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Physics Revision \"Force and Braking\"' -> 1.19 'know that the stopping distance of a vehicle i' via distinctive token(s) braking",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Bh2KN0q5H7Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.19P",
+    "6.18P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Transformers and the National Grid | GCSE Physics | Doodle Science' -> 6.19P 'know and use the relationship between input (p' via distinctive token(s) transformer; 6.18P 'explain the use of step-up and step-down trans' via distinctive token(s) transformer",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CaNrfGfrOrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.13",
+    "7.12"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Half-Life | GCSE Physics | Doodle Science' -> 7.13 'use the concept of the half-life to carry out ' via distinctive token(s) half, life; 7.12 'know the definition of the term 'half-life' an' via distinctive token(s) half, life",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "EEj8hMBPTi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.19P",
+    "6.18P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Transformers | GCSE Physics | Doodle Science' -> 6.19P 'know and use the relationship between input (p' via distinctive token(s) transformer; 6.18P 'explain the use of step-up and step-down trans' via distinctive token(s) transformer",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "FDHOdlnrIKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7",
+    "2.8"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Series and Parallel Circuits | GCSE Physics | Doodle Science' -> 2.7 'explain why a series or parallel circuit is mo' via distinctive token(s) serie; 2.8 'understand how the current in a series circuit' via distinctive token(s) serie",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MhEGS1zsApo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.19P"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Renewable Energy Resources: Part 1 | GCSE Physics | Doodle Science' -> 4.19P 'describe the advantages and disadvantages of m' via distinctive token(s) renewable",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "PG8wV022Eu0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.14",
+    "1.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Physics Revision \"Vector Diagrams\"' -> 1.14 'understand that force is a vector quantity' via distinctive token(s) vector; 1.13 'understand how vector quantities differ from s' via distinctive token(s) vector",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "SCg81A6kwg0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.19P"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Non-Renewable Energy Resources | GCSE Physics | Doodle Science' -> 4.19P 'describe the advantages and disadvantages of m' via distinctive token(s) non, renewable",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UsZsns63Km4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.26P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Physics Revision \"The Microphone\" (Triple)' -> 3.26P 'understand how an oscilloscope and microphone ' via distinctive token(s) microphone",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "V1cTPQxN4K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Electromagnetic Devices' partially names the everyday-magnetic-applications spec 4.5 (electromagnets); the 2.2 bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "dnebaW-a338",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.23"
+   ],
+   "confidence": "medium",
+   "evidence": "title \"Hooke's Law\" names the Hooke's-law spec 1.23 directly; the 3.15 reflection bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "drMKdcMq3o0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.20",
+    "1.19"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Physics Revision \"Vehicle Stopping Distance\"' -> 1.20 'describe the factors affecting vehicle stoppin' via distinctive token(s) stopping, vehicle; 1.19 'know that the stopping distance of a vehicle i' via distinctive token(s) stopping, vehicle",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "fRwq8cRCko0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.15"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Resultant Forces | GCSE Physics | Doodle Science' -> 1.15 'calculate the resultant force of forces that a' via distinctive token(s) resultant",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nC_J3gRQHi8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.32P",
+    "1.30P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Moments | GCSE Physics | Doodle Science' -> 1.32P 'use the principle of moments for a simple syst' via distinctive token(s) moment; 1.30P 'know and use the relationship between the mome' via distinctive token(s) moment",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pjK_3RuiCXk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.31P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Centre of Mass | GCSE Physics | Doodle Science' -> 1.31P 'know that the weight of a body acts through it' via distinctive token(s) centre",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tFe7K0H9e3E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4",
+    "2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Calculating Power and Fuses | GCSE Physics | Doodle Science' -> 2.4 'know and use the relationship between power, c' via distinctive token(s) fuse; 2.2 'understand how the use of insulation, double i' via distinctive token(s) fuse",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 195,
-  "specPointsMapped": 150,
-  "specPointsUnmapped": 45,
-  "videosTotal": 214,
-  "videosMapped": 214,
+  "specPointsMapped": 152,
+  "specPointsUnmapped": 43,
+  "videosTotal": 233,
+  "videosMapped": 233,
   "videosUnmapped": 0,
-  "mappingRows": 216,
+  "mappingRows": 235,
   "byConfidence": {
    "high": 0,
-   "medium": 186,
-   "low": 30
+   "medium": 194,
+   "low": 41
   }
  },
  "inputs": {
@@ -7058,7 +7709,13 @@
    "path": "Videos/drafts/igcse-physics-19/video-map.draft.external-p6.json",
    "task": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)",
    "reviewAppliedUtc": "2026-11-12T09:56:37Z"
+  },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-physics-19/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.375Z"
+ "generatedUtc": "2026-11-12T18:17:37.426Z"
 }
