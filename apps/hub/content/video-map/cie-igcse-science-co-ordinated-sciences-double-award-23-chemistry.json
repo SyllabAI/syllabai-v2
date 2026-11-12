@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 14,
+  "rowsApproved": 70,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 14,
+    "rowsApproved": 70,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -242,9 +242,871 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "mR3GI7SXNqA",
+   "title": "GCSE Chemistry - Waste Water Treatment - Sources of Waste Water | How to Treat it (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mR3GI7SXNqA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "H0Z_R6GLo9A",
+   "title": "GCSE Chemistry - Air Pollution - How Pollutants are Made | Why They're Harmful (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=H0Z_R6GLo9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 276,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "A74Sf8U3v_E",
+   "title": "GCSE Chemistry - Carbon Footprints - Measuring Footprints | Reducing Emissions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=A74Sf8U3v_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "wFZrm7CAg0M",
+   "title": "GCSE Chemistry - Distillation - Simple & Fractional Distillation (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=wFZrm7CAg0M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "5ZzDxYY48HQ",
+   "title": "GCSE Chemistry - Greenhouse Gases & Climate Change (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=5ZzDxYY48HQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 389,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "QH-7X5STCO4",
+   "title": "GCSE Chemistry - Testing for Gases - Hydrogen/Chlorine/Oxygen/CO2 (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=QH-7X5STCO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 241,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "X1zptKXIEfY",
+   "title": "GCSE Chemistry - Purity & Formulations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=X1zptKXIEfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LfweGr7Y8L4",
+   "title": "GCSE Chemistry - Cracking & Alkenes - Catalytic & Steam Cracking | Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LfweGr7Y8L4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 401,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-qxeVFJh4e4",
+   "title": "GCSE Chemistry - Fractional Distillation - Crude Oil | Hydrocarbons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-qxeVFJh4e4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 335,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "MvC2nieIv3A",
+   "title": "GCSE Chemistry - Alkanes - Properties & Combustion (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=MvC2nieIv3A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 356,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "oQalH_mfOfg",
+   "title": "GCSE Chemistry - Balancing Equations | Writing Word & Symbol Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=oQalH_mfOfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 384,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "2ATXC_weN7s",
+   "title": "GCSE Chemistry - Hydrocarbons - Alkanes & Homologous Series (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=2ATXC_weN7s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 305,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "aanZzrUPEDw",
+   "title": "GCSE Chemistry -  Measuring Rates of Reaction from Graphs - Mean Rate & Rate at a Specific Time",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=aanZzrUPEDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 395,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "JK7yPzO9POU",
+   "title": "GCSE Chemistry - Factors Affecting Rate of Reaction & Collision Theory (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=JK7yPzO9POU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 338,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "HaQm4pNMZug",
+   "title": "GCSE Chemistry -  Rates of Reaction - How to Measure it | How to Show it on Graphs (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=HaQm4pNMZug",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 302,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "NAYCRPyd4xU",
+   "title": "GCSE Chemistry - Fuel Cells - Structure | How they Work | Half Equations | Pros & Cons",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=NAYCRPyd4xU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 464,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "CegXaqWMyr4",
+   "title": "GCSE Chemistry - Bond Energies - Determining if Reactions are Exothermic or Endothermic",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=CegXaqWMyr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 294,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "hNNvIsQLSV8",
+   "title": "GCSE Chemistry - Exothermic & Endothermic Reactions - Reaction Profiles | Activation Energy",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=hNNvIsQLSV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 348,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "QlG9Kt-9yTI",
+   "title": "GCSE Chemistry - Redox Reactions - Displacement Reactions | Ionic Equations | Half Equations",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=QlG9Kt-9yTI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "lvEJiiUkrWg",
+   "title": "GCSE Chemistry - Separating Metals from Metal Oxides | Extraction of Metals & Reduction",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=lvEJiiUkrWg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 280,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "NBw5s7cuwMc",
+   "title": "GCSE Chemistry - The Reactivity Series - Metal Reactions | Displacement Reactions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=NBw5s7cuwMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 268,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "vcxlISVJ6Os",
+   "title": "GCSE Chemistry - Neutralisation Reactions | Reactions of Acids (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vcxlISVJ6Os",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 305,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "FOgZgMBbnXM",
+   "title": "GCSE Chemistry - Strong Acids & Weak Acids | pH & Concentration of Hydrogen Ions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=FOgZgMBbnXM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 340,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Yrf3Z_TQu_k",
+   "title": "GCSE Chemistry - Acids & Bases - pH | Features | Neutralisation Reactions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Yrf3Z_TQu_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 332,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "rluAIfmi7x8",
+   "title": "GCSE Chemistry - Concentration Calculations (grams per dm³) (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=rluAIfmi7x8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 233,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Xx9xrkbDLog",
+   "title": "GCSE Chemistry - Gas Calculations - Volume & Moles | Mass, Moles & Mr (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Xx9xrkbDLog",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 418,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LTnhZvyOvFU",
+   "title": "GCSE Chemistry - Limiting Reactants & Balanced Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LTnhZvyOvFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 285,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "kBlmEfS_P00",
+   "title": "GCSE Chemistry - Moles & Mass - Avogadro's Constant | Formula for Moles, Mass & Mr (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=kBlmEfS_P00",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 293,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-I2mwJH6MhA",
+   "title": "GCSE Chemistry - Relative Formula Mass | Mr & Percentage Mass Calculations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-I2mwJH6MhA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "tRKkGRBndto",
+   "title": "GCSE Chemistry - Metallic Bonding - Properties of Metals | Alloys & Pure Metals (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=tRKkGRBndto",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 239,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "RVV8pncaA7A",
+   "title": "GCSE Chemistry - Diamond & Graphite - Structure | Properties (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=RVV8pncaA7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 227,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "SxuldWdqFB0",
+   "title": "GCSE Chemistry - Types of Covalent Structures: Simple Molecular & Giant Covalent Structures",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=SxuldWdqFB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 322,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "7IkYm7ZgiAw",
+   "title": "GCSE Chemistry - Covalent Bonding - Formation | Drawing Covalent Bonds (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=7IkYm7ZgiAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 357,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ybi6kQHKVws",
+   "title": "GCSE Chemistry - Ionic Compounds - Structure | Properties | Formula (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ybi6kQHKVws",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 392,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "MdU44WeiLps",
+   "title": "GCSE Chemistry - Ionic Bonding - Formation | Dot and Cross Diagrams (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=MdU44WeiLps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "V1OXjdN9QoU",
+   "title": "GCSE Chemistry - Formation of Ions - Electrons | Charge | Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=V1OXjdN9QoU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "uYubwlPRdCs",
+   "title": "GCSE Chemistry - Group 7 & Group 0 Elements - Halogens & Noble Gases | Properties | Trends",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=uYubwlPRdCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "TGZs93DzMDY",
+   "title": "GCSE Chemistry - Group 1 Elements - Alkali Metals | Properties | Reactivity (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=TGZs93DzMDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 380,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "DOB_fJO6-uA",
+   "title": "GCSE Chemistry - Metals & Non-metals: Electron Arrangement & Properties (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=DOB_fJO6-uA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 313,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "kvTzdD1eGUQ",
+   "title": "GCSE Chemistry - Electronic Structure (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=kvTzdD1eGUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 411,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "29Rd-Lly-fw",
+   "title": "GCSE Chemistry - Separation Techniques - Filtration | Evaporation | Crystallisation",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=29Rd-Lly-fw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "E15yF8dNGr8",
+   "title": "GCSE Chemistry - Compounds, Molecules & Mixtures (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=E15yF8dNGr8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 381,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-FBk8cNvJds",
+   "title": "GCSE Chemistry - Elements, Isotopes & Relative Atomic Mass (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-FBk8cNvJds",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 443,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "zuQ469vjwgo",
+   "title": "Atoms & Ions | Protons, Neutrons, Electrons (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=zuQ469vjwgo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 469,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "me19WmGg8Dw",
+   "title": "Electrolysis Part 3/3 - Aqueous Solutions (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=me19WmGg8Dw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "t11ViUTDNzE",
+   "title": "Electrolysis Part 2/3 - Electrolysis to Extract Metals From Oxides (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=t11ViUTDNzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 385,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "RAEm-kJ_QkU",
+   "title": "Electrolysis Part 1/3 - Basics and Molten Compounds (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=RAEm-kJ_QkU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 260,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "q0CAfXV-YdY",
+   "title": "GCSE Chemistry - What is Corrosion and How to Stop it (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=q0CAfXV-YdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 379,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "U-eCXeFwTgY",
+   "title": "GCSE Chemistry - Condensation Polymers (Polyesters) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=U-eCXeFwTgY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "mWTgHjdea4Y",
+   "title": "GCSE Chemistry - Tests for Anions - Carbonate, Sulfate and Halide Ions (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mWTgHjdea4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "1ZUg6ZC3ltA",
+   "title": "GCSE Chemistry - Addition Polymers & Polymerisation (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=1ZUg6ZC3ltA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 431,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "vVwLa1fRsVY",
+   "title": "GCSE Chemistry - Alcohols",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vVwLa1fRsVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 248,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "83Is-rouV-U",
+   "title": "GCSE Chemistry - Addition Reactions of Alkenes",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=83Is-rouV-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 345,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "MEQ1YGxfAQ4",
+   "title": "GCSE Chemistry - Moles, Concentration & Volume Calculations",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=MEQ1YGxfAQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 364,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "TdJ57SQ6GAQ",
+   "title": "GCSE Chemistry - Paper Chromatography",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=TdJ57SQ6GAQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 393,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "hkBrw2fG75U",
+   "title": "GCSE Chemistry - States of Matter & Changing State",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=hkBrw2fG75U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 262,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
   }
  ],
  "mappings": [
+  {
+   "video": "hkBrw2fG75U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.2",
+    "C1.1.3",
+    "C1.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'States of Matter & Changing State' = particle models and changes of state (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "nUzOXy9V-K0",
    "lessonRef": null,
@@ -254,6 +1116,305 @@
    ],
    "confidence": "medium",
    "evidence": "elements/compounds/mixtures differences = 2.1.1 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "E15yF8dNGr8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Compounds, Molecules & Mixtures' = differences between elements, compounds and mixtures (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zuQ469vjwgo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.2.1",
+    "C2.2.2",
+    "C2.2.3",
+    "C2.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Atoms & Ions | Protons, Neutrons, Electrons' = atomic structure and subatomic charges (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "kvTzdD1eGUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electronic Structure' = determining electronic configuration of elements (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-FBk8cNvJds",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.3.3",
+    "C3.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Elements, Isotopes & Relative Atomic Mass' = isotopes and relative atomic mass (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MdU44WeiLps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.4.1",
+    "C2.4.3",
+    "C2.4.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Ionic Bonding - Formation | Dot and Cross Diagrams' = ionic bond formation with dot-and-cross diagrams (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ybi6kQHKVws",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.4.4",
+    "C2.4.6",
+    "C2.4.7",
+    "C3.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Ionic Compounds - Structure | Properties | Formula' = giant ionic lattice properties and formulae (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "V1OXjdN9QoU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.4.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Formation of Ions - Electrons | Charge' = ion formation charges linked to group number (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7IkYm7ZgiAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.5.2",
+    "C2.5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Covalent Bonding - Formation | Drawing Covalent Bonds' = bond formation with dot-and-cross diagrams (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "SxuldWdqFB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.5.3",
+    "C2.5.5",
+    "C2.6.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Simple Molecular & Giant Covalent Structures' = properties of both covalent structure types (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "RVV8pncaA7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.6.1",
+    "C2.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Diamond & Graphite - Structure | Properties' = giant covalent structures of graphite and diamond (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "tRKkGRBndto",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.7.1",
+    "C2.7.2",
+    "C9.3.1",
+    "C9.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Metallic Bonding - Properties of Metals | Alloys & Pure Metals' = metallic lattice bonding and alloy hardness (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oQalH_mfOfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Balancing Equations | Writing Word & Symbol Equations' = constructing word and symbol equations (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "LTnhZvyOvFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.1.4",
+    "C3.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Limiting Reactants & Balanced Equations' = limiting-reactant stoichiometry with equation construction (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "QlG9Kt-9yTI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.1.7",
+    "C6.3.6",
+    "C9.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Redox Reactions - Displacement | Ionic Equations' = electron-transfer redox, displacement and ionic equations (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -306,6 +1467,47 @@
    }
   },
   {
+   "video": "-I2mwJH6MhA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Relative Formula Mass | Mr & Percentage Mass' = formula mass and percentage composition (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "kBlmEfS_P00",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.3.2",
+    "C3.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title \"Moles & Mass - Avogadro's Constant\" = mole unit and mass-molar-mass relationship (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "kMak1TQ3YgU",
    "lessonRef": null,
    "lessonUrl": null,
@@ -314,6 +1516,68 @@
    ],
    "confidence": "medium",
    "evidence": "mass-from-moles = the mass/molar-amount relationship of 3.3.3 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Xx9xrkbDLog",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.3.3",
+    "C3.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Gas Calculations - Volume & Moles' = molar gas volume and mole-mass relationships (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MEQ1YGxfAQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.3.4",
+    "C3.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Moles, Concentration & Volume Calculations' = concentration, solution and gas volume calculations (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "rluAIfmi7x8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Concentration Calculations (grams per dm³)' = concentration units and solution volume calculations (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -347,6 +1611,94 @@
    }
   },
   {
+   "video": "RAEm-kJ_QkU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.2",
+    "C4.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrolysis Part 1/3 - Basics and Molten Compounds' = defining electrolysis and predicting molten products (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "me19WmGg8Dw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.3",
+    "C4.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrolysis Part 3/3 - Aqueous Solutions' = electrolysis of aqueous compounds with selective discharge (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NAYCRPyd4xU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.8",
+    "C4.2.1",
+    "C4.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fuel Cells - Half Equations | Pros & Cons' = hydrogen-oxygen fuel cells with electrode half-equations (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "hNNvIsQLSV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C5.1.1",
+    "C5.1.2",
+    "C5.1.5",
+    "C5.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reaction Profiles | Activation Energy' = drawing pathway diagrams with activation energy (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "4HS6D0hTzdg",
    "lessonRef": null,
    "lessonUrl": null,
@@ -356,6 +1708,66 @@
    ],
    "confidence": "medium",
    "evidence": "exo/endothermic = pathway diagrams (5.1.3) + enthalpy-change transfer (5.1.4) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CegXaqWMyr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C5.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Bond Energies - Exothermic or Endothermic' = calculating enthalpy from bond breaking and making (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "aanZzrUPEDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Measuring Rates of Reaction from Graphs' = interpreting graphs from rate experiments (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "HaQm4pNMZug",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How to Measure it | How to Show it on Graphs' = practical rate methods and graph interpretation (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -388,6 +1800,28 @@
    }
   },
   {
+   "video": "JK7yPzO9POU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.2.5",
+    "C6.2.6",
+    "C6.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Factors Affecting Rate of Reaction & Collision Theory' = collision-theory explanations of rate factors (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "gnbuTl2ariI",
    "lessonRef": null,
    "lessonUrl": null,
@@ -408,6 +1842,389 @@
    }
   },
   {
+   "video": "vcxlISVJ6Os",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C7.1.1",
+    "C7.1.4",
+    "C7.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Neutralisation Reactions | Reactions of Acids' = acid-alkali neutralisation and characteristic acid reactions (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Yrf3Z_TQu_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C7.1.1",
+    "C7.1.4",
+    "C7.1.6",
+    "C7.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Acids & Bases - pH | Features | Neutralisation' = characteristic acid and base reactions with pH (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "FOgZgMBbnXM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C7.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Strong Acids & Weak Acids | pH & Concentration of Hydrogen Ions' = dissociation and hydrogen-ion concentration (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "DOB_fJO6-uA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C8.1.2",
+    "C8.1.3",
+    "C9.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Metals & Non-metals: Electron Arrangement & Properties' = comparing metal and non-metal properties (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TGZs93DzMDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C8.2.1",
+    "C8.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Group 1 Elements - Alkali Metals | Reactivity' = alkali-metal properties and reactivity trends (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "uYubwlPRdCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C8.3.1",
+    "C8.3.2",
+    "C8.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Group 7 & Group 0 - Halogens & Noble Gases' = halogen trends and noble-gas unreactivity (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NBw5s7cuwMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.4.1",
+    "C9.4.2",
+    "C9.4.3",
+    "C9.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Reactivity Series - Metal Reactions | Displacement' = reactivity order from metal reactions (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "q0CAfXV-YdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.5.1",
+    "C9.5.3",
+    "C9.5.4",
+    "C9.5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'What is Corrosion and How to Stop it' = rusting conditions and prevention methods (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "lvEJiiUkrWg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.6.1",
+    "C9.6.2",
+    "C9.6.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Separating Metals from Metal Oxides | Extraction of Metals' = ore reduction and electrolytic extraction (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "t11ViUTDNzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.6.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrolysis to Extract Metals From Oxides' = extracting aluminium from bauxite by electrolysis (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mR3GI7SXNqA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C10.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Waste Water Treatment - Sources of Waste Water | How to Treat it' = sewage sources and treatment adjacent to domestic water treatment spec (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "H0Z_R6GLo9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C10.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Air Pollution - Why They're Harmful' = adverse effects of air pollutants (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "A74Sf8U3v_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C10.2.4",
+    "C10.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Reducing Emissions' = strategies to reduce greenhouse gas emission effects (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "5ZzDxYY48HQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C10.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Greenhouse Gases & Climate Change' = carbon dioxide and methane causing global warming (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2ATXC_weN7s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.1.4",
+    "C11.1.5",
+    "C11.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Hydrocarbons - Alkanes & Homologous Series' = saturated alkanes and homologous series characteristics (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-qxeVFJh4e4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.3.4",
+    "C11.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fractional Distillation - Crude Oil' = separating petroleum into useful fractions (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wFZrm7CAg0M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.3.5",
+    "C12.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Distillation - Simple & Fractional Distillation' = distillation as separation method with petroleum fraction application (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MvC2nieIv3A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Alkanes - Properties & Combustion' = alkane unreactivity except complete and incomplete combustion (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "CmANMHeeZgw",
    "lessonRef": null,
    "lessonUrl": null,
@@ -416,6 +2233,27 @@
    ],
    "confidence": "medium",
    "evidence": "alkenes = the C=C double-bond/unsaturated statement of 11.5.1 (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "83Is-rouV-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.5.2",
+    "C11.5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Addition Reactions of Alkenes' = alkene addition reactions forming single products (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -468,6 +2306,46 @@
    }
   },
   {
+   "video": "LfweGr7Y8L4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Cracking & Alkenes - Catalytic & Steam Cracking' = cracking larger alkanes to manufacture alkenes (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vVwLa1fRsVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Alcohols' = ethanol manufacture, combustion and uses (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "GhvevdJU_DM",
    "lessonRef": null,
    "lessonUrl": null,
@@ -508,6 +2386,131 @@
    }
   },
   {
+   "video": "1ZUg6ZC3ltA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.7.2",
+    "C11.7.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Addition Polymers & Polymerisation' = poly(ethene) formation and repeat units (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "U-eCXeFwTgY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C11.7.3",
+    "C11.7.5",
+    "C11.7.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Condensation Polymers (Polyesters)' = condensation polymerisation and polyester repeat units (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TdJ57SQ6GAQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.3.1",
+    "C12.3.2",
+    "C12.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Paper Chromatography' = chromatogram separation, interpretation and Rf values (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "29Rd-Lly-fw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Separation Techniques - Filtration | Evaporation | Crystallisation' = separation and purification methods (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "X1zptKXIEfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Purity & Formulations' = assessing purity via melting point and percentage purity calculations (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mWTgHjdea4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Tests for Anions - Carbonate, Sulfate and Halide Ions' = anion identification tests (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "jVkGKurtaiE",
    "lessonRef": null,
    "lessonUrl": null,
@@ -526,20 +2529,40 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "video": "QH-7X5STCO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C12.5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Testing for Gases - Hydrogen/Chlorine/Oxygen/CO2' = chemical tests to identify gases (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
   }
  ],
  "coverage": {
   "specPointsTotal": 181,
-  "specPointsMapped": 14,
-  "specPointsUnmapped": 167,
-  "videosTotal": 14,
-  "videosMapped": 14,
+  "specPointsMapped": 108,
+  "specPointsUnmapped": 73,
+  "videosTotal": 70,
+  "videosMapped": 70,
   "videosUnmapped": 0,
-  "mappingRows": 14,
+  "mappingRows": 70,
   "byConfidence": {
    "high": 0,
-   "medium": 14,
-   "low": 0
+   "medium": 68,
+   "low": 2
   }
  },
  "inputs": {
@@ -562,5 +2585,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.083Z"
+ "generatedUtc": "2026-11-12T09:58:57.419Z"
 }

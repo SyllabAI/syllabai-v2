@@ -1,0 +1,633 @@
+{
+ "artifact": "rn11-run-020-apply-manifest-r0",
+ "generatedUtc": "2026-11-12",
+ "operatorOrder": "run-020 (trace 1a1ce80c01c93d3d)",
+ "scope": "run-019 filing step-2: D2 cs-23 8.1 adds + D6 pure-1 1.3 adds; D1/D3/D4/D5 + 1.3.1a/1.3.2a disposition NOT touched",
+ "courses": [
+  {
+   "slug": "cie-igcse-computer-science-23",
+   "addedNodes": [
+    {
+     "code": "8.1.5",
+     "family": "SPEC_POINT",
+     "title": "Understand and use nested statements",
+     "description": null,
+     "parents": [
+      "cie-igcse-computer-science-2023-2025-T8:SUB8.1"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 83
+    },
+    {
+     "code": "8.1.6a",
+     "family": "SPEC_POINT",
+     "title": "Understand what is meant by procedures, functions and parameters",
+     "description": null,
+     "parents": [
+      "cie-igcse-computer-science-2023-2025-T8:SUB8.1"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 84
+    },
+    {
+     "code": "8.1.6b",
+     "family": "SPEC_POINT",
+     "title": "Define and use procedures and functions, with or without parameters",
+     "description": null,
+     "parents": [
+      "cie-igcse-computer-science-2023-2025-T8:SUB8.1"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 85
+    },
+    {
+     "code": "8.1.6c",
+     "family": "SPEC_POINT",
+     "title": "Understand and use local and global variables",
+     "description": null,
+     "parents": [
+      "cie-igcse-computer-science-2023-2025-T8:SUB8.1"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 86
+    },
+    {
+     "code": "8.1.7",
+     "family": "SPEC_POINT",
+     "title": "Understand and use library routines",
+     "description": null,
+     "parents": [
+      "cie-igcse-computer-science-2023-2025-T8:SUB8.1"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 87
+    }
+   ],
+   "addedEdges": [
+    {
+     "source": "cie-igcse-computer-science-2023-2025-T8:SUB8.1",
+     "relation": "PART_OF",
+     "target": "8.1.5",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-igcse-computer-science-2023-2025-T8:SUB8.1",
+     "relation": "PART_OF",
+     "target": "8.1.6a",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-igcse-computer-science-2023-2025-T8:SUB8.1",
+     "relation": "PART_OF",
+     "target": "8.1.6b",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-igcse-computer-science-2023-2025-T8:SUB8.1",
+     "relation": "PART_OF",
+     "target": "8.1.6c",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-igcse-computer-science-2023-2025-T8:SUB8.1",
+     "relation": "PART_OF",
+     "target": "8.1.7",
+     "provenanceTier": "RULE_DERIVED"
+    }
+   ],
+   "orderBumps": [
+    {
+     "code": "8.1.8",
+     "from": 83,
+     "to": 88
+    },
+    {
+     "code": "8.2.1",
+     "from": 84,
+     "to": 89
+    },
+    {
+     "code": "8.2.2",
+     "from": 85,
+     "to": 90
+    },
+    {
+     "code": "8.2.3",
+     "from": 86,
+     "to": 91
+    },
+    {
+     "code": "8.3.1",
+     "from": 87,
+     "to": 92
+    },
+    {
+     "code": "8.3.2",
+     "from": 88,
+     "to": 93
+    }
+   ],
+   "manifest": {
+    "specPoints": {
+     "from": 88,
+     "to": 93
+    }
+   },
+   "kgSpanningTreeHandEdges": [
+    [
+     "subject",
+     "sec7",
+     "hier"
+    ],
+    [
+     "subject",
+     "sec9",
+     "hier"
+    ],
+    [
+     "subject",
+     "sec10",
+     "hier"
+    ]
+   ],
+   "kgPreExistingDriftReconciled": {
+    "codes": [
+     "1.1.2",
+     "1.1.4",
+     "2.1.1",
+     "2.1.2",
+     "3.1.1",
+     "3.1.2",
+     "3.2.3",
+     "3.4.3",
+     "6.3.5",
+     "8.1.1a",
+     "8.1.4"
+    ],
+    "note": "the of-record KG file's points[].text for these codes predated the content titles of record; the regen restores the T-SPEC-KG-REGEN-1 mirror law (points[].text == content titles)"
+   },
+   "index": {
+    "counts": {
+     "from": {
+      "nodes": 120,
+      "edges": 213,
+      "specPoints": 88
+     },
+     "to": {
+      "nodes": 125,
+      "edges": 218,
+      "specPoints": 93
+     }
+    }
+   },
+   "composed": {
+    "8.1.5": false,
+    "8.1.6a": false,
+    "8.1.6b": false,
+    "8.1.6c": false,
+    "8.1.7": false
+   },
+   "sha256": {
+    "curriculum": {
+     "pre": "ca84fbe6a57b41f9797c7c2eeaf05721bf894515bea417e6b9261956fc456797",
+     "post": "be09e79668c447f60efa4c5ca4aad2d37d7324944f42558a45b70c9976ab2c4e"
+    },
+    "spine": {
+     "pre": "4081efcf754df47e4bffdc34cb2318a142acf535f5553caeb40f2999d27432f3",
+     "post": "7b7978b71bfc995fca78a56ea9fe1390fadecefc1e2837d1005444fef84bc1ac"
+    },
+    "kg": {
+     "pre": "25a330d2f86f9bd30eb123a5e7e2206438a40173a4939f66ba6b96a9c0992d4b",
+     "post": "cab6341ec77541bf1364042a64fd7d520f75b3fe40fdf2815fc09c47bdfbb809"
+    },
+    "manifest": {
+     "pre": "7827024794517c6220364c4bd890c25265efef6ae36ff123a4b5c82b2f2fc9cc",
+     "post": "3e1694f8238e8a5d3d9e09ba772c076448fdfa59e663e9acf4c3e0db1d9291fb"
+    }
+   }
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-1",
+   "addedNodes": [
+    {
+     "code": "1.3.3",
+     "family": "SPEC_POINT",
+     "title": "understand that the equation (x – a)² + (y – b)² = r² represents the circle with centre (a, b) and radius r",
+     "description": null,
+     "parents": [
+      "cie-a-level-maths-2023-2025-T1:SUB1.3"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 15
+    },
+    {
+     "code": "1.3.4",
+     "family": "SPEC_POINT",
+     "title": "use algebraic methods to solve problems involving lines and circles",
+     "description": null,
+     "parents": [
+      "cie-a-level-maths-2023-2025-T1:SUB1.3"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 16
+    },
+    {
+     "code": "1.3.5",
+     "family": "SPEC_POINT",
+     "title": "understand the relationship between a graph and its associated algebraic equation, and use the relationship between points of intersection of graphs and solutions of equations.",
+     "description": null,
+     "parents": [
+      "cie-a-level-maths-2023-2025-T1:SUB1.3"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 17
+    }
+   ],
+   "addedEdges": [
+    {
+     "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+     "relation": "PART_OF",
+     "target": "1.3.3",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+     "relation": "PART_OF",
+     "target": "1.3.4",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+     "relation": "PART_OF",
+     "target": "1.3.5",
+     "provenanceTier": "RULE_DERIVED"
+    }
+   ],
+   "orderBumps": [
+    {
+     "code": "1.4.1",
+     "from": 15,
+     "to": 18
+    },
+    {
+     "code": "1.4.1a",
+     "from": 16,
+     "to": 19
+    },
+    {
+     "code": "1.5.1",
+     "from": 17,
+     "to": 20
+    },
+    {
+     "code": "1.5.2",
+     "from": 18,
+     "to": 21
+    },
+    {
+     "code": "1.5.3",
+     "from": 19,
+     "to": 22
+    },
+    {
+     "code": "1.5.4",
+     "from": 20,
+     "to": 23
+    },
+    {
+     "code": "1.5.5",
+     "from": 21,
+     "to": 24
+    },
+    {
+     "code": "1.6.1",
+     "from": 22,
+     "to": 25
+    },
+    {
+     "code": "1.6.2",
+     "from": 23,
+     "to": 26
+    },
+    {
+     "code": "1.6.3",
+     "from": 24,
+     "to": 27
+    },
+    {
+     "code": "1.6.4",
+     "from": 25,
+     "to": 28
+    },
+    {
+     "code": "1.7.1",
+     "from": 26,
+     "to": 29
+    },
+    {
+     "code": "1.7.2",
+     "from": 27,
+     "to": 30
+    },
+    {
+     "code": "1.7.3",
+     "from": 28,
+     "to": 31
+    },
+    {
+     "code": "1.7.4",
+     "from": 29,
+     "to": 32
+    },
+    {
+     "code": "1.8.1",
+     "from": 30,
+     "to": 33
+    },
+    {
+     "code": "1.8.2",
+     "from": 31,
+     "to": 34
+    },
+    {
+     "code": "1.8.3",
+     "from": 32,
+     "to": 35
+    },
+    {
+     "code": "1.8.4",
+     "from": 33,
+     "to": 36
+    }
+   ],
+   "manifest": {
+    "specPoints": {
+     "from": 33,
+     "to": 36
+    }
+   },
+   "kgSpanningTreeHandEdges": [],
+   "kgPreExistingDriftReconciled": {
+    "codes": [],
+    "note": "the of-record KG file's points[].text for these codes predated the content titles of record; the regen restores the T-SPEC-KG-REGEN-1 mirror law (points[].text == content titles)"
+   },
+   "index": {
+    "counts": {
+     "from": {
+      "nodes": 43,
+      "edges": 88,
+      "specPoints": 33
+     },
+     "to": {
+      "nodes": 46,
+      "edges": 91,
+      "specPoints": 36
+     }
+    }
+   },
+   "composed": {
+    "1.3.3": true,
+    "1.3.4": false,
+    "1.3.5": false
+   },
+   "sha256": {
+    "curriculum": {
+     "pre": "8eaf2115e317ab1460ba7cb36d67d12d044d1064f44c1238c9b842b600295abb",
+     "post": "537164e1a572f82ae1c382a6ee8588cfd81cfef8d1903915789bf34faf001fbe"
+    },
+    "spine": {
+     "pre": "e6c69d305544fa053d98d39f93c4adbca1ef295c620cfff03670b57a822868df",
+     "post": "aa02cc06b3f8844aad9cda05fb637b50d6d02737f0bdeb1bd445fdf097826f4a"
+    },
+    "kg": {
+     "pre": "a416168ff1d6fbab873a73b4d3c6523104efbf40768f182cb1707994733ebc9a",
+     "post": "997494248c8ce83c1cf07896c2e1622debc1074fa908cdfedf5428fedb87cec8"
+    },
+    "manifest": {
+     "pre": "74b36de0595ba39c000f1f112679aaadcd1fdcbe01263d6a3331ce7d2d53700c",
+     "post": "eb0bd87e5c9b18f393ec633fb15938b8e7930b6c657ac524c0861b22c7af2fe4"
+    }
+   }
+  },
+  {
+   "slug": "cie-as-maths-20-pure-1",
+   "addedNodes": [
+    {
+     "code": "1.3.3",
+     "family": "SPEC_POINT",
+     "title": "understand that the equation (x – a)² + (y – b)² = r² represents the circle with centre (a, b) and radius r",
+     "description": null,
+     "parents": [
+      "cie-a-level-maths-2023-2025-T1:SUB1.3"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 15
+    },
+    {
+     "code": "1.3.4",
+     "family": "SPEC_POINT",
+     "title": "use algebraic methods to solve problems involving lines and circles",
+     "description": null,
+     "parents": [
+      "cie-a-level-maths-2023-2025-T1:SUB1.3"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 16
+    },
+    {
+     "code": "1.3.5",
+     "family": "SPEC_POINT",
+     "title": "understand the relationship between a graph and its associated algebraic equation, and use the relationship between points of intersection of graphs and solutions of equations.",
+     "description": null,
+     "parents": [
+      "cie-a-level-maths-2023-2025-T1:SUB1.3"
+     ],
+     "provenanceTier": "RULE_DERIVED",
+     "order": 17
+    }
+   ],
+   "addedEdges": [
+    {
+     "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+     "relation": "PART_OF",
+     "target": "1.3.3",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+     "relation": "PART_OF",
+     "target": "1.3.4",
+     "provenanceTier": "RULE_DERIVED"
+    },
+    {
+     "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+     "relation": "PART_OF",
+     "target": "1.3.5",
+     "provenanceTier": "RULE_DERIVED"
+    }
+   ],
+   "orderBumps": [
+    {
+     "code": "1.4.1",
+     "from": 15,
+     "to": 18
+    },
+    {
+     "code": "1.4.1a",
+     "from": 16,
+     "to": 19
+    },
+    {
+     "code": "1.5.1",
+     "from": 17,
+     "to": 20
+    },
+    {
+     "code": "1.5.2",
+     "from": 18,
+     "to": 21
+    },
+    {
+     "code": "1.5.3",
+     "from": 19,
+     "to": 22
+    },
+    {
+     "code": "1.5.4",
+     "from": 20,
+     "to": 23
+    },
+    {
+     "code": "1.5.5",
+     "from": 21,
+     "to": 24
+    },
+    {
+     "code": "1.6.1",
+     "from": 22,
+     "to": 25
+    },
+    {
+     "code": "1.6.2",
+     "from": 23,
+     "to": 26
+    },
+    {
+     "code": "1.6.3",
+     "from": 24,
+     "to": 27
+    },
+    {
+     "code": "1.6.4",
+     "from": 25,
+     "to": 28
+    },
+    {
+     "code": "1.7.1",
+     "from": 26,
+     "to": 29
+    },
+    {
+     "code": "1.7.2",
+     "from": 27,
+     "to": 30
+    },
+    {
+     "code": "1.7.3",
+     "from": 28,
+     "to": 31
+    },
+    {
+     "code": "1.7.4",
+     "from": 29,
+     "to": 32
+    },
+    {
+     "code": "1.8.1",
+     "from": 30,
+     "to": 33
+    },
+    {
+     "code": "1.8.2",
+     "from": 31,
+     "to": 34
+    },
+    {
+     "code": "1.8.3",
+     "from": 32,
+     "to": 35
+    },
+    {
+     "code": "1.8.4",
+     "from": 33,
+     "to": 36
+    }
+   ],
+   "manifest": {
+    "specPoints": {
+     "from": 33,
+     "to": 36
+    }
+   },
+   "kgSpanningTreeHandEdges": [],
+   "kgPreExistingDriftReconciled": {
+    "codes": [],
+    "note": "the of-record KG file's points[].text for these codes predated the content titles of record; the regen restores the T-SPEC-KG-REGEN-1 mirror law (points[].text == content titles)"
+   },
+   "index": {
+    "counts": {
+     "from": {
+      "nodes": 43,
+      "edges": 88,
+      "specPoints": 33
+     },
+     "to": {
+      "nodes": 46,
+      "edges": 91,
+      "specPoints": 36
+     }
+    }
+   },
+   "composed": {
+    "1.3.3": true,
+    "1.3.4": false,
+    "1.3.5": false
+   },
+   "sha256": {
+    "curriculum": {
+     "pre": "c4432eb6d311cf77f119ea18a786c65309bf87a3f4f73b4782a83d74fba6c4ba",
+     "post": "2a6fdaf2afa23ee7b14cbbb511aa0d314cf0d7411f3f35ac3e9eaa70ccf9b00a"
+    },
+    "spine": {
+     "pre": "aff85f615617a745d9f4a174229c401c84ae34fbb4ef1da8fa9303e527141202",
+     "post": "86db637cc3514d7cb03d3ccf0eac1205a46e20ce436d28d1c7d8f593297c771a"
+    },
+    "kg": {
+     "pre": "e94f5e497bf3900d1e2fd8c4d308e3174ded1e342f8aa8e44f24ae553b19158c",
+     "post": "8007efbc3b12a747b7833a7a406638f439cf29b61e42675fdb0db686b758bd05"
+    },
+    "manifest": {
+     "pre": "957a0236014f8799c50bd9b1c2c12dcab74572ee2be1c50153136d141012d8c5",
+     "post": "cc3043e7d9b878ba1dd46efeecf1cd9910d14c533e9c4725c0de14b26b643a13"
+    }
+   }
+  },
+  {
+   "plane": "ugm-serve",
+   "bundles": [],
+   "law": "the +3 official codes stay OFF both serve indexes — the 1.1-shaped a-level plane's primaryPick law forbids honest-gap index rows (ugm.bundle.test.ts honesty invariant: 'no honest-gap spec point on the 1.1-shaped pure-1 plane'), and the AS bijection law pins the AS index to the A-level's; the codes enter the serve plane when a T-UGM lane serves them (the 0606/ial-pure-4 in-index gap-row shape is available to the 1.2 planes only)",
+   "testRepins": [
+    {
+     "site": "ugm.bundle.test.ts AS bijection",
+     "from": "expect(curCodes).toHaveLength(33);",
+     "to": "expect(curCodes).toHaveLength(36);"
+    },
+    {
+     "site": "ugm.bundle.test.ts AS comment",
+     "to": "36 AS spine codes, 30 in the index — the three folded a-codes stay folded; run-020's 1.3.3/1.3.4/1.3.5 are uncovered official adds that stay OFF the serve index until a T-UGM lane serves them"
+    }
+   ],
+   "served": "zero serve-plane bytes changed (both bundles byte-identical to pre-run state)"
+  }
+ ]
+}

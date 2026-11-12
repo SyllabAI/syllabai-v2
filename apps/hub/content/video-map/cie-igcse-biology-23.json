@@ -6,7 +6,12 @@
   "provider": "multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only)",
   "label": "cie-igcse-biology-23",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p5": {
+   "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
+   "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-01T01:04:15Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2C",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. Pilot sweep: one spec trimmed from an enzyme video, one generic-title reject.",
-  "rowsApproved": 13,
+  "rowsApproved": 25,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -28,6 +33,114 @@
     "video": "RNLceVI8jcc",
     "spec": "14.1.8",
     "reason": "Amoeba 'Nervous System' generic title; synapse structure with vesicles/neurotransmitter (14.1.8) not title-evidenced."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P2C",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "Same title-only posture. Pilot sweep: one spec trimmed from an enzyme video, one generic-title reject.",
+    "rowsApproved": 13,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "AgMvvybtRL4",
+      "spec": "5.1.6",
+      "reason": "FSL 'Effect of Temperature and pH on Enzymes' names the 5.1.5 investigation; the enzyme-action mechanism (active site, ES complex) of 5.1.6 is a different clause, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "RNLceVI8jcc",
+      "spec": "14.1.8",
+      "reason": "Amoeba 'Nervous System' generic title; synapse structure with vesicles/neurotransmitter (14.1.8) not title-evidenced."
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p5 (cognito completion)",
+    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-12",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+    "ruledUtc": "2026-11-12T07:07:10Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Programmatic re-verification: oEmbed author Cognito 12/12, all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: borderline rows kept at low with disclosed partial overlap; full-row drops and spec trims below.",
+    "rowsApproved": 12,
+    "rowsRejected": 14,
+    "rejects": [
+     {
+      "video": "ow6GIfvhTbs",
+      "reason": "self-review full-row drop: 20.4.8 is captive-breeding context; IVF binds the code but not the spec content — misbind",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "kKiz8Wzcfc8",
+      "reason": "self-review full-row drop: no binary-fission spec in CIE 0610; the 21.1.1 \"rapid reproduction rate\" hook is a phrase fragment, not the spec content",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "w3ykU52K-Hw",
+      "reason": "self-review full-row drop: no clinical-trials spec in CIE 0610; the drug-definition hook does not carry \"development and testing\"",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "rHT7muCqMXE",
+      "reason": "no honest binding: Video teaches microscope parts and use; no candidate spec covers microscopy - candidates are unrelated plant-transport, reproduction and tropism specs.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "_AkfWlXK20A",
+      "reason": "no honest binding: Video teaches fossil formation and extinction causes; candidates only cover carbon cycle, conservation programmes and deforestation - none named by title.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "dqy7B9pxnNU",
+      "reason": "no honest binding: Video teaches contraception methods; no candidate covers contraception - 'hormonal' candidates are nervous-vs-hormonal control and unrelated keyword junk.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "hS00-J7T_TA",
+      "reason": "no honest binding: Empty candidate list - no spec candidates available to bind.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "_DfTkFzQCG8",
+      "reason": "no honest binding: Video teaches malaria (protist) and rose black spot (fungal) diseases; candidates cover CHD, antibody immunity and hygiene - none named by title.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "jRzIhanvvVU",
+      "reason": "no honest binding: Generic health/disease definitions lesson; candidates cover CHD risk factors, antibody immunity and spread-control hygiene, none taught here.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "PAzs3Ooex5k",
+      "reason": "no honest binding: Video compares light and electron microscopes; candidates are unrelated 'differences' keyword matches (selection, inspired/expired air, photosynthesis).",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "PB97svr7Ye8",
+      "reason": "no honest binding: Empty candidate list - no spec candidates available to bind.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "SOgVM904cPc",
+      "reason": "no honest binding: Video teaches Mendel's pea experiments and history of genetics; candidates are genetic-modification and fermenter specs, none cover Mendel or inheritance.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "zg1GZ0kj878",
+      "reason": "no honest binding: Video teaches kidney failure treatment (dialysis/transplant); candidates are kidney structure and urinary-system identification specs - no failure-treatment spec in candidates.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "oVg6ycY3eXQ",
+      "reason": "no honest binding: Video teaches plant diseases and plant defences; candidates cover human body defences and antibody immunity - human-defence keyword mismatch.",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     }
+    ]
    }
   ]
  },
@@ -241,6 +354,186 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Amoeba Sisters",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "g2QtHxpK0i4",
+   "title": "GCSE Biology - Maintaining Biodiversity | Reducing Environment Impact (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=g2QtHxpK0i4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 303,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "qRqa454ZIro",
+   "title": "GCSE Biology - Classification Systems | Linnaean System (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=qRqa454ZIro",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 375,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "DycQKyb5IP4",
+   "title": "GCSE Biology - Adaptations | Structural | Behavioural | Functional (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=DycQKyb5IP4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 398,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "L8_n6_1e-M8",
+   "title": "GCSE Biology - Diabetes | Type 1 & Type 2 Diabetes (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=L8_n6_1e-M8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "sz1ZckN2kJM",
+   "title": "GCSE Biology - Risk Factors for Non-Communicable Disease | How Disease Affects Others in Society",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=sz1ZckN2kJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-30_21Juyek",
+   "title": "GCSE Biology - Communicable Disease | Bacterial Disease (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-30_21Juyek",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 188,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "RO1zgLcWCGI",
+   "title": "GCSE Biology - Communicable Disease | Viruses (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=RO1zgLcWCGI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 241,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "coYwh7fdTh8",
+   "title": "GCSE Biology - Communicable Disease (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=coYwh7fdTh8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 224,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "jvIr7b0roYI",
+   "title": "GCSE Biology - The Brain",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=jvIr7b0roYI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 342,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "umRe7GBJ5GE",
+   "title": "GCSE Biology - How do Pregnancy Tests Work?",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=umRe7GBJ5GE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 209,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "XrUW54Ea598",
+   "title": "GCSE Biology - Monoclonal Antibodies",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=XrUW54Ea598",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 259,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "r_5GM3_u0Wo",
+   "title": "GCSE Biology - Drugs - Painkillers vs Antibiotics - Relief vs Treatment (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=r_5GM3_u0Wo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 217,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
   }
  ],
  "mappings": [
@@ -438,20 +731,208 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "video": "g2QtHxpK0i4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "20.4.7",
+    "20.2.4",
+    "19.2.10",
+    "20.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Maintaining Biodiversity | Reducing Environment Impact' = conservation for biodiversity plus human impacts like deforestation and overharvesting",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "qRqa454ZIro",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Classification Systems | Linnaean System' = classifying organisms into groups; Linnaean system includes binomial naming",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "DycQKyb5IP4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Adaptations | Structural | Behavioural | Functional' = adaptations as features suiting organisms to their environment via natural selection",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "L8_n6_1e-M8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.4.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Diabetes | Type 1 & Type 2 Diabetes' = Type 1 diabetes and its treatment with insulin",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "sz1ZckN2kJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.2.5",
+    "9.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Risk Factors for Non-Communicable Disease' = CHD risk factors: diet, exercise, smoking, stress, age",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "-30_21Juyek",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Communicable Disease | Bacterial Disease' = bacterial infections and their antibiotic treatment (partial)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RO1zgLcWCGI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.7",
+    "15.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Communicable Disease | Viruses' = virus features (protein coat, genetic material); antibiotics do not affect viruses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "coYwh7fdTh8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Communicable Disease' = how pathogens spread and are controlled via hygiene and clean water",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "jvIr7b0roYI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'The Brain' = brain as part of the CNS; brain role in thermoregulation (partial)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "umRe7GBJ5GE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.5.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'How do Pregnancy Tests Work?' = hormone detection in pregnancy; partial overlap with pregnancy hormone roles",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XrUW54Ea598",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.8",
+    "10.1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Monoclonal Antibodies' = antibodies as proteins binding specific antigens with complementary shapes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "r_5GM3_u0Wo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.1.2",
+    "15.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Drugs - Painkillers vs Antibiotics - Relief vs Treatment' = antibiotics as treatment of bacterial infections",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 388,
-  "specPointsMapped": 13,
-  "specPointsUnmapped": 375,
-  "videosTotal": 14,
-  "videosMapped": 13,
+  "specPointsMapped": 30,
+  "specPointsUnmapped": 358,
+  "videosTotal": 26,
+  "videosMapped": 25,
   "videosUnmapped": 1,
-  "mappingRows": 13,
+  "mappingRows": 25,
   "byConfidence": {
    "high": 0,
-   "medium": 13,
-   "low": 0
+   "medium": 20,
+   "low": 5
   }
  },
  "inputs": {
@@ -464,7 +945,13 @@
    "path": "Videos/drafts/cie-igcse-biology-23/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2C",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p5": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-biology-23/video-map.draft.external-p5.json",
+   "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+   "reviewAppliedUtc": "2026-11-12T07:07:10Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.021Z"
+ "generatedUtc": "2026-11-12T09:58:57.346Z"
 }

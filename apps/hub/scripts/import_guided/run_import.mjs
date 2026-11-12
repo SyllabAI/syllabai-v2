@@ -3840,6 +3840,113 @@ rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
     },
   },
 
+  "bio-stageb1-v34": {
+    manifest: "hub-import-manifest-v34.json",
+    manifest_version: 34,
+    course_id: "igcse-biology-19",
+    lesson_kind: "hub-lesson-import-1.6",
+    kinds: { "hub-lesson-import-1.6": 14, "sme-question-package": 14 },
+    adapter: "guided-lesson-0.7--hub-lesson-import-1.6",
+    directive: "run the BIOLOGY-4BI1 stage-B wave-1 chain \u2014 import the igcse-biology-19 stage-B wave-1 tranche of record (the first register bucket of the frozen B4 partition: 14 notes end-to-end at the 0.7/1.6/1.3 generation: 3 characteristics-of-living-organisms + 7 biological-molecules + 4 cell-structure register notes, the pilot excluded per runbook B3; 28 lessons / 252 checks = 140 MCQ + 56 recall + 28 explain-why + 28 application; 38 figures all module-mapped heading-unique; glossary 47; workedExamples 1 populated + 13 designed nulls) \u2014 biology-scope manifest v34 (the per-course manifest convention of the global v-series: chemistry v1..v17+v32, physics v18..v31, biology v33..v34), resources chain dfbcf872 (commit A) + 7b80fbde (commit A corrective \u2014 glossary 3-item band, five >10-char recall model answers, empty figureIds omitted; force-back rule-blocked, disclosed) + d06bffdd (commit C), with the physics v31 (254), chemistry v32 (224) and biology stage-A (2) packs re-pinned byte-identical on the wave tree. Declared hub landing = 28/28 written (the 14 wave-1 notes' first guided-lessons + guided-questions files) + the runner-owned guided-import.json re-issued with 15 rows (pilot + wave 1). Operator directive of record: 'the same four-plane treatment for the remaining Reasoning subjects (Chemistry 4CH1 stage-B authoring, Biology),' continuing under 'Continue, why did you stop?' \u2014 trace 1a1ce45bbe8dc30d.",
+    promo: {
+      commit: "d06bffdd4e8cbbe4368ff9667f95feff89075a08",
+      tree: "3da3379d9d474318faca18dca39f66d200fa7905",
+      parent: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      trace: "1a1ce45bbe8dc30d",
+    },
+    integration_branch: null, // ancestry of record \u2014 the stage-B wave-1 commits are on resources main
+    artifact_pin: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634", // commit A corrective \u2014 the source-0.7 generation pin
+    schemas: {
+      hub: "/home/z/my-project/scripts/bio-stageb1-survivors/hub-lesson-import.1.6.schema.json",
+      pkg: "/home/z/my-project/scripts/bio-stageb1-survivors/sme-question-package.1.3.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.6.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.3.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/bio-stageb1-survivors/hub-import-manifest-v34.json",
+      int3: "/home/z/my-project/scripts/bio-stageb1-survivors/INT-3-transform-record-bio-stageb1.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261112-bio-stageb1.json",
+    identity: {"notes": 14, "lessons": 28, "checks": 252, "keyPoints": 122, "distractors": 420, "glossaryTerms": 47, "figures": 38, "figures_module_mapped": 38, "figures_note_level": 0, "workedExamples_populated": 1, "workedExamples_null": 13, "authored_chars_conserved": 152660},
+    figures_feed: true,
+    checks_feed: true,
+    artifact_count: 28,
+    note_count: 14,
+    wave_count: 1,
+    id_prefix: "igcse-biology",
+    manifest_min_bytes: 100,
+    package_schema: "sme-question-package/1.3",
+    targetSchemas: ["hub/lesson-import/1.6", "sme-question-package/1.3"],
+    landing: "additive", // 14 first issues \u2014 the wave-1 notes' files do not exist on the hub yet
+    relFor(a) { return a.path; }, // v34 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.6" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.6/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.3/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+
+  "bio-stageb1-v35": {
+    manifest: "hub-import-manifest-v35.json",
+    manifest_version: 35,
+    // BIOLOGY stage-B wave-1 CUMULATIVE corrective (resources commit C corrective
+    // 480eef9f; the physics-wave1-v19/v20 defect class): the v34 tranche-scoped INT-3
+    // (14 rows) would make the runner-owned guided-import.json rebuild DROP the stage-A
+    // pilot row from the biology index — caught BEFORE any hub landing via the v20
+    // precedent review. v35 re-pins all 30 pack artifacts byte-identical (2 pilot @
+    // v33 shas + 28 wave-1 @ v34 shas) and re-issues the index with all 15 rows.
+    // ZERO authored bytes change.
+    course_id: "igcse-biology-19",
+    lesson_kind: "hub-lesson-import-1.6",
+    kinds: { "hub-lesson-import-1.6": 15, "sme-question-package": 15 },
+    adapter: "guided-lesson-0.7--hub-lesson-import-1.6",
+    directive: "run the BIOLOGY-4BI1 stage-B wave-1 CUMULATIVE corrective \u2014 re-import the igcse-biology-19 pack of record (15 notes = the stage-A pilot rn_qRXSsjyzyZsJnc7k 'Characteristics of Living Organisms' + the 14 wave-1 register notes of the frozen B4 partition W1 bucket: 3 characteristics-of-living-organisms + 7 biological-molecules + 4 cell-structure; 30 lessons / 270 checks cumulative = 150 MCQ + 60 recall + 30 explain-why + 30 application; 49 figures = 45 module-mapped + 4 note-level; workedExamples 1 populated + 14 designed nulls) and RE-ISSUE the runner-owned guided-import.json index with all 15 rows, restoring the stage-A pilot flow. Declared hub landing = 30/30 identical-exists + the index re-issue; zero chemistry or physics bytes touched, zero authored bytes changed. Operator directive of record: 'the same four-plane treatment for the remaining Reasoning subjects (Chemistry 4CH1 stage-B authoring, Biology),' continuing under 'Continue, why did you stop?' \u2014 trace 1a1ce45bbe8dc30d.",
+    promo: {
+      commit: "480eef9f06e9d316c33d0c81b2fc7c963a0a364e",
+      tree: "8b37a6099da7e91e728f20193f417b606b7a33ea",
+      parent: "2ad0df3a4ad7df811329ef04a77149268b9e85eb",
+      trace: "1a1ce45bbe8dc30d",
+    },
+    integration_branch: null, // ancestry of record \u2014 the corrective commits are on resources main
+    artifact_pin: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634", // commit A corrective — the wave-1 source-0.7 generation pin
+    artifact_pins_by_note: {
+      // the stage-A pilot keeps its own v33 source pin (commit A of the stage-A lane) \u2014
+      // the pilot lessons/packages embed pinnedRef 7378f249; re-pinning it to the wave-1
+      // commit would falsify the pilot's provenance (G-D pinnedRef, of-record per-note law)
+      rn_qRXSsjyzyZsJnc7k: "7378f2498a76501a907a0bda9724237bd4486663",
+    },
+    checks_feed: true, // written-kind G-D branch
+    figures_feed: true, // 49 cumulative figures (11 pilot + 38 wave-1)
+    schemas: {
+      hub: "/home/z/my-project/scripts/bio-stageb1-survivors/hub-lesson-import.1.6.schema.json",
+      pkg: "/home/z/my-project/scripts/bio-stageb1-survivors/sme-question-package.1.3.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.6.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.3.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/bio-stageb1-survivors/hub-import-manifest-v35.json",
+      int3: "/home/z/my-project/scripts/bio-stageb1-survivors/INT-3-transform-record-bio-stageb1-v35.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261112-bio-stageb1-v35.json",
+    identity: {"notes": 15, "lessons": 30, "checks": 270, "keyPoints": 132, "distractors": 450, "glossaryTerms": 51, "figures": 49, "figures_module_mapped": 45, "figures_note_level": 4, "workedExamples_populated": 1, "workedExamples_null": 14, "authored_chars_conserved": 167324},
+    artifact_count: 30,
+    note_count: 15,
+    wave_count: 2,
+    id_prefix: "igcse-biology",
+    manifest_min_bytes: 100,
+    package_schema: "sme-question-package/1.3",
+    targetSchemas: ["hub/lesson-import/1.6", "sme-question-package/1.3"],
+    landing: "additive", // all 30 expected identical-exists; only the index carries new bytes
+    relFor(a) { return a.path; },
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.6" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.6/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.3/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";

@@ -6,7 +6,12 @@
   "provider": "multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only)",
   "label": "igcse-maths-a-18-higher",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p5": {
+   "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
+   "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-01T01:04:15Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2C",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. Two rejects where the title names the domain but not the spec's distinctive frame.",
-  "rowsApproved": 5,
+  "rowsApproved": 6,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -28,6 +33,49 @@
     "video": "MBKmLYqjCLE",
     "spec": "4.8E",
     "reason": "Evidence itself concedes the video is ½bh area; the ab·sinC form of 4.8E is not title-evidenced. Same pattern as the owner's 4.16 identity reject."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P2C",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "Same title-only posture. Two rejects where the title names the domain but not the spec's distinctive frame.",
+    "rowsApproved": 5,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "mhO_ANLBKXo",
+      "spec": "3.3H",
+      "reason": "'Plotting a Line by Finding Where it Crosses the Axes' names intercept-plotting, not the y=mx+c / gradient recognition frame of 3.3H. Would need a low row to be defensible; rejected at medium."
+     },
+     {
+      "lessonRef": null,
+      "video": "MBKmLYqjCLE",
+      "spec": "4.8E",
+      "reason": "Evidence itself concedes the video is ½bh area; the ab·sinC form of 4.8E is not title-evidenced. Same pattern as the owner's 4.16 identity reject."
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p5 (cognito completion)",
+    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-12",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+    "ruledUtc": "2026-11-12T07:07:10Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Programmatic re-verification: oEmbed author Cognito 1/1, all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: borderline rows kept at low with disclosed partial overlap; full-row drops and spec trims below.",
+    "rowsApproved": 1,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "video": "WCwtVN7nKTE",
+      "reason": "no honest binding: 2D projections/plans-and-elevations has no spec-point home in the 4MA1 higher spine; closest candidate (4.10B face/edge/vertex) is not title-named content",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     }
+    ]
    }
   ]
  },
@@ -136,6 +184,21 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "5jXHWWtB_FE",
+   "title": "GCSE Maths - How to Prove Algebraic Identities - Proof Part 2 (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=5jXHWWtB_FE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
   }
  ],
  "mappings": [
@@ -213,19 +276,34 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "video": "5jXHWWtB_FE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2E"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How to Prove Algebraic Identities - Proof Part 2' = algebraic proof construction and identity manipulation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 188,
   "specPointsMapped": 5,
   "specPointsUnmapped": 183,
-  "videosTotal": 7,
-  "videosMapped": 5,
+  "videosTotal": 8,
+  "videosMapped": 6,
   "videosUnmapped": 2,
-  "mappingRows": 5,
+  "mappingRows": 6,
   "byConfidence": {
    "high": 0,
-   "medium": 5,
+   "medium": 6,
    "low": 0
   }
  },
@@ -239,7 +317,13 @@
    "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2C",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p5": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external-p5.json",
+   "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+   "reviewAppliedUtc": "2026-11-12T07:07:10Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.019Z"
+ "generatedUtc": "2026-11-12T09:58:57.357Z"
 }

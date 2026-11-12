@@ -1,0 +1,496 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kwZSCXKYc7tWwWsK",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "9518c68a6afb734e5cce9886f10261cc37dac144c86654a6bc75efe240b53d64",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_kwZSCXKYc7tWwWsK",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q1",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "What is the job of the buffer solutions in this practical?",
+      "misconceptionClass": "buffer job",
+      "options": [
+        {
+          "key": "A",
+          "text": "To hold each tube at a fixed, chosen pH",
+          "correct": true,
+          "explanation": "Buffers clamp the pH as the independent variable.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To digest the starch directly",
+          "correct": false,
+          "explanation": "Amylase does the digesting.",
+          "misconception": "role confusion"
+        },
+        {
+          "key": "C",
+          "text": "To colour the solution blue-black",
+          "correct": false,
+          "explanation": "Iodine provides the colour.",
+          "misconception": "role confusion"
+        },
+        {
+          "key": "D",
+          "text": "To warm the tubes",
+          "correct": false,
+          "explanation": "Temperature is controlled separately.",
+          "misconception": "role confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q2",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "How often is a droplet transferred to a fresh iodine well?",
+      "misconceptionClass": "interval",
+      "options": [
+        {
+          "key": "A",
+          "text": "Every time the colour changes",
+          "correct": false,
+          "explanation": "Transfers are on a fixed schedule.",
+          "misconception": "method misread"
+        },
+        {
+          "key": "B",
+          "text": "Every ten seconds",
+          "correct": true,
+          "explanation": "The pH practical uses ten-second transfers.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Every ten minutes",
+          "correct": false,
+          "explanation": "Far too slow for the reaction.",
+          "misconception": "interval wrong"
+        },
+        {
+          "key": "D",
+          "text": "Only once at the end",
+          "correct": false,
+          "explanation": "The series of transfers IS the timing.",
+          "misconception": "method misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q3",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "What marks the end of a digestion run at one pH on the iodine tile?",
+      "misconceptionClass": "endpoint",
+      "options": [
+        {
+          "key": "A",
+          "text": "The stopwatch reaching one minute",
+          "correct": false,
+          "explanation": "Runs end on the colour, not a fixed time.",
+          "misconception": "endpoint misread"
+        },
+        {
+          "key": "B",
+          "text": "The buffer changing colour",
+          "correct": false,
+          "explanation": "Buffers do not change colour.",
+          "misconception": "endpoint invented"
+        },
+        {
+          "key": "C",
+          "text": "The first iodine well that stays yellow-brown",
+          "correct": true,
+          "explanation": "No blue-black means no starch left.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The first well that turns blue-black",
+          "correct": false,
+          "explanation": "That is the START of the story.",
+          "misconception": "endpoint inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q4",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "Which safety pairing of goggles and gloves matches the note?",
+      "misconceptionClass": "safety pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gloves for eye protection; goggles for skin",
+          "correct": false,
+          "explanation": "The protections are swapped.",
+          "misconception": "pairing swapped"
+        },
+        {
+          "key": "B",
+          "text": "No protection needed",
+          "correct": false,
+          "explanation": "Both hazards are named.",
+          "misconception": "safety denied"
+        },
+        {
+          "key": "C",
+          "text": "Goggles only for the buffers",
+          "correct": false,
+          "explanation": "The hazards are the solutions, not the buffers.",
+          "misconception": "hazard misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Goggles for eye irritation from iodine and amylase; gloves for amylase on skin",
+          "correct": true,
+          "explanation": "Both protections map to their named hazards.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q5",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "Why is the same volume of amylase used at every pH?",
+      "misconceptionClass": "control volume",
+      "options": [
+        {
+          "key": "A",
+          "text": "So that only pH differs between tubes and the comparison stays fair",
+          "correct": true,
+          "explanation": "Equal enzyme concentration is the CORMS control.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because amylase is expensive",
+          "correct": false,
+          "explanation": "Cost is not the design reason.",
+          "misconception": "reason invented"
+        },
+        {
+          "key": "C",
+          "text": "Because amylase changes pH otherwise",
+          "correct": false,
+          "explanation": "Amylase does not set the pH.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "D",
+          "text": "Because buffers would react with more amylase",
+          "correct": false,
+          "explanation": "No such reaction is claimed.",
+          "misconception": "claim invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q6",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "Name the enzyme whose activity is tested across pH values here.",
+      "misconceptionClass": "enzyme recall",
+      "kind": "recall",
+      "modelAnswer": "Amylase — the starch-digesting enzyme under test.",
+      "keywords": [
+        "amylase",
+        "digesting",
+        "starch",
+        "enzyme"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q7",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "State the pH values the note suggests sweeping across.",
+      "misconceptionClass": "pH sweep recall",
+      "kind": "recall",
+      "modelAnswer": "Buffers around pH 3, 5, 7, 9 and 11.",
+      "keywords": [
+        "3",
+        "5",
+        "7",
+        "9",
+        "11"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q8",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "Explain why a fresh iodine well is needed for every ten-second droplet.",
+      "misconceptionClass": "fresh well need",
+      "kind": "explain-why",
+      "modelAnswer": "Each well's iodine reacts with the starch in the droplet it receives and cannot report again, so a fresh well per droplet keeps every ten-second reading independent and lets the well count act as a clock.",
+      "keywords": [
+        "iodine",
+        "droplet",
+        "independent",
+        "receives"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L1::Q9",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L1",
+      "stem": "A run at pH 9 stops changing colour after 6 wells while pH 7 stops after 3. Which pH sits nearer amylase's optimum, and what would you expect at pH 11?",
+      "misconceptionClass": "pH data application",
+      "kind": "application",
+      "modelAnswer": "pH 7 is nearer the optimum because its shorter well count means faster digestion; at pH 11 the count should lengthen again as the strongly alkaline conditions denature more enzyme, mirroring the far-acid behaviour at pH 3.",
+      "keywords": [
+        "optimum",
+        "denature",
+        "alkaline",
+        "conditions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q1",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "What does the shortest well count identify?",
+      "misconceptionClass": "curve readout",
+      "options": [
+        {
+          "key": "A",
+          "text": "The temperature of the room",
+          "correct": false,
+          "explanation": "Temperature is controlled, not measured here.",
+          "misconception": "confusion"
+        },
+        {
+          "key": "B",
+          "text": "The optimum pH for amylase in this experiment",
+          "correct": true,
+          "explanation": "Fastest digestion locates the optimum.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The most alkaline buffer used",
+          "correct": false,
+          "explanation": "Alkalinity is not the readout.",
+          "misconception": "confusion"
+        },
+        {
+          "key": "D",
+          "text": "The tube with the most starch",
+          "correct": false,
+          "explanation": "Starch volumes are controlled.",
+          "misconception": "confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q2",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "Why do well counts lengthen on BOTH sides of the optimum?",
+      "misconceptionClass": "symmetry mechanism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because iodine reacts faster at extremes",
+          "correct": false,
+          "explanation": "Iodine behaviour does not change.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
+          "text": "Because buffers thicken at extremes",
+          "correct": false,
+          "explanation": "No thickening is claimed.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "C",
+          "text": "Because denaturation away from the optimum reduces the enzyme's working shape either way",
+          "correct": true,
+          "explanation": "One mechanism, two directions.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because starch dissolves better at extremes",
+          "correct": false,
+          "explanation": "Starch solubility is not the mechanism.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q3",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "Which CORMS element corresponds to holding the enzyme concentration constant?",
+      "misconceptionClass": "corms control",
+      "options": [
+        {
+          "key": "A",
+          "text": "The C — change",
+          "correct": false,
+          "explanation": "C is pH, the thing varied.",
+          "misconception": "letter mismatch"
+        },
+        {
+          "key": "B",
+          "text": "The O — organism",
+          "correct": false,
+          "explanation": "O covers the organism or enzyme source.",
+          "misconception": "letter mismatch"
+        },
+        {
+          "key": "C",
+          "text": "The M — measure",
+          "correct": false,
+          "explanation": "M is the well count.",
+          "misconception": "letter mismatch"
+        },
+        {
+          "key": "D",
+          "text": "The S — same or controlled variables",
+          "correct": true,
+          "explanation": "Enzyme concentration sits in the control list.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q4",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "What happens to amylase's activity at pH values far from its optimum?",
+      "misconceptionClass": "extreme pH effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "It falls because the active site is denatured and the substrate cannot bind",
+          "correct": true,
+          "explanation": "The binding-loss pathway is the answer.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It rises because the enzyme stretches out",
+          "correct": false,
+          "explanation": "Stretching destroys fit.",
+          "misconception": "effect inverted"
+        },
+        {
+          "key": "C",
+          "text": "It stays the same",
+          "correct": false,
+          "explanation": "The curve's slopes deny this.",
+          "misconception": "flat curve denied"
+        },
+        {
+          "key": "D",
+          "text": "It becomes measurable only with a colorimeter",
+          "correct": false,
+          "explanation": "Activity change is measurable by wells.",
+          "misconception": "instrument confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q5",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "A graph of pH against rate for a duodenum enzyme peaks around pH 8. Which statement follows?",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "The graph says nothing about optimum",
+          "correct": false,
+          "explanation": "Peak position is exactly the optimum.",
+          "misconception": "readout denied"
+        },
+        {
+          "key": "B",
+          "text": "The enzyme's optimum is mildly alkaline, matching its small-intestine home",
+          "correct": true,
+          "explanation": "Peak location = optimum, and the duodenum is alkaline.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The enzyme works best in strong acid",
+          "correct": false,
+          "explanation": "The peak is alkaline.",
+          "misconception": "peak misread"
+        },
+        {
+          "key": "D",
+          "text": "The enzyme denatures at its peak",
+          "correct": false,
+          "explanation": "The peak is where it works BEST.",
+          "misconception": "peak misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q6",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "State the reading that marks the optimum pH in this practical.",
+      "misconceptionClass": "optimum reading recall",
+      "kind": "recall",
+      "modelAnswer": "The shortest well count at which iodine no longer turns blue-black.",
+      "keywords": [
+        "shortest",
+        "iodine",
+        "longer",
+        "count"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q7",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "Name the process that reduces activity on either side of the optimum pH.",
+      "misconceptionClass": "process recall",
+      "kind": "recall",
+      "modelAnswer": "Denaturation of the enzyme.",
+      "keywords": [
+        "denaturation",
+        "enzyme",
+        "activity",
+        "process"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q8",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "Explain why the same amylase can show a shortest count at pH 7 in class even though some commercial amylase preparations peak elsewhere.",
+      "misconceptionClass": "optimum variation",
+      "kind": "explain-why",
+      "modelAnswer": "Optimum pH tracks the conditions an enzyme is produced for and the exact preparation used, so class results locate the optimum of THIS amylase sample; a different source or a duodenum enzyme can carry a different peak without contradicting the method.",
+      "keywords": [
+        "optimum",
+        "preparation",
+        "peak",
+        "contradicting"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kwZSCXKYc7tWwWsK::L2::Q9",
+      "moduleId": "rn_kwZSCXKYc7tWwWsK::L2",
+      "stem": "A technician must redesign this practical to test pH 4 only, with all else fixed. Using CORMS, state the C, the M and one S.",
+      "misconceptionClass": "redesign application",
+      "kind": "application",
+      "modelAnswer": "C: change the pH to 4 (against the comparison runs); M: measure the time by counting ten-second wells until iodine stays yellow-brown; S: same amylase concentration, starch volume and temperature across tubes.",
+      "keywords": [
+        "pH",
+        "wells",
+        "concentration",
+        "temperature"
+      ],
+      "options": []
+    }
+  ]
+}

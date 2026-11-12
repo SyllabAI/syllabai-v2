@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 130,
+  "rowsApproved": 159,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 130,
+    "rowsApproved": 159,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2112,9 +2112,524 @@
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "mJ00tlE2RwI",
+   "title": "Circuit Symbols - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=mJ00tlE2RwI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 379,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "ODySpy9BTKs",
+   "title": "Converting from Prefixes to SI Units - Maths for A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=ODySpy9BTKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "KcK_0SAEdrw",
+   "title": "Prefixes You Need to Remember - Maths for A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=KcK_0SAEdrw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 328,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "hnCwBq7o_EY",
+   "title": "How to Measure the Diameter of a Wire - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=hnCwBq7o_EY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 100,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "MVY--fncLok",
+   "title": "Young Modulus of Nylon (with a Fish) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=MVY--fncLok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 208,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "r9YMBZ6cQwk",
+   "title": "How to Derive Springs in Series Quickly - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=r9YMBZ6cQwk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 104,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "nKxpEHBDMjQ",
+   "title": "How to Derive Springs in Parallel Quickly - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=nKxpEHBDMjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 119,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "nFWJZRx6GDA",
+   "title": "How to Derive the Double Slit Equation (for AQA) Quickly - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=nFWJZRx6GDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 124,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "dRSE6fpW3iM",
+   "title": "Protons vs Neutrons (in LEGO) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=dRSE6fpW3iM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 433,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "AJCUVcXq51o",
+   "title": "Using Non-Ohmic Devices as Sensors - OCR PAG 4.3 PRACTICAL - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=AJCUVcXq51o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 200,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "TWu4U-ngMjk",
+   "title": "I’ve been teaching microwave polarisation wrong! - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=TWu4U-ngMjk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 582,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "wYkmoZUyAAs",
+   "title": "Springs in Series and Parallel - OCR PAG 2.2 PRACTICAL - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=wYkmoZUyAAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 287,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "boOBAMdwqQE",
+   "title": "Combining Uncertainties - WORKED EXAMPLE - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=boOBAMdwqQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 488,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "I4f87E8Z0JA",
+   "title": "Thermal Energy in Collisions - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=I4f87E8Z0JA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 320,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "8YSHbxoCRPo",
+   "title": "Viscosity of a Liquid (Extension) - OCR PAG 1.2 PRACTICAL - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=8YSHbxoCRPo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "SNRp92jIq9s",
+   "title": "Combining Uncertainties - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=SNRp92jIq9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 228,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "zBuMcUd9YIM",
+   "title": "Lissajous Figures on an Oscilloscope - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=zBuMcUd9YIM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 419,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "taT4kdu88Vc",
+   "title": "Springs in Parallel and Series - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=taT4kdu88Vc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 439,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "edgsmtUH954",
+   "title": "The Standard Model of Particle Physics - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=edgsmtUH954",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 484,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "-vxPGJEJR0Y",
+   "title": "The Size, Mass and Density of the Nucleus - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=-vxPGJEJR0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 258,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "fJjeo5nYUyU",
+   "title": "The LDR (Light Dependent Resistor) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=fJjeo5nYUyU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 88,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "FeUwtLmBz7A",
+   "title": "Circuit Symbols - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=FeUwtLmBz7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 225,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "r3lvzIKKaJg",
+   "title": "Mass and Weight - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=r3lvzIKKaJg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 155,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "gGXHdgsFA9s",
+   "title": "Ductile and Brittle Materials - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=gGXHdgsFA9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 189,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "0YTiPcvydNQ",
+   "title": "Wave Properties: Reflection, Refraction, Diffraction and Polarisation - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=0YTiPcvydNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 218,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "l36IeG0dC64",
+   "title": "Adding Vectors (Mathematically and Graphically) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=l36IeG0dC64",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 417,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "60oM8QgOdqI",
+   "title": "Scalars and Vectors - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=60oM8QgOdqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "O4tA6Nt_iig",
+   "title": "Unit Prefixes - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=O4tA6Nt_iig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 178,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "Sb8cxC4lOy8",
+   "title": "Derived Units - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Sb8cxC4lOy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 187,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
   }
  ],
  "mappings": [
+  {
+   "video": "Sb8cxC4lOy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Derived Units' names the derived-units-as-products/quotients content of 1.2.2 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ODySpy9BTKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Converting from Prefixes to SI Units' names the prefixes spec 1.2.4 directly (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KcK_0SAEdrw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Prefixes You Need to Remember' names the prefixes spec 1.2.4 directly (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "O4tA6Nt_iig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Unit Prefixes' names the prefixes spec 1.2.4 directly (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "DBDl6OOxyck",
    "lessonRef": null,
@@ -2156,6 +2671,46 @@
    }
   },
   {
+   "video": "boOBAMdwqQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Combining Uncertainties' names the derived-quantity uncertainty assessment of 1.3.3 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "SNRp92jIq9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Combining Uncertainties' names the derived-quantity uncertainty assessment of 1.3.3 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "P1lSWWUkMdQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2164,6 +2719,47 @@
    ],
    "confidence": "medium",
    "evidence": "title names scalar and vector quantities (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "l36IeG0dC64",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Adding Vectors (Mathematically and Graphically)' names the coplanar-vector addition of 1.4.2 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "60oM8QgOdqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.2",
+    "1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Scalars and Vectors - A Level Physics' -> 1.4.3 'represent a vector as two perpendicular compon' via distinctive token(s) scalar; 1.4.2 '\u0007add and subtract coplanar vectors' via distinctive token(s) scalar (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2725,6 +3321,27 @@
    }
   },
   {
+   "video": "r3lvzIKKaJg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.6",
+    "4.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Mass and Weight - A Level Physics' -> 3.1.6 '\u0007describe and use the concept of weight as the' via distinctive token(s) weight; 4.1.1 '\u0007understand that the weight of an object may b' via distinctive token(s) weight (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "x-ly8BXpPxE",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2733,6 +3350,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names drag, air resistance and water resistance (frictional/viscous forces) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8YSHbxoCRPo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Viscosity of a Liquid' names the viscous/drag forces of 3.2.1 (qualitative); Stokes-style quantification is Edexcel-only (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2856,6 +3493,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names elastic and inelastic collisions (momentum conservation; KE conserved in elastic collisions) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "I4f87E8Z0JA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Thermal Energy in Collisions' names the elastic-collision KE conservation of 3.3.3 (KE lost to heating) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3253,6 +3910,86 @@
    }
   },
   {
+   "video": "r9YMBZ6cQwk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Series' names the spring-constant content of 6.1.4 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nKxpEHBDMjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Parallel' names the spring-constant content of 6.1.4 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wYkmoZUyAAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Series and Parallel (OCR PAG)' names the spring-constant content of 6.1.4 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "taT4kdu88Vc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Parallel and Series' names the spring-constant content of 6.1.4 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "EC2dNWGSHCc",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3301,6 +4038,27 @@
    ],
    "confidence": "low",
    "evidence": "title names stress-strain graphs; definitions clause only partially evidenced (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MVY--fncLok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.5",
+    "6.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Young Modulus of Nylon (with a Fish) - A Level Physics' -> 6.1.6 'describe an experiment to determine the Young ' via distinctive token(s) modulu, young; 6.1.5 'define and use the terms stress, strain and th' via distinctive token(s) modulu, young (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3393,6 +4151,26 @@
    }
   },
   {
+   "video": "hnCwBq7o_EY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Measure the Diameter of a Wire' names the wire-diameter measurement step of the Young-modulus experiment in 6.1.6; partial (apparatus step, not the full experiment) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "Qw_9kX9PARc",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3402,6 +4180,26 @@
    ],
    "confidence": "low",
    "evidence": "elastic named; plastic-deformation terms not in title (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gGXHdgsFA9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Ductile and Brittle Materials' names the plastic-deformation behaviour of 6.2.1 (elastic vs plastic distinction) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3462,6 +4260,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names phase and phase difference (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zBuMcUd9YIM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Lissajous Figures on an Oscilloscope - A Level Physics' -> 7.1.3 '\u0007understand the use of the time-base and y -ga' via distinctive token(s) oscilloscope (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3706,6 +4524,46 @@
    ],
    "confidence": "medium",
    "evidence": "title names a polarisation-of-microwaves practical (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TWu4U-ngMjk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.5.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'microwave polarisation' names the polarisation phenomenon of 7.5.1 demonstrated with microwaves (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0YTiPcvydNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.5.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Wave Properties ... Polarisation' names the polarisation phenomenon of 7.5.1; reflection/refraction/diffraction have no CIE A-level spec (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3992,6 +4850,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names calculating wavelength using a double slit with results (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nFWJZRx6GDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How to Derive the Double Slit Equation (for AQA) Quickly - A Level Phy' -> 8.3.4 'recall and use λ = ax / D for double-slit inte' via distinctive token(s) double, slit (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4307,6 +5185,27 @@
    }
   },
   {
+   "video": "fJjeo5nYUyU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.4",
+    "9.3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The LDR (Light Dependent Resistor) - A Level Physics' -> 9.3.7 '\u0007understand that the resistance of a light-dep' via distinctive token(s) dependent, ldr; 10.3.4 '\u0007explain the use of thermistors and light-depe' via distinctive token(s) dependent (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "bjt4CrRL8yM",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4335,6 +5234,48 @@
    ],
    "confidence": "medium",
    "evidence": "title names the thermistor (resistance falls as temperature rises) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mJ00tlE2RwI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1",
+    "10.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Circuit Symbols - A Level Physics' -> 10.1.2 'draw and interpret circuit diagrams containing' via distinctive token(s) symbol; 10.1.1 'recall and use the circuit symbols shown in se' via distinctive token(s) symbol (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "FeUwtLmBz7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1",
+    "10.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Circuit Symbols - A Level Physics' -> 10.1.2 'draw and interpret circuit diagrams containing' via distinctive token(s) symbol; 10.1.1 'recall and use the circuit symbols shown in se' via distinctive token(s) symbol (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4637,6 +5578,26 @@
    }
   },
   {
+   "video": "AJCUVcXq51o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Non-Ohmic Devices as Sensors' names the thermistor/LDR-in-potential-divider sensor use of 10.3.4 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "qAlpNXO_FRE",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4645,6 +5606,47 @@
    ],
    "confidence": "medium",
    "evidence": "title names the alpha scattering experiment (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-vxPGJEJR0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Size, Mass and Density of the Nucleus - A Level Physics' -> 11.1.1 'infer from the results of the α -particle scat' via distinctive token(s) nucleu, size (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dRSE6fpW3iM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.2",
+    "11.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Protons vs Neutrons (in LEGO) - A Level Physics' -> 11.2.3 '\u0007recall that protons and neutrons are not fund' via distinctive token(s) neutron, proton; 11.1.2 'describe a simple model for the nuclear atom t' via distinctive token(s) neutron, proton (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4738,6 +5740,27 @@
    }
   },
   {
+   "video": "edgsmtUH954",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.1",
+    "11.2.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'The Standard Model of Particle Physics' names the quark/lepton fundamental-particle content of 11.2.1/11.2.6 (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "ORhXRlhrbG0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4760,16 +5783,16 @@
  ],
  "coverage": {
   "specPointsTotal": 145,
-  "specPointsMapped": 85,
-  "specPointsUnmapped": 60,
-  "videosTotal": 130,
-  "videosMapped": 130,
+  "specPointsMapped": 97,
+  "specPointsUnmapped": 48,
+  "videosTotal": 159,
+  "videosMapped": 159,
   "videosUnmapped": 0,
-  "mappingRows": 130,
+  "mappingRows": 159,
   "byConfidence": {
    "high": 0,
-   "medium": 121,
-   "low": 9
+   "medium": 137,
+   "low": 22
   }
  },
  "inputs": {
@@ -4793,5 +5816,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.068Z"
+ "generatedUtc": "2026-11-12T09:58:57.397Z"
 }

@@ -11,6 +11,11 @@
    "provider": "physics-online (@PhysicsOnline — one channel behind gcsephysicsonline.com + alevelphysicsonline.com, Lewis Matheson / Physics Online Ltd)",
    "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence posture title-only (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/worksheet-answers/paper-walkthrough videos excluded)",
    "enumeratedUtc": "2026-11-10T03:03:19Z"
+  },
+  "p6": {
+   "provider": "physics-online (PhysicsOnline YouTube channel — unmapped remainder)",
+   "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 1,081 public uploads, +1 net vs the P2E enumeration of 1,080 on 2026-11-10; the P2E lane cached only its 303-drafted subset, so the delta video is not individually identified) + oEmbed identity sweep 113/113 on the routed pool (473/473 live overall, author Physics Online) + marker routing (A-level / GCSE markers, GCSE and unmarked videos cross-spine-routed by distinctive-token idf overlap) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T09:56:37Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Title-only posture, tightened rule. 11 spec-level rejects: A-level-only formalisations carried by GCSE videos (flux definitions, binding energy, first law, I-V sketching, polarisation, I=Anvq, centre of gravity, hydrostatic derivation, equilibrium-with-torque) where the title does not name the clause.",
-  "rowsApproved": 177,
+  "rowsApproved": 215,
   "rowsRejected": 27,
   "rejects": [
    {
@@ -401,6 +406,1043 @@
       "spec": "25.3.2",
       "reason": "'Redshift Calculations — IGCSE Physics' — IGCSE-level source; the A2 clause's delta-lambda/lambda and v/c ratios are not carried by the source level. Spec stays honestly unmapped.",
       "lane": "T-VIDEOMAP-P2E"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p6 (physicsonline completion)",
+    "task": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-12",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+    "ruledUtc": "2026-11-12T09:56:37Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: oEmbed author Physics Online 38/38, all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds and trims tabled in scripts/p6/p6_judgment.py with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 38,
+    "rowsRejected": 205,
+    "rejects": [
+     {
+      "video": "rlM1MJqYwps",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "BPXmE7egzRk",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "UPeE626-SuU",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Rzs3qfCGXF4",
+      "reason": "no honest binding: best candidate \"recall that wavelengths in the range 400–700 nm in free spac\" (7.4.3) binds only on generic vocabulary: free",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "9NxBJ9lMRaU",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "T6qYP7H_B4c",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "X0jF9V1rVP4",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "0UcNTU-HkYo",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "V5VSRocgthI",
+      "reason": "no honest binding: best candidate \"recall and use intensity = power/area and intensity ∝ ( ampl\" (7.1.7) binds only on generic vocabulary: area",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "U8yEH0rH_Jg",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "PXzGKUrps2A",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: graph",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cvEc942VqRE",
+      "reason": "no honest binding: best candidate \"\u0007understand the use of the time-base and y -gain of a cathod\" (7.1.3) binds only on generic vocabulary: base",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "xBsdWCme50E",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: area, graph",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "3aIovrgFmHg",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: area, graph",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "wtA24Q1jIeg",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: area, graph",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "i-AFbrMKhYg",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: area, graph",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "HJKXwsSnIXA",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "PMs0ULbc45Q",
+      "reason": "no honest binding: best candidate \"understand that the area under the force–extension graph rep\" (6.2.2) binds only on generic vocabulary: represent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "mPznLRMzooY",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "XPlPH093z9M",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_m3qGz_YVCw",
+      "reason": "no honest binding: best candidate \"\u0007distinguish between root-mean-square (r.m.s.) and peak valu\" (21.1.4) binds only on generic vocabulary: mean, value",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "H2_uKX0Xcmg",
+      "reason": "no honest binding: best candidate \"\u0007describe and explain motion due to a uniform velocity in on\" (2.1.9) binds only on generic vocabulary: equation, velocity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "0M2d5U5tTX8",
+      "reason": "no honest binding: best candidate \"derive, using the definitions of speed, frequency and wavele\" (7.1.4) binds only on generic vocabulary: equation",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "gMyur4acJIQ",
+      "reason": "no honest binding: best candidate \"derive, using the definitions of speed, frequency and wavele\" (7.1.4) binds only on generic vocabulary: equation",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cFWnecYIETE",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "y5eQoczruB0",
+      "reason": "no honest binding: best candidate \"recall that wavelengths in the range 400–700 nm in free spac\" (7.4.3) binds only on generic vocabulary: free",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "tgV2ErDM-ls",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "PILsjybmVwI",
+      "reason": "no honest binding: best candidate \"define the potential difference across a component as the en\" (9.2.1) binds only on generic vocabulary: unit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "7WzhD8oMgdk",
+      "reason": "no honest binding: best candidate \"define the potential difference across a component as the en\" (9.2.1) binds only on generic vocabulary: unit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "h9hUmp4eU_w",
+      "reason": "no honest binding: best candidate \"define the potential difference across a component as the en\" (9.2.1) binds only on generic vocabulary: unit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "F7y_wyaRu0k",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "LDZNqr_Jcsw",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "yPtZUx6kSHE",
+      "reason": "no honest binding: best candidate \"\u0007recall and use Hubble’s law v . H d and explain how this le\" (25.3.4) binds only on generic vocabulary: si, unit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "4sAnRLrDKhM",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cZp7-ofxr6s",
+      "reason": "no honest binding: best candidate \"\u0007use, for a current-carrying conductor, the expression I = A\" (9.1.4) binds only on generic vocabulary: number",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "EG4l26qHGtI",
+      "reason": "no honest binding: best candidate \"\u0007understand that isotopes are forms of the same element with\" (11.1.4) binds only on generic vocabulary: form, number",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "q0g9doFBVzQ",
+      "reason": "no honest binding: best candidate \"\u0007understand that isotopes are forms of the same element with\" (11.1.4) binds only on generic vocabulary: form, number",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "2QKXTHCPy7E",
+      "reason": "no honest binding: best candidate \"\u0007understand that isotopes are forms of the same element with\" (11.1.4) binds only on generic vocabulary: form, number, particle",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "axs7QAOdNIg",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Q0JEqBjfxR0",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "v7mZnyXnhzI",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "EABJoapqIoE",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "O16dJE0SXoI",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "bUUGUmkWeGY",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "t46rjR5xLlY",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "z1WUZ0QksWA",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "F7j-64oN1-U",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ZxxtnW1gZFU",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "oP3ZEx7Nslc",
+      "reason": "no honest binding: best candidate \"recall and use P = V I , P = I R and P = V / R\" (9.2.3) binds only on generic vocabulary: difference",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "fK3UrtIMMW8",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "uZPi0aIKGaM",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Po7tSy2PV2w",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "tEjQxvgiDs4",
+      "reason": "no honest binding: best candidate \"\u0007derive, from Newton’s law of gravitation and the definition\" (13.3.1) binds only on generic vocabulary: derive, law, newton",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "KCnxJsd7N9k",
+      "reason": "no honest binding: best candidate \"\u0007derive, from the definitions of velocity and acceleration, \" (2.1.6) binds only on generic vocabulary: derive, velocity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "4io2723jjB4",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: elastic, energy, potential",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "38KZiEdb730",
+      "reason": "no honest binding: best candidate \"derive, using the definitions of speed, frequency and wavele\" (7.1.4) binds only on generic vocabulary: derive, equation",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "k7TzNcSyXb8",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cZafZ33cji4",
+      "reason": "no honest binding: best candidate \"mv 2 3 derive, using the equations of motion, the formula fo\" (5.2.1a) binds only on generic vocabulary: derive, energy, kinetic",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Z_KQK1GgwwE",
+      "reason": "no honest binding: best candidate \"mv 2 3 derive, using the equations of motion, the formula fo\" (5.2.1a) binds only on generic vocabulary: derive, energy, kinetic",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cXwmBlKndCc",
+      "reason": "no honest binding: best candidate \"derive, using Kirchhoff’s laws, a formula for the combined r\" (10.2.5) binds only on generic vocabulary: derive, parallel, resistor, two",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "uNeyu46JtIk",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "HXW2tRfTkTE",
+      "reason": "no honest binding: best candidate \"mv 2 3 derive, using the equations of motion, the formula fo\" (5.2.1a) binds only on generic vocabulary: derive, power",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "4t2EVSYuP78",
+      "reason": "no honest binding: best candidate \"\u0007recall and use the inverse square law for radiant flux inte\" (25.1.2) binds only on generic vocabulary: square",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Ezu3G8veq0E",
+      "reason": "no honest binding: best candidate \"\u0007describe and interpret qualitatively the evidence provided \" (22.3.2) binds only on generic vocabulary: nature, particle, wave",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "db6I4VrbK9o",
+      "reason": "no honest binding: best candidate \"understand the effects of the internal resistance of a sourc\" (10.1.5) binds only on generic vocabulary: practical",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "hOlTmCsawgY",
+      "reason": "no honest binding: best candidate \"derive, using the definitions of speed, frequency and wavele\" (7.1.4) binds only on generic vocabulary: equation",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "kIYHm06pHuc",
+      "reason": "no honest binding: best candidate \"understand that the resistance of a thermistor decreases as \" (9.3.8) binds only on generic vocabulary: electricity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "DuomJ2B1rao",
+      "reason": "no honest binding: best candidate \"\u0007show an understanding of experiments that demonstrate two-s\" (8.3.2) binds only on generic vocabulary: wave",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "mPqZjuImVFM",
+      "reason": "no honest binding: best candidate \"recall and use hf = E – E\" (22.4.3) binds only on generic vocabulary: quantum",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "wBrJ30plBhw",
+      "reason": "no honest binding: best candidate \"understand that objects moving against a resistive force may\" (3.2.3) binds only on generic vocabulary: force, motion",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "1AIkUB4NPDo",
+      "reason": "no honest binding: best candidate \"\u0007understand that annihilation occurs when a particle interac\" (24.3.3) binds only on generic vocabulary: particle",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ayjtBJ0UcqE",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "hYN_W8WfbGs",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "QDpxgMqisVc",
+      "reason": "no honest binding: best candidate \"\u0007understand that the weight of an object may be taken as act\" (4.1.1) binds only on generic vocabulary: point, turning",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "HLfR_kGpYxY",
+      "reason": "no honest binding: best candidate \"understand and explain experiments that demonstrate: • that \" (20.5.4) binds only on generic vocabulary: circuit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "CdRMlZmwrrE",
+      "reason": "no honest binding: best candidate \"\u0007understand that computed tomography (CT) scanning produces \" (24.2.4) binds only on generic vocabulary: first",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "YweH-m2zZB4",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "dFvwGrDBQPQ",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "z603U-Am3AY",
+      "reason": "no honest binding: best candidate \"describe an experiment to determine the Young modulus of a m\" (6.1.6) binds only on generic vocabulary: strain",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "SsPXIL-lZ7s",
+      "reason": "no honest binding: best candidate \"\u0007understand that, while momentum of a system is always conse\" (3.3.4) binds only on generic vocabulary: energy, kinetic, momentum",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "4DQ4FvNW8-c",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Pltdo3Suoj4",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_3Mb9cJQzAk",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "38CMCtpOw60",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "w_-fp1wSaog",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "jT_cDQYLNbs",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: force",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "C1PmobeDzAM",
+      "reason": "no honest binding: best candidate \"understand that the resistance of a thermistor decreases as \" (9.3.8) binds only on generic vocabulary: electricity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "a4qxRiXRuTE",
+      "reason": "no honest binding: best candidate \"calculate the energy released in nuclear reactions using E =\" (23.1.7) binds only on generic vocabulary: binding, nuclear",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Q2XTRXs6mtA",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "b0MBGgo1yCc",
+      "reason": "no honest binding: best candidate \"define half-life\" (23.2.4) binds only on generic vocabulary: half",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "fbAm5psmdKY",
+      "reason": "no honest binding: best candidate \"\u0007show an understanding of experiments that demonstrate two-s\" (8.3.2) binds only on generic vocabulary: wave",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "uCbS1DdQHMI",
+      "reason": "no honest binding: best candidate \"derive, using the definitions of speed, frequency and wavele\" (7.1.4) binds only on generic vocabulary: equation",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "L_fizvD0nBM",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Qj64W5G0RwQ",
+      "reason": "no honest binding: best candidate \"recall and use P = V I , P = I R and P = V / R\" (9.2.3) binds only on generic vocabulary: power",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "OIf7Mnv92mg",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "avz_YYhT8yw",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "TJfyJHxDPV0",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "U_aYZx2CTkY",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "kbWVBsCnWCM",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "fqLqDOYT1Vc",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "g_zD_5917jc",
+      "reason": "no honest binding: best candidate \"\u0007recall F = ma and solve problems using it, understanding th\" (3.1.2) binds only on generic vocabulary: acceleration, force",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "lw1OMstvsMI",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "1CDEWV84hSM",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "FBK_3t0HsU4",
+      "reason": "no honest binding: best candidate \"\u0007recall and understand that the efficiency of a system is th\" (5.1.3) binds only on generic vocabulary: system",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ovT8lRAkFME",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "illnJUD7JI4",
+      "reason": "no honest binding: best candidate \"\u0007understand that the lines in the emission and absorption sp\" (25.3.1) binds only on generic vocabulary: emission",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "hkQ28nYuFBc",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "wXyAKFZ6AM0",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "HzWdDZyULZE",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "gfz1Atl_vxg",
+      "reason": "no honest binding: best candidate \"use the capacitance formulae for capacitors in series and in\" (19.1.4) binds only on generic vocabulary: parallel, serie",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "RnVXD1cFPV0",
+      "reason": "no honest binding: best candidate \"\u0007recall and understand that the efficiency of a system is th\" (5.1.3) binds only on generic vocabulary: system",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ly5v9jBaNd0",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "1QZynnWIgTk",
+      "reason": "no honest binding: best candidate \"\u0007understand that the weight of an object may be taken as act\" (4.1.1) binds only on generic vocabulary: point",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "L7yuBVYen50",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: plastic",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "jPm_5eNy1MU",
+      "reason": "no honest binding: best candidate \"represent a vector as two perpendicular components\" (1.4.3) binds only on generic vocabulary: physical, quantitie",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "qpNSAWvKTuk",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "mj6Py98WKno",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Pml4Z4BJibc",
+      "reason": "no honest binding: best candidate \"understand the use of standard candles to determine distance\" (25.1.4) binds only on generic vocabulary: standard",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_bfgch6q5Rk",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_5-W8p3MKds",
+      "reason": "no honest binding: best candidate \"recall and use hf = E – E\" (22.4.3) binds only on generic vocabulary: quantum",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "SF9ljW4frkI",
+      "reason": "no honest binding: best candidate \"\u0007describe and interpret qualitatively the evidence provided \" (22.3.2) binds only on generic vocabulary: diffraction, electron",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "aaDfHS5JVsU",
+      "reason": "no honest binding: best candidate \"describe an experiment to determine the Young modulus of a m\" (6.1.6) binds only on generic vocabulary: strain, stres",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cZtmvv4R57w",
+      "reason": "no honest binding: best candidate \"\u0007determine the elastic potential energy of a material deform\" (6.2.3) binds only on generic vocabulary: behaviour",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "czsL0-ZGyD0",
+      "reason": "no honest binding: no candidate named the title content (idf overlap empty)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "peh8cpHmOm4",
+      "reason": "no honest binding: best candidate \"\u0007understand that the resistance of a light-dependent resisto\" (9.3.7) binds only on generic vocabulary: light",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "KlZwnpN_EZU",
+      "reason": "no honest binding: best candidate \"describe an experiment to determine the Young modulus of a m\" (6.1.6) binds only on generic vocabulary: describe, experiment",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "y7E7XiQ1B3o",
+      "reason": "no honest binding: best candidate \"understand the conditions required if two-source interferenc\" (8.3.3) binds only on generic vocabulary: source",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "C0NyYKJrogw",
+      "reason": "no honest binding: best candidate \"\u0007understand the exponential nature of radioactive decay, and\" (23.2.6) binds only on generic vocabulary: nuclear",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "jhz29mQ6o_Q",
+      "reason": "no honest binding: best candidate \"\u0007understand that annihilation occurs when a particle interac\" (24.3.3) binds only on generic vocabulary: particle",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "JsHQvy-Y30g",
+      "reason": "no honest binding: best candidate \"\u0007show an understanding of experiments that demonstrate two-s\" (8.3.2) binds only on generic vocabulary: experiment",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "I9CVM31TEcQ",
+      "reason": "no honest binding: best candidate \"\u0007analyse the effect of a single capacitor in smoothing, incl\" (21.2.4) binds only on generic vocabulary: capacitor",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "LBBGp3KAhgA",
+      "reason": "no honest binding: best candidate \"\u0007recall and use the fact that the electric field at a point \" (18.5.2) binds only on generic vocabulary: electric, equal",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_Tx_L0Mm_wg",
+      "reason": "no honest binding: best candidate \"use Kirchhoff’s laws to solve simple circuit problems\" (10.2.7) binds only on generic vocabulary: circuit, problem, solve",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "YwMvOT6xee0",
+      "reason": "no honest binding: best candidate \"understand that the resistance of a thermistor decreases as \" (9.3.8) binds only on generic vocabulary: resistivity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "opZ9lHoDFw8",
+      "reason": "no honest binding: best candidate \"understand that the resistance of a thermistor decreases as \" (9.3.8) binds only on generic vocabulary: resistance, temperature",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "sExVE6s-5cM",
+      "reason": "no honest binding: best candidate \"\u0007understand that annihilation occurs when a particle interac\" (24.3.3) binds only on generic vocabulary: particle",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "9HyKNkXW9W0",
+      "reason": "no honest binding: best candidate \"\u0007sketch the I – V characteristics of a metallic conductor at\" (9.3.3) binds only on generic vocabulary: conductor",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "MVFGQ8QZAjE",
+      "reason": "no honest binding: best candidate \"\u0007show an understanding of experiments that demonstrate two-s\" (8.3.2) binds only on generic vocabulary: wave",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "2kHCvtTjOJs",
+      "reason": "no honest binding: best candidate \"use a vector triangle to represent coplanar forces in equili\" (4.2.3) binds only on generic vocabulary: vector",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "jLRoseFxm30",
+      "reason": "no honest binding: best candidate \"understand that amount of substance is an SI base quantity w\" (15.1.1) binds only on generic vocabulary: base, unit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "OPXK8acRcBo",
+      "reason": "no honest binding: best candidate \"\u0007recall and use the formula ∆ E = mg ∆ h for gravitational p\" (5.2.2) binds only on generic vocabulary: energy, kinetic",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "iwWfoet4-zc",
+      "reason": "no honest binding: best candidate \"represent a vector as two perpendicular components\" (1.4.3) binds only on generic vocabulary: quantitie, unit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "sErfG5fMji0",
+      "reason": "self-review full-row drop: gamma absorption by lead: the 24.2.3 bind is X-ray attenuation — keyword-adjacent, not the named content; no gamma-attenuation spec in CIE 9702",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "sUVTsd4ehf4",
+      "reason": "self-review full-row drop: surface area/volume of a sphere names no spec content; the 18.3.1 spherical-shell link is preparatory maths, not the spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "qKfBU7EWPSs",
+      "reason": "self-review full-row drop: small angle approximations: no small-angle spec exists in the CIE 9702 spine",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "FnYD5Xp6jPo",
+      "reason": "self-review full-row drop: common relationships on graphs: generic linearisation maths; the 23.2.6 exponential-decay hook is a fragment, not the title content",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "sz2hfUQxlnQ",
+      "reason": "self-review full-row drop: y-intercept with false origin: generic graph maths; no spec carries it",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "BD-QGM3nWcA",
+      "reason": "self-review full-row drop: calculating gradients: generic maths skill; the 2.1.4/2.1.5 kinematics gradients require the v-t/d-t context the title does not name",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "rFou2q2-pNo",
+      "reason": "self-review full-row drop: gradients with appropriate unit: generic maths skill",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "xhxX0XHiCUU",
+      "reason": "self-review full-row drop: calculating gradients: generic maths skill",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "X-419Gd1ZaI",
+      "reason": "self-review full-row drop: linear straight-line graphs: generic maths skill",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "BnXpGHB8ULs",
+      "reason": "self-review full-row drop: problem-solving-skills video (diagram first); binds no content spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Bg26bFr15Fk",
+      "reason": "self-review full-row drop: ratio of charges: generic ratio maths; the efficiency bind is keyword-adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "AAH-H-X-Q1Q",
+      "reason": "self-review full-row drop: ratios: generic maths skill",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "s9EA42kLNlM",
+      "reason": "self-review full-row drop: combining equations: generic algebra skill",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "YADOB7a-F7U",
+      "reason": "self-review full-row drop: rearranging lambda: rearranging practice; no physics content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "CYfVlpggpw8",
+      "reason": "self-review full-row drop: rearranging u: rearranging practice; no physics content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "TasMAdLZ-mc",
+      "reason": "self-review full-row drop: maths symbols ≠ circuit symbols; the 10.1.2 bind is keyword-adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cFcyfD147sU",
+      "reason": "self-review full-row drop: significant figures: generic maths skill; no sig-fig spec in the spine",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "97MKqQsdUjo",
+      "reason": "self-review full-row drop: significant figures: generic maths skill",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "W7C-mlA4zvs",
+      "reason": "self-review full-row drop: rules for significant figures: generic maths skill; F=BIL bind is nonsense adjacency",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "osXVRVwmM9U",
+      "reason": "self-review full-row drop: standard form calculations: generic maths skill",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "MhhzHuAJ3Sg",
+      "reason": "self-review full-row drop: 2023 OCR full paper walkthrough — paper-content sewage, no spec content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "hcqWtCNNsiQ",
+      "reason": "self-review full-row drop: multiple-choice technique — exam-skills, binds no content spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "YeS5hs4_FiI",
+      "reason": "self-review full-row drop: generic mistake video; no content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "nOmASKTL2ns",
+      "reason": "self-review full-row drop: 2025 exam-rules news — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "aecyMBVevN8",
+      "reason": "self-review full-row drop: revision-websites list — advice sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "yyRaXdPjrY4",
+      "reason": "self-review full-row drop: 2020 OCR full paper walkthrough — paper-content sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_C0MULRejao",
+      "reason": "self-review full-row drop: advance-information news — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "NzCDhVNWtiQ",
+      "reason": "self-review full-row drop: Oxford PAT preparation — admissions-test sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "R-OSRUQEyfc",
+      "reason": "self-review full-row drop: formulae-booklet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "KDG8NveLsaA",
+      "reason": "self-review full-row drop: formulae-booklet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "OM1HbJQ1yKs",
+      "reason": "self-review full-row drop: formulae-booklet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_CXKwQrcbsc",
+      "reason": "self-review full-row drop: topic-intro survey; the elastic-PE bind is one slice of a survey video (P2E generic-survey reject class)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "0G6CA4Xs6xU",
+      "reason": "self-review full-row drop: image processing: title names no imaging modality or spec content",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ONJgL-Hvqsg",
+      "reason": "self-review full-row drop: IAL materials revision survey — generic survey reject class",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "eD9H-2CQ2i0",
+      "reason": "self-review full-row drop: Stokes' law is not a CIE 9702 spec; the current-as-flow bind is keyword-adjacent ('flow')",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Cx2TrRehiBw",
+      "reason": "self-review full-row drop: Royal Academy of Engineering promo — sponsored sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "LrxaieZNa00",
+      "reason": "self-review full-row drop: All-of-AQA survey video — generic survey reject class",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "pwp1NcfXu80",
+      "reason": "self-review full-row drop: All-of-AQA survey video — generic survey reject class",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "TFMRbx9mARU",
+      "reason": "self-review full-row drop: Wheatstone bridge is not a CIE 9702 spec; the bridge-rectifier bind matched the word bridge only",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "aqXT2o9qcyE",
+      "reason": "self-review full-row drop: fluorescence: no fluorescence spec in CIE 9702; I-V binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "fV4_K77sAfk",
+      "reason": "self-review full-row drop: novelty rebadging demo; the circuit-diagram bind is nonsense adjacency",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "KvS0png1F1s",
+      "reason": "self-review full-row drop: pulse oximetry is not CIE 9702 medical-physics content; ultrasound bind is adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "AZ8IH1_YkD4",
+      "reason": "self-review full-row drop: multiple-choice technique — exam-skills",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "DkPLiQhDwms",
+      "reason": "self-review full-row drop: lens images: no lens spec exists in CIE 9702 (removed from A-level)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "L3jgUZ9l8kY",
+      "reason": "self-review full-row drop: lens images: no lens spec exists in CIE 9702",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "4N6rPk9ucdI",
+      "reason": "self-review full-row drop: lens images: no lens spec exists in CIE 9702",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "exVMqFrpFf4",
+      "reason": "self-review full-row drop: muon novelty demo; spring bind is apparatus-only",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "xaUb1wDxlY8",
+      "reason": "self-review full-row drop: control variables/fair tests: practical-skills vocabulary with no subject-content spec in CIE 9702",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "zx7WfvExe5o",
+      "reason": "self-review full-row drop: maximum power of a cell: max-power-transfer is not a CIE spec; the AC mean-power bind is a different context",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Mv7oPnUgDF8",
+      "reason": "self-review full-row drop: lasers: no laser spec in CIE 9702",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "KqEGYzlcMsw",
+      "reason": "self-review full-row drop: OCR PAG stopping-distance practical: braking/stopping distance is not a CIE 9702 spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "CsgUgFQIYGc",
+      "reason": "self-review full-row drop: ribbon tweeter novelty demo; estimates bind is nonsense adjacency",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "2ZPrUaW1kKg",
+      "reason": "self-review full-row drop: specific charge: not a CIE 9702 spec (specific-acoustic-impedance/latent-heat binds are word-adjacent on specific)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cbUcL-SzUKE",
+      "reason": "self-review full-row drop: anomalous results: data-analysis skills vocabulary with no subject-content spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "-cvXiGlzecM",
+      "reason": "self-review full-row drop: independent/dependent/control variables: no subject-content spec in CIE 9702",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ydzrEUbvfT8",
+      "reason": "self-review full-row drop: electron capture: not a CIE 9702 spec; homogeneity bind is nonsense adjacency",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ste3iijdOh8",
+      "reason": "self-review full-row drop: salad-bowl accelerator novelty demo; accelerator content is not a CIE 9702 spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "UqEn1dNUsvc",
+      "reason": "self-review full-row drop: fluorescence: no fluorescence spec in CIE 9702",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "rZKfqQ5RT34",
+      "reason": "self-review full-row drop: Feynman diagrams: not a CIE 9702 spec; circuit-diagram bind matched the word diagram only",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "dVWdyLTHJgg",
+      "reason": "self-review full-row drop: circuit-building skills; no content spec named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "s4MrVmWvIUw",
+      "reason": "self-review full-row drop: conductance is Edexcel vocabulary, not a CIE 9702 spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "IBDk8Opqn8E",
+      "reason": "self-review full-row drop: free-body diagrams/inclined planes: binds Malus law only via word adjacency; the 1.4.3 resolution link is tool-level, not named content",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "xcc6S91mcQc",
+      "reason": "self-review full-row drop: string-wave velocity v = sqrt(T/mu): not a CIE 9702 spec (v = f lambda bind is adjacent, not the named derivation)",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
      }
     ]
    }
@@ -3223,6 +4265,576 @@
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "mJ00tlE2RwI",
+   "title": "Circuit Symbols - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=mJ00tlE2RwI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 379,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "ofaxkM5ydwg",
+   "title": "Inverse Square Law for Gamma (in LEGO) - A Level Physics Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=ofaxkM5ydwg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 378,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "z4ucdSYzCpQ",
+   "title": "Mass-Spring Experiment - A Level Physics Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=z4ucdSYzCpQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 255,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "HxiJWs5Ha9w",
+   "title": "Velocity of a Satellite Equation - Maths for A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=HxiJWs5Ha9w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 119,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "MR3mMPILChk",
+   "title": "Path of a Charged Particle Equation - Maths for A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=MR3mMPILChk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 105,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "YB3dmRMTCKU",
+   "title": "Converting between Joules and Electronvolts - Maths for A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=YB3dmRMTCKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 157,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "ODySpy9BTKs",
+   "title": "Converting from Prefixes to SI Units - Maths for A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=ODySpy9BTKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "KcK_0SAEdrw",
+   "title": "Prefixes You Need to Remember - Maths for A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=KcK_0SAEdrw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 328,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "hnCwBq7o_EY",
+   "title": "How to Measure the Diameter of a Wire - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=hnCwBq7o_EY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 100,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "MVY--fncLok",
+   "title": "Young Modulus of Nylon (with a Fish) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=MVY--fncLok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 208,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "r9YMBZ6cQwk",
+   "title": "How to Derive Springs in Series Quickly - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=r9YMBZ6cQwk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 104,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "nKxpEHBDMjQ",
+   "title": "How to Derive Springs in Parallel Quickly - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=nKxpEHBDMjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 119,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "nFWJZRx6GDA",
+   "title": "How to Derive the Double Slit Equation (for AQA) Quickly - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=nFWJZRx6GDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 124,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "dRSE6fpW3iM",
+   "title": "Protons vs Neutrons (in LEGO) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=dRSE6fpW3iM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 433,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "AJCUVcXq51o",
+   "title": "Using Non-Ohmic Devices as Sensors - OCR PAG 4.3 PRACTICAL - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=AJCUVcXq51o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 200,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "TWu4U-ngMjk",
+   "title": "I’ve been teaching microwave polarisation wrong! - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=TWu4U-ngMjk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 582,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "wYkmoZUyAAs",
+   "title": "Springs in Series and Parallel - OCR PAG 2.2 PRACTICAL - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=wYkmoZUyAAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 287,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "boOBAMdwqQE",
+   "title": "Combining Uncertainties - WORKED EXAMPLE - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=boOBAMdwqQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 488,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "I4f87E8Z0JA",
+   "title": "Thermal Energy in Collisions - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=I4f87E8Z0JA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 320,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "p8bN2PwlbR0",
+   "title": "What happens to Circuits in Liquid Nitrogen? - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=p8bN2PwlbR0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 172,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "8YSHbxoCRPo",
+   "title": "Viscosity of a Liquid (Extension) - OCR PAG 1.2 PRACTICAL - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=8YSHbxoCRPo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 245,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "SNRp92jIq9s",
+   "title": "Combining Uncertainties - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=SNRp92jIq9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 228,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "zBuMcUd9YIM",
+   "title": "Lissajous Figures on an Oscilloscope - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=zBuMcUd9YIM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 419,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "mB36yqMJoVY",
+   "title": "Liquid Nitrogen and High Voltages - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=mB36yqMJoVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 100,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "taT4kdu88Vc",
+   "title": "Springs in Parallel and Series - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=taT4kdu88Vc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 439,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "gtpPsyQ7dD4",
+   "title": "Measuring the Resistivity of a Wire - PRACTICAL - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=gtpPsyQ7dD4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 254,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "edgsmtUH954",
+   "title": "The Standard Model of Particle Physics - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=edgsmtUH954",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 484,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "-vxPGJEJR0Y",
+   "title": "The Size, Mass and Density of the Nucleus - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=-vxPGJEJR0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 258,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "bIMe5B65iO4",
+   "title": "Resistance, and why V=IR is not Ohm's Law - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=bIMe5B65iO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 130,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "fJjeo5nYUyU",
+   "title": "The LDR (Light Dependent Resistor) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=fJjeo5nYUyU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 88,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "FeUwtLmBz7A",
+   "title": "Circuit Symbols - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=FeUwtLmBz7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 225,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "r3lvzIKKaJg",
+   "title": "Mass and Weight - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=r3lvzIKKaJg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 155,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "gGXHdgsFA9s",
+   "title": "Ductile and Brittle Materials - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=gGXHdgsFA9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 189,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "0YTiPcvydNQ",
+   "title": "Wave Properties: Reflection, Refraction, Diffraction and Polarisation - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=0YTiPcvydNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 218,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "l36IeG0dC64",
+   "title": "Adding Vectors (Mathematically and Graphically) - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=l36IeG0dC64",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 417,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "60oM8QgOdqI",
+   "title": "Scalars and Vectors - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=60oM8QgOdqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "O4tA6Nt_iig",
+   "title": "Unit Prefixes - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=O4tA6Nt_iig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 178,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "Sb8cxC4lOy8",
+   "title": "Derived Units - A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Sb8cxC4lOy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 187,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
   }
  ],
  "mappings": [
@@ -5926,20 +7538,598 @@
    "boardMismatch": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "mJ00tlE2RwI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.2",
+    "10.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Circuit Symbols - A Level Physics' -> 10.1.2 'draw and interpret circuit diagrams containing' via distinctive token(s) symbol; 10.1.1 'recall and use the circuit symbols shown in se' via distinctive token(s) symbol",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ofaxkM5ydwg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "25.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Inverse Square Law for Gamma (in LEGO)' names the inverse-square relationship of 25.1.2; spec is astronomy-framed (radiant flux) — partial, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "z4ucdSYzCpQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Mass-Spring Experiment' names the mass-spring system that demonstrates simple harmonic motion (a = proportional to -displacement); apparatus-named bind, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "HxiJWs5Ha9w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.2.1a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Velocity of a Satellite Equation' names the circular-orbit equation of 13.2.1a (relating gravitational force to orbital speed)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MR3mMPILChk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "20.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Path of a Charged Particle Equation' names the charged-particle-in-a-B-field motion of 20.3.5 (r = p/BQ circular path)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YB3dmRMTCKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Converting between Joules and Electronvolts' names the eV-as-unit content of 22.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ODySpy9BTKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Converting from Prefixes to SI Units' names the prefixes spec 1.2.4 directly",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KcK_0SAEdrw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Prefixes You Need to Remember' names the prefixes spec 1.2.4 directly",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hnCwBq7o_EY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Measure the Diameter of a Wire' names the wire-diameter measurement step of the Young-modulus experiment in 6.1.6; partial (apparatus step, not the full experiment)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MVY--fncLok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.6",
+    "6.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Young Modulus of Nylon (with a Fish) - A Level Physics' -> 6.1.6 'describe an experiment to determine the Young ' via distinctive token(s) modulu, young; 6.1.5 'define and use the terms stress, strain and th' via distinctive token(s) modulu, young",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "r9YMBZ6cQwk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Series' names the spring-constant content of 6.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nKxpEHBDMjQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Parallel' names the spring-constant content of 6.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nFWJZRx6GDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How to Derive the Double Slit Equation (for AQA) Quickly - A Level Phy' -> 8.3.4 'recall and use λ = ax / D for double-slit inte' via distinctive token(s) double, slit",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "dRSE6fpW3iM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.3",
+    "11.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Protons vs Neutrons (in LEGO) - A Level Physics' -> 11.2.3 '\u0007recall that protons and neutrons are not fund' via distinctive token(s) neutron, proton; 11.1.2 'describe a simple model for the nuclear atom t' via distinctive token(s) neutron, proton",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "AJCUVcXq51o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Non-Ohmic Devices as Sensors' names the thermistor/LDR-in-potential-divider sensor use of 10.3.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TWu4U-ngMjk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.5.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'microwave polarisation' names the polarisation phenomenon of 7.5.1 demonstrated with microwaves",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wYkmoZUyAAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Series and Parallel (OCR PAG)' names the spring-constant content of 6.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "boOBAMdwqQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Combining Uncertainties' names the derived-quantity uncertainty assessment of 1.3.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "I4f87E8Z0JA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Thermal Energy in Collisions' names the elastic-collision KE conservation of 3.3.3 (KE lost to heating)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "p8bN2PwlbR0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'What happens to Circuits in Liquid Nitrogen? - A Level Physics' -> 14.2.1 '\u0007understand that a physical property that vari' via distinctive token(s) liquid",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8YSHbxoCRPo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Viscosity of a Liquid' names the viscous/drag forces of 3.2.1 (qualitative); Stokes-style quantification is Edexcel-only",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "SNRp92jIq9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Combining Uncertainties' names the derived-quantity uncertainty assessment of 1.3.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "zBuMcUd9YIM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Lissajous Figures on an Oscilloscope - A Level Physics' -> 7.1.3 '\u0007understand the use of the time-base and y -ga' via distinctive token(s) oscilloscope",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mB36yqMJoVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Liquid Nitrogen and High Voltages' demonstrates the property-varies-with-temperature behaviour of 14.2.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "taT4kdu88Vc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Springs in Parallel and Series' names the spring-constant content of 6.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gtpPsyQ7dD4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Measuring the Resistivity of a Wire' names R = rho L / A of 9.3.6 (the resistivity experiment)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "edgsmtUH954",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.1",
+    "11.2.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'The Standard Model of Particle Physics' names the quark/lepton fundamental-particle content of 11.2.1/11.2.6",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "-vxPGJEJR0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Size, Mass and Density of the Nucleus - A Level Physics' -> 11.1.1 'infer from the results of the α -particle scat' via distinctive token(s) nucleu, size",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bIMe5B65iO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Resistance, and why V=IR is not Ohm's Law - A Level Physics' -> 9.3.5 'state Ohm’s law' via distinctive token(s) ohm",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "fJjeo5nYUyU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.7",
+    "10.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The LDR (Light Dependent Resistor) - A Level Physics' -> 9.3.7 '\u0007understand that the resistance of a light-dep' via distinctive token(s) dependent, ldr; 10.3.4 '\u0007explain the use of thermistors and light-depe' via distinctive token(s) dependent",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "FeUwtLmBz7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.2",
+    "10.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Circuit Symbols - A Level Physics' -> 10.1.2 'draw and interpret circuit diagrams containing' via distinctive token(s) symbol; 10.1.1 'recall and use the circuit symbols shown in se' via distinctive token(s) symbol",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "r3lvzIKKaJg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.6",
+    "4.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Mass and Weight - A Level Physics' -> 3.1.6 '\u0007describe and use the concept of weight as the' via distinctive token(s) weight; 4.1.1 '\u0007understand that the weight of an object may b' via distinctive token(s) weight",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gGXHdgsFA9s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Ductile and Brittle Materials' names the plastic-deformation behaviour of 6.2.1 (elastic vs plastic distinction)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "0YTiPcvydNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.5.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Wave Properties ... Polarisation' names the polarisation phenomenon of 7.5.1; reflection/refraction/diffraction have no CIE A-level spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "l36IeG0dC64",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Adding Vectors (Mathematically and Graphically)' names the coplanar-vector addition of 1.4.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "60oM8QgOdqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.3",
+    "1.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Scalars and Vectors - A Level Physics' -> 1.4.3 'represent a vector as two perpendicular compon' via distinctive token(s) scalar; 1.4.2 '\u0007add and subtract coplanar vectors' via distinctive token(s) scalar",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "O4tA6Nt_iig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Unit Prefixes' names the prefixes spec 1.2.4 directly",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Sb8cxC4lOy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Derived Units' names the derived-units-as-products/quotients content of 1.2.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 303,
-  "specPointsMapped": 131,
-  "specPointsUnmapped": 172,
-  "videosTotal": 176,
-  "videosMapped": 173,
+  "specPointsMapped": 148,
+  "specPointsUnmapped": 155,
+  "videosTotal": 214,
+  "videosMapped": 211,
   "videosUnmapped": 3,
-  "mappingRows": 177,
+  "mappingRows": 215,
   "byConfidence": {
    "high": 0,
-   "medium": 165,
-   "low": 12
+   "medium": 186,
+   "low": 29
   }
  },
  "inputs": {
@@ -5958,7 +8148,13 @@
    "path": "Videos/drafts/cie-a-level-physics-25/video-map.draft.external-p2e.json",
    "task": "T-VIDEOMAP-P2E",
    "reviewAppliedUtc": "2026-11-10T03:30:11Z"
+  },
+  "p6": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-physics-25/video-map.draft.external-p6.json",
+   "task": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)",
+   "reviewAppliedUtc": "2026-11-12T09:56:37Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.036Z"
+ "generatedUtc": "2026-11-12T09:58:57.362Z"
 }

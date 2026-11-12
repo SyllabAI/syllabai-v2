@@ -1,0 +1,34 @@
+{
+  "lane": "t-lesson-motion-ws2",
+  "run": "run-001",
+  "date": "2026-11-12",
+  "plan": "docs/books/PLAN-LESSON-VISUAL-v1.2.md (WS2 — motion tokens; the lane table of record)",
+  "base": "origin/main 6bc20ae3 (fetch-first; WS1 merge 4c958180 verified ancestor)",
+  "scope": "apps/hub/src/app/globals.css (the token block gains the motion tokens + the reduced-motion law) and apps/hub/src/components/books/lesson/lesson-view.tsx (the 8 interactive transition sites consume the tokens) — presentation-only className additions plus CSS custom properties; zero behavior, zero props, zero pack/content bytes, zero new client boundaries; server-first intact",
+  "first_hand_finding_of_record": "the Lesson's 8 interactive transition sites (3 derived-links inner links, 1 aside section-anchor, 2 breadcrumb links, 2 footer chapter buttons) carried NO duration/ease of their own — they rendered Tailwind's implicit defaults (--default-transition-duration: 150ms, --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1), verified in the installed tailwindcss/theme.css): motion that is theme-blind and untokenized. The only per-theme motion on the surface today is candy-shop/chat-app-plum's transition-timing-function re-point on [data-slot=\"button\"] — which reaches NONE of the 8 sites (all raw <a>/<Link>, no data-slot). transition-all census in books/ = 0 (WS3's explicit lists held).",
+  "token_pass": {
+    "globals_token_block": "@theme inline gains --ease-motion: var(--motion-ease) — a first-class v4 utility (ease-motion) whose value resolves through the --motion-ease runtime var so a theme can re-point the curve the way it re-points the fonts (the --app-font-* pattern: the inlined value is itself a var() reference and re-resolves per theme at runtime). :root gains the duration rung --motion-duration-fast: 150ms (v4 has NO duration utility namespace, so this is a pure runtime var consumed via duration-(--motion-duration-fast)) plus the ease raw --motion-ease: cubic-bezier(0.4, 0, 0.2, 1).",
+    "reduced_motion_law": "@media (prefers-reduced-motion: reduce) { :root { --motion-duration-fast: 0ms; } } — the law RIDES THE TOKEN: one re-point turns every token consumer instant, and future consumers inherit the law for free. 'Fewer and gentler, not zero' (side-nav run-006 posture): the state change still lands without the travel; per-site motion-reduce:transition-none stays for non-token motion.",
+    "lesson_sites": "all 8 transition sites gain 'duration-(--motion-duration-fast) ease-motion' after their WS3 explicit transition lists (byte-kept) — one duration voice, one curve voice, tokenized",
+    "rendered_identity": "token values are EXACTLY the implicit defaults the sites rendered before (150ms / cubic-bezier(0.4,0,0.2,1)) — rendered motion is byte-identical on every theme today; the ONLY behavior change is under prefers-reduced-motion (transitions turn instant), which is the lane's law",
+    "compile_proof": "tailwindcss CLI compile of the real src/app/globals.css emits: .duration-\\(--motion-duration-fast\\) { --tw-duration: var(--motion-duration-fast); transition-duration: var(--motion-duration-fast); } / .ease-motion { --tw-ease: var(--motion-ease); transition-timing-function: var(--motion-ease); } / the :root rungs / the reduced-motion :root { --motion-duration-fast: 0ms } re-point. The @theme inline --ease-motion token is LIVE (consumed by the 8 sites), not dead theme."
+  },
+  "not_applicable_disclosure": {
+    "rail_widgets": "lesson-interactive.tsx, lesson-progress.tsx, block-renderer.tsx and the rail widgets carry ZERO transition sites (measured census) — WS6 owns the widget-zone motion pass; adding transitions there was NOT this lane",
+    "strength_check_flow": "2 transition sites (transition-[width] bar, transition-colors option rows) — WS6-adjacent per the WS1 receipt disclosure, byte-kept",
+    "candy_plum_button_beziers": "candy-shop + chat-app-plum each pin transition-timing-function cubic-bezier(0.22,1,0.36,1) rest / cubic-bezier(0.34,1.56,0.64,1) active on [data-slot=\"button\"] — 4 raw copies of the same two values; a dedupe-onto-the-tokens candidate for a later lane, byte-kept here (out of the Lesson's scope)",
+    "body_transition": "the base-layer body transition stays raw 'background-color 0.15s ease, color 0.15s ease' — its 'ease' keyword is NOT the token curve, so tokenizing would have been a rendered change outside the lane; byte-kept, disclosed",
+    "course_shell_row": ".course-shell-row 0.2s ease-in-out + its existing reduced-motion guard stay byte-kept (pre-existing, out of lane)",
+    "theme_repoints": "no theme re-points --motion-ease or --motion-duration-fast in this lane — the tokens ENABLE theme-aware motion; a later lane may apply the re-points (rendered motion on the Lesson stays byte-identical today by design)"
+  },
+  "gates": {
+    "tsc_noEmit": 0,
+    "eslint_changed_file": 0,
+    "lesson_suites": "72 pass / 0 fail / 137 expects (books-lesson + lesson-markdown + books-lesson-links + books-slices)",
+    "full_hub_battery": "1312 pass / 9 fail / 38,960 expects — fail set A/B-IDENTICAL to the stashed clean tree at origin/main 6bc20ae3 in this shell: dual-run posture x5 + store-laws x3 (a cross-file env-pollution class: the suites pass standalone 51/0 WITH the diff; the recycled shell carries no .env, and the full-battery run order makes NEXT_PUBLIC_API_V2_BASE_URL-gated tests execute unmet) + T-UGM-RENDER-1 katex IGCSE (the WS1-known pre-existing fail)",
+    "tailwind_compile": "the real globals.css compiles clean via @tailwindcss/cli (Done in 5s); token utilities + law verified in the emitted CSS (see compile_proof)",
+    "next_build": "delegated to the CI hub gate on the exact head (the repo's disclosed delegation posture)"
+  },
+  "ci_gate_of_record": "verify + hub on the PR head",
+  "honesty": "no data derived, no behavior changed except the reduced-motion law the lane itself mandates; the Lesson's interactive motion becomes one tokenized voice (durations/easings as tokens, theme-re-pointable, reduced-motion-respecting) while rendering byte-identically to the pre-lane surface"
+}

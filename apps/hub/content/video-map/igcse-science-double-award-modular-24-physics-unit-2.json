@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 32,
+  "rowsApproved": 35,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 32,
+    "rowsApproved": 35,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -522,6 +522,51 @@
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "Lvlk6XQTlaI",
+   "title": "Kinetic Energy of Satellites - Start With The Equations, Then See What Cancels...",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Lvlk6XQTlaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 248,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "GfoWEbr8QEc",
+   "title": "The Power of a Motor - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=GfoWEbr8QEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 72,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "rk-7bmuE0Mc",
+   "title": "Atoms and Isotopes - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=rk-7bmuE0Mc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 181,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
   }
  ],
  "mappings": [
@@ -695,6 +740,26 @@
    }
   },
   {
+   "video": "GfoWEbr8QEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.12"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Power of a Motor' names the force-on-current-carrying-wire motor effect of 6.12 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "NjgqJahwsG0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -785,6 +850,27 @@
    ],
    "confidence": "medium",
    "evidence": "title names representing atoms (nuclide symbols; atomic/mass numbers) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "rk-7bmuE0Mc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2",
+    "8.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Atoms and Isotopes - GCSE Physics Worksheet Answers EXPLAINED' -> 7.2 'describe the structure of an atom in terms of ' via distinctive token(s) atom; 7.3 'know the terms atomic (proton) number, mass (n' via distinctive token(s) isotope (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1131,6 +1217,26 @@
    }
   },
   {
+   "video": "Lvlk6XQTlaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Kinetic Energy of Satellites' names the gravitational-orbit content of 8.4 (satellites orbiting under gravity); KE-maths framing exceeds the spec, disclosed (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "okMA18ppu98",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1196,14 +1302,14 @@
   "specPointsTotal": 57,
   "specPointsMapped": 39,
   "specPointsUnmapped": 18,
-  "videosTotal": 32,
-  "videosMapped": 32,
+  "videosTotal": 35,
+  "videosMapped": 35,
   "videosUnmapped": 0,
-  "mappingRows": 32,
+  "mappingRows": 35,
   "byConfidence": {
    "high": 0,
-   "medium": 31,
-   "low": 1
+   "medium": 32,
+   "low": 3
   }
  },
  "inputs": {
@@ -1227,5 +1333,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.142Z"
+ "generatedUtc": "2026-11-12T09:58:57.500Z"
 }

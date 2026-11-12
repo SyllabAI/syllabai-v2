@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_3BY6d33PGXMGkgP7",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "4d49456c7f1b5782074974daf8e7e18227edc301da56e5c663075c34bc0a7081",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_3BY6d33PGXMGkgP7",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q1",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "Which statement describes an undifferentiated, mitosis-capable cell?",
+      "misconceptionClass": "stem definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "An undifferentiated cell able to divide by mitosis and produce specialised descendants",
+          "correct": true,
+          "explanation": "Undifferentiated plus mitosis plus specialisation potential.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A fully specialised cell that repairs tissue",
+          "correct": false,
+          "explanation": "Specialised cells are the opposite of stem cells.",
+          "misconception": "status inverted"
+        },
+        {
+          "key": "C",
+          "text": "Any cell found in bone marrow",
+          "correct": false,
+          "explanation": "Marrow hosts many cell types.",
+          "misconception": "location over-generalised"
+        },
+        {
+          "key": "D",
+          "text": "A cell that has stopped dividing",
+          "correct": false,
+          "explanation": "Stem cells divide by mitosis.",
+          "misconception": "property denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q2",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "When a stem cell divides, what can its daughters become?",
+      "misconceptionClass": "division outcomes",
+      "options": [
+        {
+          "key": "A",
+          "text": "They merge into one larger cell",
+          "correct": false,
+          "explanation": "Absurd.",
+          "misconception": "absurd option"
+        },
+        {
+          "key": "B",
+          "text": "They may stay undifferentiated or specialise into particular cell types",
+          "correct": true,
+          "explanation": "Both fates are named.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "They always become specialised immediately",
+          "correct": false,
+          "explanation": "Self-renewal is half the story.",
+          "misconception": "outcome truncated"
+        },
+        {
+          "key": "D",
+          "text": "They always remain stem cells",
+          "correct": false,
+          "explanation": "Specialisation is the other half.",
+          "misconception": "outcome truncated"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q3",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "Which statement contrasts adult and embryonic stem cells correctly?",
+      "misconceptionClass": "adult vs embryonic",
+      "options": [
+        {
+          "key": "A",
+          "text": "Embryonic stem cells are found in bone marrow",
+          "correct": false,
+          "explanation": "They exist only in embryos.",
+          "misconception": "location swapped"
+        },
+        {
+          "key": "B",
+          "text": "Both types exist only in embryos",
+          "correct": false,
+          "explanation": "Adult stem cells live in tissues.",
+          "misconception": "scope wrong"
+        },
+        {
+          "key": "C",
+          "text": "Embryonic stem cells can differentiate into any cell type; adult ones into a limited range",
+          "correct": true,
+          "explanation": "Potency difference is the named contrast.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Adult stem cells can become any cell type",
+          "correct": false,
+          "explanation": "Their range is limited.",
+          "misconception": "potency over-claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q4",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "Where are adult stem cells found, according to the note?",
+      "misconceptionClass": "adult location",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only in embryos",
+          "correct": false,
+          "explanation": "That is the embryonic kind.",
+          "misconception": "type confusion"
+        },
+        {
+          "key": "B",
+          "text": "Floating freely in the blood",
+          "correct": false,
+          "explanation": "Not the named home.",
+          "misconception": "location invented"
+        },
+        {
+          "key": "C",
+          "text": "Nowhere after birth",
+          "correct": false,
+          "explanation": "They persist in tissues.",
+          "misconception": "existence denied"
+        },
+        {
+          "key": "D",
+          "text": "In some tissues and organs, for example the bone marrow",
+          "correct": true,
+          "explanation": "The named location with its example.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q5",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "Why are embryonic stem cells prized for therapy despite the ethics?",
+      "misconceptionClass": "therapy pull",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because their wider differentiation range lets them become whichever tissue a treatment needs",
+          "correct": true,
+          "explanation": "Potency is the therapeutic advantage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because they multiply faster than bacteria",
+          "correct": false,
+          "explanation": "No such claim.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "C",
+          "text": "Because they avoid all immune rejection",
+          "correct": false,
+          "explanation": "Rejection risk still applies.",
+          "misconception": "advantage over-claim"
+        },
+        {
+          "key": "D",
+          "text": "Because they are the only undifferentiated cells",
+          "correct": false,
+          "explanation": "Adult stem cells exist too.",
+          "misconception": "uniqueness over-claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q6",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "State the word for a cell that has not yet specialised.",
+      "misconceptionClass": "undifferentiated recall",
+      "kind": "recall",
+      "modelAnswer": "Undifferentiated.",
+      "keywords": [
+        "undifferentiated",
+        "specialised",
+        "embryonic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q7",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "Name the process by which stem cells divide.",
+      "misconceptionClass": "division process recall",
+      "kind": "recall",
+      "modelAnswer": "Mitosis — the division route stem cells use.",
+      "keywords": [
+        "mitosis",
+        "division",
+        "route",
+        "cells"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q8",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "Explain why bone marrow counts as a stem-cell niche even though blood cells are constantly made there.",
+      "misconceptionClass": "marrow reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Bone marrow hosts adult stem cells that keep dividing by mitosis, feeding the constant production of blood cells; the tissue's ability to restock red cells, white cells and platelets is exactly the self-renewal-plus-specialisation behaviour that defines a stem-cell population.",
+      "keywords": [
+        "marrow",
+        "mitosis",
+        "blood",
+        "specialisation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L1::Q9",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L1",
+      "stem": "A lab brochure claims its cell line 'can become any human cell type'. Which stem-cell class does that describe, and where must the line have come from?",
+      "misconceptionClass": "potency application",
+      "kind": "application",
+      "modelAnswer": "Any-type potency describes embryonic stem cells, so the line must have originated from embryonic tissue rather than from an adult tissue such as bone marrow.",
+      "keywords": [
+        "embryonic",
+        "potency",
+        "tissue",
+        "originated"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q1",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "Which blood products does a bone-marrow transplant restore?",
+      "misconceptionClass": "marrow products",
+      "options": [
+        {
+          "key": "A",
+          "text": "Plasma proteins only",
+          "correct": false,
+          "explanation": "Not the named products.",
+          "misconception": "product invented"
+        },
+        {
+          "key": "B",
+          "text": "Red cells, white cells and platelets",
+          "correct": true,
+          "explanation": "All three lineages are named.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Red cells only",
+          "correct": false,
+          "explanation": "White cells and platelets too.",
+          "misconception": "scope truncated"
+        },
+        {
+          "key": "D",
+          "text": "Platelets only",
+          "correct": false,
+          "explanation": "All three lineages.",
+          "misconception": "scope truncated"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q2",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "Why might a patient's immune system reject donor bone-marrow cells?",
+      "misconceptionClass": "rejection mechanism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because donor cells cannot divide",
+          "correct": false,
+          "explanation": "They divide by mitosis.",
+          "misconception": "property denied"
+        },
+        {
+          "key": "B",
+          "text": "Because marrow cells lack haemoglobin",
+          "correct": false,
+          "explanation": "Irrelevant to rejection.",
+          "misconception": "reason invented"
+        },
+        {
+          "key": "C",
+          "text": "The donor cells carry different surface antigens from the patient's own",
+          "correct": true,
+          "explanation": "Antigen difference is the named trigger.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because donor cells are larger",
+          "correct": false,
+          "explanation": "Size is irrelevant.",
+          "misconception": "reason invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q3",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "What advantage do a patient's OWN stem cells have over donor cells?",
+      "misconceptionClass": "own-cell advantage",
+      "options": [
+        {
+          "key": "A",
+          "text": "They can become any cell type",
+          "correct": false,
+          "explanation": "Adult cells have limited range.",
+          "misconception": "potency over-claim"
+        },
+        {
+          "key": "B",
+          "text": "They are free of ethical objections always",
+          "correct": false,
+          "explanation": "Ethics depends on the source, and adult autologous cells are the uncontroversial case.",
+          "misconception": "ethics over-generalised"
+        },
+        {
+          "key": "C",
+          "text": "They divide faster than embryonic cells",
+          "correct": false,
+          "explanation": "No such claim.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "D",
+          "text": "No rejection and no immunosuppressant drugs needed",
+          "correct": true,
+          "explanation": "Both benefits are named.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q4",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "Which illness is treated with red blood cells from marrow-derived stem cells?",
+      "misconceptionClass": "anaemia case",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anaemia — the blood cannot carry enough oxygen",
+          "correct": true,
+          "explanation": "The named pairing.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Pneumonia",
+          "correct": false,
+          "explanation": "That is a bacterial lung infection.",
+          "misconception": "disease mismatch"
+        },
+        {
+          "key": "C",
+          "text": "Malaria",
+          "correct": false,
+          "explanation": "That is a protoctist disease.",
+          "misconception": "disease mismatch"
+        },
+        {
+          "key": "D",
+          "text": "Diabetes",
+          "correct": false,
+          "explanation": "Not the named case.",
+          "misconception": "disease invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q5",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "What is the ethical objection some people raise about embryonic stem cells?",
+      "misconceptionClass": "ethics core",
+      "options": [
+        {
+          "key": "A",
+          "text": "Embryonic cells cannot specialise",
+          "correct": false,
+          "explanation": "They can specialise into anything.",
+          "misconception": "property inverted"
+        },
+        {
+          "key": "B",
+          "text": "Growing human embryos as a source treats embryos as potential human life to be harvested",
+          "correct": true,
+          "explanation": "The embryo-status concern is the named objection.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Embryonic cells are expensive to freeze",
+          "correct": false,
+          "explanation": "Cost is not the named objection.",
+          "misconception": "objection invented"
+        },
+        {
+          "key": "D",
+          "text": "Embryos divide too slowly",
+          "correct": false,
+          "explanation": "Irrelevant.",
+          "misconception": "objection invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q6",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "Name the surface proteins whose difference triggers rejection of donor cells.",
+      "misconceptionClass": "antigen recall",
+      "kind": "recall",
+      "modelAnswer": "Antigens — the surface proteins that mark cell identity.",
+      "keywords": [
+        "antigens",
+        "proteins",
+        "identity",
+        "surface"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q7",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "Name the drugs a patient takes to prevent immune rejection of donor cells.",
+      "misconceptionClass": "drug recall",
+      "kind": "recall",
+      "modelAnswer": "Immunosuppressant drugs.",
+      "keywords": [
+        "immunosuppressant",
+        "drugs",
+        "rejection",
+        "patient"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q8",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "Explain why white-cell transfusions from marrow-derived stem cells help patients with weakened immune systems.",
+      "misconceptionClass": "white cell reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "White cells such as phagocytes and lymphocytes are the immune system's working cells; a patient with a reduced immune system lacks them, so marrow-derived white cells restore pathogen-fighting capacity directly.",
+      "keywords": [
+        "white",
+        "immune",
+        "lymphocytes",
+        "phagocytes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3BY6d33PGXMGkgP7::L2::Q9",
+      "moduleId": "rn_3BY6d33PGXMGkgP7::L2",
+      "stem": "A hospital must choose between donor marrow and the patient's own marrow cells for a transplant. Using this note, state which is safer and give the two-part reason.",
+      "misconceptionClass": "transplant choice application",
+      "kind": "application",
+      "modelAnswer": "The patient's own marrow cells are safer: they carry the patient's own antigens, so no immune rejection occurs, and the patient avoids immunosuppressant drugs with their infection risks.",
+      "keywords": [
+        "antigens",
+        "rejection",
+        "immunosuppressant",
+        "patient's"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -140,6 +140,74 @@ describe("FailoverLlmChain — media routing (the frozen HUB-ANSWER-BOX law)", (
     }
     expect(groqOk.calls).toHaveLength(0);
   });
+
+  test("VISION-FB tail: media walks gemini → groq-vision → openrouter-vision (the fallback law)", async () => {
+    const geminiDown = fetchJson(500, { error: "gemini down" });
+    const groqVisionOk = fetchJson(200, {
+      model: "meta-llama/llama-4-scout-17b-16e-instruct",
+      choices: [{ finish_reason: "stop", message: { content: "scout read the crop" } }],
+    });
+    const openrouterVisionOk = fetchJson(200, {
+      choices: [{ finish_reason: "stop", message: { content: "never" } }],
+    });
+    const textGroq = fetchJson(200, { choices: [{ finish_reason: "stop", message: { content: "never" } }] });
+    const chain = new FailoverLlmChain([
+      // the §26.1 tail position: text-only groq member first, gemini primary,
+      // then the VISION-FB slots appended at the end (insertion = routing)
+      groq(textGroq.fetchImpl),
+      gemini(geminiDown.fetchImpl),
+      new OpenAiCompatibleChainMember(
+        "groq-vision",
+        { apiKey: "gsk", baseUrl: "https://groq.test/v1", model: "meta-llama/llama-4-scout-17b-16e-instruct" },
+        { ...MEMBER_OPTS, fetchImpl: groqVisionOk.fetchImpl },
+        true, // mediaCapable — the vision slot
+      ),
+      new OpenAiCompatibleChainMember(
+        "openrouter-vision",
+        { apiKey: "ok", baseUrl: "https://openrouter.test/api/v1", model: "nvidia/nemotron-3.5-super-vl:free" },
+        { ...MEMBER_OPTS, fetchImpl: openrouterVisionOk.fetchImpl },
+        true,
+      ),
+    ]);
+    const out = await chain.generate({ system: "s", user: "u", media: { base64: "QUJD", mimeType: "image/png" } });
+    expect(out.text).toBe("scout read the crop");
+    expect(out.providerName).toBe("groq-vision");
+    // the text-only member NEVER sees the image (routing filter, not luck)
+    expect(textGroq.calls).toHaveLength(0);
+    // gemini was tried first (the PRIMARY vision member of record) and the
+    // chain failed over to the free-model fallback
+    expect(geminiDown.calls).toHaveLength(1);
+    // openrouter-vision is last — never reached once groq-vision served
+    expect(openrouterVisionOk.calls).toHaveLength(0);
+    // the wire shape carries the image_url data URL (the OpenAI parts law)
+    const body = JSON.parse(String(groqVisionOk.calls[0]!.init.body)) as {
+      messages: Array<{ role: string; content: unknown }>;
+    };
+    const userContent = body.messages.find((m) => m.role === "user")!.content as Array<Record<string, unknown>>;
+    expect(userContent[0]).toEqual({
+      type: "image_url",
+      image_url: { url: "data:image/png;base64,QUJD" },
+    });
+    expect(userContent[1]).toEqual({ type: "text", text: "u" });
+  });
+
+  test("VISION-FB tail: TEXT requests keep the frozen §26.1 order — the tail is failover depth only", async () => {
+    const groqOk = fetchJson(200, { choices: [{ finish_reason: "stop", message: { content: "groq text" } }] });
+    const groqVisionOk = fetchJson(200, { choices: [{ finish_reason: "stop", message: { content: "never" } }] });
+    const chain = new FailoverLlmChain([
+      groq(groqOk.fetchImpl),
+      new OpenAiCompatibleChainMember(
+        "groq-vision",
+        { apiKey: "gsk", baseUrl: "https://groq.test/v1", model: "meta-llama/llama-4-scout-17b-16e-instruct" },
+        { ...MEMBER_OPTS, fetchImpl: groqVisionOk.fetchImpl },
+        true,
+      ),
+    ]);
+    const out = await chain.generate({ system: "s", user: "u" });
+    expect(out.text).toBe("groq text");
+    expect(out.providerName).toBe("groq");
+    expect(groqVisionOk.calls).toHaveLength(0); // the tail never preempted the primary
+  });
 });
 
 describe("FailoverLlmChain.generate — the failover + aggregate contract", () => {

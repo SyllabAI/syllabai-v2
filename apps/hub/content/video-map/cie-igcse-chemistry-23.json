@@ -6,7 +6,12 @@
   "provider": "multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only)",
   "label": "cie-igcse-chemistry-23",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p5": {
+   "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
+   "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-01T01:04:15Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2C",
@@ -14,9 +19,94 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 15 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 15,
+  "rowsApproved": 77,
   "rowsRejected": 0,
-  "rejects": []
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P2C",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "Same title-only posture. All 15 mappings passed: every title names its spec's distinctive content exactly.",
+    "rowsApproved": 15,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p5 (cognito completion)",
+    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-12",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+    "ruledUtc": "2026-11-12T07:07:10Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Programmatic re-verification: oEmbed author Cognito 62/62, all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: borderline rows kept at low with disclosed partial overlap; full-row drops and spec trims below.",
+    "rowsApproved": 62,
+    "rowsRejected": 12,
+    "rejects": [
+     {
+      "video": "1BCc_RrrSSw",
+      "reason": "self-review full-row drop: flame emission spectroscopy has no CIE 0620 spec; the 12.5.4 flame-test bind is keyword-adjacent, not title-named content",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "td8WR_FOQc0",
+      "reason": "no honest binding: candidate list has no potable-water or desalination specs; retrieved specs cover rusting, salt hydration and equilibrium instead",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "-i_Eug83uzo",
+      "reason": "no honest binding: no candidate covers lifecycle assessment; only galvanising and poly(ethene) specs retrieved",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "pKOf6WvYgMQ",
+      "reason": "no honest binding: candidate list is empty",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "DnFcyhsSVGg",
+      "reason": "no honest binding: only candidate is apparatus measurement; no atmosphere-evolution spec in candidates",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "eZCtGJwns0Q",
+      "reason": "no honest binding: no candidate covers atom economy; CIE candidate list lacks that spec",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "YZi5DnMX0XM",
+      "reason": "no honest binding: no conservation-of-mass spec among candidates",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "NtRgKuNiQ-Y",
+      "reason": "no honest binding: no nanoparticle spec among candidates; CIE list lacks the topic",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "ZeJubj0KWdM",
+      "reason": "no honest binding: no graphene or fullerene spec among candidates; only graphite/diamond specs retrieved",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "NVnnIjUbXNQ",
+      "reason": "no honest binding: no history/development-of-periodic-table spec among candidates",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "9WNFwOqb_24",
+      "reason": "no honest binding: candidates only cover deducing formulae from models, not atomic-model history",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "7o27fhO_nm0",
+      "reason": "no honest binding: no naturally-occurring-polymer (protein/DNA/carbohydrate) spec among candidates; only addition/condensation polymerisation specs retrieved",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     }
+    ]
+   }
+  ]
  },
  "videos": [
   {
@@ -243,6 +333,936 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "mR3GI7SXNqA",
+   "title": "GCSE Chemistry - Waste Water Treatment - Sources of Waste Water | How to Treat it (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mR3GI7SXNqA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "H0Z_R6GLo9A",
+   "title": "GCSE Chemistry - Air Pollution - How Pollutants are Made | Why They're Harmful (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=H0Z_R6GLo9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 276,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "A74Sf8U3v_E",
+   "title": "GCSE Chemistry - Carbon Footprints - Measuring Footprints | Reducing Emissions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=A74Sf8U3v_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "wFZrm7CAg0M",
+   "title": "GCSE Chemistry - Distillation - Simple & Fractional Distillation (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=wFZrm7CAg0M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "5ZzDxYY48HQ",
+   "title": "GCSE Chemistry - Greenhouse Gases & Climate Change (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=5ZzDxYY48HQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 389,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "QH-7X5STCO4",
+   "title": "GCSE Chemistry - Testing for Gases - Hydrogen/Chlorine/Oxygen/CO2 (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=QH-7X5STCO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 241,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "X1zptKXIEfY",
+   "title": "GCSE Chemistry - Purity & Formulations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=X1zptKXIEfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LfweGr7Y8L4",
+   "title": "GCSE Chemistry - Cracking & Alkenes - Catalytic & Steam Cracking | Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LfweGr7Y8L4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 401,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-qxeVFJh4e4",
+   "title": "GCSE Chemistry - Fractional Distillation - Crude Oil | Hydrocarbons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-qxeVFJh4e4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 335,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "MvC2nieIv3A",
+   "title": "GCSE Chemistry - Alkanes - Properties & Combustion (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=MvC2nieIv3A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 356,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "oQalH_mfOfg",
+   "title": "GCSE Chemistry - Balancing Equations | Writing Word & Symbol Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=oQalH_mfOfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 384,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "2ATXC_weN7s",
+   "title": "GCSE Chemistry - Hydrocarbons - Alkanes & Homologous Series (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=2ATXC_weN7s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 305,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "KZPO23kia_o",
+   "title": "GCSE Chemistry - Le Chatelier's Principle - Position of Equilibrium in Reversible Reactions",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=KZPO23kia_o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 253,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "5rC6f_P_A48",
+   "title": "GCSE Chemistry - Reversible Reactions & Dynamic Equilibrium (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=5rC6f_P_A48",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 388,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "aanZzrUPEDw",
+   "title": "GCSE Chemistry -  Measuring Rates of Reaction from Graphs - Mean Rate & Rate at a Specific Time",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=aanZzrUPEDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 395,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "JK7yPzO9POU",
+   "title": "GCSE Chemistry - Factors Affecting Rate of Reaction & Collision Theory (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=JK7yPzO9POU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 338,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "HaQm4pNMZug",
+   "title": "GCSE Chemistry -  Rates of Reaction - How to Measure it | How to Show it on Graphs (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=HaQm4pNMZug",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 302,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "NAYCRPyd4xU",
+   "title": "GCSE Chemistry - Fuel Cells - Structure | How they Work | Half Equations | Pros & Cons",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=NAYCRPyd4xU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 464,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "CegXaqWMyr4",
+   "title": "GCSE Chemistry - Bond Energies - Determining if Reactions are Exothermic or Endothermic",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=CegXaqWMyr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 294,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "hNNvIsQLSV8",
+   "title": "GCSE Chemistry - Exothermic & Endothermic Reactions - Reaction Profiles | Activation Energy",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=hNNvIsQLSV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 348,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "QlG9Kt-9yTI",
+   "title": "GCSE Chemistry - Redox Reactions - Displacement Reactions | Ionic Equations | Half Equations",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=QlG9Kt-9yTI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "lvEJiiUkrWg",
+   "title": "GCSE Chemistry - Separating Metals from Metal Oxides | Extraction of Metals & Reduction",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=lvEJiiUkrWg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 280,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "NBw5s7cuwMc",
+   "title": "GCSE Chemistry - The Reactivity Series - Metal Reactions | Displacement Reactions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=NBw5s7cuwMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 268,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "vcxlISVJ6Os",
+   "title": "GCSE Chemistry - Neutralisation Reactions | Reactions of Acids (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vcxlISVJ6Os",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 305,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "FOgZgMBbnXM",
+   "title": "GCSE Chemistry - Strong Acids & Weak Acids | pH & Concentration of Hydrogen Ions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=FOgZgMBbnXM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 340,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Yrf3Z_TQu_k",
+   "title": "GCSE Chemistry - Acids & Bases - pH | Features | Neutralisation Reactions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Yrf3Z_TQu_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 332,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "DIird9oZVII",
+   "title": "GCSE Chemistry - Percentage Yield - Theoretical & Actual Yield | Calculations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=DIird9oZVII",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 310,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "rluAIfmi7x8",
+   "title": "GCSE Chemistry - Concentration Calculations (grams per dm³) (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=rluAIfmi7x8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 233,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Xx9xrkbDLog",
+   "title": "GCSE Chemistry - Gas Calculations - Volume & Moles | Mass, Moles & Mr (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Xx9xrkbDLog",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 418,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LTnhZvyOvFU",
+   "title": "GCSE Chemistry - Limiting Reactants & Balanced Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LTnhZvyOvFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 285,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "kBlmEfS_P00",
+   "title": "GCSE Chemistry - Moles & Mass - Avogadro's Constant | Formula for Moles, Mass & Mr (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=kBlmEfS_P00",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 293,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-I2mwJH6MhA",
+   "title": "GCSE Chemistry - Relative Formula Mass | Mr & Percentage Mass Calculations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-I2mwJH6MhA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "tRKkGRBndto",
+   "title": "GCSE Chemistry - Metallic Bonding - Properties of Metals | Alloys & Pure Metals (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=tRKkGRBndto",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 239,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "RVV8pncaA7A",
+   "title": "GCSE Chemistry - Diamond & Graphite - Structure | Properties (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=RVV8pncaA7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 227,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "SxuldWdqFB0",
+   "title": "GCSE Chemistry - Types of Covalent Structures: Simple Molecular & Giant Covalent Structures",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=SxuldWdqFB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 322,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "7IkYm7ZgiAw",
+   "title": "GCSE Chemistry - Covalent Bonding - Formation | Drawing Covalent Bonds (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=7IkYm7ZgiAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 357,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ybi6kQHKVws",
+   "title": "GCSE Chemistry - Ionic Compounds - Structure | Properties | Formula (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ybi6kQHKVws",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 392,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "MdU44WeiLps",
+   "title": "GCSE Chemistry - Ionic Bonding - Formation | Dot and Cross Diagrams (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=MdU44WeiLps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 279,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "V1OXjdN9QoU",
+   "title": "GCSE Chemistry - Formation of Ions - Electrons | Charge | Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=V1OXjdN9QoU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "uYubwlPRdCs",
+   "title": "GCSE Chemistry - Group 7 & Group 0 Elements - Halogens & Noble Gases | Properties | Trends",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=uYubwlPRdCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "TGZs93DzMDY",
+   "title": "GCSE Chemistry - Group 1 Elements - Alkali Metals | Properties | Reactivity (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=TGZs93DzMDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 380,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "DOB_fJO6-uA",
+   "title": "GCSE Chemistry - Metals & Non-metals: Electron Arrangement & Properties (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=DOB_fJO6-uA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 313,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "kvTzdD1eGUQ",
+   "title": "GCSE Chemistry - Electronic Structure (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=kvTzdD1eGUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 411,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "29Rd-Lly-fw",
+   "title": "GCSE Chemistry - Separation Techniques - Filtration | Evaporation | Crystallisation",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=29Rd-Lly-fw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "E15yF8dNGr8",
+   "title": "GCSE Chemistry - Compounds, Molecules & Mixtures (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=E15yF8dNGr8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 381,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-FBk8cNvJds",
+   "title": "GCSE Chemistry - Elements, Isotopes & Relative Atomic Mass (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=-FBk8cNvJds",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 443,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "zuQ469vjwgo",
+   "title": "Atoms & Ions | Protons, Neutrons, Electrons (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=zuQ469vjwgo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 469,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "me19WmGg8Dw",
+   "title": "Electrolysis Part 3/3 - Aqueous Solutions (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=me19WmGg8Dw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "t11ViUTDNzE",
+   "title": "Electrolysis Part 2/3 - Electrolysis to Extract Metals From Oxides (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=t11ViUTDNzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 385,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "RAEm-kJ_QkU",
+   "title": "Electrolysis Part 1/3 - Basics and Molten Compounds (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=RAEm-kJ_QkU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 260,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "1_HoWz5Kxfk",
+   "title": "GCSE Chemistry - The Haber Process Explained (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=1_HoWz5Kxfk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 337,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "q0CAfXV-YdY",
+   "title": "GCSE Chemistry - What is Corrosion and How to Stop it (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=q0CAfXV-YdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 379,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "U-eCXeFwTgY",
+   "title": "GCSE Chemistry - Condensation Polymers (Polyesters) (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=U-eCXeFwTgY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "mWTgHjdea4Y",
+   "title": "GCSE Chemistry - Tests for Anions - Carbonate, Sulfate and Halide Ions (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mWTgHjdea4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "cYgRd4rXY6I",
+   "title": "GCSE Chemistry - Esters (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=cYgRd4rXY6I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 122,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ED9EU3FfzyU",
+   "title": "GCSE Chemistry - Carboxylic Acids (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ED9EU3FfzyU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 185,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "1ZUg6ZC3ltA",
+   "title": "GCSE Chemistry - Addition Polymers & Polymerisation (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=1ZUg6ZC3ltA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 431,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "vVwLa1fRsVY",
+   "title": "GCSE Chemistry - Alcohols",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vVwLa1fRsVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 248,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "83Is-rouV-U",
+   "title": "GCSE Chemistry - Addition Reactions of Alkenes",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=83Is-rouV-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 345,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "MEQ1YGxfAQ4",
+   "title": "GCSE Chemistry - Moles, Concentration & Volume Calculations",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=MEQ1YGxfAQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 364,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "TdJ57SQ6GAQ",
+   "title": "GCSE Chemistry - Paper Chromatography",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=TdJ57SQ6GAQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 393,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "hkBrw2fG75U",
+   "title": "GCSE Chemistry - States of Matter & Changing State",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=hkBrw2fG75U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 262,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
   }
  ],
  "mappings": [
@@ -474,20 +1494,1039 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "video": "mR3GI7SXNqA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.7",
+    "10.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Waste Water Treatment - Sources of Waste Water | How to Treat it' = sewage sources and treatment adjacent to domestic water treatment spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "H0Z_R6GLo9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Air Pollution - Why They're Harmful' = adverse effects of air pollutants",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "A74Sf8U3v_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Reducing Emissions' = strategies to reduce greenhouse gas emission effects",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wFZrm7CAg0M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.4.1",
+    "11.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Distillation - Simple & Fractional Distillation' = distillation as separation method with petroleum fraction application",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "5ZzDxYY48HQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Greenhouse Gases & Climate Change' = carbon dioxide and methane causing global warming",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QH-7X5STCO4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Testing for Gases - Hydrogen/Chlorine/Oxygen/CO2' = chemical tests to identify gases",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "X1zptKXIEfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.4.3",
+    "3.3.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Purity & Formulations' = assessing purity via melting point and percentage purity calculations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LfweGr7Y8L4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.5.3",
+    "11.5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Cracking & Alkenes - Catalytic & Steam Cracking' = cracking larger alkanes to manufacture alkenes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "-qxeVFJh4e4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.3.5",
+    "11.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fractional Distillation - Crude Oil' = separating petroleum into useful fractions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MvC2nieIv3A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Alkanes - Properties & Combustion' = alkane unreactivity except complete and incomplete combustion",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "oQalH_mfOfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Balancing Equations | Writing Word & Symbol Equations' = constructing word and symbol equations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "2ATXC_weN7s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.4.1",
+    "11.1.4",
+    "11.1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Hydrocarbons - Alkanes & Homologous Series' = saturated alkanes and homologous series characteristics",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KZPO23kia_o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.4",
+    "6.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title \"Le Chatelier's Principle - Position of Equilibrium\" = predicting how conditions shift equilibrium position",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "5rC6f_P_A48",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.3",
+    "6.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reversible Reactions & Dynamic Equilibrium' = closed-system equilibrium and direction change",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "aanZzrUPEDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Measuring Rates of Reaction from Graphs' = interpreting graphs from rate experiments",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JK7yPzO9POU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.6",
+    "6.2.5",
+    "6.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Factors Affecting Rate of Reaction & Collision Theory' = collision-theory explanations of rate factors",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "HaQm4pNMZug",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.8",
+    "6.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How to Measure it | How to Show it on Graphs' = practical rate methods and graph interpretation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NAYCRPyd4xU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1",
+    "4.2.2",
+    "4.1.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fuel Cells - Half Equations | Pros & Cons' = hydrogen-oxygen fuel cells with electrode half-equations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CegXaqWMyr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.8",
+    "5.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Bond Energies - Exothermic or Endothermic' = calculating enthalpy from bond breaking and making",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hNNvIsQLSV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.6",
+    "5.1.5",
+    "5.1.1",
+    "5.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reaction Profiles | Activation Energy' = drawing pathway diagrams with activation energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QlG9Kt-9yTI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.4.8",
+    "6.4.7",
+    "3.1.7",
+    "9.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Redox Reactions - Displacement | Ionic Equations' = electron-transfer redox, displacement and ionic equations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "lvEJiiUkrWg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.6.1",
+    "9.6.2",
+    "9.6.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Separating Metals from Metal Oxides | Extraction of Metals' = ore reduction and electrolytic extraction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NBw5s7cuwMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.4.1",
+    "9.4.2",
+    "9.4.4",
+    "9.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Reactivity Series - Metal Reactions | Displacement' = reactivity order from metal reactions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vcxlISVJ6Os",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.8",
+    "7.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Neutralisation Reactions | Reactions of Acids' = acid-alkali neutralisation and characteristic acid reactions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "FOgZgMBbnXM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.10",
+    "7.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Strong Acids & Weak Acids | pH & Concentration of Hydrogen Ions' = dissociation and hydrogen-ion concentration",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Yrf3Z_TQu_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.1",
+    "7.1.4",
+    "7.1.8",
+    "7.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Acids & Bases - pH | Features | Neutralisation' = characteristic acid and base reactions with pH",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "DIird9oZVII",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Percentage Yield - Theoretical & Actual Yield' = calculating percentage yield",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "rluAIfmi7x8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Concentration Calculations (grams per dm³)' = concentration units and solution volume calculations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Xx9xrkbDLog",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.4",
+    "3.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Gas Calculations - Volume & Moles' = molar gas volume and mole-mass relationships",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LTnhZvyOvFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.5",
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Limiting Reactants & Balanced Equations' = limiting-reactant stoichiometry with equation construction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kBlmEfS_P00",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3",
+    "3.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title \"Moles & Mass - Avogadro's Constant\" = mole unit and mass-molar-mass relationship",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "-I2mwJH6MhA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.2",
+    "3.3.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Relative Formula Mass | Mr & Percentage Mass' = formula mass and percentage composition",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tRKkGRBndto",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7.1",
+    "2.7.2",
+    "9.3.1",
+    "9.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Metallic Bonding - Properties of Metals | Alloys & Pure Metals' = metallic lattice bonding and alloy hardness",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RVV8pncaA7A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.6.1",
+    "2.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Diamond & Graphite - Structure | Properties' = giant covalent structures of graphite and diamond",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "SxuldWdqFB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5.3",
+    "2.5.5",
+    "2.6.1",
+    "2.6.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Simple Molecular & Giant Covalent Structures' = properties of both covalent structure types",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7IkYm7ZgiAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5.2",
+    "2.5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Covalent Bonding - Formation | Drawing Covalent Bonds' = bond formation with dot-and-cross diagrams",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ybi6kQHKVws",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.5",
+    "2.4.4",
+    "2.4.7",
+    "3.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Ionic Compounds - Structure | Properties | Formula' = giant ionic lattice properties and formulae",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MdU44WeiLps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.3",
+    "2.4.6",
+    "2.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Ionic Bonding - Formation | Dot and Cross Diagrams' = ionic bond formation with dot-and-cross diagrams",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "V1OXjdN9QoU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.3",
+    "2.4.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Formation of Ions - Electrons | Charge' = ion formation charges linked to group number",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uYubwlPRdCs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.1",
+    "8.5.1",
+    "8.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Group 7 & Group 0 - Halogens & Noble Gases' = halogen trends and noble-gas unreactivity",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TGZs93DzMDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.1",
+    "8.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Group 1 Elements - Alkali Metals | Reactivity' = alkali-metal properties and reactivity trends",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "DOB_fJO6-uA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1",
+    "8.1.2",
+    "8.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Metals & Non-metals: Electron Arrangement & Properties' = comparing metal and non-metal properties",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kvTzdD1eGUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electronic Structure' = determining electronic configuration of elements",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "29Rd-Lly-fw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Separation Techniques - Filtration | Evaporation | Crystallisation' = separation and purification methods",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "E15yF8dNGr8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Compounds, Molecules & Mixtures' = differences between elements, compounds and mixtures",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "-FBk8cNvJds",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4",
+    "3.2.1",
+    "2.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Elements, Isotopes & Relative Atomic Mass' = isotopes and relative atomic mass",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "zuQ469vjwgo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.1",
+    "2.2.2",
+    "2.2.3",
+    "2.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Atoms & Ions | Protons, Neutrons, Electrons' = atomic structure and subatomic charges",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "me19WmGg8Dw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.9",
+    "4.1.10",
+    "4.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrolysis Part 3/3 - Aqueous Solutions' = electrolysis of aqueous compounds with selective discharge",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "t11ViUTDNzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.6.5",
+    "9.6.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrolysis to Extract Metals From Oxides' = extracting aluminium from bauxite by electrolysis",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RAEm-kJ_QkU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.2",
+    "4.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrolysis Part 1/3 - Basics and Molten Compounds' = defining electrolysis and predicting molten products",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1_HoWz5Kxfk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.5",
+    "6.3.6",
+    "6.3.7",
+    "6.3.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Haber Process Explained' = Haber raw materials, conditions and compromise explanation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "q0CAfXV-YdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.5.1",
+    "9.5.3",
+    "9.5.4",
+    "9.5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'What is Corrosion and How to Stop it' = rusting conditions and prevention methods",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "U-eCXeFwTgY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.8.8",
+    "11.8.9",
+    "11.8.10",
+    "11.8.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Condensation Polymers (Polyesters)' = condensation polymerisation and polyester repeat units",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mWTgHjdea4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Tests for Anions - Carbonate, Sulfate and Halide Ions' = anion identification tests",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "cYgRd4rXY6I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.7.3",
+    "11.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Esters' = ester formation from acid plus alcohol and naming esters",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ED9EU3FfzyU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.7.1",
+    "11.7.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Carboxylic Acids' = ethanoic acid reactions and formation by oxidation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1ZUg6ZC3ltA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.8.2",
+    "11.8.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Addition Polymers & Polymerisation' = poly(ethene) formation and repeat units",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vVwLa1fRsVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.6.1",
+    "11.6.2",
+    "11.6.3",
+    "11.6.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Alcohols' = ethanol manufacture, combustion and uses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "83Is-rouV-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.5.6",
+    "11.5.5",
+    "11.5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Addition Reactions of Alkenes' = alkene addition reactions forming single products",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MEQ1YGxfAQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.5",
+    "3.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Moles, Concentration & Volume Calculations' = concentration, solution and gas volume calculations",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TdJ57SQ6GAQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.3.1",
+    "12.3.2",
+    "12.3.3",
+    "12.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Paper Chromatography' = chromatogram separation, interpretation and Rf values",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hkBrw2fG75U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.2",
+    "1.1.3",
+    "1.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'States of Matter & Changing State' = particle models and changes of state",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 252,
-  "specPointsMapped": 17,
-  "specPointsUnmapped": 235,
-  "videosTotal": 15,
-  "videosMapped": 15,
+  "specPointsMapped": 137,
+  "specPointsUnmapped": 115,
+  "videosTotal": 77,
+  "videosMapped": 77,
   "videosUnmapped": 0,
-  "mappingRows": 15,
+  "mappingRows": 77,
   "byConfidence": {
    "high": 0,
-   "medium": 15,
-   "low": 0
+   "medium": 75,
+   "low": 2
   }
  },
  "inputs": {
@@ -500,7 +2539,13 @@
    "path": "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2C",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p5": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external-p5.json",
+   "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+   "reviewAppliedUtc": "2026-11-12T07:07:10Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.023Z"
+ "generatedUtc": "2026-11-12T09:58:57.350Z"
 }

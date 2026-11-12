@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_CGsRy4NGjCQRGgXs",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "1d6e26f9b1637ab45512f1f4a9d35139fe20d62138cd69bcca6e00fd4ad10db3",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_CGsRy4NGjCQRGgXs",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q1",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "Which feature is shared by every eukaryotic organism?",
+      "misconceptionClass": "eukaryote defining feature",
+      "options": [
+        {
+          "key": "A",
+          "text": "Their DNA sits inside a nucleus enclosed by its own membrane",
+          "correct": true,
+          "explanation": "This is the universal eukaryotic signature named in the note.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Their cells always contain chloroplasts for photosynthesis",
+          "correct": false,
+          "explanation": "Fungi and animals never photosynthesise, so this cannot be universal.",
+          "misconception": "chloroplasts wrongly treated as universal"
+        },
+        {
+          "key": "C",
+          "text": "They are always built from many cooperating cells",
+          "correct": false,
+          "explanation": "Yeasts and many protoctists live as single cells, so multicellularity is not shared.",
+          "misconception": "multicellularity wrongly treated as universal"
+        },
+        {
+          "key": "D",
+          "text": "Their genetic material floats freely in the cytoplasm",
+          "correct": false,
+          "explanation": "That describes prokaryotes, the group the note contrasts against eukaryotes.",
+          "misconception": "prokaryote plan mixed into eukaryotes"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q2",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "Which list contains only eukaryotic groups?",
+      "misconceptionClass": "group membership recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Protoctists, animals, bacteria, plants",
+          "correct": false,
+          "explanation": "Again bacteria sneak in; the fourth slot should be fungi.",
+          "misconception": "bacteria misfiled as eukaryotic"
+        },
+        {
+          "key": "B",
+          "text": "Animals, plants, fungi, protoctists",
+          "correct": true,
+          "explanation": "These are exactly the four eukaryote groups the note names.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Animals, plants, bacteria, fungi",
+          "correct": false,
+          "explanation": "Bacteria are prokaryotic, so the list mixes the two camps.",
+          "misconception": "bacteria misfiled as eukaryotic"
+        },
+        {
+          "key": "D",
+          "text": "Plants, fungi, protoctists, viruses",
+          "correct": false,
+          "explanation": "Viruses sit outside the classification of living organisms altogether.",
+          "misconception": "viruses misfiled as a eukaryote group"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q3",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "A single-celled organism is found to have a membrane-enclosed nucleus. How should it be classified?",
+      "misconceptionClass": "single-celled classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "A virus, because it has so few parts",
+          "correct": false,
+          "explanation": "Viruses have no cellular structure at all, let alone a nucleus.",
+          "misconception": "virus treated as a small cell"
+        },
+        {
+          "key": "B",
+          "text": "Neither group, because classification needs multicellularity",
+          "correct": false,
+          "explanation": "Nothing in the classification demands many cells.",
+          "misconception": "multicellularity treated as compulsory"
+        },
+        {
+          "key": "C",
+          "text": "A eukaryote, because body size does not change the cell plan",
+          "correct": true,
+          "explanation": "Single-celled eukaryotes exist, so the nucleus decides the group.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "A prokaryote, because all single cells are prokaryotic",
+          "correct": false,
+          "explanation": "Plenty of protoctists and yeasts are single cells with enclosed nuclei.",
+          "misconception": "single-celled equated with prokaryotic"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q4",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "Under a light microscope, which observation most directly supports calling a cell eukaryotic?",
+      "misconceptionClass": "microscopy evidence",
+      "options": [
+        {
+          "key": "A",
+          "text": "The cell has a regular rectangular outline",
+          "correct": false,
+          "explanation": "Shape tells you about the wall, not about DNA packaging.",
+          "misconception": "cell shape used as nuclear evidence"
+        },
+        {
+          "key": "B",
+          "text": "The specimen moves across the field of view",
+          "correct": false,
+          "explanation": "Movement is a life process, not a cell-plan feature.",
+          "misconception": "motility confused with cell plan"
+        },
+        {
+          "key": "C",
+          "text": "The cell stains darker at its edges than at its centre",
+          "correct": false,
+          "explanation": "Edge staining says nothing reliable about the nucleus.",
+          "misconception": "staining pattern over-read"
+        },
+        {
+          "key": "D",
+          "text": "A dark rounded region enclosed by a distinct membrane is visible",
+          "correct": true,
+          "explanation": "That is the nucleus, the deciding eukaryotic feature.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q5",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "Why can body design never settle whether an organism is eukaryotic?",
+      "misconceptionClass": "body design irrelevance",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because eukaryotes and prokaryotes each include both single-celled and many-celled members",
+          "correct": true,
+          "explanation": "The note states eukaryotes may be single-celled or multicellular, so body design cuts across both camps.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because every living thing is made of exactly one cell",
+          "correct": false,
+          "explanation": "Animals and plants are obviously many-celled.",
+          "misconception": "multicellular life denied"
+        },
+        {
+          "key": "C",
+          "text": "Because only organisms with cell walls can be many-celled",
+          "correct": false,
+          "explanation": "Animal cells lack walls yet build whole bodies.",
+          "misconception": "cell wall tied to multicellularity"
+        },
+        {
+          "key": "D",
+          "text": "Because microscopes cannot resolve whether a body has one cell",
+          "correct": false,
+          "explanation": "Cell count is exactly what microscopy resolves well.",
+          "misconception": "microscope capability denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q6",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "State the shared cell feature that defines the eukaryote camp.",
+      "misconceptionClass": "eukaryote definition recall",
+      "kind": "recall",
+      "modelAnswer": "A nucleus that holds the DNA and is enclosed by its own membrane.",
+      "keywords": [
+        "nucleus",
+        "membrane",
+        "DNA",
+        "enclosed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q7",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "Name the four eukaryotic groups covered by this course.",
+      "misconceptionClass": "four groups recall",
+      "kind": "recall",
+      "modelAnswer": "Animals, plants, fungi and protoctists.",
+      "keywords": [
+        "animals",
+        "plants",
+        "fungi",
+        "protoctists"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q8",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "A classmate sorts organisms into 'single-celled' versus 'many-celled' and calls the first pile prokaryotes. Explain the flaw in that sorting.",
+      "misconceptionClass": "single-celled misclassification",
+      "kind": "explain-why",
+      "modelAnswer": "The piles confuse body design with cell plan: several protoctists and the yeast fungus are single cells yet carry an enclosed nucleus, which makes them eukaryotes, while some prokaryotes can cling together in clumps without becoming many-celled organisms.",
+      "keywords": [
+        "protoctists",
+        "yeast",
+        "nucleus",
+        "prokaryotes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L1::Q9",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L1",
+      "stem": "A pond sample yields an organism that is one cell, about twice the length of a bacterium, and clearly shows a rounded structure enclosed by a double membrane. Which camp does it belong to, and what additional observation would tell you which of the four groups it sits in?",
+      "misconceptionClass": "pond organism application",
+      "kind": "application",
+      "modelAnswer": "It is a eukaryote because its genetic material sits in a membrane-enclosed nucleus; grouping it further needs observations such as chloroplasts (plant-like), a chitin-based hyphal or yeast form (fungus), feeding by ingesting or absorbing, or none of those (protoctist).",
+      "keywords": [
+        "eukaryote",
+        "nucleus",
+        "protoctist",
+        "observations"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q1",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "Which combination correctly lists a plant-only feature and an animal-only feature?",
+      "misconceptionClass": "plant vs animal contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nucleus with its own membrane — starch store",
+          "correct": false,
+          "explanation": "The enclosed nucleus is common to both groups; starch belongs to plants.",
+          "misconception": "shared feature treated as distinguishing"
+        },
+        {
+          "key": "B",
+          "text": "Cellulose cell wall — glycogen carbohydrate store",
+          "correct": true,
+          "explanation": "Walls with cellulose belong to plants; glycogen storage belongs to animals.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Chloroplasts — cellulose cell wall",
+          "correct": false,
+          "explanation": "Both features sit on the plant side of the comparison.",
+          "misconception": "two plant traits labelled as the animal pair"
+        },
+        {
+          "key": "D",
+          "text": "Glycogen store — mitochondria present",
+          "correct": false,
+          "explanation": "Mitochondria appear in both groups, so they cannot separate them.",
+          "misconception": "shared organelle treated as distinguishing"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q2",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "A stained slide shows cells with visible chloroplasts and a thin outer wall. Which group do they come from?",
+      "misconceptionClass": "slide identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fungi",
+          "correct": false,
+          "explanation": "Fungal walls are not built with cellulose and the group has no chloroplasts.",
+          "misconception": "fungus confused with plant"
+        },
+        {
+          "key": "B",
+          "text": "Protoctists",
+          "correct": false,
+          "explanation": "Some protoctists photosynthesise, but the combination with a cellulose wall matches the plant list here.",
+          "misconception": "protoctist assigned the plant pairing"
+        },
+        {
+          "key": "C",
+          "text": "Plants",
+          "correct": true,
+          "explanation": "Chloroplasts plus a wall is the classic plant-cell pairing.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Animals",
+          "correct": false,
+          "explanation": "Animal cells never carry chloroplasts or walls.",
+          "misconception": "plant traits assigned to animals"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q3",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "Which statement about carbohydrate storage is correct for these two groups?",
+      "misconceptionClass": "carbohydrate storage",
+      "options": [
+        {
+          "key": "A",
+          "text": "Plants bank glycogen; animals bank starch",
+          "correct": false,
+          "explanation": "The two stores have been swapped.",
+          "misconception": "storage molecules swapped"
+        },
+        {
+          "key": "B",
+          "text": "Both groups bank starch",
+          "correct": false,
+          "explanation": "Animal cells store carbohydrate as glycogen instead.",
+          "misconception": "animal store misnamed"
+        },
+        {
+          "key": "C",
+          "text": "Neither group stores carbohydrate",
+          "correct": false,
+          "explanation": "Both groups maintain a carbohydrate reserve.",
+          "misconception": "storage denied"
+        },
+        {
+          "key": "D",
+          "text": "Plants bank starch; animals bank glycogen",
+          "correct": true,
+          "explanation": "The note names starch for plants and glycogen for animals.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q4",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "What do animal cells and plant cells BOTH possess?",
+      "misconceptionClass": "shared features",
+      "options": [
+        {
+          "key": "A",
+          "text": "A nucleus enclosed by its own membrane and mitochondria",
+          "correct": true,
+          "explanation": "Both groups run the core eukaryotic plan including mitochondria.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A cellulose wall and chloroplasts",
+          "correct": false,
+          "explanation": "Those belong to plant cells only.",
+          "misconception": "plant-only traits claimed as shared"
+        },
+        {
+          "key": "C",
+          "text": "Chloroplasts but no mitochondria",
+          "correct": false,
+          "explanation": "Plant cells contain mitochondria alongside their chloroplasts.",
+          "misconception": "mitochondria denied in plants"
+        },
+        {
+          "key": "D",
+          "text": "A cellulose wall but no nucleus",
+          "correct": false,
+          "explanation": "Both groups are eukaryotic, so nuclei are present in both.",
+          "misconception": "nucleus denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q5",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "Why is the absence of a cell wall a reliable marker for animal cells in this course?",
+      "misconceptionClass": "wall absence marker",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because walls appear only in single-celled organisms",
+          "correct": false,
+          "explanation": "Plant bodies are many-celled with walls on every cell.",
+          "misconception": "walls tied to unicellularity"
+        },
+        {
+          "key": "B",
+          "text": "Because plant cells carry a cellulose wall and fungal cells are walled too, while animal cells run without one",
+          "correct": true,
+          "explanation": "The wall contrast separates animal cells from both other many-celled groups.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Because animal cells are always spherical",
+          "correct": false,
+          "explanation": "Shape varies across animal tissues.",
+          "misconception": "shape used as wall evidence"
+        },
+        {
+          "key": "D",
+          "text": "Because animal cells cannot survive with a wall",
+          "correct": false,
+          "explanation": "The note never claims walls harm animal cells.",
+          "misconception": "wall lethality invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q6",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "List three structures an animal cell has that the note names, besides the nucleus.",
+      "misconceptionClass": "animal cell structures recall",
+      "kind": "recall",
+      "modelAnswer": "Cell membrane, cytoplasm and mitochondria.",
+      "keywords": [
+        "membrane",
+        "cytoplasm",
+        "mitochondria",
+        "structures"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q7",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "State the material that plant cell walls are built from and the plant carbohydrate store.",
+      "misconceptionClass": "wall material recall",
+      "kind": "recall",
+      "modelAnswer": "Walls are built from cellulose, and the store is starch.",
+      "keywords": [
+        "cellulose",
+        "starch",
+        "walls",
+        "built"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q8",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "Explain why chloroplasts let plants count as self-feeders while animals must find food.",
+      "misconceptionClass": "chloroplast self-feeding",
+      "kind": "explain-why",
+      "modelAnswer": "Chloroplasts capture light energy and drive photosynthesis, so a plant can manufacture the sugars it needs from simple raw materials, whereas animal cells carry no chloroplasts and must take in ready-made organic food.",
+      "keywords": [
+        "chloroplasts",
+        "photosynthesis",
+        "food",
+        "manufacture"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L2::Q9",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L2",
+      "stem": "A food label lists a carbohydrate reserve harvested from an unknown organism. Chemical tests show the reserve is glycogen. Which of the two groups did the organism belong to, and which organelle would you expect its cells to contain for releasing energy from that reserve?",
+      "misconceptionClass": "glycogen source application",
+      "kind": "application",
+      "modelAnswer": "Glycogen points to the animal group, since plants bank starch; its cells would contain mitochondria to release energy from the stored carbohydrate.",
+      "keywords": [
+        "glycogen",
+        "animal",
+        "mitochondria",
+        "carbohydrate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q1",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "Which structure builds the bodies of multicellular fungi?",
+      "misconceptionClass": "hyphae structure",
+      "options": [
+        {
+          "key": "A",
+          "text": "Muscle and nerve tissues",
+          "correct": false,
+          "explanation": "Those are animal tissues.",
+          "misconception": "animal tissues assigned to fungi"
+        },
+        {
+          "key": "B",
+          "text": "Free-floating colonies of identical single cells only",
+          "correct": false,
+          "explanation": "Multicellular fungi are hyphal, not loose cell colonies.",
+          "misconception": "colony structure misattributed"
+        },
+        {
+          "key": "C",
+          "text": "Thread-like hyphae containing many nuclei",
+          "correct": true,
+          "explanation": "The note describes hyphae as the thread-like building units of multicellular fungi.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Cellulose leaves and stems",
+          "correct": false,
+          "explanation": "That is plant anatomy.",
+          "misconception": "plant anatomy assigned to fungi"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q2",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "Which fungus is named as the single-celled example?",
+      "misconceptionClass": "yeast example",
+      "options": [
+        {
+          "key": "A",
+          "text": "Mucor",
+          "correct": false,
+          "explanation": "Mucor is the named multicellular genus.",
+          "misconception": "multicellular genus swapped in"
+        },
+        {
+          "key": "B",
+          "text": "Lactobacillus",
+          "correct": false,
+          "explanation": "That is a bacterium, not a fungus.",
+          "misconception": "bacterium misfiled as fungus"
+        },
+        {
+          "key": "C",
+          "text": "Plasmodium",
+          "correct": false,
+          "explanation": "That is a protoctist.",
+          "misconception": "protoctist misfiled as fungus"
+        },
+        {
+          "key": "D",
+          "text": "Yeast",
+          "correct": true,
+          "explanation": "The note names yeast as the single-celled fungus.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q3",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "Why does the protoctist group resist a one-line definition?",
+      "misconceptionClass": "protoctist diversity",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because its members are too varied to share one distinguishing trait beyond the eukaryotic plan",
+          "correct": true,
+          "explanation": "The note calls the group very diverse with features differing from the other three groups.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because all protoctists are photosynthetic",
+          "correct": false,
+          "explanation": "Only some are; the group is not uniform.",
+          "misconception": "uniformity wrongly asserted"
+        },
+        {
+          "key": "C",
+          "text": "Because they have no nuclei",
+          "correct": false,
+          "explanation": "Protoctists are eukaryotes with enclosed nuclei.",
+          "misconception": "nucleus denied"
+        },
+        {
+          "key": "D",
+          "text": "Because they are all parasitic",
+          "correct": false,
+          "explanation": "The note gives no such blanket claim.",
+          "misconception": "parasitism over-generalised"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q4",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "A diagram shows a cell with a wall, an enclosed nucleus, mitochondria and no chloroplasts, growing as a thread of connected compartments. Best match?",
+      "misconceptionClass": "fungal cell identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "An animal skin cell",
+          "correct": false,
+          "explanation": "Animal cells have neither walls nor hyphal threading.",
+          "misconception": "animal cell misassigned"
+        },
+        {
+          "key": "B",
+          "text": "A fungal cell from a hypha",
+          "correct": true,
+          "explanation": "Wall plus enclosed nucleus, mitochondria, no chloroplasts, hyphal thread — the fungal portrait.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "A plant leaf cell",
+          "correct": false,
+          "explanation": "Leaf cells carry chloroplasts.",
+          "misconception": "chloroplast omitted"
+        },
+        {
+          "key": "D",
+          "text": "A bacterial cell",
+          "correct": false,
+          "explanation": "Bacteria lack the enclosed nucleus.",
+          "misconception": "prokaryote mixed in"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q5",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "Which exam skill does the note explicitly flag for fungi and protoctists?",
+      "misconceptionClass": "drawing skill",
+      "options": [
+        {
+          "key": "A",
+          "text": "Calculating their surface-area-to-volume ratios",
+          "correct": false,
+          "explanation": "That belongs to transport notes, not this one.",
+          "misconception": "transport skill misplaced"
+        },
+        {
+          "key": "B",
+          "text": "Staining them with iodine to test for starch",
+          "correct": false,
+          "explanation": "Iodine testing is a food-test technique, not a classification skill.",
+          "misconception": "food-test skill misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Recognising, drawing and labelling their cells from images",
+          "correct": true,
+          "explanation": "The closing hint names practising labelled drawings of fungal and protoctist cells.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Measuring their generation times in culture",
+          "correct": false,
+          "explanation": "No growth-rate work appears in this note.",
+          "misconception": "invented practical skill"
+        }
+      ]
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q6",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "Give the word for the thread-like filaments that build multicellular fungi.",
+      "misconceptionClass": "hypha term recall",
+      "kind": "recall",
+      "modelAnswer": "Hyphae — thread-like filaments packed with nuclei.",
+      "keywords": [
+        "hyphae",
+        "filaments",
+        "nuclei",
+        "thread"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q7",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "Name one single-celled fungus and one disease-causing protoctist mentioned across this topic.",
+      "misconceptionClass": "named examples recall",
+      "kind": "recall",
+      "modelAnswer": "Yeast is the single-celled fungus; Plasmodium is the malaria protoctist.",
+      "keywords": [
+        "yeast",
+        "plasmodium",
+        "protoctist",
+        "malaria"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q8",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "Explain why a yeast cell counts as a fungus rather than as a protoctist.",
+      "misconceptionClass": "yeast classification",
+      "kind": "explain-why",
+      "modelAnswer": "Yeast carries the fungal toolkit — a wall, an enclosed nucleus and no chloroplasts — and it reproduces and feeds the fungal way, so it is placed with fungi even though it lives as a single cell; protoctists are identified only after the three defined groups have been ruled out.",
+      "keywords": [
+        "yeast",
+        "fungal",
+        "protoctists",
+        "chloroplasts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CGsRy4NGjCQRGgXs::L3::Q9",
+      "moduleId": "rn_CGsRy4NGjCQRGgXs::L3",
+      "stem": "A new microscope sample shows a many-celled organism built from branching threads with walls, several nuclei per compartment and no chloroplasts. Assign it to a group and justify the assignment with two features.",
+      "misconceptionClass": "thread sample application",
+      "kind": "application",
+      "modelAnswer": "It belongs with the fungi: the branching thread construction matches hyphae, and the combination of walls with no chloroplasts plus many nuclei per compartment is the fungal portrait rather than the plant one.",
+      "keywords": [
+        "hyphae",
+        "chloroplasts",
+        "fungi",
+        "construction"
+      ],
+      "options": []
+    }
+  ]
+}
