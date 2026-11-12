@@ -41,6 +41,11 @@
    "gate": "G9-fleet-noop",
    "ok": true,
    "detail": "v1.7 output byte-identical to v1.6 (ex version labels) for all 105 other courses"
+  },
+  {
+   "gate": "G10-verify-lane",
+   "ok": true,
+   "detail": "CI verify red at 5efb6a4e (run 43208001913, cie-phase4-roster) -> the api-plane law extension (bundle-seed UNIT-parent + SME shim skip) -> full local lane green: typecheck 0, apps/api packages 3520/13skip/0, roster 15/0, golden OK, retrieval 22/0+19/19; hub+census+Vercel green at 5efb6a4e"
   }
  ]
 }
