@@ -1,0 +1,20 @@
+{
+ "receipt": "rn11-run-022-postReview",
+ "family": "RN-DEBRIS-11",
+ "run": "022-postReview",
+ "kind": "the author self-review record before desk merge of PR #965 (operator order run-022, trace 1a1d0d9a1d636c91; the run-018/019/020/021 postReview flow re-invoked)",
+ "generatedUtc": "2026-11-13",
+ "head": "1bd910fe38f227181e12c57974c919f0dc930c26",
+ "commitChain": "base 0cb01618 -> 4008f20a artifacts -> dfa73a15 receipts+worklogs -> 1bd910fe union (2-parent: dfa73a15 + a87f9ace main-advance)",
+ "findings": [
+  "B1 PASS: the PR net diff (merge-base a87f9ace..head) is EXACTLY the 9 declared bookkeeping paths (9 files, +5848/-0): run-022 artifacts (census/deltas/adjudication + 4 scripts incl. the postReview battery), the run-022 receipt, and the two append-only worklogs; branch-own commits declared-only; the union delta vs dfa73a15 == exactly main’s advance (byte-lawful theirs-verbatim union); ZERO content/src/docs bytes anywhere in the branch",
+  "B2 PASS: all three artifacts parse; census official-pin asserts ALL PASS (8.1.1a==subRows[8.1.4f]; 6.3.5 blob==official 7.5; 8.1.4 blob=(a)-(e) only); spine parity 38/38; KG point-text mirror all-true; dense order 1..114 zero violations; EVERY option’s ord gate PASS in the deltas engine",
+  "B3 PASS: both worklogs carry theirs-verbatim prefix (a87f9ace bytes) + the run-022 suffix byte-identical in both ledgers, zero new markers",
+  "B4 PASS: 2-parent union merge (no squash, no force, no rebase); first-parent chain exactly base->artifacts->receipts->union",
+  "B5 PASS: CI check-runs at 1bd910fe — hub SUCCESS, verify SUCCESS, Vercel Preview Comments SUCCESS; the Vercel deploy commit-status recorded PENDING at review time (the BIO-STAGEB1-documented QUEUED-then-building/allowance-cap class; the desk merges when it resolves — this is a desk-merge PR, author does not self-merge)"
+ ],
+ "scopeLaw": "zero-invention held: no ruling invented for D3/D4/D5/D6b; the adjudication presents computed options + labeled recommendations + the ruling surface; run-023 is mechanical on the desk’s tokens",
+ "boundaries": "D3/D4/D5/D6b rows byte-untouched; UGM serve plane untouched; no exporter code change; both worklogs append-only",
+ "mergePlan": "PR #965 to the R0 desk; author does not self-merge; no force-push; fetch-first race-guard at every step",
+ "battery": "5/5 scripted ALL PASS (rn22_review_battery.py, committed to run-022/scripts/)"
+}
