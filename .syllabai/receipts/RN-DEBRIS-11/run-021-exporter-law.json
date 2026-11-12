@@ -1,0 +1,51 @@
+{
+ "receipt": "rn11-run-021-exporter-law",
+ "family": "RN-DEBRIS-11",
+ "run": "021-exporter-law",
+ "kind": "the exporter-law apply (D1 of the run-019 filing) — code-change run per the filing's option (a); the synthetic-subtopic option (b) stands REJECTED in the filing",
+ "operatorOrder": "run-021",
+ "operatorTrace": "1a1cf5ecf9027039",
+ "generatedUtc": "2026-11-12",
+ "pins": {
+  "source": "run-016 topic_level_points_proposal_r0.json == the run-019 filing D1 applyReadyPins (asserted byte-equal, 21 points)",
+  "points": "T7 x12 (7.1, 7.2a, 7.2b, 7.2c, 7.3, 7.4, 7.5a, 7.5b, 7.6, 7.7, 7.8, 7.9) orders 78-89; T9 x4 (9.1-9.4) 106-109; T10 x5 (10.1, 10.2, 10.3a, 10.3b, 10.3c) 110-114",
+  "titles": "byte-exact, normalization-identity asserted per title",
+  "parents": "the TOPIC node codes verbatim from the pins; provenanceTier RULE_DERIVED (fleet convention)"
+ },
+ "orderLawDisclosure": "the run-016 orderLawIfApplied text ('global 1..109; T8's 11 shift +12 (90-100); T9 101-104; T10 105-109') was computed on the pre-run-020 88-point census; run-020 grew T8 by 5 (SUB8.1 adds at 83-87). The LAW (T7 takes the T8 block head; T8 shifts +12; T9/T10 append in official topic order) recomputed on the current census: T8's 16 points 78-93 -> 90-105, T9 106-109, T10 110-114, global dense 1..114. G2/G7 assert the exact bump set (the 16 T8 codes, order-field-only, +12).",
+ "exporterLaw": {
+  "version": "kg_export.py v1.6 -> v1.7",
+  "law": "a SPEC_POINT with zero SUBTOPIC parents and exactly one TOPIC parent hangs under its SECTION (hier sec<N> -> p:<id>); subtopic-parented points resolve exactly as v1.6 (the igcse-chemistry-19 dual-parent shape keeps its subtopic resolution); >=2 SUBTOPIC parents still refuse; 0 SUBTOPIC + !=1 TOPIC still refuses",
+  "spanningTree": "sections with direct points emit subject -> sec<N> hier naturally at the canonical numeric position — the 700bb601 hand-maintained sec7/9/10 patch is absorbed (array 239e = 239 exporter, zero hand edges remain)",
+  "tables": "pointSubtopics/subPointCounts byte-identical (section-hung points absent from the per-subtopic tables; the loader/coverage consumers guard the absence — kg-coverage.ts ?? {} / ?? [])",
+  "fleet": "G9: v1.7 output byte-identical to v1.6 (ex version labels) for ALL 105 other courses — includes the unit-layer path (sec_key_of = {} there) and the igcse-chemistry-19 dual-parent class"
+ },
+ "counts": {
+  "content": {
+   "specPoints": "93 -> 114",
+   "edges": "124 -> 145 PART_OF",
+   "topics/subtopics": "10/21 unchanged"
+  },
+  "kg": {
+   "array": "125n/218e -> 146n/239e",
+   "hier": "124 -> 145 == nodes-1",
+   "pre": "94 unchanged (the cs-23 prereq snapshot anchors none of the 21 new codes — asserted)",
+   "meta": "exporter output per the 700bb601 nodes/meta law (146/239/114)"
+  },
+  "manifest": "specPoints 93 -> 114 single site; sections/topics/notes/questions counts untouched",
+  "index": "P5 truth -> 146n/239e/114sp"
+ },
+ "gates": "G1 serializers (dump law) / G2 content surgery (+21 after the T7/T9/T10 shells, dense 1..114) / G3 spine mirror parity 146 / G4 manifest single site / G5 KG regen (deep-equal ex-generatedUtc, 21 titles carried, mirror set == content titles, tables + prerequisites byte-identical) / G7 byte-scope (21 nodes + 21 edges + 16 order fields, both planes, zero other bytes) / G8 index P5 / G9 fleet-noop 105 courses — ALL PASS",
+ "battery": "verify_corpus_23a PASS; verify_flashcard_sync_courses PASS (exit 0); validate_cie_bundles PASS (pure-1 bank 67 intact); validate_gradeb PASS (105/106 served); verify_subject_identity PASS 106/106; validate_spines statement_diff_count 0; bun kg-corpus 111/0; ugm.bundle 100/0; bundle-seed 64/0; sme bundle-questions 25/0; hub tsc --noEmit exit 0; ugm.render 2 pass + 1 PRE-EXISTING fail (T-UGM-RENDER-1, the W6-disclosed standing red of its own lane)",
+ "ugm": "serve plane byte-untouched — the 21 new codes stay OFF the serve index per the 1.1 primaryPick honesty law + AS bijection law until a T-UGM lane serves them",
+ "boundaries": "D3 8.1.1a re-code / D4 carrier-class reconciliation / D5 6.3.x debris / 1.3.1a-1.3.2a disposition BYTE-UNTOUCHED (still-open desk choices); the 7.4-7.9 fresh rows vs the six mis-filed 6.3.x carriers (6.3.4a/6.3.5-6.3.9) is the filing's own flagged D4 overlap — carried, not reconciled, per the desk-owned option list",
+ "mergePlan": "PR to the R0 desk; author does not self-merge; no force-push; fetch-first race-guard at push",
+ "apiPlane": {
+  "trigger": "CI verify-lane red at 5efb6a4e (run 43208001913): cie-phase4-roster.test.ts — 'bundle SPEC_POINT 7.1 parent ...-T7 is not a mapped TOPIC' — the api DB-plane mapper's parent-type law, never exercised by the run-020 gate list (the run-020 adds were subtopic-hung)",
+  "bundleSeedMapper": "apps/api/src/services/curriculum/bundle-seed.ts mapBundleNodes SPEC_POINT parent gate extended TOPIC -> TOPIC-or-UNIT (the curriculum TOPIC family maps to the api UNIT; the topic-level point lands under its UNIT — kg_export v1.7 mirrored; the dual-parent [UNIT, TOPIC] chemistry-19 law unchanged; >=2 SUBTOPIC or 0+!=1 shapes still refuse)",
+  "smeShim": "apps/api/src/services/sme/bundle-questions.ts topicCodeResolver: UNIT-parented points skip the spec->TOPIC anchor map (serve-plane law — no SME topic anchor until served; future question tags fail-closed at the lookup)",
+  "censusPins": "held WITHOUT re-pinning: mapLaw.green true, reds [], bundlesMapped 56, maxDbCodeLength 25, excl.unmapped 12610 (no question tags the 21 new codes)",
+  "verifyLane": "bun run typecheck 0; bun test apps/api packages 3520 pass / 13 skip / 0 fail; golden selftest OK; retrieval eval 22/0 + selftest 19/19; hub+census+Vercel already green at 5efb6a4e",
+  "dbShape": "SPEC_POINT under UNIT is a shorter hierarchy chain — the DB seed's edge materialization is type-generic (attach(child, parent) from the validated parent chain; the family-type enforcement IS the extended mapper gate); zero DB contact in this run (zero-DB by construction)"
+ }
+}
