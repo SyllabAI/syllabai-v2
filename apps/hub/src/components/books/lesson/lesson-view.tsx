@@ -138,7 +138,7 @@ function DerivedLinks({
         <Link
           key={n.noteId}
           href={`/courses/${courseSlug}/revision-notes/${n.noteId}`}
-          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
         >
           <BookOpen className="h-3.5 w-3.5" aria-hidden />
           {n.title}
@@ -148,7 +148,7 @@ function DerivedLinks({
         <Link
           key={t.topicSlug}
           href={`/courses/${courseSlug}/exam-questions/${t.topicSlug}`}
-          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
         >
           <FileQuestion className="h-3.5 w-3.5" aria-hidden />
           {(t as { topicName?: string }).topicName ?? t.topicSlug}
@@ -157,7 +157,7 @@ function DerivedLinks({
       {cards.length > 0 && (
         <Link
           href={`/courses/${courseSlug}/flashcards`}
-          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex items-center gap-1 rounded-sm underline decoration-dotted underline-offset-4 outline-none transition-[color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
         >
           <ListChecks className="h-3.5 w-3.5" aria-hidden />
           Flashcards ({cards.length})
@@ -291,7 +291,7 @@ export function LessonView({
             <a
               key={s.id}
               href={`#${s.id.replace(/:/g, "-")}`}
-              className="rounded-sm px-2 py-1 text-muted-foreground outline-none transition-[background-color,color,box-shadow] hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+              className="rounded-sm px-2 py-1 text-muted-foreground outline-none transition-[background-color,color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
             >
               {i + 1}. {s.title}
             </a>
@@ -309,7 +309,7 @@ export function LessonView({
         <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
           <Link
             href={`/courses/${courseSlug}/books/${docId}?chapter=${encodeURIComponent(chapterKey)}`}
-            className="inline-flex items-center gap-1 rounded-sm text-muted-foreground outline-none transition-[color,box-shadow] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex items-center gap-1 rounded-sm text-muted-foreground outline-none transition-[color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Rail
@@ -317,7 +317,7 @@ export function LessonView({
           <span className="text-muted-foreground">·</span>
           <Link
             href={`/courses/${courseSlug}/books`}
-            className="rounded-sm text-muted-foreground outline-none transition-[color,box-shadow] hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+            className="rounded-sm text-muted-foreground outline-none transition-[color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
           >
             Book shelf
           </Link>
@@ -375,14 +375,14 @@ export function LessonView({
         <div className="mt-6 flex flex-wrap gap-3 text-sm">
           <Link
             href={`/courses/${courseSlug}/books/${docId}?chapter=${encodeURIComponent(chapterKey)}`}
-            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 outline-none transition-[background-color,box-shadow] hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
+            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 outline-none transition-[background-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden />
             Open this chapter in the Rail
           </Link>
           <Link
             href={`/courses/${courseSlug}/books`}
-            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 outline-none transition-[background-color,box-shadow] hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
+            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 outline-none transition-[background-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
           >
             All chapters
           </Link>
