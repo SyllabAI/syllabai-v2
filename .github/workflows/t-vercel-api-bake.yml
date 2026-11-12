@@ -136,11 +136,20 @@ jobs:
         if: steps.prod.outputs.sha != steps.head.outputs.sha
         run: npm install -g vercel@latest
 
-      - name: Link project
+      - name: Link project (INSIDE the stage dir — the deploy cwd)
         if: steps.prod.outputs.sha != steps.head.outputs.sha
         env:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
-        run: vercel link --yes --project "$API_PROJECT_NAME" --token="$VERCEL_BAKE_TOKEN"
+        run: |
+          # run-001 receipt (2026-11-12 06:21Z): linking in the repo root while
+          # deploying from "$STAGE_DIR" left the stage dir UNLINKED — the CLI
+          # auto-linked a project named after the directory, the bake landed in
+          # api-stage (no production env → FUNCTION_INVOCATION_FAILED) and
+          # syllabai-v2 production stayed on the old build while the
+          # version-agnostic serving proof still passed. The link must happen
+          # in the same directory the deploy runs from.
+          cd "$STAGE_DIR"
+          vercel link --yes --project "$API_PROJECT_NAME" --token="$VERCEL_BAKE_TOKEN"
 
       - name: Bake production (CLI deploy FROM THE GATED STAGE; source-tagged with main HEAD)
         if: steps.prod.outputs.sha != steps.head.outputs.sha
@@ -154,10 +163,37 @@ jobs:
             --meta "githubCommitRef=main" \
             --token="$VERCEL_BAKE_TOKEN"
 
-      - name: Post-deploy serving proof (read-only live probe)
+      - name: Post-deploy serving proof (promotion sha + read-only live probe)
         if: steps.prod.outputs.sha != steps.head.outputs.sha
+        env:
+          VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+          BAKE_SHA: ${{ steps.head.outputs.sha }}
         run: |
           sleep 15
+          # Promotion proof first: the run-001 receipt — the health/login
+          # probes are version-agnostic (the OLD build answers them green
+          # too), so the proof must assert production actually TOOK the
+          # merge commit before anything else.
+          curl -sSf -H "Authorization: Bearer $VERCEL_BAKE_TOKEN" \
+            "https://api.vercel.com/v6/deployments?projectId=$API_PROJECT_ID&target=production&limit=5" \
+            | BAKE_SHA="$BAKE_SHA" python3 -c "
+          import json, os, sys
+          live = {'READY', 'BUILDING', 'QUEUED', 'INITIATING'}
+          deploys = [d for d in json.load(sys.stdin).get('deployments', []) if d.get('state') in live]
+          pick = deploys[0] if deploys else None
+          sha = (pick.get('meta') or {}).get('githubCommitSha', '') if pick else ''
+          state = pick.get('state', 'none') if pick else 'none'
+          head = os.environ['BAKE_SHA']
+          print('newest live API deployment after bake: ' + state + ' @ ' + (sha[:10] if sha else '(none)'))
+          print('main HEAD of record:                    READY @ ' + head[:10])
+          if sha != head:
+              print('PROMOTION PROOF RED: production did not take the merge commit')
+              sys.exit(1)
+          if state != 'READY':
+              print('PROMOTION PROOF RED: the promoted deployment is not READY')
+              sys.exit(1)
+          "
+          echo "PROMOTION PROOF GREEN — production is at main HEAD"
           echo "--- /actuator/health (expect 200 UP, never the NOT_FOUND page) ---"
           H=$(curl -s -w "\n%{http_code}" https://api.syllab-ai.com/actuator/health)
           echo "$H"
