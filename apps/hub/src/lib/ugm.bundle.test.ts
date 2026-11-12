@@ -2041,8 +2041,10 @@ describe("the same-board re-serve plane (T-UGM-AS-PURE-1 r0 — the AS pure-1 bu
     expect([...as1.specPoints.map((s) => s.code)].sort()).toEqual(
       [...bundle.specPoints.map((s) => s.code)].sort(),
     );
-    // 33 AS spine codes, 30 in the index — the three folded a-codes disclosed below
-    expect(curCodes).toHaveLength(33);
+    // 36 AS spine codes, 30 in the index — the three folded a-codes stay folded (below); run-020's
+    // 1.3.3/1.3.4/1.3.5 are uncovered official adds that stay OFF the serve index until a T-UGM lane
+    // serves them (the 1.1-shaped a-level plane forbids honest-gap index rows — primaryPick law)
+    expect(curCodes).toHaveLength(36);
     expect(as1.specPoints).toHaveLength(30);
     for (const sp of as1.specPoints) {
       const node = cur.nodes.find((n) => n.code === sp.code);

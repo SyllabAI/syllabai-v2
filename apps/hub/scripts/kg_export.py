@@ -37,6 +37,21 @@ curriculum SUBTOPIC layer as the point-mapping level (points attach to
 their topic directly). Curricula without UNIT nodes export exactly as
 v1.1 — byte-identical shapes.
 
+v1.7: topic-level points (run-021, the run-019 filing D1 law) — a
+SPEC_POINT with ZERO SUBTOPIC parents and exactly one TOPIC parent (the
+official spec carries no subtopic layer there, e.g. 0478 T7/T9/T10)
+hangs under its Section directly: hier edge sec<N> -> p:<id>. Points
+with a SUBTOPIC parent resolve exactly as v1.6 (the dual-parent
+disclosure shape, e.g. igcse-chemistry-19's ['4CH1-S1', '4CH1-S1-a'],
+keeps its subtopic resolution — the section parent stays structural
+noise, ignored as before). Sections that gain direct points emit their
+subject -> sec<N> hier edge naturally (numeric order in the subject
+block), absorbing the hand-maintained spanning-tree patch for the
+formerly empty stub sections. pointSubtopics / subPointCounts keep
+their shapes (section-hung points are absent from the per-subtopic
+tables — the loader/coverage consumers guard the absence). Output is
+byte-identical to v1.6 for every course without topic-hung points.
+
 v1 ships hier edges only: curriculum.json carries no prerequisite, relation or
 paper metadata, and the corpus discipline forbids inventing edges. The 4CH1
 counts cross-check against the prototype's hand-curated dataset (1 Subject /
@@ -423,6 +438,7 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
         # v1.2 unit-layer path: UNIT nodes are the printed spec units and
         # export as Sections; TOPICs export as SubTopics under their unit;
         # curriculum SUBTOPICs are consumed as the point-mapping level.
+        sec_key_of = {}   # v1.7: no section-hung points on the unit path
         def _unit_num(u):
             m = re.search(r"U(\d+)$", u["code"])
             if not m:
@@ -514,9 +530,10 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
                 raise ExportError(f"{slug}: duplicate subtopic titles in section "
                                   f"{sec_key_of[topic_code]} ({topic_code})")
 
-    # --- points: explicit subtopic mapping (from curriculum parents) ------
+    # --- points: explicit subtopic-or-section mapping (from curriculum parents) -
     points_list = []
     point_subs: dict[str, list[str]] = collections.defaultdict(list)  # sub build id -> [pointId]
+    point_secs: dict[str, list[str]] = collections.defaultdict(list)  # v1.7: sec key -> [pointId]
     seen_pid = {}
     for p in points:
         pid = point_id_for(qual_code, p["code"])
@@ -525,13 +542,21 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
         seen_pid[pid] = p["code"]
         parents = p.get("parents") or []
         sub_codes = [c for c in parents if c in sub_id_of]
-        if len(sub_codes) != 1:
+        if len(sub_codes) > 1:
             raise ExportError(f"{slug}: SPEC_POINT {p['code']} has {len(sub_codes)} "
                               f"SUBTOPIC parents ({parents})")
         points_list.append({"id": pid, "text": normalize_display_text(p["title"]),
                             **({"applicability": p["applicability"]}
                                if p.get("applicability") else {})})
-        point_subs[sub_id_of[sub_codes[0]]].append(pid)
+        if sub_codes:
+            point_subs[sub_id_of[sub_codes[0]]].append(pid)
+        else:
+            # v1.7: topic-level point — zero SUBTOPIC parents, exactly one TOPIC parent
+            sec_codes = [c for c in parents if c in sec_key_of]
+            if len(sec_codes) != 1:
+                raise ExportError(f"{slug}: SPEC_POINT {p['code']} has 0 SUBTOPIC "
+                                  f"and {len(sec_codes)} SECTION parents ({parents})")
+            point_secs[sec_key_of[sec_codes[0]]].append(pid)
 
     # numeric ids must order strictly within a section (port of pointOrd gate)
     # ord key = tuple of numeric components + trailing letter, so multi-level
@@ -561,6 +586,7 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
         secs = {sid[0] for sid, _ in defs}
         if len(secs) != 1:
             raise ExportError(f"{slug}: section {key} subtopic ids span {secs}")
+    for key in sections_tbl:                      # v1.7: all sections with points
         numeric = [pt["id"] for pt in points_list
                    if "." in pt["id"] and pt["id"].split(".")[0] == key]
         ords = [_ord_key(numeric_id) for numeric_id in numeric]
@@ -589,12 +615,29 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
             node["applicability"] = pt["applicability"]
         kg_nodes.append(node)
 
-    edges = [["subject", "sec" + key, "hier"] for key in subtopics_tbl]
+    def _subj_order():
+        """v1.6 order for the subtopic-hung sections; a section that only gained
+        direct points (v1.7) takes its canonical numeric slot in the subject
+        block — the 700bb601 hand-patch position law, now exporter-native."""
+        held = list(subtopics_tbl.keys())
+        new_ = sorted((k for k in point_secs if k not in subtopics_tbl), key=int)
+        out = []
+        for k in held:
+            while new_ and int(new_[0]) < int(k):
+                out.append(new_.pop(0))
+            out.append(k)
+        out.extend(new_)
+        return out
+
+    edges = [["subject", "sec" + key, "hier"] for key in _subj_order()]
     for key, defs in subtopics_tbl.items():
         for sid, _ in defs:
             edges.append(["sec" + key, sid, "hier"])
             for pid in point_subs.get(sid, []):
                 edges.append([sid, "p:" + pid, "hier"])
+    for key, pids in point_secs.items():          # v1.7: topic-level points
+        for pid in pids:
+            edges.append(["sec" + key, "p:" + pid, "hier"])
 
     # --- v1.3: prerequisite / related edges from the committed snapshot ---
     # Projects the operator-validated T-C11 store + the inferred-prototype
@@ -615,7 +658,8 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
             raise ExportError(f"{slug}: edge {e} has non-contract type {e[2]}")
         if e[0] not in ids or e[1] not in ids:
             raise ExportError(f"{slug}: dangling edge {e[0]} -> {e[1]}")
-    mapped = sum(len(v) for v in point_subs.values())
+    mapped = (sum(len(v) for v in point_subs.values())
+              + sum(len(v) for v in point_secs.values()))
     if mapped != len(points_list):
         raise ExportError(f"{slug}: mapping covers {mapped}/{len(points_list)} points")
     point_sub_nodes = sum(1 for e in edges if e[2] == "hier" and e[1].startswith("p:"))
@@ -635,15 +679,22 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
             "curriculumCode": qual_code,
             "syllabusVersion": cur.get("syllabusVersion"),
             "source": f"content/{slug}/curriculum.json (curriculum truth, RULE_DERIVED)",
-            "exporter": ("scripts/kg_export.py v1.6 (prerequisite projection + "
-                         "concept-web tier + reversed-pair governance + "
-                         "applicability passthrough + display-text normalization)"
+            "exporter": ("scripts/kg_export.py v1.7 (topic-level point hang law + "
+                         "prerequisite projection + concept-web tier + "
+                         "reversed-pair governance + applicability passthrough + "
+                         "display-text normalization)"
                          if unit_layer else
-                         "scripts/kg_export.py v1.6 (prerequisite projection + "
-                         "concept-web tier + reversed-pair governance + "
-                         "display-text normalization)"),
+                         "scripts/kg_export.py v1.7 (topic-level point hang law + "
+                         "prerequisite projection + concept-web tier + "
+                         "reversed-pair governance + display-text normalization)"),
             "generatedUtc": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "notes": ("v1.6: concept-web prerequisite tier — AI-projected, "
+            "notes": ("v1.7: topic-level points — a SPEC_POINT with zero SUBTOPIC "
+                      "parents and exactly one TOPIC parent hangs under its "
+                      "SECTION (0478 T7/T9/T10, no subtopic layer in the "
+                      "official spec); subtopic-parented points resolve exactly "
+                      "as v1.6; sections with direct points join the spanning "
+                      "tree naturally. "
+                      "v1.6: concept-web prerequisite tier — AI-projected, "
                       "unvalidated, labelled INFERRED PROTOTYPE by the renderer "
                       "(never in prereqValidated); in-order pairs only. "
                       "v1.5: SpecificationPoint statement/label and points[].text "

@@ -16,6 +16,11 @@
    "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
    "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
    "enumeratedUtc": "2026-11-01T01:04:15Z"
+  },
+  "p6": {
+   "provider": "physics-online (PhysicsOnline YouTube channel — unmapped remainder)",
+   "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 1,081 public uploads, +1 net vs the P2E enumeration of 1,080 on 2026-11-10; the P2E lane cached only its 303-drafted subset, so the delta video is not individually identified) + oEmbed identity sweep 113/113 on the routed pool (473/473 live overall, author Physics Online) + marker routing (A-level / GCSE markers, GCSE and unmarked videos cross-spine-routed by distinctive-token idf overlap) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T09:56:37Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 16 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 176,
+  "rowsApproved": 214,
   "rowsRejected": 1,
   "rejects": [
    {
@@ -120,6 +125,473 @@
       "video": "IxqUjM8cOcU",
       "reason": "no honest binding: Calculation title; no candidate covers transformer turns-ratio equations, only construction and transmission use",
       "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p6 (physicsonline completion)",
+    "task": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-12",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+    "ruledUtc": "2026-11-12T09:56:37Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: oEmbed author Physics Online 38/38, all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds and trims tabled in scripts/p6/p6_judgment.py with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 38,
+    "rowsRejected": 91,
+    "rejects": [
+     {
+      "video": "lz_201T-gnY",
+      "reason": "no honest binding: best candidate \"\u0007Calculate the combined resistance of two or more resistors \" (4.3.4) binds only on generic vocabulary: circuit, serie",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "L_CTtlha7WA",
+      "reason": "no honest binding: best candidate \"\u0007Define momentum as mass × velocity; recall and use the equa\" (1.6.1) binds only on generic vocabulary: velocity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ls4ZK2XBDk0",
+      "reason": "no honest binding: best candidate \"\u0007Define acceleration as change in velocity per unit time; re\" (1.2.9) binds only on generic vocabulary: time, velocity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "5nBbTDzEBZk",
+      "reason": "no honest binding: best candidate \"\u0007Know that electric current is related to the flow of charge\" (4.2.1a) binds only on generic vocabulary: charge, current",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "as5KmIPWm6c",
+      "reason": "no honest binding: best candidate \"\u0007State that a fuse without an earth wire protects the circui\" (4.4.5) binds only on generic vocabulary: circuit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "xbIPTFaZVl4",
+      "reason": "no honest binding: best candidate \"\u0007Know that, in comparison to each other, the four planets ne\" (6.1.2a) binds only on generic vocabulary: difference",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "rb6Wdmc_PTI",
+      "reason": "no honest binding: best candidate \"\u0007Analyse and interpret planetary data about orbital distance\" (6.1.8) binds only on generic vocabulary: density",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "7CfMXzFgHEE",
+      "reason": "no honest binding: best candidate \"\u0007Calculate the area under a speed–time graph to determine th\" (1.2.7) binds only on generic vocabulary: distance, graph, time",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "aXaAMqvmfmE",
+      "reason": "no honest binding: best candidate \"Define average orbital speed from the equation \u0007where r is t\" (6.1.4) binds only on generic vocabulary: average",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_S3WnwoWOgk",
+      "reason": "no honest binding: best candidate \"\u0007Define acceleration as change in velocity per unit time; re\" (1.2.9) binds only on generic vocabulary: acceleration, time, velocity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "yf4FQDTeq0w",
+      "reason": "no honest binding: best candidate \"\u0007Define ultrasound as sound with a frequency higher than 20 \" (3.4.9) binds only on generic vocabulary: sound",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "laDmuQFmK3Y",
+      "reason": "no honest binding: best candidate \"\u0007State the factors affecting the magnitude of an induced e.m\" (4.5.3) binds only on generic vocabulary: generator",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "0m7bTNEFMn4",
+      "reason": "no honest binding: best candidate \"\u0007Analyse and interpret planetary data about orbital distance\" (6.1.8) binds only on generic vocabulary: density",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "bDvwZOGHd5k",
+      "reason": "no honest binding: best candidate \"\u0007Define momentum as mass × velocity; recall and use the equa\" (1.6.1) binds only on generic vocabulary: velocity",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "tcUpIDm1t10",
+      "reason": "no honest binding: best candidate \"\u0007Know that microscopic particles may be moved by collisions \" (2.1.8) binds only on generic vocabulary: matter, model, particle",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "vtuw9Ib1c3E",
+      "reason": "no honest binding: best candidate \"\u0007Describe how the scattering of alpha (α) particles by a she\" (5.1.3a) binds only on generic vocabulary: model, particle",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "f6FiboyHUfk",
+      "reason": "no honest binding: best candidate \"\u0007Recall and use the equation for the change in gravitational\" (1.7.5) binds only on generic vocabulary: energy, gravitational, potential",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "RXGwC4unVlo",
+      "reason": "no honest binding: best candidate \"\u0007State the advantages of high-voltage transmission\" (4.5.5a) binds only on generic vocabulary: voltage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "B4TgGk8B5Nk",
+      "reason": "no honest binding: best candidate \"\u0007Understand that electric circuits transfer energy from a so\" (4.2.1d) binds only on generic vocabulary: energy, transfer",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "7i7OlEJ-n5c",
+      "reason": "no honest binding: best candidate \"\u0007Define the kilowatt-hour (kW h) and calculate the cost of u\" (4.2.4c) binds only on generic vocabulary: unit",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "e52ZDsAI7ZU",
+      "reason": "no honest binding: best candidate \"\u0007Describe the effect of α -decay, β -decay and γ -emissions \" (5.2.4a) binds only on generic vocabulary: number",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "QkIBC8pvHA0",
+      "reason": "no honest binding: best candidate \"\u0007Determine, qualitatively, from given data or the shape of a\" (1.2.5) binds only on generic vocabulary: data, graph",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "0fYhiy2Q1cs",
+      "reason": "no honest binding: best candidate \"\u0007Draw and interpret circuit diagrams containing diodes and l\" (4.3.2a) binds only on generic vocabulary: draw",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ZGWlTcx2Mc4",
+      "reason": "no honest binding: best candidate \"\u0007Describe how wavelength and gap size affects diffraction th\" (3.1.9) binds only on generic vocabulary: diffraction",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "OXI31z6_xu4",
+      "reason": "self-review full-row drop: LEGO oscilloscope build video — novelty, no spec content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "-6WT6VBtHgY",
+      "reason": "self-review full-row drop: equation-sheet problems — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Nc5PKQwoqKg",
+      "reason": "self-review full-row drop: concussion-prevention piece: no impact/force spec named; binds are word-adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "1aq3dsH6vOA",
+      "reason": "self-review full-row drop: tutoring-service promo — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "6LARrjFbCmk",
+      "reason": "self-review full-row drop: can-you-explain quiz format; no spec content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "-rWj9AoY_O8",
+      "reason": "self-review full-row drop: RGB LED colour mixing: no LED-colour spec in 0625; circuit binds are adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "EJOPslIfz_g",
+      "reason": "self-review full-row drop: STEM SMART programme promo — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "KBsfEyA0T-4",
+      "reason": "self-review full-row drop: equation-sheet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "OJPcnclQ_yA",
+      "reason": "self-review full-row drop: Cambridge-university advice video — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "7hFhMpQy7oE",
+      "reason": "self-review full-row drop: data-sheet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "pL8lSs8-04k",
+      "reason": "self-review full-row drop: equation-sheet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "gq9WWYQCGx4",
+      "reason": "self-review full-row drop: formulae-sheet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "y1Lk_r43f30",
+      "reason": "self-review full-row drop: every-equation compilation — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "JfHcVhXqZvU",
+      "reason": "self-review full-row drop: equation-sheet walkthrough — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "ZAPHc7ArwuE",
+      "reason": "self-review full-row drop: office tour — channel promo sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "xEQ7DfRydOk",
+      "reason": "self-review full-row drop: 2021 assessment-materials finder — exam-service sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "CCenrAOHDLc",
+      "reason": "self-review full-row drop: generic I-V characteristics worksheet: 0625 carries no I-V curve spec; the image-characteristic binds are word-adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "i9F6V3vWxWY",
+      "reason": "self-review full-row drop: independent/dependent variables: no subject-content spec in 0625",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "X63WpnuJa1U",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "6_Tn9VoOlyQ",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "XDMqO8zl0pA",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "FhI3BxPqNss",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "5Urz-VskHsI",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "5e-OOtSH8iI",
+      "reason": "self-review full-row drop: channel promo — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "5M7VMGpuDyw",
+      "reason": "self-review full-row drop: room tour — channel promo sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "LddQrQmDkKo",
+      "reason": "self-review full-row drop: normal contact force: no normal-force spec in 0625; the optics normal binds matched the word normal only",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "PY-p437CZ0Q",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "D2v5Kgw5coc",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "GXvNz-127dk",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "BDiJdIorBNQ",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "mLpf8zSRhSU",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "N_8fnd_mNhQ",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "oEm4e0M71tM",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "JiHl2dsBHXs",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "3Wjkh7pcilw",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "3R0pPGbfstY",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "_hpo71uSUIs",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "AGAO7w0TjuU",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "CsyQ700lfXk",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "oX53jxM6D9g",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "LheOjO2DJD0",
+      "reason": "self-review full-row drop: reaction time: not a 0625 spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Nn1Gwj1dea4",
+      "reason": "self-review full-row drop: seven-days-in-a-week novelty; the Earth-orbit bind is word-adjacent",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "vygtYhdtkZc",
+      "reason": "self-review full-row drop: All-of-AQA survey video — generic survey reject class",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "XAVQDy-gQdA",
+      "reason": "self-review full-row drop: energy-efficient buildings: insulation detail exceeds 0625 thermal content; no honest bind",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "kgRAdLr9nww",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "AJ6MlcAi09Y",
+      "reason": "self-review full-row drop: reducing unwanted energy losses: insulation detail exceeds 0625 thermal content; the radiation-safety/motor binds are word-adjacent nonsense",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "qwmJdbBufQo",
+      "reason": "self-review full-row drop: power-to-heat-a-burger worked example: SHC/p-power binds ambiguous from title; no distinctive content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "cTKsXqzO4MQ",
+      "reason": "self-review full-row drop: sledge-speed novelty worked example: no distinctive content named",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "BVPRdDhz5o8",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "pZo_jCPCQEE",
+      "reason": "self-review full-row drop: tangents to a curve: graph technique with no subject-content spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "pYZWVKI4zEk",
+      "reason": "self-review full-row drop: scale drawing: beyond the collinear resultant of 1.5.3; no honest bind",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Ln-fz6G7DZY",
+      "reason": "self-review full-row drop: tangents to a curve: graph technique with no subject-content spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "BQJDKUSSAN0",
+      "reason": "self-review full-row drop: scale drawing: beyond the collinear resultant of 1.5.3; no honest bind",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "6hAv_XzkTHM",
+      "reason": "self-review full-row drop: significant figures: no sig-fig spec in 0625",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "yw_xN7TDb2g",
+      "reason": "self-review full-row drop: significant figures: no sig-fig spec in 0625",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "AEjdfg8oA00",
+      "reason": "self-review full-row drop: standard form and significant figures: no maths-skills spec in 0625",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "5DygmHw7O0w",
+      "reason": "self-review full-row drop: significant figures: no sig-fig spec in 0625",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "BUPi5aNm0iQ",
+      "reason": "self-review full-row drop: how to plot data: graph technique with no subject-content spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Po4yRQ5pLuk",
+      "reason": "self-review full-row drop: line of best fit: graph technique with no subject-content spec",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "6MloRcZFs5I",
+      "reason": "self-review full-row drop: equipment promo — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "EDOKLtKOk1k",
+      "reason": "self-review full-row drop: pinhole photography: no pinhole-camera spec in the 0625 spine",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Wo3TvlHt6iw",
+      "reason": "self-review full-row drop: Royal Academy of Engineering sponsored resource — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "dNDdlG3T8x4",
+      "reason": "self-review full-row drop: mistakes/advice video — exam-skills sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "2TMVp7S5j8Q",
+      "reason": "self-review full-row drop: study-advice video — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "5i27lEOTTZM",
+      "reason": "self-review full-row drop: equipment promo — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "kN7j1PHoSKs",
+      "reason": "self-review full-row drop: exam-technique video — sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
+     },
+     {
+      "video": "Em4YDr749jA",
+      "reason": "self-review full-row drop: OCR multiple-choice paper content — paper sewage",
+      "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
      }
     ]
    }
@@ -2853,6 +3325,576 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "cAMD7HX_Kqw",
+   "title": "Electrostatic Pringles",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=cAMD7HX_Kqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "FDLOQSDdStk",
+   "title": "Refraction Analogy with a Real Car - GCSE and A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=FDLOQSDdStk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 84,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "genvYCm0RT4",
+   "title": "LDRs and Thermistors - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=genvYCm0RT4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "t7cS-oqtFuk",
+   "title": "Ultrasound - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=t7cS-oqtFuk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 268,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "177JCYlHHk8",
+   "title": "Specific Heat Capacity 2 - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=177JCYlHHk8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 247,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "uDjFYYrJae4",
+   "title": "Specific Heat Capacity 1 - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=uDjFYYrJae4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "AxrSOrbnUNw",
+   "title": "IV Characteristics of a Resistor Experiment RESULTS - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=AxrSOrbnUNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 173,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "Oau4WrY4wNk",
+   "title": "IV Characteristics of a Bulb Experiment RESULTS - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Oau4WrY4wNk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 155,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "KaI1S1uQj1M",
+   "title": "IV Characteristics of a Diode Experiment RESULTS - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=KaI1S1uQj1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 154,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "R-OUS5-Lv8I",
+   "title": "Specific Heat Capacity of Water Experiment RESULTS - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=R-OUS5-Lv8I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 463,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "DbHuwbXUdM0",
+   "title": "Specific Heat Capacity of Aluminium Experiment RESULTS - GCSE Physics Required Practical",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=DbHuwbXUdM0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 517,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "6yvoL0bIG_E",
+   "title": "Energy Resources - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=6yvoL0bIG_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 289,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "7eOqj-PCjAs",
+   "title": "Heat Transfer - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=7eOqj-PCjAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 205,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "WbyEGZTKxBs",
+   "title": "Conservation and Efficiency - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=WbyEGZTKxBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 246,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "CdWlMwv0JYU",
+   "title": "Colour - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=CdWlMwv0JYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 166,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "t25GWRUDwqE",
+   "title": "Energy Stores - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=t25GWRUDwqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 265,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "HcxLMZ-xhEc",
+   "title": "Permanent Magnets - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=HcxLMZ-xhEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 189,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "P_kvSvc_XME",
+   "title": "Measuring Speed from a Curved Distance-Time Graph - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=P_kvSvc_XME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 175,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "oOcCqVzFI_s",
+   "title": "How to Calculate Distance and Displacement - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=oOcCqVzFI_s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 382,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "CYMWpvY38z8",
+   "title": "Seismic Waves - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=CYMWpvY38z8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 260,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "NKDqsUMNY-k",
+   "title": "Circular Motion - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=NKDqsUMNY-k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 242,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "67EY4ksgyC0",
+   "title": "Distance and Displacement - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=67EY4ksgyC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 464,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "jzanJYX0wR8",
+   "title": "Density of a Concrete Block - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=jzanJYX0wR8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 137,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "5pzjDd8nI94",
+   "title": "Measuring the Speed of Water Waves - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=5pzjDd8nI94",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 127,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "kz9-oMMWI6Q",
+   "title": "How to Build Real Circuits that Work - GCSE Physics PRACTICAL",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=kz9-oMMWI6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 400,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "pRIPOc-lrfA",
+   "title": "Calculating Acceleration (of a Car) - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=pRIPOc-lrfA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 127,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "YvVX5ijP29Y",
+   "title": "Calculating the Speed of Real Objects - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=YvVX5ijP29Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "JCrkr6loKrQ",
+   "title": "Building a Massive NZ Chart of all the Possible Isotopes in Lego!",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=JCrkr6loKrQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 571,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "qR7Fu8X16uc",
+   "title": "Energy Stores and Transfers for a Bursting Balloon - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=qR7Fu8X16uc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 153,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "L8vz1MQsuys",
+   "title": "The Sankey Diagram - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=L8vz1MQsuys",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 97,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "SAaI7EZTd98",
+   "title": "Changes in Energy Stores for a Mountain Bike - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=SAaI7EZTd98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 124,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "WlKVNPhXKXw",
+   "title": "How far has the Spring been Compressed? WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=WlKVNPhXKXw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 142,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "tQqc10irjFg",
+   "title": "Energy Transferred by a Filament Bulb - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=tQqc10irjFg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 155,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "XpmqsGthzDc",
+   "title": "Resistance of a Filament Lamp - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=XpmqsGthzDc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 109,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "J6itBk8l_uE",
+   "title": "Calculating Current in Ammeters - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=J6itBk8l_uE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 159,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "BfBygbuFUfM",
+   "title": "Charge is Transferred by a Toaster - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=BfBygbuFUfM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 83,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "l2hBlQ0sLk4",
+   "title": "Energy Stores and Transfers for a Trolley - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=l2hBlQ0sLk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 107,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "Fi57TwHttkk",
+   "title": "Energy Stores and Transfers of a Kettle Boiling Water - WORKED EXAMPLE - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Fi57TwHttkk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 131,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
   }
  ],
  "mappings": [
@@ -5590,20 +6632,599 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
    "reviewedUtc": "2026-11-12T07:07:10Z",
    "boardMismatch": true
+  },
+  {
+   "video": "cAMD7HX_Kqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrostatic Pringles' demonstrates the friction-charging experiments of 4.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "FDLOQSDdStk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Refraction Analogy' names the refraction terms (normal, angle of incidence/refraction) of 3.2.1a",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "genvYCm0RT4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'LDRs and Thermistors' names components whose circuit-diagram symbols/appearance appear in 4.3.1; behaviour detail exceeds the spec, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "t7cS-oqtFuk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.9",
+    "3.4.12"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Ultrasound - GCSE Physics Worksheet Answers EXPLAINED' -> 3.4.9 '\u0007Define ultrasound as sound with a frequency h' via distinctive token(s) ultrasound; 3.4.12 '\u0007Describe the uses of ultrasound in non- destr' via distinctive token(s) ultrasound",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "177JCYlHHk8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.4a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Specific Heat Capacity 2' names the SHC measurement experiments of 2.2.4a",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uDjFYYrJae4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.4a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Specific Heat Capacity 1' names the SHC measurement experiments of 2.2.4a",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "AxrSOrbnUNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2c"
+   ],
+   "confidence": "low",
+   "evidence": "title 'IV Characteristics of a Resistor Experiment RESULTS' is the voltmeter-ammeter resistance-determination experiment of 4.2.2c; framing differs, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Oau4WrY4wNk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2c"
+   ],
+   "confidence": "low",
+   "evidence": "title 'IV Characteristics of a Bulb Experiment RESULTS' is the voltmeter-ammeter resistance-determination experiment of 4.2.2c; framing differs, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KaI1S1uQj1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2c"
+   ],
+   "confidence": "low",
+   "evidence": "title 'IV Characteristics of a Diode Experiment RESULTS' is the voltmeter-ammeter resistance-determination experiment of 4.2.2c; framing differs, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "R-OUS5-Lv8I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.4a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'SHC of Water Experiment RESULTS' names the SHC measurement experiments of 2.2.4a",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "DbHuwbXUdM0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.4a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'SHC of Aluminium Experiment RESULTS' names the SHC measurement experiments of 2.2.4a",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6yvoL0bIG_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1b",
+    "1.7.2b"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Energy Resources' names the energy-generation methods of 1.7.1b and their renewability trade-offs of 1.7.2b",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7eOqj-PCjAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.1",
+    "2.3.1a"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Heat Transfer' names the conduction (2.3.1) and convection (2.3.1a) methods; radiation half of the worksheet not bound, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WbyEGZTKxBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.6",
+    "1.7.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Conservation and Efficiency' names the conservation principle of 1.7.6 and the efficiency definition of 1.7.7",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CdWlMwv0JYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.2c"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Colour' names the visible-spectrum colour content of 3.2.2c",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "t25GWRUDwqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1",
+    "1.7.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Energy Stores' names the energy-storage spec 1.7.1 and the store-to-store transfer of 1.7.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "HcxLMZ-xhEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.3",
+    "4.1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Permanent Magnets' names the permanent-vs-temporary magnet properties of 4.1.3 and the permanent-magnet uses of 4.1.9",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "P_kvSvc_XME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Measuring Speed from a Curved Distance-Time Graph' names the d-t graph interpretation of 1.2.4/1.2.5",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "oOcCqVzFI_s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Calculate Distance and Displacement' names the speed-in-a-given-direction (displacement) content of 1.2.2; 0625 has no standalone displacement spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CYMWpvY38z8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.6",
+    "3.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Seismic Waves - GCSE Physics' -> 3.1.6 '\u0007Know that for a longitudinal wave, the direct' via distinctive token(s) seismic; 3.1.5 '\u0007Know that for a transverse wave, the directio' via distinctive token(s) seismic",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NKDqsUMNY-k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.12"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Circular Motion' names the circular-path motion of 1.5.12",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "67EY4ksgyC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Distance and Displacement' names the speed-in-a-given-direction (displacement) content of 1.2.2; 0625 has no standalone displacement spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "jzanJYX0wR8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Density of a Concrete Block' names the density-determination content of 1.4.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "5pzjDd8nI94",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Measuring the Speed of Water Waves' names the wave-speed equation of 3.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kz9-oMMWI6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Build Real Circuits that Work' names the construct-and-use-circuits content of 4.3.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pRIPOc-lrfA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Calculating Acceleration (of a Car)' names the acceleration definition/equation of 1.2.9",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "YvVX5ijP29Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Calculating the Speed of Real Objects' names the speed definition of 1.2.1 and the average-speed equation of 1.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JCrkr6loKrQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Chart of all the Possible Isotopes' names the isotope content of 5.1.5; novelty nuclide-chart framing, disclosed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "qR7Fu8X16uc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Energy Stores and Transfers for a Bursting Balloon - WORKED EXAMPLE - ' -> 1.7.2 '\u0007Describe how energy is transferred between st' via distinctive token(s) store",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "L8vz1MQsuys",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Sankey Diagram - GCSE Physics' -> 1.7.6 '\u0007Know the principle of the conservation of ene' via distinctive token(s) sankey",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "SAaI7EZTd98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Changes in Energy Stores for a Mountain Bike - WORKED EXAMPLE - GCSE P' -> 1.7.2 '\u0007Describe how energy is transferred between st' via distinctive token(s) store",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WlKVNPhXKXw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How far has the Spring been Compressed?' names the spring-constant content of 1.5.9",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tQqc10irjFg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.3d"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Energy Transferred by a Filament Bulb' names E = IVt of 4.2.3d",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XpmqsGthzDc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.7a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Resistance of a Filament Lamp' names the filament-lamp p.d./resistance relationship of 4.2.7a",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "J6itBk8l_uE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Calculating Current in Ammeters' names the ammeter-use content of 4.2.2a (with the V=IR calculation)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "BfBygbuFUfM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Charge is Transferred by a Toaster' names the current-as-charge-flow content of 4.2.1a",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "l2hBlQ0sLk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Energy Stores and Transfers for a Trolley - WORKED EXAMPLE - GCSE Phys' -> 1.7.2 '\u0007Describe how energy is transferred between st' via distinctive token(s) store",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Fi57TwHttkk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Energy Stores and Transfers of a Kettle Boiling Water' names the store-to-store transfer of 1.7.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
+   "reviewedUtc": "2026-11-12T09:56:37Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 294,
-  "specPointsMapped": 155,
-  "specPointsUnmapped": 139,
-  "videosTotal": 176,
-  "videosMapped": 176,
+  "specPointsMapped": 162,
+  "specPointsUnmapped": 132,
+  "videosTotal": 214,
+  "videosMapped": 214,
   "videosUnmapped": 0,
-  "mappingRows": 176,
+  "mappingRows": 214,
   "byConfidence": {
    "high": 0,
-   "medium": 143,
-   "low": 33
+   "medium": 168,
+   "low": 46
   }
  },
  "inputs": {
@@ -5628,7 +7249,13 @@
    "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p5.json",
    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
    "reviewAppliedUtc": "2026-11-12T07:07:10Z"
+  },
+  "p6": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p6.json",
+   "task": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)",
+   "reviewAppliedUtc": "2026-11-12T09:56:37Z"
   }
  },
- "generatedUtc": "2026-11-12T07:09:06.145Z"
+ "generatedUtc": "2026-11-12T09:58:57.369Z"
 }
