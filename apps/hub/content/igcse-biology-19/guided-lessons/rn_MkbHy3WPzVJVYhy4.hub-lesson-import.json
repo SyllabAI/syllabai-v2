@@ -1,0 +1,183 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_MkbHy3WPzVJVYhy4",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "07cd93d09f79342cb9b363367794dd2b5fbc6be1e510a278564a1e681ac7e077",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_MkbHy3WPzVJVYhy4",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Biological Molecules",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/biological-molecules/practical-investigating-temperature-and-enzyme-activity",
+    "specAnchors": [
+      {
+        "code": "2.12",
+        "text": "practical: investigate how enzyme activity can be affected by changes in temperature"
+      }
+    ],
+    "primer": {
+      "text": "Amylase digesting starch into maltose is the classic enzyme practical, and iodine is the clock: every droplet transfer that still turns blue-black means starch remains. This note runs the temperature version — water baths from 30 to 60 degrees, repeats for reliability, the reading of results, the two named limitations with fixes, and the CORMS planning frame.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_MkbHy3WPzVJVYhy4::L1",
+        "title": "The amylase clock at different temperatures",
+        "sourceHeadings": [
+          "Practical: Enzymes & Temperature",
+          "Method"
+        ],
+        "specRefs": [
+          "2.12"
+        ],
+        "opening": "The method is a timing race: starch solution is warmed to the chosen temperature, amylase joins it, and every minute a droplet is transferred to a well of iodine. Blue-black means starch survives; the first well that stays yellow-brown marks the moment digestion finished. Repeating at each temperature and across a range builds the dataset.",
+        "keyPoints": [
+          "Amylase digests starch into maltose, and iodine tests for remaining starch.",
+          "Iodine is yellow-brown and turns blue-black only while starch is present.",
+          "A droplet is transferred to a fresh iodine well every minute until no colour change occurs.",
+          "The reaction time is read by counting the wells up to the first unchanged one.",
+          "The whole run is repeated across a temperature range such as 30 to 60 degrees Celsius."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Mix amylase with warmed starch; test droplets against iodine every minute; count wells until iodine stops turning blue-black — that count is the digestion time at that temperature.",
+            "analogy": "Iodine wells are bus stops: the reaction's bus travels along them once per minute, and the first stop where nothing changes is its final stop.",
+            "examPointer": "When describing the method, name the interval (every minute) and the readout (counting wells) — both carry marks."
+          },
+          "medium": {
+            "restatement": "The design fixes volume and concentration while varying temperature, and the iodine-well count converts a continuous reaction into a discrete, comparable number; repeats at each temperature expose the random error the stopwatch cannot see.",
+            "analogy": "Counting wells turns a blur into a ruler: each well is one tick of ten seconds' worth of clock on the tile.",
+            "examPointer": "State the controlled variables (volumes, concentrations) explicitly when asked why the comparison is fair."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MkbHy3WPzVJVYhy4::L1::Q1",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q2",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q3",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q4",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q5",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q6",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q7",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q8",
+          "rn_MkbHy3WPzVJVYhy4::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_MkbHy3WPzVJVYhy4::L2",
+        "title": "Reading results, fixing limitations, planning with CORMS",
+        "sourceHeadings": [
+          "Results and Analysis",
+          "Applying CORMS to practical work"
+        ],
+        "specRefs": [
+          "2.12"
+        ],
+        "opening": "The analysis reads the well counts as reaction speeds: fewer wells means faster digestion, with the shortest count at the optimum temperature. Two limitations matter — drifting water temperature and judging colour by eye — and each has a named fix. CORMS then wraps the whole design into a planning answer examiners can mark quickly.",
+        "keyPoints": [
+          "The shortest iodine-well count marks the optimum temperature, where the enzyme works fastest.",
+          "Below the optimum, colder temperatures slow collisions and stretch the reaction time.",
+          "A named limitation is temperature drift, fixed by using proper water baths at each set temperature.",
+          "A second limitation is judging colour by eye, improved by a colorimeter that measures colour intensity.",
+          "CORMS stands for Change, Organism, Repeat, Measure and control variables."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Fewest wells = fastest = optimum. Fix drifting temperature with water baths; fix colour judgement with a colorimeter. CORMS plans the design.",
+            "analogy": "The well count is a race time: the temperature that wins with the fewest ticks is the enzyme's favourite.",
+            "examPointer": "Pair each limitation with its improvement — a limitation stated without a fix earns half the marks."
+          },
+          "medium": {
+            "restatement": "The two limitations attack validity and precision respectively: drift confounds which temperature caused the rate, and subjective colour calls blur the endpoint; baths and a colorimeter target each directly.",
+            "analogy": "Drift is an unfair referee (the wrong team blamed), colour-judgement is a fuzzy scoreboard (nobody knows who won); baths fix the referee, the colorimeter sharpens the scoreboard.",
+            "examPointer": "In CORMS answers, give M its letter explicitly (M1 time via wells; M2 the count itself) — the note models that format."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MkbHy3WPzVJVYhy4::L2::Q1",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q2",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q3",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q4",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q5",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q6",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q7",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q8",
+          "rn_MkbHy3WPzVJVYhy4::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "spotting tile",
+          "definition": "The multi-well plate holding separate iodine drops for each timed test.",
+          "firstLesson": 1
+        },
+        {
+          "term": "colorimeter",
+          "definition": "An instrument that measures colour intensity by shining light through a solution.",
+          "firstLesson": 2
+        },
+        {
+          "term": "CORMS",
+          "definition": "The planning frame: Change, Organism, Repeat, Measure, Same/control variables.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/59d3dca0f2a0-24858-investigating-the-effect-of-temperature-on.png",
+        "alt": "Diagram showing an experiment on amylase and starch reaction times at different temperatures, using a thermometer, spotting tile, and iodine.",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The amylase-starch timing setup across temperatures, with spotting tile and iodine wells"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/22e800f5b889-corms-evaluation.png",
+        "alt": "CORMS evaluation, downloadable AS & A Level Biology revision notes",
+        "sourceHeading": "Applying CORMS to practical work",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The CORMS evaluation grid"
+      }
+    ]
+  }
+}

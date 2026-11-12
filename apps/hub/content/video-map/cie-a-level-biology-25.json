@@ -6,7 +6,12 @@
   "provider": "multi (freesciencelessons / doodlescience / cognito channel-only / amoeba-sisters / malmesbury)",
   "label": "cie-a-level-biology-25",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY; AQA<->CIE divergence handled by conservative binding (medium/low only, no high rows). NOTE: freesciencelessons videos with embedding disabled (oEmbed 401) were identity-checked via i.ytimg.com thumbnail liveness + the channel uploads-playlist enumeration instead; identityMethod field records which path each video used",
-  "enumeratedUtc": "2026-11-09T05:12:35Z"
+  "enumeratedUtc": "2026-11-09T05:12:35Z",
+  "p5": {
+   "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
+   "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-01T01:04:15Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2D",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Title-only posture with the tightened P2D binding rule (title must name the spec's distinctive content). 104/139 medium and 30/35 low rows pass; rejects are A-level-only clauses (recombinant production, biosensors, genetic screening, microarrays, gene editing, mitosis significance) that GCSE-adjacent or generic-titled videos do not name.",
-  "rowsApproved": 133,
+  "rowsApproved": 193,
   "rowsRejected": 7,
   "rejects": [
    {
@@ -58,6 +63,124 @@
     "video": "gu9T91GJXDo",
     "spec": "19.1.7",
     "reason": "GCSE 'Genetic Engineering' — the gene-editing (CRISPR-style insertion/deletion/replacement) clause of 19.1.7 is not title-evidenced in a GCSE genetic-engineering video."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P2D",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "Title-only posture with the tightened P2D binding rule (title must name the spec's distinctive content). 104/139 medium and 30/35 low rows pass; rejects are A-level-only clauses (recombinant production, biosensors, genetic screening, microarrays, gene editing, mitosis significance) that GCSE-adjacent or generic-titled videos do not name.",
+    "rowsApproved": 133,
+    "rowsRejected": 7,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "OaRvfVYWYok",
+      "spec": "19.2.1",
+      "reason": "'Globular Proteins 2 Insulin and Lysozyme' covers insulin structure/function; the recombinant-human-protein production clause of 19.2.1 is not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "IDuEqWBEPk4",
+      "spec": "14.1.11",
+      "reason": "'The Regulation of Blood Glucose Concentration' — test strips and biosensors (14.1.11) are A-level-specific clauses, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "3XhzsN8TpTI",
+      "spec": "19.2.2",
+      "reason": "GCSE 'Inherited Disorders' covers the disorders; the genetic-screening framing of 19.2.2 (BRCA, Huntington) is not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "ebIpkw3XapE",
+      "spec": "19.1.10",
+      "reason": "Amoeba 'Gene Expression and Regulation' covers regulation; microarray analysis of genomes (19.1.10) is a distinct technique, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "ebIpkw3XapE",
+      "spec": "19.1.6",
+      "reason": "Same video: marker genes with fluorescent products (19.1.6) not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "Fh9b6a-3DLQ",
+      "spec": "5.1.2",
+      "reason": "GCSE 'Sexual and Asexual Reproduction' — the significance-of-mitosis clauses (growth, repair, genetic identity) of 5.1.2 are not title-evidenced; keyword-adjacent."
+     },
+     {
+      "lessonRef": null,
+      "video": "gu9T91GJXDo",
+      "spec": "19.1.7",
+      "reason": "GCSE 'Genetic Engineering' — the gene-editing (CRISPR-style insertion/deletion/replacement) clause of 19.1.7 is not title-evidenced in a GCSE genetic-engineering video."
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p5 (cognito completion)",
+    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-12",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+    "ruledUtc": "2026-11-12T07:07:10Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Programmatic re-verification: oEmbed author Cognito 60/60, all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: borderline rows kept at low with disclosed partial overlap; full-row drops and spec trims below.",
+    "rowsApproved": 60,
+    "rowsRejected": 10,
+    "rejects": [
+     {
+      "video": "zGFNtKv3pDA",
+      "reason": "no honest binding: title names phylogeny/courtship/classification systems; candidate list has no such specs (only virus-classification spec, which the title doesn't name)",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "PiaaOYGZGQ8",
+      "reason": "no honest binding: title names digestive enzymes (carbohydrases/lipases/proteases); no digestion spec among candidates, only enzyme kinetics/action specs",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "GErAVO8lPQk",
+      "reason": "no honest binding: title names ileum absorption of glucose/lipids; no digestion/absorption candidate present (13.1.4/13.1.5 absorption spectra are unrelated)",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "iYPBEk0C-GA",
+      "reason": "no honest binding: title names insect tracheal gas exchange; candidate list only contains human gas exchange specs 9.1.x",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "rBthb6EM5Qc",
+      "reason": "no honest binding: title names fish gills/countercurrent exchange; no fish gas exchange spec in candidate list",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "Tqs2fQA2ZiI",
+      "reason": "no honest binding: title names heartbeat excitation pathway and ECGs; candidate list has no cardiac conduction or ECG spec",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "b5Vg1iaPpHw",
+      "reason": "no honest binding: title names physical/chemical digestion; no digestion candidate present in candidate list",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "F-DjWHM2IFQ",
+      "reason": "no honest binding: title names cell fractionation/ultracentrifugation; no such spec exists in the candidate list",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "gc6a6XB5IpM",
+      "reason": "no honest binding: title names stem cell types/potency/uses; no stem-cell spec in candidate list",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "4p6H15MQ0gg",
+      "reason": "no honest binding: title names water structure/functions; no water spec in candidate list",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     }
+    ]
    }
   ]
  },
@@ -2061,6 +2184,906 @@
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "OpH6zHIeNxE",
+   "title": "A-Level Biology - Anaerobic Respiration | Alcohol & Lactic Acid Fermentation (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=OpH6zHIeNxE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 365,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "2UcH2lsd49I",
+   "title": "A-Level Biology - Oxidative Phosphorylation - What It Is | Key Stages | ATP Yield (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=2UcH2lsd49I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 394,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "RUScE515p1o",
+   "title": "A-Level Biology - Krebs Cycle - What It Is | Key Stages | Role of Coenzymes (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=RUScE515p1o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 373,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "GfXi2dN_6DY",
+   "title": "A-Level Biology - Link Reaction - What It Is | Key Stages | Reactants & Products (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=GfXi2dN_6DY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LiftqP42TSg",
+   "title": "A-Level Biology - Glycolysis - What It Is | Key Stages | Reactants & Products (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LiftqP42TSg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 398,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "bOwHbhZ9XHQ",
+   "title": "A-Level Biology - Maintaining Biodiversity - Reasons To Maintain It | Conservation (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=bOwHbhZ9XHQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 398,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "gSPhBBP_FOo",
+   "title": "A-Level Biology - Human Impact on Biodiversity - Population | Farming | Climate (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=gSPhBBP_FOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 378,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "CPjgk8x7I9E",
+   "title": "A-Level Biology - Sampling Animal Populations | Mark-release-recapture Technique (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=CPjgk8x7I9E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 345,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "mrDxJon0MBE",
+   "title": "A-Level Biology - Non-random Sampling - Methods | Abiotic Factors & Distribution (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mrDxJon0MBE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 417,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ge1gOJBAZl4",
+   "title": "A-Level Biology - Translocation & Mass Flow Hypothesis | How Active Loading Works (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ge1gOJBAZl4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 404,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "4Fhzf-Wjt-w",
+   "title": "A-Level Biology - Water Transport in Plants - Root Pathways | Xylem | Transpiration (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=4Fhzf-Wjt-w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 486,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "jp9BBvYIrG0",
+   "title": "A-Level Biology - Xylem & Phloem - Structure | Function | Distribution (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=jp9BBvYIrG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 350,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "VgOWQD2Sde0",
+   "title": "A-Level Biology - 5 Kingdoms & 3 Domains | How Viruses are Classified (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=VgOWQD2Sde0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 494,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "vVLlOENSOqQ",
+   "title": "A-Level Biology - Random Sampling - Techniques | Estimating Population Size (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vVLlOENSOqQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 396,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "_d7wBrrnGN0",
+   "title": "A-Level Biology - Haemoglobin - Oxygen Dissociation Curve | Bohr Effect (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=_d7wBrrnGN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 584,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "0N0169EXckk",
+   "title": "A-Level Biology - Biodiversity: Species Diversity | Species Richness & Evenness (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=0N0169EXckk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 353,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "N5bXJneUP88",
+   "title": "A-Level Biology - Tissue Fluid & Lymph - How They're Formed | Comparison with Blood (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=N5bXJneUP88",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 428,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "wW1NiCQvkDg",
+   "title": "A-Level Biology - Blood - Red & White Blood Cells | Platelets | Plasma (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=wW1NiCQvkDg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 294,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "GoJ3p7Zz7Ew",
+   "title": "A-Level Biology - Cardiac Cycle - Atrial Systole | Ventricular Systole | Diastole (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=GoJ3p7Zz7Ew",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 308,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "o2_jih4xkE0",
+   "title": "A-Level Biology - Gas Exchange in Plants - Adaptations of Leaves | Xerophytes (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=o2_jih4xkE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 394,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "EfJ98vWYcNQ",
+   "title": "A-Level Biology - Human Gas Exchange System - Structure | Adaptations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=EfJ98vWYcNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 591,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Fzo2wFw7ewQ",
+   "title": "A-Level Biology - Heart Structure - Chambers | Valves | Blood Vessels (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Fzo2wFw7ewQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 366,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "L_aXRbm5adg",
+   "title": "A-Level Biology - Blood Vessels - Artery | Arteriole | Capillary | Venule | Vein (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=L_aXRbm5adg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 469,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "CBlVe5RVGAk",
+   "title": "A-Level Biology - Circulatory Systems - Why We Need Them | Key Components | Types (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=CBlVe5RVGAk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 445,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "7g9NA42fVtw",
+   "title": "A-Level Biology - Vaccination & Immunity - Types of Immunity | Herd Immunity (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=7g9NA42fVtw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 440,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "TH8wSzfKz5M",
+   "title": "A-Level Biology - Monoclonal Antibodies | ELISA Test | Hybridoma Method (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=TH8wSzfKz5M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 455,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "sL038Tgubsk",
+   "title": "A-Level Biology - Humoral Response - B Cells | Primary & Secondary Responses (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=sL038Tgubsk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 467,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "9YBJxrVHmGI",
+   "title": "A-Level Biology - Meiosis & Genetic Variation - Crossing Over | Independent Segregation",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=9YBJxrVHmGI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 360,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "vJjuJInJ6-Y",
+   "title": "A-Level Biology - Meiosis - Stages | Differences to Mitosis (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vJjuJInJ6-Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 425,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "6Au1o25WHd0",
+   "title": "A-Level Biology - Mitosis - Stages of Mitosis & Cytokinesis | Cell Division & Cancer (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=6Au1o25WHd0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 404,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "biV6d0_1c20",
+   "title": "A-Level Biology - Active Transport - Steps in How it Works | Bulk Transport (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=biV6d0_1c20",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 330,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "w1aE8SWBnIE",
+   "title": "A-Level Biology - Cellular Response - T Cells | Non-specific & Specific Defences (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=w1aE8SWBnIE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 317,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "bXJ2XIz1Wjg",
+   "title": "A-Level Biology - Phagocytosis - Phagocytes | Stages | Role of Cytokines & Opsonins (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=bXJ2XIz1Wjg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 264,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "4WTXYE7AhBk",
+   "title": "A-Level Biology - Defence Mechanisms - Pathogens | Non-specific Defences | Antigens (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=4WTXYE7AhBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 403,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "BWCWT7pFJnY",
+   "title": "A-Level Biology - Diffusion - Simple & Facilitated | Factors Affecting Diffusion (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=BWCWT7pFJnY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 322,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "uwQdygERQ9g",
+   "title": "A-Level Biology - Fluid Mosaic Model - What Cell Membranes Are | Key Structures (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=uwQdygERQ9g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 396,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "TEyVKIebVjA",
+   "title": "A-Level Biology - Cell Cycle - Interphase | Mitosis | Cytokinesis | Checkpoints (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=TEyVKIebVjA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 286,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ZqBvRgYXKEA",
+   "title": "A-level Biology - Electron Microscopes: Transmission Electron & Scanning Electron (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ZqBvRgYXKEA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 396,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "xVu3WpLh7pY",
+   "title": "A-Level Biology - Magnification & Resolution - Object & Image | Calculations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=xVu3WpLh7pY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 314,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "C3BaYTfaOco",
+   "title": "A-Level Biology - Prokaryotic Cells - Structure & Function (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=C3BaYTfaOco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 194,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "KVahseq7Xe0",
+   "title": "A-Level Biology - Plant, Algal & Fungal Cells - Structure & Function (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=KVahseq7Xe0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 347,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "rIe5b418ZHw",
+   "title": "A-Level Biology - Mutations! Gene and Chromosome Mutations (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=rIe5b418ZHw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 458,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "AUy4UxmcQi0",
+   "title": "A-Level Biology - Translation | How Proteins Are Made (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=AUy4UxmcQi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 302,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Za7OxszhSzE",
+   "title": "A-Level Biology - Viruses | Structure of Viruses (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Za7OxszhSzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 285,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "zUS71Lb7f7Y",
+   "title": "A-Level Biology - Eukaryotic Cells: Animal Cells | Organelles of Animal Cells (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=zUS71Lb7f7Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 504,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "8ReRCQkxjnQ",
+   "title": "A-Level Biology - mRNA & tRNA | Messenger RNA & Transfer RNA (2027/28 Exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=8ReRCQkxjnQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 340,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "crCaEtjkXZE",
+   "title": "A-Level Biology - DNA Replication | 3 prime and 5 prime ends (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=crCaEtjkXZE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 344,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "DEpFYP1twU8",
+   "title": "A-Level Biology - Transcription | Sense & Antisense Strands (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=DEpFYP1twU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 327,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "c8cKqka8Pqc",
+   "title": "A-Level Biology - Nucleic Acids | DNA vs RNA (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=c8cKqka8Pqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 455,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "kwoS8iiUWHk",
+   "title": "A-Level Biology - Inhibitors & Cofactors - What they Are | End-product Inhibition (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=kwoS8iiUWHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 430,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "lS3jX-yXXc4",
+   "title": "A-Level Biology - Factors that Affect Enzyme Action (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=lS3jX-yXXc4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 464,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "BFWRPr3_y_M",
+   "title": "A-Level Biology - Enzyme Action - What Enzymes Are | Lock & Key | Induced Fit (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=BFWRPr3_y_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 318,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "pcT72Wg4DX4",
+   "title": "A-Level Biology - ATP - Structure | How it's Synthesised & Broken Down | Functions (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=pcT72Wg4DX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 335,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "GGIXwPst7Ys",
+   "title": "A-Level Biology - Proteins: Amino Acids | Dipeptides | How to Test for Proteins (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=GGIXwPst7Ys",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 324,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "KcMFFzDn2FE",
+   "title": "A-Level Biology - Proteins: Structures - 4 Main Levels | Bonds (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=KcMFFzDn2FE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 266,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ZOSy3jEaILQ",
+   "title": "A-Level Biology - Lipids: Triglycerides & Phospholipids | Cholesterol (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ZOSy3jEaILQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 424,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "xP9SgwDkJnM",
+   "title": "A-Level Biology - Lipids: Introduction - Structure | Functions | Tests (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=xP9SgwDkJnM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 347,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "S4T4KVTSGdA",
+   "title": "A-Level Biology - Carbohydrates: Polysaccharides - Starch | Glycogen | Cellulose (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=S4T4KVTSGdA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 407,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "1ibWOa-S4bI",
+   "title": "A-Level Biology - Carbohydrates: Monosaccharides & Disaccharides (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=1ibWOa-S4bI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 386,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "QN4hqLdC48g",
+   "title": "A-Level Biology - Biological Molecules - Carbohydrates | Lipids | Proteins | Nucleic Acids",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=QN4hqLdC48g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 337,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
   }
  ],
  "mappings": [
@@ -4077,20 +5100,973 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "video": "OpH6zHIeNxE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.2.10",
+    "12.2.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Anaerobic Respiration | Alcohol & Lactic Acid Fermentation' = lactate and ethanol fermentation, greater aerobic yield = anaerobic respiration specs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "2UcH2lsd49I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.2.8",
+    "12.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Oxidative Phosphorylation' = ETC and chemiosmosis on inner mitochondrial membrane = oxidative phosphorylation spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "RUScE515p1o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.2.5",
+    "12.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Krebs Cycle | Role of Coenzymes' = decarboxylation and dehydrogenation reducing NAD and FAD = Krebs cycle specs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GfXi2dN_6DY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.2.4",
+    "12.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Link Reaction' = pyruvate enters mitochondria, acetyl transfer via coenzyme A = link reaction specs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LiftqP42TSg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.2.2",
+    "12.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Glycolysis' = phosphorylation of glucose and splitting to triose phosphate = glycolysis spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bOwHbhZ9XHQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.3.2",
+    "18.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reasons To Maintain It | Conservation' = reasons to maintain biodiversity and conservation roles = 18.3.2/18.3.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gSPhBBP_FOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Human Impact on Biodiversity - Population | Farming | Climate' = human-driven extinction causes = 18.3.1 spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CPjgk8x7I9E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Mark-release-recapture Technique' = Lincoln index method for animal abundance = 18.2.4 spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mrDxJon0MBE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.2.4",
+    "18.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Non-random Sampling - Methods | Abiotic Factors & Distribution' = transect methods and abiotic distribution correlations = 18.2.4/18.2.5",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ge1gOJBAZl4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Translocation & Mass Flow Hypothesis' = mass flow down hydrostatic pressure gradient source to sink = 7.2.8",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4Fhzf-Wjt-w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.2",
+    "7.2.4",
+    "7.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Root Pathways | Xylem | Transpiration' = apoplast/symplast pathways, cohesion-tension, transpiration = water transport specs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "jp9BBvYIrG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.2",
+    "7.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Xylem & Phloem - Structure | Function | Distribution' = vessel and sieve tube structure, function, distribution = 7.1.x specs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "VgOWQD2Sde0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.1.2",
+    "18.1.5",
+    "18.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title '5 Kingdoms & 3 Domains | How Viruses are Classified' = three domains, kingdom features, virus classification = 18.1.x specs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vVLlOENSOqQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Random Sampling - Techniques | Estimating Population Size' = importance of random sampling for biodiversity = 18.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "_d7wBrrnGN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.4",
+    "8.2.5",
+    "8.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Oxygen Dissociation Curve | Bohr Effect' = haemoglobin ODC, lung/tissue importance, Bohr shift = 8.2.4-8.2.6",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "0N0169EXckk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Species Diversity | Species Richness & Evenness' = species-level biodiversity assessment = 18.2.2 spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "N5bXJneUP88",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.7",
+    "8.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Tissue Fluid & Lymph - How They're Formed' = tissue fluid formation in capillary network vs blood = 8.1.7/8.1.6",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wW1NiCQvkDg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.5",
+    "8.2.1",
+    "8.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Red & White Blood Cells | Platelets | Plasma' = blood cells and plasma CO2 role covered only partially = 8.1.5/8.2.1/8.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GoJ3p7Zz7Ew",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Cardiac Cycle - Atrial Systole | Ventricular Systole | Diastole' = systole/diastole pressure and valve changes = 8.3.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "o2_jih4xkE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Adaptations of Leaves | Xerophytes' = xerophytic leaf adaptations reducing water loss = 7.2.5 (drawing-skill spec)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "EfJ98vWYcNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1",
+    "9.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Human Gas Exchange System - Structure | Adaptations' = trachea-to-alveoli structure and alveolar gas exchange = 9.1.1/9.1.7",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Fzo2wFw7ewQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.1",
+    "8.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Heart Structure - Chambers | Valves | Blood Vessels' = external/internal heart structure and great vessels = 8.3.1/8.1.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "L_aXRbm5adg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Blood Vessels - Artery | Arteriole | Capillary | Venule | Vein' = main vessel functions only partially covered = 8.1.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "CBlVe5RVGAk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Circulatory Systems - Why We Need Them | Types' = closed double circulation with heart, blood, vessels = 8.1.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7g9NA42fVtw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.4",
+    "11.2.5",
+    "11.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Vaccination & Immunity - Types of Immunity | Herd Immunity' = active/passive natural/artificial types, vaccines, herd immunity = 11.2.4-11.2.6",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TH8wSzfKz5M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.2",
+    "11.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Monoclonal Antibodies | ELISA Test | Hybridoma Method' = hybridoma production and mAb diagnosis/treatment = 11.2.2/11.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "sL038Tgubsk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.3",
+    "11.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Humoral Response - B Cells | Primary & Secondary Responses' = B-lymphocyte primary response and memory-cell secondary = 11.1.3/11.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9YBJxrVHmGI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Crossing Over | Independent Segregation' = crossing over and random orientation give genetic variation = 16.1.6",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vJjuJInJ6-Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.1.4",
+    "16.1.3",
+    "16.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Meiosis - Stages | Differences to Mitosis' = meiosis chromosome behaviour, reduction division, stage recognition = 16.1.4/16.1.3/16.1.5",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6Au1o25WHd0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1",
+    "5.2.2",
+    "5.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Mitosis - Stages of Mitosis & Cytokinesis' = mitosis chromosome behaviour, stage recognition, importance of mitosis = 5.2.x/5.1.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "biV6d0_1c20",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Active Transport - Steps | Bulk Transport' = active transport plus endocytosis/exocytosis = 4.2.1 spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "w1aE8SWBnIE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.3",
+    "11.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Cellular Response - T Cells' = T-lymphocyte roles inside the primary/secondary response specs = 11.1.3/11.1.4 partial",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bXJ2XIz1Wjg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Phagocytosis - Phagocytes | Stages' = mode of action of macrophages and neutrophils = 11.1.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "4WTXYE7AhBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.2",
+    "10.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Pathogens | Non-specific Defences | Antigens' = pathogen transmissibility and self/non-self antigens = 10.1.1/11.1.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "BWCWT7pFJnY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1",
+    "4.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Diffusion - Simple & Facilitated' = simple and facilitated diffusion plus SA:V factor = 4.2.1/4.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "uwQdygERQ9g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.2",
+    "4.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fluid Mosaic Model - Key Structures' = membrane model and component arrangement/roles = 4.1.1-4.1.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TEyVKIebVjA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.3",
+    "5.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Cell Cycle - Interphase | Mitosis | Cytokinesis' = mitotic cell cycle outline and chromosome behaviour = 5.1.3/5.2.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ZqBvRgYXKEA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electron Microscopes: TEM & SEM' = resolution and magnification in electron vs light microscopy = 1.1.5",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "xVu3WpLh7pY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.5",
+    "1.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Magnification & Resolution - Calculations' = defining terms and calculating magnification/size = 1.1.5/1.1.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "C3BaYTfaOco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.5",
+    "1.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Prokaryotic Cells - Structure & Function' = prokaryotic structural features and eukaryote comparison = 1.2.5/1.2.6",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KVahseq7Xe0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Plant, Algal & Fungal Cells - Structure & Function' = eukaryotic organelles and plant/animal comparison = 1.2.1/1.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "rIe5b418ZHw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.6",
+    "6.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Gene and Chromosome Mutations' = base-sequence change and substitution/deletion/insertion types = 6.2.6/6.2.7",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "AUy4UxmcQi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Translation | How Proteins Are Made' = translation half of the transcription-and-translation spec = 6.2.3 partial",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Za7OxszhSzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Viruses | Structure of Viruses' = non-cellular nucleic acid core, capsid, envelope = 1.2.7",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "zUS71Lb7f7Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Eukaryotic Cells: Animal Cells | Organelles' = recognising and outlining eukaryotic organelles = 1.2.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8ReRCQkxjnQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.5",
+    "6.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'mRNA & tRNA' = mRNA structure and tRNA role in polypeptide construction = 6.1.5/6.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "crCaEtjkXZE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'DNA Replication | 3 prime and 5 prime ends' = semi-conservative replication of antiparallel strands = 6.1.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "DEpFYP1twU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.4",
+    "6.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Transcription | Sense & Antisense Strands' = template/sense strands and transcription to polypeptides = 6.2.4/6.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "c8cKqka8Pqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Nucleic Acids | DNA vs RNA' = RNA structure contrasted against DNA = 6.1.5 spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kwoS8iiUWHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Inhibitors & Cofactors' = competitive and non-competitive reversible inhibition = 3.2.3 spec",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "lS3jX-yXXc4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1",
+    "3.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Factors that Affect Enzyme Action' = temperature/pH/substrate/inhibitor effects on reaction rate = 3.2.1/3.2.3",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "BFWRPr3_y_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Enzyme Action - Lock & Key | Induced Fit' = active site, enzyme-substrate complex, induced fit = 3.1.2",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pcT72Wg4DX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1",
+    "12.1.3",
+    "1.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'ATP - Structure | Synthesised & Broken Down | Functions' = ATP nucleotide structure, chemiosmotic synthesis, energy uses = 6.1.1/12.1.3/1.2.4",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GGIXwPst7Ys",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.1",
+    "2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Amino Acids | Dipeptides | Test for Proteins' = amino acid structure, peptide bonds, biuret test = 2.3.1/2.1.1",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KcMFFzDn2FE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Proteins: Structures - 4 Main Levels | Bonds' = interactions/bonds holding protein shape = 2.3.3 (levels spec 2.3.2 absent)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ZOSy3jEaILQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.9",
+    "2.2.10",
+    "2.2.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Lipids: Triglycerides & Phospholipids' = triglyceride and phospholipid structure and function = 2.2.9-2.2.11",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "xP9SgwDkJnM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.9",
+    "2.2.10",
+    "2.2.11",
+    "2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Lipids: Introduction - Structure | Functions | Tests' = triglyceride/phospholipid structure-function and emulsion test",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "S4T4KVTSGdA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.7",
+    "2.2.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Polysaccharides - Starch | Glycogen | Cellulose' = starch/glycogen and cellulose structure-function = 2.2.7/2.2.8",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1ibWOa-S4bI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2",
+    "2.2.5",
+    "2.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Monosaccharides & Disaccharides' = definitions plus glycosidic bond formation and hydrolysis = 2.2.2/2.2.5/2.2.6",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "QN4hqLdC48g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.5",
+    "2.2.9",
+    "2.2.11"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Biological Molecules - Carbohydrates | Lipids' = overview touching glycosidic condensation and triglyceride/phospholipid structure",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 257,
-  "specPointsMapped": 138,
-  "specPointsUnmapped": 119,
-  "videosTotal": 125,
-  "videosMapped": 121,
+  "specPointsMapped": 177,
+  "specPointsUnmapped": 80,
+  "videosTotal": 185,
+  "videosMapped": 181,
   "videosUnmapped": 4,
-  "mappingRows": 133,
+  "mappingRows": 193,
   "byConfidence": {
    "high": 0,
-   "medium": 104,
-   "low": 29
+   "medium": 158,
+   "low": 35
   }
  },
  "inputs": {
@@ -4103,7 +6079,13 @@
    "path": "Videos/drafts/cie-a-level-biology-25/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2D",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p5": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-biology-25/video-map.draft.external-p5.json",
+   "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+   "reviewAppliedUtc": "2026-11-12T07:07:10Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.028Z"
+ "generatedUtc": "2026-11-12T07:09:06.132Z"
 }

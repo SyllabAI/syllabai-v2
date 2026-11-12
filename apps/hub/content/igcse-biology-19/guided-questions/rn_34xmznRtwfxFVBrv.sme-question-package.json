@@ -1,0 +1,974 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_34xmznRtwfxFVBrv",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "2d37e36cab99a720cc1ff18f698977ff6fa86538ddfbd6adb237d9ee35988eef",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_34xmznRtwfxFVBrv",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q1",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "What does cell differentiation produce?",
+      "misconceptionClass": "differentiation outcome",
+      "options": [
+        {
+          "key": "A",
+          "text": "Specialised cells with structures fitted to particular functions",
+          "correct": true,
+          "explanation": "Specialisation is the outcome of differentiation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "More copies of the same unspecialised cell",
+          "correct": false,
+          "explanation": "That is mitosis without differentiation.",
+          "misconception": "process confusion"
+        },
+        {
+          "key": "C",
+          "text": "Cells that lose all their organelles",
+          "correct": false,
+          "explanation": "Differentiation remakes structure, it does not strip it.",
+          "misconception": "outcome inverted"
+        },
+        {
+          "key": "D",
+          "text": "Genetically new organisms",
+          "correct": false,
+          "explanation": "Differentiation changes structure, not genome.",
+          "misconception": "scale confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q2",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "What are stem cells?",
+      "misconceptionClass": "stem cell definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cells that cannot divide",
+          "correct": false,
+          "explanation": "They divide by mitosis.",
+          "misconception": "property denied"
+        },
+        {
+          "key": "B",
+          "text": "Undifferentiated cells that divide by mitosis into stem cells or specialised cells",
+          "correct": true,
+          "explanation": "The note's definition.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Cells that have finished differentiating",
+          "correct": false,
+          "explanation": "Stem cells are undifferentiated.",
+          "misconception": "status inverted"
+        },
+        {
+          "key": "D",
+          "text": "Cells found only in plants",
+          "correct": false,
+          "explanation": "Animals carry them too.",
+          "misconception": "scope wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q3",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "When do most ANIMAL cells differentiate?",
+      "misconceptionClass": "animal timing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only during repair",
+          "correct": false,
+          "explanation": "Repair is the adult stem cell's job.",
+          "misconception": "role confusion"
+        },
+        {
+          "key": "B",
+          "text": "Never — animal cells are born specialised",
+          "correct": false,
+          "explanation": "They differentiate early.",
+          "misconception": "denial wrong"
+        },
+        {
+          "key": "C",
+          "text": "At an early stage of development",
+          "correct": true,
+          "explanation": "Early differentiation is the animal pattern.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Continuously throughout life",
+          "correct": false,
+          "explanation": "That is the plant pattern.",
+          "misconception": "timing swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q4",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "What do adult stem cells mainly do?",
+      "misconceptionClass": "adult stem role",
+      "options": [
+        {
+          "key": "A",
+          "text": "Build the whole body from scratch",
+          "correct": false,
+          "explanation": "That happened during early development.",
+          "misconception": "timing confusion"
+        },
+        {
+          "key": "B",
+          "text": "Photosynthesise",
+          "correct": false,
+          "explanation": "Wrong kingdom entirely.",
+          "misconception": "kingdom error"
+        },
+        {
+          "key": "C",
+          "text": "Nothing — they are inactive",
+          "correct": false,
+          "explanation": "They actively maintain tissues.",
+          "misconception": "activity denied"
+        },
+        {
+          "key": "D",
+          "text": "Replace and repair damaged cells throughout life",
+          "correct": true,
+          "explanation": "The note gives replacing and repairing as their role.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q5",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "Which kingdom keeps cells able to fully differentiate throughout life?",
+      "misconceptionClass": "plant ability",
+      "options": [
+        {
+          "key": "A",
+          "text": "Plants",
+          "correct": true,
+          "explanation": "Many plant cells retain full differentiation ability.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Animals",
+          "correct": false,
+          "explanation": "Animal cells lose the ability early.",
+          "misconception": "timing swapped"
+        },
+        {
+          "key": "C",
+          "text": "Bacteria",
+          "correct": false,
+          "explanation": "Not the frame of this note.",
+          "misconception": "scope wrong"
+        },
+        {
+          "key": "D",
+          "text": "Viruses",
+          "correct": false,
+          "explanation": "Not living organisms.",
+          "misconception": "kingdom error"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q6",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "Define cell differentiation in one sentence.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "The process that turns an unspecialised cell into a specialised one.",
+      "keywords": [
+        "differentiation",
+        "specialised",
+        "unspecialised",
+        "process"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q7",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "Name the undifferentiated cells that divide by mitosis.",
+      "misconceptionClass": "stem recall",
+      "kind": "recall",
+      "modelAnswer": "Stem cells.",
+      "keywords": [
+        "stem cells",
+        "mitosis",
+        "undifferentiated",
+        "divide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q8",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "Explain why a nerve cell needs an elongated structure built during differentiation.",
+      "misconceptionClass": "nerve shape reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A nerve cell's job is carrying impulses between distant body parts, so its cytoplasm and membrane elongate into long connections during differentiation; the length is the structure that lets signals reach their targets.",
+      "keywords": [
+        "elongate",
+        "impulses",
+        "differentiation",
+        "connections"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L1::Q9",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L1",
+      "stem": "A gardener takes a cutting and new roots sprout from the stem. Using differentiation timing, explain why the cutting works for the plant but an equivalent would fail for a salamander's lost limb.",
+      "misconceptionClass": "cutting application",
+      "kind": "application",
+      "modelAnswer": "Plant cells can still fully differentiate late in life, so stem cells in the cutting rebuild root tissue; most animal cells differentiated early and lost that ability, so regrowth depends on limited stem-cell repair rather than full re-differentiation.",
+      "keywords": [
+        "differentiate",
+        "stem cells",
+        "repair",
+        "differentiation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q1",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "Where do ciliated cells carry out their transport job?",
+      "misconceptionClass": "cilia location",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the soil around roots",
+          "correct": false,
+          "explanation": "Absurd for animal cells.",
+          "misconception": "absurd option"
+        },
+        {
+          "key": "B",
+          "text": "In the trachea and bronchi",
+          "correct": true,
+          "explanation": "The named airway locations.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "In the heart's chambers",
+          "correct": false,
+          "explanation": "Not the named site.",
+          "misconception": "location invented"
+        },
+        {
+          "key": "D",
+          "text": "In the leaf's palisade layer",
+          "correct": false,
+          "explanation": "That is plant tissue.",
+          "misconception": "kingdom error"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q2",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "What do the cilia do?",
+      "misconceptionClass": "cilia function",
+      "options": [
+        {
+          "key": "A",
+          "text": "Conduct electrical impulses",
+          "correct": false,
+          "explanation": "That is the nerve cell's job.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "B",
+          "text": "Store haemoglobin",
+          "correct": false,
+          "explanation": "That is the red blood cell's cargo.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "C",
+          "text": "Beat to transport mucus and trapped particles along the airways",
+          "correct": true,
+          "explanation": "Cilia beat in unison to move mucus.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Absorb oxygen directly from air",
+          "correct": false,
+          "explanation": "Oxygen exchange happens in the lungs' alveoli.",
+          "misconception": "function mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q3",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "Why does the fatty sheath matter for a nerve cell?",
+      "misconceptionClass": "sheath purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "It digests the impulses",
+          "correct": false,
+          "explanation": "Impulses are conducted, not digested.",
+          "misconception": "function invented"
+        },
+        {
+          "key": "B",
+          "text": "It stores oxygen",
+          "correct": false,
+          "explanation": "Wrong cargo.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "C",
+          "text": "It beats like cilia",
+          "correct": false,
+          "explanation": "Different structure entirely.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "D",
+          "text": "It insulates the axon and speeds up transmission",
+          "correct": true,
+          "explanation": "Insulation and speed are the sheath's roles.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q4",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "What gives red blood cells their efficient oxygen transport?",
+      "misconceptionClass": "red cell design",
+      "options": [
+        {
+          "key": "A",
+          "text": "A biconcave shape with high surface area and packed haemoglobin",
+          "correct": true,
+          "explanation": "Shape plus cargo together.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Long axons",
+          "correct": false,
+          "explanation": "That is nerve anatomy.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "C",
+          "text": "Hair-like cilia",
+          "correct": false,
+          "explanation": "That is ciliated-cell anatomy.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "D",
+          "text": "A cellulose wall",
+          "correct": false,
+          "explanation": "Animal cells lack walls.",
+          "misconception": "kingdom error"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q5",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "Which specialist is adapted for communication between distant body parts?",
+      "misconceptionClass": "communication specialist",
+      "options": [
+        {
+          "key": "A",
+          "text": "The root hair cell",
+          "correct": false,
+          "explanation": "That absorbs from soil.",
+          "misconception": "kingdom error"
+        },
+        {
+          "key": "B",
+          "text": "The nerve cell, whose length links body regions to the central nervous system",
+          "correct": true,
+          "explanation": "Length serves long-distance signalling.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The ciliated cell",
+          "correct": false,
+          "explanation": "Cilia clear mucus locally.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "D",
+          "text": "The palisade cell",
+          "correct": false,
+          "explanation": "That is a plant photosynthesis cell.",
+          "misconception": "kingdom error"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q6",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "Name the protein that transports oxygen in red blood cells.",
+      "misconceptionClass": "haemoglobin recall",
+      "kind": "recall",
+      "modelAnswer": "Haemoglobin.",
+      "keywords": [
+        "haemoglobin",
+        "transports",
+        "protein",
+        "oxygen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q7",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "Name the hair-like extensions on ciliated cells.",
+      "misconceptionClass": "cilia recall",
+      "kind": "recall",
+      "modelAnswer": "Cilia — the beating hair-like extensions.",
+      "keywords": [
+        "cilia",
+        "extensions",
+        "beating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q8",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "Explain why a nerve cell's axon needs its fatty sheath AND its length to do one job.",
+      "misconceptionClass": "axon design reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Length carries the impulse between distant regions, while the fatty sheath insulates the axon so the signal travels fast and does not leak away; together they turn a cell into a working cable between body parts and the central nervous system.",
+      "keywords": [
+        "axon",
+        "insulat",
+        "impulses",
+        "insulates"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L2::Q9",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L2",
+      "stem": "A smoker's airways lose ciliated cells to damage. Using the specialist's function, predict two consequences in the trachea.",
+      "misconceptionClass": "smoker application",
+      "kind": "application",
+      "modelAnswer": "Mucus is no longer swept upward, so it accumulates in the airways, and trapped particles and pathogens linger longer — the clearing service its cilia provided is gone.",
+      "keywords": [
+        "mucus",
+        "cilia",
+        "trapped",
+        "accumulates"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q1",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "Which protein loads oxygen inside red blood cells?",
+      "misconceptionClass": "oxygen cargo",
+      "options": [
+        {
+          "key": "A",
+          "text": "Keratin",
+          "correct": false,
+          "explanation": "That is a structural protein.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "B",
+          "text": "Amylase",
+          "correct": false,
+          "explanation": "That is a digestive enzyme.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "C",
+          "text": "Haemoglobin",
+          "correct": true,
+          "explanation": "Haemoglobin is the oxygen carrier.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Chlorophyll",
+          "correct": false,
+          "explanation": "That is a plant pigment.",
+          "misconception": "kingdom error"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q2",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "What advantage does the biconcave shape give?",
+      "misconceptionClass": "shape advantage",
+      "options": [
+        {
+          "key": "A",
+          "text": "Extra room for cilia",
+          "correct": false,
+          "explanation": "Red cells have no cilia.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "B",
+          "text": "A harder outer shell",
+          "correct": false,
+          "explanation": "Hardness is not the advantage.",
+          "misconception": "advantage invented"
+        },
+        {
+          "key": "C",
+          "text": "The ability to conduct impulses",
+          "correct": false,
+          "explanation": "That is nerve business.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "D",
+          "text": "A large surface area for fast oxygen loading and unloading",
+          "correct": true,
+          "explanation": "Surface area is the shape's gift.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q3",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "Where does haemoglobin unload its oxygen?",
+      "misconceptionClass": "unloading site",
+      "options": [
+        {
+          "key": "A",
+          "text": "Around the body's tissues, after loading in the lungs",
+          "correct": true,
+          "explanation": "Lungs load, tissues unload.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "In the trachea",
+          "correct": false,
+          "explanation": "That is the ciliated cells' territory.",
+          "misconception": "location mismatch"
+        },
+        {
+          "key": "C",
+          "text": "In the soil",
+          "correct": false,
+          "explanation": "Absurd for a human cell.",
+          "misconception": "absurd option"
+        },
+        {
+          "key": "D",
+          "text": "Inside the nucleus",
+          "correct": false,
+          "explanation": "Not an exchange site.",
+          "misconception": "location invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q4",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "How is the red blood cell's design an example of differentiation?",
+      "misconceptionClass": "design origin",
+      "options": [
+        {
+          "key": "A",
+          "text": "It stayed unspecialised on purpose",
+          "correct": false,
+          "explanation": "Contradiction.",
+          "misconception": "status confusion"
+        },
+        {
+          "key": "B",
+          "text": "Its biconcave shape and haemoglobin-packed cytoplasm are the specialised structures its transport function needs",
+          "correct": true,
+          "explanation": "Structure follows the specialised function.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "It keeps the ability to become any other cell",
+          "correct": false,
+          "explanation": "It is already specialised.",
+          "misconception": "status inverted"
+        },
+        {
+          "key": "D",
+          "text": "It divided by mitosis into red and white cells",
+          "correct": false,
+          "explanation": "That is not differentiation.",
+          "misconception": "process confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q5",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "Which observation would suggest damaged or abnormal red cells?",
+      "misconceptionClass": "abnormal reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cells moving through capillaries",
+          "correct": false,
+          "explanation": "Normal behaviour.",
+          "misconception": "normality inverted"
+        },
+        {
+          "key": "B",
+          "text": "Cells made in the marrow",
+          "correct": false,
+          "explanation": "Normal origin.",
+          "misconception": "normality inverted"
+        },
+        {
+          "key": "C",
+          "text": "Cells losing their biconcave profile, cutting the surface-area advantage",
+          "correct": true,
+          "explanation": "Shape loss hits the design's core advantage.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Cells full of haemoglobin",
+          "correct": false,
+          "explanation": "That is normal.",
+          "misconception": "normality inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q6",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "Describe the shape of a red blood cell in one word-pair.",
+      "misconceptionClass": "shape recall",
+      "kind": "recall",
+      "modelAnswer": "Biconcave — dented on both faces.",
+      "keywords": [
+        "biconcave",
+        "dented",
+        "faces",
+        "shape"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q7",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "State the two design features that make oxygen transport efficient.",
+      "misconceptionClass": "design pair recall",
+      "kind": "recall",
+      "modelAnswer": "The biconcave shape (large surface area) and densely packed haemoglobin.",
+      "keywords": [
+        "biconcave",
+        "surface area",
+        "haemoglobin",
+        "densely"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q8",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "Explain why packing red cells with haemoglobin is not enough without the shape advantage.",
+      "misconceptionClass": "cargo plus shape",
+      "kind": "explain-why",
+      "modelAnswer": "Haemoglobin sets the loading capacity, but the gas still must cross the membrane quickly; the biconcave shape supplies the exchange surface and short diffusion paths, so cargo and geometry only work together.",
+      "keywords": [
+        "haemoglobin",
+        "surface",
+        "membrane",
+        "biconcave"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L3::Q9",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L3",
+      "stem": "An athlete trains at altitude and blood tests show more red blood cells. Using the specialist's design, explain the benefit.",
+      "misconceptionClass": "altitude application",
+      "kind": "application",
+      "modelAnswer": "More cells mean more biconcave surfaces and more total haemoglobin, so the blood's oxygen-carrying capacity rises — the fleet grows bigger while each cell keeps the same efficient design.",
+      "keywords": [
+        "haemoglobin",
+        "capacity",
+        "design",
+        "biconcave"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q1",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "What do root hair cells absorb?",
+      "misconceptionClass": "root hair uptake",
+      "options": [
+        {
+          "key": "A",
+          "text": "Oxygen from the air",
+          "correct": false,
+          "explanation": "That is lung business.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "B",
+          "text": "Mucus particles",
+          "correct": false,
+          "explanation": "That is ciliated work.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "C",
+          "text": "Light energy",
+          "correct": false,
+          "explanation": "That is palisade work.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "D",
+          "text": "Water and mineral ions from the soil",
+          "correct": true,
+          "explanation": "Both named uptakes.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q2",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "Which structural feature gives root hair cells their absorption advantage?",
+      "misconceptionClass": "root hair feature",
+      "options": [
+        {
+          "key": "A",
+          "text": "Long extensions that increase surface area",
+          "correct": true,
+          "explanation": "Extension and surface area together.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Biconcave shape",
+          "correct": false,
+          "explanation": "That is red blood cells.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "C",
+          "text": "A fatty sheath",
+          "correct": false,
+          "explanation": "That is nerve anatomy.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "D",
+          "text": "Tight column packing",
+          "correct": false,
+          "explanation": "That is palisade anatomy.",
+          "misconception": "anatomy mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q3",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "Where exactly do palisade mesophyll cells sit in the leaf?",
+      "misconceptionClass": "palisade location",
+      "options": [
+        {
+          "key": "A",
+          "text": "Floating free in the air spaces",
+          "correct": false,
+          "explanation": "They are packed, not free.",
+          "misconception": "arrangement inverted"
+        },
+        {
+          "key": "B",
+          "text": "Beneath the upper epidermis, tightly packed",
+          "correct": true,
+          "explanation": "The named position.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "In the root's cortex",
+          "correct": false,
+          "explanation": "That is root territory.",
+          "misconception": "location mismatch"
+        },
+        {
+          "key": "D",
+          "text": "On the leaf's lower surface only",
+          "correct": false,
+          "explanation": "The note names the upper side.",
+          "misconception": "location wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q4",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "Why are palisade cells column-shaped?",
+      "misconceptionClass": "palisade shape",
+      "options": [
+        {
+          "key": "A",
+          "text": "To grow longer root extensions",
+          "correct": false,
+          "explanation": "That is root hair business.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "B",
+          "text": "To conduct impulses",
+          "correct": false,
+          "explanation": "That is nerve business.",
+          "misconception": "function mismatch"
+        },
+        {
+          "key": "C",
+          "text": "To maximise light capture for photosynthesis",
+          "correct": true,
+          "explanation": "Shape serves light interception.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To store more cell sap",
+          "correct": false,
+          "explanation": "Vacuoles do that everywhere.",
+          "misconception": "function mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q5",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "Which organelle would you count in large numbers in a palisade cell sample?",
+      "misconceptionClass": "palisade organelle",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cilia",
+          "correct": false,
+          "explanation": "Not an organelle and not here.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "B",
+          "text": "Haemoglobin granules",
+          "correct": false,
+          "explanation": "Haemoglobin is a red-cell protein.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "C",
+          "text": "Axons",
+          "correct": false,
+          "explanation": "That is nerve anatomy.",
+          "misconception": "anatomy mismatch"
+        },
+        {
+          "key": "D",
+          "text": "Chloroplasts",
+          "correct": true,
+          "explanation": "Palisade cells are packed with them.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q6",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "State the two absorptions a root hair cell performs.",
+      "misconceptionClass": "uptake pair recall",
+      "kind": "recall",
+      "modelAnswer": "Water and mineral ions.",
+      "keywords": [
+        "water",
+        "mineral ions",
+        "absorptions",
+        "performs"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q7",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "Name the leaf layer's cells that sit beneath the upper epidermis.",
+      "misconceptionClass": "layer recall",
+      "kind": "recall",
+      "modelAnswer": "The palisade mesophyll cells.",
+      "keywords": [
+        "palisade",
+        "mesophyll",
+        "cells",
+        "epidermis"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q8",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "Explain why thin walls help a root hair cell absorb faster.",
+      "misconceptionClass": "thin wall reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Water and ions entering by diffusion and osmosis cross fewer barrier layers when the wall is thin, so uptake per unit area rises — the thin wall complements the long extension's surface-area gain.",
+      "keywords": [
+        "wall",
+        "osmosis",
+        "uptake",
+        "complements"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_34xmznRtwfxFVBrv::L4::Q9",
+      "moduleId": "rn_34xmznRtwfxFVBrv::L4",
+      "stem": "A leaf is shaded by a neighbouring plant for a whole season. Predict how its palisade layer responds, using the specialist's adaptations.",
+      "misconceptionClass": "shade application",
+      "kind": "application",
+      "modelAnswer": "With light scarce, photosynthesis drops, so the palisade layer's chloroplast-rich columns underperform; growth slows because the light-capturing design has less to capture — the adaptation sets the ceiling, the environment sets the output.",
+      "keywords": [
+        "palisade",
+        "chloroplasts",
+        "photosynthesis",
+        "underperform"
+      ],
+      "options": []
+    }
+  ]
+}

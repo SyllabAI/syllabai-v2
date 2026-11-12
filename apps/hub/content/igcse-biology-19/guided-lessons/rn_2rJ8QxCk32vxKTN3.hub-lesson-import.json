@@ -1,0 +1,121 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_2rJ8QxCk32vxKTN3",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "414151e33919caebb6d3b3cfad792ffe1473939fa0b27ddfda78e66ce7e1fdff",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_2rJ8QxCk32vxKTN3",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Biological Molecules",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/biological-molecules/role-of-enzymes",
+    "specAnchors": [
+      {
+        "code": "2.10",
+        "text": "understand the role of enzymes as biological catalysts in metabolic reactions"
+      }
+    ],
+    "primer": {
+      "text": "Enzymes are the protein machines that keep metabolism running fast enough for life. This note explains why they are called biological catalysts, how the active site recognises its substrate, and how the enzyme-substrate complex forms and releases its products — the mechanism behind almost every reaction you will meet in this course.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_2rJ8QxCk32vxKTN3::L1",
+        "title": "Biological catalysts and the active-site mechanism",
+        "sourceHeadings": [
+          "Enzymes as Biological Catalysts",
+          "The mechanism of enzyme action"
+        ],
+        "specRefs": [
+          "2.10"
+        ],
+        "opening": "An enzyme is a protein made inside living cells that speeds up a chemical reaction without being changed itself. Without them, a single meal would take weeks to digest; with them it takes hours. Each enzyme recognises one substrate because its active site is complementary in shape, forming a complex that breaks apart to release products.",
+        "keyPoints": [
+          "Enzymes — proteins made inside living cells — speed reactions up as biological catalysts without being changed or used up.",
+          "They are made in living cells, which is what the word biological adds.",
+          "Each enzyme's active site is complementary in shape to its particular substrate.",
+          "Substrate binding forms the enzyme-substrate complex; products then leave and the enzyme works again."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Enzymes are protein catalysts from living cells: the substrate fits the active site, the reaction happens, products leave, and the enzyme is ready to work again.",
+            "analogy": "An enzyme works like a vending machine for one exact coin: the right coin (substrate) drops in, the snack (product) drops out, and the machine resets for the next coin.",
+            "examPointer": "The phrase 'without being changed or used up' is the mark-earning clause in catalyst definitions — never omit it."
+          },
+          "medium": {
+            "restatement": "Catalysis lowers the barrier so metabolic reactions run at life-compatible speeds; specificity comes from shape complementarity, and the complex step explains why products no longer fit the site.",
+            "analogy": "A good catalyst is a matchmaker that ends each event single again — it introduces substrate partners, steps back, and repeats.",
+            "examPointer": "Link the three-step mechanism (random movement, collision, product release) to the collision idea when explaining how rate changes with temperature."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_2rJ8QxCk32vxKTN3::L1::Q1",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q2",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q3",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q4",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q5",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q6",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q7",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q8",
+          "rn_2rJ8QxCk32vxKTN3::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "catalyst",
+          "definition": "A substance that speeds up a chemical reaction without being changed or used up itself.",
+          "firstLesson": 1
+        },
+        {
+          "term": "active site",
+          "definition": "The region of an enzyme whose complementary shape receives its specific substrate.",
+          "firstLesson": 1
+        },
+        {
+          "term": "enzyme-substrate complex",
+          "definition": "The temporary combined structure formed while a substrate sits in an enzyme's active site.",
+          "firstLesson": 1
+        },
+        {
+          "term": "metabolic reaction",
+          "definition": "Any of the chemical reactions that together make up an organism's metabolism.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/524a02d4540b-how-enzymes-work.png",
+        "alt": "How enzymes work, IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "The mechanism of enzyme action",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "How enzymes work: substrate binding the active site, reaction, product release"
+      }
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_NZDqQdFYGgTTBGjz",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "cc6510a72dcbadef2939c92271d0788da580e40ec6c02b9a35263d959b2d7fad",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_NZDqQdFYGgTTBGjz",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Biological Molecules",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/biological-molecules/ph-and-enzyme-function",
+    "specAnchors": [
+      {
+        "code": "2.13",
+        "text": "understand how enzyme function can be affected by changes in pH altering the active site"
+      }
+    ],
+    "primer": {
+      "text": "pH changes enzyme activity just as temperature does, but with a twist: different enzymes prefer different optimum pH values depending on where they work. This note explains why drifting away from the optimum disrupts the active site, why stomach and duodenum enzymes disagree, and why 'denatured' — never 'died' — is the word to write.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_NZDqQdFYGgTTBGjz::L1",
+        "title": "Optimum pH values and the denaturation drift",
+        "sourceHeadings": [
+          "Factors Affecting Enzyme Action: pH"
+        ],
+        "specRefs": [
+          "2.13"
+        ],
+        "opening": "Most enzymes do their best work at pH 7, but location changes the target: stomach enzymes work in acid near pH 2, and duodenum enzymes prefer alkaline conditions around pH 8 or 9. Drift too far either way and the bonds holding the amino acid chain are disrupted, the active site changes shape, and activity collapses.",
+        "keyPoints": [
+          "Most enzymes have an optimum pH of about 7.",
+          "Stomach enzymes work in acidic conditions with an optimum near pH 2.",
+          "Duodenum enzymes prefer alkaline conditions, around pH 8 or 9.",
+          "Too high or too low a pH disrupts the bonds holding the amino acid chain, changing the active site's shape."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Enzymes peak at their optimum pH — usually 7, sometimes 2 (stomach) or 8-9 (duodenum). Far from it, the site distorts and activity stops.",
+            "analogy": "Each enzyme has a favourite seat on the pH bus; shove it a few seats along and it can still sit, shove it off the bus entirely and it never rides again.",
+            "examPointer": "Pair the location with the number — stomach with pH 2, duodenum with pH 8-9 — because the location marks are attached to the values."
+          },
+          "medium": {
+            "restatement": "pH acts through the same shape-destroying pathway as heat: ionisation changes disrupt intramolecular bonds, the complementary site fit is lost, and the rate falls — reversibly near the optimum, terminally far from it.",
+            "analogy": "pH is a magnet bank beside a paper model: slide it and the folds (bonds) pull open; slide too far and the model creases into a shape that will not hold again.",
+            "examPointer": "Write 'denatured', not 'killed' or 'died' — the exam hint flags this wording explicitly."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NZDqQdFYGgTTBGjz::L1::Q1",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q2",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q3",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q4",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q5",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q6",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q7",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q8",
+          "rn_NZDqQdFYGgTTBGjz::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "optimum pH",
+          "definition": "The pH at which an enzyme's activity is greatest.",
+          "firstLesson": 1
+        },
+        {
+          "term": "alkaline",
+          "definition": "Describes conditions above pH 7, such as those in the duodenum.",
+          "firstLesson": 1
+        },
+        {
+          "term": "acidic",
+          "definition": "Describes conditions below pH 7, such as those in the stomach.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/73efe9cfa95e-effect-of-ph-on-enzyme-activity.png",
+        "alt": "Effect of pH on enzyme activity, IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "Factors Affecting Enzyme Action: pH",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Effect of pH on enzyme activity, peaking at the optimum"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/93dea9454620-graph-showing-effect-of-ph-on-rate-of-activity-f.png",
+        "alt": "Graph showing effect of pH on rate of activity for an enzyme from duodenum, IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "Factors Affecting Enzyme Action: pH",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Graph of pH against rate of activity for a duodenum enzyme"
+      }
+    ]
+  }
+}
