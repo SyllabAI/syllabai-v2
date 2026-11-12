@@ -212,14 +212,24 @@ interface ChatCompletionChunk {
  * reasoning completion allowance (reasoning tokens count against the cap on
  * this member's reasoning models); reasoningEffort → reasoning_effort (the
  * §26 knob).
+ *
+ * Media (the VISION-FB amendment, operator directive 2026-11-12): a member
+ * constructed mediaCapable=true (the groq-vision / openrouter-vision slots)
+ * rides the OpenAI content-parts shape — {type:"image_url", image_url:{url:
+ * "data:<mime>;base64,<data>"}} then {type:"text"} — so the free vision
+ * models serve the transcription seam as the fallback after gemini. A
+ * text-only member (the default construction) NEVER receives a media request
+ * through the chain (the routing law filters on supportsMedia()); on a
+ * direct call its payload drops the image — the disclosed belt, unchanged.
  */
 export class OpenAiCompatibleChainMember extends BaseChainMember {
   constructor(
     name: string,
     private readonly config: OpenAiCompatibleConfig,
     opts: MemberOpts,
+    mediaCapable = false,
   ) {
-    super(name, opts, config.model, false); // mediaCapable=false (LlmChainConfig)
+    super(name, opts, config.model, mediaCapable);
   }
 
   private endpoint(): string {
@@ -229,13 +239,25 @@ export class OpenAiCompatibleChainMember extends BaseChainMember {
 
   private payload(request: LlmChainRequest, stream: boolean): Record<string, unknown> {
     const model = request.model != null && request.model.trim() !== "" ? request.model : this.config.model;
+    // media rides the OpenAI content-parts shape ONLY on a member constructed
+    // mediaCapable (the groq-vision / openrouter-vision slots); a text-only
+    // member DROPS it — the belt behind the chain routing law: no text-only
+    // model ever receives an image it cannot see (disclosed at the adapter)
+    const userContent: string | Array<Record<string, unknown>> =
+      request.media == null || !this.mediaCapable
+        ? request.user
+        : [
+            {
+              type: "image_url",
+              image_url: { url: `data:${request.media.mimeType};base64,${request.media.base64}` },
+            },
+            { type: "text", text: request.user },
+          ];
     const body: Record<string, unknown> = {
       model,
-      // media-carrying requests never reach this member (chain routing law);
-      // a direct call is refused honestly rather than hallucinating blindness
       messages: [
         ...(request.system ? [{ role: "system", content: request.system }] : []),
-        { role: "user", content: request.user },
+        { role: "user", content: userContent },
       ],
       stream,
     };
