@@ -46,17 +46,23 @@
  *     privilege TRUE with no matching ACL entry means the residual path is
  *     membership or PUBLIC, which NO per-table REVOKE can reach and which
  *     no census view displays; the red receipt must name the path.
- *     run-005 INHERITANCE ENFORCEMENT (the path named by the run-004
- *     receipt): the app role of record is an INHERIT member of
- *     neon_superuser (the NEON-DB-LOSS restore stopgap), so
- *     has_table_privilege sees through the membership chain and NO
- *     per-table REVOKE can ever reach it. The driver now flips the app
- *     role to NOINHERIT (ALTER ROLE — minimal, revertible, one ALTER from
- *     the pre-run posture): direct ACL grants are unaffected, the
- *     membership row is KEPT (the ops SET ROLE path survives), and the
- *     negative wire proof then measures the post-enforcement reality. If
- *     the ALTER is refused, the receipt is an honest red naming the
- *     blocker; zero further SQL.
+ *     run-006 INHERITANCE ENFORCEMENT (the path named by the run-004
+ *     receipt, first attempted run-005): the app role of record is an
+ *     INHERIT member of neon_superuser (the Neon platform provisions
+ *     console/API-created roles into that membership), so has_table_
+ *     privilege sees through the chain and NO per-table REVOKE can ever
+ *     reach it. The flip (ALTER ROLE ... NOINHERIT) now runs PRE-SET-ROLE
+ *     against the connection vantage of record: the runner provisions a
+ *     branch-local enforcement-capable vantage for the COW leg (the Neon
+ *     API password reset on neon_superuser — the branch dies at leg end,
+ *     production roles never touched) and gates the PROD credential
+ *     mutation behind the prod_superuser_reset input (deny default — a
+ *     production password reset is the operator's call, disclosed in the
+ *     receipt when allowed). Direct ACL grants are unaffected; the
+ *     membership row is KEPT (ops SET ROLE survives); one ALTER restores
+ *     the pre-run posture. The flip precedes any DDL — a red here means
+ *     zero bytes touched; run-005 measured the owner-vantage refusal
+ *     ("permission denied to alter role").
  *   - post-verify AFTER the DDL: per-table invariant census (columns, PK,
  *     FK→users/proposals with ON DELETE cascade, indexes incl. the
  *     partial-open unique grant index, CHECK constraints, app-role DML
@@ -70,7 +76,7 @@
  *     editor_grants CASCADE (pure additive — no existing table or column
  *     is touched by this migration) + REVOKE the granted verbs FROM the
  *     app role + ALTER ROLE syllabai_v2_app_w2r2 INHERIT (restores the
- *     pre-run inheritance posture; run-005).
+ *     pre-run inheritance posture; run-006).
  *
  * CLI:
  *   bun scripts/editor-apply-0028.ts --db file:/tmp/uri.file \
@@ -296,6 +302,63 @@ try {
 		member_of_owner: member,
 		set_role_used: null as string | null,
 	};
+
+	const rolePresent = await appRoleExists();
+	receipt.app_role_present = rolePresent;
+	receipt.environment_note =
+		"this database carries ALTER DEFAULT PRIVILEGES granting DML ON TABLES to the app role (the NEON-DB-LOSS restore posture, run-003-restore-method-r0.json) — the driver REVOKEs verbs beyond the invariant grant set in the apply transaction; the append-only receipts law is enforced by the final grant set and proven by the negative has_table_privilege wire proof";
+
+	// ── THE INHERITANCE ENFORCEMENT (run-006, moved PRE-SET-ROLE): the run-004
+	// receipt named the residual path — the app role is an INHERIT member of
+	// neon_superuser (the Neon platform provisions console/API-created roles
+	// into that membership), so has_table_privilege sees through the chain and
+	// NO per-table REVOKE can ever reach it. The flip must run against the
+	// CONNECTION VANTAGE (current_user), before the ownership gate's SET ROLE:
+	// an enforcement-capable vantage (run-006 runner: the branch-local
+	// neon_superuser path) succeeds; an owner-class vantage is refused and the
+	// receipt is an honest red naming the refusal (measured run-005: neondb_
+	// owner holds no CREATEROLE/ADMIN on the app role). Fail-closed: the flip
+	// precedes any DDL, so a red here means zero bytes touched. Membership rows
+	// are KEPT (ops SET ROLE preserved); direct ACL grants unaffected; revert:
+	// ALTER ROLE ... INHERIT.
+	if (rolePresent) {
+		const preMemberships = await sql`SELECT r.rolname AS member, g.rolname AS granted_role, m.admin_option, r.rolinherit AS member_inherits FROM pg_auth_members m JOIN pg_roles r ON r.oid = m.member JOIN pg_roles g ON g.oid = m.roleid WHERE r.rolname = ${APP_ROLE} ORDER BY g.rolname`;
+		const inheritMemberships = preMemberships.filter((m) => m.member_inherits);
+		if (inheritMemberships.length > 0) {
+			try {
+				const before = (await sql`SELECT rolinherit FROM pg_roles WHERE rolname = ${APP_ROLE}`)[0]?.rolinherit as boolean;
+				await sql.unsafe(`ALTER ROLE ${APP_ROLE} NOINHERIT`);
+				const after = (await sql`SELECT rolinherit FROM pg_roles WHERE rolname = ${APP_ROLE}`)[0]?.rolinherit as boolean;
+				if (after !== false)
+					throw new Error("NOINHERIT did not take (pg_roles.rolinherit still true)");
+				receipt.app_role_inheritance_enforcement = {
+					detected: inheritMemberships,
+					vantage_current_user: meRow ?? null,
+					action: `ALTER ROLE ${APP_ROLE} NOINHERIT`,
+					before_rolinherit: before,
+					after_rolinherit: after,
+					note: "enforcement ran PRE-SET-ROLE against the connection vantage (run-006); membership rows KEPT (ops SET ROLE path preserved); direct ACL grants unaffected; cluster-wide role attribute; revert: ALTER ROLE ... INHERIT",
+				};
+			} catch (e) {
+				const msg = e instanceof Error ? e.message : String(e);
+				receipt.app_role_inheritance_enforcement = {
+					detected: inheritMemberships,
+					vantage_current_user: meRow ?? null,
+					action: `ALTER ROLE ${APP_ROLE} NOINHERIT`,
+					error: msg,
+				};
+				throw new Error(
+					`inheritance enforcement fail-closed: the app role holds INHERIT memberships [${inheritMemberships.map((m) => m.granted_role).join(", ")}] — NO per-table REVOKE reaches them and the append-only law is unenforceable; ALTER ROLE refused from vantage ${meRow}: ${msg}`,
+				);
+			}
+		} else {
+			receipt.app_role_inheritance_enforcement = {
+				detected: [],
+				action: "none-needed",
+			};
+		}
+	}
+
 	if (tableOwner && meRow && tableOwner !== meRow) {
 		if (!member) {
 			throw new Error(
@@ -306,11 +369,6 @@ try {
 		receipt.ownership.set_role_used = tableOwner;
 		console.log(`SET ROLE ${tableOwner} (membership path)`);
 	}
-
-	const rolePresent = await appRoleExists();
-	receipt.app_role_present = rolePresent;
-	receipt.environment_note =
-		"this database carries ALTER DEFAULT PRIVILEGES granting DML ON TABLES to the app role (the NEON-DB-LOSS restore posture, run-003-restore-method-r0.json) — the driver REVOKEs verbs beyond the invariant grant set in the apply transaction; the append-only receipts law is enforced by the final grant set and proven by the negative has_table_privilege wire proof";
 
 	// ── per-file decision: apply | already_applied | fail-closed partial ─────
 	const plan: Array<{ id: string; decision: string; existing: string[]; missing: string[] }> = [];
@@ -411,51 +469,6 @@ try {
 		}
 		receipt.app_role_privilege_proof = `grants verified via has_table_privilege (no impersonation): editor_grants/editor_edit_proposals carry 4 DML verbs; editor_edit_receipts carries SELECT,INSERT ONLY (the append-only law)`;
 
-		// ── THE INHERITANCE ENFORCEMENT (run-005): the run-004 receipt named the
-		// residual path — the app role is an INHERIT member of neon_superuser (the
-		// NEON-DB-LOSS restore stopgap), so has_table_privilege sees through the
-		// membership chain and NO per-table REVOKE can ever reach it. Flip the app
-		// role to NOINHERIT: direct ACL grants are unaffected, the membership row is
-		// KEPT (ops SET ROLE preserved), one ALTER restores the pre-run posture. The
-		// negative wire proof below then measures the post-enforcement reality — if
-		// NOINHERIT does not flip the verdict on this PG build, the receipt is an
-		// honest red and the escalation (REVOKE the membership, operator console) is
-		// the next decision, not a silent law-weakening. Fail-closed: an ALTER
-		// refusal aborts the run before the negative proof.
-		const preMemberships = await sql`SELECT r.rolname AS member, g.rolname AS granted_role, m.admin_option, r.rolinherit AS member_inherits FROM pg_auth_members m JOIN pg_roles r ON r.oid = m.member JOIN pg_roles g ON g.oid = m.roleid WHERE r.rolname = ${APP_ROLE} ORDER BY g.rolname`;
-		const inheritMemberships = preMemberships.filter((m) => m.member_inherits);
-		if (inheritMemberships.length > 0) {
-			try {
-				const before = (await sql`SELECT rolinherit FROM pg_roles WHERE rolname = ${APP_ROLE}`)[0]?.rolinherit as boolean;
-				await sql.unsafe(`ALTER ROLE ${APP_ROLE} NOINHERIT`);
-				const after = (await sql`SELECT rolinherit FROM pg_roles WHERE rolname = ${APP_ROLE}`)[0]?.rolinherit as boolean;
-				if (after !== false)
-					throw new Error("NOINHERIT did not take (pg_roles.rolinherit still true)");
-				receipt.app_role_inheritance_enforcement = {
-					detected: inheritMemberships,
-					action: `ALTER ROLE ${APP_ROLE} NOINHERIT`,
-					before_rolinherit: before,
-					after_rolinherit: after,
-					note: "membership rows KEPT (ops SET ROLE path preserved); direct ACL grants unaffected; cluster-wide role attribute; revert: ALTER ROLE ... INHERIT",
-				};
-			} catch (e) {
-				const msg = e instanceof Error ? e.message : String(e);
-				receipt.app_role_inheritance_enforcement = {
-					detected: inheritMemberships,
-					action: `ALTER ROLE ${APP_ROLE} NOINHERIT`,
-					error: msg,
-				};
-				throw new Error(
-					`inheritance enforcement fail-closed: the app role holds INHERIT memberships [${inheritMemberships.map((m) => m.granted_role).join(", ")}] — NO per-table REVOKE reaches them and the append-only law is unenforceable; ALTER ROLE NOINHERIT refused: ${msg}`,
-				);
-			}
-		} else {
-			receipt.app_role_inheritance_enforcement = {
-				detected: [],
-				action: "none-needed",
-			};
-		}
-
 		// ── the append-only NEGATIVE wire proof (run-003): has_table_privilege
 		// reads the ACLs the planner consults (incl. anything default
 		// privileges materialized), so proving the FORBIDDEN verbs are DENIED
@@ -476,6 +489,8 @@ try {
 		// receipt must NAME the path; a green receipt should record that the
 		// topology was checked and clean. ───────────────────────────────────
 		const memberships = await sql`SELECT r.rolname AS member, g.rolname AS granted_role, m.admin_option, r.rolinherit AS member_inherits FROM pg_auth_members m JOIN pg_roles r ON r.oid = m.member JOIN pg_roles g ON g.oid = m.roleid WHERE r.rolname = ${APP_ROLE} ORDER BY g.rolname`;
+		const superRoleFacts = (await sql`SELECT rolsuper, rolinherit FROM pg_roles WHERE rolname = 'neon_superuser'`)[0] ?? null;
+		const superMembers = (await sql`SELECT r.rolname AS member FROM pg_auth_members m JOIN pg_roles r ON r.oid = m.member WHERE m.roleid = (SELECT oid FROM pg_roles WHERE rolname = 'neon_superuser')`).map((r) => r.member as string);
 		const publicRolePrivileges: Record<string, boolean> = {};
 		for (const t of files.flatMap((f) => f.tables)) {
 			for (const p of ALL_TABLE_VERBS) {
@@ -494,6 +509,12 @@ try {
 			public_role_privileges: publicRolePrivileges,
 			table_acls: tableAcls,
 			app_member_of_table_owner: appMemberOfOwner,
+			neon_superuser_facts: {
+				rolsuper: superRoleFacts ? (superRoleFacts.rolsuper as boolean) : null,
+				rolinherit: superRoleFacts ? (superRoleFacts.rolinherit as boolean) : null,
+				members: superMembers,
+				note: "run-006: neon_superuser's own attribute/membership facts — the enforcement-vantage ladder evidence (rolsuper means the vantage can ALTER the app role directly)",
+			},
 			note: "has_table_privilege consults ACLs + PUBLIC + the membership inherit chain; role_table_grants displays ONLY explicit ACL entries — a disagreement between the two is the signature of a membership/PUBLIC residual path",
 		};
 		if (violated.length > 0) {
@@ -505,7 +526,7 @@ try {
 		receipt.app_role_append_only_proof = `verified via has_table_privilege (no impersonation): the app role holds NO verb beyond the invariant grant set on any editor table (editor_edit_receipts: no UPDATE/DELETE — the append-only receipts law holds under the production default-privileges posture)`;
 	}
 
-	receipt.rollback = "DROP TABLE IF EXISTS editor_edit_receipts, editor_edit_proposals, editor_grants CASCADE; REVOKE the granted verbs FROM the app role; ALTER ROLE syllabai_v2_app_w2r2 INHERIT (restores the pre-run inheritance posture, run-005) (pure additive migration — no existing table or column touched)";
+	receipt.rollback = "DROP TABLE IF EXISTS editor_edit_receipts, editor_edit_proposals, editor_grants CASCADE; REVOKE the granted verbs FROM the app role; ALTER ROLE syllabai_v2_app_w2r2 INHERIT (restores the pre-run inheritance posture, run-006) (pure additive migration — no existing table or column touched)";
 	receipt.ok = true;
 	writeReceipt(true);
 	console.log("0028 applied + verified (idempotent; app-role grants verified; receipts append-only by grant set)");
