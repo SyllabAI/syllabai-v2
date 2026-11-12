@@ -17,7 +17,7 @@ from pathlib import Path
 
 CLONE = Path('/home/z/my-project/work/rn22/clone')
 BASE = '0cb0161809765d871b34c1f3e12136f188463184'
-HEAD_EXPECT_SUFFIX = ('4008f20a', 'dfa73a15', '1bd910fe')
+OWN_ARTIFACTS, OWN_RECEIPTS = '4008f20a', 'dfa73a15'
 DECLARED_PATHS = {
     '.syllabai/lane-artifacts/RN-DEBRIS-11/run-022/adjudication_r0.json',
     '.syllabai/lane-artifacts/RN-DEBRIS-11/run-022/option_deltas_r0.json',
@@ -41,12 +41,12 @@ def main():
     res['head'] = head
 
     # B4 commit chain
-    HEAD_EXPECT_SUFFIX = ('4008f20a', 'dfa73a15', '1bd910fe', '7dd58793', 'd4027d3b')
+    HEAD_EXPECT_CHAIN = ['db04e533', 'd4027d3b', '7dd58793', '1bd910fe', 'dfa73a15', '4008f20a']  # newest-first
     chain = [l.split()[0][:8] for l in git('log', '--oneline', '--first-parent', f'{BASE}..HEAD').splitlines()]
     res['B4_chain'] = chain
-    assert chain == list(HEAD_EXPECT_SUFFIX), chain
-    assert len(chain) == 5, f'expected 5 branch commits (artifacts, receipts, union1, postReview, union2), got {chain}'
-    parents = git('show', '-s', '--format=%P', head).split()
+    assert chain == HEAD_EXPECT_CHAIN, chain
+    assert len(chain) == 6, f'expected 6 branch commits (battery-refresh, union2, postReview, union1, receipts, artifacts), got {chain}'
+    parents = git('show', '-s', '--format=%P', 'd4027d3b').split()
     assert len(parents) == 2, 'union2 commit must be 2-parent'
     assert parents[0].startswith('7dd58793') and parents[1] == '493aa4748a6b12517118db72ab8e8c741eaf7e3c', parents
     p1 = git('show', '-s', '--format=%P', '1bd910fe').split()
@@ -59,21 +59,23 @@ def main():
                                  '.syllabai/lane-artifacts/RN-DEBRIS-11/run-022/scripts/rn22_review_battery.py'}
     names = set(git('diff', '--name-only', f'{MAIN_TIP}..HEAD').splitlines())
     assert names == PR_PATHS, f'PR path-set drift: extra={names-PR_PATHS} missing={PR_PATHS-names}'
-    own1 = set(git('show', '--name-only', '--format=', HEAD_EXPECT_SUFFIX[0]).split())
-    own2 = set(git('show', '--name-only', '--format=', HEAD_EXPECT_SUFFIX[1]).split())
+    own1 = set(git('show', '--name-only', '--format=', OWN_ARTIFACTS).split())
+    own2 = set(git('show', '--name-only', '--format=', OWN_RECEIPTS).split())
     assert own1 <= PR_PATHS and own2 <= PR_PATHS, f'branch-own commit scope drift: {own1 | own2 - PR_PATHS}'
     own4 = set(git('show', '--name-only', '--format=', '7dd58793').split())
     assert own4 <= PR_PATHS, f'postReview commit scope drift: {own4 - PR_PATHS}'
     content = [p for p in names if p.startswith(('apps/', 'packages/', 'docs/', 'golden/', 'public/kg/'))]
     assert not content, f'content bytes touched: {content}'
     # union1's own delta vs dfa73a15 == exactly main's first advance (theirs-verbatim, no invention)
-    union1_delta = set(git('diff', '--name-only', f'{HEAD_EXPECT_SUFFIX[1]}..1bd910fe').splitlines())
+    union1_delta = set(git('diff', '--name-only', f'{OWN_RECEIPTS}..1bd910fe').splitlines())
     adv1 = set(git('diff', '--name-only', f'{BASE}..a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae').splitlines())
     assert union1_delta == adv1, f'union1 delta != first advance: {union1_delta ^ adv1}'
-    # union2's own delta vs 7dd58793 == exactly main's second advance
-    union2_delta = set(git('diff', '--name-only', f'7dd58793..HEAD').splitlines())
+    # union2's own delta vs 7dd58793 == exactly main's second advance; the refresh commit adds only the battery script
+    union2_delta = set(git('diff', '--name-only', f'7dd58793..d4027d3b').splitlines())
     adv2 = set(git('diff', '--name-only', f'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae..{MAIN_TIP}').splitlines())
     assert union2_delta == adv2, f'union2 delta != second advance: {union2_delta ^ adv2}'
+    refresh_delta = set(git('diff', '--name-only', f'd4027d3b..HEAD').splitlines())
+    assert refresh_delta == {'.syllabai/lane-artifacts/RN-DEBRIS-11/run-022/scripts/rn22_review_battery.py'}, refresh_delta
     st = git('diff', '--shortstat', f'{MAIN_TIP}..HEAD').strip()
     res['B1'] = {'prPaths': sorted(names), 'shortstat': st,
                  'branchOwnCommitsScope': 'declared-only', 'union1Delta == advance1': True, 'union2Delta == advance2': True}
@@ -96,17 +98,21 @@ def main():
     res['B2'] = {'censusAsserts': 'ALL PASS', 'deltasOrdGates': 'ALL PASS', 'adjudication': '4 items + ruling surface'}
     print('B2 PASS: artifacts parse; census pin asserts + spine parity + KG mirror + all option ord gates hold')
 
-    # B3 worklog suffix identity
-    for wl in ('worklog.md', '.syllabai/worklog.md'):
+    # B3 worklog suffix identity — per-file theirs of record (advance-1 for root, advance-2 for .syllabai)
+    THEIRS_MAP = {'worklog.md': 'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae',
+                  '.syllabai/worklog.md': '493aa4748a6b12517118db72ab8e8c741eaf7e3c'}
+    for wl, theirs_ref in THEIRS_MAP.items():
         cur = (CLONE / wl).read_bytes()
-        theirs = subprocess.run(['git', 'show', f'a87f9ace44054fd72bbfabed2eac4fcf16f5d3ae:{wl}'],
+        theirs = subprocess.run(['git', 'show', f'{theirs_ref}:{wl}'],
                                 cwd=CLONE, capture_output=True).stdout
-        assert cur.startswith(theirs), f'{wl}: theirs-verbatim prefix lost'
+        assert cur.startswith(theirs), f'{wl}: theirs-verbatim prefix lost vs {theirs_ref[:8]}'
         suffix = cur[len(theirs):]
-        assert b'RN-DEBRIS-11 run-022' in suffix and len(suffix) < 4000
+        assert b'RN-DEBRIS-11 run-022' in suffix, f'{wl}: run-022 entry missing'
+        assert suffix.count(b'RN-DEBRIS-11 run-022') == 1, f'{wl}: run-022 entry not exactly once'
+        assert suffix.rstrip(b'\n').endswith(b'fetch-first race-guard at push.'), f'{wl}: run-022 entry not at tail'
         for marker in (b'<<<<<<<', b'======='):
             assert suffix.count(marker) == 0, f'{wl}: markers in suffix'
-    res['B3'] = 'both worklogs: theirs-verbatim prefix + run-022 suffix byte-identical, zero markers'
+    res['B3'] = 'both worklogs: theirs-verbatim prefix (root vs advance-1, .syllabai vs advance-2) + the run-022 entry byte-identical exactly once at tail, zero markers'
     print('B3 PASS:', res['B3'])
 
     # B5 CI on head

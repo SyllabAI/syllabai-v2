@@ -5,16 +5,17 @@
  "kind": "the author self-review record before desk merge of PR #965 (operator order run-022, trace 1a1d0d9a1d636c91; the run-018/019/020/021 postReview flow re-invoked)",
  "generatedUtc": "2026-11-13",
  "head": "1bd910fe38f227181e12c57974c919f0dc930c26",
- "commitChain": "base 0cb01618 -> 4008f20a artifacts -> dfa73a15 receipts+worklogs -> 1bd910fe union (2-parent: dfa73a15 + a87f9ace main-advance)",
+ "commitChain": "base 0cb01618 -> 4008f20a artifacts -> dfa73a15 receipts+worklogs -> 1bd910fe union#1 (dfa73a15 + a87f9ace) -> 7dd58793 postReview -> d4027d3b union#2 (7dd58793 + 493aa474) -> <this head> battery-refresh + postReview update",
  "findings": [
-  "B1 PASS: the PR net diff (merge-base a87f9ace..head) is EXACTLY the 9 declared bookkeeping paths (9 files, +5848/-0): run-022 artifacts (census/deltas/adjudication + 4 scripts incl. the postReview battery), the run-022 receipt, and the two append-only worklogs; branch-own commits declared-only; the union delta vs dfa73a15 == exactly main’s advance (byte-lawful theirs-verbatim union); ZERO content/src/docs bytes anywhere in the branch",
-  "B2 PASS: all three artifacts parse; census official-pin asserts ALL PASS (8.1.1a==subRows[8.1.4f]; 6.3.5 blob==official 7.5; 8.1.4 blob=(a)-(e) only); spine parity 38/38; KG point-text mirror all-true; dense order 1..114 zero violations; EVERY option’s ord gate PASS in the deltas engine",
-  "B3 PASS: both worklogs carry theirs-verbatim prefix (a87f9ace bytes) + the run-022 suffix byte-identical in both ledgers, zero new markers",
-  "B4 PASS: 2-parent union merge (no squash, no force, no rebase); first-parent chain exactly base->artifacts->receipts->union",
-  "B5 PASS: CI check-runs at 1bd910fe — hub SUCCESS, verify SUCCESS, Vercel Preview Comments SUCCESS; the Vercel deploy commit-status recorded PENDING at review time (the BIO-STAGEB1-documented QUEUED-then-building/allowance-cap class; the desk merges when it resolves — this is a desk-merge PR, author does not self-merge)"
+  "B1 PASS: the PR net diff (main tip 493aa474..head) is EXACTLY the 11 declared bookkeeping paths: run-022 artifacts (census/deltas/adjudication + 5 scripts), the run-022 receipt + postReview receipt, and the two append-only worklogs; branch-own commits declared-only; union#1 delta == main advance #962/#952 byte-exact; union#2 delta == main advance #964 byte-exact (both theirs-verbatim, scripted asserts); ZERO content/src/docs bytes anywhere in the branch",
+  "B2 PASS: all three artifacts parse; census official-pin asserts ALL PASS (8.1.1a==subRows[8.1.4f]; 6.3.5 blob==official 7.5; 8.1.4 blob=(a)-(e) only); spine parity 38/38; KG point-text mirror all-true; dense order 1..114 zero violations; EVERY option ord gate PASS in the deltas engine",
+  "B3 PASS: both worklogs — root carries theirs-verbatim prefix (a87f9ace) and .syllabai carries theirs-verbatim prefix (493aa474, the BIO-STAGEB2 append) with the run-022 entry byte-identical EXACTLY ONCE at each tail, zero new markers (scripted)",
+  "B4 PASS: both race-guard syncs are 2-parent unions (no squash, no force, no rebase); first-parent chain base->artifacts->receipts->union1->postReview->union2->battery-refresh",
+  "B5 PASS: CI check-runs at the 1bd910fe pre-sync head — hub/verify/Vercel-comments ALL success; the Vercel deploy commit-status recorded PENDING at review time (the BIO-STAGEB1-documented QUEUED-then-building/allowance-cap class); CI re-runs on this head per the push — the desk merges when the statuses resolve"
  ],
  "scopeLaw": "zero-invention held: no ruling invented for D3/D4/D5/D6b; the adjudication presents computed options + labeled recommendations + the ruling surface; run-023 is mechanical on the desk’s tokens",
  "boundaries": "D3/D4/D5/D6b rows byte-untouched; UGM serve plane untouched; no exporter code change; both worklogs append-only",
  "mergePlan": "PR #965 to the R0 desk; author does not self-merge; no force-push; fetch-first race-guard at every step",
- "battery": "5/5 scripted ALL PASS (rn22_review_battery.py, committed to run-022/scripts/)"
+ "battery": "5/5 scripted ALL PASS (rn22_review_battery.py re-run post-sync-2; B5 recorded CI state at the referenced heads)",
+ "updatedUtc": "2026-11-13 (postReview update after race-guard sync #2)"
 }
