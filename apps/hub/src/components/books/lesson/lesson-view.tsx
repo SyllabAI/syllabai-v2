@@ -90,8 +90,11 @@ function GlossaryStrip({ slugs, glossary }: { slugs: string[]; glossary: LessonG
   const entries = slugs.map((s) => bySlug.get(s)).filter((g): g is LessonGlossaryEntry => g != null);
   if (entries.length === 0) return null;
   return (
-    <div className="mt-4 rounded-md border bg-card p-3 text-xs">
-      <div className="mb-1.5 font-semibold">Key terms in this section</div>
+    <div className="mt-4 rounded-md border bg-card p-3 sm:p-4 text-xs">
+      <div className="mb-1.5 flex items-center gap-1.5 font-semibold">
+        <BookMarked className="h-4 w-4" aria-hidden />
+        Key terms in this section
+      </div>
       <dl className="grid gap-1.5 sm:grid-cols-2">
         {entries.map((g) => (
           <div key={g.slug}>
@@ -203,7 +206,7 @@ function SectionBlock({
       <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h2 className="text-xl font-semibold tracking-tight">{section.title}</h2>
         {section.bookPage != null && (
-          <span className="rounded bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
+          <span className="rounded-sm bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
             SB p.{section.bookPage}
           </span>
         )}
@@ -288,7 +291,7 @@ export function LessonView({
             <a
               key={s.id}
               href={`#${s.id.replace(/:/g, "-")}`}
-              className="rounded px-2 py-1 text-muted-foreground outline-none transition-[background-color,color,box-shadow] hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
+              className="rounded-sm px-2 py-1 text-muted-foreground outline-none transition-[background-color,color,box-shadow] hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
             >
               {i + 1}. {s.title}
             </a>
@@ -318,19 +321,22 @@ export function LessonView({
           >
             Book shelf
           </Link>
-          <span className="rounded bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
+          <span className="rounded-sm bg-muted px-1.5 py-0.5 text-2xs font-medium text-muted-foreground">
             {pack.paperRoute === "chemistry-only" ? "Chemistry only (Paper 2)" : "Core (Papers 1C & 2C)"}
           </span>
           {preview && (
-            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-2xs font-semibold text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
+            <span className="rounded-sm bg-amber-100 px-1.5 py-0.5 text-2xs font-semibold text-amber-900 dark:bg-amber-900/40 dark:text-amber-200">
               DRAFT PREVIEW — not published
             </span>
           )}
         </div>
         <h1 className="text-2xl font-bold tracking-tight">{pack.title}</h1>
         {pack.learningObjective && (
-          <div className="mt-2 rounded-md border p-3 text-[14px] leading-relaxed">
-            <span className="font-semibold">Learning objectives · </span>
+          <div className="mt-2 rounded-md border p-3 sm:p-4 text-[14px] leading-relaxed">
+            <div className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold">
+              <Target className="h-4 w-4" aria-hidden />
+              Learning objectives
+            </div>
             {pack.learningObjective}
           </div>
         )}
