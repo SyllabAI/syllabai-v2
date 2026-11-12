@@ -265,7 +265,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
           {busy ? "Waking SillyAI…" : "Start session"}
         </Button>
         <p className="text-center text-2xs leading-relaxed text-muted-foreground">
-          Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts. Quota: 3 sessions a day.
+          Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts.
         </p>
       </div>
     </div>
