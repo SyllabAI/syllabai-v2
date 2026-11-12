@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 155,
+  "rowsApproved": 157,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 155,
+    "rowsApproved": 157,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2409,6 +2409,36 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "DoodleScience",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9HyKNkXW9W0",
+   "title": "Conductors, Insulators and Semi-Conductors - A Level Physics",
+   "provider": "PhysicsOnline",
+   "watchUrl": "https://www.youtube.com/watch?v=9HyKNkXW9W0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "PhysicsOnline (AQA/OCR/Edexcel-focused UK channel) bound onto CIE/Edexcel specs on content match; boardMismatch disclosed per row; oEmbed identity verified (author 'Physics Online')",
+   "durationS": 138,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T20:07:05Z"
+  },
+  {
+   "id": "QMIcDNx36IQ",
+   "title": "Changes of State - GCSE #Shorts",
+   "provider": "PhysicsOnline",
+   "watchUrl": "https://www.youtube.com/watch?v=QMIcDNx36IQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "PhysicsOnline (AQA/OCR/Edexcel-focused UK channel) bound onto CIE/Edexcel specs on content match; boardMismatch disclosed per row; oEmbed identity verified (author 'Physics Online')",
+   "durationS": 26,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T20:07:05Z"
   }
  ],
  "mappings": [
@@ -4454,6 +4484,26 @@
    }
   },
   {
+   "video": "9HyKNkXW9W0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.22P"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Conductors, Insulators and Semi-Conductors - A Level Physics' -> 2.22P 'identify common materials that are electrical conductors or insulators, including metals and plastics' — the title names the spec's subject outright; boardMismatch (A-level video onto Edexcel IGCSE spec) disclosed; the prior AL25:p6 drop rejected only the AL25 I-V-characteristics candidate (generic 'conductor'), not this course (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "5obbfXg_MH4",
    "lessonRef": null,
    "lessonUrl": null,
@@ -5365,6 +5415,26 @@
    }
   },
   {
+   "video": "QMIcDNx36IQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Changes of State - GCSE #Shorts' -> 5.8P 'explain why heating a system will change the energy stored within the system and raise its temperature or produce changes of state' — the title names changes of state; conceptual half only, the 5.11P practical is NOT bound; shorts format disclosed; low (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "x7GZ2DXef84",
    "lessonRef": null,
    "lessonUrl": null,
@@ -5550,16 +5620,16 @@
  ],
  "coverage": {
   "specPointsTotal": 94,
-  "specPointsMapped": 78,
-  "specPointsUnmapped": 16,
-  "videosTotal": 155,
-  "videosMapped": 155,
+  "specPointsMapped": 80,
+  "specPointsUnmapped": 14,
+  "videosTotal": 157,
+  "videosMapped": 157,
   "videosUnmapped": 0,
-  "mappingRows": 155,
+  "mappingRows": 157,
   "byConfidence": {
    "high": 0,
-   "medium": 126,
-   "low": 29
+   "medium": 127,
+   "low": 30
   }
  },
  "inputs": {
@@ -5583,5 +5653,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T18:17:37.519Z"
+ "generatedUtc": "2026-11-12T20:09:49.894Z"
 }
