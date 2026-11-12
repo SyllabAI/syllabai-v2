@@ -1,0 +1,46 @@
+{
+ "artifact": "rn11-run-021-gates-r0",
+ "generatedUtc": "2026-11-12",
+ "gates": [
+  {
+   "gate": "G1-serializers",
+   "ok": true,
+   "detail": "content/spine/kg/manifest round-trip EXACT (dump law)"
+  },
+  {
+   "gate": "G2-content-surgery",
+   "ok": true,
+   "detail": "+21 nodes after their TOPIC shells (T7/T9/T10), +21 PART_OF edges, 16 order bumps (+12 each), dense 1..114"
+  },
+  {
+   "gate": "G3-spine-mirror",
+   "ok": true,
+   "detail": "per-code parity 146 nodes, edges mirrored, identical surgery"
+  },
+  {
+   "gate": "G4-manifest",
+   "ok": true,
+   "detail": "specPoints 93->114 (single site); sections/topics/notes/questions counts untouched"
+  },
+  {
+   "gate": "G5-kg-regen",
+   "ok": true,
+   "detail": "array 146n/239e (meta 146/239/114 = exporter output v1.7), hier 145==nodes-1, subject block sec1..sec10 naturalized (the 700bb601 hand patch absorbed: sec7x12/sec9x4/sec10x5 direct point edges), deep-equal OK, 21 new titles carried, pointSubtopics/subPointCounts/prerequisites byte-identical"
+  },
+  {
+   "gate": "G7-byte-scope",
+   "ok": true,
+   "detail": "delta == exactly 21 nodes + 21 edges + 16 order fields, both planes; zero other bytes"
+  },
+  {
+   "gate": "G8-index",
+   "ok": true,
+   "detail": "index counts -> 146n/239e/114sp (P5 array truth)"
+  },
+  {
+   "gate": "G9-fleet-noop",
+   "ok": true,
+   "detail": "v1.7 output byte-identical to v1.6 (ex version labels) for all 105 other courses"
+  }
+ ]
+}
