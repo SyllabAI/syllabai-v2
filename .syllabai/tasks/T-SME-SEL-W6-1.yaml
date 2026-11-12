@@ -1,0 +1,80 @@
+version: 1
+task:
+  id: T-SME-SEL-W6-1
+  title: 'SME picker layer for the Exam Questions selector, wave 6 — the CIE
+    Maths family in one sweep (cie-as-maths-20-pure-1, cie-a-level-maths-20-
+    pure-1/pure-3, cie-as/AL mechanics, cie-as/AL probability-and-statistics-1,
+    cie-a-level-maths-20-probability-and-statistics-2; 9709 spec-20) (operator
+    order: "pick the next wave" — pick of record after the census)'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 6 after the merged
+    physics/chemistry #867, biology #878, cosmetics #886, chem-23 #890,
+    bio-23+DA-slices #907 and the IAL Maths family #932)
+  wave: sme-selector
+  deps: [T-SME-SEL-W1-1, T-SME-SEL-W2-1, T-SME-SEL-W3-1, T-SME-SEL-COSM-1, T-SME-SEL-W4-1, T-SME-SEL-W5-1]
+  scope:
+    allowed:
+    - apps/hub/content/cie-{as,a-level}-maths-20-*/curriculum.json for the
+      EIGHT touched courses (+156 SME_REFERENCE nodes append-only total: 39
+      section rows + 117 topic rows, verbatim from the live picker fetch
+      2026-11-12, module-filtered from the one pooled SME course; removal
+      round-trip asserted byte-identical on all eight)
+    - apps/hub/scripts/verify_sme_wave6.ts +
+      apps/hub/scripts/sme-wave6-fixtures.json (NEW gate, live-derived)
+    - apps/api/test/curriculum/bundle-seed.test.ts (count-contract re-pin of
+      record: the 9709 cross-bank test's nodes.length expressions predated
+      any SME layer on those files; re-pinned to the official-spine count
+      per the seeder's T-SME-SEL-W2 law extension which SKIPS -SME- rows
+      fleet-wide, fail-closed)
+    - .syllabai/tasks/T-SME-SEL-W6-1.yaml + .syllabai/receipts/
+      T-SME-SEL-W6-1/run-001.md + both worklogs (append-only)
+    forbidden:
+    - questions.json on any course (sets untouched; homes are runtime via
+      smeRowOfQuestionSet by corpus topicSlug)
+    - the official spines (1/8/33, 1/5/22, 1/5/17, 1/8/33, 1/9/43, 1/5/22,
+      1/5/17, 1/5/18 byte-untouched)
+    - cie-as-maths-20-pure-2 (NO SME module exists — picker 404 both slugs;
+      pool math 75 = 22+24+10+10+9; its 15 sets keep official-spine service)
+    - any set home, question content, kind label, note, flashcard
+    - the 66 remaining set-bearing courses without the layer (later waves)
+  evidence:
+    - live picker fetches 2026-11-12 (operator workspace scratch/sme-w6/
+      <module>.json x5 + pure-2 404 probes): ONE SME course
+      (crs_9fVmFm3g3fXrykfz, "Cambridge
+      International A Level Maths") with FIVE modules (Pure 1, Pure 3,
+      Mechanics, PS1, PS2 — NO Pure 2); every unit page ships the whole-
+      course payload pooled (39 sections / 75 topics / 75 questionSets) with
+      sections+topics module-filtered and sets carrying a DIRECT module
+      relationship; JSON:API shape (attributes/relationships) like wave 5;
+      module ids pinned in fixtures
+    - audit of record (scripts/sme_w6_audit.py, by slug/ID): 7 of 8 courses
+      PERFECT bijections (0 sme-only / 0 hub-only / 0 count mismatches / 0
+      section mismatches / 0 name variance); AS PS1 9/10 exact + ONE
+      documented trailing-hyphen corpus variant (topicSlug
+      "representation-of-data-" vs live "representation-of-data"; the known
+      ci-repair/cie-unit-tail-trailing-variant corpus quirk class; set name
+      verbatim, sectionSlug match, official-spine home T5:SUB5.1 unchanged
+      pre==post); zero drift BY TOPIC on every course (corpus == SME live:
+      22/22, 22/22, 24/24, 10/10, 10/10, 10/10, 10/10, 9/9)
+  verification:
+    - bun apps/hub/scripts/verify_sme_wave6.ts PASS (spines 1/8/33, 1/5/22,
+      1/5/17, 1/8/33, 1/9/43, 1/5/22, 1/5/17, 1/5/18 intact; 156
+      SME_REFERENCE nodes; 39 runtime smeSections; 117 rows pinned to CORPUS
+      counts; drift law BY TOPIC with the one pinned variant; deep links
+      resolve)
+    - verify_sme_wave1..wave5 + cosmetics1 PASS; verify_sme_wire_r0 PASS
+      (2,574/2,574 placed, 0 unplaced; gen-row homes 29 -> 21 — the eight
+      retired homes are the touched courses' own topic-level '-gen' fallback
+      homes; homes parity law probe-verified: only own-gen -> own-SME
+      upgrades, 61 sets, counts conserved, official-row placements and the
+      variant home untouched)
+    - bun test bundle-seed + sme bundle-questions: 89 pass / 0 fail / 11,729
+      expect() calls (after the count-contract re-pin + bun install for the
+      recycled sandbox's workspace links)
+    - bun test sme/cie-phase4-roster 15 pass / 0 fail; hub
+      ugm.bundle/ugm.render/board/sme-serve-aliases 114 pass + 1 PRE-EXISTING
+      fail (T-UGM-RENDER-1 IGCSE katex — fails at clean HEAD 714da724 in a
+      detached worktree; not this wave's, its own lane)
