@@ -1,0 +1,729 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_N2VFzZptQZMnYvDp",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "c6ac44b04ea5a8bc07b362ccb55f4585477be04477498ee5c13746e14603008c",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "packageId": "igcse-biology::rn_N2VFzZptQZMnYvDp",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q1",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "Which situations prompt adrenaline production?",
+      "misconceptionClass": "trigger identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Circumstances where the body could be facing danger",
+          "correct": true,
+          "explanation": "Danger triggers the fight-or-flight hormone.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "After every meal",
+          "correct": false,
+          "explanation": "Meals trigger insulin, not adrenaline.",
+          "misconception": "trigger swapped"
+        },
+        {
+          "key": "C",
+          "text": "During deep sleep only",
+          "correct": false,
+          "explanation": "Sleep is not the named trigger.",
+          "misconception": "trigger invented"
+        },
+        {
+          "key": "D",
+          "text": "When blood glucose falls too low",
+          "correct": false,
+          "explanation": "Low glucose is not adrenaline's trigger here.",
+          "misconception": "trigger invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q2",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "Which effect list matches adrenaline?",
+      "misconceptionClass": "effect recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Narrowing of muscle blood vessels",
+          "correct": false,
+          "explanation": "Adrenaline widens them to feed muscles.",
+          "misconception": "effect inverted"
+        },
+        {
+          "key": "B",
+          "text": "Faster heart and breathing rates, blood redirected to muscles",
+          "correct": true,
+          "explanation": "Those prepare the body for sudden movement.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Slower pulse and widened airways",
+          "correct": false,
+          "explanation": "Adrenaline speeds the pulse; the rest is mismatched.",
+          "misconception": "effects inverted"
+        },
+        {
+          "key": "D",
+          "text": "Storage of glucose as glycogen",
+          "correct": false,
+          "explanation": "That is insulin's effect.",
+          "misconception": "hormone swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q3",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "What does the liver do with the glucose adrenaline releases from glycogen?",
+      "misconceptionClass": "fuel routing",
+      "options": [
+        {
+          "key": "A",
+          "text": "It excretes the glucose in urine",
+          "correct": false,
+          "explanation": "Excretion is not the pathway named.",
+          "misconception": "route invented"
+        },
+        {
+          "key": "B",
+          "text": "It stores the glucose as fat permanently",
+          "correct": false,
+          "explanation": "The emergency route is respiration, not storage.",
+          "misconception": "route invented"
+        },
+        {
+          "key": "C",
+          "text": "It ships the glucose to active muscle cells for respiration",
+          "correct": true,
+          "explanation": "Released glucose is transported to working muscles.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It converts the glucose back to glycogen at once",
+          "correct": false,
+          "explanation": "That undoes the emergency mobilisation.",
+          "misconception": "direction inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q4",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "Which gland detects high blood glucose and responds?",
+      "misconceptionClass": "insulin source",
+      "options": [
+        {
+          "key": "A",
+          "text": "The pituitary gland",
+          "correct": false,
+          "explanation": "The pituitary handles ADH, FSH and LH.",
+          "misconception": "gland swapped"
+        },
+        {
+          "key": "B",
+          "text": "The testes",
+          "correct": false,
+          "explanation": "The testes produce testosterone.",
+          "misconception": "gland swapped"
+        },
+        {
+          "key": "C",
+          "text": "The sweat glands",
+          "correct": false,
+          "explanation": "Sweat glands are exocrine cooling organs.",
+          "misconception": "gland confused"
+        },
+        {
+          "key": "D",
+          "text": "The pancreas",
+          "correct": true,
+          "explanation": "Pancreatic cells detect the rise and secrete insulin.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q5",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "How do muscles and liver respond once insulin arrives?",
+      "misconceptionClass": "insulin effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "They take up glucose and store it as glycogen",
+          "correct": true,
+          "explanation": "Uptake and glycogen storage lower the blood level.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They release glucose into the blood",
+          "correct": false,
+          "explanation": "That would worsen the high level.",
+          "misconception": "effect inverted"
+        },
+        {
+          "key": "C",
+          "text": "They stop respiring entirely",
+          "correct": false,
+          "explanation": "Respiration continues; storage is the adjustment.",
+          "misconception": "extreme claimed"
+        },
+        {
+          "key": "D",
+          "text": "They secrete more insulin locally",
+          "correct": false,
+          "explanation": "Only the pancreas secretes insulin.",
+          "misconception": "source confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q6",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "Name the hormone that readies the body for fight or flight.",
+      "misconceptionClass": "naming recall",
+      "kind": "recall",
+      "modelAnswer": "Adrenaline, the fight-or-flight hormone.",
+      "keywords": [
+        "adrenaline",
+        "fight or flight",
+        "hormone"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q7",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "State the storage molecule that insulin builds and where it is kept.",
+      "misconceptionClass": "storage recall",
+      "kind": "recall",
+      "modelAnswer": "Glycogen, stored in the liver and muscles.",
+      "keywords": [
+        "glycogen",
+        "liver",
+        "muscles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q8",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "Explain why blood glucose control counts as another example of homeostasis.",
+      "misconceptionClass": "homeostasis link",
+      "kind": "explain-why",
+      "modelAnswer": "Glucose concentration must stay inside a narrow band — too high and cells lose water by osmosis, too low and the brain starves of respiratory fuel — so a detection-and-correction loop (pancreas, insulin, uptake) holds the level steady, exactly like temperature or water control.",
+      "keywords": [
+        "narrow",
+        "osmosis",
+        "brain",
+        "steady"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L1::Q9",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L1",
+      "stem": "A student finishes a sugary drink. Track the pancreatic response and the final storage location.",
+      "misconceptionClass": "insulin application",
+      "kind": "application",
+      "modelAnswer": "Absorbed glucose pushes the blood level high; pancreatic cells detect it and secrete insulin; muscles and the liver take the glucose up and convert it to stored glycogen until the concentration returns to normal and insulin secretion stops.",
+      "keywords": [
+        "pancreatic",
+        "insulin",
+        "glycogen",
+        "normal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q1",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "Where is testosterone produced?",
+      "misconceptionClass": "source recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the pituitary gland",
+          "correct": false,
+          "explanation": "The pituitary produces FSH and LH.",
+          "misconception": "source swapped"
+        },
+        {
+          "key": "B",
+          "text": "In the male testes",
+          "correct": true,
+          "explanation": "The testes produce testosterone.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "In the ovaries",
+          "correct": false,
+          "explanation": "Ovaries produce progesterone and oestrogen.",
+          "misconception": "source swapped"
+        },
+        {
+          "key": "D",
+          "text": "In the pancreas",
+          "correct": false,
+          "explanation": "The pancreas produces insulin.",
+          "misconception": "source swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q2",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "Which changes does testosterone drive?",
+      "misconceptionClass": "effect recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Maintenance of the uterine lining",
+          "correct": false,
+          "explanation": "That is progesterone's role.",
+          "misconception": "role swapped"
+        },
+        {
+          "key": "B",
+          "text": "Widening of muscle blood vessels in emergencies",
+          "correct": false,
+          "explanation": "That is adrenaline's effect.",
+          "misconception": "role swapped"
+        },
+        {
+          "key": "C",
+          "text": "Male secondary sexual characteristics such as a deepening voice",
+          "correct": true,
+          "explanation": "Voice deepening is a named characteristic.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Breast development and wider hips",
+          "correct": false,
+          "explanation": "Those are female characteristics driven by oestrogen.",
+          "misconception": "sex swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q3",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "What does progesterone prevent?",
+      "misconceptionClass": "progesterone role",
+      "options": [
+        {
+          "key": "A",
+          "text": "Egg maturation by FSH",
+          "correct": false,
+          "explanation": "FSH maturation is not the named block here.",
+          "misconception": "role confused"
+        },
+        {
+          "key": "B",
+          "text": "Insulin secretion",
+          "correct": false,
+          "explanation": "Unrelated systems.",
+          "misconception": "role confused"
+        },
+        {
+          "key": "C",
+          "text": "Water reabsorption in the kidney",
+          "correct": false,
+          "explanation": "That is ADH's territory.",
+          "misconception": "role confused"
+        },
+        {
+          "key": "D",
+          "text": "Further ovulation",
+          "correct": true,
+          "explanation": "Progesterone blocks additional ovulation while lining is maintained.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q4",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "During pregnancy, which hormone keeps the uterine lining intact?",
+      "misconceptionClass": "maintenance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Progesterone",
+          "correct": true,
+          "explanation": "Progesterone maintains the uterine lining during pregnancy.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Adrenaline",
+          "correct": false,
+          "explanation": "Emergency mobiliser, not pregnancy hormone.",
+          "misconception": "hormone swapped"
+        },
+        {
+          "key": "C",
+          "text": "Testosterone",
+          "correct": false,
+          "explanation": "Male-development hormone.",
+          "misconception": "hormone swapped"
+        },
+        {
+          "key": "D",
+          "text": "Insulin",
+          "correct": false,
+          "explanation": "Glucose regulator, not pregnancy hormone.",
+          "misconception": "hormone swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q5",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "Which pairing of source and hormone is correct?",
+      "misconceptionClass": "source pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pituitary and oestrogen",
+          "correct": false,
+          "explanation": "Oestrogen comes from the ovaries.",
+          "misconception": "pairing wrong"
+        },
+        {
+          "key": "B",
+          "text": "Ovaries and progesterone",
+          "correct": true,
+          "explanation": "Progesterone is produced in the female ovaries.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Testes and progesterone",
+          "correct": false,
+          "explanation": "The testes make testosterone.",
+          "misconception": "pairing wrong"
+        },
+        {
+          "key": "D",
+          "text": "Pancreas and testosterone",
+          "correct": false,
+          "explanation": "The pancreas makes insulin.",
+          "misconception": "pairing wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q6",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "State the source and one effect of testosterone.",
+      "misconceptionClass": "testosterone recall",
+      "kind": "recall",
+      "modelAnswer": "Made in the testes; it drives growth of the male reproductive organs plus male secondary sexual characteristics.",
+      "keywords": [
+        "testes",
+        "male reproductive",
+        "secondary sexual characteristics"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q7",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "State the two actions of progesterone.",
+      "misconceptionClass": "progesterone recall",
+      "kind": "recall",
+      "modelAnswer": "Holding the uterine lining steady through pregnancy while further ovulation is prevented.",
+      "keywords": [
+        "uterine lining",
+        "pregnancy",
+        "prevented",
+        "ovulation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q8",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "Explain why blocking further ovulation serves pregnancy.",
+      "misconceptionClass": "progesterone reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A developing pregnancy needs the maintained uterine lining to stay undisturbed; releasing another egg during that time would restart the cycle's hormonal swings and risk the existing pregnancy, so progesterone holds the lining and shuts the door on further ovulation.",
+      "keywords": [
+        "pregnancy",
+        "uterine lining",
+        "cycle",
+        "ovulation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L2::Q9",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L2",
+      "stem": "A teenage boy notices his voice deepening and facial hair appearing. Name the hormone and its gland, and classify the change.",
+      "misconceptionClass": "development application",
+      "kind": "application",
+      "modelAnswer": "Testosterone, produced by the testes, is responsible — voice deepening and facial hair are secondary sexual characteristics developing under its stimulation.",
+      "keywords": [
+        "testosterone",
+        "testes",
+        "secondary sexual characteristics"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q1",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "Where is oestrogen produced?",
+      "misconceptionClass": "source recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "By the testes",
+          "correct": false,
+          "explanation": "The testes produce testosterone.",
+          "misconception": "source swapped"
+        },
+        {
+          "key": "B",
+          "text": "By the liver",
+          "correct": false,
+          "explanation": "The liver stores glycogen here.",
+          "misconception": "source invented"
+        },
+        {
+          "key": "C",
+          "text": "By the female ovaries",
+          "correct": true,
+          "explanation": "The ovaries produce oestrogen.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "By the adrenal gland",
+          "correct": false,
+          "explanation": "The adrenal gland produces adrenaline.",
+          "misconception": "source swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q2",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "Which list gives female secondary sexual characteristics driven by oestrogen?",
+      "misconceptionClass": "characteristic recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deepening voice and increased muscle mass",
+          "correct": false,
+          "explanation": "Those are male characteristics from testosterone.",
+          "misconception": "sex swapped"
+        },
+        {
+          "key": "B",
+          "text": "Widening of muscle blood vessels",
+          "correct": false,
+          "explanation": "That is an adrenaline effect.",
+          "misconception": "hormone confused"
+        },
+        {
+          "key": "C",
+          "text": "Production of dilute urine",
+          "correct": false,
+          "explanation": "Unrelated to oestrogen's brief.",
+          "misconception": "hormone confused"
+        },
+        {
+          "key": "D",
+          "text": "Breast development, wider hips, pubic and underarm hair",
+          "correct": true,
+          "explanation": "Those are the named female characteristics.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q3",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "What does oestrogen stimulate after menstruation?",
+      "misconceptionClass": "lining repair",
+      "options": [
+        {
+          "key": "A",
+          "text": "Repair of the uterus lining",
+          "correct": true,
+          "explanation": "Oestrogen rebuilds and thickens the lining after menstruation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Immediate breakdown of the lining",
+          "correct": false,
+          "explanation": "Breakdown precedes menstruation; repair follows it.",
+          "misconception": "phase inverted"
+        },
+        {
+          "key": "C",
+          "text": "Permanent closure of the uterus",
+          "correct": false,
+          "explanation": "Nothing is closed; the lining is rebuilt.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "D",
+          "text": "Secretion of insulin",
+          "correct": false,
+          "explanation": "Unrelated hormone system.",
+          "misconception": "hormone confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q4",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "How does oestrogen influence egg release?",
+      "misconceptionClass": "cycle influence",
+      "options": [
+        {
+          "key": "A",
+          "text": "It has no role in egg release",
+          "correct": false,
+          "explanation": "Cycle regulation is half its brief.",
+          "misconception": "role denied"
+        },
+        {
+          "key": "B",
+          "text": "Through its influence on the pituitary hormones FSH and LH",
+          "correct": true,
+          "explanation": "Oestrogen steers ovulation indirectly through the pituitary hormones.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "By physically pushing the egg out",
+          "correct": false,
+          "explanation": "Hormones signal; they do not push.",
+          "misconception": "mechanism wrong"
+        },
+        {
+          "key": "D",
+          "text": "By dissolving the ovary wall",
+          "correct": false,
+          "explanation": "No such mechanism exists.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q5",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "Which hormone row of the summary table pairs insulin with its source?",
+      "misconceptionClass": "table pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insulin — ovaries",
+          "correct": false,
+          "explanation": "The ovaries give oestrogen and progesterone.",
+          "misconception": "pairing wrong"
+        },
+        {
+          "key": "B",
+          "text": "Insulin — pituitary gland",
+          "correct": false,
+          "explanation": "The pituitary gives ADH, FSH and LH.",
+          "misconception": "pairing wrong"
+        },
+        {
+          "key": "C",
+          "text": "Insulin — pancreas",
+          "correct": true,
+          "explanation": "The pancreas is insulin's source.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Insulin — adrenal gland",
+          "correct": false,
+          "explanation": "The adrenal gland gives adrenaline.",
+          "misconception": "pairing wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q6",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "State the source gland and the two briefs of oestrogen.",
+      "misconceptionClass": "oestrogen recall",
+      "kind": "recall",
+      "modelAnswer": "Ovaries; it develops female secondary sexual characteristics and regulates the menstrual cycle.",
+      "keywords": [
+        "ovaries",
+        "secondary sexual characteristics",
+        "menstrual cycle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q7",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "Name the two pituitary hormones oestrogen influences for egg release.",
+      "misconceptionClass": "influence recall",
+      "kind": "recall",
+      "modelAnswer": "FSH and LH.",
+      "keywords": [
+        "FSH",
+        "LH",
+        "pituitary"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q8",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "Explain why oestrogen's lining repair matters for a possible pregnancy.",
+      "misconceptionClass": "cycle reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "After menstruation the lining is thin and unable to host an embryo; oestrogen's repair and thickening rebuilds a nourishing bed, so if an egg is released and fertilised that cycle, the uterus is ready for implantation rather than shedding the attempt.",
+      "keywords": [
+        "lining",
+        "embryo",
+        "implantation",
+        "fertilised"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N2VFzZptQZMnYvDp::L3::Q9",
+      "moduleId": "rn_N2VFzZptQZMnYvDp::L3",
+      "stem": "Complete the five-row checklist: for each of adrenaline, insulin, testosterone, progesterone and oestrogen, give its source.",
+      "misconceptionClass": "summary application",
+      "kind": "application",
+      "modelAnswer": "Adrenaline — adrenal gland; insulin — pancreas; testosterone — testes; progesterone — ovaries; oestrogen — ovaries.",
+      "keywords": [
+        "adrenal gland",
+        "pancreas",
+        "testes",
+        "ovaries"
+      ],
+      "options": []
+    }
+  ]
+}

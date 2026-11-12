@@ -1,0 +1,263 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Hy9CCn3FFsxHWdp3",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "e908458fe8d90eb73883b8cd58f5346b0a6e2ef0c505b9c654db467ced05eee4",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_Hy9CCn3FFsxHWdp3",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Co-ordination and Response",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/co-ordination-and-response/the-role-of-skin-in-temperature-regulation",
+    "specAnchors": [
+      {
+        "code": "2.93",
+        "text": "describe the role of the skin in temperature regulation, with reference to sweating, vasoconstriction and vasodilation"
+      }
+    ],
+    "primer": {
+      "text": "You know the body must hold its core near a fixed temperature. This note shows the skin doing the hands-on work: sweat glands evaporating heat away, arterioles widening or narrowing the blood supply to the surface, and the brain coordinating both through its temperature receptors. The two exam-hint scenarios — hot room, cold room — are the template answers.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_Hy9CCn3FFsxHWdp3::L1",
+        "title": "Cooling mechanisms of the skin",
+        "sourceHeadings": [
+          "The Role of Skin in Temperature Regulation",
+          "Cooling mechanisms in humans"
+        ],
+        "specRefs": [
+          "2.93"
+        ],
+        "opening": "When the body runs hot, the skin cools it three ways. Vasodilation relaxes the arteriole muscles so more blood flows through surface capillaries and radiates heat away; sweat glands pour out sweat whose evaporation carries heat off the skin; and hair-erector muscles relax, flattening the hairs so air can circulate freely instead of forming an insulating layer.",
+        "keyPoints": [
+          "Vasodilation relaxes arteriole muscles, widening the vessels feeding surface capillaries.",
+          "More blood at the surface loses heat to the surroundings by radiation.",
+          "Sweat glands secrete sweat, which cools the skin as it evaporates using body heat.",
+          "Hair-erector muscles relax, flattening hairs so air circulates and heat can radiate away."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Hot body: widen the surface pipes, pour on evaporating sweat, flatten the hairs — three routes for heat to escape.",
+            "analogy": "It is a radiator bleeding heat into a cool room: open the valve, add a wet towel, and switch off the blanket.",
+            "examPointer": "The specification wants sweating, vasoconstriction and vasodilation — hairs are optional colour, not required marks."
+          },
+          "medium": {
+            "restatement": "Each mechanism engineers a heat-loss term: vasodilation raises radiative loss by increasing surface blood volume, sweating adds latent-heat loss through evaporation, and flat hairs strip the insulating air layer.",
+            "analogy": "Three taps draining the same bath — surface flow, evaporation and insulation each opened at once.",
+            "examPointer": "Write the hot-room answer as the two-step template: arterioles widen so blood radiates heat; sweat evaporates and cools the surface."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q1",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q2",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q3",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q4",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q5",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q6",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q7",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q8",
+          "rn_Hy9CCn3FFsxHWdp3::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_Hy9CCn3FFsxHWdp3::L2",
+        "title": "Warming mechanisms and why the set point matters",
+        "sourceHeadings": [
+          "Warming mechanisms in humans"
+        ],
+        "specRefs": [
+          "2.93"
+        ],
+        "opening": "In the cold the skin switches tactics: arteriole muscles contract, narrowing the surface supply so less heat radiates away, sweat output falls, hairs stand on end to trap an insulating air layer, and shivering — a reflex — makes muscles burn fuel rapidly, releasing heat that warms the blood.",
+        "keyPoints": [
+          "Vasoconstriction contracts the arteriole muscles, so less blood flows through surface capillaries.",
+          "Reduced surface blood flow cuts heat loss by radiation.",
+          "Hair-erector muscles contract, raising the hairs to trap an insulating air layer.",
+          "Shivering is a reflex: rapid, regular muscle contractions release heat from exothermic reactions.",
+          "Vasoconstriction conserves heat rather than generating it — the wording matters."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Cold body: narrow the surface pipes, stand the hairs up, shiver the muscles — keep heat in and make a little more.",
+            "analogy": "The body buttons its coat (hairs), zips the vents (vasoconstriction) and jogs on the spot (shivering) to stay warm.",
+            "examPointer": "The cold-room template: vasoconstriction reduces surface flow, and sweating decreases so less heat leaves by evaporation."
+          },
+          "medium": {
+            "restatement": "The warming kit splits into conservation (vasoconstriction, erection of hairs, reduced sweat) and generation (shivering's exothermic muscle burn), with the corpus careful to call vasoconstriction a reducer, not a heater.",
+            "analogy": "Two strategies — plug the leaks and light the stove; the body deploys both but names them honestly.",
+            "examPointer": "Goosebumps are optional in answers; vasoconstriction and reduced sweating are the required pair."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q1",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q2",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q3",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q4",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q5",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q6",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q7",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q8",
+          "rn_Hy9CCn3FFsxHWdp3::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_Hy9CCn3FFsxHWdp3::L3",
+        "title": "The set point and the coordinating loop",
+        "sourceHeadings": [
+          "The importance of temperature regulation"
+        ],
+        "specRefs": [
+          "2.93"
+        ],
+        "opening": "The whole apparatus defends a number: the core sits close to 37 °C, and a drift beyond roughly two degrees can be fatal. Thermoreceptors in the skin and the hypothalamus detect even minute changes, and the brain coordinates the cooling or heating response the moment either sensor reports a deviation.",
+        "keyPoints": [
+          "Human core temperature is held close to 37 °C.",
+          "A drift of more than about two degrees can be fatal.",
+          "Thermoreceptors in the skin and hypothalamus detect tiny temperature changes.",
+          "The brain then coordinates either the cooling or the warming response, as needed.",
+          "Temperature regulation is a homeostatic process kept within a constant range."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Sensors in skin and hypothalamus watch the level; the brain answers any drift with cooling or warming responses.",
+            "analogy": "A thermostat with two probe wires — one outside (skin), one inside (hypothalamus) — feeding a single controller.",
+            "examPointer": "Quote the pair of figures: near 37 °C, fatal beyond about 2 °C of drift."
+          },
+          "medium": {
+            "restatement": "The narrow band exists because enzymes demand it; detection at two sensor sites feeds a central coordinator that scales the surface mechanisms already learned — dilate, sweat, constrict, shiver — to hold the range.",
+            "analogy": "A greenkeeper trims the grass by millimetres because the tournament tolerates none — precision comes from multiple sensors and one decisive hand.",
+            "examPointer": "Link the fatal-drift figure to enzyme function — that causal sentence is what 'importance' questions reward."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q1",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q2",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q3",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q4",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q5",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q6",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q7",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q8",
+          "rn_Hy9CCn3FFsxHWdp3::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "vasodilation",
+          "definition": "Relaxation of arteriole muscles so skin vessels widen and more blood flows near the surface, losing heat by radiation.",
+          "firstLesson": 1
+        },
+        {
+          "term": "vasoconstriction",
+          "definition": "Contraction of arteriole muscles so skin vessels narrow and heat loss by radiation is reduced.",
+          "firstLesson": 2
+        },
+        {
+          "term": "shivering",
+          "definition": "A reflex of rapid, regular muscle contractions whose exothermic reactions release heat to warm the blood.",
+          "firstLesson": 2
+        },
+        {
+          "term": "thermoreceptors",
+          "definition": "Temperature-detecting receptors in the skin and hypothalamus that spot minute changes in body temperature.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/1851fe8acafa-61910-a-cross-section-of-human-skin.png",
+        "alt": "Diagram of skin cross-section showing layers and structures: epidermis, dermis, fatty tissue, hair, sweat gland, pore, capillaries, and nerve endings.",
+        "sourceHeading": "The Role of Skin in Temperature Regulation",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Human skin contains structures involved in processes that can increase or reduce heat loss to the surroundings"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/4d3722c9532f-responses-in-the-skin-when-hot.png",
+        "alt": "Responses in the skin when hot",
+        "sourceHeading": "Cooling mechanisms in humans",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Responses in the skin when the body temperature is too high and needs to decrease"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/f7c3c5337758-responses-in-skin-when-cold.png",
+        "alt": "Responses in skin when cold",
+        "sourceHeading": "Warming mechanisms in humans",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Responses in the skin when body temperature is too low and needs to increase"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/cb20177457a4-regulating-body-temperature.png",
+        "alt": "Regulating body temperature",
+        "sourceHeading": "The importance of temperature regulation",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Temperature regulation is an example of homeostasis as it must be maintained within a constant range"
+      }
+    ]
+  }
+}

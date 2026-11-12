@@ -1,0 +1,491 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_PJm6gGXDSFg2j4DJ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "e7a12851a5176fe6fbfd2a37cb3cc9b0e28f91a6dbb0e6b42b74ed82a69a67ae",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "packageId": "igcse-biology::rn_PJm6gGXDSFg2j4DJ",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q1",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "What is accommodation?",
+      "misconceptionClass": "term definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "The way the lens performs fine focusing by changing shape",
+          "correct": true,
+          "explanation": "Accommodation names the lens's shape-changing focusing job.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The widening of the pupil in dim light",
+          "correct": false,
+          "explanation": "That is part of the pupil reflex, a different mechanism.",
+          "misconception": "mechanism confused"
+        },
+        {
+          "key": "C",
+          "text": "The stretching of the optic nerve",
+          "correct": false,
+          "explanation": "The optic nerve transmits impulses; it does not focus.",
+          "misconception": "structure misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Tearing in response to irritation",
+          "correct": false,
+          "explanation": "Tearing protects the surface, it does not focus.",
+          "misconception": "function confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q2",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "Which state pair fits viewing a close-up object?",
+      "misconceptionClass": "near-object state",
+      "options": [
+        {
+          "key": "A",
+          "text": "Suspensory ligaments contract; pupil narrows",
+          "correct": false,
+          "explanation": "Ligaments cannot contract, and the pupil is the other topic.",
+          "misconception": "exam-hint trap"
+        },
+        {
+          "key": "B",
+          "text": "Ciliary muscles contract; lens becomes thicker",
+          "correct": true,
+          "explanation": "Contraction slackens the ligaments, letting the lens fatten.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Ciliary muscles relax; lens becomes thinner",
+          "correct": false,
+          "explanation": "That is the distant-object setting.",
+          "misconception": "setting inverted"
+        },
+        {
+          "key": "D",
+          "text": "Ciliary muscles contract; lens becomes thinner",
+          "correct": false,
+          "explanation": "Contraction produces the fat lens, not the thin one.",
+          "misconception": "lens outcome wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q3",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "When the ciliary muscles relax, what happens to light refraction?",
+      "misconceptionClass": "refraction link",
+      "options": [
+        {
+          "key": "A",
+          "text": "Refraction direction reverses",
+          "correct": false,
+          "explanation": "Light still bends toward the retina, just less strongly.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "B",
+          "text": "Light is refracted more",
+          "correct": false,
+          "explanation": "More refraction belongs to the fat near-vision lens.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "Light is refracted less",
+          "correct": true,
+          "explanation": "Relaxation thins the lens, reducing refraction for distant objects.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Refraction stops entirely",
+          "correct": false,
+          "explanation": "The cornea and lens always bend light somewhat.",
+          "misconception": "extreme claimed"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q4",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "Which row of the focusing table is stated correctly?",
+      "misconceptionClass": "table row discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "Distant objects: ciliary muscles contract",
+          "correct": false,
+          "explanation": "Distant vision relaxes those muscles.",
+          "misconception": "row inverted"
+        },
+        {
+          "key": "B",
+          "text": "Near objects: suspensory ligaments tight",
+          "correct": false,
+          "explanation": "Near vision needs slack ligaments.",
+          "misconception": "row inverted"
+        },
+        {
+          "key": "C",
+          "text": "Distant objects: lens fatter",
+          "correct": false,
+          "explanation": "Distant vision uses the thin lens.",
+          "misconception": "row inverted"
+        },
+        {
+          "key": "D",
+          "text": "Near objects: light refraction more",
+          "correct": true,
+          "explanation": "The fat near-lens bends light more strongly.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q5",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "Why must the suspensory ligaments be described as tightening rather than contracting?",
+      "misconceptionClass": "exam-hint discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because they are not muscles, so they cannot contract",
+          "correct": true,
+          "explanation": "The exam hint is explicit — ligaments tighten or loosen only.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because they are too small to move",
+          "correct": false,
+          "explanation": "They do move — by tightening and loosening.",
+          "misconception": "reason wrong"
+        },
+        {
+          "key": "C",
+          "text": "Because they only work at night",
+          "correct": false,
+          "explanation": "Accommodation runs in all light levels.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "D",
+          "text": "Because contraction would tear the retina",
+          "correct": false,
+          "explanation": "Tearing risk is not the issue; tissue type is.",
+          "misconception": "reason invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q6",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "Name the muscle ring and the connectors that reshape the lens.",
+      "misconceptionClass": "structure recall",
+      "kind": "recall",
+      "modelAnswer": "The ciliary muscles, connected to the lens by the suspensory ligaments.",
+      "keywords": [
+        "ciliary muscles",
+        "suspensory ligaments",
+        "lens"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q7",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "State the lens shape used for distant objects and its refraction amount.",
+      "misconceptionClass": "distant-state recall",
+      "kind": "recall",
+      "modelAnswer": "A thinner lens, refracting light less.",
+      "keywords": [
+        "thinner",
+        "refracting",
+        "less"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q8",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "Explain why a fatter lens suits near objects.",
+      "misconceptionClass": "optics reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Rays from a nearby object are strongly diverging, so they need more bending to meet on the retina; a fatter lens is more curved and refracts light more, which is exactly the extra bending close work demands.",
+      "keywords": [
+        "diverging",
+        "retina",
+        "curved",
+        "refracts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L1::Q9",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L1",
+      "stem": "A student looks up from a book at a bird across the field. Track the machinery changes from near-vision to distant-vision settings.",
+      "misconceptionClass": "switch application",
+      "kind": "application",
+      "modelAnswer": "The ciliary muscles relax, widening the ring; the suspensory ligaments tighten and pull on the lens; the lens stretches thinner; light is refracted less, so the bird's rays focus sharply on the retina.",
+      "keywords": [
+        "relax",
+        "tighten",
+        "thinner",
+        "refracted less"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q1",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "What does the pupil do in dim light?",
+      "misconceptionClass": "dim-light response",
+      "options": [
+        {
+          "key": "A",
+          "text": "Closes completely",
+          "correct": false,
+          "explanation": "Some light must always enter for vision.",
+          "misconception": "extreme claimed"
+        },
+        {
+          "key": "B",
+          "text": "Dilates, widening to admit more light",
+          "correct": true,
+          "explanation": "Dilation maximises light entry for vision in dimness.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Constricts, narrowing to block light",
+          "correct": false,
+          "explanation": "That is the bright-light response.",
+          "misconception": "response inverted"
+        },
+        {
+          "key": "D",
+          "text": "Stays exactly the same size",
+          "correct": false,
+          "explanation": "The reflex actively resizes the pupil.",
+          "misconception": "change denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q2",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "Why does the pupil reflex exist?",
+      "misconceptionClass": "purpose reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To focus light onto the fovea",
+          "correct": false,
+          "explanation": "Focusing is the lens and cornea's work.",
+          "misconception": "function swapped"
+        },
+        {
+          "key": "B",
+          "text": "To make the eye look attractive",
+          "correct": false,
+          "explanation": "Appearance is not the biological function.",
+          "misconception": "purpose invented"
+        },
+        {
+          "key": "C",
+          "text": "To protect the retina from damage",
+          "correct": true,
+          "explanation": "Limiting light entry shields the light-sensitive cells.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To keep the eyeball moist",
+          "correct": false,
+          "explanation": "Lubrication is the conjunctiva's job.",
+          "misconception": "function swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q3",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "Which muscle state pair matches bright light?",
+      "misconceptionClass": "muscle states",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both muscle sets contracted",
+          "correct": false,
+          "explanation": "Antagonistic muscles cannot both contract here.",
+          "misconception": "antagonism denied"
+        },
+        {
+          "key": "B",
+          "text": "Both muscle sets relaxed",
+          "correct": false,
+          "explanation": "Circular muscles must contract to narrow the opening.",
+          "misconception": "states wrong"
+        },
+        {
+          "key": "C",
+          "text": "Radial muscles contracted; circular muscles relaxed",
+          "correct": false,
+          "explanation": "That combination widens the pupil — the dim-light setting.",
+          "misconception": "states inverted"
+        },
+        {
+          "key": "D",
+          "text": "Radial muscles relaxed; circular muscles contracted",
+          "correct": true,
+          "explanation": "Circular contraction narrows the pupil for bright light.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q4",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "What size pupil and light entry fit the dim-light row of the table?",
+      "misconceptionClass": "table row recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Wide pupil, more light entering",
+          "correct": true,
+          "explanation": "Dim light dilates the pupil and admits more light.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Wide pupil, less light entering",
+          "correct": false,
+          "explanation": "A wide opening admits more, not less.",
+          "misconception": "logic inverted"
+        },
+        {
+          "key": "C",
+          "text": "Narrow pupil, more light entering",
+          "correct": false,
+          "explanation": "The two columns never pair that way.",
+          "misconception": "logic inverted"
+        },
+        {
+          "key": "D",
+          "text": "Narrow pupil, less light entering",
+          "correct": false,
+          "explanation": "That is the bright-light row.",
+          "misconception": "row inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q5",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "Stepping from a dark cinema into noon sunshine, what should the pupil do?",
+      "misconceptionClass": "scenario application",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing happens; the retina simply endures",
+          "correct": false,
+          "explanation": "The reflex exists precisely because endurance is not enough.",
+          "misconception": "response denied"
+        },
+        {
+          "key": "B",
+          "text": "The pupil constricts quickly to cut the light flood",
+          "correct": true,
+          "explanation": "Bright light triggers constriction to protect the retina.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The pupil dilates further to adapt",
+          "correct": false,
+          "explanation": "Dilation would flood the retina — the opposite of protection.",
+          "misconception": "response inverted"
+        },
+        {
+          "key": "D",
+          "text": "The lens fattens to block light",
+          "correct": false,
+          "explanation": "Lens shape serves focusing, not light gating.",
+          "misconception": "mechanism confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q6",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "Name the reflex that changes pupil size.",
+      "misconceptionClass": "term recall",
+      "kind": "recall",
+      "modelAnswer": "The pupil reflex, a reflex action of the iris muscles.",
+      "keywords": [
+        "pupil reflex",
+        "reflex action",
+        "iris"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q7",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "Give the muscle pair whose opposed actions resize the pupil.",
+      "misconceptionClass": "muscle pair recall",
+      "kind": "recall",
+      "modelAnswer": "The radial muscles and the circular muscles of the iris.",
+      "keywords": [
+        "radial muscles",
+        "circular muscles",
+        "iris"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q8",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "Explain why uncontrolled bright light would endanger vision.",
+      "misconceptionClass": "damage reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The retina's receptor cells are delicate light detectors; a flood of unregulated bright light would overstimulate and damage them, permanently degrading vision — which is why the reflex narrows the pupil the moment intensity rises.",
+      "keywords": [
+        "retina",
+        "receptor cells",
+        "damage",
+        "vision"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PJm6gGXDSFg2j4DJ::L2::Q9",
+      "moduleId": "rn_PJm6gGXDSFg2j4DJ::L2",
+      "stem": "Someone walks into a dimly lit cellar from a bright yard. Describe the muscle states and the visual consequence.",
+      "misconceptionClass": "dim application",
+      "kind": "application",
+      "modelAnswer": "Radial muscles contract while circular muscles relax, so the pupil dilates wide; more light enters the eye, improving vision in the darkness — the dim-light row of the reflex table in action.",
+      "keywords": [
+        "radial muscles",
+        "circular muscles",
+        "dilates",
+        "vision"
+      ],
+      "options": []
+    }
+  ]
+}
