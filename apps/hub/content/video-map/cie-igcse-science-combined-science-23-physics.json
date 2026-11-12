@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 43,
+  "rowsApproved": 48,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 43,
+    "rowsApproved": 48,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -697,9 +697,104 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "cAMD7HX_Kqw",
+   "title": "Electrostatic Pringles",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=cAMD7HX_Kqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "genvYCm0RT4",
+   "title": "LDRs and Thermistors - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=genvYCm0RT4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "6yvoL0bIG_E",
+   "title": "Energy Resources - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=6yvoL0bIG_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 289,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "7eOqj-PCjAs",
+   "title": "Heat Transfer - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=7eOqj-PCjAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 205,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "YvVX5ijP29Y",
+   "title": "Calculating the Speed of Real Objects - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=YvVX5ijP29Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
   }
  ],
  "mappings": [
+  {
+   "video": "YvVX5ijP29Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Calculating the Speed of Real Objects' names the speed definition of 1.2.1 and the average-speed equation of 1.2.3 (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "1ehCM_SKJso",
    "lessonRef": null,
@@ -1047,6 +1142,27 @@
    }
   },
   {
+   "video": "6yvoL0bIG_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P2.4.2",
+    "P2.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Energy Resources' names the energy-generation methods of 1.7.1b and their renewability trade-offs of 1.7.2b (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "iUxh0tQNVjQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1175,6 +1291,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names a conduction experiment (good vs bad thermal conductors) (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7eOqj-PCjAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Heat Transfer' names the conduction (2.3.1) and convection (2.3.1a) methods; radiation half of the worksheet not bound, disclosed (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1329,6 +1465,26 @@
    }
   },
   {
+   "video": "cAMD7HX_Kqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P5.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrostatic Pringles' demonstrates the friction-charging experiments of 4.2.3 (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "ZP30SB0tQdU",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1469,6 +1625,26 @@
    }
   },
   {
+   "video": "genvYCm0RT4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "P6.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'LDRs and Thermistors' names components whose circuit-diagram symbols/appearance appear in 4.3.1; behaviour detail exceeds the spec, disclosed (inherited from the owner-approved cie-igcse-physics-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-physics-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "oHIm47NVZA0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1572,16 +1748,16 @@
  ],
  "coverage": {
   "specPointsTotal": 86,
-  "specPointsMapped": 23,
-  "specPointsUnmapped": 63,
-  "videosTotal": 43,
-  "videosMapped": 43,
+  "specPointsMapped": 25,
+  "specPointsUnmapped": 61,
+  "videosTotal": 48,
+  "videosMapped": 48,
   "videosUnmapped": 0,
-  "mappingRows": 43,
+  "mappingRows": 48,
   "byConfidence": {
    "high": 0,
-   "medium": 31,
-   "low": 12
+   "medium": 34,
+   "low": 14
   }
  },
  "inputs": {
@@ -1605,5 +1781,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T07:09:06.203Z"
+ "generatedUtc": "2026-11-12T09:58:57.435Z"
 }
