@@ -812,10 +812,15 @@ export function PaperViewerClient({
         )}
       >
         {/* mobile A/B toggle — floats over the pane's bottom edge so it costs
-            zero vertical space; preserves each doc's scroll */}
+            zero vertical space; preserves each doc's scroll.
+            T-HUB-INK-BRK run-002 (operator stress test 2026-11-12): the pill
+            is the strip's SOVEREIGN control — z-50 so no floating chrome
+            (ink toolbar, region-mark trigger) can ever bury it again (the
+            ink toolbar at z-40 used to cover the whole strip and the swap
+            buttons stopped working the moment ink was toggled on). */}
         {isSplitCapable && (
           <div
-            className="absolute bottom-3 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1 rounded-full border bg-background/95 p-1 shadow-md backdrop-blur lg:hidden"
+            className="absolute bottom-3 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border bg-background/95 p-1 shadow-md backdrop-blur lg:hidden"
             role="tablist"
             aria-label="Switch document"
           >

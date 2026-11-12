@@ -318,7 +318,14 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
 
   return (
     <>
-      <div className="absolute bottom-3 left-2 z-40 flex items-center gap-2">
+      {/* T-HUB-INK-BRK run-002 (operator stress test 2026-11-12): this row
+          used to sit at bottom-3 left-2 — the same strip as the ink toolbar
+          (z-40) and the mobile swap pill — and on a phone pane it COVERED
+          the toolbar's first three tool buttons (Draw/Text/Maths). It now
+          rides ABOVE the toolbar on every layout: bottom-28 <lg (the
+          toolbar is at bottom-16 there, above the swap pill strip),
+          bottom-14 at lg (just above the bottom-3 toolbar). */}
+      <div className="absolute bottom-28 left-2 z-40 flex items-center gap-2 lg:bottom-14">
         <Button
           size="sm"
           variant={enabled ? "secondary" : "outline"}
