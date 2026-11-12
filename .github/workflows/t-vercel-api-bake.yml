@@ -53,7 +53,12 @@ name: t-vercel-api-bake
 on:
   schedule:
     - cron: "30 3 * * *" # 03:30 UTC — staggered one hour after the hub floor
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      promoteUrl:
+        description: "Skip the bake: boot-check + promote this READY production deployment (URL) onto the domain. For the sticky-rollback case where prod already HAS a READY deployment at main HEAD but the domain serves an older pinned one."
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -116,8 +121,8 @@ jobs:
           "
 
       - name: Skip when production is already current
-        if: steps.prod.outputs.sha == steps.head.outputs.sha
-        run: echo "API production already at main HEAD — nothing to bake"
+        if: steps.prod.outputs.sha == steps.head.outputs.sha && inputs.promoteUrl == ''
+        run: echo "API production already at main HEAD — nothing to bake (pass promoteUrl to move the domain)"
 
       - name: Build the prebuilt stage (scripts/api-stage/build.sh)
         if: steps.prod.outputs.sha != steps.head.outputs.sha
@@ -164,15 +169,16 @@ jobs:
             --meta "githubCommitRef=main" \
             --token="$VERCEL_BAKE_TOKEN")"
           echo "$OUT"
-          URL="$(echo "$OUT" | grep -Eo 'https://syllabai-v2-[a-z0-9]+-[a-z0-9]+\.vercel\.app' | tail -1)"
+          URL="$(echo "$OUT" | grep -Eo 'https://syllabai-v2-[a-z0-9-]+\.vercel\.app' | tail -1)"
           if [ -z "$URL" ]; then echo "BAKE RED: no deployment URL in CLI output"; exit 1; fi
           echo "baked deployment: $URL"
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Promote onto the production domain (sticky-rollback law)
-        if: steps.bake.outputs.url != ''
+        if: steps.bake.outputs.url != '' || inputs.promoteUrl != ''
         env:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
+          TARGET_URL: ${{ steps.bake.outputs.url || inputs.promoteUrl }}
         run: |
           # run-002 receipt (2026-11-12): after the 2026-11-11 recovery the
           # production domain was pinned by `vercel rollback` — and a Vercel
@@ -188,22 +194,22 @@ jobs:
           sleep 5
           OK=""
           for i in 1 2 3 4 5 6; do
-            C=$(curl -s -o /tmp/boot.json -w "%{http_code}" "${{ steps.bake.outputs.url }}/actuator/health" || true)
+            C=$(curl -s -o /tmp/boot.json -w "%{http_code}" "$TARGET_URL/actuator/health" || true)
             if [ "$C" = "200" ] && grep -q '"status":"UP"' /tmp/boot.json; then
-              echo "boot GREEN on the baked deployment: ${{ steps.bake.outputs.url }}"
+              echo "boot GREEN on the target deployment: $TARGET_URL"
               OK=1; break
             fi
             echo "boot probe $i: HTTP $C"
             sleep 10
           done
           if [ -z "$OK" ]; then
-            echo "PROMOTE RED: the baked deployment does not boot on its own URL — refusing to promote"
+            echo "PROMOTE RED: the target deployment does not boot on its own URL — refusing to promote"
             exit 1
           fi
-          vercel promote "${{ steps.bake.outputs.url }}" --yes --token="$VERCEL_BAKE_TOKEN"
+          vercel promote "$TARGET_URL" --yes --token="$VERCEL_BAKE_TOKEN"
 
       - name: Post-deploy serving proof (promotion sha + read-only live probe)
-        if: steps.prod.outputs.sha != steps.head.outputs.sha
+        if: steps.bake.outputs.url != '' || inputs.promoteUrl != ''
         env:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
           BAKE_SHA: ${{ steps.head.outputs.sha }}
