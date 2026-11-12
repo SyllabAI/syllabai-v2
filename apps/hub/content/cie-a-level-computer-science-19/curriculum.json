@@ -3280,6 +3280,786 @@
    "provenanceTier": "RULE_DERIVED",
    "order": 227,
    "scope": "A Level"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S1",
+   "family": "TOPIC",
+   "title": "1. Information representation",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 21,
+   "smeSectionSlug": "1-information-representation"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S1:data-representation",
+   "family": "SUBTOPIC",
+   "title": "Data Representation",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Data Representation\" (slug data-representation) under section \"1. Information representation\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S1"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S1:multimedia",
+   "family": "SUBTOPIC",
+   "title": "Multimedia",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Multimedia\" (slug multimedia) under section \"1. Information representation\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S1"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S1:compression",
+   "family": "SUBTOPIC",
+   "title": "Compression",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Compression\" (slug compression) under section \"1. Information representation\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S1"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S2",
+   "family": "TOPIC",
+   "title": "2. Communication",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 22,
+   "smeSectionSlug": "2-communication-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S2:networks-and-the-internet",
+   "family": "SUBTOPIC",
+   "title": "Networks & the Internet",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Networks & the Internet\" (slug networks-and-the-internet) under section \"2. Communication\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S2"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S3",
+   "family": "TOPIC",
+   "title": "3. Hardware",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 23,
+   "smeSectionSlug": "3-hardware-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S3:computers-and-components",
+   "family": "SUBTOPIC",
+   "title": "Computers & Components",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Computers & Components\" (slug computers-and-components) under section \"3. Hardware\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S3"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S3:logic-gates-and-logic-circuits",
+   "family": "SUBTOPIC",
+   "title": "Logic Gates & Logic Circuits",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Logic Gates & Logic Circuits\" (slug logic-gates-and-logic-circuits) under section \"3. Hardware\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S3"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S4",
+   "family": "TOPIC",
+   "title": "4. Processor Fundamentals",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 24,
+   "smeSectionSlug": "4-processor-fundamentals-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S4:central-processing-unit-cpu-architecture",
+   "family": "SUBTOPIC",
+   "title": "Central Processing Unit (CPU) Architecture",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Central Processing Unit (CPU) Architecture\" (slug central-processing-unit-cpu-architecture) under section \"4. Processor Fundamentals\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S4"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S4:assembly-language-",
+   "family": "SUBTOPIC",
+   "title": "Assembly Language",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Assembly Language\" (slug assembly-language-) under section \"4. Processor Fundamentals\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S4"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S4:bit-manipulation",
+   "family": "SUBTOPIC",
+   "title": "Bit Manipulation",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Bit Manipulation\" (slug bit-manipulation) under section \"4. Processor Fundamentals\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S4"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S5",
+   "family": "TOPIC",
+   "title": "5. System Software",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 25,
+   "smeSectionSlug": "5-system-software-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S5:operating-systems",
+   "family": "SUBTOPIC",
+   "title": "Operating Systems",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Operating Systems\" (slug operating-systems) under section \"5. System Software\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S5"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S5:language-translators",
+   "family": "SUBTOPIC",
+   "title": "Language Translators",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Language Translators\" (slug language-translators) under section \"5. System Software\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S5"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S6",
+   "family": "TOPIC",
+   "title": "6. Security, privacy & data integrity",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 26,
+   "smeSectionSlug": "6-security-privacy-and-data-integrity-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S6:data-security",
+   "family": "SUBTOPIC",
+   "title": "Data Security",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Data Security\" (slug data-security) under section \"6. Security, privacy & data integrity\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S6"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S6:data-integrity",
+   "family": "SUBTOPIC",
+   "title": "Data Integrity",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Data Integrity\" (slug data-integrity) under section \"6. Security, privacy & data integrity\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S6"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S7",
+   "family": "TOPIC",
+   "title": "7. Ethics & Ownership",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 27,
+   "smeSectionSlug": "7-ethics-and-ownership-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S7:ethics-and-ownership",
+   "family": "SUBTOPIC",
+   "title": "Ethics & Ownership",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Ethics & Ownership\" (slug ethics-and-ownership) under section \"7. Ethics & Ownership\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S7"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S8",
+   "family": "TOPIC",
+   "title": "8. Databases",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 28,
+   "smeSectionSlug": "8-databases-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S8:database-concepts",
+   "family": "SUBTOPIC",
+   "title": "Database Concepts",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Database Concepts\" (slug database-concepts) under section \"8. Databases\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S8"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S8:database-management-systems-dbms-",
+   "family": "SUBTOPIC",
+   "title": "Database Management Systems (DBMS)",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Database Management Systems (DBMS)\" (slug database-management-systems-dbms-) under section \"8. Databases\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S8"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S8:data-definition-language-ddl-and-data-manipulation-language-dml",
+   "family": "SUBTOPIC",
+   "title": "Data Definition Language (DDL) & Data Manipulation Language (DML)",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Data Definition Language (DDL) & Data Manipulation Language (DML)\" (slug data-definition-language-ddl-and-data-manipulation-language-dml) under section \"8. Databases\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S8"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S9",
+   "family": "TOPIC",
+   "title": "9. Algorithm Design & Problem-solving",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 29,
+   "smeSectionSlug": "9-algorithm-design-and-problem-solving-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S9:computational-thinking-skills",
+   "family": "SUBTOPIC",
+   "title": "Computational Thinking Skills",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Computational Thinking Skills\" (slug computational-thinking-skills) under section \"9. Algorithm Design & Problem-solving\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S9"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S9:algorithms",
+   "family": "SUBTOPIC",
+   "title": "Algorithms",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Algorithms\" (slug algorithms) under section \"9. Algorithm Design & Problem-solving\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S9"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S10",
+   "family": "TOPIC",
+   "title": "10. Data Types & Structures",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 30,
+   "smeSectionSlug": "10-data-types-and-structures-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S10:data-types-and-records",
+   "family": "SUBTOPIC",
+   "title": "Data Types & Records",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Data Types & Records\" (slug data-types-and-records) under section \"10. Data Types & Structures\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S10"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S10:arrays",
+   "family": "SUBTOPIC",
+   "title": "Arrays",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Arrays\" (slug arrays) under section \"10. Data Types & Structures\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S10"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S10:files",
+   "family": "SUBTOPIC",
+   "title": "Files",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Files\" (slug files) under section \"10. Data Types & Structures\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S10"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S10:introduction-to-abstract-data-types-adt",
+   "family": "SUBTOPIC",
+   "title": "Introduction to Abstract Data Types (ADT)",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Introduction to Abstract Data Types (ADT)\" (slug introduction-to-abstract-data-types-adt) under section \"10. Data Types & Structures\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S10"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 3
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S11",
+   "family": "TOPIC",
+   "title": "11. Programming",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 31,
+   "smeSectionSlug": "11-programming-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S11:programming-basics",
+   "family": "SUBTOPIC",
+   "title": "Programming Basics",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Programming Basics\" (slug programming-basics) under section \"11. Programming\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S11"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S11:constructs",
+   "family": "SUBTOPIC",
+   "title": "Constructs",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Constructs\" (slug constructs) under section \"11. Programming\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S11"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S11:structured-programming",
+   "family": "SUBTOPIC",
+   "title": "Structured Programming",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Structured Programming\" (slug structured-programming) under section \"11. Programming\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S11"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S12",
+   "family": "TOPIC",
+   "title": "12. Software Development",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 32,
+   "smeSectionSlug": "12-software-development-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S12:program-development-life-cycle",
+   "family": "SUBTOPIC",
+   "title": "Program Development Life cycle",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Program Development Life cycle\" (slug program-development-life-cycle) under section \"12. Software Development\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S12"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S12:program-design-",
+   "family": "SUBTOPIC",
+   "title": "Program Design",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Program Design\" (slug program-design-) under section \"12. Software Development\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S12"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S12:program-testing-and-maintenance",
+   "family": "SUBTOPIC",
+   "title": "Program Testing & Maintenance",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Program Testing & Maintenance\" (slug program-testing-and-maintenance) under section \"12. Software Development\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S12"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S13",
+   "family": "TOPIC",
+   "title": "13. Data Representation",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 33,
+   "smeSectionSlug": "13-data-representation-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S13:user-defined-data-types",
+   "family": "SUBTOPIC",
+   "title": "User-defined Data Types",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"User-defined Data Types\" (slug user-defined-data-types) under section \"13. Data Representation\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S13"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S13:file-organisation-and-access-",
+   "family": "SUBTOPIC",
+   "title": "File Organisation & Access",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"File Organisation & Access\" (slug file-organisation-and-access-) under section \"13. Data Representation\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S13"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S13:floating-point-numbers-representation-and-manipulation",
+   "family": "SUBTOPIC",
+   "title": "Floating-point Numbers, Representation & Manipulation",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Floating-point Numbers, Representation & Manipulation\" (slug floating-point-numbers-representation-and-manipulation) under section \"13. Data Representation\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S13"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S14",
+   "family": "TOPIC",
+   "title": "14. Communication & internet technologies",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 34,
+   "smeSectionSlug": "14-communication-and-internet-technologies-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S14:protocols",
+   "family": "SUBTOPIC",
+   "title": "Protocols",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Protocols\" (slug protocols) under section \"14. Communication & internet technologies\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S14"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S14:circuit-switching-packet-switching",
+   "family": "SUBTOPIC",
+   "title": "Circuit Switching, Packet Switching",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Circuit Switching, Packet Switching\" (slug circuit-switching-packet-switching) under section \"14. Communication & internet technologies\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S14"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S15",
+   "family": "TOPIC",
+   "title": "15. Hardware & Virtual Machines",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 35,
+   "smeSectionSlug": "15-hardware-and-virtual-machines-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S15:processors-parallel-processing-and-virtual-machines",
+   "family": "SUBTOPIC",
+   "title": "Processors, Parallel Processing & Virtual Machines",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Processors, Parallel Processing & Virtual Machines\" (slug processors-parallel-processing-and-virtual-machines) under section \"15. Hardware & Virtual Machines\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S15"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S15:boolean-algebra-and-logic-circuits",
+   "family": "SUBTOPIC",
+   "title": "Boolean Algebra & Logic Circuits",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Boolean Algebra & Logic Circuits\" (slug boolean-algebra-and-logic-circuits) under section \"15. Hardware & Virtual Machines\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S15"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S16",
+   "family": "TOPIC",
+   "title": "16. System Software",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 36,
+   "smeSectionSlug": "16-system-software-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S16:purposes-of-an-operating-system-os",
+   "family": "SUBTOPIC",
+   "title": "Purposes of an Operating System (OS)",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Purposes of an Operating System (OS)\" (slug purposes-of-an-operating-system-os) under section \"16. System Software\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S16"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S16:translation-software",
+   "family": "SUBTOPIC",
+   "title": "Translation Software",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Translation Software\" (slug translation-software) under section \"16. System Software\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S16"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S17",
+   "family": "TOPIC",
+   "title": "17. Security",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 37,
+   "smeSectionSlug": "17-security-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S17:encryption-encryption-protocols-and-digital-certificates",
+   "family": "SUBTOPIC",
+   "title": "Encryption, Encryption Protocols & Digital Certificates",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Encryption, Encryption Protocols & Digital Certificates\" (slug encryption-encryption-protocols-and-digital-certificates) under section \"17. Security\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S17"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S18",
+   "family": "TOPIC",
+   "title": "18. Artificial Intelligence (AI)",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 38,
+   "smeSectionSlug": "18-artificial-intelligence-ai-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S18:artificial-intelligence-ai",
+   "family": "SUBTOPIC",
+   "title": "Artificial Intelligence (AI)",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Artificial Intelligence (AI)\" (slug artificial-intelligence-ai) under section \"18. Artificial Intelligence (AI)\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S18"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S19",
+   "family": "TOPIC",
+   "title": "19. Computational thinking & Problem-solving",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 39,
+   "smeSectionSlug": "19-computational-thinking-and-problem-solving-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S19:algorithms",
+   "family": "SUBTOPIC",
+   "title": "Algorithms",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Algorithms\" (slug algorithms) under section \"19. Computational thinking & Problem-solving\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S19:recursion",
+   "family": "SUBTOPIC",
+   "title": "Recursion",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Recursion\" (slug recursion) under section \"19. Computational thinking & Problem-solving\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S20",
+   "family": "TOPIC",
+   "title": "20. Further Programming",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 40,
+   "smeSectionSlug": "20-further-programming-"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S20:programming-paradigms",
+   "family": "SUBTOPIC",
+   "title": "Programming Paradigms",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Programming Paradigms\" (slug programming-paradigms) under section \"20. Further Programming\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S20"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S20:object-oriented-programming",
+   "family": "SUBTOPIC",
+   "title": "Object-Oriented Programming",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Object-Oriented Programming\" (slug object-oriented-programming) under section \"20. Further Programming\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S20"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S20:file-processing-and-exception-handling",
+   "family": "SUBTOPIC",
+   "title": "File Processing & Exception Handling",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"File Processing & Exception Handling\" (slug file-processing-and-exception-handling) under section \"20. Further Programming\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S20"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S21",
+   "family": "TOPIC",
+   "title": "21. Exam skills",
+   "description": "SME Exam-Questions picker section row (ADR-039 disclosed append 2026-11-12): mirrors the live SaveMyExams picker section verbatim (https://www.savemyexams.com/a-level/computer-science/cie/19/topic-questions/); navigation layer only — spec anchoring stays on the official spine.",
+   "parents": [
+    "cie-a-level-computer-science-19"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 41,
+   "smeSectionSlug": "21-exam-skills"
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S21:exam-technique",
+   "family": "SUBTOPIC",
+   "title": "Exam Technique",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Exam Technique\" (slug exam-technique) under section \"21. Exam skills\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S21"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S21:paper-guides",
+   "family": "SUBTOPIC",
+   "title": "Paper Guides",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Paper Guides\" (slug paper-guides) under section \"21. Exam skills\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S21"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-computer-science-19-SME-S21:key-exam-skills",
+   "family": "SUBTOPIC",
+   "title": "Key Exam Skills",
+   "description": "SME Exam-Questions picker topic row (ADR-039 disclosed append 2026-11-12): SME topic \"Key Exam Skills\" (slug key-exam-skills) under section \"21. Exam skills\"; sets file in 1:1 by their corpus topicSlug. Duplicated topic slugs in this course resolve by the set's sectionSlug (smeSectionSlug carried on the section row).",
+   "parents": [
+    "cie-a-level-computer-science-19-SME-S21"
+   ],
+   "provenanceTier": "SME_REFERENCE",
+   "order": 2
   }
  ],
  "edges": [
