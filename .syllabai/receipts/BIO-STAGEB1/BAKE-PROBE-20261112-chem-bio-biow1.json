@@ -1,0 +1,34 @@
+{
+ "format": "bake-probe-receipt/0.1",
+ "generated_at_utc": "2026-11-12T08:06:02Z",
+ "feeds": [
+  "chem-stageb-v32",
+  "bio-stagea-v33",
+  "bio-stageb1-v34",
+  "bio-stageb1-v35"
+ ],
+ "production_base": "https://syllabai-hub-v2.vercel.app",
+ "state": {
+  "http_status": 402,
+  "vercel_error": "DEPLOYMENT_DISABLED",
+  "class": "allowance cap \u2014 site-wide serving halt (the worklog-recorded class; self-heal = allowance reset + the standing bake / accepted deployment going READY)",
+  "evidence": [
+   "curl probes: 402 x-vercel-error: DEPLOYMENT_DISABLED from 05:55Z through 08:05Z (site-wide, every route)",
+   "bake workflow runs: 05:57Z (BUILDING @ e97a5488), 06:15Z (QUEUED @ 66ee3366), 07:39Z (QUEUED @ ccfa854dd) \u2014 all no-op'd under the idempotence law, all 'success'",
+   "the deployments for main HEADs are being ACCEPTED (cap no longer refusing) but sit QUEUED behind the build queue; serving resumes when the newest deployment reaches READY at main HEAD",
+   "main HEAD ccfa854dd2 (the biology stage-B wave-1 hub landing) carries all four feed landings: chemistry v32, biology stage-A v33, biology wave-1 v34+v35"
+  ]
+ },
+ "bake_dispatches": [
+  "2026-11-12T05:57:09Z run 43164761980",
+  "2026-11-12T06:15:05Z run 43166806913",
+  "2026-11-12T07:39:52Z run 43176920174"
+ ],
+ "law": "bake probe: post-push poll window; calibrate on a prior-wave note that must stay unchanged; production returns AT main HEAD with all landed feeds once serving resumes",
+ "poll_window": {
+  "first_probe_utc": "2026-11-12T05:55:41Z",
+  "last_probe_utc": "2026-11-12T08:05:29Z",
+  "probes": "402 throughout (~2h10m window)"
+ },
+ "next": "the LIVE SPOT-CHECK (chem-stageb-v32 sample + bio-stagea-v33 pilot + bio-stageb1 wave-1 sample; expected 'Your answer' = 4 x lessons; 2.1B marker 0; controls = physics wave-12 notes) runs the moment serving resumes; probe sets staged at w12_work/{chem-probe-set,bio-w1-probe-set}.json"
+}
