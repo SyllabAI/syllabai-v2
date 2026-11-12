@@ -96,7 +96,41 @@ interface RawSqlClient {
   exec(text: string): Promise<void>;
 }
 
-/** Neon WebSocket session — the production path (behaviour unchanged). */
+/**
+ * One JS array value → canonical Postgres array-literal text.
+ *
+ * The law (T-MG-REGIONS-500 run-001, live 2026-11-11): @neondatabase/serverless
+ * (0.10.2, the bundled pg prepareValue) JSON-stringifies every non-scalar
+ * parameter, so a JS array bound to `any($1::uuid[])` arrives as
+ * `["a","b"]` — a MALFORMED array literal (the valid form is `{"a","b"}`) —
+ * and the query 500s on the Neon path while the postgres.js path (local /
+ * CI replay) serializes arrays natively. Same code, green tests, broken
+ * production. Converting arrays to the quoted literal here keeps the wire
+ * value a SCALAR (every driver accepts it) and the call-site `::casts`
+ * (uuid[]/text[] — a fleet-wide serving idiom) parse it. Mapped in
+ * NeonWsClient ONLY: postgres.js must keep its native array binding.
+ *
+ * One level only: the fleet binds flat uuid[]/text[] lists. Scalars, null
+ * and plain objects pass through byte-identical to today's behaviour.
+ */
+export function toPgWireValue(value: unknown): unknown {
+  if (!Array.isArray(value)) return value;
+  return (
+    "{" +
+    value
+      .map((el) => {
+        if (el === null || el === undefined) return "NULL";
+        if (typeof el === "number" || typeof el === "boolean") return String(el);
+        return '"' + String(el).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
+      })
+      .join(",") +
+    "}"
+  );
+}
+
+/** Neon WebSocket session — the production path. Array parameters are
+ * converted to canonical pg array literals (see toPgWireValue — the driver
+ * would otherwise JSON-stringify them into malformed array literals). */
 class NeonWsClient implements RawSqlClient {
   private client: Client;
   private connecting: Promise<void> | null = null;
@@ -108,7 +142,10 @@ class NeonWsClient implements RawSqlClient {
     return this.connecting;
   }
   async query(text: string, values: unknown[]) {
-    const res = await this.client.query({ text, values });
+    const res = await this.client.query({
+      text,
+      values: values.map((v) => toPgWireValue(v)),
+    });
     return res.rows as Array<Record<string, unknown>>;
   }
   async exec(text: string) {
