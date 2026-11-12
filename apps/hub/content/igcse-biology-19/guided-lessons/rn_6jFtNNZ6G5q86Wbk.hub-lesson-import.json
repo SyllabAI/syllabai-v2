@@ -1,0 +1,128 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6jFtNNZ6G5q86Wbk",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "8237bb38af8bdf9781b070f38a61eda10ffaad002d558a4b1d8271233b342495",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_6jFtNNZ6G5q86Wbk",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Biological Molecules",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/biological-molecules/temperature-and-enzyme-function",
+    "specAnchors": [
+      {
+        "code": "2.11",
+        "text": "understand how temperature changes can affect enzyme function, including changes to the shape of active site"
+      }
+    ],
+    "primer": {
+      "text": "Temperature is the factor that changes enzyme activity in two opposite directions. Warming towards the optimum adds kinetic energy and speeds reactions; overheating destroys the bonds holding the enzyme's shape and denatures it. This note separates those two effects so you can explain the classic temperature graph mark by mark.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_6jFtNNZ6G5q86Wbk::L1",
+        "title": "Optimum temperature, kinetic energy and denaturation",
+        "sourceHeadings": [
+          "Factors Affecting Enzyme Action: Temperature"
+        ],
+        "specRefs": [
+          "2.11"
+        ],
+        "opening": "Every enzyme works fastest at its optimum temperature — 37 degrees Celsius in the human body. Below it, molecules move slowly and reactions crawl; above it, heat breaks the bonds holding the enzyme's shape and the active site is lost for good. Cold slows enzymes but never denatures them, which is exactly the contrast examiners test.",
+        "keyPoints": [
+          "Each enzyme has an optimum temperature at which it works fastest; the human body's is 37 degrees Celsius.",
+          "Warming towards the optimum adds kinetic energy, so enzyme and substrate collide more often.",
+          "Beyond the optimum, heat breaks the bonds holding the protein's shape and the enzyme denatures.",
+          "Denaturation is irreversible, and denatured active sites no longer fit their substrates.",
+          "Low temperatures do not denature enzymes; they only slow the reaction down."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Warm to the optimum and the reaction speeds up; overheat and the enzyme denatures permanently. Cold merely slows it.",
+            "analogy": "An enzyme is like a singer: a warmer room loosens the voice, but a fire melts the instrument — and melted instruments never play again.",
+            "examPointer": "The graph has a peak at 37 and a collapse after it; answers must name BOTH the kinetic-energy rise and the denaturation fall."
+          },
+          "medium": {
+            "restatement": "The rate curve rises because collision frequency grows with kinetic energy, then falls steeply because bond breakage reshapes the active site; the two mechanisms act on opposite sides of the peak.",
+            "analogy": "Below the peak you are pushing a swing gently (more pushes, faster); above it you snap the swing's chains (no pushes can help).",
+            "examPointer": "Say 'irreversible' when defining denaturation — one word, one mark, routinely missed."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q1",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q2",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q3",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q4",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q5",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q6",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q7",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q8",
+          "rn_6jFtNNZ6G5q86Wbk::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "optimum temperature",
+          "definition": "The temperature at which an enzyme works fastest.",
+          "firstLesson": 1
+        },
+        {
+          "term": "denaturation",
+          "definition": "The irreversible loss of an enzyme's shape when heat breaks the bonds holding it, destroying active-site fit.",
+          "firstLesson": 1
+        },
+        {
+          "term": "kinetic energy",
+          "definition": "The energy of molecular movement, which grows as temperature rises.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/f28c22e8995f-effect-of-temperature-on-enzyme-activity.png",
+        "alt": "Effect of temperature on enzyme activity, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Factors Affecting Enzyme Action: Temperature",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Effect of temperature on enzyme activity: rising to the optimum, collapsing beyond it"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/cc424ec91bd4-graph-showing-the-effect-of-temperature-on-rate-.png",
+        "alt": "Graph showing the effect of temperature on rate of enzyme activity, IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "Factors Affecting Enzyme Action: Temperature",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Graph of temperature against the rate of enzyme activity"
+      }
+    ]
+  }
+}

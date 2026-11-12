@@ -1,0 +1,297 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6nfRDC4jtDHbdbqZ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "0cf3740e6a00b1348459476c647b4a06010c4a965a7ce020e451dc2d2493ecef",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_6nfRDC4jtDHbdbqZ",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Biological Molecules",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/biological-molecules/practical-food-tests",
+    "specAnchors": [
+      {
+        "code": "2.9",
+        "text": "practical: investigate food samples for the presence of glucose, starch, protein and fat"
+      }
+    ],
+    "primer": {
+      "text": "Four reagents turn food samples into visible answers: Benedict's for glucose, iodine for starch, Biuret for protein and the ethanol emulsion test for lipids. This note walks each test's method and colour change, the sample-preparation steps for solids, the hazards worth naming, and the worked example that reads a results table for an apple, olive oil, egg yolk and a biscuit.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_6nfRDC4jtDHbdbqZ::L1",
+        "title": "Getting a sample ready and the glucose test",
+        "sourceHeadings": [
+          "Preparing a sample",
+          "Test for glucose (a reducing sugar)"
+        ],
+        "specRefs": [
+          "2.9"
+        ],
+        "opening": "Solid foods must be broken up, mixed with distilled water and filtered before any test can run, giving a clear solution to work with. For glucose, Benedict's solution goes in blue and the tube is heated for five minutes; a positive result slides towards orange or brick red, with darker colours meaning more glucose was present.",
+        "keyPoints": [
+          "Solid samples are crushed, stirred into distilled water and filtered to give a testable solution.",
+          "Benedict's solution is blue before heating and changes colour only when glucose is present.",
+          "The glucose test tube is heated in very hot water for five minutes.",
+          "A positive Benedict's result runs from light blue towards orange or brick red.",
+          "Darker colour changes signal a higher glucose concentration."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Prepare solids by crushing, water-mixing and filtering. Benedict's test: add blue solution, heat five minutes, blue to orange/red means glucose, darker means more.",
+            "analogy": "Preparing the sample is sieving lump sugar out of tea — you test the dissolved part, not the lumps.",
+            "examPointer": "Write both the reagent AND the colour change; a method description with only one of the two loses a mark."
+          },
+          "medium": {
+            "restatement": "Filtration removes undissolved solids so the reagent meets a true solution; the graded colour scale lets the test act as a rough concentration measure, not just a presence flag.",
+            "analogy": "The colour ladder is a rough thermometer for glucose: the redder the reading, the higher the level it reports.",
+            "examPointer": "State the safety clause (goggles; heat in a water bath with the burner off) — practical write-ups award it."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q1",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q2",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q3",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q4",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q5",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q6",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q7",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q8",
+          "rn_6nfRDC4jtDHbdbqZ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_6nfRDC4jtDHbdbqZ::L2",
+        "title": "Starch, protein and lipid tests",
+        "sourceHeadings": [
+          "Test for starch using iodine solution",
+          "Protein food test"
+        ],
+        "specRefs": [
+          "2.9"
+        ],
+        "opening": "Iodine solution starts yellow-brown and flips to blue-black when starch is present, no heating needed. Protein uses Biuret solution, blue at first, sliding to violet or lilac when protein appears. Each test pairs one reagent with one colour story, and mixing the pairs is the single most common way these marks are lost.",
+        "keyPoints": [
+          "Iodine solution is yellow-brown and turns blue-black in the presence of starch.",
+          "The starch test needs no heating, unlike the glucose test.",
+          "Biuret solution is blue and turns violet, lilac or purple when protein is present.",
+          "Biuret solution contains copper sulfate and sodium hydroxide, both flagged hazards."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Iodine: yellow-brown to blue-black means starch. Biuret: blue to violet/lilac means protein.",
+            "analogy": "Two colour pairs, two keys: iodine is the starch key, Biuret is the protein key — use the wrong key and the door stays shut.",
+            "examPointer": "Learn the pairs as a two-column table; most lost marks here are iodine colours written for protein or vice versa."
+          },
+          "medium": {
+            "restatement": "The copper sulfate and alkali in Biuret drive the protein colour reaction, which is why goggles matter more for this test than for iodine, which is mainly an eye irritant.",
+            "analogy": "Biuret carries a double hazard — a metal salt plus a corrosive alkali — while iodine is a single-irritant reagent.",
+            "examPointer": "Name copper sulfate and sodium hydroxide when asked for hazards; 'dangerous chemicals' alone earns nothing."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q1",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q2",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q3",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q4",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q5",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q6",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q7",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q8",
+          "rn_6nfRDC4jtDHbdbqZ::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      },
+      {
+        "id": "rn_6nfRDC4jtDHbdbqZ::L3",
+        "title": "The lipid emulsion test, the results table and hazards",
+        "sourceHeadings": [
+          "Test for lipids (fats)",
+          "Food Test Results Table"
+        ],
+        "specRefs": [
+          "2.9"
+        ],
+        "opening": "Lipids are tested by shaking the sample with ethanol, decanting the ethanol layer into water and looking for a cloudy emulsion. The results table gathers all four tests into one grid, and the worked example reads that grid for four foods. Hazards close the practical: flammable ethanol, corrosive Biuret, irritant iodine and the open flame.",
+        "keyPoints": [
+          "The lipid test shakes the sample with ethanol, then adds the ethanol layer to cold distilled water.",
+          "A positive lipid test forms a cloudy white emulsion.",
+          "The results table pairs each molecule with its reagent and colour change in one grid.",
+          "Ethanol is highly flammable and must stay away from any flame."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ethanol test: shake with ethanol, pour the ethanol into water, look for a cloudy emulsion — that means lipid.",
+            "analogy": "The emulsion is like oil shaken into salad dressing: tiny droplets scatter light and the liquid turns milky.",
+            "examPointer": "Write the settling-and-decanting step; answers that jump straight from shaking to cloudiness miss the method mark."
+          },
+          "medium": {
+            "restatement": "The emulsion appears because dissolved lipid comes out of solution when the ethanol meets water, forming dispersed droplets; the grid table exists because four reagent-colour pairs are easy to swap under exam pressure.",
+            "analogy": "Water evicts the lipid from its ethanol taxi, and the evicted passengers cluster into droplets small enough to cloud the tube.",
+            "examPointer": "For 'describe how to test' questions, open with the reagent name — the exam hint singles this out as the marking habit."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q1",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q2",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q3",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q4",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q5",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q6",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q7",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q8",
+          "rn_6nfRDC4jtDHbdbqZ::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-04",
+          "fig-05",
+          "fig-06"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "emulsion",
+          "definition": "The cloudy mixture of tiny lipid droplets in water that signals a positive ethanol test.",
+          "firstLesson": 3
+        },
+        {
+          "term": "reducing sugar",
+          "definition": "A sugar such as glucose that changes Benedict's solution on heating.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reagent",
+          "definition": "The chemical added to a sample to reveal a molecule, such as iodine or Biuret solution.",
+          "firstLesson": 2
+        },
+        {
+          "term": "filtrate",
+          "definition": "The solution that passes through the filter paper during sample preparation.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A student tested several foods with the four reagents and recorded the colour changes in a results table. Using the table: (a) which food groups are present in the apple, and how do you know? (b) which foods contained lipids?",
+        "steps": [
+          "Read the apple's row: its iodine test turned blue-black and its Benedict's test turned orange.",
+          "Blue-black with iodine shows starch, and orange with Benedict's shows sugar, so the apple contains both.",
+          "The apple's Biuret and emulsion tests stayed negative, so it contains no protein and no lipid.",
+          "Scan the lipid column: olive oil, egg yolk and biscuit all formed cloudy emulsions."
+        ],
+        "finalAnswer": "(a) The apple contained starch and sugar (both tests positive) and no protein or lipid (both tests negative). (b) Olive oil, egg yolk and biscuit contained lipids."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/ce0dbfbc4425-59579-the-benedicts-test-for-glucose.png",
+        "alt": "Test tube with food sample and Benedict's solution is placed in boiling water on a Bunsen burner for a colour change reaction.",
+        "sourceHeading": "Test for glucose (a reducing sugar)",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The Benedict's test for glucose: sample and solution heated in hot water"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/9972122363cc-14775-in-the-presence-of-starch-iodine.png",
+        "alt": "Diagram illustrating iodine test for starch: Add food sample to test tube, add iodine drops, observe colour change to yellow-brown (negative) or blue-black (positive).",
+        "sourceHeading": "Test for starch using iodine solution",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Iodine test for the presence of starch in a food sample"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/c520c4b7aad1-55631-the-biuret-test-for-protein.png",
+        "alt": "Three test tubes illustrating the Biuret test: the first with food sample and Biuret solution, the second turning purple indicating protein, the third remaining blue.",
+        "sourceHeading": "Protein food test",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The Biuret test for protein across three tubes"
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/d1029afbf6ff-the-ethanol-test-for-lipids.png",
+        "alt": "The ethanol test for lipids, IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "Test for lipids (fats)",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "The ethanol test for lipids: shaking, decanting and the cloudy emulsion"
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/ed22c719ade8-food-test-colour-changes-table.png",
+        "alt": "Food test colour changes table, downloadable IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "Food Test Results Table",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Food test colour changes collected into one results table"
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/b0099987dbff-table-food-tests-analysis.png",
+        "alt": "b0099987dbff-table-food-tests-analysis.png",
+        "sourceHeading": "Food Test Results Table",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "The worked example's results table for four foods"
+      }
+    ]
+  }
+}

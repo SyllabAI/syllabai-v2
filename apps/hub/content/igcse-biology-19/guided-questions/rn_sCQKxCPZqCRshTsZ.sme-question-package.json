@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sCQKxCPZqCRshTsZ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "88c9349c3cd036697b18f138d2acf974a87813f7a25e4b28c63ff9e7a7e0b143",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_sCQKxCPZqCRshTsZ",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q1",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "Which structure does a bacterial cell LACK?",
+      "misconceptionClass": "bacterial absence",
+      "options": [
+        {
+          "key": "A",
+          "text": "A nucleus enclosed by a membrane",
+          "correct": true,
+          "explanation": "Prokaryotes keep their DNA loose in the cytoplasm.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A cell wall",
+          "correct": false,
+          "explanation": "The wall is a named bacterial feature.",
+          "misconception": "wall wrongly denied"
+        },
+        {
+          "key": "C",
+          "text": "Plasmids",
+          "correct": false,
+          "explanation": "Plasmids are named bacterial DNA elements.",
+          "misconception": "plasmids wrongly denied"
+        },
+        {
+          "key": "D",
+          "text": "Cytoplasm",
+          "correct": false,
+          "explanation": "Cytoplasm is named as present.",
+          "misconception": "cytoplasm wrongly denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q2",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "Which list gives the structures a bacterial cell POSSESSES?",
+      "misconceptionClass": "bacterial inventory",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nucleus, chloroplast, cell wall",
+          "correct": false,
+          "explanation": "Neither nucleus nor chloroplast exists here.",
+          "misconception": "two impossibilities"
+        },
+        {
+          "key": "B",
+          "text": "Cell wall, cell membrane, cytoplasm, plasmids",
+          "correct": true,
+          "explanation": "This is exactly the inventory the note lists.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Nucleus, cell membrane, cytoplasm",
+          "correct": false,
+          "explanation": "No nucleus exists in bacteria.",
+          "misconception": "nucleus misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Cell wall, mitochondria, plasmids",
+          "correct": false,
+          "explanation": "Mitochondria are absent from bacteria.",
+          "misconception": "mitochondrion misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q3",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "Why are bacteria described as prokaryotic rather than eukaryotic?",
+      "misconceptionClass": "classification reason",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because they lack a cell wall",
+          "correct": false,
+          "explanation": "They actually have a wall.",
+          "misconception": "inverted feature"
+        },
+        {
+          "key": "B",
+          "text": "Because they are always harmful",
+          "correct": false,
+          "explanation": "Lactobacillus is useful, so harm is not universal.",
+          "misconception": "harm over-generalised"
+        },
+        {
+          "key": "C",
+          "text": "Because their genetic material sits loose in the cytoplasm with no enclosing membrane",
+          "correct": true,
+          "explanation": "The missing nucleus is the deciding contrast.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because they are microscopic",
+          "correct": false,
+          "explanation": "Size does not decide the classification.",
+          "misconception": "size treated as decisive"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q4",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "Which pairing of example bacterium and role is correct?",
+      "misconceptionClass": "examples pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lactobacillus bulgaricus — pneumonia; Pneumococcus — yoghurt",
+          "correct": false,
+          "explanation": "The two roles are swapped.",
+          "misconception": "roles swapped"
+        },
+        {
+          "key": "B",
+          "text": "Pneumococcus — yoghurt; Mucor — pneumonia",
+          "correct": false,
+          "explanation": "Mucor is a fungus, not a bacterium.",
+          "misconception": "fungus misfiled"
+        },
+        {
+          "key": "C",
+          "text": "Yeast — yoghurt; TMV — pneumonia",
+          "correct": false,
+          "explanation": "Yeast is a fungus and TMV is a virus.",
+          "misconception": "two cross-group errors"
+        },
+        {
+          "key": "D",
+          "text": "Lactobacillus bulgaricus — yoghurt production; Pneumococcus — pneumonia",
+          "correct": true,
+          "explanation": "Both named examples pair correctly with their roles.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q5",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "What is the shape of the bacterial chromosome described in this note?",
+      "misconceptionClass": "chromosome shape",
+      "options": [
+        {
+          "key": "A",
+          "text": "A single circular chromosome of DNA",
+          "correct": true,
+          "explanation": "The note names a circular chromosome.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Several linear chromosomes inside a nucleus",
+          "correct": false,
+          "explanation": "Both the shape and the location are wrong.",
+          "misconception": "eukaryote plan misattributed"
+        },
+        {
+          "key": "C",
+          "text": "DNA held only inside plasmids",
+          "correct": false,
+          "explanation": "Plasmids ride alongside the main chromosome, they are not the whole genome.",
+          "misconception": "plasmid role over-stated"
+        },
+        {
+          "key": "D",
+          "text": "No DNA at all, only RNA",
+          "correct": false,
+          "explanation": "Bacteria carry DNA; RNA-only describes some viruses.",
+          "misconception": "virus genome misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q6",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "State where the genetic material of a prokaryotic cell is found.",
+      "misconceptionClass": "dna location recall",
+      "kind": "recall",
+      "modelAnswer": "Loose in the cytoplasm, with no enclosing nuclear membrane.",
+      "keywords": [
+        "cytoplasm",
+        "nuclear",
+        "enclosing",
+        "membrane"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q7",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "Name the extra DNA elements a bacterial cell carries besides its chromosome.",
+      "misconceptionClass": "plasmid recall",
+      "kind": "recall",
+      "modelAnswer": "Plasmids — small loops of DNA in the cytoplasm.",
+      "keywords": [
+        "plasmids",
+        "DNA",
+        "cytoplasm",
+        "small"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q8",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "Explain why mitochondria cannot be drawn on a labelled bacterial cell diagram.",
+      "misconceptionClass": "no mitochondria",
+      "kind": "explain-why",
+      "modelAnswer": "Bacteria lack mitochondria and every other membrane-bound organelle; their energy-releasing chemistry runs directly across the cell membrane and in the cytoplasm, so any diagram showing a mitochondrion has drawn a eukaryotic feature on a prokaryotic cell.",
+      "keywords": [
+        "mitochondria",
+        "organelle",
+        "membrane",
+        "mitochondrion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sCQKxCPZqCRshTsZ::L1::Q9",
+      "moduleId": "rn_sCQKxCPZqCRshTsZ::L1",
+      "stem": "A pupil's labelled bacterial cell diagram includes plasmids, a cell wall and a nucleus. The plasmids and wall are correct — what must change, and why?",
+      "misconceptionClass": "diagram repair application",
+      "kind": "application",
+      "modelAnswer": "The nucleus must be removed and replaced by DNA loose in the cytoplasm (a circular chromosome), because bacteria are prokaryotes with no membrane-enclosed nucleus.",
+      "keywords": [
+        "nucleus",
+        "cytoplasm",
+        "circular",
+        "prokaryotes"
+      ],
+      "options": []
+    }
+  ]
+}
