@@ -705,7 +705,15 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           paper's bottom on a phone pane (the reported "bottom toolbar
           blocks scroll/pinch": touches there never reached the scroller).
           The row keeps every control reachable at ~44px; pan-x keeps the
-          row's pans inside the row. */}
+          row's pans inside the row.
+          T-HUB-INK-BRK run-002 (operator stress test 2026-11-12): the row
+          RIDES ABOVE the mobile A/B swap strip (bottom-16 <lg, bottom-3 at
+          lg where the pill is hidden) — at the old bottom-3 the row's
+          z-40 covered the z-30 swap pill and the paper/mark-scheme tabs
+          stopped working the moment ink was toggled on. The Collapse
+          control is sticky-right INSIDE the scroll row: with 17 controls
+          (~640px) overflowing a phone pane, the fold button used to sit
+          ~650px from the left edge — off-viewport, undiscoverable. */}
       {collapsed ? (
         <Button
           size="sm"
@@ -720,7 +728,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
         <div
           role="toolbar"
           aria-label="Ink annotations"
-          className="absolute bottom-3 right-2 z-40 flex max-w-[calc(100%-1rem)] flex-nowrap items-center gap-1 overflow-x-auto overscroll-contain rounded-lg border bg-background/95 p-1 shadow-md backdrop-blur [touch-action:pan-x]"
+          className="absolute bottom-16 right-2 z-40 flex max-w-[calc(100%-1rem)] flex-nowrap items-center gap-1 overflow-x-auto overscroll-contain rounded-lg border bg-background/95 p-1 shadow-md backdrop-blur [touch-action:pan-x] lg:bottom-3"
         >
           <Button
             size="sm"
@@ -969,11 +977,14 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               IS NO WAY TO DISABLE THE BOTTOM TOOLS BAR"). The row folds to
               the one-button pill; the posture persists per device. No
               "Close ink layer" — the surface itself never unmounts, only
-              the chrome folds. */}
+              the chrome folds.
+              T-HUB-INK-BRK run-002: sticky-right so the fold control stays
+              visible however far the row has scrolled (it was the 17th
+              control, ~650px deep — effectively unreachable on a phone). */}
           <Button
             size="sm"
             variant="ghost"
-            className="size-8 px-0"
+            className="sticky right-0 ml-1 shrink-0 rounded-md bg-background/95 size-8 px-0"
             aria-label="Collapse annotation tools"
             onClick={toggleCollapsed}
           >
@@ -989,7 +1000,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
       {migration && token && sourceUrl && (
         <div
           aria-label="Ink saved on this device"
-          className="absolute bottom-14 right-2 z-40 max-w-72 rounded-lg border bg-background/95 p-3 text-xs shadow-md backdrop-blur"
+          className="absolute bottom-28 right-2 z-40 max-w-72 rounded-lg border bg-background/95 p-3 text-xs shadow-md backdrop-blur lg:bottom-14"
         >
           <p className="text-muted-foreground">
             {migration.phase === "failed"
@@ -1042,7 +1053,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
       {hintOpen && snap.shapes.length === 0 && (
         <div
           aria-label="Put your answer down"
-          className="absolute bottom-14 right-2 z-40 w-72 rounded-lg border bg-background/95 p-3 text-xs shadow-md backdrop-blur"
+          className="absolute bottom-28 right-2 z-40 w-72 rounded-lg border bg-background/95 p-3 text-xs shadow-md backdrop-blur lg:bottom-14"
         >
           <p className="font-semibold">Put your answer down</p>
           <p className="mt-1 text-muted-foreground">
