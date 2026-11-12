@@ -1,0 +1,104 @@
+version: 1
+task:
+  id: T-HUB-COURSES-UI-3
+  title: "The directory's defect round — grouped count digits, label-aware qualifier suppression, the ghost's honest line, the ICT casing display fix, the search-input width, and the intro's full qualification ladder"
+  owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1ce9d48df638f9)"
+  status: "IN_REVIEW run-001 (branch t-hub-courses-ui-3/run-001 from origin/main f20f9bce; PR against main; NOT self-merged per house law)"
+  priority: P1
+  band: T-HUB (frontend — courses directory surface)
+  wave: hub-courses-directory
+  deps: [T-HUB-COURSES-UI-2, T-HUB-COURSES-PUBLIC-2]
+  execution_record: >
+    run-000 (2026-11-12, operator traces 1a1ce978776cc971 + 1a1ce9d48df638f9):
+    the operator asked what problems the live www.syllab-ai.com/courses shows;
+    a fresh first-hand pass (agent-browser screenshots + SSR marker battery,
+    evidence download/courses-review/ 01-hero/02-mid/03-bottom/04-mobile.png)
+    surfaced five visible defects and one copy nit; the operator's "Fix"
+    authorized the bundle (the storefront-wall and filter-breadth findings
+    were NOT authorized — they stay product decisions).
+    run-001 (same trace): six fixes, six files. ① formatCourseStats gains
+    en-GB grouped digits (plural() → n.toLocaleString("en-GB")) — the hero's
+    papers StatChip already ran that formatter ("4,382"), so the cards'
+    "1133 flashcards" and the hero's "4,382" now come from ONE formatter
+    ("1,133 flashcards"); the PUBLIC-2 pin updated and the production case
+    of record added (0620: 107 notes · 1,133 flashcards · 1,300 questions).
+    ② duplicateVariants gains label-aware suppression — a derived qualifier
+    whose words the registry label already carries (case/punctuation-insensitive
+    word-set containment, "&"/"and" folded) renders nothing: "Chemistry —
+    Modular 2024, Unit 1" no longer re-announces "Unit 1", "Chemistry —
+    A-Level" no longer re-announces "A-Level", the 4XSD1 reordered qualifier
+    ("Double Award Modular Biology Unit 1") is covered by the title's own
+    words. Label is an OPT-IN field on VariantKeyable — lanes without one
+    (the add-course/add-class overlays' minimum shape) keep the old behavior
+    byte-for-byte. Qualifiers that differentiate survive ("Financial
+    Statements" under "Accounting"), and the 9709 level prefixes ("A-Level
+    Mechanics" / "AS Pure 2") STAY BY DESIGN — that family exists at both
+    levels, the prefix is the honest AS/A-Level disambiguator.
+    ③ the registered ghost's honesty surfaced: the pending law lived only in
+    a desktop-hover tooltip, so a zero-content card (CIE 9696 A-Level
+    Geography; Edexcel 4HI1 History) read as broken — a ghost with no
+    substance line now renders "No published content yet — the corpus is
+    queued for import." (text-xs italic muted; the tooltip's own claim).
+    Papers-only ghosts (9709 Pure 2: 68 papers + pending) stay line-free —
+    they have substance. ④ the Edexcel ICT lane's registry label "Ict" is
+    patched at display level ("Ict" → "ICT") — the canonical value is pinned
+    by subject-identity law (resolveSubjectKey("Ict")), and the display-level
+    precedent is the test builder's own casing fix; the registry data file is
+    untouched. ⑤ the search input widens w-80 → w-96 — the placeholder's own
+    tail ("…exam code or") was clipped at 320px (first-hand screenshot).
+    ⑥ the intro/meta-description count line drops the "IAL/IGCSE course
+    variants" phrasing for the full ladder the page actually sections
+    ("… 106 Learning Hubs across IGCSE, AS, A-Level and IAL") — same counts,
+    same substance tail, one template feeding meta description + JSON-LD +
+    hero copy.
+    Gates: bun test targeted 44/44 (218 expects — directory-stats +
+    directory-groups + route-gate + subject-identity + the NEW
+    course-variant pins); eslint on the six changed files 0 problems; tsc
+    --noEmit exit 0; FULL hub suite A/B fail-band BYTE-IDENTICAL on branch
+    vs clean main (1290 pass / 19 fail / 2 errors both legs — main's band
+    has grown since the run-002 era with the ~15 lanes merged since, both
+    legs identical, +5 pass = exactly this run's five new pins); next build
+    compile + STATIC PRERENDER COMPLETE 4703/4703 in 8.3min (BUILD_ID
+    0Is6c0XyUGMsmV8In8aA5 written) — standalone emit ENOSPC, the identical
+    disclosed failure mode of six prior runs (CI hub job = the packaging
+    gate of record). Runtime verified on the built artifact (next start
+    :3111): /courses 200 with every run-001 marker — "1,133 flashcards" ×1
+    and ZERO comma-less 4-digit counts, ">Ict<" residue 0, ghost line ×2
+    (9696 + 4HI1), "Unit 1 Unit 1" duplication pattern 0, w-96 ×1 / w-80
+    input 0, new ladder intro ×6 / old phrasing 0, "A-Level Mechanics"
+    correctly retained; route-gate 8/8 intact in the targeted run.
+    Browser evidence download/courses-review/ui3-{hero,ghost}.png (1440×1000,
+    built artifact). House notes: zero new dependencies, zero registry/data
+    bytes (courses.json untouched), fonts/palette/theme untouched, no network
+    added. Residuals disclosed: the JSON-LD Course name still emits the
+    registry's "Ict" (display fix covers the rendered card only; a registry
+    casing change would need the subject-identity law amended — not in this
+    run's scope); the storefront wall and filter breadth remain operator
+    product decisions.
+    House lane, no self-merge; PAT rotation FIFTEENTH filing — still
+    outstanding.
+base:
+  repo: "syllabai-v2 @ f20f9bce (origin/main at claim)"
+basis: >
+  Operator order 2026-11-12 traces 1a1ce978776cc971 ("You were working on
+  https://www.syllab-ai.com/courses page right?") + 1a1ce9d48df638f9
+  ("Fix") authorizing the defect bundle this lane surfaced first-hand.
+  Continues the directory program: PUBLIC-1/UI-1/PUBLIC-2/UI-2.
+scope:
+  allowed:
+    - "apps/hub/src/app/courses/course-directory.tsx (title display casing, ghost honest line, search-input width)"
+    - "apps/hub/src/app/courses/page.tsx (intro template copy only)"
+    - "apps/hub/src/lib/course-variant.ts (label-aware suppression; VariantKeyable gains optional label)"
+    - "apps/hub/src/lib/course-variant.test.ts (NEW — the suppression/retention pins)"
+    - "apps/hub/src/lib/directory-stats.ts (plural formatter only)"
+    - "apps/hub/src/lib/directory-stats.test.ts (pin updates + production case)"
+    - ".syllabai/tasks/T-HUB-COURSES-UI-3.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-HUB-COURSES-UI-3/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/hub/content/** (the registry data stays byte-identical — 'Ict' is the identity law's canonical value)"
+    - "apps/hub/src/app/courses/[course]/** (hub subtree untouched)"
+    - "fonts/palette/theme-pack changes (house design system is law)"
+    - "components/** (the kit is consumed, not edited)"
+    - "packages/**, apps/api/**, golden/** (out of band)"
+    - "any user-data surface on the public directory (option-1 law)"

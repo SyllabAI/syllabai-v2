@@ -23,7 +23,10 @@ export const ZERO_COURSE_COUNTS: CourseCounts = {
 };
 
 function plural(n: number, one: string, rest: string): string {
-  return `${n} ${n === 1 ? one : rest}`;
+  // T-HUB-COURSES-UI-3: grouped digits — the hero's papers StatChip already
+  // formats via toLocaleString("en-GB") ("4,382"); the cards' substance line
+  // now matches it ("1,133 flashcards"), one formatter everywhere.
+  return `${n.toLocaleString("en-GB")} ${n === 1 ? one : rest}`;
 }
 
 /**
