@@ -12,8 +12,10 @@ import { boardOf, distinctBoards } from "@/lib/board";
 import type { CourseMeta } from "@/lib/courses";
 import {
   courseLevelAnchor,
+  distinctLevels,
   groupDirectory,
 } from "@/lib/directory-groups";
+import { featuredCourses } from "@/lib/directory-featured";
 import {
   formatCourseStats,
   ZERO_COURSE_COUNTS,
@@ -44,6 +46,210 @@ const DEEP_LINK_RESOURCES = new Set([
   "flashcards",
   "past-papers",
 ]);
+
+/**
+ * T-HUB-COURSES-IA-1: the directory card, extracted from the family grids
+ * so the storefront's featured tier (lib/directory-featured.ts) renders
+ * the SAME recipe — one card law, two consumers. The markup, classes and
+ * derived consts are the family-grid block verbatim (run-002's approved
+ * design of record); nothing about the card itself changes here.
+ */
+function DirectoryCard({
+  c,
+  bundleStats,
+  archivePapers,
+  subtitles,
+}: {
+  c: CourseMeta;
+  bundleStats?: Record<string, CourseCounts>;
+  archivePapers?: Record<string, number>;
+  subtitles: Map<string, string>;
+}) {
+  // fix ③: two lanes, legible at a glance — committed corpus
+  // cards carry the primary tint; import-pending cards go
+  // dashed on a muted surface and keep a NEUTRAL hover (their
+  // hover used to invite exactly like real cards, then led to
+  // grey tiles). min-h is gone: with 2-line titles the dead
+  // vertical budget was ~35% of every card.
+  const ghost = c.status !== "pilot" && c.status !== "full";
+  // T-HUB-COURSES-PUBLIC-2 (①+②): the card's substance line
+  // inputs — real committed-corpus counts (server-plumbed
+  // manifest counts) + the tutor signal where the registry
+  // genuinely scopes one (curriculumCode, V53/ADR-030).
+  // run-002 (UI-2): the past-paper count joins the same
+  // line (folded out of the badge row per the operator's
+  // card-design decision, trace 1a1beb40a15f8125) — one
+  // substance line, sourced from the same two maps the
+  // hero StatChips aggregate.
+  const statsLine = formatCourseStats(
+    bundleStats?.[c.slug] ?? ZERO_COURSE_COUNTS,
+  );
+  const tutorReady = Boolean(c.curriculumCode);
+  const papers = archivePapers?.[c.slug] ?? 0;
+  // run-002: the card's icon slot is the run-001 identity —
+  // the subject's bespoke glyph on its tile colour pair
+  // (lib/subject-identity.ts, the approved mockup), themed
+  // through the .subject-tile colour template in
+  // globals.css so all four themes and dark mode re-skin
+  // it without per-theme rules. Unmapped subjects (the
+  // build gate makes this a resilience path) render the
+  // muted lucide fallback tile instead.
+  const identity = getSubjectIdentity(c.subject);
+  return (
+    <Link key={c.slug} href={`/courses/${c.slug}`} className="group min-w-0 focus-visible:outline-none">
+      <Card
+        className={
+          ghost
+            ? "h-full border-dashed bg-muted/40 transition-[border-color,box-shadow] group-hover:border-muted-foreground/50 group-focus-visible:border-muted-foreground/50 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+            : c.hasBundle
+              ? "h-full border-primary/30 transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+              : "h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
+        }
+      >
+        {/* run-002 (UI-2): gap-4 — the attachment's row recipe
+            (tile + text at the course rows' own rhythm). */}
+        <CardContent className="flex h-full items-start gap-4 p-5">
+          {/* run-002 (UI-2): the tile is now the attachment's
+              own tile verbatim — size-14 rounded-2xl, no
+              border (the design of record's tiles are
+              borderless solid tints; the .subject-tile
+              template keeps driving bg/fg for all four
+              themes + dark). The run-001 size-12/rounded-xl
+              was the compromise grid echo; the operator's
+              card-design round (trace 1a1beb40a15f8125)
+              moved the cards to the full row scale. */}
+          {identity ? (
+            <span
+              aria-hidden
+              className="subject-tile flex size-14 shrink-0 items-center justify-center rounded-2xl"
+              style={
+                {
+                  "--subj-bg": identity.tile.bg,
+                  "--subj-fg": identity.tile.fg,
+                } as CSSProperties
+              }
+            >
+              <SubjectGlyph glyph={identity.glyph} className="size-6" />
+            </span>
+          ) : (
+            <span
+              aria-hidden
+              className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-muted text-muted-foreground"
+            >
+              <BookOpen className="size-6" />
+            </span>
+          )}
+          <div className="min-w-0 flex-1">
+            {/* fix ③: the distinguishing tail ("Biology Unit 1" vs
+                "Unit 2") now wraps to two balanced lines instead
+                of being truncated away; the color flip on hover
+                stays a real-corpus signal, ghosts keep foreground. */}
+            {/* run-002 (UI-2): the title is the loudest line in
+                the card — the attachment's row titles are
+                font-bold at full size with tracking-tight; a
+                14px semibold title competing with three 12px
+                strata read flat. text-[15px] is already in the
+                design of record's own vocabulary (its hero
+                description rides text-[15px]). */}
+            <p
+              className={
+                "line-clamp-2 text-pretty text-[15px] font-bold tracking-tight" +
+                (ghost ? "" : " group-hover:text-primary")
+              }
+            >
+              {c.label}
+            </p>
+            {subtitles.get(c.slug) && (
+              <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitles.get(c.slug)}</p>
+            )}
+            {/* run-002 (UI-2): the meta line is the attachment's
+                own mixed-weight recipe — board in medium
+                full-ink, thin | separators, the code in mono
+                (the course page's "Edexcel | IGCSE | 4CH1" line).
+                The bare mono line wrapped cold on narrow cards;
+                a 22-char board name in mono was the worst
+                wrapping offender. */}
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">{boardOf(c)}</span>
+              <span className="mx-1.5 text-muted-foreground/50">|</span>
+              {c.code ? <span className="font-mono">{c.code}</span> : <span className="not-italic">code pending</span>}
+            </p>
+            {/* T-HUB-COURSES-PUBLIC-2 (①+②): the substance
+                line — what is actually inside this course,
+                led by the tutor signal where true. Zero-sized
+                parts are omitted and an all-zero lane (the
+                import-pending ghosts) renders no line at
+                all.
+                run-002 (UI-2): the line now carries the past
+                papers too, and the emphasis follows the
+                attachment's count-line recipe ("112 notes" at
+                text-xs font-medium text-foreground) — counts
+                are content, full ink; the tutor lead keeps its
+                primary sparkle. The old all-muted caption
+                inverted that emphasis. */}
+            {(statsLine || papers > 0 || tutorReady) && (
+              <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs">
+                {tutorReady && (
+                  <span className="inline-flex items-center gap-1 font-medium text-foreground/80">
+                    <Sparkles
+                      className="size-3 text-primary"
+                      aria-hidden
+                    />
+                    Tutor ready
+                  </span>
+                )}
+                {statsLine && (
+                  <span className="font-medium text-foreground">{statsLine}</span>
+                )}
+                {papers > 0 && (
+                  <span
+                    className="font-medium tabular-nums text-foreground"
+                    title="Official question papers + mark schemes, readable on the course page"
+                  >
+                    {papers} past paper{papers === 1 ? "" : "s"}
+                  </span>
+                )}
+              </p>
+            )}
+            {/* run-002 (UI-2): the badge row is retired for the
+                common path. The operator's card-design round
+                (trace 1a1beb40a15f8125): "retire the full
+                corpus pill and fold papers into the count
+                line" — an always-on constant on 102/106 cards
+                is noise, and the hero StatChip row owns the
+                aggregate ("102 full corpus"); per-card honesty
+                is carried by the real counts line + the
+                committed border. What survives: the rare,
+                differentiating statuses only — pilot and the
+                import-pending ghosts — and they lose the
+                uppercase shout (the last survivors after
+                run-001 de-shouted the headings). A full card
+                now renders ZERO badges; the max-two-badges
+                law is satisfied with room to spare. */}
+            {(c.status === "pilot" || ghost) && (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {c.status === "pilot" && (
+                  <Badge className="rounded-full">
+                    pilot corpus · official spec tree
+                  </Badge>
+                )}
+                {ghost && (
+                  <Badge
+                    variant="outline"
+                    className="rounded-full text-muted-foreground"
+                    title="This lane is registered; its full corpus — notes, exam questions, flashcards and the past-paper archive — is queued for import. Nothing is rendered for it yet."
+                  >
+                    import pending
+                  </Badge>
+                )}
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
+  );
+}
 
 export function CourseDirectory({
   courses,
@@ -79,6 +285,14 @@ export function CourseDirectory({
   // to filter by one — with two boards in the registry the cards were not
   // tellable apart and a board's lanes were unfindable card-by-card.
   const [board, setBoardState] = useState<string | null>(null);
+  // T-HUB-COURSES-IA-1: the level filter — the storefront's second chip
+  // dimension, on the page's own sectioning axis (IGCSE → AS → A-Level →
+  // IAL). Same law as the board state verbatim: ?level= lands pre-filtered
+  // after mount (SSR HTML stays the unfiltered directory — no hydration
+  // mismatch), chip toggles sync the URL via replaceState, and invalid
+  // values are refused — the filter only ever names a level the registry
+  // can actually show.
+  const [level, setLevelState] = useState<string | null>(null);
   // UX review F-05 companion: the course pages' board crumb links to
   // /courses?board=… — land pre-filtered. Applied after mount so the SSR
   // HTML stays the unfiltered directory (no hydration mismatch); chip
@@ -89,12 +303,17 @@ export function CourseDirectory({
     const params = new URLSearchParams(window.location.search);
     const b = params.get("board");
     if (b && boards.some(([name]) => name === b)) setBoardState(b);
+    // T-HUB-COURSES-IA-1: ?level= joins ?board= under the same
+    // apply-after-mount law (validated against the registry's own levels).
+    const lv = params.get("level");
+    if (lv && levels.some(([name]) => name === lv)) setLevelState(lv);
     // T-HUB-COURSES-PUBLIC-2 (④): a shared ?q= lands pre-filled, same
     // apply-after-mount law as board= — the SSR HTML stays the unfiltered
     // directory, so hydration never disagrees.
     const nq = params.get("q");
     if (nq) setQ(nq);
-    // `boards` derives from the courses prop via useMemo — stable per mount
+    // `boards`/`levels` derive from the courses prop via useMemo — stable
+    // per mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const setBoard = (b: string | null) => {
@@ -102,6 +321,15 @@ export function CourseDirectory({
     const url = new URL(window.location.href);
     if (b) url.searchParams.set("board", b);
     else url.searchParams.delete("board");
+    window.history.replaceState(null, "", url);
+  };
+  // T-HUB-COURSES-IA-1: the level chip's URL sync — the setBoard law
+  // verbatim (?level= join/delete, replaceState, no history spam).
+  const setLevel = (lv: string | null) => {
+    setLevelState(lv);
+    const url = new URL(window.location.href);
+    if (lv) url.searchParams.set("level", lv);
+    else url.searchParams.delete("level");
     window.history.replaceState(null, "", url);
   };
   // T-HUB-COURSES-PUBLIC-2 (④): the search query joins board= in the URL —
@@ -134,6 +362,11 @@ export function CourseDirectory({
   // add-course overlay's board step uses (one honest cascade shape)
   const boards = useMemo(() => distinctBoards(courses), [courses]);
 
+  // T-HUB-COURSES-IA-1: distinct registry levels in the ladder's own order
+  // (directory-groups.ts distinctLevels — the section sort law mirrored);
+  // the chip row and the ?level= validation derive from this one shape.
+  const levels = useMemo(() => distinctLevels(courses), [courses]);
+
   // T-HUB-COURSES-PUBLIC-1 fix ③: the "Continue" pointer is client-only —
   // the account-backed last-opened store reconciles through the app shell,
   // and useSyncExternalStore's server snapshot is null, so the SSR HTML of
@@ -155,6 +388,7 @@ export function CourseDirectory({
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return courses.filter((c) => {
+      if (level && c.level !== level) return false;
       if (board && boardOf(c) !== board) return false;
       if (!needle) return true;
       // run-002: the haystack gains the identity lib's canonical subject
@@ -173,7 +407,21 @@ export function CourseDirectory({
         alias.includes(needle)
       );
     });
-  }, [courses, board, q]);
+  }, [courses, board, level, q]);
+
+  // T-HUB-COURSES-IA-1: the storefront's featured tier — the most complete
+  // lanes of the FILTERED set by committed depth (the pure law lives in
+  // lib/directory-featured.ts, unit-pinned; ghosts can never feature).
+  // Render rule (the taste the operator's order implies): the tier shows
+  // only when it actually curates — the filtered set holds more lanes than
+  // the tier does AND enough committed lanes to fill it. A 4-lane filtered
+  // view renders no featured band; the wall below IS the short answer.
+  const FEATURED_N = 6;
+  const featured = useMemo(
+    () => featuredCourses(filtered, bundleStats ?? {}, archivePapers ?? {}, FEATURED_N),
+    [filtered, bundleStats, archivePapers],
+  );
+  const featuredVisible = featured.length === FEATURED_N && filtered.length > FEATURED_N;
 
   // T-HUB-COURSES-UI-1 run-002 (stage 2 of the approved redesign): the
   // grouping moved to the pure, unit-pinned law in lib/directory-groups.ts —
@@ -224,6 +472,45 @@ export function CourseDirectory({
             aria-label="Search courses"
             className="w-full sm:w-80"
           />
+          {/* T-HUB-COURSES-IA-1: the level chip row — the toolbar's second
+              filter dimension, mirroring the board row's exact shape
+              (aria group, outline chips, static counts, aria-pressed).
+              "All levels" names the dimension the way "All boards" does. */}
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by qualification level">
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              aria-pressed={level === null}
+              onClick={() => setLevel(null)}
+              className={
+                "gap-1.5 " + (level === null ? "border-primary/60 bg-primary/5 font-medium" : "")
+              }
+            >
+              All levels
+              <Badge variant="secondary" className="rounded-full px-1.5 tabular-nums">
+                {courses.length}
+              </Badge>
+            </Button>
+            {levels.map(([name, count]) => (
+              <Button
+                key={name}
+                type="button"
+                size="sm"
+                variant="outline"
+                aria-pressed={level === name}
+                onClick={() => setLevel(level === name ? null : name)}
+                className={
+                  "gap-1.5 " + (level === name ? "border-primary/60 bg-primary/5 font-medium" : "")
+                }
+              >
+                {name}
+                <Badge variant="secondary" className="rounded-full px-1.5 tabular-nums">
+                  {count}
+                </Badge>
+              </Button>
+            ))}
+          </div>
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by board">
           <Button
             type="button"
@@ -262,6 +549,44 @@ export function CourseDirectory({
         </div>
         {hero.provenance}
       </PageHero>
+      {/* T-HUB-COURSES-IA-1: the storefront's featured tier — the operator's
+          product decision ("make it a real storefront: featured tier,
+          grouping by qualification, depth surfaced"). The most complete
+          lanes first, by COMMITTED depth only (the substance line's own
+          four counts, summed — lib/directory-featured.ts, unit-pinned;
+          import-pending ghosts can never feature; depth > 0 is the honesty
+          floor). The tier recomputes on the filtered set, so under any
+          board/level/search filter it answers "the most complete of what
+          you are already looking at". Render rule: only when it actually
+          curates (the filtered set outnumbers a filled tier) — a short
+          filtered wall needs no band. The cards are the run-002 recipe of
+          record via the SAME DirectoryCard the family grids render; the
+          heading is the page's own level-heading recipe. Grouping by
+          qualification itself was already the page's law (UI-1 run-002).
+          SSR note: the tier derives purely from props + the (initially
+          null) filter state, so the prerendered HTML and the first client
+          render agree — hydration-safe by the same law as the groups. */}
+      {featuredVisible && (
+        <section aria-label="Most complete courses">
+          <h2 className="mb-3 text-lg font-bold tracking-tight">
+            Most complete{" "}
+            <span className="text-sm font-normal text-muted-foreground">
+              · {featured.length} of {filtered.length} course{filtered.length === 1 ? "" : "s"}
+            </span>
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((c) => (
+              <DirectoryCard
+                key={c.slug}
+                c={c}
+                bundleStats={bundleStats}
+                archivePapers={archivePapers}
+                subtitles={subtitles}
+              />
+            ))}
+          </div>
+        </section>
+      )}
       {/* T-HUB-COURSES-PUBLIC-2 (③): the page is 106 cards across up to 4
           levels × 5 families — one quiet anchor row under the toolbar makes
           it navigable without search. Renders only the levels actually
@@ -320,193 +645,15 @@ export function CourseDirectory({
                 {/* the dashboard subjects grid recipe: gap-4, MG-sized
                     quiet targets (t-ui-polish run-003) — now per family. */}
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {rows.map((c) => {
-                    // fix ③: two lanes, legible at a glance — committed corpus
-                    // cards carry the primary tint; import-pending cards go
-                    // dashed on a muted surface and keep a NEUTRAL hover (their
-                    // hover used to invite exactly like real cards, then led to
-                    // grey tiles). min-h is gone: with 2-line titles the dead
-                    // vertical budget was ~35% of every card.
-                    const ghost = c.status !== "pilot" && c.status !== "full";
-                    // T-HUB-COURSES-PUBLIC-2 (①+②): the card's substance line
-                    // inputs — real committed-corpus counts (server-plumbed
-                    // manifest counts) + the tutor signal where the registry
-                    // genuinely scopes one (curriculumCode, V53/ADR-030).
-                    // run-002 (UI-2): the past-paper count joins the same
-                    // line (folded out of the badge row per the operator's
-                    // card-design decision, trace 1a1beb40a15f8125) — one
-                    // substance line, sourced from the same two maps the
-                    // hero StatChips aggregate.
-                    const statsLine = formatCourseStats(
-                      bundleStats?.[c.slug] ?? ZERO_COURSE_COUNTS,
-                    );
-                    const tutorReady = Boolean(c.curriculumCode);
-                    const papers = archivePapers?.[c.slug] ?? 0;
-                    // run-002: the card's icon slot is the run-001 identity —
-                    // the subject's bespoke glyph on its tile colour pair
-                    // (lib/subject-identity.ts, the approved mockup), themed
-                    // through the .subject-tile colour template in
-                    // globals.css so all four themes and dark mode re-skin
-                    // it without per-theme rules. Unmapped subjects (the
-                    // build gate makes this a resilience path) render the
-                    // muted lucide fallback tile instead.
-                    const identity = getSubjectIdentity(c.subject);
-                    return (
-                      <Link key={c.slug} href={`/courses/${c.slug}`} className="group min-w-0 focus-visible:outline-none">
-                        <Card
-                          className={
-                            ghost
-                              ? "h-full border-dashed bg-muted/40 transition-[border-color,box-shadow] group-hover:border-muted-foreground/50 group-focus-visible:border-muted-foreground/50 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                              : c.hasBundle
-                                ? "h-full border-primary/30 transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                                : "h-full transition-[border-color,box-shadow] group-hover:border-primary/60 group-hover:shadow-sm group-focus-visible:border-primary/60 group-focus-visible:ring-2 group-focus-visible:ring-ring"
-                          }
-                        >
-                          {/* run-002 (UI-2): gap-4 — the attachment's row recipe
-                              (tile + text at the course rows' own rhythm). */}
-                          <CardContent className="flex h-full items-start gap-4 p-5">
-                            {/* run-002 (UI-2): the tile is now the attachment's
-                                own tile verbatim — size-14 rounded-2xl, no
-                                border (the design of record's tiles are
-                                borderless solid tints; the .subject-tile
-                                template keeps driving bg/fg for all four
-                                themes + dark). The run-001 size-12/rounded-xl
-                                was the compromise grid echo; the operator's
-                                card-design round (trace 1a1beb40a15f8125)
-                                moved the cards to the full row scale. */}
-                            {identity ? (
-                              <span
-                                aria-hidden
-                                className="subject-tile flex size-14 shrink-0 items-center justify-center rounded-2xl"
-                                style={
-                                  {
-                                    "--subj-bg": identity.tile.bg,
-                                    "--subj-fg": identity.tile.fg,
-                                  } as CSSProperties
-                                }
-                              >
-                                <SubjectGlyph glyph={identity.glyph} className="size-6" />
-                              </span>
-                            ) : (
-                              <span
-                                aria-hidden
-                                className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-muted text-muted-foreground"
-                              >
-                                <BookOpen className="size-6" />
-                              </span>
-                            )}
-                            <div className="min-w-0 flex-1">
-                              {/* fix ③: the distinguishing tail ("Biology Unit 1" vs
-                                  "Unit 2") now wraps to two balanced lines instead
-                                  of being truncated away; the color flip on hover
-                                  stays a real-corpus signal, ghosts keep foreground. */}
-                              {/* run-002 (UI-2): the title is the loudest line in
-                                  the card — the attachment's row titles are
-                                  font-bold at full size with tracking-tight; a
-                                  14px semibold title competing with three 12px
-                                  strata read flat. text-[15px] is already in the
-                                  design of record's own vocabulary (its hero
-                                  description rides text-[15px]). */}
-                              <p
-                                className={
-                                  "line-clamp-2 text-pretty text-[15px] font-bold tracking-tight" +
-                                  (ghost ? "" : " group-hover:text-primary")
-                                }
-                              >
-                                {c.label}
-                              </p>
-                              {subtitles.get(c.slug) && (
-                                <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitles.get(c.slug)}</p>
-                              )}
-                              {/* run-002 (UI-2): the meta line is the attachment's
-                                  own mixed-weight recipe — board in medium
-                                  full-ink, thin | separators, the code in mono
-                                  (the course page's "Edexcel | IGCSE | 4CH1" line).
-                                  The bare mono line wrapped cold on narrow cards;
-                                  a 22-char board name in mono was the worst
-                                  wrapping offender. */}
-                              <p className="mt-0.5 text-xs text-muted-foreground">
-                                <span className="font-medium text-foreground">{boardOf(c)}</span>
-                                <span className="mx-1.5 text-muted-foreground/50">|</span>
-                                {c.code ? <span className="font-mono">{c.code}</span> : <span className="not-italic">code pending</span>}
-                              </p>
-                              {/* T-HUB-COURSES-PUBLIC-2 (①+②): the substance
-                                  line — what is actually inside this course,
-                                  led by the tutor signal where true. Zero-sized
-                                  parts are omitted and an all-zero lane (the
-                                  import-pending ghosts) renders no line at
-                                  all.
-                                  run-002 (UI-2): the line now carries the past
-                                  papers too, and the emphasis follows the
-                                  attachment's count-line recipe ("112 notes" at
-                                  text-xs font-medium text-foreground) — counts
-                                  are content, full ink; the tutor lead keeps its
-                                  primary sparkle. The old all-muted caption
-                                  inverted that emphasis. */}
-                              {(statsLine || papers > 0 || tutorReady) && (
-                                <p className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs">
-                                  {tutorReady && (
-                                    <span className="inline-flex items-center gap-1 font-medium text-foreground/80">
-                                      <Sparkles
-                                        className="size-3 text-primary"
-                                        aria-hidden
-                                      />
-                                      Tutor ready
-                                    </span>
-                                  )}
-                                  {statsLine && (
-                                    <span className="font-medium text-foreground">{statsLine}</span>
-                                  )}
-                                  {papers > 0 && (
-                                    <span
-                                      className="font-medium tabular-nums text-foreground"
-                                      title="Official question papers + mark schemes, readable on the course page"
-                                    >
-                                      {papers} past paper{papers === 1 ? "" : "s"}
-                                    </span>
-                                  )}
-                                </p>
-                              )}
-                              {/* run-002 (UI-2): the badge row is retired for the
-                                  common path. The operator's card-design round
-                                  (trace 1a1beb40a15f8125): "retire the full
-                                  corpus pill and fold papers into the count
-                                  line" — an always-on constant on 102/106 cards
-                                  is noise, and the hero StatChip row owns the
-                                  aggregate ("102 full corpus"); per-card honesty
-                                  is carried by the real counts line + the
-                                  committed border. What survives: the rare,
-                                  differentiating statuses only — pilot and the
-                                  import-pending ghosts — and they lose the
-                                  uppercase shout (the last survivors after
-                                  run-001 de-shouted the headings). A full card
-                                  now renders ZERO badges; the max-two-badges
-                                  law is satisfied with room to spare. */}
-                              {(c.status === "pilot" || ghost) && (
-                                <div className="mt-2 flex flex-wrap gap-1.5">
-                                  {c.status === "pilot" && (
-                                    <Badge className="rounded-full">
-                                      pilot corpus · official spec tree
-                                    </Badge>
-                                  )}
-                                  {ghost && (
-                                    <Badge
-                                      variant="outline"
-                                      className="rounded-full text-muted-foreground"
-                                      title="This lane is registered; its full corpus — notes, exam questions, flashcards and the past-paper archive — is queued for import. Nothing is rendered for it yet."
-                                    >
-                                      import pending
-                                    </Badge>
-                                  )}
-                                </div>
-                              )}
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    );
-                  })}
-                </div>
+                  {rows.map((c) => (
+                    <DirectoryCard
+                      key={c.slug}
+                      c={c}
+                      bundleStats={bundleStats}
+                      archivePapers={archivePapers}
+                      subtitles={subtitles}
+                    />
+                  ))}                </div>
               </div>
             ))}
           </div>
