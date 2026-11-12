@@ -1,16 +1,16 @@
 {
   "format": "guided-import-index/1.0",
-  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=bio-stagea-v33)",
-  "imported_at_utc": "2026-11-11T20:23:36Z",
-  "operator_trace": "1a1cbe5f60023dd5",
+  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=bio-stageb1-v35)",
+  "imported_at_utc": "2026-11-12T07:37:09Z",
+  "operator_trace": "1a1ce45bbe8dc30d",
   "upstream": {
     "repo": "SyllabAI/syllabai-resources",
     "namespace": "integration/",
-    "commit": "e7ce875d8b67ca8b921ffd447f9a7b143ff490ad",
-    "manifest": "hub-import-manifest-v33.json",
-    "manifest_sha256": "4b3e27d61de8194f5cb409ef91bbe68b48bd4e896587e32d59560c6873c196c6",
-    "manifest_version": 33,
-    "int0_pin": "7378f2498a76501a907a0bda9724237bd4486663",
+    "commit": "480eef9f06e9d316c33d0c81b2fc7c963a0a364e",
+    "manifest": "hub-import-manifest-v35.json",
+    "manifest_sha256": "7ee7bb23053c4e842e50d1e49d2e39d0c7f28fb7b4723cee3bcca57434a9d294",
+    "manifest_version": 35,
+    "int0_pin": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
     "adapter": "guided-lesson-0.7--hub-lesson-import-1.6"
   },
   "target_schemas": [
@@ -18,28 +18,28 @@
     "sme-question-package/1.3"
   ],
   "counts": {
-    "notes": 1,
-    "lessons": 2,
-    "checks": 18,
-    "keyPoints": 10,
-    "distractors": 30,
-    "glossaryTerms": 4,
-    "figures": 11,
-    "figures_module_mapped": 7,
+    "notes": 15,
+    "lessons": 30,
+    "checks": 270,
+    "keyPoints": 132,
+    "distractors": 450,
+    "glossaryTerms": 51,
+    "figures": 49,
+    "figures_module_mapped": 45,
     "figures_note_level": 4,
-    "workedExamples_populated": 0,
-    "workedExamples_null": 1,
-    "authored_chars_conserved": 14664
+    "workedExamples_populated": 1,
+    "workedExamples_null": 14,
+    "authored_chars_conserved": 167324
   },
   "conservation": {
-    "authored_stream_sha256": "3e7cb027b176b803da6e0e9f5553cb5ad660ddc6dc515225e949ee4f56598306",
-    "authored_chars": 14664
+    "authored_stream_sha256": "011fb992e2fd16a4cf17aaed9637ffe14f3684cf919d54a89fb1d77775fef387",
+    "authored_chars": 167324
   },
   "landing": {
     "lessons_rel": "igcse-biology-19/guided-lessons",
     "questions_rel": "igcse-biology-19/guided-questions",
-    "lesson_files": 1,
-    "question_files": 1,
+    "lesson_files": 15,
+    "question_files": 15,
     "byte_exact": true,
     "additive_only": true
   },
@@ -53,6 +53,146 @@
       "packageSha256": "566aa604d7862ad405ae043eff3efe1cada1531d0c3a25311bdf64ecb4cf3bef",
       "streamSha256": "3e7cb027b176b803da6e0e9f5553cb5ad660ddc6dc515225e949ee4f56598306",
       "streamChars": 14664
+    },
+    {
+      "noteId": "rn_CGsRy4NGjCQRGgXs",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_CGsRy4NGjCQRGgXs.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_CGsRy4NGjCQRGgXs.sme-question-package.json",
+      "lessonSha256": "50de1f63c4db498433138d315f397b51d61270126c85f1a68e24f1c4e37af141",
+      "packageSha256": "084f65c892e6ce23648f594a17f23d6cfb49d2a4cc50953b4c638e405891417a",
+      "streamSha256": "1258b098600193d1420f928fc428fefa0e098e525c2df6248f99bab25009f6d0",
+      "streamChars": 20472
+    },
+    {
+      "noteId": "rn_sCQKxCPZqCRshTsZ",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_sCQKxCPZqCRshTsZ.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_sCQKxCPZqCRshTsZ.sme-question-package.json",
+      "lessonSha256": "2926932692aecf8a587b641f4292e0d6eea5cdee7e59b4a4c456a81f698f32af",
+      "packageSha256": "8e4967f46acfc18034e5097081de8cfb32fab6a5d8eef4fb96306729c445480c",
+      "streamSha256": "c5168413ec30d4bcf9e566e571313490afad0326dc936a9bf777b24980daf3e3",
+      "streamChars": 6426
+    },
+    {
+      "noteId": "rn_x2cfFnFT6j99Q25F",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_x2cfFnFT6j99Q25F.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_x2cfFnFT6j99Q25F.sme-question-package.json",
+      "lessonSha256": "18113be72a733df8cb5711d09ea24ef1c431f61b8190873d2d82be4be094b094",
+      "packageSha256": "64635550d90279dbcd7c2dd0e8c3c504415303347d1f4dd2cadcaf09ad6e1bf7",
+      "streamSha256": "fe2dccce82d832436ad33bb7ac3ee4d0150c3993e60b169c8ebce5efa0d81e85",
+      "streamChars": 11820
+    },
+    {
+      "noteId": "rn_NZDqQdFYGgTTBGjz",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_NZDqQdFYGgTTBGjz.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_NZDqQdFYGgTTBGjz.sme-question-package.json",
+      "lessonSha256": "9e02f991a35138fc4c6a0424712a120a0bdc7ca672e9922fc80d73c661e3a756",
+      "packageSha256": "22963d8e37b14ff13dd749528e42ced704ad2c48bb8dbc52f23ffd039f2f3d46",
+      "streamSha256": "24c89d0f9c3ea1bb53d3053994f6b29c33b91a3fd1beeb3f49b32b0d9172a4d2",
+      "streamChars": 5629
+    },
+    {
+      "noteId": "rn_6nfRDC4jtDHbdbqZ",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_6nfRDC4jtDHbdbqZ.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_6nfRDC4jtDHbdbqZ.sme-question-package.json",
+      "lessonSha256": "a9551d79eeb607769237781f026e6568f3bf56867cf75811c5e0d5c7fe3b260f",
+      "packageSha256": "c64c53d2956017d51652b4aed85e447e43f6060430bd48653b29413d3e2090b7",
+      "streamSha256": "f9554a75d3e65e6c99700e7a4613b8c6a16396e54b0f39d6b98c4d27ddca735a",
+      "streamChars": 15502
+    },
+    {
+      "noteId": "rn_kwZSCXKYc7tWwWsK",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_kwZSCXKYc7tWwWsK.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_kwZSCXKYc7tWwWsK.sme-question-package.json",
+      "lessonSha256": "cb8c8c06475a566567579b09541e64c4e5ee1d23d0a836366cfe7c922e8306a8",
+      "packageSha256": "2d0e7ce136c9965f5edaed656004bf0772e42a8b4a1501c323aaf91746546590",
+      "streamSha256": "3e1b123fd09fb8375e660185f9169b20f43e3ac5a78968d248998be12d06d1eb",
+      "streamChars": 10383
+    },
+    {
+      "noteId": "rn_MkbHy3WPzVJVYhy4",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_MkbHy3WPzVJVYhy4.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_MkbHy3WPzVJVYhy4.sme-question-package.json",
+      "lessonSha256": "fa0c4bef33d2d237825a55a0d9cf31047855ada00236aecedd3678092bb7d44e",
+      "packageSha256": "33a01340375735056a601edbf526615ba36ca5044b8368df387cfd1b3a38b91c",
+      "streamSha256": "279e82523d00e6fdd4c90a1d5ea36fda3ac5275b0b2a87801f191804395d7f6f",
+      "streamChars": 10684
+    },
+    {
+      "noteId": "rn_2rJ8QxCk32vxKTN3",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_2rJ8QxCk32vxKTN3.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_2rJ8QxCk32vxKTN3.sme-question-package.json",
+      "lessonSha256": "80d244e9058779dd6ae6f5d45ecc8011e4d2e03486ee0535cbd3079f05347b6a",
+      "packageSha256": "58255251fc505308ec5f674ae0119bf9b8d41fd81a7ae7a2ec40b9692577a7ea",
+      "streamSha256": "b3b00984e82e9e73688441adf2028b3222b29c655cd1c745f77687a78f6b22de",
+      "streamChars": 6097
+    },
+    {
+      "noteId": "rn_27dbWmcwsCf9k5JW",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_27dbWmcwsCf9k5JW.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_27dbWmcwsCf9k5JW.sme-question-package.json",
+      "lessonSha256": "f49fb14947c444afee4c1f0b45b9e2729c91fd7c0edf481427b0744aea03bd9e",
+      "packageSha256": "9aeee29f852608e1c6d36c4fc4c96fa53a660fde1d837d44ae8d540b462fb7a2",
+      "streamSha256": "d9552d7199220f932780c6a620dc5beefc60c1be7463ed5f81204b176d93cf48",
+      "streamChars": 10964
+    },
+    {
+      "noteId": "rn_6jFtNNZ6G5q86Wbk",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_6jFtNNZ6G5q86Wbk.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_6jFtNNZ6G5q86Wbk.sme-question-package.json",
+      "lessonSha256": "90718b1f8bb04430403af4257c07c55e113564c934406255140000a8542d4141",
+      "packageSha256": "81b87001661037df13a42c539a574b8c1b0cae5cb81d913a8f55dc9cbf0cb6fa",
+      "streamSha256": "d8d5f0891da6a1ec6d64c0fd94cc72c0e7fb87895d4a4a12ca9ce5992a4202b3",
+      "streamChars": 5925
+    },
+    {
+      "noteId": "rn_NPzyvfByCy3bwH6f",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_NPzyvfByCy3bwH6f.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_NPzyvfByCy3bwH6f.sme-question-package.json",
+      "lessonSha256": "d3021d92bcd21fdf0d908bdb4bcedceda1050f73ae96988dd67106da6eb4cbbb",
+      "packageSha256": "7b0a9d754cf3dd5b257a5ebb4ebf6acb1349de56efe0b01f241dd222e811e88d",
+      "streamSha256": "0bd2a30aa6baac1dc36d93d0812e032814a817f3874fbdd2efa4e1ccbf57c847",
+      "streamChars": 9703
+    },
+    {
+      "noteId": "rn_7txVGXxCfkcpWhNg",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_7txVGXxCfkcpWhNg.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_7txVGXxCfkcpWhNg.sme-question-package.json",
+      "lessonSha256": "9c31365a219e3bd3cf13fd89acb18de929c826db44b5c329e19fc535cb8153bf",
+      "packageSha256": "097a4a994d8bc96f5379bd9b2ab474c347fe7eb0f459fbcdfc7d870a55ee1ab2",
+      "streamSha256": "ec93b72178b1fd8a87853f9b6dfe43f0eebb0db8941e1d6a6c9019b59db7f217",
+      "streamChars": 9795
+    },
+    {
+      "noteId": "rn_34xmznRtwfxFVBrv",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_34xmznRtwfxFVBrv.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_34xmznRtwfxFVBrv.sme-question-package.json",
+      "lessonSha256": "bbea4ab20c14e361dbb75f130961ad46bc4697b7d0fabe39865a8f9a24db5d4e",
+      "packageSha256": "6b840b2993add2eda089337f972693eec695714d1948df69291dc9c845743f69",
+      "streamSha256": "e7ab46b6f85b4a13182afb4e0216d041a386b7afc5a837df69d9d35281cf8b33",
+      "streamChars": 18637
+    },
+    {
+      "noteId": "rn_3BY6d33PGXMGkgP7",
+      "wave": "bio-stageb1",
+      "lessonPath": "igcse-biology-19/guided-lessons/rn_3BY6d33PGXMGkgP7.hub-lesson-import.json",
+      "packagePath": "igcse-biology-19/guided-questions/rn_3BY6d33PGXMGkgP7.sme-question-package.json",
+      "lessonSha256": "481245b8e3c3d2a7e291c2234c0891ccd64939f10048a9a1fe96d6c76b8cd6d2",
+      "packageSha256": "d68872c5ad7273cb2fe6d523fb65f69a3f3e79d2841d084af32345754da8334b",
+      "streamSha256": "515c64a7411863f5fba1af75744cd1a7ffb4f3a5d37d2d5cac18ee3161360794",
+      "streamChars": 10623
     }
   ]
 }

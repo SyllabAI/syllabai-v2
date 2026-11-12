@@ -1,0 +1,735 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6nfRDC4jtDHbdbqZ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "0cf3740e6a00b1348459476c647b4a06010c4a965a7ce020e451dc2d2493ecef",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_6nfRDC4jtDHbdbqZ",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q1",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "Which steps prepare a solid food sample for testing?",
+      "misconceptionClass": "sample preparation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Crush it, stir it into distilled water, then filter the mixture",
+          "correct": true,
+          "explanation": "The note's four-step preparation ends with filtering the solution.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Boil it dry, then scrape the residue",
+          "correct": false,
+          "explanation": "No boiling-dry step exists.",
+          "misconception": "invented step"
+        },
+        {
+          "key": "C",
+          "text": "Freeze it, then shave thin slices",
+          "correct": false,
+          "explanation": "No freezing step exists.",
+          "misconception": "invented step"
+        },
+        {
+          "key": "D",
+          "text": "Test it whole, then filter afterwards",
+          "correct": false,
+          "explanation": "Testing happens on the filtered solution.",
+          "misconception": "order wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q2",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "What colour is Benedict's solution before the test, and what colour change shows glucose?",
+      "misconceptionClass": "benedict colours",
+      "options": [
+        {
+          "key": "A",
+          "text": "Clear at the start; cloudy shows glucose",
+          "correct": false,
+          "explanation": "Cloudiness is the lipid emulsion result.",
+          "misconception": "lipid result misattributed"
+        },
+        {
+          "key": "B",
+          "text": "Blue at the start; a positive test turns orange or brick red",
+          "correct": true,
+          "explanation": "Both ends of the colour story are correct.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Yellow-brown at the start; blue-black shows glucose",
+          "correct": false,
+          "explanation": "Those are the iodine test's colours.",
+          "misconception": "iodine colours misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Violet at the start; blue shows glucose",
+          "correct": false,
+          "explanation": "Violet belongs to the Biuret result.",
+          "misconception": "biuret colours misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q3",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "How long should the Benedict's tube be heated, and how?",
+      "misconceptionClass": "heating protocol",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ten minutes on ice",
+          "correct": false,
+          "explanation": "Cold cannot drive the colour change.",
+          "misconception": "contradiction"
+        },
+        {
+          "key": "B",
+          "text": "It is never heated",
+          "correct": false,
+          "explanation": "Heating is essential to the test.",
+          "misconception": "heating denied"
+        },
+        {
+          "key": "C",
+          "text": "Five minutes in a beaker of very hot water",
+          "correct": true,
+          "explanation": "The note gives the time and the hot-water bath.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "One minute over a direct flame",
+          "correct": false,
+          "explanation": "Neither the time nor the flame method matches.",
+          "misconception": "protocol invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q4",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "Two Benedict's tests give a pale orange result and a deep brick-red result. Which tube held more glucose?",
+      "misconceptionClass": "graded result",
+      "options": [
+        {
+          "key": "A",
+          "text": "The pale orange tube",
+          "correct": false,
+          "explanation": "Pale means less glucose.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "B",
+          "text": "Both held the same amount",
+          "correct": false,
+          "explanation": "The colour scale separates them.",
+          "misconception": "scale denied"
+        },
+        {
+          "key": "C",
+          "text": "Neither — colour carries no meaning",
+          "correct": false,
+          "explanation": "Colour is the entire readout.",
+          "misconception": "readout denied"
+        },
+        {
+          "key": "D",
+          "text": "The deep brick-red tube",
+          "correct": true,
+          "explanation": "Darker colour means higher concentration.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q5",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "Why should the Bunsen burner be switched off once the water is near boiling?",
+      "misconceptionClass": "safety reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because an open flame near chemicals is the named hazard class for this test",
+          "correct": true,
+          "explanation": "The safety list turns the burner off after heating.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because heat destroys Benedict's solution instantly",
+          "correct": false,
+          "explanation": "The solution needs heat to work.",
+          "misconception": "contradiction"
+        },
+        {
+          "key": "C",
+          "text": "Because cold water speeds the colour change",
+          "correct": false,
+          "explanation": "Cold slows chemistry.",
+          "misconception": "effect inverted"
+        },
+        {
+          "key": "D",
+          "text": "Because the tube must cool before adding solution",
+          "correct": false,
+          "explanation": "The solution goes in BEFORE heating.",
+          "misconception": "order wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q6",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "Name the reagent used to test for glucose.",
+      "misconceptionClass": "reagent recall",
+      "kind": "recall",
+      "modelAnswer": "Benedict's solution.",
+      "keywords": [
+        "benedict",
+        "benedict's",
+        "solution",
+        "reagent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q7",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "State the colour change of a positive Benedict's test.",
+      "misconceptionClass": "colour change recall",
+      "kind": "recall",
+      "modelAnswer": "From light blue towards orange or brick red.",
+      "keywords": [
+        "blue",
+        "orange",
+        "brick red",
+        "towards"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q8",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "Explain why a filtered solution rather than the whole crushed food is used for the tests.",
+      "misconceptionClass": "filtration reason",
+      "kind": "explain-why",
+      "modelAnswer": "Reagents detect dissolved molecules, so the test must run on a true solution; filtering removes undissolved lumps that would cloud the tube, trap reagent and make the colour change impossible to read fairly.",
+      "keywords": [
+        "solution",
+        "filter",
+        "reagent",
+        "undissolved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L1::Q9",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L1",
+      "stem": "A pupil times five minutes but forgets to heat the Benedict's tube at all. Predict the result and justify it.",
+      "misconceptionClass": "no heat application",
+      "kind": "application",
+      "modelAnswer": "The tube stays blue: without heating the colour change does not develop, so the negative-looking result says nothing about glucose and must be repeated with a proper hot-water bath.",
+      "keywords": [
+        "blue",
+        "heating",
+        "benedict",
+        "negative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q1",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "Which reagent tests for starch?",
+      "misconceptionClass": "starch reagent",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ethanol",
+          "correct": false,
+          "explanation": "That is the lipid test's reagent.",
+          "misconception": "lipid reagent misattributed"
+        },
+        {
+          "key": "B",
+          "text": "Iodine solution",
+          "correct": true,
+          "explanation": "Iodine is the starch reagent.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Benedict's solution",
+          "correct": false,
+          "explanation": "That tests for glucose.",
+          "misconception": "glucose reagent misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Biuret solution",
+          "correct": false,
+          "explanation": "That tests for protein.",
+          "misconception": "protein reagent misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q2",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "What colour change shows a positive starch test?",
+      "misconceptionClass": "starch colours",
+      "options": [
+        {
+          "key": "A",
+          "text": "Blue to violet",
+          "correct": false,
+          "explanation": "That is the Biuret pair.",
+          "misconception": "protein pair misattributed"
+        },
+        {
+          "key": "B",
+          "text": "Clear to cloudy",
+          "correct": false,
+          "explanation": "That is the emulsion result.",
+          "misconception": "lipid result misattributed"
+        },
+        {
+          "key": "C",
+          "text": "Yellow-brown to blue-black",
+          "correct": true,
+          "explanation": "The iodine pair is exactly this.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Blue to orange",
+          "correct": false,
+          "explanation": "That is the Benedict's pair.",
+          "misconception": "glucose pair misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q3",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "What colour change shows a positive protein test?",
+      "misconceptionClass": "protein colours",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yellow-brown to blue-black",
+          "correct": false,
+          "explanation": "That is the iodine pair.",
+          "misconception": "starch pair misattributed"
+        },
+        {
+          "key": "B",
+          "text": "Blue to brick red",
+          "correct": false,
+          "explanation": "Brick red belongs to Benedict's.",
+          "misconception": "glucose result misattributed"
+        },
+        {
+          "key": "C",
+          "text": "Clear to cloudy emulsion",
+          "correct": false,
+          "explanation": "That is the lipid result.",
+          "misconception": "lipid result misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Blue to violet, lilac or purple",
+          "correct": true,
+          "explanation": "The Biuret pair is exactly this.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q4",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "Which hazard belongs specifically to Biuret solution?",
+      "misconceptionClass": "biuret hazard",
+      "options": [
+        {
+          "key": "A",
+          "text": "It contains corrosive sodium hydroxide and copper sulfate that damages eyes",
+          "correct": true,
+          "explanation": "Both named hazards ride in Biuret.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is highly flammable like ethanol",
+          "correct": false,
+          "explanation": "Flammability is ethanol's hazard.",
+          "misconception": "ethanol hazard misattributed"
+        },
+        {
+          "key": "C",
+          "text": "It explodes near flames",
+          "correct": false,
+          "explanation": "No such hazard is claimed.",
+          "misconception": "hazard invented"
+        },
+        {
+          "key": "D",
+          "text": "It freezes the sample",
+          "correct": false,
+          "explanation": "No freezing occurs.",
+          "misconception": "hazard invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q5",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "Why does the starch test NOT need a heating step?",
+      "misconceptionClass": "no heat reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because heating would destroy the starch",
+          "correct": false,
+          "explanation": "Starch survives heating fine.",
+          "misconception": "destruction invented"
+        },
+        {
+          "key": "B",
+          "text": "Because iodine develops its blue-black colour with starch at room temperature",
+          "correct": true,
+          "explanation": "The iodine reaction needs no energy input.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Because starch dissolves only when cold",
+          "correct": false,
+          "explanation": "Temperature is irrelevant to the colour pairing.",
+          "misconception": "invented property"
+        },
+        {
+          "key": "D",
+          "text": "Because iodine is dangerous when warm",
+          "correct": false,
+          "explanation": "No such hazard is named.",
+          "misconception": "hazard invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q6",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "State the colour of iodine solution before it meets starch.",
+      "misconceptionClass": "iodine colour recall",
+      "kind": "recall",
+      "modelAnswer": "Yellow-brown.",
+      "keywords": [
+        "yellow-brown",
+        "solution",
+        "colour",
+        "iodine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q7",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "Name the reagent used to test for protein.",
+      "misconceptionClass": "protein reagent recall",
+      "kind": "recall",
+      "modelAnswer": "Biuret solution.",
+      "keywords": [
+        "biuret",
+        "solution",
+        "reagent",
+        "protein"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q8",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "Explain why safety goggles matter more during the protein and glucose tests than during the starch test.",
+      "misconceptionClass": "goggle reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Biuret solution carries corrosive sodium hydroxide and eye-damaging copper sulfate, and the glucose test adds hot water and a burner to the risk list, whereas the starch test uses iodine at room temperature, which is mainly an eye irritant with no heating step.",
+      "keywords": [
+        "biuret",
+        "sodium hydroxide",
+        "iodine",
+        "temperature"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L2::Q9",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L2",
+      "stem": "An unknown solution gives violet with Biuret and stays yellow-brown with iodine. Identify what it contains and what it lacks.",
+      "misconceptionClass": "double reagent application",
+      "kind": "application",
+      "modelAnswer": "Violet with Biuret shows protein; iodine remaining yellow-brown shows there is no starch — the sample contains protein and lacks starch.",
+      "keywords": [
+        "protein",
+        "starch",
+        "biuret",
+        "remaining"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q1",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "What is added to the ethanol solution to complete the lipid test?",
+      "misconceptionClass": "emulsion step",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hot water from the kettle",
+          "correct": false,
+          "explanation": "The water must be cold.",
+          "misconception": "temperature inverted"
+        },
+        {
+          "key": "B",
+          "text": "Iodine solution",
+          "correct": false,
+          "explanation": "That is the starch reagent.",
+          "misconception": "reagent misattributed"
+        },
+        {
+          "key": "C",
+          "text": "An equal volume of cold distilled water",
+          "correct": true,
+          "explanation": "The note specifies equal-volume cold water.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Benedict's solution",
+          "correct": false,
+          "explanation": "That is the glucose reagent.",
+          "misconception": "reagent misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q2",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "What does a positive lipid test look like?",
+      "misconceptionClass": "positive lipid look",
+      "options": [
+        {
+          "key": "A",
+          "text": "The tube turns blue-black",
+          "correct": false,
+          "explanation": "That is starch's result.",
+          "misconception": "starch result misattributed"
+        },
+        {
+          "key": "B",
+          "text": "The tube turns violet",
+          "correct": false,
+          "explanation": "That is protein's result.",
+          "misconception": "protein result misattributed"
+        },
+        {
+          "key": "C",
+          "text": "The tube turns brick red",
+          "correct": false,
+          "explanation": "That is glucose's result.",
+          "misconception": "glucose result misattributed"
+        },
+        {
+          "key": "D",
+          "text": "A cloudy white emulsion forms",
+          "correct": true,
+          "explanation": "Cloudiness is the lipid readout.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q3",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "Why is a bung used while shaking the ethanol tube?",
+      "misconceptionClass": "bung purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "To seal the tube so the volatile ethanol does not spill or escape while shaking",
+          "correct": true,
+          "explanation": "The note specifies placing a bung firmly before vigorous shaking.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To heat the contents evenly",
+          "correct": false,
+          "explanation": "The bung does not heat anything.",
+          "misconception": "function invented"
+        },
+        {
+          "key": "C",
+          "text": "To change the tube's colour",
+          "correct": false,
+          "explanation": "The bung has no chemical role.",
+          "misconception": "function invented"
+        },
+        {
+          "key": "D",
+          "text": "To filter out solids",
+          "correct": false,
+          "explanation": "Filtering is a separate earlier step.",
+          "misconception": "step conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q4",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "Which safety statement matches this practical's hazard list?",
+      "misconceptionClass": "hazards sweep",
+      "options": [
+        {
+          "key": "A",
+          "text": "No goggles are needed anywhere",
+          "correct": false,
+          "explanation": "Goggles are required.",
+          "misconception": "safety denied"
+        },
+        {
+          "key": "B",
+          "text": "Ethanol is highly flammable; Biuret's sodium hydroxide is corrosive; iodine irritates eyes",
+          "correct": true,
+          "explanation": "All three named hazards are stated.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Ethanol is safe near flames; iodine is corrosive",
+          "correct": false,
+          "explanation": "Both halves are wrong.",
+          "misconception": "hazard inversions"
+        },
+        {
+          "key": "D",
+          "text": "Only the Bunsen burner is hazardous",
+          "correct": false,
+          "explanation": "The reagents carry their own hazards.",
+          "misconception": "hazard scope wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q5",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "In the worked example, which foods tested positive for lipid?",
+      "misconceptionClass": "we foods",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only the egg yolk",
+          "correct": false,
+          "explanation": "Three foods were positive.",
+          "misconception": "scope wrong"
+        },
+        {
+          "key": "B",
+          "text": "None of them",
+          "correct": false,
+          "explanation": "Three positives are recorded.",
+          "misconception": "positives denied"
+        },
+        {
+          "key": "C",
+          "text": "Olive oil, egg yolk and biscuit",
+          "correct": true,
+          "explanation": "The worked example names exactly these three.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Apple and olive oil",
+          "correct": false,
+          "explanation": "The apple tested negative for lipid.",
+          "misconception": "apple misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q6",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "State the positive result of the ethanol emulsion test.",
+      "misconceptionClass": "emulsion recall",
+      "kind": "recall",
+      "modelAnswer": "A cloudy white emulsion forms.",
+      "keywords": [
+        "cloudy",
+        "emulsion",
+        "white",
+        "forms"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q7",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "Name the molecule group tested for by the ethanol procedure.",
+      "misconceptionClass": "lipid target recall",
+      "kind": "recall",
+      "modelAnswer": "Lipids — fats and oils.",
+      "keywords": [
+        "lipids",
+        "procedure",
+        "molecule",
+        "ethanol"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q8",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "Explain why the ethanol layer is poured into water rather than adding water directly to the sample tube.",
+      "misconceptionClass": "decant reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The lipid dissolves into the ethanol during shaking, so decanting carries the dissolved lipid away from the food solids; adding water to the original tube would leave the lipid mixed with solids and the emulsion could not be seen cleanly.",
+      "keywords": [
+        "ethanol",
+        "dissolves",
+        "decanting",
+        "dissolved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6nfRDC4jtDHbdbqZ::L3::Q9",
+      "moduleId": "rn_6nfRDC4jtDHbdbqZ::L3",
+      "stem": "A results table row reads: Benedict's orange, iodine blue-black, Biuret negative, emulsion cloudy. Which two molecules does that food contain?",
+      "misconceptionClass": "row reading application",
+      "kind": "application",
+      "modelAnswer": "Orange with Benedict's shows glucose, and blue-black with iodine shows starch; the negative Biuret and the cloudy emulsion say protein is absent while lipid is present — so the food contains glucose, starch and lipid.",
+      "keywords": [
+        "glucose",
+        "starch",
+        "lipid",
+        "benedict's"
+      ],
+      "options": []
+    }
+  ]
+}

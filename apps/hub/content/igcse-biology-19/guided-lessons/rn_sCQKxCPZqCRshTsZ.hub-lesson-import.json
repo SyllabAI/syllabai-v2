@@ -1,0 +1,117 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_sCQKxCPZqCRshTsZ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "88c9349c3cd036697b18f138d2acf974a87813f7a25e4b28c63ff9e7a7e0b143",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_sCQKxCPZqCRshTsZ",
+    "topicTitle": "The nature and variety of living organisms",
+    "subtopicTitle": "Characteristics of Living Organisms",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/1-the-nature-and-variety-of-living-organisms/characteristics-of-living-organisms/common-features-prokaryotic-organisms",
+    "specAnchors": [
+      {
+        "code": "1.3",
+        "text": "describe the common features shown by prokaryotic organisms such as bacteria Bacteria: these are microscopic single-celled organisms; they have a cell wall, cell membrane, cytoplasm and plasmids; they lack a nucleus but contain a circular chromosome of DNA; some bacteria can carry out photosynthesis but most feed off other living or dead organisms. Examples include Lactobacillus bulgaricus , a rod-shaped bacterium used in the production of yoghurt from milk, and Pneumococcus , a spherical bacterium that acts as the pathogen causing pneumonia."
+      }
+    ],
+    "primer": {
+      "text": "Prokaryotes are the second great camp of living organisms, and bacteria are the examples this course cares about. This note fixes their shared cell plan — no enclosed nucleus, loose circular DNA, plasmids — and the two named species worth remembering, one that helps make yoghurt and one that causes pneumonia.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_sCQKxCPZqCRshTsZ::L1",
+        "title": "The prokaryote plan and the bacteria portrait",
+        "sourceHeadings": [
+          "Prokaryotes",
+          "Bacteria"
+        ],
+        "specRefs": [
+          "1.3"
+        ],
+        "opening": "Prokaryotes stand apart from every group in the previous note because their cells never enclose their genetic material in a nucleus. Bacteria are the prokaryotes this course names: microscopic, single-celled, and equipped with a wall, a membrane, cytoplasm and plasmids. Learning that portrait, plus the circular chromosome, covers the whole spec point.",
+        "keyPoints": [
+          "Prokaryotic cells keep their genetic material loose in the cytoplasm instead of inside a nucleus.",
+          "Bacteria are microscopic single-celled organisms and are the named prokaryote examples.",
+          "A bacterial cell carries a cell wall, a cell membrane, cytoplasm and plasmids.",
+          "Bacteria lack mitochondria and any other membrane-bound organelles.",
+          "Lactobacillus bulgaricus helps turn milk into yoghurt; Pneumococcus causes pneumonia."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Prokaryotes: single cells with no nucleus; the DNA sits in the cytoplasm. Bacteria add a wall, membrane, cytoplasm and plasmids, with no mitochondria.",
+            "analogy": "A prokaryotic cell is an open-plan studio: everything shares one room, with the chromosome lying in the open rather than locked in an office.",
+            "examPointer": "Two marks hide in 'plasmids' and 'circular chromosome of DNA' — lists that omit them lose the detail marks."
+          },
+          "medium": {
+            "restatement": "The prokaryotic signature is the absence of a membrane-bound nucleus and of any membrane-bound organelles; plasmids are separate small DNA loops that ride alongside the circular chromosome.",
+            "analogy": "Where a eukaryote keeps archives in labelled filing cabinets, a bacterium keeps one ring binder and a stack of loose cards (plasmids) on the same desk.",
+            "examPointer": "Comparisons that earn marks pair each prokaryotic absence with the eukaryotic presence: no nucleus versus enclosed nucleus, no mitochondria versus mitochondria present."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sCQKxCPZqCRshTsZ::L1::Q1",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q2",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q3",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q4",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q5",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q6",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q7",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q8",
+          "rn_sCQKxCPZqCRshTsZ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "prokaryote",
+          "definition": "An organism whose cells carry their genetic material loose in the cytoplasm, with no membrane-enclosed nucleus.",
+          "firstLesson": 1
+        },
+        {
+          "term": "plasmid",
+          "definition": "A small extra loop of DNA found in bacterial cells alongside the main circular chromosome.",
+          "firstLesson": 1
+        },
+        {
+          "term": "circular chromosome",
+          "definition": "The single ring-shaped DNA molecule that carries a bacterium's main genetic material.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/1ea0a4eb3551-a-typical-bacterial-cell.png",
+        "alt": "A typical bacterial cell",
+        "sourceHeading": "Bacteria",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A typical bacterial cell, showing wall, membrane, cytoplasm, plasmids and circular DNA"
+      }
+    ]
+  }
+}
