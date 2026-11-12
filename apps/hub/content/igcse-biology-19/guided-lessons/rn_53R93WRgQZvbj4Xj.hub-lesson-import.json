@@ -1,0 +1,115 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_53R93WRgQZvbj4Xj",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "24bc1c37c73ba09d1e1b1233e7e5a7893b8f90c70e4b31291f9da59fb3eeb0a5",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_53R93WRgQZvbj4Xj",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Co-ordination and Response",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/co-ordination-and-response/role-of-neurotransmitters-at-synapses",
+    "specAnchors": [
+      {
+        "code": "2.89",
+        "text": "understand the role of neurotransmitters at synapses"
+      }
+    ],
+    "primer": {
+      "text": "You already know neurones carry electrical impulses at high speed. This note covers the one place that story has a gap — literally: neurones never touch, and the tiny space between them is bridged by chemicals called neurotransmitters. Learn the handover sequence, because reflex-arc questions routinely test the synapse step.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_53R93WRgQZvbj4Xj::L1",
+        "title": "Crossing the synaptic gap",
+        "sourceHeadings": [
+          "The Role of Neurotransmitters"
+        ],
+        "specRefs": [
+          "2.89"
+        ],
+        "opening": "Neurones never quite touch. Between them sits a synapse — a microscopic gap — and that gap is where chemistry takes over: an arriving impulse makes the first neurone release neurotransmitters, which diffuse across and spark a fresh impulse in the next cell.",
+        "keyPoints": [
+          "Neurones are separated by tiny gaps called synapses.",
+          "An arriving electrical impulse triggers neurotransmitter release at the end of a neurone.",
+          "Neurotransmitters diffuse over the gap and attach to the next neurone.",
+          "Binding generates a new impulse, relaying the message between the separate cells."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Impulse arrives, chemicals cross the gap, next neurone fires — the synapse relays signals between separate cells.",
+            "analogy": "A synapse is a river between islands: the message boards a ferry (the neurotransmitter) to cross.",
+            "examPointer": "Remember both halves: chemical crossing, then a NEW electrical impulse — the impulse itself never jumps."
+          },
+          "medium": {
+            "restatement": "Because neurones are not directly connected, transmission needs a chemical bridge: arriving impulses trigger neurotransmitter release, diffusion crosses the gap, and binding regenerates the electrical signal.",
+            "analogy": "Think of a relay race where the baton is thrown across a short gap rather than handed over.",
+            "examPointer": "Questions ask what neurotransmitters do — 'diffuse across the synapse and bind' earns the marks; 'travel along the neurone' does not."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_53R93WRgQZvbj4Xj::L1::Q1",
+          "rn_53R93WRgQZvbj4Xj::L1::Q2",
+          "rn_53R93WRgQZvbj4Xj::L1::Q3",
+          "rn_53R93WRgQZvbj4Xj::L1::Q4",
+          "rn_53R93WRgQZvbj4Xj::L1::Q5",
+          "rn_53R93WRgQZvbj4Xj::L1::Q6",
+          "rn_53R93WRgQZvbj4Xj::L1::Q7",
+          "rn_53R93WRgQZvbj4Xj::L1::Q8",
+          "rn_53R93WRgQZvbj4Xj::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "synapse",
+          "definition": "The tiny gap between two neurones across which signals are carried chemically.",
+          "firstLesson": 1
+        },
+        {
+          "term": "neurotransmitter",
+          "definition": "A chemical messenger released at a synapse that diffuses across and binds to the next neurone, generating a new impulse.",
+          "firstLesson": 1
+        },
+        {
+          "term": "diffusion",
+          "definition": "The spreading of molecules from a region of higher concentration to lower concentration, here across the synaptic gap.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/714180b7c758-a-synapse.png",
+        "alt": "A synapse",
+        "sourceHeading": "The Role of Neurotransmitters",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Synapses are tiny gaps between neurones"
+      }
+    ]
+  }
+}
