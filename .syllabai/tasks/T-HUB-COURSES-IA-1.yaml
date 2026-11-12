@@ -3,7 +3,7 @@ task:
   id: T-HUB-COURSES-IA-1
   title: "The /courses storefront — featured tier (most complete first), the level filter chips (?level=), depth surfaced: the operator's product decision on the directory's two structural tensions"
   owner: "operator-delegate (Z.ai, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, run trace 1a1cf1fac8e38b6d)"
-  status: "IN PROGRESS (run-001)"
+  status: MERGED # run-001 PR #958 merge 2a7eb7a4 (2026-11-12T18:51:16Z) — review-session 2026-11-13 trace 1a1d14ddc539d7ed: API-verified merged=True; landed after #954 in the operator's stated order (trace 1a1d0defcd400191); race-guard re-sync 57ec548b carried UI-3's three in-file fixes into the extracted DirectoryCard with provenance comments; CI hub gate green at PR head per lane record; production spot-check 2026-11-13 GREEN (Most complete ×1, All levels ×1); card flipped + review-session worklog row filed post-merge, bookkeeping-only
   priority: P1
   band: T-HUB (frontend — courses directory surface)
   wave: hub-courses-directory
