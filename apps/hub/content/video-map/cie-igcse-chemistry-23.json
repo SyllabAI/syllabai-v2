@@ -11,6 +11,11 @@
    "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
    "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
    "enumeratedUtc": "2026-11-01T01:04:15Z"
+  },
+  "p7": {
+   "provider": "multi (freesciencelessons, malmesbury-education)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 15 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 77,
+  "rowsApproved": 91,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -103,6 +108,93 @@
       "video": "7o27fhO_nm0",
       "reason": "no honest binding: no naturally-occurring-polymer (protein/DNA/carbohydrate) spec among candidates; only addition/condensation polymerisation specs retrieved",
       "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 14 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 14,
+    "rowsRejected": 15,
+    "rejects": [
+     {
+      "video": "6LV63WtuvJg",
+      "reason": "self-review drop: using tangents to determine rate: generic graph/maths skill — P6 wholesale reject class; both binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "PdValXAVUOc",
+      "reason": "self-review drop: bond energy calculations: the honest 0620 bond-energy spec was not bound; 3.3.4/3.2.3 binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Qp2C4FALx4k",
+      "reason": "self-review drop: Dalton atomic model: the honest 0620 atomic-structure spec was not bound; the formula-deduction binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "TfkZ_GtS5wk",
+      "reason": "self-review drop: Doodle physics-channel video (life cycle of stars): cross-subject misroute — the binds matched generic substance tokens; no honest 0620 chemistry bind",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "cI2Shr8nns8",
+      "reason": "self-review drop: nuclear model of atomic structure: honest target unbound; the formula-deduction binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "iA4mk3CTkmI",
+      "reason": "self-review drop: acids reacting with metals 2: the reacting-mass binds are keyword-adjacent; the reaction content itself is not named by the bound specs",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "x8DLLCNMKAs",
+      "reason": "self-review drop: titration calculations 1: the honest 0620 concentration-calc spec was not bound; 3.3.4 gas-volume/3.2.3 reacting-mass binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "ycC4oKteRJU",
+      "reason": "self-review drop: titration calculations 2: as above — honest target unbound, binds keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "3y8YDlNeuRk",
+      "reason": "no honest binding: best candidate \"Calculate percentage yield, percentage composition by mass a\" (3.3.8) binds only on generic vocabulary: avogadro, constant",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "9HvMkqn6_Pc",
+      "reason": "no honest binding: best candidate \"Explain in terms of structure and bonding the properties of \" (2.4.7) binds only on generic vocabulary: bonding, ionic",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Y0eDQ0dOpTM",
+      "reason": "no honest binding: best candidate \"Explain in terms of structure and bonding the properties of \" (2.7.2) binds only on generic vocabulary: bonding",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Z93_atEmxNI",
+      "reason": "no honest binding: best candidate \"Describe and explain the effect on the rate of reaction of: \" (6.2.6) binds only on generic vocabulary: concentration, solution",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "l_1vf1z8_OM",
+      "reason": "no honest binding: best candidate \"Calculate percentage yield, percentage composition by mass a\" (3.3.8) binds only on generic vocabulary: avogadro, constant",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "xsma3KjKPx8",
+      "reason": "no honest binding: best candidate \"Describe and explain the effect on the rate of reaction of: \" (6.2.6) binds only on generic vocabulary: concentration, solution",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "ySJkA4XiCXU",
+      "reason": "no honest binding: best candidate \"Identify representations of alloys from diagrams of structur\" (9.3.4) binds only on generic vocabulary: diagram",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
      }
     ]
    }
@@ -1263,6 +1355,216 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "3I7yCkSXPos",
+   "title": "GCSE Chemistry Revision \"Fractional Distillation of Crude Oil\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=3I7yCkSXPos",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 197,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "3oJxWwcnfJY",
+   "title": "GCSE Chemistry Revision \"Purity and Formulations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=3oJxWwcnfJY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 194,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "A3ndfwX5lyI",
+   "title": "GCSE Chemistry Revision \"Calculating Percentage Yield 2\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=A3ndfwX5lyI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 236,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "A5RpVT1WA8E",
+   "title": "GCSE Chemistry Revision \"Transition Elements\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=A5RpVT1WA8E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 225,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "JU1-HApRymY",
+   "title": "GCSE Chemistry Revision \"Amino Acids\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=JU1-HApRymY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 182,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "MuzOmFhiE8o",
+   "title": "GCSE Chemistry Revision \"Limiting reactant\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=MuzOmFhiE8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 307,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "VaXQVoI3gtc",
+   "title": "GCSE Chemistry Revision \"Calculating Percentage by Mass\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=VaXQVoI3gtc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 297,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Znnhe4BJH14",
+   "title": "GCSE Chemistry Revision \"Life-Cycle Assessment\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Znnhe4BJH14",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 304,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "eBlWCl0wx4c",
+   "title": "GCSE Chemistry Revision \"Group 7 Part 2 Compounds of the Halogens\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=eBlWCl0wx4c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 257,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "iJgMuDzkdkI",
+   "title": "GCSE Chemistry Revision \"Fuel Cells\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=iJgMuDzkdkI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 244,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "n7pYRQs20bI",
+   "title": "GCSE Chemistry Revision \"Waste Water Treatment\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=n7pYRQs20bI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 223,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "rKzt9BvvEeQ",
+   "title": "GCSE Chemistry Revision \"NPK Fertilisers\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=rKzt9BvvEeQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 288,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "riikUBLFBJs",
+   "title": "GCSE Chemistry Revision \"Cells and Batteries\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=riikUBLFBJs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 261,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "vn3Rx3g1VPk",
+   "title": "Neutralisation Titration - GCSE Science Required Practical (Triple)",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=vn3Rx3g1VPk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 849,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -2513,20 +2815,237 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
    "reviewedUtc": "2026-11-12T07:07:10Z",
    "boardMismatch": true
+  },
+  {
+   "video": "3I7yCkSXPos",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.4.1",
+    "11.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Chemistry Revision \"Fractional Distillation of Crude Oil\"' -> 12.4.1 'Describe and explain methods of separation and' via distinctive token(s) distillation, fractional; 11.3.5 'Describe the separation of petroleum into usef' via distinctive token(s) distillation, fractional",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "3oJxWwcnfJY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Purity and Formulations' names the purity-assessment spec 12.4.3; the 3.3.8 yield bind is keyword-adjacent",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "A3ndfwX5lyI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Chemistry Revision \"Calculating Percentage Yield 2\" (Triple)' -> 3.3.8 'Calculate percentage yield, percentage composi' via distinctive token(s) percentage, yield",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "A5RpVT1WA8E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.4.2",
+    "8.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Transition Elements\" (Triple)' -> 8.4.2 'Describe transition elements as having ions wi' via distinctive token(s) transition; 8.4.1 'Describe the transition elements as metals tha' via distinctive token(s) transition",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JU1-HApRymY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.8.12"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Amino Acids\" (Triple)' -> 11.8.12 'Describe proteins as natural polyamides and th' via distinctive token(s) amino",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "MuzOmFhiE8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Limiting reactant\"' -> 3.3.5 'Calculate stoichiometric reacting masses, limi' via distinctive token(s) limiting",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "VaXQVoI3gtc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.8"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Calculating Percentage by Mass\"' -> 3.3.8 'Calculate percentage yield, percentage composi' via distinctive token(s) percentage",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Znnhe4BJH14",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.6",
+    "10.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Life-Cycle Assessment\"' -> 10.1.6 'State that some of these substances are potent' via distinctive token(s) life; 10.1.5 'State that some of these substances are benefi' via distinctive token(s) life",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eBlWCl0wx4c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.3",
+    "8.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Group 7 Part 2 Compounds of the Halogens\"' -> 8.3.3 'Describe and explain the displacement reaction' via distinctive token(s) halogen; 8.3.2 'State the appearance of the halogens at r.t.p.' via distinctive token(s) halogen",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "iJgMuDzkdkI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2",
+    "4.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Fuel Cells\" (Triple)' -> 4.2.2 'Describe the advantages and disadvantages of u' via distinctive token(s) cell; 4.2.1 'State that a hydrogen–oxygen fuel cell uses hy' via distinctive token(s) cell",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "n7pYRQs20bI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Waste Water Treatment' names the domestic-water-treatment spec 10.1.7 directly; the 10.3.2 noble-gases bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "rKzt9BvvEeQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2.2",
+    "10.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Chemistry Revision \"NPK Fertilisers\" (Triple)' -> 10.2.2 'Describe the use of NPK fertilisers to provide' via distinctive token(s) fertiliser, npk; 10.2.1 'State that ammonium salts and nitrates are use' via distinctive token(s) fertiliser",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "riikUBLFBJs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2",
+    "4.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Cells and Batteries\" (Triple)' -> 4.2.2 'Describe the advantages and disadvantages of u' via distinctive token(s) cell; 4.2.1 'State that a hydrogen–oxygen fuel cell uses hy' via distinctive token(s) cell",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vn3Rx3g1VPk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.8"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Neutralisation Titration - GCSE Science Required Practical (Triple)' -> 7.1.8 'Describe the neutralisation reaction between a' via distinctive token(s) neutralisation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 252,
-  "specPointsMapped": 137,
-  "specPointsUnmapped": 115,
-  "videosTotal": 77,
-  "videosMapped": 77,
+  "specPointsMapped": 145,
+  "specPointsUnmapped": 107,
+  "videosTotal": 91,
+  "videosMapped": 91,
   "videosUnmapped": 0,
-  "mappingRows": 77,
+  "mappingRows": 91,
   "byConfidence": {
    "high": 0,
-   "medium": 75,
-   "low": 2
+   "medium": 78,
+   "low": 13
   }
  },
  "inputs": {
@@ -2545,7 +3064,13 @@
    "path": "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external-p5.json",
    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
    "reviewAppliedUtc": "2026-11-12T07:07:10Z"
+  },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.350Z"
+ "generatedUtc": "2026-11-12T18:17:37.408Z"
 }

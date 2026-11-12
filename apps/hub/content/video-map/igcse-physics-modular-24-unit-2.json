@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 73,
+  "rowsApproved": 78,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 73,
+    "rowsApproved": 78,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1153,6 +1153,81 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "0JzscbSaabM",
+   "title": "GCSE Physics Revision \"Visible Light\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=0JzscbSaabM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 252,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Bh2KN0q5H7Q",
+   "title": "Transformers and the National Grid | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=Bh2KN0q5H7Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 75,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "CaNrfGfrOrE",
+   "title": "Half-Life | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=CaNrfGfrOrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 102,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "EEj8hMBPTi0",
+   "title": "Transformers | GCSE Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=EEj8hMBPTi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 167,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "UsZsns63Km4",
+   "title": "GCSE Physics Revision \"The Microphone\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UsZsns63Km4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 117,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -1433,6 +1508,27 @@
    ],
    "confidence": "medium",
    "evidence": "electromagnetic waves = the continuous spectrum (3.10) + order by wavelength/frequency (3.11) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0JzscbSaabM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.10",
+    "5.12"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Physics Revision \"Visible Light\" (Triple)' -> 3.12 'explain some of the uses of electromagnetic ra' via distinctive token(s) visible; 3.10 'know that light is part of a continuous electr' via distinctive token(s) visible (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1813,6 +1909,26 @@
    }
   },
   {
+   "video": "UsZsns63Km4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.26P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Physics Revision \"The Microphone\" (Triple)' -> 3.26P 'understand how an oscilloscope and microphone ' via distinctive token(s) microphone (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "hKO3DpgiISk",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2072,6 +2188,48 @@
    ],
    "confidence": "low",
    "evidence": "national grid implies step-up/step-down transmission; the transformer explanation not title-evidenced (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Bh2KN0q5H7Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.18P",
+    "7.19P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Transformers and the National Grid | GCSE Physics | Doodle Science' -> 6.19P 'know and use the relationship between input (p' via distinctive token(s) transformer; 6.18P 'explain the use of step-up and step-down trans' via distinctive token(s) transformer (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "EEj8hMBPTi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.18P",
+    "7.19P"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Transformers | GCSE Physics | Doodle Science' -> 6.19P 'know and use the relationship between input (p' via distinctive token(s) transformer; 6.18P 'explain the use of step-up and step-down trans' via distinctive token(s) transformer (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2393,6 +2551,27 @@
    }
   },
   {
+   "video": "CaNrfGfrOrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.12",
+    "8.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Half-Life | GCSE Physics | Doodle Science' -> 7.13 'use the concept of the half-life to carry out ' via distinctive token(s) half, life; 7.12 'know the definition of the term 'half-life' an' via distinctive token(s) half, life (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "YejvYYRjSUk",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2670,14 +2849,14 @@
   "specPointsTotal": 101,
   "specPointsMapped": 72,
   "specPointsUnmapped": 29,
-  "videosTotal": 73,
-  "videosMapped": 73,
+  "videosTotal": 78,
+  "videosMapped": 78,
   "videosUnmapped": 0,
-  "mappingRows": 73,
+  "mappingRows": 78,
   "byConfidence": {
    "high": 0,
-   "medium": 65,
-   "low": 8
+   "medium": 66,
+   "low": 12
   }
  },
  "inputs": {
@@ -2701,5 +2880,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.473Z"
+ "generatedUtc": "2026-11-12T18:17:37.524Z"
 }

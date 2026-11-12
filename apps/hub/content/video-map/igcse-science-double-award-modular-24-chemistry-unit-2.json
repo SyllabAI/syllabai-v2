@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 30,
+  "rowsApproved": 32,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 30,
+    "rowsApproved": 32,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -482,6 +482,36 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Freesciencelessons",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "4iZRs4XlJOE",
+   "title": "GCSE Chemistry Revision \"Required Practical 7: Identifying Ions\" (Triple)",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4iZRs4XlJOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 224,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "MxS4pMc2O2Y",
+   "title": "GCSE Chemistry Revision \"Climate Change\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=MxS4pMc2O2Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 228,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -852,6 +882,26 @@
    }
   },
   {
+   "video": "MxS4pMc2O2Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'GCSE Chemistry Revision \"Climate Change\"' -> 4CH1-2.13 'know that carbon dioxide is a greenhouse gas a' via distinctive token(s) climate (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "jVkGKurtaiE",
    "lessonRef": null,
    "lessonUrl": null,
@@ -901,6 +951,27 @@
    ],
    "confidence": "medium",
    "evidence": "metal hydroxide precipitates = NaOH cation tests of 2.47 (NH4+ clause partial) (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4iZRs4XlJOE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.18",
+    "6.19"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Required Practical 7: Identifying Ions\" (Trip' -> 4CH1-2.48 'describe tests for these anions: • Cl – , Br –' via distinctive token(s) identifying; 4CH1-2.47 'describe tests for these cations: • NH 4 + usi' via distinctive token(s) identifying (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1107,14 +1178,14 @@
   "specPointsTotal": 47,
   "specPointsMapped": 38,
   "specPointsUnmapped": 9,
-  "videosTotal": 30,
-  "videosMapped": 30,
+  "videosTotal": 32,
+  "videosMapped": 32,
   "videosUnmapped": 0,
-  "mappingRows": 30,
+  "mappingRows": 32,
   "byConfidence": {
    "high": 0,
-   "medium": 29,
-   "low": 1
+   "medium": 30,
+   "low": 2
   }
  },
  "inputs": {
@@ -1137,5 +1208,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.493Z"
+ "generatedUtc": "2026-11-12T18:17:37.548Z"
 }

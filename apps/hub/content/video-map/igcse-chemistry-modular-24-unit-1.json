@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 46,
+  "rowsApproved": 55,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 46,
+    "rowsApproved": 55,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -328,6 +328,21 @@
    "levelTag": "gcse",
    "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
    "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "o56nWrsp-hI",
+   "title": "GCSE Chemistry Revision \"Metals and Alloys\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=o56nWrsp-hI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-aligned GCSE channel; content generic GCSE-level",
+   "durationS": 214,
    "guestVisible": null,
    "subelementOfPrimary": false,
    "oembedAuthor": "Freesciencelessons",
@@ -722,6 +737,126 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "-XCPPB-sBFU",
+   "title": "GCSE Chemistry Revision \"Chromatography\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=-XCPPB-sBFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 304,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "1UQnUQR0tTo",
+   "title": "GCSE Chemistry Revision \"Using the Earth's Resources\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1UQnUQR0tTo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 180,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "4wTSLBBBMo0",
+   "title": "GCSE Chemistry Revision \"Using Moles to Balance Equations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4wTSLBBBMo0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 303,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "5zOpoeN0dV0",
+   "title": "GCSE Chemistry Revision \"Reacting Masses 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=5zOpoeN0dV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 294,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Md4BQL91U6w",
+   "title": "GCSE Chemistry Revision \"Calculating Moles of a Compound\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Md4BQL91U6w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 376,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "P8i4QYncQxI",
+   "title": "GCSE Chemistry Revision \"Required Practical 6: Chromatography\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=P8i4QYncQxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 276,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "b5RVPauf4oM",
+   "title": "GCSE Chemistry Revision \"Alternative Methods of Extracting Metals\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=b5RVPauf4oM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 187,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "pnTGNAfu6GE",
+   "title": "Chromatography - GCSE Science Required Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=pnTGNAfu6GE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 617,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -815,6 +950,69 @@
    ],
    "confidence": "medium",
    "evidence": "fractional distillation clause of 1.10 (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-XCPPB-sBFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.10",
+    "1.13"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Chromatography\"' -> 4CH1-1.13 'practical: investigate paper chromatography us' via distinctive token(s) chromatography; 4CH1-1.10 'describe these experimental techniques for the' via distinctive token(s) chromatography (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "P8i4QYncQxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.10",
+    "1.13"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Required Practical 6: Chromatography\"' -> 4CH1-1.13 'practical: investigate paper chromatography us' via distinctive token(s) chromatography; 4CH1-1.10 'describe these experimental techniques for the' via distinctive token(s) chromatography (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pnTGNAfu6GE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.10",
+    "1.13"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Chromatography - GCSE Science Required Practical' -> 4CH1-1.13 'practical: investigate paper chromatography us' via distinctive token(s) chromatography; 4CH1-1.10 'describe these experimental techniques for the' via distinctive token(s) chromatography (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1051,6 +1249,46 @@
    }
   },
   {
+   "video": "4wTSLBBBMo0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.27"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Using Moles to Balance Equations' partially names the mole spec 4CH1-1.27; the 4CH1-4.18 cracking bind is nonsense adjacency (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Md4BQL91U6w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.27"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Calculating Moles of a Compound' partially names the mole spec 4CH1-1.27; the 4CH1-3.22C equilibrium bind is nonsense adjacency (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "kMak1TQ3YgU",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1079,6 +1317,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Reacting Masses 1' = reacting-mass calculations of 1.29 (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "5zOpoeN0dV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.29"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reacting Masses 2' names the reacting-masses spec 4CH1-1.29 directly; the 4CH1-4.32C ethanol bind is nonsense adjacency (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1294,6 +1552,26 @@
    }
   },
   {
+   "video": "1UQnUQR0tTo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.8C"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Using the Earth's Resources\"' -> 4CH1-2.22C 'know that most metals are extracted from ores ' via distinctive token(s) earth (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "YcyMElBEzAY",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1302,6 +1580,26 @@
    ],
    "confidence": "medium",
    "evidence": "electrolysis of molten aluminium oxide = molten-compound electrolysis (1.58C) + extraction-above-carbon example (2.23C) (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "b5RVPauf4oM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.9C"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Alternative Methods of Extracting Metals' names the extraction-methods spec 4CH1-2.23C directly; the 4CH1-3.13 catalyst bind is nonsense adjacency (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1323,6 +1621,27 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Alloys' = alloy definition (2.26C) + harder-than-pure-metal explanation (2.27C) (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-chemistry-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "o56nWrsp-hI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.12C",
+    "2.13C"
+   ],
+   "confidence": "low",
+   "evidence": "title 'GCSE Chemistry Revision \"Metals and Alloys\"' -> 4CH1-2.27C 'explain why alloys are harder than pure metals' via distinctive token(s) alloy; 4CH1-2.26C 'know that an alloy is a mixture of a metal and' via distinctive token(s) alloy (inherited from the owner-approved igcse-chemistry-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1672,14 +1991,14 @@
   "specPointsTotal": 100,
   "specPointsMapped": 64,
   "specPointsUnmapped": 36,
-  "videosTotal": 46,
-  "videosMapped": 46,
+  "videosTotal": 55,
+  "videosMapped": 55,
   "videosUnmapped": 0,
-  "mappingRows": 46,
+  "mappingRows": 55,
   "byConfidence": {
    "high": 0,
-   "medium": 40,
-   "low": 6
+   "medium": 41,
+   "low": 14
   }
  },
  "inputs": {
@@ -1702,5 +2021,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.454Z"
+ "generatedUtc": "2026-11-12T18:17:37.506Z"
 }

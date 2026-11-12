@@ -7,6 +7,11 @@
   "label": "ial-chemistry-17",
   "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of cie-a-level-chemistry-25; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
   "enumeratedUtc": "2026-11-09T05:12:35Z",
+  "p7": {
+   "provider": "multi (freesciencelessons, malmesbury-education)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
+  },
   "p2f": {
    "provider": "Edexcel-native channels: Exam Essentials, Sergei's Chemistry, Allery Chemistry, Omar's Biology Lab, A-star Solution, MedDude",
    "method": "yt-dlp flat enumeration + machine-verified Edexcel paper-code binding (method paper-code, confidence high, boardMismatch false) + idf topic-title containment (>= 0.55, >= 3 informative tokens, P4 rule) for topic anchors; oEmbed identity sweep with thumbnail-liveness fallback; sewage filter (promos, results-day, shorts/vlog); evidence posture title-only",
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 42,
+  "rowsApproved": 70,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -30,9 +35,126 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 8,
+    "rowsApproved": 9,
     "rowsRejected": 0,
     "rejects": []
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 27 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 27,
+    "rowsRejected": 21,
+    "rejects": [
+     {
+      "video": "3CviYzZ1VPQ",
+      "reason": "self-review drop: Infra-Red Spectroscopy (malmesbury): the honest IAL IR-spectroscopy spec was not bound; the 10.17 alcohol-reactions and 15.20 NMR binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Edotk_-p0rY",
+      "reason": "self-review drop: working with gases (mole/gas-volume drills): the honest IAL molar-gas-volume spec was not bound; the 4.3 risk-assessment bind is keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "OSB_1x08UHc",
+      "reason": "self-review drop: naming unbranched hydrocarbons: the honest IAL nomenclature spec was not bound; the 5.3 E-Z and 5.1 alkene binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "WUj0RERaWMA",
+      "reason": "self-review drop: enthalpy cycles involving standard enthalpies: the honest IAL Hess-cycle spec was not bound; the 20.3/16.15 binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "dLqGwSq4GyA",
+      "reason": "self-review drop: acids, bases and neutralisation (intro): the honest IAL acid-base spec was not bound; the 6.4 standard-enthalpy bind is keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "q3L8xARUFZM",
+      "reason": "self-review drop: effect of lone pairs on molecular shape: the honest IAL electron-pair-repulsion spec was not bound; the 5.6/15.8 binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "0ezyQMc4iqw",
+      "reason": "no honest binding: best candidate \"be able to use the models in 3.20 and 3.21 to interpret simp\" (3.22) binds only on generic vocabulary: propertie, simple",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "6jKTbT81jY8",
+      "reason": "no honest binding: best candidate \"know that an orbital is a region within an atom that can hol\" (2.9) binds only on generic vocabulary: atomic, orbital",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "7TFldvLgII0",
+      "reason": "no honest binding: best candidate \"know the general formula of alkenes and understand that alke\" (5.1) binds only on generic vocabulary: formula, general",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "9oBZiKcYGo8",
+      "reason": "no honest binding: best candidate \"be able to use knowledge of organic chemistry contained give\" (20.3) binds only on generic vocabulary: compound, group, propertie",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "C6xFruVCd_U",
+      "reason": "no honest binding: best candidate \"know Hess’s Law and be able to apply it to: i constructing e\" (6.6) binds only on generic vocabulary: cycle, enthalpy",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "NTH9J_hlAVI",
+      "reason": "no honest binding: best candidate \"be able to explain: i the trends in melting and boiling temp\" (2.18) binds only on generic vocabulary: down, energy, first, group, ionisation",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Njasv7Fdpao",
+      "reason": "no honest binding: best candidate \"understand factors that influence the choice of solvents, in\" (7.6) binds only on generic vocabulary: hydration",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "QLhzsmx0EDs",
+      "reason": "no honest binding: best candidate \"be able to use the models in 3.20 and 3.21 to interpret simp\" (3.22) binds only on generic vocabulary: propertie, simple",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "UXddr3WtyyA",
+      "reason": "no honest binding: best candidate \"be able to explain: i the trends in melting and boiling temp\" (2.18) binds only on generic vocabulary: energy, first, ionisation",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Ua0DOzmKqIk",
+      "reason": "no honest binding: best candidate \"know the general formula of alkanes and cycloalkanes, and un\" (4.9) binds only on generic vocabulary: compound, formula",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Zx076l7JOpo",
+      "reason": "no honest binding: best candidate \"be able to make predictions about fluorine and astatine and \" (8.28) binds only on generic vocabulary: group, halogen",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "fqnhRbuyy04",
+      "reason": "no honest binding: best candidate \"understand the trend in reactivity of Group 7 elements in te\" (8.25) binds only on generic vocabulary: element, group, reactivity",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "lW-8QR6ePzc",
+      "reason": "no honest binding: best candidate \"understand, in terms of intermolecular forces, physical prop\" (7.5) binds only on generic vocabulary: alkane, propertie",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "lhiHBe55orM",
+      "reason": "no honest binding: best candidate \"know and be able to interpret evidence for the existence of \" (3.1) binds only on generic vocabulary: compound, ionic, propertie",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "zhJSic7gx18",
+      "reason": "no honest binding: best candidate \"be able to use the models in 3.20 and 3.21 to interpret simp\" (3.22) binds only on generic vocabulary: propertie, structure",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     }
+    ]
    },
    {
     "lane": "external-channels-p2f (edexcel-native anchors)",
@@ -175,6 +297,449 @@
    "subelementOfPrimary": false,
    "oembedAuthor": null,
    "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ACIhhP0rL4Y",
+   "title": "A Level Chemistry Revision \"Covalent Bonding and Expansion of the Octet\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ACIhhP0rL4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "07V9FlJy7po",
+   "title": "A Level Chemistry Revision \"Calculations Involving the Avogadro Constant Part 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=07V9FlJy7po",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 247,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "6BuK3LW40Ks",
+   "title": "A Level Chemistry Revision \"Hydrolysis of Haloalkanes by Nucleophilic Substitution\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=6BuK3LW40Ks",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "8B_9nVR2Xlw",
+   "title": "A Level Chemistry Revision \"Calculating Atom Economy\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=8B_9nVR2Xlw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 264,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "9ogq50CBgCg",
+   "title": "A Level Chemistry Revision \"Electron Configuration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9ogq50CBgCg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 276,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "A_FwHV2ogRE",
+   "title": "A Level Chemistry Revision \"Molecular Formula and Empirical Formula\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=A_FwHV2ogRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 198,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "GhH77DcEv9M",
+   "title": "A Level Chemistry Revision \"Chlorofluorocarbons and the Ozone Layer\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GhH77DcEv9M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 321,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "GkpPPKZxe9o",
+   "title": "A Level Chemistry Revision \"Calculating Empirical Formula Part 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=GkpPPKZxe9o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 289,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "HVtPeQeRhJw",
+   "title": "A Level Chemistry Revision \"Electrophilic Addition of a Halogen to Alkenes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=HVtPeQeRhJw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 299,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "J0cNkvkZocI",
+   "title": "A Level Chemistry Revision \"The Rate of Hydrolysis of Haloalkanes by Nucleophilic Substitution\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=J0cNkvkZocI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 294,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "LxtMp4v8FNQ",
+   "title": "A Level Chemistry Revision \"Electron Configuration 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=LxtMp4v8FNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 313,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "ND6uKJwqeGw",
+   "title": "Enthalpy Change of Neutralisation - Chemistry A-level Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=ND6uKJwqeGw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 666,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "PgdIQTkvg2Q",
+   "title": "A Level Chemistry Revision \"Testing for Ammonium Ions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=PgdIQTkvg2Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 90,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Q3e-iB3QHFc",
+   "title": "A Level Chemistry Revision \"Thermal Cracking and Catalytic Cracking of Alkanes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Q3e-iB3QHFc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 257,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "R4e5NJkYvT4",
+   "title": "A Level Chemistry \"Collision Theory and Rates of Reaction\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=R4e5NJkYvT4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 253,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "TSb_fmyuZX4",
+   "title": "A Level Chemistry Revision \"Separation of Alkanes by Fractional Distillation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=TSb_fmyuZX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 280,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "UYdwwtTjBi0",
+   "title": "A Level Chemistry Revision \"Cis-Trans Isomers\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UYdwwtTjBi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 319,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "VlieAP7QDZI",
+   "title": "A Level Chemistry Revision \"Calculating Empirical Formula Part 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=VlieAP7QDZI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 294,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "WYVL4CNGj2A",
+   "title": "A Level Chemistry Revision \"Testing for Sulfate Ions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=WYVL4CNGj2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "aUEpAEaSsBU",
+   "title": "Reflux - Oxidation of Ethanol - Chemistry A-level Practial",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=aUEpAEaSsBU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 565,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "d1z_N47RUtE",
+   "title": "A Level Chemistry Revision \"Addition Polymers\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=d1z_N47RUtE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 372,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "eryK-SRXBl0",
+   "title": "A Level Chemistry Revision \"Testing for Carbonate Ions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=eryK-SRXBl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 203,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ijdglGENBKI",
+   "title": "Monitoring Rate of Reaction - Iodination of Propanone - A-level Chemistry Required Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=ijdglGENBKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 649,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "oPIKEDeaBQ8",
+   "title": "A Level Chemistry Revision \"Bond Enthalpies\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=oPIKEDeaBQ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 297,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "tvzlGwIZXHk",
+   "title": "A Level Chemistry Revision (Year 13) \"Nitration of Benzene\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=tvzlGwIZXHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "vSKa51UYIhI",
+   "title": "A Level Chemistry Revision \"Electron Configuration and the Periodic Table\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=vSKa51UYIhI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 200,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Freesciencelessons",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "wMjuedOlhus",
+   "title": "A Level Chemistry Revision \"Polar Bonds and Polar Molecules\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=wMjuedOlhus",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "yFYfP_-Azio",
+   "title": "A Level Chemistry Revision \"Induced dipole-dipole interactions\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=yFYfP_-Azio",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
    "identityMethod": "thumb-fallback"
   },
   {
@@ -790,6 +1355,26 @@
    }
   },
   {
+   "video": "ACIhhP0rL4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Covalent Bonding and Expansion of the Octet' names the expanded-octet spec 3.4.2 (SO2, PCl5 named in-spec — verified); the 3.7.1 ionic-diagram bind is wrong — trimmed (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "7zcIKkkFg1A",
    "lessonRef": null,
    "lessonUrl": null,
@@ -848,6 +1433,423 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "video": "07V9FlJy7po",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Calculations Involving the Avogadro Constant' partially names the mole spec 1.2 (mole-unit calculations — partial, disclosed); the 16.15 maths-skills bind is adjacent, trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6BuK3LW40Ks",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Hydrolysis of Haloalkanes by Nucleophilic Substitution' names the nucleophilic-substitution mechanism spec 10.9 directly; the 15.8 carbonyl bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "8B_9nVR2Xlw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Calculating Atom Economy' names the percentage-yield/atom-economy spec 1.9 (verified fragment); the 9.7 catalyst bind is keyword-adjacent",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9ogq50CBgCg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.14",
+    "2.15"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Electron Configuration\"' -> 2.14 'be able to predict the electronic configuratio' via distinctive token(s) configuration; 2.15 'understand that electronic configuration deter' via distinctive token(s) configuration",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "A_FwHV2ogRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1",
+    "20.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Molecular Formula and Empirical Formula\"' -> 1.1 'know the terms ‘atom', 'element', 'ion', 'mole' via distinctive token(s) empirical; 20.1 'be able to deduce the empirical formulae, mole' via distinctive token(s) empirical",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GhH77DcEv9M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.18"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Chlorofluorocarbons and the Ozone Layer' partially names the free-radical-substitution spec 4.18 (CFC ozone-depletion mechanism context — partial, disclosed); the 15.22 Rf-value bind is nonsense",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GkpPPKZxe9o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1",
+    "20.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Calculating Empirical Formula Part 1\"' -> 1.1 'know the terms ‘atom', 'element', 'ion', 'mole' via distinctive token(s) empirical; 20.1 'be able to deduce the empirical formulae, mole' via distinctive token(s) empirical",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "HVtPeQeRhJw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electrophilic Addition of a Halogen to Alkenes' names the alkene electrophilic-addition mechanism spec 5.6 directly; the 18.5 arene-substitution bind is wrong topic — trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "J0cNkvkZocI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.9"
+   ],
+   "confidence": "low",
+   "evidence": "title 'The Rate of Hydrolysis of Haloalkanes by Nucleophilic Substitution' partially names the haloalkane-hydrolysis spec 10.9 (rate context — partial, disclosed); the 15.8 carbonyl bind is nonsense",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LxtMp4v8FNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.14",
+    "2.15"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Electron Configuration 2\"' -> 2.14 'be able to predict the electronic configuratio' via distinctive token(s) configuration; 2.15 'understand that electronic configuration deter' via distinctive token(s) configuration",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ND6uKJwqeGw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Enthalpy Change of Neutralisation - Chemistry A-level Practical' -> 6.4 'know the definition of standard enthalpy chang' via distinctive token(s) neutralisation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "PgdIQTkvg2Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.19"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Testing for Ammonium Ions' partially names the test-reactions/ionic-equations spec 8.19 (cation tests — partial, disclosed); the 15.23 HPLC bind is nonsense",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Q3e-iB3QHFc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.12"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Thermal Cracking and Catalytic Cracking of Alkanes' partially names the alkanes-sources spec 4.12 (alkanes obtained from crude oil by cracking — partial, disclosed); the 4.18 substitution-mechanism bind is the wrong mechanism class — trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "R4e5NJkYvT4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1",
+    "9.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry \"Collision Theory and Rates of Reaction\".' -> 9.1 'understand, in terms of the collision theory, ' via distinctive token(s) collision; 9.2 'understand that reactions take place only when' via distinctive token(s) collision",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "TSb_fmyuZX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.12"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Separation of Alkanes by Fractional Distil' -> 4.12 'know that alkanes are used as fuels and obtain' via distinctive token(s) fractional",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UYdwwtTjBi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Cis-Trans Isomers' names the E-Z/geometric-isomerism spec 5.3 directly (cis-trans = E-Z); the 17.15 square-planar bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "VlieAP7QDZI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1",
+    "20.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Calculating Empirical Formula Part 2\"' -> 1.1 'know the terms ‘atom', 'element', 'ion', 'mole' via distinctive token(s) empirical; 20.1 'be able to deduce the empirical formulae, mole' via distinctive token(s) empirical",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WYVL4CNGj2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.19"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Testing for Sulfate Ions' partially names the test-reactions spec 8.19 (anion tests incl. sulfate — partial, disclosed); the 8.15 solubility bind is nonsense",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "aUEpAEaSsBU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.19",
+    "10.18"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Reflux - Oxidation of Ethanol - Chemistry A-level Practial' -> 10.19 'understand, the following techniques in the pr' via distinctive token(s) reflux; 10.18 'understand that potassium dichromate(VI) in di' via distinctive token(s) reflux",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "d1z_N47RUtE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.8"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Addition Polymers' partially names the polymer-disposal spec 5.8 (addition-polymer environmental context — partial, disclosed); the 19.10 physical-properties bind is adjacent, trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eryK-SRXBl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.19",
+    "15.23"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Testing for Carbonate Ions\"' -> 8.19 'know reactions, including ionic equations wher' via distinctive token(s) testing; 15.23 'know that high-performance liquid chromatograp' via distinctive token(s) testing",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ijdglGENBKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.6",
+    "11.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Monitoring Rate of Reaction - Iodination of Propanone - A-level Chemis' -> 11.6 'understand how to: i obtain data to calculate ' via distinctive token(s) iodination, propanone; 11.4 'understand experiments that can be used to inv' via distinctive token(s) monitoring",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "oPIKEDeaBQ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.9",
+    "6.10"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Bond Enthalpies\"' -> 6.9 'understand the terms ‘bond enthalpy’ and ‘mean' via distinctive token(s) enthalpie; 6.10 'be able to calculate mean bond enthalpies from' via distinctive token(s) enthalpie",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tvzlGwIZXHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "18.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision (Year 13) \"Nitration of Benzene\"' -> 18.5 'understand the mechanism of the electrophilic ' via distinctive token(s) nitration",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vSKa51UYIhI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.14",
+    "2.15"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Electron Configuration and the Periodic Ta' -> 2.14 'be able to predict the electronic configuratio' via distinctive token(s) configuration; 2.15 'understand that electronic configuration deter' via distinctive token(s) configuration",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wMjuedOlhus",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.15"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Polar Bonds and Polar Molecules' names the polar-bonds spec 3.15 directly; the 7.6 solvent-choice bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "yFYfP_-Azio",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1",
+    "7.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Induced dipole-dipole interactions\".' -> 7.1 'understand the nature of the following intermo' via distinctive token(s) dipole, induced, interaction; 7.2 'understand the interactions in molecules, such' via distinctive token(s) interaction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
   },
   {
    "anchor": {
@@ -1498,16 +2500,16 @@
  ],
  "coverage": {
   "specPointsTotal": 319,
-  "specPointsMapped": 6,
-  "specPointsUnmapped": 313,
-  "videosTotal": 42,
-  "videosMapped": 42,
+  "specPointsMapped": 34,
+  "specPointsUnmapped": 285,
+  "videosTotal": 70,
+  "videosMapped": 70,
   "videosUnmapped": 0,
-  "mappingRows": 42,
+  "mappingRows": 70,
   "byConfidence": {
    "high": 17,
-   "medium": 13,
-   "low": 12
+   "medium": 23,
+   "low": 30
   }
  },
  "inputs": {
@@ -1529,6 +2531,12 @@
    ],
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-chemistry-17/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
+  },
   "p2f": {
    "repo": "SyllabAI/syllabai-resources",
    "path": "Videos/drafts/ial-chemistry-17/video-map.draft.external-p2f.json",
@@ -1536,5 +2544,5 @@
    "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.507Z"
+ "generatedUtc": "2026-11-12T18:17:37.577Z"
 }
