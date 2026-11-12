@@ -1,0 +1,292 @@
+{
+ "artifact": "rn11-run-019-structural-filing-r0",
+ "status": "FILING-OF-RECORD — desk disposition requested (six decision items; nothing applied)",
+ "law": "run-016 boundary law: title/label repairs + mirror restoration are lane work; structural re-code/re-parent/addition/removal of corpus rows is desk territory. run-017/run-018 discharged the title-only classes of record; this run PACKAGES the structural residue — it does not adjudicate.",
+ "submittedBy": "RN-DEBRIS-11 lane, run-019 (operator order \"draft that filing as the next lane item\", trace 1a1ce4ceea57e131)",
+ "generatedUtc": "2026-11-12",
+ "baseTip": "99a2d752929340d7951cded8c7ebd820c074ca5d",
+ "sourcesOfRecord": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-016/topic_level_points_proposal_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/structural_proposal_map_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-017/official_0478_census_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/adjudication_r0.json",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-018/scripts/run018_adjudication.py",
+  ".syllabai/receipts/RN-DEBRIS-11/run-016-trig-defect-projection-structure.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-017-cs23-garbage-titles.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-018-pure1-glue-titles.json"
+ ],
+ "decisionItems": [
+  {
+   "id": "D1_exporter_law_keystone",
+   "title": "THE EXPORTER-LAW DECISION — 21 official 0478 topic-level points, apply-ready, blocked on the kg_export v1.6 SUBTOPIC-hang law",
+   "sourceRun": "run-016 (proposal map of record; receipt newFindings disposition)",
+   "finding": "kg_export v1.6: every SPEC_POINT must hang under exactly one SUBTOPIC; the 106-course fleet is universally SUBTOPIC-hung (the apparent precedent igcse-chemistry-19 is dual-parented — its S1-a..i rows are real official subsections); the official 0478 T7/T9/T10 carry NO subtopic layer",
+   "evidence": "cie-igcse-computer-science-23: SPEC_POINT 7.1 has 0 SUBTOPIC parents (['cie-igcse-computer-science-2023-2025-T7'])",
+   "censusChanging": true,
+   "exporterBlocked": true,
+   "optionsForTheDesk": [
+    "extend kg_export to accept topic-level points (code-change run; the KG graph shape decision is desk territory)",
+    "synthetic per-topic SUBTOPIC rows (REJECTED here: curriculum-plane invention — the doc has no such rows)"
+   ],
+   "applyReadyPins": {
+    "law": "zero-invention; byte-exact titles in the run-016 proposal of record",
+    "points": [
+     {
+      "code": "7.1",
+      "title": "Understand the program development life cycle, limited to: analysis, design, coding and testing",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.2a",
+      "title": "Understand that every computer system is made up of sub-systems, which are made up of further sub-systems",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.2b",
+      "title": "Understand how a problem can be decomposed into its component parts",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.2c",
+      "title": "Use different methods to design and construct a solution to a problem",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.3",
+      "title": "Explain the purpose of a given algorithm",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.4",
+      "title": "Understand standard methods of solution",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.5a",
+      "title": "Understand the need for validation checks to be made on input data and the different types of validation check",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.5b",
+      "title": "Understand the need for verification checks to be made on input data and the different types of verification check",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.6",
+      "title": "Suggest and apply suitable test data",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.7",
+      "title": "Complete a trace table to document a dry-run of an algorithm",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.8",
+      "title": "Identify errors in given algorithms and suggest ways of correcting these errors",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "7.9",
+      "title": "Write and amend algorithms for given problems or scenarios, using: pseudocode, program code and flowcharts",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T7"
+      ]
+     },
+     {
+      "code": "9.1",
+      "title": "Define a single-table database from given data storage requirements",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T9"
+      ]
+     },
+     {
+      "code": "9.2",
+      "title": "Suggest suitable basic data types",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T9"
+      ]
+     },
+     {
+      "code": "9.3",
+      "title": "Understand the purpose of a primary key and identify a suitable primary key for a given database table",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T9"
+      ]
+     },
+     {
+      "code": "9.4",
+      "title": "Read, understand and complete structured query language (SQL) scripts to query data stored in a single database table",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T9"
+      ]
+     },
+     {
+      "code": "10.1",
+      "title": "Identify and use the standard symbols for logic gates",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T10"
+      ]
+     },
+     {
+      "code": "10.2",
+      "title": "Define and understand the functions of the logic gates",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T10"
+      ]
+     },
+     {
+      "code": "10.3a",
+      "title": "Use logic gates to create given logic circuits from a: (i) problem statement (ii) logic expression (iii) truth table",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T10"
+      ]
+     },
+     {
+      "code": "10.3b",
+      "title": "Complete a truth table from a: (i) problem statement (ii) logic expression (iii) logic circuit",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T10"
+      ]
+     },
+     {
+      "code": "10.3c",
+      "title": "Write a logic expression from a: (i) problem statement (ii) logic circuit (iii) truth table",
+      "parents": [
+       "cie-igcse-computer-science-2023-2025-T10"
+      ]
+     }
+    ],
+    "edges": "21 PART_OF edges (T7x12, T9x4, T10x5) + orderLawIfApplied in the proposal of record",
+    "codeCount": 21
+   },
+   "unblocks": [
+    "D4_misfiled_section7_rows_reparent"
+   ]
+  },
+  {
+   "id": "D2_cs23_81_coverage_gap",
+   "title": "cs-23 8.1 coverage gap — add the 5 missing official rows under SUB8.1 (subtopic-hung, NOT exporter-blocked; census-changing)",
+   "sourceRun": "run-017 (structural proposal map F2)",
+   "finding": "official 8.1 rows 5, 6(a), 6(b), 6(c), 7 are ABSENT from the corpus (8.1 jumps 8.1.4 -> 8.1.8); their statements surfaced inside the old 8.1.1a blob as interleave debris",
+   "evidence": "census subRows: 8.1.5 'Understand and use nested statements', 8.1.6a 'Understand what is meant by procedures, functions and parameters', 8.1.6b 'Define and use procedures and functions, with or without parameters', 8.1.6c 'Understand and use local and global variables', 8.1.7 'Understand and use library routines'; official 8.1 census = 8 numbered rows (17 points with the fleet lettered-row law) vs corpus 6",
+   "censusChanging": true,
+   "exporterBlocked": false,
+   "byteExactTitlesForTheDeskAdd": {
+    "8.1.5": "Understand and use nested statements",
+    "8.1.6a": "Understand what is meant by procedures, functions and parameters",
+    "8.1.6b": "Define and use procedures and functions, with or without parameters",
+    "8.1.6c": "Understand and use local and global variables",
+    "8.1.7": "Understand and use library routines"
+   },
+   "optionsForTheDesk": [
+    "add all 5 rows under SUB8.1 (order after 8.1.4, before 8.1.8 — census-changing)",
+    "decline with disposition note of record"
+   ]
+  },
+  {
+   "id": "D3_811a_recode",
+   "title": "cs-23 8.1.1a re-code — the code does not exist officially; carrier of official 8.1.4(f) (mis-map CONFIRMED, run-016 newFindings[1] discharged by run-017)",
+   "sourceRun": "run-017 (structural proposal map F1)",
+   "finding": "corpus code 8.1.1a does not exist officially: official 8.1 row 1 ('Declare and use variables and constants') has NO lettered sub-rows; 8.1.1a carries official 8.1.4(f)'s statement (title repaired this run; run-016 newFindings[1] mis-map suspicion CONFIRMED)",
+   "evidence": "census rows['8.1.4'] letters a-f; subRows['8.1.4f']; corpus 8.1.1a pre-apply title (apply_manifest_r0.json rows[8])",
+   "censusChanging": false,
+   "exporterBlocked": false,
+   "byteExactContext": {
+    "official_8.1.4f": "Understand and use arithmetic, logical and Boolean operators",
+    "corpus_8.1.1a": "carries official 8.1.4(f)'s statement (title repaired in place by run-017, code unchanged — title-only law)"
+   },
+   "optionsForTheDesk": [
+    "re-code 8.1.1a -> 8.1.4f (sub-row of row 8.1.4)",
+    "fold into 8.1.4",
+    "retain 8.1.1a with disclosed provenance note"
+   ]
+  },
+  {
+   "id": "D4_misfiled_section7_rows_reparent",
+   "title": "cs-23 6.3.4a/6.3.5-6.3.9 are official section-7 rows (7.4-7.9) mis-filed under SUB6.3 — re-parent to T7; BLOCKED on D1's exporter law; overlaps the run-016 proposal rows 7.4-7.9",
+   "sourceRun": "run-017 (structural proposal map F4)",
+   "finding": "corpus rows 6.3.4a, 6.3.5, 6.3.6, 6.3.7, 6.3.8, 6.3.9 carry official section 7 rows verbatim (7.4, 7.5, 7.6, 7.7, 7.8, 7.9) mis-filed under SUB6.3; official 6.3 (AI) ends at row 3",
+   "evidence": "census rows['7.5']; corpus titles 6.3.4a/6.3.6-6.3.9 byte-equal official 7.4/7.6-7.9 statements; 6.3.5 title repaired this run to official 7.5",
+   "censusChanging": true,
+   "exporterBlocked": true,
+   "reconciliation": "if the desk extends the exporter law (D1), these six corpus rows are the natural in-place carriers of official 7.4-7.9 and would DUPLICATE the run-016 proposal rows 7.4-7.9 unless reconciled — the desk picks the carrier class (in-place re-parent vs proposal-row add); decision belongs to the desk",
+   "optionsForTheDesk": [
+    "rule D1 first, then re-parent the six rows in place (drop the overlapping run-016 proposal rows 7.4-7.9 from the add list)",
+    "rule D1 and add fresh rows 7.4-7.9, dispositioning the six mis-filed corpus rows separately (remove/re-file)",
+    "decline"
+   ]
+  },
+  {
+   "id": "D5_63_nonrow_debris",
+   "title": "cs-23 6.3.1a/6.3.2a/6.3.3a ('See section 4' appendix pointers) + 6.3.4 (advisory sentence) are NOT official outcome rows — disposition DESK CALL; prerequisite concepts are load-bearing on the codes",
+   "sourceRun": "run-017 (structural proposal map F3)",
+   "finding": "4 corpus rows under SUB6.3 are NOT official outcome rows: 6.3.1a/6.3.2a/6.3.3a are the 'See section 4 for the:' pointer bullets (flowchart symbols / logic gate symbols / pseudocode format — appendix pointers), 6.3.4 is the inter-section advisory sentence ('Students are advised to program solutions…')",
+   "evidence": "official 6.3 = exactly 3 numbered rows (census cross-check, run-016 evidence + this run's raw dumps); the 4 texts are doc-verbatim non-row text",
+   "censusChanging": true,
+   "exporterBlocked": false,
+   "prereqLoadBearing": {
+    "anchors": [
+     "6.3.1a",
+     "6.3.2a",
+     "6.3.3a"
+    ],
+    "law": "C47-CON-FLOWCHART-SYMBOLS->6.3.1a, C47-CON-LOGIC-GATE-SYMBOLS->6.3.2a, C47-CON-PSEUDOCODE-FORMAT->6.3.3a — ANY removal requires the prereq re-anchor pass in the SAME change"
+   },
+   "optionsForTheDesk": [
+    "remove as non-rows + same-change prereq re-anchor",
+    "re-file as non-point metadata (codes preserved, points-census excluded — exporter-shape decision needed for the metadata class)",
+    "retain as-is with disclosed provenance"
+   ]
+  },
+  {
+   "id": "D6_pure1_13_coverage_split",
+   "title": "9709 pure-1 1.3 coverage split — official 1.3.3/1.3.4/1.3.5 absent as dedicated rows (fragments inside the 1.3.2a blob); 1.3.1a/1.3.2a disposition; 1.4.1a no-action disclosed",
+   "sourceRun": "run-018 (adjudication of record P1+P2)",
+   "finding": "official 1.3.3/1.3.4/1.3.5 have no dedicated corpus rows — the 1.3.2a blob carries their fragments (head of 1.3.3 + all of 1.3.4 + all of 1.3.5); 1.3.1a is non-row debris (upstream fragment '1 problems' + fleet-glued '• understand that the equation' head of official 1.3.3) | corpus a-suffix codes 1.3.1a/1.3.2a/1.4.1a are the fleet's de-duplication of the upstream parse's DUPLICATE official_codes (1.3.1 x2, 1.3.2 x2, 1.4.1 x2) — parse-vintage artifacts; 1.4.1a is the dedicated carrier of official 1.4.2 (title repaired this run, code retained per the run-012 frozen-anchor law)",
+   "evidence": "census rows 1.3.3/1.3.4/1.3.5; upstream parse duplicate-code entries 1.3.1/1.3.2",
+   "censusChanging": true,
+   "exporterBlocked": false,
+   "byteExactTitlesForTheDeskAdd": {
+    "1.3.3": "understand that the equation (x – a)2 + (y – b)2 = r 2 represents the circle with centre (a, b) and radius r",
+    "1.3.4": "use algebraic methods to solve problems involving lines and circles",
+    "1.3.5": "understand the relationship between a graph and its associated algebraic equation, and use the relationship between points of intersection of graphs and solutions of equations."
+   },
+   "titlePinNote": "1.3.3 keeps the raw layout superscript form ('2' for x²/y²/r²) per the run-018 pin law — glyph composition is the add-pass's business, not the filing's",
+   "noActionDisclosed": "no action required for 1.4.1a (disclosed); 1.3.1a/1.3.2a fold into P1",
+   "optionsForTheDesk": [
+    "add 3 rows under SUB1.3 + disposition 1.3.1a/1.3.2a (remove/re-file; 1.3.2a fragments then re-home into the new rows)",
+    "decline with disposition note of record"
+   ]
+  }
+ ],
+ "suggestedDispositionOrder": [
+  "D1 first (the keystone law decision — unblocks D4 and the 21-point add)",
+  "D2 and D6 (independent census-growth adds; mechanical once ruled — the lane can execute them as follow-up runs on desk order)",
+  "D3 and D5 (cs-23 single-course dispositions; D5 carries the prereq re-anchor requirement)",
+  "D4 rides D1's ruling (reconciliation choice included)"
+ ],
+ "executorNote": "on any ruling, the mechanical apply (byte-surgery per the run-016/017/018 dump law, manifest + spine + KG planes re-census in the same change) is lane-executable as a follow-up run — desk decides who executes"
+}
