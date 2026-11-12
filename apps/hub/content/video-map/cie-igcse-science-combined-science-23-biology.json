@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 2,
+  "rowsApproved": 3,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 2,
+    "rowsApproved": 3,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -62,6 +62,21 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Freesciencelessons",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "g2QtHxpK0i4",
+   "title": "GCSE Biology - Maintaining Biodiversity | Reducing Environment Impact (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=g2QtHxpK0i4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 303,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
   }
  ],
  "mappings": [
@@ -104,19 +119,39 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "video": "g2QtHxpK0i4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B12.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Maintaining Biodiversity | Reducing Environment Impact' = conservation for biodiversity plus human impacts like deforestation and overharvesting (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
   }
  ],
  "coverage": {
   "specPointsTotal": 70,
-  "specPointsMapped": 2,
-  "specPointsUnmapped": 68,
-  "videosTotal": 2,
-  "videosMapped": 2,
+  "specPointsMapped": 3,
+  "specPointsUnmapped": 67,
+  "videosTotal": 3,
+  "videosMapped": 3,
   "videosUnmapped": 0,
-  "mappingRows": 2,
+  "mappingRows": 3,
   "byConfidence": {
    "high": 0,
-   "medium": 2,
+   "medium": 3,
    "low": 0
   }
  },
@@ -140,5 +175,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.088Z"
+ "generatedUtc": "2026-11-12T07:09:06.198Z"
 }

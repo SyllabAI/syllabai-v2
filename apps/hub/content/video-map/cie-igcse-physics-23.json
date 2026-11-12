@@ -11,6 +11,11 @@
    "provider": "physics-online (@PhysicsOnline — one channel behind gcsephysicsonline.com + alevelphysicsonline.com, Lewis Matheson / Physics Online Ltd)",
    "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence posture title-only (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/worksheet-answers/paper-walkthrough videos excluded)",
    "enumeratedUtc": "2026-11-10T03:03:19Z"
+  },
+  "p5": {
+   "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
+   "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-01T01:04:15Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 16 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 103,
+  "rowsApproved": 176,
   "rowsRejected": 1,
   "rejects": [
    {
@@ -58,6 +63,63 @@
       "spec": "1.4.3",
       "reason": "Spec-trim: the Coke-vs-Diet-Coke floating demo evidences 1.4.1 (density definition) but 1.4.3 requires the determination from density DATA, which the qualitative comparison does not evidence. 1.4.1 binding kept.",
       "lane": "T-VIDEOMAP-P2E"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p5 (cognito completion)",
+    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-12",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+    "ruledUtc": "2026-11-12T07:07:10Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Programmatic re-verification: oEmbed author Cognito 73/73, all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: borderline rows kept at low with disclosed partial overlap; full-row drops and spec trims below.",
+    "rowsApproved": 73,
+    "rowsRejected": 9,
+    "rejects": [
+     {
+      "video": "_5xzIfB_cbM",
+      "reason": "self-review full-row drop: 3.3.4 is EM-radiation hazard; the video teaches nuclear irradiation/contamination — adjacent, not named",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "qlvKhMJibPY",
+      "reason": "no honest binding: Radiotherapy and medical tracers content absent from candidate list; nearest specs (ultrasound, EM uses) are different",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "VFwf1JldiJA",
+      "reason": "no honest binding: No candidate spec covers specific latent heat; candidates concern SHC experiments and fusion, unrelated",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "d7_dMHwqpgM",
+      "reason": "no honest binding: No candidate spec covers static electricity or charge build-up on insulators",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "q0yjYZdTS3I",
+      "reason": "no honest binding: Stopping/thinking/braking distances not covered by any candidate spec; candidates are space physics",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "SYU1TKQru1c",
+      "reason": "no honest binding: Free-body diagrams and resultant-force calculation not covered by candidates; 1.5.5 covers resultant-force effects only",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "xdrE0kP8GTM",
+      "reason": "no honest binding: Contact versus non-contact force classification not covered by any candidate spec",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "bWEtm-7cYzM",
+      "reason": "no honest binding: Red-shift specs absent from candidate list; only candidate is star life cycle, not named by title",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     },
+     {
+      "video": "IxqUjM8cOcU",
+      "reason": "no honest binding: Calculation title; no candidate covers transformer turns-ratio equations, only construction and transmission use",
+      "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
      }
     ]
    }
@@ -1696,6 +1758,1101 @@
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "hH8FLOhxKks",
+   "title": "GCSE Physics - Orbits - What They Are | How Orbit Size Relates to an Object's Speed (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=hH8FLOhxKks",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 286,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "V69KZun35K8",
+   "title": "GCSE Physics - Life Cycle of Stars | How Stars are Formed & Destroyed (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=V69KZun35K8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 392,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Elv4bsa7TIA",
+   "title": "GCSE Physics - Nuclear Fusion - How it Works | Pros & Cons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Elv4bsa7TIA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 195,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "JQEZaJX7NVQ",
+   "title": "GCSE Physics - Nuclear Fission - How it Works | Nuclear Reactors | Pros & Cons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=JQEZaJX7NVQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 254,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "wvgT52mwM3Y",
+   "title": "GCSE Physics - Radioactive Decay & Half-life | How to Calculate Activity & Half-life (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=wvgT52mwM3Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 408,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "1ui5YnYkYpc",
+   "title": "GCSE Physics - Alpha, Beta & Gamma Radiation | How Ionising & Penetrating They Are (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=1ui5YnYkYpc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 298,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "NxD7L4B7fRE",
+   "title": "GCSE Physics - Pressure & Volume | pV = Constant Equation (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=NxD7L4B7fRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 302,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "eHizt31t1rs",
+   "title": "GCSE Physics - Factors Affecting Gas Pressure | How Gas Particles Create Pressure (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=eHizt31t1rs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 240,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "m2P2DdfebiU",
+   "title": "GCSE Physics - Density - Equation | How to Calculate Density Experimentally (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=m2P2DdfebiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 321,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "zjkBMk5d3tM",
+   "title": "GCSE Physics - Particle Theory & States of Matter | Solids, Liquids & Gases (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=zjkBMk5d3tM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 297,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "XWL8963-AuQ",
+   "title": "GCSE Physics - Motor Effect - How to Find Force Direction & Strength (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=XWL8963-AuQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 296,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LTfP8yPAVFw",
+   "title": "GCSE Physics - Electromagnetism - Wires | Coils | Solenoids | Electromagnets (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LTfP8yPAVFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 331,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "_lP3Nd_JLLU",
+   "title": "GCSE Physics - Electric Fields - Field Lines | Ionisation of Air (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=_lP3Nd_JLLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 209,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "mcvH4JU2stM",
+   "title": "GCSE Physics - Fuses & Earthing | Safety Precautions to Reduce Risks from Surges (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mcvH4JU2stM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "tb8mW-FiexA",
+   "title": "GCSE Physics - Plugs & Wires - Earth Wire | Neutral Wire | Live Wire (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=tb8mW-FiexA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 233,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "B1XiX3sNV-c",
+   "title": "GCSE Physics - Alternating Current & Direct Current | AC & DC (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=B1XiX3sNV-c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 173,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "wfsvM1Obfu8",
+   "title": "GCSE Physics - Components - Symbols | Measurements in Circuits | Resistors (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=wfsvM1Obfu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 223,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "rUnABMRPzvg",
+   "title": "GCSE Physics - Conduction, Convection & Radiation | How Heat Energy is Transferred (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=rUnABMRPzvg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 271,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "hSzEdvFEVq8",
+   "title": "GCSE Physics - Gravitational Potential Energy & Gravity | How to Calculate Weight (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=hSzEdvFEVq8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 412,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "gNNH7ctGDh0",
+   "title": "The Sun, Stars & Universe | What Light Years Are",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=gNNH7ctGDh0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 397,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "bHLsHjRMAsU",
+   "title": "GCSE Physics - Permanent & Induced Magnets (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=bHLsHjRMAsU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 199,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "v7_9DoCLRKk",
+   "title": "GCSE Physics - Nuclear Decay Equations - Alpha, Beta & Gamma Radiation (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=v7_9DoCLRKk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 292,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "GTpo1nAZqFE",
+   "title": "GCSE Physics - Atomic Structure, Isotopes & Electron Shells (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=GTpo1nAZqFE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 347,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "u3isbsyDtL0",
+   "title": "GCSE Physics - National Grid - How we Generate & Transmit Electricity | Transformers (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=u3isbsyDtL0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 223,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "GIvE5Zlpea8",
+   "title": "GCSE Physics - Parallel Circuits (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=GIvE5Zlpea8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 228,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Hk4JEB5DITw",
+   "title": "GCSE Physics - Series Circuits (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Hk4JEB5DITw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 393,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "XMhOKC34tvs",
+   "title": "GCSE Physics - Charge / Current / Time (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=XMhOKC34tvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "BbizKa6eywo",
+   "title": "GCSE Physics - Voltage, Current & Resistance | V = IR Equation | IV Graphs (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=BbizKa6eywo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 276,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "rFd-vzU4_pg",
+   "title": "GCSE Physics - Circuits: Introduction - Potential Difference | Current | Resistance (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=rFd-vzU4_pg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 263,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "6G7glidXTcQ",
+   "title": "GCSE Physics -  Seismic Waves - P-waves & S-waves (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=6G7glidXTcQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 294,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "0_hd08yYoXY",
+   "title": "GCSE Physics - Ultrasound - Prenatal Scanning | Industrial Imaging | Sonar (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=0_hd08yYoXY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 338,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LWQE68YRyGg",
+   "title": "GCSE Physics - Visible Light & Colour - Colour Spectrum | Colour Filters (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LWQE68YRyGg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 397,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "9mF21_QDpxY",
+   "title": "GCSE Physics - How to Draw Ray Diagrams - Concave & Convex Lenses (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=9mF21_QDpxY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 406,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "0O3NdG0uWM4",
+   "title": "GCSE Physics - How Lenses Work - Convex & Concave Lenses | Real & Virtual Images (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=0O3NdG0uWM4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 397,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "kp8sBmEqY28",
+   "title": "GCSE Physics - X-Rays & Gamma Rays - Characteristics | Uses (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=kp8sBmEqY28",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 273,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "N9yEWOlkDzI",
+   "title": "GCSE Physics - Visible & Ultraviolet Light - Characteristics | Uses (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=N9yEWOlkDzI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 286,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "JUWfr251540",
+   "title": "GCSE Physics - Microwaves & Infrared - Characteristics | Uses (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=JUWfr251540",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 306,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "a272XhMzzCI",
+   "title": "GCSE Physics - Radio Waves - Different Types | How They're Used for Communication (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=a272XhMzzCI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 290,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "zx0UIMA2-bA",
+   "title": "GCSE Physics - Electromagnetic Waves - Frequency | Wavelength | Where They Come From (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=zx0UIMA2-bA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 311,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "1DFAy8MXkMA",
+   "title": "GCSE Physics - Longitudinal & Transverse Waves - Labelling & Calculating Wave Speed (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=1DFAy8MXkMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 400,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "KjFA2Zvdn6I",
+   "title": "GCSE Physics - Momentum (Part 2 of 2) - Changes in Momentum (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=KjFA2Zvdn6I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 396,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "mjeOuh0G-gw",
+   "title": "GCSE Physics - Momentum (Part 1 of 2) | Conservation of Momentum (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mjeOuh0G-gw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 453,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "A_Dh7EstGwU",
+   "title": "GCSE Physics - Newton's 3rd Law | How it Relates to F = ma (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=A_Dh7EstGwU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 173,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "D8XOm4swxOU",
+   "title": "GCSE Physics - Newton's 1st & 2nd Laws | Circular Motion | Inertia (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=D8XOm4swxOU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 397,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "k3AYX5INJ_4",
+   "title": "GCSE Physics - Terminal Velocity - What Affects Air Resistance | Resultant Force & Acceleration",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=k3AYX5INJ_4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 465,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ysda01Y8PgE",
+   "title": "GCSE Physics - Acceleration - Rate of Change in Velocity | Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ysda01Y8PgE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 328,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "OIpvOIb3GAg",
+   "title": "GCSE Physics - Liquid Pressure & Upthrust - Calculating Liquid Pressure | How it Varies With Depth",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=OIpvOIb3GAg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 354,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "sfnsuS0-o58",
+   "title": "GCSE Physics - Pressure - Equation & How it Works (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=sfnsuS0-o58",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 278,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "pqbPcLTz-tE",
+   "title": "GCSE Physics - Moments - Seesaws & Gears (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=pqbPcLTz-tE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 389,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "abWi5y6bJ9k",
+   "title": "GCSE Physics - Elasticity, Spring Constant & Hooke's Law | Force Extension Graphs (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=abWi5y6bJ9k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 352,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "mIxhW8JfRrQ",
+   "title": "GCSE Physics - Hydroelectricity & Tidal Barrages - How they Work | Pros & Cons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=mIxhW8JfRrQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 238,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "pL_lR-VcDT8",
+   "title": "GCSE Physics - Biofuels - How they Work | Pros & Cons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=pL_lR-VcDT8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 189,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Q5CqN-vbetM",
+   "title": "GCSE Physics - Geothermal Power - How it Works | Pros & Cons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Q5CqN-vbetM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 145,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "patAsiGEfGc",
+   "title": "GCSE Physics - Wind & Solar Power - How they Work | Pros & Cons (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=patAsiGEfGc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 193,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "N5mHKqcit9I",
+   "title": "GCSE Physics - Energy Resources - Renewables & Non-renewables | Uses | Sources of Electricity",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=N5mHKqcit9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 231,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "KbrqbW0um0Y",
+   "title": "GCSE Physics - Efficiency | Energy & Power (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=KbrqbW0um0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 336,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Pf5EHVxc4XI",
+   "title": "GCSE Physics - Power & Work Done - Equations | Calculations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Pf5EHVxc4XI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 269,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "vwZ2u3qn5pM",
+   "title": "GCSE Physics - Reducing Unwanted Energy Transfers - Thermal Insulation | Lubrication (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=vwZ2u3qn5pM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 250,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "ROBkMqJQLr4",
+   "title": "GCSE Physics - Conservation of Energy | Open & Closed Systems (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=ROBkMqJQLr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 229,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "LUHGFLR2p8k",
+   "title": "GCSE Physics - Specific Heat Capacity | Internal Energy & Temperature (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=LUHGFLR2p8k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 302,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "nbFjz4eiJHQ",
+   "title": "GCSE Physics - Elastic Potential Energy & F = ke Equations (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=nbFjz4eiJHQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 278,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "244-42IQGYU",
+   "title": "GCSE Physics - Kinetic Energy | How to Calculate it (2027/28 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=244-42IQGYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 263,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "7RtBUEZbKmI",
+   "title": "GCSE Physics - How Transformers Work (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=7RtBUEZbKmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 260,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "pkzY7QfTowM",
+   "title": "GCSE Physics - Generator Effect / Electromagnetic Induction (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=pkzY7QfTowM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 299,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "evWpDrRAyCc",
+   "title": "GCSE Physics - How the Electric Motor Works (2026/27 exams)",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=evWpDrRAyCc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 303,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "s9wZkP64rAc",
+   "title": "GCSE Physics - Sound Waves and Hearing",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=s9wZkP64rAc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 308,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "je-qc7sxYzU",
+   "title": "GCSE Physics - How Radiation Affects Temperature",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=je-qc7sxYzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 332,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "UUc44Vg5pCI",
+   "title": "GCSE Physics - Refraction of waves",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=UUc44Vg5pCI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 310,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "WDBtOeXUdWQ",
+   "title": "GCSE Physics - Reflection",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=WDBtOeXUdWQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 329,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "p7QS4cz-Avs",
+   "title": "GCSE Physics - How Moments Work - Spanners and Seesaws",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=p7QS4cz-Avs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 341,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "Q8y4x5EElm8",
+   "title": "GCSE Physics - Development of the model of the atom",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=Q8y4x5EElm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 273,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "3elpPfyHV0E",
+   "title": "GCSE Physics - What Are Magnets? How to Draw Magnetic Field Lines",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=3elpPfyHV0E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 272,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "JGwcDCeYRYo",
+   "title": "GCSE Physics - Energy Stores, Transferring Energy & Work Done",
+   "provider": "cognito",
+   "watchUrl": "https://www.youtube.com/watch?v=JGwcDCeYRYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic teaching content bound on topic, not board wording",
+   "durationS": 310,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Cognito",
+   "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
   }
  ],
  "mappings": [
@@ -3260,20 +4417,1193 @@
    "boardMismatch": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-10T03:30:11Z"
+  },
+  {
+   "video": "hH8FLOhxKks",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.6",
+    "6.1.10",
+    "6.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Orbits - How Orbit Size Relates to an Object's Speed' = gravity holds orbits; speed tied to orbit radius and period",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "V69KZun35K8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Life Cycle of Stars | How Stars are Formed & Destroyed' = star formation to destruction is the stellar life cycle",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Elv4bsa7TIA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.5a",
+    "1.7.6a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Nuclear Fusion - How it Works | Pros & Cons' = energy released by fusion; research into fusion power generation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JQEZaJX7NVQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Nuclear Fission - Nuclear Reactors' = nuclear fuel listed among electricity-generating energy resources",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wvgT52mwM3Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1b",
+    "5.2.1c"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Radioactive Decay & Half-life' = unstable nuclei decay; half-life time for half to decay",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1ui5YnYkYpc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Alpha, Beta & Gamma Radiation | How Ionising & Penetrating They Are' = identifying the three emissions by ionising and penetrating power",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "NxD7L4B7fRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1b"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Pressure & Volume | pV = Constant Equation' = fixed gas mass pressure rises as volume decreases",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "eHizt31t1rs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1b",
+    "2.1.3",
+    "2.1.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Factors Affecting Gas Pressure | How Gas Particles Create Pressure' = particle collisions create pressure; volume and temperature change it",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "m2P2DdfebiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1",
+    "1.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Density - Equation | How to Calculate Density Experimentally' = density as mass per volume; determining it for solids and liquids",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "zjkBMk5d3tM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.1a",
+    "2.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Particle Theory & States of Matter | Solids, Liquids & Gases' = particle arrangement and motion of the three states",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XWL8963-AuQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.1c",
+    "4.5.2d"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Motor Effect - How to Find Force Direction & Strength' = force on current-carrying conductor; relative force-field-current directions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LTfP8yPAVFw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.1a",
+    "4.5.2a",
+    "4.1.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electromagnetism - Wires | Coils | Solenoids | Electromagnets' = field patterns of current-carrying wires and solenoids; electromagnet uses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "_lP3Nd_JLLU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.8",
+    "4.2.9",
+    "4.2.10"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electric Fields - Field Lines' = region where charge experiences force; field patterns between plates",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mcvH4JU2stM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.2",
+    "4.4.3",
+    "4.4.4",
+    "4.4.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Fuses & Earthing | Safety Precautions' = fuses and earth wire protect circuits and appliance users",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tb8mW-FiexA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Plugs & Wires - Earth Wire | Neutral Wire | Live Wire' = mains circuit live, neutral and earth wires",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "B1XiX3sNV-c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.4a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Alternating Current & Direct Current | AC & DC' = difference between d.c. and a.c.",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "wfsvM1Obfu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Components - Symbols | Measurements in Circuits | Resistors' = drawing circuit diagrams with cells, meters, resistors, lamps",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "rUnABMRPzvg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.1c",
+    "2.3.2",
+    "2.3.3a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Conduction, Convection & Radiation | How Heat Energy is Transferred' = the three thermal transfer mechanisms and their applications",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hSzEdvFEVq8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.5",
+    "1.3.5",
+    "1.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Gravitational Potential Energy & Gravity | How to Calculate Weight' = weight from gravitational field strength; GPE change mgΔh",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "gNNH7ctGDh0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.1a",
+    "6.2.1b",
+    "6.2.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Sun, Stars & Universe | What Light Years Are' = Sun as star; galaxy and Universe distances in light-years",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "bHLsHjRMAsU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.2",
+    "4.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Permanent & Induced Magnets' = induced magnetism; hard versus soft magnet properties",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "v7_9DoCLRKk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.5a",
+    "5.2.2b",
+    "5.2.4a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Nuclear Decay Equations - Alpha, Beta & Gamma Radiation' = decay equations in nuclide notation; nucleus changes to new element",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GTpo1nAZqFE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.5",
+    "5.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Atomic Structure, Isotopes & Electron Shells' = nucleus plus orbiting electrons; isotope meaning; proton and nucleon numbers",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "u3isbsyDtL0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.4a",
+    "4.5.1e"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'National Grid - How we Generate & Transmit Electricity | Transformers' = transformers in high-voltage transmission; simple transformer construction",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "GIvE5Zlpea8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.5",
+    "4.3.6",
+    "4.3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Parallel Circuits' = branch currents, lower combined resistance, parallel lamp advantages",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Hk4JEB5DITw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1a",
+    "4.3.3",
+    "4.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Series Circuits' = same current everywhere; e.m.f.s and resistances add in series",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "XMhOKC34tvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1a"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Charge / Current / Time' = current related to flow of charge over time",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "BbizKa6eywo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1c",
+    "4.2.7a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Voltage, Current & Resistance | V = IR Equation | IV Graphs' = resistance equation R=V/I; I-V characteristics of components",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "rFd-vzU4_pg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.3b",
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Circuits: Introduction - Potential Difference | Current | Resistance' = p.d. as work done per unit charge; circuit diagrams",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "6G7glidXTcQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.5",
+    "3.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Seismic Waves - P-waves & S-waves' = P- and S-waves exemplify longitudinal and transverse wave vibration",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "0_hd08yYoXY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.9",
+    "3.4.12"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Ultrasound - Prenatal Scanning | Industrial Imaging | Sonar' = ultrasound above 20 kHz; scanning, testing and sonar uses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LWQE68YRyGg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.2c"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Visible Light & Colour - Colour Spectrum' = seven colours of the visible spectrum in order",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9mF21_QDpxY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.3b",
+    "3.2.1b"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How to Draw Ray Diagrams - Concave & Convex Lenses' = ray diagrams for real image formation by converging lens",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "0O3NdG0uWM4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1b",
+    "3.2.5a",
+    "3.2.3b"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How Lenses Work - Convex & Concave Lenses | Real & Virtual Images' = converging/diverging lens action; virtual image from diverging rays",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "kp8sBmEqY28",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'X-Rays & Gamma Rays - Characteristics | Uses' = typical uses of electromagnetic spectrum regions incl. medical imaging",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "N9yEWOlkDzI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3",
+    "3.2.2c"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Visible & Ultraviolet Light - Characteristics | Uses' = uses of EM regions; visible spectrum colours and UV harm",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JUWfr251540",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3",
+    "3.3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Microwaves & Infrared - Characteristics | Uses' = microwave and infrared in communications; typical EM uses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "a272XhMzzCI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3",
+    "3.3.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Radio Waves - Different Types | How They are Used for Communication' = radio waves in communications systems; typical EM region uses",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "zx0UIMA2-bA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Electromagnetic Waves - Frequency | Wavelength' = EM spectrum ordered by frequency and wavelength; wave features",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "1DFAy8MXkMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.5",
+    "3.1.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Longitudinal & Transverse Waves - Labelling & Calculating Wave Speed' = vibration parallel or right-angled to propagation; wave labelling",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KjFA2Zvdn6I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2",
+    "1.6.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Momentum (Part 2 of 2) - Changes in Momentum' = impulse FΔt; resultant force as rate of momentum change",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mjeOuh0G-gw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.1",
+    "1.6.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Momentum (Part 1 of 2) | Conservation of Momentum' = momentum as mass times velocity; conservation in one dimension",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "A_Dh7EstGwU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.11"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Newton's 3rd Law | How it Relates to F = ma' = recall and use F = ma",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "D8XOm4swxOU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.12"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Newton's 1st & 2nd Laws | Circular Motion | Inertia' = circular motion from force perpendicular to the motion",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "k3AYX5INJ_4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.13",
+    "1.5.5",
+    "1.5.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Terminal Velocity - What Affects Air Resistance | Resultant Force & Acceleration' = falling with drag until resultant force reaches zero",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ysda01Y8PgE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Acceleration - Rate of Change in Velocity | Equations' = acceleration as change in velocity per unit time",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "OIpvOIb3GAg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8.3",
+    "1.8.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Liquid Pressure & Upthrust - Calculating Liquid Pressure | How it Varies With Depth' = liquid pressure increasing with depth and density; equation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "sfnsuS0-o58",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Pressure - Equation & How it Works' = pressure defined as force per unit area",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pqbPcLTz-tE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.2a",
+    "1.5.3a",
+    "1.5.5a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Moments - Seesaws & Gears' = principle of moments balancing forces each side of pivot",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "abWi5y6bJ9k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.9",
+    "1.5.2",
+    "1.5.10"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Elasticity, Spring Constant & Hooke's Law | Force Extension Graphs' = spring constant force per unit extension; load-extension graphs",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "mIxhW8JfRrQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1b"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Hydroelectricity & Tidal Barrages - How they Work | Pros & Cons' = energy from tides and water behind hydroelectric dams",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pL_lR-VcDT8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Biofuels - How they Work | Pros & Cons' = chemical energy stored in biofuels among energy sources",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Q5CqN-vbetM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Geothermal Power - How it Works | Pros & Cons' = geothermal resources listed among useful energy sources",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "patAsiGEfGc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1b"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Wind & Solar Power - How they Work | Pros & Cons' = wind energy and sunlight listed among energy sources",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "N5mHKqcit9I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1b",
+    "1.7.4a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Energy Resources - Renewables & Non-renewables | Sources of Electricity' = generating electricity from the full range of energy resources",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "KbrqbW0um0Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.7",
+    "1.7.3a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Efficiency | Energy & Power' = efficiency defined from useful and total energy; transfer efficiency concept",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Pf5EHVxc4XI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1c",
+    "1.7.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Power & Work Done - Equations | Calculations' = power as work done per unit time; W = Fd",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "vwZ2u3qn5pM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4",
+    "2.3.3a"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Reducing Unwanted Energy Transfers - Thermal Insulation | Lubrication' = thermal insulators conduct poorly; gases conduct badly (insulation materials)",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ROBkMqJQLr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.6",
+    "1.7.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Conservation of Energy | Open & Closed Systems' = energy conserved in simple and complex processes",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "LUHGFLR2p8k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.4a",
+    "2.2.1a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Specific Heat Capacity | Internal Energy & Temperature' = measuring specific heat capacity; temperature rise raises internal energy",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "nbFjz4eiJHQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1",
+    "1.5.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Elastic Potential Energy & F = ke Equations' = elastic (strain) named energy store; load-extension graph work",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "244-42IQGYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Kinetic Energy | How to Calculate it' = recall and use the kinetic energy equation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "7RtBUEZbKmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.1e"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How Transformers Work' = simple transformer construction with soft iron core for voltage transformation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pkzY7QfTowM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.2",
+    "4.5.3",
+    "4.5.1b"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Generator Effect / Electromagnetic Induction' = demonstrating electromagnetic induction; factors affecting induced e.m.f.; a.c. generator",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "evWpDrRAyCc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.1c"
+   ],
+   "confidence": "low",
+   "evidence": "title 'How the Electric Motor Works' = d.c. motor from force on current-carrying coil in field",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "s9wZkP64rAc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.2",
+    "3.4.3",
+    "3.4.4",
+    "3.4.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Sound Waves and Hearing' = longitudinal sound; audible frequency range; loudness and pitch",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "je-qc7sxYzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.9",
+    "2.3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How Radiation Affects Temperature' = emission rate depends on surface temperature; Earth radiation balance",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "UUc44Vg5pCI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.8",
+    "3.2.1a",
+    "3.2.2a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Refraction of waves' = refraction at boundaries; angles of incidence and refraction; ripple tank",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WDBtOeXUdWQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1",
+    "3.2.3",
+    "3.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reflection' = angle of incidence equals angle of reflection; plane mirror constructions",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "p7QS4cz-Avs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1a",
+    "1.5.2a",
+    "1.5.3a"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How Moments Work - Spanners and Seesaws' = moment as turning effect; force times perpendicular distance",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Q8y4x5EElm8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.3a",
+    "5.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Development of the model of the atom' = alpha particle scattering supports the nuclear model",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "3elpPfyHV0E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.6",
+    "4.1.7",
+    "4.1.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'What Are Magnets? How to Draw Magnetic Field Lines' = forces between poles; bar-magnet field pattern plotted with compass",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "JGwcDCeYRYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Energy Stores, Transferring Energy & Work Done' = energy transferred between stores by mechanical work done",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
+   "reviewedUtc": "2026-11-12T07:07:10Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 294,
-  "specPointsMapped": 76,
-  "specPointsUnmapped": 218,
-  "videosTotal": 103,
-  "videosMapped": 103,
+  "specPointsMapped": 155,
+  "specPointsUnmapped": 139,
+  "videosTotal": 176,
+  "videosMapped": 176,
   "videosUnmapped": 0,
-  "mappingRows": 103,
+  "mappingRows": 176,
   "byConfidence": {
    "high": 0,
-   "medium": 79,
-   "low": 24
+   "medium": 143,
+   "low": 33
   }
  },
  "inputs": {
@@ -3292,7 +5622,13 @@
    "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p2e.json",
    "task": "T-VIDEOMAP-P2E",
    "reviewAppliedUtc": "2026-11-10T03:30:11Z"
+  },
+  "p5": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p5.json",
+   "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
+   "reviewAppliedUtc": "2026-11-12T07:07:10Z"
   }
  },
- "generatedUtc": "2026-11-11T14:52:29.025Z"
+ "generatedUtc": "2026-11-12T07:09:06.145Z"
 }
