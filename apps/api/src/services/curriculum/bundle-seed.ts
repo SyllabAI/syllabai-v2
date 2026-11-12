@@ -743,9 +743,18 @@ export function mapBundleNodes(
       );
     }
     const parentMapped = byCode.get(parent);
-    if (parentMapped == null || parentMapped.nodeType !== "TOPIC") {
+    // RN-DEBRIS-11 run-021 (the run-019 filing D1 law, trace 1a1cf5ecf9027039):
+    // the topic-level point — a SPEC_POINT whose single parent is the curriculum
+    // TOPIC family (mapped UNIT here, the 0478 T7/T9/T10 shape that carries no
+    // subtopic layer officially) — lands under its UNIT, mirroring kg_export
+    // v1.7's section-hung law byte-for-byte (zero SUBTOPIC parents + exactly one
+    // TOPIC-family parent). The subtopic-hung law is unchanged: a mapped TOPIC
+    // (curriculum SUBTOPIC) parent remains the classic path; the dual-parent
+    // law above still routes chemistry-19's [UNIT, TOPIC] shape to the TOPIC.
+    // Anything else still refuses.
+    if (parentMapped == null || (parentMapped.nodeType !== "TOPIC" && parentMapped.nodeType !== "UNIT")) {
       throw new BundleSeedConflictError(
-        "bundle SPEC_POINT " + n.code + " parent " + parent + " is not a mapped TOPIC",
+        "bundle SPEC_POINT " + n.code + " parent " + parent + " is not a mapped TOPIC or UNIT",
       );
     }
     // lane C leg 4 (ruling A of record, trace 1a15beb5881f7f31): the pre-law

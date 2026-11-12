@@ -1,0 +1,24 @@
+{
+ "receipt": "rn11-run-021-postReview",
+ "family": "RN-DEBRIS-11",
+ "run": "021-postReview",
+ "kind": "self-review record before self-merge (PR #959) — the run-018/019/020 postReview flow",
+ "operatorOrder": "self-merge #959",
+ "operatorTrace": "1a1cfafa2d7bb1c1",
+ "generatedUtc": "2026-11-12",
+ "selfReviewFindings": {
+  "netDiff": "PR #959 vs main 541424a1: exactly the 16 apply paths (+3734/-35) — cs-23 curriculum (+373/-16), manifest (+1/-1), spine (+1/-1), KG regen (+1/-1), index.json (+1/-1), kg_export.py (+63/-12), api bundle-seed.ts (+11/-2), sme bundle-questions.ts (+17/-1), 2 worklogs (+4 each), 4 lane-artifact files + 1 receipt (new)",
+  "pins": "the 21 topic-level points byte-exact across the whole chain: run-016 proposal of record == run-019 filing D1 applyReadyPins == run-021 apply_manifest addedNodes == head curriculum nodes (titles+parents byte-exact; each single parent a TOPIC-family node); zero-invention, no normalization",
+  "scope": "adds-only: zero removed nodes; survivors byte-identical EXCEPT the 16 sec8 order bumps (+12 each, order field only, both content and spine — identical surgery); dense SPEC_POINT orders 1..114; T7 78-89 / T8 90-105 / T9 106-109 / T10 110-114 per the disclosed order-law recompute; manifest 93->114 single site; index P5 single site {146,239,114} (105 other courses byte-identical); still-open desk choices (D3 8.1.1a re-code, D4 carrier-class reconciliation, D5 6.3.x debris, 1.3.1a/1.3.2a) byte-untouched",
+  "kg": "146n/239e (types Subject1/Section10/SubTopic21/SpecificationPoint114; byEdgeType hier 145 / pre 94); pre edges byte-identical; hier delta == exactly the 21 sec->p: edges; pointSubtopics/subPointCounts/meta.prerequisites byte-identical; mirror law points[].text set == content titles set (114); LIVE G5 PROOF: v1.7 exporter re-run on the head tree == committed KG file byte-equal ex generatedUtc — the committed array is pure exporter output, zero hand edges remain (700bb601 patch naturalized)",
+  "g9live": "LIVE fleet re-run: v1.7 exports 106/106; v1.6 (base blob) refuses cs-23 with the D1 blocker of record ('SPEC_POINT 7.1 has 0 SUBTOPIC parents') and exports 105/105; v1.7 == v1.6 ex version labels for all 105 other courses (the only per-course delta is the meta.notes changelog prefix prepended to the byte-identical v1.6 notes — asserted exactly that shape per course)",
+  "exporterLaw": "v1.6 -> v1.7 static law assert: >=2-SUBTOPIC refusal retained; 0 SUBTOPIC + !=1 SECTION refusal added; _subj_order canonical numeric naturalization present; no sec7/9/10 hand-patch remnants in any hub script",
+  "apiPlane": "bundle-seed.ts SPEC_POINT parent gate TOPIC -> TOPIC-or-UNIT (dual-parent chemistry-19 law unchanged, refusal message updated); sme/bundle-questions.ts topicCodeResolver skips UNIT-parented points (fail-close at lookup, never silent); roster census pins held WITHOUT re-pinning (mapLaw green/reds/56/maxDbCodeLength 25, excl.unmapped 12610)",
+  "ugm": "serve plane byte-untouched — the 21 new codes stay OFF the serve index per the 1.1 primaryPick honesty law + AS bijection law until a T-UGM lane serves them",
+  "gates": "G1-G5, G7-G10 of record in .syllabai/lane-artifacts/RN-DEBRIS-11/run-021/gates_r0.json (all ok:true); postReview re-assert battery scripted ALL PASS — 47/47 checks (rn21_review_battery.py, groups C1-C12)",
+  "ciEvidence": "at 6f5ece72: verify SUCCESS, hub SUCCESS, census SUCCESS, Vercel Preview Comments SUCCESS (check-runs API); the postReview head goes to the sha-pinned PUT only after verify+hub+census success at THAT head (exit unmasked)"
+ },
+ "raceGuard": "origin/main 541424a1 == the PR base at review time; fresh tip re-checked immediately before push and immediately before the sha-pinned PUT; on base move: re-sync, re-verify, re-pin; no force, no rebase, fetch-first",
+ "mergePlan": "sha-pinned PUT /repos/SyllabAI/syllabai-v2/pulls/959/merge (merge_method=merge, sha=<the postReview head>) after verify+hub+census success at that head; merge commit of record with the self-merge disclosure; no squash, no force",
+ "boundaries": "the mechanical apply of the run-019 filing's D1 exporter-law keystone only; the still-open desk choices remain at the R0 desk; no serve-plane re-index of the new codes; zero DB contact (zero-DB by construction per the receipt apiPlane.dbShape)"
+}
