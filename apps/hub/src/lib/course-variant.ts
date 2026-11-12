@@ -21,6 +21,12 @@ export interface VariantKeyable {
    *  syllabus code with no qualifier after the subject, so the level is the
    *  only honest differentiator (duplicateVariants' fallback of record). */
   level?: string;
+  /** registry display label — when present, a derived subtitle whose words
+   *  the label already carries is suppressed (T-HUB-COURSES-UI-3):
+   *  "Chemistry — Modular 2024, Unit 1" no longer re-announces "Unit 1",
+   *  "Chemistry — A-Level" no longer re-announces "A-Level". Absent label
+   *  (the overlays' minimum shape) keeps the old behavior byte-for-byte. */
+  label?: string;
 }
 
 const LEVEL_TOKENS = new Set(["igcse", "ial", "gcse", "as", "alevel"]);
@@ -109,6 +115,25 @@ function syllabusYearLabel(slug: string): string | null {
 }
 
 /**
+ * T-HUB-COURSES-UI-3: a subtitle is only worth a line when it ADDS words the
+ * title does not already carry. Comparison is word-set containment after
+ * normalizing case, punctuation and the "&"/"and" spelling split (the
+ * registry titles write "Probability & Statistics 2", the slug-derived
+ * subtitle writes "Probability and Statistics 2" — same words, one set).
+ */
+function subtitleRedundant(label: string, sub: string): boolean {
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .split(/[^a-z0-9]+/)
+      .filter(Boolean);
+  const labelWords = new Set(norm(label));
+  const subWords = norm(sub);
+  return subWords.length > 0 && subWords.every((w) => labelWords.has(w));
+}
+
+/**
  * slug → subtitle map, covering only lanes whose (subject, code) pair
  * appears more than once in the registry.
  *
@@ -141,7 +166,12 @@ export function duplicateVariants<T extends VariantKeyable>(courses: T[]): Map<s
           label = syllabusYearLabel(lane.slug) ?? sub;
         }
       }
-      if (label) out.set(lane.slug, label);
+      // T-HUB-COURSES-UI-3: the label-aware suppression — a qualifier that
+      // only re-announces the title ("Unit 1" under "… Unit 1") renders
+      // nothing; qualifiers that differentiate ("Financial Statements" under
+      // "Accounting") survive. Lanes without a label keep the old law.
+      if (label && !(lane.label && subtitleRedundant(lane.label, label)))
+        out.set(lane.slug, label);
     }
   }
   return out;

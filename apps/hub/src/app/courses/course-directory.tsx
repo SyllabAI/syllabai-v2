@@ -217,12 +217,15 @@ export function CourseDirectory({
         {/* t-ui-polish run-003 — one toolbar row: search beside the board
             chips at sm+ (they wrap as a stack below sm, exactly as before). */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          {/* T-HUB-COURSES-UI-3: w-80 clipped the placeholder's own tail
+              ("…exam code or" — 47 chars do not fit 320px); w-96 carries
+              the full copy at the same toolbar rhythm. */}
           <Input
             value={q}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={`Search ${courses.length} courses by subject, exam code or board…`}
             aria-label="Search courses"
-            className="w-full sm:w-80"
+            className="w-full sm:w-96"
           />
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by board">
           <Button
@@ -413,7 +416,12 @@ export function CourseDirectory({
                                   (ghost ? "" : " group-hover:text-primary")
                                 }
                               >
-                                {c.label}
+                                {/* T-HUB-COURSES-UI-3: "Ict" is the registry's
+                                    canonical value (subject-identity pins
+                                    resolveSubjectKey("Ict")), patched at
+                                    display level — the same law the test
+                                    builder already applies. */}
+                                {c.label === "Ict" ? "ICT" : c.label}
                               </p>
                               {subtitles.get(c.slug) && (
                                 <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitles.get(c.slug)}</p>
@@ -465,6 +473,20 @@ export function CourseDirectory({
                                       {papers} past paper{papers === 1 ? "" : "s"}
                                     </span>
                                   )}
+                                </p>
+                              )}
+                              {/* T-HUB-COURSES-UI-3: the registered ghost's
+                                  honesty, surfaced — the pending law lived only
+                                  in a desktop-hover tooltip, and a card with no
+                                  substance line at all read as broken rather
+                                  than queued (production: CIE 9696 Geography
+                                  rendered title + board + a bare badge). One
+                                  quiet line, the tooltip's own claim: nothing
+                                  published, corpus queued for import. */}
+                              {ghost && !statsLine && papers === 0 && !tutorReady && (
+                                <p className="mt-1.5 text-xs italic text-muted-foreground">
+                                  No published content yet — the corpus is queued
+                                  for import.
                                 </p>
                               )}
                               {/* run-002 (UI-2): the badge row is retired for the

@@ -15,6 +15,9 @@ import { CourseDirectory } from "./course-directory";
 // owned the mobile first screen before a single course rendered. The intro is
 // now the count + substance line (31 words); the provenance and honesty notes
 // survive verbatim-in-substance one click down, in a <details> disclosure.
+// T-HUB-COURSES-UI-3: the count line no longer undersells the shelf — the
+// page sections itself IGCSE → AS → A-Level → IAL, so "IAL/IGCSE course
+// variants" became the full ladder (same counts, same substance tail).
 const intro = ({
   edexcel,
   cambridge,
@@ -24,7 +27,7 @@ const intro = ({
   cambridge: number;
   total: number;
 }) =>
-  `${edexcel} Edexcel IAL/IGCSE course variants and ${cambridge} Cambridge International courses — ${total} Learning Hubs: spec-anchored revision notes, exam questions, flashcards and the official QP+MS past-paper archive, organised around each course's specification tree.`;
+  `${edexcel} Edexcel and ${cambridge} Cambridge International courses — ${total} Learning Hubs across IGCSE, AS, A-Level and IAL: spec-anchored revision notes, exam questions, flashcards and the official QP+MS past-paper archive, organised around each course's specification tree.`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const courses = await listCourses();
