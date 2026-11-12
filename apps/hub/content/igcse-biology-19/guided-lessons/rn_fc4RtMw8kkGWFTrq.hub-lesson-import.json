@@ -1,0 +1,120 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_fc4RtMw8kkGWFTrq",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "68b2c3f96e6af15cf3c234067ba87f7e188a75900a3f642e9684352ad604204d",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_fc4RtMw8kkGWFTrq",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Co-ordination and Response",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/co-ordination-and-response/co-ordinating-response",
+    "specAnchors": [
+      {
+        "code": "2.82",
+        "text": "understand that a co-ordinated response requires a stimulus, a receptor and an effector"
+      }
+    ],
+    "primer": {
+      "text": "You already know that glands and muscles carry out actions inside the body, and that some of those actions happen without any decision on your part. This note names the three parts every automatic control loop needs: a change that gets detected, a cell that detects it, and the muscle or gland that acts. Master this vocabulary and every later control system becomes a labelled example of the same loop.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_fc4RtMw8kkGWFTrq::L1",
+        "title": "The parts of a co-ordinated response",
+        "sourceHeadings": [
+          "Co-ordinating a Response"
+        ],
+        "specRefs": [
+          "2.82"
+        ],
+        "opening": "Whenever conditions inside the body drift away from their ideal level, an automatic loop brings them back. The loop always has the same three components: something changes, a receptor detects that change, and an effector acts to reverse it. Between detection and action sits a coordination centre — the brain, spinal cord or pancreas — which processes the information.",
+        "keyPoints": [
+          "A co-ordinated response needs a stimulus: a change in the environment such as shifted blood glucose or temperature.",
+          "Receptors are cells that detect stimuli and pass the information on.",
+          "A coordination centre — the brain, spinal cord or pancreas — receives and processes information from receptors.",
+          "An effector is a muscle or gland that carries out the response and restores the optimum level."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A change is detected by a receptor, processed by a coordination centre, and reversed by an effector such as a muscle or gland.",
+            "analogy": "It works like a thermostat: the sensor notices the room drifting, the controller decides, and the heater or chiller acts.",
+            "examPointer": "Name all three parts — stimulus, receptor, effector — whenever a question asks how a control system works; missing one costs the mark."
+          },
+          "medium": {
+            "restatement": "Involuntary control loops run through the brain stem or spinal cord without conscious effort, linking receptors to effectors through a processing centre to restore set points.",
+            "analogy": "Picture a factory line where inspectors report faults to a supervisor who directs machine operators to correct them — detection, decision, correction.",
+            "examPointer": "Questions often plant a distractor claiming conscious control — remember homeostatic loops are automatic, so say involuntary in answers about thermoregulation or water balance."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_fc4RtMw8kkGWFTrq::L1::Q1",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q2",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q3",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q4",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q5",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q6",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q7",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q8",
+          "rn_fc4RtMw8kkGWFTrq::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "stimulus",
+          "definition": "A change in the internal or external environment that a receptor detects and the body responds to.",
+          "firstLesson": 1
+        },
+        {
+          "term": "receptor",
+          "definition": "A cell that detects a stimulus and passes information on to a coordination centre.",
+          "firstLesson": 1
+        },
+        {
+          "term": "coordination centre",
+          "definition": "A structure such as the brain, spinal cord or pancreas that receives and processes information from receptors.",
+          "firstLesson": 1
+        },
+        {
+          "term": "effector",
+          "definition": "A muscle or gland that carries out the response which restores optimum conditions.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/fa06013a2053-16901-coordinating-a-response.png",
+        "alt": "Flowchart illustrating the body's response to low water, featuring brain, heart, kidneys, ADH release, and blood water level regulation process.",
+        "sourceHeading": "Co-ordinating a Response",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A co-ordinated response (such as that required when there is not enough water in the blood) requires a stimulus, a receptor and an effector"
+      }
+    ]
+  }
+}

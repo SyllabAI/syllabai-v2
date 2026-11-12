@@ -1,0 +1,493 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_MhjqBYqSPhvcDJHg",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "735abff516749a8b3d78ed28ff2fcecaa0abb28bcd03f017fc9ab09c9021b42a",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "packageId": "igcse-biology::rn_MhjqBYqSPhvcDJHg",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q1",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "What is a tropism?",
+      "misconceptionClass": "definition precision",
+      "options": [
+        {
+          "key": "A",
+          "text": "A directional growth response toward or away from a stimulus",
+          "correct": true,
+          "explanation": "Tropisms are directional growth responses of plants.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A rapid movement of a whole plant",
+          "correct": false,
+          "explanation": "Plants respond by growth, not by moving their position.",
+          "misconception": "mechanism wrong"
+        },
+        {
+          "key": "C",
+          "text": "A chemical released by roots",
+          "correct": false,
+          "explanation": "Chemicals called auxins cause tropisms but are not tropisms themselves.",
+          "misconception": "cause confused with effect"
+        },
+        {
+          "key": "D",
+          "text": "A response only to touch",
+          "correct": false,
+          "explanation": "The named tropisms answer light and gravity.",
+          "misconception": "stimulus narrowed"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q2",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "How do shoots respond to light?",
+      "misconceptionClass": "shoot phototropism",
+      "options": [
+        {
+          "key": "A",
+          "text": "No response at all",
+          "correct": false,
+          "explanation": "Phototropism is a core plant response.",
+          "misconception": "response denied"
+        },
+        {
+          "key": "B",
+          "text": "Positive phototropism — growth toward the light",
+          "correct": true,
+          "explanation": "Shoots grow toward light to catch sunlight for leaves.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Negative phototropism — growth away from light",
+          "correct": false,
+          "explanation": "That describes roots' light response.",
+          "misconception": "sign inverted"
+        },
+        {
+          "key": "D",
+          "text": "Positive geotropism — growth toward gravity",
+          "correct": false,
+          "explanation": "That is the roots' gravity response.",
+          "misconception": "tropism type swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q3",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "How do roots respond to gravity?",
+      "misconceptionClass": "root geotropism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Positive phototropism",
+          "correct": false,
+          "explanation": "Phototropism answers light, not gravity.",
+          "misconception": "tropism type swapped"
+        },
+        {
+          "key": "B",
+          "text": "Random sideways growth",
+          "correct": false,
+          "explanation": "Root growth is directional, not random.",
+          "misconception": "direction denied"
+        },
+        {
+          "key": "C",
+          "text": "Positive geotropism — growth toward gravity, into the soil",
+          "correct": true,
+          "explanation": "Roots grow downward with gravity to anchor and absorb water.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Negative geotropism — growth away from gravity",
+          "correct": false,
+          "explanation": "That is the shoots' gravity response.",
+          "misconception": "sign inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q4",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "Which pairing describes roots' response to light correctly?",
+      "misconceptionClass": "root phototropism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Roots ignore light entirely",
+          "correct": false,
+          "explanation": "The table assigns roots a negative phototropic response.",
+          "misconception": "response denied"
+        },
+        {
+          "key": "B",
+          "text": "Roots bend toward light to photosynthesise",
+          "correct": false,
+          "explanation": "Photosynthesis is the shoots' job.",
+          "misconception": "organ swapped"
+        },
+        {
+          "key": "C",
+          "text": "Positive phototropism",
+          "correct": false,
+          "explanation": "Roots grow away from light.",
+          "misconception": "sign inverted"
+        },
+        {
+          "key": "D",
+          "text": "Negative phototropism — growth away from the light source",
+          "correct": true,
+          "explanation": "Roots grow downward into soil, away from light.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q5",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "Why do roots grow downward into the soil?",
+      "misconceptionClass": "function reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To hold the plant firm and draw up soil water plus dissolved minerals",
+          "correct": true,
+          "explanation": "Those are the stated reasons for downward root growth.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To escape grazing animals",
+          "correct": false,
+          "explanation": "Predator escape is not the named reason.",
+          "misconception": "reason invented"
+        },
+        {
+          "key": "C",
+          "text": "To release seeds safely",
+          "correct": false,
+          "explanation": "Reproduction is unrelated to root direction.",
+          "misconception": "reason invented"
+        },
+        {
+          "key": "D",
+          "text": "To catch more sunlight",
+          "correct": false,
+          "explanation": "Light is the shoots' target.",
+          "misconception": "function swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q6",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "Define geotropism.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "A plant's directional growth response to gravity, toward it (positive, as in roots) or away (negative, as in shoots).",
+      "keywords": [
+        "gravity",
+        "growth",
+        "positive",
+        "negative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q7",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "State the two tropism signs a shoot displays.",
+      "misconceptionClass": "sign recall",
+      "kind": "recall",
+      "modelAnswer": "Positive phototropism toward light and negative geotropism away from gravity.",
+      "keywords": [
+        "positive phototropism",
+        "negative geotropism",
+        "light",
+        "gravity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q8",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "Explain why a shoot's positive phototropic response helps the plant survive.",
+      "misconceptionClass": "benefit reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Growing toward light positions the leaves where they can absorb the most sunlight for photosynthesis, so the plant makes more food, grows stronger and outcompetes shaded neighbours — the tropism converts a stimulus directly into a survival advantage.",
+      "keywords": [
+        "light",
+        "photosynthesis",
+        "leaves",
+        "survival"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L1::Q9",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L1",
+      "stem": "A seedling germinates on a dark windowsill with light coming from one side only. Describe its expected growth pattern.",
+      "misconceptionClass": "scenario application",
+      "kind": "application",
+      "modelAnswer": "The shoot curves toward the window (positive phototropism) while growing upward against gravity (negative geotropism); the root grows away from the light and downward into the compost with gravity (positive geotropism, negative phototropism).",
+      "keywords": [
+        "positive phototropism",
+        "negative geotropism",
+        "positive geotropism",
+        "negative phototropism"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q1",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "Where is auxin produced?",
+      "misconceptionClass": "production site",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the leaves at night",
+          "correct": false,
+          "explanation": "Production is tied to shoot tips, not leaves or darkness.",
+          "misconception": "site invented"
+        },
+        {
+          "key": "B",
+          "text": "In the tips of growing shoots",
+          "correct": true,
+          "explanation": "Auxin is mostly made in the shoot tips.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "In the root hairs",
+          "correct": false,
+          "explanation": "Root hairs absorb water; they do not make auxin here.",
+          "misconception": "site wrong"
+        },
+        {
+          "key": "D",
+          "text": "In the flowers",
+          "correct": false,
+          "explanation": "Flowers handle reproduction in this note's scope.",
+          "misconception": "site wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q2",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "What does auxin do to cells behind the tip?",
+      "misconceptionClass": "auxin effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kills them to shorten the shoot",
+          "correct": false,
+          "explanation": "Auxin promotes growth, not death.",
+          "misconception": "effect inverted"
+        },
+        {
+          "key": "B",
+          "text": "Turns them into root cells",
+          "correct": false,
+          "explanation": "No such transformation is described.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "C",
+          "text": "Stimulates them to elongate",
+          "correct": true,
+          "explanation": "Auxin makes existing cells get longer; more auxin means faster elongation.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Causes them to divide into many new cells",
+          "correct": false,
+          "explanation": "The exam hint is explicit — auxin elongates existing cells, it does not multiply them.",
+          "misconception": "process misnamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q3",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "Under one-sided light, where does auxin accumulate?",
+      "misconceptionClass": "distribution reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "On the sunlit side",
+          "correct": false,
+          "explanation": "That would bend the shoot away from light — the opposite of what happens.",
+          "misconception": "side inverted"
+        },
+        {
+          "key": "B",
+          "text": "Evenly on both sides",
+          "correct": false,
+          "explanation": "Even spreading happens under all-round light, not one-sided light.",
+          "misconception": "condition confused"
+        },
+        {
+          "key": "C",
+          "text": "It drains out of the roots",
+          "correct": false,
+          "explanation": "Auxin stays within the shoot's growing region.",
+          "misconception": "fate invented"
+        },
+        {
+          "key": "D",
+          "text": "On the shaded side of the shoot",
+          "correct": true,
+          "explanation": "Auxin concentrates on the side away from the light.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q4",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "What is the result of the shaded side elongating faster?",
+      "misconceptionClass": "bend reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The shoot bends and grows in the direction of the light",
+          "correct": true,
+          "explanation": "Faster shaded-side growth curves the shoot sunward.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The shoot bends away from the light",
+          "correct": false,
+          "explanation": "That would need the sunlit side to elongate faster.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "The shoot snaps",
+          "correct": false,
+          "explanation": "Growth bending, not breaking, occurs.",
+          "misconception": "outcome invented"
+        },
+        {
+          "key": "D",
+          "text": "The shoot stops growing",
+          "correct": false,
+          "explanation": "Growth continues — unevenly.",
+          "misconception": "outcome invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q5",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "Which statement about auxin and cell number is correct?",
+      "misconceptionClass": "exam-hint discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "Auxin increases the number of cells in the shoot",
+          "correct": false,
+          "explanation": "This is precisely the trap — auxin does not increase cell number.",
+          "misconception": "exam-hint trap"
+        },
+        {
+          "key": "B",
+          "text": "Auxin makes the cells that already exist get longer",
+          "correct": true,
+          "explanation": "Elongation of existing cells is the correct mechanism.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Auxin removes old cells",
+          "correct": false,
+          "explanation": "No cell removal is involved.",
+          "misconception": "claim invented"
+        },
+        {
+          "key": "D",
+          "text": "Cell number changes only in roots",
+          "correct": false,
+          "explanation": "The note concerns shoot elongation; cell number is unchanged.",
+          "misconception": "scope confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q6",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "State where auxin is made and where it acts.",
+      "misconceptionClass": "site recall",
+      "kind": "recall",
+      "modelAnswer": "Made in the shoot tips; it diffuses just behind the tip into the elongation zone.",
+      "keywords": [
+        "shoot tips",
+        "diffuses",
+        "elongation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q7",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "Give the dose relationship between auxin and elongation.",
+      "misconceptionClass": "dose recall",
+      "kind": "recall",
+      "modelAnswer": "The more auxin present, the faster the cells elongate and grow.",
+      "keywords": [
+        "more auxin",
+        "faster",
+        "elongate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q8",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "Explain why writing 'the shoot grows toward the light because cells divide' loses marks.",
+      "misconceptionClass": "exam-hint reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because division implies new cells are being made, which is wrong: auxin causes the cells that already exist behind the tip to elongate, so the shoot bends by existing cells getting longer — claiming division shows the mechanism has been misidentified.",
+      "keywords": [
+        "elongate",
+        "existing cells",
+        "division",
+        "mechanism"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MhjqBYqSPhvcDJHg::L2::Q9",
+      "moduleId": "rn_MhjqBYqSPhvcDJHg::L2",
+      "stem": "A potted plant sits in a room whose only window is to its left. Using auxin, explain the shape it develops after two weeks.",
+      "misconceptionClass": "auxin application",
+      "kind": "application",
+      "modelAnswer": "Light from the left makes auxin accumulate on the right (shaded) side of the shoot; those cells elongate faster than the lit side, so the stem curves leftward toward the window — a visible positive phototropic bend.",
+      "keywords": [
+        "auxin",
+        "shaded",
+        "elongate",
+        "curves"
+      ],
+      "options": []
+    }
+  ]
+}
