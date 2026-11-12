@@ -167,12 +167,20 @@ jobs:
           fi
           chmod 600 /tmp/e28-cow.uri
           bun scripts/editor-apply-0028.ts --db file:/tmp/e28-cow.uri --receipt cow-editor-0028-receipt.json
+      - name: CREATE-ROLE viability probe (run-006 fork evidence; COW-only, zero prod contact)
+        if: always()
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/e28-probe.uri
+          chmod 600 /tmp/e28-probe.uri
+          bun scripts/editor-probe-role.ts --db file:/tmp/e28-probe.uri --receipt cow-editor-0028-probe.json
       - name: Upload the receipt artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: editor-0028-cow-receipts
-          path: cow-editor-0028-receipt.json
+          path: |
+            cow-editor-0028-receipt.json
+            cow-editor-0028-probe.json
           if-no-files-found: ignore
       - name: DROP the COW + 404-verify (zero residue, even on failure)
         if: always()
