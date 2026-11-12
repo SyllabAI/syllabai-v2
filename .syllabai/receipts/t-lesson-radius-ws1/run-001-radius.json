@@ -1,0 +1,33 @@
+{
+  "lane": "t-lesson-radius-ws1",
+  "run": "run-001",
+  "date": "2026-11-12",
+  "plan": "docs/books/PLAN-LESSON-VISUAL-v1.2.md (WS1 — surface anatomy & nested radius; merged of record via #928, plan v1.2 is the lane table of record)",
+  "base": "origin/main 2d554ac3 (fetch-first verified unchanged at push time)",
+  "scope": "the Lesson reader (components/books/lesson/lesson-view.tsx ONLY) — presentation-only classNames plus the label-anatomy row additions; zero behavior, zero props, zero pack/content bytes; server-first intact (server component; no new client boundaries). The label-anatomy additions are presentation elements only (aria-hidden lucide icons + row wrappers) — the lane's named 'label anatomy pass' requires them.",
+  "first_hand_finding_of_record": "bare `rounded` is pinned by NO theme: globals.css theme geometry pins cover rounded-sm/md/lg/xl only (quiet-green L380-383 = 4/5/5/6, candy-shop L634-637 = 14/24/40/40, chat-app-plum L1037-1040 = 10/18/28/28) — bare `rounded` stays the stock 4px under EVERY theme, so the four bare-rounded sites on the Lesson surface were theme-blind (hard-squared chips inside candy-shop's 'round everything' 14/24/40 ladder and plum's 10/18/28). This is the plan's 'badges (rounded vs rounded-md mixed)' finding, measured to the token layer.",
+  "anatomy_pass": {
+    "radius_voice_structural": "Box wrapper rounded-r-md border-l-4 (the 12-type accent signature), glossary strip, derived-links strip, learning-objectives box, footer chapter buttons — all byte-kept on the themed rounded-md rung (one structural voice)",
+    "radius_voice_chips": "SB p.X badge, paper-route badge, DRAFT PREVIEW badge: bare `rounded` -> rounded-sm (joins the themed ladder: SME 6 / QG 4 / candy 14 / plum 10) — one chip voice, px-1.5 py-0.5 byte-kept",
+    "radius_voice_links": "aside section-anchor pill: bare `rounded` -> rounded-sm (joins the link voice WS3 established; focus ring hugs the themed rung); derived-links inner links already rounded-sm — byte-kept",
+    "nested_radius_law_verified": "child steps down from parent on every nested pair and holds under EVERY theme: derived strip rounded-md -> inner links rounded-sm (SME 8->6, QG 5->4, candy 24->14, plum 18->10); Box rounded-r-md wraps un-radiused prose (no child radii to step); the aside anchors and badges are free-standing (no parent radius owed)",
+    "padding_anatomy": "stacked callouts (Box, learning-objectives, glossary strip) unified on p-3 sm:p-4 (objectives + glossary step up from p-3 to match the Box rung); the derived-links strip stays compact p-2.5 — it is the inline wrap-strip class, not a stacked callout (disclosed, not an oversight)",
+    "label_anatomy": "the Box label row (icon h-4 w-4 + semibold, mb-1.5 row) is the canonical stacked-callout label: glossary strip gains the BookMarked icon row ('Key terms in this section'), the learning-objectives box converts its inline 'Learning objectives · ' label to the canonical row (Target icon). The derived strip's inline 'Keep going' label (Layers, h-3.5) stays inline — wrap-strip class (disclosed)."
+  },
+  "not_applicable_disclosure": {
+    "rail_widgets": "7 bare-`rounded` sites remain in books/ OUTSIDE this lane — eq-builder-block.tsx x5, sort-match-block.tsx x2 (measured census) — WS6 scope per the plan; not touched",
+    "lesson_progress_tracker": "WS5 scope per plan (rounded-md border card, themed already)",
+    "strength_check_flow": "rail-adjacent, no bare rounded measured, WS6-adjacent — not touched",
+    "typography": "objectives box text-[14px] and prose text-[15px] are WS4's deliverable (Q5) — byte-kept here",
+    "motion": "no transition changes — WS2's lane; the WS3 explicit lists are byte-kept"
+  },
+  "gates": {
+    "tsc_noEmit": 0,
+    "eslint_changed_file": 0,
+    "lesson_suites": "72 pass / 0 fail / 137 expects (books-lesson + lesson-markdown + books-lesson-links + books-slices)",
+    "full_hub_battery": "1320 pass / 1 fail / 39,149 expects — A/B-proven pre-existing: the stashed clean tree returned the IDENTICAL 1320/1 and the same single fail line (T-UGM-RENDER-1 katex IGCSE corpus) at base 2d554ac3",
+    "next_build": "delegated to the CI hub gate on the exact head (the repo's disclosed delegation posture)"
+  },
+  "ci_gate_of_record": "verify + hub on the PR head",
+  "honesty": "no data derived, no behavior changed; the Lesson's chip/badge/anchor radii become theme-aware (they finally move with candy-shop and chat-app-plum), the stacked-callout label anatomy is one voice, and the nested radius law is verified under all four theme ladders"
+}
