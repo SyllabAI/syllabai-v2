@@ -1,0 +1,26 @@
+{
+ "receipt": "rn11-run-020-postReview",
+ "family": "RN-DEBRIS-11",
+ "run": "020-postReview",
+ "kind": "self-review record before self-merge (PR #953) — the run-018/019 postReview flow",
+ "operatorOrder": "self-merge #953",
+ "operatorTrace": "1a1cf125b4c443cd",
+ "generatedUtc": "2026-11-12",
+ "selfReviewFindings": {
+  "netDiff": "PR #953 vs main 2d554ac3: exactly the 22 apply paths (+1560/-56) — 3 curricula (cs-23 +91/-6, pure-1 x2 +70/-19), 3 manifests (+1/-1 each), 3 spines (+1/-1 each), 3 KG regens (+1/-1 each), index.json (+1/-1), ugm.bundle.test.ts (+4/-2), 2 worklogs (+7 each), 2 lane-artifact JSONs + 3 scripts + 1 receipt (new)",
+  "pins": "D2: the 5 added titles byte-exact vs run-017 census subRows (official_0478_census_r0.json), orders 83-87 after 8.1.4@82, 8.1.8@88; D6: 1.3.4/1.3.5 byte-exact vs run-018 adjudication PROPOSAL pins, 1.3.3 == pin composed per the fleet glyph law (3 inline twos superscripted, disclosed), orders 15-17 after 1.3.2a@14; A-level/AS titles byte-identical",
+  "scope": "adds-only: zero removed codes; surviving titles byte-identical; survivor diffs confined to the order field (6 bumps cs-23, 19 bumps each pure-1); dense SPEC_POINT orders 1..93 / 1..36 x2; manifests 93/36/36; still-open desk choices (D1/D3/D4/D5, 1.3.1a/1.3.2a) byte-untouched",
+  "kg": "cs-23 125n/218e (meta exporter 125/215/93; hier 124 == nodes-1 incl. the 3 hand-maintained spanning-tree edges), pure-1 x2 46n/91e (hier 45); parsed delta vs base == exactly the declared adds, removed 0; points[].text mirror == content titles; index.json P5 course census {125,218,93} + {46,91,36} x2; spines carry the new codes",
+  "ugm": "serve plane byte-untouched (only ugm.bundle.test.ts census re-pin 33->36 with the 30-index law disclosed in-comment); the 3 new uncovered codes stay OFF the serve index per the 1.1 primaryPick honesty law + AS bijection law",
+  "gates": "G1-G8 + GV1 of record in .syllabai/lane-artifacts/RN-DEBRIS-11/run-020/gates_r0.json (exits unmasked); postReview re-assert battery scripted ALL PASS (rn20_pin_reassert.py)",
+  "ciEvidence": "at 62de0dc5: verify SUCCESS, hub SUCCESS, census SUCCESS, Vercel Preview Comments SUCCESS (check-runs API); the postReview head goes to the sha-pinned PUT only after verify+hub success at THAT head (exit unmasked)"
+ },
+ "raceGuardSync2": {
+  "window": "origin/main ccfa854d -> 2d554ac3 while the PR awaited the self-merge order",
+  "mainDelta": "BIO-STAGEB1 bake-probe receipt (new file .syllabai/receipts/BIO-STAGEB1/BAKE-PROBE-20261112-chem-bio-biow1.json) + 2 .syllabai/worklog.md lines — disjoint from all 22 PR paths",
+  "resolution": "append-only union of .syllabai/worklog.md: theirs-verbatim-first (611B), the run-020 suffix 3565B byte-exact re-appended at tail, zero new conflict markers, prefix/suffix byte-identity asserted scripted; clean merge c0309b8e; root worklog.md untouched by main",
+  "law": "fetch-first, no force, no rebase"
+ },
+ "mergePlan": "sha-pinned PUT /repos/SyllabAI/syllabai-v2/pulls/953/merge (merge_method=merge, sha=<the postReview head>) after verify+hub success at that head; merge commit of record with the self-merge disclosure; on base move: re-sync, re-verify, re-pin; no squash, no force",
+ "boundaries": "the mechanical apply of the run-019 filing's D2+D6-adds only; the still-open desk choices remain at the R0 desk; no serve-plane re-index of the new codes"
+}
