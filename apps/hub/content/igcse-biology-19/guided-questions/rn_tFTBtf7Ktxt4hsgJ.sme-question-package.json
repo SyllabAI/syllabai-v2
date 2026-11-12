@@ -1,0 +1,492 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_tFTBtf7Ktxt4hsgJ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "34c1659afb3e387fb4ddd9b3166348f20ec9e661824c302d1e0ad450d02deb95",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_tFTBtf7Ktxt4hsgJ",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q1",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "How is one breath defined for the count?",
+      "misconceptionClass": "method recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "One inhale plus one exhale",
+          "correct": true,
+          "explanation": "That pairing makes each cycle countable.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One inhale only",
+          "correct": false,
+          "explanation": "The exhale completes the cycle.",
+          "misconception": "definition truncated"
+        },
+        {
+          "key": "C",
+          "text": "One minute of breathing",
+          "correct": false,
+          "explanation": "A minute holds many breaths.",
+          "misconception": "unit confused"
+        },
+        {
+          "key": "D",
+          "text": "One heartbeat's worth of air",
+          "correct": false,
+          "explanation": "Breaths are not timed to heartbeats.",
+          "misconception": "definition invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q2",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "When is the after-exercise count taken?",
+      "misconceptionClass": "timing recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The next day",
+          "correct": false,
+          "explanation": "The effect would have vanished.",
+          "misconception": "timing wrong"
+        },
+        {
+          "key": "B",
+          "text": "Immediately after the exercise ends",
+          "correct": true,
+          "explanation": "Delay would let the rate drift back towards rest.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Ten minutes later",
+          "correct": false,
+          "explanation": "Recovery would have begun, muddying the change.",
+          "misconception": "timing wrong"
+        },
+        {
+          "key": "D",
+          "text": "Before the exercise",
+          "correct": false,
+          "explanation": "That is the resting count.",
+          "misconception": "timing impossible"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q3",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "What does the change in breathing rate equal?",
+      "misconceptionClass": "calculation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The mean of the two rates",
+          "correct": false,
+          "explanation": "The mean hides the change instead of measuring it.",
+          "misconception": "calculation wrong"
+        },
+        {
+          "key": "B",
+          "text": "The larger of the two rates",
+          "correct": false,
+          "explanation": "The larger rate alone says nothing about the change.",
+          "misconception": "calculation wrong"
+        },
+        {
+          "key": "C",
+          "text": "Breathing rate after exercise minus breathing rate at rest",
+          "correct": true,
+          "explanation": "The subtraction isolates the exercise effect.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Resting rate minus after-exercise rate",
+          "correct": false,
+          "explanation": "That gives a negative number for a rise.",
+          "misconception": "direction flipped"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q4",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "Why must every participant perform the same exercise?",
+      "misconceptionClass": "control reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because different exercises are dangerous",
+          "correct": false,
+          "explanation": "Safety is not the comparison reason.",
+          "misconception": "reason wrong"
+        },
+        {
+          "key": "B",
+          "text": "Because counting needs rhythm",
+          "correct": false,
+          "explanation": "Counting works at any rhythm.",
+          "misconception": "reason invented"
+        },
+        {
+          "key": "C",
+          "text": "Because equipment is limited",
+          "correct": false,
+          "explanation": "Practicality is not the scientific reason.",
+          "misconception": "reason practical"
+        },
+        {
+          "key": "D",
+          "text": "So the change in breathing rate is comparable across participants",
+          "correct": true,
+          "explanation": "Identical demand makes the counts comparable.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q5",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "Which conclusion follows from the change in breathing rate?",
+      "misconceptionClass": "conclusion recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Exercise makes breathing both faster and deeper",
+          "correct": true,
+          "explanation": "Both the count per minute and the breath size rise.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Exercise decreases breathing rate",
+          "correct": false,
+          "explanation": "The counts rise after exercise.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "C",
+          "text": "Exercise has no measurable effect",
+          "correct": false,
+          "explanation": "The change is the whole point of the practical.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "D",
+          "text": "Exercise only deepens breathing, not its rate",
+          "correct": false,
+          "explanation": "Both frequency and depth increase.",
+          "misconception": "answer partial"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q6",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "State the equation for the change in breathing rate.",
+      "misconceptionClass": "calculation recall",
+      "kind": "recall",
+      "modelAnswer": "Change in breathing rate equals the rate after exercise minus the rate at rest.",
+      "keywords": [
+        "after exercise",
+        "minus",
+        "rest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q7",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "Name two variables that must be kept the same across participants.",
+      "misconceptionClass": "control recall",
+      "kind": "recall",
+      "modelAnswer": "The type and duration of exercise, and the environment such as temperature, plus the same counting method.",
+      "keywords": [
+        "exercise",
+        "duration",
+        "environment"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q8",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "Explain why the mean of several participants is better than one person's numbers.",
+      "misconceptionClass": "reliability reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because individuals differ in fitness, motivation and health, so one person's counts could be atypical; averaging across the group smooths those quirks and gives a value that reflects the exercise effect rather than one body's idiosyncrasies.",
+      "keywords": [
+        "mean",
+        "participants",
+        "averaging",
+        "effect"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L1::Q9",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L1",
+      "stem": "A student counts 14 breaths per minute at rest and 30 straight after one minute of step-ups. State the change and the biological cause.",
+      "misconceptionClass": "numeric application",
+      "kind": "application",
+      "modelAnswer": "The change is 16 breaths per minute; the cause is the muscles' extra oxygen demand and extra carbon dioxide output during the step-ups, which drove the deeper, faster breathing.",
+      "keywords": [
+        "16",
+        "oxygen",
+        "carbon dioxide",
+        "exercise"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q1",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "Which fix addresses uneven exercise intensity?",
+      "misconceptionClass": "fix recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Measuring more variables",
+          "correct": false,
+          "explanation": "More data does not standardise effort.",
+          "misconception": "fix vague"
+        },
+        {
+          "key": "B",
+          "text": "A controlled exercise such as step-ups at a set pace",
+          "correct": true,
+          "explanation": "Standardising the effort removes the variability.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Counting for fifteen seconds",
+          "correct": false,
+          "explanation": "That fixes timing error, not intensity.",
+          "misconception": "fix mismatched"
+        },
+        {
+          "key": "D",
+          "text": "Using older participants",
+          "correct": false,
+          "explanation": "Age is not the intensity fix.",
+          "misconception": "fix invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q2",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "Why is breathing rate hard to measure accurately?",
+      "misconceptionClass": "limitation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because participants refuse to cooperate",
+          "correct": false,
+          "explanation": "Cooperation is not the stated problem.",
+          "misconception": "reason wrong"
+        },
+        {
+          "key": "B",
+          "text": "Because exercise always stops breathing",
+          "correct": false,
+          "explanation": "Exercise raises breathing, never stops it.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "C",
+          "text": "It changes quickly after exercise, so timing errors distort the count",
+          "correct": true,
+          "explanation": "The rate decays while you count it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because breaths are invisible",
+          "correct": false,
+          "explanation": "Breaths are visible and countable.",
+          "misconception": "reason wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q3",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "What does multiplying a 15-second count by four give?",
+      "misconceptionClass": "scaling recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The depth of each breath",
+          "correct": false,
+          "explanation": "The count measures frequency, not depth.",
+          "misconception": "quantity confused"
+        },
+        {
+          "key": "B",
+          "text": "The resting rate",
+          "correct": false,
+          "explanation": "The scaled figure is the post-exercise rate.",
+          "misconception": "quantity confused"
+        },
+        {
+          "key": "C",
+          "text": "The recovery time",
+          "correct": false,
+          "explanation": "Nothing about the count gives recovery time.",
+          "misconception": "quantity confused"
+        },
+        {
+          "key": "D",
+          "text": "The breaths-per-minute equivalent",
+          "correct": true,
+          "explanation": "Four quarter-minutes make a minute.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q4",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "Which is NOT a standard fix for the counting or intensity problems?",
+      "misconceptionClass": "exclusion recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Playing loud music throughout",
+          "correct": true,
+          "explanation": "Music is not among the listed controls.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Conducting the session indoors",
+          "correct": false,
+          "explanation": "Indoors levels the temperature and air quality.",
+          "misconception": "real fix"
+        },
+        {
+          "key": "C",
+          "text": "Similar conditions for all participants",
+          "correct": false,
+          "explanation": "That is the stated levelling measure.",
+          "misconception": "real fix"
+        },
+        {
+          "key": "D",
+          "text": "Allowing rest before starting",
+          "correct": false,
+          "explanation": "Rest settles everyone onto the same baseline.",
+          "misconception": "real fix"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q5",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "Why might two participants show different changes despite identical exercise?",
+      "misconceptionClass": "variation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the stopwatch was broken",
+          "correct": false,
+          "explanation": "No stopwatch is involved in breath counting.",
+          "misconception": "excuse invented"
+        },
+        {
+          "key": "B",
+          "text": "Fitness, motivation and health differ between people",
+          "correct": true,
+          "explanation": "Individual physiology colours the response.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Because breaths cannot be counted",
+          "correct": false,
+          "explanation": "They can, imperfectly.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "D",
+          "text": "Because exercise always gives the same change",
+          "correct": false,
+          "explanation": "It does not; variation is the norm.",
+          "misconception": "claim false"
+        }
+      ]
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q6",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "State the solution for the timing error in breath counting.",
+      "misconceptionClass": "fix recall",
+      "kind": "recall",
+      "modelAnswer": "Begin counting immediately after exercise and count for a fixed short period, such as fifteen seconds, then multiply up to a per-minute rate.",
+      "keywords": [
+        "immediately",
+        "fixed short period",
+        "multiply up",
+        "fifteen seconds"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q7",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "Name three external conditions that can influence breathing rate.",
+      "misconceptionClass": "variable recall",
+      "kind": "recall",
+      "modelAnswer": "Temperature, air quality and stress levels.",
+      "keywords": [
+        "temperature",
+        "air quality",
+        "stress"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q8",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "Explain why a step-up test at a fixed pace is fairer than 'run as fast as you can'.",
+      "misconceptionClass": "fairness reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because a fixed pace gives every participant the same workload, so any difference in the breathing response reflects the person, not a private choice of effort; 'as fast as you can' lets motivation and ability silently rewrite the intensity.",
+      "keywords": [
+        "fixed pace",
+        "workload",
+        "effort",
+        "intensity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_tFTBtf7Ktxt4hsgJ::L2::Q9",
+      "moduleId": "rn_tFTBtf7Ktxt4hsgJ::L2",
+      "stem": "Design the control that would let a class compare smokers and non-smokers on this practical, naming one extra limitation it introduces.",
+      "misconceptionClass": "design application",
+      "kind": "application",
+      "modelAnswer": "Match participants for age and fitness across both groups, hold the exercise and environment identical, and compare the mean changes; the extra limitation is that smoking history varies in amount and duration, so the groups are not perfectly matched even after controls.",
+      "keywords": [
+        "matched",
+        "mean",
+        "smoking history",
+        "limitation"
+      ],
+      "options": []
+    }
+  ]
+}

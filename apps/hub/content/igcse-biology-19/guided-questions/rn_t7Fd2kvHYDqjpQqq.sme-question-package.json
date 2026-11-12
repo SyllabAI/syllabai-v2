@@ -1,0 +1,254 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_t7Fd2kvHYDqjpQqq",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "9e42e5b79d027591564ac371a8135aaa27ddcba538cd6d56a1f1261ac0bc5268",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_t7Fd2kvHYDqjpQqq",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q1",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "Which gas do plants excrete in daylight?",
+      "misconceptionClass": "day-waste recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Oxygen, because photosynthesis produces more than respiration uses",
+          "correct": true,
+          "explanation": "Surplus oxygen from faster photosynthesis is the daylight waste.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Carbon dioxide, because photosynthesis makes it",
+          "correct": false,
+          "explanation": "Photosynthesis consumes carbon dioxide; it releases oxygen.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "C",
+          "text": "Nitrogen, absorbed from air",
+          "correct": false,
+          "explanation": "Nitrogen plays no part in plant metabolism here.",
+          "misconception": "gas invented"
+        },
+        {
+          "key": "D",
+          "text": "Water vapour only",
+          "correct": false,
+          "explanation": "Transpiration happens, but the excretion asked about is the gas pair.",
+          "misconception": "answer incomplete"
+        }
+      ]
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q2",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "What do plants do with carbon dioxide at night?",
+      "misconceptionClass": "night-waste recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "They convert it into oxygen",
+          "correct": false,
+          "explanation": "Conversion needs photosynthesis, which has stopped.",
+          "misconception": "conversion wrong"
+        },
+        {
+          "key": "B",
+          "text": "They produce it by respiration and it diffuses out",
+          "correct": true,
+          "explanation": "Respiration runs without light, so carbon dioxide becomes the surplus gas.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "They absorb extra carbon dioxide for storage",
+          "correct": false,
+          "explanation": "Nothing stores it; in darkness the plant makes more than it can use.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "D",
+          "text": "They stop producing any waste at all",
+          "correct": false,
+          "explanation": "Respiration never stops, so waste keeps coming.",
+          "misconception": "claim false"
+        }
+      ]
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q3",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "Why is gas excretion in plants a passive process?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the leaf is thin",
+          "correct": false,
+          "explanation": "Thinness speeds diffusion but does not make it passive.",
+          "misconception": "factor misplaced"
+        },
+        {
+          "key": "B",
+          "text": "Because photosynthesis powers it",
+          "correct": false,
+          "explanation": "Photosynthesis creates the gradient; the diffusion itself is unpowered.",
+          "misconception": "process confused"
+        },
+        {
+          "key": "C",
+          "text": "The gases simply diffuse down their concentration gradients",
+          "correct": true,
+          "explanation": "No pump or transport protein is needed; the gradient does the work.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because the stomata are always wide open",
+          "correct": false,
+          "explanation": "Stomata open and close; openness is not the passivity.",
+          "misconception": "mechanism wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q4",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "During a bright day, what is the net effect on the two gases?",
+      "misconceptionClass": "net-balance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "More carbon dioxide produced than used",
+          "correct": false,
+          "explanation": "That is the night-time balance.",
+          "misconception": "directions swapped"
+        },
+        {
+          "key": "B",
+          "text": "Both gases exactly balanced",
+          "correct": false,
+          "explanation": "Exact balance happens at a particular low light intensity, not in bright light.",
+          "misconception": "condition misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Neither gas moves at all",
+          "correct": false,
+          "explanation": "Both keep moving; only the net balance shifts.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "D",
+          "text": "More oxygen produced than used, and less carbon dioxide released than used",
+          "correct": true,
+          "explanation": "Photosynthesis dominates, so oxygen accumulates and carbon dioxide is drawn down.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q5",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "Through which structures do the waste gases leave the leaf?",
+      "misconceptionClass": "exit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The stomata",
+          "correct": true,
+          "explanation": "The stomata are the pores the gases drift through.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The roots",
+          "correct": false,
+          "explanation": "Roots take up water and ions; they are not this exit.",
+          "misconception": "exit wrong"
+        },
+        {
+          "key": "C",
+          "text": "The waxy cuticle",
+          "correct": false,
+          "explanation": "The cuticle is a barrier, not a pore.",
+          "misconception": "exit wrong"
+        },
+        {
+          "key": "D",
+          "text": "The xylem vessels",
+          "correct": false,
+          "explanation": "Xylem carries water upwards inside the plant.",
+          "misconception": "exit wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q6",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "Name the two waste gases of plant metabolism.",
+      "misconceptionClass": "gas recall",
+      "kind": "recall",
+      "modelAnswer": "Oxygen and carbon dioxide.",
+      "keywords": [
+        "oxygen",
+        "carbon dioxide",
+        "waste gases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q7",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "State when each gas becomes surplus in a plant.",
+      "misconceptionClass": "timing recall",
+      "kind": "recall",
+      "modelAnswer": "Oxygen is surplus in the light when photosynthesis outruns respiration; carbon dioxide is surplus in the dark when only respiration runs.",
+      "keywords": [
+        "oxygen",
+        "light",
+        "carbon dioxide",
+        "dark"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q8",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "Explain why the same gas can be a raw material by day and a waste by night.",
+      "misconceptionClass": "role-reversal reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Photosynthesis consumes carbon dioxide and releases oxygen while light lasts, but in darkness only respiration runs, consuming oxygen and releasing carbon dioxide; the direction of the faster process decides which gas is in surplus, so each gas swaps roles as the light changes.",
+      "keywords": [
+        "photosynthesis",
+        "respiration",
+        "surplus",
+        "darkness"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_t7Fd2kvHYDqjpQqq::L1::Q9",
+      "moduleId": "rn_t7Fd2kvHYDqjpQqq::L1",
+      "stem": "A greenhouse keeper keeps lights on all night. Predict the gas exchange and explain why.",
+      "misconceptionClass": "extended-light application",
+      "kind": "application",
+      "modelAnswer": "With light supplied, photosynthesis continues through the night, so the plant keeps consuming carbon dioxide and releasing oxygen; the usual night-time pattern of net carbon dioxide release is replaced by a daytime-style exchange in which oxygen is the surplus gas.",
+      "keywords": [
+        "photosynthesis",
+        "carbon dioxide",
+        "oxygen",
+        "night"
+      ],
+      "options": []
+    }
+  ]
+}

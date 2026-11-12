@@ -1,0 +1,102 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_t7Fd2kvHYDqjpQqq",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "9e42e5b79d027591564ac371a8135aaa27ddcba538cd6d56a1f1261ac0bc5268",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_t7Fd2kvHYDqjpQqq",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Excretion",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/excretion/excretion-in-plants",
+    "specAnchors": [
+      {
+        "code": "2.70",
+        "text": "understand the origin of carbon dioxide and oxygen as waste products of metabolism and their loss from the stomata of a leaf"
+      }
+    ],
+    "primer": {
+      "text": "Plants run two gas-hungry processes on opposite schedules: photosynthesis in the daylight hours and respiration around the clock. The result is that each gas takes its turn as surplus, and the leaf simply lets the excess drift away through its stomata — no pumping, no effort, just diffusion.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_t7Fd2kvHYDqjpQqq::L1",
+        "title": "Plant Wastes and the Stomata",
+        "sourceHeadings": [
+          "The Need for Excretion in Plants",
+          "Oxygen and carbon dioxide"
+        ],
+        "specRefs": [
+          "2.70"
+        ],
+        "opening": "Plant metabolism produces two wastes worth naming: oxygen, surplus in the light, and carbon dioxide, surplus in the dark. In bright daylight a photosynthesising leaf burns through carbon dioxide faster than respiration replaces it, and the oxygen it makes piles up until it leaks away through the stomata. When darkness falls the roles reverse and carbon dioxide now accumulates and drifts out. Because the gases simply move down their gradients, the process costs the plant no energy.",
+        "keyPoints": [
+          "Photosynthesis and respiration in a plant can each turn the other's raw material into waste.",
+          "In bright light photosynthesis outruns respiration, so oxygen is the surplus gas.",
+          "In darkness only respiration runs, so carbon dioxide is the surplus gas.",
+          "The surplus gas diffuses out of the leaf through the stomata.",
+          "Diffusion costs no energy, so plant gas excretion is a passive process."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Whatever gas the plant is not using at the moment diffuses out through the stomata.",
+            "analogy": "It is like a revolving door that only swings when more people push from one side.",
+            "examPointer": "State the direction of the net gas flow for day and for night — both are commonly asked."
+          },
+          "medium": {
+            "restatement": "Light decides which gas is waste: oxygen by day, carbon dioxide by night.",
+            "analogy": "Two clocks run at once — the solar-powered one and the always-on one — and the faster one sets the waste.",
+            "examPointer": "Quote the phrase net effect when comparing the two rates, as mark schemes reward it."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q1",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q2",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q3",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q4",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q5",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q6",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q7",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q8",
+          "rn_t7Fd2kvHYDqjpQqq::L1::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "stoma",
+          "definition": "A pore in the leaf epidermis, formed between two guard cells, through which gases diffuse in and out.",
+          "firstLesson": 1
+        },
+        {
+          "term": "net gas exchange",
+          "definition": "The overall direction of gas movement once the faster of photosynthesis and respiration has set the balance.",
+          "firstLesson": 1
+        },
+        {
+          "term": "passive process",
+          "definition": "A movement driven only by a concentration gradient, costing the cell no energy.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

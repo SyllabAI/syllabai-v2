@@ -1,0 +1,260 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_78VnVvwXpYGkNvpQ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "ea23797925f6ed26c19d2ab44b0afa93295be7dc0cc27c3c9c656f4b4154b5ad",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_78VnVvwXpYGkNvpQ",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Excretion",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/excretion/nephron-function",
+    "specAnchors": [
+      {
+        "code": "2.75B",
+        "text": "describe ultrafiltration in the Bowman’s capsule and the composition of the glomerular filtrate"
+      },
+      {
+        "code": "2.76B",
+        "text": "understand how water is reabsorbed into the blood from the collecting duct"
+      },
+      {
+        "code": "2.77B",
+        "text": "understand why selective reabsorption of glucose occurs at the proximal convoluted tubule"
+      }
+    ],
+    "primer": {
+      "text": "Urine does not simply appear — it is built in three stages along the nephron. You already know the kidney filters blood; this note walks the filtrate from the glomerulus, through the glucose rescue at the proximal convoluted tubule, to the water tuning at the collecting duct you met in the ADH note.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_78VnVvwXpYGkNvpQ::L1",
+        "title": "Ultrafiltration",
+        "sourceHeadings": [
+          "Formation of urine",
+          "Ultrafiltration"
+        ],
+        "specRefs": [
+          "2.75B"
+        ],
+        "opening": "The first stage happens in the glomerulus, the knot of capillaries tucked inside each Bowman's capsule. Blood arrives under high pressure — the vessel feeding in is wider than the one leaving, so pressure piles up — and that pressure shoves small molecules through a sieve-like membrane into the capsule. Water, glucose, urea and ions cross; proteins and blood cells are too bulky and stay behind.",
+        "keyPoints": [
+          "Three stages build urine: ultrafiltration, selective reabsorption and water reabsorption.",
+          "Ultrafiltration happens in the glomerulus under unusually high blood pressure.",
+          "The vessel entering the glomerulus is wider than the vessel leaving it, which forces the pressure up.",
+          "The sieve-like membrane passes small molecules and holds back proteins and cells.",
+          "The fluid caught in the Bowman's capsule is the glomerular filtrate."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "High pressure squeezes the small molecules of the blood into the Bowman's capsule.",
+            "analogy": "It is a coffee press: hot water forced through a mesh leaves the grounds behind.",
+            "examPointer": "Always list the filtrate's contents — water, glucose, urea, ions — and name what stays behind."
+          },
+          "medium": {
+            "restatement": "Describe the sieving as squeezing under pressure; large molecules never leave the blood at all.",
+            "analogy": "A sieve under a tap: fine grains wash through, pebbles stay in the mesh.",
+            "examPointer": "Say forced out by pressure rather than diffused — mark schemes penalise the diffusion slip."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_78VnVvwXpYGkNvpQ::L1::Q1",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q2",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q3",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q4",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q5",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q6",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q7",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q8",
+          "rn_78VnVvwXpYGkNvpQ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_78VnVvwXpYGkNvpQ::L2",
+        "title": "Selective Reabsorption of Glucose",
+        "sourceHeadings": [
+          "Selective Reabsorption"
+        ],
+        "specRefs": [
+          "2.77B"
+        ],
+        "opening": "The filtrate still carries glucose the body intends to keep. All of it is reclaimed in the proximal convoluted tubule by active transport, which pushes glucose against its gradient into the surrounding capillaries. That push costs energy, which is why the PCT's cells are packed with mitochondria.",
+        "keyPoints": [
+          "All the glucose in the filtrate is reabsorbed at the proximal convoluted tubule.",
+          "Glucose moves against its concentration gradient, so active transport is required.",
+          "Active transport needs energy, supplied by the PCT cells' many mitochondria.",
+          "Urea stays in the filtrate because it is waste, not because it cannot be moved.",
+          "The word selective means useful substances are rescued and wastes are left."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The PCT wins back every trace of glucose before the fluid goes further.",
+            "analogy": "A security checkpoint that waves every familiar face through and lets the strangers pass.",
+            "examPointer": "Name active transport and mitochondria together — the energy story earns the marks."
+          },
+          "medium": {
+            "restatement": "Glucose is fully rescued in the PCT by energy-costing transport.",
+            "analogy": "Like paying a porter to carry every dropped coin back up the hill, against the flow.",
+            "examPointer": "Pair the words active transport and mitochondria; one without the other loses the mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_78VnVvwXpYGkNvpQ::L2::Q1",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q2",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q3",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q4",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q5",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q6",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q7",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q8",
+          "rn_78VnVvwXpYGkNvpQ::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_78VnVvwXpYGkNvpQ::L3",
+        "title": "Reabsorption of Water",
+        "sourceHeadings": [
+          "Reabsorption of Water"
+        ],
+        "specRefs": [
+          "2.76B"
+        ],
+        "opening": "The last stage hands control back to the hormone you met earlier. Filtrate leaving the PCT passes the loop of Henle and the distal convoluted tubule before reaching the collecting duct, where the majority of the remaining water returns to the blood by osmosis. How much returns depends on ADH: more hormone, more water reclaimed, and a concentrated urine; less hormone, and the water departs in a dilute stream.",
+        "keyPoints": [
+          "After the PCT, filtrate flows through the loop of Henle, the DCT and the collecting duct.",
+          "Some water leaves in the loop of Henle, but most is reclaimed at the collecting duct.",
+          "Water crosses the collecting duct by osmosis into the blood.",
+          "ADH sets how permeable the duct is, and therefore how much water is reclaimed.",
+          "More ADH concentrates the urine; less ADH dilutes it."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Water leaves the collecting duct by osmosis, and ADH decides how much.",
+            "analogy": "A clothes line in changing weather: the drier the air, the more water the laundry gives up.",
+            "examPointer": "Tie the hormone to the outcome — ADH up, concentrated urine — in one sentence."
+          },
+          "medium": {
+            "restatement": "The collecting duct is the adjustable water gate; ADH holds the handle.",
+            "analogy": "A dam with movable sluice gates: how far they open decides the river's flow.",
+            "examPointer": "Answer water questions with the chain: ADH, permeability, osmosis, urine concentration."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_78VnVvwXpYGkNvpQ::L3::Q1",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q2",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q3",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q4",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q5",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q6",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q7",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q8",
+          "rn_78VnVvwXpYGkNvpQ::L3::Q9"
+        ],
+        "figureIds": [
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "ultrafiltration",
+          "definition": "Pressure-driven filtering of small blood molecules into the Bowman's capsule at the glomerulus.",
+          "firstLesson": 1
+        },
+        {
+          "term": "glomerular filtrate",
+          "definition": "The fluid caught in the Bowman's capsule: water, glucose, urea and ions, minus proteins and cells.",
+          "firstLesson": 1
+        },
+        {
+          "term": "selective reabsorption",
+          "definition": "The reclamation of useful substances, chiefly all the glucose, at the proximal convoluted tubule.",
+          "firstLesson": 2
+        },
+        {
+          "term": "osmosis",
+          "definition": "The movement of water across a membrane towards the more concentrated solution.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/e33c7f37bcc2-29760-ultrafiltration.png",
+        "alt": "Glomerulus and Bowman's capsule with blood flow and the width difference of the vessels labelled.",
+        "sourceHeading": "Ultrafiltration",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "High pressure at the glomerulus forces small molecules into the capsule"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/9867733f2ee8-48592-selective-reabsorption.png",
+        "alt": "Proximal convoluted tubule with glucose reabsorbed into the surrounding capillary.",
+        "sourceHeading": "Selective Reabsorption",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Glucose leaves the filtrate for the bloodstream in the PCT"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/66f0b6d2c5b7-23628-water-reabsorption.png",
+        "alt": "Nephron showing filtrate flow and water leaving the collecting duct into the capillary network.",
+        "sourceHeading": "Reabsorption of Water",
+        "moduleIds": [
+          "L3"
+        ],
+        "binding": "heading-unique",
+        "caption": "Water reclaims its path to the blood at the collecting duct"
+      }
+    ]
+  }
+}

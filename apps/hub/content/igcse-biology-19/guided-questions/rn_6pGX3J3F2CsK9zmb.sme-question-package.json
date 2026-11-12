@@ -1,0 +1,255 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6pGX3J3F2CsK9zmb",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "981665158342b857dbdf9acb60df8a348caf185eadf1535c6b79ccc6a8e6712d",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_6pGX3J3F2CsK9zmb",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q1",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "Which tube carries urine from the kidney to the bladder?",
+      "misconceptionClass": "naming recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The ureter",
+          "correct": true,
+          "explanation": "The ureter is the kidney-to-bladder tube.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The urethra",
+          "correct": false,
+          "explanation": "The urethra runs from the bladder to outside the body.",
+          "misconception": "naming swapped"
+        },
+        {
+          "key": "C",
+          "text": "The renal vein",
+          "correct": false,
+          "explanation": "The renal vein carries blood, not urine.",
+          "misconception": "vessel confused"
+        },
+        {
+          "key": "D",
+          "text": "The renal artery",
+          "correct": false,
+          "explanation": "The renal artery brings blood in for filtering.",
+          "misconception": "vessel confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q2",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "What does the renal vein carry?",
+      "misconceptionClass": "vessel recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Urea directly to the liver",
+          "correct": false,
+          "explanation": "Urea leaves via urine; nothing returns it to the liver.",
+          "misconception": "route invented"
+        },
+        {
+          "key": "B",
+          "text": "Filtered blood away from the kidneys",
+          "correct": true,
+          "explanation": "The vein returns the cleaned blood to the circulation.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Urine towards the bladder",
+          "correct": false,
+          "explanation": "Urine travels in the ureters, never in veins.",
+          "misconception": "cargo confused"
+        },
+        {
+          "key": "D",
+          "text": "Unfiltered blood towards the kidneys",
+          "correct": false,
+          "explanation": "That describes the renal artery.",
+          "misconception": "direction flipped"
+        }
+      ]
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q3",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "Where is urine stored before release?",
+      "misconceptionClass": "organ recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the urethra",
+          "correct": false,
+          "explanation": "The urethra is a passage, not a store.",
+          "misconception": "organ wrong"
+        },
+        {
+          "key": "B",
+          "text": "In the renal pelvis",
+          "correct": false,
+          "explanation": "The pelvis only funnels urine towards the ureter.",
+          "misconception": "organ partial"
+        },
+        {
+          "key": "C",
+          "text": "In the bladder",
+          "correct": true,
+          "explanation": "The bladder is the system's holding tank.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "In the kidneys",
+          "correct": false,
+          "explanation": "The kidneys produce urine continuously; they do not store it.",
+          "misconception": "organ wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q4",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "How many kidneys and ureters does the urinary system contain?",
+      "misconceptionClass": "count recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "One kidney, two ureters",
+          "correct": false,
+          "explanation": "Each ureter serves one kidney; the counts match.",
+          "misconception": "count wrong"
+        },
+        {
+          "key": "B",
+          "text": "Two kidneys, one ureter",
+          "correct": false,
+          "explanation": "A single ureter could not drain both kidneys.",
+          "misconception": "count wrong"
+        },
+        {
+          "key": "C",
+          "text": "Three kidneys in total",
+          "correct": false,
+          "explanation": "Humans have exactly two.",
+          "misconception": "count invented"
+        },
+        {
+          "key": "D",
+          "text": "Two of each",
+          "correct": true,
+          "explanation": "The system is paired at those two points.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q5",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "Which sequence shows how urine travels through the system?",
+      "misconceptionClass": "route recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kidney, ureter, bladder, urethra",
+          "correct": true,
+          "explanation": "That is the one-way flow of the urinary system.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Bladder, kidney, urethra",
+          "correct": false,
+          "explanation": "Urine starts at the kidney, not the bladder.",
+          "misconception": "route reversed"
+        },
+        {
+          "key": "C",
+          "text": "Kidney, urethra, bladder",
+          "correct": false,
+          "explanation": "The urethra comes after the bladder.",
+          "misconception": "route swapped"
+        },
+        {
+          "key": "D",
+          "text": "Ureter, kidney, bladder",
+          "correct": false,
+          "explanation": "The ureter follows the kidney, not the reverse.",
+          "misconception": "route reversed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q6",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "Name the four structures of the urinary system.",
+      "misconceptionClass": "system recall",
+      "kind": "recall",
+      "modelAnswer": "The kidneys, the ureters, the bladder and the urethra.",
+      "keywords": [
+        "kidneys",
+        "ureters",
+        "bladder",
+        "urethra"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q7",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "Which two vessels connect each kidney to the circulation?",
+      "misconceptionClass": "vessel recall",
+      "kind": "recall",
+      "modelAnswer": "The renal artery, bringing blood in, and the renal vein, carrying filtered blood away.",
+      "keywords": [
+        "renal artery",
+        "renal vein",
+        "filtered blood",
+        "kidney"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q8",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "Explain why confusing the ureter with the urethra would break an answer.",
+      "misconceptionClass": "naming reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because the two tubes sit at opposite ends of the system and carry urine in different stages: the ureter runs from kidney to bladder, the urethra from bladder to outside; swapping them reverses the direction of flow and loses the marks.",
+      "keywords": [
+        "ureter",
+        "urethra",
+        "bladder",
+        "direction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_6pGX3J3F2CsK9zmb::L1::Q9",
+      "moduleId": "rn_6pGX3J3F2CsK9zmb::L1",
+      "stem": "Label a diagram showing a kidney, its two attached tubes and the storage organ, naming every tube with its direction.",
+      "misconceptionClass": "diagram application",
+      "kind": "application",
+      "modelAnswer": "The tube leaving each kidney downwards is the ureter, carrying urine to the bladder; the single tube leaving the bladder is the urethra, releasing urine outside; and the renal artery and vein attach at the kidney's blood side, in and out respectively.",
+      "keywords": [
+        "ureter",
+        "bladder",
+        "urethra",
+        "renal artery"
+      ],
+      "options": []
+    }
+  ]
+}
