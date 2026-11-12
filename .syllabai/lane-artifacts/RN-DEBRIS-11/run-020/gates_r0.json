@@ -1,0 +1,131 @@
+{
+ "artifact": "rn11-run-020-gates-r0",
+ "generatedUtc": "2026-11-12",
+ "gates": [
+  {
+   "gate": "cie-igcse-computer-science-23:G1-serializers",
+   "ok": true,
+   "detail": "content/spine/kg/manifest round-trip EXACT (dump law)"
+  },
+  {
+   "gate": "cie-igcse-computer-science-23:G2-content-surgery",
+   "ok": true,
+   "detail": "+5 nodes at the official position, +5 edges, 6 order bumps (+5 each)"
+  },
+  {
+   "gate": "cie-igcse-computer-science-23:G3-spine-mirror",
+   "ok": true,
+   "detail": "per-code parity 125 official nodes, edges mirrored"
+  },
+  {
+   "gate": "cie-igcse-computer-science-23:G4-manifest",
+   "ok": true,
+   "detail": "specPoints 88->93 (single site)"
+  },
+  {
+   "gate": "cie-igcse-computer-science-23:G5-kg-regen",
+   "ok": true,
+   "detail": "array 125n/218e (meta 125/215/93 = exporter output), hier 124==nodes-1, deep-equal OK, 5 new titles carried, 11 pre-existing drift texts reconciled to the mirror law"
+  },
+  {
+   "gate": "cie-igcse-computer-science-23:G7-byte-scope",
+   "ok": true,
+   "detail": "delta == exactly 5 nodes + 5 edges + 6 order fields, both planes; zero other bytes"
+  },
+  {
+   "gate": "cie-igcse-computer-science-23:G8-index",
+   "ok": true,
+   "detail": "index counts -> 125n/218e/93sp (P5 array truth)"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G1-serializers",
+   "ok": true,
+   "detail": "content/spine/kg/manifest round-trip EXACT (dump law)"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G2-content-surgery",
+   "ok": true,
+   "detail": "+3 nodes at the official position, +3 edges, 19 order bumps (+3 each)"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G3-spine-mirror",
+   "ok": true,
+   "detail": "per-code parity 46 official nodes, edges mirrored"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G4-manifest",
+   "ok": true,
+   "detail": "specPoints 33->36 (single site)"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G5-kg-regen",
+   "ok": true,
+   "detail": "array 46n/91e (meta 46/91/36 = exporter output), hier 45==nodes-1, deep-equal OK, 3 new titles carried"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G7-byte-scope",
+   "ok": true,
+   "detail": "delta == exactly 3 nodes + 3 edges + 19 order fields, both planes; zero other bytes"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G8-index",
+   "ok": true,
+   "detail": "index counts -> 46n/91e/36sp (P5 array truth)"
+  },
+  {
+   "gate": "cie-a-level-maths-20-pure-1:G6-ugm-untouched",
+   "ok": true,
+   "detail": "ugm-resources.json byte-identical (new points carry no resources)"
+  },
+  {
+   "gate": "cie-as-maths-20-pure-1:G1-serializers",
+   "ok": true,
+   "detail": "content/spine/kg/manifest round-trip EXACT (dump law)"
+  },
+  {
+   "gate": "cie-as-maths-20-pure-1:G2-content-surgery",
+   "ok": true,
+   "detail": "+3 nodes at the official position, +3 edges, 19 order bumps (+3 each)"
+  },
+  {
+   "gate": "cie-as-maths-20-pure-1:G3-spine-mirror",
+   "ok": true,
+   "detail": "per-code parity 46 official nodes, edges mirrored"
+  },
+  {
+   "gate": "cie-as-maths-20-pure-1:G4-manifest",
+   "ok": true,
+   "detail": "specPoints 33->36 (single site)"
+  },
+  {
+   "gate": "cie-as-maths-20-pure-1:G5-kg-regen",
+   "ok": true,
+   "detail": "array 46n/91e (meta 46/91/36 = exporter output), hier 45==nodes-1, deep-equal OK, 3 new titles carried"
+  },
+  {
+   "gate": "cie-as-maths-20-pure-1:G7-byte-scope",
+   "ok": true,
+   "detail": "delta == exactly 3 nodes + 3 edges + 19 order fields, both planes; zero other bytes"
+  },
+  {
+   "gate": "cie-as-maths-20-pure-1:G8-index",
+   "ok": true,
+   "detail": "index counts -> 46n/91e/36sp (P5 array truth)"
+  },
+  {
+   "gate": "ugm:serve-plane-law",
+   "ok": true,
+   "detail": "both UGM bundles byte-untouched (1.1 primaryPick law + AS bijection law); curriculum census re-pin 33->36 in the AS bijection test; the 0606-style gap rows filed as the T-UGM follow-up note"
+  },
+  {
+   "gate": "GV1-battery",
+   "ok": true,
+   "detail": "verify_corpus_23a PASS; verify_flashcard_sync_courses PASS; validate_cie_bundles PASS (pure-1 bank size 67 intact); validate_gradeb PASS; verify_subject_identity PASS 106/106; validate_spines exit 0 (statement_diff_count 0)"
+  },
+  {
+   "gate": "bun-tests",
+   "ok": true,
+   "detail": "kg-corpus 111/0; ugm.bundle 100/0; bundle-seed 64/0; sme bundle-questions 25/0; ugm.render 2 pass + 1 PRE-EXISTING fail (T-UGM-RENDER-1 IGCSE katex — the W6-disclosed standing red of its own lane, reproduced at clean HEAD, not this run's); hub tsc --noEmit exit 0"
+  }
+ ]
+}
