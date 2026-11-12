@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 64,
+  "rowsApproved": 73,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 64,
+    "rowsApproved": 73,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1018,6 +1018,141 @@
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "Lvlk6XQTlaI",
+   "title": "Kinetic Energy of Satellites - Start With The Equations, Then See What Cancels...",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Lvlk6XQTlaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 248,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "GfoWEbr8QEc",
+   "title": "The Power of a Motor - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=GfoWEbr8QEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 72,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "CmN6MpKhVkw",
+   "title": "Reflection - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=CmN6MpKhVkw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 190,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "e7k4j_YilGU",
+   "title": "Wave Calculations - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=e7k4j_YilGU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 213,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "rk-7bmuE0Mc",
+   "title": "Atoms and Isotopes - GCSE Physics Worksheet Answers EXPLAINED",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=rk-7bmuE0Mc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 181,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "Ja6mFCz2Vvc",
+   "title": "Reflection, Refraction, Absorption and Transmission of Waves - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Ja6mFCz2Vvc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 226,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "0aw2jD3zlQM",
+   "title": "Reflection (NOT Reflected) - GCSE Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=0aw2jD3zlQM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 315,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "MzZmgk1Hjs8",
+   "title": "How to Read an Oscilloscope - GCSE and A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=MzZmgk1Hjs8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 198,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "QLHBcElp7e8",
+   "title": "Oscilloscope - WORKED EXAMPLE - GCSE and A Level Physics",
+   "provider": "physics-online",
+   "watchUrl": "https://www.youtube.com/watch?v=QLHBcElp7e8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "gcse",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic teaching content (many carry AQA/OCR tags) bound on topic, not board wording",
+   "durationS": 185,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Physics Online",
+   "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
   }
  ],
  "mappings": [
@@ -1205,6 +1340,26 @@
    }
   },
   {
+   "video": "e7k4j_YilGU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Wave Calculations' names the speed-frequency-wavelength relationship v = f lambda of 3.5 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "8K6gOST8pZk",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1237,6 +1392,26 @@
    ],
    "confidence": "medium",
    "evidence": "refraction of waves = 3.9 + 3.14 + ray diagrams (3.16) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Ja6mFCz2Vvc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.9"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reflection, Refraction, Absorption and Transmission' names the wave-boundary behaviour of 3.9 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1318,6 +1493,46 @@
    ],
    "confidence": "medium",
    "evidence": "title names reflection (law of reflection) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CmN6MpKhVkw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reflection' names the law-of-reflection content of 3.15 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0aw2jD3zlQM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Reflection' names the law-of-reflection content of 3.15 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1556,6 +1771,48 @@
    }
   },
   {
+   "video": "MzZmgk1Hjs8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.26P",
+    "5.27P"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'How to Read an Oscilloscope - GCSE and A Level Physics' -> 3.27P 'practical: investigate the frequency of a soun' via distinctive token(s) oscilloscope; 3.26P 'understand how an oscilloscope and microphone ' via distinctive token(s) oscilloscope (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "QLHBcElp7e8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.26P",
+    "5.27P"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Oscilloscope - WORKED EXAMPLE - GCSE and A Level Physics' -> 3.27P 'practical: investigate the frequency of a soun' via distinctive token(s) oscilloscope; 3.26P 'understand how an oscilloscope and microphone ' via distinctive token(s) oscilloscope (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "hKO3DpgiISk",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1726,6 +1983,26 @@
    }
   },
   {
+   "video": "GfoWEbr8QEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.12"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'The Power of a Motor' names the force-on-current-carrying-wire motor effect of 6.12 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "NjgqJahwsG0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1877,6 +2154,27 @@
    ],
    "confidence": "medium",
    "evidence": "title names representing atoms (nuclide symbols; atomic/mass numbers) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "rk-7bmuE0Mc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2",
+    "8.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Atoms and Isotopes - GCSE Physics Worksheet Answers EXPLAINED' -> 7.2 'describe the structure of an atom in terms of ' via distinctive token(s) atom; 7.3 'know the terms atomic (proton) number, mass (n' via distinctive token(s) isotope (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2223,6 +2521,26 @@
    }
   },
   {
+   "video": "Lvlk6XQTlaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Kinetic Energy of Satellites' names the gravitational-orbit content of 8.4 (satellites orbiting under gravity); KE-maths framing exceeds the spec, disclosed (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "okMA18ppu98",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2350,16 +2668,16 @@
  ],
  "coverage": {
   "specPointsTotal": 101,
-  "specPointsMapped": 70,
-  "specPointsUnmapped": 31,
-  "videosTotal": 64,
-  "videosMapped": 64,
+  "specPointsMapped": 72,
+  "specPointsUnmapped": 29,
+  "videosTotal": 73,
+  "videosMapped": 73,
   "videosUnmapped": 0,
-  "mappingRows": 64,
+  "mappingRows": 73,
   "byConfidence": {
    "high": 0,
-   "medium": 58,
-   "low": 6
+   "medium": 65,
+   "low": 8
   }
  },
  "inputs": {
@@ -2383,5 +2701,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T07:09:06.240Z"
+ "generatedUtc": "2026-11-12T09:58:57.473Z"
 }
