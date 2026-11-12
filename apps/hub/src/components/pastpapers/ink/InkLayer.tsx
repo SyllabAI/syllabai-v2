@@ -76,6 +76,26 @@
  * the clean instrument stroke; a straddling drag commits the live mixed
  * path; off-guide drags stay raw freehand. No new global listeners —
  * the guides and tools ride the same canvas pointer handlers.
+ *
+ * BREAKAGE SWEEP (T-HUB-INK-BRK, operator 2026-11-12: "because of the
+ * pen/writing toolkit, the pdf viewer has many problems, sometimes some
+ * things break") — four pinned fixes:
+ *   1. TOOLBAR WALL: the expanded row is ONE nowrap horizontally-
+ *      scrollable line (the pane's own s146 law) — the flex-wrap wall
+ *      used to cover the paper's bottom 2–3 rows deep on a phone pane
+ *      and swallow every scroll/pinch touch there.
+ *   2. PINCH HIJACK: a draw-armed canvas tags itself data-ink-drawing
+ *      and the pane's pinch pairing (pdf-pane s144) skips those
+ *      pointers — a palm resting mid-stroke used to pair with the pen,
+ *      step the zoom and swap the holder under the live stroke.
+ *   3. DRAFT RACE: the open text/math draft is COMMITTED before a
+ *      second placement opens (mirror refs + a settle set) — the old
+ *      path silently clobbered the typed text or let the stale removal
+ *      blur cancel the successor; every close path is now idempotent.
+ *   4. ZERO-BOX WIPES: repaint refuses sub-px boxes (detached reads
+ *      during the pane's non-React holder swaps) — the store is no
+ *      longer wiped to 1×1 and the commit-time cssW guards can no
+ *      longer silently drop a stroke/text.
  */
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
@@ -679,7 +699,13 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           the bottom-right corner); ALWAYS visible (T-MG-INK-11: MG's
           annotator toolbar ships with no gate — parity law) unless the
           user collapsed it (T-HUB-INK-TOUCH run-001: the pill below is
-          the way back) */}
+          the way back).
+          T-HUB-INK-BRK: ONE nowrap horizontally-scrollable row (the pane's
+          own s146 law) — the old flex-wrap built a 2–3-row wall over the
+          paper's bottom on a phone pane (the reported "bottom toolbar
+          blocks scroll/pinch": touches there never reached the scroller).
+          The row keeps every control reachable at ~44px; pan-x keeps the
+          row's pans inside the row. */}
       {collapsed ? (
         <Button
           size="sm"
@@ -694,7 +720,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
         <div
           role="toolbar"
           aria-label="Ink annotations"
-          className="absolute bottom-3 right-2 z-40 flex max-w-[calc(100%-1rem)] flex-wrap items-center gap-1 rounded-lg border bg-background/95 p-1 shadow-md backdrop-blur"
+          className="absolute bottom-3 right-2 z-40 flex max-w-[calc(100%-1rem)] flex-nowrap items-center gap-1 overflow-x-auto overscroll-contain rounded-lg border bg-background/95 p-1 shadow-md backdrop-blur [touch-action:pan-x]"
         >
           <Button
             size="sm"
@@ -1256,15 +1282,33 @@ export function InkCanvas({
   const lastPxRef = useRef<[number, number] | null>(null);
   const rafRef = useRef(0);
   const [draft, setDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
+  // T-HUB-INK-BRK (operator: "the pdf viewer has many problems, sometimes
+  // some things break"): the draft MIRRORS + the settle guard — the
+  // tap-elsewhere race of record. The old flow let the opening press of a
+  // SECOND placement run setDraft(new) while the first textarea was still
+  // mounted: preventDefault suppressed the focus transfer (no blur → no
+  // commit — the typed text was silently clobbered), and when the browser
+  // DID fire the removal blur, the stale onBlur closure ran AFTER the new
+  // setDraft and its setDraft(null) killed the fresh editor. The mirror
+  // lets the pointerdown path commit the OPEN draft first (data kept), and
+  // the settle set makes every close path idempotent — a stale blur can
+  // never re-commit (duplicate shapes/double undo) or clobber the successor.
+  const draftRef = useRef(draft);
+  draftRef.current = draft;
+  const settledDraftsRef = useRef(new Set<{ x: number; y: number; value: string; editId?: string }>());
+  const [mathDraft, setMathDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
+  const mathDraftRef = useRef(mathDraft);
+  mathDraftRef.current = mathDraft;
+  const settledMathDraftsRef = useRef(new Set<{ x: number; y: number; value: string; editId?: string }>());
+  const mathRef = useRef<HTMLTextAreaElement | null>(null);
   // instrument drag state (T-MG-INK-2)
   const dragKindRef = useRef<DragKind | null>(null);
   const guideToolRef = useRef<"ruler" | "protractor" | null>(null);
   const rawRef = useRef<Array<[number, number]>>([]);
   const pivotRef = useRef<{ x: number; y: number } | null>(null);
   const [sweepDeg, setSweepDeg] = useState<number | null>(null);
-  // ── T-MG-INK-4 state: math draft, erase sweep, select/move ──
-  const [mathDraft, setMathDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
-  const mathRef = useRef<HTMLTextAreaElement | null>(null);
+  // ── T-MG-INK-4 state: erase sweep, select/move (the math draft + its
+  //    mirror/settle guard live with the text draft above) ──
   // T-MG-INK-9: the equation keyboard — closed on create (MG's posture:
   // their math box carries the ⌨ toggle; the keyboard never auto-opens),
   // pane-wide via the keyboardHost portal.
@@ -1332,6 +1376,14 @@ export function InkCanvas({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const box = canvas.getBoundingClientRect();
+    // T-HUB-INK-BRK: a sub-px box is a DETACHED or hidden canvas — the
+    // pane's non-React holder swaps report 0×0 between the eviction and
+    // the self-heal's re-attach. Sizing the store then would wipe the
+    // bitmap to 1×1 and leave boxRef at zero, where the commit-time
+    // cssW > 0 guards silently DROPPED strokes and text (the "sometimes
+    // things break" window). Skip; the ResizeObserver repaint on
+    // re-attach restores size and paint.
+    if (box.width < 1 || box.height < 1) return;
     boxRef.current = { cssW: box.width, cssH: box.height };
     sizeBackingStore(ctx, canvas, box.width, box.height, window.devicePixelRatio || 1);
     paintShapes(ctx, boxRef.current, displayShapes, activeRef.current ? { color, widthFrac, points: activeRef.current } : null);
@@ -1351,6 +1403,85 @@ export function InkCanvas({
   useEffect(() => {
     repaint();
   }, [repaint]);
+
+  // T-HUB-INK-BRK: the commit takes the draft TARGET (not the closure) and
+  // settles it — one commit per draft instance, idempotent under the stale
+  // blur a non-React holder eviction can fire after a successor opened.
+  // run-003 laws unchanged: an edit replaces content in place (same id); an
+  // empty commit is a CANCEL (the shape is untouched — deletion stays the
+  // erase/✕ surface, never the editor). Defined BEFORE the pointer handler:
+  // the tap-elsewhere law commits the open draft first.
+  const commitDraft = useCallback(
+    (target: { x: number; y: number; value: string; editId?: string } | null) => {
+      if (!target || settledDraftsRef.current.has(target)) return;
+      settledDraftsRef.current.add(target);
+      if (settledDraftsRef.current.size > 64) {
+        const first = settledDraftsRef.current.values().next().value;
+        if (first !== undefined) settledDraftsRef.current.delete(first);
+      }
+      const value = target.value.trim();
+      if (target.editId) {
+        if (value) onCommitTextEdit(target.editId, value);
+      } else {
+        const { cssW } = boxRef.current;
+        if (value && cssW > 0) {
+          onCommitText({
+            page,
+            color,
+            // T-MG-INK-9: the editor edits at MG's 16 css px default — commit
+            // that relative size (WYSIWYG-honest at the reference width).
+            sizeFrac: clamp01(INK_TEXT_BASE_PX / cssW),
+            x: target.x,
+            y: target.y,
+            text: value,
+          });
+        }
+      }
+      if (draftRef.current === target) setDraft(null);
+    },
+    [onCommitTextEdit, color, onCommitText, page],
+  );
+
+  // T-MG-INK-4: the math draft commits an mtext at the same relative
+  // size law as the text editor (14 css px at commit time). run-003:
+  // the edit twin — content replaced in place (same id), empty = cancel.
+  // T-HUB-INK-BRK: the settle guard twin (see commitDraft above) — one
+  // commit per draft instance, stale-blur-proof. Escape DISCARDS: it
+  // settles the draft WITHOUT committing, so a late blur cannot resurrect
+  // discarded content.
+  const commitMathDraft = useCallback(
+    (target: { x: number; y: number; value: string; editId?: string } | null, discard = false) => {
+      if (!target || settledMathDraftsRef.current.has(target)) return;
+      settledMathDraftsRef.current.add(target);
+      if (settledMathDraftsRef.current.size > 64) {
+        const first = settledMathDraftsRef.current.values().next().value;
+        if (first !== undefined) settledMathDraftsRef.current.delete(first);
+      }
+      const value = target.value.trim();
+      if (!discard) {
+        if (target.editId) {
+          if (value) onCommitMathEdit(target.editId, value);
+        } else {
+          const { cssW } = boxRef.current;
+          if (value && cssW > 0) {
+            onCommitMath({
+              page,
+              color,
+              sizeFrac: clamp01(INK_TEXT_BASE_PX / cssW),
+              x: target.x,
+              y: target.y,
+              tex: value,
+            });
+          }
+        }
+      }
+      if (mathDraftRef.current === target) {
+        setMathDraft(null);
+        setKbOpen(false);
+      }
+    },
+    [onCommitMathEdit, color, onCommitMath, page],
+  );
 
   const scheduleLive = useCallback(() => {
     if (rafRef.current) return;
@@ -1395,6 +1526,13 @@ export function InkCanvas({
         // EXISTING text box (topmost of the family) opens it for editing;
         // an empty-canvas tap creates a new one (the MG parity posture).
         const target = topmostFamilyHit("text", displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX);
+        // T-HUB-INK-BRK: the tap-elsewhere commit — preventDefault (above)
+        // suppressed the focus transfer, so the OPEN draft would never blur;
+        // committing it here keeps the typed text AND lets the new placement
+        // open cleanly (the settle guard below makes the eventual removal
+        // blur of the old textarea a no-op).
+        const open = draftRef.current;
+        if (open) commitDraft(open);
         // T-MG-INK-10: opening an editor spends the chip for this arming.
         setSpentSeq(armSeq);
         setDraft(
@@ -1421,6 +1559,10 @@ export function InkCanvas({
         // read the erase/select gestures use), topmost of the family.
         measureMtexts();
         const target = topmostFamilyHit("mtext", displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX, readMeasured);
+        // T-HUB-INK-BRK: the math twin of the tap-elsewhere commit (see the
+        // text branch above).
+        const openMath = mathDraftRef.current;
+        if (openMath) commitMathDraft(openMath);
         // T-MG-INK-10: the math twin of the chip-spend law.
         setSpentSeq(armSeq);
         setMathDraft(
@@ -1524,7 +1666,7 @@ export function InkCanvas({
       lastPxRef.current = [e.clientX, e.clientY];
       scheduleLive();
     },
-    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts],
+    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts, commitDraft, commitMathDraft],
   );
 
   const onPointerMove = useCallback(
@@ -1718,60 +1860,6 @@ export function InkCanvas({
     else repaint();
   }, [onCommitStroke, onCommitErase, onCommitMove, page, repaint, ruler, protractor, erasePreview, movePreview]);
 
-  const commitDraft = useCallback(() => {
-    if (!draft) return;
-    const value = draft.value.trim();
-    // run-003: the edit path — content replaced in place (same id); an
-    // empty commit is a CANCEL (the shape is unchanged — deletion stays
-    // the erase/✕ surface, never the editor).
-    if (draft.editId) {
-      if (value) onCommitTextEdit(draft.editId, value);
-      setDraft(null);
-      return;
-    }
-    const { cssW } = boxRef.current;
-    if (value && cssW > 0) {
-      onCommitText({
-        page,
-        color,
-        // T-MG-INK-9: the editor edits at MG's 16 css px default — commit
-        // that relative size (WYSIWYG-honest at the reference width).
-        sizeFrac: clamp01(INK_TEXT_BASE_PX / cssW),
-        x: draft.x,
-        y: draft.y,
-        text: value,
-      });
-    }
-    setDraft(null);
-  }, [draft, onCommitTextEdit, color, onCommitText, page]);
-
-  // T-MG-INK-4: the math draft commits an mtext at the same relative
-  // size law as the text editor (14 css px at commit time). run-003:
-  // the edit twin — content replaced in place (same id), empty = cancel.
-  const commitMathDraft = useCallback(() => {
-    if (!mathDraft) return;
-    const value = mathDraft.value.trim();
-    if (mathDraft.editId) {
-      if (value) onCommitMathEdit(mathDraft.editId, value);
-      setMathDraft(null);
-      setKbOpen(false);
-      return;
-    }
-    const { cssW } = boxRef.current;
-    if (value && cssW > 0) {
-      onCommitMath({
-        page,
-        color,
-        sizeFrac: clamp01(INK_TEXT_BASE_PX / cssW),
-        x: mathDraft.x,
-        y: mathDraft.y,
-        tex: value,
-      });
-    }
-    setMathDraft(null);
-    setKbOpen(false);
-  }, [mathDraft, onCommitMathEdit, color, onCommitMath, page]);
-
   // ── T-MG-INK-9: the equation keyboard's insert/backspace paths ──
   // The keyboard taps the DRAFT's selection (the textarea keeps focus —
   // the panel swallows its pointerdowns), the pure module owns the
@@ -1780,25 +1868,27 @@ export function InkCanvas({
   const kbInsert = useCallback(
     (ins: KeyInsertion) => {
       const ta = mathRef.current;
-      if (!ta || !mathDraft) return;
+      const md = mathDraftRef.current;
+      if (!ta || !md) return;
       const start = ta.selectionStart ?? ta.value.length;
       const end = ta.selectionEnd ?? start;
       const res = insertIntoValue(ta.value, start, end, ins);
       pendingCaretRef.current = res.caret;
-      setMathDraft({ ...mathDraft, value: res.value });
+      setMathDraft({ ...md, value: res.value });
     },
-    [mathDraft],
+    [],
   );
 
   const kbBackspace = useCallback(() => {
     const ta = mathRef.current;
-    if (!ta || !mathDraft) return;
+    const md = mathDraftRef.current;
+    if (!ta || !md) return;
     const start = ta.selectionStart ?? ta.value.length;
     const end = ta.selectionEnd ?? start;
     const res = backspaceValue(ta.value, start, end);
     pendingCaretRef.current = res.caret;
-    setMathDraft({ ...mathDraft, value: res.value });
-  }, [mathDraft]);
+    setMathDraft({ ...md, value: res.value });
+  }, []);
 
   // The caret/selection restore after a keyboard edit (and the keyboard
   // taps themselves never blur the draft — the panel's pointerdown law).
@@ -1861,6 +1951,7 @@ export function InkCanvas({
         ref={canvasRef}
         aria-hidden="true"
         data-ink-page={page}
+        data-ink-drawing={mode === "select" ? undefined : page}
         className="pp-inkLayer absolute inset-0 z-30 h-full w-full"
         style={{
           // T-HUB-INK-TOUCH run-001 (operator: "when it is on, cant scroll
@@ -1870,6 +1961,10 @@ export function InkCanvas({
           // every draw-family tool owns the gesture (touch-action: none)
           // because a finger IS the pen there. Mouse shape-drag in select
           // mode is untouched (touch-action gates TOUCH pans only).
+          // T-HUB-INK-BRK: the data-ink-drawing marker is the pane-pinch
+          // contract — a draw-armed canvas's pointers NEVER pair into the
+          // pane's pinch-zoom (a palm resting mid-stroke used to step the
+          // zoom, swap the holder under the live stroke and kill the tool).
           touchAction: mode === "select" ? "pan-x pan-y pinch-zoom" : "none",
           cursor: toolCursor,
         }}
@@ -1979,11 +2074,11 @@ export function InkCanvas({
             el.style.width = `${Math.max(48, el.scrollWidth + 2)}px`;
             el.style.height = `${Math.max(44, el.scrollHeight)}px`;
           }}
-          onBlur={commitDraft}
+          onBlur={() => commitDraft(draft)}
           onKeyDown={(e) => {
             // MG's posture (tldraw text): Enter is a NEWLINE; the edit
             // commits on click-away (blur) or Escape.
-            if (e.key === "Escape") commitDraft();
+            if (e.key === "Escape") commitDraft(draft);
           }}
           className="absolute z-40 min-h-[44px] resize-none overflow-hidden rounded border-transparent bg-transparent p-0 leading-[1.35] shadow-none outline-none"
           style={{
@@ -2030,14 +2125,14 @@ export function InkCanvas({
                 // editor box is the click-away commit.
                 const box = e.currentTarget.closest("[data-ink-editor]");
                 if (box && box.contains(e.relatedTarget as Node | null)) return;
-                commitMathDraft();
+                commitMathDraft(mathDraft);
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault();
-                  commitMathDraft();
+                  commitMathDraft(mathDraft);
                 }
-                if (e.key === "Escape") setMathDraft(null);
+                if (e.key === "Escape") commitMathDraft(mathDraft, true);
               }}
               className="min-h-7 w-full resize-none bg-transparent p-0 font-mono text-xs outline-none"
               placeholder="LaTeX"
@@ -2064,7 +2159,7 @@ export function InkCanvas({
           <MathKeyboard
             onInsert={kbInsert}
             onBackspace={kbBackspace}
-            onCommit={commitMathDraft}
+            onCommit={() => commitMathDraft(mathDraftRef.current)}
             onClose={() => setKbOpen(false)}
           />,
           keyboardHost,
