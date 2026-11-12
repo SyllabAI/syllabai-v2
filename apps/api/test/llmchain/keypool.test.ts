@@ -12,8 +12,10 @@
  *     member owns its credential);
  *   - an AUTHENTICATION_FAILURE key benches to the end of the UTC day (the
  *     frozen health law) — the pool stops calling it at all;
- *   - media routing still only reaches the gemini family (pool members
- *     inherit supportsMedia from their class);
+ *   - media routing reaches the gemini family (pool members inherit
+ *     supportsMedia from their class) AND the VISION-FB tail (groq-vision /
+ *     openrouter-vision — mediaCapable OpenAI-compatible members appended at
+ *     the chain tail, the vision-fallback amendment of record 2026-11-12);
  *   - TEST mode + zero-key boots stay fail-closed (dormant singletons).
  * Real adapters + injected fake fetches — no network (the CI discipline).
  */
@@ -87,7 +89,7 @@ describe("parseKeyPool (the DC8 env projection)", () => {
 // ── construction law ────────────────────────────────────────────────────────
 
 describe("buildLlmChain key pools (construction)", () => {
-  test("multi-key env registers one member per key, provider order preserved", () => {
+  test("multi-key env registers one member per key, provider order preserved, vision tail appended", () => {
     const chain = buildLlmChain(
       {
         SYLLABAI_GROQ_API_KEY: "gk1,gk2,gk3",
@@ -96,6 +98,9 @@ describe("buildLlmChain key pools (construction)", () => {
       },
       clock,
     );
+    // the frozen §26.1 loop first (with the DC8 pools), THEN the VISION-FB
+    // tail (groq-vision → openrouter-vision) — text order untouched, media
+    // order walks gemini → groq-vision → openrouter-vision
     expect(Object.keys(chain.memberHealth())).toEqual([
       "groq",
       "groq#2",
@@ -103,40 +108,121 @@ describe("buildLlmChain key pools (construction)", () => {
       "gemini",
       "gemini#2",
       "openrouter",
+      "groq-vision",
+      "groq-vision#2",
+      "groq-vision#3",
+      "openrouter-vision",
     ]);
-    // per-key members inherit their class law: the gemini family is the
-    // vision-capable one, pool-wide
+    // per-key members inherit their class law: the gemini family AND the
+    // vision tail are media-capable, pool-wide
     expect(chain.member("gemini#2")?.supportsMedia()).toBe(true);
     expect(chain.member("groq#3")?.supportsMedia()).toBe(false);
+    expect(chain.member("groq-vision#3")?.supportsMedia()).toBe(true);
+    expect(chain.member("openrouter-vision")?.supportsMedia()).toBe(true);
   });
 
-  test("single-key boot is byte-identical (the frozen three names, no #2)", () => {
+  test("single-key boot carries the frozen three names plus the vision tail (no #2)", () => {
     const chain = buildLlmChain({ SYLLABAI_GROQ_API_KEY: "gk1" }, clock);
-    expect(Object.keys(chain.memberHealth())).toEqual(["groq", "gemini", "openrouter"]);
+    expect(Object.keys(chain.memberHealth())).toEqual([
+      "groq",
+      "gemini",
+      "openrouter",
+      "groq-vision",
+      "openrouter-vision",
+    ]);
     expect(chain.member("groq#2")).toBeNull();
+    expect(chain.member("groq-vision#2")).toBeNull();
+    // the vision slot rides the provider key: configured + healthy + the pin
+    expect(chain.member("groq-vision")).toBeInstanceOf(OpenAiCompatibleChainMember);
+    expect(chain.member("groq-vision")?.health().snapshot().configured).toBe(true);
+    expect(chain.member("groq-vision")?.health().snapshot().effectiveModel).toBe(
+      "meta-llama/llama-4-scout-17b-16e-instruct",
+    );
+    expect(chain.member("openrouter-vision")?.health().snapshot().configured).toBe(false);
   });
 
-  test("zero-key boot stays the dormant fail-closed singleton", () => {
+  test("zero-key boot stays the dormant fail-closed singletons (providers + vision tail)", () => {
     const chain = buildLlmChain({}, clock);
-    expect(Object.keys(chain.memberHealth())).toEqual(["groq", "gemini", "openrouter"]);
+    expect(Object.keys(chain.memberHealth())).toEqual([
+      "groq",
+      "gemini",
+      "openrouter",
+      "groq-vision",
+      "openrouter-vision",
+    ]);
     expect(chain.available()).toBe(false);
+    // the dormant vision slot still shows the model it WOULD use (drift signal)
+    expect(chain.member("groq-vision")?.health().snapshot().effectiveModel).toBe(
+      "meta-llama/llama-4-scout-17b-16e-instruct",
+    );
+    expect(chain.member("openrouter-vision")?.health().snapshot().effectiveModel).toBe(
+      "nvidia/nemotron-3.5-super-vl:free",
+    );
   });
 
-  test("TEST mode ignores a whole pool (fail-closed, no real adapters)", () => {
+  test("TEST mode ignores a whole pool (fail-closed, no real adapters, vision tail included)", () => {
     const chain = buildLlmChain(
       { SYLLABAI_LLM_MODE: "test", SYLLABAI_GROQ_API_KEY: "gk1,gk2" },
       clock,
     );
     const report = chain.memberHealth();
-    expect(Object.keys(report)).toEqual(["groq", "gemini", "openrouter"]);
+    expect(Object.keys(report)).toEqual([
+      "groq",
+      "gemini",
+      "openrouter",
+      "groq-vision",
+      "openrouter-vision",
+    ]);
     expect(report.groq?.configured).toBe(false);
+    expect(report["groq-vision"]?.configured).toBe(false);
     expect(chain.available()).toBe(false);
   });
 
-  test("blank pool entries never construct a keyless member", () => {
+  test("blank pool entries never construct a keyless member (vision tail included)", () => {
     const chain = buildLlmChain({ SYLLABAI_GROQ_API_KEY: " , ,, " }, clock);
-    expect(Object.keys(chain.memberHealth())).toEqual(["groq", "gemini", "openrouter"]);
+    expect(Object.keys(chain.memberHealth())).toEqual([
+      "groq",
+      "gemini",
+      "openrouter",
+      "groq-vision",
+      "openrouter-vision",
+    ]);
     expect(chain.member("groq")?.health().snapshot().configured).toBe(false);
+    expect(chain.member("groq-vision")?.health().snapshot().configured).toBe(false);
+  });
+
+  test("VISION-FB opt-out: SYLLABAI_LLM_GROQ_VISION_ENABLED=false registers the slot dormant-disabled", () => {
+    const chain = buildLlmChain(
+      { SYLLABAI_GROQ_API_KEY: "gk1", SYLLABAI_LLM_GROQ_VISION_ENABLED: "false" },
+      clock,
+    );
+    // the registerProvider law mirrors the providers: a disabled slot keeps
+    // its dormant row (the report shows it off with the model it WOULD use)
+    expect(Object.keys(chain.memberHealth())).toEqual([
+      "groq",
+      "gemini",
+      "openrouter",
+      "groq-vision",
+      "openrouter-vision",
+    ]);
+    const slot = chain.member("groq-vision")!.health().snapshot();
+    expect(slot.enabled).toBe(false);
+    expect(slot.configured).toBe(false);
+    expect(slot.healthy).toBe(false);
+    // the primary §26.1 provider itself is untouched (real + healthy)
+    expect(chain.member("groq")).toBeInstanceOf(OpenAiCompatibleChainMember);
+    expect(chain.member("groq")!.health().snapshot().healthy).toBe(true);
+  });
+
+  test("VISION-FB re-pin: SYLLABAI_LLM_GROQ_VISION_MODEL overrides the yml pin", () => {
+    const chain = buildLlmChain(
+      {
+        SYLLABAI_GROQ_API_KEY: "gk1",
+        SYLLABAI_LLM_GROQ_VISION_MODEL: "some-other-vision-model",
+      },
+      clock,
+    );
+    expect(chain.member("groq-vision")?.health().snapshot().effectiveModel).toBe("some-other-vision-model");
   });
 });
 

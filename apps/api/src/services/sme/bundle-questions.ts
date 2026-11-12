@@ -226,7 +226,23 @@ function topicCodeResolver(
     // T-MIG-139: spec points land SPEC_POINT post-G2 (was SUBTOPIC pre-139)
     if (node.nodeType !== "SPEC_POINT") continue;
     const parent = mapped.get(node.parentBundleCode ?? "");
-    if (parent == null || parent.nodeType !== "TOPIC") {
+    if (parent == null) {
+      throw new BundleQuestionsError(
+        "spec point " + node.dbCode + " parent is not in the bundle map",
+      );
+    }
+    if (parent.nodeType === "UNIT") {
+      // RN-DEBRIS-11 run-021 (the run-019 filing D1 law, trace
+      // 1a1cf5ecf9027039): the topic-level point (0478 T7/T9/T10 — no
+      // subtopic layer officially, kg_export v1.7 section-hung + the
+      // bundle-seed UNIT-parent law mirrored). It anchors to NO SME topic —
+      // the same serve-plane law that keeps the new codes off the UGM serve
+      // index: skipped from this map until a T-SME/T-UGM lane serves them,
+      // and any future question tagging such a code fail-closes at the
+      // lookup below ("spec code not in the bundle spine"), never silently.
+      continue;
+    }
+    if (parent.nodeType !== "TOPIC") {
       throw new BundleQuestionsError(
         "spec point " + node.dbCode + " parent is not a mapped TOPIC",
       );

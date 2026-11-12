@@ -1,0 +1,196 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_MhjqBYqSPhvcDJHg",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "735abff516749a8b3d78ed28ff2fcecaa0abb28bcd03f017fc9ab09c9021b42a",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_MhjqBYqSPhvcDJHg",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Co-ordination and Response",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/co-ordination-and-response/response-to-stimuli-plants",
+    "specAnchors": [
+      {
+        "code": "2.83",
+        "text": "understand that plants respond to stimuli"
+      },
+      {
+        "code": "2.84",
+        "text": "describe the geotropic and phototropic responses of roots and stems"
+      },
+      {
+        "code": "2.85",
+        "text": "understand the role of auxin in the phototropic response of stems"
+      }
+    ],
+    "primer": {
+      "text": "You know plants need light for photosynthesis and water from the soil. This note explains how rooted organisms still manage to steer themselves: shoots grow toward light and away from gravity, roots do the opposite, and a chemical called auxin runs the whole steering system. Learn the tropism vocabulary here — it is heavily examined.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_MhjqBYqSPhvcDJHg::L1",
+        "title": "Tropisms: directional growth toward and away",
+        "sourceHeadings": [
+          "Response to Stimuli: Plants",
+          "Geotropic & Phototropic Responses of Plants"
+        ],
+        "specRefs": [
+          "2.83",
+          "2.84"
+        ],
+        "opening": "Plants cannot walk away from problems, so they grow their way out instead. Directional growth toward or away from light and gravity is called a tropism: shoots climb toward light and against gravity, while roots push downward with gravity and away from light, anchoring the plant and reaching water.",
+        "keyPoints": [
+          "Plants grow in response to stimuli such as light and gravity.",
+          "Directional growth responses to light and gravity are named tropisms.",
+          "Growth toward the stimulus is positive; growth away is negative.",
+          "Shoots show positive phototropism and negative geotropism.",
+          "Roots show positive geotropism and negative phototropism."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shoots bend toward light and upward against gravity; roots drive downward with gravity and away from light.",
+            "analogy": "A plant is a two-way traveller — its top chases sunshine while its bottom hunts deep water.",
+            "examPointer": "Learn the four pairings in the table: shoot or root, with light or gravity, each carrying its sign."
+          },
+          "medium": {
+            "restatement": "Tropisms couple a directional stimulus to growth direction: phototropism orients shoots for photosynthesis while geotropism anchors roots and aims them at soil water and minerals.",
+            "analogy": "Think of a hotel with two concierges — one steers guests toward the bright lobby, the other toward the underground car park.",
+            "examPointer": "Definitions earn marks: name the tropism, the organ and the sign — 'positive phototropism of shoots' is a complete answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MhjqBYqSPhvcDJHg::L1::Q1",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q2",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q3",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q4",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q5",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q6",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q7",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q8",
+          "rn_MhjqBYqSPhvcDJHg::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_MhjqBYqSPhvcDJHg::L2",
+        "title": "Auxin: the chemistry of the phototropic bend",
+        "sourceHeadings": [
+          "The Role of Auxin in Phototropism"
+        ],
+        "specRefs": [
+          "2.85"
+        ],
+        "opening": "Auxin is the plant's growth coordinator. Made in the shoot tips, it moves just behind the tip where it makes existing cells elongate; the more auxin, the faster the stretch. When light strikes one side, auxin collects on the shaded side, those cells lengthen faster, and the shoot bends toward the light.",
+        "keyPoints": [
+          "Auxins are plant growth regulators coordinating directional growth.",
+          "Auxin is manufactured in shoot tips and moves downward to the zone just behind, where cell division happens.",
+          "Auxin makes existing cells elongate; higher auxin means faster elongation.",
+          "Even light gives an even auxin spread, so shoots grow straight.",
+          "One-sided light concentrates auxin on the shaded side, whose cells lengthen faster and bend the shoot toward the light."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Tip-made auxin pools on the shaded side, stretching those cells faster, so the shoot curves sunward.",
+            "analogy": "Like a rowing boat turning — the shaded-side cells are the rowers pulling harder on one side.",
+            "examPointer": "Say cell elongation, never cell division — the exam hint penalises answers claiming new cells appear."
+          },
+          "medium": {
+            "restatement": "Auxin's gradient across the shoot is the mechanism: uniform light gives uniform elongation, unilateral light gives an elongation gap that bends the organ.",
+            "analogy": "A bimetallic strip bends because one metal expands more; a shoot bends because one side elongates more.",
+            "examPointer": "Quote the dose relationship — the more auxin, the faster the elongation — when explaining the bend."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MhjqBYqSPhvcDJHg::L2::Q1",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q2",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q3",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q4",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q5",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q6",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q7",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q8",
+          "rn_MhjqBYqSPhvcDJHg::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "tropism",
+          "definition": "A directional growth response of a plant toward (positive) or away (negative) from a stimulus such as light or gravity.",
+          "firstLesson": 1
+        },
+        {
+          "term": "phototropism",
+          "definition": "The directional growth response to light; positive in shoots, negative in roots.",
+          "firstLesson": 1
+        },
+        {
+          "term": "geotropism",
+          "definition": "The directional growth response to gravity; positive in roots, negative in shoots.",
+          "firstLesson": 1
+        },
+        {
+          "term": "auxin",
+          "definition": "A plant growth regulator made in shoot tips that makes existing cells elongate faster where it accumulates.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/d872a65dbd87-parsley-phototropism.png",
+        "alt": "Parsley phototropism",
+        "sourceHeading": "Geotropic & Phototropic Responses of Plants",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Plant shoots display a positive phototropic response by growing towards a light source"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/30162dfa254a-positive-phototropism-in-plant-shoots.png",
+        "alt": "Phototropism in plants",
+        "sourceHeading": "The Role of Auxin in Phototropism",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Positive phototropism in plant shoots is a result of auxin accumulating on the shaded side of a shoot"
+      }
+    ]
+  }
+}

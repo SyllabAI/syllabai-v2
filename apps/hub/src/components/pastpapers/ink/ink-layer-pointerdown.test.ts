@@ -604,3 +604,91 @@ describe("T-MG-INK-10 run-001 — the armed-tool hover chips (MG's hover text)",
     expect(container.querySelector('[data-ink-add-chip="text"]')).not.toBeNull();
   });
 });
+
+// ── T-HUB-INK-BRK — the tap-elsewhere commit + the pinch marker (2026-11-12) ──
+
+describe("T-HUB-INK-BRK — the draft-race fix and the draw-armed marker (the InkCanvas seam)", () => {
+  test("(g) tap-elsewhere COMMITS the open text draft (typed text kept) and opens a FRESH editor", async () => {
+    const { canvas, container, commits } = await mountInkCanvas({ mode: "text" });
+    // open draft #1 and type into it
+    const open1 = pressPointerDown(canvas, { clientX: 60, clientY: 60 });
+    await dispatchOn(canvas, open1.ev);
+    const ta1 = queryDraft(container, "New text annotation");
+    expect(ta1).not.toBeNull();
+    typeIn(ta1!, "hello world");
+    // the OLD defect: this second placement press ran setDraft(new) with the
+    // first still open — preventDefault suppressed the blur (silent clobber)
+    // and, when a removal blur DID fire, its stale setDraft(null) killed the
+    // successor. The fix commits the open draft BEFORE opening the new one.
+    const open2 = pressPointerDown(canvas, { clientX: 300, clientY: 240 });
+    await dispatchOn(canvas, open2.ev);
+    expect(open2.calls()).toBe(1); // the pointerdown law still holds on press #2
+    expect(commits.text).toHaveBeenCalledTimes(1);
+    expect(commits.text.mock.calls[0]![0]).toMatchObject({
+      page: 1,
+      x: 60 / PAGE_W,
+      y: 60 / PAGE_H,
+      text: "hello world",
+    });
+    // the successor editor is the LIVE draft — fresh value, still mounted
+    const ta2 = queryDraft(container, "New text annotation");
+    expect(ta2).not.toBeNull();
+    expect(ta2!.value).toBe("");
+  });
+
+  test("(g) math twin: tap-elsewhere commits the open mtext draft and opens a fresh editor", async () => {
+    const { canvas, container, commits } = await mountInkCanvas({ mode: "math" });
+    const open1 = pressPointerDown(canvas, { clientX: 80, clientY: 90 });
+    await dispatchOn(canvas, open1.ev);
+    const ta1 = queryDraft(container, "New math annotation");
+    expect(ta1).not.toBeNull();
+    typeIn(ta1!, "x^2+1");
+    const open2 = pressPointerDown(canvas, { clientX: 320, clientY: 200 });
+    await dispatchOn(canvas, open2.ev);
+    expect(commits.math).toHaveBeenCalledTimes(1);
+    expect(commits.math.mock.calls[0]![0]).toMatchObject({
+      page: 1,
+      x: 80 / PAGE_W,
+      y: 90 / PAGE_H,
+      tex: "x^2+1",
+    });
+    expect(queryDraft(container, "New math annotation")).not.toBeNull();
+  });
+
+  test("(g) an EMPTY open draft is a CANCEL on tap-elsewhere — no commit, successor opens", async () => {
+    const { canvas, container, commits } = await mountInkCanvas({ mode: "text" });
+    const open1 = pressPointerDown(canvas, { clientX: 60, clientY: 60 });
+    await dispatchOn(canvas, open1.ev);
+    expect(queryDraft(container, "New text annotation")).not.toBeNull();
+    const open2 = pressPointerDown(canvas, { clientX: 300, clientY: 240 });
+    await dispatchOn(canvas, open2.ev);
+    expect(commits.text).not.toHaveBeenCalled();
+    expect(queryDraft(container, "New text annotation")).not.toBeNull();
+  });
+
+  test("(g) the settle guard is idempotent — a stale blur after the successor opened changes nothing", async () => {
+    const { canvas, container, commits } = await mountInkCanvas({ mode: "text" });
+    const open1 = pressPointerDown(canvas, { clientX: 60, clientY: 60 });
+    await dispatchOn(canvas, open1.ev);
+    const ta1 = queryDraft(container, "New text annotation")!;
+    typeIn(ta1, "first");
+    const open2 = pressPointerDown(canvas, { clientX: 300, clientY: 240 });
+    await dispatchOn(canvas, open2.ev);
+    expect(commits.text).toHaveBeenCalledTimes(1);
+    // the browser may fire focusout on the REMOVED first textarea after the
+    // successor opened (the non-React holder-swap path); the settle set
+    // makes that late blur a no-op — no duplicate shape, no double undo step
+    blurEditor(ta1);
+    expect(commits.text).toHaveBeenCalledTimes(1);
+  });
+
+  test("(g) the draw-armed marker: data-ink-drawing on every draw tool, ABSENT in select (browse keeps the paper pinch)", async () => {
+    for (const mode of ["pen", "text", "math", "erase", "line", "ruler", "protractor", "compasses"] as const) {
+      const { canvas } = await mountInkCanvas({ mode });
+      expect(canvas.hasAttribute("data-ink-drawing"), `mode=${mode}`).toBe(true);
+      await lastUnmount!();
+    }
+    const { canvas } = await mountInkCanvas({ mode: "select" });
+    expect(canvas.hasAttribute("data-ink-drawing")).toBe(false);
+  });
+});

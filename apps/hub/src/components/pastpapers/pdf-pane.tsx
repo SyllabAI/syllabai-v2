@@ -1808,6 +1808,18 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
 
     const onPointerDown = (e: PointerEvent) => {
       if (e.pointerType !== "touch") return;
+      // T-HUB-INK-BRK (the ink toolkit's marker contract): a draw-armed ink
+      // canvas (touch-action none — the finger IS the pen) tags its surface
+      // data-ink-drawing; those pointers never pair into the pane pinch.
+      // The old path recorded EVERY touch pointer on the scroller, so a
+      // palm resting mid-stroke paired with the pen and the pinch steps
+      // zoomed the pane UNDER the live stroke — applyLiveStyles + the
+      // debounced refreeze swapped the holder (replaceChildren), releasing
+      // the pointer capture mid-gesture and killing the tool ("sometimes
+      // some things break"). Browse/select keeps the native pinch: its
+      // canvas declares pan-x pan-y pinch-zoom and carries no marker.
+      const t = e.target;
+      if (t instanceof Element && t.closest("[data-ink-drawing]")) return;
       pinchPtsRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (!pinchPairRef.current && pinchPtsRef.current.size >= 2) {
         const ids = [...pinchPtsRef.current.keys()];

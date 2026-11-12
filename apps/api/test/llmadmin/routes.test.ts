@@ -14,7 +14,8 @@
  * Pinned laws:
  *   - the wire shape (LlmAdminControllerTest shape gate): {chainAvailable,
  *     providers} with providers keyed in the §26.1 chain order groq →
- *     gemini → openrouter, validated against the canonical
+ *     gemini → openrouter THEN the VISION-FB tail groq-vision →
+ *     openrouter-vision, validated against the canonical
  *     chainHealthReportSchema (llm-admin.ts contracts)
  *   - the CAPTURE-ORDER key assembly (ruling4 §2): snapshot keys emit in
  *     the captured alphabetical order — the byte-level emission order
@@ -109,6 +110,24 @@ const LEG04_GOLDEN = {
       remainingLocalBudget: 1000,
       requestsToday: 0,
     },
+    // the VISION-FB tail (amendment of record 2026-11-12): the capture boot
+    // registers the dormant vision slots alongside the three §26.1 providers —
+    // same law, same shape, the vision model they WOULD use as the drift signal
+    "groq-vision": {
+      configured: false,
+      consecutiveFailures: 0,
+      cooldownUntil: null,
+      coolingDown: false,
+      dailyBudget: 1000,
+      effectiveModel: "meta-llama/llama-4-scout-17b-16e-instruct",
+      enabled: false,
+      healthy: false,
+      lastErrorAt: null,
+      lastErrorMessage: null,
+      lastFailureClass: null,
+      remainingLocalBudget: 1000,
+      requestsToday: 0,
+    },
     openrouter: {
       configured: false,
       consecutiveFailures: 0,
@@ -116,6 +135,21 @@ const LEG04_GOLDEN = {
       coolingDown: false,
       dailyBudget: 1000,
       effectiveModel: "nvidia/nemotron-3-super-120b-a12b:free",
+      enabled: false,
+      healthy: false,
+      lastErrorAt: null,
+      lastErrorMessage: null,
+      lastFailureClass: null,
+      remainingLocalBudget: 1000,
+      requestsToday: 0,
+    },
+    "openrouter-vision": {
+      configured: false,
+      consecutiveFailures: 0,
+      cooldownUntil: null,
+      coolingDown: false,
+      dailyBudget: 1000,
+      effectiveModel: "nvidia/nemotron-3.5-super-vl:free",
       enabled: false,
       healthy: false,
       lastErrorAt: null,
@@ -236,8 +270,15 @@ describe("GET /chain-health — the r4b capture golden gate", () => {
     expect(chainHealthReportSchema.safeParse(body).success).toBeTrue();
     // exactly two keys, the frozen LinkedHashMap law
     expect(Object.keys(body)).toEqual(["chainAvailable", "providers"]);
-    // chain order (LlmChainProperties.chainOrder() verbatim)
-    expect(Object.keys(body.providers)).toEqual(["groq", "gemini", "openrouter"]);
+    // chain order (LlmChainProperties.chainOrder() verbatim, then the
+    // VISION-FB tail — the §26.1 providers stay the FIRST three)
+    expect(Object.keys(body.providers)).toEqual([
+      "groq",
+      "gemini",
+      "openrouter",
+      "groq-vision",
+      "openrouter-vision",
+    ]);
     expect(body.chainAvailable).toBe(false); // no keys → honestly false
   });
 
@@ -275,7 +316,7 @@ describe("chain config law — the application.yml @ 6cad6ef layer of record", (
     expect(body.chainAvailable).toBe(false);
   });
 
-  test("properties of record: groq base-url carries /v1, chain 60/60/3/1000 (yml-effective)", () => {
+  test("properties of record: groq base-url carries /v1, chain 60/60/3/1000, vision slots default on (yml-effective)", () => {
     const props = readLlmChainProperties({});
     expect(props.mode).toBe("PRODUCTION");
     expect(props.groq.baseUrl).toBe("https://api.groq.com/openai/v1");
@@ -287,6 +328,11 @@ describe("chain config law — the application.yml @ 6cad6ef layer of record", (
     expect(props.chain.cooldownSeconds).toBe(60);
     expect(props.chain.failureThreshold).toBe(3);
     expect(props.chain.dailyBudgetPerProvider).toBe(1000);
+    // the VISION-FB slots: enabled by default, the free vision models pinned
+    expect(props.groq.visionEnabled).toBe(true);
+    expect(props.groq.visionModel).toBe("meta-llama/llama-4-scout-17b-16e-instruct");
+    expect(props.openRouter.visionEnabled).toBe(true);
+    expect(props.openRouter.visionModel).toBe("nvidia/nemotron-3.5-super-vl:free");
   });
 
   test("the record compactors stay reachable as compactor TARGETS (blank/≤0 sets)", () => {
@@ -300,9 +346,16 @@ describe("chain config law — the application.yml @ 6cad6ef layer of record", (
     expect(readLlmChainProperties({ SYLLABAI_GROQ_MODEL: "custom-model" }).groq.model).toBe("custom-model");
     // the daily-budget bridge rides SYLLABAI_LLM_DAILY_BUDGET
     expect(readLlmChainProperties({ SYLLABAI_LLM_DAILY_BUDGET: "50" }).chain.dailyBudgetPerProvider).toBe(50);
+    // the VISION-FB model/enable bridges ride the same three-layer law
+    expect(readLlmChainProperties({ SYLLABAI_GROQ_VISION_MODEL: "custom-vision" }).groq.visionModel).toBe(
+      "custom-vision",
+    );
+    expect(
+      readLlmChainProperties({ SYLLABAI_LLM_OPENROUTER_VISION_ENABLED: "false" }).openRouter.visionEnabled,
+    ).toBe(false);
   });
 
-  test("enabled + keyed (PRODUCTION) → configured/healthy, chainAvailable true", async () => {
+  test("enabled + keyed (PRODUCTION) → configured/healthy, chainAvailable true, vision slot rides the key", async () => {
     const { app } = makeApp(asAdmin, {
       SYLLABAI_LLM_GROQ_ENABLED: "true",
       SYLLABAI_LLM_GROQ_API_KEY: "gsk_test-key",
@@ -313,6 +366,13 @@ describe("chain config law — the application.yml @ 6cad6ef layer of record", (
     };
     expect(body.providers.groq!).toMatchObject({ enabled: true, configured: true, healthy: true });
     expect(body.providers.gemini!.configured).toBe(false); // untouched members stay honest
+    // the VISION-FB slot rides the provider key: configured + healthy
+    expect(body.providers["groq-vision"]!).toMatchObject({
+      enabled: true,
+      configured: true,
+      healthy: true,
+      effectiveModel: "meta-llama/llama-4-scout-17b-16e-instruct",
+    });
     expect(body.chainAvailable).toBe(true);
   });
 
@@ -349,6 +409,12 @@ describe("chain config law — the application.yml @ 6cad6ef layer of record", (
     expect(groq).toBeInstanceOf(OpenAiCompatibleChainMember);
     expect(chain.member("gemini")).toBeInstanceOf(DormantChainMember);
     expect(chain.member("openrouter")).toBeInstanceOf(DormantChainMember);
+    // the VISION-FB tail constructs the REAL media-capable adapter for a
+    // keyed provider (LIVE = production posture), media-capable
+    const groqVision = chain.member("groq-vision")!;
+    expect(groqVision).toBeInstanceOf(OpenAiCompatibleChainMember);
+    expect(groqVision.supportsMedia()).toBe(true);
+    expect(chain.member("openrouter-vision")).toBeInstanceOf(DormantChainMember);
   });
 
   test("layer-1 relaxed binding overrides the yml layer (Spring precedence)", async () => {
