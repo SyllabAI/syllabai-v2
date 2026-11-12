@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 70,
+  "rowsApproved": 83,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 70,
+    "rowsApproved": 83,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1074,6 +1074,22 @@
    "identityMethod": "thumb-fallback"
   },
   {
+   "id": "Pvzqiz8wqJ4",
+   "title": "A Level Chemistry Revision \"How to Carry Out a Titration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Pvzqiz8wqJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
+   "durationS": 460,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": null,
+   "oembedVerifiedUtc": null,
+   "identityMethod": "thumb-fallback"
+  },
+  {
    "id": "4pIHhXfGZlE",
    "title": "GCSE Chemistry Revision \"Strong and Weak Acids\"",
    "provider": "freesciencelessons",
@@ -1152,6 +1168,196 @@
    "oembedAuthor": "Malmesbury Education",
    "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "1OAiJEEUiVg",
+   "title": "A Level Chemistry Revision \"Using the Ideal Gas Equation in Chemical Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1OAiJEEUiVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "2Dvxw-sP2WI",
+   "title": "A Level Chemistry Revision \"Le Chatelier's Principle and Concentration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=2Dvxw-sP2WI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 292,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "3eP2mtc9jrg",
+   "title": "Water Of Crystallisation - A-level Chemistry Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=3eP2mtc9jrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 329,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9sEj8htfrEM",
+   "title": "A Level Chemistry Revision \"Water of Crystallisation Part 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9sEj8htfrEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 324,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ACIhhP0rL4Y",
+   "title": "A Level Chemistry Revision \"Covalent Bonding and Expansion of the Octet\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ACIhhP0rL4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "VANo-L82z1E",
+   "title": "A Level Chemistry Revision \"Determining Water of Crystallisation by Titration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=VANo-L82z1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 423,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "hL6QXSziA2w",
+   "title": "A Level Chemistry Revision \"Determining Water of Crystallisation by Titration Part 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hL6QXSziA2w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "hmGF0McNwHo",
+   "title": "A Level Chemistry Revision \"Limiting Reagent\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hmGF0McNwHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "oEX2I93tIUc",
+   "title": "A Level Chemistry Revisions \"The Ideal Gas Equation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=oEX2I93tIUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 198,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "pquHv3LITTs",
+   "title": "A Level Chemistry Revision \"Calculating Percentage Yield\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=pquHv3LITTs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 298,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "t7MF-NQ0kKU",
+   "title": "A Level Chemistry Revision \"Environmental Effects of Addition Polymers\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=t7MF-NQ0kKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 221,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "tIPTQ8svZYo",
+   "title": "Interpreting Mass Spectra - A-level Chemistry",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=tIPTQ8svZYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 669,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -1468,6 +1674,126 @@
    }
   },
   {
+   "video": "3eP2mtc9jrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Water Of Crystallisation - A-level Chemistry Practical' -> 2.3.4 'understand and use the terms anhydrous, hydrat' via distinctive token(s) crystallisation (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9sEj8htfrEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Water of Crystallisation Part 1\"' -> 2.3.4 'understand and use the terms anhydrous, hydrat' via distinctive token(s) crystallisation (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VANo-L82z1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Determining Water of Crystallisation by Titration' names the hydrated/anhydrous spec 2.3.4 directly; the 7.2.9 curves bind is adjacent, trimmed (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "hL6QXSziA2w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Determining Water of Crystallisation by Titration' (part 2) names spec 2.3.4 directly; the 7.2.9 bind is adjacent, trimmed (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "hmGF0McNwHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Limiting Reagent\"' -> 2.4.1 'perform calculations including use of the mole' via distinctive token(s) limiting (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pquHv3LITTs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Calculating Percentage Yield' partially names the mole-calculation spec 2.4.1; the 37.2.2 chromatogram bind is nonsense adjacency (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "Oog0E8cCWqg",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1538,6 +1864,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names covalent bonding (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ACIhhP0rL4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Covalent Bonding and Expansion of the Octet' names the expanded-octet spec 3.4.2 (SO2, PCl5 named in-spec — verified); the 3.7.1 ionic-diagram bind is wrong — trimmed (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1641,6 +1987,48 @@
    ],
    "confidence": "medium",
    "evidence": "title names permanent dipole-dipole interactions (listed IMF clause) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "1OAiJEEUiVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Using the Ideal Gas Equation in Chemical R' -> 4.1.3 'state and use the ideal gas equation pV = nRT ' via distinctive token(s) ideal; 4.1.1 'explain the origin of pressure in a gas in ter' via distinctive token(s) ideal (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oEX2I93tIUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revisions \"The Ideal Gas Equation\"' -> 4.1.3 'state and use the ideal gas equation pV = nRT ' via distinctive token(s) ideal; 4.1.1 'explain the origin of pressure in a gas in ter' via distinctive token(s) ideal (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1859,6 +2247,27 @@
    }
   },
   {
+   "video": "2Dvxw-sP2WI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.2",
+    "7.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Le Chatelier's Principle and Concentration' -> 7.1.3 'use Le Chatelier’s principle to deduce qualita' via distinctive token(s) chatelier, principle; 7.1.2 'define Le Chatelier’s principle as: if a chang' via distinctive token(s) chatelier, principle (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "HAkaD6-7fgQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1888,6 +2297,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names strong and weak acids (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Pvzqiz8wqJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.10"
+   ],
+   "confidence": "low",
+   "evidence": "title 'How to Carry Out a Titration' partially names the indicator-selection spec 7.2.10; the 7.2.9 curves bind is adjacent, trimmed (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2246,6 +2675,26 @@
    }
   },
   {
+   "video": "t7MF-NQ0kKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Environmental Effects of Addition Polymers' -> 14.1.6 'recognise the environmental consequences of ca' via distinctive token(s) environmental (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "Eidpt9jj70E",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2554,6 +3003,26 @@
    }
   },
   {
+   "video": "tIPTQ8svZYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Interpreting Mass Spectra - A-level Chemistry' -> 22.2.1 'analyse mass spectra in terms of m / e values ' via distinctive token(s) spectra (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "WXu8uAiCtLU",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2596,16 +3065,16 @@
  ],
  "coverage": {
   "specPointsTotal": 204,
-  "specPointsMapped": 94,
-  "specPointsUnmapped": 110,
-  "videosTotal": 70,
-  "videosMapped": 70,
+  "specPointsMapped": 98,
+  "specPointsUnmapped": 106,
+  "videosTotal": 83,
+  "videosMapped": 83,
   "videosUnmapped": 0,
-  "mappingRows": 70,
+  "mappingRows": 83,
   "byConfidence": {
    "high": 0,
-   "medium": 59,
-   "low": 11
+   "medium": 64,
+   "low": 19
   }
  },
  "inputs": {
@@ -2628,5 +3097,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.391Z"
+ "generatedUtc": "2026-11-12T18:17:37.441Z"
 }

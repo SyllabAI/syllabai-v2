@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 112,
+  "rowsApproved": 140,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 112,
+    "rowsApproved": 140,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1778,6 +1778,445 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "1xbeHi_gGQw",
+   "title": "A Level Biology Revision \"Arteries and Arterioles\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1xbeHi_gGQw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 267,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "3DRYU8zAAcA",
+   "title": "A Level Biology Revision \"Endocytosis and Exocytosis OCR / Edexcel\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=3DRYU8zAAcA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 206,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "4XmLuUa1d44",
+   "title": "A Level Biology Revision \"Centrioles, Cilia and Flagella (OCR)\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=4XmLuUa1d44",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 222,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "6mgkoqcm6Sg",
+   "title": "Cell Organelles and Structures Review",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=6mgkoqcm6Sg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 496,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9ZPF3qmp58Y",
+   "title": "A Level Biology Revision \"Movement of Water Through the Roots of a Plant\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9ZPF3qmp58Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 329,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "9iUrjW6vHps",
+   "title": "Colourimetry (testing for glucose in urine) - Biology A-level Required Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=9iUrjW6vHps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 619,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "ElqjDBI_g9M",
+   "title": "Microscope Drawings - Biology A-level",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=ElqjDBI_g9M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 354,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "K1S7STZ2BrA",
+   "title": "A Level Biology Revision \"Haemoglobin and the Bohr Effect\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=K1S7STZ2BrA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 284,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "R09zFIGevio",
+   "title": "Cell Organelles & Structures [Chapter 4 Aligned]: Before the Bell Biology",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=R09zFIGevio",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 440,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Ry30h1s7hqo",
+   "title": "A Level Biology Revision \"Lysosomes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=Ry30h1s7hqo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 178,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "TNBj1-P0L2E",
+   "title": "A Level Biology Revision \"Laser Scanning Confocal Microscopy\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=TNBj1-P0L2E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 185,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "TbOQIbEEVtA",
+   "title": "Mutations [Chapter 15 Aligned]: Before the Bell Biology",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=TbOQIbEEVtA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 380,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "UNPGHEAOpyg",
+   "title": "A Level Biology Revision \"Centrioles, Cilia and Flagella (OCR)\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=UNPGHEAOpyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 246,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "UzwOfFvLtJ0",
+   "title": "Membrane Permeability (Beetroot) - BIology A-level Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=UzwOfFvLtJ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 681,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "_EtYZQ-WETE",
+   "title": "A Level Biology Revision \"Starch Part 2: Amylopectin\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=_EtYZQ-WETE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 171,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "a8XytwaLLq8",
+   "title": "A Level Biology Revision \"Disaccharides\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=a8XytwaLLq8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 186,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "c2joz4hJV0k",
+   "title": "A Level Biology Revision \"The Effect of pH on Enzymes\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=c2joz4hJV0k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 303,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "gEMYUFcJakw",
+   "title": "A Level Biology Revision \"Vacuoles in Cells\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=gEMYUFcJakw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 179,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "mKuBj2j_Hl0",
+   "title": "A Level Biology Revision \"Initiation and Coordination of the Action of the Heart\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=mKuBj2j_Hl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 200,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "nUFe7Gq_73I",
+   "title": "A Level Biology Revision \"The Effects of Osmosis on Animal and Plant Cells\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nUFe7Gq_73I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 311,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "nekOPRY94aI",
+   "title": "A Level Biology Revision \"Translation\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=nekOPRY94aI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 428,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "p-tpx_hqaGc",
+   "title": "DNA Replication [Chapter 10 Aligned]: Before the Bell Biology",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=p-tpx_hqaGc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 563,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "tvq6PpMbNfw",
+   "title": "A Level Biology Revision (Year 13) \"Frame Shift Mutations\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=tvq6PpMbNfw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 387,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "uVUf_pt7Sh0",
+   "title": "Antibiotics, Antivirals, and Vaccines",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=uVUf_pt7Sh0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 569,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "x0fdYrgzsSA",
+   "title": "A Level Biology Revision \"Vacuoles in Cells\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=x0fdYrgzsSA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 203,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "xNP2jrm2iMo",
+   "title": "A Level Biology Revision \"Monosaccharides\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xNP2jrm2iMo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 183,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "xk7GULrfzTc",
+   "title": "A Level Biology Revision \"Using a Colorimeter to Quantify Glucose 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=xk7GULrfzTc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 348,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "zrKdz93WlVk",
+   "title": "Mitosis vs. Meiosis: Side by Side Comparison",
+   "provider": "amoeba-sisters",
+   "watchUrl": "https://www.youtube.com/watch?v=zrKdz93WlVk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "US-curriculum biology channel (Amoeba Sisters); bound on topic against UK specs, curriculum divergence disclosed via boardMismatch",
+   "durationS": 382,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Amoeba Sisters",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -1811,6 +2250,47 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Magnification & Resolution - Calculations' = defining terms and calculating magnification/size = 1.1.5/1.1.3 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ElqjDBI_g9M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Microscope Drawings' partially names the magnification-calculation spec 1.1.3; the 7.2.5 plant-section-drawing bind is a different context — trimmed (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TNBj1-P0L2E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.3",
+    "1.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Biology Revision \"Laser Scanning Confocal Microscopy\"' -> 1.1.5 'define resolution and magnification and explai' via distinctive token(s) microscopy; 1.1.3 'calculate magnifications of images and actual ' via distinctive token(s) scanning (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1932,6 +2412,148 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Eukaryotic Cells: Animal Cells | Organelles' = recognising and outlining eukaryotic organelles = 1.2.1 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4XmLuUa1d44",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Biology Revision \"Centrioles, Cilia and Flagella (OCR)\"' -> 1.2.1 'recognise organelles and other cell structures' via distinctive token(s) centriole, cilia (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "6mgkoqcm6Sg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Cell Organelles and Structures Review' -> 1.2.5 'outline key structural features of a prokaryot' via distinctive token(s) organelle; 1.2.1 'recognise organelles and other cell structures' via distinctive token(s) organelle (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "R09zFIGevio",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Cell Organelles & Structures [Chapter 4 Aligned]: Before the Bell Biol' -> 1.2.5 'outline key structural features of a prokaryot' via distinctive token(s) organelle; 1.2.1 'recognise organelles and other cell structures' via distinctive token(s) organelle (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Ry30h1s7hqo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"Lysosomes\"' -> 1.2.1 'recognise organelles and other cell structures' via distinctive token(s) lysosome (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "UNPGHEAOpyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Biology Revision \"Centrioles, Cilia and Flagella (OCR)\"' -> 1.2.1 'recognise organelles and other cell structures' via distinctive token(s) centriole, cilia (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gEMYUFcJakw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"Vacuoles in Cells\"' -> 1.2.1 'recognise organelles and other cell structures' via distinctive token(s) vacuole (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "x0fdYrgzsSA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"Vacuoles in Cells\"' -> 1.2.1 'recognise organelles and other cell structures' via distinctive token(s) vacuole (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2154,6 +2776,26 @@
    }
   },
   {
+   "video": "9iUrjW6vHps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Colourimetry (testing for glucose in urine) - Biology A-level Required' -> 14.1.11 'explain the principles of operation of test st' via distinctive token(s) urine; 2.1.3 'describe and carry out a test to identify the ' via distinctive token(s) testing (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "8GDXf2LrrUg",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2196,6 +2838,26 @@
    }
   },
   {
+   "video": "xNP2jrm2iMo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"Monosaccharides\"' -> 2.2.2 'define the terms monomer, polymer, macromolecu' via distinctive token(s) monosaccharide (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "QN4hqLdC48g",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2206,6 +2868,27 @@
    ],
    "confidence": "low",
    "evidence": "title 'Biological Molecules - Carbohydrates | Lipids' = overview touching glycosidic condensation and triglyceride/phospholipid structure (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "a8XytwaLLq8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.5",
+    "2.2.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"Disaccharides\"' -> 2.2.6 'describe the breakage of a glycosidic bond in ' via distinctive token(s) disaccharide; 2.2.5 'describe the formation of a glycosidic bond by' via distinctive token(s) disaccharide (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2287,6 +2970,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Polysaccharides - Starch | Glycogen | Cellulose' = starch/glycogen and cellulose structure-function = 2.2.7/2.2.8 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_EtYZQ-WETE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.7"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Starch Part 2: Amylopectin' names the polysaccharide-structure spec 2.2.7 (starch/amylopectin); the 2.1.1 Benedict bind is wrong (starch is non-reducing — iodine, not Benedict's) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2604,6 +3307,26 @@
    }
   },
   {
+   "video": "xk7GULrfzTc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"Using a Colorimeter to Quantify Glucose 2\"' -> 3.1.4 'outline the use of a colorimeter for measuring' via distinctive token(s) colorimeter (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "w6GZUhaR3II",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2633,6 +3356,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Factors that Affect Enzyme Action' = temperature/pH/substrate/inhibitor effects on reaction rate = 3.2.1/3.2.3 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "c2joz4hJV0k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"The Effect of pH on Enzymes\"' -> 3.2.1 'investigate and explain the effects of the fol' via distinctive token(s) ph (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2788,6 +3531,26 @@
    }
   },
   {
+   "video": "UzwOfFvLtJ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Membrane Permeability (Beetroot) - BIology A-level Practical' -> 4.1.3 'describe the roles of phospholipids, cholester' via distinctive token(s) permeability (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "Xv25kbsBHfI",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2849,6 +3612,26 @@
    }
   },
   {
+   "video": "3DRYU8zAAcA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Biology Revision \"Endocytosis and Exocytosis OCR / Edexcel\"' -> 4.2.1 'describe and explain the processes of simple d' via distinctive token(s) endocytosi, exocytosi (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "ZcYmb9A7Fu0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2857,6 +3640,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names osmosis required practical (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nUFe7Gq_73I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"The Effects of Osmosis on Animal and Plant C' -> 4.2.2 'investigate simple diffusion and osmosis using' via distinctive token(s) osmosi (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2959,6 +3762,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Mitosis - Stages of Mitosis & Cytokinesis' = mitosis chromosome behaviour, stage recognition, importance of mitosis = 5.2.x/5.1.2 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zrKdz93WlVk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Mitosis vs. Meiosis: Side by Side Comparison' names the mitosis spec 5.1.2 and the meiosis chromosome-behaviour spec 16.1.4 (both verified in spine); the 2.1.2 Benedict bind is nonsense adjacency (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3093,6 +3916,26 @@
    }
   },
   {
+   "video": "p-tpx_hqaGc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'DNA Replication' names the semi-conservative-replication spec 6.1.4 (verified in spine); the 15.1.1 endocrine bind is nonsense adjacency (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "8ReRCQkxjnQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3215,6 +4058,26 @@
    }
   },
   {
+   "video": "nekOPRY94aI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Biology Revision \"Translation\".' -> 6.2.3 'describe how the information in DNA is used du' via distinctive token(s) translation (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "rIe5b418ZHw",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3224,6 +4087,47 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Gene and Chromosome Mutations' = base-sequence change and substitution/deletion/insertion types = 6.2.6/6.2.7 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TbOQIbEEVtA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.6",
+    "6.2.7"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Mutations [Chapter 15 Aligned]: Before the Bell Biology' -> 6.2.7 'explain that a gene mutation is a result of su' via distinctive token(s) mutation; 6.2.6 'state that a gene mutation is a change in the ' via distinctive token(s) mutation (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "tvq6PpMbNfw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.7"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Frame Shift Mutations' — frame shifts result from the substitution/deletion/insertion named by the gene-mutation spec 6.2.7 (verified in spine; the word 'frameshift' itself is not in the spine, disclosed); the 18.2.4/8.2.6 binds are nonsense adjacency (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3308,6 +4212,26 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Root Pathways | Xylem | Transpiration' = apoplast/symplast pathways, cohesion-tension, transpiration = water transport specs (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9ZPF3qmp58Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Movement of Water Through the Roots of a Plant' names the water-transport-pathway spec 7.2.2 (apoplast/symplast, Casparian strip — verified in spine); the 12.2.12 rice bind and 7.1.2 distribution bind were adjacent, replaced (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3448,6 +4372,27 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Circulatory Systems - Why We Need Them | Types' = closed double circulation with heart, blood, vessels = 8.1.1 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "1xbeHi_gGQw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.1",
+    "8.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Biology Revision \"Arteries and Arterioles\"' -> 8.1.1 'state that the mammalian circulatory system is' via distinctive token(s) arterie, arteriole; 8.1.4 'explain how the structure of muscular arteries' via distinctive token(s) arterie (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3608,6 +4553,26 @@
    }
   },
   {
+   "video": "K1S7STZ2BrA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Biology Revision \"Haemoglobin and the Bohr Effect\"' -> 8.2.6 'describe the Bohr shift and explain the import' via distinctive token(s) bohr (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "JIjKZah2CBw",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3676,6 +4641,26 @@
    ],
    "confidence": "low",
    "evidence": "cardiac cycle named; SA/AV node conduction not in title (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mKuBj2j_Hl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Initiation and Coordination of the Action of the Heart' names the heartbeat-initiation spec 8.3.4 (sinoatrial/AV nodes, Purkyne tissue — verified in spine); the 14.1.9 cell-signalling bind was adjacent, replaced (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4075,20 +5060,40 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "video": "uVUf_pt7Sh0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Antibiotics, Antivirals, and Vaccines' -> 11.2.5 'explain that vaccines contain antigens that st' via distinctive token(s) vaccine; 17.2.4 'outline how bacteria become resistant to antib' via distinctive token(s) antibiotic (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
   }
  ],
  "coverage": {
   "specPointsTotal": 123,
   "specPointsMapped": 96,
   "specPointsUnmapped": 27,
-  "videosTotal": 112,
-  "videosMapped": 112,
+  "videosTotal": 140,
+  "videosMapped": 140,
   "videosUnmapped": 0,
-  "mappingRows": 112,
+  "mappingRows": 140,
   "byConfidence": {
    "high": 0,
-   "medium": 93,
-   "low": 19
+   "medium": 99,
+   "low": 41
   }
  },
  "inputs": {
@@ -4111,5 +5116,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.385Z"
+ "generatedUtc": "2026-11-12T18:17:37.435Z"
 }

@@ -16,6 +16,11 @@
    "provider": "physics-online (PhysicsOnline YouTube channel — unmapped remainder)",
    "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 1,081 public uploads, +1 net vs the P2E enumeration of 1,080 on 2026-11-10; the P2E lane cached only its 303-drafted subset, so the delta video is not individually identified) + oEmbed identity sweep 113/113 on the routed pool (473/473 live overall, author Physics Online) + marker routing (A-level / GCSE markers, GCSE and unmarked videos cross-spine-routed by distinctive-token idf overlap) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
    "enumeratedUtc": "2026-11-12T09:56:37Z"
+  },
+  "p7": {
+   "provider": "multi (doodlescience, malmesbury-education)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Title-only posture, tightened rule. 11 spec-level rejects: A-level-only formalisations carried by GCSE videos (flux definitions, binding energy, first law, I-V sketching, polarisation, I=Anvq, centre of gravity, hydrostatic derivation, equilibrium-with-torque) where the title does not name the clause.",
-  "rowsApproved": 215,
+  "rowsApproved": 217,
   "rowsRejected": 27,
   "rejects": [
    {
@@ -1445,6 +1450,17 @@
       "lane": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 2 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 2,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ],
   "selfReviewNote": "Both external lanes adjudicated by delegated self-review per owner chat 2026-11-09 ('For now, approve and review yourself'); the P2E lane adds PhysicsOnline (gcsephysicsonline.com + alevelphysicsonline.com) under the same tightened binding rule."
@@ -4835,6 +4851,36 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-12T09:56:37Z"
+  },
+  {
+   "id": "50idS8d0rHk",
+   "title": "Heat and Thermodynamics | A-Level Physics | Doodle Science",
+   "provider": "doodlescience",
+   "watchUrl": "https://www.youtube.com/watch?v=50idS8d0rHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Doodle Science UK GCSE/A-level science; board-agnostic teaching content bound on topic",
+   "durationS": 295,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "DoodleScience",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "Eqjfw56tV1Q",
+   "title": "Young Modulus - Physics A-level Required Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=Eqjfw56tV1Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 447,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -8116,20 +8162,52 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'Start filing it')",
    "reviewedUtc": "2026-11-12T09:56:37Z",
    "boardMismatch": true
+  },
+  {
+   "video": "50idS8d0rHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.3.2",
+    "14.3.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Heat and Thermodynamics | A-Level Physics | Doodle Science' -> 14.3.2 '\u0007define and use specific latent heat and disti' via distinctive token(s) heat; 14.3.1 'define and use specific heat capacity' via distinctive token(s) heat",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Eqjfw56tV1Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.6",
+    "6.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Young Modulus - Physics A-level Required Practical' -> 6.1.6 'describe an experiment to determine the Young ' via distinctive token(s) modulu, young; 6.1.5 'define and use the terms stress, strain and th' via distinctive token(s) modulu, young",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 303,
   "specPointsMapped": 148,
   "specPointsUnmapped": 155,
-  "videosTotal": 214,
-  "videosMapped": 211,
+  "videosTotal": 216,
+  "videosMapped": 213,
   "videosUnmapped": 3,
-  "mappingRows": 215,
+  "mappingRows": 217,
   "byConfidence": {
    "high": 0,
-   "medium": 186,
-   "low": 29
+   "medium": 187,
+   "low": 30
   }
  },
  "inputs": {
@@ -8154,7 +8232,13 @@
    "path": "Videos/drafts/cie-a-level-physics-25/video-map.draft.external-p6.json",
    "task": "T-VIDEOMAP-P6 (PhysicsOnline channel completion)",
    "reviewAppliedUtc": "2026-11-12T09:56:37Z"
+  },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-physics-25/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.362Z"
+ "generatedUtc": "2026-11-12T18:17:37.399Z"
 }

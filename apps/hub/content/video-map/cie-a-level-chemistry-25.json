@@ -6,7 +6,12 @@
   "provider": "multi (freesciencelessons / doodlescience / cognito channel-only / amoeba-sisters / malmesbury)",
   "label": "cie-a-level-chemistry-25",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY; AQA<->CIE divergence handled by conservative binding (medium/low only, no high rows). NOTE: freesciencelessons videos with embedding disabled (oEmbed 401) were identity-checked via i.ytimg.com thumbnail liveness + the channel uploads-playlist enumeration instead; identityMethod field records which path each video used",
-  "enumeratedUtc": "2026-11-09T05:12:35Z"
+  "enumeratedUtc": "2026-11-09T05:12:35Z",
+  "p7": {
+   "provider": "multi (freesciencelessons, malmesbury-education)",
+   "method": "the unmapped remainder of four previously-mined channel pools (P2B/P2C/P2D precedents), re-enumerated fresh before the lane (0 deltas: 179/776/72/58) + union-exclusion against the current corpus + subject-marker routing with idf best-of across the 12 science parent spines + oEmbed identity sweep with the P2D thumb-fallback for FSL embedding-disabled A-level videos (250/250 verified) + deterministic binding pre-pass + agent judgment pass under the tightened binding rule; evidence is TITLE-ONLY",
+   "enumeratedUtc": "2026-11-12T18:15:29Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P2D",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Title-only posture, tightened rule. 20 spec-level rejects: A-level-only clauses carried by GCSE videos (acyl chlorides, pH calculations, Q=It, Kp, pH curves, condensation repeat units), wrong-topic hits (Group-2 video bound to Period-3 spec), and benzene videos bound to phenol/phenylamine clauses.",
-  "rowsApproved": 89,
+  "rowsApproved": 103,
   "rowsRejected": 20,
   "rejects": [
    {
@@ -136,6 +141,287 @@
     "video": "EP0zfm_FVqc",
     "spec": "35.1.3",
     "reason": "Cognito 'What is a Polymer?' is addition-polymer level; the condensation repeat-unit deduction of 35.1.3 is not title-evidenced."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P2D",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-09T06:10:24Z",
+    "evidenceBasis": "Title-only posture, tightened rule. 20 spec-level rejects: A-level-only clauses carried by GCSE videos (acyl chlorides, pH calculations, Q=It, Kp, pH curves, condensation repeat units), wrong-topic hits (Group-2 video bound to Period-3 spec), and benzene videos bound to phenol/phenylamine clauses.",
+    "rowsApproved": 89,
+    "rowsRejected": 20,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "m5u4STdFlOE",
+      "spec": "3.4.2",
+      "reason": "GCSE 'Covalent Bonding 1' covers H2/Cl2/HCl; the expanded-octet examples (SO2, PCl5, SF6) of 3.4.2 are A-level-only, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "yFDNBl8KjHg",
+      "spec": "24.1.2",
+      "reason": "F=Le relation between the Faraday and Avogadro constants (24.1.2) is electrochemistry, not title-evidenced in an Avogadro-constant calculations video."
+     },
+     {
+      "lessonRef": null,
+      "video": "7OW_DM8ZXbg",
+      "spec": "23.1.1",
+      "reason": "'How to Determine the Standard Enthalpy Change of Reaction' — lattice energy / atomisation enthalpies (23.1.1) are a distinct topic, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "7OW_DM8ZXbg",
+      "spec": "23.2.2",
+      "reason": "Same video: energy cycles combining lattice energy and enthalpy change of solution (23.2.2) not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "CRRvDqQqOkc",
+      "spec": "9.2.1",
+      "reason": "'Redox Reactions of Group 2 Elements…' bound to a Period-3 clause (9.2.1: Na, Mg, Al reactions) — wrong group; topic mismatch."
+     },
+     {
+      "lessonRef": null,
+      "video": "8PM_tWNFbGY",
+      "spec": "14.1.6",
+      "reason": "GCSE 'Combustion of Hydrocarbons' names the reaction; the environmental-consequences clause (CO, NOx, unburnt hydrocarbons) of 14.1.6 is not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "sssQlWf3YYI",
+      "spec": "31.1.1",
+      "reason": "'Directing Groups in the Reactions of Benzene' — halogenoarene production routes (31.1.1) not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "ySJkA4XiCXU",
+      "spec": "3.7.1",
+      "reason": "GCSE 'Limitations of Bonding Diagrams' is about the limits of dot-and-cross; the construct-ionic-covalent-coordinate-diagrams clause of 3.7.1 is not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "tvzlGwIZXHk",
+      "spec": "32.2.5",
+      "reason": "'Nitration of Benzene' — the phenol-vs-benzene conditions comparison of 32.2.5 is a distinct clause, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "tvzlGwIZXHk",
+      "spec": "34.2.1",
+      "reason": "Same video: phenylamine preparation via nitration-then-reduction (34.2.1) not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "WVwiozCzTX0",
+      "spec": "32.2.5",
+      "reason": "'Bromination of Benzene' — phenol bromination comparison (32.2.5) not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "dRwGa62uoNk",
+      "spec": "32.2.1",
+      "reason": "'The Reactions of Phenol' — the phenol production route from diazonium salts (32.2.1) is a preparation clause, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "ketAGS1gkQM",
+      "spec": "33.1.4",
+      "reason": "GCSE 'Carboxylic Acids' — relative acidities of carboxylic acids/phenols/alcohols (33.1.4) is A-level-only, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "ketAGS1gkQM",
+      "spec": "33.1.2",
+      "reason": "Same video: PCl3/PCl5/SOCl2 conversion to acyl chlorides (33.1.2) not title-evidenced at GCSE."
+     },
+     {
+      "lessonRef": null,
+      "video": "b8IzjgX2UlQ",
+      "spec": "7.1.7",
+      "reason": "'The Equilibrium Constant Kc' — the Kp (partial-pressure) calculations of 7.1.7 are a distinct CIE topic, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "Pvzqiz8wqJ4",
+      "spec": "7.2.9",
+      "reason": "'How to Carry Out a Titration' is technique-level; the pH-curve sketching of 7.2.9 is the distinctive content, not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "4pIHhXfGZlE",
+      "spec": "25.1.4",
+      "reason": "GCSE 'Strong and Weak Acids' — [H+] and pH calculation clause of 25.1.4 not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "ukbtTTG1Kew",
+      "spec": "24.1.3",
+      "reason": "GCSE RP3 Electrolysis — Q=It charge/mass/volume calculations of 24.1.3 not title-evidenced."
+     },
+     {
+      "lessonRef": null,
+      "video": "vWZWPlFmua4",
+      "spec": "12.1.1",
+      "reason": "GCSE Biology 'The Nitrogen Cycle' bound to a chemistry clause (N2 triple-bond inertness, 12.1.1) — cross-subject keyword hit."
+     },
+     {
+      "lessonRef": null,
+      "video": "EP0zfm_FVqc",
+      "spec": "35.1.3",
+      "reason": "Cognito 'What is a Polymer?' is addition-polymer level; the condensation repeat-unit deduction of 35.1.3 is not title-evidenced."
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p7 (remaining channel pools)",
+    "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 'approve and review yourself'; lane authorized 2026-11-13",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+    "ruledUtc": "2026-11-12T18:15:29Z",
+    "evidenceBasis": "Title-only posture, tightened binding rule. Deterministic distinctive-token pre-pass then a full agent judgment pass over every adjudicated row. Programmatic re-verification: identity 14 verified (oEmbed + thumb-fallback per the P2D law), all specs in the render-plane spine, no duplicates against the existing union, confidence never high. Judgment pass: full-row drops with reasons in the reject ledger; re-binds tabled with title assertions; borderline low rows kept and named in the review file.",
+    "rowsApproved": 14,
+    "rowsRejected": 27,
+    "rejects": [
+     {
+      "video": "-KKQqfDRALs",
+      "reason": "self-review drop: FSL practise-questions drill (generic enthalpy calculation practice): the 2.4.1 mole bind is keyword-adjacent — P6 generic-drill reject class",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "8b_v-FlYIao",
+      "reason": "self-review drop: optical isomerism in hydroxynitriles: the honest CIE chirality spec was not bound; the 37.3.2 NMR bind is keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "FwM9s00dwo4",
+      "reason": "self-review drop: FSL practise-questions drill: keyword-adjacent mole bind — generic-drill reject class",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "TDxkfvjQzpM",
+      "reason": "self-review drop: working with solutions (mole drills): the 22.2.1 mass-spectra bind is nonsense adjacency",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "YLitGJVP_aI",
+      "reason": "self-review drop: FSL practise-questions drill: keyword-adjacent — generic-drill reject class",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "l9vbRew0wLQ",
+      "reason": "self-review drop: FSL practise-questions drill: keyword-adjacent — generic-drill reject class",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "pFwv1CJuqjw",
+      "reason": "self-review drop: oxidation of aldehydes: the honest CIE spec was not bound; the 37.3.x NMR binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "pJKfVaAU7M4",
+      "reason": "self-review drop: working with solutions (mole drills): mass-spectra bind is nonsense adjacency",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "xIcHUv_gbmA",
+      "reason": "self-review drop: volatility/solubility of alcohols: the honest CIE alcohols spec was not bound; the 11.1.x halogen-volatility binds matched the token volatility — keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "y2VN0FjVWTw",
+      "reason": "self-review drop: the structure of benzene: the honest CIE delocalised-pi spec was not bound; the 37.3.x NMR binds are keyword-adjacent",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "-mFtKp_o8D0",
+      "reason": "no honest binding: best candidate \"define and use the terms: neutralisation, Δ H neut: • (a) st\" (5.1.3) binds only on generic vocabulary: change, enthalpy, standard",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "6KqEIfUJoMs",
+      "reason": "no honest binding: best candidate \"(a) state what is meant by coordination number the ligand an\" (28.2.6) binds only on generic vocabulary: charge, ion",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "7MmfKPKzP1o",
+      "reason": "no honest binding: best candidate \"determine the electronic configuration of atoms and ions giv\" (1.3.6) binds only on generic vocabulary: configuration, electron, ion",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "7zIE54-YvLk",
+      "reason": "no honest binding: best candidate \"determine the electronic configuration of atoms and ions giv\" (1.3.6) binds only on generic vocabulary: configuration, electron",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "ABYfB8r2BOg",
+      "reason": "no honest binding: best candidate \"describe, and write equations for, the reactions of the elem\" (10.1.1) binds only on generic vocabulary: element, group, oxygen, reaction, water",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "Df3tpeeJtHQ",
+      "reason": "no honest binding: best candidate \"\u0007explain the difference in reactivity between a halogenoalka\" (31.1.2) binds only on generic vocabulary: reactivity",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "INtCJ7jjdac",
+      "reason": "no honest binding: best candidate \"predict, using E values, the feasibility of redox reactions \" (28.2.8) binds only on generic vocabulary: reaction, redox",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "MkBRt3lbwEE",
+      "reason": "no honest binding: best candidate \"recall the reactions by which hydroxynitriles can be produce\" (19.2.2) binds only on generic vocabulary: aldehyde, ketone",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "PFCxeeFeJWk",
+      "reason": "no honest binding: best candidate \"use dot-and-cross diagrams to illustrate ionic, covalent and\" (3.7.1) binds only on generic vocabulary: bonding, covalent, ionic",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "ZBlZ0p6obb0",
+      "reason": "no honest binding: best candidate \"(a) \u0007describe van der Waals’ forces as the intermolecular fo\" (3.6.3) binds only on generic vocabulary: bonding, hydrogen",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "ctVUmJATDBk",
+      "reason": "no honest binding: best candidate \"deduce the possible isomers for an organic molecule of known\" (13.4.6) binds only on generic vocabulary: isomer, structural",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "k_PU5YlLGF4",
+      "reason": "no honest binding: best candidate \"understand and use systematic nomenclature of simple aliphat\" (29.1.3) binds only on generic vocabulary: chain, naming",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "nx_Il1uFpKc",
+      "reason": "no honest binding: best candidate \"explain the relevance of chirality to the synthetic preparat\" (29.4.4) binds only on generic vocabulary: isomer",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "qwWPwvf8hDM",
+      "reason": "no honest binding: best candidate \"(a) \u0007classify alcohols as primary, secondary and tertiary al\" (16.1.3) binds only on generic vocabulary: alcohol, oxidation, secondary, tertiary",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "s09cfeirxgA",
+      "reason": "no honest binding: best candidate \"carry out calculations using cycles and relevant energy term\" (5.2.2) binds only on generic vocabulary: enthalpy",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "sX1JYZwJL7w",
+      "reason": "no honest binding: best candidate \"2 3 P O , SO ), chlorine (to give NaC l , MgC l , A l C l , \" (9.2.2) binds only on generic vocabulary: number, oxidation",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     },
+     {
+      "video": "vnV75L9VUr0",
+      "reason": "no honest binding: best candidate \"define and use the terms: neutralisation, Δ H neut: • (a) st\" (5.1.3) binds only on generic vocabulary: change, combustion, enthalpy, standard",
+      "lane": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)"
+     }
+    ]
    }
   ]
  },
@@ -1579,6 +1865,196 @@
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-09T05:12:35Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "1OAiJEEUiVg",
+   "title": "A Level Chemistry Revision \"Using the Ideal Gas Equation in Chemical Reactions\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=1OAiJEEUiVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 277,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "2Dvxw-sP2WI",
+   "title": "A Level Chemistry Revision \"Le Chatelier's Principle and Concentration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=2Dvxw-sP2WI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 292,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "3eP2mtc9jrg",
+   "title": "Water Of Crystallisation - A-level Chemistry Practical",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=3eP2mtc9jrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 329,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "9sEj8htfrEM",
+   "title": "A Level Chemistry Revision \"Water of Crystallisation Part 1\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=9sEj8htfrEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 324,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "ACIhhP0rL4Y",
+   "title": "A Level Chemistry Revision \"Covalent Bonding and Expansion of the Octet\".",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=ACIhhP0rL4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 312,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "VANo-L82z1E",
+   "title": "A Level Chemistry Revision \"Determining Water of Crystallisation by Titration\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=VANo-L82z1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 423,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "hL6QXSziA2w",
+   "title": "A Level Chemistry Revision \"Determining Water of Crystallisation by Titration Part 2\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hL6QXSziA2w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 274,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "hmGF0McNwHo",
+   "title": "A Level Chemistry Revision \"Limiting Reagent\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=hmGF0McNwHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 363,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "oEX2I93tIUc",
+   "title": "A Level Chemistry Revisions \"The Ideal Gas Equation\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=oEX2I93tIUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 198,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "pquHv3LITTs",
+   "title": "A Level Chemistry Revision \"Calculating Percentage Yield\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=pquHv3LITTs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 298,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "t7MF-NQ0kKU",
+   "title": "A Level Chemistry Revision \"Environmental Effects of Addition Polymers\"",
+   "provider": "freesciencelessons",
+   "watchUrl": "https://www.youtube.com/watch?v=t7MF-NQ0kKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
+   "durationS": 221,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "tIPTQ8svZYo",
+   "title": "Interpreting Mass Spectra - A-level Chemistry",
+   "provider": "malmesbury-education",
+   "watchUrl": "https://www.youtube.com/watch?v=tIPTQ8svZYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
+   "durationS": 669,
+   "guestVisible": null,
+   "subelementOfPrimary": false,
+   "oembedAuthor": "Malmesbury Education",
+   "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
   }
  ],
  "mappings": [
@@ -2949,20 +3425,233 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-09T06:10:24Z",
    "boardMismatch": true
+  },
+  {
+   "video": "1OAiJEEUiVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.3",
+    "4.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Using the Ideal Gas Equation in Chemical R' -> 4.1.3 'state and use the ideal gas equation pV = nRT ' via distinctive token(s) ideal; 4.1.1 'explain the origin of pressure in a gas in ter' via distinctive token(s) ideal",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "2Dvxw-sP2WI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.3",
+    "7.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Le Chatelier's Principle and Concentration' -> 7.1.3 'use Le Chatelier’s principle to deduce qualita' via distinctive token(s) chatelier, principle; 7.1.2 'define Le Chatelier’s principle as: if a chang' via distinctive token(s) chatelier, principle",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "3eP2mtc9jrg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Water Of Crystallisation - A-level Chemistry Practical' -> 2.3.4 'understand and use the terms anhydrous, hydrat' via distinctive token(s) crystallisation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "9sEj8htfrEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'A Level Chemistry Revision \"Water of Crystallisation Part 1\"' -> 2.3.4 'understand and use the terms anhydrous, hydrat' via distinctive token(s) crystallisation",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "ACIhhP0rL4Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Covalent Bonding and Expansion of the Octet' names the expanded-octet spec 3.4.2 (SO2, PCl5 named in-spec — verified); the 3.7.1 ionic-diagram bind is wrong — trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "Pvzqiz8wqJ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.10"
+   ],
+   "confidence": "low",
+   "evidence": "title 'How to Carry Out a Titration' partially names the indicator-selection spec 7.2.10; the 7.2.9 curves bind is adjacent, trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "VANo-L82z1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Determining Water of Crystallisation by Titration' names the hydrated/anhydrous spec 2.3.4 directly; the 7.2.9 curves bind is adjacent, trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "WVwiozCzTX0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "32.2.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Bromination of Benzene' names the benzene-bromination conditions spec 32.2.5 directly; the 37.3.2 NMR bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hL6QXSziA2w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title 'Determining Water of Crystallisation by Titration' (part 2) names spec 2.3.4 directly; the 7.2.9 bind is adjacent, trimmed",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "hmGF0McNwHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Limiting Reagent\"' -> 2.4.1 'perform calculations including use of the mole' via distinctive token(s) limiting",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "oEX2I93tIUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.3",
+    "4.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revisions \"The Ideal Gas Equation\"' -> 4.1.3 'state and use the ideal gas equation pV = nRT ' via distinctive token(s) ideal; 4.1.1 'explain the origin of pressure in a gas in ter' via distinctive token(s) ideal",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "pquHv3LITTs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Calculating Percentage Yield' partially names the mole-calculation spec 2.4.1; the 37.2.2 chromatogram bind is nonsense adjacency",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "t7MF-NQ0kKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "14.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "title 'A Level Chemistry Revision \"Environmental Effects of Addition Polymers' -> 14.1.6 'recognise the environmental consequences of ca' via distinctive token(s) environmental",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
+  },
+  {
+   "video": "tIPTQ8svZYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "title 'Interpreting Mass Spectra - A-level Chemistry' -> 22.2.1 'analyse mass spectra in terms of m / e values ' via distinctive token(s) spectra",
+   "method": "llm-draft-external",
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
+   "reviewedUtc": "2026-11-12T18:15:29Z",
+   "boardMismatch": true
   }
  ],
  "coverage": {
   "specPointsTotal": 356,
-  "specPointsMapped": 108,
-  "specPointsUnmapped": 248,
-  "videosTotal": 90,
-  "videosMapped": 81,
-  "videosUnmapped": 9,
-  "mappingRows": 89,
+  "specPointsMapped": 113,
+  "specPointsUnmapped": 243,
+  "videosTotal": 102,
+  "videosMapped": 95,
+  "videosUnmapped": 7,
+  "mappingRows": 103,
   "byConfidence": {
    "high": 0,
-   "medium": 75,
-   "low": 14
+   "medium": 81,
+   "low": 22
   }
  },
  "inputs": {
@@ -2975,7 +3664,13 @@
    "path": "Videos/drafts/cie-a-level-chemistry-25/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P2D",
    "reviewAppliedUtc": "2026-11-09T06:10:24Z"
+  },
+  "p7": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-chemistry-25/video-map.draft.external-p7.json",
+   "task": "T-VIDEOMAP-P7 (remaining external channel pools: amoeba-sisters / freesciencelessons / malmesbury-education / doodlescience)",
+   "reviewAppliedUtc": "2026-11-12T18:15:29Z"
   }
  },
- "generatedUtc": "2026-11-12T09:58:57.307Z"
+ "generatedUtc": "2026-11-12T18:17:37.393Z"
 }
