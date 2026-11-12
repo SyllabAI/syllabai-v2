@@ -18,7 +18,9 @@
  * Response shape (chainHealth()): a LinkedHashMap with exactly two keys —
  * "chainAvailable" (chain.available(): any member available) and
  * "providers" (memberHealth(): per-provider ADR-023 snapshots keyed by the
- * §26.1 chain order groq → gemini → openrouter). The snapshot NEVER
+ * §26.1 chain order groq → gemini → openrouter, then the vision tail
+ * groq-vision → openrouter-vision — the VISION-FB amendment 2026-11-12).
+ * The snapshot NEVER
  * carries credential material — API keys, authorization headers, prompts
  * or learner data (the frozen LlmAdminControllerTest.snapshotsNeverCarrySecrets
  * law; re-pinned against the r4b leg-04 golden).
@@ -28,7 +30,10 @@
  * @ 6cad6ef layer (capture-corroborated: groq openai/gpt-oss-120b via
  * SYLLABAI_GROQ_MODEL, gemini gemini-3.6-flash, openrouter
  * nvidia/nemotron-3-super-120b-a12b:free, chain 60/60/3/1000, enabled
- * bridges default true) > the record compactor targets. The ZERO-KEY boot
+ * bridges default true) > the record compactor targets. VISION-FB: the
+ * vision slots ride SYLLABAI_LLM_{GROQ,OPENROUTER}_VISION_{ENABLED,MODEL}
+ * (default on; groq meta-llama/llama-4-scout-17b-16e-instruct, openrouter
+ * nvidia/nemotron-3.5-super-vl:free). The ZERO-KEY boot
  * of record (ruling4 §3): with no keys the application boots, the report
  * shows what is missing, and chainAvailable is honestly false.
  */

@@ -281,6 +281,73 @@ describe("OpenAiCompatibleChainMember — the SpringAiChatModelAdapter wire law"
   });
 });
 
+// ── the VISION-FB media slot (groq-vision / openrouter-vision tail) ─────────
+
+describe("OpenAiCompatibleChainMember — the media-capable construction (VISION-FB)", () => {
+  function scoutMember(fetchImpl: typeof fetch) {
+    return new OpenAiCompatibleChainMember(
+      "groq-vision",
+      { apiKey: "gsk_vision", baseUrl: "https://api.groq.com/openai/v1", model: "meta-llama/llama-4-scout-17b-16e-instruct" },
+      { ...opts, fetchImpl },
+      true, // mediaCapable — the vision slot
+    );
+  }
+
+  test("media request → image_url data URL + text content parts (the OpenAI vision wire shape)", async () => {
+    const { fetchImpl, calls } = fetchJson(200, {
+      model: "meta-llama/llama-4-scout-17b-16e-instruct",
+      choices: [{ finish_reason: "stop", message: { content: "NH4+" } }],
+    });
+    const member = scoutMember(fetchImpl);
+    const out = await member.generate({
+      system: "transcribe the crop",
+      user: "read the handwritten answer",
+      temperature: 0,
+      maxTokens: 900,
+      media: { base64: "QUJD", mimeType: "image/png" },
+    });
+    expect(out.text).toBe("NH4+");
+    expect(out.providerName).toBe("groq-vision");
+    const body = JSON.parse(String(calls[0]!.init.body)) as Record<string, unknown>;
+    expect(body.model).toBe("meta-llama/llama-4-scout-17b-16e-instruct");
+    const messages = body.messages as Array<{ role: string; content: unknown }>;
+    expect(messages[0]).toEqual({ role: "system", content: "transcribe the crop" });
+    const userParts = messages[1]!.content as Array<Record<string, unknown>>;
+    expect(userParts[0]).toEqual({
+      type: "image_url",
+      image_url: { url: "data:image/png;base64,QUJD" },
+    });
+    expect(userParts[1]).toEqual({ type: "text", text: "read the handwritten answer" });
+    expect(member.supportsMedia()).toBe(true);
+    expect(member.health().snapshot().healthy).toBe(true);
+  });
+
+  test("text request on the vision slot → byte-identical string content (no parts array)", async () => {
+    const { fetchImpl, calls } = fetchJson(200, {
+      choices: [{ finish_reason: "stop", message: { content: "x" } }],
+    });
+    const member = scoutMember(fetchImpl);
+    await member.generate({ system: "s", user: "u" });
+    const body = JSON.parse(String(calls[0]!.init.body)) as { messages: Array<{ content: unknown }> };
+    expect(body.messages[1]!.content).toBe("u");
+  });
+
+  test("the default (text-only) construction drops media on a direct call — the disclosed belt", async () => {
+    const { fetchImpl, calls } = fetchJson(200, {
+      choices: [{ finish_reason: "stop", message: { content: "x" } }],
+    });
+    const member = groqMember(fetchImpl);
+    expect(member.supportsMedia()).toBe(false);
+    await member.generate({ system: "s", user: "u", media: { base64: "QUJD", mimeType: "image/png" } });
+    const body = JSON.parse(String(calls[0]!.init.body)) as { messages: Array<{ content: unknown }> };
+    // the CHAIN routing law is the guard (media never offered to a text
+    // member); the payload drop is the belt — no image_url anywhere
+    expect(body.messages[1]!.content).toBe("u");
+    expect(JSON.stringify(body)).not.toContain("image_url");
+    expect(JSON.stringify(body)).not.toContain("QUJD");
+  });
+});
+
 // ── Gemini member (the vision-capable member) ───────────────────────────────
 
 function geminiMember(fetchImpl: typeof fetch) {
