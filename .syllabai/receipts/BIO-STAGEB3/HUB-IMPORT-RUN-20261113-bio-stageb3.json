@@ -1,0 +1,267 @@
+{
+  "format": "hub-import-run-receipt/0.1",
+  "generated_at_utc": "2026-11-12T20:42:06Z",
+  "feed": "bio-stageb3-v37",
+  "adapter": "guided-lesson-0.7--hub-lesson-import-1.6",
+  "landing_law": "additive",
+  "generated_at_utc_note": "figures feed: declared revision of the 112 lesson artifacts (G-DELTA); additive-only law unchanged for everything else",
+  "operator_trace": "1a1d147b95e4b899",
+  "operator_directive": "run the BIOLOGY-4BI1 stage-B wave-3 chain — import the igcse-biology-19 stage-B wave-3 tranche of record (the third register bucket of the frozen B4 partition: 16 excretion + gas-exchange notes end-to-end at the 0.7/1.6/1.3 generation, register rows 28..43 0-based; 30 lessons / 270 checks = 150 MCQ + 60 recall + 30 explain-why + 30 application; 29 figures all module-mapped heading-unique; glossary 54; workedExamples 0 populated + 16 designed nulls) — biology-scope manifest v37 CUMULATIVE (the programme-level v-series continues: chemistry v1..v17 + v32, physics v18..v31, biology v33..v37; 88 artifacts = 56 prior re-pinned byte-identical + 32 wave-3 first issues), resources chain 9c278f61 (commit A) + 53f09990 (commit C) with the physics v31 (254), chemistry v32 (224) and prior biology v36 (56) packs re-pinned byte-identical on the wave tree. Declared hub landing = 32/32 first issues + 56/56 identical-exists + the runner-owned guided-import.json re-issued with all 44 rows (pilot + waves 1..3). Operator directive of record: 'the same four-plane treatment for the remaining Reasoning subjects (Chemistry 4CH1 stage-B authoring, Biology),' continuing under 'Continue, why did you stop?' — trace 1a1d147b95e4b899.",
+  "runner": {
+    "path": "apps/hub/scripts/import_guided/run_import.mjs",
+    "id": "hub-import-runner/1.0",
+    "runtime": "node v24.22.2"
+  },
+  "feed_config": {
+    "manifest": "hub-import-manifest-v37.json",
+    "manifest_version": 37,
+    "promo": {
+      "commit": "53f0999030cb8a3972220767ee6cf4b277084672",
+      "tree": "c50688959f2020a2faaebb82439171821fa6d40c",
+      "parent": "9c278f619b85b60d65573e80790a3ff261f8fa93",
+      "trace": "1a1d147b95e4b899"
+    },
+    "promotion_pending": false,
+    "integration_branch": "(main ancestry)",
+    "artifact_pin": "9c278f619b85b60d65573e80790a3ff261f8fa93",
+    "figures_feed": true
+  },
+  "gates": {
+    "P0": "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
+    "GA": "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
+    "GB": "88/88 fetched raw @ pinned commit, sha256+bytes exact",
+    "GC": "ajv draft-07 ×88 vs both target schemas",
+    "GD": "X ×44 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (765 checks), pinned provenance, figure closure both ways (97 figures)",
+    "GE": "Φ — per-note stream anchors ×44 vs the feed's INT-3 record; wave subtotals ×4; grand stream vs manifest; legacy-anchor equality ×44 (figures carried no prose)",
+    "LAND": "byte-exact atomic landing (additive law) — additive-only, divergent overwrite aborts",
+    "GV": "cold re-read ×88; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 88/88; figure counts re-derived from disk"
+  },
+  "gate_results": [
+    {
+      "stage": "P0",
+      "name": "promotion commit resolves",
+      "ok": true,
+      "detail": "53f0999030cb8a3972220767ee6cf4b277084672"
+    },
+    {
+      "stage": "P0",
+      "name": "tree matches promotion receipt",
+      "ok": true,
+      "detail": "tree=c50688959f2020a2faaebb82439171821fa6d40c"
+    },
+    {
+      "stage": "P0",
+      "name": "parent matches promotion receipt",
+      "ok": true,
+      "detail": "parent=9c278f619b85b60d65573e80790a3ff261f8fa93"
+    },
+    {
+      "stage": "P0",
+      "name": "message carries promotion trace",
+      "ok": true,
+      "detail": "guided(BIOLOGY-4BI1 stage-B wave 3): commit C — namespace-complete outputs (16 hub-import-"
+    },
+    {
+      "stage": "P0",
+      "name": "promotion commit remains main ancestor",
+      "ok": true,
+      "detail": "status=identical behind_by=0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest fetched @ promotion commit",
+      "ok": true,
+      "detail": "30935B"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest byte-identical to lane survivor",
+      "ok": true,
+      "detail": "remote f13839659ff2 vs survivor f13839659ff2"
+    },
+    {
+      "stage": "G-A",
+      "name": "format hub-import-manifest/1.0",
+      "ok": true,
+      "detail": "hub-import-manifest/1.0"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest_version 37",
+      "ok": true,
+      "detail": "37"
+    },
+    {
+      "stage": "G-A",
+      "name": "88 artifacts listed",
+      "ok": true,
+      "detail": "88"
+    },
+    {
+      "stage": "G-A",
+      "name": "kinds 88/88 (feed census)",
+      "ok": true,
+      "detail": "{\"hub-lesson-import-1.6\":44,\"sme-question-package\":44}"
+    },
+    {
+      "stage": "G-A",
+      "name": "counts == closing identity",
+      "ok": true,
+      "detail": "{\"notes\":44,\"lessons\":85,\"checks\":765,\"keyPoints\":400,\"distractors\":1275,\"glossaryTerms\":155,\"figures\":97,\"figures_module_mapped\":93,\"figures_note_level\":4,\"workedExamples_populated\":1,\"workedExamples_null\":43,\"authored_chars_conserved\":453238}"
+    },
+    {
+      "stage": "G-A",
+      "name": "conservation block present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "stage": "G-A",
+      "name": "adapter of record",
+      "ok": true,
+      "detail": "guided-lesson-0.7--hub-lesson-import-1.6"
+    },
+    {
+      "stage": "G-A",
+      "name": "manifest carries promotion operator trace",
+      "ok": true,
+      "detail": "1a1d147b95e4b899"
+    },
+    {
+      "stage": "G-A",
+      "name": "artifact paths conform to the feed's path-map families",
+      "ok": true,
+      "detail": "88 conform"
+    },
+    {
+      "stage": "G-A",
+      "name": "hub schema byte-identical to survivor",
+      "ok": true,
+      "detail": "12230B"
+    },
+    {
+      "stage": "G-A",
+      "name": "package schema byte-identical to survivor",
+      "ok": true,
+      "detail": "6300B"
+    },
+    {
+      "stage": "G-B",
+      "name": "88/88 artifacts fetched + sha256/bytes exact",
+      "ok": true,
+      "detail": "all exact"
+    },
+    {
+      "stage": "G-C",
+      "name": "ajv draft-07 ×88 (guided-lesson-0.7--hub-lesson-import-1.6 + sme-question-package/1.3)",
+      "ok": true,
+      "detail": "all pass"
+    },
+    {
+      "stage": "G-D",
+      "name": "X ×44: grammar + checkRefs↔questions + figure closure + provenance",
+      "ok": true,
+      "detail": "765 checks + 97 figures resolve"
+    },
+    {
+      "stage": "G-E",
+      "name": "per-note stream anchors ×44 (sha256 + chars)",
+      "ok": true,
+      "detail": "all conserved"
+    },
+    {
+      "stage": "G-E",
+      "name": "wave stream subtotals ×4 vs manifest",
+      "ok": true,
+      "detail": "all match"
+    },
+    {
+      "stage": "G-E",
+      "name": "grand stream vs manifest",
+      "ok": true,
+      "detail": "453238 chars bb716678f154"
+    },
+    {
+      "stage": "LAND",
+      "name": "88 artifacts landed byte-exact (additive law)",
+      "ok": true,
+      "detail": "32 written, 0 revised, 56 already identical"
+    },
+    {
+      "stage": "LAND",
+      "name": "guided-import.json index landed (runner-owned, re-issued)",
+      "ok": true,
+      "detail": "27039B"
+    },
+    {
+      "stage": "G-V",
+      "name": "cold re-read ×88 byte-identical vs manifest sha",
+      "ok": true,
+      "detail": "disk == fetched bytes"
+    },
+    {
+      "stage": "G-V",
+      "name": "closing identity re-derived from disk",
+      "ok": true,
+      "detail": "{\"notes\":44,\"lessons\":85,\"checks\":765,\"keyPoints\":400,\"distractors\":1275,\"glossaryTerms\":155}"
+    },
+    {
+      "stage": "G-V",
+      "name": "figure counts re-derived from disk",
+      "ok": true,
+      "detail": "{\"figures\":97,\"moduleMapped\":93,\"noteLevel\":4,\"modulesWithFigures\":63}"
+    },
+    {
+      "stage": "G-V",
+      "name": "loader rel-shape probe (content/<rel>)",
+      "ok": true,
+      "detail": "igcse-biology-19/guided-lessons/rn_qRXSsjyzyZsJnc7k.hub-lesson-import.json , igcse-biology-19/guided-questions/rn_qRXSsjyzyZsJnc7k.sme-question-package.json , igcse-biology-19/guided-import.json"
+    },
+    {
+      "stage": "G-V",
+      "name": "static build copies content/ recursively (cpSync recursive in build_corpus_static.mjs)",
+      "ok": true,
+      "detail": "whole-tree copy — new guided-* subdirs publish with the next build"
+    },
+    {
+      "stage": "G-V",
+      "name": "idempotence re-landing 88/88 identical-exists",
+      "ok": true,
+      "detail": "88/88"
+    }
+  ],
+  "landing": {
+    "hub_tree": "/home/z/my-project/syllabai-v2/apps/hub",
+    "pack": "content/igcse-biology-19/",
+    "lessons_dir": "guided-lessons/ (44 files)",
+    "questions_dir": "guided-questions/ (44 files)",
+    "index": "guided-import.json (guided-import-index/1.0)",
+    "files_written": 32,
+    "files_revised": 0,
+    "files_already_identical": 56,
+    "bytes_landed": 1124906
+  },
+  "counts_landed": {
+    "notes": 44,
+    "lessons": 85,
+    "checks": 765,
+    "keyPoints": 400,
+    "distractors": 1275,
+    "glossaryTerms": 155
+  },
+  "figures_landed": {
+    "figures": 97,
+    "moduleMapped": 93,
+    "noteLevel": 4,
+    "modulesWithFigures": 63
+  },
+  "conservation_recomputed": {
+    "authored_chars": 453238,
+    "authored_stream_sha256": "bb716678f154409a1f6743985b15c73185459332ade9ae3a52d32331322b5a3f"
+  },
+  "next_operator_gated": [
+    "commit the hub tree addition (runner + content/igcse-biology-19/guided-*) per standing convention — push auto-bakes the hub (git-linked law)",
+    "hub PR (atomic): FEED runner + TS optional fields + renderer figure cards + revised artifacts + re-issued guided-import.json; merges only after resources PR #207"
+  ],
+  "duration_ms": 9100
+}

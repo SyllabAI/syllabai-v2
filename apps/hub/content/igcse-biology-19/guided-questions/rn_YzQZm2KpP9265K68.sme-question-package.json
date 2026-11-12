@@ -1,0 +1,492 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_YzQZm2KpP9265K68",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "58103744fdd735eb7edbad01d5dc59637a8f432f23edbaf741e4713b68cc9b92",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_YzQZm2KpP9265K68",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q1",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "Which smoke component binds irreversibly to haemoglobin?",
+      "misconceptionClass": "chemical recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon monoxide",
+          "correct": true,
+          "explanation": "That binding is carbon monoxide's defining harm.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nicotine",
+          "correct": false,
+          "explanation": "Nicotine acts on vessels and heart rate.",
+          "misconception": "chemical confused"
+        },
+        {
+          "key": "C",
+          "text": "Tar",
+          "correct": false,
+          "explanation": "Tar is the carcinogen and mucus driver.",
+          "misconception": "chemical confused"
+        },
+        {
+          "key": "D",
+          "text": "Carbon dioxide",
+          "correct": false,
+          "explanation": "Carbon dioxide is a metabolic waste, not a smoke component here.",
+          "misconception": "gas confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q2",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "What does nicotine do to blood vessels?",
+      "misconceptionClass": "effect recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It has no vascular effect",
+          "correct": false,
+          "explanation": "Vascular action is nicotine's headline effect.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "B",
+          "text": "It narrows them, raising blood pressure",
+          "correct": true,
+          "explanation": "Narrowed vessels and a faster heart push pressure up.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "It widens them, lowering pressure",
+          "correct": false,
+          "explanation": "The effect is constriction, not widening.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "D",
+          "text": "It dissolves their walls",
+          "correct": false,
+          "explanation": "Nothing dissolves; constriction is the mechanism.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q3",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "Why must a smoker breathe faster and deeper?",
+      "misconceptionClass": "compensation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because nicotine numbs the breathing muscles",
+          "correct": false,
+          "explanation": "No numbing is described.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
+          "text": "Because smoke fills the lungs physically",
+          "correct": false,
+          "explanation": "The driver is blood chemistry, not blockage.",
+          "misconception": "mechanism wrong"
+        },
+        {
+          "key": "C",
+          "text": "Because carbon monoxide has cut the blood's oxygen-carrying capacity",
+          "correct": true,
+          "explanation": "Less capacity per litre demands more litres per minute.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because tar blocks the alveoli completely",
+          "correct": false,
+          "explanation": "Tar's damage builds over years, not as the direct breathing driver.",
+          "misconception": "mechanism wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q4",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "Which disease pair does COPD name?",
+      "misconceptionClass": "terminology recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bronchitis and asthma",
+          "correct": false,
+          "explanation": "Asthma is not in this pairing.",
+          "misconception": "pair wrong"
+        },
+        {
+          "key": "B",
+          "text": "Emphysema and heart attack",
+          "correct": false,
+          "explanation": "Heart attack belongs to the cardiovascular story.",
+          "misconception": "pair wrong"
+        },
+        {
+          "key": "C",
+          "text": "Cancer and bronchitis",
+          "correct": false,
+          "explanation": "Cancer risk is separate from the COPD naming.",
+          "misconception": "pair wrong"
+        },
+        {
+          "key": "D",
+          "text": "Chronic bronchitis and emphysema together",
+          "correct": true,
+          "explanation": "COPD is the combined diagnosis of those two.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q5",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "How does carbon monoxide raise coronary heart disease risk?",
+      "misconceptionClass": "chain reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Through the compensatory faster pumping, which raises blood pressure and strains the arteries",
+          "correct": true,
+          "explanation": "The risk rides on the compensation, not on direct poisoning.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "By dissolving the artery walls",
+          "correct": false,
+          "explanation": "Nothing dissolves artery walls here.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "C",
+          "text": "By binding to the heart muscle",
+          "correct": false,
+          "explanation": "It binds haemoglobin, not the heart.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "D",
+          "text": "It does not raise the risk at all",
+          "correct": false,
+          "explanation": "The raised pressure and strain raise it.",
+          "misconception": "claim false"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q6",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "Name the three harmful chemicals in cigarette smoke named here.",
+      "misconceptionClass": "chemical recall",
+      "kind": "recall",
+      "modelAnswer": "Nicotine, carbon monoxide and tar.",
+      "keywords": [
+        "nicotine",
+        "carbon monoxide",
+        "tar"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q7",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "State two cardiovascular consequences of smoking.",
+      "misconceptionClass": "consequence recall",
+      "kind": "recall",
+      "modelAnswer": "Raised blood pressure and increased risk of coronary heart disease and stroke.",
+      "keywords": [
+        "blood pressure",
+        "coronary heart disease",
+        "stroke"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q8",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "Explain why the phrase irreversible binding makes carbon monoxide especially dangerous.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because each bound haemoglobin molecule is permanently out of service — no reaction can free it — so the oxygen deficit accumulates with every cigarette and the body can only compensate by working the breathing and circulation harder.",
+      "keywords": [
+        "irreversible",
+        "haemoglobin",
+        "oxygen",
+        "compensate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L1::Q9",
+      "moduleId": "rn_YzQZm2KpP9265K68::L1",
+      "stem": "A smoker's blood test shows reduced oxygen carriage. Trace the full chain to their raised heart-disease risk.",
+      "misconceptionClass": "chain application",
+      "kind": "application",
+      "modelAnswer": "Carbon monoxide occupies haemoglobin irreversibly, so less oxygen travels per litre; breathing deepens and quickens to compensate, and the heart pumps faster, which raises blood pressure, encourages clot formation and strains the coronary arteries — the chain from smoke to heart disease.",
+      "keywords": [
+        "haemoglobin",
+        "oxygen",
+        "blood pressure",
+        "coronary"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q1",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "What stimulates excess mucus production?",
+      "misconceptionClass": "cause recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The cough itself",
+          "correct": false,
+          "explanation": "The cough responds to mucus; it does not create it.",
+          "misconception": "cause reversed"
+        },
+        {
+          "key": "B",
+          "text": "Tar, which enlarges the goblet cells and mucus glands",
+          "correct": true,
+          "explanation": "Tar is the chemical driver of the mucus flood.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Nicotine, acting on the glands",
+          "correct": false,
+          "explanation": "Nicotine's targets are vessels and heart rate.",
+          "misconception": "cause wrong"
+        },
+        {
+          "key": "D",
+          "text": "Carbon monoxide dissolving in mucus",
+          "correct": false,
+          "explanation": "No such mechanism exists.",
+          "misconception": "cause invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q2",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "Why does mucus accumulate in a smoker's airways?",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the bronchioles widen",
+          "correct": false,
+          "explanation": "They block, not widen.",
+          "misconception": "mechanism wrong"
+        },
+        {
+          "key": "B",
+          "text": "Because tar evaporates into mucus",
+          "correct": false,
+          "explanation": "No evaporation route is described.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "C",
+          "text": "Because the cilia that sweep it are damaged and stop beating",
+          "correct": true,
+          "explanation": "Broken sweepers let the pool grow.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because mucus production stops while drainage continues",
+          "correct": false,
+          "explanation": "Production rises while drainage fails — the worst combination.",
+          "misconception": "direction wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q3",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "What role do phagocytes play in emphysema?",
+      "misconceptionClass": "cell role recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "They repair the elastic fibres",
+          "correct": false,
+          "explanation": "They digest them; nothing repairs them.",
+          "misconception": "role reversed"
+        },
+        {
+          "key": "B",
+          "text": "They produce extra mucus",
+          "correct": false,
+          "explanation": "Goblet cells make mucus; phagocytes bring elastase.",
+          "misconception": "role confused"
+        },
+        {
+          "key": "C",
+          "text": "They carry oxygen to damaged tissue",
+          "correct": false,
+          "explanation": "Oxygen carriage is red cells' job.",
+          "misconception": "role invented"
+        },
+        {
+          "key": "D",
+          "text": "They release elastase that digests the alveoli's elastic fibres",
+          "correct": true,
+          "explanation": "The infection-fighting cells cause the structural damage.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q4",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "What happens to the alveoli once their elastic fibres are digested?",
+      "misconceptionClass": "progression recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "They become less elastic, cannot stretch, and many burst",
+          "correct": true,
+          "explanation": "Loss of spring ends in structural collapse.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They multiply to compensate",
+          "correct": false,
+          "explanation": "No regrowth occurs.",
+          "misconception": "progression invented"
+        },
+        {
+          "key": "C",
+          "text": "They narrow into thin tubes",
+          "correct": false,
+          "explanation": "They rupture rather than narrow.",
+          "misconception": "progression wrong"
+        },
+        {
+          "key": "D",
+          "text": "They harden into bone-like tissue",
+          "correct": false,
+          "explanation": "Nothing hardens into bone here.",
+          "misconception": "progression invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q5",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "Why do emphysema patients become breathless?",
+      "misconceptionClass": "consequence reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because their blood thickens",
+          "correct": false,
+          "explanation": "Thickening is not described.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
+          "text": "Because the burst alveoli have shrunk the surface area available for gas exchange",
+          "correct": true,
+          "explanation": "Less area means less oxygen transferred per breath.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Because their hearts enlarge",
+          "correct": false,
+          "explanation": "Heart change is not the stated mechanism.",
+          "misconception": "cause misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Because mucus fills every alveolus",
+          "correct": false,
+          "explanation": "Mucus belongs to the bronchitis half of the story.",
+          "misconception": "mechanism partial"
+        }
+      ]
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q6",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "Name the two diseases of the gas exchange surface that occur together in COPD.",
+      "misconceptionClass": "disease recall",
+      "kind": "recall",
+      "modelAnswer": "Chronic bronchitis and emphysema.",
+      "keywords": [
+        "chronic bronchitis",
+        "emphysema",
+        "COPD"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q7",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "State the enzyme that digests alveolar elastic fibres.",
+      "misconceptionClass": "enzyme recall",
+      "kind": "recall",
+      "modelAnswer": "Elastase, released by phagocytes entering the lungs.",
+      "keywords": [
+        "elastase",
+        "phagocytes",
+        "digests",
+        "elastic fibres"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q8",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "Explain why a smoker's cough develops.",
+      "misconceptionClass": "chain reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because tar-driven mucus pools in airways whose cilia are too damaged to sweep it out, so coughing is the only remaining way to move the mucus — the body's manual replacement for the broken conveyor.",
+      "keywords": [
+        "tar",
+        "mucus",
+        "cilia",
+        "cough"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_YzQZm2KpP9265K68::L2::Q9",
+      "moduleId": "rn_YzQZm2KpP9265K68::L2",
+      "stem": "Explain why emphysema damage cannot be reversed by quitting alone.",
+      "misconceptionClass": "permanence application",
+      "kind": "application",
+      "modelAnswer": "Because the burst alveoli are structurally gone — no regrowth replaces the lost exchange surface; quitting removes the ongoing assault but cannot rebuild the area already destroyed, which is why severe sufferers need supplemental oxygen for life.",
+      "keywords": [
+        "burst alveoli",
+        "no regrowth",
+        "surface",
+        "oxygen"
+      ],
+      "options": []
+    }
+  ]
+}
