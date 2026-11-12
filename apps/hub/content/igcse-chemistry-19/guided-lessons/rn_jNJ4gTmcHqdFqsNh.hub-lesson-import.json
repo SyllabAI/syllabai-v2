@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_jNJ4gTmcHqdFqsNh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "095adc8bf7749f08c7a48b610c1b9e8586f465462eba894045b66f2469aeffed",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "bc9b9d823bbb64e42b4893c18591fb8e6aa574b03f34d164e8e3456ab8ad67de",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_jNJ4gTmcHqdFqsNh",
@@ -20,11 +20,11 @@
       },
       {
         "code": "4CH1-2.2",
-        "text": "understand how the differences between the reactions of these elements with air and water provide evidence for the trend in reactivity in Group1"
+        "text": "understand how the differences between the reactions of these elements with air and water provide evidence for the trend in reactivity in Group 1"
       },
       {
         "code": "4CH1-2.3",
-        "text": "use knowledge of trends in Group1 to predict the properties of other alkali metals"
+        "text": "use knowledge of trends in Group 1 to predict the properties of other alkali metals"
       }
     ],
     "primer": {
@@ -44,7 +44,7 @@
         ],
         "opening": "The first column of the periodic table holds a family so consistent in its behaviour that it carries its own name: the alkali metals. Drop any of them into water and you get the same story, an alkaline solution plus bubbles of hydrogen. That shared pattern of reactions is the evidence chemists use to recognise them as one family.",
         "keyPoints": [
-          "The alkali metals are lithium, sodium, potassium, rubidium, caesium and francium, found in the first column.",
+          "The first column holds the alkali metals: lithium, sodium, potassium, rubidium, caesium and francium.",
           "They share characteristic chemical behaviour because each carries a single electron in its outermost shell.",
           "They are soft, easily cut with a knife, with low densities and low melting points.",
           "All react with water to give an alkaline solution, which is how the family earned its name.",
@@ -102,7 +102,7 @@
           "Lithium fizzes gently on the water surface, sodium races about, and potassium burns with a lilac flame.",
           "Exposed to air, each metal tarnishes as oxygen draws a dull oxide coating across its surface.",
           "Tarnishing also speeds up down the group, mirroring the water trend.",
-          "Melting points fall down the group as the attractive forces between outer electrons and positive ions weaken."
+          "Melting points fall down the group as the pull between outer electrons and positive ions weakens."
         ],
         "depthLayers": {
           "low": {
@@ -189,7 +189,8 @@
           "rn_jNJ4gTmcHqdFqsNh::L3::Q7",
           "rn_jNJ4gTmcHqdFqsNh::L3::Q8",
           "rn_jNJ4gTmcHqdFqsNh::L3::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -218,11 +219,6 @@
           "term": "tarnish",
           "definition": "The dull oxide coating that forms on a metal surface when oxygen attacks it.",
           "firstLesson": 2
-        },
-        {
-          "term": "trend",
-          "definition": "A pattern of behaviour that changes in one direction down a group or across a period; a pattern, not a rule.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -241,23 +237,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/698f3280d8f0-group-1-metals-in-periodic-table.png",
         "alt": "Group 1 metals in Periodic Table, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Group 1 elements in the Periodic Table",
-        "caption": "The alkali metals lie on the far left of the periodic table, in the very first group",
-        "binding": "unresolved",
+        "sourceHeading": "Group 1 elements",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The alkali metals lie on the far left of the periodic table, in the very first group"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6cb4d94b094a-graph-mp-group-1.png",
         "alt": "Graph MP Group 1, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Graph to show the physical trends in Group 1",
-        "caption": "The melting point of the Group 1 metals decreases as you descend the group",
-        "binding": "unresolved",
+        "sourceHeading": "Trends in Group 1",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The melting point of the Group 1 metals decreases as you descend the group"
       }
     ]
   }

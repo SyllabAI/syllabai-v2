@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_x5m8QBWxtKvxQ9sx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7649fc38478e9db2837ca086f7187ebb7b09e7c86af0d1ccc4bc4cf75e71b3f6",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "21e4ac33f66d6bd623355ec650e2f4b2d0f5ab00fc420d9357c8861740b573f4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_x5m8QBWxtKvxQ9sx",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Endothermic and combustion",
+          "correct": false,
+          "explanation": "Endothermic reactions take heat in, so the pairing cannot be correct.",
+          "misconception": "category inverted"
+        },
+        {
+          "key": "B",
           "text": "Neutralisation and combustion",
           "correct": true,
           "explanation": "Both reaction types always release heat to the surroundings.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Displacement and combustion",
           "correct": false,
           "explanation": "Displacement reactions can take energy in or give it out, so they do not always release heat.",
           "misconception": "displacement assumed always exothermic"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Displacement and neutralisation",
           "correct": false,
           "explanation": "Neutralisation does release heat, but displacement can run in either energy direction.",
           "misconception": "displacement mis-typed"
-        },
-        {
-          "key": "D",
-          "text": "Endothermic and combustion",
-          "correct": false,
-          "explanation": "Endothermic reactions take heat in, so the pairing cannot be correct.",
-          "misconception": "category inverted"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Heat released by the reaction flows into the surroundings",
-          "correct": true,
-          "explanation": "Energy given out by the chemicals has nowhere to go except the surroundings, warming them.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The surroundings supply the energy for the reaction",
-          "correct": false,
-          "explanation": "That describes an endothermic change; exothermic reactions hand energy over instead.",
-          "misconception": "direction inverted"
-        },
-        {
-          "key": "C",
           "text": "The reaction destroys energy so none remains in the chemicals",
           "correct": false,
           "explanation": "Energy is conserved; it is transferred, never destroyed.",
           "misconception": "energy destroyed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The products store the released heat permanently",
           "correct": false,
           "explanation": "The heat passes to the surroundings; the products end with less energy than the reactants.",
           "misconception": "products as heat store"
+        },
+        {
+          "key": "C",
+          "text": "Heat released by the reaction flows into the surroundings",
+          "correct": true,
+          "explanation": "Energy given out by the chemicals has nowhere to go except the surroundings, warming them.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The surroundings supply the energy for the reaction",
+          "correct": false,
+          "explanation": "That describes an endothermic change; exothermic reactions hand energy over instead.",
+          "misconception": "direction inverted"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It increases because heat is taken in from the surroundings",
-          "correct": true,
-          "explanation": "Energy absorbed from the surroundings raises the heat content of the system.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It decreases because energy leaves the system",
           "correct": false,
           "explanation": "An endothermic change pulls energy in; a falling energy content describes exothermic reactions.",
           "misconception": "exo and endo swapped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It stays exactly the same throughout the change",
           "correct": false,
           "explanation": "Total energy is conserved, but the share held by the system changes when heat crosses the boundary.",
           "misconception": "conservation misapplied"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It becomes impossible to measure with school apparatus",
           "correct": false,
           "explanation": "A thermometer in the mixture tracks the change directly.",
           "misconception": "measurement despair"
+        },
+        {
+          "key": "D",
+          "text": "It increases because heat is taken in from the surroundings",
+          "correct": true,
+          "explanation": "Energy absorbed from the surroundings raises the heat content of the system.",
+          "misconception": null
         }
       ]
     },
@@ -214,7 +214,8 @@
       "modelAnswer": "Endothermic reactions take heat in from the surroundings, so the temperature of the reaction mixture falls.",
       "keywords": [
         "falls",
-        "take"
+        "take",
+        "surroundings"
       ],
       "options": []
     },
@@ -241,7 +242,8 @@
       "modelAnswer": "Whether the thermometer shows a rise or a fall separates them: a temperature rise marks an exothermic change and a fall marks an endothermic one.",
       "keywords": [
         "rise",
-        "fall"
+        "fall",
+        "thermometer"
       ],
       "options": []
     },
@@ -253,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The law of conservation of energy does not apply to chemical reactions",
+          "correct": false,
+          "explanation": "The law applies to every reaction; energy changes location but persists.",
+          "misconception": "law scope error"
+        },
+        {
+          "key": "B",
           "text": "Energy was transferred to the surroundings, not destroyed",
           "correct": true,
           "explanation": "The law of conservation of energy forbids destruction; the heat simply moved out of the mixture.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Energy was destroyed because the temperature fell",
           "correct": false,
           "explanation": "A falling temperature signals heat leaving, not energy vanishing.",
           "misconception": "destruction accepted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Energy was created inside the thermometer bulb",
           "correct": false,
           "explanation": "The thermometer only reports temperature; it does not manufacture energy.",
           "misconception": "creation claimed"
-        },
-        {
-          "key": "D",
-          "text": "The law of conservation of energy does not apply to chemical reactions",
-          "correct": false,
-          "explanation": "The law applies to every reaction; energy changes location but persists.",
-          "misconception": "law scope error"
         }
       ]
     },
@@ -289,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The missing energy was released to the surroundings as heat",
-          "correct": true,
-          "explanation": "Conservation requires the energy difference to appear somewhere, and it leaves as heat.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The products are always colder, so they store less",
-          "correct": false,
-          "explanation": "Temperature is a reading, not the energy ledger; the difference is the transferred heat.",
-          "misconception": "temperature equated to energy"
-        },
-        {
-          "key": "C",
           "text": "Some energy was destroyed while bonds rearranged",
           "correct": false,
           "explanation": "No energy disappears; it is transferred to the surroundings.",
           "misconception": "destruction claimed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The products gained energy from the surroundings",
           "correct": false,
           "explanation": "Gaining energy would make the products richer in energy, the opposite of the observation.",
           "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "The missing energy was released to the surroundings as heat",
+          "correct": true,
+          "explanation": "Conservation requires the energy difference to appear somewhere, and it leaves as heat.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The products are always colder, so they store less",
+          "correct": false,
+          "explanation": "Temperature is a reading, not the energy ledger; the difference is the transferred heat.",
+          "misconception": "temperature equated to energy"
         }
       ]
     },
@@ -325,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Combustion gives energy out; displacement may give energy out or take it in",
-          "correct": true,
-          "explanation": "Combustion always releases heat, while displacement appears in both directions in the list of heat changes.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Combustion takes energy in; neutralisation gives it out",
           "correct": false,
           "explanation": "Combustion always gives energy out; only the second half of the pairing is right.",
           "misconception": "combustion inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Neutralisation takes energy in; combustion takes it in",
           "correct": false,
           "explanation": "Both named types give energy out.",
           "misconception": "both inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Displacement always takes energy in; combustion gives it out",
           "correct": false,
           "explanation": "Displacement can run either way, so the word always makes the claim wrong.",
           "misconception": "displacement fixed"
+        },
+        {
+          "key": "D",
+          "text": "Combustion gives energy out; displacement may give energy out or take it in",
+          "correct": true,
+          "explanation": "Combustion always releases heat, while displacement appears in both directions in the list of heat changes.",
+          "misconception": null
         }
       ]
     },
@@ -397,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Only in the products, which stay hot forever",
+          "correct": false,
+          "explanation": "The products share their energy with the surroundings as the mixture cools.",
+          "misconception": "products hoard heat"
+        },
+        {
+          "key": "B",
           "text": "In the surroundings, including the thermometer and the air around the cup",
           "correct": true,
           "explanation": "The heat spreads to everything touching the mixture, which is what the thermometer detects.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Nowhere, because the reaction consumed it",
           "correct": false,
           "explanation": "Energy is conserved; the warming shows it moved to the surroundings.",
           "misconception": "consumption claimed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "In the reactants, which store extra energy afterwards",
           "correct": false,
           "explanation": "The reactants are spent; the products hold less energy than they did.",
           "misconception": "reactants enriched"
-        },
-        {
-          "key": "D",
-          "text": "Only in the products, which stay hot forever",
-          "correct": false,
-          "explanation": "The products share their energy with the surroundings as the mixture cools.",
-          "misconception": "products hoard heat"
         }
       ]
     },
@@ -434,7 +436,8 @@
       "modelAnswer": "The law of conservation of energy says energy cannot be created or destroyed, only transferred.",
       "keywords": [
         "conservation",
-        "transferred"
+        "transferred",
+        "destroyed"
       ],
       "options": []
     },
@@ -447,7 +450,8 @@
       "modelAnswer": "Neutralisation and combustion are exothermic examples that always give energy out.",
       "keywords": [
         "neutralisation",
-        "combustion"
+        "combustion",
+        "exothermic"
       ],
       "options": []
     },

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_fQSYvKRMDBj3s2Bx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f31a95345b9168db659e61270427f3bf10a26a43466c66d57e6b0a6784cd9d69",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "f4eaf5f9f1b37718ec86d19cdcb8a4d064e6a44da2414e856846338d75a2dd1a",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_fQSYvKRMDBj3s2Bx",
@@ -15,12 +15,8 @@
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-7-acids-bases-and-salt-preparations/2-7-8-practical-prepare-copperiisulfate",
     "specAnchors": [
       {
-        "code": "4CH1-2.39",
-        "text": "describe an experiment to prepare a pure,dry sample of a soluble salt,starting from an insoluble reactant"
-      },
-      {
         "code": "4CH1-2.42",
-        "text": "practical:prepare a sample of pure,dry hydrated copper(II)sulfate crystals starting from copper(II)oxide"
+        "text": "practical: prepare a sample of pure, dry hydrated copper(II) sulfate crystals starting from copper(II) oxide"
       }
     ],
     "primer": {
@@ -36,7 +32,6 @@
           "Method"
         ],
         "specRefs": [
-          "4CH1-2.39",
           "4CH1-2.42"
         ],
         "opening": "This practical makes a familiar blue salt from two simple starting materials: an acid and an insoluble black base. The first stage covers the reaction itself, from warming the acid to adding copper(II) oxide until it is in excess. Filtering then removes the leftover solid, leaving a clean blue solution behind.",
@@ -79,23 +74,25 @@
           "rn_fQSYvKRMDBj3s2Bx::L1::Q7",
           "rn_fQSYvKRMDBj3s2Bx::L1::Q8",
           "rn_fQSYvKRMDBj3s2Bx::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
         "id": "rn_fQSYvKRMDBj3s2Bx::L2",
         "title": "Results",
         "sourceHeadings": [
-          "Method",
           "Results"
         ],
         "specRefs": [
           "4CH1-2.42"
         ],
-        "opening": "The second stage turns the blue solution into the crystals the exam asks for. Evaporation concentrates the solution until it is saturated, a cold glass rod confirms the point is reached, and crystallisation is then left to happen on its own. The final crystals should be bright blue and regularly shaped.",
+        "opening": "The second stage turns the blue solution into the crystals the exam asks for. Evaporation concentrates the solution until it is saturated, a cold glass rod confirms the point is reached, and crystallisation is then left to happen on its own. The finished crystals ought to come out bright blue and well shaped.",
         "keyPoints": [
           "The solution is heated gently to evaporate water and make it saturated.",
-          "Dipping a cold glass rod into the solution checks saturation, as crystals form on the end.",
-          "The filtrate is left in a warm place to dry and crystallise.",
+          "A cold glass rod dipped into the solution tests saturation: crystals forming on its end is the sign.",
+          "The filtrate is set aside somewhere warm to dry out and crystallise.",
           "Excess solution is decanted away, and the crystals are allowed to dry.",
           "Good crystals of hydrated copper(II) sulfate are bright blue and regularly shaped."
         ],
@@ -131,7 +128,8 @@
           "rn_fQSYvKRMDBj3s2Bx::L2::Q7",
           "rn_fQSYvKRMDBj3s2Bx::L2::Q8",
           "rn_fQSYvKRMDBj3s2Bx::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -160,21 +158,6 @@
           "term": "filtration",
           "definition": "Separating an insoluble solid from a liquid by filter paper; the liquid passing through is the filtrate.",
           "firstLesson": 1
-        },
-        {
-          "term": "saturated",
-          "definition": "Holding as much dissolved salt as possible at that temperature, so crystals can form.",
-          "firstLesson": 2
-        },
-        {
-          "term": "evaporation",
-          "definition": "The change of a liquid into a gas at the surface; here it concentrates the salt solution.",
-          "firstLesson": 2
-        },
-        {
-          "term": "crystallisation",
-          "definition": "The formation of solid crystals from a saturated solution as it cools or dries.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -193,10 +176,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9383614f587d-preparing-soluble-salts-1.png",
         "alt": "IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Preparation of a soluble salt from an insoluble base and acid",
-        "caption": "The preparation of copper(II) sulfate by the insoluble base method",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Practical: Prepare Copper(II) Sulfate",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The preparation of copper(II) sulfate by the insoluble base method"
       }
     ]
   }

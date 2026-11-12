@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_6c2G8nJpFSnQnbcP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "dfd13367c3b31697346fe787dc6c11298135afe15bf2941a931a78352110ca6d",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "a0b24062d23c646635e2bd7ce700f82c8d155c5653cbeaafb5402a5a3ba84fd4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_6c2G8nJpFSnQnbcP",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "C2H8",
+          "correct": false,
+          "explanation": "The carbon count must match n, which is three here.",
+          "misconception": "subscript misplaced"
+        },
+        {
+          "key": "B",
           "text": "C3H8",
           "correct": true,
           "explanation": "Substituting gives H = 2(3) + 2 = 8, so propane is C3H8.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "C3H6",
           "correct": false,
           "explanation": "That is CnH2n, the alkene recipe, not the alkane one.",
           "misconception": "alkene formula used"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "C3H10",
           "correct": false,
           "explanation": "Two extra hydrogens break both the formula and the bonding rules.",
           "misconception": "arithmetic slipped"
-        },
-        {
-          "key": "D",
-          "text": "C2H8",
-          "correct": false,
-          "explanation": "The carbon count must match n, which is three here.",
-          "misconception": "subscript misplaced"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because they contain only hydrogen and carbon atoms",
-          "correct": true,
-          "explanation": "The CnH2n+2 recipe uses exactly those two elements and no others.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because they were first found in living things",
-          "correct": false,
-          "explanation": "Origin plays no part in the hydrocarbon definition.",
-          "misconception": "history misused"
-        },
-        {
-          "key": "C",
           "text": "Because they always contain a C=C bond",
           "correct": false,
           "explanation": "A C=C bond would make them alkenes and unsaturated.",
           "misconception": "family confused"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because they burn to give carbon dioxide",
           "correct": false,
           "explanation": "Burning behaviour is a consequence, not the classification test.",
           "misconception": "test misapplied"
+        },
+        {
+          "key": "C",
+          "text": "Because they contain only hydrogen and carbon atoms",
+          "correct": true,
+          "explanation": "The CnH2n+2 recipe uses exactly those two elements and no others.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because they were first found in living things",
+          "correct": false,
+          "explanation": "Origin plays no part in the hydrocarbon definition.",
+          "misconception": "history misused"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Combustion, cracking, and reaction with halogens in light",
-          "correct": true,
-          "explanation": "The note lists exactly these three as the chemistry of this generally unreactive family.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "They react readily with most reagents at room temperature",
           "correct": false,
           "explanation": "Alkanes are described as generally unreactive; their chemistry is a short list.",
           "misconception": "reactivity inflated"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "None at all, because they are fully saturated",
           "correct": false,
           "explanation": "Saturation limits but does not abolish reactivity.",
           "misconception": "inertness absolute"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Only addition reactions across their double bonds",
           "correct": false,
           "explanation": "Alkanes have no double bonds to add across; that is alkene chemistry.",
           "misconception": "family crossed"
+        },
+        {
+          "key": "D",
+          "text": "Combustion, cracking, and reaction with halogens in light",
+          "correct": true,
+          "explanation": "The note lists exactly these three as the chemistry of this generally unreactive family.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "The alkanes follow CnH2n+2, where n is any whole number.",
       "keywords": [
-        "cnh2n"
+        "cnh2n",
+        "alkanes",
+        "general"
       ],
       "options": []
     },
@@ -211,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "Only single bonds join the carbon atoms in an alkane, which is what makes the family saturated.",
       "keywords": [
-        "single"
+        "single",
+        "throughout",
+        "saturated"
       ],
       "options": []
     },
@@ -224,7 +228,8 @@
       "modelAnswer": "Addition needs a C=C double bond that can open, and an alkane's carbons are joined by single bonds only, so there is no double bond for atoms to add across.",
       "keywords": [
         "double",
-        "bonds"
+        "bonds",
+        "addition"
       ],
       "options": []
     },
@@ -236,7 +241,9 @@
       "kind": "application",
       "modelAnswer": "Substituting n = 12 into CnH2n+2 gives C12H26.",
       "keywords": [
-        "c12h26"
+        "c12h26",
+        "substituting",
+        "molecular"
       ],
       "options": []
     },
@@ -248,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "C5H8",
+          "correct": false,
+          "explanation": "That formula fits no unbranched alkane or alkene of five carbons.",
+          "misconception": "formula invented"
+        },
+        {
+          "key": "B",
           "text": "C5H12",
           "correct": true,
           "explanation": "With n = 5 the alkane recipe gives H = 2(5) + 2 = 12.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "C5H10",
           "correct": false,
           "explanation": "That is the alkene count for five carbons; the alkane needs two more hydrogens.",
           "misconception": "alkene formula used"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "C4H10",
           "correct": false,
           "explanation": "Four carbons is butane, one rung below pentane.",
           "misconception": "rung miscounted"
-        },
-        {
-          "key": "D",
-          "text": "C5H8",
-          "correct": false,
-          "explanation": "That formula fits no unbranched alkane or alkene of five carbons.",
-          "misconception": "formula invented"
         }
       ]
     },
@@ -284,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "6",
-          "correct": true,
-          "explanation": "Ethane is C2H6: two carbons joined to each other, each carrying three hydrogens.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "4",
-          "correct": false,
-          "explanation": "Four hydrogens would leave two carbon bonds unfilled.",
-          "misconception": "bonds unfilled"
-        },
-        {
-          "key": "C",
           "text": "8",
           "correct": false,
           "explanation": "Eight hydrogens is propane count territory, not ethane.",
           "misconception": "rung miscounted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "2",
           "correct": false,
           "explanation": "Two hydrogens would suit no saturated two-carbon skeleton.",
           "misconception": "formula misread"
+        },
+        {
+          "key": "C",
+          "text": "6",
+          "correct": true,
+          "explanation": "Ethane is C2H6: two carbons joined to each other, each carrying three hydrogens.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "4",
+          "correct": false,
+          "explanation": "Four hydrogens would leave two carbon bonds unfilled.",
+          "misconception": "bonds unfilled"
         }
       ]
     },
@@ -320,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Butane",
-          "correct": true,
-          "explanation": "The stems run meth, eth, prop, but, pent; so butane follows propane.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Pentane",
           "correct": false,
           "explanation": "Pentane comes after butane, two rungs above propane.",
           "misconception": "rung skipped"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Ethane",
           "correct": false,
           "explanation": "Ethane is below propane in the series.",
           "misconception": "direction inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Propene",
           "correct": false,
           "explanation": "That is the three-carbon alkene, a different family.",
           "misconception": "family crossed"
+        },
+        {
+          "key": "D",
+          "text": "Butane",
+          "correct": true,
+          "explanation": "The stems run meth, eth, prop, but, pent; so butane follows propane.",
+          "misconception": null
         }
       ]
     },
@@ -392,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The simplest ratio of atoms",
+          "correct": false,
+          "explanation": "Ratios are the empirical formula job; displayed means every bond drawn.",
+          "misconception": "representation swapped"
+        },
+        {
+          "key": "B",
           "text": "Every individual bond between the atoms",
           "correct": true,
           "explanation": "C4H10 counts atoms; the displayed formula draws all thirteen bonds in place.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The boiling point of the compound",
           "correct": false,
           "explanation": "Physical data belongs to tables, not drawings.",
           "misconception": "data in drawing"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The colour of the liquid",
           "correct": false,
           "explanation": "Colour is irrelevant to a structural drawing.",
           "misconception": "property imported"
-        },
-        {
-          "key": "D",
-          "text": "The simplest ratio of atoms",
-          "correct": false,
-          "explanation": "Ratios are the empirical formula job; displayed means every bond drawn.",
-          "misconception": "representation swapped"
         }
       ]
     },
@@ -429,7 +436,8 @@
       "modelAnswer": "The three-carbon alkane is propane, C3H8.",
       "keywords": [
         "propane",
-        "c3h8"
+        "c3h8",
+        "molecules"
       ],
       "options": []
     },
@@ -441,7 +449,9 @@
       "kind": "recall",
       "modelAnswer": "Every carbon is drawn with four single bonds in a displayed formula.",
       "keywords": [
-        "four"
+        "four",
+        "displayed",
+        "surround"
       ],
       "options": []
     },
@@ -454,7 +464,8 @@
       "modelAnswer": "The carbon chain grows one atom at a time: each member extends the chain by a further carbon, adding a CH2 step from methane through to pentane.",
       "keywords": [
         "carbon",
-        "chain"
+        "chain",
+        "extends"
       ],
       "options": []
     },
@@ -467,7 +478,8 @@
       "modelAnswer": "A C=C double bond is the functional group of the alkenes, so drawn that way the picture reads as ethene rather than ethane.",
       "keywords": [
         "alkenes",
-        "ethene"
+        "ethene",
+        "hydrocarbon"
       ],
       "options": []
     }

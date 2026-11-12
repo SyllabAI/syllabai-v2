@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_KTZjJ7sPdDt4tkTH",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "23433b4593fadf71c7c1238e0ae3d2674a1b5c19441648eaca4fee8bb6dfea7f",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "94e6660ad81bdac5cb46a64c42bf1efae142af9a4616e4eeab9f8dada8121b59",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_KTZjJ7sPdDt4tkTH",
@@ -39,10 +39,10 @@
         ],
         "opening": "Every bond is a spring with a price tag: pulling it apart costs energy, snapping it shut pays energy back. This lesson fixes which half of the reaction spends and which one earns.",
         "keyPoints": [
-          "Bond-breaking is an endothermic process because energy must be taken in to break bonds.",
-          "Bond-making is an exothermic process because energy is released when new bonds are formed.",
+          "Bond-breaking is an endothermic process because energy has to be taken in to break bonds.",
+          "Bond-making is an exothermic process because energy is given out as new bonds are formed.",
           "Whether a reaction is exothermic or endothermic overall depends on the balance between breaking and making.",
-          "Each chemical bond has a specific bond energy for breaking it or forming it.",
+          "Every chemical bond carries its own specific bond energy, for breaking it or forming it.",
           "Bond energies are usually quoted in kilojoules per mole of bonds."
         ],
         "depthLayers": {
@@ -77,7 +77,8 @@
           "rn_KTZjJ7sPdDt4tkTH::L1::Q7",
           "rn_KTZjJ7sPdDt4tkTH::L1::Q8",
           "rn_KTZjJ7sPdDt4tkTH::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_KTZjJ7sPdDt4tkTH::L2",
@@ -93,7 +94,7 @@
         "keyPoints": [
           "In an exothermic reaction the energy released making bonds is greater than the energy taken in breaking them.",
           "Exothermic reactions have a negative enthalpy change because the reactants hold more energy than the products.",
-          "In an endothermic reaction the energy needed to break bonds exceeds the energy released forming them.",
+          "In an endothermic reaction the energy required to break bonds exceeds the energy released forming them.",
           "Endothermic reactions have a positive enthalpy change because the products hold more energy than the reactants.",
           "The overall enthalpy change equals the energy in minus the energy out."
         ],
@@ -184,7 +185,8 @@
           "rn_KTZjJ7sPdDt4tkTH::L3::Q7",
           "rn_KTZjJ7sPdDt4tkTH::L3::Q8",
           "rn_KTZjJ7sPdDt4tkTH::L3::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -232,21 +234,21 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6bc418862a43-bond-making-exothermic-reaction.png",
         "alt": "Bond making exothermic reaction",
         "sourceHeading": "Exothermic reactions",
-        "caption": "Making new bonds gives off heat from the reaction to the surroundings",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Making new bonds gives off heat from the reaction to the surroundings"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d10962535d6f-bond-breaking-endothermic-reaction.png",
         "alt": "Bond breaking endothermic reaction",
         "sourceHeading": "Endothermic reactions",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

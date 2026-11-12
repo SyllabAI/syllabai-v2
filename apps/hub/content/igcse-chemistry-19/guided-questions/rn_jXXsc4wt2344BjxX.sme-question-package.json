@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_jXXsc4wt2344BjxX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "50a1e31e02732ac86e530d9e7fb9804789fccfdfc2ee9ebb0e45348d74cb3575",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "994ae885e6b3ce22362884d620c1b39345e263c2301d0948b1b880a0f236bad4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_jXXsc4wt2344BjxX",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Reactivity peaks in the middle of the group at bromine",
+          "correct": false,
+          "explanation": "There is no peak; the trend runs steadily from the highly reactive top of the group to the sluggish bottom.",
+          "misconception": "non-monotonic trend invented"
+        },
+        {
+          "key": "B",
           "text": "Reactivity decreases as you go down the group",
           "correct": true,
           "explanation": "Fluorine is the fiercest halogen and iodine the mildest of the three tested, so reactivity falls with depth.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Reactivity increases as you go down the group",
           "correct": false,
           "explanation": "That is the Group 1 trend; Group 7 runs the opposite way because it gains electrons instead of losing them.",
           "misconception": "Group 1 trend copied onto Group 7"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "All halogens react with equal vigour",
           "correct": false,
           "explanation": "Their displacement chemistry and hydrogen reactions clearly differ in vigour down the group.",
           "misconception": "uniform reactivity assumed"
-        },
-        {
-          "key": "D",
-          "text": "Reactivity peaks in the middle of the group at bromine",
-          "correct": false,
-          "explanation": "There is no peak; the trend runs steadily from the highly reactive top of the group to the sluggish bottom.",
-          "misconception": "non-monotonic trend invented"
         }
       ]
     },
@@ -91,67 +91,67 @@
       "options": [
         {
           "key": "A",
-          "text": "Its outermost shell is the closest to the positive nucleus, so it attracts the gained electron most strongly",
-          "correct": true,
-          "explanation": "With the fewest shells, fluorine's incoming electron feels the strongest pull, which makes its electron gain the easiest and fastest.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It has the most electron shells, so it has the most room for electrons",
-          "correct": false,
-          "explanation": "Fluorine has the fewest shells; the strong pull comes from the short distance, not from extra room.",
-          "misconception": "shell count misassigned"
-        },
-        {
-          "key": "C",
           "text": "It is the lightest halogen, so it moves fastest",
           "correct": false,
           "explanation": "Mass and speed are not the drivers; reactivity tracks the strength of attraction for the gained electron.",
           "misconception": "mass-speed reasoning about reactivity"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It is the most abundant halogen in the laboratory",
           "correct": false,
           "explanation": "Availability has nothing to do with the position of fluorine at the top of the reactivity trend.",
           "misconception": "availability confused with reactivity"
+        },
+        {
+          "key": "C",
+          "text": "Its outer shell sits nearest the positive nucleus, so the gained electron is attracted most strongly",
+          "correct": true,
+          "explanation": "With the fewest shells, fluorine's incoming electron feels the strongest pull, which makes its electron gain the easiest and fastest.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It has the most electron shells, so it has the most room for electrons",
+          "correct": false,
+          "explanation": "Fluorine has the fewest shells; the strong pull comes from the short distance, not from extra room.",
+          "misconception": "shell count misassigned"
         }
       ]
     },
     {
       "id": "rn_jXXsc4wt2344BjxX::L1::Q4",
       "moduleId": "rn_jXXsc4wt2344BjxX::L1",
-      "stem": "How does the force of attraction between the nucleus and the outermost shell change down Group 7?",
+      "stem": "How does the pull between the nucleus and the outermost shell change down Group 7?",
       "misconceptionClass": "attraction trend error",
       "options": [
         {
           "key": "A",
-          "text": "It decreases, because the outermost shell sits further from the nucleus",
-          "correct": true,
-          "explanation": "Each extra shell adds distance, and electrostatic attraction weakens with distance, so the outer electrons feel less pull.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It increases, because the nucleus holds more protons",
           "correct": false,
           "explanation": "Although the proton count rises, the added shells increase the distance further, and distance wins the comparison.",
           "misconception": "proton count overweighted against distance"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It stays the same across the group",
           "correct": false,
           "explanation": "A constant attraction would give constant electron-gain ease, contradicting the clear reactivity trend.",
           "misconception": "flat trend assumed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It disappears entirely for the largest halogens",
           "correct": false,
           "explanation": "Attraction weakens but never vanishes; even iodine still draws in an electron, just less keenly.",
           "misconception": "trend exaggerated to zero"
+        },
+        {
+          "key": "D",
+          "text": "It decreases, because the outermost shell sits further from the nucleus",
+          "correct": true,
+          "explanation": "Each extra shell adds distance, and electrostatic attraction weakens with distance, so the outer electrons feel less pull.",
+          "misconception": null
         }
       ]
     },
@@ -200,13 +200,10 @@
       "modelAnswer": "A halogen atom gains one electron during reactions to form a -1 ion called a halide ion.",
       "keywords": [
         "halide",
-        "halides",
         "-1",
-        "minus",
         "one",
         "1",
         "electron",
-        "electrons",
         "gain",
         "gains",
         "ion"
@@ -243,7 +240,6 @@
         "further",
         "distance",
         "nucleus",
-        "weaker",
         "weakens",
         "weak",
         "attraction",
@@ -267,7 +263,6 @@
         "readily",
         "reactivity",
         "decreases",
-        "falls",
         "one",
         "1",
         "electron",
@@ -286,110 +281,110 @@
       "options": [
         {
           "key": "A",
+          "text": "It varies from seven down to one through the group",
+          "correct": false,
+          "explanation": "The outer count is fixed at seven for the whole group; what varies is the number of inner shells.",
+          "misconception": "outer count thought to drift down the group"
+        },
+        {
+          "key": "B",
           "text": "Seven",
           "correct": true,
           "explanation": "Seven outer electrons leave each halogen exactly one short of a noble gas arrangement, which drives the electron gain.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One",
           "correct": false,
           "explanation": "One outer electron belongs to Group 1; the halogens carry seven and gain one more.",
           "misconception": "group column misread"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Eight",
           "correct": false,
           "explanation": "Eight outer electrons is the complete noble gas set; halogens reach it only after gaining one electron.",
           "misconception": "completed shell credited before the gain"
-        },
-        {
-          "key": "D",
-          "text": "It varies from seven down to one through the group",
-          "correct": false,
-          "explanation": "The outer count is fixed at seven for the whole group; what varies is the number of inner shells.",
-          "misconception": "outer count thought to drift down the group"
         }
       ]
     },
     {
       "id": "rn_jXXsc4wt2344BjxX::L2::Q2",
       "moduleId": "rn_jXXsc4wt2344BjxX::L2",
-      "stem": "What changes in the atom as you move from chlorine to bromine to iodine?",
+      "stem": "What changes in the atom on descending the group from chlorine to bromine to iodine?",
       "misconceptionClass": "shell addition recall",
       "options": [
         {
           "key": "A",
-          "text": "One more filled inner shell at each step, so the outer shell lies further out",
-          "correct": true,
-          "explanation": "Each element down the group occupies the next period, adding a complete shell and enlarging the atom.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The outer shell count falls from seven towards five",
-          "correct": false,
-          "explanation": "The outer count stays at seven; only the total number of shells grows.",
-          "misconception": "outer electrons confused with shells"
-        },
-        {
-          "key": "C",
           "text": "The nucleus shrinks, pulling everything closer",
           "correct": false,
           "explanation": "Nuclei grow with proton count down the group; it is the shell distance that increases.",
           "misconception": "nuclear size trend inverted"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Nothing changes, so all three behave identically",
           "correct": false,
           "explanation": "Reactions are similar in type but differ in vigour, precisely because of the added shells.",
           "misconception": "similarity of pattern read as identity"
+        },
+        {
+          "key": "C",
+          "text": "One more filled inner shell at each step, so the outer shell lies further out",
+          "correct": true,
+          "explanation": "Each element down the group occupies the next period, adding a complete shell and enlarging the atom.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The outer shell count falls from seven towards five",
+          "correct": false,
+          "explanation": "The outer count stays at seven; only the total number of shells grows.",
+          "misconception": "outer electrons confused with shells"
         }
       ]
     },
     {
       "id": "rn_jXXsc4wt2344BjxX::L2::Q3",
       "moduleId": "rn_jXXsc4wt2344BjxX::L2",
-      "stem": "Why does the increased distance from the outer shell to the nucleus make halogens less reactive down the group?",
+      "stem": "Why does the widening gap from the outer shell to the nucleus make halogens less reactive down the group?",
       "misconceptionClass": "mechanism reasoning",
       "options": [
         {
           "key": "A",
-          "text": "The pull on the electron to be gained is weaker, so gaining it is harder",
-          "correct": true,
-          "explanation": "Reactivity for a halogen means attracting one electron; weaker pull at distance means slower, less vigorous reactions.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The atoms become too heavy to move towards the metal",
           "correct": false,
           "explanation": "Movement of whole atoms is irrelevant; the trend lives in the attraction for a single electron.",
           "misconception": "atom motion mistaken for reactivity"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The outer shells of different atoms can no longer touch",
           "correct": false,
           "explanation": "Contact between reactants is not the limiting factor; the strength of the electron gain is.",
           "misconception": "contact-based reasoning invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Larger atoms can hold more than one extra electron",
           "correct": false,
           "explanation": "Halogens gain exactly one electron to fill the shell; capacity does not change the trend.",
           "misconception": "multi-electron gain invented"
+        },
+        {
+          "key": "D",
+          "text": "The pull on the electron to be gained is weaker, so gaining it is harder",
+          "correct": true,
+          "explanation": "Reactivity for a halogen means attracting one electron; weaker pull at distance means slower, less vigorous reactions.",
+          "misconception": null
         }
       ]
     },
     {
       "id": "rn_jXXsc4wt2344BjxX::L2::Q4",
       "moduleId": "rn_jXXsc4wt2344BjxX::L2",
-      "stem": "Which comparison between fluorine and iodine is correct?",
+      "stem": "Which comparison between fluorine and iodine correctly describes gaining the extra electron?",
       "misconceptionClass": "pairwise comparison",
       "options": [
         {
@@ -430,31 +425,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Larger atoms, more shells, easier electron loss",
+          "correct": false,
+          "explanation": "Halogens gain electrons; describing loss describes Group 1 and inverts the explanation.",
+          "misconception": "gain and loss swapped in the chain"
+        },
+        {
+          "key": "B",
           "text": "More shells down the group, greater distance, weaker attraction for the gained electron, lower reactivity",
           "correct": true,
           "explanation": "This chain runs from configuration to reactivity in the direction the trend actually flows, which earns the full explanation mark.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "More protons, stronger attraction, higher reactivity down the group",
           "correct": false,
           "explanation": "That chain predicts the Group 1 direction; for Group 7 the distance effect dominates and reactivity falls.",
           "misconception": "chain runs against the evidence"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Heavier molecules, more collisions, faster reactions",
           "correct": false,
           "explanation": "Collision counting does not describe a single atom's electron gain, which is what the trend measures.",
           "misconception": "collision theory misapplied"
-        },
-        {
-          "key": "D",
-          "text": "Larger atoms, more shells, easier electron loss",
-          "correct": false,
-          "explanation": "Halogens gain electrons; describing loss describes Group 1 and inverts the explanation.",
-          "misconception": "gain and loss swapped in the chain"
         }
       ]
     },
@@ -490,9 +485,7 @@
         "adds",
         "one",
         "rises",
-        "rise",
-        "increase",
-        "increases"
+        "rise"
       ],
       "options": []
     },
@@ -508,7 +501,6 @@
         "distance",
         "nucleus",
         "weaker",
-        "weakens",
         "weak",
         "attraction",
         "incoming",
@@ -530,10 +522,8 @@
         "chlorine",
         "closer",
         "close",
-        "stronger",
         "attraction",
         "easier",
-        "easily",
         "more",
         "reactive",
         "bromine"

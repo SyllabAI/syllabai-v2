@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_5g8Dd6y89tkCVJsN",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1ea4ca3ea4c1a8e8be424f81517a0b3314efa042c32d2bca21ff25f4fef43348",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "263bd98ef77fa6d6372cc253d56d694ad348389895dc351cdc6c358dd0b764c7",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_5g8Dd6y89tkCVJsN",
@@ -127,7 +127,8 @@
           "rn_5g8Dd6y89tkCVJsN::L2::Q7",
           "rn_5g8Dd6y89tkCVJsN::L2::Q8",
           "rn_5g8Dd6y89tkCVJsN::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -153,23 +154,8 @@
           "firstLesson": 1
         },
         {
-          "term": "saturated solution",
-          "definition": "A solution holding as much dissolved salt as it can at that temperature.",
-          "firstLesson": 2
-        },
-        {
           "term": "water of crystallisation",
           "definition": "Water molecules built into a salt's crystal structure, written after a dot in its formula.",
-          "firstLesson": 2
-        },
-        {
-          "term": "evaporation",
-          "definition": "The change from liquid to vapour that concentrates a solution as it is heated.",
-          "firstLesson": 2
-        },
-        {
-          "term": "crystallisation",
-          "definition": "The formation of ordered solid crystals as a concentrated solution loses water.",
           "firstLesson": 2
         }
       ],
@@ -189,11 +175,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/16691ff6344b-40620-50944-using-titration-to-prepare-a-salt.png",
         "alt": "Using-titration-to-prepare-a-salt1, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Preparation of a soluble salt using a titration",
-        "caption": "Diagram showing the apparatus needed to prepare a salt by titration",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the apparatus needed to prepare a salt by titration"
       }
     ]
   }

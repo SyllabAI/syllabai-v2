@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_3YZNCXSQQqXTT6HR",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "109bc14541342c0818fb153baf6447a0ddd4c4a329c75a0cc057a9bf0ab8928a",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "a5fda53113151eec0811497b045f3a5cb90e28e6ea45c639f4322c6cf5b44aa0",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_3YZNCXSQQqXTT6HR",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Electrolysis",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-9-electrolysis/1-9-2-electrolysis-experiments",
     "specAnchors": [
-      {
-        "code": "4CH1-1.56C",
-        "text": "understand why ionic compounds conduct electricity only when molten or in aqueous solution"
-      },
       {
         "code": "4CH1-1.58C",
         "text": "describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead(II) bromide) and aqueous solutions (including sodium chloride, dilute sulfuric acid and copper(II) sulfate) and to predict the products"
@@ -35,7 +31,6 @@
           "Electrolysis of molten compounds"
         ],
         "specRefs": [
-          "4CH1-1.56C",
           "4CH1-1.58C"
         ],
         "opening": "A binary ionic compound contains just two elements joined by ionic bonding, lead(II) bromide being the classic example. Heated past its melting point it becomes molten, its ions can move freely, and it conducts, which allows electrolysis to split it into its two elements. The positive ion always travels to the cathode and the negative ion to the anode, so the cathode product is the metal and the anode product the non-metal.",
@@ -78,6 +73,9 @@
           "rn_3YZNCXSQQqXTT6HR::L1::Q7",
           "rn_3YZNCXSQQqXTT6HR::L1::Q8",
           "rn_3YZNCXSQQqXTT6HR::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -106,7 +104,7 @@
           "medium": {
             "restatement": "The aqueous electrolyte is a mixture of compound ions and the ions from water's own split into H+ and OH-. Discharge follows relative reactivity: halide ions outrank hydroxide at the anode, producing the halogen, while at the cathode the less reactive candidate is discharged, so hydrogen emerges unless a metal less reactive than hydrogen is present.",
             "analogy": "Picture a dispatch office sending the least stubborn claimant first: reactivity is stubbornness, and the particle that gives up most easily is the one released at the electrode.",
-            "examPointer": "Practise the three named solutions to the point of instant recall: sodium chloride, dilute sulfuric acid and copper(II) sulfate, each with its own cathode and anode products."
+            "examPointer": "Practise the three named solutions to the point of instant recall — dilute sulfuric acid, sodium chloride and copper(II) sulfate — each with its own cathode and anode products."
           }
         },
         "gatePolicy": {
@@ -179,20 +177,22 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d3396430f518-electrolysis-of-lead-bromide.png",
         "alt": "Electrolysis of Lead Bromide, IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Diagram showing the electrolysis of lead(II) bromide",
-        "caption": "Lead ions are attracted to the cathode, and bromide ions to the anode",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Electrolysis of molten compounds",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Lead ions are attracted to the cathode, and bromide ions to the anode"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/db9d8c8e7e72-60569-basics-of-electrolysis.png",
         "alt": "The basic set-up of an electrolytic cell",
-        "sourceHeading": "The electrolysis of aqueous solutions",
-        "binding": "unresolved",
+        "sourceHeading": "Electrolysis of aqueous solutions",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

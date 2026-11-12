@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_pBp5Z5C2RHTKk7Wn",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1fa442c635c8c8b4a14a32fc4e97dac999ae2c45a9516cd8316d503a58bb4d02",
-    "pinnedRef": "a8889009338bc5ce09edfed1d610d8cc9c9457b4"
+    "sourceLayerSha256": "ec3a41d2af9cecdf59935b78d9caf0f6b5d3ab555695880b2b66b0ccf476213f",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_pBp5Z5C2RHTKk7Wn",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Acids, Bases & Salt Preparations",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-7-acids-bases-and-salt-preparations/2-7-9-practical-prepare-leadiisulfate",
     "specAnchors": [
-      {
-        "code": "4CH1-2.41C",
-        "text": "describe an experiment to prepare a pure, dry sample of an insoluble salt, starting from two soluble reactants"
-      },
       {
         "code": "4CH1-2.43C",
         "text": "practical: prepare a sample of pure, dry lead(II) sulfate"
@@ -35,7 +31,6 @@
           "Aim"
         ],
         "specRefs": [
-          "4CH1-2.41C",
           "4CH1-2.43C"
         ],
         "opening": "This practical prepares a dry sample of lead(II) sulfate, an insoluble salt, from two solutions that are both soluble. Lead(II) nitrate provides the lead ions and potassium sulfate provides the sulfate ions, and when the two solutions meet, white lead(II) sulfate falls out of the mixture while potassium nitrate stays behind in the liquid.",
@@ -78,6 +73,12 @@
           "rn_pBp5Z5C2RHTKk7Wn::L1::Q7",
           "rn_pBp5Z5C2RHTKk7Wn::L1::Q8",
           "rn_pBp5Z5C2RHTKk7Wn::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04"
         ]
       },
       {
@@ -129,7 +130,8 @@
           "rn_pBp5Z5C2RHTKk7Wn::L2::Q7",
           "rn_pBp5Z5C2RHTKk7Wn::L2::Q8",
           "rn_pBp5Z5C2RHTKk7Wn::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -140,11 +142,6 @@
           "firstLesson": 1
         },
         {
-          "term": "spectator ions",
-          "definition": "Ions present in the mixture that take no part in forming the precipitate.",
-          "firstLesson": 1
-        },
-        {
           "term": "filtrate",
           "definition": "The liquid that passes through the filter paper, leaving the solid residue behind.",
           "firstLesson": 2
@@ -152,11 +149,6 @@
         {
           "term": "distilled water",
           "definition": "Purified water with no dissolved minerals, used to wash traces of other solutions off the solid.",
-          "firstLesson": 2
-        },
-        {
-          "term": "toxic",
-          "definition": "Poisonous to the body, the reason lead salts need careful handling.",
           "firstLesson": 2
         },
         {
@@ -185,34 +177,42 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/295f15261331-2-7-9-preparation-of-leadiisulfate-1.png",
         "alt": "Preparation of lead(II)sulfate 1, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Preparation of an insoluble salt via precipitation",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c42c7d706434-2-7-9-preparation-of-leadiisulfate-2.png",
         "alt": "Preparation of lead(II)sulfate 2, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Preparation of an insoluble salt via precipitation",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/14629074e53c-2-7-9-preparation-of-leadiisulfate-3.png",
         "alt": "Preparation of lead(II)sulfate 3, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Preparation of an insoluble salt via precipitation",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/0093b0722e85-2-7-9-preparation-of-leadiisulfate-4.png",
         "alt": "Preparation of lead(II)sulfate 4, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "Preparation of an insoluble salt via precipitation",
-        "caption": "The preparation of lead(II)sulfate by precipitation from two soluble salts",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Aim",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The preparation of lead(II)sulfate by precipitation from two soluble salts"
       }
     ]
   }

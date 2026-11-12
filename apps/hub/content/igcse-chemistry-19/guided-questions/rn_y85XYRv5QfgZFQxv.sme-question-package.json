@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_y85XYRv5QfgZFQxv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "fd355ff07c62531ab287f82bd9e4282a9916040cef4bafc38100bc483de2db9d",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "88a3c861d1e06405c3d46eb88fbb8ce388aca85cdaf75cea5965d9a4017e8a09",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_y85XYRv5QfgZFQxv",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The activation energy of the reverse reaction only",
+          "correct": false,
+          "explanation": "The forward barrier is the one drawn from the reactant level.",
+          "misconception": "direction misassigned"
+        },
+        {
+          "key": "B",
           "text": "The activation energy required to start the reaction",
           "correct": true,
           "explanation": "That initial climb is the minimum energy particles need to react.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The overall enthalpy change",
           "correct": false,
           "explanation": "The enthalpy change is reactants to products, not to the peak.",
           "misconception": "features swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The energy released by the products",
           "correct": false,
           "explanation": "Release happens on the way down, not on the initial climb.",
           "misconception": "direction confused"
-        },
-        {
-          "key": "D",
-          "text": "The activation energy of the reverse reaction only",
-          "correct": false,
-          "explanation": "The forward barrier is the one drawn from the reactant level.",
-          "misconception": "direction misassigned"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Downwards with a negative value",
-          "correct": true,
-          "explanation": "Products sit lower, so the overall arrow descends and ΔH is negative.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Upwards with a positive value",
-          "correct": false,
-          "explanation": "That is the endothermic profile.",
-          "misconception": "type swapped"
-        },
-        {
-          "key": "C",
           "text": "Downwards with a positive value",
           "correct": false,
           "explanation": "A downward arrow with a positive sign contradicts itself.",
           "misconception": "sign mismatched"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Upwards with a negative value",
           "correct": false,
           "explanation": "Neither half matches exothermic behaviour.",
           "misconception": "both wrong"
+        },
+        {
+          "key": "C",
+          "text": "Downwards with a negative value",
+          "correct": true,
+          "explanation": "Products sit lower, so the overall arrow descends and ΔH is negative.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Upwards with a positive value",
+          "correct": false,
+          "explanation": "That is the endothermic profile.",
+          "misconception": "type swapped"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "X needs more energy to get going, so more heat is needed to start it",
-          "correct": true,
-          "explanation": "A taller barrier means a harder start even when the overall change matches.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "X releases more energy overall",
           "correct": false,
           "explanation": "The overall change is stated to be the same.",
           "misconception": "conflation"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "X must be endothermic and the other exothermic",
           "correct": false,
           "explanation": "Equal enthalpy changes mean both point the same way.",
           "misconception": "type invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "X has no activation energy",
           "correct": false,
           "explanation": "Every reaction has some barrier; X's is simply taller.",
           "misconception": "absurd claim"
+        },
+        {
+          "key": "D",
+          "text": "X needs more energy to get going, so more heat is needed to start it",
+          "correct": true,
+          "explanation": "A taller barrier means a harder start even when the overall change matches.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "The height difference represents the overall enthalpy change of the reaction.",
       "keywords": [
         "enthalpy",
-        "overall"
+        "overall",
+        "difference"
       ],
       "options": []
     },
@@ -213,7 +214,8 @@
       "modelAnswer": "For an exothermic reaction the enthalpy value is negative and the arrow points downwards.",
       "keywords": [
         "negative",
-        "downwards"
+        "downwards",
+        "exothermic"
       ],
       "options": []
     },
@@ -253,67 +255,67 @@
       "options": [
         {
           "key": "A",
+          "text": "As a vertical line at the start",
+          "correct": false,
+          "explanation": "Catalysts change the pathway shape, not the axes.",
+          "misconception": "absurd shape"
+        },
+        {
+          "key": "B",
           "text": "As a second curve with a lower peak between the same reactant and product levels",
           "correct": true,
           "explanation": "The alternative pathway is drawn lower while the endpoints stay fixed.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "As a deeper valley below the reactant level",
           "correct": false,
           "explanation": "The route still climbs to a peak; it is just a smaller one.",
           "misconception": "shape misread"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "As a new product level lower than before",
           "correct": false,
           "explanation": "Product levels are unchanged by catalysis.",
           "misconception": "levels shifted"
-        },
-        {
-          "key": "D",
-          "text": "As a vertical line at the start",
-          "correct": false,
-          "explanation": "Catalysts change the pathway shape, not the axes.",
-          "misconception": "absurd shape"
         }
       ]
     },
     {
       "id": "rn_y85XYRv5QfgZFQxv::L2::Q2",
       "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
-      "stem": "Why does lowering the peak increase the rate?",
+      "stem": "Why does a lower peak increase the rate?",
       "misconceptionClass": "mechanism link",
       "options": [
         {
           "key": "A",
-          "text": "A greater proportion of molecules now have sufficient energy for an effective collision",
-          "correct": true,
-          "explanation": "The smaller hurdle converts average collisions into successful ones.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because the molecules themselves become more energetic",
-          "correct": false,
-          "explanation": "Molecule energies are unchanged; the requirement drops.",
-          "misconception": "energy myth"
-        },
-        {
-          "key": "C",
           "text": "Because the products are more stable",
           "correct": false,
           "explanation": "Product stability is identical with or without the catalyst.",
           "misconception": "stability myth"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the reactant level falls",
           "correct": false,
           "explanation": "The reactant level never moves.",
           "misconception": "level myth"
+        },
+        {
+          "key": "C",
+          "text": "A greater proportion of molecules now have sufficient energy for an effective collision",
+          "correct": true,
+          "explanation": "The smaller hurdle converts average collisions into successful ones.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because the molecules themselves become more energetic",
+          "correct": false,
+          "explanation": "Molecule energies are unchanged; the requirement drops.",
+          "misconception": "energy myth"
         }
       ]
     },
@@ -325,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It is unchanged, because the start and finish levels are the same",
-          "correct": true,
-          "explanation": "Catalysts alter the route, never the endpoints.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It becomes more negative",
           "correct": false,
           "explanation": "The drop between levels is fixed.",
           "misconception": "sign drift"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It becomes positive",
           "correct": false,
           "explanation": "The direction of the overall change is untouched.",
           "misconception": "sign flip"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It halves, because the barrier fell",
           "correct": false,
           "explanation": "Barrier and overall change are different quantities.",
           "misconception": "conflation"
+        },
+        {
+          "key": "D",
+          "text": "It is unchanged, because the start and finish levels are the same",
+          "correct": true,
+          "explanation": "Catalysts alter the route, never the endpoints.",
+          "misconception": null
         }
       ]
     },
@@ -397,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A value that changes with the colour of the mixture",
+          "correct": false,
+          "explanation": "Colour has no bearing on the barrier.",
+          "misconception": "absurd link"
+        },
+        {
+          "key": "B",
           "text": "A fixed value for that reaction, unchanged by how fast the reaction is run",
           "correct": true,
           "explanation": "The barrier is a property of the reaction and its pathway.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A value that grows as the reaction proceeds",
           "correct": false,
           "explanation": "The barrier is set by the pathway, not by progress.",
           "misconception": "growth myth"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A value that depends on the amount of product formed",
           "correct": false,
           "explanation": "Yield does not set the barrier.",
           "misconception": "yield conflated"
-        },
-        {
-          "key": "D",
-          "text": "A value that changes with the colour of the mixture",
-          "correct": false,
-          "explanation": "Colour has no bearing on the barrier.",
-          "misconception": "absurd link"
         }
       ]
     },
@@ -431,10 +433,9 @@
       "stem": "State what catalysts provide to the reactants on an energy profile.",
       "misconceptionClass": "catalyst pathway recall",
       "kind": "recall",
-      "modelAnswer": "Catalysts provide the reactants with an alternative pathway of lower activation energy.",
+      "modelAnswer": "Catalysts hand the reactants an alternative route of lower activation energy.",
       "keywords": [
         "alternative",
-        "pathway",
         "lower",
         "activation"
       ],
@@ -449,7 +450,8 @@
       "modelAnswer": "The catalysed reaction finishes faster than the same reaction without the catalyst.",
       "keywords": [
         "finishes",
-        "faster"
+        "faster",
+        "uncatalysed"
       ],
       "options": []
     },

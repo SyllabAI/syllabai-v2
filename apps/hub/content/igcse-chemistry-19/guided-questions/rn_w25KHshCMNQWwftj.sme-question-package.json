@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_w25KHshCMNQWwftj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4af9f8912aa3a4d9093f46e9b5558f77d7be6a4964ce89d187dac585b931c02c",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "f360306e878197e4bf930b4b2f4b64713864d547e3b4220863f29e3a02b72f23",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_w25KHshCMNQWwftj",
   "subject": "igcse-chemistry",
@@ -55,67 +55,67 @@
       "options": [
         {
           "key": "A",
+          "text": "Electrolysis, dissolving and neutralisation",
+          "correct": false,
+          "explanation": "Electrolysis needs a power supply and is not one of the solution-mixing examples.",
+          "misconception": "electrolysis intruded"
+        },
+        {
+          "key": "B",
           "text": "Neutralisation, dissolving and displacement",
           "correct": true,
           "explanation": "All three happen in solution and release or absorb a measurable amount of heat.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Combustion, dissolving and neutralisation",
           "correct": false,
           "explanation": "Combustion needs a burning fuel and a different arrangement with a spirit burner.",
           "misconception": "combustion misfiled"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Combustion, displacement and rusting",
           "correct": false,
           "explanation": "Combustion uses the copper-can method, and rusting is far too slow to measure this way.",
           "misconception": "scope over-extended"
-        },
-        {
-          "key": "D",
-          "text": "Electrolysis, dissolving and neutralisation",
-          "correct": false,
-          "explanation": "Electrolysis needs a power supply and is not one of the solution-mixing examples.",
-          "misconception": "electrolysis intruded"
         }
       ]
     },
     {
       "id": "rn_w25KHshCMNQWwftj::L1::Q3",
       "moduleId": "rn_w25KHshCMNQWwftj::L1",
-      "stem": "In the method, why is an excess of the second reagent added?",
+      "stem": "In the calorimetry method, why is an excess of the second reagent added?",
       "misconceptionClass": "procedure reasoning",
       "options": [
         {
           "key": "A",
-          "text": "So that all of the first reagent reacts and the temperature rise reaches its maximum",
-          "correct": true,
-          "explanation": "Excess second reagent drives the reaction to completion, giving the largest measurable temperature change.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To make the solution less dense so it is easier to stir",
-          "correct": false,
-          "explanation": "Density is assumed equal to water; stirring is for even mixing, not density control.",
-          "misconception": "density confused"
-        },
-        {
-          "key": "C",
           "text": "To keep the temperature constant during the reaction",
           "correct": false,
           "explanation": "The temperature is supposed to rise; excess reagent maximises that rise.",
           "misconception": "constant temperature goal"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "To prevent heat escaping through the cup walls",
           "correct": false,
           "explanation": "Insulation and a lid slow heat escape; excess reagent has a different job.",
           "misconception": "insulation conflated"
+        },
+        {
+          "key": "C",
+          "text": "So that all of the first reagent reacts and the temperature rise reaches its maximum",
+          "correct": true,
+          "explanation": "Excess second reagent drives the reaction to completion, giving the largest measurable temperature change.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To make the solution less dense so it is easier to stir",
+          "correct": false,
+          "explanation": "Density is assumed equal to water; stirring is for even mixing, not density control.",
+          "misconception": "density confused"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The solution has the same specific heat capacity and density as water",
-          "correct": true,
-          "explanation": "Taking 4.18 J/g/°C and 1 g/cm3 lets the mass heated be read straight from the volume.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The solution boils at exactly 100 °C",
           "correct": false,
           "explanation": "Boiling point is not part of the assumption set for these calculations.",
           "misconception": "irrelevant property"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The solution is colourless so the thermometer can be read",
           "correct": false,
           "explanation": "Colour does not enter the calculation at all.",
           "misconception": "observation confused with calculation"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The reaction is endothermic in every case",
           "correct": false,
           "explanation": "The method covers exothermic and endothermic changes alike.",
           "misconception": "direction assumed"
+        },
+        {
+          "key": "D",
+          "text": "The solution has the same specific heat capacity and density as water",
+          "correct": true,
+          "explanation": "Taking 4.18 J/g/°C and 1 g/cm3 lets the mass heated be read straight from the volume.",
+          "misconception": null
         }
       ]
     },
@@ -259,31 +259,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To confirm the wick stayed dry throughout",
+          "correct": false,
+          "explanation": "Wick condition is not the target measurement; fuel mass is.",
+          "misconception": "irrelevant detail"
+        },
+        {
+          "key": "B",
           "text": "To find the mass of fuel burned during the temperature rise",
           "correct": true,
           "explanation": "The mass lost by the burner is the fuel consumed, which pairs the energy change with the amount of fuel.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To check the balance is working correctly",
           "correct": false,
           "explanation": "The balance is assumed fine; the two weighings measure fuel used.",
           "misconception": "calibration confusion"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To measure the temperature of the flame",
           "correct": false,
           "explanation": "A balance cannot read temperature; the thermometer does that.",
           "misconception": "apparatus roles swapped"
-        },
-        {
-          "key": "D",
-          "text": "To confirm the wick stayed dry throughout",
-          "correct": false,
-          "explanation": "Wick condition is not the target measurement; fuel mass is.",
-          "misconception": "irrelevant detail"
         }
       ]
     },
@@ -295,31 +295,31 @@
       "options": [
         {
           "key": "A",
-          "text": "To give a measurable rise while keeping heat losses and fuel use under control",
-          "correct": true,
-          "explanation": "A rise of about 20 °C is large enough to read accurately yet short enough to limit uncontrolled losses.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because water cannot be heated by more than 20 °C",
-          "correct": false,
-          "explanation": "Water can heat further; the value is a working choice, not a physical limit.",
-          "misconception": "false physical limit"
-        },
-        {
-          "key": "C",
           "text": "Because the spirit burner stops working above that temperature",
           "correct": false,
           "explanation": "The burner could keep burning; the stop is deliberate.",
           "misconception": "apparatus limit invented"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "To make sure the fuel is all used up",
           "correct": false,
           "explanation": "The burner must still hold fuel for the final weighing to show the mass burned.",
           "misconception": "completion misread"
+        },
+        {
+          "key": "C",
+          "text": "To give a measurable rise while keeping heat losses and fuel use under control",
+          "correct": true,
+          "explanation": "A rise of about 20 °C is large enough to read accurately yet short enough to limit uncontrolled losses.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because water cannot be heated by more than 20 °C",
+          "correct": false,
+          "explanation": "Water can heat further; the value is a working choice, not a physical limit.",
+          "misconception": "false physical limit"
         }
       ]
     },
@@ -331,31 +331,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Heat losses and incomplete combustion",
-          "correct": true,
-          "explanation": "Heat escapes to the surroundings and some fuel burns incompletely, both shrinking the measured effect.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Heat gains and complete combustion",
           "correct": false,
           "explanation": "Complete combustion is the ideal, not an error; gains are not the named problem.",
           "misconception": "error inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Thermometer drift and balance drift",
           "correct": false,
           "explanation": "Instrument drift is not one of the two named errors for this experiment.",
           "misconception": "wrong error family"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Water evaporating and the can rusting",
           "correct": false,
           "explanation": "Neither evaporation nor rust is the named error pair.",
           "misconception": "invented errors"
+        },
+        {
+          "key": "D",
+          "text": "Heat losses and incomplete combustion",
+          "correct": true,
+          "explanation": "Heat escapes to the surroundings and some fuel burns incompletely, both shrinking the measured effect.",
+          "misconception": null
         }
       ]
     },
@@ -403,30 +403,30 @@
       "options": [
         {
           "key": "A",
+          "text": "It stays in the wick forever",
+          "correct": false,
+          "explanation": "The wick is not a named heat sink in this experiment.",
+          "misconception": "invented sink"
+        },
+        {
+          "key": "B",
           "text": "Some is lost to the surroundings and some is absorbed by the calorimeter",
           "correct": true,
           "explanation": "Those two sinks are the named destinations for the missing heat.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It is destroyed inside the flame",
           "correct": false,
           "explanation": "Energy is conserved; it spreads to other places instead of vanishing.",
           "misconception": "energy destroyed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It turns the fuel into a denser liquid",
           "correct": false,
           "explanation": "Density changes of the fuel are not part of the heat account.",
-          "misconception": "invented sink"
-        },
-        {
-          "key": "D",
-          "text": "It stays in the wick forever",
-          "correct": false,
-          "explanation": "The wick is not a named heat sink in this experiment.",
           "misconception": "invented sink"
         }
       ]
@@ -440,7 +440,8 @@
       "modelAnswer": "A spirit burner with the fuel is weighed before and after the run to find how much fuel burned.",
       "keywords": [
         "spirit",
-        "burner"
+        "burner",
+        "combustion"
       ],
       "options": []
     },

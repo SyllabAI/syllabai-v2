@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_tvwj4VZ6yFscPJfD",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a0a0a33ee2c159cede8e82c574a6cf565ad7e13dd775828b29d93074d358777c",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "520f3d408fcd5bcafc6ff3379bb50be95c0a80af09daf8686159dc5d7b553841",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_tvwj4VZ6yFscPJfD",
   "subject": "igcse-chemistry",
@@ -19,7 +19,7 @@
       "options": [
         {
           "key": "A",
-          "text": "A substance that increases the rate of a reaction but is chemically unchanged at the end",
+          "text": "A substance that speeds a reaction up yet is chemically unchanged when it ends",
           "correct": true,
           "explanation": "Both the speed-up and the unchanged state are required.",
           "misconception": null
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because catalysts dissolve into the products",
+          "correct": false,
+          "explanation": "Dissolving is not part of catalysis here.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "B",
           "text": "Because the catalyst is not consumed and can keep working",
           "correct": true,
           "explanation": "Being unchanged at the end means one batch can process far more reactant.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because catalysts are too expensive to waste",
           "correct": false,
           "explanation": "Cost may be true industrially, but the chemical reason is non-consumption.",
           "misconception": "economics substituted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because a small mass reacts completely",
           "correct": false,
           "explanation": "The catalyst does not react away at all.",
           "misconception": "consumption myth"
-        },
-        {
-          "key": "D",
-          "text": "Because catalysts dissolve into the products",
-          "correct": false,
-          "explanation": "Dissolving is not part of catalysis here.",
-          "misconception": "invented mechanism"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Above or below the reaction arrow",
-          "correct": true,
-          "explanation": "The arrow position shows the catalyst aids the change without being a reactant.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "On the left with the reactants",
-          "correct": false,
-          "explanation": "That would list it as a reactant, which it is not.",
-          "misconception": "position misassigned"
-        },
-        {
-          "key": "C",
           "text": "On the right with the products",
           "correct": false,
           "explanation": "It is not produced by the reaction.",
           "misconception": "position misassigned"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Nowhere, since catalysts are secret",
           "correct": false,
           "explanation": "Industrial equations routinely show catalysts over the arrow.",
           "misconception": "invisibility myth"
+        },
+        {
+          "key": "C",
+          "text": "Above or below the reaction arrow",
+          "correct": true,
+          "explanation": "The arrow position shows the catalyst aids the change without being a reactant.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "On the left with the reactants",
+          "correct": false,
+          "explanation": "That would list it as a reactant, which it is not.",
+          "misconception": "position misassigned"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The substance acted as a catalyst, unchanged in mass by the reaction",
-          "correct": true,
-          "explanation": "Matching start and end masses are the expected behaviour of a catalyst.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The catalyst must have doubled in activity",
           "correct": false,
           "explanation": "Mass recovery says nothing about activity doubling.",
           "misconception": "inference inflated"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The catalyst was the product",
           "correct": false,
           "explanation": "Products are made by the reaction; the catalyst was present at the start.",
           "misconception": "role inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The reaction never happened",
           "correct": false,
           "explanation": "The reaction can proceed fully while the catalyst stays unchanged.",
           "misconception": "no-reaction myth"
+        },
+        {
+          "key": "D",
+          "text": "The substance acted as a catalyst, unchanged in mass by the reaction",
+          "correct": true,
+          "explanation": "Matching start and end masses are the expected behaviour of a catalyst.",
+          "misconception": null
         }
       ]
     },
@@ -257,31 +257,31 @@
       "options": [
         {
           "key": "A",
-          "text": "By providing an alternative pathway with lower activation energy",
+          "text": "By weakening the products so they form sooner",
+          "correct": false,
+          "explanation": "Product strength is not the mechanism.",
+          "misconception": "invented mechanism"
+        },
+        {
+          "key": "B",
+          "text": "By offering the reaction a different route of lower activation energy",
           "correct": true,
           "explanation": "The lower hurdle lets more collisions lead to products.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "By heating the reaction mixture",
           "correct": false,
           "explanation": "Catalysts are not heaters; temperature is a separate factor.",
           "misconception": "factors crossed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "By increasing the concentration of reactants",
           "correct": false,
           "explanation": "Concentration is untouched by the catalyst.",
           "misconception": "factors crossed"
-        },
-        {
-          "key": "D",
-          "text": "By weakening the products so they form sooner",
-          "correct": false,
-          "explanation": "Product strength is not the mechanism.",
-          "misconception": "invented mechanism"
         }
       ]
     },
@@ -293,67 +293,67 @@
       "options": [
         {
           "key": "A",
-          "text": "It stays the same; the catalyst opens a new, lower route alongside it",
-          "correct": true,
-          "explanation": "The original pathway still exists; the alternative is simply easier.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "It falls, because the catalyst lowers every barrier",
-          "correct": false,
-          "explanation": "The uncatalysed route is untouched; only the new route is lower.",
-          "misconception": "barrier myth"
-        },
-        {
-          "key": "C",
           "text": "It doubles, because two routes now compete",
           "correct": false,
           "explanation": "Competition between routes does not raise any barrier.",
           "misconception": "competition myth"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "It disappears entirely",
           "correct": false,
           "explanation": "The catalysed route still has its own, smaller barrier.",
           "misconception": "zero-barrier myth"
+        },
+        {
+          "key": "C",
+          "text": "It stays the same; the catalyst opens a new, lower route alongside it",
+          "correct": true,
+          "explanation": "The original pathway still exists; the alternative is simply easier.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It falls, because the catalyst lowers every barrier",
+          "correct": false,
+          "explanation": "The uncatalysed route is untouched; only the new route is lower.",
+          "misconception": "barrier myth"
         }
       ]
     },
     {
       "id": "rn_tvwj4VZ6yFscPJfD::L2::Q3",
       "moduleId": "rn_tvwj4VZ6yFscPJfD::L2",
-      "stem": "Iron in the ammonia process and vanadium(V) oxide in the sulfur process are examples of what?",
+      "stem": "Iron in the ammonia process and vanadium(V) oxide in the sulfur process are two different catalysts chosen for what?",
       "misconceptionClass": "example recognition",
       "options": [
         {
           "key": "A",
-          "text": "Different catalysts chosen for different industrial processes",
-          "correct": true,
-          "explanation": "Each process pairs with a catalyst suited to it, all working on the same principle.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Reactants consumed by their reactions",
           "correct": false,
           "explanation": "Both substances are recovered unchanged after the process.",
           "misconception": "role inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Products of their reactions",
           "correct": false,
           "explanation": "Neither is a product; both pre-date the reaction.",
           "misconception": "role inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Fuels burned to heat the processes",
           "correct": false,
           "explanation": "They are not burned; they host the reaction on their surfaces.",
           "misconception": "fuel confusion"
+        },
+        {
+          "key": "D",
+          "text": "Different catalysts chosen for different industrial processes",
+          "correct": true,
+          "explanation": "Each process pairs with a catalyst suited to it, all working on the same principle.",
+          "misconception": null
         }
       ]
     },
@@ -401,30 +401,30 @@
       "options": [
         {
           "key": "A",
+          "text": "Water molecules",
+          "correct": false,
+          "explanation": "Water is a solvent or reactant here, not the biological catalyst.",
+          "misconception": "molecule swapped"
+        },
+        {
+          "key": "B",
           "text": "Enzymes",
           "correct": true,
           "explanation": "Enzymes catalyse the reactions of living systems on the same lower-pathway principle.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Fats",
           "correct": false,
           "explanation": "Fats store energy; they do not catalyse.",
           "misconception": "molecule swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Sugars",
           "correct": false,
           "explanation": "Sugars are respiratory fuels, not catalysts.",
-          "misconception": "molecule swapped"
-        },
-        {
-          "key": "D",
-          "text": "Water molecules",
-          "correct": false,
-          "explanation": "Water is a solvent or reactant here, not the biological catalyst.",
           "misconception": "molecule swapped"
         }
       ]
@@ -437,7 +437,9 @@
       "kind": "recall",
       "modelAnswer": "Enzymes act as the catalysts in biological systems.",
       "keywords": [
-        "enzymes"
+        "enzymes",
+        "biological",
+        "catalysts"
       ],
       "options": []
     },

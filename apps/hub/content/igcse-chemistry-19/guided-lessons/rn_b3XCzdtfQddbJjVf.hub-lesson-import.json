@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_b3XCzdtfQddbJjVf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "daca9b859fa5c3a91aab5bde5e982d5fd995e0cf4671664aae63fa15bfe9e809",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "e9a992cb94221822231270f79eaa9a053da43b483387318345ed8d40326e55b9",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_b3XCzdtfQddbJjVf",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-1.18",
-        "text": "understand how elements are arranged in the Periodic Table: in order of atomic number, in groups and periods"
+        "text": "understand how elements are arranged in the Periodic Table: • in order of atomic number • in groups and periods."
       }
     ],
     "primer": {
@@ -48,7 +48,7 @@
             "examPointer": "The fingerprint line earns easy marks: electrons come and go in reactions, but the atomic number of an element never changes."
           },
           "medium": {
-            "restatement": "Over 100 identified elements are laid out in order of increasing atomic number, each one proton more than the element before. The ordering is chosen so that elements with similar properties finish up in the same vertical column - and the atomic number is unique to each element, never altered by chemical reactions.",
+            "restatement": "Over 100 identified elements are laid out in order of increasing atomic number, each one proton more than the element before. The ordering is chosen so that elements with similar properties finish up in the same vertical column — and each element's atomic number belongs to it alone, never altered by chemical reactions.",
             "analogy": "Think of a stadium where every seat number increases by exactly one along the row: the strict numbering is what lets supporters of the same team find each other.",
             "examPointer": "Two facts travel together in exam answers: the order is by atomic number, and that number is the element's fingerprint which no reaction can rewrite."
           }
@@ -73,7 +73,8 @@
           "rn_b3XCzdtfQddbJjVf::L1::Q7",
           "rn_b3XCzdtfQddbJjVf::L1::Q8",
           "rn_b3XCzdtfQddbJjVf::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_b3XCzdtfQddbJjVf::L2",
@@ -138,11 +139,6 @@
           "firstLesson": 1
         },
         {
-          "term": "group",
-          "definition": "A vertical column of the periodic table, numbering the electrons in the outermost shell.",
-          "firstLesson": 2
-        },
-        {
           "term": "period",
           "definition": "A horizontal row of the periodic table, numbering the shells of electrons an atom holds.",
           "firstLesson": 2
@@ -180,11 +176,11 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4ab073476fc2-new-periodic-table-2.png",
         "alt": "new-periodic-table-2",
         "sourceHeading": "The periodic table",
-        "caption": "The Periodic Table of the Elements",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The Periodic Table of the Elements"
       }
     ]
   }

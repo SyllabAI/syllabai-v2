@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_DGkNCJRcCN4VQ28p",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "c4e5d8ba5989103d857baa42b4e6ffbdb7d9de0a00a65ce898d31e8990b71f33",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "ca1156de40e35d57524bf7c82e38276425ae23613d9efcc4b76bdacfb62e1ff1",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_DGkNCJRcCN4VQ28p",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Carbon does not appear in the reactivity series",
+          "correct": false,
+          "explanation": "Carbon is an important element with its own place on the series, exactly as the note states.",
+          "misconception": "carbon's membership denied"
+        },
+        {
+          "key": "B",
           "text": "Between aluminium and zinc",
           "correct": true,
           "explanation": "Carbon's seat between aluminium and zinc is what lets it pull some metal oxides apart and not others.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Between potassium and sodium",
           "correct": false,
           "explanation": "Nothing sits between those two; carbon is far lower, in the middle of the ladder.",
           "misconception": "carbon placed too high"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Below gold at the very bottom",
           "correct": false,
           "explanation": "Carbon outranks several metals including zinc and iron; it is not the bottom entry.",
           "misconception": "carbon placed too low"
-        },
-        {
-          "key": "D",
-          "text": "Carbon does not appear in the reactivity series",
-          "correct": false,
-          "explanation": "Carbon is an important element with its own place on the series, exactly as the note states.",
-          "misconception": "carbon's membership denied"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Iron reacts with dilute acids but copper does not",
-          "correct": true,
-          "explanation": "Only metals above hydrogen react with dilute acids, and iron sits above the hydrogen seat while copper sits below it.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Both iron and copper react with dilute acids",
-          "correct": false,
-          "explanation": "Copper's seat below hydrogen blocks the acid reaction; only iron qualifies.",
-          "misconception": "acid rule misapplied to copper"
-        },
-        {
-          "key": "C",
           "text": "Neither iron nor copper reacts with dilute acids",
           "correct": false,
           "explanation": "Iron is above hydrogen and does react; iron sulfate is a standard product.",
           "misconception": "iron's reactivity denied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Hydrogen displaces copper from its salts",
           "correct": false,
           "explanation": "Hydrogen sits below some metals and above others; displacing copper would need hydrogen to outrank it, which it does not.",
           "misconception": "displacement direction misjudged"
+        },
+        {
+          "key": "C",
+          "text": "Iron reacts with dilute acids but copper does not",
+          "correct": true,
+          "explanation": "Only metals above hydrogen react with dilute acids, and iron sits above the hydrogen seat while copper sits below it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Both iron and copper react with dilute acids",
+          "correct": false,
+          "explanation": "Copper's seat below hydrogen blocks the acid reaction; only iron qualifies.",
+          "misconception": "acid rule misapplied to copper"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Magnesium, aluminium, zinc",
-          "correct": true,
-          "explanation": "Magnesium sits above aluminium, which sits above zinc, so this rung-to-rung run is correct.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Zinc, magnesium, aluminium",
           "correct": false,
           "explanation": "That run runs uphill; zinc sits below both magnesium and aluminium.",
           "misconception": "middle rung inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Copper, iron, zinc",
           "correct": false,
           "explanation": "The true descending order there is zinc, iron, copper; this list reverses it.",
           "misconception": "bottom of the ladder reversed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Silver, potassium, calcium",
           "correct": false,
           "explanation": "Silver sits near the bottom and potassium at the top; they are not consecutive.",
           "misconception": "distant rungs treated as adjacent"
+        },
+        {
+          "key": "D",
+          "text": "Magnesium, aluminium, zinc",
+          "correct": true,
+          "explanation": "Magnesium sits above aluminium, which sits above zinc, so this rung-to-rung run is correct.",
+          "misconception": null
         }
       ]
     },
@@ -163,7 +163,7 @@
       "options": [
         {
           "key": "A",
-          "text": "Because it is used in the extraction of metals from their oxides",
+          "text": "Because it is the element that extracts metals from their oxides",
           "correct": true,
           "explanation": "Carbon can take oxygen from the oxides of metals below it, which is the basis of its extraction role.",
           "misconception": null
@@ -197,7 +197,7 @@
       "stem": "List the metals of the reactivity series of record in order, from the most reactive to the least reactive.",
       "misconceptionClass": "reactivity series order recall",
       "kind": "recall",
-      "modelAnswer": "Potassium, sodium, lithium, calcium, magnesium, aluminium, zinc, iron, copper, silver and gold, running from the most reactive at the top to the least reactive at the bottom.",
+      "modelAnswer": "Potassium tops the series, then sodium, then lithium, then calcium, then magnesium, then aluminium, then zinc, then iron, then copper, then silver, then gold — most reactive first, least reactive last.",
       "keywords": [
         "potassium",
         "sodium",
@@ -239,13 +239,9 @@
       "kind": "explain-why",
       "modelAnswer": "Carbon's place between aluminium and zinc decides which metal oxides it can strip oxygen from: it is used to extract metals that sit below it in the series from their oxides.",
       "keywords": [
-        "extraction",
         "extract",
-        "extracted",
         "oxides",
         "oxide",
-        "reduce",
-        "reduction",
         "position",
         "below",
         "metals",
@@ -269,8 +265,6 @@
         "acid",
         "acids",
         "displace",
-        "displaces",
-        "reacts",
         "no",
         "reaction"
       ],
@@ -284,31 +278,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Zebras",
+          "correct": false,
+          "explanation": "Zebras marks zinc, which sits just below carbon in the series.",
+          "misconception": "zinc and carbon mixed"
+        },
+        {
+          "key": "B",
           "text": "Cute",
           "correct": true,
           "explanation": "Cute supplies the C that marks carbon's seat between aluminium and zinc.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Cats",
           "correct": false,
           "explanation": "Cats is the first C, and it stands for calcium, not carbon.",
           "misconception": "the two C words swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Countries",
           "correct": false,
           "explanation": "Countries is the third C, marking copper near the bottom of the list.",
           "misconception": "the three C words confused"
-        },
-        {
-          "key": "D",
-          "text": "Zebras",
-          "correct": false,
-          "explanation": "Zebras marks zinc, which sits just below carbon in the series.",
-          "misconception": "zinc and carbon mixed"
         }
       ]
     },
@@ -320,31 +314,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Hot",
-          "correct": true,
-          "explanation": "Hot gives the H for hydrogen, sitting between iron (into) and copper (countries).",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Into",
-          "correct": false,
-          "explanation": "Into marks iron, which sits just above hydrogen in the series.",
-          "misconception": "iron and hydrogen swapped"
-        },
-        {
-          "key": "C",
           "text": "Send",
           "correct": false,
           "explanation": "Send marks sodium at the top of the list, nowhere near hydrogen's seat.",
           "misconception": "top rung confused with the middle"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Signed",
           "correct": false,
           "explanation": "Signed marks silver, second from the bottom of the ladder.",
           "misconception": "silver and hydrogen confused"
+        },
+        {
+          "key": "C",
+          "text": "Hot",
+          "correct": true,
+          "explanation": "Hot gives the H for hydrogen, sitting between iron (into) and copper (countries).",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Into",
+          "correct": false,
+          "explanation": "Into marks iron, which sits just above hydrogen in the series.",
+          "misconception": "iron and hydrogen swapped"
         }
       ]
     },
@@ -356,31 +350,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Magnesium",
-          "correct": true,
-          "explanation": "Monkeys follows cats (calcium) in the sentence, matching magnesium's rung below calcium.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Manganese",
           "correct": false,
           "explanation": "Manganese is not on the eleven-metal list of record; the M is magnesium.",
           "misconception": "extra metal introduced"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Mercury",
           "correct": false,
           "explanation": "Mercury is not part of this series; the M rung is magnesium.",
           "misconception": "extra metal introduced"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Aluminium",
           "correct": false,
           "explanation": "Aluminium is the next word, and, which follows monkeys in the sentence.",
           "misconception": "adjacent rungs swapped"
+        },
+        {
+          "key": "D",
+          "text": "Magnesium",
+          "correct": true,
+          "explanation": "Monkeys follows cats (calcium) in the sentence, matching magnesium's rung below calcium.",
+          "misconception": null
         }
       ]
     },
@@ -428,31 +422,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Extraction works only for metals above carbon",
+          "correct": false,
+          "explanation": "That inverts the logic; carbon reduces the oxides of metals that sit below it.",
+          "misconception": "extraction rule inverted"
+        },
+        {
+          "key": "B",
           "text": "Carbon, at its seat between aluminium and zinc, can pull oxygen from the oxides of metals below it",
           "correct": true,
           "explanation": "The seat below some metals and above others is what decides which oxides carbon can reduce.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Gold, at the bottom, is the easiest metal to extract with carbon",
           "correct": false,
           "explanation": "Gold's low position means it needs little help, but carbon's usefulness comes from outranking the oxide's metal.",
           "misconception": "bottom rung overvalued"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The mnemonic itself performs the extraction",
           "correct": false,
           "explanation": "The sentence is a memory tool; the chemistry comes from carbon's position, not from the words.",
           "misconception": "memory tool confused with chemistry"
-        },
-        {
-          "key": "D",
-          "text": "Extraction works only for metals above carbon",
-          "correct": false,
-          "explanation": "That inverts the logic; carbon reduces the oxides of metals that sit below it.",
-          "misconception": "extraction rule inverted"
         }
       ]
     },
@@ -485,8 +479,7 @@
         "cute",
         "hydrogen",
         "hot",
-        "non-metals",
-        "nonmetals"
+        "non-metals"
       ],
       "options": []
     },
@@ -500,7 +493,6 @@
       "keywords": [
         "finish",
         "end",
-        "ends",
         "bottom",
         "least",
         "reactive",

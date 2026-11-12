@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_S7GPh8BBPBbmhYKm",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5f76d42878573dff746e619e0e7325975f8e8ce9956b0948a776acf3a04df598",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "1d45daaa28e556d0659762571f4e6b675a0cc9872624df2129c1d4838ed5477e",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_S7GPh8BBPBbmhYKm",
@@ -148,11 +148,6 @@
           "firstLesson": 1
         },
         {
-          "term": "kinetic energy",
-          "definition": "The energy of motion; hotter particles carry more of it, so diffusion speeds up.",
-          "firstLesson": 1
-        },
-        {
           "term": "dilution",
           "definition": "The process of adding more solvent to a solution, which lowers the concentration.",
           "firstLesson": 2
@@ -160,11 +155,6 @@
         {
           "term": "solvent",
           "definition": "The liquid, usually water, that is added to dilute a solution.",
-          "firstLesson": 2
-        },
-        {
-          "term": "solute",
-          "definition": "The dissolved substance whose particles are spread further apart during dilution.",
           "firstLesson": 2
         },
         {
@@ -189,34 +179,34 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/5ad4552dc77f-1-1-2-diffusion-of-bromine-gas.png",
         "alt": "Diffusion of bromine gas",
-        "sourceHeading": "Diffusion in gases",
-        "caption": "Diffusion of red-brown bromine gas",
-        "binding": "unresolved",
+        "sourceHeading": "Diffusion and dilution",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diffusion of red-brown bromine gas"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/22ad7918f67d-diffusion-of-potassium-manganate-vi-in-water.png",
         "alt": "Diagram to show the diffusion of potassium manganate in water",
-        "sourceHeading": "Diffusion in liquids",
-        "caption": "Diffusion of potassium manganate(VII) in water over time",
-        "binding": "unresolved",
+        "sourceHeading": "Diffusion and dilution",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diffusion of potassium manganate(VII) in water over time"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3bcee1da72c2-1-1-2-dilution-of-potassium-managantevii.png",
         "alt": "Diagram to show the dilution of potassium manganate in water.",
         "sourceHeading": "Dilution",
-        "caption": "Dissolving potassium manganate (VII) in water",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Dissolving potassium manganate (VII) in water"
       }
     ]
   }

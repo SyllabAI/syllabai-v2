@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_2MpXPtNXvn8pQm3r",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ec89145944589dd5b8828b153922bd02aba048f1ef6b61ea596cc2d2b6af80e4",
-    "pinnedRef": "80afdb8e02b628754f0e522d257e54d046ba5b0f"
+    "sourceLayerSha256": "5eed9d24c0f49cf3b711a2c54066abc1103f60ecab3f6fef476603aae14900ed",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_2MpXPtNXvn8pQm3r",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It will not dissolve at all",
+          "correct": false,
+          "explanation": "Dissolving is exactly what the note records them doing.",
+          "misconception": "solubility denied"
+        },
+        {
+          "key": "B",
           "text": "It forms a neutral solution",
           "correct": true,
           "explanation": "The note states alcohols dissolve in water to form neutral solutions.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It forms an acidic solution",
           "correct": false,
           "explanation": "Acidity belongs to the carboxylic acids, not the alcohols here.",
           "misconception": "family properties mixed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It forms an alkaline solution",
           "correct": false,
           "explanation": "The hydroxyl group is covalently bonded, not ionic like alkali hydroxides.",
           "misconception": "OH read as alkali"
-        },
-        {
-          "key": "D",
-          "text": "It will not dissolve at all",
-          "correct": false,
-          "explanation": "Dissolving is exactly what the note records them doing.",
-          "misconception": "solubility denied"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because it is the part responsible for ethanol's characteristic reactions",
-          "correct": true,
-          "explanation": "The functional group is by definition the reactive arrangement steering the family chemistry.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because it functions as the fuel itself",
-          "correct": false,
-          "explanation": "The whole molecule burns; the group name refers to reactive role, not fuel duty.",
-          "misconception": "role misread"
-        },
-        {
-          "key": "C",
           "text": "Because it adds the most mass to the molecule",
           "correct": false,
           "explanation": "Mass share is irrelevant to the functional group concept.",
           "misconception": "size mistaken for role"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because it was the first part discovered",
           "correct": false,
           "explanation": "Discovery order plays no part in the definition.",
           "misconception": "history misused"
+        },
+        {
+          "key": "C",
+          "text": "Because it is the part responsible for ethanol's characteristic reactions",
+          "correct": true,
+          "explanation": "The functional group is by definition the reactive arrangement steering the family chemistry.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because it functions as the fuel itself",
+          "correct": false,
+          "explanation": "The whole molecule burns; the group name refers to reactive role, not fuel duty.",
+          "misconception": "role misread"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "As fuels, because they burn releasing energy",
-          "correct": true,
-          "explanation": "The note lists the first four alcohols as commonly used fuels.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "As bleaches for fabrics",
           "correct": false,
           "explanation": "Bleaching is not among the listed uses.",
           "misconception": "use invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "As oxidising agents in engines",
           "correct": false,
           "explanation": "They are the burned substance, not the supplier of oxygen.",
           "misconception": "role inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "As indicators for acidity",
           "correct": false,
           "explanation": "They form neutral solutions, the opposite of indicator material.",
           "misconception": "use invented"
+        },
+        {
+          "key": "D",
+          "text": "As fuels, because they burn releasing energy",
+          "correct": true,
+          "explanation": "The note lists the first four alcohols as commonly used fuels.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "Every alcohol carries the hydroxyl group, written -OH.",
       "keywords": [
         "hydroxyl",
-        "oh"
+        "oh",
+        "functional"
       ],
       "options": []
     },
@@ -212,7 +213,9 @@
       "kind": "recall",
       "modelAnswer": "A neutral solution is formed.",
       "keywords": [
-        "neutral"
+        "neutral",
+        "solution",
+        "alcohol"
       ],
       "options": []
     },
@@ -253,31 +256,31 @@
       "options": [
         {
           "key": "A",
+          "text": "C3H7OH",
+          "correct": false,
+          "explanation": "Three carbons is propan-1-ol, one rung above ethanol.",
+          "misconception": "rung miscounted"
+        },
+        {
+          "key": "B",
           "text": "C2H5OH",
           "correct": true,
           "explanation": "The two-carbon alcohol carries five chain hydrogens plus the hydroxyl hydrogen.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "CH3OH",
           "correct": false,
           "explanation": "That is methanol, the one-carbon member of the family.",
           "misconception": "member miscounted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "C2H5COOH",
           "correct": false,
           "explanation": "That formula belongs to the acid family, not the alcohols.",
           "misconception": "family crossed"
-        },
-        {
-          "key": "D",
-          "text": "C3H7OH",
-          "correct": false,
-          "explanation": "Three carbons is propan-1-ol, one rung above ethanol.",
-          "misconception": "rung miscounted"
         }
       ]
     },
@@ -289,31 +292,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The final e of the alkane name is replaced with ol",
-          "correct": true,
-          "explanation": "Methane to methanol, ethane to ethanol: one letter swap records the OH group.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The stem is replaced with the word alcohol",
-          "correct": false,
-          "explanation": "The stem stays; only the ending changes.",
-          "misconception": "stem replaced"
-        },
-        {
-          "key": "C",
           "text": "The suffix ane is replaced with ene",
           "correct": false,
           "explanation": "That is the alkene rule; alcohols take the ol ending.",
           "misconception": "suffix crossed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "A prefix hydro- is added to the alkane name",
           "correct": false,
           "explanation": "No hydro- prefix exists in this system.",
           "misconception": "prefix invented"
+        },
+        {
+          "key": "C",
+          "text": "The final e of the alkane name is replaced with ol",
+          "correct": true,
+          "explanation": "Methane to methanol, ethane to ethanol: one letter swap records the OH group.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The stem is replaced with the word alcohol",
+          "correct": false,
+          "explanation": "The stem stays; only the ending changes.",
+          "misconception": "stem replaced"
         }
       ]
     },
@@ -325,31 +328,31 @@
       "options": [
         {
           "key": "A",
-          "text": "That the OH group sits on the first carbon atom",
-          "correct": true,
-          "explanation": "The number is the address of the hydroxyl group along the three-carbon chain.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "That the molecule contains one carbon",
           "correct": false,
           "explanation": "The stem prop already fixes three carbons; the 1 locates the group.",
           "misconception": "role misread"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "That the alcohol is the first member of the family",
           "correct": false,
           "explanation": "Methanol is the first member; the number is about position, not order.",
           "misconception": "series position confused"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "That one water molecule is attached",
           "correct": false,
           "explanation": "The OH is bonded into the molecule, not water stuck on.",
           "misconception": "hydration misread"
+        },
+        {
+          "key": "D",
+          "text": "That the OH group sits on the first carbon atom",
+          "correct": true,
+          "explanation": "The number is the address of the hydroxyl group along the three-carbon chain.",
+          "misconception": null
         }
       ]
     },
@@ -397,31 +400,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A four-carbon chain with OH on every carbon",
+          "correct": false,
+          "explanation": "One hydroxyl group per molecule is the rule at this level.",
+          "misconception": "group multiplied"
+        },
+        {
+          "key": "B",
           "text": "A four-carbon chain with the OH group bonded to the end carbon",
           "correct": true,
           "explanation": "Butan-1-ol places the hydroxyl on carbon one of the four-carbon chain, as the table shows.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "A three-carbon chain with OH in the middle",
           "correct": false,
           "explanation": "Both the chain length and the group position are wrong for butan-1-ol.",
           "misconception": "member miscounted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "A four-carbon chain with a C=C double bond",
           "correct": false,
           "explanation": "A double bond would make it an alkene; alcohol chains are single-bonded.",
           "misconception": "bond inserted"
-        },
-        {
-          "key": "D",
-          "text": "A four-carbon chain with OH on every carbon",
-          "correct": false,
-          "explanation": "One hydroxyl group per molecule is the rule at this level.",
-          "misconception": "group multiplied"
         }
       ]
     },
@@ -433,7 +436,9 @@
       "kind": "recall",
       "modelAnswer": "Methanol is CH3OH.",
       "keywords": [
-        "ch3oh"
+        "ch3oh",
+        "molecular",
+        "methanol"
       ],
       "options": []
     },
@@ -445,7 +450,9 @@
       "kind": "recall",
       "modelAnswer": "Propanol is the acceptable shortened name.",
       "keywords": [
-        "propanol"
+        "propanol",
+        "acceptable",
+        "shortened"
       ],
       "options": []
     },
@@ -472,7 +479,8 @@
       "modelAnswer": "Propan-1-ol (propanol is acceptable).",
       "keywords": [
         "propan",
-        "propanol"
+        "propanol",
+        "acceptable"
       ],
       "options": []
     }

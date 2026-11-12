@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_Zh6Pw56rjdMkPCD4",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2c83c5a7af22a7041849b67b0928ed3ebd088affacc8b7cbbfe276f41c7ab687",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "4f96e4b2dcda21f92ae788c5cee4174f3430c434984ac8a3938393832a21b266",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_Zh6Pw56rjdMkPCD4",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Pressure only affects liquids",
+          "correct": false,
+          "explanation": "Pressure effects are quoted for gases in this topic.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "B",
           "text": "The same number of particles is forced into a smaller volume, so collisions become more frequent",
           "correct": true,
           "explanation": "Squeezing the crowd raises the bump rate per second.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Pressure adds energy to each particle",
           "correct": false,
           "explanation": "Pressure changes spacing; energy belongs to the temperature story.",
           "misconception": "factors crossed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Pressure creates extra particles",
           "correct": false,
           "explanation": "The particle count is unchanged.",
           "misconception": "creation myth"
-        },
-        {
-          "key": "D",
-          "text": "Pressure only affects liquids",
-          "correct": false,
-          "explanation": "Pressure effects are quoted for gases in this topic.",
-          "misconception": "state confusion"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Enough energy and the right arrangement, so product molecules form",
-          "correct": true,
-          "explanation": "Only a proportion of collisions carry what it takes to react.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The particles colliding head-on at any speed",
-          "correct": false,
-          "explanation": "Direction alone is not enough without the energy requirement.",
-          "misconception": "geometry myth"
-        },
-        {
-          "key": "C",
           "text": "The particles sticking together permanently",
           "correct": false,
           "explanation": "Products form and separate; permanent sticking is not the rule.",
           "misconception": "sticking myth"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The presence of a catalyst in every collision",
           "correct": false,
           "explanation": "Catalysts are absent in most explained reactions here.",
           "misconception": "catalyst intruded"
+        },
+        {
+          "key": "C",
+          "text": "Enough energy and the right arrangement, so product molecules form",
+          "correct": true,
+          "explanation": "Only a proportion of collisions carry what it takes to react.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The particles colliding head-on at any speed",
+          "correct": false,
+          "explanation": "Direction alone is not enough without the energy requirement.",
+          "misconception": "geometry myth"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "It increases because the particle crowding and collision count rise",
-          "correct": true,
-          "explanation": "Half the volume means twice the crowding, so collisions per second rise.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It decreases because particles have less room to move",
           "correct": false,
           "explanation": "Less room means more meetings, not fewer.",
           "misconception": "trend inverted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It stays the same because particle count is fixed",
           "correct": false,
           "explanation": "Count is fixed but crowding is not.",
           "misconception": "count-only reasoning"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It doubles only if a catalyst is added",
           "correct": false,
           "explanation": "No catalyst is needed for the pressure effect.",
           "misconception": "condition invented"
+        },
+        {
+          "key": "D",
+          "text": "It increases because the particle crowding and collision count rise",
+          "correct": true,
+          "explanation": "Half the volume means twice the crowding, so collisions per second rise.",
+          "misconception": null
         }
       ]
     },
@@ -200,7 +200,8 @@
       "modelAnswer": "A higher concentration puts more reactant particles into the same volume.",
       "keywords": [
         "particles",
-        "reactant"
+        "reactant",
+        "concentration"
       ],
       "options": []
     },
@@ -213,7 +214,8 @@
       "modelAnswer": "Raising the pressure squeezes the same number of gas particles into a smaller volume.",
       "keywords": [
         "squeezes",
-        "smaller"
+        "smaller",
+        "particles"
       ],
       "options": []
     },
@@ -253,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because the reaction switches to a faster pathway",
+          "correct": false,
+          "explanation": "No new pathway appears; the same one runs faster.",
+          "misconception": "pathway myth"
+        },
+        {
+          "key": "B",
           "text": "Because collisions become both more frequent and more energetic",
           "correct": true,
           "explanation": "The two effects combine, with the energy gain doing the greater work.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because particles double in size",
           "correct": false,
           "explanation": "Particle size does not change with temperature.",
           "misconception": "size myth"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because the concentration rises with temperature",
           "correct": false,
           "explanation": "Concentration is a separate factor.",
           "misconception": "factors crossed"
-        },
-        {
-          "key": "D",
-          "text": "Because the reaction switches to a faster pathway",
-          "correct": false,
-          "explanation": "No new pathway appears; the same one runs faster.",
-          "misconception": "pathway myth"
         }
       ]
     },
@@ -289,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Every 10 °C increase in temperature approximately doubles the rate",
-          "correct": true,
-          "explanation": "The stated rule of thumb links a 10 °C step to a doubling of rate.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Every 10 °C increase halves the rate",
-          "correct": false,
-          "explanation": "Heating speeds reactions; the rule says doubles.",
-          "misconception": "rule inverted"
-        },
-        {
-          "key": "C",
           "text": "Every 1 °C increase doubles the rate",
           "correct": false,
           "explanation": "The doubling belongs to a 10 °C step.",
           "misconception": "step misread"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Rate is unaffected below 50 °C",
           "correct": false,
           "explanation": "No threshold appears in the rule.",
           "misconception": "threshold myth"
+        },
+        {
+          "key": "C",
+          "text": "Every 10 °C increase in temperature approximately doubles the rate",
+          "correct": true,
+          "explanation": "The stated rule of thumb links a 10 °C step to a doubling of rate.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Every 10 °C increase halves the rate",
+          "correct": false,
+          "explanation": "Heating speeds reactions; the rule says doubles.",
+          "misconception": "rule inverted"
         }
       ]
     },
@@ -325,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "More solid particles are exposed to the other reactant, so collisions per second increase",
-          "correct": true,
-          "explanation": "Exposure is the whole story; the powder meets the solution everywhere at once.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Powder particles move faster than lumps",
           "correct": false,
           "explanation": "Speed of particles is a temperature effect, not a surface effect.",
           "misconception": "factors crossed"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Powdering raises the concentration of the solution",
           "correct": false,
           "explanation": "The solid is not part of the solution concentration.",
           "misconception": "concentration conflated"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Powder lowers the activation energy",
           "correct": false,
           "explanation": "Only catalysts lower the energy barrier.",
           "misconception": "catalyst effect borrowed"
+        },
+        {
+          "key": "D",
+          "text": "More solid particles are exposed to the other reactant, so collisions per second increase",
+          "correct": true,
+          "explanation": "Exposure is the whole story; the powder meets the solution everywhere at once.",
+          "misconception": null
         }
       ]
     },
@@ -397,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A catalyst",
+          "correct": false,
+          "explanation": "A catalyst changes the energy barrier, not the particle energies.",
+          "misconception": "mechanism mismatch"
+        },
+        {
+          "key": "B",
           "text": "Temperature",
           "correct": true,
           "explanation": "Heat raises particle speed, so collisions come more often and hit harder.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Surface area",
           "correct": false,
           "explanation": "Surface area changes only the number of exposed collision sites.",
           "misconception": "frequency only"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Concentration",
           "correct": false,
           "explanation": "Concentration changes crowding, not particle energy.",
           "misconception": "frequency only"
-        },
-        {
-          "key": "D",
-          "text": "A catalyst",
-          "correct": false,
-          "explanation": "A catalyst changes the energy barrier, not the particle energies.",
-          "misconception": "mechanism mismatch"
         }
       ]
     },

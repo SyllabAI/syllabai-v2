@@ -1,0 +1,1022 @@
+{
+ "artifact": "rn11-run018-official-9709-p1-census-r0",
+ "pins": {
+  "sha256": "3a7a37692399f47ff5e0d94cc41f9dd33d3b99467ce83aa4bad28c6136f96256",
+  "sha1": "997e5a9f0d8b0eb2c2c51568f95b81bae78c2e32"
+ },
+ "range": [
+  750,
+  964
+ ],
+ "census": {
+  "1.1": {
+   "title": "Quadratics",
+   "gutter": 75,
+   "rows": 5
+  },
+  "1.2": {
+   "title": "Functions",
+   "gutter": 76,
+   "rows": 5
+  },
+  "1.3": {
+   "title": "Coordinate geometry",
+   "gutter": 76,
+   "rows": 5
+  },
+  "1.4": {
+   "title": "Circular measure",
+   "gutter": 72,
+   "rows": 2
+  },
+  "1.5": {
+   "title": "Trigonometry",
+   "gutter": 72,
+   "rows": 5
+  },
+  "1.6": {
+   "title": "Series",
+   "gutter": 72,
+   "rows": 4
+  },
+  "1.7": {
+   "title": "Differentiation",
+   "gutter": 76,
+   "rows": 4
+  },
+  "1.8": {
+   "title": "Integration",
+   "gutter": 76,
+   "rows": 4
+  }
+ },
+ "rows": [
+  {
+   "row": "1.1.1",
+   "sub": "1.1",
+   "subTitle": "Quadratics",
+   "gutter": 75,
+   "lines": [
+    {
+     "col": 13,
+     "side": "STMT",
+     "text": "•     carry out the process of completing the square          e.g. to locate the vertex of the graph of"
+    },
+    {
+     "col": 19,
+     "side": "STMT",
+     "text": "for a quadratic polynomial ax2 + bx + c and use         y = ax2 + bx + c or to sketch the graph"
+    },
+    {
+     "col": 19,
+     "side": "STMT",
+     "text": "a completed square form"
+    }
+   ]
+  },
+  {
+   "row": "1.1.2",
+   "sub": "1.1",
+   "subTitle": "Quadratics",
+   "gutter": 75,
+   "lines": [
+    {
+     "col": 13,
+     "side": "STMT",
+     "text": "•     find the discriminant of a quadratic polynomial         e.g. to determine the number of real roots of the"
+    },
+    {
+     "col": 19,
+     "side": "STMT",
+     "text": "ax2 + bx + c and use the discriminant                   equation ax2 + bx + c = 0. Knowledge of the term"
+    },
+    {
+     "col": 75,
+     "side": "NOTE-COL?",
+     "text": "‘repeated root’ is included."
+    }
+   ]
+  },
+  {
+   "row": "1.1.3",
+   "sub": "1.1",
+   "subTitle": "Quadratics",
+   "gutter": 75,
+   "lines": [
+    {
+     "col": 13,
+     "side": "STMT",
+     "text": "•     solve quadratic equations, and quadratic                By factorising, completing the square and using the"
+    },
+    {
+     "col": 19,
+     "side": "STMT",
+     "text": "inequalities, in one unknown                            formula."
+    }
+   ]
+  },
+  {
+   "row": "1.1.4",
+   "sub": "1.1",
+   "subTitle": "Quadratics",
+   "gutter": 75,
+   "lines": [
+    {
+     "col": 13,
+     "side": "STMT",
+     "text": "•     solve by substitution a pair of simultaneous            e.g. x + y + 1 = 0 and x2 + y2 = 25,"
+    },
+    {
+     "col": 19,
+     "side": "STMT",
+     "text": "equations of which one is linear and one is             2x + 3y = 7 and 3x2 = 4 + 4xy."
+    },
+    {
+     "col": 19,
+     "side": "STMT",
+     "text": "quadratic"
+    }
+   ]
+  },
+  {
+   "row": "1.1.5",
+   "sub": "1.1",
+   "subTitle": "Quadratics",
+   "gutter": 75,
+   "lines": [
+    {
+     "col": 13,
+     "side": "STMT",
+     "text": "•     recognise and solve equations in x which are            e.g. x4 – 5x2 + 4 = 0, 6x +     x − 1 = 0,"
+    },
+    {
+     "col": 19,
+     "side": "STMT",
+     "text": "quadratic in some function of x.                           2"
+    },
+    {
+     "col": 75,
+     "side": "NOTE-COL?",
+     "text": "tan x = 1 + tan x."
+    }
+   ]
+  },
+  {
+   "row": "1.2.1",
+   "sub": "1.2",
+   "subTitle": "Functions",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    understand the terms function, domain,"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "range, one-one function, inverse function and"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "composition of functions"
+    },
+    {
+     "col": 98,
+     "side": "NOTE-COL?",
+     "text": "1"
+    }
+   ]
+  },
+  {
+   "row": "1.2.2",
+   "sub": "1.2",
+   "subTitle": "Functions",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 98,
+     "side": "NOTE-COL?",
+     "text": "FLOAT:1"
+    },
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    identify the range of a given function in simple            e.g. range of f : x 7 x for x H 1 and"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "cases, and find the composition of two given"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "range of g : x 7 x 2 + 1 for x ! R . Including the"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "functions"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "condition that a composite function gf can only be"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "formed when the range of f is within the domain of g."
+    }
+   ]
+  },
+  {
+   "row": "1.2.3",
+   "sub": "1.2",
+   "subTitle": "Functions",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    determine whether or not a given function is                e.g. finding the inverse of"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "h : x 7 ^2x + 3h − 4 for x 1 − 2 ."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "one-one, and find the inverse of a one-one                                  2              3"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "function in simple cases"
+    }
+   ]
+  },
+  {
+   "row": "1.2.4",
+   "sub": "1.2",
+   "subTitle": "Functions",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    illustrate in graphical terms the relation between          Sketches should include an indication of the mirror"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "a one-one function and its inverse                          line y = x."
+    }
+   ]
+  },
+  {
+   "row": "1.2.5",
+   "sub": "1.2",
+   "subTitle": "Functions",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    understand and use the transformations of the               Including use of the terms ‘translation’, ‘reflection’"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "graph of y = f(x) given by                                  and ‘stretch’ in describing transformations. Questions"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "y = f(x) + a, y = f(x + a),                                 may involve algebraic or trigonometric functions, or"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "other graphs with given features."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "y = af(x), y = f(ax) and simple combinations of"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "these."
+    }
+   ]
+  },
+  {
+   "row": "1.3.1",
+   "sub": "1.3",
+   "subTitle": "Coordinate geometry",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    find the equation of a straight line given                  e.g. given two points, or one point and the gradient."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "sufficient information"
+    }
+   ]
+  },
+  {
+   "row": "1.3.2",
+   "sub": "1.3",
+   "subTitle": "Coordinate geometry",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    interpret and use any of the forms y = mx + c,              Including calculations of distances, gradients,"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "y – y1 = m(x – x1), ax + by + c = 0 in solving              midpoints, points of intersection and use of the"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "problems                                                    relationship between the gradients of parallel and"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "perpendicular lines."
+    }
+   ]
+  },
+  {
+   "row": "1.3.3",
+   "sub": "1.3",
+   "subTitle": "Coordinate geometry",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    understand that the equation                                Including use of the expanded form"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "(x – a)2 + (y – b)2 = r 2 represents the circle             x 2 + y 2 + 2gx + 2fy + c = 0."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "with centre (a, b) and radius r"
+    }
+   ]
+  },
+  {
+   "row": "1.3.4",
+   "sub": "1.3",
+   "subTitle": "Coordinate geometry",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    use algebraic methods to solve problems                     Including use of elementary geometrical properties of"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "involving lines and circles                                 circles, e.g. tangent perpendicular to radius, angle in a"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "semicircle, symmetry."
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "Implicit differentiation is not included."
+    }
+   ]
+  },
+  {
+   "row": "1.3.5",
+   "sub": "1.3",
+   "subTitle": "Coordinate geometry",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    understand the relationship between a graph and             e.g. to determine the set of values of k for which the"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "its associated algebraic equation, and use the              line y = x + k intersects, touches or does not meet a"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "relationship between points of intersection of              quadratic curve."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "graphs and solutions of equations."
+    }
+   ]
+  },
+  {
+   "row": "1.4.1",
+   "sub": "1.4",
+   "subTitle": "Circular measure",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   understand the definition of a radian, and use the"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "relationship between radians and degrees"
+    },
+    {
+     "col": 49,
+     "side": "STMT",
+     "text": "1"
+    }
+   ]
+  },
+  {
+   "row": "1.4.2",
+   "sub": "1.4",
+   "subTitle": "Circular measure",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 49,
+     "side": "STMT",
+     "text": "FLOAT:1"
+    },
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   use the formulae s = r i and A = r 2 i                   Including calculation of lengths and angles in"
+    },
+    {
+     "col": 49,
+     "side": "STMT",
+     "text": "2"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "in solving problems concerning the arc length            triangles and areas of triangles."
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "and sector area of a circle."
+    }
+   ]
+  },
+  {
+   "row": "1.5.1",
+   "sub": "1.5",
+   "subTitle": "Trigonometry",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   sketch and use graphs of the sine, cosine and            Including e.g. y = 3 sin x, y = 1 – cos 2x,"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "tangent functions (for angles of any size, and"
+    },
+    {
+     "col": 73,
+     "side": "NOTE-COL?",
+     "text": "y = tan cx + rm ."
+    },
+    {
+     "col": 86,
+     "side": "NOTE-COL?",
+     "text": "1"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "using either degrees or radians)                                       4"
+    },
+    {
+     "col": 92,
+     "side": "NOTE-COL?",
+     "text": "1         3     1"
+    }
+   ]
+  },
+  {
+   "row": "1.5.2",
+   "sub": "1.5",
+   "subTitle": "Trigonometry",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   use the exact values of the sine, cosine and             e.g. cos 150c = −                 =    ."
+    },
+    {
+     "col": 92,
+     "side": "NOTE-COL?",
+     "text": "2 3 , sin 4 r    2"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "tangent of 30°, 45°, 60°, and related angles"
+    }
+   ]
+  },
+  {
+   "row": "1.5.3",
+   "sub": "1.5",
+   "subTitle": "Trigonometry",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   use the notations sin–1x, cos­–1x, tan–1x to denote      No specialised knowledge of these functions is"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "the principal values of the inverse trigonometric        required, but understanding of them as examples of"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "relations                                                inverse functions is expected."
+    },
+    {
+     "col": 35,
+     "side": "STMT",
+     "text": "sin i"
+    }
+   ]
+  },
+  {
+   "row": "1.5.4",
+   "sub": "1.5",
+   "subTitle": "Trigonometry",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   use the identities"
+    },
+    {
+     "col": 35,
+     "side": "STMT",
+     "text": "cos i / tan i and                    e.g. in proving identities, simplifying expressions and"
+    },
+    {
+     "col": 72,
+     "side": "NOTE-COL?",
+     "text": "solving equations."
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "sin 2 i + cos 2 i / 1"
+    }
+   ]
+  },
+  {
+   "row": "1.5.5",
+   "sub": "1.5",
+   "subTitle": "Trigonometry",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   find all the solutions of simple trigonometrical         e.g. solve 3 sin 2x + 1 = 0 for − r 1 x 1 r ,"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "equations lying in a specified interval (general         3 sin 2 i − 5 cos i − 1 = 0 for 0c G i G 360c."
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "forms of solution are not included)."
+    }
+   ]
+  },
+  {
+   "row": "1.6.1",
+   "sub": "1.6",
+   "subTitle": "Series",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 44,
+     "side": "STMT",
+     "text": "FLOAT:n"
+    },
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   use the expansion of (a + b) , where n is a"
+    },
+    {
+     "col": 98,
+     "side": "NOTE-COL?",
+     "text": "r"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "positive integer"
+    },
+    {
+     "col": 72,
+     "side": "NOTE-COL?",
+     "text": "Knowledge of the greatest term and properties of the"
+    },
+    {
+     "col": 72,
+     "side": "NOTE-COL?",
+     "text": "coefficients are not required."
+    }
+   ]
+  },
+  {
+   "row": "1.6.2",
+   "sub": "1.6",
+   "subTitle": "Series",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   recognise arithmetic and geometric progressions"
+    }
+   ]
+  },
+  {
+   "row": "1.6.3",
+   "sub": "1.6",
+   "subTitle": "Series",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   use the formulae for the nth term and for the            Including knowledge that numbers a, b, c are ‘in"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "sum of the first n terms to solve problems               arithmetic progression’ if 2b = a + c (or equivalent)"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "involving arithmetic or geometric progressions           and are ‘in geometric progression’ if b2 = ac (or"
+    },
+    {
+     "col": 72,
+     "side": "NOTE-COL?",
+     "text": "equivalent)."
+    },
+    {
+     "col": 72,
+     "side": "NOTE-COL?",
+     "text": "Questions may involve more than one progression."
+    }
+   ]
+  },
+  {
+   "row": "1.6.4",
+   "sub": "1.6",
+   "subTitle": "Series",
+   "gutter": 72,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•   use the condition for the convergence of a"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "geometric progression, and the formula for"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "the sum to infinity of a convergent geometric"
+    },
+    {
+     "col": 15,
+     "side": "STMT",
+     "text": "progression."
+    }
+   ]
+  },
+  {
+   "row": "1.7.1",
+   "sub": "1.7",
+   "subTitle": "Differentiation",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    understand the gradient of a curve at a point as            Only an informal understanding of the idea of a limit"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "the limit of the gradients of a suitable sequence           is expected."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "of chords, and use the notations                            e.g. includes consideration of the gradient of the"
+    },
+    {
+     "col": 31,
+     "side": "STMT",
+     "text": "dy     d2y                                   chord joining the points with x coordinates 2 and"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "f ′(x), f ″(x), , and 2 for first and second"
+    },
+    {
+     "col": 31,
+     "side": "STMT",
+     "text": "dx      dx                                   (2 + h) on the curve y = x3. Formal use of the general"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "derivatives                                                 method of differentiation from first principles is not"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "required."
+    },
+    {
+     "col": 88,
+     "side": "NOTE-COL?",
+     "text": "dy"
+    }
+   ]
+  },
+  {
+   "row": "1.7.2",
+   "sub": "1.7",
+   "subTitle": "Differentiation",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    use the derivative of xn (for any rational n),              e.g. find      , given y =     2x3 + 5 ."
+    },
+    {
+     "col": 88,
+     "side": "NOTE-COL?",
+     "text": "dx"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "together with constant multiples, sums and"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "differences of functions, and of composite"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "functions using the chain rule"
+    }
+   ]
+  },
+  {
+   "row": "1.7.3",
+   "sub": "1.7",
+   "subTitle": "Differentiation",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    apply differentiation to gradients, tangents and            Including connected rates of change, e.g. given the"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "normals, increasing and decreasing functions and            rate of increase of the radius of a circle, find the rate"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "rates of change                                             of increase of the area for a specific value of one of"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "the variables."
+    }
+   ]
+  },
+  {
+   "row": "1.7.4",
+   "sub": "1.7",
+   "subTitle": "Differentiation",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    locate stationary points and determine their                Including use of the second derivative for identifying"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "nature, and use information about stationary                maxima and minima; alternatives may be used in"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "points in sketching graphs.                                 questions where no method is specified."
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "Knowledge of points of inflexion is not included."
+    }
+   ]
+  },
+  {
+   "row": "1.8.1",
+   "sub": "1.8",
+   "subTitle": "Integration",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 111,
+     "side": "NOTE-COL?",
+     "text": "FLOAT:1"
+    },
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    understand integration as the reverse process of                                                     dx ."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "differentiation, and integrate (ax + b)n (for any                                          ^2x + 3h2"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "rational n except –1), together with constant"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "multiples, sums and differences"
+    }
+   ]
+  },
+  {
+   "row": "1.8.2",
+   "sub": "1.8",
+   "subTitle": "Integration",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    solve problems involving the evaluation of a                e.g. to find the equation of the curve through (1, –2)"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "constant of integration                                                 dy"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "for which      = 2x + 1 ."
+    },
+    {
+     "col": 88,
+     "side": "NOTE-COL?",
+     "text": "dx"
+    }
+   ]
+  },
+  {
+   "row": "1.8.3",
+   "sub": "1.8",
+   "subTitle": "Integration",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    evaluate definite integrals                                 Including simple cases of ‘improper’ integrals, such as"
+    },
+    {
+     "col": 76,
+     "side": "NOTE-COL?",
+     "text": "; x 2 dx and ; x 2 dx ."
+    },
+    {
+     "col": 77,
+     "side": "NOTE-COL?",
+     "text": "1   1            3"
+    },
+    {
+     "col": 79,
+     "side": "NOTE-COL?",
+     "text": "-            -"
+    },
+    {
+     "col": 77,
+     "side": "NOTE-COL?",
+     "text": "0               1"
+    }
+   ]
+  },
+  {
+   "row": "1.8.4",
+   "sub": "1.8",
+   "subTitle": "Integration",
+   "gutter": 76,
+   "lines": [
+    {
+     "col": 11,
+     "side": "STMT",
+     "text": "•    use definite integration to find                            A volume of revolution may involve a region not"
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "–     the area of a region bounded by a curve and           bounded by the axis of rotation, e.g. the region"
+    },
+    {
+     "col": 22,
+     "side": "STMT",
+     "text": "lines parallel to the axes, or between a curve        between y = 9 – x2 and y = 5 rotated about the"
+    },
+    {
+     "col": 22,
+     "side": "STMT",
+     "text": "and a line or between two curves                      x-axis."
+    },
+    {
+     "col": 16,
+     "side": "STMT",
+     "text": "–     a volume of revolution about one of the axes."
+    }
+   ]
+  }
+ ]
+}

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_Zh6Pw56rjdMkPCD4",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2c83c5a7af22a7041849b67b0928ed3ebd088affacc8b7cbbfe276f41c7ab687",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "4f96e4b2dcda21f92ae788c5cee4174f3430c434984ac8a3938393832a21b266",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_Zh6Pw56rjdMkPCD4",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Rates of Reaction",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-2-rates-of-reaction/3-2-2-explaining-rates",
     "specAnchors": [
-      {
-        "code": "4CH1-3.10",
-        "text": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reaction"
-      },
       {
         "code": "4CH1-3.11",
         "text": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle collision theory"
@@ -78,6 +74,10 @@
           "rn_Zh6Pw56rjdMkPCD4::L1::Q7",
           "rn_Zh6Pw56rjdMkPCD4::L1::Q8",
           "rn_Zh6Pw56rjdMkPCD4::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -88,13 +88,12 @@
           "How increasing the surface area affects rate"
         ],
         "specRefs": [
-          "4CH1-3.10",
           "4CH1-3.11"
         ],
         "opening": "Heat does two jobs at once: particles move faster and collide more often, and each collision arrives with more energy. This lesson separates those jobs and adds the exposure effect of powdered solids.",
         "keyPoints": [
           "Increasing the temperature gives particles more kinetic energy, so collisions become more frequent and successful.",
-          "A small rise in temperature causes a large increase in rate.",
+          "A small temperature rise produces a large jump in rate.",
           "For aqueous and gaseous systems, every 10 °C rise roughly doubles the rate of reaction.",
           "Increasing the surface area exposes more particles of a solid to the other reactant.",
           "Doubling the surface area doubles the number of collisions per second."
@@ -131,6 +130,10 @@
           "rn_Zh6Pw56rjdMkPCD4::L2::Q7",
           "rn_Zh6Pw56rjdMkPCD4::L2::Q8",
           "rn_Zh6Pw56rjdMkPCD4::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
         ]
       }
     ],
@@ -177,37 +180,45 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a2a146844cc8-1-8-reaction-kinetics-concentration-on-rate-of-r.png",
         "alt": "Diagram showing how increasing concentration means more particles in the same volume / space, resulting in more collisions",
-        "sourceHeading": "Diagram showing the effect of increasing concentration",
-        "caption": "A higher concentration of particles in (b) means that there are more particles present in the same volume than (a) so the number of collisions and successful collisions between particles increases causing an increased rate of reaction",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "How increasing concentration affects rate",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "A higher concentration of particles in (b) means that there are more particles present in the same volume than (a) so the number of collisions and successful collisions between particles increases causing an increased rate of reaction"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/0d0230196407-oh-cvjgh-changing-pressure-rates.png",
         "alt": "Diagram showing how increasing pressure means the same number of more particles in a smaller volume / space, resulting in more collisions",
-        "sourceHeading": "Diagram showing the effect of increasing pressure",
-        "caption": "The higher pressure (b) means that there are the same number of particles present in a smaller volume than (a) so the number of collisions and successful collisions between particles increases causing an increased rate of reaction",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Explaining rates of reaction",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The higher pressure (b) means that there are the same number of particles present in a smaller volume than (a) so the number of collisions and successful collisions between particles increases causing an increased rate of reaction"
       },
       {
         "id": "fig-03",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e0c6650c0b9a-6-1-6-effect-of-temperature.png",
         "alt": "Diagram showing how increasing temperature means that the particles have more kinetic energy, resulting in more collisions",
-        "sourceHeading": "Diagram showing the effect of increasing temperature",
-        "caption": "An increase in temperature causes an increase in the kinetic energy of the particles. The number of successful collisions increases",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "How increasing temperature affects rate",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "An increase in temperature causes an increase in the kinetic energy of the particles. The number of successful collisions increases"
       },
       {
         "id": "fig-04",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3745ee583d9b-6-1-6-effect-of-surface-area.png",
         "alt": "Diagram showing how increasing surface area means more particles are available for reaction, resulting in more collisions",
-        "sourceHeading": "Diagram showing the effect of increasing surface area",
-        "caption": "An increase in surface area means more collisions per second",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "How increasing the surface area affects rate",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "An increase in surface area means more collisions per second"
       }
     ]
   }

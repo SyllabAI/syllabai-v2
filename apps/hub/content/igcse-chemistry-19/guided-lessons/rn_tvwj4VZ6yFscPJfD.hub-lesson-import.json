@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_tvwj4VZ6yFscPJfD",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a0a0a33ee2c159cede8e82c574a6cf565ad7e13dd775828b29d93074d358777c",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "520f3d408fcd5bcafc6ff3379bb50be95c0a80af09daf8686159dc5d7b553841",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_tvwj4VZ6yFscPJfD",
@@ -17,10 +17,6 @@
       {
         "code": "4CH1-3.12",
         "text": "know that a catalyst is a substance that increases the rate of a reaction, but is chemically unchanged at the end of the reaction"
-      },
-      {
-        "code": "4CH1-3.13",
-        "text": "know that a catalyst works by providing an alternative pathway with lower activation energy"
       }
     ],
     "primer": {
@@ -32,7 +28,7 @@
         "id": "rn_tvwj4VZ6yFscPJfD::L1",
         "title": "What a catalyst is and is not",
         "sourceHeadings": [
-          "The effect of a catalyst on rate of reaction"
+          "Catalysts & Rates"
         ],
         "specRefs": [
           "4CH1-3.12"
@@ -78,9 +74,7 @@
           "rn_tvwj4VZ6yFscPJfD::L1::Q8",
           "rn_tvwj4VZ6yFscPJfD::L1::Q9"
         ],
-        "figureIds": [
-          "fig-01"
-        ]
+        "figureIds": []
       },
       {
         "id": "rn_tvwj4VZ6yFscPJfD::L2",
@@ -89,7 +83,7 @@
           "The effect of a catalyst on rate of reaction"
         ],
         "specRefs": [
-          "4CH1-3.13"
+          "4CH1-3.12"
         ],
         "opening": "The shortcut is the secret: a catalyst offers the reaction an alternative pathway with a lower energy hurdle. This lesson walks that mechanism and meets the industrial catalysts built on it.",
         "keyPoints": [
@@ -182,22 +176,21 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/65a73758c90f-5-6-reaction-kinetics-iron-catalyst-1.png",
         "alt": "Diagram showing how iron acts as a catalyst for the Haber process",
         "sourceHeading": "The effect of a catalyst on rate of reaction",
-        "binding": "unresolved",
         "moduleIds": [
-          "L1",
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b9dba5d10ec4-5-6-reaction-kinetics-iron-catalyst-2.png",
         "alt": "Reaction Kinetics - Iron Catalyst (2), downloadable AS & A Level Chemistry revision notes",
         "sourceHeading": "The effect of a catalyst on rate of reaction",
-        "caption": "Catalysts work by attracting reactant molecules on to the surface and so providing an alternate reaction pathway of lower energy",
-        "binding": "content-overlap",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Catalysts work by attracting reactant molecules on to the surface and so providing an alternate reaction pathway of lower energy"
       }
     ]
   }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_QVmDs8X4szpds3cP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7ccc7e15d2ea6fc207c95cdf67f83b9127d24e2ef200dff8d34dc3d8a4fd815b",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "14aa78c53b4a1c5a0c936ae9123a0b3c2baf947a1bbd6bcd4b30c24a194279e4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_QVmDs8X4szpds3cP",
@@ -14,10 +14,6 @@
     "subtopicTitle": "States of Matter",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-1-states-of-matter/1-1-5-practical-investigate-the-solubility-of-a-solid-in-water-at-a-specific-temperature",
     "specAnchors": [
-      {
-        "code": "4CH1-1.5C",
-        "text": "know what is meant by the term solubility in the units g per 100 g of solvent"
-      },
       {
         "code": "4CH1-1.7C",
         "text": "practical: investigate the solubility of a solid in water at a specific temperature"
@@ -91,7 +87,6 @@
           "Results"
         ],
         "specRefs": [
-          "4CH1-1.5C",
           "4CH1-1.7C"
         ],
         "opening": "The weighed results tell the whole story in three numbers: the solution poured in, the solid recovered, and therefore the water that carried it. From those, the solubility comes out in the standard unit, grams per 100 grams of water, and the solute's share of the solution can be stated as a percentage.",
@@ -135,7 +130,8 @@
           "rn_QVmDs8X4szpds3cP::L2::Q7",
           "rn_QVmDs8X4szpds3cP::L2::Q8",
           "rn_QVmDs8X4szpds3cP::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -161,19 +157,9 @@
           "firstLesson": 1
         },
         {
-          "term": "solvent",
-          "definition": "The liquid, here water, that does the dissolving.",
-          "firstLesson": 1
-        },
-        {
           "term": "solute",
           "definition": "The solid that dissolves; here copper(II) sulfate.",
           "firstLesson": 1
-        },
-        {
-          "term": "percentage by mass",
-          "definition": "The solute's mass divided by the solution's mass, multiplied by 100.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -194,10 +180,10 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1aa2f3cc1462-23078-practical-investigate-the-solubility-of-a-.png",
         "alt": "Practical: Investigate the Solubility of a Solid in Water at a Specific Temperature",
         "sourceHeading": "Method",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

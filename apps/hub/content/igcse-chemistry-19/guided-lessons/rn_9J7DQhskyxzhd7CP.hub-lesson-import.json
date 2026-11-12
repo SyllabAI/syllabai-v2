@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_9J7DQhskyxzhd7CP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4c9d8310dd0b4856c2d234f822702b7984ebf21a61a2abf8eaed93d50d99f039",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "1bf6b41e471fedebd67dd331bfa159b688ccb11e2eb9226d6ad35f06e896bc4c",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_9J7DQhskyxzhd7CP",
@@ -83,7 +83,8 @@
           "rn_9J7DQhskyxzhd7CP::L1::Q7",
           "rn_9J7DQhskyxzhd7CP::L1::Q8",
           "rn_9J7DQhskyxzhd7CP::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_9J7DQhskyxzhd7CP::L2",
@@ -99,7 +100,7 @@
         "keyPoints": [
           "Sulfur dioxide from burned fuels dissolves into raindrops and makes sulfuric acid.",
           "The route is 2SO2 + O2 + 2H2O -> 2H2SO4, one component of acid rain.",
-          "Nitrogen dioxide from car engines reacts with rain water to give a mixture of nitrous and nitric acids.",
+          "Nitrogen dioxide released by car engines meets rain water and forms a mixture of nitrous and nitric acids.",
           "The nitrogen route is 2NO2 + H2O -> HNO2 + HNO3, and lightning can also trigger NOx formation.",
           "Acid rain corrodes metals and carbonate statues, harms aquatic life, pollutes crops and water, and irritates lungs."
         ],
@@ -135,6 +136,9 @@
           "rn_9J7DQhskyxzhd7CP::L2::Q7",
           "rn_9J7DQhskyxzhd7CP::L2::Q8",
           "rn_9J7DQhskyxzhd7CP::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -181,10 +185,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/ab9c58eee843-how-acid-rain-is-produced.png",
         "alt": "How acid rain is produced, downloadable IGCSE & GCSE Biology revision notes",
-        "sourceHeading": "The formation of acid rain",
-        "caption": "Formation of acid rain from nitrogen and sulfur oxides",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "How is acid rain formed?",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Formation of acid rain from nitrogen and sulfur oxides"
       }
     ]
   }

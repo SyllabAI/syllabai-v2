@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_kdRjZHjHcpVZsD3h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d5ebc434454f253360ad373afbaa979d5ddf04783bff9c328c09235712ba00d2",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "9d16c05b7fb544e12be135769dc926f0eb1e3873af95d4bcf7577a5d1ec79e99",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_kdRjZHjHcpVZsD3h",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Electrolysis",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-9-electrolysis/1-9-4-practical-investigate-the-electrolysis-of-aqueous-solutions",
     "specAnchors": [
-      {
-        "code": "4CH1-1.58C",
-        "text": "describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead(II) bromide) and aqueous solutions (including sodium chloride, dilute sulfuric acid and copper(II) sulfate) and to predict the products"
-      },
       {
         "code": "4CH1-1.60C",
         "text": "practical: investigate the electrolysis of aqueous solutions"
@@ -78,6 +74,9 @@
           "rn_kdRjZHjHcpVZsD3h::L1::Q7",
           "rn_kdRjZHjHcpVZsD3h::L1::Q8",
           "rn_kdRjZHjHcpVZsD3h::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -88,7 +87,7 @@
           "Conclusions:"
         ],
         "specRefs": [
-          "4CH1-1.58C"
+          "4CH1-1.60C"
         ],
         "opening": "The results table across the three solutions is the practical's payoff. Sodium chloride solution splits into hydrogen at its cathode and chlorine at its anode, the chlorine showing itself by bleaching litmus. Dilute sulfuric acid splits into hydrogen at its cathode and oxygen at its anode, while copper(II) sulfate deposits pink-brown copper at its cathode and gives oxygen at its anode.",
         "keyPoints": [
@@ -130,7 +129,8 @@
           "rn_kdRjZHjHcpVZsD3h::L2::Q7",
           "rn_kdRjZHjHcpVZsD3h::L2::Q8",
           "rn_kdRjZHjHcpVZsD3h::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -176,9 +176,11 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9f22fc866bd4-electrolysis-apparatus-inverted-test-tubes.png",
         "alt": "Diagram showing electrolysis equipment with inverted test tubes above the electrodes to collect the gases",
-        "sourceHeading": "Electrolysis cell for collecting gaseous products from aqueous solutions",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Method:",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique"
       }
     ]
   }

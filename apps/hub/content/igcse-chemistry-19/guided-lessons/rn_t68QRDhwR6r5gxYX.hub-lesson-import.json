@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_t68QRDhwR6r5gxYX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "70fefa0fd4527da0cd527a632f2a9e3d06a3a303e9e541e28dd37d38d3d57fbe",
-    "pinnedRef": "51a6ed34e715a270c1d1525d1cff903777337437"
+    "sourceLayerSha256": "f127faff8105da3fc935190cd0dc023e8a20858e574b5f41c6a55f695024dfa4",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_t68QRDhwR6r5gxYX",
@@ -14,10 +14,6 @@
     "subtopicTitle": "Reversible Reactions & Equilibria",
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-3-reversible-reactions-and-equilibria/3-3-1-reversible-reactions",
     "specAnchors": [
-      {
-        "code": "4CH1-3.17",
-        "text": "know that some reactions are reversible and this is indicated by the symbol ⇌ in equations"
-      },
       {
         "code": "4CH1-3.18",
         "text": "describe reversible reactions such as the dehydration of hydrated copper(II) sulfate and the effect of heat on ammonium chloride"
@@ -35,7 +31,7 @@
           "Reversible reactions"
         ],
         "specRefs": [
-          "4CH1-3.17"
+          "4CH1-3.18"
         ],
         "opening": "Most equations you have met end when the reactants run out, but some reactions can be undone by their own products. This lesson introduces the double arrow that marks chemistry able to travel in both directions.",
         "keyPoints": [
@@ -77,7 +73,8 @@
           "rn_t68QRDhwR6r5gxYX::L1::Q7",
           "rn_t68QRDhwR6r5gxYX::L1::Q8",
           "rn_t68QRDhwR6r5gxYX::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_t68QRDhwR6r5gxYX::L2",
@@ -178,12 +175,12 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6a98f5a0c76f-6-2-2-energy-changes-reversible-reactions.png",
         "alt": "Energy Changes & Reversible Reactions, downloadable IGCSE & GCSE Chemistry revision notes",
-        "sourceHeading": "The dehydration of hydrated copper(II) sulfate",
-        "caption": "The dehydration of hydrated salts is often a reversible reaction",
-        "binding": "unresolved",
+        "sourceHeading": "Dehydration of hydrated copper(II) sulfate",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The dehydration of hydrated salts is often a reversible reaction"
       }
     ]
   }

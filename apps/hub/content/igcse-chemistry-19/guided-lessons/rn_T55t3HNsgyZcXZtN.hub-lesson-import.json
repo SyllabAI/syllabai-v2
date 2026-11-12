@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_T55t3HNsgyZcXZtN",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b369a0ae929569c0cc6ae2eecc034d3802e74925ef22adde7ba1216d6b97715a",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "1875e8eca38fb88868f79afa4d85598f443d1fef4ff5be4e1263cfeade11b81c",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_T55t3HNsgyZcXZtN",
@@ -16,7 +16,7 @@
     "specAnchors": [
       {
         "code": "4CH1-1.35C",
-        "text": "understand how to carry out calculations involving gas volumes and the molar volume of a gas (24 dm3 and 24 000 cm3 at room temperature and pressure (rtp))"
+        "text": "understand how to carry out calculations involving gas volumes and the molar volume of a gas (24 dm 3 and 24 000 cm 3 at room temperature and pressure (rtp))"
       }
     ],
     "primer": {
@@ -129,7 +129,8 @@
           "rn_T55t3HNsgyZcXZtN::L2::Q7",
           "rn_T55t3HNsgyZcXZtN::L2::Q8",
           "rn_T55t3HNsgyZcXZtN::L2::Q9"
-        ]
+        ],
+        "figureIds": []
       }
     ],
     "assets": {
@@ -155,18 +156,8 @@
           "firstLesson": 1
         },
         {
-          "term": "coefficient",
-          "definition": "The balancing number in front of a formula in an equation.",
-          "firstLesson": 2
-        },
-        {
           "term": "balanced equation",
           "definition": "A symbol equation whose atom counts match on both sides; its coefficients set gas-volume ratios.",
-          "firstLesson": 2
-        },
-        {
-          "term": "combustion",
-          "definition": "Burning a fuel in oxygen, as in the propane example of this note.",
           "firstLesson": 2
         }
       ],
@@ -186,22 +177,22 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a09acca5b100-molar-volume-dm3-decimetre-formula-triangle.png",
         "alt": "Molar Volume dm3 (decimetre) Formula Triangle, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Avogadro's Law",
-        "caption": "Formula triangle showing the relationship between moles of gas, volume in dm***<sup>***3***</sup>*** and the molar volume",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Formula triangle showing the relationship between moles of gas, volume in dm***<sup>***3***</sup>*** and the molar volume"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/cc16959315f9-molar-volume-cm3-formula-triangle.png",
         "alt": "Molar Volume cm3 Formula Triangle, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Avogadro's Law",
-        "caption": "Formula triangle showing the relationship between moles of gas, volume in cm***<sup>***3 ***</sup>***and the molar volume",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Formula triangle showing the relationship between moles of gas, volume in cm***<sup>***3 ***</sup>***and the molar volume"
       }
     ]
   }

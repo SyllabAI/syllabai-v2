@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_2d6Yb8GwGfRRd6pZ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5d75e44413ef478510708cde16abd3d7988037757e9f289320d96651ec6d508f",
-    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
+    "sourceLayerSha256": "a69686e0e226a99c2cbef5e8ff6b7321533deb1edbf1dbc6b971eaab444a774a",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_2d6Yb8GwGfRRd6pZ",
@@ -15,12 +15,8 @@
     "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-3-reversible-reactions-and-equilibria/3-3-2-dynamic-equilibrium",
     "specAnchors": [
       {
-        "code": "4CH1-3.19C",
-        "text": "know that a reversible reaction can reach dynamic equilibrium in a sealed container"
-      },
-      {
         "code": "4CH1-3.20C",
-        "text": "know that the characteristics of a reaction at dynamic equilibrium are: the forward and reverse reactions occur at the same rate; the concentrations of reactants and products remain constant"
+        "text": "know that the characteristics of a reaction at dynamic equilibrium are: • the forward and reverse reactions occur at the same rate • the concentrations of reactants and products remain constant."
       }
     ],
     "primer": {
@@ -32,11 +28,9 @@
         "id": "rn_2d6Yb8GwGfRRd6pZ::L1",
         "title": "Dynamic equilibrium",
         "sourceHeadings": [
-          "Dynamic Equilibrium",
-          "Dynamic equilibrium"
+          "Dynamic Equilibrium"
         ],
         "specRefs": [
-          "4CH1-3.19C",
           "4CH1-3.20C"
         ],
         "opening": "Some reactions can undo themselves: the products re-form the reactants as readily as the reactants form the products. This lesson defines the special state such a reaction settles into, called dynamic equilibrium, and the one condition it demands — a closed container. Two features mark that state, and they are the ones the exam asks for.",
@@ -79,6 +73,9 @@
           "rn_2d6Yb8GwGfRRd6pZ::L1::Q7",
           "rn_2d6Yb8GwGfRRd6pZ::L1::Q8",
           "rn_2d6Yb8GwGfRRd6pZ::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -89,7 +86,7 @@
           "The rate of the forward and reverse reaction during the progress of a reaction"
         ],
         "specRefs": [
-          "4CH1-3.19C"
+          "4CH1-3.20C"
         ],
         "opening": "Definitions become clearer when watched in motion, and the Haber process is the note's chosen showcase. It makes ammonia from nitrogen and hydrogen, and its rate story ends exactly at equilibrium. Follow the two rates from the start of the reaction and you can see the state assemble itself.",
         "keyPoints": [
@@ -163,11 +160,6 @@
           "term": "concentration",
           "definition": "The amount of a substance held in a given volume of mixture.",
           "firstLesson": 1
-        },
-        {
-          "term": "Haber process",
-          "definition": "The industrial reaction making ammonia from nitrogen and hydrogen; the note's equilibrium example.",
-          "firstLesson": 2
         }
       ],
       "workedExample": {
@@ -186,21 +178,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a9182d3d4399-equilibrium-in-open-closed-systems.png",
         "alt": "Equilibrium in open & closed systems",
-        "sourceHeading": "The difference between an open and closed system",
-        "caption": "Equilibrium can only be reached in a closed container",
-        "binding": "note-level",
-        "moduleIds": []
+        "sourceHeading": "Dynamic Equilibrium",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "Equilibrium can only be reached in a closed container"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d2522ef3b3c0-dynamic-equilibrium.png",
         "alt": "Graph to show dynamic equilibrium",
         "sourceHeading": "The rate of the forward and reverse reaction during the progress of a reaction",
-        "caption": "At equilibrium, the rate of the forward reaction is equal to the rate of the reverse reaction",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "At equilibrium, the rate of the forward reaction is equal to the rate of the reverse reaction"
       }
     ]
   }

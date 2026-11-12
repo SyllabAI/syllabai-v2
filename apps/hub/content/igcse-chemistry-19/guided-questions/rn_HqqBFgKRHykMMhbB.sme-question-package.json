@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_HqqBFgKRHykMMhbB",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1ccdf67e032d344bb1692dccfca6341d66d725e52bdaa10841356c9c62ea7488",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "61e4642a8c32475e52d3e143f42f3386a0fd4cd7d1102936320ca2a9c115298e",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_HqqBFgKRHykMMhbB",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "A catalyst is always required for the reaction to proceed",
+          "correct": false,
+          "explanation": "Addition needs no catalyst in general; the definition is about merging molecules.",
+          "misconception": "catalyst assumed"
+        },
+        {
+          "key": "B",
           "text": "Two or more molecules form one larger molecule with no other products",
           "correct": true,
           "explanation": "Everything that enters the reaction leaves inside the single merged product.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "One atom swaps places with another inside the molecule",
           "correct": false,
           "explanation": "That describes substitution, which produces two products rather than one.",
           "misconception": "types swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The molecule burns in a plentiful oxygen supply",
           "correct": false,
           "explanation": "Burning in oxygen is combustion, the third type, not addition.",
           "misconception": "combustion confusion"
-        },
-        {
-          "key": "D",
-          "text": "A catalyst is always required for the reaction to proceed",
-          "correct": false,
-          "explanation": "Addition needs no catalyst in general; the definition is about merging molecules.",
-          "misconception": "catalyst assumed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Both bromine atoms add across the double bond, leaving one product",
-          "correct": true,
-          "explanation": "The two reactant molecules merge into dibromoethane alone, which is the addition signature.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because ethene is an alkane with strong bonds",
-          "correct": false,
-          "explanation": "Ethene is an alkene, and the classification rests on the single merged product.",
-          "misconception": "family mislabelled"
-        },
-        {
-          "key": "C",
           "text": "Because a hydrogen atom was replaced by bromine",
           "correct": false,
           "explanation": "No hydrogen leaves the molecule here; the bromine joins on across the double bond.",
           "misconception": "substitution misapplied"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the reaction needs ultraviolet light to start",
           "correct": false,
           "explanation": "Ultraviolet light belongs to the alkane-halogen substitution story, not this addition.",
           "misconception": "conditions borrowed"
+        },
+        {
+          "key": "C",
+          "text": "Both bromine atoms add across the double bond, leaving one product",
+          "correct": true,
+          "explanation": "The two reactant molecules merge into dibromoethane alone, which is the addition signature.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because ethene is an alkane with strong bonds",
+          "correct": false,
+          "explanation": "Ethene is an alkene, and the classification rests on the single merged product.",
+          "misconception": "family mislabelled"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Two products: the substituted molecule and the displaced fragment",
-          "correct": true,
-          "explanation": "What leaves the organic molecule pairs with the incoming atom to form the second product, as in HBr.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "One product only, because everything merges",
           "correct": false,
           "explanation": "One merged product describes addition; substitution always has something displaced.",
           "misconception": "addition count reused"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Three products in every case",
           "correct": false,
           "explanation": "The standard substitution makes exactly two products at this level.",
           "misconception": "count inflated"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It depends on the temperature used",
           "correct": false,
           "explanation": "The product count follows from the reaction type, not the temperature.",
           "misconception": "conditions decide type"
+        },
+        {
+          "key": "D",
+          "text": "Two products: the substituted molecule and the displaced fragment",
+          "correct": true,
+          "explanation": "What leaves the organic molecule pairs with the incoming atom to form the second product, as in HBr.",
+          "misconception": null
         }
       ]
     },
@@ -199,7 +199,9 @@
       "kind": "recall",
       "modelAnswer": "Substitution happens when one atom or functional group in a molecule is replaced by another.",
       "keywords": [
-        "replaced"
+        "replaced",
+        "substitution",
+        "functional"
       ],
       "options": []
     },
@@ -212,7 +214,8 @@
       "modelAnswer": "Two or more molecules combine into a single larger product, with no other products formed.",
       "keywords": [
         "single",
-        "larger"
+        "larger",
+        "distinguishes"
       ],
       "options": []
     },
@@ -225,7 +228,8 @@
       "modelAnswer": "Methane is a saturated alkane, so swapping a halogen for a hydrogen is substitution and only proceeds under UV radiation; ethene is an alkene whose C=C opens by addition, a move that needs no UV condition.",
       "keywords": [
         "substitution",
-        "addition"
+        "addition",
+        "ultraviolet"
       ],
       "options": []
     },
@@ -238,7 +242,8 @@
       "modelAnswer": "Addition: the molecules combine into the single larger product bromoethane, so just one product forms.",
       "keywords": [
         "addition",
-        "single"
+        "single",
+        "bromoethane"
       ],
       "options": []
     },
@@ -250,31 +255,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Carbon dioxide and hydrogen gas",
+          "correct": false,
+          "explanation": "Hydrogen from the fuel joins oxygen to make water, not hydrogen gas.",
+          "misconception": "hydrogen gas misassigned"
+        },
+        {
+          "key": "B",
           "text": "Carbon dioxide and water",
           "correct": true,
           "explanation": "Unlimited oxygen oxidises every carbon fully to CO2, with hydrogen ending as water.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Carbon monoxide and water",
           "correct": false,
           "explanation": "Carbon monoxide belongs to incomplete burning in a limited oxygen supply.",
           "misconception": "incomplete products used"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Carbon and hydrogen only",
           "correct": false,
           "explanation": "With oxygen present the products are oxides, not the bare elements.",
           "misconception": "elements released"
-        },
-        {
-          "key": "D",
-          "text": "Carbon dioxide and hydrogen gas",
-          "correct": false,
-          "explanation": "Hydrogen from the fuel joins oxygen to make water, not hydrogen gas.",
-          "misconception": "hydrogen gas misassigned"
         }
       ]
     },
@@ -286,31 +291,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A limited supply of air or oxygen",
-          "correct": true,
-          "explanation": "Starved of oxygen, the carbon cannot fully oxidise and settles for monoxide.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "An unlimited supply of oxygen",
-          "correct": false,
-          "explanation": "Plentiful oxygen drives complete burning to carbon dioxide instead.",
-          "misconception": "oxygen supply inverted"
-        },
-        {
-          "key": "C",
           "text": "The presence of nitrogen in the air",
           "correct": false,
           "explanation": "Nitrogen is already in air during complete burning too; only the oxygen shortage matters.",
           "misconception": "nitrogen blamed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Any temperature below 100 degrees Celsius",
           "correct": false,
           "explanation": "Temperature alone does not decide the products; the oxygen supply does.",
           "misconception": "temperature blamed"
+        },
+        {
+          "key": "C",
+          "text": "A limited supply of air or oxygen",
+          "correct": true,
+          "explanation": "Starved of oxygen, the carbon cannot fully oxidise and settles for monoxide.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "An unlimited supply of oxygen",
+          "correct": false,
+          "explanation": "Plentiful oxygen drives complete burning to carbon dioxide instead.",
+          "misconception": "oxygen supply inverted"
         }
       ]
     },
@@ -322,31 +327,31 @@
       "options": [
         {
           "key": "A",
-          "text": "2 before O2 and 2 before H2O",
-          "correct": true,
-          "explanation": "Four hydrogens need two waters, and those two waters plus CO2 need four oxygens, so 2O2 supplies them.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "1 before O2 and 2 before H2O",
           "correct": false,
           "explanation": "One O2 gives only two oxygens, but CO2 and 2H2O together need four.",
           "misconception": "oxygen undercounted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "2 before O2 and 1 before H2O",
           "correct": false,
           "explanation": "One water leaves two hydrogens stranded from the four that methane carries.",
           "misconception": "hydrogen miscounted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "4 before O2 and 4 before H2O",
           "correct": false,
           "explanation": "That over-supplies oxygen and breaks the atom balance the equation must keep.",
           "misconception": "overscaled balancing"
+        },
+        {
+          "key": "D",
+          "text": "2 before O2 and 2 before H2O",
+          "correct": true,
+          "explanation": "Four hydrogens need two waters, and those two waters plus CO2 need four oxygens, so 2O2 supplies them.",
+          "misconception": null
         }
       ]
     },
@@ -394,31 +399,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because it produces one merged product",
+          "correct": false,
+          "explanation": "Two products, CO2 and water, form in complete burning, so it is not an addition case.",
+          "misconception": "addition confused"
+        },
+        {
+          "key": "B",
           "text": "Because it is one of the three named types of organic reaction",
           "correct": true,
           "explanation": "The classification scheme of the topic lists exactly these three reaction families.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because it only happens to alkanes",
           "correct": false,
           "explanation": "The note records alkenes burning too, so the type is not alkane-only.",
           "misconception": "family restricted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because it needs ultraviolet light like substitution",
           "correct": false,
           "explanation": "Combustion needs oxygen and a flame or spark, not ultraviolet radiation.",
           "misconception": "conditions crossed"
-        },
-        {
-          "key": "D",
-          "text": "Because it produces one merged product",
-          "correct": false,
-          "explanation": "Two products, CO2 and water, form in complete burning, so it is not an addition case.",
-          "misconception": "addition confused"
         }
       ]
     },
@@ -431,7 +436,8 @@
       "modelAnswer": "Carbon dioxide and water, formed when air or oxygen is in unlimited supply.",
       "keywords": [
         "dioxide",
-        "water"
+        "water",
+        "hydrocarbon"
       ],
       "options": []
     },
@@ -444,7 +450,8 @@
       "modelAnswer": "C3H8 + 5O2 -> 3CO2 + 4H2O.",
       "keywords": [
         "c3h8",
-        "3co2"
+        "3co2",
+        "combustion"
       ],
       "options": []
     },
@@ -457,7 +464,8 @@
       "modelAnswer": "A blue flame has plenty of oxygen, so the carbon leaves as carbon dioxide; a yellow, sooty flame is oxygen-starved, so incomplete combustion gives carbon monoxide and carbon soot instead.",
       "keywords": [
         "monoxide",
-        "limited"
+        "limited",
+        "incomplete"
       ],
       "options": []
     },

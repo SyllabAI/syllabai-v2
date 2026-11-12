@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_vXPcH3vS8wv7BFkK",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d80d46eb8eb6a5540027a403c0731a1eae23110d0078865ab79e9633c804db5e",
-    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
+    "sourceLayerSha256": "ca132bcb1a032c4a5ad5093ad78f34e34d738f9ebf23692d09e7dab5e0410eec",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_vXPcH3vS8wv7BFkK",
   "subject": "igcse-chemistry",
@@ -50,36 +50,36 @@
     {
       "id": "rn_vXPcH3vS8wv7BFkK::L1::Q2",
       "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
-      "stem": "Which yield is calculated from the balanced equation and the reacting masses?",
+      "stem": "Which yield do you calculate using the balanced equation together with the reacting masses?",
       "misconceptionClass": "source-of-yield error",
       "options": [
         {
           "key": "A",
+          "text": "Neither yield uses the equation",
+          "correct": false,
+          "explanation": "The balanced equation is exactly what the theoretical yield is built from.",
+          "misconception": "equation avoided entirely"
+        },
+        {
+          "key": "B",
           "text": "The theoretical yield",
           "correct": true,
           "explanation": "The theoretical yield assumes complete conversion, so it is worked out from the equation rather than measured.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The actual yield",
           "correct": false,
           "explanation": "The actual yield can only be found by doing the experiment and weighing the product.",
           "misconception": "measured value thought to be derivable"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The percentage yield",
           "correct": false,
           "explanation": "Percentage yield is computed afterwards, from the actual and theoretical yields together.",
           "misconception": "derived quantity treated as primary"
-        },
-        {
-          "key": "D",
-          "text": "Neither yield uses the equation",
-          "correct": false,
-          "explanation": "The balanced equation is exactly what the theoretical yield is built from.",
-          "misconception": "equation avoided entirely"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Products keep turning back into reactants, so the forward reaction never completes",
-          "correct": true,
-          "explanation": "In reversible reactions the products are continually converting back, which caps the yield however careful the technique.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The equipment absorbs some of the product",
-          "correct": false,
-          "explanation": "Equipment losses can be reduced by careful technique; reversibility caps the yield even with perfect apparatus.",
-          "misconception": "avoidable losses blamed for a fundamental cap"
-        },
-        {
-          "key": "C",
           "text": "Side reactions with the air consume product",
           "correct": false,
           "explanation": "Side reactions are a separate loss route; the question states the reaction itself runs both ways.",
           "misconception": "side reactions blamed where reversibility is the cap"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Weighing the product introduces error",
           "correct": false,
           "explanation": "Measurement error affects the recorded figure, not the chemical ceiling a reversible reaction imposes.",
           "misconception": "measurement error confused with chemical ceiling"
+        },
+        {
+          "key": "C",
+          "text": "Products keep turning back into reactants, so the forward reaction never completes",
+          "correct": true,
+          "explanation": "In reversible reactions the products are continually converting back, which caps the yield however careful the technique.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The equipment absorbs some of the product",
+          "correct": false,
+          "explanation": "Equipment losses can be reduced by careful technique; reversibility caps the yield even with perfect apparatus.",
+          "misconception": "avoidable losses blamed for a fundamental cap"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "During the separation and purification stages",
-          "correct": true,
-          "explanation": "Filtration and distillation are separation and purification steps, and products can be lost during both.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "While the reactants are being weighed",
           "correct": false,
           "explanation": "Nothing has been made yet at the weighing stage, so no product can be lost there.",
           "misconception": "loss located before any product exists"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "During transfer between containers",
           "correct": false,
           "explanation": "Transfer losses are real but separate; the named operations are filtration and distillation themselves.",
           "misconception": "plausible generic loss misapplied to the named steps"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "No loss is possible once the reaction ends",
           "correct": false,
           "explanation": "Products remain vulnerable after the reaction; cleaning steps are a classic loss point.",
           "misconception": "completion assumed to freeze losses"
+        },
+        {
+          "key": "D",
+          "text": "During the separation and purification stages",
+          "correct": true,
+          "explanation": "Filtration and distillation are separation and purification steps, and products can be lost during both.",
+          "misconception": null
         }
       ]
     },
@@ -163,7 +163,7 @@
       "options": [
         {
           "key": "A",
-          "text": "To increase profits and reduce costs and waste",
+          "text": "To lift profits while cutting costs and waste",
           "correct": true,
           "explanation": "Higher yields convert more of each batch into sellable product, cutting waste and cost.",
           "misconception": null
@@ -266,31 +266,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Actual yield plus theoretical yield",
+          "correct": false,
+          "explanation": "Adding the two yields has no meaning; they measure the same quantity under different conditions.",
+          "misconception": "combination confused with comparison"
+        },
+        {
+          "key": "B",
           "text": "Actual yield divided by theoretical yield, times one hundred",
           "correct": true,
           "explanation": "The comparison always puts the real amount over the promised amount, scaled to one hundred.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Theoretical yield divided by actual yield, times one hundred",
           "correct": false,
           "explanation": "That inverts the comparison; the result would exceed one hundred whenever some product is lost.",
           "misconception": "division inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Actual yield minus theoretical yield",
           "correct": false,
           "explanation": "The difference shows grams lost but is not the percentage the specification asks for.",
           "misconception": "difference mistaken for a ratio"
-        },
-        {
-          "key": "D",
-          "text": "Actual yield plus theoretical yield",
-          "correct": false,
-          "explanation": "Adding the two yields has no meaning; they measure the same quantity under different conditions.",
-          "misconception": "combination confused with comparison"
         }
       ]
     },
@@ -302,31 +302,31 @@
       "options": [
         {
           "key": "A",
-          "text": "80 percent",
-          "correct": true,
-          "explanation": "1.6 divided by 2.0 is 0.8, and 0.8 times one hundred is 80.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "125 percent",
-          "correct": false,
-          "explanation": "2.0 divided by 1.6 is 1.25, so this answer comes from dividing the larger promised amount by the smaller real one.",
-          "misconception": "division inverted"
-        },
-        {
-          "key": "C",
           "text": "1.25",
           "correct": false,
           "explanation": "The ratio was computed but never scaled by one hundred.",
           "misconception": "unmultiplied ratio reported as a percentage"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "8 percent",
           "correct": false,
           "explanation": "0.8 was scaled wrongly by a factor of ten; one hundred, not ten, is the multiplier.",
           "misconception": "decimal point misplaced"
+        },
+        {
+          "key": "C",
+          "text": "80 percent",
+          "correct": true,
+          "explanation": "1.6 divided by 2.0 is 0.8, and 0.8 times one hundred is 80.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "125 percent",
+          "correct": false,
+          "explanation": "2.0 divided by 1.6 is 1.25, so this answer comes from dividing the larger promised amount by the smaller real one.",
+          "misconception": "division inverted"
         }
       ]
     },
@@ -338,31 +338,31 @@
       "options": [
         {
           "key": "A",
-          "text": "An error was made, most likely dividing the theoretical yield by the actual yield",
-          "correct": true,
-          "explanation": "No reaction can make more than the equation promises; the classic cause is dividing the promised amount by the real one.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The reaction was unusually efficient",
           "correct": false,
           "explanation": "Even complete conversion reaches only one hundred percent; above that the arithmetic is wrong, not the chemistry impressive.",
           "misconception": "impossible value praised as excellence"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The actual yield was measured carelessly",
           "correct": false,
           "explanation": "A figure above one hundred points at the formula first; no measurement can beat the theoretical ceiling.",
           "misconception": "measurement blamed before formula checked"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The theoretical yield was too low",
           "correct": false,
           "explanation": "The theoretical yield is fixed by the balanced equation; the calculation, not the ceiling, must be redone.",
           "misconception": "ceiling renegotiated to fit the number"
+        },
+        {
+          "key": "D",
+          "text": "An error was made, most likely dividing the theoretical yield by the actual yield",
+          "correct": true,
+          "explanation": "No reaction can make more than the equation promises; the classic cause is dividing the promised amount by the real one.",
+          "misconception": null
         }
       ]
     },
@@ -410,31 +410,31 @@
       "options": [
         {
           "key": "A",
+          "text": "9.2 percent",
+          "correct": false,
+          "explanation": "4.2 plus 5.0 is 9.2; addition never appears in a yield sum.",
+          "misconception": "values added"
+        },
+        {
+          "key": "B",
           "text": "84 percent",
           "correct": true,
           "explanation": "4.2 divided by 5.0 is 0.84, and scaling by one hundred gives 84 percent.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "119 percent",
           "correct": false,
           "explanation": "5.0 divided by 4.2 is about 1.19; the inversion pushes the answer past the impossible ceiling.",
           "misconception": "division inverted"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "0.84 percent",
           "correct": false,
           "explanation": "The division was done but the one-hundred scaling was skipped.",
           "misconception": "ratio unscaled"
-        },
-        {
-          "key": "D",
-          "text": "9.2 percent",
-          "correct": false,
-          "explanation": "4.2 plus 5.0 is 9.2; addition never appears in a yield sum.",
-          "misconception": "values added"
         }
       ]
     },
@@ -449,9 +449,7 @@
         "actual",
         "theoretical",
         "divide",
-        "divided",
-        "hundred",
-        "100"
+        "hundred"
       ],
       "options": []
     },
@@ -483,9 +481,7 @@
         "mistake",
         "divided",
         "divide",
-        "inverse",
-        "inverted",
-        "wrong"
+        "inverse"
       ],
       "options": []
     },
@@ -498,7 +494,8 @@
       "modelAnswer": "31 / 40 x 100 = 77.5 percent.",
       "keywords": [
         "77.5",
-        "77.5 percent"
+        "77.5 percent",
+        "theoretical"
       ],
       "options": []
     }

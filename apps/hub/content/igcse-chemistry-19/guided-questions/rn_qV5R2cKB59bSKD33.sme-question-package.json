@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_qV5R2cKB59bSKD33",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "c6908c22ab104bf6e35332978e908b63216e20aaaf97a291e274b9af1ed8309f",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "e3d2f22760e17152aff296da8833da7ca116c6a2312816a46a5990bc5e524201",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_qV5R2cKB59bSKD33",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "The white tile",
+          "correct": false,
+          "explanation": "The tile only improves visibility of the colour change.",
+          "misconception": "supporting item given a measuring role"
+        },
+        {
+          "key": "B",
           "text": "The burette",
           "correct": true,
           "explanation": "The burette is filled with acid and run in gradually, giving the variable volume that is recorded before and after.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The pipette",
           "correct": false,
           "explanation": "The pipette delivers one fixed volume, 25 cm3 of alkali here, into the flask.",
           "misconception": "fixed and variable roles swapped"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The conical flask",
           "correct": false,
           "explanation": "The flask holds the reaction mixture; it measures nothing.",
           "misconception": "container mistaken for a measuring tool"
-        },
-        {
-          "key": "D",
-          "text": "The white tile",
-          "correct": false,
-          "explanation": "The tile only improves visibility of the colour change.",
-          "misconception": "supporting item given a measuring role"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Placing exactly 25 cm3 of sodium hydroxide solution into the conical flask",
-          "correct": true,
-          "explanation": "The pipette and filler deliver one precise, fixed volume to start the titration.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Adding the indicator drop by drop",
-          "correct": false,
-          "explanation": "Indicator drops are added straight from a bottle; the pipette handles the alkali volume.",
-          "misconception": "roles shuffled"
-        },
-        {
-          "key": "C",
           "text": "Measuring the gas released",
           "correct": false,
           "explanation": "No gas is measured in an acid-alkali titration.",
           "misconception": "wrong measurement type"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Stirring the mixture during the titration",
           "correct": false,
           "explanation": "Swirling the flask does the mixing; the pipette is for measuring.",
           "misconception": "mixing confused with measuring"
+        },
+        {
+          "key": "C",
+          "text": "Placing exactly 25 cm3 of sodium hydroxide solution into the conical flask",
+          "correct": true,
+          "explanation": "The pipette and filler deliver one precise, fixed volume to start the titration.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Adding the indicator drop by drop",
+          "correct": false,
+          "explanation": "Indicator drops are added straight from a bottle; the pipette handles the alkali volume.",
+          "misconception": "roles shuffled"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Salts, made under carefully controlled reacting volumes",
-          "correct": true,
-          "explanation": "The note lists salt preparation as another use of titrations.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "New elements",
           "correct": false,
           "explanation": "Titrations rearrange ions in solution; they never create elements.",
           "misconception": "impossible claim"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Pure metals by electrolysis",
           "correct": false,
           "explanation": "Electrolysis is a separate process; titration is a volumetric method.",
           "misconception": "processes mixed"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Indicators from plants",
           "correct": false,
           "explanation": "Indicators are extracted from plants directly; titrations consume them, not make them.",
           "misconception": "direction reversed"
+        },
+        {
+          "key": "D",
+          "text": "Salts, made under carefully controlled reacting volumes",
+          "correct": true,
+          "explanation": "The note lists salt preparation as another use of titrations.",
+          "misconception": null
         }
       ]
     },
@@ -197,7 +197,7 @@
       "stem": "What property of a solution does a titration analyse?",
       "misconceptionClass": "titration purpose recall",
       "kind": "recall",
-      "modelAnswer": "Its concentration — a titration is a method of analysing the concentration of solutions.",
+      "modelAnswer": "Its concentration — a titration analyses how concentrated a solution is.",
       "keywords": [
         "concentration",
         "concentrated",
@@ -234,7 +234,6 @@
       "keywords": [
         "exactly",
         "neutralises",
-        "neutralizes",
         "neutralisation",
         "volumes",
         "controlled",
@@ -259,9 +258,7 @@
         "concentration",
         "volume",
         "calculate",
-        "calculated",
-        "neutralise",
-        "neutralize"
+        "neutralise"
       ],
       "options": []
     },
@@ -273,31 +270,31 @@
       "options": [
         {
           "key": "A",
+          "text": "To check the tap still turns",
+          "correct": false,
+          "explanation": "A tap check is sensible but is not the stated purpose; bubbles are.",
+          "misconception": "plausible but wrong purpose"
+        },
+        {
+          "key": "B",
           "text": "To remove air bubbles, which collect in the jet space below the tap",
           "correct": true,
           "explanation": "A bubble in the jet space would later escape and falsify the volume delivered, so it is flushed out first.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "To warm the burette to room temperature",
           "correct": false,
           "explanation": "Temperature plays no part; the flush targets bubbles.",
           "misconception": "invented reason"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "To clean the burette of all acid traces",
           "correct": false,
           "explanation": "The burette is already filled with that acid; the small run clears the jet space specifically.",
           "misconception": "cleaning confused with bubble removal"
-        },
-        {
-          "key": "D",
-          "text": "To check the tap still turns",
-          "correct": false,
-          "explanation": "A tap check is sensible but is not the stated purpose; bubbles are.",
-          "misconception": "plausible but wrong purpose"
         }
       ]
     },
@@ -309,31 +306,31 @@
       "options": [
         {
           "key": "A",
-          "text": "To the nearest 0.05 cm3",
-          "correct": true,
-          "explanation": "Both the starting point and the final titre are recorded to 0.05 cm3.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "To the nearest whole cm3",
-          "correct": false,
-          "explanation": "Whole cm3 would waste the burette's precision and spoil the concordance test.",
-          "misconception": "precision undersold"
-        },
-        {
-          "key": "C",
           "text": "To the nearest 5 cm3",
           "correct": false,
           "explanation": "That is far too coarse for titration work.",
           "misconception": "precision undersold further"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Precision does not matter if the colour change is sharp",
           "correct": false,
           "explanation": "A sharp endpoint still needs precisely recorded volumes to be useful.",
           "misconception": "qualitative satisfaction replacing measurement"
+        },
+        {
+          "key": "C",
+          "text": "To the nearest 0.05 cm3",
+          "correct": true,
+          "explanation": "Both the starting point and the final titre are recorded to 0.05 cm3.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "To the nearest whole cm3",
+          "correct": false,
+          "explanation": "Whole cm3 would waste the burette's precision and spoil the concordance test.",
+          "misconception": "precision undersold"
         }
       ]
     },
@@ -345,38 +342,38 @@
       "options": [
         {
           "key": "A",
-          "text": "It makes the indicator's colour changes more obvious",
-          "correct": true,
-          "explanation": "Against a white background the endpoint colour flip is far easier to see.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "It keeps the flask warm",
           "correct": false,
           "explanation": "No warming is wanted; the tile is about visibility.",
           "misconception": "purpose invented"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "It stops the flask from tipping over",
           "correct": false,
           "explanation": "Stability is incidental; the stated purpose is seeing the colour change.",
           "misconception": "secondary benefit chosen"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "It absorbs any spilled acid",
           "correct": false,
           "explanation": "Spill control is not the tile's stated job.",
           "misconception": "safety role invented"
+        },
+        {
+          "key": "D",
+          "text": "It makes the indicator's colour changes more obvious",
+          "correct": true,
+          "explanation": "Against a white background the endpoint colour flip is far easier to see.",
+          "misconception": null
         }
       ]
     },
     {
       "id": "rn_qV5R2cKB59bSKD33::L2::Q4",
       "moduleId": "rn_qV5R2cKB59bSKD33::L2",
-      "stem": "Two titres of 14.90 cm3 and 15.00 cm3 are obtained. What can be said about them?",
+      "stem": "Two titres of 14.90 cm3 and 15.00 cm3 are obtained. What does the repeat rule say about results like these?",
       "misconceptionClass": "concordance judgement",
       "options": [
         {
@@ -417,31 +414,31 @@
       "options": [
         {
           "key": "A",
+          "text": "It is only a matter of tidiness",
+          "correct": false,
+          "explanation": "Tidiness is not the issue; measurement integrity is.",
+          "misconception": "issue minimised"
+        },
+        {
+          "key": "B",
           "text": "Drips from the funnel would fall into the burette and falsify the initial reading",
           "correct": true,
           "explanation": "A late drip adds volume you never recorded, which corrupts the titre.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The funnel would react with the acid",
           "correct": false,
           "explanation": "Funnels are inert in this context; the problem is stray drips, not reaction.",
           "misconception": "invented chemistry"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The funnel blocks the jet space",
           "correct": false,
           "explanation": "The jet space is below the tap; the funnel sits at the top.",
           "misconception": "apparatus geography confused"
-        },
-        {
-          "key": "D",
-          "text": "It is only a matter of tidiness",
-          "correct": false,
-          "explanation": "Tidiness is not the issue; measurement integrity is.",
-          "misconception": "issue minimised"
         }
       ]
     },
@@ -478,8 +475,7 @@
         "cm3",
         "nearest",
         "eye",
-        "level",
-        "precision"
+        "level"
       ],
       "options": []
     },
@@ -495,12 +491,10 @@
         "sharp",
         "endpoint",
         "drop",
-        "drops",
         "permanent",
         "change",
         "missed",
-        "titre",
-        "exact"
+        "titre"
       ],
       "options": []
     },

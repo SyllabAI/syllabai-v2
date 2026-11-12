@@ -3744,11 +3744,98 @@ rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
     package_schema: "sme-question-package/1.2",
     targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
     landing: "additive",
-    relFor(a) { return a.path; }, // v31 manifest paths are integration-relative
+  },
+  "chem-stageb-v32": {
+    manifest: "hub-import-manifest-v32.json",
+    manifest_version: 32,
+    course_id: "igcse-chemistry-19",
+    lesson_kind: "hub-lesson-import-1.5",
+    kinds: { "hub-lesson-import-1.5": 112, "sme-question-package": 112 },
+    adapter: "guided-lesson-0.6--hub-lesson-import-1.5",
+    directive: "run the CHEMISTRY-4CH1 stage-B chain \u2014 import the igcse-chemistry-19 stage-B re-issue of record (the complete 112-note register at the 0.6/1.5/1.2 generation: 239 lessons / 2,151 checks = 1,195 MCQ + 478 recall + 239 explain-why + 239 application; 200 figures all heading-unique module-mapped; declared authoring deltas: kind fields x1,195, 20 fourth distractors, 3 model answers, 629 keyword variants dropped + 64 top-ups, 110 figure re-binds, 49 glossary trims, 355 8-gram rephrases, 36 spec realigns, 44 spec codes narrowed to the register binding, 15 heading re-anchors + 1 declared corpus-limited exception) with the chemistry v17 legacy generation (224 artifacts) conserved byte-identical on the resources tree and the physics v31 pack untouched \u2014 chemistry-scope manifest v32 (the per-course manifest convention of the global v-series), the corrective commit C2 e5bac0bd after the first C mixed the packs (caught here at G-A before any landing; 0 of 224 artifacts differ). Declared hub landing = 224/224 revised (112 lesson files + 112 question files replace the 1.4/1.1 generation) + the runner-owned guided-import.json re-issued with all 112 rows. Operator directive trace 1a1cbe5f60023dd5 ('the same four-plane treatment for the remaining Reasoning subjects (Chemistry 4CH1 stage-B authoring, Biology)'), execution trace 1a1cbe5f60023dd5.",
+    promo: {
+      commit: "e5bac0bda910f5271b981d828ac7407c62d28aa3",
+      tree: "0904bf5147772dc362f15c950ab2cb9b23fdbc5d",
+      parent: "bd28c97824df54a3949a80d52218d978734d195c",
+      trace: "1a1cbe5f60023dd5",
+    },
+    integration_branch: null, // ancestry of record \u2014 the stage-B commits are on resources main
+    artifact_pin: "0ef5c2ccaa86167c30d6bc4446d64415230d4310", // stage-B commit A \u2014 the source-0.6 generation pin for all 112 chemistry notes
+    schemas: {
+      hub: "/home/z/my-project/scripts/chem-stageb-survivors/hub-lesson-import.1.5.schema.json",
+      pkg: "/home/z/my-project/scripts/chem-stageb-survivors/sme-question-package.1.2.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.5.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.2.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/chem-stageb-survivors/hub-import-manifest-v32.json",
+      int3: "/home/z/my-project/scripts/chem-stageb-survivors/INT-3-transform-record-chem-stageb.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261112-chem-stageb.json",
+    identity: {"notes": 112, "lessons": 239, "checks": 2151, "keyPoints": 1212, "distractors": 3585, "glossaryTerms": 559, "figures": 200, "figures_module_mapped": 200, "figures_note_level": 0, "workedExamples_populated": 112, "workedExamples_null": 0, "authored_chars_conserved": 1684549},
+    figures_feed: true, // figureIds <-> moduleIds closure both ways at G-D; figure census at G-V
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum (the mixed-check-type feed law)
+    artifact_count: 224,
+    note_count: 112,
+    wave_count: 1,
+    id_prefix: "igcse-chemistry",
+    manifest_min_bytes: 1000,
+    package_schema: "sme-question-package/1.2",
+    targetSchemas: ["hub/lesson-import/1.5", "sme-question-package/1.2"],
+    landing: "revision", // declared G-DELTA: exactly the 224 chemistry files re-pin (the 1.4/1.1 generation replaced by 1.5/1.2)
+    pilotDelta: { files: ["rn_2VnK66PqbvFKdKYt.hub-lesson-import.json", "rn_2VnK66PqbvFKdKYt.sme-question-package.json", "rn_S7GPh8BBPBbmhYKm.hub-lesson-import.json", "rn_S7GPh8BBPBbmhYKm.sme-question-package.json", "rn_HZM2WRjPPT8Srcxt.hub-lesson-import.json", "rn_HZM2WRjPPT8Srcxt.sme-question-package.json", "rn_cTk2cs2h2BKQ3y3B.hub-lesson-import.json", "rn_cTk2cs2h2BKQ3y3B.sme-question-package.json", "rn_QVmDs8X4szpds3cP.hub-lesson-import.json", "rn_QVmDs8X4szpds3cP.sme-question-package.json", "rn_TWGVV6RXN3Ktqb9h.hub-lesson-import.json", "rn_TWGVV6RXN3Ktqb9h.sme-question-package.json", "rn_RvgxXR36425BFMcx.hub-lesson-import.json", "rn_RvgxXR36425BFMcx.sme-question-package.json", "rn_YBWYstSRgM2QPzQq.hub-lesson-import.json", "rn_YBWYstSRgM2QPzQq.sme-question-package.json", "rn_R3ptwxGTTvdBFvyP.hub-lesson-import.json", "rn_R3ptwxGTTvdBFvyP.sme-question-package.json", "rn_TsfqyK9BYMtN2Bfd.hub-lesson-import.json", "rn_TsfqyK9BYMtN2Bfd.sme-question-package.json", "rn_kb2VkFMdBTbmG33t.hub-lesson-import.json", "rn_kb2VkFMdBTbmG33t.sme-question-package.json", "rn_vzGMZxqQtWYVWB7h.hub-lesson-import.json", "rn_vzGMZxqQtWYVWB7h.sme-question-package.json", "rn_b3XCzdtfQddbJjVf.hub-lesson-import.json", "rn_b3XCzdtfQddbJjVf.sme-question-package.json", "rn_Syxyh4Fct8KFg8NQ.hub-lesson-import.json", "rn_Syxyh4Fct8KFg8NQ.sme-question-package.json", "rn_wTtM2fQVVjntRm64.hub-lesson-import.json", "rn_wTtM2fQVVjntRm64.sme-question-package.json", "rn_mBqgkpZ3hbSBmWCC.hub-lesson-import.json", "rn_mBqgkpZ3hbSBmWCC.sme-question-package.json", "rn_JCfdFrHsCkrmMbFj.hub-lesson-import.json", "rn_JCfdFrHsCkrmMbFj.sme-question-package.json", "rn_T55t3HNsgyZcXZtN.hub-lesson-import.json", "rn_T55t3HNsgyZcXZtN.sme-question-package.json", "rn_N4HX8tqbdhTQcHyS.hub-lesson-import.json", "rn_N4HX8tqbdhTQcHyS.sme-question-package.json", "rn_xT8XsdJtDX5gNFXj.hub-lesson-import.json", "rn_xT8XsdJtDX5gNFXj.sme-question-package.json", "rn_VyXFNyxZHZGkxqTG.hub-lesson-import.json", "rn_VyXFNyxZHZGkxqTG.sme-question-package.json", "rn_vXPcH3vS8wv7BFkK.hub-lesson-import.json", "rn_vXPcH3vS8wv7BFkK.sme-question-package.json", "rn_pWzTTBv3B4yGFfj3.hub-lesson-import.json", "rn_pWzTTBv3B4yGFfj3.sme-question-package.json", "rn_yj4y972FxCWnDnSg.hub-lesson-import.json", "rn_yj4y972FxCWnDnSg.sme-question-package.json", "rn_Hkwmd9GSp3gdxxR5.hub-lesson-import.json", "rn_Hkwmd9GSp3gdxxR5.sme-question-package.json", "rn_4tzwS4GZjPybwtkS.hub-lesson-import.json", "rn_4tzwS4GZjPybwtkS.sme-question-package.json", "rn_mbcBZkygY4YpG2bf.hub-lesson-import.json", "rn_mbcBZkygY4YpG2bf.sme-question-package.json", "rn_8Nv33F4dD3kkZnY6.hub-lesson-import.json", "rn_8Nv33F4dD3kkZnY6.sme-question-package.json", "rn_J7ZcTWyRxRgWQ45R.hub-lesson-import.json", "rn_J7ZcTWyRxRgWQ45R.sme-question-package.json", "rn_FCnWFz9MhgsqnZGM.hub-lesson-import.json", "rn_FCnWFz9MhgsqnZGM.sme-question-package.json", "rn_jVwPmjqHbqQkXcjG.hub-lesson-import.json", "rn_jVwPmjqHbqQkXcjG.sme-question-package.json", "rn_vfmJxw4VQgXKzXF3.hub-lesson-import.json", "rn_vfmJxw4VQgXKzXF3.sme-question-package.json", "rn_MVnFKDMVkswzpmpw.hub-lesson-import.json", "rn_MVnFKDMVkswzpmpw.sme-question-package.json", "rn_KpvF2TWr5fYHk2Jz.hub-lesson-import.json", "rn_KpvF2TWr5fYHk2Jz.sme-question-package.json", "rn_GkJG52NCN98ShGRm.hub-lesson-import.json", "rn_GkJG52NCN98ShGRm.sme-question-package.json", "rn_Hp2nK8XpN2SmjdQc.hub-lesson-import.json", "rn_Hp2nK8XpN2SmjdQc.sme-question-package.json", "rn_rHKCkt3PTXDBpmJG.hub-lesson-import.json", "rn_rHKCkt3PTXDBpmJG.sme-question-package.json", "rn_3YZNCXSQQqXTT6HR.hub-lesson-import.json", "rn_3YZNCXSQQqXTT6HR.sme-question-package.json", "rn_TM4QVMgXVxs4vbfY.hub-lesson-import.json", "rn_TM4QVMgXVxs4vbfY.sme-question-package.json", "rn_kdRjZHjHcpVZsD3h.hub-lesson-import.json", "rn_kdRjZHjHcpVZsD3h.sme-question-package.json", "rn_jNJ4gTmcHqdFqsNh.hub-lesson-import.json", "rn_jNJ4gTmcHqdFqsNh.sme-question-package.json", "rn_V9tPMnX6Hq2XnqcP.hub-lesson-import.json", "rn_V9tPMnX6Hq2XnqcP.sme-question-package.json", "rn_7Q8M9nVkr2FxCzxd.hub-lesson-import.json", "rn_7Q8M9nVkr2FxCzxd.sme-question-package.json", "rn_jXXsc4wt2344BjxX.hub-lesson-import.json", "rn_jXXsc4wt2344BjxX.sme-question-package.json", "rn_6M5JB7CjvwdDykMS.hub-lesson-import.json", "rn_6M5JB7CjvwdDykMS.sme-question-package.json", "rn_WJD4ZN4kQfzJNSPV.hub-lesson-import.json", "rn_WJD4ZN4kQfzJNSPV.sme-question-package.json", "rn_S2fg29M7cqvMj5kT.hub-lesson-import.json", "rn_S2fg29M7cqvMj5kT.sme-question-package.json", "rn_QzYRzzmwRxk2gKqV.hub-lesson-import.json", "rn_QzYRzzmwRxk2gKqV.sme-question-package.json", "rn_5WvdZNzzhHdjj2Qq.hub-lesson-import.json", "rn_5WvdZNzzhHdjj2Qq.sme-question-package.json", "rn_Kd76WccxD9ytSJJC.hub-lesson-import.json", "rn_Kd76WccxD9ytSJJC.sme-question-package.json", "rn_gBGX339WBpwyCrFF.hub-lesson-import.json", "rn_gBGX339WBpwyCrFF.sme-question-package.json", "rn_DGkNCJRcCN4VQ28p.hub-lesson-import.json", "rn_DGkNCJRcCN4VQ28p.sme-question-package.json", "rn_3B8JxsSjJvR9B4fk.hub-lesson-import.json", "rn_3B8JxsSjJvR9B4fk.sme-question-package.json", "rn_sX8yyBxHn8bS7t46.hub-lesson-import.json", "rn_sX8yyBxHn8bS7t46.sme-question-package.json", "rn_BX88twwgffRMgx82.hub-lesson-import.json", "rn_BX88twwgffRMgx82.sme-question-package.json", "rn_xq9jy75y43kDXkvx.hub-lesson-import.json", "rn_xq9jy75y43kDXkvx.sme-question-package.json", "rn_nzW5ppBTV3ZnfSYY.hub-lesson-import.json", "rn_nzW5ppBTV3ZnfSYY.sme-question-package.json", "rn_sf7s7s6bQ2cZv29s.hub-lesson-import.json", "rn_sf7s7s6bQ2cZv29s.sme-question-package.json", "rn_MMkxbt9y3M3XvXrc.hub-lesson-import.json", "rn_MMkxbt9y3M3XvXrc.sme-question-package.json", "rn_dTP52nzhYb96XrJx.hub-lesson-import.json", "rn_dTP52nzhYb96XrJx.sme-question-package.json", "rn_ZWrmDYtNGnmFycPM.hub-lesson-import.json", "rn_ZWrmDYtNGnmFycPM.sme-question-package.json", "rn_qV5R2cKB59bSKD33.hub-lesson-import.json", "rn_qV5R2cKB59bSKD33.sme-question-package.json", "rn_p2FmkrXqZSzFngpg.hub-lesson-import.json", "rn_p2FmkrXqZSzFngpg.sme-question-package.json", "rn_by5FDNfkqdBCkmXb.hub-lesson-import.json", "rn_by5FDNfkqdBCkmXb.sme-question-package.json", "rn_9WM8QhSxmYpGhjqd.hub-lesson-import.json", "rn_9WM8QhSxmYpGhjqd.sme-question-package.json", "rn_VvsXMdW3TB37JhWF.hub-lesson-import.json", "rn_VvsXMdW3TB37JhWF.sme-question-package.json", "rn_6ZCysv9GnNQmc3w2.hub-lesson-import.json", "rn_6ZCysv9GnNQmc3w2.sme-question-package.json", "rn_5g8Dd6y89tkCVJsN.hub-lesson-import.json", "rn_5g8Dd6y89tkCVJsN.sme-question-package.json", "rn_qb9TBhB6VmnFGjvf.hub-lesson-import.json", "rn_qb9TBhB6VmnFGjvf.sme-question-package.json", "rn_fQSYvKRMDBj3s2Bx.hub-lesson-import.json", "rn_fQSYvKRMDBj3s2Bx.sme-question-package.json", "rn_pBp5Z5C2RHTKk7Wn.hub-lesson-import.json", "rn_pBp5Z5C2RHTKk7Wn.sme-question-package.json", "rn_T6S7R66N2wSZpWyc.hub-lesson-import.json", "rn_T6S7R66N2wSZpWyc.sme-question-package.json", "rn_vVdP57QhDYSVfZgy.hub-lesson-import.json", "rn_vVdP57QhDYSVfZgy.sme-question-package.json", "rn_v5JjfpT6grhtq3QW.hub-lesson-import.json", "rn_v5JjfpT6grhtq3QW.sme-question-package.json", "rn_kJg2gwF77vdFZZ2H.hub-lesson-import.json", "rn_kJg2gwF77vdFZZ2H.sme-question-package.json", "rn_YWDXCCmjfjkJcs6c.hub-lesson-import.json", "rn_YWDXCCmjfjkJcs6c.sme-question-package.json", "rn_x5m8QBWxtKvxQ9sx.hub-lesson-import.json", "rn_x5m8QBWxtKvxQ9sx.sme-question-package.json", "rn_w25KHshCMNQWwftj.hub-lesson-import.json", "rn_w25KHshCMNQWwftj.sme-question-package.json", "rn_dgVRCKCwn4rTGxGZ.hub-lesson-import.json", "rn_dgVRCKCwn4rTGxGZ.sme-question-package.json", "rn_HNXFQt7vM32g6PMv.hub-lesson-import.json", "rn_HNXFQt7vM32g6PMv.sme-question-package.json", "rn_KTZjJ7sPdDt4tkTH.hub-lesson-import.json", "rn_KTZjJ7sPdDt4tkTH.sme-question-package.json", "rn_6478QfpYNQDjZSvt.hub-lesson-import.json", "rn_6478QfpYNQDjZSvt.sme-question-package.json", "rn_XJ8qXfzZJJFKXHnF.hub-lesson-import.json", "rn_XJ8qXfzZJJFKXHnF.sme-question-package.json", "rn_Zh6Pw56rjdMkPCD4.hub-lesson-import.json", "rn_Zh6Pw56rjdMkPCD4.sme-question-package.json", "rn_tvwj4VZ6yFscPJfD.hub-lesson-import.json", "rn_tvwj4VZ6yFscPJfD.sme-question-package.json", "rn_y85XYRv5QfgZFQxv.hub-lesson-import.json", "rn_y85XYRv5QfgZFQxv.sme-question-package.json", "rn_H6ZVkxvdNgYDvfFb.hub-lesson-import.json", "rn_H6ZVkxvdNgYDvfFb.sme-question-package.json", "rn_3wZh9qRT7qFJn9QW.hub-lesson-import.json", "rn_3wZh9qRT7qFJn9QW.sme-question-package.json", "rn_t68QRDhwR6r5gxYX.hub-lesson-import.json", "rn_t68QRDhwR6r5gxYX.sme-question-package.json", "rn_2d6Yb8GwGfRRd6pZ.hub-lesson-import.json", "rn_2d6Yb8GwGfRRd6pZ.sme-question-package.json", "rn_DRQXrcSrmgQ7jcbZ.hub-lesson-import.json", "rn_DRQXrcSrmgQ7jcbZ.sme-question-package.json", "rn_wDdXr5k7gknQ7xJp.hub-lesson-import.json", "rn_wDdXr5k7gknQ7xJp.sme-question-package.json", "rn_NdJGQM8BqHmTy7Vg.hub-lesson-import.json", "rn_NdJGQM8BqHmTy7Vg.sme-question-package.json", "rn_HqqBFgKRHykMMhbB.hub-lesson-import.json", "rn_HqqBFgKRHykMMhbB.sme-question-package.json", "rn_H9chr9BWCfXYW472.hub-lesson-import.json", "rn_H9chr9BWCfXYW472.sme-question-package.json", "rn_V3hNWh6QWrbCRHrX.hub-lesson-import.json", "rn_V3hNWh6QWrbCRHrX.sme-question-package.json", "rn_9J7DQhskyxzhd7CP.hub-lesson-import.json", "rn_9J7DQhskyxzhd7CP.sme-question-package.json", "rn_DrqzYWZMScqGrbWT.hub-lesson-import.json", "rn_DrqzYWZMScqGrbWT.sme-question-package.json", "rn_6c2G8nJpFSnQnbcP.hub-lesson-import.json", "rn_6c2G8nJpFSnQnbcP.sme-question-package.json", "rn_MmqCNJfWbtYzRVqT.hub-lesson-import.json", "rn_MmqCNJfWbtYzRVqT.sme-question-package.json", "rn_H2zGfgH76qYV5cmr.hub-lesson-import.json", "rn_H2zGfgH76qYV5cmr.sme-question-package.json", "rn_DBGf3WVffDBNDp4R.hub-lesson-import.json", "rn_DBGf3WVffDBNDp4R.sme-question-package.json", "rn_2MpXPtNXvn8pQm3r.hub-lesson-import.json", "rn_2MpXPtNXvn8pQm3r.sme-question-package.json", "rn_8T5GfPn2q7sY2YCh.hub-lesson-import.json", "rn_8T5GfPn2q7sY2YCh.sme-question-package.json", "rn_ncFJkGhXFsKrkNkH.hub-lesson-import.json", "rn_ncFJkGhXFsKrkNkH.sme-question-package.json", "rn_2z53qk2CdWrVVc7V.hub-lesson-import.json", "rn_2z53qk2CdWrVVc7V.sme-question-package.json", "rn_BBGMYy3Yx9Nm4GV3.hub-lesson-import.json", "rn_BBGMYy3Yx9Nm4GV3.sme-question-package.json", "rn_BDkhS5vQpRd4hvwf.hub-lesson-import.json", "rn_BDkhS5vQpRd4hvwf.sme-question-package.json", "rn_7ZMc3T3J4SJXfNdR.hub-lesson-import.json", "rn_7ZMc3T3J4SJXfNdR.sme-question-package.json", "rn_4SgDJv8rKxpQQSBh.hub-lesson-import.json", "rn_4SgDJv8rKxpQQSBh.sme-question-package.json", "rn_bvyrkKqRBMKCRzHM.hub-lesson-import.json", "rn_bvyrkKqRBMKCRzHM.sme-question-package.json", "rn_bGgYrQXP2tqrYwdV.hub-lesson-import.json", "rn_bGgYrQXP2tqrYwdV.sme-question-package.json"] },
+    relFor(a) { return a.path; }, // v32 manifest paths are integration-relative
     pathFamily(a) {
       return (
         (a.kind === "hub-lesson-import-1.5" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.5/")) ||
         (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.2/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
+
+  "bio-stagea-v33": {
+    manifest: "hub-import-manifest-v33.json",
+    manifest_version: 33,
+    course_id: "igcse-biology-19",
+    lesson_kind: "hub-lesson-import-1.6",
+    kinds: { "hub-lesson-import-1.6": 1, "sme-question-package": 1 },
+    adapter: "guided-lesson-0.7--hub-lesson-import-1.6",
+    directive: "run the BIOLOGY-4BI1 stage-A chain \u2014 import the igcse-biology-19 stage-A pilot of record per the new-subject runbook B3 (ONE note end-to-end: rn_qRXSsjyzyZsJnc7k 'Characteristics of Living Organisms', spec 1.1; 2 lessons / 18 checks = 10 MCQ + 4 recall + 2 explain-why + 2 application; 11 figures = 7 module-mapped + 4 note-level; glossary 4; workedExample designed null) riding the newly minted 0.7/1.6/1.3 generation (strictly additive over 0.6/1.5/1.2; schemas landed at the resources commit-A pin) \u2014 biology-scope manifest v33 (the per-course manifest convention of the global v-series: chemistry v1..v17+v32, physics v18..v31, now v33), resources chain 7378f249 + 6dd46755 with the physics v31 (254) and chemistry v32 (224) packs re-pinned byte-identical and the spec_point_resolution.json mechanical bootstrap (210 ids / 175 codes / 142 notes) at commit A. Declared hub landing = 2/2 written (the course's first guided-lessons + guided-questions files) + the runner-owned guided-import.json created with 1 row. The frozen B4 partition of record (141 notes in 10 subtopic-atomic waves) rides the resources promotion receipt; stage-B waves are subsequent operator ignitions. Operator directive trace 1a1cbe5f60023dd5 ('the same four-plane treatment for the remaining Reasoning subjects (Chemistry 4CH1 stage-B authoring, Biology)'), execution trace 1a1cbe5f60023dd5.",
+    promo: {
+      commit: "e7ce875d8b67ca8b921ffd447f9a7b143ff490ad",
+      tree: "0f6833585c22442d7a6da0e4eb5e40e561b1955c",
+      parent: "6dd46755ce41b4249a61e7d299cef094f23073d1",
+      trace: "1a1cbe5f60023dd5",
+    },
+    integration_branch: null, // ancestry of record \u2014 the stage-A commits are on resources main
+    artifact_pin: "7378f2498a76501a907a0bda9724237bd4486663", // stage-A commit A \u2014 the source-0.7 generation pin for the pilot
+    schemas: {
+      hub: "/home/z/my-project/scripts/bio-stagea-survivors/hub-lesson-import.1.6.schema.json",
+      pkg: "/home/z/my-project/scripts/bio-stagea-survivors/sme-question-package.1.3.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.6.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.3.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/bio-stagea-survivors/hub-import-manifest-v33.json",
+      int3: "/home/z/my-project/scripts/bio-stagea-survivors/INT-3-transform-record-bio-stagea.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261112-bio-stagea.json",
+    identity: {"notes": 1, "lessons": 2, "checks": 18, "keyPoints": 10, "distractors": 30, "glossaryTerms": 4, "figures": 11, "figures_module_mapped": 7, "figures_note_level": 4, "workedExamples_populated": 0, "workedExamples_null": 1, "authored_chars_conserved": 14664},
+    figures_feed: true,
+    checks_feed: true,
+    artifact_count: 2,
+    note_count: 1,
+    wave_count: 1,
+    id_prefix: "igcse-biology",
+    manifest_min_bytes: 100,
+    package_schema: "sme-question-package/1.3",
+    targetSchemas: ["hub/lesson-import/1.6", "sme-question-package/1.3"],
+    landing: "additive", // the course's first guided planes \u2014 first issues, nothing to revise
+    relFor(a) { return a.path; }, // v33 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.6" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.6/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.3/"))
       ) && !!a.path.split("/").pop();
     },
   },

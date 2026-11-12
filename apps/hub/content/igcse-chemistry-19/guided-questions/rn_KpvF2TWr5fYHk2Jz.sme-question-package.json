@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_KpvF2TWr5fYHk2Jz",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cbbdb2b3844537611f47bb7e05a7a74aa91eaf5c77ad0c0fb8bb911fc71b5f64",
-    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
+    "sourceLayerSha256": "82988b142f2ef7e0d3ee71967b6453f198181a8cfec1cfa94b1c65462d2a40a6",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_KpvF2TWr5fYHk2Jz",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Nothing needs to be overcome",
+          "correct": false,
+          "explanation": "Energy is still required, but it pays only for loosening the weak forces between molecules.",
+          "misconception": "energy demand denied"
+        },
+        {
+          "key": "B",
           "text": "The weak intermolecular forces between the molecules",
           "correct": true,
           "explanation": "State changes pull molecules apart from one another, and only the weak forces between them need be overcome.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The strong covalent bonds within the molecules",
           "correct": false,
           "explanation": "The molecules survive melting intact; their internal covalent bonds do not break.",
           "misconception": "covalent bonds broken on melting"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "The nuclei of the atoms involved",
           "correct": false,
           "explanation": "Nuclei are never disturbed by melting; the molecules separate whole.",
           "misconception": "nuclear change imagined"
-        },
-        {
-          "key": "D",
-          "text": "Nothing needs to be overcome",
-          "correct": false,
-          "explanation": "Energy is still required, but it pays only for loosening the weak forces between molecules.",
-          "misconception": "energy demand denied"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Gases or liquids, with low-melting solids being less common",
-          "correct": true,
-          "explanation": "The weak intermolecular forces let most such substances melt or boil below room temperature, or not far above it.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Solids with high melting points",
-          "correct": false,
-          "explanation": "High melting points belong to giant structures; simple molecular substances melt low.",
-          "misconception": "giant-structure behaviour transferred"
-        },
-        {
-          "key": "C",
           "text": "Gases only",
           "correct": false,
           "explanation": "Liquids are common too, and some solids with low melting points exist.",
           "misconception": "states narrowed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Plasma at high temperature",
           "correct": false,
           "explanation": "Plasma is far outside the scope of molecular substances at room temperature.",
           "misconception": "state invented"
+        },
+        {
+          "key": "C",
+          "text": "Gases or liquids, with low-melting solids being less common",
+          "correct": true,
+          "explanation": "The weak intermolecular forces let most such substances melt or boil below room temperature, or not far above it.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Solids with high melting points",
+          "correct": false,
+          "explanation": "High melting points belong to giant structures; simple molecular substances melt low.",
+          "misconception": "giant-structure behaviour transferred"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "A hollow sphere of 60 carbon atoms forming 20 hexagons and 12 pentagons",
-          "correct": true,
-          "explanation": "The buckyball shape joins 20 hexagons with 12 pentagons into a closed spherical cage.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Flat layers of hexagons that slide over each other",
           "correct": false,
           "explanation": "Layered hexagons describe graphite; fullerene curls into a closed sphere.",
           "misconception": "graphite structure substituted"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "A rigid tetrahedral network of four-bonded carbons",
           "correct": false,
           "explanation": "A tetrahedral network describes diamond; fullerene is a separate molecule.",
           "misconception": "diamond structure substituted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Long parallel tubes of paired carbon atoms",
           "correct": false,
           "explanation": "Hollow tubes describe some other fullerenes, but C60 itself is the soccer-ball sphere.",
           "misconception": "nanotube form confused with C60"
+        },
+        {
+          "key": "D",
+          "text": "A hollow sphere of 60 carbon atoms forming 20 hexagons and 12 pentagons",
+          "correct": true,
+          "explanation": "The buckyball shape joins 20 hexagons with 12 pentagons into a closed spherical cage.",
+          "misconception": null
         }
       ]
     },
@@ -208,7 +208,6 @@
         "force",
         "between",
         "neighbouring",
-        "neighboring",
         "molecules",
         "molecule",
         "intermolecular"
@@ -270,17 +269,14 @@
       "modelAnswer": "The claim is wrong: C60 cannot conduct, because its spare electrons move only within each buckyball and cannot migrate between the molecules, so no charge can travel through the solid.",
       "keywords": [
         "cannot",
-        "cant",
         "not",
         "conduct",
-        "conducts",
         "electrons",
         "electron",
         "within",
         "migrate",
         "between",
         "buckyball",
-        "buckyballs",
         "spare"
       ],
       "options": []
@@ -293,31 +289,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Larger molecules conduct more, raising their boiling points",
+          "correct": false,
+          "explanation": "Conduction is irrelevant to the boiling point; the intermolecular forces set it.",
+          "misconception": "conduction linked to boiling point"
+        },
+        {
+          "key": "B",
           "text": "More electrons give more intermolecular forces of attraction, so more energy is needed to separate the molecules",
           "correct": true,
           "explanation": "The electron count rises with molecular mass, and each extra electron adds to the intermolecular attraction.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Bigger molecules have stronger covalent bonds",
           "correct": false,
           "explanation": "Covalent bond strength is not the driver; the boiling point tracks the forces between molecules.",
           "misconception": "covalent bonds credited with the trend"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Bigger molecules are heavier, and weight holds them together",
           "correct": false,
           "explanation": "Mass itself does not bond anything; the electron count behind the mass sets the intermolecular strength.",
           "misconception": "weight mistaken for attraction"
-        },
-        {
-          "key": "D",
-          "text": "Larger molecules conduct more, raising their boiling points",
-          "correct": false,
-          "explanation": "Conduction is irrelevant to the boiling point; the intermolecular forces set it.",
-          "misconception": "conduction linked to boiling point"
         }
       ]
     },
@@ -329,31 +325,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The boiling point rises as the molecule gets bigger",
-          "correct": true,
-          "explanation": "The alkane family is the textbook display of the increasing-mass trend in simple molecular substances.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The boiling point falls as the molecule gets bigger",
-          "correct": false,
-          "explanation": "The trend runs the other way: bigger alkanes boil higher.",
-          "misconception": "trend direction reversed"
-        },
-        {
-          "key": "C",
           "text": "The boiling point stays constant across the family",
           "correct": false,
           "explanation": "The graph climbs steadily; constancy would contradict the intermolecular-forces argument.",
           "misconception": "flat trend imagined"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "The boiling point jumps randomly with no pattern",
           "correct": false,
           "explanation": "The pattern is clear and systematic, which is why the family illustrates the rule.",
           "misconception": "pattern denied"
+        },
+        {
+          "key": "C",
+          "text": "The boiling point rises as the molecule gets bigger",
+          "correct": true,
+          "explanation": "The alkane family is the textbook display of the increasing-mass trend in simple molecular substances.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The boiling point falls as the molecule gets bigger",
+          "correct": false,
+          "explanation": "The trend runs the other way: bigger alkanes boil higher.",
+          "misconception": "trend direction reversed"
         }
       ]
     },
@@ -365,31 +361,31 @@
       "options": [
         {
           "key": "A",
-          "text": "They have no free ions or electrons available to move and carry the charge",
-          "correct": true,
-          "explanation": "Conduction needs mobile charged particles, and covalent structures offer neither free ions nor free electrons.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Their electrons are too heavy to move",
           "correct": false,
           "explanation": "Electron mass is beside the point; the electrons in covalent structures are simply not free to roam.",
           "misconception": "mass blamed for immobility"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Their covalent bonds repel the current",
           "correct": false,
           "explanation": "There is no repulsion of current; the structures simply lack mobile charge carriers.",
           "misconception": "repulsion model invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "They conduct only when solid",
           "correct": false,
           "explanation": "Simple molecular substances fail to conduct in any state, since no charged particles free up on melting.",
           "misconception": "state condition misstated"
+        },
+        {
+          "key": "D",
+          "text": "They have no free ions or electrons available to move and carry the charge",
+          "correct": true,
+          "explanation": "Conduction needs mobile charged particles, and covalent structures offer neither free ions nor free electrons.",
+          "misconception": null
         }
       ]
     },
@@ -432,36 +428,36 @@
     {
       "id": "rn_KpvF2TWr5fYHk2Jz::L2::Q5",
       "moduleId": "rn_KpvF2TWr5fYHk2Jz::L2",
-      "stem": "Sulfur hexafluoride is a dense gas used around electrical transformers. Why?",
+      "stem": "Sulfur hexafluoride is a dense gas used around electrical transformers — why does it work as one of the common insulators?",
       "misconceptionClass": "insulating application",
       "options": [
         {
           "key": "A",
+          "text": "Its density makes it a conductor at high pressure",
+          "correct": false,
+          "explanation": "Density affects insulation quality, not conduction; the molecules still carry no mobile charge.",
+          "misconception": "pressure-to-conduction leap"
+        },
+        {
+          "key": "B",
           "text": "It is a covalent substance with no freely moving charged particles, so it acts as an insulator",
           "correct": true,
           "explanation": "The gas's covalent molecules carry no mobile charge, which is exactly the property an insulating surround needs.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "It conducts electricity away from the transformer",
           "correct": false,
           "explanation": "The gas is valued for not conducting; it insulates rather than drains charge.",
           "misconception": "role reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "It is metallic and therefore safe",
           "correct": false,
           "explanation": "It is a molecular gas, not a metal; safety here comes from insulation.",
           "misconception": "classification wrong"
-        },
-        {
-          "key": "D",
-          "text": "Its density makes it a conductor at high pressure",
-          "correct": false,
-          "explanation": "Density affects insulation quality, not conduction; the molecules still carry no mobile charge.",
-          "misconception": "pressure-to-conduction leap"
         }
       ]
     },
@@ -477,7 +473,6 @@
         "rises",
         "increase",
         "increases",
-        "higher",
         "melting",
         "boiling",
         "points",
@@ -545,7 +540,6 @@
         "electrons",
         "electron",
         "carry",
-        "carries",
         "charge",
         "current",
         "conduct",

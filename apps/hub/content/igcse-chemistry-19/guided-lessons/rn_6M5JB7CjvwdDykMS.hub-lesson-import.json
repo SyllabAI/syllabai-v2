@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_6M5JB7CjvwdDykMS",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "368b0ac8fa46498860d30ef19b0a49f93b8826496d5f6b572364405cccde1bda",
-    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
+    "sourceLayerSha256": "5b6635a0cec497aab0ae69828138a79f90d61a33f97d82cad264b77d00637d67",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_6M5JB7CjvwdDykMS",
@@ -43,7 +43,7 @@
           "About 80 percent of dry air by volume is nitrogen, roughly four-fifths of the total.",
           "About 20 percent of dry air by volume is oxygen, roughly one-fifth of the total.",
           "Small proportions of carbon dioxide, water vapour and noble gases make up the remainder.",
-          "The proportion of gases in the air has changed little in 200 million years.",
+          "The make-up of the air has changed little in 200 million years.",
           "Carbon dioxide is present only in a very small amount yet it has a large warming role."
         ],
         "depthLayers": {
@@ -55,7 +55,7 @@
           "medium": {
             "restatement": "By volume, dry air is approximately 80 percent nitrogen and 20 percent oxygen, and those four-fifths and one-fifth shares are remarkably stable over geological time. The remaining fraction holds carbon dioxide, water vapour and the noble gases in small proportions, which is why any measurement experiment targets the oxygen fifth alone.",
             "analogy": "Picture a stadium of 100 spectators where 80 wear one colour and 20 another: spotting the handful of others takes a deliberate search, just as measuring the trace gases takes special experiments.",
-            "examPointer": "When a question asks for the four most abundant gases in dry air, give nitrogen and oxygen with their percentages, then carbon dioxide and the noble gases as the small shares."
+            "examPointer": "When a question asks which four gases dominate dry air, give nitrogen and oxygen with their percentages, then carbon dioxide and the noble gases as the small shares."
           }
         },
         "gatePolicy": {
@@ -181,23 +181,23 @@
         "id": "fig-01",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/cc99152418ea-pie-chart-showing-composition-of-air.png",
         "alt": "Pie chart showing composition of the atmosphere",
-        "sourceHeading": "The composition of the atmosphere",
-        "caption": "The atmosphere mainly consists of nitrogen and oxygen",
-        "binding": "unresolved",
+        "sourceHeading": "Composition of the atmosphere",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The atmosphere mainly consists of nitrogen and oxygen"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/5eae7623f887-oxygen-in-air-using-combustion.png",
         "alt": "Oxygen in air using combustion, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Finding the percentage of oxygen",
-        "caption": "The percentage of oxygen in air can be determined by burning phosphorus in air and measuring the volume change",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "The percentage of oxygen in air can be determined by burning phosphorus in air and measuring the volume change"
       }
     ]
   }

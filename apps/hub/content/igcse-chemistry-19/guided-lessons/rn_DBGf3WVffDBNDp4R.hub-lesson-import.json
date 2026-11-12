@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_DBGf3WVffDBNDp4R",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d664187abc8bf3c2d2923a550f84b967986df53bb59ab534b3148ba2d669518f",
-    "pinnedRef": "52acc7ec1650b985b8a5f88472b1de12b0bc4e6d"
+    "sourceLayerSha256": "9ffcc7f2378718efa6e21415421287a4d3cd4207a717e53ce1182a06b3cfbaf7",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_DBGf3WVffDBNDp4R",
@@ -53,7 +53,7 @@
             "examPointer": "Say addition across the C=C, and remember no UV condition and no second product apply here."
           },
           "medium": {
-            "restatement": "In an addition reaction the atoms of a simple molecule add across the C=C double bond of an alkene, so bromine and ethene form dibromoethane with each carbon gaining one bromine. The move generalises to any halogen with any alkene, always yielding one product where both halogen atoms bond across the former double bond.",
+            "restatement": "In an addition reaction the atoms of a simple molecule attach themselves across the C=C double bond of an alkene, so bromine and ethene form dibromoethane with each carbon gaining one bromine. The move generalises to any halogen with any alkene, always yielding one product where both halogen atoms bond across the former double bond.",
             "analogy": "Picture a drawbridge that lowers to let two riders cross side by side: the double bond opens, each carbon hosts one halogen rider, and the bridge closes as single bonds again.",
             "examPointer": "Write the dibromoalkane product with a bromine on each carbon, and state the reaction type as addition with no other products."
           }
@@ -183,22 +183,22 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c42f395eb92e-bromine-addition-to-ethene.png",
         "alt": "Bromine-Addition-to-Ethene, IGCSE & GCSE Chemistry revision notes",
         "sourceHeading": "Addition of bromine to ethene",
-        "caption": "Bromine atoms add across the C=C in the addition reaction of ethene and bromine",
-        "binding": "heading-unique",
         "moduleIds": [
           "L1"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Bromine atoms add across the C=C in the addition reaction of ethene and bromine"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/757de8f4c1d5-using-bromine-water-to-test-for-unsaturation.webp",
         "alt": "Chemical reaction diagram showing bromine reacting with ethene at room temperature to form 1,2-dibromoethane, decolourising bromine water.",
         "sourceHeading": "Bromine water test",
-        "caption": "Diagram showing the result of the test using bromine water with alkanes and alkenes",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Diagram showing the result of the test using bromine water with alkanes and alkenes"
       }
     ]
   }

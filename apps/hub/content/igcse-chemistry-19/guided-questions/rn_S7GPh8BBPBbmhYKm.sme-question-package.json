@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.1",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_S7GPh8BBPBbmhYKm",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5f76d42878573dff746e619e0e7325975f8e8ce9956b0948a776acf3a04df598",
-    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
+    "sourceLayerSha256": "1d45daaa28e556d0659762571f4e6b675a0cc9872624df2129c1d4838ed5477e",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "packageId": "igcse-chemistry::rn_S7GPh8BBPBbmhYKm",
   "subject": "igcse-chemistry",
@@ -55,31 +55,31 @@
       "options": [
         {
           "key": "A",
+          "text": "Because heating widens the gaps between particles permanently",
+          "correct": false,
+          "explanation": "The cause is the faster motion of the particles, not a lasting change in spacing.",
+          "misconception": "spacing misattributed"
+        },
+        {
+          "key": "B",
           "text": "Because the particles have more kinetic energy and move more quickly",
           "correct": true,
           "explanation": "Hotter particles carry more kinetic energy, so their random motion spreads them sooner.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Because the particles become smaller when heated",
           "correct": false,
           "explanation": "Particle size never changes with temperature; only the speed of motion does.",
           "misconception": "size change imagined"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "Because heat creates extra particles to spread",
           "correct": false,
           "explanation": "Heating adds energy, not particles.",
           "misconception": "particle creation assumed"
-        },
-        {
-          "key": "D",
-          "text": "Because heating widens the gaps between particles permanently",
-          "correct": false,
-          "explanation": "The cause is the faster motion of the particles, not a lasting change in spacing.",
-          "misconception": "spacing misattributed"
         }
       ]
     },
@@ -91,31 +91,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The random motion of both kinds of particle and the large gaps between them",
-          "correct": true,
-          "explanation": "The explanation is random movement combined with the large spaces between gas particles.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "The jars are shaken to stir the gases together",
-          "correct": false,
-          "explanation": "No stirring occurs; the gases mix on their own.",
-          "misconception": "external mixing assumed"
-        },
-        {
-          "key": "C",
           "text": "Bromine particles are lighter, so they float upward",
           "correct": false,
           "explanation": "Both gases move randomly in all directions; no floating mechanism is involved.",
           "misconception": "buoyancy story imported"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "A chemical reaction between air and bromine",
           "correct": false,
           "explanation": "The gases simply mix physically; no reaction takes place.",
           "misconception": "reaction invented"
+        },
+        {
+          "key": "C",
+          "text": "The random motion of both kinds of particle and the large gaps between them",
+          "correct": true,
+          "explanation": "The explanation is random movement combined with the large spaces between gas particles.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The jars are shaken to stir the gases together",
+          "correct": false,
+          "explanation": "No stirring occurs; the gases mix on their own.",
+          "misconception": "external mixing assumed"
         }
       ]
     },
@@ -127,31 +127,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because liquid particles are closely packed together and move more slowly",
-          "correct": true,
-          "explanation": "Close packing and slower movement make the spread of particles slower in liquids.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "Because liquids contain no moving particles at all",
           "correct": false,
           "explanation": "Liquid particles move randomly and slide over each other, so diffusion still occurs.",
           "misconception": "liquid motion denied"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "Because liquid particles are larger than gas particles",
           "correct": false,
           "explanation": "Particle size does not differ between states; packing and speed do.",
           "misconception": "size comparison invented"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "Because diffusion is impossible in liquids",
           "correct": false,
           "explanation": "Diffusion happens in both gases and liquids, only at different rates.",
           "misconception": "occurrence denied"
+        },
+        {
+          "key": "D",
+          "text": "Because their particles stay close together but move more slowly",
+          "correct": true,
+          "explanation": "Close packing and slower movement make the spread of particles slower in liquids.",
+          "misconception": null
         }
       ]
     },
@@ -202,9 +202,7 @@
         "evenly",
         "spread",
         "even",
-        "throughout",
-        "uniform",
-        "distributed"
+        "throughout"
       ],
       "options": []
     },
@@ -218,9 +216,7 @@
       "keywords": [
         "no",
         "none",
-        "without",
-        "nothing",
-        "zero"
+        "nothing"
       ],
       "options": []
     },
@@ -234,10 +230,8 @@
       "keywords": [
         "random",
         "motion",
-        "moving",
         "move",
         "vibrate",
-        "vibrating",
         "fixed"
       ],
       "options": []
@@ -251,12 +245,8 @@
       "modelAnswer": "Warm the water — diffusion speeds up at higher temperatures — and remember liquids always diffuse slower than gases because their particles are closely packed and move slowly.",
       "keywords": [
         "warm",
-        "warmer",
-        "hot",
-        "hotter",
         "temperature",
-        "heat",
-        "heating"
+        "water"
       ],
       "options": []
     },
@@ -268,31 +258,31 @@
       "options": [
         {
           "key": "A",
+          "text": "They clump together and sink to the bottom",
+          "correct": false,
+          "explanation": "Dilution spreads particles apart; nothing in the process makes them clump.",
+          "misconception": "clumping invented"
+        },
+        {
+          "key": "B",
           "text": "They are still present in the solution but more spread out",
           "correct": true,
           "explanation": "Dilution spreads the particles through more solvent without removing any of them.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "Some of them are removed along with the extra water",
           "correct": false,
           "explanation": "Dilution does not remove particles; it only spreads them out.",
           "misconception": "removal assumed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "They break apart into smaller particles",
           "correct": false,
           "explanation": "The particles remain whole; only their spacing changes.",
           "misconception": "particle splitting"
-        },
-        {
-          "key": "D",
-          "text": "They clump together and sink to the bottom",
-          "correct": false,
-          "explanation": "Dilution spreads particles apart; nothing in the process makes them clump.",
-          "misconception": "clumping invented"
         }
       ]
     },
@@ -304,31 +294,31 @@
       "options": [
         {
           "key": "A",
-          "text": "Because even a small crystal contains a very large number of very small particles",
-          "correct": true,
-          "explanation": "The long-lasting colour shows there are a lot of particles in a small amount of the substance.",
-          "misconception": null
-        },
-        {
-          "key": "B",
-          "text": "Because the water permanently stains the container",
-          "correct": false,
-          "explanation": "The fading happens in the solution itself, not in the container.",
-          "misconception": "wrong target"
-        },
-        {
-          "key": "C",
           "text": "Because new dye particles are created at each step",
           "correct": false,
           "explanation": "Dilution creates nothing; the same particles simply spread further.",
           "misconception": "creation assumed"
         },
         {
-          "key": "D",
+          "key": "B",
           "text": "Because the particles lose their colour as they spread",
           "correct": false,
           "explanation": "The particles keep their properties; the colour looks fainter only because they are more spread out.",
           "misconception": "property loss assumed"
+        },
+        {
+          "key": "C",
+          "text": "Because even a small crystal contains a very large number of very small particles",
+          "correct": true,
+          "explanation": "The long-lasting colour shows there are a lot of particles in a small amount of the substance.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because the water permanently stains the container",
+          "correct": false,
+          "explanation": "The fading happens in the solution itself, not in the container.",
+          "misconception": "wrong target"
         }
       ]
     },
@@ -340,31 +330,31 @@
       "options": [
         {
           "key": "A",
-          "text": "The colour becomes fainter with each dilution and persists through many of them",
-          "correct": true,
-          "explanation": "The colour fades but does not disappear until a lot of dilutions have been done.",
-          "misconception": null
-        },
-        {
-          "key": "B",
           "text": "The colour disappears completely after a single dilution",
           "correct": false,
           "explanation": "That is exactly what the experiment contradicts.",
           "misconception": "instant disappearance"
         },
         {
-          "key": "C",
+          "key": "B",
           "text": "The colour becomes darker as more water is added",
           "correct": false,
           "explanation": "Adding solvent lowers the concentration, so the colour lightens.",
           "misconception": "trend inverted"
         },
         {
-          "key": "D",
+          "key": "C",
           "text": "The colour changes from purple to blue",
           "correct": false,
           "explanation": "The note describes gradual fading, not a change of hue.",
           "misconception": "hue shift invented"
+        },
+        {
+          "key": "D",
+          "text": "The colour becomes fainter with each dilution and persists through many of them",
+          "correct": true,
+          "explanation": "The colour fades but does not disappear until a lot of dilutions have been done.",
+          "misconception": null
         }
       ]
     },
@@ -412,30 +402,30 @@
       "options": [
         {
           "key": "A",
+          "text": "Warming the solution instead of adding water",
+          "correct": false,
+          "explanation": "Warming speeds diffusion, but dilution means adding solvent to lower the concentration.",
+          "misconception": "process confused"
+        },
+        {
+          "key": "B",
           "text": "The largest volume of water, spreading the particles the most",
           "correct": true,
           "explanation": "More solvent means a lower concentration, so the biggest dilution gives the faintest colour.",
           "misconception": null
         },
         {
-          "key": "B",
+          "key": "C",
           "text": "The smallest volume of water",
           "correct": false,
           "explanation": "A small addition changes the concentration the least.",
           "misconception": "volume effect reversed"
         },
         {
-          "key": "C",
+          "key": "D",
           "text": "No water at all, as standing still dilutes best",
           "correct": false,
           "explanation": "Dilution specifically means adding solvent; standing changes nothing about the concentration.",
-          "misconception": "process confused"
-        },
-        {
-          "key": "D",
-          "text": "Warming the solution instead of adding water",
-          "correct": false,
-          "explanation": "Warming speeds diffusion, but dilution means adding solvent to lower the concentration.",
           "misconception": "process confused"
         }
       ]
@@ -462,13 +452,11 @@
       "stem": "State what happens to the colour of a solution with each dilution.",
       "misconceptionClass": "colour trend",
       "kind": "recall",
-      "modelAnswer": "The colour grows fainter with each dilution, but it does not disappear immediately.",
+      "modelAnswer": "The colour grows fainter with every dilution, yet it does not vanish straight away.",
       "keywords": [
         "fainter",
-        "paler",
         "faint",
-        "lighter",
-        "weaker"
+        "colour"
       ],
       "options": []
     },
@@ -481,11 +469,9 @@
       "modelAnswer": "It shows that even a small crystal must contain a huge number of tiny particles — enough to keep colouring the water after so much dilution.",
       "keywords": [
         "huge",
-        "large",
         "many",
         "number",
-        "particles",
-        "millions"
+        "particles"
       ],
       "options": []
     },
@@ -500,10 +486,7 @@
         "lower",
         "falls",
         "fall",
-        "lowers",
-        "less",
-        "decreases",
-        "decrease"
+        "lowers"
       ],
       "options": []
     }

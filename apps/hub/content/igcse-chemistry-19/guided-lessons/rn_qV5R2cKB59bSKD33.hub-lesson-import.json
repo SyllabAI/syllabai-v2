@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.4",
-  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
-    "sourceFormat": "guided-lesson/0.5",
+    "sourceFormat": "guided-lesson/0.6",
     "noteId": "rn_qV5R2cKB59bSKD33",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "c6908c22ab104bf6e35332978e908b63216e20aaaf97a291e274b9af1ed8309f",
-    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    "sourceLayerSha256": "e3d2f22760e17152aff296da8833da7ca116c6a2312816a46a5990bc5e524201",
+    "pinnedRef": "0ef5c2ccaa86167c30d6bc4446d64415230d4310"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_qV5R2cKB59bSKD33",
@@ -33,7 +33,7 @@
         "specRefs": [
           "4CH1-2.33C"
         ],
-        "opening": "A titration is a method of analysing the concentration of solutions, most importantly in acid-base work. Running one solution from a burette into another, with an indicator watching, tells you exactly how much alkali neutralises a quantity of acid. Titrations also let you calculate moles, concentration or volume, and can be used to prepare salts.",
+        "opening": "A titration is a way of analysing how concentrated a solution is, most importantly in acid-base work. Running one solution from a burette into another, with an indicator watching, tells you exactly how much alkali neutralises a quantity of acid. Titrations also let you calculate moles, concentration or volume, and can be used to prepare salts.",
         "keyPoints": [
           "Titrations analyse the concentration of solutions.",
           "Acid-base titrations find exactly how much alkali neutralises a quantity of acid.",
@@ -73,7 +73,8 @@
           "rn_qV5R2cKB59bSKD33::L1::Q7",
           "rn_qV5R2cKB59bSKD33::L1::Q8",
           "rn_qV5R2cKB59bSKD33::L1::Q9"
-        ]
+        ],
+        "figureIds": []
       },
       {
         "id": "rn_qV5R2cKB59bSKD33::L2",
@@ -150,21 +151,6 @@
           "firstLesson": 1
         },
         {
-          "term": "pipette",
-          "definition": "The device that transfers one fixed volume, here 25 cm3, into the flask.",
-          "firstLesson": 1
-        },
-        {
-          "term": "titre",
-          "definition": "The volume delivered by the burette between the starting and final readings.",
-          "firstLesson": 2
-        },
-        {
-          "term": "concordant",
-          "definition": "Describes two results lying within 0.1 cm3 of each other, so both are trusted.",
-          "firstLesson": 2
-        },
-        {
           "term": "neutralisation",
           "definition": "The reaction in which an acid and an alkali react completely, leaving the indicator's endpoint passed.",
           "firstLesson": 1
@@ -191,21 +177,21 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/695c81d8834b-39888-titration-setup1.png",
         "alt": "Diagram showing a titration setup. A conical flask, pipette, and burette on a stand are labelled, illustrating the process of adding a solution.",
         "sourceHeading": "How to carry out a titration",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique"
       },
       {
         "id": "fig-02",
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/513bd971eddc-titration-apparatus.png",
         "alt": "Titration apparatus, downloadable AS & A Level Chemistry revision notes",
         "sourceHeading": "How to carry out a titration",
-        "caption": "Performing a titration",
-        "binding": "heading-unique",
         "moduleIds": [
           "L2"
-        ]
+        ],
+        "binding": "heading-unique",
+        "caption": "Performing a titration"
       }
     ]
   }
