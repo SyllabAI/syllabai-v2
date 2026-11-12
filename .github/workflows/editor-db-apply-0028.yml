@@ -32,6 +32,19 @@
 # OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
 # dispatched (the dispatch = the operator's fire order per the 093/133b law;
 # the ADR-044 Phase 1 exit criterion completes when the operator fires it).
+#
+# RUN-006 (the run-005 red receipt honored): the enforcement-vantage ladder.
+#   The run-004 diagnostics named the residual path (the app role is an
+#   INHERIT member of neon_superuser — the Neon platform provisions
+#   console/API-created roles into it); run-005 measured the ALTER refusal
+#   from the owner vantage ("permission denied to alter role"). This runner
+#   now provisions the enforcement-capable vantage for the COW leg (the
+#   branch-local neon_superuser password reset — the branch dies at leg end,
+#   production roles never touched) and gates the PROD credential mutation
+#   behind the prod_superuser_reset input (deny default: a production
+#   password reset is the operator's call, disclosed in the receipt when
+#   allowed). The driver runs the flip PRE-SET-ROLE, so the connection
+#   vantage of record is what enforces or honestly refuses.
 # Secrets of record: NEON_API_KEY (exists), SIB_PROD_DATABASE_URL (exists,
 # owner-capable). Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID
 # (exist). Receipts are scrubbed by construction: the driver records the DB
@@ -50,6 +63,10 @@ on:
         description: "Operator note for this apply run"
         required: false
         default: ""
+      prod_superuser_reset:
+        description: "allow = the prod leg resets the PRODUCTION neon_superuser password via the Neon API (a production credential mutation, revertible, disclosed in the receipt) to gain the enforcement-capable vantage; deny = the staged SIB_PROD_DATABASE_URL vantage only (the enforcement ALTER is measured honestly and refused unless that DSN is enforcement-capable)"
+        required: false
+        default: "deny"
 
 permissions:
   contents: read
@@ -116,9 +133,38 @@ jobs:
           [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
           ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
           echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL neon_superuser password (run-006 enforcement vantage; the branch dies at leg end)
+        id: sul
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          PW=""
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /tmp/e28-su-reset.json -w "%{http_code}" \
+              -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neon_superuser/reset_password" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            if [ "$CODE" = "200" ]; then PW=$(jq -r '.role.password' /tmp/e28-su-reset.json); break; fi
+            if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+            echo "neon_superuser reset not permitted on this project (HTTP ${CODE}) — the leg continues on the owner vantage and the receipt measures the refusal honestly"; break
+          done
+          if [ -n "$PW" ]; then
+            ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+            echo "su_available=true" >> "$GITHUB_OUTPUT"
+            echo "su_url=postgresql://neon_superuser:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+          else
+            echo "su_available=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Apply 0028 + post-verify on the COW (frozen driver, idempotent)
         run: |
-          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/e28-cow.uri
+          if [ "${{ steps.sul.outputs.su_available }}" = "true" ]; then
+            printf '%s' "${{ steps.sul.outputs.su_url }}" > /tmp/e28-cow.uri
+            echo "apply vantage: neon_superuser (run-006 enforcement-capable)"
+          else
+            printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/e28-cow.uri
+            echo "apply vantage: neondb_owner (enforcement will measure the refusal honestly)"
+          fi
           chmod 600 /tmp/e28-cow.uri
           bun scripts/editor-apply-0028.ts --db file:/tmp/e28-cow.uri --receipt cow-editor-0028-receipt.json
       - name: Upload the receipt artifacts
@@ -158,14 +204,45 @@ jobs:
           bun-version: "1.3.14"
       - name: Install workspace deps (frozen lockfile)
         run: bun install --frozen-lockfile
-      - name: Apply 0028 against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
+      - name: Stage the prod vantage (staged DSN of record; optional operator-gated superuser reset)
         env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
           SIB_PROD_DATABASE_URL: ${{ secrets.SIB_PROD_DATABASE_URL }}
         run: |
           set -euo pipefail
           [ -n "$SIB_PROD_DATABASE_URL" ] || { echo "SIB_PROD_DATABASE_URL not staged — abort"; exit 2; }
-          printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/e28-prod.uri
+          if [ "${{ inputs.prod_superuser_reset }}" = "allow" ]; then
+            echo "OPERATOR-GATED prod credential mutation: resetting the PRODUCTION neon_superuser password (revertible; nobody is known to connect as it; disclosed in the receipt)"
+            HOST=$(python3 -c "import urllib.parse,sys;u=urllib.parse.urlparse(sys.argv[1]);print(u.hostname or '')" "$SIB_PROD_DATABASE_URL")
+            [ -n "$HOST" ] || { echo "cannot parse the staged DSN host"; exit 2; }
+            PW=""
+            for i in $(seq 1 20); do
+              CODE=$(curl -s -o /tmp/e28-prod-su.json -w "%{http_code}" \
+                -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${NEON_PARENT_BRANCH_ID}/roles/neon_superuser/reset_password" \
+                -H "Authorization: Bearer ${NEON_API_KEY}")
+              if [ "$CODE" = "200" ]; then PW=$(jq -r '.role.password' /tmp/e28-prod-su.json); break; fi
+              if [ "$CODE" = "423" ]; then sleep 5; continue; fi
+              echo "prod neon_superuser reset refused (HTTP ${CODE}) — falling back to the staged DSN vantage"; break
+            done
+            if [ -n "$PW" ]; then
+              ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+              printf 'postgresql://neon_superuser:%s@%s/neondb?sslmode=require' "$ENC" "$HOST" > /tmp/e28-prod.uri
+              echo "prod vantage: neon_superuser (enforcement-capable)"
+            else
+              printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/e28-prod.uri
+              echo "prod vantage: staged DSN (the enforcement ALTER will be measured honestly)"
+            fi
+          else
+            printf '%s' "$SIB_PROD_DATABASE_URL" > /tmp/e28-prod.uri
+            echo "prod vantage: staged DSN (prod_superuser_reset=deny — the enforcement ALTER will be measured honestly)"
+          fi
           chmod 600 /tmp/e28-prod.uri
+      - name: Apply 0028 against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
+        run: |
+          set -euo pipefail
+          [ -s /tmp/e28-prod.uri ] || { echo "prod URI not staged — abort"; exit 2; }
           bun scripts/editor-apply-0028.ts --db file:/tmp/e28-prod.uri --receipt prod-editor-0028-receipt.json
       - name: LIVE WIRE PROOF (GET /editor/me — 403 is the expected grant-less verdict)
         run: |
