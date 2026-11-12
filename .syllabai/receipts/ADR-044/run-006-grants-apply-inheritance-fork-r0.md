@@ -29,3 +29,13 @@ What IS proven (every run's receipt): the frozen 0028 file applies cleanly as on
 - The old-generation role `syllabai_v2_app_w2` also holds S,I,U,D on the new tables via the same default privileges (observed in the run-004/006 ACL dumps). Out of this driver's law (which governs `syllabai_v2_app_w2r2`); noted for whichever path is chosen.
 - Rollback of record (if the tables ever land and must go): DROP the three tables CASCADE + REVOKE the granted verbs + ALTER ROLE ... INHERIT. Zero existing-table bytes are involved at any point.
 - The driver/runner changes of runs 003–006 are live on main (a2833543, 2f259c8a, 59cc6e98, f379233d); all fail-closed semantics unchanged; every receipt names its vantage.
+
+## VERDICT (run-007, 2026-11-12 — the CREATE-ROLE viability probe, workflow run 43172104479, COW-only)
+
+The probe (`scripts/editor-probe-role.ts`, driver e1e76bf3) measured all three gates GREEN on the disposable branch:
+
+- **P1 — CREATE ROLE works**: `neondb_owner` created the probe role (`editor_probe_92e76cfa57ec`) — the successor-role path is not dead on arrival.
+- **P2 — SQL-created roles are membership-FREE**: the fresh role held ZERO memberships — the `neon_superuser` INHERIT defect does NOT reproduce for SQL-created roles (it attaches to console/API-created roles only).
+- **P3 — the verb set holds exactly**: SELECT granted = TRUE; UPDATE / DELETE / TRUNCATE all DENIED on a SELECT-only table — the critical negative that reads TRUE-via-membership on the platform-provisioned app role.
+
+**Verdict of record: fork option 2 (the app-role re-provisioning cutover) is VIABLE end-to-end.** The probe receipt rides artifact `editor-0028-cow-receipts` of run 43172104479 (probe JSON: `p1/p2/p3` all green, `ok: true`). The cutover sequence: (1) SQL-create `syllabai_v2_app_w3r3` on prod as neondb_owner + grant the of-record app set (schema USAGE + DML on existing tables + sequences) via a guarded lane; (2) cut the app's DATABASE_URL in Vercel to the w3r3 DSN + live-verify; (3) re-dispatch the grants-apply run — the enforcement block finds no INHERIT memberships on w3r3, the full wire-proof battery completes green, and the Phase 1 exit criterion closes; (4) hygiene follow-up: retire the old role's surface once the app runs clean. Steps 1–2 are a production credential change — operator-gated.

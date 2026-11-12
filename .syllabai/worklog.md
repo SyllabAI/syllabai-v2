@@ -2475,3 +2475,7 @@ Stage Summary:
 
 - Runs 1–6 of editor-db-apply-0028 measured the full escalation ladder: default-privileges ACL defect (found+fixed), membership residual (named: app role INHERIT member of neon_superuser), ALTER ROLE NOINHERIT refused from the owner vantage ("permission denied to alter role"), Neon API refuses the neon_superuser password reset (HTTP 422). PROD NEVER TOUCHED (guard held 6/6; COWs dropped 404-verified every run); the prod vantage remains unmeasured.
 - Receipt of record: .syllabai/receipts/ADR-044/run-006-grants-apply-inheritance-fork-r0.md (the fork: Neon platform request / app-role re-provisioning cutover / ADR amendment). The migration mechanics themselves are proven green (invariants_ok every run); only the append-only DB-layer guarantee is blocked by the platform provisioning.
+
+## ADR-044 run-007 addendum (2026-11-12) — the CREATE-ROLE probe verdict: fork option 2 VIABLE
+
+- Workflow run 43172104479 (cow-only, zero prod contact): P1 CREATE ROLE works from neondb_owner; P2 a SQL-created role holds ZERO platform memberships (the neon_superuser INHERIT defect does not reproduce); P3 the fresh role holds exactly its granted verbs (UPDATE/DELETE/TRUNCATE denied on a SELECT-only table). All green — the re-provisioning cutover is the measured path. Probe receipt on the artifact of record; the fork receipt gains the VERDICT section. The prod cutover (w3r3 + DATABASE_URL) remains operator-gated.
