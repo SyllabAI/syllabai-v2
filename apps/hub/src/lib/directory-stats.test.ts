@@ -44,7 +44,15 @@ describe("course substance line formatting", () => {
   test("full trio joins with the house middle dot", () => {
     expect(
       formatCourseStats({ notes: 112, flashcards: 340, questions: 1250 }),
-    ).toBe("112 notes · 340 flashcards · 1250 questions");
+    ).toBe("112 notes · 340 flashcards · 1,250 questions");
+  });
+
+  test("T-HUB-COURSES-UI-3: ≥1000 counts carry the en-GB separator — the same formatter the hero papers chip runs", () => {
+    // the production case of record: Chemistry CIE 0620's manifest renders
+    // 1133 flashcards; the hero chip beside it says "4,382" — one law now
+    expect(
+      formatCourseStats({ notes: 107, flashcards: 1133, questions: 1300 }),
+    ).toBe("107 notes · 1,133 flashcards · 1,300 questions");
   });
 
   test("zero parts never appear between nonzero parts (honesty law)", () => {
