@@ -1,0 +1,158 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6mmXMQzgwqHvN6yg",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "841c37b5c481a7c0cd27585fb959f3bb6bc4b9f71540cbdcbd8aac9896885ba7",
+    "pinnedRef": "832d0f08d887d4e2bded6023709cf6a130a6a740"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_6mmXMQzgwqHvN6yg",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Co-ordination and Response",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/co-ordination-and-response/homeostasis",
+    "specAnchors": [
+      {
+        "code": "2.81",
+        "text": "understand that homeostasis is the maintenance of a constant internal environment, and that body water content and body temperature are both examples of homeostasis"
+      }
+    ],
+    "primer": {
+      "text": "You already know that enzymes need the right conditions to work and that the body is full of feedback systems keeping things steady. This note names that idea — homeostasis — and walks through its two flagship examples in humans: holding temperature near a set point and balancing the water content of the blood through the kidneys.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_6mmXMQzgwqHvN6yg::L1",
+        "title": "Homeostasis and why the internal environment matters",
+        "sourceHeadings": [
+          "Homeostasis"
+        ],
+        "specRefs": [
+          "2.81"
+        ],
+        "opening": "Homeostasis means keeping the conditions inside the body steady even when the outside world shifts. Enzymes and cells only work inside narrow ranges, so drifting too far in either direction becomes dangerous. Temperature and the water content of the blood are the two classic examples you need to quote in exams.",
+        "keyPoints": [
+          "Homeostasis keeps the internal environment of the body constant within set limits.",
+          "It matters because enzymes and cells only function properly within narrow internal ranges.",
+          "If conditions drift beyond those limits the organism can die.",
+          "Body temperature and body water content are the two named examples of homeostatic control."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Homeostasis holds internal conditions steady — temperature near a set point and blood water balanced — so enzymes keep working.",
+            "analogy": "It is the body's thermostat and water meter running at once, nudging levels back whenever they wander.",
+            "examPointer": "Quote the two examples — temperature and water content — by name; questions usually ask for both."
+          },
+          "medium": {
+            "restatement": "Set limits protect enzyme activity and cell function; sensors detect drift, control centres process it, and effectors restore the optimum.",
+            "analogy": "Picture a greenhouse: vents and heaters respond to sensors so seedlings never cook or freeze, whatever the weather outside.",
+            "examPointer": "Link failure to death explicitly — exceeding the limits means enzymes stop working, which examiners reward."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6mmXMQzgwqHvN6yg::L1::Q1",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q2",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q3",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q4",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q5",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q6",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q7",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q8",
+          "rn_6mmXMQzgwqHvN6yg::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_6mmXMQzgwqHvN6yg::L2",
+        "title": "Controlling temperature and water content in humans",
+        "sourceHeadings": [
+          "Control of body temperature in humans",
+          "Control of body water content in humans"
+        ],
+        "specRefs": [
+          "2.81"
+        ],
+        "opening": "Human core temperature sits close to 37 °C, monitored by the thermoregulatory centre at the base of the brain. Water balance is managed differently: losses through breathing and sweating cannot be adjusted, so the kidneys fine-tune how much water the urine carries away. ADH is the hormone steering that reabsorption.",
+        "keyPoints": [
+          "Core body temperature stays near 37 °C; a shift beyond about two degrees can be fatal.",
+          "The thermoregulatory centre at the brain's base monitors blood temperature and coordinates cooling or heating responses.",
+          "Temperature receptors in the skin send extra signals to that centre.",
+          "The kidneys adjust how much water is reabsorbed from the filtrate in the nephron's collecting ducts.",
+          "Too little blood water means more reabsorption and concentrated urine; too much means dilute urine — ADH controls the switch."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Breathing and sweating lose water regardless, so control sits in the kidneys: ADH decides how much filtrate water returns, setting urine volume and concentration.",
+            "analogy": "ADH works like a tap on the drain — more hormone closes the tap for a small, concentrated trickle; less opens it for a copious, dilute flow.",
+            "examPointer": "Always attach ADH to the collecting duct — naming the nephron structure earns the mark."
+          },
+          "medium": {
+            "restatement": "Thermoregulation pairs blood-borne and skin receptors with brain coordination, while osmoregulation couples kidney reabsorption to ADH release, both restoring set points.",
+            "analogy": "One system is a thermostat with sensors in two rooms; the other is a reservoir engineer releasing or storing water to hold the level constant.",
+            "examPointer": "Contrast the two losses: lungs and skin are uncontrollable, urine is adjustable — that contrast is the question's core."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6mmXMQzgwqHvN6yg::L2::Q1",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q2",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q3",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q4",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q5",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q6",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q7",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q8",
+          "rn_6mmXMQzgwqHvN6yg::L2::Q9"
+        ],
+        "figureIds": []
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "homeostasis",
+          "definition": "The maintenance of steady internal conditions within narrow set limits despite external change.",
+          "firstLesson": 1
+        },
+        {
+          "term": "thermoregulatory centre",
+          "definition": "The region at the base of the brain that monitors blood temperature and coordinates heating or cooling responses.",
+          "firstLesson": 1
+        },
+        {
+          "term": "collecting duct",
+          "definition": "The nephron structure from which water is reabsorbed into the blood under ADH control.",
+          "firstLesson": 2
+        },
+        {
+          "term": "ADH",
+          "definition": "The hormone that controls how much water the kidneys reabsorb, setting urine volume and concentration.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}
