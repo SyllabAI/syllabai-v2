@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_27dbWmcwsCf9k5JW",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "94e6b7e0bc923d08994d7e0861c1c45c7cd3b94e05a8ae4a3d23e31e5ae6657e",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_27dbWmcwsCf9k5JW",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q1",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "Which chemical elements do carbohydrates contain?",
+      "misconceptionClass": "carbohydrate elements",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon, hydrogen and oxygen",
+          "correct": true,
+          "explanation": "The note lists exactly these three elements.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Carbon, hydrogen and nitrogen",
+          "correct": false,
+          "explanation": "Nitrogen belongs to proteins, not carbohydrates.",
+          "misconception": "protein elements misattributed"
+        },
+        {
+          "key": "C",
+          "text": "Carbon, hydrogen, oxygen and nitrogen",
+          "correct": false,
+          "explanation": "The nitrogen addition describes proteins.",
+          "misconception": "protein elements over-applied"
+        },
+        {
+          "key": "D",
+          "text": "Carbon and hydrogen only",
+          "correct": false,
+          "explanation": "Oxygen is always present too.",
+          "misconception": "element omitted"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q2",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "What joins together to build starch and glycogen?",
+      "misconceptionClass": "starch building",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cellulose fragments",
+          "correct": false,
+          "explanation": "Cellulose is itself a glucose polymer, not a building block.",
+          "misconception": "polymer confused with unit"
+        },
+        {
+          "key": "B",
+          "text": "Many glucose molecules linked in long chains",
+          "correct": true,
+          "explanation": "Both polymers are built from many glucose units.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Glycerol and fatty acids",
+          "correct": false,
+          "explanation": "Those build lipids.",
+          "misconception": "lipid units misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Amino acids",
+          "correct": false,
+          "explanation": "Those build proteins.",
+          "misconception": "protein units misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q3",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "Why are polysaccharides useful as storage molecules?",
+      "misconceptionClass": "storage rationale",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because they carry nitrogen for growth",
+          "correct": false,
+          "explanation": "Carbohydrates carry no nitrogen.",
+          "misconception": "element invented"
+        },
+        {
+          "key": "B",
+          "text": "Because they are the smallest sugars available",
+          "correct": false,
+          "explanation": "They are the largest members of the family.",
+          "misconception": "size inverted"
+        },
+        {
+          "key": "C",
+          "text": "Because they are large and insoluble, so they stay in place inside cells",
+          "correct": true,
+          "explanation": "The note links insolubility to the storage role.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because they dissolve quickly into the blood",
+          "correct": false,
+          "explanation": "Insolubility, not solubility, suits storage.",
+          "misconception": "property inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q4",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "Maltose is formed when which two units join?",
+      "misconceptionClass": "maltose formation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Glucose and a fatty acid",
+          "correct": false,
+          "explanation": "Fatty acids build lipids.",
+          "misconception": "cross-family join"
+        },
+        {
+          "key": "B",
+          "text": "Two amino acids",
+          "correct": false,
+          "explanation": "That would build a protein fragment.",
+          "misconception": "protein units misattributed"
+        },
+        {
+          "key": "C",
+          "text": "Glycerol and glucose",
+          "correct": false,
+          "explanation": "Glycerol belongs to lipids.",
+          "misconception": "lipid unit misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Two glucose molecules",
+          "correct": true,
+          "explanation": "The note names maltose as two glucose molecules joined.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q5",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "A molecule list reads: glucose, maltose, starch, cellulose. Which family do all four belong to, and what changes along the list?",
+      "misconceptionClass": "family sweep",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbohydrates; the molecules grow from single units to very long chains",
+          "correct": true,
+          "explanation": "All four are carbohydrates and the list runs by increasing chain length.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Lipids; they grow from oils to fats",
+          "correct": false,
+          "explanation": "None of the four is a lipid.",
+          "misconception": "family misattributed"
+        },
+        {
+          "key": "C",
+          "text": "Proteins; they grow by adding amino acids",
+          "correct": false,
+          "explanation": "None of the four is a protein.",
+          "misconception": "family misattributed"
+        },
+        {
+          "key": "D",
+          "text": "A mixed list with no single family",
+          "correct": false,
+          "explanation": "All four sit in one family.",
+          "misconception": "family unity denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q6",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "State the three chemical elements carbohydrates contain.",
+      "misconceptionClass": "elements recall",
+      "kind": "recall",
+      "modelAnswer": "Carbon, hydrogen and oxygen.",
+      "keywords": [
+        "carbon",
+        "hydrogen",
+        "oxygen",
+        "carbohydrates"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q7",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "Name the polysaccharide that plants use for storage and the one animals use.",
+      "misconceptionClass": "storage pair recall",
+      "kind": "recall",
+      "modelAnswer": "Plants store starch; animals store glycogen.",
+      "keywords": [
+        "starch",
+        "glycogen",
+        "animals",
+        "plants"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q8",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "Explain why cellulose, starch and glycogen can all be built from the same single unit yet play different roles.",
+      "misconceptionClass": "same unit different roles",
+      "kind": "explain-why",
+      "modelAnswer": "All three are long chains of glucose units, but chain length, the way chains branch and where they are placed differ, so the same building block yields a wall material in plants, a plant energy store and an animal energy store.",
+      "keywords": [
+        "glucose",
+        "chains",
+        "starch",
+        "building"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L1::Q9",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L1",
+      "stem": "An athlete's trainer suggests a slow-release carbohydrate meal before a long race. Using chain length, explain which family member fits that description.",
+      "misconceptionClass": "slow release application",
+      "kind": "application",
+      "modelAnswer": "A long-chain polysaccharide such as starch fits: its large insoluble molecules must be broken down step by step into glucose, releasing energy steadily rather than in one jump the way a drink of simple sugar would.",
+      "keywords": [
+        "starch",
+        "glucose",
+        "chains",
+        "polysaccharide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q1",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "Which pair of smaller units builds lipids?",
+      "misconceptionClass": "lipid units",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nucleotides",
+          "correct": false,
+          "explanation": "Nucleotides build nucleic acids, outside this note.",
+          "misconception": "unit family invented"
+        },
+        {
+          "key": "B",
+          "text": "Glycerol and fatty acids",
+          "correct": true,
+          "explanation": "The note names exactly this pair.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Glucose and maltose",
+          "correct": false,
+          "explanation": "Those are carbohydrate units.",
+          "misconception": "carbohydrate units misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Amino acids",
+          "correct": false,
+          "explanation": "Those build proteins.",
+          "misconception": "protein units misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q2",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "Which statement about lipid behaviour at room temperature is correct?",
+      "misconceptionClass": "fat vs oil",
+      "options": [
+        {
+          "key": "A",
+          "text": "Oils contain nitrogen while fats do not",
+          "correct": false,
+          "explanation": "Neither contains nitrogen.",
+          "misconception": "element invented"
+        },
+        {
+          "key": "B",
+          "text": "Only oils can store energy",
+          "correct": false,
+          "explanation": "Both store energy richly.",
+          "misconception": "function denied"
+        },
+        {
+          "key": "C",
+          "text": "They are both lipids, differing in their state at room temperature",
+          "correct": true,
+          "explanation": "Solid lipids are fats and liquid lipids are oils.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Fats are carbohydrates and oils are lipids",
+          "correct": false,
+          "explanation": "Both belong to the lipid family.",
+          "misconception": "family split invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q3",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "Why can organisms build hundreds of thousands of different proteins?",
+      "misconceptionClass": "protein variety",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because amino acids can turn into glycerol",
+          "correct": false,
+          "explanation": "Amino acids do not become lipid units.",
+          "misconception": "cross-family conversion invented"
+        },
+        {
+          "key": "B",
+          "text": "Because every protein uses exactly the same order",
+          "correct": false,
+          "explanation": "A fixed order would give one protein.",
+          "misconception": "uniformity contradicted"
+        },
+        {
+          "key": "C",
+          "text": "Because proteins link to carbohydrates in varied ways",
+          "correct": false,
+          "explanation": "The family builds from amino acids alone.",
+          "misconception": "conjugation invented"
+        },
+        {
+          "key": "D",
+          "text": "Because amino acids can be arranged in many different orders",
+          "correct": true,
+          "explanation": "Sequence variety is the stated source of protein diversity.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q4",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "What decides a protein's overall shape?",
+      "misconceptionClass": "shape determinant",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its specific amino acid sequence",
+          "correct": true,
+          "explanation": "Sequence gives the molecule its particular shape.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The temperature of the cell",
+          "correct": false,
+          "explanation": "Temperature affects shape but does not determine the designed shape.",
+          "misconception": "condition treated as determinant"
+        },
+        {
+          "key": "C",
+          "text": "The amount of starch stored nearby",
+          "correct": false,
+          "explanation": "Carbohydrate stores are unrelated to protein shape.",
+          "misconception": "irrelevant variable"
+        },
+        {
+          "key": "D",
+          "text": "The number of fatty acids attached",
+          "correct": false,
+          "explanation": "Fatty acids belong to lipids.",
+          "misconception": "lipid unit misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q5",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "Which list contains only proteins named in this note?",
+      "misconceptionClass": "protein examples",
+      "options": [
+        {
+          "key": "A",
+          "text": "Keratin, triglyceride and enzymes",
+          "correct": false,
+          "explanation": "Triglyceride is a lipid.",
+          "misconception": "lipid misfiled"
+        },
+        {
+          "key": "B",
+          "text": "Enzymes, haemoglobin and keratin",
+          "correct": true,
+          "explanation": "All three are named protein examples.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Enzymes, starch and keratin",
+          "correct": false,
+          "explanation": "Starch is a carbohydrate.",
+          "misconception": "carbohydrate misfiled"
+        },
+        {
+          "key": "D",
+          "text": "Haemoglobin, glycogen and enzymes",
+          "correct": false,
+          "explanation": "Glycogen is a carbohydrate.",
+          "misconception": "carbohydrate misfiled"
+        }
+      ]
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q6",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "Name the smaller units proteins are built from.",
+      "misconceptionClass": "protein units recall",
+      "kind": "recall",
+      "modelAnswer": "Amino acids.",
+      "keywords": [
+        "amino acids",
+        "proteins",
+        "smaller",
+        "units"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q7",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "Give the two smaller units lipids are built from.",
+      "misconceptionClass": "lipid units recall",
+      "kind": "recall",
+      "modelAnswer": "Glycerol and fatty acids.",
+      "keywords": [
+        "glycerol",
+        "fatty acids",
+        "smaller",
+        "lipids"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q8",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "Explain why a change in a protein's amino acid sequence can stop the protein doing its job.",
+      "misconceptionClass": "sequence change effect",
+      "kind": "explain-why",
+      "modelAnswer": "The sequence determines the overall shape of the molecule, and the shape determines what the protein can bind or catalyse; altering the sequence can reshape the working region so it no longer fits its target, leaving the protein unable to function.",
+      "keywords": [
+        "sequence",
+        "shape",
+        "bind",
+        "determines"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_27dbWmcwsCf9k5JW::L2::Q9",
+      "moduleId": "rn_27dbWmcwsCf9k5JW::L2",
+      "stem": "A seed contains an energy store and a structural material for new membranes. Which two molecule families and unit pairs should the seed be rich in?",
+      "misconceptionClass": "seed stores application",
+      "kind": "application",
+      "modelAnswer": "The energy store should be a lipid (built from glycerol and fatty acids) and the membrane material also draws on lipids, while any growth machinery will need proteins built from amino acids — so the seed banks both families.",
+      "keywords": [
+        "lipid",
+        "glycerol",
+        "amino acids",
+        "machinery"
+      ],
+      "options": []
+    }
+  ]
+}

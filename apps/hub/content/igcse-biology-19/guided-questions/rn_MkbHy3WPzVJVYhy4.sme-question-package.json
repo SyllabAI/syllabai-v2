@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_MkbHy3WPzVJVYhy4",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "07cd93d09f79342cb9b363367794dd2b5fbc6be1e510a278564a1e681ac7e077",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_MkbHy3WPzVJVYhy4",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q1",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "What does iodine turning blue-black in a well tell you during the practical?",
+      "misconceptionClass": "iodine reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "Starch is still present in the droplet",
+          "correct": true,
+          "explanation": "Blue-black is the starch-positive colour.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The amylase has finished working",
+          "correct": false,
+          "explanation": "Finished means NO colour change.",
+          "misconception": "reading inverted"
+        },
+        {
+          "key": "C",
+          "text": "The maltose is being built faster",
+          "correct": false,
+          "explanation": "Maltose does not colour iodine.",
+          "misconception": "product misattributed"
+        },
+        {
+          "key": "D",
+          "text": "The temperature has changed",
+          "correct": false,
+          "explanation": "Colour reports starch, not temperature.",
+          "misconception": "variable confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q2",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "How is the reaction time recorded?",
+      "misconceptionClass": "timing method",
+      "options": [
+        {
+          "key": "A",
+          "text": "By the tube changing colour all at once",
+          "correct": false,
+          "explanation": "The tile, not the tube, is the readout.",
+          "misconception": "surface confusion"
+        },
+        {
+          "key": "B",
+          "text": "By counting the wells up to the first one where iodine stays unchanged",
+          "correct": true,
+          "explanation": "Well counting is the stated readout.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "By weighing the tube before and after",
+          "correct": false,
+          "explanation": "No weighing occurs.",
+          "misconception": "invented method"
+        },
+        {
+          "key": "D",
+          "text": "By watching for bubbles",
+          "correct": false,
+          "explanation": "No gas is produced here.",
+          "misconception": "invented method"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q3",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "What range of temperatures does the note suggest investigating?",
+      "misconceptionClass": "temperature range",
+      "options": [
+        {
+          "key": "A",
+          "text": "From 80 to 100 degrees Celsius",
+          "correct": false,
+          "explanation": "Enzymes denature well before this.",
+          "misconception": "range invented"
+        },
+        {
+          "key": "B",
+          "text": "Only room temperature",
+          "correct": false,
+          "explanation": "One temperature gives no comparison.",
+          "misconception": "range denied"
+        },
+        {
+          "key": "C",
+          "text": "From about 30 to 60 degrees Celsius",
+          "correct": true,
+          "explanation": "The note names this range.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "From 0 to 10 degrees Celsius",
+          "correct": false,
+          "explanation": "Too cold for a visible rate spread.",
+          "misconception": "range invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q4",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "Why does the investigation repeat each temperature at least twice more?",
+      "misconceptionClass": "repeat rationale",
+      "options": [
+        {
+          "key": "A",
+          "text": "To warm the water bath up",
+          "correct": false,
+          "explanation": "Repeats do not warm anything.",
+          "misconception": "function invented"
+        },
+        {
+          "key": "B",
+          "text": "To use up the spare reagents",
+          "correct": false,
+          "explanation": "Reagent use is not a goal.",
+          "misconception": "absurd rationale"
+        },
+        {
+          "key": "C",
+          "text": "Because amylase improves with practice",
+          "correct": false,
+          "explanation": "Enzymes do not learn.",
+          "misconception": "absurd rationale"
+        },
+        {
+          "key": "D",
+          "text": "To check reliability by exposing random error in the timing",
+          "correct": true,
+          "explanation": "Repeats expose anomalous timings.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q5",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "Which variable set must stay controlled for the temperature comparison to be fair?",
+      "misconceptionClass": "controls",
+      "options": [
+        {
+          "key": "A",
+          "text": "The volumes and concentrations of starch, amylase and iodine",
+          "correct": true,
+          "explanation": "The CORMS control list names these.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The temperature of every tube",
+          "correct": false,
+          "explanation": "Temperature is the independent variable being changed.",
+          "misconception": "variable role confusion"
+        },
+        {
+          "key": "C",
+          "text": "The number of iodine wells",
+          "correct": false,
+          "explanation": "The tile layout is fixed equipment, not a variable of interest.",
+          "misconception": "equipment vs variable confusion"
+        },
+        {
+          "key": "D",
+          "text": "The brand of stopwatch",
+          "correct": false,
+          "explanation": "Equipment brand is irrelevant.",
+          "misconception": "irrelevant variable"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q6",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "Name the enzyme and its substrate used in this practical.",
+      "misconceptionClass": "pair recall",
+      "kind": "recall",
+      "modelAnswer": "Amylase digests starch.",
+      "keywords": [
+        "amylase",
+        "starch",
+        "digests",
+        "substrate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q7",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "State the colour iodine shows when starch has been fully digested.",
+      "misconceptionClass": "negative colour recall",
+      "kind": "recall",
+      "modelAnswer": "It stays yellow-brown.",
+      "keywords": [
+        "yellow-brown",
+        "stays",
+        "digested",
+        "colour"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q8",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "Explain why the iodine wells must each receive a fresh droplet rather than re-testing the same well.",
+      "misconceptionClass": "fresh well reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Once a well's iodine has reacted with starch it cannot report a new state, so each timed droplet needs untouched iodine; re-using a well would mix old reaction products with the new droplet and blur the moment digestion truly finished.",
+      "keywords": [
+        "iodine",
+        "droplet",
+        "well",
+        "untouched"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L1::Q9",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L1",
+      "stem": "A pupil's 40-degree run shows the iodine still changing after 12 wells while the 37-degree run stopped at 5. Using enzyme theory, interpret the pattern.",
+      "misconceptionClass": "interpretation application",
+      "kind": "application",
+      "modelAnswer": "40 degrees sits slightly above the human optimum, so the enzyme is already losing shape to early denaturation and digests the starch more slowly than at 37 — the longer well count at 40 matches the curve's fall beyond the peak.",
+      "keywords": [
+        "optimum",
+        "denaturation",
+        "slowly",
+        "slightly"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q1",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "Which temperature run should show the SHORTEST well count?",
+      "misconceptionClass": "optimum readout",
+      "options": [
+        {
+          "key": "A",
+          "text": "All runs tie",
+          "correct": false,
+          "explanation": "The rate curve separates them.",
+          "misconception": "curve denied"
+        },
+        {
+          "key": "B",
+          "text": "The run at the enzyme's optimum temperature",
+          "correct": true,
+          "explanation": "Fastest digestion means fewest wells.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The coldest run",
+          "correct": false,
+          "explanation": "Cold runs the slowest.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "D",
+          "text": "The hottest run",
+          "correct": false,
+          "explanation": "Heat denatures and slows or stops digestion.",
+          "misconception": "direction inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q2",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "Which improvement fixes the drifting-temperature limitation?",
+      "misconceptionClass": "drift fix",
+      "options": [
+        {
+          "key": "A",
+          "text": "Shaking the tubes more often",
+          "correct": false,
+          "explanation": "Shaking changes mixing, not temperature.",
+          "misconception": "irrelevant fix"
+        },
+        {
+          "key": "B",
+          "text": "Using a darker spotting tile",
+          "correct": false,
+          "explanation": "Tile colour is irrelevant.",
+          "misconception": "irrelevant fix"
+        },
+        {
+          "key": "C",
+          "text": "Using water baths set to each temperature, with solutions pre-warmed",
+          "correct": true,
+          "explanation": "Water baths hold the temperature steady.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Adding more iodine to each well",
+          "correct": false,
+          "explanation": "Iodine volume does not fix drift.",
+          "misconception": "irrelevant fix"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q3",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "What does a colorimeter add to this investigation?",
+      "misconceptionClass": "colorimeter role",
+      "options": [
+        {
+          "key": "A",
+          "text": "A way to raise the temperature",
+          "correct": false,
+          "explanation": "That is the water bath's job.",
+          "misconception": "function confusion"
+        },
+        {
+          "key": "B",
+          "text": "Extra amylase when the reaction slows",
+          "correct": false,
+          "explanation": "No enzyme dosing occurs.",
+          "misconception": "function invented"
+        },
+        {
+          "key": "C",
+          "text": "A record of the room's humidity",
+          "correct": false,
+          "explanation": "Humidity is irrelevant.",
+          "misconception": "function invented"
+        },
+        {
+          "key": "D",
+          "text": "An objective measurement of colour intensity to detect the endpoint",
+          "correct": true,
+          "explanation": "The colorimeter replaces eye judgement with measurement.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q4",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "In the CORMS frame for this experiment, which letter covers repeating the investigation?",
+      "misconceptionClass": "corms letters",
+      "options": [
+        {
+          "key": "A",
+          "text": "R",
+          "correct": true,
+          "explanation": "R is repeat for reliability.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C",
+          "correct": false,
+          "explanation": "C is the change (temperature).",
+          "misconception": "letter mismatch"
+        },
+        {
+          "key": "C",
+          "text": "M",
+          "correct": false,
+          "explanation": "M is measure.",
+          "misconception": "letter mismatch"
+        },
+        {
+          "key": "D",
+          "text": "S",
+          "correct": false,
+          "explanation": "S is the controlled variables.",
+          "misconception": "letter mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q5",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "Which pairing of limitation and consequence is correct?",
+      "misconceptionClass": "limitation consequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "Colorimeter — it removes the need for amylase",
+          "correct": false,
+          "explanation": "The enzyme is still required.",
+          "misconception": "function invented"
+        },
+        {
+          "key": "B",
+          "text": "Temperature drift — the true temperature behind a rate is uncertain",
+          "correct": true,
+          "explanation": "Drift confuses the attribution of the measured rate.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Colour judgement — the enzyme digests faster",
+          "correct": false,
+          "explanation": "Judgement error adds noise, it does not speed digestion.",
+          "misconception": "effect invented"
+        },
+        {
+          "key": "D",
+          "text": "Water baths — they cause denaturation",
+          "correct": false,
+          "explanation": "Baths prevent drift; they do not denature.",
+          "misconception": "effect invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q6",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "State what CORMS helps you do in a practical write-up.",
+      "misconceptionClass": "corms recall",
+      "kind": "recall",
+      "modelAnswer": "Plan a valid investigation: change, organism, repeat, measure, same/control variables.",
+      "keywords": [
+        "valid",
+        "investigation",
+        "variables",
+        "organism"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q7",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "Name the instrument suggested for objective colour measurement.",
+      "misconceptionClass": "instrument recall",
+      "kind": "recall",
+      "modelAnswer": "A colorimeter.",
+      "keywords": [
+        "colorimeter",
+        "measurement",
+        "instrument",
+        "suggested"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q8",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "Explain why the well-count method can miss the exact moment digestion finishes.",
+      "misconceptionClass": "resolution reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Droplets are transferred only once per minute, so the endpoint is only known to fall somewhere inside a one-minute window between the last blue-black well and the first unchanged one; finer sampling intervals would narrow that window.",
+      "keywords": [
+        "droplet",
+        "minute",
+        "endpoint",
+        "transferred"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MkbHy3WPzVJVYhy4::L2::Q9",
+      "moduleId": "rn_MkbHy3WPzVJVYhy4::L2",
+      "stem": "A class runs the practical with baths at 30, 40 and 50 degrees and gets mean well counts of 9, 4 and 8. Which temperature sits nearest the optimum, and why does 50 still finish faster than 30?",
+      "misconceptionClass": "data application",
+      "kind": "application",
+      "modelAnswer": "40 degrees is nearest the optimum because its count of 4 is the shortest; 50 beats 30 because at 50 the enzyme still holds enough shape to work faster than the collision-starved 30-degree run, even though denaturation has begun eating into its rate.",
+      "keywords": [
+        "optimum",
+        "collisions",
+        "denaturation",
+        "shortest"
+      ],
+      "options": []
+    }
+  ]
+}

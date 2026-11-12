@@ -1,0 +1,494 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_x2cfFnFT6j99Q25F",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "aeed4d6124406a973f846c98fe0534a1603c901ee6ae6d78b081f58e8610a0ea",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "packageId": "igcse-biology::rn_x2cfFnFT6j99Q25F",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q1",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "Which definition matches the term pathogen?",
+      "misconceptionClass": "pathogen definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "An organism that brings about disease inside a different organism",
+          "correct": true,
+          "explanation": "This matches the note's definition.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Any microscopic particle found in the air",
+          "correct": false,
+          "explanation": "Pathogens are organisms causing disease, not any particle.",
+          "misconception": "particle over-generalisation"
+        },
+        {
+          "key": "C",
+          "text": "Any organism living inside a host",
+          "correct": false,
+          "explanation": "Many internal organisms are harmless; causing disease is the deciding property.",
+          "misconception": "commensalism conflated with pathogenicity"
+        },
+        {
+          "key": "D",
+          "text": "Any organism that feeds on dead material",
+          "correct": false,
+          "explanation": "Decomposer feeding is not disease-causing.",
+          "misconception": "decomposer conflated with pathogen"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q2",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "Which group of organisms includes pathogens but is NOT classified among living organisms?",
+      "misconceptionClass": "virus status",
+      "options": [
+        {
+          "key": "A",
+          "text": "Protoctists",
+          "correct": false,
+          "explanation": "Protoctists are living eukaryotes.",
+          "misconception": "living status misassigned"
+        },
+        {
+          "key": "B",
+          "text": "Viruses",
+          "correct": true,
+          "explanation": "Viruses cause disease yet sit outside the classification of living organisms.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Bacteria",
+          "correct": false,
+          "explanation": "Bacteria are living prokaryotes.",
+          "misconception": "living status misassigned"
+        },
+        {
+          "key": "D",
+          "text": "Fungi",
+          "correct": false,
+          "explanation": "Fungi are living eukaryotes.",
+          "misconception": "living status misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q3",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "How do pathogenic bacteria such as Pneumococcus sometimes behave, according to the note?",
+      "misconceptionClass": "bacterial behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "They only infect plants",
+          "correct": false,
+          "explanation": "Pneumonia is a human disease.",
+          "misconception": "host range wrong"
+        },
+        {
+          "key": "B",
+          "text": "They are always harmless",
+          "correct": false,
+          "explanation": "They cause pneumonia.",
+          "misconception": "harm denied"
+        },
+        {
+          "key": "C",
+          "text": "They can stay within body cavities or spaces without infecting host cells",
+          "correct": true,
+          "explanation": "The note states they do not always infect host cells.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "They always invade and take over host cells",
+          "correct": false,
+          "explanation": "That describes viruses, not these bacteria.",
+          "misconception": "virus behaviour over-applied"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q4",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "Which pairing of pathogen example and disease is correct?",
+      "misconceptionClass": "example pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pneumococcus — malaria",
+          "correct": false,
+          "explanation": "Pneumococcus causes pneumonia.",
+          "misconception": "disease swapped"
+        },
+        {
+          "key": "B",
+          "text": "Mucor — malaria in humans",
+          "correct": false,
+          "explanation": "Mucor is a plant-infecting fungus.",
+          "misconception": "group and disease crossed"
+        },
+        {
+          "key": "C",
+          "text": "TMV — malaria",
+          "correct": false,
+          "explanation": "TMV is a plant virus.",
+          "misconception": "virus disease crossed"
+        },
+        {
+          "key": "D",
+          "text": "Plasmodium falciparum — malaria spread by mosquitoes",
+          "correct": true,
+          "explanation": "The named protoctist and its vector pair correctly.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q5",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "Why is 'all fungi are pathogens' a wrong claim to write in an exam?",
+      "misconceptionClass": "over-generalisation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because only some Mucor species are pathogenic and most fungi are harmless decomposers or food makers",
+          "correct": true,
+          "explanation": "The note deliberately says some (but not all) Mucor species are pathogenic.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because fungi are prokaryotes and cannot infect anything",
+          "correct": false,
+          "explanation": "Fungi are eukaryotes and some do infect.",
+          "misconception": "classification error stacked"
+        },
+        {
+          "key": "C",
+          "text": "Because fungi lack cell walls",
+          "correct": false,
+          "explanation": "Fungi have walls.",
+          "misconception": "inverted feature"
+        },
+        {
+          "key": "D",
+          "text": "Because pathogens must be single-celled",
+          "correct": false,
+          "explanation": "Multicellular fungi can be pathogenic.",
+          "misconception": "size rule invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q6",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "Give the term for an organism that brings about disease in a different organism.",
+      "misconceptionClass": "term recall",
+      "kind": "recall",
+      "modelAnswer": "A pathogen.",
+      "keywords": [
+        "pathogen",
+        "different",
+        "organism"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q7",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "Name the protoctist pathogen and the disease it causes.",
+      "misconceptionClass": "malaria pair recall",
+      "kind": "recall",
+      "modelAnswer": "Plasmodium falciparum causes malaria.",
+      "keywords": [
+        "plasmodium",
+        "malaria",
+        "falciparum",
+        "causes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q8",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "Explain why the three named cellular pathogen groups can look so different from one another yet still share the pathogen label.",
+      "misconceptionClass": "label across groups",
+      "kind": "explain-why",
+      "modelAnswer": "The label describes what an organism does — causing disease in a host — not how it is built, so a wall-carrying bacterium, a hyphal fungus and a parasite protoctist can all qualify despite sitting in three different classification groups.",
+      "keywords": [
+        "disease",
+        "groups",
+        "host",
+        "classification"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L1::Q9",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L1",
+      "stem": "A gardener finds a plant with discoloured, wilting leaves and suspects three culprits: a bacterium, a fungus and a virus. Using this note's examples, name one named species for two of the culprit classes.",
+      "misconceptionClass": "garden culprits application",
+      "kind": "application",
+      "modelAnswer": "A fungal culprit could be a Mucor species (some are plant pathogens) and a viral culprit could be tobacco mosaic virus; the bacterium slot would need a plant-infecting bacterial species rather than the human-lung Pneumococcus.",
+      "keywords": [
+        "mucor",
+        "tobacco mosaic virus",
+        "pathogens",
+        "pneumococcus"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q1",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "What does a virus particle contain?",
+      "misconceptionClass": "virus contents",
+      "options": [
+        {
+          "key": "A",
+          "text": "Many types of nucleic acid and a nucleus",
+          "correct": false,
+          "explanation": "One nucleic acid type and no nucleus.",
+          "misconception": "nucleus misattributed"
+        },
+        {
+          "key": "B",
+          "text": "A protein coat around one type of nucleic acid",
+          "correct": true,
+          "explanation": "This matches the note's structure description.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "A cell wall, membrane and cytoplasm",
+          "correct": false,
+          "explanation": "Viruses have no cellular structure.",
+          "misconception": "cellular parts misattributed"
+        },
+        {
+          "key": "D",
+          "text": "Mitochondria and ribosomes",
+          "correct": false,
+          "explanation": "Viruses carry no organelles.",
+          "misconception": "organelles misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q2",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "Why are viruses excluded from the classification of living organisms?",
+      "misconceptionClass": "non-living reason",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because they cannot cause disease",
+          "correct": false,
+          "explanation": "Causing disease is what they do best.",
+          "misconception": "harm denied"
+        },
+        {
+          "key": "B",
+          "text": "Because they lack nucleic acid",
+          "correct": false,
+          "explanation": "Every virus carries DNA or RNA.",
+          "misconception": "genome denied"
+        },
+        {
+          "key": "C",
+          "text": "Because they perform none of the eight life processes on their own",
+          "correct": true,
+          "explanation": "The note gives exactly this reason.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because they are too small to see with a microscope",
+          "correct": false,
+          "explanation": "Smallness is not the exclusion reason.",
+          "misconception": "size treated as decisive"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q3",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "Which statement about virus reproduction is correct?",
+      "misconceptionClass": "virus reproduction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Viruses reproduce freely in soil and water",
+          "correct": false,
+          "explanation": "They need living cells.",
+          "misconception": "free reproduction denied correctly"
+        },
+        {
+          "key": "B",
+          "text": "Viruses reproduce by cell division",
+          "correct": false,
+          "explanation": "Viruses have no cells to divide.",
+          "misconception": "division misattributed"
+        },
+        {
+          "key": "C",
+          "text": "Viruses never reproduce at all",
+          "correct": false,
+          "explanation": "They reproduce via host cells.",
+          "misconception": "reproduction denied"
+        },
+        {
+          "key": "D",
+          "text": "Viruses can reproduce only inside living host cells",
+          "correct": true,
+          "explanation": "Parasitic reproduction inside living cells is the named rule.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q4",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "A tobacco plant shows a mosaic pattern of leaf discolouration and poor growth. Which pathogen fits, and what is the mechanism?",
+      "misconceptionClass": "tmv mechanism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tobacco mosaic virus, which damages chloroplast formation and so reduces photosynthesis",
+          "correct": true,
+          "explanation": "The note ties the discolouration to chloroplast damage and the poor growth to reduced photosynthesis.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Plasmodium falciparum, which destroys red blood cells",
+          "correct": false,
+          "explanation": "That is the malaria protoctist of humans.",
+          "misconception": "wrong kingdom and host"
+        },
+        {
+          "key": "C",
+          "text": "Pneumococcus, which infects the lungs",
+          "correct": false,
+          "explanation": "That is a human lung pathogen.",
+          "misconception": "wrong host"
+        },
+        {
+          "key": "D",
+          "text": "A Mucor fungus, which rots the roots",
+          "correct": false,
+          "explanation": "The mosaic pattern is TMV's signature.",
+          "misconception": "signature misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q5",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "Which description of HIV's course through the immune system matches the note?",
+      "misconceptionClass": "hiv course",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is spread only through the air",
+          "correct": false,
+          "explanation": "The named routes are sexual contact and bodily-fluid exchange.",
+          "misconception": "route wrong"
+        },
+        {
+          "key": "B",
+          "text": "It begins flu-like, hides in the immune system for years, and can end in AIDS",
+          "correct": true,
+          "explanation": "The three-stage course is the note's account.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "It kills within days of infection",
+          "correct": false,
+          "explanation": "The note describes years of hidden presence.",
+          "misconception": "timeline invented"
+        },
+        {
+          "key": "D",
+          "text": "It never damages the immune system",
+          "correct": false,
+          "explanation": "Immune damage is its defining effect.",
+          "misconception": "effect denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q6",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "State the two components that make up every virus particle.",
+      "misconceptionClass": "virus components recall",
+      "kind": "recall",
+      "modelAnswer": "A protein coat and one type of nucleic acid (DNA or RNA).",
+      "keywords": [
+        "protein coat",
+        "nucleic acid",
+        "components",
+        "particle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q7",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "Name the virus that causes flu in humans.",
+      "misconceptionClass": "flu virus recall",
+      "kind": "recall",
+      "modelAnswer": "The influenza virus.",
+      "keywords": [
+        "influenza",
+        "virus",
+        "causes",
+        "humans"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q8",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "Explain why a virus needs a host cell even though it carries its own genetic instructions.",
+      "misconceptionClass": "host necessity",
+      "kind": "explain-why",
+      "modelAnswer": "A virus owns instructions but no machinery: with no cytoplasm, organelles or metabolism, it cannot run the eight life processes alone, so it must take over a host cell's metabolic equipment to build new virus particles.",
+      "keywords": [
+        "host",
+        "metabolic",
+        "instructions",
+        "organelles"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_x2cfFnFT6j99Q25F::L2::Q9",
+      "moduleId": "rn_x2cfFnFT6j99Q25F::L2",
+      "stem": "A lab notebook lists three isolates: one taken from diseased tobacco leaves, one from a patient's immune cells, and one from an airway lining sample. Assign the likely virus to each sample.",
+      "misconceptionClass": "isolate assignment application",
+      "kind": "application",
+      "modelAnswer": "Leaf isolate: tobacco mosaic virus; immune-cell isolate: HIV; airway lining isolate: influenza virus — each virus matches the tissue its disease targets.",
+      "keywords": [
+        "tobacco mosaic virus",
+        "hiv",
+        "influenza",
+        "isolate"
+      ],
+      "options": []
+    }
+  ]
+}

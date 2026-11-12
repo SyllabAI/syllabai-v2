@@ -1,0 +1,194 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_kwZSCXKYc7tWwWsK",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "9518c68a6afb734e5cce9886f10261cc37dac144c86654a6bc75efe240b53d64",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_kwZSCXKYc7tWwWsK",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Biological Molecules",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/biological-molecules/practical-investigating-ph-and-enzyme-activity",
+    "specAnchors": [
+      {
+        "code": "2.14B",
+        "text": "practical: investigate how enzyme activity can be affected by changes in pH"
+      }
+    ],
+    "primer": {
+      "text": "The pH version of the amylase practical swaps the water bath for buffer solutions at pH 3, 5, 7, 9 and 11, with iodine wells still acting as the clock. This note walks the method, the safety list, the reading of results around the optimum, and the CORMS plan, finishing with the warning that any pH outside the optimum can denature the enzyme.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_kwZSCXKYc7tWwWsK::L1",
+        "title": "Buffers, droplets and the pH clock",
+        "sourceHeadings": [
+          "Practical: Enzymes & pH",
+          "Method"
+        ],
+        "specRefs": [
+          "2.14B"
+        ],
+        "opening": "Buffer solutions hold each tube at a fixed pH while amylase attacks starch. Every ten seconds a droplet moves to a fresh iodine well, and the run ends the first time the yellow-brown colour survives. The buffer at pH 3 starts the sweep, with repeats at 5, 7, 9 and 11 building the comparison across the pH scale.",
+        "keyPoints": [
+          "Buffer solutions at different pH values hold each tube's conditions constant.",
+          "Amylase and buffer are mixed, then starch is added and the stopwatch starts.",
+          "A droplet transfers to a fresh iodine well every ten seconds until blue-black stops appearing.",
+          "The run is repeated with buffers at pH values such as 5, 7, 9 and 11.",
+          "Iodine and amylase irritate eyes, so goggles are worn, and gloves guard against amylase on skin."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Mix amylase with a pH buffer, add starch, time it: droplet to a fresh iodine well every ten seconds; count wells until the blue-black stops. Repeat across pH 3 to 11.",
+            "analogy": "The buffer is a thermostat for acidity: it clamps the pH so only the pH you chose is being tested.",
+            "examPointer": "State the interval (every 10 seconds) — the pH practical's timing differs from the temperature version's minute intervals."
+          },
+          "medium": {
+            "restatement": "Buffers convert pH from an uncontrolled nuisance into the independent variable; the well count then gives each pH a comparable digestion time, and the shortest count locates the optimum.",
+            "analogy": "Each buffer tube is one lane of a swimming gala held at a different water temperature — the lane clocks are only comparable because the lanes differ in exactly one thing.",
+            "examPointer": "Name goggles AND gloves in safety answers — the note assigns eye irritation to goggles and skin irritation to gloves."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kwZSCXKYc7tWwWsK::L1::Q1",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q2",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q3",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q4",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q5",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q6",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q7",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q8",
+          "rn_kwZSCXKYc7tWwWsK::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_kwZSCXKYc7tWwWsK::L2",
+        "title": "Reading the pH curve and planning with CORMS",
+        "sourceHeadings": [
+          "Results and Analysis",
+          "Applying CORMS to practical work"
+        ],
+        "specRefs": [
+          "2.14B"
+        ],
+        "opening": "Results read the same way as the temperature practical: the shortest well count marks the optimum pH, where iodine quit blue-black fastest, and counts lengthen on both sides as denaturation bites. CORMS then assembles the plan — change the pH, hold the enzyme concentration, repeat, measure via wells, and fix the temperature and volumes.",
+        "keyPoints": [
+          "At the optimum pH the iodine stops turning blue-black in the shortest time.",
+          "Above or below the optimum the count stretches because the enzyme is losing shape.",
+          "Denaturation on either side of the optimum prevents the substrate binding the active site.",
+          "The CORMS plan changes pH, holds enzyme concentration, repeats, measures by wells, and controls temperature and volumes."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shortest count = optimum pH. Counts grow away from it because the enzyme denatures and binds less substrate.",
+            "analogy": "The pH curve is a valley: the enzyme works at the valley floor and stumbles on both slopes.",
+            "examPointer": "Say 'both sides' when explaining the pattern — one-sided answers lose the symmetry mark."
+          },
+          "medium": {
+            "restatement": "The pH curve's symmetry comes from one mechanism acting twice: ion-driven shape loss near either end of the scale reduces effective enzyme concentration, stretching every well count away from the optimum.",
+            "analogy": "Denaturation is a tax charged on both sides of the optimum; the further you trade from the peak, the higher the rate you pay.",
+            "examPointer": "Any pH outside the optimum can denature the enzyme — the note's closing hint makes that sentence worth writing verbatim in spirit."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kwZSCXKYc7tWwWsK::L2::Q1",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q2",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q3",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q4",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q5",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q6",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q7",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q8",
+          "rn_kwZSCXKYc7tWwWsK::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-02",
+          "fig-03"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "buffer solution",
+          "definition": "A solution that holds pH constant, letting one pH value be tested per tube.",
+          "firstLesson": 1
+        },
+        {
+          "term": "optimum pH",
+          "definition": "The pH where amylase digests starch fastest, shown by the shortest well count.",
+          "firstLesson": 2
+        },
+        {
+          "term": "denature",
+          "definition": "To permanently lose an enzyme's working shape, preventing substrate binding.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/6e6d54beecfc-investigating-effect-ph-on-enzyme-activity.png",
+        "alt": "Investigating effect pH on enzyme activity, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The pH practical setup: amylase, buffer and starch mixed, with iodine spotting tile"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/93dea9454620-graph-showing-effect-of-ph-on-rate-of-activity-f.png",
+        "alt": "Graph showing effect of pH on rate of activity for an enzyme from duodenum, IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "Results and Analysis",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "Graph of pH against rate of activity for a small-intestine enzyme"
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/22e800f5b889-corms-evaluation.png",
+        "alt": "CORMS evaluation, downloadable AS & A Level Biology revision notes",
+        "sourceHeading": "Applying CORMS to practical work",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The CORMS evaluation grid"
+      }
+    ]
+  }
+}

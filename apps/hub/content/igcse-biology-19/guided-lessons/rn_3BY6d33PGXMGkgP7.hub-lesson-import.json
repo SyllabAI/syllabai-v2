@@ -1,0 +1,169 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_3BY6d33PGXMGkgP7",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "4d49456c7f1b5782074974daf8e7e18227edc301da56e5c663075c34bc0a7081",
+    "pinnedRef": "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_3BY6d33PGXMGkgP7",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Cell Structure",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/cell-structure/stem-cells-in-medicine-advantages-and-disadvantages",
+    "specAnchors": [
+      {
+        "code": "2.6B",
+        "text": "understand the advantages and disadvantages of using stem cells in medicine"
+      }
+    ],
+    "primer": {
+      "text": "Stem cells are the body's undifferentiated reserve — cells that can keep dividing or become specialised. This note separates adult from embryonic stem cells, then weighs the medical promise against the risks and the ethics: bone-marrow transplants that save blood patients, rejection dangers, and the embryo debate that examiners love as an evaluation question.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_3BY6d33PGXMGkgP7::L1",
+        "title": "The undifferentiated toolkit: adult versus embryonic",
+        "sourceHeadings": [
+          "Stem Cells",
+          "Types of Stem Cells Table"
+        ],
+        "specRefs": [
+          "2.6B"
+        ],
+        "opening": "A stem cell is an undifferentiated cell that can divide by mitosis again and again, and its daughter cells may stay undifferentiated or specialise. Adult stem cells sit in tissues such as bone marrow and can differentiate into a limited range; embryonic stem cells, found only in embryos, can differentiate into any cell type the body needs.",
+        "keyPoints": [
+          "A stem cell is an undifferentiated cell that can divide by mitosis to self-renew or specialise.",
+          "Daughter cells of a stem cell division may stay undifferentiated or become specialised.",
+          "Adult stem cells live in tissues such as bone marrow and differentiate into a limited range of types.",
+          "Embryonic stem cells exist only in embryos and can differentiate into any cell type."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Stem cells = undifferentiated, mitosis-capable. Adult: limited range, in tissues like marrow. Embryonic: any type, embryos only.",
+            "analogy": "Adult stem cells are a trade apprentice trained for one guild; embryonic stem cells are a fresh school leaver who could join any guild at all.",
+            "examPointer": "'Limited range' versus 'any type' is the contrast that scores the adult-versus-embryonic comparison."
+          },
+          "medium": {
+            "restatement": "Potency is the organising variable: adult stem cells carry partial potency tied to their tissue, embryonic stem cells are effectively pluripotent, and both self-renew through mitosis before committing.",
+            "analogy": "Two kinds of blank keys: one cut to open a few doors in one building, one still blank enough for any lock in town.",
+            "examPointer": "Therapy questions hinge on potency: the embryonic advantage IS the wider differentiation range."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_3BY6d33PGXMGkgP7::L1::Q1",
+          "rn_3BY6d33PGXMGkgP7::L1::Q2",
+          "rn_3BY6d33PGXMGkgP7::L1::Q3",
+          "rn_3BY6d33PGXMGkgP7::L1::Q4",
+          "rn_3BY6d33PGXMGkgP7::L1::Q5",
+          "rn_3BY6d33PGXMGkgP7::L1::Q6",
+          "rn_3BY6d33PGXMGkgP7::L1::Q7",
+          "rn_3BY6d33PGXMGkgP7::L1::Q8",
+          "rn_3BY6d33PGXMGkgP7::L1::Q9"
+        ],
+        "figureIds": []
+      },
+      {
+        "id": "rn_3BY6d33PGXMGkgP7::L2",
+        "title": "Stem cells in medicine: promise, rejection and ethics",
+        "sourceHeadings": [
+          "Stem Cells in Medicine",
+          "Evaluating Stem Cells in Medicine Table"
+        ],
+        "specRefs": [
+          "2.6B"
+        ],
+        "opening": "Medicine wants stem cells where the body's own cells fail. Bone-marrow transplants show the promise — donor marrow rebuilds a patient's red cells, white cells and platelets — but donor antigens can trigger rejection, so a patient's own cells are safer. Embryonic sources add an ethical dimension: growing embryos for harvesting troubles people who see embryos as human life.",
+        "keyPoints": [
+          "Stem cells could treat illnesses where the body's own cells no longer function properly.",
+          "Bone-marrow transplants rebuild blood: red cells for anaemia, white cells for immunity, platelets for clotting.",
+          "Donor cells carry different antigens, so the patient's immune system may reject them.",
+          "A patient's own stem cells avoid rejection and the need for immunosuppressant drugs.",
+          "Growing embryos as an embryonic-stem-cell source raises ethical objections for some people."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Promise: rebuild failing tissue (marrow for blood). Risk: donor antigen rejection. Ethics: embryo use. Own cells beat donor cells on safety.",
+            "analogy": "A transplant is a spare-parts order: the best part is your own (no fitting problems), a donor's may not fit, and the embryonic catalogue raises arguments of its own.",
+            "examPointer": "Evaluation answers need BOTH sides plus a conclusion — benefit, risk/ethics, then a judgement."
+          },
+          "medium": {
+            "restatement": "The evaluation is a trade-off triangle: therapeutic potency (embryonic best), immune compatibility (own cells best), and ethical cost (embryonic worst) — the bone-marrow case sits at the compatible-but-limited corner.",
+            "analogy": "Choosing stem cells is like choosing a organ donor list policy: capability, compatibility and consent pull in different directions.",
+            "examPointer": "Name immunosuppressant drugs explicitly when contrasting donor and patient-own cells."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_3BY6d33PGXMGkgP7::L2::Q1",
+          "rn_3BY6d33PGXMGkgP7::L2::Q2",
+          "rn_3BY6d33PGXMGkgP7::L2::Q3",
+          "rn_3BY6d33PGXMGkgP7::L2::Q4",
+          "rn_3BY6d33PGXMGkgP7::L2::Q5",
+          "rn_3BY6d33PGXMGkgP7::L2::Q6",
+          "rn_3BY6d33PGXMGkgP7::L2::Q7",
+          "rn_3BY6d33PGXMGkgP7::L2::Q8",
+          "rn_3BY6d33PGXMGkgP7::L2::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "embryonic stem cell",
+          "definition": "A stem cell found only in embryos, able to differentiate into any cell type.",
+          "firstLesson": 1
+        },
+        {
+          "term": "antigen",
+          "definition": "A protein on the cell surface whose difference between donor and patient can trigger rejection.",
+          "firstLesson": 2
+        },
+        {
+          "term": "bone marrow",
+          "definition": "The tissue inside bones where adult stem cells make blood cells.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/d367f044a116-evaluating-stem-cells-table-3.png",
+        "alt": "Evaluating stem cells_1, downloadable IGCSE & GCSE Biology revision notes",
+        "sourceHeading": "Evaluating Stem Cells in Medicine Table",
+        "moduleIds": [
+          "L2"
+        ],
+        "binding": "heading-unique",
+        "caption": "The benefits-and-risks evaluation table for stem cells in medicine"
+      }
+    ]
+  }
+}
