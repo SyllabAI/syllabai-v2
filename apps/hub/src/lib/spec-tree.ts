@@ -28,6 +28,12 @@ export interface SpecTopic {
   title: string;
   subtopics: SpecSubtopic[];
   specPointCount: number;
+  /** ADR-039 wave 7 — the live SaveMyExams section slug, carried on SME
+   *  section rows ("smeSectionSlug") so duplicated topic slugs in one course
+   *  (e.g. 9618 "algorithms" in sections 9 and 19) resolve by the set's
+   *  corpus sectionSlug instead of first-match. Optional; absent on the
+   *  official spine and on wave-1..6 rows. */
+  smeSectionSlug?: string;
 }
 
 export interface SpecTree {
@@ -206,6 +212,8 @@ export function buildSpecTreeIndex(
         subtopics: [],
         specPointCount: 0,
       };
+      const secSlug = (sec as { smeSectionSlug?: string }).smeSectionSlug;
+      if (typeof secSlug === "string" && secSlug.length > 0) sme.smeSectionSlug = secSlug;
       const rows = nodes
         .filter((n) => n.family === "SUBTOPIC" && n.parents.includes(sec.code))
         .sort(byNodeOrder);
@@ -244,12 +252,23 @@ export function smeRowOfQuestionSet(
   const secs = index.tree.smeSections;
   if (!secs || secs.length === 0 || !topic.topicSlug) return null;
   const want = `:${topic.topicSlug}`;
+  // ADR-039 wave 7 — a course may carry the same topic slug under two
+  // sections (9618 "algorithms" in sections 9 and 19); first-match would
+  // file both sets into one row. When the suffix is ambiguous, the set's
+  // corpus sectionSlug picks the row whose section row carries that
+  // smeSectionSlug. Single-match courses (waves 1–6) are untouched: they
+  // return on the first branch exactly as before.
+  let first: string | null = null;
   for (const sec of secs) {
     for (const row of sec.subtopics) {
-      if (row.code.endsWith(want)) return row.code;
+      if (!row.code.endsWith(want)) continue;
+      if (first === null) first = row.code;
+      if (topic.sectionSlug && sec.smeSectionSlug === topic.sectionSlug) {
+        return row.code;
+      }
     }
   }
-  return null;
+  return first;
 }
 
 /** "4CH1-1.10" sorts after "4CH1-1.9" — numeric, not lexical. */
