@@ -1,0 +1,29 @@
+{
+  "task": "T-LESSON-MEASURE-WS4",
+  "run": "run-001",
+  "date": "2026-11-12",
+  "lane": "WS4 measure+type (plan v1.2 lane table)",
+  "surface": "apps/hub/src/components/books/lesson/lesson-view.tsx ONLY — the student's primary year-round learning surface",
+  "base": "main 1364f095 (post #968; zero lane-path overlap with the advance 0cb01618..1364f095)",
+  "findings": [
+    "MEASURE: the article (min-w-0 flex-1) carried NO width cap of its own — inside the wrapper's max-w-6xl (72rem) minus the w-56 rail, gap-8 and px-4, the prose ran 46rem (at the lg floor) to 54rem (at the cap) — roughly 90+ characters per line at 15px: theme-blind and far past any reading-measure band.",
+    "TYPE: one prose role, three arbitrary px sizes — body prose text-[15px] (SectionBlock), Box bodies text-[15px], learning-objectives text-[14px] — no token rung anywhere in the reader flow."
+  ],
+  "the_law": [
+    "MEASURE: the article gains max-w-[36rem] (~68ch at 16px; the plan-of-record number). The wrapper keeps max-w-6xl — it owns the rail+gap+px chrome. Below lg the cap does not bind (viewport-natural). The reader stays rail-anchored; the freed space falls to the right of the reader (docs-standard), no mx-auto games.",
+    "TYPE: all three prose sites unified to text-base (the token rung): body 15->16px, boxes 15->16px (optical parity kept — both moved together), objectives 14->16px (a disclosed +2px bump; one rung for one role is the point). leading-relaxed byte-kept at all three sites; the [&_p]/[&_ul]/[&_ol] rhythm byte-kept."
+  ],
+  "gates": {
+    "typecheck": "tsc --noEmit: 0 errors",
+    "lint": "eslint on the changed file: 0",
+    "lesson_trio": "books-lesson + lesson-blocks-join + books-lesson-links: 24 tests / 42 expects / 0 fail",
+    "full_battery": "1332 pass / 9 fail / 39,161 expects across 95 files (37.6s) — fail set A/B-IDENTICAL to the clean tree at 1364f095 in this shell (the pre-existing battery class: ink-layer-holder-selfheal, question-cla-threads, api.v2-surface, ugm.render)",
+    "tailwind": "@tailwindcss/cli on the real globals.css: .text-base (font-size var(--text-base)=1rem + line-height rung) and .max-w-[36rem] (max-width: 36rem) both emit"
+  },
+  "disclosures": [
+    "Worklog entry of record filed POST-MERGE (the T-COPYFIX-001 pattern, PRs #963/#967) — deliberately NOT appended in-lane; this branch carries code + receipt only, so the recurring worklog append-conflict class never engages.",
+    "Chrome typography byte-kept: text-xs labels/chips/derived strip (WS6-adjacent), rail nav text-xs (WS5), text-2xs chips, h1 text-2xl / h2 text-xl heading scale.",
+    "No theme file touched — both utilities are core Tailwind v4; emission proven anyway as receipt-grade evidence.",
+    "The 9-fail battery set is pre-existing and unchanged by this lane (A/B verified)."
+  ]
+}
