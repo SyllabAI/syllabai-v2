@@ -1,0 +1,134 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_Jg4wDZyJTjK4pd2m",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "8bf56e73c34a9256220e88252de668bd19c2a38f3d20de9a6d16064dabde6169",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_Jg4wDZyJTjK4pd2m",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Excretion",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/excretion/nephron-structure",
+    "specAnchors": [
+      {
+        "code": "2.74B",
+        "text": "describe the structure of a nephron, including the Bowman’s capsule and glomerulus, convoluted tubules, loop of Henle and collecting duct"
+      }
+    ],
+    "primer": {
+      "text": "Before following the nephron's work you should know its shape. The kidney divides into three regions, houses roughly a million microscopic nephrons, and each nephron strings its capsule, tubules, loop and duct together in a fixed order — with some parts sitting in the cortex and others reaching down into the medulla.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_Jg4wDZyJTjK4pd2m::L1",
+        "title": "Kidney Regions and Nephron Parts",
+        "sourceHeadings": [
+          "Kidney Structure",
+          "The structure of a nephron"
+        ],
+        "specRefs": [
+          "2.74B"
+        ],
+        "opening": "Cut a kidney open and three regions show: the outer cortex, the inner medulla, and the funnel-shaped renal pelvis that gathers urine into the ureter. The nephrons — around a million per kidney — thread through these regions: Bowman's capsule, glomerulus and both convoluted tubules sit in the cortex, while the loop of Henle and collecting duct reach into the medulla.",
+        "keyPoints": [
+          "The kidney has three regions: cortex, medulla and renal pelvis.",
+          "Nephrons are the kidney's functional units, roughly a million per kidney.",
+          "A nephron runs Bowman's capsule, PCT, loop of Henle, DCT, then collecting duct.",
+          "The capsule, glomerulus and convoluted tubules occupy the cortex.",
+          "The loop of Henle and collecting duct descend mainly into the medulla."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The nephron is a folded tube whose parts occupy different kidney layers.",
+            "analogy": "A factory floor plan: offices upstairs (cortex), the long processing lines downstairs (medulla).",
+            "examPointer": "Learn the nephron part list in order — questions ask you to name them in sequence."
+          },
+          "medium": {
+            "restatement": "Cortex hosts filtration and rescue; medulla hosts concentration; pelvis collects.",
+            "analogy": "A three-storey workshop: design upstairs, heavy work downstairs, shipping at the door.",
+            "examPointer": "Match each nephron part to its region when asked where a stage happens."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q1",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q2",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q3",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q4",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q5",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q6",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q7",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q8",
+          "rn_Jg4wDZyJTjK4pd2m::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "nephron",
+          "definition": "The microscopic functional unit of the kidney; roughly a million per kidney.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cortex",
+          "definition": "The kidney's outermost layer, hosting the capsule, glomerulus and convoluted tubules.",
+          "firstLesson": 1
+        },
+        {
+          "term": "medulla",
+          "definition": "The kidney's inner region, hosting the loop of Henle and collecting duct.",
+          "firstLesson": 1
+        },
+        {
+          "term": "renal pelvis",
+          "definition": "The funnel-shaped cavity collecting urine from the collecting ducts into the ureter.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/d36286679326-kidney-structure.png",
+        "alt": "Kidneys in position with a cut-open view labelling cortex, medulla, renal vessels and ureter.",
+        "sourceHeading": "The structure of a nephron",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The kidney's regions as they appear in section"
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/fcb5b221291b-structure-of-a-nephron.png",
+        "alt": "Single nephron drawn from Bowman's capsule through tubules, loop and collecting duct.",
+        "sourceHeading": "The structure of a nephron",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The nephron's parts in their fixed order"
+      }
+    ]
+  }
+}

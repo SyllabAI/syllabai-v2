@@ -4021,6 +4021,92 @@ rn_zn4NVCRcTSNv8sRZ: "0cea83a781024eccd40da9bd5025f43b9b1c0c75",
     },
   },
 
+  "bio-stageb3-v37": {
+    manifest: "hub-import-manifest-v37.json",
+    manifest_version: 37,
+    // BIOLOGY stage-B wave-3 CUMULATIVE (resources commit C 53f099903; the frozen B4
+    // partition wave 3 of 10): the third register bucket \u2014 16 excretion + gas-exchange
+    // notes end-to-end at the 0.7/1.6/1.3 generation \u2014 rides the cumulative biology pack
+    // (88 artifacts = 56 prior re-pinned byte-identical + 32 wave-3 first issues) and
+    // re-issues the runner-owned guided-import.json index with all 44 rows.
+    // Zero chemistry or physics bytes touched; prior biology rows byte-identical.
+    course_id: "igcse-biology-19",
+    lesson_kind: "hub-lesson-import-1.6",
+    kinds: { "hub-lesson-import-1.6": 44, "sme-question-package": 44 },
+    adapter: "guided-lesson-0.7--hub-lesson-import-1.6",
+    directive: "run the BIOLOGY-4BI1 stage-B wave-3 chain \u2014 import the igcse-biology-19 stage-B wave-3 tranche of record (the third register bucket of the frozen B4 partition: 16 excretion + gas-exchange notes end-to-end at the 0.7/1.6/1.3 generation, register rows 28..43 0-based; 30 lessons / 270 checks = 150 MCQ + 60 recall + 30 explain-why + 30 application; 29 figures all module-mapped heading-unique; glossary 54; workedExamples 0 populated + 16 designed nulls) \u2014 biology-scope manifest v37 CUMULATIVE (the programme-level v-series continues: chemistry v1..v17 + v32, physics v18..v31, biology v33..v37; 88 artifacts = 56 prior re-pinned byte-identical + 32 wave-3 first issues), resources chain 9c278f61 (commit A) + 53f09990 (commit C) with the physics v31 (254), chemistry v32 (224) and prior biology v36 (56) packs re-pinned byte-identical on the wave tree. Declared hub landing = 32/32 first issues + 56/56 identical-exists + the runner-owned guided-import.json re-issued with all 44 rows (pilot + waves 1..3). Operator directive of record: 'the same four-plane treatment for the remaining Reasoning subjects (Chemistry 4CH1 stage-B authoring, Biology),' continuing under 'Continue, why did you stop?' \u2014 trace 1a1d147b95e4b899.",
+    promo: {
+      commit: "53f0999030cb8a3972220767ee6cf4b277084672",
+      tree: "c50688959f2020a2faaebb82439171821fa6d40c",
+      parent: "9c278f619b85b60d65573e80790a3ff261f8fa93",
+      trace: "1a1d147b95e4b899",
+    },
+    integration_branch: null, // ancestry of record \u2014 the wave-3 commits are on resources main
+    artifact_pin: "9c278f619b85b60d65573e80790a3ff261f8fa93", // wave-3 commit A \u2014 the source-0.7 generation pin of record for the 16 wave-3 notes
+    artifact_pins_by_note: {
+      // prior-pack provenance of record (G-D pinnedRef, per-note law): the stage-A pilot
+      // keeps its v33 source pin, the 14 wave-1 notes keep their v34 source pin, the 13
+      // wave-2 notes keep their v36 source pin \u2014 re-pinning them to the wave-3 commit
+      // would falsify their provenance
+      rn_qRXSsjyzyZsJnc7k: "7378f2498a76501a907a0bda9724237bd4486663",
+      rn_CGsRy4NGjCQRGgXs: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_sCQKxCPZqCRshTsZ: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_x2cfFnFT6j99Q25F: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_NZDqQdFYGgTTBGjz: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_6nfRDC4jtDHbdbqZ: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_kwZSCXKYc7tWwWsK: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_MkbHy3WPzVJVYhy4: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_2rJ8QxCk32vxKTN3: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_27dbWmcwsCf9k5JW: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_6jFtNNZ6G5q86Wbk: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_NPzyvfByCy3bwH6f: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_7txVGXxCfkcpWhNg: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_34xmznRtwfxFVBrv: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_3BY6d33PGXMGkgP7: "7b80fbde5e2b4dfb70a38e590d4a8b8493ced634",
+      rn_fc4RtMw8kkGWFTrq: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_6mmXMQzgwqHvN6yg: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_xyy6KxPcBNZs8fYX: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_2dRQSWp7xJJJ7MBj: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_ZpkRF2B94q6dBpfN: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_MhjqBYqSPhvcDJHg: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_53R93WRgQZvbj4Xj: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_zFt2dHy9krWbkSKb: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_PJm6gGXDSFg2j4DJ: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_crVHckMJcJw7d56s: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_Kv6WmJssTtqT56Pj: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_N2VFzZptQZMnYvDp: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+      rn_Hy9CCn3FFsxHWdp3: "832d0f08d887d4e2bded6023709cf6a130a6a740",
+    },
+    checks_feed: true, // written-kind G-D branch
+    figures_feed: true, // 97 cumulative figures (11 pilot + 38 wave-1 + 19 wave-2 + 29 wave-3)
+    schemas: {
+      hub: "/home/z/my-project/scripts/bio-stageb3-survivors/hub-lesson-import.1.6.schema.json",
+      pkg: "/home/z/my-project/scripts/bio-stageb3-survivors/sme-question-package.1.3.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.6.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.3.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/bio-stageb3-survivors/hub-import-manifest-v37.json",
+      int3: "/home/z/my-project/scripts/bio-stageb3-survivors/INT-3-transform-record-bio-stageb3-v37.json",
+    },
+    receipt: "/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261113-bio-stageb3.json",
+    identity: {"notes": 44, "lessons": 85, "checks": 765, "keyPoints": 400, "distractors": 1275, "glossaryTerms": 155, "figures": 97, "figures_module_mapped": 93, "figures_note_level": 4, "workedExamples_populated": 1, "workedExamples_null": 43, "authored_chars_conserved": 453238},
+    artifact_count: 88,
+    note_count: 44,
+    wave_count: 4,
+    id_prefix: "igcse-biology",
+    manifest_min_bytes: 100,
+    package_schema: "sme-question-package/1.3",
+    targetSchemas: ["hub/lesson-import/1.6", "sme-question-package/1.3"],
+    landing: "additive", // 32 first issues + 56 identical-exists; the index re-issue carries the wave-3 rows
+    relFor(a) { return a.path; }, // v37 manifest paths are integration-relative
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.6" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.6/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.3/"))
+      ) && !!a.path.split("/").pop();
+    },
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";

@@ -65,10 +65,10 @@ const FIXTURES = JSON.parse(
 ) as Record<string, CourseFix>;
 
 const SPINE: Record<string, { topics: number; subs: number; points: number }> = {
-  "cie-as-maths-20-pure-1": { topics: 1, subs: 8, points: 33 },
+  "cie-as-maths-20-pure-1": { topics: 1, subs: 8, points: 36 },
   "cie-as-maths-20-mechanics": { topics: 1, subs: 5, points: 22 },
   "cie-as-maths-20-probability-and-statistics-1": { topics: 1, subs: 5, points: 17 },
-  "cie-a-level-maths-20-pure-1": { topics: 1, subs: 8, points: 33 },
+  "cie-a-level-maths-20-pure-1": { topics: 1, subs: 8, points: 36 },
   "cie-a-level-maths-20-pure-3": { topics: 1, subs: 9, points: 43 },
   "cie-a-level-maths-20-mechanics": { topics: 1, subs: 5, points: 22 },
   "cie-a-level-maths-20-probability-and-statistics-1": { topics: 1, subs: 5, points: 17 },

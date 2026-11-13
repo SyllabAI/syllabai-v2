@@ -1,0 +1,495 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_PN8mKxRDH8y6kkt8",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "53aeda704cc0994522199563fd2e848011d266588d5181356379aa521ee27b00",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_PN8mKxRDH8y6kkt8",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q1",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "Which reaction produces the carbon dioxide that the lungs excrete?",
+      "misconceptionClass": "source recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Aerobic respiration",
+          "correct": true,
+          "explanation": "Respiration releases carbon dioxide and water as its wastes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Protein synthesis",
+          "correct": false,
+          "explanation": "Building proteins consumes amino acids; it does not release carbon dioxide.",
+          "misconception": "process swapped"
+        },
+        {
+          "key": "C",
+          "text": "Deamination in the liver",
+          "correct": false,
+          "explanation": "Deamination produces urea, the kidney's cargo, not the lungs'.",
+          "misconception": "source close"
+        },
+        {
+          "key": "D",
+          "text": "Photosynthesis",
+          "correct": false,
+          "explanation": "Photosynthesis is a plant process and consumes carbon dioxide.",
+          "misconception": "kingdom confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q2",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "Which organ converts surplus amino acids into urea?",
+      "misconceptionClass": "organ recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the skin, from sweat",
+          "correct": false,
+          "explanation": "Sweat carries traces of urea out, but its source is the liver via the blood.",
+          "misconception": "organ invented"
+        },
+        {
+          "key": "B",
+          "text": "In the liver, from excess amino acids",
+          "correct": true,
+          "explanation": "The liver breaks surplus amino acids down, and the nitrogen ends as urea.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "In the kidneys, from filtered blood",
+          "correct": false,
+          "explanation": "The kidneys excrete urea but never manufacture it.",
+          "misconception": "organ swapped"
+        },
+        {
+          "key": "D",
+          "text": "In the lungs, from carbon dioxide",
+          "correct": false,
+          "explanation": "The lungs handle carbon dioxide and water vapour only.",
+          "misconception": "organ invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q3",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "How does accumulated carbon dioxide damage cells?",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It raises blood pressure directly",
+          "correct": false,
+          "explanation": "Raised pressure is a separate risk-factor story, not the carbon dioxide route.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
+          "text": "It binds to haemoglobin permanently",
+          "correct": false,
+          "explanation": "That is carbon monoxide's trick in the smoking note, not carbon dioxide's here.",
+          "misconception": "mechanism confused"
+        },
+        {
+          "key": "C",
+          "text": "It dissolves to form an acid that lowers pH and slows enzymes",
+          "correct": true,
+          "explanation": "The acidic solution shifts pH and enzymes lose their working range.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "It blocks the nephron filters physically",
+          "correct": false,
+          "explanation": "Carbon dioxide does not clog filters; its harm is chemical.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q4",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "Which of these is NOT excretion?",
+      "misconceptionClass": "definition discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "Releasing carbon dioxide at the lungs",
+          "correct": false,
+          "explanation": "That is the lungs' excretory role.",
+          "misconception": "genuine excretion"
+        },
+        {
+          "key": "B",
+          "text": "Losing urea in urine",
+          "correct": false,
+          "explanation": "Urea is metabolic waste carried out by the kidneys.",
+          "misconception": "genuine excretion"
+        },
+        {
+          "key": "C",
+          "text": "Sweating out excess salts",
+          "correct": false,
+          "explanation": "Excess ions leaving via sweat fit the excretion definition.",
+          "misconception": "genuine excretion"
+        },
+        {
+          "key": "D",
+          "text": "Passing out undigested food as faeces",
+          "correct": true,
+          "explanation": "Faeces never entered cells, so their removal is egestion.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q5",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "Why can concentrated body fluids be dangerous to cells?",
+      "misconceptionClass": "osmotic reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "They draw water out of cells by osmosis, so reactions falter",
+          "correct": true,
+          "explanation": "The osmotic pull strips cells of the water their chemistry needs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They push extra water into cells until they burst",
+          "correct": false,
+          "explanation": "Water flows out of cells into concentrated fluids, not in.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "C",
+          "text": "They dissolve the cell membrane",
+          "correct": false,
+          "explanation": "Membranes are not dissolved by concentrated fluids here.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "D",
+          "text": "They cool the cells below enzyme range",
+          "correct": false,
+          "explanation": "The damage is osmotic, not thermal.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q6",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "Define excretion in one sentence.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Excretion is the removal from the body of metabolic waste, toxic materials and substances present in excess of requirements.",
+      "keywords": [
+        "removal",
+        "metabolic waste",
+        "excess"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q7",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "Name the two wastes of aerobic respiration.",
+      "misconceptionClass": "product recall",
+      "kind": "recall",
+      "modelAnswer": "Carbon dioxide and water.",
+      "keywords": [
+        "carbon dioxide",
+        "water",
+        "aerobic respiration"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q8",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "Explain why the build-up of urea would become harmful.",
+      "misconceptionClass": "harm reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Urea is a toxic product of the liver's breakdown of surplus amino acids; allowed to accumulate it raises the concentration of the body fluids, drags water out of cells by osmosis and would poison the chemistry that depends on steady conditions.",
+      "keywords": [
+        "toxic",
+        "amino acids",
+        "osmosis",
+        "accumulate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L1::Q9",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L1",
+      "stem": "A student claims breathing out removes 'faeces gases'. Correct the statement using the definition of excretion.",
+      "misconceptionClass": "misconception repair",
+      "kind": "application",
+      "modelAnswer": "Breathing out excretes carbon dioxide and water vapour, both genuine metabolic wastes from respiration; faeces are undigested food that never took part in metabolism, so their removal is egestion and belongs to the digestive system, not excretion.",
+      "keywords": [
+        "excretion",
+        "egestion",
+        "carbon dioxide",
+        "metabolic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q1",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "Which organ excretes most of the body's urea?",
+      "misconceptionClass": "organ-product recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The liver",
+          "correct": false,
+          "explanation": "The liver makes urea but hands it to the blood for the kidneys to remove.",
+          "misconception": "source confused"
+        },
+        {
+          "key": "B",
+          "text": "The kidneys",
+          "correct": true,
+          "explanation": "Urea leaves the body dissolved in the urine the kidneys produce.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The lungs",
+          "correct": false,
+          "explanation": "The lungs send out carbon dioxide and water vapour.",
+          "misconception": "organ swapped"
+        },
+        {
+          "key": "D",
+          "text": "The skin",
+          "correct": false,
+          "explanation": "Sweat carries only traces of urea; the main route is urinary.",
+          "misconception": "organ partial"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q2",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "What leaves the body in sweat?",
+      "misconceptionClass": "composition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon dioxide dissolved in water",
+          "correct": false,
+          "explanation": "Carbon dioxide leaves via the lungs, not the sweat glands.",
+          "misconception": "cargo swapped"
+        },
+        {
+          "key": "B",
+          "text": "Glucose and glycogen",
+          "correct": false,
+          "explanation": "Neither is a sweat ingredient; glucose is reabsorbed in the kidney.",
+          "misconception": "composition invented"
+        },
+        {
+          "key": "C",
+          "text": "Water, excess mineral ions and a trace of urea",
+          "correct": true,
+          "explanation": "Sweat is a salty fluid carrying those three things.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Urea and protein only",
+          "correct": false,
+          "explanation": "Protein is far too large to leave this way.",
+          "misconception": "composition wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q3",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "During exhalation, which excretory products leave the lungs?",
+      "misconceptionClass": "product recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Oxygen and nitrogen",
+          "correct": false,
+          "explanation": "Those are inhaled components, not excretory products.",
+          "misconception": "gas confused"
+        },
+        {
+          "key": "B",
+          "text": "Urea and ions",
+          "correct": false,
+          "explanation": "Those travel to the bladder, not the airway.",
+          "misconception": "cargo swapped"
+        },
+        {
+          "key": "C",
+          "text": "Carbon dioxide only",
+          "correct": false,
+          "explanation": "Water vapour accompanies it and also counts.",
+          "misconception": "list truncated"
+        },
+        {
+          "key": "D",
+          "text": "Carbon dioxide and water vapour",
+          "correct": true,
+          "explanation": "Both are wastes of respiration and both leave with used air.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q4",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "Why does urea travel from the liver to the kidneys rather than being excreted at the liver?",
+      "misconceptionClass": "system reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The liver makes urea and releases it into blood, which the kidneys then filter",
+          "correct": true,
+          "explanation": "Excretion of urea is the kidney's job; the liver only supplies the raw waste.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The liver has no blood supply",
+          "correct": false,
+          "explanation": "The liver is one of the best-perfused organs in the body.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "C",
+          "text": "Urea becomes harmless in the blood",
+          "correct": false,
+          "explanation": "It stays toxic and must be removed; the kidneys do that.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "D",
+          "text": "The kidneys convert urea back to amino acids",
+          "correct": false,
+          "explanation": "No such conversion happens; urea simply leaves in urine.",
+          "misconception": "process invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q5",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "Which pairing of organ and cargo is correct?",
+      "misconceptionClass": "pairing discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "Liver — sweat",
+          "correct": false,
+          "explanation": "The liver makes urea; sweating belongs to the skin.",
+          "misconception": "pairing wrong"
+        },
+        {
+          "key": "B",
+          "text": "Skin — excess ions and water",
+          "correct": true,
+          "explanation": "Sweat carries surplus salts out with the water they dissolve in.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Lungs — urea",
+          "correct": false,
+          "explanation": "The lungs never handle urea.",
+          "misconception": "pairing wrong"
+        },
+        {
+          "key": "D",
+          "text": "Kidneys — carbon dioxide",
+          "correct": false,
+          "explanation": "Carbon dioxide's exit is the airway, not the urinary system.",
+          "misconception": "pairing wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q6",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "List the three excretory organs named in the specification.",
+      "misconceptionClass": "organ recall",
+      "kind": "recall",
+      "modelAnswer": "The lungs, the kidneys and the skin.",
+      "keywords": [
+        "lungs",
+        "kidneys",
+        "skin"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q7",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "State the excretory cargo of the skin.",
+      "misconceptionClass": "cargo recall",
+      "kind": "recall",
+      "modelAnswer": "Excess mineral ions, water and small amounts of urea, lost in sweat.",
+      "keywords": [
+        "ions",
+        "water",
+        "urea",
+        "sweat"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q8",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "Explain why each excretory organ suits its particular cargo.",
+      "misconceptionClass": "adaptation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The lungs already handle gas movement, so volatile carbon dioxide and vapour fit naturally; the kidneys filter blood, so dissolved urea and surplus ions are their cargo; the skin's surface glands produce a fluid, so salts and water can simply evaporate away.",
+      "keywords": [
+        "lungs",
+        "gas",
+        "kidneys",
+        "filter",
+        "skin",
+        "sweat"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_PN8mKxRDH8y6kkt8::L2::Q9",
+      "moduleId": "rn_PN8mKxRDH8y6kkt8::L2",
+      "stem": "After a run, list every excretory route working harder and name what each is removing.",
+      "misconceptionClass": "integration application",
+      "kind": "application",
+      "modelAnswer": "Breathing deepens and quickens so the lungs expel extra carbon dioxide and water vapour; sweating increases so the skin sheds more water, salts and traces of urea; and the kidneys adjust urine volume, excreting urea and excess ions while conserving water.",
+      "keywords": [
+        "lungs",
+        "carbon dioxide",
+        "sweat",
+        "kidneys",
+        "urea"
+      ],
+      "options": []
+    }
+  ]
+}

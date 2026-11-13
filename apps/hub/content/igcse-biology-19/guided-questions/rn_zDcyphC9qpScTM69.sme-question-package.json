@@ -1,0 +1,492 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_zDcyphC9qpScTM69",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "771a3b8c5f1ae1f4af608a5cdf042c01af1b3b590fd98c79d856d1e9491d052b",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_zDcyphC9qpScTM69",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q1",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "Which change in ADH release follows when the water potential of the blood climbs too high?",
+      "misconceptionClass": "feedback direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "The pituitary releases less ADH",
+          "correct": true,
+          "explanation": "Extra blood water means the correction is to keep less water, so ADH output falls.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The pituitary releases more ADH",
+          "correct": false,
+          "explanation": "More ADH would reclaim even more water, worsening the surplus rather than correcting it.",
+          "misconception": "feedback reversed"
+        },
+        {
+          "key": "C",
+          "text": "ADH release stops permanently",
+          "correct": false,
+          "explanation": "The system dials ADH down gradually; it does not switch off altogether.",
+          "misconception": "extreme overstatement"
+        },
+        {
+          "key": "D",
+          "text": "ADH release stays exactly the same",
+          "correct": false,
+          "explanation": "A feedback system responds to the drift; an unchanged ADH level would leave the imbalance uncorrected.",
+          "misconception": "no-response error"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q2",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "What direct effect does ADH have on the collecting duct?",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It pumps water into the duct by active transport",
+          "correct": false,
+          "explanation": "Water leaves the duct by osmosis; active transport is the glucose story in the PCT.",
+          "misconception": "process swapped"
+        },
+        {
+          "key": "B",
+          "text": "Its walls become more permeable to water",
+          "correct": true,
+          "explanation": "ADH acts on the duct walls so water can leave the filtrate more freely.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Its walls become less permeable to water",
+          "correct": false,
+          "explanation": "That is the response when ADH is withdrawn, not when it is present.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "D",
+          "text": "Its walls become thicker to slow filtration",
+          "correct": false,
+          "explanation": "ADH changes permeability, not wall thickness, and filtration happens in the glomerulus.",
+          "misconception": "structure invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q3",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "Where are the detectors that monitor blood water concentration located?",
+      "misconceptionClass": "anatomy recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the renal pelvis of the kidney",
+          "correct": false,
+          "explanation": "The renal pelvis gathers urine; it plays no sensing role.",
+          "misconception": "site confused"
+        },
+        {
+          "key": "B",
+          "text": "In the ureter walls",
+          "correct": false,
+          "explanation": "The ureter only transports urine towards the bladder.",
+          "misconception": "site invented"
+        },
+        {
+          "key": "C",
+          "text": "In the hypothalamus of the brain",
+          "correct": true,
+          "explanation": "Osmoreceptors sit in the hypothalamus and watch the blood's water content.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "In the collecting duct of each nephron",
+          "correct": false,
+          "explanation": "The duct is where water is reabsorbed, not where the change is detected.",
+          "misconception": "site confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q4",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "A hiker has sweated heavily on a long walk and drinks nothing. Which urine output would you expect?",
+      "misconceptionClass": "scenario prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "A large volume of pale, dilute urine",
+          "correct": false,
+          "explanation": "Dilute, plentiful urine appears when blood water is in surplus, the opposite of dehydration.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "B",
+          "text": "No urine at all",
+          "correct": false,
+          "explanation": "Waste must still be removed; output shrinks but never stops.",
+          "misconception": "absolute error"
+        },
+        {
+          "key": "C",
+          "text": "Urine with no urea in it",
+          "correct": false,
+          "explanation": "Urea is always excreted; only the water fraction changes.",
+          "misconception": "composition error"
+        },
+        {
+          "key": "D",
+          "text": "A small volume of dark, concentrated urine",
+          "correct": true,
+          "explanation": "Sweating loses water, so ADH rises, plenty is reabsorbed, and little concentrated urine remains.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q5",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "Which statement about the ADH feedback loop is correct?",
+      "misconceptionClass": "loop classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "A fall in blood water raises ADH, which lets the duct reclaim more water",
+          "correct": true,
+          "explanation": "Low blood water triggers a bigger ADH release and therefore greater reabsorption.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A fall in blood water lowers ADH, so the duct loses more water",
+          "correct": false,
+          "explanation": "Both halves are inverted; the loop actually defends the water the body has.",
+          "misconception": "double reversal"
+        },
+        {
+          "key": "C",
+          "text": "A rise in blood water raises ADH, so the duct reclaims more",
+          "correct": false,
+          "explanation": "A surplus suppresses ADH rather than boosting it.",
+          "misconception": "double reversal"
+        },
+        {
+          "key": "D",
+          "text": "ADH alters how much filtrate the glomerulus makes",
+          "correct": false,
+          "explanation": "Filtration rate at the glomerulus is not what ADH controls; the duct is.",
+          "misconception": "site swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q6",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "Name the hormone that controls how much water is reabsorbed from the collecting duct.",
+      "misconceptionClass": "hormone recall",
+      "kind": "recall",
+      "modelAnswer": "Antidiuretic hormone (ADH), released by the pituitary gland.",
+      "keywords": [
+        "ADH",
+        "pituitary",
+        "antidiuretic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q7",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "State the exact effect ADH has on the collecting duct.",
+      "misconceptionClass": "wording recall",
+      "kind": "recall",
+      "modelAnswer": "ADH makes the collecting duct more permeable to water.",
+      "keywords": [
+        "ADH",
+        "collecting duct",
+        "permeable",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q8",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "Explain why the ADH system is described as negative feedback.",
+      "misconceptionClass": "feedback reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because a move away from the normal blood water level triggers a response that pushes it back: low water raises ADH so more is reabsorbed, high water lowers ADH so more is lost, and the correction always opposes the original change.",
+      "keywords": [
+        "negative feedback",
+        "ADH",
+        "reabsorbed",
+        "opposes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L1::Q9",
+      "moduleId": "rn_zDcyphC9qpScTM69::L1",
+      "stem": "On a hot sports day a runner drinks very little. Describe the full sequence from detection to urine output.",
+      "misconceptionClass": "scenario sequence",
+      "kind": "application",
+      "modelAnswer": "Osmoreceptors in the hypothalamus detect the concentrated blood, the pituitary releases more ADH, the walls of the collecting ducts open up to water, extra water is reabsorbed into the blood, and a small volume of concentrated urine is produced.",
+      "keywords": [
+        "hypothalamus",
+        "ADH",
+        "permeable",
+        "concentrated urine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q1",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "Which three substances does urine contain?",
+      "misconceptionClass": "composition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Urea only, dissolved in plasma",
+          "correct": false,
+          "explanation": "Urea travels in water with ions; plasma is not excreted as such.",
+          "misconception": "composition truncated"
+        },
+        {
+          "key": "B",
+          "text": "Water, urea and ions",
+          "correct": true,
+          "explanation": "These are the three components named in the specification.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Glucose, protein and water",
+          "correct": false,
+          "explanation": "Healthy urine contains no glucose or protein; both are reabsorbed or too large to filter.",
+          "misconception": "composition invented"
+        },
+        {
+          "key": "D",
+          "text": "Water, urea and red blood cells",
+          "correct": false,
+          "explanation": "Blood cells stay in the blood; they never cross the filter.",
+          "misconception": "component invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q2",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "Why is urine passed after strenuous exercise usually darker in colour?",
+      "misconceptionClass": "cause-effect",
+      "options": [
+        {
+          "key": "A",
+          "text": "Exercise damages the filters so protein leaks out",
+          "correct": false,
+          "explanation": "Protein leakage is a high-blood-pressure effect on the glomerulus, not a normal exercise outcome.",
+          "misconception": "pathology misplaced"
+        },
+        {
+          "key": "B",
+          "text": "Exercise stops ADH release completely",
+          "correct": false,
+          "explanation": "Dehydration raises ADH; it does not abolish it.",
+          "misconception": "hormone error"
+        },
+        {
+          "key": "C",
+          "text": "Water lost in sweat leaves less to dilute the urea",
+          "correct": true,
+          "explanation": "Exercise raises sweat loss, so the remaining urine is concentrated and darker.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Exercise makes the kidneys produce extra urea",
+          "correct": false,
+          "explanation": "The urea load hardly changes; it is the water fraction that falls.",
+          "misconception": "cause invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q3",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "A person spends an afternoon drinking large amounts of water. Which urine description fits?",
+      "misconceptionClass": "scenario prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Small quantity, dark yellow",
+          "correct": false,
+          "explanation": "That is the dehydration picture, not the over-hydration one.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "B",
+          "text": "Large quantity, dark yellow",
+          "correct": false,
+          "explanation": "The volume is right but the colour is wrong; extra water lightens the sample.",
+          "misconception": "half-correct mixture"
+        },
+        {
+          "key": "C",
+          "text": "Normal quantity with visible ions settled out",
+          "correct": false,
+          "explanation": "Ions stay dissolved; they do not settle out of urine.",
+          "misconception": "observation invented"
+        },
+        {
+          "key": "D",
+          "text": "Large quantity, pale yellow",
+          "correct": true,
+          "explanation": "Surplus water is excreted, so volume rises and the urea is diluted to a pale colour.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q4",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "Which factor does NOT directly change the concentration of urine?",
+      "misconceptionClass": "variable exclusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "The colour of the clothing worn",
+          "correct": true,
+          "explanation": "Clothing colour has no role in the water balance described here.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The amount of fluid drunk",
+          "correct": false,
+          "explanation": "Intake directly dilutes or concentrates the urine.",
+          "misconception": "real variable"
+        },
+        {
+          "key": "C",
+          "text": "The surrounding temperature",
+          "correct": false,
+          "explanation": "Heat drives sweat loss and concentrates urine.",
+          "misconception": "real variable"
+        },
+        {
+          "key": "D",
+          "text": "The level of physical activity",
+          "correct": false,
+          "explanation": "Exercise drives sweat loss in the same direction.",
+          "misconception": "real variable"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q5",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "What happens to the urea in urine when the urine volume is large and pale?",
+      "misconceptionClass": "concentration reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It turns into ions",
+          "correct": false,
+          "explanation": "Urea and ions are separate solutes; neither converts into the other.",
+          "misconception": "conversion invented"
+        },
+        {
+          "key": "B",
+          "text": "It is less concentrated because it is dissolved in more water",
+          "correct": true,
+          "explanation": "A bigger water fraction spreads the same urea more thinly.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "It becomes more concentrated",
+          "correct": false,
+          "explanation": "More water means less concentrated urea, not more.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "D",
+          "text": "It disappears entirely",
+          "correct": false,
+          "explanation": "Urea is always present; dilution is not removal.",
+          "misconception": "extreme claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q6",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "List the three components of urine.",
+      "misconceptionClass": "composition recall",
+      "kind": "recall",
+      "modelAnswer": "Urine contains water, urea and ions.",
+      "keywords": [
+        "water",
+        "urea",
+        "ions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q7",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "State two everyday factors that make urine more concentrated.",
+      "misconceptionClass": "variable recall",
+      "kind": "recall",
+      "modelAnswer": "High temperature and vigorous exercise, because both increase the water lost as sweat.",
+      "keywords": [
+        "temperature",
+        "exercise",
+        "sweat"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q8",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "Explain why someone who drinks very little on a warm day produces dark urine.",
+      "misconceptionClass": "mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Warm conditions and low intake together leave the blood short of water, so ADH rises and the collecting duct reclaims most of it; the small volume of urine left carries the usual urea in much less water, so it looks dark.",
+      "keywords": [
+        "ADH",
+        "collecting duct",
+        "reclaims",
+        "concentrated"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_zDcyphC9qpScTM69::L2::Q9",
+      "moduleId": "rn_zDcyphC9qpScTM69::L2",
+      "stem": "Two athletes finish the same match: one drank two litres during play, one drank nothing. Predict and explain each urine output.",
+      "misconceptionClass": "comparison application",
+      "kind": "application",
+      "modelAnswer": "The drinker passes a large volume of pale urine because surplus water suppresses ADH and dilutes the urea; the non-drinker passes a small volume of dark urine because sweat loss raised ADH, the duct reabsorbed heavily, and the remaining urea is concentrated.",
+      "keywords": [
+        "ADH",
+        "reabsorbed",
+        "pale urine",
+        "concentrated"
+      ],
+      "options": []
+    }
+  ]
+}

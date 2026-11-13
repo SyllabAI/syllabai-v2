@@ -1,0 +1,730 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_78VnVvwXpYGkNvpQ",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "ea23797925f6ed26c19d2ab44b0afa93295be7dc0cc27c3c9c656f4b4154b5ad",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_78VnVvwXpYGkNvpQ",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q1",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "Where does ultrafiltration take place?",
+      "misconceptionClass": "site recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the glomerulus inside the Bowman's capsule",
+          "correct": true,
+          "explanation": "That is the filtration site named in the specification.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "In the collecting duct",
+          "correct": false,
+          "explanation": "The collecting duct handles water reabsorption, the final stage.",
+          "misconception": "site confused"
+        },
+        {
+          "key": "C",
+          "text": "In the loop of Henle",
+          "correct": false,
+          "explanation": "The loop concentrates the filtrate; it does not filter blood.",
+          "misconception": "site confused"
+        },
+        {
+          "key": "D",
+          "text": "In the ureter",
+          "correct": false,
+          "explanation": "The ureter only carries urine towards the bladder.",
+          "misconception": "site confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q2",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "Which substances are present in the glomerular filtrate?",
+      "misconceptionClass": "composition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Urea and glucose only",
+          "correct": false,
+          "explanation": "Water and ions cross too; the list is not that short.",
+          "misconception": "list truncated"
+        },
+        {
+          "key": "B",
+          "text": "Water, glucose, urea and ions",
+          "correct": true,
+          "explanation": "These four cross the filter; everything larger stays in the blood.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Water, urea and protein",
+          "correct": false,
+          "explanation": "Protein never crosses the filtration membrane.",
+          "misconception": "component wrong"
+        },
+        {
+          "key": "D",
+          "text": "Water, glucose and red blood cells",
+          "correct": false,
+          "explanation": "Blood cells are far too large to filter through.",
+          "misconception": "component wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q3",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "Why is blood pressure especially high inside the glomerulus?",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The capsule squeezes the capillaries",
+          "correct": false,
+          "explanation": "The capsule surrounds but does not squeeze.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
+          "text": "Because the blood is thicker there",
+          "correct": false,
+          "explanation": "Blood thickness does not change at the glomerulus.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "C",
+          "text": "The vessel entering is wider than the vessel leaving, so pressure builds",
+          "correct": true,
+          "explanation": "That width difference forces the pressure up at the filtration site.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The heart pumps extra hard towards the kidneys",
+          "correct": false,
+          "explanation": "No extra pumping occurs; geometry does the work.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q4",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "What stops proteins from entering the filtrate?",
+      "misconceptionClass": "barrier recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Active transport pulls them back",
+          "correct": false,
+          "explanation": "Nothing transports proteins back; they never leave the blood.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "B",
+          "text": "They dissolve out of the filtrate",
+          "correct": false,
+          "explanation": "They simply never cross in the first place.",
+          "misconception": "process invented"
+        },
+        {
+          "key": "C",
+          "text": "The capsule destroys them",
+          "correct": false,
+          "explanation": "Nothing destroys proteins at the capsule.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "D",
+          "text": "They are too large to pass the filtration membrane",
+          "correct": true,
+          "explanation": "Size alone excludes them at the sieve.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q5",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "Which process description matches ultrafiltration?",
+      "misconceptionClass": "process discrimination",
+      "options": [
+        {
+          "key": "A",
+          "text": "Small molecules are forced out of the blood under pressure",
+          "correct": true,
+          "explanation": "Forcing under pressure is the defining feature of this stage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Glucose is pulled back into the blood by active transport",
+          "correct": false,
+          "explanation": "That is selective reabsorption, the second stage.",
+          "misconception": "stage confused"
+        },
+        {
+          "key": "C",
+          "text": "Water leaves the collecting duct by osmosis",
+          "correct": false,
+          "explanation": "That is water reabsorption, the third stage.",
+          "misconception": "stage confused"
+        },
+        {
+          "key": "D",
+          "text": "Urea diffuses slowly out of the blood",
+          "correct": false,
+          "explanation": "Urea is forced out with the rest of the filtrate, not diffused.",
+          "misconception": "process wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q6",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "Name the fluid that collects in the Bowman's capsule.",
+      "misconceptionClass": "term recall",
+      "kind": "recall",
+      "modelAnswer": "The glomerular filtrate.",
+      "keywords": [
+        "glomerular filtrate",
+        "Bowman's capsule",
+        "fluid"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q7",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "List the three processes that turn filtrate into urine, in order.",
+      "misconceptionClass": "sequence recall",
+      "kind": "recall",
+      "modelAnswer": "Ultrafiltration, then selective reabsorption of glucose, then reabsorption of water.",
+      "keywords": [
+        "ultrafiltration",
+        "selective reabsorption",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q8",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "Explain why ultrafiltration is described as a pressure-driven process rather than diffusion.",
+      "misconceptionClass": "process reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because the high pressure built up in the glomerulus physically forces small molecules through the sieve-like membrane; no concentration gradient is doing the work, which is what diffusion would require.",
+      "keywords": [
+        "pressure",
+        "glomerulus",
+        "membrane",
+        "gradient"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L1::Q9",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L1",
+      "stem": "A student says 'the glomerulus filters urea out because the blood does not want it'. Sharpen this into the examinable mechanism.",
+      "misconceptionClass": "mechanism repair",
+      "kind": "application",
+      "modelAnswer": "Better: the glomerulus is a high-pressure filtration point — the width difference between the vessels entering and leaving builds pressure that forces small molecules, including urea, through the membrane into the Bowman's capsule; the sieving is mechanical, so selectivity is by size, not by usefulness.",
+      "keywords": [
+        "pressure",
+        "membrane",
+        "size",
+        "Bowman's capsule"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q1",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "Where is glucose reabsorbed from the filtrate?",
+      "misconceptionClass": "site recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the loop of Henle",
+          "correct": false,
+          "explanation": "The loop's job is concentration, not glucose rescue.",
+          "misconception": "site confused"
+        },
+        {
+          "key": "B",
+          "text": "In the proximal convoluted tubule",
+          "correct": true,
+          "explanation": "The PCT is the reabsorption site for glucose.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "In the glomerulus",
+          "correct": false,
+          "explanation": "The glomerulus filters; reabsorption happens further along.",
+          "misconception": "site confused"
+        },
+        {
+          "key": "D",
+          "text": "In the collecting duct",
+          "correct": false,
+          "explanation": "The collecting duct handles water, not glucose.",
+          "misconception": "site confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q2",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "Why does glucose reabsorption need active transport?",
+      "misconceptionClass": "mechanism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the tubule walls are thick",
+          "correct": false,
+          "explanation": "Wall thickness plays no role in the gradient story.",
+          "misconception": "reason invented"
+        },
+        {
+          "key": "B",
+          "text": "Because glucose dissolves poorly in water",
+          "correct": false,
+          "explanation": "Glucose dissolves readily; that is not the constraint.",
+          "misconception": "reason invented"
+        },
+        {
+          "key": "C",
+          "text": "Glucose moves against its concentration gradient",
+          "correct": true,
+          "explanation": "Uphill movement demands energy; passive processes only go downhill.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because glucose molecules are very large",
+          "correct": false,
+          "explanation": "Size is not the issue; the gradient direction is.",
+          "misconception": "reason wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q3",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "What provides the energy for glucose reabsorption?",
+      "misconceptionClass": "energy recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The pressure of the filtrate",
+          "correct": false,
+          "explanation": "Pressure drives ultrafiltration, not active transport.",
+          "misconception": "energy source wrong"
+        },
+        {
+          "key": "B",
+          "text": "The beating cilia",
+          "correct": false,
+          "explanation": "Cilia belong to the airways, not the nephron.",
+          "misconception": "structure misplaced"
+        },
+        {
+          "key": "C",
+          "text": "ADH from the pituitary",
+          "correct": false,
+          "explanation": "ADH directs water reabsorption in the collecting duct.",
+          "misconception": "hormone misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Mitochondria in the PCT cells",
+          "correct": true,
+          "explanation": "The many mitochondria supply the ATP the active transport needs.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q4",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "How much glucose does a healthy person lose in urine?",
+      "misconceptionClass": "completeness recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "None — all of it is reabsorbed",
+          "correct": true,
+          "explanation": "The reabsorption at the PCT is total.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A small constant trickle",
+          "correct": false,
+          "explanation": "A healthy nephron loses nothing; a trickle signals a problem.",
+          "misconception": "quantity invented"
+        },
+        {
+          "key": "C",
+          "text": "Whatever exceeds the blood's storage",
+          "correct": false,
+          "explanation": "There is no such threshold in this model — reabsorption is complete.",
+          "misconception": "mechanism wrong"
+        },
+        {
+          "key": "D",
+          "text": "About half of it",
+          "correct": false,
+          "explanation": "Half would waste the body's fuel; the design reclaims all.",
+          "misconception": "quantity invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q5",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "Which statement about urea in the filtrate is correct?",
+      "misconceptionClass": "waste behaviour",
+      "options": [
+        {
+          "key": "A",
+          "text": "It never enters the filtrate at all",
+          "correct": false,
+          "explanation": "Urea is small enough to filter and does enter the filtrate.",
+          "misconception": "fact wrong"
+        },
+        {
+          "key": "B",
+          "text": "It stays in the filtrate and becomes more concentrated as water leaves",
+          "correct": true,
+          "explanation": "Urea is waste; it rides the fluid onwards and concentrates.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "It is actively reabsorbed like glucose",
+          "correct": false,
+          "explanation": "Active reabsorption is reserved for useful substances.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "D",
+          "text": "It is broken down inside the tubule",
+          "correct": false,
+          "explanation": "Nothing breaks urea down in the nephron.",
+          "misconception": "process invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q6",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "Name the tubule where glucose is selectively reabsorbed.",
+      "misconceptionClass": "site recall",
+      "kind": "recall",
+      "modelAnswer": "The proximal convoluted tubule (PCT).",
+      "keywords": [
+        "proximal convoluted tubule",
+        "PCT",
+        "glucose"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q7",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "Which two features of the PCT suit it to active transport?",
+      "misconceptionClass": "structure-function recall",
+      "kind": "recall",
+      "modelAnswer": "Its cells carry many mitochondria, and active transport moves glucose against its gradient.",
+      "keywords": [
+        "mitochondria",
+        "active transport",
+        "gradient"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q8",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "Explain why the term selective is used for this reabsorption.",
+      "misconceptionClass": "terminology reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because the process rescues the useful substance — glucose — while leaving wastes such as urea in the filtrate; the tubule distinguishes between what the body keeps and what it discards, which is exactly what selective means here.",
+      "keywords": [
+        "glucose",
+        "urea",
+        "useful",
+        "waste"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L2::Q9",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L2",
+      "stem": "A rare disorder leaves PCT mitochondria scarce. Predict the urine and explain.",
+      "misconceptionClass": "clinical application",
+      "kind": "application",
+      "modelAnswer": "With too few mitochondria the active transport of glucose loses power, so glucose would remain in the filtrate and appear in the urine — the same signature seen when blood glucose runs far above normal, because the rescue machinery cannot cope.",
+      "keywords": [
+        "mitochondria",
+        "active transport",
+        "glucose",
+        "urine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q1",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "From which structure is most water reabsorbed into the blood?",
+      "misconceptionClass": "site recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Bowman's capsule",
+          "correct": false,
+          "explanation": "The capsule catches the filtrate; nothing is reabsorbed there.",
+          "misconception": "site confused"
+        },
+        {
+          "key": "B",
+          "text": "The loop of Henle exclusively",
+          "correct": false,
+          "explanation": "Some water leaves in the loop, but the majority crosses the duct.",
+          "misconception": "quantity wrong"
+        },
+        {
+          "key": "C",
+          "text": "The collecting duct",
+          "correct": true,
+          "explanation": "Most of the reabsorption happens there, under ADH's control.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The glomerulus",
+          "correct": false,
+          "explanation": "The glomerulus filters blood; it does not reabsorb water.",
+          "misconception": "site confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q2",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "By which process does water leave the collecting duct?",
+      "misconceptionClass": "process recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Active transport",
+          "correct": false,
+          "explanation": "Active transport is the glucose story; water needs no pumping.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "B",
+          "text": "Ultrafiltration",
+          "correct": false,
+          "explanation": "That is the pressure-driven first stage, in reverse territory here.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "C",
+          "text": "Evaporation",
+          "correct": false,
+          "explanation": "Nothing evaporates inside the kidney.",
+          "misconception": "process invented"
+        },
+        {
+          "key": "D",
+          "text": "Osmosis",
+          "correct": true,
+          "explanation": "Water moves down its potential gradient through the duct wall.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q3",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "What happens to the urine when ADH release rises?",
+      "misconceptionClass": "hormone-effect recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It becomes smaller in volume and more concentrated",
+          "correct": true,
+          "explanation": "More reclaimed water means less, stronger urine.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Larger in volume and paler",
+          "correct": false,
+          "explanation": "That is the low-ADH outcome.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "C",
+          "text": "Unchanged, because ADH acts elsewhere",
+          "correct": false,
+          "explanation": "ADH acts precisely on the duct's water permeability.",
+          "misconception": "mechanism wrong"
+        },
+        {
+          "key": "D",
+          "text": "Absent altogether",
+          "correct": false,
+          "explanation": "Waste still leaves; the volume only shrinks.",
+          "misconception": "extreme claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q4",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "Which structures does the filtrate pass through after the PCT?",
+      "misconceptionClass": "route recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The loop of Henle, then the glomerulus",
+          "correct": false,
+          "explanation": "Fluid never returns to the glomerulus.",
+          "misconception": "route impossible"
+        },
+        {
+          "key": "B",
+          "text": "The loop of Henle, the distal convoluted tubule, then the collecting duct",
+          "correct": true,
+          "explanation": "That is the downstream sequence of the nephron.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The glomerulus, then the Bowman's capsule",
+          "correct": false,
+          "explanation": "Those are the upstream filtration structures.",
+          "misconception": "route reversed"
+        },
+        {
+          "key": "D",
+          "text": "The ureter, then the bladder directly",
+          "correct": false,
+          "explanation": "Those come after the nephron has finished its work.",
+          "misconception": "route skipped"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q5",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "Why is the collecting duct called the site of osmoregulation?",
+      "misconceptionClass": "role reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because it filters proteins from the blood",
+          "correct": false,
+          "explanation": "Protein handling belongs to the glomerulus's membrane.",
+          "misconception": "function wrong"
+        },
+        {
+          "key": "B",
+          "text": "Because it makes ADH",
+          "correct": false,
+          "explanation": "The pituitary makes ADH; the duct merely responds.",
+          "misconception": "source wrong"
+        },
+        {
+          "key": "C",
+          "text": "Because adjusting water reabsorption there is how the blood's water content is controlled",
+          "correct": true,
+          "explanation": "The duct's variable permeability is the body's water lever.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Because it stores urine between passes",
+          "correct": false,
+          "explanation": "Storage is the bladder's job.",
+          "misconception": "function wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q6",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "Name the hormone that controls water reabsorption at the collecting duct.",
+      "misconceptionClass": "hormone recall",
+      "kind": "recall",
+      "modelAnswer": "ADH, the antidiuretic hormone from the pituitary gland.",
+      "keywords": [
+        "ADH",
+        "pituitary",
+        "antidiuretic",
+        "collecting duct"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q7",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "Through which three structures does filtrate pass after the PCT?",
+      "misconceptionClass": "route recall",
+      "kind": "recall",
+      "modelAnswer": "The loop of Henle, the distal convoluted tubule and the collecting duct.",
+      "keywords": [
+        "loop of Henle",
+        "distal convoluted tubule",
+        "collecting duct"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q8",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "Explain why water leaves the collecting duct by osmosis rather than by active transport.",
+      "misconceptionClass": "process reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because water simply moves down its potential gradient from the dilute filtrate towards the more concentrated blood whenever the duct wall allows it; no energy is spent, and the wall's permeability — set by ADH — is all the control the body needs.",
+      "keywords": [
+        "osmosis",
+        "gradient",
+        "permeability",
+        "ADH"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_78VnVvwXpYGkNvpQ::L3::Q9",
+      "moduleId": "rn_78VnVvwXpYGkNvpQ::L3",
+      "stem": "A diuretic drink suppresses ADH for an afternoon. Trace the effect through the collecting duct to the urine.",
+      "misconceptionClass": "hormone application",
+      "kind": "application",
+      "modelAnswer": "With ADH lowered the duct walls stay tight against water, so little is reclaimed by osmosis; a large volume of pale, dilute urine carries the water away, which is exactly the response to surplus blood water.",
+      "keywords": [
+        "ADH",
+        "osmosis",
+        "dilute urine",
+        "reclaimed"
+      ],
+      "options": []
+    }
+  ]
+}

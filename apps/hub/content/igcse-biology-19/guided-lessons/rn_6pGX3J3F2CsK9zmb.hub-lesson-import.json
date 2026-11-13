@@ -1,0 +1,116 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_6pGX3J3F2CsK9zmb",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "981665158342b857dbdf9acb60df8a348caf185eadf1535c6b79ccc6a8e6712d",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_6pGX3J3F2CsK9zmb",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Excretion",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/excretion/structure-of-the-urinary-system",
+    "specAnchors": [
+      {
+        "code": "2.73B",
+        "text": "describe the structure of the urinary system, including the kidneys, ureters, bladder and urethra"
+      }
+    ],
+    "primer": {
+      "text": "The kidneys do not work alone: they sit in a plumbing system that carries blood in, urine out. Two kidneys, two ureters, one bladder and one urethra make the urinary system, with the renal artery and vein attaching each kidney to the circulation.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_6pGX3J3F2CsK9zmb::L1",
+        "title": "The Urinary System's Parts",
+        "sourceHeadings": [
+          "The Urinary System: Structure"
+        ],
+        "specRefs": [
+          "2.73B"
+        ],
+        "opening": "Two kidneys at the back of the abdomen produce urine; two ureters carry it downwards; the bladder stores it; and the urethra finally releases it from the body. Each kidney is also plugged into the bloodstream through the renal artery, which brings blood to be filtered, and the renal vein, which carries the cleaned blood away.",
+        "keyPoints": [
+          "The urinary system consists of two kidneys, two ureters, the bladder and the urethra.",
+          "Ureters transport urine from each kidney down to the bladder.",
+          "The urethra is the final tube, releasing urine from the bladder to the outside.",
+          "The renal artery supplies the kidney with blood to filter.",
+          "The renal vein returns the filtered blood to the circulation."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Kidneys make urine, ureters carry it, the bladder stores it, the urethra releases it.",
+            "analogy": "Four stops on a one-way waterway: factory, pipes, reservoir, exit gate.",
+            "examPointer": "Never swap ureter and urethra — the two tubes are the classic naming trap."
+          },
+          "medium": {
+            "restatement": "Ureter joins kidney to bladder; urethra joins bladder to the world.",
+            "analogy": "A house with two drains: one from the kitchen (ureter), one main outflow (urethra).",
+            "examPointer": "Write the direction with each tube's name — 'from the kidney to the bladder' — to lock the pairing."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6pGX3J3F2CsK9zmb::L1::Q1",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q2",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q3",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q4",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q5",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q6",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q7",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q8",
+          "rn_6pGX3J3F2CsK9zmb::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "ureter",
+          "definition": "The tube carrying urine from a kidney down to the bladder.",
+          "firstLesson": 1
+        },
+        {
+          "term": "urethra",
+          "definition": "The tube carrying urine from the bladder to outside the body.",
+          "firstLesson": 1
+        },
+        {
+          "term": "renal artery",
+          "definition": "The vessel bringing unfiltered blood from the aorta to each kidney.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/082d656ace46-55746-urinary-system.png",
+        "alt": "Human urinary system with kidneys, ureters, bladder and urethra labelled.",
+        "sourceHeading": "The Urinary System: Structure",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The four structures of the urinary system in position"
+      }
+    ]
+  }
+}
