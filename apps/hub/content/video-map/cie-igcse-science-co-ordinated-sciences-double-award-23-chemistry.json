@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 79,
+  "rowsApproved": 82,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 79,
+    "rowsApproved": 82,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1217,6 +1217,39 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Malmesbury Education",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "8X8Bv0gO5vI",
+   "title": "IGCSE Chemistry 0620 | Chapter 1 - The particulate nature of matter",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=8X8Bv0gO5vI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BQbR9LwCq8c",
+   "title": "IGCSE Chemistry Tutorial: Chapter 1-The particulate nature of matter",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=BQbR9LwCq8c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kYXrJ4Tv7tk",
+   "title": "IGCSE Chemistry 0620 | Chapter 5 - Electricity and Chemistry",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=kYXrJ4Tv7tk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -1231,6 +1264,46 @@
    ],
    "confidence": "medium",
    "evidence": "title 'States of Matter & Changing State' = particle models and changes of state (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8X8Bv0gO5vI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 1 marker of a syllabus-structured series narrows the pool to section 1 specs; title binds 1.2.2 'Describe and explain the effect of relative molecular ma' via token(s) ['matter'] (df 8); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BQbR9LwCq8c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 1 marker of a syllabus-structured series narrows the pool to section 1 specs; title binds 1.2.2 'Describe and explain the effect of relative molecular ma' via token(s) ['matter'] (df 8); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1861,6 +1934,26 @@
    ],
    "confidence": "low",
    "evidence": "title 'GCSE Chemistry Revision \"Cells and Batteries\" (Triple)' -> 4.2.2 'Describe the advantages and disadvantages of u' via distinctive token(s) cell; 4.2.1 'State that a hydrogen–oxygen fuel cell uses hy' via distinctive token(s) cell (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "kYXrJ4Tv7tk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.2.1 'State that a hydrogen–oxygen fuel cell uses hydrogen and' via token(s) ['electricity'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2873,16 +2966,16 @@
  ],
  "coverage": {
   "specPointsTotal": 181,
-  "specPointsMapped": 111,
-  "specPointsUnmapped": 70,
-  "videosTotal": 79,
-  "videosMapped": 79,
+  "specPointsMapped": 112,
+  "specPointsUnmapped": 69,
+  "videosTotal": 82,
+  "videosMapped": 82,
   "videosUnmapped": 0,
-  "mappingRows": 79,
+  "mappingRows": 82,
   "byConfidence": {
    "high": 0,
-   "medium": 69,
-   "low": 10
+   "medium": 70,
+   "low": 12
   }
  },
  "inputs": {
@@ -2905,5 +2998,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-13T11:08:13.742Z"
+ "generatedUtc": "2026-11-13T13:26:09.492Z"
 }

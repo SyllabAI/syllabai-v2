@@ -16,6 +16,11 @@
    "provider": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) + MrArnoldsMaths (MrArnoldsMaths Channel — legacy Edexcel GCSE/GCE walkthrough + topic-tutorial channel)",
    "method": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) flat-enumerated 2026-11-13T10:43:50Z; MrArnoldsMaths (MrArnoldsMaths Channel — legacy Edexcel GCSE/GCE walkthrough + topic-tutorial channel) flat-enumerated 2026-11-13T10:43:46Z; routing: module-code Tier B anchors + unit.section-marker/module-named Tier A with class-table judgment over every row",
    "enumeratedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "provider": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "method": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) flat-enumerated 2026-11-13T12:53:08Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 222,
+  "rowsApproved": 223,
   "rowsRejected": 13,
   "rejects": [
    {
@@ -256,6 +261,17 @@
     "ruledUtc": "2026-11-13T11:04:04Z",
     "evidenceBasis": "Identity: oEmbed sweep 358/358 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: IAL module codes regex-verified in titles. Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables over EVERY routed row; module-structured rows (unit.section marker / module-named title) permitted the disclosed higher title-only bar at low confidence; rebinds validated against the target spine; degenerate vocabulary binds (factor formulae -> P1 radian) dropped.",
     "rowsApproved": 34,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 1,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2702,6 +2718,17 @@
    "lessonUrl": null,
    "levelTag": "ial",
    "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oxY2puEL5LU",
+   "title": "The whole of A Level Statistics 1 Mathematics in 25 mins",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=oxY2puEL5LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -6611,19 +6638,34 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
    "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "oxY2puEL5LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1 'The basic ideas of mathematical modelling as applied in ' via token(s) ['statistic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 16,
   "specPointsMapped": 15,
   "specPointsUnmapped": 1,
-  "videosTotal": 222,
-  "videosMapped": 222,
+  "videosTotal": 223,
+  "videosMapped": 223,
   "videosUnmapped": 0,
-  "mappingRows": 222,
+  "mappingRows": 223,
   "byConfidence": {
    "high": 144,
-   "medium": 69,
+   "medium": 70,
    "low": 9
   }
  },
@@ -6643,7 +6685,13 @@
    "path": "Videos/drafts/ial-maths-20-statistics-1/video-map.draft.external-p10.json",
    "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
    "reviewAppliedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-statistics-1/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
   }
  },
- "generatedUtc": "2026-11-13T11:08:13.680Z"
+ "generatedUtc": "2026-11-13T13:26:09.430Z"
 }

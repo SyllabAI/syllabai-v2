@@ -16,6 +16,11 @@
    "provider": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel)",
    "method": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) flat-enumerated 2026-11-13T10:43:50Z; routing: module-code Tier B anchors + unit.section-marker/module-named Tier A with class-table judgment over every row",
    "enumeratedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "provider": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "method": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) flat-enumerated 2026-11-13T12:53:08Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 426,
+  "rowsApproved": 428,
   "rowsRejected": 13,
   "rejects": [
    {
@@ -277,6 +282,23 @@
       "video": "314GYOiIUG0",
       "reason": "route misbind re-adjudicated: addition formulae sin(A±B)/cos(A±B) are named by the pure-3 2.3 spec text; the pure-2 4.4 pre-pass bind was a series-vocabulary adjacency",
       "lane": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 2,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "video": "aWR8NxH_jBc",
+      "reason": "no-binding (routed-but-unmapped): zero token overlap with the spine in the pre-pass — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
    }
@@ -4967,6 +4989,28 @@
    "lessonUrl": null,
    "levelTag": "ial",
    "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9JJCkHaQ6mM",
+   "title": "Pure 2 June 2022 Exam IAL WMA12/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=9JJCkHaQ6mM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RO2j-oJLC6c",
+   "title": "Pure 2 Jan 2022 Exam IAL WMA12/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=RO2j-oJLC6c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -12608,18 +12652,56 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
    "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-2"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "9JJCkHaQ6mM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 2 June 2022 Exam IAL WMA12/01\"; syllabus/paper code WMA12 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-2"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "RO2j-oJLC6c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 2 Jan 2022 Exam IAL WMA12/01\"; syllabus/paper code WMA12 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 19,
   "specPointsMapped": 19,
   "specPointsUnmapped": 0,
-  "videosTotal": 426,
-  "videosMapped": 426,
+  "videosTotal": 428,
+  "videosMapped": 428,
   "videosUnmapped": 0,
-  "mappingRows": 426,
+  "mappingRows": 428,
   "byConfidence": {
-   "high": 312,
+   "high": 314,
    "medium": 85,
    "low": 29
   }
@@ -12640,7 +12722,13 @@
    "path": "Videos/drafts/ial-maths-20-pure-2/video-map.draft.external-p10.json",
    "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
    "reviewAppliedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-pure-2/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
   }
  },
- "generatedUtc": "2026-11-13T11:08:13.656Z"
+ "generatedUtc": "2026-11-13T13:26:09.413Z"
 }

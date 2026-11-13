@@ -24,7 +24,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 43,
+  "rowsApproved": 44,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -35,7 +35,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 10,
+    "rowsApproved": 11,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -234,6 +234,17 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CNokhqsTNWM",
+   "title": "AS & A Level Physics (9702) - Chapter 12: Wave Phenomena",
+   "provider": "james-gan",
+   "watchUrl": "https://www.youtube.com/watch?v=CNokhqsTNWM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "James Gan (CIE 9618 AS&A CS chapter series + 9702 physics + 9709 maths) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -802,6 +813,27 @@
    ],
    "confidence": "medium",
    "evidence": "title names phase and phase difference (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CNokhqsTNWM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "53",
+    "62"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 22.3.1 '\u0007understand that the photoelectric effect provides evide' via token(s) ['phenomena', 'physic', 'wave'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1559,15 +1591,15 @@
  ],
  "coverage": {
   "specPointsTotal": 171,
-  "specPointsMapped": 7,
-  "specPointsUnmapped": 164,
-  "videosTotal": 43,
-  "videosMapped": 43,
+  "specPointsMapped": 9,
+  "specPointsUnmapped": 162,
+  "videosTotal": 44,
+  "videosMapped": 44,
   "videosUnmapped": 0,
-  "mappingRows": 43,
+  "mappingRows": 44,
   "byConfidence": {
    "high": 32,
-   "medium": 10,
+   "medium": 11,
    "low": 1
   }
  },
@@ -1604,5 +1636,5 @@
    "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-13T11:08:13.869Z"
+ "generatedUtc": "2026-11-13T13:26:09.613Z"
 }
