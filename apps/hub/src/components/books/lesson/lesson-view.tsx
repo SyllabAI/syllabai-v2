@@ -77,7 +77,7 @@ function Box({ type, md }: { type: string; md: string }) {
         <Icon className="h-4 w-4" aria-hidden />
         {style.label}
       </div>
-      <div className="text-[15px] leading-relaxed [&_p]:my-1.5">
+      <div className="text-base leading-relaxed [&_p]:my-1.5">
         <Markdown>{md}</Markdown>
       </div>
     </div>
@@ -215,7 +215,7 @@ function SectionBlock({
         seg.kind === "box" ? (
           <Box key={i} type={seg.boxType ?? ""} md={rewriteGlossaryChips(seg.md, glossary)} />
         ) : (
-          <div key={i} className="text-[15px] leading-relaxed [&_p]:my-2.5 [&_ul]:my-2.5 [&_ol]:my-2.5">
+          <div key={i} className="text-base leading-relaxed [&_p]:my-2.5 [&_ul]:my-2.5 [&_ol]:my-2.5">
             <Markdown>{rewriteGlossaryChips(seg.md, glossary)}</Markdown>
           </div>
         ),
@@ -305,7 +305,7 @@ export function LessonView({
           />
         )}
       </aside>
-      <article className="min-w-0 flex-1">
+      <article className="min-w-0 flex-1 max-w-[36rem]">
         <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
           <Link
             href={`/courses/${courseSlug}/books/${docId}?chapter=${encodeURIComponent(chapterKey)}`}
@@ -332,7 +332,7 @@ export function LessonView({
         </div>
         <h1 className="text-2xl font-bold tracking-tight">{pack.title}</h1>
         {pack.learningObjective && (
-          <div className="mt-2 rounded-md border p-3 sm:p-4 text-[14px] leading-relaxed">
+          <div className="mt-2 rounded-md border p-3 sm:p-4 text-base leading-relaxed">
             <div className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold">
               <Target className="h-4 w-4" aria-hidden />
               Learning objectives
