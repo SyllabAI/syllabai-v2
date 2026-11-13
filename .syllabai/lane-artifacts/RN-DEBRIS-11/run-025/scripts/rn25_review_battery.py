@@ -13,9 +13,12 @@ Run against the branch head (post push). Asserts:
   B4  the commit chain is base -> content -> receipts -> postReview+battery
       (per-commit scope asserted vs its first parent — no self-referential
       sha; end-relative by scope so refresh commits self-assert)
-  B5  CI conclusions on the pushed head: the census/hub/verify gates ALL
-      success; the Vercel deploy status classified fail-loud (success OR the
-      documented plane-level classes — canceled-while-queued / rate-limited /
+  B5  CI conclusions on the pushed head: the hub/verify gates ALL success;
+      the census-guard classified by its own path-filter law (fires ONLY on
+      apps/hub/content/** or import_corpus/** — absent when no such path is
+      declared, success when present; fail-loud either way); the Vercel
+      deploy status classified fail-loud (success OR the documented
+      plane-level classes — canceled-while-queued / rate-limited /
       DEPLOYMENT_DISABLED — any other failure = the battery reds)
 """
 import json, subprocess, sys
@@ -163,8 +166,19 @@ def main():
         headers={'Authorization': f'token {pat}', 'User-Agent': 'rn25-battery'})
     runs = json.loads(urllib.request.urlopen(req, timeout=30).read())['check_runs']
     cis = {r['name']: (r['status'], r['conclusion']) for r in runs}
-    for name in ('census', 'hub', 'verify'):
+    for name in ('hub', 'verify'):
         assert cis.get(name) == ('completed', 'success'), f'{name}: {cis.get(name)}'
+    # the census-guard law (the workflow's own path filter of record): it fires ONLY on
+    # apps/hub/content/** or apps/hub/scripts/import_corpus/** — the run-025 declared path
+    # set carries NO such path, so its absence on this head is lawful; if present it must
+    # be success (fail-loud either way)
+    if 'census' in cis:
+        assert cis['census'] == ('completed', 'success'), f'census: {cis["census"]}'
+        census_verdict = 'present and success'
+    else:
+        assert not any(pp.startswith('apps/hub/content/') or pp.startswith('apps/hub/scripts/import_corpus/')
+                       for pp in EXPECTED_OWN), 'census-guard absent while a content/** path is declared — unlawful gate set'
+        census_verdict = 'absent-by-own-path-filter (the declared run-025 paths carry no apps/hub/content/** or import_corpus/** path)'
     req2 = urllib.request.Request(
         f'https://api.github.com/repos/SyllabAI/syllabai-v2/commits/{head}/status',
         headers={'Authorization': f'token {pat}', 'User-Agent': 'rn25-battery'})
@@ -181,7 +195,7 @@ def main():
     else:
         assert False, f'Vercel deploy status unclassified failure: {verc}'
     res['B5'] = {'checkRuns': cis, 'vercelDeploy': verdict}
-    print(f'B5 PASS: census/hub/verify ALL success on the pushed head; Vercel deploy: {verdict}')
+    print(f'B5 PASS: hub/verify ALL success on the pushed head; census: {census_verdict}; Vercel deploy: {verdict}')
 
     out = Path('/home/z/my-project/work/rn25/out/rn25_postReview_battery.json')
     out.parent.mkdir(parents=True, exist_ok=True)
