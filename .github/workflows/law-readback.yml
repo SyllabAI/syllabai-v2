@@ -1,0 +1,45 @@
+name: law-readback
+
+# T-LAW-ENFORCE-1 (operator directive 2026-11-13, zai-web trace 1a1d545c404c9a2d).
+# §8 of docs/AGENT_COORDINATION.md mandates this job of record: "every push to
+# main re-parses the workflow YAMLs and asserts the trigger literals and gate
+# steps of record ... A fix that did not stick must fail the same day."
+# The assertions live in .github/scripts/law_readback_assert.py — deliberate
+# gate changes must update them in the same risk-tier PR.
+# The coordination job enforces the §2 claim protocol: one open PR per task id.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  law-readback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure PyYAML
+        run: python3 -c "import yaml" 2>/dev/null || python3 -m pip install --quiet --disable-pip-version-check pyyaml
+      - name: Assert the gate of record (§8 read-back)
+        run: python3 .github/scripts/law_readback_assert.py
+
+  coordination:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: §2 claim protocol — one open PR per task id
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python3 .github/scripts/coordination_guard.py
