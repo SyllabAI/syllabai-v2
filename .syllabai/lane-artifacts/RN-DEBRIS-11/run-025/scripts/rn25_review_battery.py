@@ -10,9 +10,15 @@ Run against the branch head (post push). Asserts:
   B3  both worklogs: theirs-verbatim prefix vs main tip + the run-025 entry
       AND the #995 merge-record entry byte-identical exactly once at each
       tail, zero unparented markers
-  B4  the commit chain is base -> content -> receipts -> postReview+battery
-      (per-commit scope asserted vs its first parent — no self-referential
-      sha; end-relative by scope so refresh commits self-assert)
+  B4  the commit chain: base -> content -> receipts -> postReview+battery,
+      then a tail walk over UNION commits (2-parent sync merges: delta vs its
+      first parent == the main advance since the PREVIOUS main tip,
+      theirs-verbatim; delta vs its second parent == exactly the declared
+      path set) and REFRESH commits (battery + postReview receipt only)
+      interleaved in any order up to HEAD (per-commit scope asserted vs its
+      first parent — no self-referential sha; end-relative by scope so
+      refresh commits self-assert; the battery main tip == the newest
+      union's second parent)
   B5  CI conclusions on the pushed head: the hub/verify gates ALL success;
       the census-guard classified by its own path-filter law (fires ONLY on
       apps/hub/content/** or import_corpus/** — absent when no such path is
@@ -62,16 +68,19 @@ def main():
     head = git('rev-parse', 'HEAD').strip()
     res['head'] = head
 
-    # B4 commit chain (first-parent, newest-first) — end-relative, per-commit scope;
-    # the sync union (if present) sits at chain[-4] with pinned parents and delta laws
-    chain = [l.split()[0] for l in git('log', '--oneline', '--first-parent', f'{BASE}..HEAD').splitlines()]
+    # B4 commit chain (first-parent, newest-first) — end-relative per-commit scope;
+    # refresh #3 re-anchor: the tail walk accepts UNION commits (2-parent sync merges)
+    # and REFRESH commits interleaved in any order above the fixed spine, because the
+    # resync loop can repeat (main tip drift = union again); the battery main tip is
+    # the NEWEST union's second parent
+    chain = [l.split()[0] for l in git('log', '--format=%H', '--first-parent', f'{BASE}..HEAD').splitlines()]
     res['B4_chain'] = [c[:8] for c in chain]
     assert len(chain) >= 3, f'expected >= 3 first-parent commits, got {len(chain)}: {chain}'
     head_full = head
     assert chain[0] == head_full, chain
     c_content, c_receipts = chain[-1], chain[-2]
     c_postreview = chain[-3]
-    # per-commit scope vs first parent
+    # per-commit scope vs first parent (the fixed spine)
     content_scope = set(git('diff', '--name-only', f'{BASE}..{c_content}').splitlines())
     assert content_scope == {MAP}, f'content scope drift: {content_scope}'
     receipts_scope = set(git('diff', '--name-only', f'{c_content}..{c_receipts}').splitlines())
@@ -79,28 +88,37 @@ def main():
         f'receipts scope drift: {receipts_scope}'
     pr_scope = set(git('diff', '--name-only', f'{c_receipts}..{c_postreview}').splitlines())
     assert pr_scope == {f'{R25}/scripts/rn25_review_battery.py', POSTREVIEW}, f'postReview scope drift: {pr_scope}'
-    main_tip = None
-    unions = ''
-    if len(chain) >= 4:
-        # the sync union (the run-024 fd407622 shape): 2-parent, theirs-verbatim deltas
-        UNION = chain[-4]
-        ps = git('show', '-s', '--format=%P', UNION).split()
-        assert len(ps) == 2 and ps[0].startswith(chain[-3]), f'union parents: {ps}'
-        main_tip = ps[1]
-        adv = set(git('diff', '--name-only', f'{BASE}..{main_tip}').splitlines())
-        ud1 = set(git('diff', '--name-only', f'{chain[-3]}..{UNION}').splitlines())
-        assert ud1 == adv, f'union delta != advance: {ud1 ^ adv}'
-        od1 = set(git('diff', '--name-only', f'{main_tip}..{UNION}').splitlines())
-        assert od1 == EXPECTED_OWN, f'union second-parent own-delta drift: {od1 ^ EXPECTED_OWN}'
-        unions = f'1/1 delta == its advance byte-lawful (theirs-verbatim worklog overlap resolved scripted)'
-    refreshes = chain[:-4] if len(chain) >= 4 else []
-    for i, rc in enumerate(refreshes):  # any battery-refresh commits at the tail (newest first)
-        parent = chain[i + 1]
-        f_scope = set(git('diff', '--name-only', f'{parent}..{rc}').splitlines())
-        assert f_scope == {f'{R25}/scripts/rn25_review_battery.py', POSTREVIEW}, f'refresh {rc[:8]} scope drift: {f_scope}'
-    print(f'B4 PASS: {len(chain)}-commit first-parent chain (content {c_content[:8]} -> receipts {c_receipts[:8]} -> '
-          f'postReview+battery {c_postreview[:8]}' + (f' -> union {chain[-4][:8]} ({main_tip[:8]} as its second parent), {unions}' if main_tip else '') +
-          (f' -> {len(refreshes)} refresh commit(s)' if refreshes else '') + '), each scope-asserted vs its first parent')
+    # the tail walk, oldest-first from the postReview commit: each higher commit is
+    # either a UNION (2-parent sync merge, theirs-verbatim deltas vs BOTH parents) or
+    # a REFRESH (battery script + the postReview receipt's battery line only)
+    REFRESH_SCOPE = {f'{R25}/scripts/rn25_review_battery.py', POSTREVIEW}
+    prev, prev_main_tip = c_postreview, BASE
+    main_tip, unions = BASE, []
+    for idx in range(len(chain) - 4, -1, -1):
+        c = chain[idx]
+        ps = git('show', '-s', '--format=%P', c).split()
+        delta = set(git('diff', '--name-only', f'{prev}..{c}').splitlines())
+        if len(ps) == 2:
+            assert ps[0] == prev, f'union {c[:8]} first parent != walked prev {prev[:8]}: {ps}'
+            adv = set(git('diff', '--name-only', f'{prev_main_tip}..{ps[1]}').splitlines())
+            assert delta == adv, f'union {c[:8]} delta != the advance since {prev_main_tip[:8]}: {delta ^ adv}'
+            od1 = set(git('diff', '--name-only', f'{ps[1]}..{c}').splitlines())
+            assert od1 == EXPECTED_OWN, f'union {c[:8]} second-parent own-delta drift: {od1 ^ EXPECTED_OWN}'
+            unions.append(f'{c[:8]}({ps[1][:8]} as its second parent)')
+            main_tip, prev, prev_main_tip = ps[1], c, ps[1]
+        elif len(ps) == 1:
+            assert ps[0] == prev, f'refresh {c[:8]} parent != walked prev {prev[:8]}: {ps}'
+            assert delta == REFRESH_SCOPE, f'refresh {c[:8]} scope drift: {delta}'
+            prev = c
+        else:
+            assert False, f'unexpected {len(ps)}-parent commit {c[:8]} in the tail walk'
+    assert prev == head_full, f'the tail walk did not reach HEAD: stopped at {prev[:8]}'
+    desc = f'content {c_content[:8]} -> receipts {c_receipts[:8]} -> postReview+battery {c_postreview[:8]}'
+    if unions:
+        desc += ' -> ' + ' -> '.join(unions)
+    print(f'B4 PASS: {len(chain)}-commit first-parent chain ({desc}), each scope-asserted vs its first parent '
+          f'(unions theirs-verbatim: delta vs first parent == the advance since the previous main tip, '
+          f'delta vs second parent == exactly the {len(EXPECTED_OWN)} declared paths); battery main tip {main_tip[:8]}')
 
     # B1 net diff path set — vs the CURRENT main tip of record (the union's second
     # parent when a union exists, else the base) — and race-guard: it must still be
