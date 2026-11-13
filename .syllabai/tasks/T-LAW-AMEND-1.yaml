@@ -32,5 +32,8 @@ scope:
     - ".github/** (risk tier — separate task)"
     - "packages/** (R1/R2 lanes)"
     - "apps/** (R3–R5 lanes)"
-    Closeout: operator approval of record 2026-11-13 trace 1a1d34f16b1640c9 ('approve #969.'); APPROVE review posted citing the
-    trace; merged per §8 on green of record; branch deleted post-merge.
+    Closeout: operator approval of record 2026-11-13 trace 1a1d34f16b1640c9 ('approve #969.'). GitHub refuses author-identity
+    APPROVE reviews (422 'Review can not approve your own pull request') —
+    the single-identity limitation §8 anticipated; approval of record is
+    the directive trace + the PR conversation comment citing it. Merge
+    per §8 on green of record; task → DONE at merge.
