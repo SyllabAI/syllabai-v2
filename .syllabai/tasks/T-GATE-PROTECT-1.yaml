@@ -1,0 +1,35 @@
+version: 1
+task:
+  id: T-GATE-PROTECT-1
+  title: "Enable the no-unverified-landings gate on main + merge queue assessment (risk tier: .github/workflows/ci.yml trigger)"
+  owner: "zai-web session (trace 1a1d4c8d1aae1e11)"
+  status: DONE
+  priority: P1
+  wave: 0
+  deps: []
+  execution_record: >
+    Operator directive 2026-11-13 (trace 1a1d4c8d1aae1e11): enable branch
+    protection + merge queue, "make sure it does not create any problems, and
+    also it should not throttle progress". Found the gate ruleset 27179683
+    'main - no-unverified-landings' already active (created by the earlier
+    zai-web session, actor null in ruleset history; 4 rules: deletion,
+    non_fast_forward, pull_request with 0 approvals, required_status_checks
+    verify+hub). Verified lanes had already adapted: first-parent walk of main
+    shows zero direct pushes across the recent merge chain; 15+ PRs landed
+    under the active gate on 2026-11-13 without throttling. Added the missing
+    merge-queue PREREQUISITE via PR #996 (on: merge_group in ci.yml - risk
+    tier, operator-directed; without it, queue entries would stall to
+    timeout). Attempted the merge_queue ruleset rule per docs (correct REST
+    params: min_entries_to_merge, max_entries_to_merge, max_entries_to_build,
+    min_entries_to_merge_wait_minutes, check_response_timeout_minutes,
+    grouping_strategy, merge_method MERGE) - rejected 422 'Invalid rule
+    merge_queue' in 9 variants (active/evaluate/disabled, full/empty params,
+    ALLGREEN/HEADGREEN, main/~DEFAULT_BRANCH targets). Root cause verified
+    against docs + community: merge queue is available ONLY for
+    organization-owned repos (public org repos; Enterprise Cloud private
+    repos) - SyllabAI is a personal account, so the rule is structurally
+    unavailable. Documented remedies in the receipt. Closed T-CIFIX as
+    invalid: the reported corrupted 'branches: ain]' literal never existed;
+    both workflow files carry 'branches: [main]' (restored 2026-10-06
+    run-003); the earlier reading was a terminal display artifact ('[m'
+    sequences swallowed in rendered output). Receipts this PR.
