@@ -151,6 +151,7 @@ import type {
   ReviewCard,
   SavedTestsView,
   SessionHistoryItem,
+  SessionHistoryResponse,
   SetLastOpenedRequest,
   TeachSession,
   TeachingCoverageView,
@@ -2438,7 +2439,10 @@ export const api = {
     ),
 
   teachMeListSessions: (course: string) =>
-    request<{ items: SessionHistoryItem[] }>(
+    // T-TEACHGENIE-008: the envelope carries `classroomStudent` — the
+    // enrollment flag of record that conditions the ratification footnote
+    // copy (a learner without a teacher never reads "your teacher ratifies").
+    request<SessionHistoryResponse>(
       `/api/v1/learners/me/teach-me/sessions?course=${encodeURIComponent(course)}`,
     ),
 

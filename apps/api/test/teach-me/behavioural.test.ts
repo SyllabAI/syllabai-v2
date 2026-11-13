@@ -273,6 +273,13 @@ describe("teach-me behavioural gate (T-MIG-039, ADR-040)", () => {
     await h.end(sessionId);
     const list = await h.history(COURSE);
     expect((list.body.items ?? []).some((i) => i.sessionId === sessionId)).toBe(true);
+    // T-TEACHGENIE-008: the envelope carries the enrollment flag of record —
+    // false for a confirmed-independent learner, affirmative true only for a
+    // class_members row; it conditions the footnotes, never a law
+    expect(list.body.classroomStudent).toBe(false);
+    h.store.classroomStudent = true;
+    const classroomList = await h.history(COURSE);
+    expect(classroomList.body.classroomStudent).toBe(true);
     const page = await h.permalink(sessionId);
     const transcript = page.body.transcript as Array<{ role: string }>;
     expect(transcript.some((m) => m.role === "pupil")).toBe(true);

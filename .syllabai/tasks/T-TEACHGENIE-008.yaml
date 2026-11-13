@@ -1,0 +1,29 @@
+version: 1
+task:
+  id: T-TEACHGENIE-008
+  title: "The conditional ratification footnote — independent students shouldn't see 'your teacher ratifies': the picker + review footnotes render the teacher claim ONLY on an affirmative class_members enrollment flag (the teachermarking predicate); the independent copy stays honest (AI_SUGGESTED-only, no counts-toward-record promise — auto-commit is not live)"
+  owner: 'Super Z (zai-web session web-7b4a27df-7d97-438a-849c-05a9c0003aa8, chat 0fade780-1ab5-4951-bfd9-13f43e897f40, dispatch trace 1a1d14ee9f267d55 — live operator order "the conditional ratification footnote (independent students shouldn''t see ''your teacher ratifies'')", 2026-11-13; execution confirmed "continue" trace 1a1d33ff11eaf835)'
+  status: 'run-001 (one read-only store probe + envelope flag + conditional copy in picker.tsx + review-screen.tsx; worklog re-files post-merge per the T-COPYFIX-001→#967 lane) — PR of record, branch t-teachgenie-008/run-001 (rebased onto main c88df552 after the pre-push race check; authored against 24e6f5fd, zero file overlap)'
+  priority: P2
+  band: T-TEACHGENIE (learner-visible truth copy + one read-only store probe; zero law bytes)
+  deps: [T-COPYFIX-001]
+  scope:
+    allowed:
+    - apps/api/src/teach-me/types.ts (ONE store-port method: hasClassEnrollment — read-only)
+    - apps/api/src/teach-me/sql.ts (the EXISTS probe over class_members)
+    - apps/api/src/teach-me/service.ts (listSessions envelope carries classroomStudent)
+    - packages/contracts/src/teach-me.ts (sessionHistoryResponseSchema + SessionHistoryResponse)
+    - apps/hub/src/lib/api.ts (teachMeListSessions → SessionHistoryResponse)
+    - apps/hub/src/components/hub/teach-genie/util.ts (pickerEvidenceFootnote + reviewEvidenceLead)
+    - apps/hub/src/components/hub/teach-genie/teach-genie-client.tsx (flag state + prop threading)
+    - apps/hub/src/components/hub/teach-genie/picker.tsx (footnote render)
+    - apps/hub/src/components/hub/teach-genie/review-screen.tsx (evidence-lead render)
+    - apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts (the copy law test)
+    - apps/api/test/teach-me/fixtures.ts + apps/api/test/teach-me/behavioural.test.ts (fixture field + envelope assertions)
+    - .syllabai/tasks/T-TEACHGENIE-008.yaml + .syllabai/receipts/T-TEACHGENIE-008/**
+    forbidden:
+    - any D1–D4 law byte (anti-gaming, quota handling, ceilings — untouched)
+    - the of-record write paths (the flag never gates a write; it is copy-only)
+    - .syllabai/worklog.md inside the PR (fleet merge-conflict lane — re-filed post-merge)
+    - auto-commit copy promises (the independent line must NOT claim anything counts)
+  notes: 'PREDICATE OF RECORD: the teachermarking EXISTS(teacher→classes→class_members→attempts) law — membership rows are the single source of truth, un-enrollment is the only revocation, ARCHIVED classes keep their roster; the footnote flag uses the SAME predicate (no class-status filter). FAIL-SAFE DIRECTION: true only on the API''s affirmative flag; unknown/error ⇒ neutral copy — a missing sentence is honest, a false teacher claim is not. T-COPYFIX-001 explicitly fenced this decision OUT of its lane (scope.forbidden: "conditional copy is a SEPARATE decision, not this lane").'

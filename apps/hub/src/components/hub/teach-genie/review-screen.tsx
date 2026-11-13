@@ -23,7 +23,7 @@ import { Markdown } from "@/components/markdown";
 import { Button } from "@/components/ui/button";
 import { BabyGenieAvatar } from "./baby-genie";
 import { ObjectiveRow } from "./session-screen";
-import { endedLine } from "./util";
+import { endedLine, reviewEvidenceLead } from "./util";
 import type { ReviewCard, TeachSession } from "@syllabai/contracts";
 import type { TeachGenieTranscriptRow } from "./session-screen";
 
@@ -35,12 +35,17 @@ export interface TeachGenieReviewProps {
   transcript: TeachGenieTranscriptRow[];
   review: ReviewCard | null;
   courseLabel: string;
+  /** T-TEACHGENIE-008 — the API's affirmative enrollment flag: true ONLY for
+   *  a confirmed class_members row. False or unknown renders the neutral
+   *  independent evidence lead — never a teacher claim to a learner without
+   *  a teacher. */
+  classroomStudent: boolean;
   /** fetch the permalink payload — the poll law calls this every 3s */
   refresh: () => Promise<void>;
   onBack: () => void;
 }
 
-export function TeachGenieReview({ session, transcript, review, courseLabel, refresh, onBack }: TeachGenieReviewProps) {
+export function TeachGenieReview({ session, transcript, review, courseLabel, classroomStudent, refresh, onBack }: TeachGenieReviewProps) {
   const pending = review == null && session.status === "review_pending";
   const failed = review == null && session.status !== "review_pending";
 
@@ -61,7 +66,7 @@ export function TeachGenieReview({ session, transcript, review, courseLabel, ref
         <h3 className="text-xl font-bold tracking-tight text-foreground">Review your session</h3>
         <div className="mt-5 flex flex-col gap-6">
           {review ? (
-            <ReviewSections review={review} courseLabel={courseLabel} />
+            <ReviewSections review={review} courseLabel={courseLabel} classroomStudent={classroomStudent} />
           ) : pending ? (
             <PendingCard />
           ) : (
@@ -169,7 +174,7 @@ function FailedCard() {
   );
 }
 
-function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLabel?: string }) {
+function ReviewSections({ review, courseLabel, classroomStudent }: { review: ReviewCard; courseLabel?: string; classroomStudent: boolean }) {
   return (
     <>
       <section aria-label="Strengths">
@@ -249,7 +254,7 @@ function ReviewSections({ review, courseLabel }: { review: ReviewCard; courseLab
       )}
 
       <p className="text-2xs leading-relaxed text-muted-foreground">
-        AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record. Spec verdicts of record:
+        {reviewEvidenceLead(classroomStudent)} Spec verdicts of record:
         {review.specPointVerdicts.map((v) => ` ${v.specPointId}=${v.verdict}`).join("," )}.
       </p>
     </>

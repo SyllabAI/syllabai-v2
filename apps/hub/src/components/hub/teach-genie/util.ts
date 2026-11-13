@@ -84,3 +84,28 @@ export function endedLine(iso: string): string {
     minute: "2-digit",
   });
 }
+
+/* T-TEACHGENIE-008 — the enrollment-conditional ratification footnotes.
+ *
+ * Classroom students read the teacher-ratifies sentence of record (the
+ * T-TEACHME-001 copy, byte-identical). Independent students read the honest
+ * neutral line — no teacher claim, and no counts-toward-record promise
+ * (auto-commit is NOT live: the copy must never promise what the engine
+ * doesn't do). Fail-safe direction: callers pass the API's affirmative
+ * enrollment flag only — unknown or error ⇒ false ⇒ the neutral line (a
+ * missing sentence is honest; a false teacher claim is not).
+ */
+
+/** The picker footer sentence ("Start session" button area). */
+export function pickerEvidenceFootnote(classroomStudent: boolean): string {
+  return classroomStudent
+    ? "Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts."
+    : "Sessions are AI_SUGGESTED evidence.";
+}
+
+/** The review card's evidence lead (the "Spec verdicts of record:" line follows). */
+export function reviewEvidenceLead(classroomStudent: boolean): string {
+  return classroomStudent
+    ? "AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record."
+    : "AI_SUGGESTED evidence.";
+}

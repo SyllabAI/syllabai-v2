@@ -275,6 +275,16 @@ export function createTeachMeStore(sql: SqlFn): TeachMeStore {
       }));
     },
 
+    async hasClassEnrollment(userId) {
+      // T-TEACHGENIE-008 — the same law the teachermarking reads speak:
+      // a membership row IS the enrollment (the roster survives an ARCHIVED
+      // class; un-enrollment is the only revocation; class status plays no
+      // part). One EXISTS probe — no class bytes leave the store.
+      const rows = await sql`
+        SELECT EXISTS(SELECT 1 FROM class_members WHERE student_id = ${userId}) AS enrolled`;
+      return boolOf(rows[0]?.enrolled);
+    },
+
     async loadSpecPointCanon(specPointCodes) {
       if (specPointCodes.length === 0) return [];
       const rows = await sql`

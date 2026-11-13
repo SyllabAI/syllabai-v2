@@ -135,6 +135,17 @@ export interface TeachMeStore {
   updateObjectivesStatus(objectiveIds: string[], status: TeachMeObjectiveRow["status"]): Promise<void>;
   listSessions(userId: string, courseId: string | null): Promise<Array<TeachMeSessionRow>>;
 
+  /**
+   * T-TEACHGENIE-008 — the enrollment flag of record: EXISTS over
+   * class_members for this student. Mirrors the teachermarking predicate
+   * exactly (membership rows are the single source of truth; un-enrollment
+   * is the only revocation; ARCHIVED classes keep their roster — enrollment,
+   * not class status, is the law). Read-only, one-row, never cached. It
+   * conditions ONLY the learner-visible ratification footnote copy (picker +
+   * review); it never gates a law or a write path.
+   */
+  hasClassEnrollment(userId: string): Promise<boolean>;
+
   // ── course-input loaders (the G1–G3 content gate + review inputs) ──
   loadSpecPointCanon(specPointCodes: string[]): Promise<SpecPointCanonRow[]>;
   /** Revision-note bodies bound to these spec points — the verbatim-overlap ground (G2/D4). */

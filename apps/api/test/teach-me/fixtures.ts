@@ -245,6 +245,8 @@ export class FakeStore implements TeachMeStore {
   masteryRows: Record<string, number> = { "2.3": 0.5, "2.4": 0.2, "2.5": 0 };
   audit: StoreAuditEntry[] = [];
   preExistingEvidenceAt: Date | null = null; // seeds recentCreditSpecPointIds
+  /** T-TEACHGENIE-008 — flip in tests to simulate a classroom student. */
+  classroomStudent = false;
 
   constructor(
     public opts: {
@@ -385,6 +387,11 @@ export class FakeStore implements TeachMeStore {
       .map((s) => ({ ...s }));
   }
 
+  async hasClassEnrollment(userId: string): Promise<boolean> {
+    this.log("hasClassEnrollment", [userId]);
+    return this.classroomStudent;
+  }
+
   async loadSpecPointCanon(specPointCodes: string[]): Promise<SpecPointCanonRow[]> {
     this.log("loadSpecPointCanon", [[...specPointCodes]]);
     const rows = this.opts.canonRows ?? CANON_ROWS;
@@ -419,7 +426,7 @@ export interface Harness {
   postMessageAs(user: string, sessionId: string, text: string): Promise<{ status: number; body: Record<string, unknown> }>;
   end(sessionId: string): Promise<{ status: number; body: Record<string, unknown> }>;
   permalink(sessionId: string): Promise<{ status: number; body: Record<string, unknown> }>;
-  history(course?: string): Promise<{ status: number; body: { items?: Array<Record<string, unknown>> } }>;
+  history(course?: string): Promise<{ status: number; body: { items?: Array<Record<string, unknown>>; classroomStudent?: boolean } }>;
   sessionRowCount(): Promise<number>;
   coverageRowCount(sessionId?: string): Promise<number>;
   creditRecords(sessionId: string): Promise<Array<Record<string, unknown>>>;
