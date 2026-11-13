@@ -75,4 +75,51 @@ jobs:
               print(f"  {name} | id {pid} | rootDirectory {root}")
               print(f"      prod: {latest}")
               print(f"      domains: {doms}")
+
+          # T-HUB-INK-BRK run-003 (2026-11-13): pull the RUNTIME logs of the
+          # latest api.syllab-ai.com prod deployment — the pdf-drawings wedge
+          # investigation needs the REAL error behind the generic 500s (the
+          # ApiError envelope law hides it from the wire). READ-ONLY GETs.
+          target = None
+          for p in projects:
+              dd = vapi(f"https://api.vercel.com/v9/projects/{p['id']}/domains").get("domains", [])
+              if any("api.syllab-ai.com" == d.get("name") for d in dd):
+                  target = p
+                  break
+          if not target:
+              print("API-LOGS: no project serving api.syllab-ai.com found")
+          else:
+              pid = target["id"]
+              ds = vapi(f"https://api.vercel.com/v6/deployments?projectId={pid}&target=production&limit=1").get("deployments", [])
+              if not ds:
+                  print("API-LOGS: no prod deployment")
+              else:
+                  d = ds[0]
+                  print(f"API-LOGS deployment {d.get('uid')} state={d.get('state')} aliasAssigned={str(d.get('aliasAssigned'))[:40]}")
+                  for ep in ("/v2/deployments/%s/events?limit=200&build=0&direction=backward" % d.get("uid"),):
+                      try:
+                          evs = vapi(f"https://api.vercel.com{ep}")
+                          if isinstance(evs, dict):
+                              evs = evs.get("events", [])
+                          print(f"API-LOGS got {len(evs)} runtime events (from {ep.split('/')[1]})")
+                          hits = 0
+                          for ev in evs:
+                              payload = ev.get("payload") or {}
+                              text = (payload.get("text") or ev.get("text") or ev.get("payload", {}).get("text") or "")
+                              if not isinstance(text, str):
+                                  text = json.dumps(text)[:300]
+                              t = str(text)
+                              if any(k in t.lower() for k in ("error", "500", "pdf-drawings", "drawings", "zod", "parse", "throw", "exception", "fail")):
+                                  hits += 1
+                                  print("  LOG:", t[:400])
+                              if hits >= 25:
+                                  break
+                          if hits == 0:
+                              print("API-LOGS: no error-shaped lines in the first event page (event sample below)")
+                              for ev in evs[:8]:
+                                  payload = ev.get("payload") or {}
+                                  text = (payload.get("text") or ev.get("text") or "")
+                                  print("  sample:", str(text)[:200])
+                      except Exception as e:
+                          print(f"API-LOGS events probe failed ({ep.split('/')[1]}):", type(e).__name__, str(e)[:160])
           PY
