@@ -6,7 +6,12 @@
   "provider": "cognito (Cognito Edu YouTube channel)",
   "label": "igcse-maths-b-16",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/announcement/non-teaching uploads excluded)",
-  "enumeratedUtc": "2026-11-10T03:03:19Z"
+  "enumeratedUtc": "2026-11-10T03:03:19Z",
+  "p9": {
+   "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
+   "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
+   "enumeratedUtc": "2026-11-13T05:57:42Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-maths-b-16)",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked every mapping row of the 107-row draft against the igcse-maths-b-16 (4MB1) spine, judging each (video,spec) pair independently — including the umbrella specs (1A, 6A, 7A) and the physics-branded vector rows, which were kept only where the title names the spec's own clause (e.g. 'Find Resultant' for 8H, 'Scalar & Vector Quantities' for 8A). Rejected 1 spec-level binding: 'Similar Shapes' off 6H, where the evidence itself marks proof of similarity 'only supporting'. All other low rows name a clause genuinely in the spec (midpoint→4H coordinates, regular polygons→6C, fraction-of-a-number→1H).",
-  "rowsApproved": 107,
+  "rowsApproved": 115,
   "rowsRejected": 1,
   "rejects": [
    {
@@ -22,6 +27,48 @@
     "video": "8-4KQw8unfY",
     "spec": "6H",
     "reason": "'Similar Shapes' names the similarity domain (6G's 'Similarity: areas and volumes of similar figures' survives on that head topic), but 6H's distinctive frame is 'Prove the similarity of two triangles' — proof work and the SSS/SAS/ASA/RHS-style conditions are not title-evidenced, and the evidence itself concedes proof is 'only supporting'. Ride-along on the 6G binding; rejected at medium."
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-maths-b-16)",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-11T14:41:20Z",
+    "evidenceBasis": "Checked every mapping row of the 107-row draft against the igcse-maths-b-16 (4MB1) spine, judging each (video,spec) pair independently — including the umbrella specs (1A, 6A, 7A) and the physics-branded vector rows, which were kept only where the title names the spec's own clause (e.g. 'Find Resultant' for 8H, 'Scalar & Vector Quantities' for 8A). Rejected 1 spec-level binding: 'Similar Shapes' off 6H, where the evidence itself marks proof of similarity 'only supporting'. All other low rows name a clause genuinely in the spec (midpoint→4H coordinates, regular polygons→6C, fraction-of-a-number→1H).",
+    "rowsApproved": 107,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "lessonRef": null,
+      "video": "8-4KQw8unfY",
+      "spec": "6H",
+      "reason": "'Similar Shapes' names the similarity domain (6G's 'Similarity: areas and volumes of similar figures' survives on that head topic), but 6H's distinctive frame is 'Prove the similarity of two triangles' — proof work and the SSS/SAS/ASA/RHS-style conditions are not title-evidenced, and the evidence itself concedes proof is 'only supporting'. Ride-along on the 6G binding; rejected at medium."
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p9 (mr-hassaans-maths completion)",
+    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+    "ruledUtc": "2026-11-13T06:48:16Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
+    "rowsApproved": 8,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "video": "4FwUt-THKVA",
+      "reason": "no-binding (routed-but-unmapped): no distinctive token overlap at the tightened bar (df<=3) — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
+     },
+     {
+      "video": "Gq_fBDFcV-Y",
+      "reason": "no-binding (routed-but-unmapped): no distinctive token overlap at the tightened bar (df<=3) — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
+     }
+    ]
    }
   ]
  },
@@ -1737,6 +1784,94 @@
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "6cjf4Yhon0w",
+   "title": "IGCSE, (Edexcel), 4MB1, June 2021, Q2, Line & Rotational Symmetry",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=6cjf4Yhon0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LXpyvhB3f98",
+   "title": "IGCSE, (Edexcel), 4MB2, January 2022, Q9, 3D Trigonometry & Bearings",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=LXpyvhB3f98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UuZii0rg5Cc",
+   "title": "Q7cd S2017 Paper41   Equations of Parallel and Perpendicular Lines",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=UuZii0rg5Cc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "boNaGfPIEV8",
+   "title": "IGCSE Text Book, Rayner, Chapter 7, Graphs, Differentiation, Ex18, page 269, Q9, Gradients of Curves",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=boNaGfPIEV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "e-kC82c-kOk",
+   "title": "Q5bi M 2017 Paper 42   Algebraic Fractions",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=e-kC82c-kOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jQkPgqeQqRs",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.5 Directed Numbers and Indices, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=jQkPgqeQqRs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oo_wdlnH25I",
+   "title": "0580 F M 19 Q10 Simultaneous Equations, Variation, Inequalities",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=oo_wdlnH25I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tfJR6UnCyRA",
+   "title": "IGCSE STYLE Cosine Rule, Sine Rule, 3 Figure Bearings Medium",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=tfJR6UnCyRA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -3359,20 +3494,148 @@
    "boardMismatch": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "LXpyvhB3f98",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MB2, January 2022, Q9, 3D Trigonometry & Bearings\"; paper code 4MB in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-b-16"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6cjf4Yhon0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MB1, June 2021, Q2, Line & Rotational Symmetry\"; paper code 4MB in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "jQkPgqeQqRs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1C 'Indices, powers and roots' via distinctive token(s) ['indice', 'number'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "boNaGfPIEV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4K"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4K 'The gradients of graphs above by drawing' via distinctive token(s) ['gradient', 'graph'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "oo_wdlnH25I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3I"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3I 'Solve simultaneous equations in two unknowns, one equati' via distinctive token(s) ['equation', 'simultaneou'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "tfJR6UnCyRA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 9D 'Bearings' via distinctive token(s) ['bearing'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "e-kC82c-kOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3F"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3F 'The manipulation of simple algebraic fractions, the deno' via distinctive token(s) ['algebraic', 'fraction'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "UuZii0rg5Cc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6N"
+   ],
+   "confidence": "low",
+   "evidence": "title names 6N 'Constructions of bisector of an angle and of perpendicul' via distinctive token(s) ['line', 'perpendicular'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 98,
-  "specPointsMapped": 40,
-  "specPointsUnmapped": 58,
-  "videosTotal": 107,
-  "videosMapped": 107,
+  "specPointsMapped": 44,
+  "specPointsUnmapped": 54,
+  "videosTotal": 115,
+  "videosMapped": 115,
   "videosUnmapped": 0,
-  "mappingRows": 107,
+  "mappingRows": 115,
   "byConfidence": {
-   "high": 0,
-   "medium": 98,
-   "low": 9
+   "high": 2,
+   "medium": 103,
+   "low": 10
   }
  },
  "inputs": {
@@ -3385,7 +3648,13 @@
    "path": "Videos/drafts/igcse-maths-b-16/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: igcse-maths-b-16)",
    "reviewAppliedUtc": "2026-11-11T14:41:20Z"
+  },
+  "p9": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-b-16/video-map.draft.external-p9.json",
+   "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+   "reviewAppliedUtc": "2026-11-13T06:48:16Z"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.693Z"
+ "generatedUtc": "2026-11-13T06:52:02.332Z"
 }

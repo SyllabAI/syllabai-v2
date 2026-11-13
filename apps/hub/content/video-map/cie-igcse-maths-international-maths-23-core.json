@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 80,
+  "rowsApproved": 81,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 80,
+    "rowsApproved": 81,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1311,6 +1311,17 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rE6HNwmGHVs",
+   "title": "0580 M J 15 23 Q18 Mensuration   Surface Area of Pyramids",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=rE6HNwmGHVs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   }
  ],
@@ -2826,6 +2837,26 @@
    }
   },
   {
+   "video": "rE6HNwmGHVs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names E5.4.1 'Carry out calculations and solve problems involving Answ' via distinctive token(s) ['area', 'mensuration', 'pyramid', 'surface'] (df 2); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved cie-igcse-maths-25-extended external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-maths-25-extended",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "EoMPwuBBYq8",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2932,13 +2963,13 @@
   "specPointsTotal": 109,
   "specPointsMapped": 45,
   "specPointsUnmapped": 64,
-  "videosTotal": 80,
-  "videosMapped": 80,
+  "videosTotal": 81,
+  "videosMapped": 81,
   "videosUnmapped": 0,
-  "mappingRows": 80,
+  "mappingRows": 81,
   "byConfidence": {
    "high": 0,
-   "medium": 69,
+   "medium": 70,
    "low": 11
   }
  },
@@ -2962,5 +2993,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.829Z"
+ "generatedUtc": "2026-11-13T06:52:02.370Z"
 }
