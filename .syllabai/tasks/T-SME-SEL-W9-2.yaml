@@ -31,6 +31,17 @@ task:
     - apps/hub/scripts/verify_sme_wave8.ts (fleet-safety probe rotation:
       cie-a-level-chemistry-25 -> cie-as-chemistry-25, disclosed
       pin-refresh class — the former probe GAINED its SME layer here)
+    - apps/api/test/curriculum/bundle-seed.test.ts (DISCLOSED RUN-001
+      AMENDMENT, the CI verify Test-step finding: the chemistry-25
+      store-law seed test asserted nodesCreated == cie.nodes.length, an
+      equality that only held while the course had no picker layer; the
+      store law correctly SKIPS the disclosed -SME- classes (r0
+      childless-leaf + the T-SME-SEL-W1/W2 picker-layer section class,
+      shape-guarded fail-closed), so the of-record assertion becomes the
+      ADMITTED count (non-SME nodes) — law unchanged, test assertion
+      SME-aware; all other trio-touching tests re-run green: study-plan /
+      cie-phase4-repair / cie-phase4-roster; api+packages battery 3,535
+      pass / 0 fail / 13 skip from the root)
     - .syllabai/tasks/T-SME-SEL-W9-2.yaml + .syllabai/receipts/
       T-SME-SEL-W9-2/run-001.md + lane artifacts + both worklogs
       (append-only)
