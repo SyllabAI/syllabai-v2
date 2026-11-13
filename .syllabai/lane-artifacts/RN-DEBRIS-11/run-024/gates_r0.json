@@ -1,0 +1,46 @@
+{
+ "artifact": "rn11-run-024-gates-r0",
+ "generatedUtc": "2026-11-13",
+ "gates": [
+  {
+   "gate": "G1-byte-scope",
+   "ok": true,
+   "detail": "git diff == exactly ['apps/hub/content-maps/cie-igcse-computer-science-23.json', 'apps/hub/content/cie-igcse-computer-science-23/flashcards.json']"
+  },
+  {
+   "gate": "G2-record-scope",
+   "ok": true,
+   "detail": "891 cards + 1331 map items + map roots byte-identical; viol: []"
+  },
+  {
+   "gate": "G3-ruled-delta",
+   "ok": true,
+   "detail": "14 cards: ids [cand,8.1.2] + code cand, zero collateral fields; 14 map items: exactly one desk_ruling ref each, unmapped key absent, declaredUnresolved retained"
+  },
+  {
+   "gate": "G4-in-spine",
+   "ok": true,
+   "detail": "9.1/9.3 are live cs-23 SPEC_POINTs (T9); no new codes introduced"
+  },
+  {
+   "gate": "G5-no-dead-codes",
+   "ok": true,
+   "detail": "zero dead 6.3.x codes in both touched planes; resid: []"
+  },
+  {
+   "gate": "G6-sid-law",
+   "ok": true,
+   "detail": "sid declaredUnresolved populations unchanged (3hpC7=16, rGVN6=17); spcptToOfficial stays null for both — the sid-level resolution remains unfiled territory"
+  },
+  {
+   "gate": "G7-census",
+   "ok": true,
+   "detail": "cs-23: multi-id cards 243->257 (+14); null-code cards 74->60 (the 14 exit the run-023 honest-unmap class); coded map items 848->862; unmapped-true 497->483"
+  },
+  {
+   "gate": "G8-dump-law",
+   "ok": true,
+   "detail": "both files still round-trip under their own dumpers"
+  }
+ ]
+}
