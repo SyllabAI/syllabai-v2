@@ -96,13 +96,13 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
       <div className="rounded-md border bg-muted/40 p-2">
         <div className="flex flex-wrap items-center gap-1" aria-label={`Equation so far: ${equation || "empty"}`} role="status">
           {assembled.map((t, i) => (
-            <span key={`l${i}`} className="rounded bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
+            <span key={`l${i}`} className="rounded-sm bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
           ))}
           {(assembled.length > 0 || rhs.length > 0) && (
             <span className="px-1 font-mono text-xs text-muted-foreground">{arrow === "⇌" ? "⇌" : "→"}</span>
           )}
           {rhs.map((t, i) => (
-            <span key={`r${i}`} className="rounded bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
+            <span key={`r${i}`} className="rounded-sm bg-background px-1.5 py-0.5 font-mono text-xs">{t}</span>
           ))}
           {assembled.length === 0 && rhs.length === 0 && (
             <span className="text-xs text-muted-foreground">tap tokens below to assemble…</span>
@@ -116,19 +116,19 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
               type="button"
               onClick={() => setSide(s)}
               aria-pressed={side === s}
-              className={`rounded border px-1.5 py-0.5 text-2xs ${side === s ? "border-primary bg-primary/10" : "border-border"}`}
+              className={`rounded-sm border px-1.5 py-0.5 text-2xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring ${side === s ? "border-primary bg-primary/10" : "border-border"}`}
             >
               {s === "lhs" ? "left" : "right"}
             </button>
           ))}
           <span className="flex-1" />
           {assembled.length > 0 && (
-            <button type="button" onClick={() => popLast("lhs")} className="rounded border px-1.5 py-0.5 text-2xs" aria-label="Remove last token on the left">
+            <button type="button" onClick={() => popLast("lhs")} className="rounded-sm border px-1.5 py-0.5 text-2xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring" aria-label="Remove last token on the left">
               ⌫ left
             </button>
           )}
           {rhs.length > 0 && (
-            <button type="button" onClick={() => popLast("rhs")} className="rounded border px-1.5 py-0.5 text-2xs" aria-label="Remove last token on the right">
+            <button type="button" onClick={() => popLast("rhs")} className="rounded-sm border px-1.5 py-0.5 text-2xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring" aria-label="Remove last token on the right">
               ⌫ right
             </button>
           )}
@@ -145,7 +145,7 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
               onClick={() => push(t)}
               disabled={exhausted}
               aria-label={`Add ${t} to the ${side === "lhs" ? "left" : "right"} side`}
-              className={`rounded-md border px-2 py-1 font-mono text-xs ${exhausted ? "border-border opacity-40" : "border-border bg-background hover:border-primary"}`}
+              className={`rounded-md border px-2 py-1 font-mono text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none ${exhausted ? "border-border opacity-40" : "border-border bg-background hover:border-primary"}`}
             >
               {t}
             </button>

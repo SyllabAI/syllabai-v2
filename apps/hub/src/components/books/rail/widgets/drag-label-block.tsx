@@ -85,7 +85,7 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
               type="button"
               onClick={() => setSelected(l === selected ? null : l)}
               aria-pressed={selected === l}
-              className={`rounded-md border px-2 py-1 text-xs ${
+              className={`rounded-md border px-2 py-1 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:border-primary focus-visible:ring-2 focus-visible:ring-ring ${
                 selected === l ? "border-primary bg-primary/10" : "border-border bg-background"
               }`}
             >
@@ -107,7 +107,7 @@ export function DragLabelBlock({ block }: { block: RailBlock }) {
                   place(s.id);
                 }
               }}
-              className={`flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-left text-xs ${
+              className={`flex w-full items-center justify-between rounded-md border px-2 py-1.5 text-left text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none ${
                 got ? "border-border bg-muted/60" : "border-dashed border-muted-foreground/40 text-muted-foreground"
               } ${selected != null ? "hover:border-primary" : ""}`}
               disabled={selected == null}
