@@ -133,7 +133,7 @@ def main():
     cand = json.loads((CLONE / '.syllabai/lane-artifacts/RN-DEBRIS-11/run-026/candidates_r0.json').read_text())
     truth = {}
     for r in cand['classA_unmappedUsers']:
-        truth[r['item']] = (r['kind'], r['declaredSid'], r['candidateOfficialCode'],
+        truth[r['item']] = (r['item'], r['kind'], r['declaredSid'], r['candidateOfficialCode'],
                             r['candidateOfficialId'], r['candidateTitle'], r['mapShapeOfRecord'])
     for row in man['rows']:
         assert (row['item'], row['kind'], row['declaredSid'], row['officialCode'],
@@ -142,7 +142,8 @@ def main():
     assert len(man['rows']) == 14
     receipt = json.loads((CLONE / APPLY_RECEIPT).read_text())
     assert receipt['operatorOrder'].startswith('Proceed') and receipt['baseTip'] == BASE
-    assert receipt['applied']['filingExecuted'].startswith('the run-026 adjudication filing')
+    assert receipt['applied']['option'].startswith('A1') and receipt['applied']['option'].find('14 unmapped users') > 0
+    assert man['filingExecuted'].startswith('the run-026 adjudication filing')
     # the live map re-pin (anti-drift)
     cm = json.loads((CLONE / MAP).read_text())
     FC = json.loads((CLONE / 'apps/hub/content/cie-igcse-computer-science-23/flashcards.json').read_text())
