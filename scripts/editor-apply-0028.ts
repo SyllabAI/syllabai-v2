@@ -103,8 +103,18 @@ const receiptPath = arg("receipt");
 
 const REPO_ROOT = path.resolve(import.meta.dir, "..");
 
-/** The of-record app role (F5-S7 production-ddl-snapshot-20261020 grant law). */
-const APP_ROLE = "syllabai_v2_app_w2r2";
+/** The of-record app role (F5-S7 production-ddl-snapshot-20261020 grant law).
+ *  run-008 (the fork-option-2 cutover lane): overridable via EDITOR_APP_ROLE
+ *  so the apply can target the SQL-created successor role
+ *  (syllabai_v2_app_w3r3) after the app-role re-provisioning cutover. The
+ *  default is UNCHANGED — zero behavior change for every existing invocation. */
+const APP_ROLE_RAW = process.env.EDITOR_APP_ROLE ?? "syllabai_v2_app_w2r2";
+// Fail-closed identifier guard: the role name is interpolated into DDL below.
+if (!/^[a-z_][a-z0-9_]{2,62}$/.test(APP_ROLE_RAW)) {
+	console.error(`EDITOR_APP_ROLE '${APP_ROLE_RAW}' is not a safe PostgreSQL identifier`);
+	process.exit(2);
+}
+const APP_ROLE = APP_ROLE_RAW;
 
 /** The one additive migration of record. The file is FROZEN. */
 const MIGRATIONS = [
@@ -526,7 +536,7 @@ try {
 		receipt.app_role_append_only_proof = `verified via has_table_privilege (no impersonation): the app role holds NO verb beyond the invariant grant set on any editor table (editor_edit_receipts: no UPDATE/DELETE — the append-only receipts law holds under the production default-privileges posture)`;
 	}
 
-	receipt.rollback = "DROP TABLE IF EXISTS editor_edit_receipts, editor_edit_proposals, editor_grants CASCADE; REVOKE the granted verbs FROM the app role; ALTER ROLE syllabai_v2_app_w2r2 INHERIT (restores the pre-run inheritance posture, run-006) (pure additive migration — no existing table or column touched)";
+	receipt.rollback = `DROP TABLE IF EXISTS editor_edit_receipts, editor_edit_proposals, editor_grants CASCADE; REVOKE the granted verbs FROM the app role; ALTER ROLE ${APP_ROLE} INHERIT (restores the pre-run inheritance posture, run-006) (pure additive migration — no existing table or column touched)`;
 	receipt.ok = true;
 	writeReceipt(true);
 	console.log("0028 applied + verified (idempotent; app-role grants verified; receipts append-only by grant set)");
