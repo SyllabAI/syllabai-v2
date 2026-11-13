@@ -759,7 +759,12 @@ describe("phase-4 CIE widening — the board/qualification vocabulary of record"
         code: "9701-2025-2027",
       },
     ]);
-    expect(summary.nodesCreated).toBe(cie.nodes.length);
+    // T-SME-SEL-W9-1 run-001 re-pin (2026-11-13): the wave-9 tranche-1 append
+    // gave cie-a-level-chemistry-25 the SME picker layer (484 -> 611 nodes).
+    // The seed map skips the -SME- rows per the disclosed picker-layer law
+    // (the same counting the official() helper pins at the 851 pattern), so
+    // nodesCreated counts OFFICIAL nodes only.
+    expect(summary.nodesCreated).toBe(cie.nodes.filter((n) => !n.code.includes("-SME-")).length);
     expect(summary.edgesCreated).toBe(cie.edges.length);
     expect(summary.alreadyActive).toBe(false);
     // idempotent re-run: the structural no-op of record
