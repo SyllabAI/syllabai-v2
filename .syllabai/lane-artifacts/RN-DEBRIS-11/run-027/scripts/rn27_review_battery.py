@@ -65,13 +65,22 @@ def main():
     head = git('rev-parse', 'HEAD').strip()
     res['head'] = head
 
-    # B4 commit chain (first-parent, newest-first) — end-relative per-commit scope
+    # B4 commit chain (first-parent) — base-relative spine + end-relative tail walk:
+    # the SPINE = the three OLDEST commits (content {MAP} -> receipts {8 paths} ->
+    # postReview+battery {2 paths}, each scope-asserted); every commit ABOVE the spine
+    # is a UNION (2-parent sync merge: delta vs its first parent == the main advance
+    # since the PREVIOUS main tip, theirs-verbatim; delta vs its second parent ==
+    # exactly the declared path set), a REFRESH (scope == {battery, postReview}), or a
+    # GATESFIX (1-parent, scope a disclosed non-empty subset of the declared receipt
+    # paths) — per-commit scope asserted vs its first parent, no self-referential sha;
+    # the battery main tip == the newest union second parent (BASE when no union)
     chain = [l.split()[0] for l in git('log', '--format=%H', '--first-parent', f'{BASE}..HEAD').splitlines()]
     res['B4_chain'] = [c[:8] for c in chain]
     assert len(chain) >= 3, f'expected >= 3 first-parent commits, got {len(chain)}: {chain}'
     head_full = head
     assert chain[0] == head_full, chain
-    c_content, c_receipts, c_postreview = chain[-1], chain[-2], chain[-3]
+    oldest = list(reversed(chain))
+    c_content, c_receipts, c_postreview = oldest[0], oldest[1], oldest[2]
     content_scope = set(git('diff', '--name-only', f'{BASE}..{c_content}').splitlines())
     assert content_scope == {MAP}, f'content scope drift: {content_scope}'
     receipts_scope = set(git('diff', '--name-only', f'{c_content}..{c_receipts}').splitlines())
@@ -80,8 +89,7 @@ def main():
     assert pr_scope == POSTREVIEW_SCOPE, f'postReview scope drift: {pr_scope}'
     prev, prev_main_tip = c_postreview, BASE
     main_tip, unions = BASE, []
-    for idx in range(len(chain) - 4, -1, -1):
-        c = chain[idx]
+    for c in oldest[3:]:
         ps = git('show', '-s', '--format=%P', c).split()
         delta = set(git('diff', '--name-only', f'{prev}..{c}').splitlines())
         if len(ps) == 2:
@@ -92,12 +100,13 @@ def main():
             assert od1 == EXPECTED_OWN, f'union {c[:8]} second-parent own-delta drift: {od1 ^ EXPECTED_OWN}'
             unions.append(f'{c[:8]}({ps[1][:8]} as its second parent)')
             main_tip, prev, prev_main_tip = ps[1], c, ps[1]
-        elif len(ps) == 1:
-            assert ps[0] == prev, f'refresh {c[:8]} parent != walked prev {prev[:8]}: {ps}'
-            assert delta == REFRESH_SCOPE, f'refresh {c[:8]} scope drift: {delta}'
+        elif delta == REFRESH_SCOPE and len(ps) == 1 and ps[0] == prev:
+            prev = c
+        elif delta and delta <= (EXPECTED_OWN - {MAP}) and len(ps) == 1 and ps[0] == prev:
+            unions.append(f'{c[:8]}(gatesfix/refresh, scope {len(delta)})')
             prev = c
         else:
-            assert False, f'unexpected {len(ps)}-parent commit {c[:8]} in the tail walk'
+            assert False, f'unexpected commit {c[:8]} in the tail walk: parents={ps} delta={sorted(delta)[:6]}'
     assert prev == head_full, f'the tail walk did not reach HEAD: stopped at {prev[:8]}'
     desc = f'content {c_content[:8]} -> receipts {c_receipts[:8]} -> postReview+battery {c_postreview[:8]}'
     if unions:

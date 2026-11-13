@@ -49,7 +49,7 @@ gates = json.loads((A / "gates_r0.json").read_text())
 check("G2-gates-r0", all(x["ok"] for x in gates["gates"]), f"gates_r0 {gates['summary']} ALL ok")
 truth = {}
 for r in cand["classA_unmappedUsers"]:
-    truth[r["item"]] = (r["kind"], r["declaredSid"], r["candidateOfficialCode"], r["candidateOfficialId"], r["candidateTitle"])
+    truth[r["item"]] = (r["item"], r["kind"], r["declaredSid"], r["candidateOfficialCode"], r["candidateOfficialId"], r["candidateTitle"])
 man_ok = len(man["rows"]) == 14 and all(
     (row["item"], row["kind"], row["declaredSid"], row["officialCode"], row["officialId"], row["candidateTitle"]) == truth[row["item"]]
     for row in man["rows"])
