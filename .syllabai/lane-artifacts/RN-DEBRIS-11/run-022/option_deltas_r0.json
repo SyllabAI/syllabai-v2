@@ -1,0 +1,1027 @@
+{
+ "artifact": "rn11-run-022-option-deltas-r0",
+ "law": "DRY-RUN deltas only; zero content bytes; order law = dense per-course renumber + exporter pointOrd gate port; byte-pins from the run-017 census of record",
+ "options": {
+  "D3": {
+   "opt1_recocode_8_1_4f": {
+    "removed": [],
+    "pointsAfter": 114,
+    "ordGateOK": true,
+    "ordGateSection": null,
+    "orderBumps": {
+     "8.1.2": [
+      92,
+      91
+     ],
+     "8.1.3": [
+      93,
+      92
+     ],
+     "8.1.4": [
+      94,
+      93
+     ]
+    },
+    "newArrivals": [
+     "8.1.4f"
+    ],
+    "tagRepoints": "none needed (0 q/fc/note refs on 8.1.1a — census r0)",
+    "prereqReanchor": {
+     "C47-CON-OPERATORS": [
+      "8.1.1a -> 8.1.4f (same-change)"
+     ]
+    },
+    "titlePin": "Understand and use arithmetic, logical and Boolean operators",
+    "titlePinSource": "run-017 census subRows[8.1.4f]",
+    "manifestDelta": "specPoints 114 -> 114 (no census change)",
+    "kgDelta": "point node id p:8.1.1a -> p:8.1.4f; pointSubtopics bucket 8a member re-id; hier edge re-target; counts unchanged"
+   },
+   "opt2_fold_into_8_1_4": {
+    "removed": [
+     "8.1.1a"
+    ],
+    "pointsAfter": 113,
+    "ordGateOK": true,
+    "ordGateSection": null,
+    "orderBumps": {
+     "8.1.2": [
+      92,
+      91
+     ],
+     "8.1.3": [
+      93,
+      92
+     ],
+     "8.1.4": [
+      94,
+      93
+     ],
+     "8.1.5": [
+      95,
+      94
+     ],
+     "8.1.6a": [
+      96,
+      95
+     ],
+     "8.1.6b": [
+      97,
+      96
+     ],
+     "8.1.6c": [
+      98,
+      97
+     ],
+     "8.1.7": [
+      99,
+      98
+     ],
+     "8.1.8": [
+      100,
+      99
+     ],
+     "8.2.1": [
+      101,
+      100
+     ],
+     "8.2.2": [
+      102,
+      101
+     ],
+     "8.2.3": [
+      103,
+      102
+     ],
+     "8.3.1": [
+      104,
+      103
+     ],
+     "8.3.2": [
+      105,
+      104
+     ],
+     "9.1": [
+      106,
+      105
+     ],
+     "9.2": [
+      107,
+      106
+     ],
+     "9.3": [
+      108,
+      107
+     ],
+     "9.4": [
+      109,
+      108
+     ],
+     "10.1": [
+      110,
+      109
+     ],
+     "10.2": [
+      111,
+      110
+     ],
+     "10.3a": [
+      112,
+      111
+     ],
+     "10.3b": [
+      113,
+      112
+     ],
+     "10.3c": [
+      114,
+      113
+     ]
+    },
+    "newArrivals": [],
+    "tagRepoints": "none needed (0 refs on 8.1.1a)",
+    "prereqReanchor": {
+     "C47-CON-OPERATORS": [
+      "8.1.1a -> 8.1.4 (same-change)"
+     ]
+    },
+    "titlePin": "(a) Understand and use the concept of sequence (b) Understand and use the concept of selection (c) Understand and use the concept of iteration (d) Understand and use the concepts of totalling and counting (e) Understand and use the concept of string handling (f) Understand and use arithmetic, logical and Boolean operators",
+    "titlePinSource": "run-017 census rows['8.1.4'].official (the doc-verbatim (a)-(f) blob)",
+    "manifestDelta": "specPoints 114 -> 113",
+    "kgDelta": "-1 point node, -1 hier edge; nodes 146->145; points 114->113"
+   },
+   "opt3_retain": {
+    "deltas": "none; provenance note only (the mis-map stays disclosed)"
+   }
+  },
+  "D4": {
+   "filingOpt1_reparent_in_place": {
+    "status": "MOOT post-run-021 (computed): the six carriers are byte-equal to the LANDED official 7.4/7.5a/7.5b/7.6-7.9 (census r0 D4 verdicts incl. the 6.3.5 blob-component splits); in-place re-parenting would duplicate rows that already exist under T7"
+   },
+   "opt1_remove6_repoin_reanchor": {
+    "removed": [
+     "6.3.4a",
+     "6.3.5",
+     "6.3.6",
+     "6.3.7",
+     "6.3.8",
+     "6.3.9"
+    ],
+    "pointsAfter": 108,
+    "ordGateOK": true,
+    "ordGateSection": null,
+    "orderBumps": {
+     "7.1": [
+      78,
+      72
+     ],
+     "7.2a": [
+      79,
+      73
+     ],
+     "7.2b": [
+      80,
+      74
+     ],
+     "7.2c": [
+      81,
+      75
+     ],
+     "7.3": [
+      82,
+      76
+     ],
+     "7.4": [
+      83,
+      77
+     ],
+     "7.5a": [
+      84,
+      78
+     ],
+     "7.5b": [
+      85,
+      79
+     ],
+     "7.6": [
+      86,
+      80
+     ],
+     "7.7": [
+      87,
+      81
+     ],
+     "7.8": [
+      88,
+      82
+     ],
+     "7.9": [
+      89,
+      83
+     ],
+     "8.1.1": [
+      90,
+      84
+     ],
+     "8.1.1a": [
+      91,
+      85
+     ],
+     "8.1.2": [
+      92,
+      86
+     ],
+     "8.1.3": [
+      93,
+      87
+     ],
+     "8.1.4": [
+      94,
+      88
+     ],
+     "8.1.5": [
+      95,
+      89
+     ],
+     "8.1.6a": [
+      96,
+      90
+     ],
+     "8.1.6b": [
+      97,
+      91
+     ],
+     "8.1.6c": [
+      98,
+      92
+     ],
+     "8.1.7": [
+      99,
+      93
+     ],
+     "8.1.8": [
+      100,
+      94
+     ],
+     "8.2.1": [
+      101,
+      95
+     ],
+     "8.2.2": [
+      102,
+      96
+     ],
+     "8.2.3": [
+      103,
+      97
+     ],
+     "8.3.1": [
+      104,
+      98
+     ],
+     "8.3.2": [
+      105,
+      99
+     ],
+     "9.1": [
+      106,
+      100
+     ],
+     "9.2": [
+      107,
+      101
+     ],
+     "9.3": [
+      108,
+      102
+     ],
+     "9.4": [
+      109,
+      103
+     ],
+     "10.1": [
+      110,
+      104
+     ],
+     "10.2": [
+      111,
+      105
+     ],
+     "10.3a": [
+      112,
+      106
+     ],
+     "10.3b": [
+      113,
+      107
+     ],
+     "10.3c": [
+      114,
+      108
+     ]
+    },
+    "newArrivals": [],
+    "tagRepoints_1to1_byteExact": {
+     "6.3.4a": "7.4",
+     "6.3.6": "7.6",
+     "6.3.7": "7.7",
+     "6.3.8": "7.8",
+     "6.3.9": "7.9"
+    },
+    "tagRepoints_splitClass_6_3_5": "tags on 6.3.5 map to the LANDED PAIR 7.5a/7.5b (the blob split) — per-tag component disposition (a-vs-b) is a judgment class, desk/lane to assign per item at run-023",
+    "tagRefCounts": {
+     "6.3.4a": {
+      "parts": 6,
+      "flashcards": 20,
+      "notes": 2,
+      "otherCodesOnTaggedParts": [
+       "6.3.4",
+       "6.3.7"
+      ]
+     },
+     "6.3.5": {
+      "parts": 14,
+      "flashcards": 27,
+      "notes": 2,
+      "otherCodesOnTaggedParts": [
+       "8.1.2"
+      ]
+     },
+     "6.3.6": {
+      "parts": 7,
+      "flashcards": 10,
+      "notes": 1,
+      "otherCodesOnTaggedParts": []
+     },
+     "6.3.7": {
+      "parts": 8,
+      "flashcards": 8,
+      "notes": 1,
+      "otherCodesOnTaggedParts": [
+       "6.3.4",
+       "6.3.4a"
+      ]
+     },
+     "6.3.8": {
+      "parts": 5,
+      "flashcards": 10,
+      "notes": 1,
+      "otherCodesOnTaggedParts": [
+       "6.3.9"
+      ]
+     },
+     "6.3.9": {
+      "parts": 1,
+      "flashcards": 8,
+      "notes": 1,
+      "otherCodesOnTaggedParts": [
+       "6.3.8"
+      ]
+     }
+    },
+    "prereqReanchor": {
+     "C47-CON-VALIDATION-TYPES": "6.3.5 -> 7.5a (component discipline disclosed)",
+     "C47-CON-TEST-DATA": "6.3.6 -> 7.6",
+     "C47-CON-TRACE-TABLE": "6.3.7 -> 7.7",
+     "C47-CON-ERROR-IDENTIFICATION": "6.3.8 -> 7.8",
+     "C47-CON-ALGORITHM-WRITE-AMEND": "6.3.9 -> 7.9"
+    },
+    "manifestDelta": "specPoints 114 -> 108",
+    "kgDelta": "-6 point nodes, -6 hier edges; nodes 146->140; projected pre/rel edges re-target via the re-anchored concepts (counts stable)"
+   },
+   "opt2_retain_disclose": {
+    "deltas": "none; the duplication of record stays disclosed (six carriers vs landed 7.4-7.9)"
+   }
+  },
+  "D5": {
+   "opt1_remove4_reanchor3": {
+    "removed": [
+     "6.3.1a",
+     "6.3.2a",
+     "6.3.3a",
+     "6.3.4"
+    ],
+    "pointsAfter": 110,
+    "ordGateOK": true,
+    "ordGateSection": null,
+    "orderBumps": {
+     "6.3.2": [
+      67,
+      66
+     ],
+     "6.3.3": [
+      69,
+      67
+     ],
+     "6.3.4a": [
+      72,
+      68
+     ],
+     "6.3.5": [
+      73,
+      69
+     ],
+     "6.3.6": [
+      74,
+      70
+     ],
+     "6.3.7": [
+      75,
+      71
+     ],
+     "6.3.8": [
+      76,
+      72
+     ],
+     "6.3.9": [
+      77,
+      73
+     ],
+     "7.1": [
+      78,
+      74
+     ],
+     "7.2a": [
+      79,
+      75
+     ],
+     "7.2b": [
+      80,
+      76
+     ],
+     "7.2c": [
+      81,
+      77
+     ],
+     "7.3": [
+      82,
+      78
+     ],
+     "7.4": [
+      83,
+      79
+     ],
+     "7.5a": [
+      84,
+      80
+     ],
+     "7.5b": [
+      85,
+      81
+     ],
+     "7.6": [
+      86,
+      82
+     ],
+     "7.7": [
+      87,
+      83
+     ],
+     "7.8": [
+      88,
+      84
+     ],
+     "7.9": [
+      89,
+      85
+     ],
+     "8.1.1": [
+      90,
+      86
+     ],
+     "8.1.1a": [
+      91,
+      87
+     ],
+     "8.1.2": [
+      92,
+      88
+     ],
+     "8.1.3": [
+      93,
+      89
+     ],
+     "8.1.4": [
+      94,
+      90
+     ],
+     "8.1.5": [
+      95,
+      91
+     ],
+     "8.1.6a": [
+      96,
+      92
+     ],
+     "8.1.6b": [
+      97,
+      93
+     ],
+     "8.1.6c": [
+      98,
+      94
+     ],
+     "8.1.7": [
+      99,
+      95
+     ],
+     "8.1.8": [
+      100,
+      96
+     ],
+     "8.2.1": [
+      101,
+      97
+     ],
+     "8.2.2": [
+      102,
+      98
+     ],
+     "8.2.3": [
+      103,
+      99
+     ],
+     "8.3.1": [
+      104,
+      100
+     ],
+     "8.3.2": [
+      105,
+      101
+     ],
+     "9.1": [
+      106,
+      102
+     ],
+     "9.2": [
+      107,
+      103
+     ],
+     "9.3": [
+      108,
+      104
+     ],
+     "9.4": [
+      109,
+      105
+     ],
+     "10.1": [
+      110,
+      106
+     ],
+     "10.2": [
+      111,
+      107
+     ],
+     "10.3a": [
+      112,
+      108
+     ],
+     "10.3b": [
+      113,
+      109
+     ],
+     "10.3c": [
+      114,
+      110
+     ]
+    },
+    "newArrivals": [],
+    "tagRepoints": {
+     "6.3.1a": "none (0 refs)",
+     "6.3.2a": "none (0 refs)",
+     "6.3.3a": "none (0 refs)",
+     "6.3.4": "6 q-part refs + note refs — re-point targets desk-owned (the advisory is not an outcome row); tagged parts' other codes: see census r0"
+    },
+    "tagRefCounts_6_3_4": {
+     "parts": 6,
+     "otherCodesOnTaggedParts": [
+      "6.3.4a",
+      "6.3.7"
+     ]
+    },
+    "prereqReanchor": {
+     "C47-CON-FLOWCHART-SYMBOLS": "6.3.1a -> desk pick (candidates: 7.9 — the only corpus row whose official title carries flowchart-symbol content alongside pseudocode/program code)",
+     "C47-CON-LOGIC-GATE-SYMBOLS": "6.3.2a -> 10.1 (\"Identify and use the standard symbols for logic gates\" — byte-semantic match)",
+     "C47-CON-PSEUDOCODE-FORMAT": "6.3.3a -> desk pick (candidate: 7.9 — pseudocode carried in its official title)"
+    },
+    "manifestDelta": "specPoints 114 -> 110",
+    "kgDelta": "-4 point nodes, -4 hier edges; nodes 146->142; the 3 concepts survive with re-anchored edges"
+   },
+   "opt2_refile_metadata": {
+    "deltas": "zero corpus-plane bytes; requires the kg_export v1.8 metadata-class shape decision (exporter code-change run, desk territory per the D1 precedent); codes preserved, points-census excluded",
+    "sketch": "non-point doc-verbatim rows project to a meta block (e.g. meta.appendixPointers[]) NOT to points[]; pointSubtopics/prereq anchors re-surface onto the metadata class or re-anchor per opt1"
+   },
+   "opt3_retain": {
+    "deltas": "none; provenance note only"
+   }
+  },
+  "D6b": {
+   "aLevel": {
+    "removed": [
+     "1.3.1a",
+     "1.3.2a"
+    ],
+    "pointsAfter": 34,
+    "ordGateOK": true,
+    "ordGateSection": null,
+    "orderBumps": {
+     "1.3.2": [
+      13,
+      12
+     ],
+     "1.3.3": [
+      15,
+      13
+     ],
+     "1.3.4": [
+      16,
+      14
+     ],
+     "1.3.5": [
+      17,
+      15
+     ],
+     "1.4.1": [
+      18,
+      16
+     ],
+     "1.4.1a": [
+      19,
+      17
+     ],
+     "1.5.1": [
+      20,
+      18
+     ],
+     "1.5.2": [
+      21,
+      19
+     ],
+     "1.5.3": [
+      22,
+      20
+     ],
+     "1.5.4": [
+      23,
+      21
+     ],
+     "1.5.5": [
+      24,
+      22
+     ],
+     "1.6.1": [
+      25,
+      23
+     ],
+     "1.6.2": [
+      26,
+      24
+     ],
+     "1.6.3": [
+      27,
+      25
+     ],
+     "1.6.4": [
+      28,
+      26
+     ],
+     "1.7.1": [
+      29,
+      27
+     ],
+     "1.7.2": [
+      30,
+      28
+     ],
+     "1.7.3": [
+      31,
+      29
+     ],
+     "1.7.4": [
+      32,
+      30
+     ],
+     "1.8.1": [
+      33,
+      31
+     ],
+     "1.8.2": [
+      34,
+      32
+     ],
+     "1.8.3": [
+      35,
+      33
+     ],
+     "1.8.4": [
+      36,
+      34
+     ]
+    },
+    "newArrivals": [],
+    "tagRepoints": "none (0 q/fc/note refs on both codes — census r0)",
+    "prereqReanchor": {
+     "MAP1-CON-LINE-EQUATION": "1.3.1a -> 1.3.1 (the dedicated official row, byte-semantic)",
+     "MAP1-CON-CIRCLE-EQUATION": "1.3.2a -> 1.3.3 (the landed dedicated row, byte-semantic)"
+    },
+    "manifestDelta": "specPoints 36 -> 34",
+    "kgDelta": "-2 point nodes, -2 hier edges per course; index P5 re-census x2",
+    "residualProof": "the 1.3.2a blob carries ONLY fragments of official 1.3.3/1.3.4/1.3.5 (landed dedicated rows, run-020) + corrupted-spacing debris; zero unique official 1.3.2 content (dedicated row 1.3.2 carries it byte-exact per run-018 titleMap)"
+   },
+   "asLevel": {
+    "removed": [
+     "1.3.1a",
+     "1.3.2a"
+    ],
+    "pointsAfter": 34,
+    "ordGateOK": true,
+    "ordGateSection": null,
+    "orderBumps": {
+     "1.3.2": [
+      13,
+      12
+     ],
+     "1.3.3": [
+      15,
+      13
+     ],
+     "1.3.4": [
+      16,
+      14
+     ],
+     "1.3.5": [
+      17,
+      15
+     ],
+     "1.4.1": [
+      18,
+      16
+     ],
+     "1.4.1a": [
+      19,
+      17
+     ],
+     "1.5.1": [
+      20,
+      18
+     ],
+     "1.5.2": [
+      21,
+      19
+     ],
+     "1.5.3": [
+      22,
+      20
+     ],
+     "1.5.4": [
+      23,
+      21
+     ],
+     "1.5.5": [
+      24,
+      22
+     ],
+     "1.6.1": [
+      25,
+      23
+     ],
+     "1.6.2": [
+      26,
+      24
+     ],
+     "1.6.3": [
+      27,
+      25
+     ],
+     "1.6.4": [
+      28,
+      26
+     ],
+     "1.7.1": [
+      29,
+      27
+     ],
+     "1.7.2": [
+      30,
+      28
+     ],
+     "1.7.3": [
+      31,
+      29
+     ],
+     "1.7.4": [
+      32,
+      30
+     ],
+     "1.8.1": [
+      33,
+      31
+     ],
+     "1.8.2": [
+      34,
+      32
+     ],
+     "1.8.3": [
+      35,
+      33
+     ],
+     "1.8.4": [
+      36,
+      34
+     ]
+    },
+    "newArrivals": [],
+    "tagRepoints": "none (0 q/fc/note refs on both codes — census r0)",
+    "prereqReanchor": {
+     "MAP1-CON-LINE-EQUATION": "1.3.1a -> 1.3.1 (the dedicated official row, byte-semantic)",
+     "MAP1-CON-CIRCLE-EQUATION": "1.3.2a -> 1.3.3 (the landed dedicated row, byte-semantic)"
+    },
+    "manifestDelta": "specPoints 36 -> 34",
+    "kgDelta": "-2 point nodes, -2 hier edges per course; index P5 re-census x2",
+    "residualProof": "the 1.3.2a blob carries ONLY fragments of official 1.3.3/1.3.4/1.3.5 (landed dedicated rows, run-020) + corrupted-spacing debris; zero unique official 1.3.2 content (dedicated row 1.3.2 carries it byte-exact per run-018 titleMap)"
+   }
+  },
+  "combined_D4opt1_plus_D5opt1": {
+   "removed": [
+    "6.3.4a",
+    "6.3.5",
+    "6.3.6",
+    "6.3.7",
+    "6.3.8",
+    "6.3.9",
+    "6.3.1a",
+    "6.3.2a",
+    "6.3.3a",
+    "6.3.4"
+   ],
+   "pointsAfter": 104,
+   "ordGateOK": true,
+   "ordGateSection": null,
+   "orderBumps": {
+    "6.3.2": [
+     67,
+     66
+    ],
+    "6.3.3": [
+     69,
+     67
+    ],
+    "7.1": [
+     78,
+     68
+    ],
+    "7.2a": [
+     79,
+     69
+    ],
+    "7.2b": [
+     80,
+     70
+    ],
+    "7.2c": [
+     81,
+     71
+    ],
+    "7.3": [
+     82,
+     72
+    ],
+    "7.4": [
+     83,
+     73
+    ],
+    "7.5a": [
+     84,
+     74
+    ],
+    "7.5b": [
+     85,
+     75
+    ],
+    "7.6": [
+     86,
+     76
+    ],
+    "7.7": [
+     87,
+     77
+    ],
+    "7.8": [
+     88,
+     78
+    ],
+    "7.9": [
+     89,
+     79
+    ],
+    "8.1.1": [
+     90,
+     80
+    ],
+    "8.1.1a": [
+     91,
+     81
+    ],
+    "8.1.2": [
+     92,
+     82
+    ],
+    "8.1.3": [
+     93,
+     83
+    ],
+    "8.1.4": [
+     94,
+     84
+    ],
+    "8.1.5": [
+     95,
+     85
+    ],
+    "8.1.6a": [
+     96,
+     86
+    ],
+    "8.1.6b": [
+     97,
+     87
+    ],
+    "8.1.6c": [
+     98,
+     88
+    ],
+    "8.1.7": [
+     99,
+     89
+    ],
+    "8.1.8": [
+     100,
+     90
+    ],
+    "8.2.1": [
+     101,
+     91
+    ],
+    "8.2.2": [
+     102,
+     92
+    ],
+    "8.2.3": [
+     103,
+     93
+    ],
+    "8.3.1": [
+     104,
+     94
+    ],
+    "8.3.2": [
+     105,
+     95
+    ],
+    "9.1": [
+     106,
+     96
+    ],
+    "9.2": [
+     107,
+     97
+    ],
+    "9.3": [
+     108,
+     98
+    ],
+    "9.4": [
+     109,
+     99
+    ],
+    "10.1": [
+     110,
+     100
+    ],
+    "10.2": [
+     111,
+     101
+    ],
+    "10.3a": [
+     112,
+     102
+    ],
+    "10.3b": [
+     113,
+     103
+    ],
+    "10.3c": [
+     114,
+     104
+    ]
+   },
+   "newArrivals": [],
+   "manifestDelta": "specPoints 114 -> 104",
+   "kgDelta": "-10 point nodes, -10 hier edges; nodes 146->136; SUB6.3 then = exactly official 6.3.1-6.3.3"
+  }
+ },
+ "baselineOrdGate": {
+  "ok": true,
+  "section": null
+ }
+}

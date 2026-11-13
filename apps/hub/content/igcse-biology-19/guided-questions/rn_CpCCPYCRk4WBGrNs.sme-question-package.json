@@ -1,0 +1,496 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_CpCCPYCRk4WBGrNs",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "67ee0e0bdc44d4b13f8228517b89abebd6cec8f191996c57ab3bbc17ad2a2b8c",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_CpCCPYCRk4WBGrNs",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q1",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "What is the thorax?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The chest cavity containing the breathing structures",
+          "correct": true,
+          "explanation": "That is the named region of the respiratory system.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The abdomen's lower part",
+          "correct": false,
+          "explanation": "The abdomen sits below the diaphragm.",
+          "misconception": "region wrong"
+        },
+        {
+          "key": "C",
+          "text": "The windpipe itself",
+          "correct": false,
+          "explanation": "The trachea is inside the thorax, not the thorax.",
+          "misconception": "structure confused"
+        },
+        {
+          "key": "D",
+          "text": "The lung's exchange surface",
+          "correct": false,
+          "explanation": "That is the alveoli.",
+          "misconception": "structure confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q2",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "Which is the correct airway order during inhalation?",
+      "misconceptionClass": "route recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nose, alveolus, trachea",
+          "correct": false,
+          "explanation": "The alveoli are the destination, not a waypoint.",
+          "misconception": "order impossible"
+        },
+        {
+          "key": "B",
+          "text": "Trachea, bronchus, bronchiole, alveolus",
+          "correct": true,
+          "explanation": "Air travels from wide to fine to the sacs.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Trachea, bronchiole, bronchus, alveolus",
+          "correct": false,
+          "explanation": "Bronchioles come after the bronchi.",
+          "misconception": "order swapped"
+        },
+        {
+          "key": "D",
+          "text": "Bronchus, trachea, alveolus, bronchiole",
+          "correct": false,
+          "explanation": "The trachea comes first.",
+          "misconception": "order scrambled"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q3",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "What do the pleural membranes do?",
+      "misconceptionClass": "structure recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "They produce the voice",
+          "correct": false,
+          "explanation": "Voicing is the larynx's business.",
+          "misconception": "function wrong"
+        },
+        {
+          "key": "B",
+          "text": "They filter incoming dust",
+          "correct": false,
+          "explanation": "Filtering happens in the upper airways.",
+          "misconception": "function wrong"
+        },
+        {
+          "key": "C",
+          "text": "They wrap around the lungs and coat the thorax's inner lining",
+          "correct": true,
+          "explanation": "Those thin layers wrap and line.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "They exchange gases directly",
+          "correct": false,
+          "explanation": "Exchange belongs to the alveoli.",
+          "misconception": "function wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q4",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "How many bronchi does a human have?",
+      "misconceptionClass": "count recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "One, shared by both lungs",
+          "correct": false,
+          "explanation": "Each lung gets its own bronchus.",
+          "misconception": "count wrong"
+        },
+        {
+          "key": "B",
+          "text": "Hundreds",
+          "correct": false,
+          "explanation": "Hundreds describes bronchioles, not bronchi.",
+          "misconception": "scale confused"
+        },
+        {
+          "key": "C",
+          "text": "None — air reaches the lungs directly",
+          "correct": false,
+          "explanation": "The bronchi are the connection.",
+          "misconception": "claim false"
+        },
+        {
+          "key": "D",
+          "text": "Two, one for each lung",
+          "correct": true,
+          "explanation": "The trachea splits into exactly two.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q5",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "Which structure is described as the specialised gas exchange surface?",
+      "misconceptionClass": "surface recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The alveoli",
+          "correct": true,
+          "explanation": "Exchange happens at those sacs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The trachea",
+          "correct": false,
+          "explanation": "The trachea conducts air; it does not exchange.",
+          "misconception": "structure wrong"
+        },
+        {
+          "key": "C",
+          "text": "The bronchioles",
+          "correct": false,
+          "explanation": "They distribute air; exchange happens downstream.",
+          "misconception": "structure wrong"
+        },
+        {
+          "key": "D",
+          "text": "The pleural membranes",
+          "correct": false,
+          "explanation": "They line and lubricate, not exchange.",
+          "misconception": "structure wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q6",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "List the contents of the thorax named in the specification.",
+      "misconceptionClass": "contents recall",
+      "kind": "recall",
+      "modelAnswer": "Ribs, intercostal muscles, diaphragm, trachea, lungs with their bronchi, bronchioles and alveoli, and the pleural membranes.",
+      "keywords": [
+        "ribs",
+        "intercostal muscles",
+        "diaphragm",
+        "trachea",
+        "bronchi",
+        "alveoli"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q7",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "Give the singular forms of bronchi and alveoli.",
+      "misconceptionClass": "terminology recall",
+      "kind": "recall",
+      "modelAnswer": "Bronchus and alveolus.",
+      "keywords": [
+        "bronchus",
+        "alveolus",
+        "singular forms"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q8",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "Explain why the airway's branching order matters to know.",
+      "misconceptionClass": "order reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because questions hand you diagrams or ask for sequences, and the route is strictly one-way: trachea to bronchus to bronchiole to alveolus; swapping bronchi and bronchioles reverses the widening-narrowing logic and loses the marks.",
+      "keywords": [
+        "trachea",
+        "bronchus",
+        "bronchiole",
+        "alveolus"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L1::Q9",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L1",
+      "stem": "A diagram shows a branching tree ending in clustered sacs, with muscle bands between curved bones around it. Label five structures and one function each.",
+      "misconceptionClass": "diagram application",
+      "kind": "application",
+      "modelAnswer": "Ribs — protection; intercostal muscles — moving the ribs; trachea — air's main road; bronchioles — distribution within the lung; alveoli — the gas exchange surface; with the diaphragm resizing the floor beneath.",
+      "keywords": [
+        "ribs",
+        "trachea",
+        "bronchioles",
+        "alveoli",
+        "diaphragm"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q1",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "What provides the lungs' large surface area?",
+      "misconceptionClass": "adaptation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The ribs",
+          "correct": false,
+          "explanation": "Ribs protect; they do not exchange.",
+          "misconception": "structure wrong"
+        },
+        {
+          "key": "B",
+          "text": "The countless alveoli",
+          "correct": true,
+          "explanation": "Area comes from sheer numbers of sacs.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "The wide trachea",
+          "correct": false,
+          "explanation": "The trachea conducts; it contributes no exchange area.",
+          "misconception": "structure wrong"
+        },
+        {
+          "key": "D",
+          "text": "The pleural membranes",
+          "correct": false,
+          "explanation": "They line the cavity, not exchange.",
+          "misconception": "structure wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q2",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "How thick are the alveolar and capillary walls?",
+      "misconceptionClass": "thickness recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "One cell thick in total",
+          "correct": false,
+          "explanation": "Each wall is one cell; the pair adds up to two.",
+          "misconception": "thickness wrong"
+        },
+        {
+          "key": "B",
+          "text": "Variable depending on breathing",
+          "correct": false,
+          "explanation": "Wall thickness is fixed anatomy.",
+          "misconception": "thickness invented"
+        },
+        {
+          "key": "C",
+          "text": "One cell thick each",
+          "correct": true,
+          "explanation": "The double barrier stays minimal.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Several cells thick",
+          "correct": false,
+          "explanation": "Much thicker walls would slow exchange badly.",
+          "misconception": "thickness wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q3",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "What keeps oxygen levels high in the alveolar air?",
+      "misconceptionClass": "gradient recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The moisture layer",
+          "correct": false,
+          "explanation": "Moisture helps dissolving, not renewal.",
+          "misconception": "feature confused"
+        },
+        {
+          "key": "B",
+          "text": "The one-cell walls",
+          "correct": false,
+          "explanation": "Thinness shortens the path; it does not renew the air.",
+          "misconception": "feature confused"
+        },
+        {
+          "key": "C",
+          "text": "The blood supply alone",
+          "correct": false,
+          "explanation": "Blood renews its own side; ventilation handles the air side.",
+          "misconception": "half-answer"
+        },
+        {
+          "key": "D",
+          "text": "Ventilation — the constant renewal of air by breathing",
+          "correct": true,
+          "explanation": "Fresh breaths replace the used air.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q4",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "What does a good blood supply maintain?",
+      "misconceptionClass": "gradient recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Steep concentration gradients by renewing the blood side",
+          "correct": true,
+          "explanation": "Fresh arrivals keep the capillary side imbalanced.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The strength of the rib cage",
+          "correct": false,
+          "explanation": "Ribs need no blood supply for this purpose.",
+          "misconception": "function wrong"
+        },
+        {
+          "key": "C",
+          "text": "The width of the bronchioles",
+          "correct": false,
+          "explanation": "Bronchiole width is not blood-dependent.",
+          "misconception": "function wrong"
+        },
+        {
+          "key": "D",
+          "text": "The moisture of the walls",
+          "correct": false,
+          "explanation": "Moisture is a local film, not a blood task.",
+          "misconception": "function wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q5",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "Why do breathing rate and heart rate rise together in exercise?",
+      "misconceptionClass": "integration reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because they share one muscle",
+          "correct": false,
+          "explanation": "Distinct muscles drive each.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
+          "text": "Because both are renewal pumps for the same gradients that exercise is draining",
+          "correct": true,
+          "explanation": "Air side and blood side renew faster together.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Because the body needs less oxygen",
+          "correct": false,
+          "explanation": "Exercise needs more.",
+          "misconception": "direction wrong"
+        },
+        {
+          "key": "D",
+          "text": "Because the alveoli multiply temporarily",
+          "correct": false,
+          "explanation": "No new alveoli appear.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q6",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "Name the four shared adaptations of exchange surfaces.",
+      "misconceptionClass": "adaptation recall",
+      "kind": "recall",
+      "modelAnswer": "Large surface area, thin walls, good ventilation and a good blood supply.",
+      "keywords": [
+        "surface area",
+        "thin",
+        "ventilation",
+        "blood supply"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q7",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "Which two structures are one cell thick at the exchange site?",
+      "misconceptionClass": "structure recall",
+      "kind": "recall",
+      "modelAnswer": "The alveolus wall and the capillary wall.",
+      "keywords": [
+        "alveolus wall",
+        "capillary wall",
+        "one cell thick"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q8",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "Explain why a collapsed lung's region exchanges poorly even if its blood supply survives.",
+      "misconceptionClass": "ventilation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because without ventilation the air side never renews: oxygen falls and carbon dioxide rises until the alveolar air matches the blood, the gradients vanish, and diffusion stalls however good the circulation remains.",
+      "keywords": [
+        "ventilation",
+        "renews",
+        "gradient",
+        "diffusion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_CpCCPYCRk4WBGrNs::L2::Q9",
+      "moduleId": "rn_CpCCPYCRk4WBGrNs::L2",
+      "stem": "At altitude, both breathing rate and heart rate climb even at rest. Use the four adaptations to explain the body's strategy.",
+      "misconceptionClass": "altitude application",
+      "kind": "application",
+      "modelAnswer": "Thinner air lowers the oxygen side of every gradient, so the body raises the renewal rates: faster breathing refreshes the alveolar air more often and a faster heart delivers blood through the one-cell-thick walls more frequently, compensating for the smaller per-breath oxygen with more exchanges per minute across the unchanged large surface area.",
+      "keywords": [
+        "gradient",
+        "ventilation",
+        "blood supply",
+        "surface area"
+      ],
+      "options": []
+    }
+  ]
+}

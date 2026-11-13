@@ -1,0 +1,734 @@
+{
+  "format": "sme-question-package/1.2",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_wQyPHSfChQQyF3cb",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "c67eab1db8a03d80c3a5e1379c4d9554879819abbd90ce19c582aff4c45a44bb",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "packageId": "igcse-biology::rn_wQyPHSfChQQyF3cb",
+  "subject": "igcse-biology",
+  "questions": [
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q1",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "Which definition matches diffusion?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Net movement of particles from higher to lower concentration",
+          "correct": true,
+          "explanation": "That is the gradient-driven movement the specification describes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Movement of water across a partially permeable membrane",
+          "correct": false,
+          "explanation": "That is osmosis, water's special case.",
+          "misconception": "process swapped"
+        },
+        {
+          "key": "C",
+          "text": "Movement requiring cellular energy",
+          "correct": false,
+          "explanation": "Diffusion is passive; energy is not spent.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "D",
+          "text": "Movement of particles against a gradient",
+          "correct": false,
+          "explanation": "Diffusion never runs uphill.",
+          "misconception": "direction flipped"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q2",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "How does an amoeba exchange gases?",
+      "misconceptionClass": "organism recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "By active transport only",
+          "correct": false,
+          "explanation": "Gas exchange is passive diffusion.",
+          "misconception": "process wrong"
+        },
+        {
+          "key": "B",
+          "text": "By diffusion straight across its cell membrane",
+          "correct": true,
+          "explanation": "A single cell needs no organ; its surface does everything.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Through special pores like stomata",
+          "correct": false,
+          "explanation": "Stomata belong to leaves, not amoeba.",
+          "misconception": "structure invented"
+        },
+        {
+          "key": "D",
+          "text": "Using lungs inherited from larger cells",
+          "correct": false,
+          "explanation": "Amoeba has no organs at all.",
+          "misconception": "structure invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q3",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "What is the gas exchange organ in humans?",
+      "misconceptionClass": "organ recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The leaves",
+          "correct": false,
+          "explanation": "Leaves are the plant's exchange surface.",
+          "misconception": "kingdom misplaced"
+        },
+        {
+          "key": "B",
+          "text": "The heart",
+          "correct": false,
+          "explanation": "The heart pumps blood; it exchanges nothing with the air.",
+          "misconception": "organ confused"
+        },
+        {
+          "key": "C",
+          "text": "The lungs",
+          "correct": true,
+          "explanation": "Lungs are the human gas exchange organ named here.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "The gills",
+          "correct": false,
+          "explanation": "Gills belong to fish.",
+          "misconception": "kingdom misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q4",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "Which feature of an exchange surface speeds diffusion?",
+      "misconceptionClass": "surface feature recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "A thick protective coating",
+          "correct": false,
+          "explanation": "Thickness slows exchange; exchange surfaces are thin.",
+          "misconception": "feature wrong"
+        },
+        {
+          "key": "B",
+          "text": "A dry surface",
+          "correct": false,
+          "explanation": "Moisture helps gases dissolve and cross.",
+          "misconception": "feature wrong"
+        },
+        {
+          "key": "C",
+          "text": "A small surface area",
+          "correct": false,
+          "explanation": "Small area reduces the exchange rate.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "D",
+          "text": "A short diffusion distance",
+          "correct": true,
+          "explanation": "Thin barriers shorten each particle's journey.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q5",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "Why do animals ventilate their exchange surfaces?",
+      "misconceptionClass": "animal adaptation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To keep the concentration gradients steep for faster exchange",
+          "correct": true,
+          "explanation": "Fresh air or water refreshes the gradient that diffusion feeds on.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To cool the blood down",
+          "correct": false,
+          "explanation": "Cooling is a separate role; ventilation's exchange job is gradient renewal.",
+          "misconception": "function misplaced"
+        },
+        {
+          "key": "C",
+          "text": "To filter dust from the air",
+          "correct": false,
+          "explanation": "Filtering is a defensive extra, not the exchange reason.",
+          "misconception": "function misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Because diffusion would stop without movement",
+          "correct": false,
+          "explanation": "Diffusion slows but does not stop; the point is keeping it fast.",
+          "misconception": "overstatement"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q6",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "Define diffusion in one sentence.",
+      "misconceptionClass": "definition recall",
+      "kind": "recall",
+      "modelAnswer": "Diffusion is the net drift of particles from where they are more concentrated to where they are less so, down a gradient.",
+      "keywords": [
+        "net drift",
+        "more concentrated",
+        "less so",
+        "gradient"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q7",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "Name the gas exchange organs of fish, humans and plants.",
+      "misconceptionClass": "organ mapping recall",
+      "kind": "recall",
+      "modelAnswer": "Fish use gills, humans use lungs, and plants use leaves and roots.",
+      "keywords": [
+        "gills",
+        "lungs",
+        "leaves",
+        "roots"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q8",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "Explain why single-celled organisms need no exchange organs.",
+      "misconceptionClass": "scaling reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because their whole surface touches the environment, so every part of the membrane can exchange directly and the distances involved are tiny; multicellular bodies bury their inner cells, which is why organs become necessary.",
+      "keywords": [
+        "surface",
+        "membrane",
+        "distance",
+        "multicellular"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L1::Q9",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L1",
+      "stem": "A spherical cell grows to ten times its diameter. Use surface-area reasoning to predict its gas exchange problem.",
+      "misconceptionClass": "scaling application",
+      "kind": "application",
+      "modelAnswer": "Volume grows with the cube of diameter but surface with only the square, so demand for gases far outstrips the membrane able to supply them; diffusion distance to the centre also lengthens, so the cell would suffocate inside unless it found an exchange organ or split.",
+      "keywords": [
+        "surface",
+        "volume",
+        "diffusion distance",
+        "exchange"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q1",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "Which gas does a respiring cell consume?",
+      "misconceptionClass": "gas recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Water vapour",
+          "correct": false,
+          "explanation": "Water is a product of respiration, not a gas it consumes.",
+          "misconception": "gas confused"
+        },
+        {
+          "key": "B",
+          "text": "Oxygen",
+          "correct": true,
+          "explanation": "Aerobic respiration takes in oxygen and releases carbon dioxide.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Carbon dioxide",
+          "correct": false,
+          "explanation": "Carbon dioxide is the product, not the reactant.",
+          "misconception": "gas swapped"
+        },
+        {
+          "key": "D",
+          "text": "Nitrogen",
+          "correct": false,
+          "explanation": "Nitrogen takes no part in respiration.",
+          "misconception": "gas invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q2",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "At night, which direction does carbon dioxide move in a leaf?",
+      "misconceptionClass": "direction recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Neither in nor out",
+          "correct": false,
+          "explanation": "Respiration continues, so the exchange continues.",
+          "misconception": "movement denied"
+        },
+        {
+          "key": "B",
+          "text": "Only through the roots",
+          "correct": false,
+          "explanation": "Gas exchange happens at the leaf's surfaces.",
+          "misconception": "route wrong"
+        },
+        {
+          "key": "C",
+          "text": "Out of the leaf, down its gradient",
+          "correct": true,
+          "explanation": "Respiring cells make the inside rich, so the gas leaves.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Into the leaf",
+          "correct": false,
+          "explanation": "That would need photosynthesis, which has stopped.",
+          "misconception": "direction flipped"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q3",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "Why does oxygen keep diffusing into a respiring leaf all night?",
+      "misconceptionClass": "gradient reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the leaf stores oxygen in vacuoles",
+          "correct": false,
+          "explanation": "Nothing stores oxygen; consumption explains the low level.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "B",
+          "text": "Because the stomata pump air in",
+          "correct": false,
+          "explanation": "Stomata are passive pores; nothing pumps.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "C",
+          "text": "Because oxygen becomes more concentrated inside",
+          "correct": false,
+          "explanation": "Inside stays LOW; that is the whole point.",
+          "misconception": "direction confused"
+        },
+        {
+          "key": "D",
+          "text": "The respiring cells keep internal oxygen low, so the gradient persists",
+          "correct": true,
+          "explanation": "Constant consumption holds the inside below the outside.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q4",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "What would happen to gas exchange if a leaf's cells stopped respiring?",
+      "misconceptionClass": "limit reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both gradients would collapse and exchange would cease",
+          "correct": true,
+          "explanation": "No consumption, no low oxygen; no output, no high carbon dioxide.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Oxygen would flood in faster",
+          "correct": false,
+          "explanation": "Without consumption there is no gradient to pull it.",
+          "misconception": "direction wrong"
+        },
+        {
+          "key": "C",
+          "text": "Only carbon dioxide would still leave",
+          "correct": false,
+          "explanation": "Its gradient depends on respiration too.",
+          "misconception": "partial error"
+        },
+        {
+          "key": "D",
+          "text": "Exchange would continue by active transport",
+          "correct": false,
+          "explanation": "The exchange is passive and gradient-dependent.",
+          "misconception": "process wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q5",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "During the day, which process usually dominates a green leaf's gas exchange?",
+      "misconceptionClass": "daytime balance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only transpiration matters by day",
+          "correct": false,
+          "explanation": "Transpiration is water loss, not the gas pair's exchange.",
+          "misconception": "process misplaced"
+        },
+        {
+          "key": "B",
+          "text": "Photosynthesis, so the leaf takes in carbon dioxide overall",
+          "correct": true,
+          "explanation": "In sufficient light photosynthesis outruns respiration and reverses the flows.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "Respiration, so oxygen floods in",
+          "correct": false,
+          "explanation": "Respiration runs but is outrun; the net flow favours photosynthesis's pattern.",
+          "misconception": "balance wrong"
+        },
+        {
+          "key": "D",
+          "text": "Neither process runs by day",
+          "correct": false,
+          "explanation": "Both run; photosynthesis simply outpaces.",
+          "misconception": "claim false"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q6",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "Name the two gases exchanged during respiration.",
+      "misconceptionClass": "gas pair recall",
+      "kind": "recall",
+      "modelAnswer": "Oxygen, taken in, and carbon dioxide, released.",
+      "keywords": [
+        "oxygen",
+        "taken in",
+        "carbon dioxide",
+        "released"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q7",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "State the direction of each gas's movement at night.",
+      "misconceptionClass": "direction recall",
+      "kind": "recall",
+      "modelAnswer": "Oxygen enters the leaf while carbon dioxide leaves it.",
+      "keywords": [
+        "oxygen",
+        "enters",
+        "carbon dioxide",
+        "leaves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q8",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "Explain why respiration is described as continuous while photosynthesis is not.",
+      "misconceptionClass": "process reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because every living cell needs energy every moment, and respiration supplies it, whereas photosynthesis depends on light and halts in darkness; the gas exchange of respiration therefore runs around the clock while photosynthesis's runs only in daylight.",
+      "keywords": [
+        "energy",
+        "respiration",
+        "light",
+        "photosynthesis"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L2::Q9",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L2",
+      "stem": "A sealed jar contains a plant in complete darkness overnight. Predict the air's carbon dioxide level by morning and explain.",
+      "misconceptionClass": "sealed-jar application",
+      "kind": "application",
+      "modelAnswer": "The carbon dioxide level rises: with no light the plant only respires, releasing carbon dioxide into the sealed air while consuming its oxygen, and with nowhere for the gas to diffuse the concentration climbs steadily.",
+      "keywords": [
+        "respires",
+        "carbon dioxide",
+        "oxygen",
+        "sealed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q1",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "Which gas does photosynthesis consume?",
+      "misconceptionClass": "gas recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nitrogen",
+          "correct": false,
+          "explanation": "Nitrogen plays no role here.",
+          "misconception": "gas invented"
+        },
+        {
+          "key": "B",
+          "text": "Glucose",
+          "correct": false,
+          "explanation": "Glucose is the sugar made by photosynthesis, not a gas it consumes.",
+          "misconception": "molecule confused"
+        },
+        {
+          "key": "C",
+          "text": "Carbon dioxide",
+          "correct": true,
+          "explanation": "Carbon dioxide is photosynthesis's raw material.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Oxygen",
+          "correct": false,
+          "explanation": "Oxygen is the product; carbon dioxide is consumed.",
+          "misconception": "gas swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q2",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "During photosynthesis, which way does oxygen move?",
+      "misconceptionClass": "direction recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Into the leaf",
+          "correct": false,
+          "explanation": "That is respiration's direction at night.",
+          "misconception": "direction flipped"
+        },
+        {
+          "key": "B",
+          "text": "It stays put inside the chloroplasts",
+          "correct": false,
+          "explanation": "Gas diffuses; some is used by respiration, the rest leaves.",
+          "misconception": "movement denied"
+        },
+        {
+          "key": "C",
+          "text": "Through the roots into the soil",
+          "correct": false,
+          "explanation": "Gas exchange happens at the leaf.",
+          "misconception": "route wrong"
+        },
+        {
+          "key": "D",
+          "text": "Out of the leaf, down its gradient",
+          "correct": true,
+          "explanation": "Produced inside, oxygen builds up and leaves.",
+          "misconception": null
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q3",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "Why does carbon dioxide keep flowing into a photosynthesising leaf?",
+      "misconceptionClass": "gradient reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The photosynthesising cells keep internal carbon dioxide low",
+          "correct": true,
+          "explanation": "Constant consumption maintains the inward gradient.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the leaf pumps air inwards",
+          "correct": false,
+          "explanation": "Nothing pumps; diffusion does the work.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "C",
+          "text": "Because carbon dioxide dissolves in the waxy cuticle",
+          "correct": false,
+          "explanation": "The cuticle is a barrier, not an entry route.",
+          "misconception": "mechanism invented"
+        },
+        {
+          "key": "D",
+          "text": "Because the leaf stores it for night",
+          "correct": false,
+          "explanation": "It is consumed immediately, not stored.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q4",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "What happens to the oxygen made during photosynthesis?",
+      "misconceptionClass": "oxygen fate recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is converted back into carbon dioxide",
+          "correct": false,
+          "explanation": "That reversal is respiration, not a direct conversion here.",
+          "misconception": "conversion invented"
+        },
+        {
+          "key": "B",
+          "text": "Some is used by respiration and the surplus diffuses out",
+          "correct": true,
+          "explanation": "Respiration runs underneath and spends some of the supply.",
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "All of it is stored in the vacuole",
+          "correct": false,
+          "explanation": "Nothing stores oxygen; the surplus leaves.",
+          "misconception": "fate invented"
+        },
+        {
+          "key": "D",
+          "text": "All of it leaves immediately",
+          "correct": false,
+          "explanation": "Respiration claims a share first.",
+          "misconception": "fate overstated"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q5",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "When photosynthesis and respiration run at similar rates, what is the net gas exchange?",
+      "misconceptionClass": "balance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Strong net carbon dioxide release",
+          "correct": false,
+          "explanation": "That is the darkness outcome.",
+          "misconception": "balance wrong"
+        },
+        {
+          "key": "B",
+          "text": "Exchange switches off entirely",
+          "correct": false,
+          "explanation": "Both processes still run; only the net shrinks.",
+          "misconception": "overstatement"
+        },
+        {
+          "key": "C",
+          "text": "Roughly zero — photosynthesis and respiration run at similar rates",
+          "correct": true,
+          "explanation": "Parity between the processes flattens the net flows.",
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Strong net oxygen release",
+          "correct": false,
+          "explanation": "That needs photosynthesis well ahead, which dim light prevents.",
+          "misconception": "balance wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q6",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "State the direction of each gas's movement in bright light.",
+      "misconceptionClass": "direction recall",
+      "kind": "recall",
+      "modelAnswer": "Carbon dioxide enters the leaf while oxygen leaves it.",
+      "keywords": [
+        "carbon dioxide",
+        "enters",
+        "oxygen",
+        "leaves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q7",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "Name the organelle where photosynthesis happens.",
+      "misconceptionClass": "organelle recall",
+      "kind": "recall",
+      "modelAnswer": "The chloroplast.",
+      "keywords": [
+        "chloroplast",
+        "photosynthesis",
+        "organelle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q8",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "Explain why a leaf in dim light may show almost no net gas exchange.",
+      "misconceptionClass": "balance reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because photosynthesis's consumption of carbon dioxide and release of oxygen nearly match respiration's opposite flows; the two processes cancel almost exactly, so neither gas shows a clear net movement.",
+      "keywords": [
+        "photosynthesis",
+        "respiration",
+        "match",
+        "net"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_wQyPHSfChQQyF3cb::L3::Q9",
+      "moduleId": "rn_wQyPHSfChQQyF3cb::L3",
+      "stem": "A greenhouse adds morning light gradually from dark to bright. Describe how the leaf's gas exchange shifts across the morning.",
+      "misconceptionClass": "transition application",
+      "kind": "application",
+      "modelAnswer": "In darkness only respiration runs: oxygen in, carbon dioxide out. As light strengthens photosynthesis wakes and trims those flows; near parity the net exchange almost vanishes; in full light photosynthesis dominates and the flows reverse — carbon dioxide in, oxygen out.",
+      "keywords": [
+        "photosynthesis",
+        "respiration",
+        "parity",
+        "reverse"
+      ],
+      "options": []
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_d6rhyBC8xRPrNzcB",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "ce34ce377c103843f284b80ea389c8755c19dfcbd523481480b0fa0a6c7a780c",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_d6rhyBC8xRPrNzcB",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Gas Exchange",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/gas-exchange/alveoli-adaptations-for-gas-exchange",
+    "specAnchors": [
+      {
+        "code": "2.48",
+        "text": "explain how alveoli are adapted for gas exchange by diffusion between air in the lungs and blood in capillaries"
+      }
+    ],
+    "primer": {
+      "text": "You have seen the respiratory system's layout; now zoom to the business end. Each alveolus is a microscopic air sac wrapped in capillaries, and everything about it — shape, walls, moisture, blood flow — exists to make oxygen and carbon dioxide swap places as fast as possible.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_d6rhyBC8xRPrNzcB::L1",
+        "title": "Alveoli Built for Diffusion",
+        "sourceHeadings": [
+          "Alveoli"
+        ],
+        "specRefs": [
+          "2.48"
+        ],
+        "opening": "Gas exchange happens between the air in an alveolus and the blood in the capillary wrapped around it, and every alveolar feature sharpens that swap. Rounded sacs in huge numbers give an enormous surface area; the alveolus and capillary walls are each a single flattened cell, so the diffusion gap is tiny; a film of moisture lets the gases dissolve before crossing; and constant ventilation plus a brisk blood supply keep the concentration gradients steep on both sides.",
+        "keyPoints": [
+          "Many rounded alveolar sacs create a very large surface area for exchange.",
+          "Alveolus and capillary walls are one cell thick, keeping the diffusion distance minimal.",
+          "A moisture layer lets gases dissolve before they diffuse across.",
+          "Ventilation refreshes the alveolar air, keeping oxygen high and carbon dioxide low inside.",
+          "A good blood supply sweeps CO2-laden blood away and delivers oxygen-poor blood, maintaining gradients."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Large area, thin walls, moisture and fresh air give the alveolus its speed.",
+            "analogy": "A busy border crossing with many booths (area), short queues (distance) and fast traffic both sides (gradients).",
+            "examPointer": "List all the adaptations together — exam answers want the full set, not one."
+          },
+          "medium": {
+            "restatement": "The alveolus stays imbalanced on purpose so diffusion never slows.",
+            "analogy": "Two crowds on opposite sides of a gate, both regularly refreshed, keep people flowing through.",
+            "examPointer": "Pair each adaptation with the word gradient — most marks live in that link."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_d6rhyBC8xRPrNzcB::L1::Q1",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q2",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q3",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q4",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q5",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q6",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q7",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q8",
+          "rn_d6rhyBC8xRPrNzcB::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "alveolus",
+          "definition": "A microscopic air sac at the end of the bronchioles; the lung's gas exchange surface.",
+          "firstLesson": 1
+        },
+        {
+          "term": "concentration gradient",
+          "definition": "The difference in gas levels between two sides; the driving force of diffusion.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ventilation",
+          "definition": "The breathing cycle that refreshes air in the lungs.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/aab6004473e7-features-of-alveoli.png",
+        "alt": "Alveolus with surrounding capillary showing blood flow, surface area, moisture layer and thin walls.",
+        "sourceHeading": "Alveoli",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The alveolus's features arranged to maximise exchange"
+      }
+    ]
+  }
+}

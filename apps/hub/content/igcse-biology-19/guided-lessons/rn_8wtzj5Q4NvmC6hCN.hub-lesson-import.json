@@ -1,0 +1,116 @@
+{
+  "format": "hub/lesson-import/1.5",
+  "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
+  "source": {
+    "sourceFormat": "guided-lesson/0.6",
+    "noteId": "rn_8wtzj5Q4NvmC6hCN",
+    "corpusVersion": "sme-revision-notes-igcse-biology-19-2026-09-17",
+    "sourceLayerSha256": "597716a47466af5e1416c874d46ff0309b5e61d84a7e344454081b553248b832",
+    "pinnedRef": "9c278f619b85b60d65573e80790a3ff261f8fa93"
+  },
+  "lesson": {
+    "id": "igcse-biology::rn_8wtzj5Q4NvmC6hCN",
+    "topicTitle": "Structure and functions in living organisms",
+    "subtopicTitle": "Gas Exchange",
+    "sourceUrl": "https://www.savemyexams.com/igcse/biology/edexcel/19/revision-notes/2-structure-and-function-in-living-organisms/gas-exchange/gas-exchange-night-vs-day",
+    "specAnchors": [
+      {
+        "code": "2.44B",
+        "text": "understand how respiration continues during the day and night, but that the net exchange of carbon dioxide and oxygen depends on the intensity of light"
+      }
+    ],
+    "primer": {
+      "text": "A plant's gas exchange is a 24-hour tug of war. Respiration pulls constantly; photosynthesis joins whenever light allows and usually pulls harder. The balance at any moment decides which gas enters and which leaves — and at one special light level, neither does.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_8wtzj5Q4NvmC6hCN::L1",
+        "title": "The 24-Hour Balance",
+        "sourceHeadings": [
+          "Gas Exchange: Night vs Day"
+        ],
+        "specRefs": [
+          "2.44B"
+        ],
+        "opening": "Plants respire around the clock but photosynthesise only in light, so the net exchange swings through the day. In daylight photosynthesis usually wins: carbon dioxide drifts in and oxygen drifts out. At night respiration alone runs and the flows reverse. At a particular low light intensity the two rates match exactly, and neither gas shows any net movement.",
+        "keyPoints": [
+          "Respiration runs day and night; photosynthesis needs light.",
+          "By day, photosynthesis usually outpaces respiration, so CO2 moves in and O2 moves out.",
+          "At night only respiration runs, so O2 moves in and CO2 moves out.",
+          "At low light intensity the two rates are equal and the net exchange is zero.",
+          "Gas exchange in plants therefore varies through the 24-hour day."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The faster process decides the direction; equal rates mean no net movement.",
+            "analogy": "A tug of war that changes teams at sunset: whoever pulls harder wins the rope for now.",
+            "examPointer": "Learn the three regimes — day, night, compensation point — and the net flow each one gives."
+          },
+          "medium": {
+            "restatement": "Day: net CO2 in. Night: net CO2 out. Balance point: net zero.",
+            "analogy": "A bank account with two standing orders — whichever is bigger decides whether the balance grows or shrinks.",
+            "examPointer": "Quote net movement explicitly; examiners award the word."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q1",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q2",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q3",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q4",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q5",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q6",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q7",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q8",
+          "rn_8wtzj5Q4NvmC6hCN::L1::Q9"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "net exchange",
+          "definition": "The overall direction of gas movement once the faster process has set the balance.",
+          "firstLesson": 1
+        },
+        {
+          "term": "compensation point",
+          "definition": "The light intensity at which photosynthesis and respiration run at equal rates, giving zero net exchange.",
+          "firstLesson": 1
+        },
+        {
+          "term": "light intensity",
+          "definition": "The brightness available for photosynthesis; the variable that shifts the balance.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-biology-19/assets/48b1330a3c14-photosynthesis-and-respiration-in-plants.png",
+        "alt": "Plant shown photosynthesising and respiring by day, respiring only by night.",
+        "sourceHeading": "Gas Exchange: Night vs Day",
+        "moduleIds": [
+          "L1"
+        ],
+        "binding": "heading-unique",
+        "caption": "The two regimes of a plant's day"
+      }
+    ]
+  }
+}

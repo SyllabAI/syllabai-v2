@@ -1,0 +1,29 @@
+{
+  "format": "bake-probe-receipt/0.1",
+  "lane": "BIO-STAGEB3",
+  "generated_at_utc": "2026-11-12T20:54:00Z",
+  "operator_trace": "1a1d147b95e4b899",
+  "subject": "post-merge bake probe + live spot-check for the wave-3 hub landing (PR #972 merge cb78eba9)",
+  "targets": [
+    {
+      "note": "rn_zDcyphC9qpScTM69 (wave-3)",
+      "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-biology-19/guided-lessons/rn_zDcyphC9qpScTM69"
+    },
+    {
+      "note": "rn_qRXSsjyzyZsJnc7k (stage-A pilot, calibration)",
+      "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-biology-19/guided-lessons/rn_qRXSsjyzyZsJnc7k"
+    },
+    {
+      "note": "rn_fc4RtMw8kkGWFTrq (wave-2, calibration)",
+      "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-biology-19/guided-lessons/rn_fc4RtMw8kkGWFTrq"
+    }
+  ],
+  "poll_window_utc": "2026-11-12T20:51Z-20:53Z (3 attempts x 3 targets, 60s apart)",
+  "result": "HTTP 402 on EVERY target INCLUDING both calibration notes (x-vercel-error: DEPLOYMENT_DISABLED) \u2014 the wave-1/wave-2 receipt class (allowance cap, site-wide serving halt); plane-level, NOT a wave-3 content defect (a content defect would 404/200-mismatch on wave-3 only while calibrations render)",
+  "disclosures": [
+    "the 402 hits the calibration notes too \u2014 plane-level, NOT a wave-3 content defect",
+    "static-build pickup proof of record: the CI hub gate (next build incl. the content plane) GREEN on the PR head and the merge commit cb78eba9; the runner's G-V loader-path + identity-from-disk probes also GREEN locally at landing",
+    "occurrence-aware spot-check (authored stem x>=1, 'Your answer' counts, 2.1B 0-hit) DEFERRED to plane restore \u2014 rides the wave-1 open item of the same class",
+    "bookkeeping-only: .syllabai/** bytes; zero content/source bytes in this commit"
+  ]
+}
