@@ -1,0 +1,402 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-igcse-economics-25",
+ "qual": "CAMBRIDGE IGCSE ECONOMICS",
+ "source": {
+  "provider": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+  "label": "cie-igcse-economics-25",
+  "method": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) flat-enumerated 2026-11-13T12:53:01Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+  "enumeratedUtc": "2026-11-13T13:23:03Z",
+  "p11": {
+   "provider": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "method": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) flat-enumerated 2026-11-13T12:53:01Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
+  }
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+  "ruledUtc": "2026-11-13T13:23:03Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+  "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+  "rowsApproved": 11,
+  "rowsRejected": 4,
+  "rejects": [
+   {
+    "video": "6ftZ7jlDv4Y",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['economic']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   },
+   {
+    "video": "dU3ftcnuM04",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['diagram', 'economic']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   },
+   {
+    "video": "05s6qSvPbQk",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['economic']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   },
+   {
+    "video": "UENwsh8bAyM",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['economic', 'factor', 'problem', 'production']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 11,
+    "rowsRejected": 4,
+    "rejects": [
+     {
+      "video": "6ftZ7jlDv4Y",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['economic']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     },
+     {
+      "video": "dU3ftcnuM04",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['diagram', 'economic']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     },
+     {
+      "video": "05s6qSvPbQk",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['economic']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     },
+     {
+      "video": "UENwsh8bAyM",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['economic', 'factor', 'problem', 'production']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "5SowCAB6mFE",
+   "title": "IGCSE Economics 0455 Chapter 2 | The allocation of resources | 2023 - 2025 syllabus",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=5SowCAB6mFE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8hSjQ5xZhsE",
+   "title": "IGCSE Economics 0455 | May/June 2021 paper 11 (MCQ)",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=8hSjQ5xZhsE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "A2EuVyibIrc",
+   "title": "How to answer \"Discuss\" questions for IGCSE Economics",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=A2EuVyibIrc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BBSYYKIm_dc",
+   "title": "IGCSE Economics 0455 Chapter 6 | International Trade and Globalisation | 2023 - 2025 syllabus",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=BBSYYKIm_dc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ee5jtz456Wc",
+   "title": "IGCSE Economics 0455 Chapter 4 | Government and the Macroeconomy | 2023 - 2025 syllabus",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=Ee5jtz456Wc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UW9fNdC66z0",
+   "title": "IGCSE Economics 0455: Chapter 4-The Macroeconomic Aims of Government Revision Part 2",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=UW9fNdC66z0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VKRmRLk_FKs",
+   "title": "IGCSE Economics 0455 Chapter 5 | Economic Development | 2023 - 2025 syllabus",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=VKRmRLk_FKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XB0YG1q64Hg",
+   "title": "IGCSE Economics 0455 Chapter 3 | Microeconomic decision makers | 2023 - 2025 syllabus",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=XB0YG1q64Hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "c0THUmmnvUI",
+   "title": "IGCSE Economics 0455 Chapter 1 | The basic economic problem | 2023 - 2025 syllabus",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=c0THUmmnvUI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hF9ZF59_DdE",
+   "title": "IGCSE Economics 0455 Chapter 5 - Economic Development",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=hF9ZF59_DdE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "md5BwxCi7E4",
+   "title": "IGCSE Economics 0455: Chapter 4-The Macroeconomic Aims of Government Revision Part 1",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=md5BwxCi7E4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-economics-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "8hSjQ5xZhsE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"IGCSE Economics 0455 | May/June 2021 paper 11 (MCQ)\"; syllabus/paper code 0455/11 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "BBSYYKIm_dc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 6 marker of a syllabus-structured series narrows the pool to section 6 specs; title binds 6.2.2 'Causes and consequences of changes in globalisation: • c' via token(s) ['economic', 'globalisation', 'international', 'trade'] (df 16); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "VKRmRLk_FKs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 5 marker of a syllabus-structured series narrows the pool to section 5 specs; title binds 5.4.1 'Causes and consequences of international differences: • ' via token(s) ['development', 'economic'] (df 9); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "Ee5jtz456Wc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 4 marker of a syllabus-structured series narrows the pool to section 4 specs; title binds 4.5.5 'Policies to promote economic growth: • the range of poli' via token(s) ['economic', 'government', 'macroeconomy'] (df 28); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "XB0YG1q64Hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 3 marker of a syllabus-structured series narrows the pool to section 3 specs; title binds 3.3.3 'Reasons for differences in wages: • reasons for differen' via token(s) ['decision', 'economic', 'maker', 'microeconomic'] (df 21); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "5SowCAB6mFE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.8.2"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 2 marker of a syllabus-structured series narrows the pool to section 2 specs; title binds 2.8.2 'Arguments for and against the market economic system: • ' via token(s) ['allocation', 'economic', 'resource'] (df 31); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "c0THUmmnvUI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 1 marker of a syllabus-structured series narrows the pool to section 1 specs; title binds 1.4.4 'Shifts of a PPC: • causes and consequences of shifts of ' via token(s) ['economic', 'problem'] (df 11); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "hF9ZF59_DdE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 5 marker of a syllabus-structured series narrows the pool to section 5 specs; title binds 5.4.1 'Causes and consequences of international differences: • ' via token(s) ['development', 'economic'] (df 9); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "UW9fNdC66z0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 4 marker of a syllabus-structured series narrows the pool to section 4 specs; title binds 4.1.1 'Macroeconomic aims: • the macroeconomic aims of governme' via token(s) ['aim', 'economic', 'government', 'macroeconomic'] (df 4); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "md5BwxCi7E4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "Chapter 4 marker of a syllabus-structured series narrows the pool to section 4 specs; title binds 4.1.1 'Macroeconomic aims: • the macroeconomic aims of governme' via token(s) ['aim', 'economic', 'government', 'macroeconomic'] (df 4); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "A2EuVyibIrc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.4.1 'Price mechanism: • how the price mechanism provides answ' via token(s) ['answer'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 113,
+  "specPointsMapped": 8,
+  "specPointsUnmapped": 105,
+  "videosTotal": 11,
+  "videosMapped": 11,
+  "videosUnmapped": 0,
+  "mappingRows": 11,
+  "byConfidence": {
+   "high": 1,
+   "medium": 1,
+   "low": 9
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-igcse-economics-25.json",
+   "sha256": "0fbc6a5e16e73ad2c576f1f58867812b6eadd7af8b3a85b780c542ca27f57723"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-economics-25/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  }
+ },
+ "generatedUtc": "2026-11-13T13:26:09.386Z"
+}

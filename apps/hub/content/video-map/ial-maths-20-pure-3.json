@@ -16,6 +16,11 @@
    "provider": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel)",
    "method": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) flat-enumerated 2026-11-13T10:43:50Z; routing: module-code Tier B anchors + unit.section-marker/module-named Tier A with class-table judgment over every row",
    "enumeratedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "provider": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "method": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) flat-enumerated 2026-11-13T12:53:08Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 384,
+  "rowsApproved": 391,
   "rowsRejected": 12,
   "rejects": [
    {
@@ -252,6 +257,23 @@
       "video": "ND9EsBsqnik",
       "reason": "full-row drop: no class rule matched; best distinctive candidate 5.2 'Integration by recognition of For example, to in' bound only on vocabulary not named by the title (['trigonometric'])",
       "lane": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 7,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "video": "q9yehKF7ljY",
+      "reason": "no-binding (routed-but-unmapped): zero token overlap with the spine in the pre-pass — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
    }
@@ -4480,6 +4502,83 @@
    "lessonUrl": null,
    "levelTag": "ial",
    "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "62Dgt8bSiSY",
+   "title": "Pure 3 January 2021 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=62Dgt8bSiSY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BV6jjvbANaI",
+   "title": "Pure 3 Specimen Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=BV6jjvbANaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MCLekSmidJM",
+   "title": "Pure 3 January 2022 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=MCLekSmidJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "e_zEYiKJALw",
+   "title": "Pure 3 Oct 2020 Edexcel Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=e_zEYiKJALw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m6zBASViAW8",
+   "title": "Pure 3 Jan 2020 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=m6zBASViAW8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sw5Ju5_UWmI",
+   "title": "Pure 3 Sample Assessment Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=sw5Ju5_UWmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uXCzU1xYKco",
+   "title": "Pure 3 October 2021 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=uXCzU1xYKco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -11415,18 +11514,151 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
    "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "MCLekSmidJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 January 2022 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "62Dgt8bSiSY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 January 2021 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "sw5Ju5_UWmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Sample Assessment Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "uXCzU1xYKco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 October 2021 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "e_zEYiKJALw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Oct 2020 Edexcel Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "BV6jjvbANaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Specimen Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "m6zBASViAW8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Jan 2020 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 18,
   "specPointsMapped": 16,
   "specPointsUnmapped": 2,
-  "videosTotal": 384,
-  "videosMapped": 384,
+  "videosTotal": 391,
+  "videosMapped": 391,
   "videosUnmapped": 0,
-  "mappingRows": 384,
+  "mappingRows": 391,
   "byConfidence": {
-   "high": 293,
+   "high": 300,
    "medium": 69,
    "low": 22
   }
@@ -11447,7 +11679,13 @@
    "path": "Videos/drafts/ial-maths-20-pure-3/video-map.draft.external-p10.json",
    "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
    "reviewAppliedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-pure-3/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
   }
  },
- "generatedUtc": "2026-11-13T11:08:13.663Z"
+ "generatedUtc": "2026-11-13T13:26:09.419Z"
 }

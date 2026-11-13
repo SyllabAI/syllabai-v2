@@ -1,0 +1,616 @@
+{
+ "schema": "hub.video-map/1",
+ "course": "cie-as-accounting-21",
+ "qual": "CAMBRIDGE AS ACCOUNTING",
+ "source": {
+  "provider": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel)",
+  "label": "cie-as-accounting-21",
+  "method": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) flat-enumerated 2026-11-13T12:53:09Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+  "enumeratedUtc": "2026-11-13T13:23:03Z",
+  "p11": {
+   "provider": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel)",
+   "method": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) flat-enumerated 2026-11-13T12:53:09Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
+  }
+ },
+ "review": {
+  "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+  "ruledUtc": "2026-11-13T13:23:03Z",
+  "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+  "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+  "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+  "rowsApproved": 19,
+  "rowsRejected": 5,
+  "rejects": [
+   {
+    "video": "JA8BCPGl_Ko",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['accounting', 'costing']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   },
+   {
+    "video": "HY6zWmx-sA4",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['accounting', 'costing']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   },
+   {
+    "video": "HidaRznHXig",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['accounting', 'analysi']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   },
+   {
+    "video": "tIHNGTpinjo",
+    "reason": "no-binding (routed-but-unmapped): zero token overlap with the spine in the pre-pass — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   },
+   {
+    "video": "auSSPGlcw34",
+    "reason": "no-binding (routed-but-unmapped): topic tokens (['record']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+    "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+   }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 19,
+    "rowsRejected": 5,
+    "rejects": [
+     {
+      "video": "JA8BCPGl_Ko",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['accounting', 'costing']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     },
+     {
+      "video": "HY6zWmx-sA4",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['accounting', 'costing']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     },
+     {
+      "video": "HidaRznHXig",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['accounting', 'analysi']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     },
+     {
+      "video": "tIHNGTpinjo",
+      "reason": "no-binding (routed-but-unmapped): zero token overlap with the spine in the pre-pass — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     },
+     {
+      "video": "auSSPGlcw34",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['record']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
+     }
+    ]
+   }
+  ]
+ },
+ "videos": [
+  {
+   "id": "3mlteZglPC0",
+   "title": "Cambridge A Level Accounting- Investment Appraisal (Net Present Value)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=3mlteZglPC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5IlEv4-aW6M",
+   "title": "Cambridge A Level Accounting- Statements of Cash Flows (part 2/3) Past paper question",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=5IlEv4-aW6M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8noKZjvmbVg",
+   "title": "Cambridge A Level Accounting- Statements of Cash Flows (part 1/3)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=8noKZjvmbVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BwrfmzpN6X4",
+   "title": "Cambridge A Level Accounting- Business Purchase and Merger (part 2/5) past paper question",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=BwrfmzpN6X4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HeIZ_1FnDOQ",
+   "title": "Cambridge A Level Accounting- Statements of Cash Flows (part 3/3) past paper question",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=HeIZ_1FnDOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "K4_lYRNZDqM",
+   "title": "Cambridge A Level Accounting- Ratio Analysis (Part 4/4)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=K4_lYRNZDqM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MdEgXT4koGk",
+   "title": "Cambridge A Level Accounting- Ratio Analysis (Part 3/4)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=MdEgXT4koGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RMtYdlsIdr8",
+   "title": "Cambridge A Level Accounting- Standard Costing (Fixed Overhead Variances)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=RMtYdlsIdr8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SvRuwnspDOo",
+   "title": "Cambridge A Level Accounting- Ratio Analysis (Part 2/4)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=SvRuwnspDOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SwMZjOf_JBQ",
+   "title": "Cambridge A Level Accounting- Ratio Analysis- (Part 1/4)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=SwMZjOf_JBQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Tn5lL-v4jCw",
+   "title": "Cambridge A Level Accounting- Investment Appraisal (Time value of money and Discounting Factor)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=Tn5lL-v4jCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Vz3x_yX_Oe4",
+   "title": "Cambridge A Level Accounting- Business Purchase and Merger (part 4/5) past paper question",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=Vz3x_yX_Oe4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XG619oKcVqo",
+   "title": "Cambridge A Level Accounting- Standard Costing (Material and Labour Variances)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=XG619oKcVqo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XwkYtReuqY4",
+   "title": "Cambridge A Level Accounting- Business Purchase and Merger (part 3/5) past paper question",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=XwkYtReuqY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cOD8I5nQgWQ",
+   "title": "Cambridge A Level Accounting- Investment Appraisal (Accounting Rate of Return)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=cOD8I5nQgWQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "heY0vmbIob8",
+   "title": "Cambridge A Level Accounting- Investment Appraisal (Internal Rate of Return and Net Present Value)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=heY0vmbIob8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ixI-0vLgNNE",
+   "title": "Cambridge A Level Accounting- Business purchase and Merger (part 1/5)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=ixI-0vLgNNE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l-f7wYUc52M",
+   "title": "Cambridge A Level Accounting- Business Purchase and Merger (part 5/5) past paper question",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=l-f7wYUc52M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "plDwpIgOsy8",
+   "title": "Cambridge A Level Accounting- Standard Costing (Sales Variances)",
+   "provider": "cambridge-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=plDwpIgOsy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  }
+ ],
+ "mappings": [
+  {
+   "video": "plDwpIgOsy8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.3 'Marginal costing: • how to calculate the contribution of' via token(s) ['accounting', 'costing', 'sale'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "RMtYdlsIdr8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost cent' via token(s) ['accounting', 'costing', 'overhead'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "XG619oKcVqo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.1.1 'Materials and labour: • accounting for material and labo' via token(s) ['accounting', 'labour', 'material'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "heY0vmbIob8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost cent' via token(s) ['accounting', 'rate'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "3mlteZglPC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.1.1 'Materials and labour: • accounting for material and labo' via token(s) ['accounting', 'value'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "Tn5lL-v4jCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.1.1 'Materials and labour: • accounting for material and labo' via token(s) ['accounting', 'time', 'value'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "cOD8I5nQgWQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost cent' via token(s) ['accounting', 'rate'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "K4_lYRNZDqM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.3 'Marginal costing: • how to calculate the contribution of' via token(s) ['accounting', 'analysi', 'ratio'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "MdEgXT4koGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.3 'Marginal costing: • how to calculate the contribution of' via token(s) ['accounting', 'analysi', 'ratio'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "5IlEv4-aW6M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4.3 'Bank reconciliation statements: • updating of cash books' via token(s) ['accounting', 'cash', 'statement'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "SvRuwnspDOo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.3 'Marginal costing: • how to calculate the contribution of' via token(s) ['accounting', 'analysi', 'ratio'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "SwMZjOf_JBQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.3 'Marginal costing: • how to calculate the contribution of' via token(s) ['accounting', 'analysi', 'ratio'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "l-f7wYUc52M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2.1 'The accounting system: • the principles of the double en' via token(s) ['accounting', 'busines', 'purchase'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "Vz3x_yX_Oe4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2.1 'The accounting system: • the principles of the double en' via token(s) ['accounting', 'busines', 'purchase'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "XwkYtReuqY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2.1 'The accounting system: • the principles of the double en' via token(s) ['accounting', 'busines', 'purchase'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "BwrfmzpN6X4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2.1 'The accounting system: • the principles of the double en' via token(s) ['accounting', 'busines', 'purchase'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "ixI-0vLgNNE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2.1 'The accounting system: • the principles of the double en' via token(s) ['accounting', 'busines', 'purchase'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "HeIZ_1FnDOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4.3 'Bank reconciliation statements: • updating of cash books' via token(s) ['accounting', 'cash', 'statement'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "8noKZjvmbVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4.3 'Bank reconciliation statements: • updating of cash books' via token(s) ['accounting', 'cash', 'statement'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  }
+ ],
+ "coverage": {
+  "specPointsTotal": 19,
+  "specPointsMapped": 5,
+  "specPointsUnmapped": 14,
+  "videosTotal": 19,
+  "videosMapped": 19,
+  "videosUnmapped": 0,
+  "mappingRows": 19,
+  "byConfidence": {
+   "high": 0,
+   "medium": 19,
+   "low": 0
+  }
+ },
+ "inputs": {
+  "spine": {
+   "file": "apps/hub/spines/cie-as-accounting-21.json",
+   "sha256": "a334aa4f4d0e1cbf16ed5cba448476b59de598bb9d96812a3b1fc6eee0c05d7c"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-as-accounting-21/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  }
+ },
+ "generatedUtc": "2026-11-13T13:26:09.368Z"
+}
