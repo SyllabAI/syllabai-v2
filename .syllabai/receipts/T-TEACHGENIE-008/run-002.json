@@ -1,0 +1,61 @@
+{
+  "task": "T-TEACHGENIE-008",
+  "run": "run-002",
+  "date": "2026-11-13",
+  "operator_order": {
+    "orders": [
+      "open run-002 (the landing footnote joins the conditional ratification footnote law — the landing.tsx:186-189 unconditional 'your teacher can ratify' line was flagged in the UI/UX consistency audit as the same class of copy run-001 conditioned in picker + review)"
+    ],
+    "channel": "zai-web",
+    "session": "web-7b4a27df-7d97-438a-849c-05a9c0003aa8",
+    "chat": "0fade780-1ab5-4951-bfd9-13f43e897f40",
+    "trace": "1a1d3c16848803f5"
+  },
+  "change": {
+    "summary": "the landing hero footnote joins the 008 conditional law: it renders the teacher claim ONLY on the API's affirmative classroomStudent flag; the classroom variant is byte-identical to the retired unconditional line, the independent variant is the honest neutral line (no teacher claim, no counts promise, no record claim). Zero store/API surface added — the run-001 envelope already carries the flag end-to-end",
+    "files": [
+      "apps/hub/src/components/hub/teach-genie/util.ts — landingEvidenceFootnote (pure helper, law-tested; the 008 copy family is now picker/review/landing)",
+      "apps/hub/src/components/hub/teach-genie/landing.tsx — footer renders landingEvidenceFootnote(classroomStudent) (the unconditional copy is retired as the default); classroomStudent prop + header note",
+      "apps/hub/src/components/hub/teach-genie/teach-genie-client.tsx — classroomStudent threaded to TeachGenieLanding (the state already existed from run-001; set ONLY on affirmative true)",
+      "apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts — the run-002 landing law test (byte-identical classroom pin + neutral independent assertions)",
+      ".syllabai/tasks/T-TEACHGENIE-008.yaml — status: run-002 stacked on run-001 PR #978; scope.allowed +landing.tsx",
+      ".syllabai/receipts/T-TEACHGENIE-008/run-002.json — this receipt"
+    ],
+    "copy": {
+      "classroom_landing": "What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review is the correction of record, so read it even when everything ticks green.",
+      "classroom_landing_note": "byte-identical to the pre-run-002 unconditional landing line — retired as the default, preserved as the classroom voice",
+      "independent_landing": "What you cover is saved as an AI_SUGGESTED suggestion — the end-of-session review shows what landed and what to tighten, so read it even when everything ticks green.",
+      "independent_landing_note": "no teacher claim / no ratify / no counts promise / no record claim (auto-commit is NOT live); 'what landed and what to tighten' reuses the review PendingCard's established phrase (review-screen.tsx) — nothing new promised"
+    }
+  },
+  "evidence": {
+    "predicate_of_record": "the SAME run-001 flag of record: the API's affirmative classroomStudent (EXISTS over class_members — the teachermarking predicate; membership rows are the single source of truth, un-enrollment is the only revocation). This run adds ZERO store/API bytes — listSessions already returns the envelope flag",
+    "gates": {
+      "hub_typecheck": "bunx tsc --noEmit (apps/hub) exit 0",
+      "hub_teach_genie_tests": "bun test apps/hub/src/components/hub/teach-genie/ → 11 pass, 0 fail, 51 expects across 2 files (incl. the new run-002 landing law test)",
+      "hub_lint": "eslint on the touched files (util.ts, landing.tsx, teach-genie-client.tsx, teach-genie-laws.test.ts): clean, exit 0 (run-001's 2 PRE-EXISTING session-screen.tsx errors are untouched — session-screen.tsx is not a run-002 file)",
+      "rebase_recheck": "gates RE-RUN on the rebased tree (branch rebased onto main d0e57d15 after #978 merge-merged; #985/#988 landed in between) — identical results: hub tsc exit 0, 11 pass / 0 fail / 51 expects, eslint clean exit 0"
+    },
+    "pins_checked": {
+      "tests": [
+        "apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts",
+        "apps/hub/src/components/hub/teach-genie/note-picker-laws.test.ts",
+        "apps/api/test/teach-me/behavioural.test.ts",
+        "apps/api/test/teach-me/update-session-seam.test.ts"
+      ],
+      "result": "zero pins on the landing string outside the component: rg 'your teacher can ratify|correction of record' over apps/hub hits only landing.tsx:187-188 itself (the teach-me review.tsx/player.tsx hits are unrouted header comments; spec-anchors.json is unrelated content); .syllabai and apps/api/test return zero hits; no golden pins"
+    }
+  },
+  "scope_disclosures": [
+    "the PendingCard's \"SillyAI's teacher is writing up what landed and what to tighten\" (review-screen.tsx) was CONSIDERED and left byte-identical for both voices: persona voice about the review's authorship, not a claim that the learner has a classroom teacher, and it promises no ratification",
+    "the 'Spec verdicts of record:' tail stays unconditional in both voices (run-001 decision: the verdicts are the same facts for every learner)",
+    "stacked lane RESOLVED: authored against t-teachgenie-008/run-001 (e75a1eff) as a stacked branch; #978 then MERGE-merged as d0e57d15 (a merge commit — the run-001 commit stays in main's history, it did not squash away), so this branch was rebased onto main d0e57d15 and the gates re-run on the current tree; PR #987 head = the rebased commit",
+    "worklog entry WITHHELD from this PR (fleet merge-conflict lane) — re-files post-merge per the T-COPYFIX-001→#967 precedent",
+    "bun install used in the authoring sandbox for the gates above; CI is the gate of record on the PR head",
+    "author_merge: false — awaiting operator merge order"
+  ],
+  "reversibility": "revert the PR, or render landingEvidenceFootnote(true) unconditionally — a one-line restore of the unconditional landing copy",
+  "branch": "t-teachgenie-008/run-002",
+  "base": "authored against t-teachgenie-008/run-001 e75a1eff401cb6bb20d6ecd4d0f0c4b8985158c0 (main at df77b2a679c4982eb18255887b9fa27c3f407892 at authoring); REBASED onto main d0e57d15beeb8e0712303fbe3ba23e0d30545442 after #978 merged (2026-11-13T08:40:03Z, merge commit) — PR #987 of record",
+  "author_merge": false
+}

@@ -288,6 +288,7 @@ export function TeachGenieClient({ course, courseLabel, noteTree }: TeachGenieCl
           history={history}
           preview={preview}
           starting={busy}
+          classroomStudent={classroomStudent}
           onStart={() => setView({ name: "picker" })}
           onOpenSession={openSession}
         />

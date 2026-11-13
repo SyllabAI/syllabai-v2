@@ -10,13 +10,18 @@
  * How-it-works card, then Recent sessions as a house list section
  * (UTC-day-grouped rows with status dot + time-ago). Every token is a hub
  * token; the MG palette and left rail are retired.
+ *
+ * T-TEACHGENIE-008 run-002: the landing footnote joins the conditional
+ * ratification law — the teacher claim renders ONLY on the API's
+ * affirmative classroomStudent flag (picker + review went conditional in
+ * run-001); unknown/error keeps the neutral independent line.
  */
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { BabyGenieAvatar } from "./baby-genie";
-import { statusDotClass, statusLabel, timeAgo } from "./util";
+import { landingEvidenceFootnote, statusDotClass, statusLabel, timeAgo } from "./util";
 import type { SessionHistoryItem } from "@syllabai/contracts";
 
 export interface TeachGeniePreviewRow {
@@ -30,6 +35,11 @@ export interface TeachGenieLandingProps {
   history: SessionHistoryItem[] | null;
   preview: TeachGeniePreviewRow[] | null;
   starting: boolean;
+  /** T-TEACHGENIE-008 run-002 — the API's affirmative enrollment flag: true
+   *  ONLY for a confirmed class_members row. False or unknown renders the
+   *  neutral independent footnote — never a teacher claim to a learner
+   *  without a teacher. */
+  classroomStudent: boolean;
   onStart: () => void;
   onOpenSession: (sessionId: string) => void;
 }
@@ -39,6 +49,7 @@ export function TeachGenieLanding({
   history,
   preview,
   starting,
+  classroomStudent,
   onStart,
   onOpenSession,
 }: TeachGenieLandingProps) {
@@ -184,8 +195,7 @@ export function TeachGenieLanding({
       )}
 
       <p className="text-center text-2xs leading-relaxed text-muted-foreground">
-        What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review
-        is the correction of record, so read it even when everything ticks green.
+        {landingEvidenceFootnote(classroomStudent)}
       </p>
     </div>
   );
