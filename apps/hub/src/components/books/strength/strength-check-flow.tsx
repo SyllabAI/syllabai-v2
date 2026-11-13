@@ -182,11 +182,11 @@ export function StrengthCheckFlow({ documentId, unit, unitLabel, checks }: FlowP
                     onClick={() => choose(o.id)}
                     disabled={reveal}
                     className={[
-                      "flex w-full items-start gap-3 rounded-md border px-3 py-2.5 text-left text-sm transition-colors",
+                      "flex w-full items-start gap-3 rounded-md border px-3 py-2.5 text-left text-sm transition-colors duration-(--motion-duration-fast) ease-motion",
                       reveal && isCorrectOption
-                        ? "border-emerald-500/60 bg-emerald-500/10"
+                        ? "border-emerald-500/60 bg-emerald-500/10 dark:border-emerald-500/40 dark:bg-emerald-500/15"
                         : reveal && chosen
-                          ? "border-red-500/60 bg-red-500/10"
+                          ? "border-red-500/60 bg-red-500/10 dark:border-red-500/40 dark:bg-red-500/15"
                           : chosen
                             ? "border-primary/60 bg-primary/5"
                             : "hover:bg-muted/60",
@@ -198,10 +198,10 @@ export function StrengthCheckFlow({ documentId, unit, unitLabel, checks }: FlowP
                     </span>
                     <span className="min-w-0 flex-1">{o.text}</span>
                     {reveal && isCorrectOption && (
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden />
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
                     )}
                     {reveal && chosen && !isCorrectOption && (
-                      <X className="mt-0.5 h-4 w-4 shrink-0 text-red-600" aria-hidden />
+                      <X className="mt-0.5 h-4 w-4 shrink-0 text-red-600 dark:text-red-400" aria-hidden />
                     )}
                   </button>
                 </li>
@@ -223,7 +223,7 @@ export function StrengthCheckFlow({ documentId, unit, unitLabel, checks }: FlowP
               <p
                 className={[
                   "text-sm font-semibold",
-                  state.result.correct ? "text-emerald-600" : "text-red-600",
+                  state.result.correct ? "text-emerald-600 dark:text-emerald-400" : "text-red-600 dark:text-red-400",
                 ].join(" ")}
               >
                 {state.result.correct

@@ -1,0 +1,50 @@
+{
+  "program": "Lesson Reader Visual Overhaul (WS1–WS7) — plan docs/books/PLAN-LESSON-VISUAL-v1.2.md",
+  "date": "2026-11-13",
+  "status": "ALL LANES LANDED",
+  "lanes": {
+    "WS1": "Surface anatomy & nested radius — MERGED 4c958180 (PR #955): the 4 bare-rounded Lesson chips to themed rounded-sm; callout padding/label anatomy unified; 7 remaining bare-rounded sites disclosed to WS6.",
+    "WS2": "Motion tokens — MERGED 0cb01618 (PR #961): --motion-duration-fast/--motion-ease tokens + the reduced-motion 0ms law; the reader's 8 interactive sites tokened with rendered identity.",
+    "WS3": "Interactive states checklist — MERGED 7fe60551 (PR #928): hover+focus-visible rings across the reader's interactive set (border-opacity ladder /30-/50-/60).",
+    "WS4": "Reading measure & prose typography — MERGED 01db45c7 (PR #971): max-w-[36rem] measure + the text-base rung for all three prose roles.",
+    "WS5": "Section rail & progress tracker — MERGED 1c90e11e (PR #974): the shared Progress indicator joins the motion-token law (rendered identity, 4 consumers).",
+    "WS6": "In-lesson widget zones — LANDED PR #980 (head f69e009a, CI ALL GREEN, awaiting merge order): the 7 bare-rounded sites themed; the states checklist reaches the widget set; explicit token transition lists throughout (13 sites, 5 files).",
+    "WS7": "Dark-mode parity & final walk — LANDED PR of record <this branch>: strength-check-flow's 5 unpaired palette sites dark-paired + its bare transition tokened; join-census 88/88 paired; the full-surface walk of record below."
+  },
+  "the_full_surface_walk_of_record": {
+    "method": "per-law rows across every program surface; gate = the receipts' per-lane proofs + this window's census/compile/battery gates; visual record = download/t-book-026/ + the lanes' CI-verified Vercel previews",
+    "prose_column_and_box_callouts": {
+      "radius": "Box rounded-r-md signature byte-kept; nested md->sm step-down under all four theme ladders (WS1)",
+      "type": "text-base + max-w-[36rem] measure, leading-relaxed and rhythm byte-kept (WS4)",
+      "states": "hover + focus-visible rings on derived links/breadcrumb/footer buttons (WS3)",
+      "motion": "explicit token lists on the 8 interactive sites (WS2)",
+      "dark": "semantic tokens; census 0 unpaired"
+    },
+    "section_rail_and_tracker": {
+      "radius": "rounded-sm anchor pills (WS1)",
+      "states": "full WS3 voice on anchors",
+      "motion": "WS2 tokens on anchors; the tracker bar tokened (WS5, rendered identity)",
+      "dark": "semantic tokens; census 0 unpaired"
+    },
+    "widget_zones": {
+      "radius": "the 7 bare-rounded sites themed (WS6, re-census 0)",
+      "states": "full WS3/ui voices incl. the two raw inputs' ui/input focus rings (WS6)",
+      "motion": "explicit token lists on 13 sites (WS6)",
+      "dark": "verdict chips/lines all dark-paired; census 0 unpaired"
+    },
+    "glossary": {
+      "anatomy": "strip padding/label unified (WS1); chips display-only; dark-safe"
+    },
+    "strength_flow": {
+      "dark": "5 sites dark-paired this lane (WS7)",
+      "motion": "option buttons tokened this lane (WS7 walk finding)",
+      "states": "house Button/voice via ui primitives"
+    },
+    "shared_chrome": {
+      "ui_primitives": "Button/Progress/Input/RadioGroup carry themed states+focus+motion+dark voices; WS5/WS6/WS7 fixes ride the primitives where shared (rendered-identity disclosures per lane)"
+    }
+  },
+  "surviving_laws_of_record": "nested radius law · motion tokens (durations/easings as tokens, explicit lists, prefers-reduced-motion 0ms) · states checklist (hover/focus-visible/active-or-disabled) · reader law (max-w-[36rem] + text-base, fonts unchanged Q4) · honest-absent (no faked data; scroll-spy disclosed behavior) · code+receipt-only branches (worklog-withdrawal) · CI verify+hub gate of record",
+  "known_disclosed_defects_unchanged": "pre-existing battery fail class (5 files: question-cla-threads, ink-layer-holder-selfheal, api.v2-surface, paper-marks-regrade, ugm.render) · red-vs-rose palette inconsistency (strength vs widgets) · candy/plum 4 raw beziers dedupe candidate · V4 lint 103 out-of-lane · u1-c09 lesson.yaml · lessonctl frozen-ref",
+  "merge_state": "WS1/WS2/WS4/WS5 merged (4c958180, 0cb01618, 01db45c7, 1c90e11e); WS6 PR #980 open awaiting merge order; WS7 PR of record open awaiting merge order; no self-merge, fetch-first at every step"
+}
