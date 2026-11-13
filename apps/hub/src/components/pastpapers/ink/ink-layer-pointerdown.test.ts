@@ -125,6 +125,17 @@ async function mountInkCanvas(overrides: Partial<InkCanvasProps> = {}) {
     onCommitMove: commits.move,
     ...overrides,
   };
+  // T-HUB-INK-BRK run-003: the gesture handlers read the LIVE tools
+  // mirror (the ref InkLayer writes synchronously at arm time) instead of
+  // the closed-over `mode` prop. The harness mirrors the production
+  // shape: the ref is keyed off the same props the test arms with — but
+  // an override-provided liveToolsRef (the dead-window pin arms through
+  // the mirror directly) wins.
+  if (!props.liveToolsRef) {
+    props.liveToolsRef = {
+      current: { mode: props.mode, color: props.color, widthFrac: props.widthFrac },
+    };
+  }
   await act(async () => {
     root.render(React.createElement(InkCanvas, props));
   });
@@ -690,5 +701,35 @@ describe("T-HUB-INK-BRK — the draft-race fix and the draw-armed marker (the In
     }
     const { canvas } = await mountInkCanvas({ mode: "select" });
     expect(canvas.hasAttribute("data-ink-drawing")).toBe(false);
+  });
+
+  // T-HUB-INK-BRK run-003 — the desktop dead-window law. On lg the first
+  // 28-page raster burst starves the armTool re-render for seconds; the
+  // handlers used to read the stale `mode` closure, so a tool armed in
+  // that window did NOTHING (proven live 2026-11-13: tap dead at t0,
+  // alive at t+3s). The pin: arming through the LIVE mirror (no re-render
+  // — exactly what the starved window looks like to the canvas) routes
+  // the gesture immediately.
+  test("(h) arming through the live mirror routes the gesture WITHOUT a re-render (the desktop raster-burst dead window)", async () => {
+    const liveToolsRef = {
+      current: { mode: "select" as InkCanvasProps["mode"], color: "black" as InkColor, widthFrac: 0.0038 },
+    };
+    const { canvas, container, commits } = await mountInkCanvas({ mode: "select", liveToolsRef });
+    // the window between the arming click and the starved re-render: the
+    // mirror says text, the props still say select.
+    liveToolsRef.current.mode = "text";
+    const press = pressPointerDown(canvas, { clientX: 106, clientY: 82 });
+    await dispatchOn(canvas, press.ev);
+    expect(press.ev.defaultPrevented).toBe(true);
+    expect(queryDraft(container, "New text annotation")).not.toBeNull();
+    // and the mirror twin: a pen armed the same way commits a stroke
+    await lastUnmount!();
+    liveToolsRef.current.mode = "pen";
+    const second = await mountInkCanvas({ mode: "select", liveToolsRef });
+    const down = pressPointerDown(second.canvas, { clientX: 50, clientY: 50 });
+    await dispatchOn(second.canvas, down.ev);
+    await dispatchOn(second.canvas, jsdomMouseEvent("pointermove", { bubbles: true, clientX: 120, clientY: 90 }));
+    await dispatchOn(second.canvas, jsdomMouseEvent("pointerup", { bubbles: true, clientX: 140, clientY: 100 }));
+    expect(second.commits.stroke).toHaveBeenCalledTimes(1);
   });
 });
