@@ -25,11 +25,13 @@ from pathlib import Path
 
 CLONE = Path('/home/z/my-project/work/syllabai-v2')
 BASE = '24e6f5fd6acef778b459be9fab0e76e3c529c8d7'
-MAIN_TIP = '4cbd95f4bfb57f15743af09eb32c59c34d6028c9'
+MAIN_TIP = '0ff74eb3478f6bd257474ac783c28e5d727af8ba'
 ADV1_TIP = '540d8ea4a103e335cd02fc6f9c1f62c18a73a24f'   # 24e6f5fd..540d8ea4 (the 14-file advance)
 ADV2_FILES = {'apps/api/src/services/learner-pdf-drawings/index.selfheal.test.ts',
               'apps/api/src/services/learner-pdf-drawings/index.ts'}   # 540d8ea4..4cbd95f4
-UNION1, UNION2 = 'e337983a9f351a83f211ec1c9dc036d6018e82df', 'a4ffd60a'
+ADV3_FILES = {'.github/workflows/t-hub-ink-brk-db-heal.yml', '.github/workflows/t-vercel-api-diag.yml',
+              'apps/api/scripts/ink-wedge-heal.ts'}   # 4cbd95f4..0ff74eb3 (the DB-heal wave)
+UNION1, UNION2, UNION3 = 'e337983a9f351a83f211ec1c9dc036d6018e82df', 'a4ffd60a', '5018edc5'
 SURGERY, RECEIPTS = '47f835c8', '7e78d091'
 BATTERY = '.syllabai/lane-artifacts/RN-DEBRIS-11/run-023/scripts/rn23_review_battery.py'
 POSTREVIEW = '.syllabai/receipts/RN-DEBRIS-11/run-023-postReview.json'
@@ -50,21 +52,23 @@ def main():
     res['B4_chain'] = chain
     head8 = head[:8]
     assert chain[0] == head8, chain
-    # chain[1] (battery fix), chain[2] (battery) asserted by scope below; the unions by sha
-    assert chain[2] == 'a4ffd60a' and chain[3] == 'e337983a' and \
-           chain[4] == '7e78d091' and chain[5] == '47f835c8', chain
-    assert len(chain) == 6, f'expected 6 first-parent commits, got {len(chain)}'
+    # chain[1] (battery fix), chain[2] (battery) asserted by scope below; the unions by sha/scope
+    assert chain[2] == '5018edc5' and chain[3] == 'a4ffd60a' and chain[4] == 'e337983a' and \
+           chain[5] == '7e78d091' and chain[6] == '47f835c8', chain
+    assert len(chain) == 7, f'expected 7 first-parent commits, got {len(chain)}'
     for sha, p0, p1 in (('e337983a', '7e78d091', ADV1_TIP),):
         ps = git('show', '-s', '--format=%P', sha).split()
         assert len(ps) == 2 and ps[0].startswith(p0) and ps[1] == p1, f'union {sha}: {ps}'
     ps2 = git('show', '-s', '--format=%P', 'a4ffd60a').split()
     assert len(ps2) == 2 and ps2[0].startswith('e337983a') and ps2[1] == MAIN_TIP, f'union2: {ps2}'
     fixscope = set(git('diff', '--name-only', f'{chain[2]}..{chain[1]}').splitlines())
-    assert fixscope == {BATTERY}, f'battery-fix commit scope drift: {fixscope}'
+    assert fixscope == {BATTERY, POSTREVIEW}, f'battery-fix commit scope drift: {fixscope}'
     bscope = set(git('diff', '--name-only', f'{chain[3]}..{chain[2]}').splitlines())
     assert bscope == {BATTERY, POSTREVIEW}, f'battery commit scope drift: {bscope}'
-    print(f'B4 PASS: 6-commit first-parent chain; both unions 2-parent with pinned parents; '
-          f'the battery commit touches exactly [battery, postReview]; the fix commit touches exactly [battery]')
+    ps3 = git('show', '-s', '--format=%P', '5018edc5').split()
+    assert len(ps3) == 2 and ps3[0].startswith('6cd7a246') and ps3[1] == MAIN_TIP, f'union3: {ps3}'
+    print(f'B4 PASS: 7-commit first-parent chain; all three unions 2-parent with pinned parents; '
+          f'the battery commit touches exactly [battery, postReview]; the fix commit too (the receipt\'s chain line + the script fix)')
 
     # B1 net diff path set + the union delta law
     names = set(git('diff', '--name-only', f'{MAIN_TIP}..HEAD').splitlines())
@@ -106,10 +110,10 @@ def main():
     }
     assert names == EXPECTED_OWN, f'PR path-set drift: extra={names-EXPECTED_OWN} missing={EXPECTED_OWN-names}'
     # each union's delta vs its FIRST parent == exactly that round's main advance
-    ud1 = set(git('diff', '--name-only', f'{chain[3]}..{UNION1[:8]}').splitlines())
+    ud1 = set(git('diff', '--name-only', f'{chain[4]}..{chain[3]}').splitlines())
     adv1 = set(git('diff', '--name-only', f'{BASE}..{ADV1_TIP}').splitlines())
     assert ud1 == adv1, f'union#1 delta != advance: {ud1 ^ adv1}'
-    ud2 = set(git('diff', '--name-only', f'{UNION1[:8]}..a4ffd60a').splitlines())
+    ud2 = set(git('diff', '--name-only', f'{chain[3]}..{chain[2]}').splitlines())
     adv2 = set(git('diff', '--name-only', f'{ADV1_TIP}..{MAIN_TIP}').splitlines())
     assert ud2 == adv2 == ADV2_FILES, f'union#2 delta != advance: {ud2 ^ adv2 ^ ADV2_FILES}'
     # and vs its SECOND parent == exactly the branch's own pre-battery path set
