@@ -1,0 +1,92 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-2
+  title: 'SME picker layer wave 9, tranche 2 — the Revision-Notes picker mirror
+    for the CIE A-level sciences-25 trio (biology 9700 / chemistry 9701 /
+    physics 9702; the #999 merge record''s named next-tranche queue: "A-level
+    sciences-25 (chemistry-25 169, physics-25 95)" — same build recipe, one
+    coherent family)'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 tranche 2 after tranche 1
+    #999; the W1-W8 waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W9-1, T-SME-SEL-W8-1, T-SME-SEL-W7-1, T-SME-SEL-W6-1,
+    T-SME-SEL-W5-1, T-SME-SEL-W4-1, T-SME-SEL-W3-1, T-SME-SEL-COSM-1,
+    T-SME-SEL-W2-1, T-SME-SEL-W1-1]
+  scope:
+    allowed:
+    - apps/hub/content/cie-a-level-biology-25/curriculum.json (+63
+      SME_REFERENCE nodes append-only: 19 section rows + 44 topic rows,
+      verbatim from the live Revision-Notes picker fetch 2026-11-13;
+      removal round-trip asserted byte-identical)
+    - apps/hub/content/cie-a-level-chemistry-25/curriculum.json (+127: 37+90)
+    - apps/hub/content/cie-a-level-physics-25/curriculum.json (+101: 25+76)
+    - apps/hub/scripts/sme-wave9-fixtures.json (MERGED — tranche-1 blocks
+      byte-preserved; 81 sections / 210 rows appended)
+    - apps/hub/scripts/verify_sme_wave9.ts (header + DRIFT_BY_COURSE doc
+      rows for the trio — zero drift, empty sets)
+    - apps/hub/scripts/verify_sme_wave8.ts (fleet-safety probe rotation:
+      cie-a-level-chemistry-25 -> cie-as-chemistry-25, disclosed
+      pin-refresh class — the former probe GAINED its SME layer here)
+    - .syllabai/tasks/T-SME-SEL-W9-2.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-2/run-001.md + lane artifacts + both worklogs
+      (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 9700/9701/9702 spines (321/484/405 official nodes
+      byte-untouched — family counts + per-node digest pinned in the
+      fixtures and asserted by the gate)
+    - any set home, question content, note content, flashcard
+    - src/ (ZERO-CODE tranche: the wave-8 mirror law renders smeSections
+      generically on both selectors; the appends alone light them up)
+  evidence:
+  - baseline of record (both census engines at main 70f1af92, post-tranche-1
+    main having advanced 2,099 commits from the #999 merge): 106
+    note-bearing courses / 9,151 notes; resolved 2,721 (the 31 layered
+    courses = 27 W8 + 4 tranche-1); user-facing loose 6,330 on the 75
+    no-layer courses (+1 vs the 6,329 the #999 record carried — other
+    lanes' corpus drift, disclosed); official-spine loose 1,634 on 75
+  - tranche selection: the named next-tranche queue — the CIE A-level
+    sciences-25 trio, ranks 1-3 of the user-facing metric (bio 239 / chem
+    239 / phys 201) and the official-spine metric's rank-1 chemistry-25
+    (169) + rank-3 physics-25 (95); 679 notes / 317 sets, one coherent
+    family
+  - live Revision-Notes picker fetches 2026-11-13 (polite curl,
+    __NEXT_DATA__): bio-25 19 sections/44 topics/239 subtopics; chem-25
+    37/90/239; phys-25 25/76/201 — subtopics == corpus notes per course
+    (239/239/201), the corpus was built 1:1 from the live tree
+  - bijection audit of record (lane w9t2_live_audit.py): 0 note slugs
+    missing, 0 set slugs missing, 0 title mismatches, 0 note sectionSlug
+    mismatches, 0 duplicate topic slugs per course; ZERO live-only drift
+    rows (tranche 1 had the set-1-fl pair on 0580; the trio has none)
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS extended to 7 courses
+    (126 checks / 0 failures): spine family counts + official-node digests
+    intact (321/484/405); 81 section rows + 210 topic rows all
+    SME_REFERENCE verbatim; per-row CORPUS note+set counts pinned (210 rows
+    x 2 dimensions); all 679 notes resolve via smeRowOfNote; all 317 sets
+    resolve via smeRowOfQuestionSet; drift rows exactly documented (none on
+    the trio); deep links resolve; official tree.topics carries zero SME
+    codes; tranche-1 fixture blocks byte-preserved (asserted by the
+    builder)
+  - verify_sme_wave8 PASS after the disclosed probe rotation; wave1-5 +
+    wave7 + cosmetics1 PASS; wire_r0 PASS (2,574 placed / 0 unplaced);
+    corpus23a PASS; prebuild chain PASS (flashcard-sync, cie bundles,
+    gradeb, subject-identity 106/106)
+  - hub lib battery (src/lib) at the lane tree: fail set comm -3
+    BYTE-EQUAL to the pristine 70f1af92 in-repo detached-checkout baseline
+    (T-UGM-RENDER-1 katex red + dual-run posture x4 + requestPartRegrade +
+    store laws x3 — all other lanes' surfaces on the advanced tip;
+    tranche-1's 2-fail set grew to 11 named fails via the 2,099-commit
+    advance, none corpus-spec related)
+  - KNOWN PRE-EXISTING debts disclosed NOT fixed here: verify_sme_wave6 2x
+    "spec points 34 != 36" (RN-DEBRIS-11 run-023 class, W6-1 run-003
+    pin-refresh queued); hub tsc 1 error "Cannot find module 'jsdom'" from
+    the ink harness (#1000) — byte-equal on the pristine tip baseline,
+    CI-green (verify/hub/census all success on 70f1af92), install-coverage
+    artifact per the #1001 receipt's documented class, zero contact with
+    this lane's files
