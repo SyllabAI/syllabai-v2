@@ -50,25 +50,24 @@ def main():
     res['B4_chain'] = chain
     head8 = head[:8]
     assert chain[0] == head8, chain
-    # chain[1] (union#2) asserted by sha prefix; chain[0] (battery) by scope below
-    assert chain[1] == 'a4ffd60a' and chain[2] == 'e337983a' and \
-           chain[3] == '7e78d091' and chain[4] == '47f835c8', chain
-    assert len(chain) == 5, f'expected 5 first-parent commits, got {len(chain)}'
+    # chain[1] (battery fix), chain[2] (battery) asserted by scope below; the unions by sha
+    assert chain[2] == 'a4ffd60a' and chain[3] == 'e337983a' and \
+           chain[4] == '7e78d091' and chain[5] == '47f835c8', chain
+    assert len(chain) == 6, f'expected 6 first-parent commits, got {len(chain)}'
     for sha, p0, p1 in (('e337983a', '7e78d091', ADV1_TIP),):
         ps = git('show', '-s', '--format=%P', sha).split()
         assert len(ps) == 2 and ps[0].startswith(p0) and ps[1] == p1, f'union {sha}: {ps}'
     ps2 = git('show', '-s', '--format=%P', 'a4ffd60a').split()
     assert len(ps2) == 2 and ps2[0].startswith('e337983a') and ps2[1] == MAIN_TIP, f'union2: {ps2}'
-    bscope = set(git('diff', '--name-only', f'{chain[1]}..{chain[0]}').splitlines())
+    fixscope = set(git('diff', '--name-only', f'{chain[2]}..{chain[1]}').splitlines())
+    assert fixscope == {BATTERY}, f'battery-fix commit scope drift: {fixscope}'
+    bscope = set(git('diff', '--name-only', f'{chain[3]}..{chain[2]}').splitlines())
     assert bscope == {BATTERY, POSTREVIEW}, f'battery commit scope drift: {bscope}'
-    print(f'B4 PASS: 5-commit first-parent chain; both unions 2-parent with pinned parents; '
-          f'the battery commit touches exactly [battery, postReview]')
+    print(f'B4 PASS: 6-commit first-parent chain; both unions 2-parent with pinned parents; '
+          f'the battery commit touches exactly [battery, postReview]; the fix commit touches exactly [battery]')
 
     # B1 net diff path set + the union delta law
     names = set(git('diff', '--name-only', f'{MAIN_TIP}..HEAD').splitlines())
-    PR_PATHS = (set(git('diff', '--name-only', f'{MAIN_TIP}..{UNION2}'.replace(UNION2, 'a4ffd60a')).splitlines()) if False else None)
-    own = set(git('diff', '--name-only', f'{MAIN_TIP}..a4ffd60a').splitlines())
-    assert names == own, f'net diff drift: {names ^ own}'
     EXPECTED_OWN = {
         '.syllabai/lane-artifacts/RN-DEBRIS-11/run-023/apply_manifest_r0.json',
         '.syllabai/lane-artifacts/RN-DEBRIS-11/run-023/gates_r0.json',
