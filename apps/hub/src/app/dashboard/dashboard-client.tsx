@@ -756,7 +756,14 @@ export function DashboardClient({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+            {/* Base band needs an explicit shrinkable column: grid-cols-1 =
+                repeat(1, minmax(0,1fr)). Without it the implicit auto track
+                adopts the cards' nowrap truncate min-content (~394 px at a
+                390 px viewport) and the dashboard side-scrolls 20 px —
+                visual audit V-1, 2026-11-13. The sm/2xl bands are already
+                minmax(0,1fr); the terminator-law spans are sm:/2xl:-prefixed
+                so this base change cannot touch them. */}
             {mySubjects.map((c) => (
               <SubjectCard
                 key={c.slug}
