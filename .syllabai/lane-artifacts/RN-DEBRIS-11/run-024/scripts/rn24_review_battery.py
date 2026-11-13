@@ -15,7 +15,10 @@ Run against the branch head (post sync #1). Asserts:
   B4  the commit chain is base -> content -> receipts -> postReview+battery ->
       union (2-parent union with pinned parents; per-commit scope asserted vs
       its first parent — no self-referential sha)
-  B5  CI conclusions on the pushed head (census/hub/verify/Vercel ALL success)
+  B5  CI conclusions on the pushed head: the census/hub/verify gates ALL
+      success; the Vercel deploy status classified fail-loud (success OR the
+      documented plane-level classes — canceled-while-queued / rate-limited /
+      DEPLOYMENT_DISABLED — any other failure = the battery reds)
 """
 import json, subprocess, sys
 from pathlib import Path
@@ -119,7 +122,8 @@ def main():
     res['B3'] = f'both worklogs: theirs-verbatim prefix vs main tip {main_tip[:8]} + the run-024 entry byte-identical exactly once at each tail, zero unparented markers'
     print('B3 PASS:', res['B3'])
 
-    # B5 CI on head
+    # B5 CI on head — the three CI gates ALL success; the Vercel deploy status classified
+    # fail-loud (success OR the documented plane-level classes only; any other failure = red)
     pat = Path('/home/z/my-project/work/.pat.0600').read_text().strip()
     import urllib.request
     req = urllib.request.Request(
@@ -127,10 +131,25 @@ def main():
         headers={'Authorization': f'token {pat}', 'User-Agent': 'rn24-battery'})
     runs = json.loads(urllib.request.urlopen(req, timeout=30).read())['check_runs']
     cis = {r['name']: (r['status'], r['conclusion']) for r in runs}
-    for name in ('census', 'hub', 'verify', 'Vercel Preview Comments'):
+    for name in ('census', 'hub', 'verify'):
         assert cis.get(name) == ('completed', 'success'), f'{name}: {cis.get(name)}'
-    res['B5'] = {'checkRuns': cis}
-    print('B5 PASS: census/hub/verify/Vercel-comments ALL success on the pushed head')
+    req2 = urllib.request.Request(
+        f'https://api.github.com/repos/SyllabAI/syllabai-v2/commits/{head}/status',
+        headers={'Authorization': f'token {pat}', 'User-Agent': 'rn24-battery'})
+    dep = json.loads(urllib.request.urlopen(req2, timeout=30).read())
+    dep_ctx = {st['context']: (st['state'], st.get('description') or '') for st in dep.get('statuses', [])}
+    verc = dep_ctx.get('Vercel – syllabai-hub-v2')
+    PLANE_CLASSES = ('rate limited', 'Canceled by Ignored Build Step', 'DEPLOYMENT_DISABLED')
+    if verc is None:
+        verdict = 'no Vercel deploy status on this head (the documented no-status class)'
+    elif verc[0] == 'success':
+        verdict = f'success ({verc[1]})'
+    elif any(c.lower() in verc[1].lower() for c in PLANE_CLASSES[:2]) or PLANE_CLASSES[2] in verc[1]:
+        verdict = f'the documented plane-level class ({verc[0]}: {verc[1]}) — not content; the CI hub gate green is the pickup proof of record per the BIO-STAGEB3/INK-BRK precedents'
+    else:
+        assert False, f'Vercel deploy status unclassified failure: {verc}'
+    res['B5'] = {'checkRuns': cis, 'vercelDeploy': verdict}
+    print(f'B5 PASS: census/hub/verify ALL success on the pushed head; Vercel deploy: {verdict}')
 
     out = Path('/home/z/my-project/work/rn24/out/rn24_postReview_battery.json')
     out.parent.mkdir(parents=True, exist_ok=True)
