@@ -109,3 +109,12 @@ export function reviewEvidenceLead(classroomStudent: boolean): string {
     ? "AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record."
     : "AI_SUGGESTED evidence.";
 }
+
+/** The landing hero footnote (run-002: joins the conditional law — the
+ *  unconditional "your teacher can ratify" line is retired as the default;
+ *  its bytes survive as the classroom voice). */
+export function landingEvidenceFootnote(classroomStudent: boolean): string {
+  return classroomStudent
+    ? "What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review is the correction of record, so read it even when everything ticks green."
+    : "What you cover is saved as an AI_SUGGESTED suggestion — the end-of-session review shows what landed and what to tighten, so read it even when everything ticks green.";
+}

@@ -4,6 +4,7 @@
 import { describe, expect, it } from "bun:test";
 import {
   endedLine,
+  landingEvidenceFootnote,
   objectiveDotClass,
   objectiveStatusLabel,
   pickerEvidenceFootnote,
@@ -65,5 +66,21 @@ describe("teach-genie display laws (T-TEACHGENIE-001; house tokens since -004)",
     expect(reviewEvidenceLead(false)).toBe("AI_SUGGESTED evidence.");
     expect(reviewEvidenceLead(false)).not.toContain("ratifies");
     expect(reviewEvidenceLead(false)).not.toContain("record");
+  });
+
+  it("T-TEACHGENIE-008 run-002: the landing footnote joins the conditional law", () => {
+    // classroom: the landing line of record — byte-identical to the
+    // retired unconditional copy
+    expect(landingEvidenceFootnote(true)).toBe(
+      "What you cover is saved as an AI_SUGGESTED suggestion your teacher can ratify — the end-of-session review is the correction of record, so read it even when everything ticks green.",
+    );
+    // independent: the honest neutral line — no teacher claim, no counts
+    // promise, no record claim (auto-commit is NOT live)
+    const independent = landingEvidenceFootnote(false);
+    expect(independent).toContain("AI_SUGGESTED suggestion");
+    expect(independent).not.toContain("teacher");
+    expect(independent).not.toContain("ratify");
+    expect(independent).not.toContain("counts");
+    expect(independent).not.toContain("record");
   });
 });
