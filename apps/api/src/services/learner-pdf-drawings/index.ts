@@ -56,10 +56,18 @@ interface DrawingRow {
   source_url: string | null;
   doc: unknown;
   revision: number;
-  updated_at: string;
+  /** T-HUB-INK-BRK run-004 (the adapter-type repro, live 2026-11-13): the
+   * REAL drivers return timestamptz as a JS Date (the Neon WebSocket path
+   * AND postgres.js alike) — only the test doubles returned strings, which
+   * is why CI stayed green while production 500'd every serve. The row
+   * type carries the union; served() normalizes to the wire contract. */
+  updated_at: string | Date;
 }
 
-/** Row → served wire shape (contract-validated — the row IS the pin). */
+/** Row → served wire shape (contract-validated — the row IS the pin).
+ * The updatedAt normalization is the run-004 law: a timestamptz arrives
+ * as a Date and the contract wants the ISO string; normalize HERE (the
+ * single row→wire boundary) so every serve path inherits it. */
 function served(r: DrawingRow): ServedPdfDrawing {
   return servedPdfDrawingSchema.parse({
     documentRefType: r.document_ref_type,
@@ -67,7 +75,7 @@ function served(r: DrawingRow): ServedPdfDrawing {
     sourceUrl: r.source_url,
     doc: r.doc,
     revision: r.revision,
-    updatedAt: r.updated_at,
+    updatedAt: r.updated_at instanceof Date ? r.updated_at.toISOString() : r.updated_at,
   });
 }
 
@@ -185,7 +193,7 @@ export class PdfDrawings {
       where id = ${row.id} and revision = ${row.revision}
       returning id, document_ref_type, document_ref_id, source_url, doc, revision, updated_at
     `) as unknown as DrawingRow[];
-    if (updated.length > 0) return { ok: true, drawing: served(updated[0]!) };
+    if (updated.length > 0) return { ok: true, drawing: safeServed(updated[0]!) };
 
     const raced = await this.selectRow(learnerId, input.ref);
     if (raced !== null && raced.revision > base) return { ok: false, current: safeServed(raced) };
