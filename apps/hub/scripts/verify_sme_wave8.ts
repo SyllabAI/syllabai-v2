@@ -162,7 +162,11 @@ totalResolved === totalNotes
 // fleet safety: courses WITHOUT an SME layer resolve to null (the notes
 // selector renders exactly as before there)
 {
-  const probes = ["cie-a-level-chemistry-25", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
+  // probe roster of record: cie-a-level-chemistry-25 rotated out at wave-9
+  // tranche 2 (it GAINED its SME layer there — the fleet-safety law only
+  // binds courses still without one); its no-layer AS sibling takes the
+  // probe slot. Same disclosed pin-refresh class as the wave-6 run-002.
+  const probes = ["cie-as-chemistry-25", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;

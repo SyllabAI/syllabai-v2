@@ -1,7 +1,8 @@
 /**
- * ADR-039 wave-9 gate — the SME Revision-Notes picker layer, CIE IGCSE maths
- * tranche 1 (the four-course maths family; the W7 closeout recommendation's
- * first build slice).
+ * ADR-039 wave-9 gate — the SME Revision-Notes picker layer. Tranche 1 (the
+ * four-course CIE IGCSE maths family) + tranche 2 (the CIE A-level sciences-25
+ * trio: biology 9700 / chemistry 9701 / physics 9702) — the W7 closeout
+ * recommendation's build slices, worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
  * (buildSpecTreeIndex + smeRowOfQuestionSet + smeRowOfNote), extended to the
@@ -69,13 +70,16 @@ interface Node {
 }
 
 // the live-only rows of record (teacher-only Mock Exams placeholder on 0580;
-// none on 0607) — mirrored verbatim as 0-note 0-set rows, the wave-1/3
-// 0-set precedent
+// none on 0607; none on the sciences-25 trio) — mirrored verbatim as 0-note
+// 0-set rows, the wave-1/3 0-set precedent
 const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-maths-25-extended": new Set(["set-1-fl"]),
   "cie-igcse-maths-25-core": new Set(["set-1-fl"]),
   "cie-igcse-maths-international-maths-23-extended": new Set(),
   "cie-igcse-maths-international-maths-23-core": new Set(),
+  "cie-a-level-biology-25": new Set(),
+  "cie-a-level-chemistry-25": new Set(),
+  "cie-a-level-physics-25": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
