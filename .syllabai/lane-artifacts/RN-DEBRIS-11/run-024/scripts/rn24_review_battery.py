@@ -50,31 +50,35 @@ def main():
     head = git('rev-parse', 'HEAD').strip()
     res['head'] = head
 
-    # B4 commit chain (first-parent, newest-first)
+    # B4 commit chain (first-parent, newest-first) — post battery-refresh #1
     chain = [l.split()[0][:8] for l in git('log', '--oneline', '--first-parent', f'{BASE}..HEAD').splitlines()]
     res['B4_chain'] = chain
-    assert len(chain) == 4, f'expected 4 first-parent commits, got {len(chain)}: {chain}'
+    assert len(chain) == 5, f'expected 5 first-parent commits, got {len(chain)}: {chain}'
     head8 = head[:8]
     assert chain[0] == head8, chain
-    assert chain[3] == '3d0a2596', f'content commit pin: {chain}'
-    ps = git('show', '-s', '--format=%P', chain[0]).split()
-    assert len(ps) == 2 and ps[0].startswith(chain[1]) and ps[1].startswith('ca4f2266'), f'union parents: {ps}'
+    assert chain[4] == '3d0a2596', f'content commit pin: {chain}'
+    ps = git('show', '-s', '--format=%P', chain[1]).split()
+    assert len(ps) == 2 and ps[0].startswith(chain[2]) and ps[1].startswith('ca4f2266'), f'union parents: {ps}'
     # per-commit scope vs first parent
-    c_scope = set(git('diff', '--name-only', f'{chain[2]}..{chain[1]}').splitlines())
+    f_scope = set(git('diff', '--name-only', f'{chain[1]}..{chain[0]}').splitlines())
+    assert f_scope == {f'{R24}/scripts/rn24_review_battery.py', POSTREVIEW}, f'battery-refresh scope drift: {f_scope}'
+    c_scope = set(git('diff', '--name-only', f'{chain[3]}..{chain[2]}').splitlines())
     assert c_scope == {f'{R24}/scripts/rn24_review_battery.py', POSTREVIEW}, f'postReview scope drift: {c_scope}'
-    b_scope = set(git('diff', '--name-only', f'{chain[3]}..{chain[2]}').splitlines())
-    assert b_scope == EXPECTED_OWN - {f'{R24}/scripts/rn24_review_battery.py', POSTREVIEW}, f'receipts scope drift: {b_scope}'
-    content_scope = set(git('diff', '--name-only', f'{BASE}..{chain[3]}').splitlines())
+    b_scope = set(git('diff', '--name-only', f'{chain[4]}..{chain[3]}').splitlines())
+    assert b_scope == EXPECTED_OWN - {f'{R24}/scripts/rn24_review_battery.py', POSTREVIEW,
+                                      'apps/hub/content-maps/cie-igcse-computer-science-23.json',
+                                      'apps/hub/content/cie-igcse-computer-science-23/flashcards.json'}, f'receipts scope drift: {b_scope}'
+    content_scope = set(git('diff', '--name-only', f'{BASE}..{chain[4]}').splitlines())
     assert content_scope == {'apps/hub/content-maps/cie-igcse-computer-science-23.json',
                              'apps/hub/content/cie-igcse-computer-science-23/flashcards.json'}, f'content scope drift: {content_scope}'
-    print(f'B4 PASS: 4-commit first-parent chain (content 3d0a2596 -> receipts -> postReview+battery -> union); '
+    print(f'B4 PASS: 5-commit first-parent chain (content 3d0a2596 -> receipts -> postReview+battery -> union -> battery-refresh); '
           f'per-commit scopes asserted; the union is 2-parent with pinned parents')
 
     # B1 net diff path set + the union delta law
     main_tip = ps[1]
     names = set(git('diff', '--name-only', f'{main_tip}..HEAD').splitlines())
     assert names == EXPECTED_OWN, f'PR path-set drift: extra={names-EXPECTED_OWN} missing={EXPECTED_OWN-names}'
-    ud1 = set(git('diff', '--name-only', f'{chain[1]}..{chain[0]}').splitlines())
+    ud1 = set(git('diff', '--name-only', f'{chain[2]}..{chain[1]}').splitlines())
     adv1 = set(git('diff', '--name-only', f'{BASE}..{main_tip}').splitlines())
     assert ud1 == adv1, f'union delta != advance: {ud1 ^ adv1}'
     od1 = set(git('diff', '--name-only', f'{main_tip}..{chain[1]}').splitlines())
