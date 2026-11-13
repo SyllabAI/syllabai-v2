@@ -71,6 +71,29 @@ function served(r: DrawingRow): ServedPdfDrawing {
   });
 }
 
+/**
+ * T-HUB-INK-BRK run-003 (live 2026-11-13): the SELF-HEALING serve. A
+ * stored row whose doc/fields fail the served contract used to make the
+ * (learner, document) pair UNRECOVERABLE — load() threw (GET 500), and
+ * every save() path that touches the stored row threw too (the 409
+ * rebase envelope and the raced-write reload), so no PUT could ever
+ * overwrite the poison (proven live: GET 500 + PUT 500 on the same row
+ * while a nonexistent row served 200 honest-empty). The client's own law
+ * ("a corrupted stored doc drops bad shapes at the parseDoc boundary,
+ * never throws") is mirrored here: on a parse failure serve the row with
+ * the doc replaced by the EMPTY container at the PRESERVED revision —
+ * the learner's next write (base = the served revision, equal-or-ahead
+ * wins) overwrites the poison and the pair heals itself. Nothing is
+ * invented: the shapes are honestly gone, the revision truth is kept.
+ */
+function safeServed(r: DrawingRow): ServedPdfDrawing {
+  try {
+    return served(r);
+  } catch {
+    return served({ ...r, doc: { schema: "syllabai-ink/1", shapes: [] } });
+  }
+}
+
 export class PdfDrawings {
   constructor(private readonly sql: SqlFn) {}
 
@@ -107,7 +130,7 @@ export class PdfDrawings {
       documentRefType: ref.documentRefType,
       documentRefId: ref.documentRefId,
       sourceUrl: ref.sourceUrl,
-      drawing: row ? served(row) : null,
+      drawing: row ? safeServed(row) : null,
     });
   }
 
@@ -128,7 +151,7 @@ export class PdfDrawings {
     // STALE: the caller's base is behind the stored revision — zero rows
     // written, the current row returned for the rebase.
     if (row !== null && row.revision > base) {
-      return { ok: false, current: served(row) };
+      return { ok: false, current: safeServed(row) };
     }
 
     if (row === null) {
@@ -142,12 +165,12 @@ export class PdfDrawings {
           ${JSON.stringify(input.doc)}::jsonb, ${base + 1})
         returning id, document_ref_type, document_ref_id, source_url, doc, revision, updated_at
       `) as unknown as DrawingRow[];
-      if (inserted.length > 0) return { ok: true, drawing: served(inserted[0]!) };
+      if (inserted.length > 0) return { ok: true, drawing: safeServed(inserted[0]!) };
       // Raced insert (the unique constraint absorbed it): re-evaluate
       // against the winner — fail-loud posture, see sql.ts.
       row = await this.selectRow(learnerId, input.ref);
       if (row === null) throw new Error("learner_pdf_drawings insert raced away");
-      if (row.revision > base) return { ok: false, current: served(row) };
+      if (row.revision > base) return { ok: false, current: safeServed(row) };
     }
 
     // CAS on the OBSERVED revision — the read-write window guard. A lost
@@ -165,7 +188,7 @@ export class PdfDrawings {
     if (updated.length > 0) return { ok: true, drawing: served(updated[0]!) };
 
     const raced = await this.selectRow(learnerId, input.ref);
-    if (raced !== null && raced.revision > base) return { ok: false, current: served(raced) };
+    if (raced !== null && raced.revision > base) return { ok: false, current: safeServed(raced) };
     throw new Error("learner_pdf_drawings revision CAS lost twice (equal-or-older writer)");
   }
 }
