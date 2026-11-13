@@ -166,10 +166,12 @@ export const doc = w.document;
 /** The opening press of a trusted pointer sequence: a bubbling,
  * cancelable pointerdown carrying the pointerType jsdom's MouseEvent
  * cannot hold natively, with an instance-level preventDefault counter
- * (the synthetic React event forwards to the native call). */
+ * (the synthetic React event forwards to the native call).
+ * T-MG-INK-11 run-001: `pointerId` and `pressure` ride the same way
+ * (instance properties — the Pointer Events fields jsdom lacks). */
 export function pressPointerDown(
   target: Element,
-  opts: { clientX?: number; clientY?: number; button?: number; pointerType?: string } = {},
+  opts: { clientX?: number; clientY?: number; button?: number; pointerType?: string; pointerId?: number; pressure?: number } = {},
 ) {
   const ev = new w.MouseEvent("pointerdown", {
     bubbles: true,
@@ -181,6 +183,8 @@ export function pressPointerDown(
     buttons: 1,
   });
   Object.defineProperty(ev, "pointerType", { value: opts.pointerType ?? "mouse" });
+  if (opts.pointerId !== undefined) Object.defineProperty(ev, "pointerId", { value: opts.pointerId });
+  if (opts.pressure !== undefined) Object.defineProperty(ev, "pressure", { value: opts.pressure });
   let preventDefaultCalls = 0;
   const native = ev.preventDefault.bind(ev);
   ev.preventDefault = () => {
@@ -188,6 +192,74 @@ export function pressPointerDown(
     native();
   };
   return { ev, calls: () => preventDefaultCalls };
+}
+
+/** T-MG-INK-11 run-001: a pointermove with the stylus fields, optionally
+ * carrying the COALESCED samples (the browser's batched intermediate
+ * events — `getCoalescedEvents` returns them chronologically, the
+ * dispatch event LAST, per the spec; the handler's skip-native law
+ * depends on that shape). */
+export function pressPointerMove(
+  target: Element,
+  opts: {
+    clientX: number;
+    clientY: number;
+    pointerType?: string;
+    pointerId?: number;
+    pressure?: number;
+    coalesced?: Array<{ clientX: number; clientY: number; pressure?: number }>;
+  } = { clientX: 0, clientY: 0 },
+) {
+  const ev = new w.MouseEvent("pointermove", {
+    bubbles: true,
+    cancelable: true,
+    composed: true,
+    clientX: opts.clientX,
+    clientY: opts.clientY,
+    button: 0,
+    buttons: 1,
+  });
+  Object.defineProperty(ev, "pointerType", { value: opts.pointerType ?? "mouse" });
+  if (opts.pointerId !== undefined) Object.defineProperty(ev, "pointerId", { value: opts.pointerId });
+  if (opts.pressure !== undefined) Object.defineProperty(ev, "pressure", { value: opts.pressure });
+  if (opts.coalesced && opts.coalesced.length > 0) {
+    const evs = opts.coalesced.map((c) => {
+      const ce = new w.MouseEvent("pointermove", {
+        bubbles: false,
+        cancelable: true,
+        clientX: c.clientX,
+        clientY: c.clientY,
+        button: 0,
+        buttons: 1,
+      });
+      Object.defineProperty(ce, "pointerType", { value: opts.pointerType ?? "mouse" });
+      Object.defineProperty(ce, "pressure", { value: c.pressure ?? 0.5 });
+      return ce;
+    });
+    Object.defineProperty(ev, "getCoalescedEvents", { value: () => [...evs, ev] });
+  }
+  return ev;
+}
+
+/** T-MG-INK-11 run-001: the gesture-ending pointerup (the stylus fields
+ * as in pressPointerDown — the isolation law keys on pointerId). */
+export function releasePointerUp(
+  target: Element,
+  opts: { clientX?: number; clientY?: number; pointerType?: string; pointerId?: number; pressure?: number } = {},
+) {
+  const ev = new w.MouseEvent("pointerup", {
+    bubbles: true,
+    cancelable: true,
+    composed: true,
+    clientX: opts.clientX ?? 0,
+    clientY: opts.clientY ?? 0,
+    button: 0,
+    buttons: 0,
+  });
+  Object.defineProperty(ev, "pointerType", { value: opts.pointerType ?? "mouse" });
+  if (opts.pointerId !== undefined) Object.defineProperty(ev, "pointerId", { value: opts.pointerId });
+  if (opts.pressure !== undefined) Object.defineProperty(ev, "pressure", { value: opts.pressure });
+  return ev;
 }
 
 /** React-controlled textarea typing under the legacy change-event

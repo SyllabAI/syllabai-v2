@@ -211,6 +211,12 @@ type InkToolMode = "pen" | "text" | "math" | "erase" | "select" | InstrumentMode
  * max(this, the pen's own width) — dpr-independent). */
 const ERASE_TOL_CSS_PX = 12;
 
+/** T-MG-INK-11 run-001: the palm-rejection window — a TOUCH gesture may
+ * not start within this many ms of the last pen pointerdown (the palm
+ * rests and taps while the stylus writes). Short on purpose: stylus-down
+ * then finger-draw stays reachable once the window expires. */
+const PEN_SESSION_MS = 1500;
+
 const SERVER_SNAPSHOT: InkSyncSnapshot = {
   status: "loading",
   shapes: [],
@@ -616,7 +622,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   }, [hostRef, sync]);
 
   const commitStroke = useCallback(
-    (page: number, points: Array<[number, number]>) => {
+    (page: number, points: Array<[number, number]>, pressures?: number[] | null) => {
       if (points.length < 2) return;
       // T-HUB-INK-BRK run-003: the LIVE colour/width — a stroke STARTED in
       // the deferred-render window commits what the user picked (the
@@ -629,6 +635,9 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
         widthFrac: liveToolsRef.current.widthFrac,
         points,
       };
+      // T-MG-INK-11 run-001: the stylus pressure channel rides the shape
+      // only when the gesture captured one (index-aligned with points).
+      if (pressures && pressures.length === points.length) stroke.pressures = pressures;
       commit([...shapesRef.current, stroke]);
     },
     [commit],
@@ -1245,7 +1254,7 @@ export interface InkCanvasProps {
   mode: InkToolMode;
   color: InkColor;
   widthFrac: number;
-  onCommitStroke: (page: number, points: Array<[number, number]>) => void;
+  onCommitStroke: (page: number, points: Array<[number, number]>, pressures?: number[] | null) => void;
   onCommitText: (shape: Omit<InkTextShape, "id" | "kind">) => void;
   // T-MG-INK-4: the math text box + the erase/select commit paths.
   onCommitMath: (shape: Omit<InkMathShape, "id" | "kind">) => void;
@@ -1364,6 +1373,22 @@ export function InkCanvas({
   const boxRef = useRef<{ cssW: number; cssH: number }>({ cssW: 0, cssH: 0 });
   const activeRef = useRef<Array<[number, number]> | null>(null);
   const lastPxRef = useRef<[number, number] | null>(null);
+  // T-MG-INK-11 run-001 (the stylus lane): the pen's per-point pressure
+  // channel, captured parallel to activeRef for FREEHAND pen gestures
+  // only (mouse/touch carry none — their strokes stay byte-identical).
+  const activePressuresRef = useRef<number[] | null>(null);
+  // The pointer-plane isolation law: ONE gesture owns the canvas at a
+  // time. activePointerIdRef is the in-flight gesture's pointerId; a
+  // second pointer's down/move/up (a palm resting on an iPad, a stray
+  // finger) is swallowed instead of clobbering the live stroke. Cleared
+  // by endStroke and the pen-precedence discard.
+  const activePointerIdRef = useRef<number | null>(null);
+  // The pen-session law (palm rejection): the timestamp of the last pen
+  // pointerdown. A TOUCH gesture may not start within PEN_SESSION_MS of
+  // it — the palm rests and taps while the stylus writes. The window is
+  // short on purpose: putting the stylus down and finger-drawing stays a
+  // real, reachable behavior after it expires.
+  const penSeenAtRef = useRef<number>(-Infinity);
   const rafRef = useRef(0);
   const [draft, setDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
   // T-HUB-INK-BRK (operator: "the pdf viewer has many problems, sometimes
@@ -1470,7 +1495,7 @@ export function InkCanvas({
     if (box.width < 1 || box.height < 1) return;
     boxRef.current = { cssW: box.width, cssH: box.height };
     sizeBackingStore(ctx, canvas, box.width, box.height, window.devicePixelRatio || 1);
-    paintShapes(ctx, boxRef.current, displayShapes, activeRef.current ? { color, widthFrac, points: activeRef.current } : null);
+    paintShapes(ctx, boxRef.current, displayShapes, activeRef.current ? { color, widthFrac, points: activeRef.current, pressures: activePressuresRef.current ?? undefined } : null);
   }, [displayShapes, color, widthFrac]);
 
   // box resize (zoom/refreeze/window resize) → re-size + re-paint
@@ -1574,7 +1599,7 @@ export function InkCanvas({
       const canvas = canvasRef.current;
       const ctx = canvas?.getContext("2d");
       if (!canvas || !ctx) return;
-      paintShapes(ctx, boxRef.current, displayShapes, activeRef.current ? { color, widthFrac, points: activeRef.current } : null);
+      paintShapes(ctx, boxRef.current, displayShapes, activeRef.current ? { color, widthFrac, points: activeRef.current, pressures: activePressuresRef.current ?? undefined } : null);
     });
   }, [displayShapes, color, widthFrac]);
 
@@ -1589,6 +1614,42 @@ export function InkCanvas({
       // prop is whatever React last flushed; during the desktop raster
       // burst that is seconds old.
       const m = tools.current.mode;
+      // ── T-MG-INK-11 run-001: the stylus pointer-plane laws ──
+      // (1) pen session stamp — the palm-rejection window's anchor;
+      // (2) pen precedence — a pen down DISCARDS an in-flight touch
+      //     gesture without committing it (the palm stroke never
+      //     existed) and takes the canvas;
+      // (3) palm rejection — a touch gesture may not start while a pen
+      //     gesture is in flight OR within the pen-session window;
+      // (4) one-gesture isolation — while a gesture is in flight, any
+      //     OTHER pointer's down is swallowed (the clobber that used to
+      //     overwrite activeRef/lastPxRef mid-stroke). Mouse is never
+      //     rejected by (3) — desktops have no palms on the glass.
+      const now = performance.now();
+      if (e.pointerType === "pen") penSeenAtRef.current = now;
+      if (e.pointerType === "pen" && dragKindRef.current) {
+        activeRef.current = null;
+        activePressuresRef.current = null;
+        lastPxRef.current = null;
+        rawRef.current = [];
+        pivotRef.current = null;
+        dragKindRef.current = null;
+        activePointerIdRef.current = null;
+        // the discarded gesture's previews go with it (a stuck erase sweep
+        // or move box would outlive its dead gesture otherwise)
+        setErasePreview(null);
+        setMovePreview(null);
+        setSweepDeg(null);
+        repaint();
+      }
+      if (
+        e.pointerType === "touch" &&
+        (dragKindRef.current !== null || now - penSeenAtRef.current < PEN_SESSION_MS)
+      ) {
+        e.preventDefault();
+        return;
+      }
+      if (dragKindRef.current !== null && e.pointerId !== activePointerIdRef.current) return;
       if (m === "text") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
         // T-MG-INK-6 run-002 (the pointerdown law): cancel the OPENING press
@@ -1674,6 +1735,8 @@ export function InkCanvas({
         const hits = shapesHitIds(displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX, readMeasured);
         if (m === "erase") {
           canvas.setPointerCapture(e.pointerId);
+          activePointerIdRef.current = e.pointerId;
+          activePressuresRef.current = null;
           dragKindRef.current = "erase";
           setErasePreview(hits.length > 0 ? new Set(hits) : new Set());
           return;
@@ -1689,6 +1752,8 @@ export function InkCanvas({
           }
           moveStartRef.current = { clientX: e.clientX, clientY: e.clientY, shape, moved: false };
           canvas.setPointerCapture(e.pointerId);
+          activePointerIdRef.current = e.pointerId;
+          activePressuresRef.current = null;
           dragKindRef.current = "move";
           return;
         }
@@ -1703,6 +1768,8 @@ export function InkCanvas({
       const frac = normalizePoint(nbox, e.clientX, e.clientY);
       if (m === "line") {
         canvas.setPointerCapture(e.pointerId);
+        activePointerIdRef.current = e.pointerId;
+        activePressuresRef.current = null;
         dragKindRef.current = "line";
         activeRef.current = [frac, frac];
         lastPxRef.current = [e.clientX, e.clientY];
@@ -1711,6 +1778,8 @@ export function InkCanvas({
       }
       if (m === "compasses") {
         canvas.setPointerCapture(e.pointerId);
+        activePointerIdRef.current = e.pointerId;
+        activePressuresRef.current = null;
         dragKindRef.current = "compasses";
         pivotRef.current = { x: frac[0], y: frac[1] };
         rawRef.current = [frac];
@@ -1727,6 +1796,8 @@ export function InkCanvas({
           if (live) {
             // pen down on the guide's snap line → instrument draw
             canvas.setPointerCapture(e.pointerId);
+            activePointerIdRef.current = e.pointerId;
+            activePressuresRef.current = null;
             dragKindRef.current = m;
             rawRef.current = [frac];
             activeRef.current = [
@@ -1742,6 +1813,8 @@ export function InkCanvas({
           dragKindRef.current = "guide";
           guideToolRef.current = m;
           canvas.setPointerCapture(e.pointerId);
+          activePointerIdRef.current = e.pointerId;
+          activePressuresRef.current = null;
           onGuideDown?.(m, { x: frac[0], y: frac[1] });
           return;
         }
@@ -1750,12 +1823,17 @@ export function InkCanvas({
         return;
       }
       canvas.setPointerCapture(e.pointerId);
+      // T-MG-INK-11 run-001: the freehand gesture is the stylus lane's
+      // commit path — a PEN captures its per-point pressure channel
+      // (mouse/touch carry none: their strokes stay byte-identical).
+      activePointerIdRef.current = e.pointerId;
+      activePressuresRef.current = e.pointerType === "pen" ? [e.pressure] : null;
       dragKindRef.current = "freehand";
       activeRef.current = [frac];
       lastPxRef.current = [e.clientX, e.clientY];
       scheduleLive();
     },
-    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts, commitDraft, commitMathDraft],
+    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts, commitDraft, commitMathDraft, repaint],
   );
 
   const onPointerMove = useCallback(
@@ -1765,6 +1843,10 @@ export function InkCanvas({
       // T-HUB-INK-BRK run-003: the live-tool read (see onPointerDown).
       const m = tools.current.mode;
       const kind = dragKindRef.current;
+      // T-MG-INK-11 run-001: one-gesture isolation — another pointer's
+      // moves (the palm under the stylus) never append to the live stroke.
+      if (kind !== null && activePointerIdRef.current !== null && e.pointerId !== activePointerIdRef.current)
+        return;
       // T-MG-INK-10: while an editor tool is armed and no editor is
       // open, the hover chip follows the cursor (MG's affordance).
       // Position-only tracking — drags are untouched below.
@@ -1858,7 +1940,37 @@ export function InkCanvas({
       // freehand
       const active = activeRef.current;
       if (active) {
+        // T-MG-INK-11 run-001: the COALESCED tail — the samples the
+        // browser batched since the last frame (a stylus samples 2-4× the
+        // render rate; Safari 18+ delivers them here, older engines fall
+        // back to the single dispatch event). Each sample past the same
+        // 1.2px thinning appends chronologically before the dispatch's
+        // own point; a PEN keeps its pressure channel index-aligned.
+        const native = e.nativeEvent;
+        const coalesced =
+          typeof native.getCoalescedEvents === "function" ? native.getCoalescedEvents() : [];
+        const pressures = activePressuresRef.current;
+        if (coalesced.length > 1) {
+          const boxNow = canvas.getBoundingClientRect();
+          const nboxNow = { left: boxNow.left, top: boxNow.top, width: boxNow.width, height: boxNow.height };
+          // The thinning chain runs on a LOCAL baseline: `last` (the last
+          // appended point's px, captured pre-dispatch) — lastPxRef already
+          // holds the dispatch point's px here, and thinning the earlier
+          // coalesced samples against it would resurrect sub-threshold
+          // samples 30px away. lastPxRef stays untouched (it must end at
+          // the dispatch point — the chronologically newest sample).
+          let prevPx = last;
+          for (const s of coalesced) {
+            if (s === native) continue;
+            const cur: [number, number] = [s.clientX, s.clientY];
+            if (prevPx && !shouldAppendPoint(prevPx, cur, 1.2)) continue;
+            prevPx = cur;
+            active.push(normalizePoint(nboxNow, cur[0], cur[1]));
+            if (pressures) pressures.push(s.pressure);
+          }
+        }
         active.push(frac);
+        if (pressures) pressures.push(e.pressure);
         scheduleLive();
       }
     },
@@ -1871,6 +1983,12 @@ export function InkCanvas({
     const active = activeRef.current;
     activeRef.current = null;
     lastPxRef.current = null;
+    // T-MG-INK-11 run-001: the gesture plane clears unconditionally — the
+    // pen's pressure channel (captured into `pressures` below) rides the
+    // freehand commit; the owning pointerId releases the canvas.
+    const pressures = activePressuresRef.current;
+    activePressuresRef.current = null;
+    activePointerIdRef.current = null;
     if (!kind) return;
     if (kind === "guide") {
       guideToolRef.current = null;
@@ -1946,8 +2064,10 @@ export function InkCanvas({
       repaint();
       return;
     }
-    // freehand (the run-003 law)
-    if (active && active.length >= 2) onCommitStroke(page, active);
+    // freehand (the run-003 law) — T-MG-INK-11 run-001: a PEN gesture
+    // commits its pressure channel alongside the points (index-aligned);
+    // mouse/touch gestures pass null and stay byte-identical.
+    if (active && active.length >= 2) onCommitStroke(page, active, pressures);
     else repaint();
   }, [onCommitStroke, onCommitErase, onCommitMove, page, repaint, ruler, protractor, erasePreview, movePreview]);
 
@@ -2061,11 +2181,23 @@ export function InkCanvas({
         }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
-        onPointerUp={endStroke}
-        onPointerCancel={endStroke}
+        onPointerUp={(e) => {
+          // T-MG-INK-11 run-001: one-gesture isolation — another pointer's
+          // up/cancel (the palm lifting off an iPad) must not end or commit
+          // the live gesture early.
+          if (activePointerIdRef.current === null || e.pointerId === activePointerIdRef.current) endStroke();
+        }}
+        onPointerCancel={(e) => {
+          if (activePointerIdRef.current === null || e.pointerId === activePointerIdRef.current) endStroke();
+        }}
         onPointerLeave={(e) => {
           // pen lifted off the canvas mid-stroke (mouse edge) → end cleanly
-          if ((activeRef.current || dragKindRef.current) && e.pointerType === "mouse") endStroke();
+          if (
+            (activeRef.current || dragKindRef.current) &&
+            e.pointerType === "mouse" &&
+            (activePointerIdRef.current === null || e.pointerId === activePointerIdRef.current)
+          )
+            endStroke();
           setChip(null);
         }}
       />
