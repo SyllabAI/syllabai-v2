@@ -59,7 +59,8 @@ def main():
     head = git('rev-parse', 'HEAD').strip()
     res['head'] = head
 
-    # B4 commit chain (first-parent, newest-first) — end-relative, per-commit scope
+    # B4 commit chain (first-parent, newest-first) — end-relative, per-commit scope;
+    # the sync union (if present) sits at chain[-4] with pinned parents and delta laws
     chain = [l.split()[0] for l in git('log', '--oneline', '--first-parent', f'{BASE}..HEAD').splitlines()]
     res['B4_chain'] = [c[:8] for c in chain]
     assert len(chain) >= 3, f'expected >= 3 first-parent commits, got {len(chain)}: {chain}'
@@ -75,20 +76,43 @@ def main():
         f'receipts scope drift: {receipts_scope}'
     pr_scope = set(git('diff', '--name-only', f'{c_receipts}..{c_postreview}').splitlines())
     assert pr_scope == {f'{R25}/scripts/rn25_review_battery.py', POSTREVIEW}, f'postReview scope drift: {pr_scope}'
-    for i, rc in enumerate(chain[:-3]):  # any battery-refresh commits at the tail (newest first)
+    main_tip = None
+    unions = ''
+    if len(chain) >= 4:
+        # the sync union (the run-024 fd407622 shape): 2-parent, theirs-verbatim deltas
+        UNION = chain[-4]
+        ps = git('show', '-s', '--format=%P', UNION).split()
+        assert len(ps) == 2 and ps[0].startswith(chain[-3]), f'union parents: {ps}'
+        main_tip = ps[1]
+        adv = set(git('diff', '--name-only', f'{BASE}..{main_tip}').splitlines())
+        ud1 = set(git('diff', '--name-only', f'{chain[-3]}..{UNION}').splitlines())
+        assert ud1 == adv, f'union delta != advance: {ud1 ^ adv}'
+        od1 = set(git('diff', '--name-only', f'{main_tip}..{UNION}').splitlines())
+        assert od1 == EXPECTED_OWN, f'union second-parent own-delta drift: {od1 ^ EXPECTED_OWN}'
+        unions = f'1/1 delta == its advance byte-lawful (theirs-verbatim worklog overlap resolved scripted)'
+    refreshes = chain[:-4] if len(chain) >= 4 else []
+    for i, rc in enumerate(refreshes):  # any battery-refresh commits at the tail (newest first)
         parent = chain[i + 1]
         f_scope = set(git('diff', '--name-only', f'{parent}..{rc}').splitlines())
         assert f_scope == {f'{R25}/scripts/rn25_review_battery.py', POSTREVIEW}, f'refresh {rc[:8]} scope drift: {f_scope}'
     print(f'B4 PASS: {len(chain)}-commit first-parent chain (content {c_content[:8]} -> receipts {c_receipts[:8]} -> '
-          f'postReview+battery {c_postreview[:8]}' + (f' -> {len(chain)-3} refresh commit(s)' if len(chain) > 3 else '') +
-          '), each scope-asserted vs its first parent; no union needed (branch cut from the main tip of record)')
+          f'postReview+battery {c_postreview[:8]}' + (f' -> union {chain[-4][:8]} ({main_tip[:8]} as its second parent), {unions}' if main_tip else '') +
+          (f' -> {len(refreshes)} refresh commit(s)' if refreshes else '') + '), each scope-asserted vs its first parent')
 
-    # B1 net diff path set
-    names = set(git('diff', '--name-only', f'{BASE}..HEAD').splitlines())
+    # B1 net diff path set — vs the CURRENT main tip of record (the union's second
+    # parent when a union exists, else the base) — and race-guard: it must still be
+    # origin/main at battery time (drift = resync loop, fail-loud)
+    if main_tip is None:
+        main_tip = BASE
+    remote_tip = subprocess.run(['git', 'ls-remote', 'origin', 'refs/heads/main'], cwd=CLONE,
+                                capture_output=True, text=True, check=True).stdout.split()[0]
+    assert remote_tip == main_tip, f'main tip drift: remote {remote_tip[:8]} != the battery main tip {main_tip[:8]} — resync loop'
+    names = set(git('diff', '--name-only', f'{main_tip}..HEAD').splitlines())
     assert names == EXPECTED_OWN, f'PR path-set drift: extra={names-EXPECTED_OWN} missing={EXPECTED_OWN-names}'
-    st = git('diff', '--shortstat', f'{BASE}..HEAD').strip()
-    res['B1'] = {'prPaths': sorted(names), 'shortstat': st}
-    print(f'B1 PASS: PR net diff == exactly the {len(names)} declared run-025 paths ({st})')
+    st = git('diff', '--shortstat', f'{main_tip}..HEAD').strip()
+    res['B1'] = {'prPaths': sorted(names), 'shortstat': st, 'mainTip': main_tip}
+    print(f'B1 PASS: PR net diff == exactly the {len(names)} declared run-025 paths vs main tip {main_tip[:8]} ({st}); '
+          f'race-guard: origin/main == the battery main tip, no drift')
 
     # B2 artifacts parse + gates hold + the zero-invention re-pin
     gates = json.loads((CLONE / f'{R25}/gates_r0.json').read_text())
@@ -115,11 +139,11 @@ def main():
     print(f"B2 PASS: artifacts parse; gates {len(gates['gates'])} ALL ok; the manifest sid rows byte-equal the derived "
           f"truth (witness re-pin); the ledger 2+33 rows; the live registry re-pin 118 ASCII-sorted")
 
-    # B3 worklog suffix identity — theirs of record = the main tip for BOTH ledgers
+    # B3 worklog suffix identity — theirs of record = the CURRENT main tip for BOTH ledgers
     for wl in ('worklog.md', '.syllabai/worklog.md'):
         cur = (CLONE / wl).read_bytes()
-        theirs = subprocess.run(['git', 'show', f'{BASE}:{wl}'], cwd=CLONE, capture_output=True).stdout
-        assert cur.startswith(theirs), f'{wl}: theirs-verbatim prefix lost vs {BASE[:8]}'
+        theirs = subprocess.run(['git', 'show', f'{main_tip}:{wl}'], cwd=CLONE, capture_output=True).stdout
+        assert cur.startswith(theirs), f'{wl}: theirs-verbatim prefix lost vs {main_tip[:8]}'
         suffix = cur[len(theirs):].decode('utf-8')
         entry_b = suffix.splitlines()[-1]
         assert entry_b.startswith('- RN-DEBRIS-11 run-025 — the sid-level resolution'), f'{wl}: run-025 entry not at tail'
