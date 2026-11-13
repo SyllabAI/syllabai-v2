@@ -1,0 +1,31 @@
+{
+  "task": "T-LESSON-RAIL-WS5",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "lane": "WS5 section rail & progress tracker (plan v1.2 lane table — visual pass)",
+  "surface": "the sticky aside (w-56) anchor list + LessonProgressTracker + the shared Progress primitive the bar renders through",
+  "base": "main 24e6f5fd (post #972/#973/#965; zero lesson-view/lesson-progress/globals overlap with the advance 1364f095..24e6f5fd)",
+  "findings": [
+    "RAIL: the aside anchors already carry the complete house voice — rounded-sm (WS1), the explicit transition list with duration-(--motion-duration-fast) ease-motion (WS2), hover + focus-visible ring (WS3); the pack-title label voice (text-2xs uppercase tracking-wide font-semibold) is byte-consistent with the tracker's 'Reading progress' label voice. WS1's assigned 'tracker WS5' bare-rounded item: census ZERO in the lesson dir + ui/progress.tsx — satisfied before this lane ran.",
+    "TRACKER CARD: themed anatomy on-voice (rounded-md border bg-card p-2.5, h-1 bar override, text-2xs labels) — no defects.",
+    "THE DEFECT: the shared Progress primitive's indicator ran transition-transform BARE — Tailwind implicit defaults (150ms / cubic-bezier(0.4,0,0.2,1)), theme-blind and untokenized: the WS2-class defect on a surface WS2's reader-set enumeration never reached."
+  ],
+  "the_law": [
+    "The indicator consumes duration-(--motion-duration-fast) ease-motion after its byte-kept transition-transform — the WS2 token pattern with RENDERED IDENTITY: the token values are exactly the pre-lane implicit defaults, so the bar's motion is identical on every theme today; the upgrade is the law — themes re-point duration/curve once, and the reduced-motion 0ms re-point (globals @media law) is inherited for free."
+  ],
+  "consumers": "4 inherit the primitive: books/lesson tracker, knowledge-graph state-drawer, guided-flow, guided-check — rendered identity holds for all (token values == implicit defaults).",
+  "gates": {
+    "typecheck": "tsc --noEmit: 0 errors",
+    "lint": "eslint on the changed file: 0",
+    "lesson_trio": "books-lesson + lesson-blocks-join + books-lesson-links: 24 tests / 42 expects / 0 fail",
+    "full_battery": "1331 pass / 10 fail / 39,161 expects across 95 files (34.8s) — fail set A/B-IDENTICAL to the clean tree at 24e6f5fd in this shell (pre-existing: question-cla-threads, ink-layer-holder-selfheal, api.v2-surface, paper-marks-regrade, ugm.render)",
+    "tailwind": "@tailwindcss/cli on the real globals.css: --tw-duration: var(--motion-duration-fast) chain + .ease-motion utility + the reduced-motion motion-duration-fast: 0ms re-point all emit at this base"
+  },
+  "disclosures": [
+    "Scroll-spy / aria-current on the rail anchors is BEHAVIOR (new client IO logic), not a visual-pass item — honest-absent, stays out of this lane.",
+    "The bar's rounded-full inside the tracker's rounded-md card is the shared primitive's (shadcn) anatomy; at h-1 the pill reads as the correct visual step-down; byte-kept under shared-primitive sovereignty — disclosed under the nested radius law.",
+    "Mobile: the tracker lives in the lg-only aside — no mobile progress bar (existing behavior, out of visual scope).",
+    "No theme file touched; the tokens are consumed as-is from the WS2 pass.",
+    "The repo worklog append stays withdrawn from the lane (T-COPYFIX-001 pattern): the branch carries code + receipt only; the master ledger Task 16 is the landing record of record; the merge-cycle entry follows on the operator's order."
+  ]
+}
