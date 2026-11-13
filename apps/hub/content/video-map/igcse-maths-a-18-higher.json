@@ -21,6 +21,11 @@
    "provider": "MrArnoldsMaths (MrArnoldsMaths Channel — legacy Edexcel GCSE/GCE walkthrough + topic-tutorial channel)",
    "method": "MrArnoldsMaths (MrArnoldsMaths Channel — legacy Edexcel GCSE/GCE walkthrough + topic-tutorial channel) flat-enumerated 2026-11-13T10:43:46Z; routing: module-code Tier B anchors + unit.section-marker/module-named Tier A with class-table judgment over every row",
    "enumeratedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "provider": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "method": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) flat-enumerated 2026-11-13T12:53:08Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
   }
  },
  "review": {
@@ -29,7 +34,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. Two rejects where the title names the domain but not the spec's distinctive frame.",
-  "rowsApproved": 56,
+  "rowsApproved": 69,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -213,6 +218,23 @@
       "video": "k7W3pD7qfm8",
       "reason": "no-binding (routed-but-unmapped): zero token overlap with the spine in the pre-pass and no class rule matched — routed-but-unmapped, honest",
       "lane": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 13,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "video": "PsInF3LRpf0",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['function']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
    }
@@ -887,6 +909,149 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3dXDuJoMkj8",
+   "title": "January 2022 Paper 2HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=3dXDuJoMkj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "64crxjOpQI8",
+   "title": "Calculus Differentiation - Hardest Grade 9 IGCSE questions",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=64crxjOpQI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6RRkdeSIL4A",
+   "title": "January 2020 Paper 1H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=6RRkdeSIL4A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FnjQARZH1Bg",
+   "title": "January 2021 Paper 1HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=FnjQARZH1Bg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GYTRm_RuJmA",
+   "title": "May 2018 Paper 1H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=GYTRm_RuJmA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QtpR7lK2iX8",
+   "title": "Jan 2021 1FR IGCSE Foundation Mathematics Regional 4MA1/1FR",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=QtpR7lK2iX8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VdWAKm8SlV8",
+   "title": "Proof - Hardest Grade 9 IGCSE questions",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=VdWAKm8SlV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZNW9hqNIV5M",
+   "title": "Jan 2021 2FR IGCSE Foundation Mathematics Regional 4MA1/2FR",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ZNW9hqNIV5M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "diT9jeQ2vvU",
+   "title": "Arithmetic Sequences - Hardest Grade 9 IGCSE questions",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=diT9jeQ2vvU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eCWt8hvbrpo",
+   "title": "January 2022 Paper 1HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=eCWt8hvbrpo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fwfmIu_Um_0",
+   "title": "January 2020 Paper 2H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=fwfmIu_Um_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qI7WAVcVtho",
+   "title": "IGCSE Foundation Mathematics Practice Paper 5 - 4MA1/1F",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=qI7WAVcVtho",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uOo_gs1u4TA",
+   "title": "IGCSE Foundation Mathematics Practice Paper 6 - 4MA1/1F",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=uOo_gs1u4TA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -1774,19 +1939,246 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
    "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "GYTRm_RuJmA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"May 2018 Paper 1H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "FnjQARZH1Bg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"January 2021 Paper 1HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "3dXDuJoMkj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"January 2022 Paper 2HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "eCWt8hvbrpo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"January 2022 Paper 1HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "uOo_gs1u4TA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"IGCSE Foundation Mathematics Practice Paper 6 - 4MA1/1F\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "qI7WAVcVtho",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"IGCSE Foundation Mathematics Practice Paper 5 - 4MA1/1F\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6RRkdeSIL4A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"January 2020 Paper 1H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fwfmIu_Um_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"January 2020 Paper 2H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "VdWAKm8SlV8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1G"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.1G 'apply vector methods for simple geometrical proofs' via token(s) ['proof'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "ZNW9hqNIV5M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3D 'use formulae from mathematics and other real-life contex' via token(s) ['mathematic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "QtpR7lK2iX8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3D 'use formulae from mathematics and other real-life contex' via token(s) ['mathematic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "64crxjOpQI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4E 'apply calculus to linear kinematics and to other simple ' via token(s) ['calculu'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "diT9jeQ2vvU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via token(s) ['arithmetic', 'sequence'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 188,
-  "specPointsMapped": 29,
-  "specPointsUnmapped": 159,
-  "videosTotal": 58,
-  "videosMapped": 56,
+  "specPointsMapped": 32,
+  "specPointsUnmapped": 156,
+  "videosTotal": 71,
+  "videosMapped": 69,
   "videosUnmapped": 2,
-  "mappingRows": 56,
+  "mappingRows": 69,
   "byConfidence": {
-   "high": 11,
-   "medium": 39,
+   "high": 19,
+   "medium": 44,
    "low": 6
   }
  },
@@ -1818,7 +2210,13 @@
    "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external-p10.json",
    "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
    "reviewAppliedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
   }
  },
- "generatedUtc": "2026-11-13T11:08:13.686Z"
+ "generatedUtc": "2026-11-13T13:26:09.440Z"
 }
