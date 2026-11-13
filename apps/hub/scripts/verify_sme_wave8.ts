@@ -161,8 +161,13 @@ totalResolved === totalNotes
 
 // fleet safety: courses WITHOUT an SME layer resolve to null (the notes
 // selector renders exactly as before there)
+// T-SME-SEL-W9-1 run-001 re-pin (2026-11-13): the first probe moves from
+// cie-a-level-chemistry-25 to cie-igcse-physics-23 — the wave-9 tranche-1
+// append gave chemistry-25 its SME layer (it now resolves 239/239 notes via
+// the wave-8 mirror law, asserted by verify_sme_wave9.ts); the probe stays
+// on a course that still renders exactly as before.
 {
-  const probes = ["cie-a-level-chemistry-25", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
+  const probes = ["cie-igcse-physics-23", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;

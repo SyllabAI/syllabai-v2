@@ -65,10 +65,16 @@ const FIXTURES = JSON.parse(
 ) as Record<string, CourseFix>;
 
 const SPINE: Record<string, { topics: number; subs: number; points: number }> = {
-  "cie-as-maths-20-pure-1": { topics: 1, subs: 8, points: 36 },
+  // T-SME-SEL-W9-1 run-001 re-pin (2026-11-13): pure-1 points 36 -> 34 — the
+  // RN-DEBRIS-11 run-023 open-dispositions apply (PR #979) removed the
+  // redundant 1.3.1a/1.3.2a SPEC_POINTs from BOTH pure-1 curricula and
+  // re-pinned ugm.bundle but missed this gate (the same re-pin class the
+  // wave-6 run-002 cleared for run-020). Corpus recounted at the re-pin:
+  // exactly 34 SPEC_POINTs per course, topics/subs unchanged.
+  "cie-as-maths-20-pure-1": { topics: 1, subs: 8, points: 34 },
   "cie-as-maths-20-mechanics": { topics: 1, subs: 5, points: 22 },
   "cie-as-maths-20-probability-and-statistics-1": { topics: 1, subs: 5, points: 17 },
-  "cie-a-level-maths-20-pure-1": { topics: 1, subs: 8, points: 36 },
+  "cie-a-level-maths-20-pure-1": { topics: 1, subs: 8, points: 34 },
   "cie-a-level-maths-20-pure-3": { topics: 1, subs: 9, points: 43 },
   "cie-a-level-maths-20-mechanics": { topics: 1, subs: 5, points: 22 },
   "cie-a-level-maths-20-probability-and-statistics-1": { topics: 1, subs: 5, points: 17 },
