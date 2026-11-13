@@ -96,7 +96,7 @@ jobs:
               else:
                   d = ds[0]
                   print(f"API-LOGS deployment {d.get('uid')} state={d.get('state')} aliasAssigned={str(d.get('aliasAssigned'))[:40]}")
-                  for ep in ("/v2/deployments/%s/events?limit=200&build=0&direction=backward" % d.get("uid"),):
+                  for ep in ("/v3/deployments/%s/events?limit=300&direction=backward&build=false" % d.get("uid"), "/v2/deployments/%s/events?limit=300&direction=backward&build=0" % d.get("uid")):
                       try:
                           evs = vapi(f"https://api.vercel.com{ep}")
                           if isinstance(evs, dict):
