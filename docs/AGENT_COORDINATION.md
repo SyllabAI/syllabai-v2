@@ -159,10 +159,18 @@ append: `git pull --rebase` and re-append; the log is append-only by design.
 > velocity is preserved by machine gates, not by skipping gates.
 > Rationale of record: 25/49 recent merges landed before one full CI pass
 > (~9.5 min) could complete, so CI was detection-only; 3/30 recent merged
-> PRs touched gate-relevant paths (all `.github/workflows`); a corrupted
-> `ci.yml` trigger literal (`branches: ain]`) persisted on `main` for five
-> weeks behind a no-op restoration commit (`c6988ecf5fd1`). Full census:
+> PRs touched gate-relevant paths (all `.github/workflows`). Full census:
 > `.syllabai/receipts/T-LAW-AMEND-1/run-001.md`.
+>
+> **Correction of record** (2026-11-13, T-LAW-ENFORCE-1, trace
+> `1a1d545c404c9a2d`): the "corrupted `ci.yml` trigger literal" clause
+> above is WITHDRAWN. Byte-level verification (blob hexdump) shows both
+> `ci.yml` and `census-guard.yml` carry `branches: [main]` — the
+> 2026-10-06 restoration (`c6988ecf5fd1`) DID stick. The "corruption"
+> was a substring-scan artifact (`ain]` matches inside `[main]`)
+> amplified by terminal rendering; T-GATE-PROTECT-1 run-001 first
+> corrected it; this amendment closes it. Gate-literal claims are settled
+> by the read-back job below, never by text scans.
 
 **The law: no unverified landings.** An author (human or agent) MAY merge
 their own PR to `main` when ALL of the following hold:
