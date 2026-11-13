@@ -78,7 +78,7 @@ export function TableFillBlock({ block }: { block: RailBlock }) {
   };
 
   const inputCls = (ri: number, ci: number) =>
-    `w-full rounded-md border bg-background px-2 py-1 text-xs ${
+    `w-full rounded-md border bg-background px-2 py-1 text-xs outline-none transition-[border-color,box-shadow] duration-(--motion-duration-fast) ease-motion focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] ${
       checked[ri]?.[ci]
         ? matchesAny(inputs[ri]?.[ci] ?? "", rows[ri]!.cells[ci]!.accepts)
           ? "border-emerald-400 dark:border-emerald-700"

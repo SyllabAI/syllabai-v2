@@ -93,7 +93,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               <button
                 type="button"
                 onClick={() => setSelectedItem(item.id === selectedItem ? null : item.id)}
-                className={`rounded-md border px-2 py-1 text-left text-xs ${
+                className={`rounded-md border px-2 py-1 text-left text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:border-primary focus-visible:ring-2 focus-visible:ring-ring ${
                   selectedItem === item.id ? "border-primary bg-primary/10" : "border-border bg-background"
                 }`}
                 aria-pressed={selectedItem === item.id}
@@ -117,7 +117,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
                 <button
                   key={t.id}
                   type="button"
-                  className="rounded-md border border-dashed px-2 py-1 text-xs hover:bg-muted"
+                  className="rounded-md border border-dashed px-2 py-1 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
                   onClick={() => {
                     if (selectedItem != null) {
                       setAssign((a) => ({ ...a, [selectedItem]: t.id }));
@@ -140,7 +140,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               <span className="flex-1 rounded-md border px-2 py-1 text-xs">{byId.get(id)?.text}</span>
               <button
                 type="button"
-                className="rounded border px-1.5 text-xs"
+                className="rounded-sm border px-1.5 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40"
                 onClick={() => move(idx, -1)}
                 disabled={idx === 0}
                 aria-label={`Move ${byId.get(id)?.text ?? "item"} up`}
@@ -149,7 +149,7 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
               </button>
               <button
                 type="button"
-                className="rounded border px-1.5 text-xs"
+                className="rounded-sm border px-1.5 text-xs outline-none transition-[background-color,border-color,box-shadow] duration-(--motion-duration-fast) ease-motion hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40"
                 onClick={() => move(idx, 1)}
                 disabled={idx === order.length - 1}
                 aria-label={`Move ${byId.get(id)?.text ?? "item"} down`}
