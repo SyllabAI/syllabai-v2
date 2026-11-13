@@ -1,0 +1,31 @@
+{
+  "task": "T-LESSON-DARK-WS7",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "lane": "WS7 dark-mode parity & final walk (plan v1.2 lane table — dark sweep of the lane outputs + full-surface walk + closing receipt)",
+  "surface": "all lesson-visual program surfaces (components/books/**) with the fix surface strength/strength-check-flow.tsx (a pre-lane surface reached by the full-surface walk)",
+  "base": "main 4cbd95f4 (unchanged since the WS6 base — zero race-guard needed)",
+  "findings": [
+    "MECHANISM: dark rides the @custom-variant dark (&:is(.dark *)) class variant over the .dark token block — semantic tokens (border/bg-card/muted/primary) are dark-safe by construction; the risk class is hardcoded palette families.",
+    "CENSUS (receipt-grade, join-aware over multi-line template literals): 88 palette-class sites across components/books/** — 88 dark-paired, 0 unpaired AFTER the fix; before the fix the ONLY unpaired sites were strength-check-flow's 5 (the option verdict borders/icons/result line — the file carried ZERO dark: pairs in full).",
+    "INTENTIONAL: media-embed's bg-black/90 is the video player backdrop — dark-invariant video chrome by convention, disclosed not fixed.",
+    "WALK FINDING: strength-check-flow's option buttons carried a bare transition-colors (no duration/ease token) — the WS2-class defect on the pre-lane surface; brought to the token voice."
+  ],
+  "the_law": [
+    "The 5 strength-check-flow sites gain the house dark pairs under the translucency convention: verdict borders bg -500/60+/10 -> dark -500/40 + /15 (the accent glow restored on dark cards); verdict icons/result text -600 -> dark -400 (the -700/-300 spirit on the lesson's own convention, red kept where the surface used red — no palette re-mapping in a closing lane).",
+    "The option buttons' transition-colors gains duration-(--motion-duration-fast) ease-motion (reduced-motion 0ms inherited free)."
+  ],
+  "gates": {
+    "typecheck": "tsc --noEmit: 0 errors",
+    "lint": "eslint (changed file): 0",
+    "lesson_trio": "books-lesson + lesson-blocks-join + books-lesson-links: 24 tests / 42 expects / 0 fail",
+    "full_battery": "1332 pass / 10 fail / 39,164 expects across 95 files (36.2s) — fail set the same 5-file pre-existing class as the WS6-turn baseline at the same base (A/B-class identical)",
+    "dark_census": "88/88 paired, 0 unpaired (scripts/ws7_dark_census.py, join-aware)",
+    "tailwind": "@tailwindcss/cli: the dark variants emit in the :is(.dark *) custom-variant form (.dark\\:border-red-500\\/40, .dark\\:text-emerald-400, ...) — 69 dark: selectors compiled at this base"
+  },
+  "disclosures": [
+    "This window's full-surface walk is CODE-LEVEL (census + compile proofs + gates); the visual record of record remains download/t-book-026/ (the audit's 5 lesson-zone screenshots) plus each lane's CI-verified Vercel preview — no live dev-server render was run in this window.",
+    "red-vs-rose: the strength flow uses red where the lesson widgets use rose for the same semantic — a palette-voice inconsistency, disclosed out of scope for a closing lane (no re-mapping).",
+    "Known pre-existing battery fail class unchanged (5 files, documented per lane since WS1)."
+  ]
+}
