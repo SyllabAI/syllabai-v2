@@ -16,5 +16,13 @@
  "boundaries": "zero bytes outside the declared run-023 path set; UGM serve plane byte-untouched (P1A ugm-resources byte-identity asserted in-script); no exporter code change; both worklogs append-only",
  "mergePlan": "SELF-MERGE PER OPERATOR ORDER: \"self-merge #979\" (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, trace 1a1d3a04442bb47d, 2026-11-13) — supersedes the filing-time mergePlan (\"author does not self-merge\") exactly per the run-021 (PR #959, merged 3e10718d) and run-022 (PR #965, merged a7dadab8) self-merge precedents: the author executes the merge after the battery 5/5 ALL PASS + CI green on the pushed head; 2-parent sha-pinned PUT (merge_method=merge, no squash); fetch-first race-guard probe immediately before the PUT (main tip must still be 0ff74eb3 — drift = resync loop); no force",
  "battery": "battery rn11-run-023-postReview (this commit); runs 5/5 on the pushed head before the PUT (B5 gates the PUT)",
- "updatedUtc": "2026-11-13 (the battery re-anchor after sync #3; pre-PUT)"
+ "updatedUtc": "2026-11-13 (post-merge record: PR #979 merged of record; the battery 5/5 + CI green gated the PUT)",
+ "merged": {
+  "sha": "df77b2a679c4982eb18255887b9fa27c3f407892",
+  "mergedAt": "2026-11-13T07:15:45Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "0ddbf0a388fc52c676b7b1c6b529497ec389d4df",
+  "mainTipAfter": "df77b2a679c4982eb18255887b9fa27c3f407892 == the merge commit (verified via fetch + API merged=true)",
+  "raceGuard": "the pre-PUT probe green (main tip 0ff74eb3) after sync #3; the first PUT attempt retired on the 8-char sha form (422, no state change) and re-fired with the full sha"
+ }
 }
