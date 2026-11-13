@@ -1,0 +1,73 @@
+{
+  "task": "T-TEACHGENIE-008",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "operator_order": {
+    "orders": [
+      "the conditional ratification footnote (independent students shouldn't see 'your teacher ratifies')"
+    ],
+    "channel": "zai-web",
+    "session": "web-7b4a27df-7d97-438a-849c-05a9c0003aa8",
+    "chat": "0fade780-1ab5-4951-bfd9-13f43e897f40",
+    "trace": "1a1d14ee9f267d55"
+  },
+  "change": {
+    "summary": "the ratification footnotes become enrollment-conditional: picker + review render the teacher claim ONLY on the API's affirmative classroomStudent flag; independent learners read the honest neutral line",
+    "files": [
+      "packages/contracts/src/teach-me.ts — sessionHistoryResponseSchema + SessionHistoryResponse (items + classroomStudent, z.strict)",
+      "apps/api/src/teach-me/types.ts — TeachMeStore.hasClassEnrollment port method (read-only, documented)",
+      "apps/api/src/teach-me/sql.ts — EXISTS(SELECT 1 FROM class_members WHERE student_id = …) probe",
+      "apps/api/src/teach-me/service.ts — listSessions envelope carries classroomStudent (Promise.all beside the rows read; no law byte touched)",
+      "apps/api/test/teach-me/fixtures.ts — FakeStore.classroomStudent field + hasClassEnrollment + widened Harness.history body type",
+      "apps/api/test/teach-me/behavioural.test.ts — envelope assertions (false, then true on fixture flip)",
+      "apps/hub/src/lib/api.ts — teachMeListSessions returns SessionHistoryResponse",
+      "apps/hub/src/components/hub/teach-genie/util.ts — pickerEvidenceFootnote + reviewEvidenceLead (pure helpers, law-tested)",
+      "apps/hub/src/components/hub/teach-genie/teach-genie-client.tsx — classroomStudent state (set ONLY on affirmative true; backToLanding refresh re-syncs) + prop threading to picker + review",
+      "apps/hub/src/components/hub/teach-genie/picker.tsx — footer renders pickerEvidenceFootnote(classroomStudent)",
+      "apps/hub/src/components/hub/teach-genie/review-screen.tsx — evidence lead renders reviewEvidenceLead(classroomStudent)",
+      "apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts — the T-TEACHGENIE-008 footnote law test"
+    ],
+    "copy": {
+      "classroom_picker": "Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts.",
+      "classroom_picker_note": "byte-identical to the T-TEACHME-001 sentence of record",
+      "independent_picker": "Sessions are AI_SUGGESTED evidence.",
+      "classroom_review": "AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record. Spec verdicts of record: …",
+      "classroom_review_note": "byte-identical to the pre-008 lead; the verdicts tail is untouched in both variants",
+      "independent_review": "AI_SUGGESTED evidence. Spec verdicts of record: …"
+    }
+  },
+  "evidence": {
+    "predicate_of_record": "teachermarking (apps/api/src/services/teachermarking/index.ts, header :48-55): visibility is an EXISTS over teacher→classes→class_members→attempts; 'membership rows are the single source of truth: un-enrollment is the only revocation — an ARCHIVED class keeps its roster … enrollment, not class status, is the law' — the footnote flag uses the SAME predicate (no class-status filter)",
+    "gates": {
+      "contracts_typecheck": "tsc --noEmit exit 0",
+      "api_typecheck": "tsc --noEmit exit 0",
+      "hub_typecheck": "tsc --noEmit exit 0",
+      "api_teach_me_tests": "bun test apps/api/test/teach-me/ → 27 pass, 0 fail (145 expect calls)",
+      "hub_teach_genie_tests": "bun test apps/hub/src/components/hub/teach-genie/ → 10 pass, 0 fail (incl. the 008 footnote law test)",
+      "hub_lint": "eslint on the touched files: 0 new problems (2 PRE-EXISTING react-hooks/set-state-in-effect errors in session-screen.tsx, reproduced on the stashed clean tree — untouched by this lane)"
+    },
+    "pins_checked": {
+      "tests": [
+        "apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts",
+        "apps/hub/src/components/hub/teach-genie/note-picker-laws.test.ts",
+        "apps/api/test/teach-me/behavioural.test.ts",
+        "apps/api/test/teach-me/update-session-seam.test.ts"
+      ],
+      "result": "no pin on either footnote string pre-008 (rg over hub tests + golden/ + golden-captures/ returned zero hits for 'ratifies'/'AI_SUGGESTED evidence'/TeachGenie); the only history test read list.body.items ?? [] (tolerant to the envelope field); the D1 audit filter (insert*/update* method prefixes) is untouched by the read-only hasClassEnrollment"
+    }
+  },
+  "scope_disclosures": [
+    "the flag is copy-only: it never gates a law, a write path, or the error vocabulary",
+    "the independent copy promises NOTHING about counts/auto-commit (auto-commit is not live — the T-COPYFIX-001 fence respected)",
+    "signed-out / fetch-error / unknown all render the neutral independent copy (fail-safe direction)",
+    "legacy teach-me surfaces (teach-me/review.tsx 'ratifies' mention) are header-comment only and not routed — no copy change there",
+    "worklog entry WITHHELD from this PR (fleet merge-conflict lane) — re-files post-merge per the T-COPYFIX-001→#967 precedent",
+    "bun install used in the authoring sandbox for the gates above; CI is the gate of record on the PR head"
+  ],
+  "reversibility": "revert the PR, or render pickerEvidenceFootnote(true)/reviewEvidenceLead(true) unconditionally — both one-line restores of the unconditional copy",
+  "branch": "t-teachgenie-008/run-001",
+  "base": "main c88df552… (authored against 24e6f5fd; rebased onto c88df552 after the pre-push fetch-race check caught the T-SME-SEL-W6-1 bookkeeping merge — zero file overlap)",
+  "base_authored": "24e6f5fd6acef778b459be9fab0e76e3c529c8d7",
+  "base_rebased": "c88df552 (full sha at git rev-parse origin/main)",
+  "author_merge": false
+}

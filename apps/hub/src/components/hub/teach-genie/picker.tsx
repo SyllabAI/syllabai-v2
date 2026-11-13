@@ -27,11 +27,17 @@ import { ArrowLeft, Check, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { TeachDifficulty, TeachSessionLength } from "@syllabai/contracts";
 import type { TeachGeniePickerNote, TeachGeniePickerNoteTopic } from "@/components/hub/teach-me/picker-data";
+import { pickerEvidenceFootnote } from "./util";
 
 export interface TeachGeniePickerProps {
   noteTree: TeachGeniePickerNoteTopic[];
   courseLabel: string;
   busy: boolean;
+  /** T-TEACHGENIE-008 — the API's affirmative enrollment flag: true ONLY for
+   *  a confirmed class_members row (the teachermarking predicate). False or
+   *  unknown renders the neutral independent footnote — never a teacher claim
+   *  to a learner without a teacher. */
+  classroomStudent: boolean;
   onStart: (body: {
     specPointIds: string[];
     difficulty: TeachDifficulty;
@@ -52,7 +58,7 @@ const LENGTHS: Array<{ value: TeachSessionLength; label: string; hint: string }>
   { value: "in_depth", label: "In-Depth", hint: "6 objectives · up to 8 messages" },
 ];
 
-export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack }: TeachGeniePickerProps) {
+export function TeachGeniePicker({ noteTree, courseLabel, busy, classroomStudent, onStart, onBack }: TeachGeniePickerProps) {
   const [unitCode, setUnitCode] = useState<string>(noteTree[0]?.code ?? "");
   const [topicCode, setTopicCode] = useState<string>(noteTree[0]?.subtopics[0]?.code ?? "");
   const [picked, setPicked] = useState<TeachGeniePickerNote | null>(null);
@@ -265,7 +271,7 @@ export function TeachGeniePicker({ noteTree, courseLabel, busy, onStart, onBack 
           {busy ? "Waking SillyAI…" : "Start session"}
         </Button>
         <p className="text-center text-2xs leading-relaxed text-muted-foreground">
-          Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts.
+          {pickerEvidenceFootnote(classroomStudent)}
         </p>
       </div>
     </div>

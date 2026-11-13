@@ -6,6 +6,8 @@ import {
   endedLine,
   objectiveDotClass,
   objectiveStatusLabel,
+  pickerEvidenceFootnote,
+  reviewEvidenceLead,
   statusDotClass,
   statusLabel,
   timeAgo,
@@ -45,5 +47,23 @@ describe("teach-genie display laws (T-TEACHGENIE-001; house tokens since -004)",
   it("endedLine: the review divider renders a real timestamp", () => {
     expect(endedLine("2026-10-31T23:24:00Z")).toMatch(/Oct/);
     expect(endedLine("not-a-date")).toBe("");
+  });
+
+  it("T-TEACHGENIE-008 footnotes: the teacher claim renders ONLY for a confirmed classroom student", () => {
+    // classroom: the sentences of record, byte-identical to T-TEACHME-001 copy
+    expect(pickerEvidenceFootnote(true)).toBe(
+      "Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts.",
+    );
+    expect(reviewEvidenceLead(true)).toBe(
+      "AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record.",
+    );
+    // independent: the honest neutral line — no teacher claim, and no
+    // counts-toward-record promise (auto-commit is NOT live)
+    expect(pickerEvidenceFootnote(false)).toBe("Sessions are AI_SUGGESTED evidence.");
+    expect(pickerEvidenceFootnote(false)).not.toContain("teacher");
+    expect(pickerEvidenceFootnote(false)).not.toContain("counts");
+    expect(reviewEvidenceLead(false)).toBe("AI_SUGGESTED evidence.");
+    expect(reviewEvidenceLead(false)).not.toContain("ratifies");
+    expect(reviewEvidenceLead(false)).not.toContain("record");
   });
 });
