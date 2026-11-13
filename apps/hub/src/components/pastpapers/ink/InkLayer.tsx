@@ -252,6 +252,22 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // the way back. And the paper OPENS in Browse (select), not pen —
   // reading is the paper's first job; ink arms on an explicit pick.
   const [mode, setMode] = useState<InkToolMode>("select");
+  // T-HUB-INK-BRK run-003: the LIVE tools mirror — armTool/pickColor/
+  // pickWidth write it SYNCHRONOUSLY, before any React commit. On desktop
+  // (lg) the first raster burst of all 28 pages can starve the re-render
+  // for seconds; the portaled canvases' gesture handlers stayed on the
+  // stale `mode` closure, so a tool armed in that window did NOTHING
+  // (proven live 2026-11-13: tap dead at t0, alive at t+3s, same session).
+  // The handlers read this ref first; `mode` stays for render-time
+  // visuals. armTool also syncs the canvases' touch-action + the pane-pinch
+  // marker imperatively so TOUCH gestures follow the new tool inside the
+  // same dead window (a draw-armed finger used to pan the paper instead of
+  // drawing until the render landed).
+  const liveToolsRef = useRef<{ mode: InkToolMode; color: InkColor; widthFrac: number }>({
+    mode: "select",
+    color: "black",
+    widthFrac: INK_WIDTH_FRACS[1],
+  });
   // T-HUB-INK-TOUCH run-001: the collapsed posture — persisted per device
   // (the token-read try/catch pattern; private mode keeps the default).
   const [collapsed, setCollapsed] = useState(false);
@@ -277,12 +293,19 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // hint-card arm) bumps it; the hover chips key their per-arm spend on
   // it (a placement spends the chip until the next arming).
   const [armSeq, setArmSeq] = useState(0);
-  const armTool = useCallback((m: InkToolMode) => {
-    setMode(m);
-    setArmSeq((s) => s + 1);
-  }, []);
   const [color, setColor] = useState<InkColor>("black");
   const [widthIdx, setWidthIdx] = useState(1);
+  // T-HUB-INK-BRK run-003: the pick twins — the mirror writes FIRST (the
+  // next stroke started inside the deferred-render window commits the
+  // picked colour/width), then the render state catches up.
+  const pickColor = useCallback((c: InkColor) => {
+    liveToolsRef.current.color = c;
+    setColor(c);
+  }, []);
+  const pickWidth = useCallback((i: number) => {
+    liveToolsRef.current.widthFrac = INK_WIDTH_FRACS[i] ?? liveToolsRef.current.widthFrac;
+    setWidthIdx(i);
+  }, []);
   const [holders, setHolders] = useState<HolderEntry[]>([]);
   // T-MG-INK-7: the portal-root registry (page → the single wrapper div
   // the portal hosts inside the holder). The pane's page lifecycle
@@ -295,6 +318,28 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   // change, nothing for React to disagree with (a keyed remount here
   // would make React unmount the detached ghost and throw NotFoundError).
   const inkRootsRef = useRef(new Map<number, HTMLElement>());
+  // T-HUB-INK-BRK run-003: the gesture-style sync — armTool's render-time
+  // touch-action/data-ink-drawing updates are subject to the same deferred
+  // re-render as the handlers, so this writes the canvases' gesture
+  // contract IMPERATIVELY (a draw-armed finger must not pan the paper
+  // inside the dead window). The render's style prop remains the truth
+  // once it lands — the two agree (same source: liveToolsRef).
+  const syncCanvasGestures = useCallback(() => {
+    const { mode: m } = liveToolsRef.current;
+    for (const root of inkRootsRef.current.values()) {
+      const c = root.querySelector<HTMLCanvasElement>("canvas[data-ink-page]");
+      if (!c) continue;
+      c.style.touchAction = m === "select" ? "pan-x pan-y pinch-zoom" : "none";
+      if (m === "select") c.removeAttribute("data-ink-drawing");
+      else c.setAttribute("data-ink-drawing", c.getAttribute("data-ink-page") ?? "");
+    }
+  }, []);
+  const armTool = useCallback((m: InkToolMode) => {
+    liveToolsRef.current.mode = m;
+    setMode(m);
+    setArmSeq((s) => s + 1);
+    syncCanvasGestures();
+  }, [syncCanvasGestures]);
   // T-MG-INK-9: the math keyboard's portal host — a pane-level bottom
   // strip (the keyboard is pane-wide, MG's virtual-keyboard posture; a
   // page holder must not contain it). pointer-events:none — the panel
@@ -573,17 +618,20 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
   const commitStroke = useCallback(
     (page: number, points: Array<[number, number]>) => {
       if (points.length < 2) return;
+      // T-HUB-INK-BRK run-003: the LIVE colour/width — a stroke STARTED in
+      // the deferred-render window commits what the user picked (the
+      // `color`/`widthIdx` closures here used to be seconds stale).
       const stroke: InkStrokeShape = {
         id: makeShapeId(),
         kind: "stroke",
         page,
-        color,
-        widthFrac: INK_WIDTH_FRACS[widthIdx],
+        color: liveToolsRef.current.color,
+        widthFrac: liveToolsRef.current.widthFrac,
         points,
       };
       commit([...shapesRef.current, stroke]);
     },
-    [color, widthIdx, commit],
+    [commit],
   );
 
   const commitText = useCallback(
@@ -856,7 +904,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
                 <DropdownMenuItem
                   key={c}
                   aria-label={c[0].toUpperCase() + c.slice(1)}
-                  onSelect={() => setColor(c)}
+                  onSelect={() => pickColor(c)}
                 >
                   <span
                     aria-hidden
@@ -890,7 +938,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
                 <DropdownMenuItem
                   key={w}
                   aria-label={INK_WIDTH_NAMES[i]}
-                  onSelect={() => setWidthIdx(i)}
+                  onSelect={() => pickWidth(i)}
                 >
                   <span
                     aria-hidden
@@ -1137,6 +1185,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               onGuideMove={guideMove}
               onGuideRotate={guideRotate}
               onGuideCreate={guideCreate}
+              liveToolsRef={liveToolsRef}
               armSeq={armSeq}
               guideSlot={
                 <>
@@ -1230,6 +1279,23 @@ export interface InkCanvasProps {
   /** T-MG-INK-10: the arm epoch — bumped by every explicit tool arming;
    * the hover chip's position and per-arm spend are keyed by it. */
   armSeq?: number;
+  /**
+   * T-HUB-INK-BRK run-003: the LIVE tools mirror (mode/color/widthFrac),
+   * written SYNCHRONOUSLY by armTool/pickColor/pickWidth before any React
+   * commit. On desktop (lg) the first 28-page raster burst can starve the
+   * re-render for seconds; the portaled canvases' handlers used to stay on
+   * the stale `mode` closure, so a tool armed in that window did NOTHING
+   * (taps/strokes dead ~3-4s, self-healing only when some unrelated render
+   * landed). The gesture handlers read this ref FIRST — the gesture
+   * follows what the user clicked, not what React has flushed. The `mode`
+   * prop stays for the render-time visuals (cursor/touch-action) and any
+   * remaining closure reads that are cosmetic-only. OPTIONAL: the direct
+   * InkCanvas mounts (the test harness) fall back to a per-instance ref
+   * seeded from the props — the harness arms via props, so the fallback
+   * mirrors it exactly; the production InkLayer always passes the live
+   * layer-level ref.
+   */
+  liveToolsRef?: { current: { mode: InkToolMode; color: InkColor; widthFrac: number } };
 }
 
 type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide" | "erase" | "move";
@@ -1286,7 +1352,14 @@ export function InkCanvas({
   guideSlot,
   keyboardHost,
   armSeq = 0,
+  liveToolsRef,
 }: InkCanvasProps) {
+  // T-HUB-INK-BRK run-003: the mirror the gesture handlers read. The
+  // production InkLayer passes its layer-level liveToolsRef (written at
+  // arm time, before any commit); a direct mount (the test harness) gets
+  // the per-instance fallback seeded from the props it armed with.
+  const liveToolsFallbackRef = useRef({ mode, color, widthFrac });
+  const tools = liveToolsRef ?? liveToolsFallbackRef;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const boxRef = useRef<{ cssW: number; cssH: number }>({ cssW: 0, cssH: 0 });
   const activeRef = useRef<Array<[number, number]> | null>(null);
@@ -1511,7 +1584,12 @@ export function InkCanvas({
     (e: React.PointerEvent<HTMLCanvasElement>) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
-      if (mode === "text") {
+      // T-HUB-INK-BRK run-003: the LIVE tool — the ref mirror armTool
+      // writes synchronously (see the props doc). The closed-over `mode`
+      // prop is whatever React last flushed; during the desktop raster
+      // burst that is seconds old.
+      const m = tools.current.mode;
+      if (m === "text") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
         // T-MG-INK-6 run-002 (the pointerdown law): cancel the OPENING press
         // BEFORE any setDraft. Per the Pointer Events spec's compatibility
@@ -1553,7 +1631,7 @@ export function InkCanvas({
         );
         return;
       }
-      if (mode === "math") {
+      if (m === "math") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
         // T-MG-INK-6 run-002: the pointerdown law, math twin — the same
         // compat-mousedown suppression as the text branch above, covering
@@ -1583,7 +1661,7 @@ export function InkCanvas({
         );
         return;
       }
-      if (mode === "erase" || mode === "select") {
+      if (m === "erase" || m === "select") {
         if (e.pointerType === "mouse" && e.button !== 0) return;
         const box = canvas.getBoundingClientRect();
         const cssBox = { cssW: box.width, cssH: box.height };
@@ -1594,7 +1672,7 @@ export function InkCanvas({
         );
         measureMtexts();
         const hits = shapesHitIds(displayShapes, { x: frac[0], y: frac[1] }, cssBox, ERASE_TOL_CSS_PX, readMeasured);
-        if (mode === "erase") {
+        if (m === "erase") {
           canvas.setPointerCapture(e.pointerId);
           dragKindRef.current = "erase";
           setErasePreview(hits.length > 0 ? new Set(hits) : new Set());
@@ -1623,7 +1701,7 @@ export function InkCanvas({
       const nbox = { left: box.left, top: box.top, width: box.width, height: box.height };
       const cssBox = { cssW: box.width, cssH: box.height };
       const frac = normalizePoint(nbox, e.clientX, e.clientY);
-      if (mode === "line") {
+      if (m === "line") {
         canvas.setPointerCapture(e.pointerId);
         dragKindRef.current = "line";
         activeRef.current = [frac, frac];
@@ -1631,7 +1709,7 @@ export function InkCanvas({
         scheduleLive();
         return;
       }
-      if (mode === "compasses") {
+      if (m === "compasses") {
         canvas.setPointerCapture(e.pointerId);
         dragKindRef.current = "compasses";
         pivotRef.current = { x: frac[0], y: frac[1] };
@@ -1641,34 +1719,34 @@ export function InkCanvas({
         scheduleLive();
         return;
       }
-      if (mode === "ruler" || mode === "protractor") {
-        const guide = mode === "ruler" ? ruler : protractor;
+      if (m === "ruler" || m === "protractor") {
+        const guide = m === "ruler" ? ruler : protractor;
         if (guide) {
           const live =
-            mode === "ruler" ? rulerLivePoint({ x: frac[0], y: frac[1] }, ruler!, cssBox) : protractorLivePoint({ x: frac[0], y: frac[1] }, protractor!, cssBox);
+            m === "ruler" ? rulerLivePoint({ x: frac[0], y: frac[1] }, ruler!, cssBox) : protractorLivePoint({ x: frac[0], y: frac[1] }, protractor!, cssBox);
           if (live) {
             // pen down on the guide's snap line → instrument draw
             canvas.setPointerCapture(e.pointerId);
-            dragKindRef.current = mode;
+            dragKindRef.current = m;
             rawRef.current = [frac];
             activeRef.current = [
               [live.x, live.y],
               [live.x, live.y],
             ];
             lastPxRef.current = [e.clientX, e.clientY];
-            if (mode === "protractor") setSweepDeg(0);
+            if (m === "protractor") setSweepDeg(0);
             scheduleLive();
             return;
           }
           // off the snap line → the touch belongs to the guide (drag body)
           dragKindRef.current = "guide";
-          guideToolRef.current = mode;
+          guideToolRef.current = m;
           canvas.setPointerCapture(e.pointerId);
-          onGuideDown?.(mode, { x: frac[0], y: frac[1] });
+          onGuideDown?.(m, { x: frac[0], y: frac[1] });
           return;
         }
         // no guide yet → the creating tap (next touch manipulates it)
-        onGuideCreate?.(mode, page, { x: frac[0], y: frac[1] });
+        onGuideCreate?.(m, page, { x: frac[0], y: frac[1] });
         return;
       }
       canvas.setPointerCapture(e.pointerId);
@@ -1684,11 +1762,13 @@ export function InkCanvas({
     (e: React.PointerEvent<HTMLCanvasElement>) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
+      // T-HUB-INK-BRK run-003: the live-tool read (see onPointerDown).
+      const m = tools.current.mode;
       const kind = dragKindRef.current;
       // T-MG-INK-10: while an editor tool is armed and no editor is
       // open, the hover chip follows the cursor (MG's affordance).
       // Position-only tracking — drags are untouched below.
-      if (!kind && (mode === "text" || mode === "math") && !draft && !mathDraft) {
+      if (!kind && (m === "text" || m === "math") && !draft && !mathDraft) {
         const box = canvas.getBoundingClientRect();
         setChip({ seq: armSeq, x: e.clientX - box.left, y: e.clientY - box.top });
       }
