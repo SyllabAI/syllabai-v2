@@ -1,0 +1,38 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-SCOPING
+  title: 'SME selector wave-9 scoping — the fleet census of record: layered/
+    non-layered truth, the maths-family tranche map, variant + provenance
+    probes (operator order: "Wave 9 scoping")'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — scoping after the merged waves
+    #867/#878/#886/#890/#907/#932/#942/#949/#952 and the wave-6 re-pin #970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W6-1, T-SME-SEL-W7-1, T-SME-SEL-W8-1]
+  scope:
+    allowed:
+    - .syllabai/lane-artifacts/T-SME-SEL-W9-SCOPING/run-001/census.json (NEW)
+    - .syllabai/receipts/T-SME-SEL-W9-SCOPING/run-001.md (NEW)
+    - .syllabai/tasks/T-SME-SEL-W9-SCOPING.yaml (NEW)
+    - both worklogs (append-only)
+    forbidden:
+    - ANY corpus/src/docs byte (read-only scoping: zero writes by definition)
+    - any SME layer build (wave 9 build is a separate order; this card only
+      scopes it)
+  acceptance:
+  - fleet census of record at main c88df552 with the EXACT selector joins
+    (smeRowOfNote/smeRowOfQuestionSet): 106 courses = 27 layered (2,077/2,077
+    notes placed, 0 unsanctioned set leftovers — the 1 census hit is the
+    wave-6 pinned variant set, gate-asserted) + 79 non-layered (7,074 notes
+    loose-by-design, 100% joinable; 2,009 sets across 64 set-bearing)
+  - maths-family tranche map of record: 33 courses, 17 layered, 16
+    non-layered; W9-T1 CIE IGCSE 5 (711n/216s), W9-T2 Edexcel 3 + fp1 + AS
+    pure-2 (651n/211s, b-16 notes-only special case), W9-T3 modular-24 units
+    4 (328n/104s, trailing-set variant class disclosed); supersedes the
+    "/18/ non-modular maths pairs" estimate
+  - probes of record: 9618-class ambiguity ZERO across all 15 candidates;
+    trailing-hyphen sets live ONLY in f-u1 (5) / f-u2 (8); fleet set
+    reconciliation 2,639 = 2,574 SME-provider + 65 b-16 past-paper rows
