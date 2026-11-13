@@ -1,0 +1,58 @@
+# T-HUB-INK-BRK — the ink-wedge heal lane (run-003 follow-up).
+#
+# CONTEXT (2026-11-13): the probe learner's 4CH1/1C pdf-drawings row 500s
+# on BOTH GET and PUT even after the PR #977 self-heal baked (READY
+# 06:31Z, healthy rows 200, this row 500) — the failure is BEFORE the
+# served-schema parse (most plausibly row-level storage corruption; the
+# SELECT itself throws). The recovery of record is a GUARDED DELETE of
+# the exact row (learner_id + document_ref_type + source_url), executed
+# by apps/api/scripts/ink-wedge-heal.ts, which CAPTURES the poison
+# fingerprint (doc head/md5/size) for the receipts, deletes under the
+# three-key guard, and postverifies the count.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — dispatch = the fire order (the
+# 093/133b law). Secret of record: T138_PROD_DATABASE_URL (exists).
+# The dispatch inputs carry the guard keys; the script never interpolates
+# SQL strings.
+
+name: t-hub-ink-brk-db-heal
+
+on:
+  workflow_dispatch:
+    inputs:
+      learner_id:
+        description: "The probe learner id (guard key 1)"
+        required: true
+      source_url:
+        description: "The wedged drawing's sourceUrl (guard key 3)"
+        required: true
+      note:
+        description: "Operator note"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-hub-ink-brk-db-heal
+  cancel-in-progress: false
+
+jobs:
+  heal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Capture + guarded delete + postverify
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+          HEAL_LEARNER_ID: ${{ inputs.learner_id }}
+          HEAL_SOURCE_URL: ${{ inputs.source_url }}
+        run: |
+          bun run apps/api/scripts/ink-wedge-heal.ts
