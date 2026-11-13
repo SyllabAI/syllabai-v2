@@ -273,12 +273,29 @@ describe("cie-phase4 roster law", () => {
     // servable 0 rides the ZERO_SERVABLE_OF_RECORD amendment above — no
     // counter moves for it at this re-pin (its raw bank was already fully in
     // the unmapped class).
-    expect(questions).toBe(14555);
-    expect(parts).toBe(19238);
+    // RN-DEBRIS-11 RUN-023 RE-PIN (the run-022 filing D4 law, operator order
+    // 'run-023', trace 1a1d343a03eb5c35): the carriers' tag re-points
+    // (6.3.4a -> 7.4, 6.3.5 -> 7.5a/7.5b, 6.3.6-9 -> 7.6-7.9, 39 parts across
+    // the 5 affected cs-23 sets) land on the T7 topic-level rows — the
+    // run-021 serve-plane law keeps those codes OFF the SME topic map, so the
+    // honest shim's new servable-anchor exclusion class (serveUnmappedSpec,
+    // the run-006 pattern) excludes the 36 affected cs-23 questions from the
+    // SERVE plane only (the hub bundle keeps them; the hub bridge serves
+    // them via the pointIds law; the codes stay spine-true). Re-pinned
+    // first-hand from the shim's own admission output (loadRoster /
+    // buildSmePackage, the same single admission law): questions 14,555 ->
+    // 14,519; parts 19,238 -> 19,199; pkgParts 25,231 -> 25,189; unmapped
+    // 12,610 UNCHANGED; serveUnmappedSpec 36 NEW (cs-23 only);
+    // badSum/dupOrder/crossSetRefCollision untouched; raw 27,246/43,996
+    // UNCHANGED. NOT a loosening: a serve-plane narrowing class, disclosed
+    // and counted — the identity re-proven EXACTLY at the new floors
+    // (27,246 - 14,519 == 12,610 + 36 + 81 + 0 == 12,727).
+    expect(questions).toBe(14519);
+    expect(parts).toBe(19199);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(25231); // run-012 re-pin (was 25,167 — the stream A note above)
+    expect(pkgParts).toBe(25189); // run-023 re-pin (was 25,231 — the run-012 note above)
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -355,20 +372,22 @@ describe("cie-phase4 roster law", () => {
     const excl = real.reduce(
       (a, e) => ({
         unmapped: a.unmapped + (e.shimExclusions?.unmapped ?? 0),
+        serveUnmappedSpec: a.serveUnmappedSpec + (e.shimExclusions?.serveUnmappedSpec ?? 0),
         badSum: a.badSum + (e.shimExclusions?.badSum ?? 0),
         dupOrder: a.dupOrder + (e.shimExclusions?.dupOrder ?? 0),
         crossSetRefCollision: a.crossSetRefCollision + (e.shimExclusions?.crossSetRefCollision ?? 0),
       }),
-      { unmapped: 0, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 },
+      { unmapped: 0, serveUnmappedSpec: 0, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 },
     );
     // D-KG1b: the claim index dissolves the cross-set collision class —
     // the belt-and-braces counter is zero of record under the amendment
-    expect(excl).toEqual({ unmapped: 12610, badSum: 0, dupOrder: 81, crossSetRefCollision: 0 }); // run-012 re-pin: unmapped 12,674 -> 12,610 (the business-25 T1 tagBackfill class)
-    // the question-level identity: raw - servable = unmapped + dupOrder + crossSetRefCollision
+    expect(excl).toEqual({ unmapped: 12610, serveUnmappedSpec: 36, badSum: 0, dupOrder: 81, crossSetRefCollision: 0 }); // run-023 re-pin: serveUnmappedSpec 36 NEW (the cs-23 T7-topic-level anchor class; unmapped 12,610 UNCHANGED)
+    // the question-level identity: raw - servable = unmapped + serveUnmappedSpec + dupOrder + crossSetRefCollision
     // (each exclusion removes whole questions; badSum is zero of record) —
     // re-proven at the D-KG1b re-pin: 27246-14491 == 12674+81+0 == 12755
     // re-proven at the run-012 re-pin: 27246-14555 == 12610+81+0 == 12691
-    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder + (excl.crossSetRefCollision ?? 0));
+    // re-proven at the run-023 re-pin: 27246-14519 == 12610+36+81+0 == 12727
+    expect(rawQ - questions).toBe(excl.unmapped + excl.serveUnmappedSpec + excl.dupOrder + (excl.crossSetRefCollision ?? 0));
     // the zero-servable real banks of record — see ZERO_SERVABLE_OF_RECORD
     // (the module-level law; econ-25 departed at run-006, the wave-2
     // anchor-gap class joined at the r1 fill and DEPARTED at the CONSUME-2

@@ -2041,10 +2041,11 @@ describe("the same-board re-serve plane (T-UGM-AS-PURE-1 r0 — the AS pure-1 bu
     expect([...as1.specPoints.map((s) => s.code)].sort()).toEqual(
       [...bundle.specPoints.map((s) => s.code)].sort(),
     );
-    // 36 AS spine codes, 30 in the index — the three folded a-codes stay folded (below); run-020's
+    // 34 AS spine codes, 30 in the index — the folded a-code 1.4.1a stays folded (below); run-020's
     // 1.3.3/1.3.4/1.3.5 are uncovered official adds that stay OFF the serve index until a T-UGM lane
-    // serves them (the 1.1-shaped a-level plane forbids honest-gap index rows — primaryPick law)
-    expect(curCodes).toHaveLength(36);
+    // serves them (the 1.1-shaped a-level plane forbids honest-gap index rows — primaryPick law);
+    // run-023 removed 1.3.1a/1.3.2a (the D6b disposition, RN-DEBRIS-11) — 36 -> 34
+    expect(curCodes).toHaveLength(34);
     expect(as1.specPoints).toHaveLength(30);
     for (const sp of as1.specPoints) {
       const node = cur.nodes.find((n) => n.code === sp.code);
@@ -2055,8 +2056,9 @@ describe("the same-board re-serve plane (T-UGM-AS-PURE-1 r0 — the AS pure-1 bu
       expect(sp.ugmIds).toEqual(src?.ugmIds ?? []);
       expect(sp.resourceCount).toBe(src?.resourceCount ?? 0);
     }
-    // the three folded a-codes ride their parent codes of record — never gap-implied
-    for (const folded of ["1.3.1a", "1.3.2a", "1.4.1a"]) {
+    // the folded a-code riding its parent codes of record — never gap-implied;
+    // run-023 removed the 1.3.1a/1.3.2a pair (the D6b disposition), so 1.4.1a is the folded class
+    for (const folded of ["1.4.1a"]) {
       expect(curCodes).toContain(folded);
       expect(as1.specPoints.map((s) => s.code)).not.toContain(folded);
       const parent = as1.specPoints.find((s) => s.code === folded.slice(0, -1));
