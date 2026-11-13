@@ -3,7 +3,7 @@ task:
   id: T-LAW-AMEND-1
   title: "Amend the merge law of record — authors-never-self-merge → no-unverified-landings (risk tier, fast path, merge queue, read-back integrity)"
   owner: "zai-web session (trace 1a1d14969d9dd695)"
-  status: IN_REVIEW
+  status: DONE
   priority: P1
   wave: 0
   deps: []
@@ -32,3 +32,5 @@ scope:
     - ".github/** (risk tier — separate task)"
     - "packages/** (R1/R2 lanes)"
     - "apps/** (R3–R5 lanes)"
+    Closeout: operator approval of record 2026-11-13 trace 1a1d34f16b1640c9 ('approve #969.'); APPROVE review posted citing the
+    trace; merged per §8 on green of record; branch deleted post-merge.
