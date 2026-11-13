@@ -337,7 +337,7 @@ export function LessonView({
               <Target className="h-4 w-4" aria-hidden />
               Learning objectives
             </div>
-            {pack.learningObjective}
+            <ObjectiveList raw={pack.learningObjective} />
           </div>
         )}
         <div className="mt-2">
@@ -388,6 +388,33 @@ export function LessonView({
           </Link>
         </div>
       </article>
+    </div>
+  );
+}
+
+/** The learningObjective string packs the objectives into one authored
+ * string separated by ";" chains and inline "•" bullets (census of record:
+ * 27 packs, ; x170, bullet x34, newline x0) — rendering it bare flattened
+ * every objective into one continuous paragraph. Split on the authored
+ * separators and render one per line; a trailing-colon lead piece (the
+ * "rules: • a • b" authoring shape) renders above the list. */
+function ObjectiveList({ raw }: { raw: string }) {
+  const pieces = raw
+    .split(/[;•]/g)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+  if (pieces.length === 0) return null;
+  const lead = pieces[0]!.endsWith(":") ? pieces[0] : null;
+  const items = lead ? pieces.slice(1) : pieces;
+  if (items.length === 0) return <p>{lead}</p>;
+  return (
+    <div>
+      {lead && <p className="mb-0.5">{lead}</p>}
+      <ul className="list-disc space-y-0.5 pl-5">
+        {items.map((o, i) => (
+          <li key={i}>{o}</li>
+        ))}
+      </ul>
     </div>
   );
 }

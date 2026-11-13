@@ -1,0 +1,23 @@
+{
+  "task": "T-LESSON-OBJFIX-1",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "lane": "Operator-reported defect: Learning objectives render as one continuous paragraph",
+  "surface": "apps/hub/src/components/books/lesson/lesson-view.tsx (the objectives box under the lesson h1)",
+  "base": "main 4cbd95f4",
+  "root_cause_of_record": "learningObjective is a single authored string (types.ts:1824, string | null) packing the objectives with ';' chains and inline bullet separators — lesson-view rendered it bare ({pack.learningObjective}) inside the box, so JSX whitespace handling collapsed everything into one run-on paragraph.",
+  "census_of_record": "27 packs carry a non-null learningObjective; ALL 27 pack multiple objectives; delimiters: ; x170, bullet x34, newline x0; worst case: 'Chemical tests' — 21 objectives flattened into one paragraph. Corpus verified at scripts time (python, receipt-grade).",
+  "the_fix": "ObjectiveList (lesson-view.tsx): split the authored string on /;/•/, trim, drop empties; a first piece ending with ':' renders as the lead line above the list (the 'rules: • a • b' authoring shape — corpus-verified on the solubility pack); the rest render as one li per objective (list-disc pl-5 space-y-0.5, markers inherit; the WS4 box anatomy byte-kept — text-base leading-relaxed, the Target label row). Corpus verification: 229 objective items render across the 27 packs; the alkenes ; -chain -> 3 items; the solubility pack -> lead + 2 items.",
+  "gates": {
+    "typecheck": "tsc --noEmit: 0 errors",
+    "lint": "eslint (changed file): 0",
+    "lesson_trio": "24 tests / 42 expects / 0 fail",
+    "full_battery": "1332 pass / 10 fail / 39,164 expects across 95 files — fail set A/B-IDENTICAL to the WS7-turn capture at the same base (diff empty)",
+    "note": "no new tailwind utilities beyond the standard list voices (list-disc/pl-5 are core); no emission-gate needed"
+  },
+  "disclosures": [
+    "The ';' split assumes authored objectives never embed a semicolon mid-sentence — the census (170 ';' boundaries across 27 packs, all reading as objective boundaries) supports this; any future pack violating it will show an extra item, not a broken layout.",
+    "The bullets-after-colon shape renders the colon piece as lead text, not a bullet — the author's intent per the solubility pack.",
+    "learningObjective strings arrive exactly as authored (books-slices sets null on the manifest path — no joiner normalizes them)."
+  ]
+}
