@@ -11,6 +11,11 @@
    "provider": "cognito (Cognito Edu YouTube channel — unmapped remainder)",
    "method": "yt-dlp flat channel enumeration (re-verified 2026-11-12: 529 public uploads, 0 delta vs the P4 cache; the 545-548 header count includes members-only/shorts) + oEmbed identity sweep 254/254 + subject routing + LLM title-to-spec adjudication under the tightened binding rule; evidence is TITLE-ONLY",
    "enumeratedUtc": "2026-11-01T01:04:15Z"
+  },
+  "p9": {
+   "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
+   "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
+   "enumeratedUtc": "2026-11-13T05:57:42Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. Two rejects where the title names the domain but not the spec's distinctive frame.",
-  "rowsApproved": 6,
+  "rowsApproved": 34,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -74,6 +79,28 @@
       "video": "WCwtVN7nKTE",
       "reason": "no honest binding: 2D projections/plans-and-elevations has no spec-point home in the 4MA1 higher spine; closest candidate (4.10B face/edge/vertex) is not title-named content",
       "lane": "T-VIDEOMAP-P5 (Cognito channel completion)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p9 (mr-hassaans-maths completion)",
+    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+    "ruledUtc": "2026-11-13T06:48:16Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
+    "rowsApproved": 28,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "video": "rrpwXLQHz9w",
+      "reason": "full-row drop: class rounding|approximation|estimate binds 1.8D but pre-pass proposed none in family — no honest bind",
+      "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
+     },
+     {
+      "video": "0Eao3MjGw3U",
+      "reason": "route misbind re-adjudicated: title names IAL P3 product rule (TYU chapter 6)",
+      "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
      }
     ]
    }
@@ -199,6 +226,314 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-12T06:32:15Z"
+  },
+  {
+   "id": "-gtmVfwdiPs",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.12 Ratios, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=-gtmVfwdiPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "17LrmGOCAYg",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q22, Circle Theorems, Intersecting Chords, (Proof)",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=17LrmGOCAYg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2dDoD5Ell54",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.11 Prime Factors, HCF & LCM, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=2dDoD5Ell54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "703y68svl6g",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q17, Direct Variation, Algebraic Terms",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=703y68svl6g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DFc0Zb5ScbM",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q23, Arithmetic Series, Sum",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=DFc0Zb5ScbM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DWFHHPcm7MU",
+   "title": "IGCSE (Textbook- Rayner), Ch 7, Graphs, Ex14, Q3, p264 , Speed Time Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=DWFHHPcm7MU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HAUAqcxTpzU",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q17, Differentiation, Cubic Curves",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=HAUAqcxTpzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Hqd6qGtmP-g",
+   "title": "IGCSE, (Edexcel), 4MA1/2H, June 2023, Q24, Similarity, Volume, Area, length",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Hqd6qGtmP-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MphaYRrHWd0",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.1(b) Arithmetic; Fractions to Decimals, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=MphaYRrHWd0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "R3ObU2jG7WY",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.4(b) Multiplication & Division of Fractions, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=R3ObU2jG7WY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Sv0hCxMqFWE",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.1(a) Decimals to Fractions TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Sv0hCxMqFWE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VY8xXrlPlqE",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.10 Prime Numbers & Factors, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=VY8xXrlPlqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Y97ZMIYUpSg",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2019,Q23, Probability, Algebraic Fractions",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Y97ZMIYUpSg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YYzRLYZzWmQ",
+   "title": "IGCSE, (Edexcel), 4MA1/2H, June 2023, Q25, Straight Line Graphs, Perpendicular Bisector",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=YYzRLYZzWmQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YzATaR8Bhp8",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q20, Statistics, Histograms",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=YzATaR8Bhp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Z-vDAzfeJS8",
+   "title": "0580 4 SP 15 Q1c   Exponential & Percentage Decrease",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Z-vDAzfeJS8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_3ZwklVB51g",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.4(a) Addition & Subtraction of Fractions, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=_3ZwklVB51g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_aUGdS6QZUM",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.3 Comparing Decimals & Fractions, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=_aUGdS6QZUM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ag-00ISYD_E",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q20, Simultaneous Equations (Non- Linear)",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ag-00ISYD_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "h3LzPsar4z0",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q16, Direct & Inverse Variation",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=h3LzPsar4z0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "orMKBUj0iWM",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.2 Arithmetic with Decimals, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=orMKBUj0iWM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rOch65hyPeU",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.8(b) Multiplication & Division in Standard Form TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=rOch65hyPeU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tX_pcPw3AuY",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.8(a) Standard Form TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=tX_pcPw3AuY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "u2ezp7Ly33A",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.8(c) Addition & Subtraction in Standard Form, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=u2ezp7Ly33A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uG_T_Uv5rEU",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.9(b) Approximation, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=uG_T_Uv5rEU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ua1Qo32uS5I",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.6 The Order of Operations, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ua1Qo32uS5I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "w7zmg2rhGjw",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.7 Recurring Decimals to Fractions TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=w7zmg2rhGjw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yNCD4JlJg1s",
+   "title": "IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q18, Differentiation, Applications",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=yNCD4JlJg1s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -291,20 +626,484 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
    "reviewedUtc": "2026-11-12T07:07:10Z",
    "boardMismatch": true
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YYzRLYZzWmQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H, June 2023, Q25, Straight Line Graphs, Perpendicular Bisector\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Hqd6qGtmP-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H, June 2023, Q24, Similarity, Volume, Area, length\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Y97ZMIYUpSg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019,Q23, Probability, Algebraic Fractions\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ag-00ISYD_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q20, Simultaneous Equations (Non- Linear)\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "yNCD4JlJg1s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q18, Differentiation, Applications\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "703y68svl6g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q17, Direct Variation, Algebraic Terms\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DFc0Zb5ScbM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q23, Arithmetic Series, Sum\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "17LrmGOCAYg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q22, Circle Theorems, Intersecting Chords, (Proof)\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YzATaR8Bhp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q20, Statistics, Histograms\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "HAUAqcxTpzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q17, Differentiation, Cubic Curves\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-18-higher"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "h3LzPsar4z0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q16, Direct & Inverse Variation\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "R3ObU2jG7WY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1E"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat' via distinctive token(s) ['division', 'multiplication'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "-gtmVfwdiPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4B 'calculate time intervals in terms of the 24-hour and the' via distinctive token(s) ['12'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "2dDoD5Ell54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1H"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1H 'identify prime factors, common factors and common multip' via distinctive token(s) ['factor', 'prime'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "VY8xXrlPlqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1G"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1G 'use the terms ‘odd’, ‘even’, ‘prime numbers’, ‘factors’ ' via distinctive token(s) ['factor', 'number', 'prime'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "ua1Qo32uS5I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1F"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1F 'use brackets and the hierarchy of operations' via distinctive token(s) ['operation'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "_aUGdS6QZUM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "low",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "_3ZwklVB51g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1E"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat' via distinctive token(s) ['addition', 'subtraction'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "orMKBUj0iWM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "low",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "MphaYRrHWd0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "low",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "Sv0hCxMqFWE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "low",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "tX_pcPw3AuY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.9A 'solve problems involving standard form' via distinctive token(s) ['form', 'standard'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "rOch65hyPeU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.9A 'solve problems involving standard form' via distinctive token(s) ['form', 'standard'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "uG_T_Uv5rEU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.8D 'use estimation to evaluate approximations to numerical c' via distinctive token(s) ['approximation'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "u2ezp7Ly33A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.9A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.9A 'solve problems involving standard form' via distinctive token(s) ['form', 'standard'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "w7zmg2rhGjw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.3A 'convert recurring decimals into fractions' via distinctive token(s) ['decimal', 'fraction', 'recurring'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "DWFHHPcm7MU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4F"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4F 'understand and use the relationship between average spee' via distinctive token(s) ['speed', 'time'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "video": "Z-vDAzfeJS8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6E 'solve simple percentage problems, including percentage i' via distinctive token(s) ['decrease', 'percentage'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 188,
-  "specPointsMapped": 5,
-  "specPointsUnmapped": 183,
-  "videosTotal": 8,
-  "videosMapped": 6,
+  "specPointsMapped": 15,
+  "specPointsUnmapped": 173,
+  "videosTotal": 36,
+  "videosMapped": 34,
   "videosUnmapped": 2,
-  "mappingRows": 6,
+  "mappingRows": 34,
   "byConfidence": {
-   "high": 0,
-   "medium": 6,
-   "low": 0
+   "high": 11,
+   "medium": 17,
+   "low": 6
   }
  },
  "inputs": {
@@ -323,7 +1122,13 @@
    "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external-p5.json",
    "task": "T-VIDEOMAP-P5 (Cognito channel completion)",
    "reviewAppliedUtc": "2026-11-12T07:07:10Z"
+  },
+  "p9": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external-p9.json",
+   "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+   "reviewAppliedUtc": "2026-11-13T06:48:16Z"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.719Z"
+ "generatedUtc": "2026-11-13T06:52:02.330Z"
 }

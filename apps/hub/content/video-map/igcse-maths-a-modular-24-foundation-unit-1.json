@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 1,
+  "rowsApproved": 8,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 1,
+    "rowsApproved": 8,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -47,9 +47,146 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-01T01:04:15Z"
+  },
+  {
+   "id": "2dDoD5Ell54",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.11 Prime Factors, HCF & LCM, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=2dDoD5Ell54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DWFHHPcm7MU",
+   "title": "IGCSE (Textbook- Rayner), Ch 7, Graphs, Ex14, Q3, p264 , Speed Time Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=DWFHHPcm7MU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "R3ObU2jG7WY",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.4(b) Multiplication & Division of Fractions, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=R3ObU2jG7WY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VY8xXrlPlqE",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.10 Prime Numbers & Factors, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=VY8xXrlPlqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_3ZwklVB51g",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.4(a) Addition & Subtraction of Fractions, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=_3ZwklVB51g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uG_T_Uv5rEU",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.9(b) Approximation, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=uG_T_Uv5rEU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ua1Qo32uS5I",
+   "title": "IGCSE Tutorial, Unit 1, Arithmetic [1], 1.6 The Order of Operations, TYU",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ua1Qo32uS5I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
+  {
+   "video": "R3ObU2jG7WY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1E"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat' via distinctive token(s) ['division', 'multiplication'] (df 1); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_3ZwklVB51g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1E"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat' via distinctive token(s) ['addition', 'subtraction'] (df 1); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ua1Qo32uS5I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1F"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1F 'use brackets and the hierarchy of operations' via distinctive token(s) ['operation'] (df 1); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "JXgduTLVjdg",
    "lessonRef": null,
@@ -69,20 +206,100 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "video": "VY8xXrlPlqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1G"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1G 'use the terms ‘odd’, ‘even’, ‘prime numbers’, ‘factors’ ' via distinctive token(s) ['factor', 'number', 'prime'] (df 3); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2dDoD5Ell54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1H"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1H 'identify prime factors, common factors and common multip' via distinctive token(s) ['factor', 'prime'] (df 3); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "uG_T_Uv5rEU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.8D 'use estimation to evaluate approximations to numerical c' via distinctive token(s) ['approximation'] (df 1); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "DWFHHPcm7MU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4F"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4F 'understand and use the relationship between average spee' via distinctive token(s) ['speed', 'time'] (df 2); title-only posture, tightened binding rule (distinctive df<=3) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
   }
  ],
  "coverage": {
   "specPointsTotal": 93,
-  "specPointsMapped": 1,
-  "specPointsUnmapped": 92,
-  "videosTotal": 1,
-  "videosMapped": 1,
+  "specPointsMapped": 6,
+  "specPointsUnmapped": 87,
+  "videosTotal": 8,
+  "videosMapped": 8,
   "videosUnmapped": 0,
-  "mappingRows": 1,
+  "mappingRows": 8,
   "byConfidence": {
    "high": 0,
-   "medium": 1,
-   "low": 0
+   "medium": 6,
+   "low": 2
   }
  },
  "inputs": {
@@ -105,5 +322,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.887Z"
+ "generatedUtc": "2026-11-13T06:52:02.435Z"
 }

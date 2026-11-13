@@ -6,7 +6,12 @@
   "provider": "inherit-pool (approved physics external lanes: igcse-physics-19, cie-igcse-physics-23, cie-a-level-physics-25 + P2E PhysicsOnline)",
   "label": "cie-a-level-maths-20-mechanics",
   "method": "LLM title-to-spec re-adjudication of owner-approved physics rows against maths mechanics specs; evidence is TITLE-ONLY (no high rows); tightened binding rule; cross-subject physics->maths-mechanics disclosed per row via crossSubject field",
-  "enumeratedUtc": "2026-11-10T03:03:19Z"
+  "enumeratedUtc": "2026-11-10T03:03:19Z",
+  "p9": {
+   "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
+   "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
+   "enumeratedUtc": "2026-11-13T05:57:42Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (mechanics cross-subject lane: cie-a-level-maths-20-mechanics)",
@@ -14,9 +19,33 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked all 65 mapping rows (65 videos, lessonRef null) against the 22 spec points of the CIE 9709 Mechanics spine (4.1-4.5), title-only evidence, applying the higher cross-subject physics->maths-mechanics bar. Every bound title names spec-listed content (identify forces, resultants, Newton's laws, scalar/vector quantities, s-t/v-t graphs, SUVAT, momentum and its conservation, work/GPE/KE/power), and the lane correctly left 4.1.3, 4.1.5, 4.2.3, 4.4.4, 4.5.5 unbound since no title evidences equilibrium, smooth contact, calculus kinematics, connected particles or car-on-hill maths. No spec-level rejects: the weakest bindings (e.g. 'Contact and Non-contact Forces'->4.1.4, 'Elastic, Inelastic Collisions'->4.3.2, GCSE/KS3 friction->4.1.6) are genuine partials already held at low/medium and stay.",
-  "rowsApproved": 65,
+  "rowsApproved": 166,
   "rowsRejected": 0,
-  "rejects": []
+  "rejects": [],
+  "lanes": [
+   {
+    "lane": "external-channels (primary)",
+    "task": "T-VIDEOMAP-P4 (mechanics cross-subject lane: cie-a-level-maths-20-mechanics)",
+    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
+    "ruledUtc": "2026-11-11T14:35:16Z",
+    "evidenceBasis": "Checked all 65 mapping rows (65 videos, lessonRef null) against the 22 spec points of the CIE 9709 Mechanics spine (4.1-4.5), title-only evidence, applying the higher cross-subject physics->maths-mechanics bar. Every bound title names spec-listed content (identify forces, resultants, Newton's laws, scalar/vector quantities, s-t/v-t graphs, SUVAT, momentum and its conservation, work/GPE/KE/power), and the lane correctly left 4.1.3, 4.1.5, 4.2.3, 4.4.4, 4.5.5 unbound since no title evidences equilibrium, smooth contact, calculus kinematics, connected particles or car-on-hill maths. No spec-level rejects: the weakest bindings (e.g. 'Contact and Non-contact Forces'->4.1.4, 'Elastic, Inelastic Collisions'->4.3.2, GCSE/KS3 friction->4.1.6) are genuine partials already held at low/medium and stay.",
+    "rowsApproved": 65,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p9 (mr-hassaans-maths completion)",
+    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+    "ruledUtc": "2026-11-13T06:48:16Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
+    "rowsApproved": 101,
+    "rowsRejected": 0,
+    "rejects": []
+   }
+  ]
  },
  "videos": [
   {
@@ -1035,6 +1064,1117 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-10T03:28:40Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-EWkBHFK2og",
+   "title": "M1 (CAIE), 9709/42/O/N/21, November 2021, Paper 4, Q2, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=-EWkBHFK2og",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-Hv6Ub5txSo",
+   "title": "M1 (CAIE), 9709/42/M/N/20 Mechanics, Nov 2020, Paper 42, Q5 Constant Acceleration, Vertical Motion",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=-Hv6Ub5txSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-UELKCwbuyg",
+   "title": "M1 (CAIE) 9709/M/J/41/22, June 2022, Q5, Work, Energy & Power",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=-UELKCwbuyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1gE6GtWYs7M",
+   "title": "CAIE, 9709/42/O/N/18 Mechanics, November 2018, Paper 42, Q5, Variable Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=1gE6GtWYs7M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2UrsvmQxm7U",
+   "title": "M1 (CAIE), 9709/42/F/M/24, March 2024, Paper 4,  Q4 Statics, Forces",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=2UrsvmQxm7U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2d-EWlIA4ZA",
+   "title": "M1 (CAIE) 9709/M/J/43/19, June 2019, Q4(ii), Connected Particles, Pulleys, Work-Energy Principle",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=2d-EWlIA4ZA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3-3QRJV_QPE",
+   "title": "M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q5, Kinematics, Variable Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=3-3QRJV_QPE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3l3BK6hQ0yU",
+   "title": "M1 (CAIE) 9709/F/M/42/20 March 2020, Q5, Statics, Resultant Forces, Resolving Forces",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=3l3BK6hQ0yU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5oIQdSYzRyw",
+   "title": "M1 (CAIE) 9709/O/N/41/21, November 2021, Q7, [1] Suvat, Inclined Planes, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=5oIQdSYzRyw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6nd04Lid73I",
+   "title": "M1 (CAIE), 9709/41/M/J/23 Mechanics, June 2023, Paper 41, Q6 Statics, Dynamics, Friction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=6nd04Lid73I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7ORe0MjBUHg",
+   "title": "M1 (CAIE) 9709/O/N/41/21, November 2021, Q7, [2] Work & Energy, Inclined Planes, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=7ORe0MjBUHg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7b969XyiHfg",
+   "title": "[10] CAIE, 9709/43/O/N/22 M1, June 2022, Paper 43, Q3, Statics, Rings",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=7b969XyiHfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8rY9b89iJXQ",
+   "title": "[2] M1 (CAIE) 9709/O/N/04/02, November 2002, Q1, Work, Energy & Power, Force & Velocity",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=8rY9b89iJXQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9mP8icjYk-0",
+   "title": "CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43,  Q6, Variable Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=9mP8icjYk-0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "A_zuUq82gxE",
+   "title": "M1 (CAIE) 9709/F/M/42/23 March 2023, Q7,  Momentum, Energy.",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=A_zuUq82gxE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AmF35k8iccA",
+   "title": "M1 (CAIE), 9709/42/F/M/23, March 2023, Paper 42, Q5, Statics, Thrust in Rods & Struts",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=AmF35k8iccA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "B0Q3vlqcDfg",
+   "title": "M1 (CAIE) 9709/O/N/43/15, November 2015, Q2, Statics, Rings (Horizontal Rod), R which way?",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=B0Q3vlqcDfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BwNK-gUGe3U",
+   "title": "M1 (CAIE) 9709/M/J/42/17,  June 2017, Q2, Kinematics, Energy",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=BwNK-gUGe3U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "C_k7GVzIMxM",
+   "title": "M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 4, Q7, Inclined Planes, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=C_k7GVzIMxM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DPm2LZ3FHiA",
+   "title": "[6] CAIE, 9709/04/M/J/07 M1, June 2007, Paper4, Q5, Statics, Rings",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=DPm2LZ3FHiA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Du4w5BLzxqs",
+   "title": "[4] M1 (CAIE) 9709/O/N/42/19, November 2019, Q4, Work Energy & Power",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Du4w5BLzxqs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GvcTXvsmR-g",
+   "title": "M1 (CAIE) 9709/O/N/42/21, Nov 2021, Q6, Statics, Limiting Equilibrium",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=GvcTXvsmR-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "I0lHvhoUsFg",
+   "title": "CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q1, Constant Acceleration, Vertical Motion",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=I0lHvhoUsFg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "I1Nv_XH5YWA",
+   "title": "[9] M1 (CAIE) 9709/O/N/42/19, November 2019, Q3, Statics, Perpendicular Forces",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=I1Nv_XH5YWA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IU-96zlNbEY",
+   "title": "[5] M1 (CAIE) 9709/O/N/42/13, June 2019, Q7, Velocity - Time Graphs, Dynamics, Lifts",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=IU-96zlNbEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "J80uSL7i6Zo",
+   "title": "M1 (CAIE) 9709/O/N/43/19, Nov 2019, Q4, Kinematics, Constant Acceleration, suvat",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=J80uSL7i6Zo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JZ9HuyVYTlc",
+   "title": "M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q7, Inclined Planes, Work Energy",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=JZ9HuyVYTlc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JovYOxoJpdU",
+   "title": "M1 (CAIE) 9709/M/J/42/13, June 2013, Q3, Statics",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=JovYOxoJpdU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JqRbvK5U9q4",
+   "title": "[7] CAIE, 9709/41/M/J/18 Mechanics 1, Paper 41, Q5, Constant Acceleration, Travel Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=JqRbvK5U9q4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KvBwZPxY4ww",
+   "title": "M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q3, Dynamics, Inclined Planes, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=KvBwZPxY4ww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LWeWfMZMp18",
+   "title": "CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q5, Statics",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=LWeWfMZMp18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LhMr9j86LVo",
+   "title": "[6] M1 (CAIE) 9709/O/N/04/09, June 2009, Q6, Dynamics, Connected Particles, suvat",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=LhMr9j86LVo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MmhWJCtM_LU",
+   "title": "CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q4, Work, Energy & Power",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=MmhWJCtM_LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "N-NQNNBBVtY",
+   "title": "CAIE, 9709/42/O/N/18 Mechanics, November 2018, Paper 42, Q7, Work, Energy & Power, suvat",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=N-NQNNBBVtY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NPGORlBZGRk",
+   "title": "CAIE, 9709/43/O/N/22 Mechanics, November 2022, Paper 43, Q4, Kinematics, Constant Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=NPGORlBZGRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P4_u1OCUgO0",
+   "title": "CAIE, 9709/04/O/N/01 M1, November 2001 Paper4, Q6, Dynamics, Connected Particles, Pulleys",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=P4_u1OCUgO0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P8aIza8LdpI",
+   "title": "M1 (CAIE), 9709/43/M/J/24, June 2024, Paper 43, Q7, Inclined Planes, Work Energy Principle",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=P8aIza8LdpI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PAWFfy8iO1M",
+   "title": "CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q3, Dynamics, Inclined Planes, Friction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=PAWFfy8iO1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PUGcoP1Iwi4",
+   "title": "[4] M1 (CAIE) 9709/O/N/04/07, June 2007, Q4, Dynamics, Connected Particles, suvat",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=PUGcoP1Iwi4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Q4nlm869Gj4",
+   "title": "CAIE, 9709/42/M/J/19 Mechanics,June 2019, Paper 42, Q7, Variable Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Q4nlm869Gj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "R5B1-xDLzdI",
+   "title": "(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q2, Work Energy Power, Inclined Planes",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=R5B1-xDLzdI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SISA3Nd9lRQ",
+   "title": "M1 (CAIE) 9709/M/J/43/19, June 2019, Q4,  Connected Particles, Pulleys, suvat",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=SISA3Nd9lRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SNxqZzlvIG4",
+   "title": "CAIE, 9709/43/M/J/10 Mechanics, November 2010, Paper 43, Q7, Statics,  Dynamics, Forces & Friction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=SNxqZzlvIG4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T-vVaENGPQc",
+   "title": "[10] (CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q6, Kinematics, Variable Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=T-vVaENGPQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TTSY_k7GIU8",
+   "title": "[1] M1 (CAIE), 9709/04/M/J/04, June 2004, Paper 4, Q2, Forces, Resultant Forces",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=TTSY_k7GIU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TvjO7nL0Z70",
+   "title": "CAIE, 9709/42/F/M/21, Mechanics, March 2021, Paper 42, Q7(b), Work Energy Principle",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=TvjO7nL0Z70",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ub4WPeAGFEc",
+   "title": "M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q4,  Dynamics, Friction. suvat",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Ub4WPeAGFEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UjpmXnIYPnY",
+   "title": "M1 (CAIE) 9709/M/J/41/22, June 2022, Q2, Dynamics, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=UjpmXnIYPnY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WSh2vqQZ_Go",
+   "title": "M1 (CAIE), 9709/42/O/N/21, November 2021, Paper 4,  Q1, Velocity Time Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=WSh2vqQZ_Go",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XEt0v_DXDQE",
+   "title": "M1 (CAIE), 9709/42/F/M/22, March 2022, Paper 42, Q7, Momentum, Dynamics, Inclined Planes, Beads",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=XEt0v_DXDQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Y-ZhTrwGeG8",
+   "title": "M1 (CAIE) 9709/O/N/41/23, Nov 2023 Paper 41, Q5,  Statics, Inclined Planes",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Y-ZhTrwGeG8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Yqe5_KDFaj4",
+   "title": "M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q6,  Statics, Limiting Equilibrium, Energy",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Yqe5_KDFaj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Z_oO-Xd-R5o",
+   "title": "(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q1, Kinematics, Constant Acceleration, Vertical Motion",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Z_oO-Xd-R5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZsOAPF3X1N4",
+   "title": "[9] M1 (CAIE) 9709/F/M/42/20 March 2020- Q3 Work- Energy Principle",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ZsOAPF3X1N4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_aNUQ8NcEvs",
+   "title": "M1 (CAIE) 9709/M/J/41/21, June 2021, Q7, Work & Energy Principle, Inclined Planes, Friction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=_aNUQ8NcEvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aO0QdCEPyuA",
+   "title": "M1 (CAIE) 9709/F/M/42/20 March 2020- Q1 Work, Power & Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=aO0QdCEPyuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "b21mdL6pmTE",
+   "title": "M1 (CAIE) 9709/F/M/42/20 March 2020- Q4, Constant Acceleration (suvat)",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=b21mdL6pmTE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bJb2sU4H8LI",
+   "title": "M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q2,  Momentum, Energy",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=bJb2sU4H8LI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bbCZeAyUZY8",
+   "title": "[2] M1 (CAIE) 9709/M/J/04/05, June 2005, Q4, Statics, Limiting Equilibrium",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=bbCZeAyUZY8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cXzriuvbeaw",
+   "title": "M1 (CAIE) 9709/M/J/41/22, June 2022, Q1, Constant Acceleration, Velocity Time Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=cXzriuvbeaw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "d1onMo2gi6Y",
+   "title": "M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 4, Q5, Vertical Motion Under Gravity, Momentum",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=d1onMo2gi6Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dFmkSxoqyGI",
+   "title": "[4] CAIE, 9709/04/M/J/04 Mechanics 1, Paper 4, Q3 Velocity & Displacement Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=dFmkSxoqyGI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eLN88PmtF1s",
+   "title": "(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q3, Momentum, Coalescing, Kinetic Energy",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=eLN88PmtF1s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ekjUjrQ0Gh0",
+   "title": "M1 (CAIE), 9709/42/F/M/24, March 2024, Paper 4, Q7, Momentum, Friction, Inclined Planes",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ekjUjrQ0Gh0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fEZ1TUzcFt8",
+   "title": "M1 (CAIE) 9709/F/M/42/20 March 2020- Q2 Dynamics, Forces & Friction (Resolving Forces)",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=fEZ1TUzcFt8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fekSK6jdWVc",
+   "title": "[8] (CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q5, Dynamics, Connected Particles, Inclined Planes",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=fekSK6jdWVc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fpIDmO-icYY",
+   "title": "CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q2, Momentum, Dynamics, Work, Energy",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=fpIDmO-icYY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gCEWtlT7ZQs",
+   "title": "M1 (CAIE) 9709/M/J/41/22, June 2022, Q4, Statics, Resultant Forces",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=gCEWtlT7ZQs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hBTpAwRVadE",
+   "title": "[6] M1 (CAIE) 9709/M/J/41/19, June 2019, Q2, Constant Acceleration, Vertical Motion Under Gravity",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=hBTpAwRVadE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iTrNq0PGIC8",
+   "title": "[7] CAIE, 9709/04/M/J/03 Mechanics 1, Paper 4, Q5 Dynamics, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=iTrNq0PGIC8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iWfByIUtorg",
+   "title": "[9] M1 (CAIE) 9709/O/N/42/19, November 2019, Q6, Dynamics, Forces & Friction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=iWfByIUtorg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iphoIF3kPXg",
+   "title": "M1 (CAIE) 9709/M/J/43/19, June 2019, Q5, Inclined Particles, Work Energy Principle",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=iphoIF3kPXg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "j70RNCTYlOQ",
+   "title": "[3] CAIE, 9709/04/M/J/03 Mechanics 1, Paper 4, Q3, Velocity Time Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=j70RNCTYlOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jRVcnHiKWmE",
+   "title": "CAIE, 9709/42/J/N/23 Mechanics, June 2023, Paper 4, Q3, Statics",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=jRVcnHiKWmE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k5YCzzBPX4w",
+   "title": "M1 (CAIE) 9709/M/J/41/20,June 2020 Paper 41, Q5, Work, Energy, Friction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=k5YCzzBPX4w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kgSQZcJowh8",
+   "title": "M1 (CAIE) 9709/M/J/41/22, June 2022, Q6, Variable Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=kgSQZcJowh8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "klefoXBeMpc",
+   "title": "M1 (CAIE) 9709/M/J/41/22, June 2022, Q7,  Momentum, Inclined Plane",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=klefoXBeMpc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kv2N5U3Cj-c",
+   "title": "M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 42, Q8, Kinematics, Constant Acceleration",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=kv2N5U3Cj-c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lKD-uaD-Bz8",
+   "title": "M1 (CAIE), 9709/42/O/N/22 Mechanics, November 2022, Paper 42, Q6, Momentum",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=lKD-uaD-Bz8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ljssoRPZ4FQ",
+   "title": "M1 (CAIE) 9709/F/M/42/20 March 2020- Q6 Dynamics, Tow Bars, suvat, Momentum",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ljssoRPZ4FQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mhkPqqFV-UA",
+   "title": "M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q4, Power, Force, Velocity, Inclined Planes",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=mhkPqqFV-UA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "n6NN2AL7DMc",
+   "title": "CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q7, Dynamics, Connected Particles, Friction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=n6NN2AL7DMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nEDw2vyRkng",
+   "title": "M1 (CAIE) 9709/M/J/43/19, June 2019, Q4, Connected Particles, Pulleys, suvat (new)",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=nEDw2vyRkng",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nIVIWYygEkc",
+   "title": "M1 (CAIE), 9709/41/M/J/25, June 2025, Paper 41, Q6,Connected Particles, Work Energy Principle",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=nIVIWYygEkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nqosrTCajM8",
+   "title": "M1 (CAIE), 9709/43/M/J/23, June 2023, Paper 4, Q2, Connected Particles, Dynamics",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=nqosrTCajM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ns34HF8n2jU",
+   "title": "M1 (CAIE), 9709/41/M/J/23 Mechanics, June 2023, Paper 41, Q7, Power and Work, Work-Energy Principle",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ns34HF8n2jU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pG3nuFcJqho",
+   "title": "[6] CAIE, 9709/42/M/J/14 Mechanics 1, Paper 42, Q6, Dynamics, Forces in One Direction",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=pG3nuFcJqho",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qR8OvSr6UM8",
+   "title": "M1 (CAIE), 9709/43/M/J/23 Mechanics, June 2023, Paper 41, Q3 Statics, Rings",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=qR8OvSr6UM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qqIcx1Ptt40",
+   "title": "M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q6, Momentum",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=qqIcx1Ptt40",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rWmVj1YwFd4",
+   "title": "M1 (CAIE) 9709/M/J/43/22, June 2022, Q4,  Statics, Perpendicular Forces",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=rWmVj1YwFd4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sdmXNC-ocPo",
+   "title": "CAIE, 9709/42/F/M/21 Mechanics, March 2021, Paper 42, Q7(a),  Dynamics, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=sdmXNC-ocPo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vKMUEbzrOTc",
+   "title": "CAIE, 9709/42/O/N/22 Mechanics, November 2022, Paper 42, Q3, Statics,",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=vKMUEbzrOTc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vZGhTjcqMXw",
+   "title": "M1 (CAIE) 9709/O/N/42/21, Nov 2021, Q7, Dynamics, Friction, Momentum",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=vZGhTjcqMXw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wRKIX5i3drE",
+   "title": "M1 (CAIE) 9709/M/J/41/22, June 2022, Q3, Statics, Limiting Equilibrium",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=wRKIX5i3drE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xHFv6Ou3LIw",
+   "title": "M1 (CAIE) 9709/M/J/42/22,  June 2022, Q4, Kinematics, Displacement Time Graphs",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=xHFv6Ou3LIw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "y0iEJukMLwY",
+   "title": "(CAIE), 9709/42/SP20, AS Mechanics, Paper 42, Q7, Dynamics, Connected Particles, Pulleys, Energy",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=y0iEJukMLwY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "z4mXXkMMdBs",
+   "title": "M1 (CAIE) 9709/F/M/42/20 March 2020- Q7, Variable Acceleration  Displacement, Velocity, Distance",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=z4mXXkMMdBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zIUY01bb0y4",
+   "title": "M1 (CAIE) 9709/M/J/42/21, June 2021, Q6, Vertical Motion Under Gravity, Momentum",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=zIUY01bb0y4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "z_RD0ERRFwo",
+   "title": "M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q1,  Statics, Equilibrium, Resolving Forces",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=z_RD0ERRFwo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zkoJ1PLxcC0",
+   "title": "(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q4, Statics, Limiiting Equilibrium",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=zkoJ1PLxcC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zsSzmCpjr9c",
+   "title": "[10] M1 (CAIE) 9709/M/J/42/16, June 2016, Q7, Dynamics, Forces & Friction, Connected Particles",
+   "provider": "mr-hassaans-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=zsSzmCpjr9c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   }
  ],
@@ -2087,18 +3227,1937 @@
    "crossSubject": "physics->maths-mechanics",
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "P8aIza8LdpI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/43/M/J/24, June 2024, Paper 43, Q7, Inclined Planes, Work Energy Principle\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "nIVIWYygEkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/41/M/J/25, June 2025, Paper 41, Q6,Connected Particles, Work Energy Principle\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "kv2N5U3Cj-c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 42, Q8, Kinematics, Constant Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ekjUjrQ0Gh0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/24, March 2024, Paper 4, Q7, Momentum, Friction, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "d1onMo2gi6Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 4, Q5, Vertical Motion Under Gravity, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "2UrsvmQxm7U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/24, March 2024, Paper 4,  Q4 Statics, Forces\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "N-NQNNBBVtY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/42/O/N/18 Mechanics, November 2018, Paper 42, Q7, Work, Energy & Power, suvat\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "AmF35k8iccA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/23, March 2023, Paper 42, Q5, Statics, Thrust in Rods & Struts\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "XEt0v_DXDQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/22, March 2022, Paper 42, Q7, Momentum, Dynamics, Inclined Planes, Beads\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Du4w5BLzxqs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[4] M1 (CAIE) 9709/O/N/42/19, November 2019, Q4, Work Energy & Power\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "8rY9b89iJXQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[2] M1 (CAIE) 9709/O/N/04/02, November 2002, Q1, Work, Energy & Power, Force & Velocity\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "I1Nv_XH5YWA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[9] M1 (CAIE) 9709/O/N/42/19, November 2019, Q3, Statics, Perpendicular Forces\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "bbCZeAyUZY8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[2] M1 (CAIE) 9709/M/J/04/05, June 2005, Q4, Statics, Limiting Equilibrium\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "zsSzmCpjr9c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[10] M1 (CAIE) 9709/M/J/42/16, June 2016, Q7, Dynamics, Forces & Friction, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "iWfByIUtorg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[9] M1 (CAIE) 9709/O/N/42/19, November 2019, Q6, Dynamics, Forces & Friction\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "LhMr9j86LVo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[6] M1 (CAIE) 9709/O/N/04/09, June 2009, Q6, Dynamics, Connected Particles, suvat\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "PUGcoP1Iwi4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[4] M1 (CAIE) 9709/O/N/04/07, June 2007, Q4, Dynamics, Connected Particles, suvat\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "IU-96zlNbEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[5] M1 (CAIE) 9709/O/N/42/13, June 2019, Q7, Velocity - Time Graphs, Dynamics, Lifts\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "kgSQZcJowh8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q6, Variable Acceleration\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "-UELKCwbuyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q5, Work, Energy & Power\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "gCEWtlT7ZQs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q4, Statics, Resultant Forces\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "wRKIX5i3drE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q3, Statics, Limiting Equilibrium\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "UjpmXnIYPnY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q2, Dynamics, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "cXzriuvbeaw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q1, Constant Acceleration, Velocity Time Graphs\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "pG3nuFcJqho",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[6] CAIE, 9709/42/M/J/14 Mechanics 1, Paper 42, Q6, Dynamics, Forces in One Direction\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "JqRbvK5U9q4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[7] CAIE, 9709/41/M/J/18 Mechanics 1, Paper 41, Q5, Constant Acceleration, Travel Graphs\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "hBTpAwRVadE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[6] M1 (CAIE) 9709/M/J/41/19, June 2019, Q2, Constant Acceleration, Vertical Motion Under Gravity\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "dFmkSxoqyGI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[4] CAIE, 9709/04/M/J/04 Mechanics 1, Paper 4, Q3 Velocity & Displacement Graphs\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "j70RNCTYlOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[3] CAIE, 9709/04/M/J/03 Mechanics 1, Paper 4, Q3, Velocity Time Graphs\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "C_k7GVzIMxM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 4, Q7, Inclined Planes, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "nqosrTCajM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/43/M/J/23, June 2023, Paper 4, Q2, Connected Particles, Dynamics\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "qqIcx1Ptt40",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q6, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "mhkPqqFV-UA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q4, Power, Force, Velocity, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "JZ9HuyVYTlc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q7, Inclined Planes, Work Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "2d-EWlIA4ZA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q4(ii), Connected Particles, Pulleys, Work-Energy Principle\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "nEDw2vyRkng",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q4, Connected Particles, Pulleys, suvat (new)\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "WSh2vqQZ_Go",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/21, November 2021, Paper 4,  Q1, Velocity Time Graphs\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "-EWkBHFK2og",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/21, November 2021, Paper 4, Q2, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "TTSY_k7GIU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[1] M1 (CAIE), 9709/04/M/J/04, June 2004, Paper 4, Q2, Forces, Resultant Forces\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "J80uSL7i6Zo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/43/19, Nov 2019, Q4, Kinematics, Constant Acceleration, suvat\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "vZGhTjcqMXw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/42/21, Nov 2021, Q7, Dynamics, Friction, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "GvcTXvsmR-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/42/21, Nov 2021, Q6, Statics, Limiting Equilibrium\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "7ORe0MjBUHg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/21, November 2021, Q7, [2] Work & Energy, Inclined Planes, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "5oIQdSYzRyw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/21, November 2021, Q7, [1] Suvat, Inclined Planes, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "zIUY01bb0y4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/21, June 2021, Q6, Vertical Motion Under Gravity, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "_aNUQ8NcEvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/21, June 2021, Q7, Work & Energy Principle, Inclined Planes, Friction\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "3-3QRJV_QPE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q5, Kinematics, Variable Acceleration\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Ub4WPeAGFEc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q4,  Dynamics, Friction. suvat\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "KvBwZPxY4ww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q3, Dynamics, Inclined Planes, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "bJb2sU4H8LI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q2,  Momentum, Energy\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "z_RD0ERRFwo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q1,  Statics, Equilibrium, Resolving Forces\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "qR8OvSr6UM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/43/M/J/23 Mechanics, June 2023, Paper 41, Q3 Statics, Rings\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ns34HF8n2jU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/41/M/J/23 Mechanics, June 2023, Paper 41, Q7, Power and Work, Work-Energy Principle\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "A_zuUq82gxE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/23 March 2023, Q7,  Momentum, Energy.\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6nd04Lid73I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/41/M/J/23 Mechanics, June 2023, Paper 41, Q6 Statics, Dynamics, Friction\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "k5YCzzBPX4w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/20,June 2020 Paper 41, Q5, Work, Energy, Friction\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "z4mXXkMMdBs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q7, Variable Acceleration  Displacement, Velocity, Distance\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ljssoRPZ4FQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q6 Dynamics, Tow Bars, suvat, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "aO0QdCEPyuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q1 Work, Power & Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Y-ZhTrwGeG8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/23, Nov 2023 Paper 41, Q5,  Statics, Inclined Planes\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "n6NN2AL7DMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q7, Dynamics, Connected Particles, Friction\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "jRVcnHiKWmE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/42/J/N/23 Mechanics, June 2023, Paper 4, Q3, Statics\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fpIDmO-icYY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q2, Momentum, Dynamics, Work, Energy\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "PAWFfy8iO1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q3, Dynamics, Inclined Planes, Friction\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "MmhWJCtM_LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q4, Work, Energy & Power\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "LWeWfMZMp18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q5, Statics\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "I0lHvhoUsFg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q1, Constant Acceleration, Vertical Motion\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "9mP8icjYk-0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43,  Q6, Variable Acceleration\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "JovYOxoJpdU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/13, June 2013, Q3, Statics\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "iphoIF3kPXg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q5, Inclined Particles, Work Energy Principle\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "SISA3Nd9lRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q4,  Connected Particles, Pulleys, suvat\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "B0Q3vlqcDfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/43/15, November 2015, Q2, Statics, Rings (Horizontal Rod), R which way?\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "klefoXBeMpc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q7,  Momentum, Inclined Plane\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "rWmVj1YwFd4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/22, June 2022, Q4,  Statics, Perpendicular Forces\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "BwNK-gUGe3U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/17,  June 2017, Q2, Kinematics, Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "xHFv6Ou3LIw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/22,  June 2022, Q4, Kinematics, Displacement Time Graphs\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Yqe5_KDFaj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q6,  Statics, Limiting Equilibrium, Energy\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "-Hv6Ub5txSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/N/20 Mechanics, Nov 2020, Paper 42, Q5 Constant Acceleration, Vertical Motion\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "3l3BK6hQ0yU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020, Q5, Statics, Resultant Forces, Resolving Forces\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "b21mdL6pmTE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q4, Constant Acceleration (suvat)\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "lKD-uaD-Bz8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/22 Mechanics, November 2022, Paper 42, Q6, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ZsOAPF3X1N4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[9] M1 (CAIE) 9709/F/M/42/20 March 2020- Q3 Work- Energy Principle\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fEZ1TUzcFt8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q2 Dynamics, Forces & Friction (Resolving Forces)\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "NPGORlBZGRk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/O/N/22 Mechanics, November 2022, Paper 43, Q4, Kinematics, Constant Acceleration\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "vKMUEbzrOTc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/42/O/N/22 Mechanics, November 2022, Paper 42, Q3, Statics,\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "TvjO7nL0Z70",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/42/F/M/21, Mechanics, March 2021, Paper 42, Q7(b), Work Energy Principle\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "sdmXNC-ocPo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/42/F/M/21 Mechanics, March 2021, Paper 42, Q7(a),  Dynamics, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "SNxqZzlvIG4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/43/M/J/10 Mechanics, November 2010, Paper 43, Q7, Statics,  Dynamics, Forces & Friction\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "1gE6GtWYs7M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/42/O/N/18 Mechanics, November 2018, Paper 42, Q5, Variable Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Q4nlm869Gj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/42/M/J/19 Mechanics,June 2019, Paper 42, Q7, Variable Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "y0iEJukMLwY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"(CAIE), 9709/42/SP20, AS Mechanics, Paper 42, Q7, Dynamics, Connected Particles, Pulleys, Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "T-vVaENGPQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[10] (CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q6, Kinematics, Variable Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fekSK6jdWVc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[8] (CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q5, Dynamics, Connected Particles, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "zkoJ1PLxcC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q4, Statics, Limiiting Equilibrium\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "7b969XyiHfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[10] CAIE, 9709/43/O/N/22 M1, June 2022, Paper 43, Q3, Statics, Rings\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "eLN88PmtF1s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q3, Momentum, Coalescing, Kinetic Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "R5B1-xDLzdI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q2, Work Energy Power, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Z_oO-Xd-R5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q1, Kinematics, Constant Acceleration, Vertical Motion\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DPm2LZ3FHiA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[6] CAIE, 9709/04/M/J/07 M1, June 2007, Paper4, Q5, Statics, Rings\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "P4_u1OCUgO0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"CAIE, 9709/04/O/N/01 M1, November 2001 Paper4, Q6, Dynamics, Connected Particles, Pulleys\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "iTrNq0PGIC8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
+   "reviewedUtc": "2026-11-13T06:48:16Z",
+   "evidence": "title: \"[7] CAIE, 9709/04/M/J/03 Mechanics 1, Paper 4, Q5 Dynamics, Connected Particles\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 22,
   "specPointsMapped": 17,
   "specPointsUnmapped": 5,
-  "videosTotal": 65,
-  "videosMapped": 65,
+  "videosTotal": 166,
+  "videosMapped": 166,
   "videosUnmapped": 0,
-  "mappingRows": 65,
+  "mappingRows": 166,
   "byConfidence": {
-   "high": 0,
+   "high": 101,
    "medium": 46,
    "low": 19
   }
@@ -2113,7 +5172,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-mechanics/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P4 (mechanics cross-subject lane: cie-a-level-maths-20-mechanics)",
    "reviewAppliedUtc": "2026-11-11T14:35:16Z"
+  },
+  "p9": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-mechanics/video-map.draft.external-p9.json",
+   "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
+   "reviewAppliedUtc": "2026-11-13T06:48:16Z"
   }
  },
- "generatedUtc": "2026-11-12T20:09:49.696Z"
+ "generatedUtc": "2026-11-13T06:52:02.306Z"
 }
