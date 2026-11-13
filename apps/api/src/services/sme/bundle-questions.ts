@@ -203,12 +203,16 @@ function partLabel(order: number): string {
  * carries an unmapped q10 followed by a mapped q10) and the roster
  * census zeroed. Claims == the exact (topicSlug, order) set the emit
  * loop derives refs for, by construction. */
-function censusValidOrdersOf(questions: ReadonlyArray<BundleQuestion>): Set<number> {
+function censusValidOrdersOf(
+  questions: ReadonlyArray<BundleQuestion>,
+  primaryServable: (q: BundleQuestion) => boolean,
+): Set<number> {
   const out = new Set<number>();
   const seen = new Set<number>();
   for (const q of questions) {
     const parts = q.parts ?? [];
     if (!parts.some((p) => (p.specPointCodes ?? []).length > 0)) continue; // unmapped
+    if (!primaryServable(q)) continue; // serveUnmappedSpec (the run-023 gate)
     if (parts.reduce((a, p) => a + p.marks, 0) !== q.totalMarks) continue; // badSum
     if (seen.has(q.order)) continue; // dupOrder: first PASSING occurrence claims
     seen.add(q.order);
@@ -237,9 +241,7 @@ function topicCodeResolver(
       // subtopic layer officially, kg_export v1.7 section-hung + the
       // bundle-seed UNIT-parent law mirrored). It anchors to NO SME topic —
       // the same serve-plane law that keeps the new codes off the UGM serve
-      // index: skipped from this map until a T-SME/T-UGM lane serves them,
-      // and any future question tagging such a code fail-closes at the
-      // lookup below ("spec code not in the bundle spine"), never silently.
+      // index: skipped from this map until a T-SME/T-UGM lane serves them.
       continue;
     }
     if (parent.nodeType !== "TOPIC") {
@@ -258,6 +260,33 @@ function topicCodeResolver(
     }
     return hit;
   };
+}
+
+/** RN-DEBRIS-11 run-023 (the run-022 filing D4 law, trace 1a1d343a03eb5c35):
+ *  the carriers' tag re-points (6.3.4a -> 7.4, 6.3.5 -> 7.5a/7.5b, 6.3.6-9 ->
+ *  7.6-7.9) land on the T7 topic-level rows — the run-021 serve-plane law of
+ *  record keeps those codes OFF the SME topic map (UNIT-parented, anchored to
+ *  NO SME topic) until a T-SME/T-UGM lane serves them. The honest shim
+ *  EXCLUDES + COUNTS the affected questions (serveUnmappedSpec — the run-006
+ *  exclusion-class pattern, exactly like unmapped/badSum/dupOrder): the bank
+ *  ingests only questions whose PRIMARY spec code carries a mapped TOPIC
+ *  anchor; nothing is rewritten; the codes stay spine-true (the hub bridge
+ *  serves them via the pointIds law) and the exclusion is disclosed per
+ *  census, never silent. Fail-closed at the package level: the frozen
+ *  validate's required primaryTopicCode is never reached with an unmapped
+ *  anchor. */
+function primaryAnchorServable(
+  mapped: ReturnType<typeof mapBundleNodes>,
+  q: BundleQuestion,
+): boolean {
+  const anchorIdx = q.parts.findIndex((p) => (p.specPointCodes ?? []).length > 0);
+  if (anchorIdx === -1) return false;
+  const primary = (q.parts[anchorIdx]!.specPointCodes ?? [])[0];
+  if (primary == null) return false;
+  const node = mapped.get(primary);
+  if (node == null || node.nodeType !== "SPEC_POINT") return false;
+  const parent = mapped.get(node.parentBundleCode ?? "");
+  return parent != null && parent.nodeType === "TOPIC";
 }
 
 // ── the shim ────────────────────────────────────────────────────────────────
@@ -281,6 +310,12 @@ export interface BundleQuestionsInput {
 export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
   const { courseSlug, curriculum, sets } = input;
   if (sets.length === 0) throw new BundleQuestionsError("bundle carries no question sets");
+  // the 135a node map, computed ONCE before the claim index (the run-023
+  // servable-anchor gate shares it with the topic resolver and the spec-code
+  // dbCode emission, so the three sides cannot drift)
+  const mapped = mapBundleNodes(curriculum, "official specification structure");
+  const resolveTopic = topicCodeResolver(mapped);
+  const primaryServable = (q: BundleQuestion) => primaryAnchorServable(mapped, q);
   // D-KG1b: the series of record. With a supplied map (the driver's
   // pre-filtered path) the lookup is strict — a miss is index/caller drift
   // and fails closed. Without one (full-bundle path) the claim index is
@@ -291,7 +326,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
     : smeClaimIndex(
         sets.map((s) => ({
           topicSlug: s.topicSlug,
-          orders: censusValidOrdersOf(s.questions),
+          orders: censusValidOrdersOf(s.questions, primaryServable),
         })),
       );
   const seriesOf = (set: BundleQuestionSet, setIndex: number, q: BundleQuestion): SmeSeries => {
@@ -309,11 +344,6 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
   // the 135a node map, computed ONCE: the topic resolver and the spec-code
   // dbCode emission (the T-MIG-136 band-4 code-join amendment) share it, so
   // the two sides cannot drift
-  const mapped = mapBundleNodes(curriculum, "official specification structure");
-  const resolveTopic = topicCodeResolver(mapped);
-  // spec code → the seed-side dbCode the frozen replace resolves against
-  // knowledge_nodes.code with (fail-closed): dotted courses byte-identical
-  // to the pre-band-4 concat; 4MB1 alnum codes land 4MB1-S<n>-<code>
   const specDbCode = (code: string): string => {
     const node = mapped.get(code);
     if (node == null || node.nodeType !== "SPEC_POINT") {
@@ -329,6 +359,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
   let partCount = 0;
   let optionCount = 0;
   let unmapped = 0;
+  let serveUnmappedSpec = 0;
   let badSum = 0;
   let dupOrder = 0;
   // the cross-set ref-namespace exclusion (T-SPECS-CIE-CONSUME-3, operator
@@ -365,6 +396,24 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
       );
       if (anchorPartIdx === -1) {
         unmapped++;
+        continue;
+      }
+      // RN-DEBRIS-11 run-023: the servable-anchor gate (the run-021
+      // UNIT-parented class) — see primaryAnchorServable above. The seed-first
+      // contract stays byte-kept: a code OUTSIDE the spine is an integration
+      // defect and the whole build refuses (the frozen law); only the
+      // spine-true UNIT-parented class (7.4/7.5a/7.5b/7.6-7.9 of record) is
+      // the servability state the honest shim excludes + counts. Gate order
+      // unmapped -> serveUnmappedSpec -> badSum -> dupOrder: a gated-OUT
+      // question never reserves its order slot (the claim law).
+      const primarySpecCode = (q.parts[anchorPartIdx]!.specPointCodes ?? [])[0]!;
+      if (!mapped.has(primarySpecCode)) {
+        throw new BundleQuestionsError(
+          "spec code not in the bundle spine: " + primarySpecCode + " (seed the curriculum first)",
+        );
+      }
+      if (!primaryServable(q)) {
+        serveUnmappedSpec++;
         continue;
       }
       // the part-sum law (T-MIG-136 band 4): the frozen validate refuses any
@@ -538,6 +587,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
       options: optionCount,
       sets: sets.length,
       unmapped: unmapped,
+      serveUnmappedSpec: serveUnmappedSpec,
       badSum: badSum,
       dupOrder: dupOrder,
       crossSetRefCollision: crossSetRefCollision,
