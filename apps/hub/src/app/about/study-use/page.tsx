@@ -52,7 +52,7 @@ export default function StudyUsePage() {
         <section>
           <h2 className="text-sm font-semibold">AI answers can be wrong</h2>
           <p className="mt-1 text-muted-foreground">
-            The tutor answers only from the course&apos;s own validated material
+            The tutor answers only from the course&apos;s own checked material
             and cites what it used — but it can still make mistakes. Check the
             citations before you rely on an answer, especially near an exam.
           </p>

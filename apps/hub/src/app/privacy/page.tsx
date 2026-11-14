@@ -57,8 +57,8 @@ export default function PrivacyPage() {
             <strong>Account basics:</strong> the name, email address and role
             (student / teacher) you or your school give us when signing in.{" "}
             <strong>Study activity:</strong> your progress, marks, saved
-            questions and flashcard scheduling, so the dashboard and tutor can
-            be grounded in what you have actually studied.{" "}
+            questions and flashcard scheduling, so the dashboard and tutor work
+            from what you have actually studied.{" "}
             <strong>Tutor questions:</strong> what you type into the AI tutor,
             processed to generate an answer. We do not sell personal data or
             run advertising trackers. [pending: full processor/subprocessor

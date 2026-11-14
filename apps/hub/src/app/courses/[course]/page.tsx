@@ -228,7 +228,7 @@ export default async function CourseHubPage({
           icon: Sparkles,
           title: "Course Tutor",
           desc: meta.curriculumCode
-            ? "A chat grounded in this course's specification, revision notes and past papers — every answer cites its sources."
+            ? "A chat built from this course's specification, revision notes and past papers — every answer cites its sources."
             : "Connects once this course's material is ready — the tutor answers from one course's own material at a time.",
           href: meta.curriculumCode ? `/tutor?course=${meta.slug}` : undefined,
           ctaLabel: "Ask the tutor",
