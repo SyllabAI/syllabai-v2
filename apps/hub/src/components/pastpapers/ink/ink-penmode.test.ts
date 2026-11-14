@@ -249,6 +249,38 @@ describe("(R) pen mode: touch never draws", () => {
     expect(commits.stroke.mock.calls.length).toBe(0);
     expect(scroller.scrollTop).toBe(-30);
   });
+  test("(R-f) run-002 the lag kill — a finger scroll 700ms after the pen's last event PANS (was swallowed for 1500ms)", async () => {
+    const scroller = installFakeScroller();
+    const { commits, canvas } = await mountPenCanvas({ penMode: true });
+    // the stylus writes, lifts
+    await dispatchOn(canvas, pressPointerDown(canvas, { clientX: 100, clientY: 75, pointerType: "pen", pointerId: 7, pressure: 0.4 }).ev);
+    await dispatchOn(canvas, pressPointerMove(canvas, { clientX: 130, clientY: 85, pointerType: "pen", pointerId: 7, pressure: 0.5 }));
+    await dispatchOn(canvas, releasePointerUp(canvas, { clientX: 140, clientY: 90, pointerType: "pen", pointerId: 7 }));
+    // the deliberate finger scroll after the palm-risk beat (600ms):
+    // under run-001 this was swallowed until 1500ms — the "first scroll
+    // is dead after writing" lag of record; run-002 pans it
+    await new Promise((r) => setTimeout(r, 700));
+    await dispatchOn(canvas, pressPointerDown(canvas, { clientX: 100, clientY: 75, pointerType: "touch", pointerId: 8 }).ev);
+    await dispatchOn(canvas, pressPointerMove(canvas, { clientX: 130, clientY: 105, pointerType: "touch", pointerId: 8 }));
+    await dispatchOn(canvas, releasePointerUp(canvas, { clientX: 130, clientY: 105, pointerType: "touch", pointerId: 8 }));
+    expect(commits.stroke.mock.calls.length).toBe(1); // the pen's stroke only
+    expect(scroller.scrollTop).toBe(-30);
+    expect(scroller.scrollLeft).toBe(-30);
+  }, { timeout: 10_000 });
+  test("(R-g) run-002 the palm beat holds — a touch 250ms after the pen is still swallowed", async () => {
+    const scroller = installFakeScroller();
+    const { commits, canvas } = await mountPenCanvas({ penMode: true });
+    await dispatchOn(canvas, pressPointerDown(canvas, { clientX: 100, clientY: 75, pointerType: "pen", pointerId: 7, pressure: 0.4 }).ev);
+    await dispatchOn(canvas, releasePointerUp(canvas, { clientX: 140, clientY: 90, pointerType: "pen", pointerId: 7 }));
+    await new Promise((r) => setTimeout(r, 250));
+    const palm = pressPointerDown(canvas, { clientX: 200, clientY: 150, pointerType: "touch", pointerId: 8 });
+    await dispatchOn(canvas, palm.ev);
+    await dispatchOn(canvas, pressPointerMove(canvas, { clientX: 240, clientY: 180, pointerType: "touch", pointerId: 8 }));
+    await dispatchOn(canvas, releasePointerUp(canvas, { clientX: 240, clientY: 180, pointerType: "touch", pointerId: 8 }));
+    expect(palm.calls()).toBe(1); // rejected — inside the 600ms palm beat
+    expect(commits.stroke.mock.calls.length).toBe(0);
+    expect(scroller.scrollTop).toBe(0);
+  }, { timeout: 10_000 });
 });
 
 // ── (S) the anchor law (wall-clock pin) ──
