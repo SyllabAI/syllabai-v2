@@ -99,6 +99,8 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+
+import { computePenModeOnLoad, penAutoArm, type InkPenPref } from "./ink-penmode";
 import {
   AlertTriangle,
   Check,
@@ -346,6 +348,69 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
     setArmSeq((s) => s + 1);
     syncCanvasGestures();
   }, [syncCanvasGestures]);
+  // ── T-MG-INK-12 run-001: pen mode (stylus writes, finger scrolls) ──
+  // The session state + the sticky preferences. The pure laws (the load
+  // math, the auto-arm target) live in ./ink-penmode and are pinned
+  // there; this is the wiring: the sighting persists 'stylus-seen', the
+  // flip arms the freehand tool ONLY from the resting default, and an
+  // explicit user toggle ('on'/'off') overrides the auto laws until
+  // changed.
+  const [penMode, setPenMode] = useState(false);
+  const penModeRef = useRef(false);
+  const penSeenRef = useRef(false);
+  const penPrefRef = useRef<InkPenPref>("auto");
+  useEffect(() => {
+    try {
+      const pref = window.localStorage.getItem("syllabai-ink-pen-mode");
+      const seen = window.localStorage.getItem("syllabai-ink-stylus-seen") === "1";
+      penSeenRef.current = seen;
+      if (pref === "on" || pref === "off") penPrefRef.current = pref;
+      penModeRef.current = computePenModeOnLoad(pref, seen);
+      setPenMode(penModeRef.current);
+    } catch {
+      /* private mode — the session defaults stand (classic until a pen event) */
+    }
+  }, []);
+  // The first-sighting law: persist the sticky sighting, then flip unless
+  // the user explicitly declined ('off' — their finger-drawing choice
+  // wins; the pen STILL writes as the armed tool either way). Idempotent
+  // (the canvas may call it on every pen event).
+  const markPenSeen = useCallback(() => {
+    if (penSeenRef.current) return;
+    penSeenRef.current = true;
+    try {
+      window.localStorage.setItem("syllabai-ink-stylus-seen", "1");
+    } catch {
+      /* private mode — session-only sighting */
+    }
+    if (penPrefRef.current === "off") return;
+    penModeRef.current = true;
+    setPenMode(true);
+    if (penAutoArm(liveToolsRef.current.mode)) armTool("pen");
+  }, [armTool]);
+  // The honest off-switch (and the on-switch for stylus owners who want
+  // pen mode before their first hover): an explicit preference overrides
+  // the auto laws — an 'off' suppresses the sighting flip, an 'on' sticks
+  // across loads.
+  const togglePenMode = useCallback(() => {
+    const next = !penModeRef.current;
+    penModeRef.current = next;
+    penPrefRef.current = next ? "on" : "off";
+    if (next) {
+      penSeenRef.current = true;
+      try {
+        window.localStorage.setItem("syllabai-ink-stylus-seen", "1");
+      } catch {
+        /* private mode */
+      }
+    }
+    try {
+      window.localStorage.setItem("syllabai-ink-pen-mode", next ? "on" : "off");
+    } catch {
+      /* private mode — session-only preference */
+    }
+    setPenMode(next);
+  }, []);
   // T-MG-INK-9: the math keyboard's portal host — a pane-level bottom
   // strip (the keyboard is pane-wide, MG's virtual-keyboard posture; a
   // page holder must not contain it). pointer-events:none — the panel
@@ -995,6 +1060,25 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           >
             <Trash2 className="size-4" aria-hidden />
           </Button>
+          {/* T-MG-INK-12 run-001: the pen-mode toggle — stylus writes,
+              finger scrolls. Auto-flips on the first stylus sighting (the
+              sticky sighting persists per device); this is the honest
+              off-switch for the rare stylus owner who finger-draws, and
+              the on-switch for anyone who wants pen mode before the first
+              hover. aria-pressed + the on/off glyph state; the data attr
+              is the live-probe seam (the serving-probe doctrine). */}
+          <Button
+            size="sm"
+            variant="ghost"
+            className="size-8 px-0"
+            aria-label="Pen mode: stylus writes, finger scrolls"
+            aria-pressed={penMode}
+            data-penmode={penMode ? "on" : "off"}
+            title={penMode ? "Pen mode on — the stylus writes, fingers scroll and pan" : "Pen mode off — fingers draw when Draw is armed"}
+            onClick={togglePenMode}
+          >
+            <Pen className={penMode ? "size-4" : "size-4 opacity-40"} aria-hidden />
+          </Button>
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
           {/* the status pill — honest states only. T-ACCOUNT-ONLY run-001:
               the account IS the store — the sync states (Saving…/Saved/
@@ -1196,6 +1280,9 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               onGuideCreate={guideCreate}
               liveToolsRef={liveToolsRef}
               armSeq={armSeq}
+              penMode={penMode}
+              penModeRef={penModeRef}
+              onPenSeen={markPenSeen}
               guideSlot={
                 <>
                   {rulerGuide?.page === page && (
@@ -1305,6 +1392,37 @@ export interface InkCanvasProps {
    * layer-level ref.
    */
   liveToolsRef?: { current: { mode: InkToolMode; color: InkColor; widthFrac: number } };
+  /**
+   * T-MG-INK-12 run-001: pen mode (stylus writes, finger scrolls). When
+   * true, a TOUCH pointer NEVER draws: a draw-family tool holds
+   * touch-action:none, so the finger pans the paper via JS (beginPan);
+   * with select armed the touch-action law is untouched and the browser's
+   * native pan/pinch rides as always. Pen, mouse and every commit law are
+   * UNCHANGED in both modes (the mouse byte-identical law holds in pen
+   * mode — pinned at the seam). Optional: the direct test mounts default
+   * to classic (false) so every pre-INK-12 pin reads unchanged.
+   */
+  penMode?: boolean;
+  /**
+   * T-MG-INK-12 run-001: the LIVE pen-mode mirror — the production
+   * InkLayer's synchronous ref (markPenSeen/togglePenMode write it BEFORE
+   * any React commit). The deferred-render window that starved `mode`
+   * (T-HUB-INK-BRK run-003) would starve the penMode prop the same way:
+   * a touch down seconds after the flip would read the stale prop and
+   * DRAW instead of pan. The routing reads this ref FIRST; the `penMode`
+   * prop stays the render-time truth. OPTIONAL: the direct test mounts
+   * omit it and ride the prop.
+   */
+  penModeRef?: { current: boolean };
+  /**
+   * T-MG-INK-12 run-001: the first-sighting callback — fired on the FIRST
+   * pen event of the mount (hover move or down; the anchor refreshes on
+   * every pen event regardless). The parent (InkLayer) persists the
+   * sticky sighting and flips pen mode; the canvas then discards any
+   * in-flight gesture via the penMode prop effect (the palm stroke never
+   * existed). Idempotent at the parent — the canvas may call it freely.
+   */
+  onPenSeen?: () => void;
 }
 
 type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide" | "erase" | "move";
@@ -1327,6 +1445,22 @@ function topmostFamilyHit<K extends "text" | "mtext">(
     if (s && s.kind === family) return s as Extract<InkShape, { kind: K }>;
   }
   return null;
+}
+
+/** T-MG-INK-12 run-001: the JS-pan target — the nearest ancestor that
+ * actually scrolls (overflow auto/scroll AND content overflowing), else
+ * the document scrolling element. Resolved at gesture START (a page
+ * holder's ancestors are stable for the gesture's lifetime). The pure
+ * modules never read the DOM — this is the pan's one DOM seam, the same
+ * posture as the mtext MeasuredSize law. */
+function findScrollAncestor(el: HTMLElement): HTMLElement | null {
+  let node: HTMLElement | null = el.parentElement;
+  while (node) {
+    const oy = getComputedStyle(node).overflowY;
+    if ((oy === "auto" || oy === "scroll") && node.scrollHeight > node.clientHeight) return node;
+    node = node.parentElement;
+  }
+  return (typeof document !== "undefined" ? (document.scrollingElement as HTMLElement | null) : null) ?? null;
 }
 
 /** One page's ink canvas — portaled into the pane's page holder. The
@@ -1362,6 +1496,9 @@ export function InkCanvas({
   keyboardHost,
   armSeq = 0,
   liveToolsRef,
+  penMode = false,
+  penModeRef,
+  onPenSeen,
 }: InkCanvasProps) {
   // T-HUB-INK-BRK run-003: the mirror the gesture handlers read. The
   // production InkLayer passes its layer-level liveToolsRef (written at
@@ -1384,11 +1521,26 @@ export function InkCanvas({
   // by endStroke and the pen-precedence discard.
   const activePointerIdRef = useRef<number | null>(null);
   // The pen-session law (palm rejection): the timestamp of the last pen
-  // pointerdown. A TOUCH gesture may not start within PEN_SESSION_MS of
-  // it — the palm rests and taps while the stylus writes. The window is
-  // short on purpose: putting the stylus down and finger-drawing stays a
-  // real, reachable behavior after it expires.
+  // EVENT. A TOUCH gesture may not start within PEN_SESSION_MS of it —
+  // the palm rests and taps while the stylus writes. T-MG-INK-12 run-001
+  // re-anchors the window: every pen event refreshes it (hover, down,
+  // draw move, lift), not just the opening down — a stroke longer than
+  // the window used to end with the window already expired, leaving the
+  // post-stroke palm gap unprotected (the Addendum 20 gap of record).
+  // The window stays short on purpose: in classic mode (pen mode off)
+  // putting the stylus down and finger-drawing stays reachable after it
+  // expires; in pen mode touch never draws anyway (it pans), so the
+  // window there only suppresses palm-PANS while the stylus is live.
   const penSeenAtRef = useRef<number>(-Infinity);
+  // ── T-MG-INK-12 run-001: the pen-mode gesture plane ──
+  // The first-sighting marker (per mount; the parent's markPenSeen is the
+  // sticky/dedupe authority — this only gates the local flip effect).
+  const penSeenLocalRef = useRef(false);
+  // The touch-pan gesture (pen mode only): the owning pointerId, its last
+  // client point, and the scroll target resolved at gesture start. A
+  // draw-family tool holds touch-action:none, so the finger's native pan
+  // is dead — this gesture pans the paper in JS instead. Never draws.
+  const panRef = useRef<{ id: number; x: number; y: number; el: HTMLElement | null } | null>(null);
   const rafRef = useRef(0);
   const [draft, setDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
   // T-HUB-INK-BRK (operator: "the pdf viewer has many problems, sometimes
@@ -1605,17 +1757,89 @@ export function InkCanvas({
 
   useEffect(() => () => cancelAnimationFrame(rafRef.current), []);
 
+  // ── T-MG-INK-12 run-001: the pen-mode plane (helpers) ──
+  // The gesture-plane discard — the pen-precedence cleanup, extracted so
+  // the pen-mode flip uses the SAME one code path (a stuck erase sweep or
+  // move box would outlive its dead gesture otherwise). No-op when
+  // nothing is in flight (the pan gesture's pointerId plane still clears).
+  const discardGesture = useCallback(() => {
+    panRef.current = null;
+    if (!dragKindRef.current) return;
+    activeRef.current = null;
+    activePressuresRef.current = null;
+    lastPxRef.current = null;
+    rawRef.current = [];
+    pivotRef.current = null;
+    dragKindRef.current = null;
+    activePointerIdRef.current = null;
+    setErasePreview(null);
+    setMovePreview(null);
+    setSweepDeg(null);
+    repaint();
+  }, [repaint]);
+  // The pen-event anchor: EVERY pen event (hover, down, draw move, lift)
+  // refreshes the palm window from the last pen event (the Addendum 20
+  // gap kill), and the FIRST sighting fires onPenSeen (the parent's
+  // sticky/dedupe authority). The flip's gesture discard rides the
+  // penMode prop effect below — the prop, not the callback, is the
+  // flip's source of truth (the parent may decline the flip on an
+  // explicit off; only a real flip discards).
+  const penEvent = useCallback(() => {
+    penSeenAtRef.current = performance.now();
+    if (!penSeenLocalRef.current) {
+      penSeenLocalRef.current = true;
+      onPenSeen?.();
+    }
+  }, [onPenSeen]);
+  // The flip effect: a classic→pen transition discards any in-flight
+  // gesture — an in-flight TOUCH stroke at the flip moment is by
+  // definition a palm stroke (the pen mode's whole premise) and the pen
+  // precedence law discards it the same way when the pen lands instead.
+  // Also covers the manual toggle: a mid-stroke flip kills the live
+  // gesture rather than committing a stroke under rules the user just
+  // turned off.
+  const prevPenModeRef = useRef(penMode);
+  useEffect(() => {
+    if (penMode && !prevPenModeRef.current) discardGesture();
+    prevPenModeRef.current = penMode;
+  }, [penMode, discardGesture]);
+  // The touch-pan opener (pen mode, draw-family armed). One gesture owns
+  // the plane: a second finger's down is swallowed (no pinch in run-001 —
+  // the resting state's Select keeps NATIVE pan/pinch via the untouched
+  // touch-action law, so pinch lives there; draw-armed pinch is a
+  // run-002 candidate). The scroll target resolves now; capture keeps the
+  // pan alive across the page holders (real events capture fine — the
+  // runbook's synthetic-events law).
+  const beginPan = useCallback((e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (panRef.current && e.pointerId !== panRef.current.id) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    canvas.setPointerCapture(e.pointerId);
+    activePointerIdRef.current = e.pointerId;
+    panRef.current = { id: e.pointerId, x: e.clientX, y: e.clientY, el: findScrollAncestor(canvas) };
+  }, []);
+
   const onPointerDown = useCallback(
     (e: React.PointerEvent<HTMLCanvasElement>) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
+      // ── T-MG-INK-12 run-001: the pen-event anchor + first sighting ──
+      // BEFORE the tool read: a no-hover stylus's first contact must DRAW
+      // on this very event — the sighting flips the resting select to the
+      // freehand tool, and reading `m` after that flip routes this down to
+      // ink, not to a select tap. Hover-first devices flipped on the move
+      // (see onPointerMove); this is the no-hover fallback (Pencil 1 on
+      // older iPads) plus the anchor refresh for the window below.
+      if (e.pointerType === "pen") penEvent();
       // T-HUB-INK-BRK run-003: the LIVE tool — the ref mirror armTool
       // writes synchronously (see the props doc). The closed-over `mode`
       // prop is whatever React last flushed; during the desktop raster
       // burst that is seconds old.
       const m = tools.current.mode;
       // ── T-MG-INK-11 run-001: the stylus pointer-plane laws ──
-      // (1) pen session stamp — the palm-rejection window's anchor;
+      // (1) pen session stamp — the palm-rejection window's anchor (as of
+      //     T-MG-INK-12 the anchor lives in penEvent above: EVERY pen
+      //     event refreshes it, not just the opening down);
       // (2) pen precedence — a pen down DISCARDS an in-flight touch
       //     gesture without committing it (the palm stroke never
       //     existed) and takes the canvas;
@@ -1626,27 +1850,29 @@ export function InkCanvas({
       //     overwrite activeRef/lastPxRef mid-stroke). Mouse is never
       //     rejected by (3) — desktops have no palms on the glass.
       const now = performance.now();
-      if (e.pointerType === "pen") penSeenAtRef.current = now;
       if (e.pointerType === "pen" && dragKindRef.current) {
-        activeRef.current = null;
-        activePressuresRef.current = null;
-        lastPxRef.current = null;
-        rawRef.current = [];
-        pivotRef.current = null;
-        dragKindRef.current = null;
-        activePointerIdRef.current = null;
         // the discarded gesture's previews go with it (a stuck erase sweep
         // or move box would outlive its dead gesture otherwise)
-        setErasePreview(null);
-        setMovePreview(null);
-        setSweepDeg(null);
-        repaint();
+        discardGesture();
       }
       if (
         e.pointerType === "touch" &&
         (dragKindRef.current !== null || now - penSeenAtRef.current < PEN_SESSION_MS)
       ) {
         e.preventDefault();
+        return;
+      }
+      // ── T-MG-INK-12 run-001: pen mode — touch NEVER draws ──
+      // A draw-family tool holds touch-action:none, so the finger pans via
+      // JS; with select armed the touch-action law is untouched (native
+      // pan/pinch rides) and the down keeps today's select-tap behavior —
+      // NO interception, the resting state feels exactly as shipped. The
+      // palm window above already returned the in-window touches, so a pan
+      // here is a deliberate finger gesture, not a resting palm. The LIVE
+      // mirror read first (the stale-prop law, T-HUB-INK-BRK run-003's
+      // twin); the prop is the render-time fallback.
+      if (e.pointerType === "touch" && (penModeRef ? penModeRef.current : penMode) && m !== "select") {
+        beginPan(e);
         return;
       }
       if (dragKindRef.current !== null && e.pointerId !== activePointerIdRef.current) return;
@@ -1833,7 +2059,7 @@ export function InkCanvas({
       lastPxRef.current = [e.clientX, e.clientY];
       scheduleLive();
     },
-    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts, commitDraft, commitMathDraft, repaint],
+    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts, commitDraft, commitMathDraft, repaint, beginPan, discardGesture, page, penEvent, penMode, penModeRef, tools],
   );
 
   const onPointerMove = useCallback(
@@ -1847,6 +2073,25 @@ export function InkCanvas({
       // moves (the palm under the stylus) never append to the live stroke.
       if (kind !== null && activePointerIdRef.current !== null && e.pointerId !== activePointerIdRef.current)
         return;
+      // ── T-MG-INK-12 run-001: pen-event anchor + hover sighting ──
+      // A pen move with NO button is the HOVER plane (S Pen / Surface /
+      // Wacom / Pencil-2 emit these before contact) — the first one flips
+      // pen mode BEFORE the first stroke, so "stylus writes automatically"
+      // needs no arming tap. Every pen move re-anchors the palm window
+      // (the draw-move case: the window survives strokes of any length).
+      if (e.pointerType === "pen") penEvent();
+      // The pen-mode pan: the owning touch pans the paper while a
+      // draw-family tool holds touch-action:none. Never appends ink.
+      if (panRef.current && e.pointerId === panRef.current.id) {
+        const p = panRef.current;
+        if (p.el) {
+          p.el.scrollTop -= e.clientY - p.y;
+          p.el.scrollLeft -= e.clientX - p.x;
+        }
+        p.x = e.clientX;
+        p.y = e.clientY;
+        return;
+      }
       // T-MG-INK-10: while an editor tool is armed and no editor is
       // open, the hover chip follows the cursor (MG's affordance).
       // Position-only tracking — drags are untouched below.
@@ -1974,7 +2219,7 @@ export function InkCanvas({
         scheduleLive();
       }
     },
-    [mode, draft, mathDraft, armSeq, ruler, protractor, onGuideMove, scheduleLive, displayShapes, readMeasured],
+    [mode, draft, mathDraft, armSeq, ruler, protractor, onGuideMove, scheduleLive, displayShapes, readMeasured, penEvent, tools],
   );
 
   const endStroke = useCallback(() => {
@@ -2185,9 +2430,23 @@ export function InkCanvas({
           // T-MG-INK-11 run-001: one-gesture isolation — another pointer's
           // up/cancel (the palm lifting off an iPad) must not end or commit
           // the live gesture early.
+          // T-MG-INK-12 run-001: the pen LIFT re-anchors the palm window
+          // (the post-stroke palm gap — the window now runs from the last
+          // pen event), and the pan gesture ends on its own pointer.
+          if (e.pointerType === "pen") penEvent();
+          if (panRef.current && e.pointerId === panRef.current.id) {
+            panRef.current = null;
+            activePointerIdRef.current = null;
+            return;
+          }
           if (activePointerIdRef.current === null || e.pointerId === activePointerIdRef.current) endStroke();
         }}
         onPointerCancel={(e) => {
+          if (panRef.current && e.pointerId === panRef.current.id) {
+            panRef.current = null;
+            activePointerIdRef.current = null;
+            return;
+          }
           if (activePointerIdRef.current === null || e.pointerId === activePointerIdRef.current) endStroke();
         }}
         onPointerLeave={(e) => {
