@@ -1,0 +1,91 @@
+{
+ "receipt": "run-028-gates",
+ "family": "RN-DEBRIS-11",
+ "run": "run-028",
+ "kind": "build-time gates (pre-commit, vs the base tip + staged worktree)",
+ "generatedUtc": "2026-11-14",
+ "baseTip": "74768c11030187007028da31f81cc362a5eb5ae2",
+ "gates": [
+  {
+   "name": "B1-prefix-worklog.md",
+   "ok": true,
+   "detail": "worklog.md"
+  },
+  {
+   "name": "B1-entry-once-worklog.md",
+   "ok": true,
+   "detail": "worklog.md"
+  },
+  {
+   "name": "B1-marks-worklog.md-<<<",
+   "ok": true,
+   "detail": "<<<<<<<"
+  },
+  {
+   "name": "B1-marks-worklog.md->>>",
+   "ok": true,
+   "detail": ">>>>>>>"
+  },
+  {
+   "name": "B1-marks-worklog.md-===",
+   "ok": true,
+   "detail": "======="
+  },
+  {
+   "name": "B1-prefix-.syllabai/worklog.md",
+   "ok": true,
+   "detail": ".syllabai/worklog.md"
+  },
+  {
+   "name": "B1-entry-once-.syllabai/worklog.md",
+   "ok": true,
+   "detail": ".syllabai/worklog.md"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md-<<<",
+   "ok": true,
+   "detail": "<<<<<<<"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md->>>",
+   "ok": true,
+   "detail": ">>>>>>>"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md-===",
+   "ok": true,
+   "detail": "======="
+  },
+  {
+   "name": "B2-merged-block",
+   "ok": true,
+   "detail": ".syllabai/receipts/RN-DEBRIS-11/run-027-item-plane-apply.json"
+  },
+  {
+   "name": "B2-anchor-preserved",
+   "ok": true,
+   "detail": "the 23rd reminder line kept (comma only)"
+  },
+  {
+   "name": "B3-receipts-parse",
+   "ok": true,
+   "detail": "both parse"
+  },
+  {
+   "name": "B5-content-byte-identity",
+   "ok": true,
+   "detail": "map + flashcards byte-identical vs base tip"
+  },
+  {
+   "name": "B4-scope-pre-gates",
+   "ok": true,
+   "detail": "6 changed paths == the declared set minus gates_r0.json (written after this check); the post-commit G4 binds the full 7"
+  },
+  {
+   "name": "B6-census-of-record",
+   "ok": true,
+   "detail": "{\"multiIdCards\": 257, \"nullCodeCards\": 60, \"codedMapItems\": 876, \"unmappedTrueItems\": 469}"
+  }
+ ],
+ "allOk": true
+}
