@@ -237,7 +237,7 @@ export function AppShell({
             <DropdownMenuTrigger
               aria-label="Study tools"
               className={cn(
-                "inline-flex h-10 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors",
+                "inline-flex h-10 items-center gap-1.5 rounded-md px-2 sm:px-3 text-sm font-medium transition-colors",
                 "hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               )}
             >
@@ -369,13 +369,13 @@ export function AppShell({
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className={cn(
-                    "inline-flex h-8 items-center gap-1.5 rounded-md border px-2.5 text-xs font-medium transition-colors",
+                    "inline-flex h-8 items-center gap-1.5 rounded-md border px-2 sm:px-2.5 text-xs font-medium transition-colors",
                     "hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   )}
                 >
                   <User className="size-3.5" aria-hidden />
                   <span className="max-w-12 truncate sm:max-w-28">{identity.name}</span>
-                  <ChevronDown className="size-3 text-muted-foreground" aria-hidden />
+                  <ChevronDown className="size-3 text-muted-foreground hidden sm:block" aria-hidden />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
                   <DropdownMenuLabel className="text-xs">
