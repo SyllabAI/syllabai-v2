@@ -18,7 +18,7 @@
  * core-backed surfaces (tutor, assistant, progress, teacher tools) need
  * a session.
  */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -92,6 +92,23 @@ export function LoginClient() {
     wakeBackend();
   }, []);
 
+  // V-2 (visual audit 2026-11-13): the role-story panel's swap animation used
+  // to run on FIRST paint too (key={role} remounts on mount), and the fade-in
+  // starts the hero text at ~0 opacity over the primary panel — pixel sampling
+  // during that window measured glyphs at ≈ panel background (1.08:1, the
+  // audit's "flash of near-invisible hero text"; the captured frame fits the
+  // fade at ~5% opacity). The animation is now reserved for genuine role
+  // SWITCHES (Student ⇄ Teacher): first paint renders the settled,
+  // fully-opaque story immediately.
+  const [storySwap, setStorySwap] = useState(0);
+  const prevRoleRef = useRef(role);
+  useEffect(() => {
+    if (prevRoleRef.current !== role) {
+      prevRoleRef.current = role;
+      setStorySwap((n) => n + 1);
+    }
+  }, [role]);
+
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const trimmed = email.trim();
@@ -163,7 +180,20 @@ export function LoginClient() {
     <div className="grid overflow-hidden rounded-xl border bg-card lg:grid-cols-[1.05fr_1fr]">
       {/* brand panel — solid primary so the split reads instantly; adapts to
           both themes because it uses tokens (SME blue / Quiet Green fern) */}
-      <div className="relative hidden flex-col justify-between bg-primary p-8 text-primary-foreground lg:flex xl:p-10">
+      <div
+        className="relative hidden flex-col justify-between bg-primary p-8 text-primary-foreground lg:flex xl:p-10"
+        style={{
+          // V-2: inline critical colours — the panel paints brand-correct even
+          // in the pre-CSS frame (the audit's second capture: white panel,
+          // grey text) and whenever the token cascade is momentarily
+          // unresolved. The var() refs keep full theme adaptation (SME blue /
+          // Quiet Green fern / .dark); the fallbacks only cover the window
+          // before the stylesheet lands and match the default (SME light)
+          // pair, so first paint never shows unreadable text.
+          backgroundColor: "var(--primary, #265bf6)",
+          color: "var(--primary-foreground, #ffffff)",
+        }}
+      >
         <div className="flex items-center gap-2">
           <span className="flex size-7 items-center justify-center rounded-md bg-white/15">
             <Atom className="size-4" aria-hidden />
@@ -171,8 +201,16 @@ export function LoginClient() {
           <span className="font-display font-semibold tracking-tight">SyllabAI Hub</span>
         </div>
 
-        {/* role-specific story; key triggers a subtle swap animation */}
-        <div key={role} className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+        {/* role-specific story; the key remounts on role SWITCH only
+            (storySwap), so the swap animation no longer fires on first
+            paint — see the V-2 note above. */}
+        <div
+          key={storySwap}
+          className={cn(
+            storySwap > 0 &&
+              "animate-in fade-in slide-in-from-bottom-2 duration-500",
+          )}
+        >
           <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight xl:text-4xl">
             {story.heading}
           </h2>
