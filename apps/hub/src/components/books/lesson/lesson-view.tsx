@@ -305,7 +305,7 @@ export function LessonView({
           />
         )}
       </aside>
-      <article className="min-w-0 flex-1 max-w-[36rem]">
+      <article className="min-w-0 flex-1 max-w-[42rem]">
         <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
           <Link
             href={`/courses/${courseSlug}/books/${docId}?chapter=${encodeURIComponent(chapterKey)}`}
