@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, ExternalLink, ScrollText } from "lucide-react";
 import { PageHeader } from "@/components/layout/page-header";
-import { allArchiveSpecs, corpusIndex, type CorpusArchiveSpec } from "@/lib/pastpapers-corpus";
+import { allArchiveSpecs, type CorpusArchiveSpec } from "@/lib/pastpapers-corpus";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import officialLinksJson from "@/data/pastpapers-official-links.json";
@@ -121,16 +121,13 @@ export default function PastPapersArchivePage() {
 
       <div className="mt-4 rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
         <p>
-          Official exam documents streamed from the{" "}
-          <span className="font-mono text-2xs">syllabai-pastpapers</span> archive — auto-matched
-          to each course, official-source verification in progress · index generated{" "}
-          {corpusIndex.meta.generatedAt.slice(0, 10)}, tree{" "}
-          <span className="font-mono text-2xs">{corpusIndex.meta.treeSha.slice(0, 7)}</span>.
+          Official exam documents — question papers, mark schemes and examiner reports —
+          matched to each course.
         </p>
         <p className="mt-1">
-          Where the archive has known gaps (cancelled sessions, unpublished mark schemes), the spec
-          carries an <span className="font-medium text-foreground">Official source</span> link to
-          Pearson&apos;s own past-papers page — retrieved and verified {OFFICIAL.meta.retrievedAt}.
+          Where sessions are missing (cancelled exams, unpublished mark schemes), the course
+          carries an <span className="font-medium text-foreground">Official source</span> link
+          to Pearson&apos;s own past-papers page — last checked {OFFICIAL.meta.retrievedAt}.
         </p>
       </div>
 

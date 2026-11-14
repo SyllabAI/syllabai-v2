@@ -436,7 +436,7 @@ export default async function CourseHubPage({
               {
                 icon: MonitorPlay,
                 title: "Videos",
-                desc: `Owner-reviewed video lessons mapped to this specification point by point — watch the exact clip a spec point needs. Title-only evidence is disclosed per row.`,
+                desc: `Video lessons for this course, topic by topic — watch the exact clip a spec point needs. Each row shows how closely the video title matches.`,
                 href: `${base}/videos`,
                 countLabel: `${fmtCount(videoMap.coverage.videosMapped)} videos · ${videoMap.coverage.specPointsMapped}/${videoMap.coverage.specPointsTotal} spec points`,
                 ready: true,

@@ -17,10 +17,9 @@ export const metadata: Metadata = {
 function PendingBanner() {
   return (
     <div className="rounded-md border border-warn/30 bg-warn/5 p-3 text-xs leading-relaxed text-warn-ink">
-      <strong className="font-semibold">Scaffold pending legal review.</strong> This
-      page was prepared as part of the design audit fix lane and still needs a
-      counsel pass before it is treated as the policy of record — do not
-      publish this URL as final until that pass lands.
+      <strong className="font-semibold">Draft — pending legal review.</strong> This
+      page is a draft that still needs a legal review — do not treat it as the
+      final terms until then.
     </div>
   );
 }

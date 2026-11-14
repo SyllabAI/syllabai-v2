@@ -89,7 +89,7 @@ export default async function CourseSpecificationPage({
         meta={meta}
         title={`${meta.subject} ${meta.code} — specification explorer`}
         crumb="Specification"
-        description={`All ${stats.specPoints} specification statements from the official ${boardName} specification, as printed${hasApplicability ? ` — filter by paper, unit or tier exactly as ${boardName} assesses them` : ""}.`}
+        description={`Every objective from the official ${boardName} specification, word for word${hasApplicability ? ` — filter by paper, unit or tier to see exactly what ${boardName} tests` : ""}.`}
       />
       <div className="mt-6">
         <SpecificationExplorer topics={topics} totalPoints={stats.specPoints} legend={legend} />

@@ -210,8 +210,8 @@ export function BattleClient({ course }: { course: string }) {
         <Card>
           <CardContent className="space-y-3 pt-4">
             <p className="text-sm text-muted-foreground">
-              The battle surface did not answer. It ships only where the spec-tagging census of
-              record exists, and it fails closed rather than serve an unpinned bank.
+              The battle didn't load. Battles run only from a checked question
+              bank for your course.
             </p>
             <Button variant="outline" onClick={() => void loadAddresses()}>
               <RefreshCw className="size-4" aria-hidden /> Try again
@@ -397,9 +397,9 @@ export function BattleClient({ course }: { course: string }) {
                   </span>
                 </p>
                 {revealed.markScheme ? (
-                  <div className="space-y-2 rounded-md border bg-muted/30 p-3" aria-label="Mark scheme of record">
+                  <div className="space-y-2 rounded-md border bg-muted/30 p-3" aria-label="Mark scheme">
                     <p className="text-2xs font-medium uppercase tracking-wide text-muted-foreground">
-                      Mark scheme — the examiner&apos;s points of record ({revealed.markScheme.marksTotal}{" "}
+                      Mark scheme — the examiner&apos;s points ({revealed.markScheme.marksTotal}{" "}
                       {revealed.markScheme.marksTotal === 1 ? "mark" : "marks"})
                     </p>
                     <ul className="space-y-2">
@@ -466,8 +466,8 @@ export function BattleClient({ course }: { course: string }) {
       )}
       {startFailed && (
         <p className="text-sm text-destructive">
-          The battle did not start — this address may hold fewer than three battle-eligible parts, or the surface
-          refused to serve. Pick another spec point.
+          The battle didn't start — this spec point may not have enough
+          questions yet. Pick another one.
         </p>
       )}
       <div className="space-y-4">
@@ -486,7 +486,7 @@ export function BattleClient({ course }: { course: string }) {
                   className={`rounded-md border px-2.5 py-1.5 text-xs transition-colors hover:bg-muted/50 disabled:opacity-50 ${
                     preselect === a.code ? "border-primary bg-primary/5" : ""
                   }`}
-                  title={`${a.combined} anchored parts — battles serve the choice-graded subset`}
+                  title={`${a.combined} questions — battles use the multiple-choice subset`}
                 >
                   <span className="font-mono font-medium">{a.code}</span>
                   <span className="ml-1.5 text-muted-foreground">{a.combined}</span>
@@ -528,7 +528,7 @@ function BattleHeading() {
           Strength Battle
         </span>
       }
-      description="Three questions, sixty seconds, head-to-head at one spec-point address — the same real past-paper bank the drill serves, with model-drawn sets and the examiner's mark schemes revealed instantly."
+      description="Three questions, sixty seconds, head-to-head on one spec point — the same real past-paper questions the drill serves, with the examiner's mark schemes revealed instantly."
     />
   );
 }

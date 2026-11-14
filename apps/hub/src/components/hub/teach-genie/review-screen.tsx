@@ -254,7 +254,7 @@ function ReviewSections({ review, courseLabel, classroomStudent }: { review: Rev
       )}
 
       <p className="text-2xs leading-relaxed text-muted-foreground">
-        {reviewEvidenceLead(classroomStudent)} Spec verdicts of record:
+        {reviewEvidenceLead(classroomStudent)} Spec verdicts:
         {review.specPointVerdicts.map((v) => ` ${v.specPointId}=${v.verdict}`).join("," )}.
       </p>
     </>

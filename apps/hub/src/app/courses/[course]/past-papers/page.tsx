@@ -8,7 +8,6 @@ import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import {
   corpusPapersForCourse,
   corpusSpecsForCourse,
-  corpusIndex,
   doubleAwardScopeNote,
   groupBySession,
   prettyBytes,
@@ -119,7 +118,7 @@ export default async function PastPapersPage({
 
   const specNote =
     specMap == null
-      ? "This course has no specification mapped into the archive yet."
+      ? "This course's past papers haven't been added yet."
       : undefined;
 
   return (
@@ -149,7 +148,7 @@ export default async function PastPapersPage({
               </p>
               <p className="text-sm text-muted-foreground">
                 {specNote ??
-                  "The syllabai-pastpapers archive doesn't hold this specification yet. You can still practise by topic, or try the assembled practice papers."}
+                  "We don't have past papers for this course yet. You can still practise by topic, or try the practice papers."}
               </p>
               <div className="flex flex-wrap gap-2 text-sm font-semibold text-primary">
                 <Link href={`${base}/exam-questions`} className="hover:underline">
@@ -178,10 +177,7 @@ export default async function PastPapersPage({
               official timer, then grade against the MS.
             </p>
             <p className="mt-1">
-              Official {meta.board ?? "Pearson Edexcel"} documents streamed from the{" "}
-              <span className="font-mono text-2xs">syllabai-pastpapers</span> archive
-              (auto-matched — official-source verification in progress · index generated{" "}
-              {corpusIndex.meta.generatedAt.slice(0, 10)}).
+              Official {meta.board ?? "Pearson Edexcel"} documents, matched to this course.
             </p>
           </div>
 
