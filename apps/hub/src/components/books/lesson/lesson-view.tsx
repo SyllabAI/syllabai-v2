@@ -362,7 +362,7 @@ export function LessonView({
           <section id="lesson-extras" data-progress-idx={pack.sections.length} className="mt-2 scroll-mt-16 border-t py-6">
             <h2 className="mb-1 text-xl font-semibold tracking-tight">Interactive extras</h2>
             <p className="mb-3 text-xs text-muted-foreground">
-              Interactive elements for this chapter without a spec-anchored section — honest placement, never dropped.
+              Interactive elements for this chapter that don't map to a spec section — placed at chapter level, never dropped.
             </p>
             <LessonInteractive
               blocks={extraBlocks}

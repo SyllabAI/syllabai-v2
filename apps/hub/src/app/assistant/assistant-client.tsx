@@ -106,8 +106,8 @@ interface CatalogQuestion {
 const MAX_QUESTION_CHARS = 600; // mirrors the API contract (note island parity)
 
 const MODES: { value: Mode; label: string; hint: string; questionOnly: boolean }[] = [
-  { value: "EXPLAIN", label: "Explain", hint: "Teach the topic from validated sources", questionOnly: false },
-  { value: "SUMMARIZE", label: "Summarize", hint: "Compress the anchored material", questionOnly: false },
+  { value: "EXPLAIN", label: "Explain", hint: "Teach the topic from the course sources", questionOnly: false },
+  { value: "SUMMARIZE", label: "Summarize", hint: "Compress the material you picked", questionOnly: false },
   { value: "HINT", label: "Hint", hint: "Scaffolding only — never the answer", questionOnly: true },
   { value: "CHECK", label: "Check", hint: "Full mark-scheme feedback after your attempt", questionOnly: true },
 ];
@@ -352,7 +352,7 @@ export function AssistantClient({
           <div className="leading-tight">
             <h1 className="text-sm font-semibold">Contextual Learning Assistant</h1>
             <p className="text-2xs text-muted-foreground">
-              you pick the context — it answers from validated course material
+              you pick the context — it answers from the course material
             </p>
           </div>
         </div>
@@ -362,7 +362,7 @@ export function AssistantClient({
         <div className="flex items-start gap-2 border-b bg-warn/10 px-4 py-2.5 text-xs leading-relaxed text-warn-ink">
           <Info className="mt-0.5 size-3.5 shrink-0 text-warn" aria-hidden />
           <p>
-            The assistant can make mistakes. It answers only from validated course
+            The assistant can make mistakes. It answers only from the course
             material, with citations — always check them.
           </p>
         </div>
@@ -613,7 +613,7 @@ export function AssistantClient({
               {m.refused && (
                 <p className="flex items-center gap-1.5 text-2xs font-semibold text-warn">
                   <TriangleAlert className="size-3.5" aria-hidden />
-                  Honest refusal — the anchored material does not support this
+                  No answer — the material you picked does not support this
                 </p>
               )}
               <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(m.content)}</Markdown>
@@ -646,7 +646,7 @@ export function AssistantClient({
               )}
               {m.context && (
                 <p className="text-2xs leading-relaxed text-muted-foreground">
-                  anchored <span className="font-medium text-foreground">{m.context.anchor}</span>
+                  from <span className="font-medium text-foreground">{m.context.anchor}</span>
                   {" · "}
                   {m.context.kind === "EXAM_QUESTION" ? "exam question" : "spec topic"}
                   {typeof m.context.attempted === "boolean" && (
@@ -676,7 +676,7 @@ export function AssistantClient({
         {busy && (
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <Loader2 className="size-3.5 animate-spin" aria-hidden />
-            resolving context → gathering validated evidence → grounding the answer…
+            reading the context → gathering the sources → writing the answer…
           </div>
         )}
         </div>
@@ -709,7 +709,7 @@ export function AssistantClient({
                   ? "Describe your answer — Check gives full feedback against the mark scheme"
                   : mode === "HINT"
                     ? "Ask for a hint (scaffolding, never the answer)"
-                    : "Ask about the anchored context…"
+                    : "Ask about the context you picked…"
               }
               className="resize-none border-0 bg-transparent px-3.5 py-2.5 text-sm shadow-none placeholder:text-muted-foreground/70 focus-visible:ring-0 focus-visible:ring-offset-0"
             />

@@ -123,7 +123,7 @@ d.style.colorScheme=dark?"dark":"light";
 // T-HUB-AUDITFIX-1 run-005: the description of record — one source shared
 // by the metadata block and the OG/Twitter defaults below.
 const siteDescription =
-  "Spec-anchored revision for Edexcel & Cambridge International: notes, exam questions, flashcards, past papers and a grounded AI tutor — mapped to your syllabus.";
+  "Spec-mapped revision for Edexcel & Cambridge International: notes, exam questions, flashcards, past papers and an AI tutor that cites its sources.";
 
 export const metadata: Metadata = {
   // UX review 2026-10-31 F-08: canonical + Open Graph URLs on the course
@@ -160,7 +160,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "SyllabAI Hub — spec-anchored revision for Edexcel & Cambridge International",
+        alt: "SyllabAI Hub — spec-mapped revision for Edexcel & Cambridge International",
       },
     ],
   },
