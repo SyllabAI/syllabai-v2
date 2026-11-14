@@ -224,8 +224,8 @@ function DirectoryCard({
                 queued for import. Papers-only ghosts stay line-free. */}
             {ghost && !statsLine && papers === 0 && !tutorReady && (
               <p className="mt-1.5 text-xs italic text-muted-foreground">
-                No published content yet — the corpus is queued
-                for import.
+                No published content yet — this course is
+                on the way.
               </p>
             )}
             {/* run-002 (UI-2): the badge row is retired for the

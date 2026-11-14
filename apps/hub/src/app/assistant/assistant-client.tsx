@@ -501,7 +501,7 @@ export function AssistantClient({
                   {question.marks} marks
                   {question.specPointCodes.length > 0
                     ? ` · ${question.specPointCodes.slice(0, 3).join(", ")}${question.specPointCodes.length > 3 ? ", …" : ""}`
-                    : " · not mapped to spec points"}
+                    : " · not tied to a spec point"}
                   {" · "}
                   {attempted ? (
                     <span className="text-success">attempt recorded</span>
@@ -589,10 +589,10 @@ export function AssistantClient({
         <div ref={threadRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
         {thread.length === 0 && !busy && (
           <p className="py-6 text-center text-xs leading-relaxed text-muted-foreground">
-            Every answer is grounded in validated course material anchored to the context you
-            picked — citations point at the real sources, and nothing is served that the content
-            does not support. The free <a href="/tutor" className="underline">AI Tutor</a> stays the
-            whole-corpus surface; this assistant is deliberately bounded.
+            Every answer comes from the course material for the context you
+            picked — citations point at the real sources, and nothing is claimed
+            that they don&apos;t support. The free <a href="/tutor" className="underline">AI Tutor</a> covers
+            the whole course; this assistant stays within the section you picked.
           </p>
         )}
         {thread.map((m, i) =>

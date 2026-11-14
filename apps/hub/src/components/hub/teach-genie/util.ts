@@ -85,10 +85,11 @@ export function endedLine(iso: string): string {
   });
 }
 
-/* T-TEACHGENIE-008 — the enrollment-conditional ratification footnotes.
- *
- * Classroom students read the teacher-ratifies sentence of record (the
- * T-TEACHME-001 copy, byte-identical). Independent students read the honest
+/* T-TEACHGENIE-008 — the enrollment-conditional ratification footnotes;
+ * re-worded in student register by T-REGISTER run-001 (the AI_SUGGESTED enum
+ * name is retired from learner copy — "AI suggestions" carries the same
+ * meaning). Classroom students read the teacher-checks sentence (the
+ * T-TEACHME-001 conditional, same voice). Independent students read the honest
  * neutral line — no teacher claim, and no counts-toward-record promise
  * (auto-commit is NOT live: the copy must never promise what the engine
  * doesn't do). Fail-safe direction: callers pass the API's affirmative
@@ -99,13 +100,13 @@ export function endedLine(iso: string): string {
 /** The picker footer sentence ("Start session" button area). */
 export function pickerEvidenceFootnote(classroomStudent: boolean): string {
   return classroomStudent
-    ? "Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts."
-    : "Sessions are AI_SUGGESTED evidence.";
+    ? "Sessions start from AI suggestions — your teacher checks them over before anything counts."
+    : "Sessions start from AI suggestions.";
 }
 
-/** The review card's evidence lead (the "Spec verdicts of record:" line follows). */
+/** The review card's evidence lead (the "Spec verdicts:" line follows). */
 export function reviewEvidenceLead(classroomStudent: boolean): string {
   return classroomStudent
-    ? "AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record."
-    : "AI_SUGGESTED evidence.";
+    ? "AI suggestions — your teacher checks them over before any of this touches your record."
+    : "AI suggestions.";
 }

@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Class geography progress · Teacher workspace",
   description:
-    "My Class Geography Progress: the class's curriculum geography — every subject's spec tree with the corpus coverage per subtopic (notes, exam questions, flashcards). Corpus coverage, not learner mastery.",
+    "My Class Geography Progress: the class's curriculum geography — every subject's spec tree with the content coverage per subtopic (notes, exam questions, flashcards). Content coverage, not learner mastery.",
 };
 
 export default async function TeacherClassGeographyPage({
