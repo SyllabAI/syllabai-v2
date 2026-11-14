@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-REGISTER
+  title: 'The register sweep — student-facing copy stops speaking ops: the hub UI retired its internal register ("of record", AI_SUGGESTED enum, parsed-Pearson/archive/census/lane/receipt/grounded/spec-anchored process speak) for student-appropriate language, strings only, meaning kept'
+  owner: 'Super Z (zai-web session web-7b4a27df-7d97-438a-849c-05a9c0003aa8, chat 0fade780-1ab5-4951-bfd9-13f43e897f40, dispatch traces 1a1d7eb7 "Register copy leak … the whole fucking website is full of this types of things … There are more instances like this. Find it all" (4 verbatim samples) + 1a1da597c5f3500d "start T-REGISTER run-001" + 1a1db56ca58cedc5 "review+self merge")'
+  status: 'run-001 MERGED — PRs of record #1018 (sweep 29 surfaces + review addenda 16 surfaces, merge 787f6a83) and #1023 (addendum 2: grounded/spec-anchored/validated family 22 surfaces, merge 889e1663); post-merge zero-hit verification on main 889e1663'
+  priority: P1
+  band: T-REGISTER (learner-visible register; zero engine bytes)
+  deps: [T-COPYFIX-001, T-TEACHGENIE-008]
+  scope:
+    allowed:
+    - apps/hub/src student-visible strings (pages, components, metadata descriptions, api-route display details, aria labels) — strings only
+    - apps/hub/src law tests where pinned copy re-words (teach-genie-laws.test.ts)
+    - .syllabai/tasks/T-REGISTER.yaml + .syllabai/receipts/T-REGISTER/** + .syllabai/worklog.md (append-only, post-merge re-file)
+    forbidden:
+    - any engine/API/store byte (tsc surfaces untouched; only display strings + two now-unused corpusIndex imports)
+    - the T-TEACHGENIE-008 conditional law (classroom vs independent voice) — re-worded in place, condition + fail-safe direction intact
+    - the about/provenance page and its "provenance register" inbound links (the deliberate operator-facing provenance register)
+    - code comments (not learner-visible) and internal identifiers (corpusBankPathOfRecord, BankPathOfRecord, provenance-tier enum keys)
+    - spec-point vocabulary (student-standard — the leak was the process speak around it)
+  notes: 'LIVE EVIDENCE: the operator pasted 4 verbatim student-visible leaks (past-papers archive "streamed from the syllabai-pastpapers archive (auto-matched — official-source verification in progress · index generated …)", spec statements "All 182 specification statements …, as printed", "Assessment homes come from the parsed Pearson specification … Hover a chip for the printed rule", video panel "Owner-reviewed … the confidence chip … title-only … different-board … nothing here records progress"). All four retired verbatim-to-student in #1018. Self-review rounds 1-2 (post-push seed-word classifier + exact-phrase zero-hit verification) caught 38 further residuals including the landing/terms "grounded AI tutor" family and the grade-boundaries sha256/repo footer. Deliberate keeps: the "Auto-matched" chip label, spec-point vocabulary, the about/provenance page, all code comments. DISCLOSED debt: teacher test-builder/marking ops register (kappa, "validated-assembly receipt") is a teacher-ops surface — separate lane decision; video-map.test.ts 5 fails pre-existing corpus-content debt (zero lane contact).'

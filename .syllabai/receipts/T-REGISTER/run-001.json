@@ -1,0 +1,56 @@
+{
+ "task": "T-REGISTER",
+ "run": "run-001",
+ "date": "2026-11-15",
+ "operator_order": {
+  "orders": [
+   "Register copy leak. And another thing, the whole fucking website is full of this types of things. SOme examples: [4 verbatim past-paper/spec/assessment-homes/video-panel samples] … There are more instances like this. Find it all",
+   "start T-REGISTER run-001",
+   "review+self merge"
+  ],
+  "channel": "zai-web",
+  "session": "web-7b4a27df-7d97-438a-849c-05a9c0003aa8",
+  "chat": "0fade780-1ab5-4951-bfd9-13f43e897f40",
+  "traces": ["1a1d7eb7", "1a1da597c5f3500d", "1a1db56ca58cedc5"]
+ },
+ "change": {
+  "summary": "The register sweep: student-facing copy stops speaking ops. Meaning-preserving student-register rewrite, strings only, zero engine bytes — 67 surfaces across 3 commits / 2 PRs. The operator's 4 verbatim samples retired word-for-word; the 'of record' register, the AI_SUGGESTED enum-in-copy, the archive/index/census/lane/receipt process speak, and (addendum 2) the grounded/spec-anchored/validated retrieval-engine register + ops-culture voice ('Honest refusal', 'the honest state, not a stub', 'the server clock is the law') all retired from learner-visible surfaces including metadata descriptions, aria labels and sr-only a11y copy.",
+  "prs_of_record": [
+   {"pr": 1018, "merge_commit": "787f6a830c3e131bda35ddf2ea0028aaef5901ad", "commits": ["64c0a731 (sweep: 29 surfaces, +121 -134)", "15d4186a (review addenda 1: 16 surfaces, +29 -38)"], "base_head": "74768c11", "rebased": true},
+   {"pr": 1023, "merge_commit": "889e16634fcf4b8a6bf4fa811d69eae9180caf07", "commits": ["caa87330 (review addendum 2: grounded/spec-anchored/validated family, 22 surfaces across 20 files)"], "base_head": "787f6a83"}
+  ],
+  "files": [
+   "global past-papers archive + course past-papers + viewer tooltip — 'streamed from the syllabai-pastpapers archive (auto-matched — official-source verification in progress · index generated …, tree …)' -> 'Official exam documents — question papers, mark schemes and examiner reports — matched to each course'; 'held in the syllabai-pastpapers corpus' header -> 'the past-papers library'",
+   "specification explorer + page — 'All 182 specification statements …, as printed' -> 'Every objective from the official … specification, word for word'; 'Assessment homes come from the parsed Pearson specification … the printed rule' -> 'Where each part is examined comes from the official specification … the exact rule'; 'parsed specification, as printed' -> 'straight from the official specification'",
+   "videos page + course hub card — 'Owner-reviewed' -> 'Reviewed'; 'the confidence chip says how directly' -> 'the chip on each row shows how closely'; 'Evidence (title-only)' -> 'Matched by title'; 'different-board' -> 'different board'; '106 mappings' + '8 high · 82 medium · 16 low' aggregate badges dropped (per-row chips kept); 'nothing here records progress' -> 'nothing you watch here is saved to your progress'; 'content/video-map/' path leak removed",
+   "teach-genie footnotes (picker + review, 008 conditional law intact) — 'Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts.' -> 'Sessions start from AI suggestions — your teacher checks them over before anything counts.'; independent voice 'AI suggestions.'; law test re-pinned + hardened with not.toContain('AI_SUGGESTED')",
+   "drill + battle — 'spec-tagging census of record', 'fails closed', 'Mark scheme of record', 'the examiner's points of record', 'anchored parts', 'tagged corpus of record', 'model-drawn sets', 'the server clock is the law', 'a seeded fair-coin sparring partner, not a model', 'stay real drill evidence' -> plain student register, counts kept",
+   "exam-questions history (route disclosure + panel + page + editor-history lib) — 'Corpus of record', 'Bank path of record', 'commits of record', ADR-044 x2, 'syllabai-resources git provenance' -> 'Question bank history', 'Question bank:', review-process wording",
+   "addendum-2 register family — landing hero + layout siteDescription/OG alt + dashboard meta/hero + courses blurb + login bullets/sub/tagline ('Grounded AI, honest citations, spec-anchored everything' -> 'An AI that shows its sources, everything mapped to the spec') + showcase: grounded/spec-anchored/Spec-grounded -> cited-sources/spec-mapped voice; tutor promises list ('Grounded answers. Every reply is retrieved from the corpus' -> 'Cited answers. Every reply comes from your course material'; 'Honest refusals' -> 'Says so when unsure'); badge 'grounded refusal' -> 'no answer'; assistant mode hints/refusal/citation chip/busy line/placeholder; CLA sheets sr-only a11y x2; study-use + privacy; teach-genie empty state ('the honest state, not a stub' -> 'this page shows exactly where things stand'); RegionMarkLayer 'grounded rect' x2 -> 'no position on that page'; lesson-view extras; toolkit-client",
+   "grade boundaries — per-source '(sha256 …)' chips + footer 'sha256-recorded in the syllabai-resources GradeBoundaries lane' -> plain source links + 'official … documents'",
+   "interactive chip — aria 'not parsed yet' -> 'not ready yet'; popover 'parsed into the syllabai corpus: PDF -> question parsing -> validation' -> 'a question-by-question copy of this paper'",
+   "graph-explorer lab blurb — byte-faithful / operator's prototype / GRAPH_CONTRACT v1.0 / canonicalKG artifact / data-decoupled fork of v77 -> 'A prototype knowledge-graph playground' (DATA_URL still consumed by the stats fetch)",
+   "RegionMarkLayer ledger line — 'Ledger: N written, M duplicate write(s) absorbed' -> 'Recorded: N saved, M duplicates skipped' (singular/plural handled)",
+   "api/ai/cla 503 detail — 'The SyllabAI backend is not configured for this deployment' -> 'The AI tutor isn't available right now — please try again later'",
+   "privacy/terms pending banners — 'design audit fix lane', 'counsel pass', 'policy of record' -> 'Draft — pending legal review'",
+   "teacher metadata descriptions — validation 'Phase 2 / demo-truth / corpus items', toolkit 'grounded / server-side', geography 'corpus coverage' x2 -> teacher register",
+   "course-directory ghost line + course page empty state — 'the corpus is queued for import' -> 'this course is on the way'; 'registered and its materials are in preparation' -> 'materials are in preparation'",
+   "strengths page/panel, drill ZERO_STAKES_NOTE, seneca, mock provider, eq-builder, loose-copy — ADR-031 cite, 'zero-stakes lane', 'gradebook', 'adjudicated outcome of the spec-mapping lane', 'SyllabAI Seneca harvest', 'syllabai-resources@ref', 'equation of record' -> student register"
+  ]
+ },
+ "gates": {
+  "tsc": {"hub": "exit 0 (both PR heads)", "contracts": "exit 0 (#1018 head)", "api": "exit 0 (#1018 head)"},
+  "bun_test": "teach-genie laws 10 pass (incl. hardened not.toContain('AI_SUGGESTED')); editor-history + paper-marks + components/hub 58 pass 0 fail on the final tree",
+  "eslint": "0 NEW problems on all touched files across both PRs; disclosed pre-existing: 5 errors on 3 files (#1018 set) + 4 errors on 2 files (addendum-2 set), byte-identical on pristine stashed trees",
+  "ci": "PR head check-runs 5/5 success on 64c0a731, 15d4186a, caa87330 (verify, law-readback, hub, coordination, Vercel Preview Comments); Vercel deploy 'Canceled by Ignored Build Step' infra-side non-blocking"
+ },
+ "review_loop": "review+self merge order executed: post-push independent seed-word classifier resweep (comments stripped, 30+ patterns) caught 16 residuals the sweep missed (incl. the landing-page 'grounded AI tutor' and grade-boundaries sha256/repo footer) -> shipped as commit 2 of #1018; exact-phrase zero-hit verification on the merged tree caught the second family (grounded/spec-anchored/validated, 22 surfaces) -> #1023; final zero-hit verification on main 889e1663 clean (only code comments + internal identifiers remain)",
+ "disclosures": [
+  "video-map.test.ts 5 fails PRE-EXISTING corpus-content debt — byte-identical on the pristine tree, zero lane contact",
+  "teacher test-builder/marking ops register (kappa, 'validated-assembly receipt', 'validated questions') left standing — teacher-ops surface, separate lane decision",
+  "kept deliberately: the 'Auto-matched' chip label, spec-point vocabulary, the about/provenance page + its 'provenance register' inbound links, all code comments, internal identifiers (corpusBankPathOfRecord, BankPathOfRecord, provenance-tier enum keys with student-voiced display labels)",
+  "aggregate confidence-count badges dropped from the videos header (per-row chips remain) — QA stats, not learner facts",
+  "worklog + task card + receipt re-file post-merge per the T-COPYFIX-001 -> #967 lane (this receipt is that re-file)"
+ ],
+ "verdict": "SHIP — the hub's learner-visible surfaces no longer speak ops; the operator's four verbatim samples are retired word-for-word; two self-review rounds closed the residuals; the register law is now pinned by the hardened teach-genie footnotes test."
+}
