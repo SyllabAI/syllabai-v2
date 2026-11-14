@@ -747,7 +747,7 @@ export function PaperViewerClient({
         <Badge
           variant="outline"
           className="hidden text-2xs md:inline-flex"
-          title={`Auto-matched index — official-source verification in progress · index generated ${metaGeneratedAt.slice(0, 10)}`}
+          title={`Matched to this course automatically — last updated ${metaGeneratedAt.slice(0, 10)}`}
         >
           Auto-matched
         </Badge>

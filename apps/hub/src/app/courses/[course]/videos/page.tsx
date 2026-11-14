@@ -108,7 +108,7 @@ function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
         )}
         {row.boardMismatch && (
           <Badge variant="outline" className="text-2xs">
-            different-board source
+            different board
           </Badge>
         )}
       </div>
@@ -117,7 +117,7 @@ function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
       )}
       {row.evidence && (
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-          Evidence (title-only): {row.evidence}
+          Matched by title: {row.evidence}
         </p>
       )}
     </li>
@@ -259,11 +259,11 @@ export default async function VideosPage({
           meta={meta}
           title={`${board}${meta.level} ${meta.label} — Videos`}
           crumb="Videos"
-          description="The video lane is enabled for this course, but no owner-reviewed video map is committed yet."
+          description="Videos for this course are on the way."
         />
         <div className="mt-6 rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
-          No videos published for this course yet. When the reviewed mapping lands
-          in content/video-map/, it appears here spec point by spec point.
+          No videos published for this course yet — new ones are added topic by
+          topic as they&apos;re reviewed.
         </div>
       </div>
     );
@@ -336,7 +336,7 @@ export default async function VideosPage({
         meta={meta}
         title={`${board}${meta.level} ${meta.label} — Videos`}
         crumb="Videos"
-        description={`Owner-reviewed video lessons mapped to this specification point by point (${c.specPointsMapped} of ${c.specPointsTotal} spec points covered by ${c.videosMapped} videos).`}
+        description={`Video lessons for this course, topic by topic (${c.specPointsMapped} of ${c.specPointsTotal} spec points have videos, drawn from ${c.videosMapped} lessons).`}
       />
 
       <div className="mt-6 flex flex-wrap items-center gap-2">
@@ -344,31 +344,26 @@ export default async function VideosPage({
           variant="outline"
           className="border-muted-foreground/30 text-2xs text-muted-foreground"
         >
-          Owner-reviewed{map.qual ? ` · ${map.qual}` : ""}
+          Reviewed{map.qual ? ` · ${map.qual}` : ""}
         </Badge>
         <Badge variant="secondary" className="text-2xs">
           {c.specPointsMapped}/{c.specPointsTotal} spec points
         </Badge>
         <Badge variant="secondary" className="text-2xs">
-          {c.videosMapped} videos · {c.mappingRows} mappings
+          {c.videosMapped} videos
         </Badge>
-        {c.byConfidence && (
-          <Badge variant="secondary" className="text-2xs">
-            {c.byConfidence.high} high · {c.byConfidence.medium} medium ·{" "}
-            {c.byConfidence.low} low
-          </Badge>
-        )}
         {anchorBadge && (
           <Badge variant="secondary" className="text-2xs">
             {anchorBadge}
           </Badge>
         )}
         <p className="w-full max-w-3xl text-xs leading-relaxed text-muted-foreground">
-          Matches are title-only: the confidence chip says how directly the video
-          title names the spec point&apos;s content — watch before relying on a medium
-          or low match. Rows marked &ldquo;different-board&rdquo; come from channels
-          aligned to another exam board (the board note says how). Links open the
-          source channel or lesson page; nothing here records progress.
+          Matches are made from video titles alone — the chip on each row shows how
+          closely the title fits the spec point&apos;s content, so watch a medium or
+          low match before relying on it. Rows marked &ldquo;different board&rdquo; come
+          from channels that follow a different exam board — the note on the row says
+          which. Links open the original channel or lesson page; nothing you watch
+          here is saved to your progress.
         </p>
       </div>
 
@@ -416,7 +411,7 @@ export default async function VideosPage({
                   </Badge>
                   <span className="text-xs text-muted-foreground">
                     {topicRows.length} revision {topicRows.length === 1 ? "video" : "videos"}{" "}
-                    for this topic — zero spec-point weight
+                    for this topic — general revision, not tied to one spec point
                   </span>
                 </div>
                 <ul className="mt-2 space-y-2">
@@ -429,7 +424,7 @@ export default async function VideosPage({
 
             {topic.points.length === 0 ? (
               <p className="mt-2 text-xs text-muted-foreground">
-                No spec points in this topic have mapped videos yet.
+                No videos for this topic&apos;s spec points yet.
               </p>
             ) : (
               <div className="mt-3 space-y-4">
@@ -458,7 +453,7 @@ export default async function VideosPage({
             {topic.covered < topic.total && topic.points.length > 0 && (
               <p className="mt-2 text-xs text-muted-foreground">
                 {topic.total - topic.covered} of {topic.total} spec points in this
-                topic have no mapped video yet — the honest gap stays visible.
+                topic have no video yet.
               </p>
             )}
           </section>

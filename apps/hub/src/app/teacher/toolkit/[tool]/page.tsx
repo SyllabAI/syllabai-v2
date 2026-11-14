@@ -16,7 +16,7 @@ export async function generateMetadata({
     title: meta ? `${meta.title} · Teacher workspace` : "Teaching Toolkit · Teacher workspace",
     description:
       meta?.subtitle ??
-      "The four AI generators, grounded in each class's subject — the picked class resolves it server-side.",
+      "The four AI generators, matched to each class's subject — the picked class sets it automatically.",
   };
 }
 

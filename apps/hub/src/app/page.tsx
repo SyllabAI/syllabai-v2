@@ -74,7 +74,7 @@ export default async function HubPage() {
       href: "/tutor",
       icon: Sparkles,
       title: "Tutor",
-      desc: "A grounded AI tutor — every answer cites the spec points it draws on.",
+      desc: "An AI tutor that shows its working — every answer cites the spec points it draws on.",
     },
     {
       href: "/learner",
