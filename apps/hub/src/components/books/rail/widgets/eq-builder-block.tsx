@@ -162,7 +162,7 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
             label="state symbols"
             detail={verdict.states.complete ? "every species carries a state" : `${verdict.states.missing} species missing (s)/(l)/(g)/(aq)`}
           />
-          <VerdictLine ok={verdict.matchesTarget} label="matches the target" detail={verdict.matchesTarget ? "this is the equation of record" : ""} />
+          <VerdictLine ok={verdict.matchesTarget} label="matches the target" detail={verdict.matchesTarget ? "this is the target equation" : ""} />
         </div>
       )}
       <div className="mt-1.5">

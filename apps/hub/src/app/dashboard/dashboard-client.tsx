@@ -616,7 +616,7 @@ export function DashboardClient({
           the hero's one honest number until the account trail loads. */}
       <PageHero
         title="Welcome back 👋"
-        description="Your launchpad for spec-anchored revision — notes, exam questions and flashcards mapped to each of your courses. Your progress syncs to your account across devices; self-marked answers and reading history stay on this device."
+        description="Your launchpad for revision — notes, exam questions and flashcards mapped to each of your courses. Your progress syncs to your account across devices; self-marked answers and reading history stay on this device."
         stats={
           <StatChip
             icon={GraduationCap}

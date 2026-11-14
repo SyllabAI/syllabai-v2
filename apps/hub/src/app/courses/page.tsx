@@ -27,7 +27,7 @@ const intro = ({
   cambridge: number;
   total: number;
 }) =>
-  `${edexcel} Edexcel and ${cambridge} Cambridge International courses — ${total} Learning Hubs across IGCSE, AS, A-Level and IAL: spec-anchored revision notes, exam questions, flashcards and the official QP+MS past-paper archive, organised around each course's specification tree.`;
+  `${edexcel} Edexcel and ${cambridge} Cambridge International courses — ${total} Learning Hubs across IGCSE, AS, A-Level and IAL: spec-mapped revision notes, exam questions, flashcards and the official QP+MS past-paper archive, organised around each course's specification tree.`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const courses = await listCourses();

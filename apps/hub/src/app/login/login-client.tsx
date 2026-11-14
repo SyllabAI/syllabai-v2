@@ -47,9 +47,9 @@ const ROLE_STORY: Record<
 > = {
   student: {
     heading: "Revision that knows the spec.",
-    sub: "Every note, question and hint is grounded in the Edexcel syllabus.",
+    sub: "Every note, question and hint follows the Edexcel syllabus.",
     bullets: [
-      { icon: BookOpen, text: "Spec-grounded revision notes for 94 courses" },
+      { icon: BookOpen, text: "Revision notes mapped to the spec for 94 courses" },
       { icon: FileQuestion, text: "Exam-style questions with self-marking" },
       { icon: Sparkles, text: "A tutor that cites the syllabus, not vibes" },
     ],
@@ -195,7 +195,7 @@ export function LoginClient() {
           <p className="font-medium">
             Pearson Edexcel &amp; Cambridge International (CIE)
           </p>
-          <p>Grounded AI, honest citations, spec-anchored everything.</p>
+          <p>An AI that shows its sources, everything mapped to the spec.</p>
         </div>
       </div>
 

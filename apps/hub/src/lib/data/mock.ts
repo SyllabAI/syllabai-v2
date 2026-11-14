@@ -37,7 +37,7 @@ export function mockProvider(): DemoDataProvider {
   return {
     id: "mock",
     displayName: "Bundled corpus (real import)",
-    detail: `syllabai-resources@${manifest.importSource.ref} · 4CH1 · generated ${manifest.generatedUtc.slice(0, 10)}`,
+    detail: `4CH1 pilot bundle · generated ${manifest.generatedUtc.slice(0, 10)}`,
     manifest: async () => manifest,
     curriculum: async () => curriculum,
     conceptGraph: async () => conceptGraph,

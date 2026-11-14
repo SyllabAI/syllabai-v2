@@ -218,6 +218,14 @@ const ERASE_TOL_CSS_PX = 12;
  * rests and taps while the stylus writes). Short on purpose: stylus-down
  * then finger-draw stays reachable once the window expires. */
 const PEN_SESSION_MS = 1500;
+/** T-MG-INK-12 run-002: the stylus-mode PAN window — the short beat of
+ * palm risk that matters is the one right after pen contact (the palm
+ * lifts WITH the pen); from 600ms of pen quiet a draw-armed stylus-mode
+ * canvas PANS a touch instead of swallowing it. The 1500ms ink window
+ * above is untouched (classic finger-draw protection is unchanged); this
+ * window only kills the "first finger scroll is dead after writing" lag
+ * of record (the operator's run-001 device report). */
+const PAN_SESSION_MS = 600;
 
 const SERVER_SNAPSHOT: InkSyncSnapshot = {
   status: "loading",
@@ -1060,24 +1068,31 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
           >
             <Trash2 className="size-4" aria-hidden />
           </Button>
-          {/* T-MG-INK-12 run-001: the pen-mode toggle — stylus writes,
-              finger scrolls. Auto-flips on the first stylus sighting (the
-              sticky sighting persists per device); this is the honest
-              off-switch for the rare stylus owner who finger-draws, and
-              the on-switch for anyone who wants pen mode before the first
-              hover. aria-pressed + the on/off glyph state; the data attr
-              is the live-probe seam (the serving-probe doctrine). */}
+          {/* T-MG-INK-12 run-002: the stylus-mode toggle, now LABELED —
+              the run-001 device report ("sometimes inconsistent, finger
+              ink still keeps working") traced to state ambiguity: an
+              icon-only toggle reads as decoration, an explicit-off the
+              user forgot they set suppresses the auto-flip, and the
+              classic palm window near a hovering stylus intermittently
+              rejects finger ink. The state is now IN the button: "Stylus
+              On / Stylus Off", deterministic laws either way (On = the
+              stylus writes and fingers never ink — they pan; Off = classic
+              — fingers draw when Draw is armed). Auto-flip on the first
+              stylus sighting still happens (the operator-sanctioned
+              magic) but is now VISIBLE. aria-pressed + the data attr as
+              the live-probe seam (the serving-probe doctrine). */}
           <Button
             size="sm"
             variant="ghost"
-            className="size-8 px-0"
-            aria-label="Pen mode: stylus writes, finger scrolls"
+            className="h-8 gap-1.5 px-2"
+            aria-label="Stylus mode: stylus writes, finger scrolls"
             aria-pressed={penMode}
             data-penmode={penMode ? "on" : "off"}
-            title={penMode ? "Pen mode on — the stylus writes, fingers scroll and pan" : "Pen mode off — fingers draw when Draw is armed"}
+            title={penMode ? "Stylus mode on — the stylus writes, fingers scroll and pan" : "Stylus mode off — fingers draw when Draw is armed"}
             onClick={togglePenMode}
           >
             <Pen className={penMode ? "size-4" : "size-4 opacity-40"} aria-hidden />
+            <span className="text-xs font-medium">{penMode ? "Stylus On" : "Stylus Off"}</span>
           </Button>
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
           {/* the status pill — honest states only. T-ACCOUNT-ONLY run-001:
@@ -1855,23 +1870,33 @@ export function InkCanvas({
         // or move box would outlive its dead gesture otherwise)
         discardGesture();
       }
-      if (
-        e.pointerType === "touch" &&
-        (dragKindRef.current !== null || now - penSeenAtRef.current < PEN_SESSION_MS)
-      ) {
+      const penModeLive = penModeRef ? penModeRef.current : penMode;
+      if (e.pointerType === "touch" && (dragKindRef.current !== null || now - penSeenAtRef.current < PEN_SESSION_MS)) {
+        // ── T-MG-INK-12 run-002: the stylus-mode pan carve-out ──
+        // Inside the 1500ms palm window BUT past the 600ms pan beat, a
+        // draw-armed stylus-mode canvas PANS the touch instead of
+        // swallowing it — the palm-risk that matters is the beat right
+        // after pen contact (the palm lifts with the pen); 600–1500ms of
+        // pen quiet under a finger is a deliberate scroll, and swallowing
+        // it was the "first finger scroll is dead after writing" lag of
+        // record. The in-flight guard stands in BOTH windows — a palm
+        // never pans under a live pen stroke — and select-armed keeps the
+        // native gesture plane (no interception, as shipped).
+        if (dragKindRef.current === null && now - penSeenAtRef.current >= PAN_SESSION_MS && penModeLive && m !== "select") {
+          beginPan(e);
+          return;
+        }
         e.preventDefault();
         return;
       }
-      // ── T-MG-INK-12 run-001: pen mode — touch NEVER draws ──
+      // ── T-MG-INK-12 run-001: stylus mode — touch NEVER draws ──
       // A draw-family tool holds touch-action:none, so the finger pans via
       // JS; with select armed the touch-action law is untouched (native
       // pan/pinch rides) and the down keeps today's select-tap behavior —
       // NO interception, the resting state feels exactly as shipped. The
-      // palm window above already returned the in-window touches, so a pan
-      // here is a deliberate finger gesture, not a resting palm. The LIVE
-      // mirror read first (the stale-prop law, T-HUB-INK-BRK run-003's
+      // LIVE mirror read first (the stale-prop law, T-HUB-INK-BRK run-003's
       // twin); the prop is the render-time fallback.
-      if (e.pointerType === "touch" && (penModeRef ? penModeRef.current : penMode) && m !== "select") {
+      if (e.pointerType === "touch" && penModeLive && m !== "select") {
         beginPan(e);
         return;
       }

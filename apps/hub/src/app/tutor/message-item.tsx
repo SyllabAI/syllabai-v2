@@ -237,7 +237,7 @@ export function MessageItem({
           </span>
           {message.refused && (
             <Badge variant="outline" className="h-4 w-fit border-warn/30 px-1.5 text-[9.5px] text-warn">
-              grounded refusal
+              no answer
             </Badge>
           )}
           {message.stopped && (

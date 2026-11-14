@@ -135,8 +135,7 @@ export async function GET(request: NextRequest) {
       bank: setHistory.bank,
       anchor: null,
       commits: setHistory.commits,
-      disclosure:
-        "Read-only provenance from the corpus of record (syllabai-resources git history) for the whole question set.",
+      disclosure: "Read-only edit history for the whole question set.",
     });
   } catch (e) {
     if (e instanceof BankHistoryError) {

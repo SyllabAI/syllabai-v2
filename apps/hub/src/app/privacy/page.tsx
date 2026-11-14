@@ -19,11 +19,10 @@ export const metadata: Metadata = {
 function PendingBanner() {
   return (
     <div className="rounded-md border border-warn/30 bg-warn/5 p-3 text-xs leading-relaxed text-warn-ink">
-      <strong className="font-semibold">Scaffold pending legal review.</strong> This
-      page was prepared as part of the design audit fix lane and still needs a
-      counsel pass before it is treated as the policy of record. Items marked{" "}
+      <strong className="font-semibold">Draft — pending legal review.</strong> This
+      page is a draft that still needs a legal review. Items marked{" "}
       <span className="font-mono">[pending]</span> must be filled in during that
-      review — do not publish this URL as final until they are.
+      review — do not treat this page as the final policy until then.
     </div>
   );
 }
@@ -58,8 +57,8 @@ export default function PrivacyPage() {
             <strong>Account basics:</strong> the name, email address and role
             (student / teacher) you or your school give us when signing in.{" "}
             <strong>Study activity:</strong> your progress, marks, saved
-            questions and flashcard scheduling, so the dashboard and tutor can
-            be grounded in what you have actually studied.{" "}
+            questions and flashcard scheduling, so the dashboard and tutor work
+            from what you have actually studied.{" "}
             <strong>Tutor questions:</strong> what you type into the AI tutor,
             processed to generate an answer. We do not sell personal data or
             run advertising trackers. [pending: full processor/subprocessor

@@ -326,8 +326,8 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
       {chipsSeen === 0 ? (
         <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">
-            Paper/unit applicability has not been derived for this course yet — the
-            statements below are the parsed specification, as printed.
+            Paper, unit and tier filters aren't available for this course yet —
+            everything below comes straight from the official specification.
           </CardContent>
         </Card>
       ) : (
@@ -357,10 +357,10 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
             {tierOptions.length === 1 &&
               renderLocked("lk-tier", <GraduationCap className="size-3.5" aria-hidden />, "Tier", tierOptions[0].value)}
             <p className="text-xs leading-relaxed text-muted-foreground sm:col-span-3">
-              Assessment homes come from the parsed Pearson specification (content
-              summaries &amp; assessment overviews). Hover a chip for the printed rule.
-              Filters appear only where the qualification has that structure — a
-              linear IGCSE has no unit scope, and only Maths A splits Foundation /
+              Where each part is examined comes from the official specification (content
+              summaries &amp; assessment overviews). Hover a chip for the exact rule.
+              Filters appear only where the qualification has that structure — an
+              IGCSE has no unit filter, and only Maths A splits Foundation /
               Higher tiers.
             </p>
           </CardContent>
@@ -459,7 +459,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
       {filterActive && visible === 0 && (
         <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">
-            No specification statements match this scope combination.
+            Nothing matches this filter.
           </CardContent>
         </Card>
       )}

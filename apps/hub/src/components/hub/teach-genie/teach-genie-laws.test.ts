@@ -50,20 +50,23 @@ describe("teach-genie display laws (T-TEACHGENIE-001; house tokens since -004)",
   });
 
   it("T-TEACHGENIE-008 footnotes: the teacher claim renders ONLY for a confirmed classroom student", () => {
-    // classroom: the sentences of record, byte-identical to T-TEACHME-001 copy
+    // classroom: the teacher-checks sentence (student register per T-REGISTER
+    // run-001 — the AI_SUGGESTED enum name is retired from learner copy)
     expect(pickerEvidenceFootnote(true)).toBe(
-      "Sessions are AI_SUGGESTED evidence — your teacher ratifies before anything counts.",
+      "Sessions start from AI suggestions — your teacher checks them over before anything counts.",
     );
     expect(reviewEvidenceLead(true)).toBe(
-      "AI_SUGGESTED evidence — your teacher ratifies before any of this touches your record.",
+      "AI suggestions — your teacher checks them over before any of this touches your record.",
     );
+    expect(pickerEvidenceFootnote(true)).not.toContain("AI_SUGGESTED");
+    expect(reviewEvidenceLead(true)).not.toContain("AI_SUGGESTED");
     // independent: the honest neutral line — no teacher claim, and no
     // counts-toward-record promise (auto-commit is NOT live)
-    expect(pickerEvidenceFootnote(false)).toBe("Sessions are AI_SUGGESTED evidence.");
+    expect(pickerEvidenceFootnote(false)).toBe("Sessions start from AI suggestions.");
     expect(pickerEvidenceFootnote(false)).not.toContain("teacher");
     expect(pickerEvidenceFootnote(false)).not.toContain("counts");
-    expect(reviewEvidenceLead(false)).toBe("AI_SUGGESTED evidence.");
-    expect(reviewEvidenceLead(false)).not.toContain("ratifies");
+    expect(reviewEvidenceLead(false)).toBe("AI suggestions.");
+    expect(reviewEvidenceLead(false)).not.toContain("teacher");
     expect(reviewEvidenceLead(false)).not.toContain("record");
   });
 });
