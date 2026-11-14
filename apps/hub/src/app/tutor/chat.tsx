@@ -858,13 +858,14 @@ export function TutorChat({
               </p>
               <ul className="mt-2 space-y-2 leading-relaxed text-muted-foreground">
                 <li>
-                  <strong className="text-foreground">Grounded answers.</strong> Every reply is
-                  retrieved from the corpus and carries numbered citations that deep-link to the
+                  <strong className="text-foreground">Cited answers.</strong> Every reply comes
+                  from your course material and carries numbered citations that deep-link to the
                   notes, spec points and worked solutions behind it.
                 </li>
                 <li>
-                  <strong className="text-foreground">Honest refusals.</strong> When the evidence is
-                  thin it says so instead of guessing — accuracy before confidence.
+                  <strong className="text-foreground">Says so when unsure.</strong> When the
+                  material doesn't support an answer it says that instead of guessing — accuracy
+                  before confidence.
                 </li>
                 <li>
                   <strong className="text-foreground">Coverage.</strong>{" "}

@@ -195,7 +195,7 @@ export function ToolkitClient({
         description={
           <>
             Four AI generators that work <em>from your classes</em>: pick a class and its subject,
-            board and level are resolved for you — every document is grounded in that course&apos;s
+            board and level are resolved for you — every document is matched to that course&apos;s
             curriculum. Generated drafts are a first pass: review before classroom use.
           </>
         }

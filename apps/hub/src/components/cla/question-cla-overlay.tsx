@@ -956,7 +956,7 @@ export function QuestionClaOverlay({
             <div className="min-w-0 flex-1 pl-2 leading-tight">
               <SheetTitle className="block text-sm font-semibold">{panelTitle}</SheetTitle>
               <SheetDescription className="sr-only">
-                Answers are grounded in this question only, never its mark scheme before you attempt.
+                Answers come from this question only — never from its mark scheme before you attempt.
               </SheetDescription>
             </div>
             {/* pr-9 clears the Sheet's built-in close affordance; the New

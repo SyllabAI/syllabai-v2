@@ -59,7 +59,7 @@ const DEMO_CARDS: {
     title: "Student dashboard",
     desc: "The full learner view, signed in as a demo student.",
     bullets: [
-      "Spec-grounded revision notes and flashcards",
+      "Revision notes and flashcards mapped to the spec",
       "Exam-style questions with marking and attempt history",
       "A tutor that cites the specification for every answer",
     ],

@@ -86,7 +86,7 @@ export interface RegionMarkLayerProps {
 const CROP_REASONS: Record<string, string> = {
   holder_missing: "That page is not on screen right now — scroll to it and mark again.",
   page_not_rendered: "That page has not finished rendering — try again in a moment.",
-  degenerate_crop: "The region's grounded rect is empty on that page.",
+  degenerate_crop: "That region has no position on that page.",
   canvas_unavailable: "The browser refused the canvas composite.",
   export_blocked: "The browser blocked exporting the page image (cross-origin taint).",
   too_large: "The crop exceeded the 4 MB wire cap even as JPEG — mark a smaller region.",
@@ -203,7 +203,7 @@ export function RegionMarkLayer({ hostRef, sourceUrl, paperId }: RegionMarkLayer
       storedRot === 90 || storedRot === 180 || storedRot === 270 ? storedRot : 0;
     const viewRect: NormRect | null = planRegionViewRect(region.rects, page, rot);
     if (!viewRect) {
-      dispatch({ type: "failed", regionId: region.id, detail: "The region has no grounded rect on that page." });
+      dispatch({ type: "failed", regionId: region.id, detail: "That region has no position on that page." });
       return;
     }
     const host = hostRef.current;
