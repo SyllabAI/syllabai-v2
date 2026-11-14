@@ -1,0 +1,84 @@
+{
+ "receipt": "run-028-merge-record-ride",
+ "family": "RN-DEBRIS-11",
+ "run": "run-028",
+ "kind": "the run-027 merge record ride receipts — the standing ride-along law's obligatory next unit (the run-027 merge record rides THIS run's receipts: entry A in both worklogs, the run-027-item-plane-apply.json merged block); zero content bytes",
+ "operatorOrder": "Continue (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, trace 1a1da5be43540999, 2026-11-14)",
+ "generatedUtc": "2026-11-14",
+ "baseTip": "74768c11030187007028da31f81cc362a5eb5ae2",
+ "mergedRecordRode": {
+  "pr": 1012,
+  "sha": "f9bc04ef7a08e29e842f6d1c3a6bdb1584db6450",
+  "mergedAt": "2026-11-14T02:45:28Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "dad03300ff7a40b4eaf6e9f764e26c8fdbe8bff7",
+  "parents": [
+   "83dae8feef9b89c2fe3d9684ea93cc558f1beeab",
+   "dad03300ff7a40b4eaf6e9f764e26c8fdbe8bff7"
+  ],
+  "verified": "API pulls/1012 merged=true + merge_commit_sha == sha + ls-remote main tip == sha post-merge; parents API-verified (2, first == the pre-merge tip 83dae8fe)"
+ },
+ "landedStateVerification": {
+  "method": "re-derived read-only from the committed tree at the base tip via git show, with the OF-RECORD census logic (the rn27_apply.py shapes: multi-id over the flashcards file specPointIds; null-code over specPointCode; coded/unmapped over the map items dict; pops over the declaredUnresolved sid lists); G8 dump law json.dumps(indent=1, ensure_ascii=False) newline-terminated",
+  "census": {
+   "multiIdCards": 257,
+   "nullCodeCards": 60,
+   "codedMapItems": 876,
+   "unmappedTrueItems": 469
+  },
+  "matchesRun027CensusOfRecord": true,
+  "sidPopulations": {
+   "spcpt_3hpC7gNs8YZ6t7kd": 16,
+   "spcpt_rGVN6hJn6Mb9z2nR": 17,
+   "spcpt_7JRKzsBqqdfPqf5t": 6
+  },
+  "a1": {
+   "items": 14,
+   "declarationsRetained": true,
+   "unmappedKeys": 0,
+   "viaSids": [
+    "spcpt_3hpC7gNs8YZ6t7kd",
+    "spcpt_rGVN6hJn6Mb9z2nR"
+   ]
+  },
+  "aggregatesOfRecord": {
+   "contentCoverage": {
+    "flashcards": {
+     "coded": 499,
+     "total": 905,
+     "unmapped": 406,
+     "viaSubtopicScope": 0
+    },
+    "notes": {
+     "coded": 77,
+     "total": 97,
+     "unmapped": 20,
+     "viaSubtopicScope": 4
+    },
+    "questionParts": {
+     "coded": 272,
+     "total": 343,
+     "unmapped": 71,
+     "viaSubtopicScope": 0
+    }
+   },
+   "spcptUnmappedCount": 66
+  },
+  "driftVerification": {
+   "questionParts": "items-of-truth coded 285 vs the aggregate 272 == exactly the 13 A1 q-parts (the run-027 apply)",
+   "notes": "items-of-truth coded 78 vs the aggregate 77 == exactly the A1 note rn_KGhttHj9fT889Bm2 (the run-027 apply)",
+   "flashcards": "per the of-record disclosure: stale by the 14 run-024 card codings (the aggregate's coded definition is the compile.ts algorithm of record; not recomputed here)",
+   "spcptUnmapped": "the 2 run-025-resolved sids spcpt_3hpC7gNs8YZ6t7kd + spcpt_rGVN6hJn6Mb9z2nR still listed (verified)",
+   "disposition": "the run-024/025/027 zero-collateral precedent stands (build-time aggregates untouched, CI-green of record, disclosed); remediation desk-re-ruleable in a later run — NOT remediated in this receipts run (zero content bytes)"
+  }
+ },
+ "boundaries": "zero content bytes — no map/spine/registry/curriculum plane touched; the content map byte-identical vs the base tip (gate G5); scope == exactly the 7 declared paths",
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-028/scripts/rn28_gates.py",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-028/gates_r0.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-028-merge-record-ride.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-028-postReview.json"
+ ],
+ "standingReminder": "the PAT remains exposed from chat transmission and MUST be revoked/rotated (the twenty-fourth filing of the standing reminder)",
+ "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027 precedents); no force-push; fetch-first race-guard at push"
+}
