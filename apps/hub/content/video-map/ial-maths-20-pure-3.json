@@ -11,6 +11,16 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p10": {
+   "provider": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel)",
+   "method": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) flat-enumerated 2026-11-13T10:43:50Z; routing: module-code Tier B anchors + unit.section-marker/module-named Tier A with class-table judgment over every row",
+   "enumeratedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "provider": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "method": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) flat-enumerated 2026-11-13T12:53:08Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
   }
  },
  "review": {
@@ -19,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 341,
+  "rowsApproved": 391,
   "rowsRejected": 12,
   "rejects": [
    {
@@ -225,6 +235,45 @@
       "video": "nSmQI06k108",
       "reason": "full-row drop: no class rule matched; best distinctive candidate 1.1 'Simplification of rational Denominators of ratio' bound only on vocabulary not named by the title (['factorising'])",
       "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p10 (two-pool maths completion: mrarnoldsmaths + mathsdeity)",
+    "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P10\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+    "ruledUtc": "2026-11-13T11:04:04Z",
+    "evidenceBasis": "Identity: oEmbed sweep 358/358 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: IAL module codes regex-verified in titles. Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables over EVERY routed row; module-structured rows (unit.section marker / module-named title) permitted the disclosed higher title-only bar at low confidence; rebinds validated against the target spine; degenerate vocabulary binds (factor formulae -> P1 radian) dropped.",
+    "rowsApproved": 43,
+    "rowsRejected": 2,
+    "rejects": [
+     {
+      "video": "ayOLOdm8Vz4",
+      "reason": "no-binding (routed-but-unmapped): zero token overlap with the spine in the pre-pass and no class rule matched — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)"
+     },
+     {
+      "video": "ND9EsBsqnik",
+      "reason": "full-row drop: no class rule matched; best distinctive candidate 5.2 'Integration by recognition of For example, to in' bound only on vocabulary not named by the title (['trigonometric'])",
+      "lane": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 7,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "video": "q9yehKF7ljY",
+      "reason": "no-binding (routed-but-unmapped): zero token overlap with the spine in the pre-pass — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
    }
@@ -3980,6 +4029,556 @@
    "lessonUrl": null,
    "levelTag": "ial",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-hHm7c95F_c",
+   "title": "Combining Transformations (Edexcel IAL P3 2.6)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=-hHm7c95F_c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-tSAJ8ehjK0",
+   "title": "The hardest questions from Edexcel IAL P3",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=-tSAJ8ehjK0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0mLXj7aGCok",
+   "title": "The Quotient Rule (Edexcel IAL P3 6.5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=0mLXj7aGCok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1QrBEWuLBdo",
+   "title": "Using sec x, cosec x and cot x (Edexcel IAL P3 3.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=1QrBEWuLBdo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2NbCiseeBpE",
+   "title": "Secant, Cosecant, Cotangent (Edexcel IAL P3 3.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=2NbCiseeBpE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2ntsKCzl_iw",
+   "title": "Differentiating Exponentials and Logarithms (Edexcel IAL P3 6.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=2ntsKCzl_iw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "314GYOiIUG0",
+   "title": "Geometric proof of Addition formulae",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=314GYOiIUG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4HGBIA7W2a8",
+   "title": "Composite Functions (Edexcel IAL P3 2.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=4HGBIA7W2a8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9boNh7W7858",
+   "title": "Graphs of Sec x, Cosec x and Cot x (Edexcel IAL P3 3.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=9boNh7W7858",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ayjj-otu-Do",
+   "title": "Multiplying and Dividing algebraic fractions (Edexcel IAL P3 1.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=Ayjj-otu-Do",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CKXr2nI7goQ",
+   "title": "Edexcel IAL P3 January 2021 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=CKXr2nI7goQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CNEuo2JIiqU",
+   "title": "Integrating f(ax + b) (Edexcel IAL P3 7.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=CNEuo2JIiqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "COFINBFQbcM",
+   "title": "y=f|(x)| and y=f(|x|) (Edexcel IAL P3 2.5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=COFINBFQbcM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "D-E2wtBayQk",
+   "title": "The Chain Rule (Edexcel IAL P3 6.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=D-E2wtBayQk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "E6qRkfNponE",
+   "title": "The Modulus Function (Edexcel IAL P3 2.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=E6qRkfNponE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "I0rHW96szk0",
+   "title": "Improper fractions (Edexcel IAL P3 1.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=I0rHW96szk0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IDM-BIHbxJc",
+   "title": "Using the angle addition formulae (Edexcel IAL P3 4.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=IDM-BIHbxJc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JTbjyWcvzdw",
+   "title": "Addition Formulae (Edexcel IAL P3 4.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=JTbjyWcvzdw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "K_SFHUO9zG0",
+   "title": "Inverse Functions (Edexcel IAL P3 2.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=K_SFHUO9zG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LvJkpHY7m-I",
+   "title": "Adding and Subtracting algebraic fractions (Edexcel IAL P3 1.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=LvJkpHY7m-I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QDPaQcFMUFo",
+   "title": "Edexcel IAL P3 January 2023 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=QDPaQcFMUFo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RGgIzawumE0",
+   "title": "Inverse trigonometric functions (Edexcel IAL P3 3.5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=RGgIzawumE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TRWxtWq3z34",
+   "title": "Fixed Point Iteration (Edexcel IAL P3 8.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=TRWxtWq3z34",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W_QzvIJNMcI",
+   "title": "Edexcel IAL P3 June 2021 Exam paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=W_QzvIJNMcI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XL5Co5ZvZ2I",
+   "title": "Reverse Chain Rule (Edexcel IAL P3 7.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=XL5Co5ZvZ2I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_Gg0Lgde3PQ",
+   "title": "Exponential Functions (Edexcel IAL P3 5.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=_Gg0Lgde3PQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aUGk-7klQyQ",
+   "title": "Using Trigonometric Identities in Integration (Edexcel IAL P3 7.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=aUGk-7klQyQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "baUZoollUR8",
+   "title": "Integrating Standard Functions (Edexcel IAL P3 7.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=baUZoollUR8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dcpPeDrSA2U",
+   "title": "Double angle formulae (Edexcel IAL P3 4.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=dcpPeDrSA2U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "euZHSIYCL2I",
+   "title": "Edexcel IAL P3 October 2021 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=euZHSIYCL2I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "i5e4_BmqgY8",
+   "title": "Differentiating sin x and cos x (Edexcel IAL P3 6.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=i5e4_BmqgY8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jlhqBHOoO-M",
+   "title": "Exponential Modelling (Edexcel IAL P3 5.5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=jlhqBHOoO-M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lYuwvEkiLUQ",
+   "title": "Natural Logarithms (Edexcel IAL P3 5.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=lYuwvEkiLUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "neBPBR6v84Q",
+   "title": "Locating roots (Edexcel IAL P3 8.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=neBPBR6v84Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "o6jLB4mfS3M",
+   "title": "Logarithms and non-linear data (Edexcel IAL P3 5.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=o6jLB4mfS3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ocLXY7-wynI",
+   "title": "Functions and Mappings (Edexcel IAL P3 2.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=ocLXY7-wynI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pYk9dJslKRY",
+   "title": "Solving Modulus Problems (Edexcel IAL P3 2.7)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=pYk9dJslKRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pn-AOVmc9EQ",
+   "title": "Differentiating e^kx (Edexcel IAL P3 5.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=pn-AOVmc9EQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "prd5cBIZiu8",
+   "title": "The Product Rule (Edexcel IAL P3 6.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=prd5cBIZiu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qGxLAqg7-hg",
+   "title": "Proving trigonometric Identities (Edexcel IAL P3 4.6)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=qGxLAqg7-hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "t2CY14NUAhU",
+   "title": "Trigonometric Identities (Edexcel IAL P3 3.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=t2CY14NUAhU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "udElRt8SuN0",
+   "title": "Differentiating Trigonometric Functions (Edexcel IAL P3 6.6)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=udElRt8SuN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wQCtmYc87D4",
+   "title": "Edexcel IAL P3 May 2023 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=wQCtmYc87D4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "62Dgt8bSiSY",
+   "title": "Pure 3 January 2021 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=62Dgt8bSiSY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BV6jjvbANaI",
+   "title": "Pure 3 Specimen Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=BV6jjvbANaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MCLekSmidJM",
+   "title": "Pure 3 January 2022 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=MCLekSmidJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "e_zEYiKJALw",
+   "title": "Pure 3 Oct 2020 Edexcel Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=e_zEYiKJALw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m6zBASViAW8",
+   "title": "Pure 3 Jan 2020 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=m6zBASViAW8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sw5Ju5_UWmI",
+   "title": "Pure 3 Sample Assessment Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=sw5Ju5_UWmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uXCzU1xYKco",
+   "title": "Pure 3 October 2021 Exam IAL WMA13/01",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=uXCzU1xYKco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -10246,20 +10845,822 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "wQCtmYc87D4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL P3 May 2023 Exam Paper\"; IAL module code IAL-P3 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "QDPaQcFMUFo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL P3 January 2023 Exam Paper\"; IAL module code IAL-P3 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "CKXr2nI7goQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL P3 January 2021 Exam Paper\"; IAL module code IAL-P3 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "-tSAJ8ehjK0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"The hardest questions from Edexcel IAL P3\"; IAL module code IAL-P3 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "euZHSIYCL2I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL P3 October 2021 Exam Paper\"; IAL module code IAL-P3 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "W_QzvIJNMcI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL P3 June 2021 Exam paper\"; IAL module code IAL-P3 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "314GYOiIUG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "addition formulae sin(A±B)/cos(A±B) are named by the pure-3 2.3 spec text; the pure-2 4.4 pre-pass bind was a series-vocabulary adjacency; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "TRWxtWq3z34",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 8.2) routes the course; title names the topic unambiguously and spec 6.2 'Approximate solution of equations using simple i' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "neBPBR6v84Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 8.1) routes the course; title names the topic unambiguously and spec 6.1 'Location of roots of f(x) = 0 by considering cha' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "XL5Co5ZvZ2I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 7.4) routes the course; title names 4.2 'Differentiation using the product rule, the quotient rul' via token(s) ['chain', 'rule'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "aUGk-7klQyQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 7.3) routes the course; title names 5.1 'Integration of eᵏˣ, 1⁄xⁿ, sinkx, cos kx and their sums a' via token(s) ['integration'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "CNEuo2JIiqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 7.2) routes the course; title names 3.3 'Use logarithmic graphs to estimate Plot log y against lo' via token(s) ['ax'] (df 5); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "baUZoollUR8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 7.1) routes the course; title names 5.1 'Integration of eᵏˣ, 1⁄xⁿ, sinkx, cos kx and their sums a' via token(s) ['function', 'standard'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "udElRt8SuN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 6.6) routes the course; title names the topic unambiguously and spec 4.1 'Differentiation of eᵏˣ, ln kx, sin kx, cos kx, t' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "0mLXj7aGCok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 6.5) routes the course; title names 4.2 'Differentiation using the product rule, the quotient rul' via token(s) ['quotient', 'rule'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "prd5cBIZiu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 6.4) routes the course; title names 4.2 'Differentiation using the product rule, the quotient rul' via token(s) ['product', 'rule'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "D-E2wtBayQk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 6.3) routes the course; title names 4.2 'Differentiation using the product rule, the quotient rul' via token(s) ['chain', 'rule'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "2ntsKCzl_iw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 6.2) routes the course; title names 3.2 'The function ln x and its graph; ln x as the inverse fun' via token(s) ['exponential', 'logarithm'] (df 4); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "i5e4_BmqgY8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 6.1) routes the course; title names 4.1 'Differentiation of eᵏˣ, ln kx, sin kx, cos kx, tan kx an' via token(s) ['cos', 'sin'] (df 6); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "jlhqBHOoO-M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 5.5) routes the course; title names 3.1 'The function eˣ and its graph.: • To include the graph o' via token(s) ['exponential'] (df 5); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "o6jLB4mfS3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 5.4) routes the course; title names 3.2 'The function ln x and its graph; ln x as the inverse fun' via token(s) ['logarithm'] (df 4); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "lYuwvEkiLUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 5.3) routes the course; title names 3.2 'The function ln x and its graph; ln x as the inverse fun' via token(s) ['logarithm'] (df 4); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "pn-AOVmc9EQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 5.2) routes the course; title names 4.1 'Differentiation of eᵏˣ, ln kx, sin kx, cos kx, tan kx an' via token(s) ['kx'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "_Gg0Lgde3PQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 5.1) routes the course; title names 3.1 'The function eˣ and its graph.: • To include the graph o' via token(s) ['exponential', 'function'] (df 5); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "qGxLAqg7-hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 4.6) routes the course; title names the topic unambiguously and spec 2.2 'Knowledge and use of sec²θ = 1 + tan²θ and cosec' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "dcpPeDrSA2U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 4.3) routes the course; title names 2.3 'Knowledge and use of double angle formulae; use of formu' via token(s) ['angle', 'double', 'formulae'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "IDM-BIHbxJc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 4.2) routes the course; title names 2.3 'Knowledge and use of double angle formulae; use of formu' via token(s) ['angle', 'formulae'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "JTbjyWcvzdw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 4.1) routes the course; title names 2.3 'Knowledge and use of double angle formulae; use of formu' via token(s) ['formulae'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "RGgIzawumE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 3.5) routes the course; title names 1.2 'Definition of a function. Domain and range of functions.' via token(s) ['function', 'inverse'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "t2CY14NUAhU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 3.4) routes the course; title names the topic unambiguously and spec 2.2 'Knowledge and use of sec²θ = 1 + tan²θ and cosec' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "1QrBEWuLBdo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 3.3) routes the course; title names the topic unambiguously and spec 2.1 'Knowledge of secant, cosecant and cotangent and ' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "9boNh7W7858",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 3.2) routes the course; title names the topic unambiguously and spec 2.1 'Knowledge of secant, cosecant and cotangent and ' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "2NbCiseeBpE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 3.1) routes the course; title names 2.1 'Knowledge of secant, cosecant and cotangent and of arcsi' via token(s) ['cosecant', 'cotangent', 'secant'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "pYk9dJslKRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 2.7) routes the course; title names 1.3 'The modulus function.: • Students should be able to sket' via token(s) ['modulu'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "-hHm7c95F_c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 2.6) routes the course; title names 1.4 'Combinations of the transformations y = f(x) as represen' via token(s) ['transformation'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "COFINBFQbcM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 2.5) routes the course; title names the topic unambiguously and spec 1.3 'The modulus function.: • Students should be able' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "K_SFHUO9zG0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 2.4) routes the course; title names 1.2 'Definition of a function. Domain and range of functions.' via token(s) ['function', 'inverse'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "4HGBIA7W2a8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 2.3) routes the course; title names 1.2 'Definition of a function. Domain and range of functions.' via token(s) ['function'] (df 8); token df above the tightened bar within a 18-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "ocLXY7-wynI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 2.2) routes the course; title names 1.2 'Definition of a function. Domain and range of functions.' via token(s) ['function', 'mapping'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "E6qRkfNponE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 2.1) routes the course; title names 1.3 'The modulus function.: • Students should be able to sket' via token(s) ['function', 'modulu'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "I0rHW96szk0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (P3 1.2) routes the course; title names the topic unambiguously and spec 1.1 'Simplification of rational Denominators of ratio' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "LvJkpHY7m-I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 1.1) routes the course; title names 1.1 'Simplification of rational Denominators of rational expr' via token(s) ['algebraic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "Ayjj-otu-Do",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (P3 1.1) routes the course; title names 1.1 'Simplification of rational Denominators of rational expr' via token(s) ['algebraic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "MCLekSmidJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 January 2022 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "62Dgt8bSiSY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 January 2021 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "sw5Ju5_UWmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Sample Assessment Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "uXCzU1xYKco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 October 2021 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "e_zEYiKJALw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Oct 2020 Edexcel Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "BV6jjvbANaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Specimen Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "m6zBASViAW8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z",
+   "evidence": "title: \"Pure 3 Jan 2020 Exam IAL WMA13/01\"; syllabus/paper code WMA13 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 18,
-  "specPointsMapped": 11,
-  "specPointsUnmapped": 7,
-  "videosTotal": 341,
-  "videosMapped": 341,
+  "specPointsMapped": 16,
+  "specPointsUnmapped": 2,
+  "videosTotal": 391,
+  "videosMapped": 391,
   "videosUnmapped": 0,
-  "mappingRows": 341,
+  "mappingRows": 391,
   "byConfidence": {
-   "high": 287,
-   "medium": 49,
-   "low": 5
+   "high": 300,
+   "medium": 69,
+   "low": 22
   }
  },
  "inputs": {
@@ -10272,7 +11673,19 @@
    "path": "Videos/drafts/ial-maths-20-pure-3/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p10": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-pure-3/video-map.draft.external-p10.json",
+   "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
+   "reviewAppliedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-pure-3/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
   }
  },
- "generatedUtc": "2026-11-13T06:52:02.279Z"
+ "generatedUtc": "2026-11-13T13:26:09.419Z"
 }

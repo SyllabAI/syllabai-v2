@@ -31,6 +31,11 @@
    "provider": "PhysicsOnline",
    "method": "re-adjudication micro-lane: the pool remainder (PhysicsOnline 1,081 uploads re-enumerated fresh 2026-11-13, 0 deltas; four P7 pools reused from the 2026-11-12 enumeration) union-excluded against the mapped corpus, candidates generated ONLY against the trio empty spec points (distinctive-token pre-pass + pool-rarity gate), full agent judgment pass; evidence is TITLE-ONLY",
    "enumeratedUtc": "2026-11-12T20:07:05Z"
+  },
+  "p11": {
+   "provider": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "method": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) flat-enumerated 2026-11-13T12:53:01Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
   }
  },
  "review": {
@@ -39,7 +44,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 16 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 237,
+  "rowsApproved": 239,
   "rowsRejected": 1,
   "rejects": [
    {
@@ -1781,6 +1786,23 @@
       "video": "zCvGZ3-k1r8",
       "reason": "pre-pass no-binding: weak-token candidates for 6.1.1 only (in-course df>3 or pool-common vocabulary) — no distinctive overlap",
       "lane": "T-VIDEOMAP-P8 (physics-trio honest-empty fill: re-adjudication of the pool remainder against the physics trio's empty spec points)"
+     }
+    ]
+   },
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 2,
+    "rowsRejected": 1,
+    "rejects": [
+     {
+      "video": "LHsQL-VXe4w",
+      "reason": "no-binding (routed-but-unmapped): topic tokens (['equation', 'know', 'physic']) overlap the spine only above the tightened bar — routed-but-unmapped, honest",
+      "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
    }
@@ -5429,6 +5451,28 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Physics Online",
    "oembedVerifiedUtc": "2026-11-12T20:07:05Z"
+  },
+  {
+   "id": "eScYrA8qUqQ",
+   "title": "IGCSE Physics Electromagnetic Induction Past Paper Questions",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=eScYrA8qUqQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fULDzxmSpg4",
+   "title": "IGCSE Physics 0625 notes Topic 4: Right hand grip rule",
+   "provider": "igcse-online",
+   "watchUrl": "https://www.youtube.com/watch?v=fULDzxmSpg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -9100,19 +9144,49 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools'; trio-fill follow-up anchored the same day: 'the ~50 specs still honest-empty on the physics trio')",
    "reviewedUtc": "2026-11-12T20:07:05Z",
    "boardMismatch": true
+  },
+  {
+   "video": "eScYrA8qUqQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.5.2 '\u0007Describe an experiment to demonstrate electromagnetic i' via token(s) ['electromagnetic', 'induction'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "fULDzxmSpg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3.3 '\u0007Describe typical uses of the different regions of the e' via token(s) ['note'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 294,
   "specPointsMapped": 171,
   "specPointsUnmapped": 123,
-  "videosTotal": 237,
-  "videosMapped": 237,
+  "videosTotal": 239,
+  "videosMapped": 239,
   "videosUnmapped": 0,
-  "mappingRows": 237,
+  "mappingRows": 239,
   "byConfidence": {
    "high": 0,
-   "medium": 178,
+   "medium": 180,
    "low": 59
   }
  },
@@ -9156,7 +9230,13 @@
    "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p8.json",
    "task": "T-VIDEOMAP-P8 (physics-trio honest-empty fill: re-adjudication of the pool remainder against the physics trio's empty spec points)",
    "reviewAppliedUtc": "2026-11-12T20:07:05Z"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
   }
  },
- "generatedUtc": "2026-11-13T06:52:02.256Z"
+ "generatedUtc": "2026-11-13T13:26:09.398Z"
 }

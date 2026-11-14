@@ -759,7 +759,18 @@ describe("phase-4 CIE widening — the board/qualification vocabulary of record"
         code: "9701-2025-2027",
       },
     ]);
-    expect(summary.nodesCreated).toBe(cie.nodes.length);
+    // T-SME-SEL-W9-2 run-001 disclosed amendment (the wave-9 tranche-2
+    // picker layer): chemistry-25 now carries 127 SME_REFERENCE picker rows
+    // (<course>-SME-S<i> sections + :<slug> topic rows), and the store law
+    // SKIPS the disclosed -SME- classes (the r0 childless-leaf class + the
+    // T-SME-SEL-W1/W2 picker-layer section class, shape-guarded fail-closed
+    // above) — nothing lands, nothing dangles. The of-record assertion is
+    // therefore the ADMITTED count (the non-SME nodes), not the raw bundle
+    // length (which only held while the course had no picker layer). A
+    // -SME- row outside the disclosed shapes refuses upstream before this
+    // assertion can even run, so the count law stays fail-closed end to end.
+    const admitted = cie.nodes.filter((n) => !n.code.includes("-SME-")).length;
+    expect(summary.nodesCreated).toBe(admitted);
     expect(summary.edgesCreated).toBe(cie.edges.length);
     expect(summary.alreadyActive).toBe(false);
     // idempotent re-run: the structural no-op of record

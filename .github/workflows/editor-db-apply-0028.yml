@@ -63,6 +63,10 @@ on:
         description: "Operator note for this apply run"
         required: false
         default: ""
+      app_role:
+        description: "the app role the apply targets (default = the of-record syllabai_v2_app_w2r2; after the run-008 fork-option-2 cutover, dispatch with syllabai_v2_app_w3r3)"
+        required: false
+        default: "syllabai_v2_app_w2r2"
       prod_superuser_reset:
         description: "allow = the prod leg resets the PRODUCTION neon_superuser password via the Neon API (a production credential mutation, revertible, disclosed in the receipt) to gain the enforcement-capable vantage; deny = the staged SIB_PROD_DATABASE_URL vantage only (the enforcement ALTER is measured honestly and refused unless that DSN is enforcement-capable)"
         required: false
@@ -106,7 +110,11 @@ jobs:
               -H "Authorization: Bearer ${NEON_API_KEY}")
             HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
             STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
-            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            # run-008 rehearsal finding (2026-11-13): the endpoints API now
+          # reports the COW lifecycle as init -> active with no 'ready' state
+          # observed in 270s of polling — accept both (behavior-preserving if
+          # 'ready' reappears; the 2026-11-12 run-007 still saw 'ready').
+          if [ -n "$HOST" ] && { [ "$STATE" = "ready" ] || [ "$STATE" = "active" ]; }; then break; fi
             sleep 3
           done
           [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
@@ -157,6 +165,8 @@ jobs:
             echo "su_available=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Apply 0028 + post-verify on the COW (frozen driver, idempotent)
+        env:
+          EDITOR_APP_ROLE: ${{ inputs.app_role }}
         run: |
           if [ "${{ steps.sul.outputs.su_available }}" = "true" ]; then
             printf '%s' "${{ steps.sul.outputs.su_url }}" > /tmp/e28-cow.uri
@@ -248,6 +258,8 @@ jobs:
           fi
           chmod 600 /tmp/e28-prod.uri
       - name: Apply 0028 against PRODUCTION (frozen driver — preflight / apply / post-verify, idempotent)
+        env:
+          EDITOR_APP_ROLE: ${{ inputs.app_role }}
         run: |
           set -euo pipefail
           [ -s /tmp/e28-prod.uri ] || { echo "prod URI not staged — abort"; exit 2; }

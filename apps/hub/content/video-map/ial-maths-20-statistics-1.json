@@ -11,6 +11,16 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p10": {
+   "provider": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) + MrArnoldsMaths (MrArnoldsMaths Channel — legacy Edexcel GCSE/GCE walkthrough + topic-tutorial channel)",
+   "method": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) flat-enumerated 2026-11-13T10:43:50Z; MrArnoldsMaths (MrArnoldsMaths Channel — legacy Edexcel GCSE/GCE walkthrough + topic-tutorial channel) flat-enumerated 2026-11-13T10:43:46Z; routing: module-code Tier B anchors + unit.section-marker/module-named Tier A with class-table judgment over every row",
+   "enumeratedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "provider": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "method": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) flat-enumerated 2026-11-13T12:53:08Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-13T13:23:03Z"
   }
  },
  "review": {
@@ -19,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 188,
+  "rowsApproved": 223,
   "rowsRejected": 13,
   "rejects": [
    {
@@ -242,6 +252,28 @@
       "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p10 (two-pool maths completion: mrarnoldsmaths + mathsdeity)",
+    "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P10\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+    "ruledUtc": "2026-11-13T11:04:04Z",
+    "evidenceBasis": "Identity: oEmbed sweep 358/358 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: IAL module codes regex-verified in titles. Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables over EVERY routed row; module-structured rows (unit.section marker / module-named title) permitted the disclosed higher title-only bar at low confidence; rebinds validated against the target spine; degenerate vocabulary binds (factor formulae -> P1 radian) dropped.",
+    "rowsApproved": 34,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+    "ruledUtc": "2026-11-13T13:23:03Z",
+    "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
+    "rowsApproved": 1,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -2312,6 +2344,391 @@
    "lessonUrl": null,
    "levelTag": "ial",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-JAzkA6I6iU",
+   "title": "The Normal Distribution (Edexcel IAL S1) Part 1",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=-JAzkA6I6iU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-UBS_atL4Xk",
+   "title": "Edexcel S1 Tutorial 4 Quartiles and Percentiles",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=-UBS_atL4Xk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4OU01fZxkUc",
+   "title": "Probability the formulae (Edexcel IAL S1 Chapter 4 )",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=4OU01fZxkUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4nA41c4007k",
+   "title": "Probability - Tree Diagrams (Edexcel IAl S1 Chapter 4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=4nA41c4007k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4zDr13ghtqc",
+   "title": "Edexcel IAL S1 October 2021 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=4zDr13ghtqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "62StortVypw",
+   "title": "Edexcel S1 Tutorial 3 Coding the Mean",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=62StortVypw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6FMvscIC_Qk",
+   "title": "Edexcel S1 Tutorial 20 The Normal Distribution",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=6FMvscIC_Qk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8-HH9QznBy0",
+   "title": "Edexcel S1 Tutorial 14 Sample space and Venn Diagrams",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=8-HH9QznBy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8PLrgqp_8Cc",
+   "title": "The hardest questions from Edexcel IAL S1",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=8PLrgqp_8Cc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BDbGzRLvV_Q",
+   "title": "Edexcel S1 Tutorial 10 Bivariate Data",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=BDbGzRLvV_Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BMM1DbYydUM",
+   "title": "Edexcel S1 Tutorial 18 Mean and variance of discrete r.v",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=BMM1DbYydUM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EDnp6NULVsY",
+   "title": "Probability - Venn diagrams the basics (Edexcel IAL S1 Chapter 4 )",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=EDnp6NULVsY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GUkB8dzReVA",
+   "title": "Edexcel S1 Tutorial 11 PMCC and Coding",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=GUkB8dzReVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GfXUpQ10PEM",
+   "title": "Edexcel S1 Tutorial 12 Regression",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=GfXUpQ10PEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "I2bt8N3YkIg",
+   "title": "Edexcel S1 Tutorial 2 Grouped Data",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=I2bt8N3YkIg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IxuuP5_TsHQ",
+   "title": "Edexcel S1 Tutorial 9 Skewness and Comparing",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=IxuuP5_TsHQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LRO4KMjDHYY",
+   "title": "Correlation and Regression (Edexcel IAL S1 Chapter 5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=LRO4KMjDHYY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NeeHhjJdPy0",
+   "title": "Edexcel S1 Tutorial 8 Histograms",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=NeeHhjJdPy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SB_RGrDnRiU",
+   "title": "The Normal distribution (Edexcel IA S1) Part 2",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=SB_RGrDnRiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T_3MoEGZgVw",
+   "title": "Edexcel IAL S1 May 2023 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=T_3MoEGZgVw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XtHnOu55uZM",
+   "title": "Edexcel S1 Tutorial 21 Standardising the normal",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=XtHnOu55uZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YhU76lK34VM",
+   "title": "Discrete Random Variables (Edexcel IAL S1 Chapter 6)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=YhU76lK34VM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "b3sJaO0CCXw",
+   "title": "Edexcel S1 Tutorial 1 Measures of location",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=b3sJaO0CCXw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bPLWqf56yIs",
+   "title": "Edexcel S1 Tutorial 7 Box and Whisker Plots",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=bPLWqf56yIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dLNJNQejx1I",
+   "title": "Edexcel S1 Tutorial 5 Measures of Dispersion",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=dLNJNQejx1I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hqy7xRefZqI",
+   "title": "Edexcel S1 Tutorial 23 Problems with the Normal",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=hqy7xRefZqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ku-yy5gXI_E",
+   "title": "Edexcel S1 Tutorial 13 Using the regression equation",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=ku-yy5gXI_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lcWLnchG_V4",
+   "title": "Edexcel S1 Tutorial 22 Finding the mean and SD of the Normal",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=lcWLnchG_V4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nfv09LuxJd8",
+   "title": "Edexcel S1 Tutorial 17 Discrete random variables",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=nfv09LuxJd8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oOxzkx5nTsI",
+   "title": "Edexcel S1 Tutorial 19 Linear transforms of discrete r.v",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=oOxzkx5nTsI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ovc0NR_JwKU",
+   "title": "Edexcel S1 Tutorial 15 Conditional Probability",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=ovc0NR_JwKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qiGoTfl8_NY",
+   "title": "Edexcel S1 Tutorial 6 Stem and Leaf Plot and Outliers",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=qiGoTfl8_NY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zC26g16vifk",
+   "title": "Edexcel S1 Tutorial 16 Mutually exclusive & independence",
+   "provider": "mrarnoldsmaths",
+   "watchUrl": "https://www.youtube.com/watch?v=zC26g16vifk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zMJ3fD-Dg30",
+   "title": "The Normal distribution finding μ and σ (Edexcel IAL S1) part 3",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=zMJ3fD-Dg30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oxY2puEL5LU",
+   "title": "The whole of A Level Statistics 1 Mathematics in 25 mins",
+   "provider": "mindful-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=oxY2puEL5LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -5699,20 +6116,557 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-statistics-1"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "T_3MoEGZgVw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL S1 May 2023 Exam Paper\"; IAL module code IAL-S1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-statistics-1"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "4zDr13ghtqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL S1 October 2021 Exam Paper\"; IAL module code IAL-S1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-statistics-1"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "8PLrgqp_8Cc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"The hardest questions from Edexcel IAL S1\"; IAL module code IAL-S1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "hqy7xRefZqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.1 'The Normal distribution including the mean, variance and' via token(s) ['normal'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "lcWLnchG_V4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.1 'The Normal distribution including the mean, variance and' via token(s) ['mean', 'normal'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "XtHnOu55uZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.1 'The Normal distribution including the mean, variance and' via token(s) ['normal'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "6FMvscIC_Qk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.1 'The Normal distribution including the mean, variance and' via token(s) ['distribution', 'normal'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "oOxzkx5nTsI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3"
+   ],
+   "confidence": "low",
+   "evidence": "title names 5.3 'Mean and variance of a discrete random variable.: • Use ' via token(s) ['discrete'] (df 5); token df above the tightened bar within a 16-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "BMM1DbYydUM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3"
+   ],
+   "confidence": "low",
+   "evidence": "title names 5.3 'Mean and variance of a discrete random variable.: • Use ' via token(s) ['discrete', 'mean', 'variance'] (df 4); token df above the tightened bar within a 16-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "nfv09LuxJd8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2"
+   ],
+   "confidence": "low",
+   "evidence": "title names 5.2 'The probability function and the cumulative distribution' via token(s) ['discrete', 'random', 'variable'] (df 4); token df above the tightened bar within a 16-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "zC26g16vifk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3 'Independence of two events.: • P(B|A) = P(B), P(A|B) = P' via token(s) ['independence'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "ovc0NR_JwKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2 'Sample space. Exclusive and complementary events. Condit' via token(s) ['conditional', 'probability'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "8-HH9QznBy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2 'Sample space. Exclusive and complementary events. Condit' via token(s) ['sample', 'space'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "ku-yy5gXI_E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.1 'Scatter diagrams. Linear regression. Calculation of the ' via token(s) ['equation', 'regression'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "GfXUpQ10PEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.1 'Scatter diagrams. Linear regression. Calculation of the ' via token(s) ['regression'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "GUkB8dzReVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (None None) routes the course; title names the topic unambiguously and spec 4.3 'The product moment correlation coefficient, its ' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "BDbGzRLvV_Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (None None) routes the course; title names the topic unambiguously and spec 4.1 'Scatter diagrams. Linear regression. Calculation' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "IxuuP5_TsHQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.4 'Skewness. Concepts of outliers. Students may be asked to' via token(s) ['skewnes'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "NeeHhjJdPy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.1 'Histograms, stem and leaf diagrams, box plots. Using his' via token(s) ['histogram'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "bPLWqf56yIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (None None) routes the course; title names the topic unambiguously and spec 2.1 'Histograms, stem and leaf diagrams, box plots. U' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "qiGoTfl8_NY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.1 'Histograms, stem and leaf diagrams, box plots. Using his' via token(s) ['leaf', 'plot', 'stem'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "dLNJNQejx1I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3 'Measures of dispersion – variance, standard deviation, r' via token(s) ['dispersion', 'measure'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "-UBS_atL4Xk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (None None) routes the course; title names the topic unambiguously and spec 2.3 'Measures of dispersion – variance, standard devi' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "62StortVypw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2 'Measures of location – mean, median, mode. Calculation o' via token(s) ['coding', 'mean'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "I2bt8N3YkIg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2 'Measures of location – mean, median, mode. Calculation o' via token(s) ['data', 'grouped'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "b3sJaO0CCXw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2 'Measures of location – mean, median, mode. Calculation o' via token(s) ['location', 'measure'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "4nA41c4007k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (S1 4) routes the course; title names 3.4 'Sum and product laws. Use of tree diagrams and Venn diag' via token(s) ['diagram', 'probability', 'tree'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "4OU01fZxkUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (S1 4) routes the course; title names 3.1 'Elementary probability.' via token(s) ['probability'] (df 7); token df above the tightened bar within a 16-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "EDnp6NULVsY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (S1 4) routes the course; title names 3.4 'Sum and product laws. Use of tree diagrams and Venn diag' via token(s) ['diagram', 'probability', 'venn'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "LRO4KMjDHYY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (S1 5) routes the course; title names 4.1 'Scatter diagrams. Linear regression. Calculation of the ' via token(s) ['correlation', 'regression'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "YhU76lK34VM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (S1 6) routes the course; title names 5.2 'The probability function and the cumulative distribution' via token(s) ['discrete', 'random', 'variable'] (df 4); token df above the tightened bar within a 16-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "zMJ3fD-Dg30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (S1) routes the course; title names 5.1 'The Normal distribution including the mean, variance and' via token(s) ['distribution', 'normal'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "SB_RGrDnRiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (S1) routes the course; title names 5.1 'The Normal distribution including the mean, variance and' via token(s) ['distribution', 'normal'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "-JAzkA6I6iU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (S1) routes the course; title names 5.1 'The Normal distribution including the mean, variance and' via token(s) ['distribution', 'normal'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "oxY2puEL5LU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1 'The basic ideas of mathematical modelling as applied in ' via token(s) ['statistic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
+   "reviewedUtc": "2026-11-13T13:23:03Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 16,
-  "specPointsMapped": 9,
-  "specPointsUnmapped": 7,
-  "videosTotal": 188,
-  "videosMapped": 188,
+  "specPointsMapped": 15,
+  "specPointsUnmapped": 1,
+  "videosTotal": 223,
+  "videosMapped": 223,
   "videosUnmapped": 0,
-  "mappingRows": 188,
+  "mappingRows": 223,
   "byConfidence": {
-   "high": 141,
-   "medium": 47,
-   "low": 0
+   "high": 144,
+   "medium": 70,
+   "low": 9
   }
  },
  "inputs": {
@@ -5725,7 +6679,19 @@
    "path": "Videos/drafts/ial-maths-20-statistics-1/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p10": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-statistics-1/video-map.draft.external-p10.json",
+   "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
+   "reviewAppliedUtc": "2026-11-13T11:04:04Z"
+  },
+  "p11": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-statistics-1/video-map.draft.external-p11.json",
+   "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
+   "reviewAppliedUtc": "2026-11-13T13:23:03Z"
   }
  },
- "generatedUtc": "2026-11-13T06:52:02.289Z"
+ "generatedUtc": "2026-11-13T13:26:09.430Z"
 }

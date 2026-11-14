@@ -11,17 +11,20 @@
  * (UTC-day-grouped rows with status dot + time-ago). Every token is a hub
  * token; the MG palette and left rail are retired.
  *
- * T-TEACHGENIE-008 run-002: the landing footnote joins the conditional
- * ratification law — the teacher claim renders ONLY on the API's
- * affirmative classroomStudent flag (picker + review went conditional in
- * run-001); unknown/error keeps the neutral independent line.
+ * T-TEACHGENIE-008 run-002: the landing footnote joined the conditional
+ * ratification law (teacher claim on the affirmative classroomStudent
+ * flag only). T-TEACHGENIE-008 run-003 (operator order 2026-11-13,
+ * "remove the footer thing from the bottom"): the landing footnote is
+ * REMOVED entirely — both voices. The landing states no AI_SUGGESTED /
+ * ratification copy at all; the evidence copy lives where the evidence
+ * lives — the picker footer + the review screen's evidence lead.
  */
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { BabyGenieAvatar } from "./baby-genie";
-import { landingEvidenceFootnote, statusDotClass, statusLabel, timeAgo } from "./util";
+import { statusDotClass, statusLabel, timeAgo } from "./util";
 import type { SessionHistoryItem } from "@syllabai/contracts";
 
 export interface TeachGeniePreviewRow {
@@ -35,11 +38,6 @@ export interface TeachGenieLandingProps {
   history: SessionHistoryItem[] | null;
   preview: TeachGeniePreviewRow[] | null;
   starting: boolean;
-  /** T-TEACHGENIE-008 run-002 — the API's affirmative enrollment flag: true
-   *  ONLY for a confirmed class_members row. False or unknown renders the
-   *  neutral independent footnote — never a teacher claim to a learner
-   *  without a teacher. */
-  classroomStudent: boolean;
   onStart: () => void;
   onOpenSession: (sessionId: string) => void;
 }
@@ -49,7 +47,6 @@ export function TeachGenieLanding({
   history,
   preview,
   starting,
-  classroomStudent,
   onStart,
   onOpenSession,
 }: TeachGenieLandingProps) {
@@ -68,14 +65,14 @@ export function TeachGenieLanding({
                   preview.map((row) =>
                     row.role === "pupil" ? (
                       <div key={row.id} className="flex flex-col items-start">
-                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground/60">SillyAI</span>
+                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground">SillyAI</span>
                         <div className="w-fit max-w-[65%] rounded-2xl border bg-card p-2 px-3 text-left text-xs font-medium leading-relaxed text-pretty text-foreground shadow-sm">
                           {row.text}
                         </div>
                       </div>
                     ) : (
                       <div key={row.id} className="flex flex-col items-end">
-                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground/60">You</span>
+                        <span className="mb-1 px-2 text-xs font-medium text-muted-foreground">You</span>
                         <div className="w-fit max-w-[65%] rounded-2xl bg-muted p-2 px-3 text-left text-xs font-medium leading-relaxed text-pretty text-foreground shadow-sm">
                           {row.text}
                         </div>
@@ -193,10 +190,6 @@ export function TeachGenieLanding({
           </div>
         </section>
       )}
-
-      <p className="text-center text-2xs leading-relaxed text-muted-foreground">
-        {landingEvidenceFootnote(classroomStudent)}
-      </p>
     </div>
   );
 }

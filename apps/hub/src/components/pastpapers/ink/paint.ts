@@ -47,7 +47,14 @@ export function paintShapes(
   ctx: Ctx,
   box: PaintBox,
   shapes: InkShape[],
-  activeStroke?: { color: string; widthFrac: number; points: Array<[number, number]> } | null,
+  activeStroke?: {
+    color: string;
+    widthFrac: number;
+    points: Array<[number, number]>;
+    /** T-MG-INK-11: the in-flight pen stroke's pressure channel (pen
+     * gestures only; absent → the in-flight stroke paints constant-width). */
+    pressures?: number[];
+  } | null,
   opts?: PaintOptions,
 ): void {
   if (opts?.clear !== false) ctx.clearRect(0, 0, box.cssW, box.cssH);
@@ -62,33 +69,84 @@ export function paintShapes(
     // byte-identical to the shipped law (the T-MG-CROPMARK-1 crop
     // composite keeps compositing strokes + text verbatim; the
     // mtext-in-crop blindspot is the spec's disclosed limitation).
-    if (s.kind === "stroke") paintStroke(ctx, box, s.color, s.widthFrac, s.points);
+    if (s.kind === "stroke") paintStroke(ctx, box, s.color, s.widthFrac, s.points, s.pressures);
     else if (s.kind === "text") paintText(ctx, box, s);
   }
   if (activeStroke && activeStroke.points.length >= 2) {
-    paintStroke(ctx, box, activeStroke.color, activeStroke.widthFrac, activeStroke.points);
+    paintStroke(ctx, box, activeStroke.color, activeStroke.widthFrac, activeStroke.points, activeStroke.pressures);
   }
 }
 
+/** T-MG-INK-11 run-001 — the pressure→width law of record. The raw
+ * PointerEvent pressure (0..1) maps linearly to a width MULTIPLIER of the
+ * stroke's widthFrac: `0.35 + 1.3 * p`. The anchors are pinned:
+ * p=0 → 0.35 (a feathered touch), p=0.5 → exactly 1.0 (the Pointer
+ * Events spec's mouse default — every mouse stroke and every legacy
+ * no-pressure stroke renders BYTE-IDENTICAL to the shipped law), p=1 →
+ * 1.65 (a hard pen press). Pure, exported for the tests. */
+export function pressureWidthMul(p: number): number {
+  return 0.35 + 1.3 * p;
+}
+
+/**
+ * T-MG-INK-11 run-001: paint a stroke with the stylus pressure channel.
+ * With `pressures` (index-aligned with points), each SEGMENT renders at
+ * the width of the point it lands on — consecutive segments whose
+ * quantized multiplier matches (steps of 0.05) batch into ONE path so a
+ * typical handwriting stroke is a handful of strokes, not one per point.
+ * Without pressures (or on any length mismatch), the render is the
+ * shipped single-path law byte-for-byte.
+ */
 function paintStroke(
   ctx: Ctx,
   box: PaintBox,
   color: string,
   widthFrac: number,
   points: Array<[number, number]>,
+  pressures?: number[],
 ): void {
   if (points.length < 2) return;
+  const px = points.map(([fx, fy]) => [fx * box.cssW, fy * box.cssH] as [number, number]);
   ctx.strokeStyle = INK_COLORS[color as keyof typeof INK_COLORS] ?? color;
-  ctx.lineWidth = Math.max(1, widthFrac * box.cssW);
-  ctx.beginPath();
-  for (let i = 0; i < points.length; i++) {
-    const [fx, fy] = points[i];
-    const x = fx * box.cssW;
-    const y = fy * box.cssH;
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
+  const hasPressure =
+    Array.isArray(pressures) && pressures.length === points.length && points.length > 0;
+  if (!hasPressure) {
+    ctx.lineWidth = Math.max(1, widthFrac * box.cssW);
+    ctx.beginPath();
+    for (let i = 0; i < px.length; i++) {
+      if (i === 0) ctx.moveTo(px[i]![0], px[i]![1]);
+      else ctx.lineTo(px[i]![0], px[i]![1]);
+    }
+    ctx.stroke();
+    return;
   }
-  ctx.stroke();
+  // Variable width: segment s (point s → point s+1) renders at the START
+  // point's pressure; runs of equal quantized multiplier (steps of 0.05)
+  // batch into one sub-path (round caps + joins make the seams invisible).
+  const base = widthFrac * box.cssW;
+  let runStart = 0;
+  let runMul = Math.round(pressureWidthMul(pressures[0]!) * 20);
+  const flushRun = (endIdx: number) => {
+    // Points [runStart..endIdx] = segments [runStart..endIdx-1], all at
+    // runMul. An empty run (a trailing point with no segment) is skipped.
+    if (endIdx <= runStart) return;
+    ctx.lineWidth = Math.max(1, base * (runMul / 20));
+    ctx.beginPath();
+    for (let i = runStart; i <= endIdx; i++) {
+      if (i === runStart) ctx.moveTo(px[i]![0], px[i]![1]);
+      else ctx.lineTo(px[i]![0], px[i]![1]);
+    }
+    ctx.stroke();
+  };
+  for (let i = 1; i < px.length; i++) {
+    const mul = Math.round(pressureWidthMul(pressures[i]!) * 20);
+    if (mul !== runMul) {
+      flushRun(i);
+      runStart = i;
+      runMul = mul;
+    }
+  }
+  flushRun(px.length - 1);
 }
 
 function paintText(ctx: Ctx, box: PaintBox, s: Extract<InkShape, { kind: "text" }>): void {

@@ -151,7 +151,7 @@ export default async function SpecArchivePage({
               {sessionLabel(sessionId)}
               {/* t-ui-polish run-002 — the MG session header carries its
                   size; same recipe as the course archive. */}
-              <span className="font-normal text-muted-foreground/60"> · {group.length}</span>
+              <span className="font-normal text-muted-foreground"> · {group.length}</span>
             </h2>
             <ul className="overflow-hidden rounded-xl border">
               {group.map((p) => (

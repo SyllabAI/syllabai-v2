@@ -11,6 +11,11 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p10": {
+   "provider": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel)",
+   "method": "Maths Deity (@MathsDeity — Edexcel IAL unit.section tutorial + paper-walkthrough channel) flat-enumerated 2026-11-13T10:43:50Z; routing: module-code Tier B anchors + unit.section-marker/module-named Tier A with class-table judgment over every row",
+   "enumeratedUtc": "2026-11-13T11:04:04Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked all 45 mapping rows (45 videos, lessonRef null) against the Edexcel IAL M1 spine (1.1-6.1), title-only evidence, applying the higher cross-subject physics->maths-mechanics bar. Kept rows whose titles name spec-listed content (scalars/vectors and resultants 2.1, SUVAT and d-t/v-t/speed-t graphs 3.1, Newton's laws 4.1, momentum/impulse 4.3, friction F=muR 4.4/5.3, weight within the 5.2 force list, moments/couples 6.1); 1.1 (modelling assumptions) and 4.2 (connected particles) are correctly unbound. Two spec-level rejects: both GCSE 'Speed' videos bound to 2.2, which demands application of VECTORS to displacements, velocities, accelerations and forces in a plane — speed is not among the spec's quantities and no vector framing is title-evidenced, unlike 'Velocity'/'Acceleration' rows which do name listed quantities and stay at low.",
-  "rowsApproved": 292,
+  "rowsApproved": 333,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -36,30 +41,6 @@
    }
   ],
   "lanes": [
-   {
-    "lane": "external-channels (primary)",
-    "task": "T-VIDEOMAP-P4 (mechanics cross-subject lane: ial-maths-20-mechanics-1)",
-    "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
-    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
-    "ruledUtc": "2026-11-11T14:35:16Z",
-    "evidenceBasis": "Checked all 45 mapping rows (45 videos, lessonRef null) against the Edexcel IAL M1 spine (1.1-6.1), title-only evidence, applying the higher cross-subject physics->maths-mechanics bar. Kept rows whose titles name spec-listed content (scalars/vectors and resultants 2.1, SUVAT and d-t/v-t/speed-t graphs 3.1, Newton's laws 4.1, momentum/impulse 4.3, friction F=muR 4.4/5.3, weight within the 5.2 force list, moments/couples 6.1); 1.1 (modelling assumptions) and 4.2 (connected particles) are correctly unbound. Two spec-level rejects: both GCSE 'Speed' videos bound to 2.2, which demands application of VECTORS to displacements, velocities, accelerations and forces in a plane — speed is not among the spec's quantities and no vector framing is title-evidenced, unlike 'Velocity'/'Acceleration' rows which do name listed quantities and stay at low.",
-    "rowsApproved": 43,
-    "rowsRejected": 2,
-    "rejects": [
-     {
-      "lessonRef": null,
-      "video": "M_0FRIX8wIM",
-      "spec": "2.2",
-      "reason": "GCSE 'Speed' is keyword-adjacent only: 2.2 is 'Application of vectors to displacements, velocities, accelerations and forces in a plane' — speed is not among the spec's listed quantities (it is the scalar side of 2.1, to which this video is not bound) and no vectors/in-a-plane mathematical framing is title-evidenced"
-     },
-     {
-      "lessonRef": null,
-      "video": "xH4w97eUBgw",
-      "spec": "2.2",
-      "reason": "GCSE 'Speed' is keyword-adjacent only: 2.2 is 'Application of vectors to displacements, velocities, accelerations and forces in a plane' — speed is not among the spec's listed quantities (it is the scalar side of 2.1, to which this video is not bound) and no vectors/in-a-plane mathematical framing is title-evidenced"
-     }
-    ]
-   },
    {
     "lane": "external-channels-p9 (mr-hassaans-maths completion)",
     "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
@@ -146,6 +127,17 @@
       "lane": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p10 (two-pool maths completion: mrarnoldsmaths + mathsdeity)",
+    "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P10\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+    "ruledUtc": "2026-11-13T11:04:04Z",
+    "evidenceBasis": "Identity: oEmbed sweep 358/358 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: IAL module codes regex-verified in titles. Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables over EVERY routed row; module-structured rows (unit.section marker / module-named title) permitted the disclosed higher title-only bar at low confidence; rebinds validated against the target spine; degenerate vocabulary binds (factor formulae -> P1 radian) dropped.",
+    "rowsApproved": 41,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -3593,6 +3585,457 @@
    "lessonUrl": null,
    "levelTag": "ial",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0XMbu2EnN4I",
+   "title": "Solving problems involving velocity and time using vectors (Edexcel IAL M1 3.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=0XMbu2EnN4I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0XxZNNfv8K0",
+   "title": "Conservation of Momentum (Edexcel IAL M1 6.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=0XxZNNfv8K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0pDdWjXlf-Y",
+   "title": "Statics of a Particle (Edexcel IAL M1 Chapter 7)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=0pDdWjXlf-Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9Nu7ZJOnZOM",
+   "title": "Vectors in Mechanics (Edexcel IAL M1 Chapter 3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=9Nu7ZJOnZOM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9zlfUQghpdo",
+   "title": "Dynamics of a Particle moving in a straight line (Edexcel IAL M1 Chapter 4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=9zlfUQghpdo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AYvA69z_bl0",
+   "title": "Acceleration-Time graphs (Edexcel IAL M1 2.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=AYvA69z_bl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BGzAz8hb6K0",
+   "title": "Displacement-time graphs (Edexcel IAL M1 2.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=BGzAz8hb6K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CBEgdBoOy_U",
+   "title": "Resultant Moments (Edexcel IAL M1 8.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=CBEgdBoOy_U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GyNNWfZsoPk",
+   "title": "Moments (Edexcel IAL M1 8.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=GyNNWfZsoPk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "H34QMDrJ7FU",
+   "title": "Forces and Friction (Edexcel IAL M1 Chapter 5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=H34QMDrJ7FU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ICdn_W0Putw",
+   "title": "Momentum and Impulse (Edexcel IAL M1 chapter 6)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=ICdn_W0Putw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KbdSt83DI6k",
+   "title": "Static Particles (Edexcel IAL M1 7.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=KbdSt83DI6k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NJSowk_wc2g",
+   "title": "Edexcel IAL M1 October 2021 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=NJSowk_wc2g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NaW5jsPkiz8",
+   "title": "Forces and Acceleration (Edexcel IAL M1 4.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=NaW5jsPkiz8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ng9sNAadNiA",
+   "title": "Modelling with Statics (Edexcel IAL M1 7.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=Ng9sNAadNiA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "POhWElVc88c",
+   "title": "Constructing a Model (Edexcel IAL M1 1.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=POhWElVc88c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PZbrPjKOQ58",
+   "title": "Force diagrams (Edexcel IAL M1 4.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=PZbrPjKOQ58",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PnVcTfUoU-E",
+   "title": "Tilting (Edexcel IAL M1 8.5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=PnVcTfUoU-E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VcWcRdqfqXo",
+   "title": "Resolving Forces (Edexcel IAL M1 5.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=VcWcRdqfqXo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Xd0zN1QyizE",
+   "title": "Vertical motion under gravity (Edexcel IAL M1 2.6)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=Xd0zN1QyizE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YonyfphZrvo",
+   "title": "Velocity-time Graphs (Edexcel IAL M1 2.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=YonyfphZrvo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZM44YpZ22OE",
+   "title": "Centres of Mass (Edexcel IAL M1 8.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=ZM44YpZ22OE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_8rKmpQe8HE",
+   "title": "Connected Particles (Edexcel IAL M1 4.5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=_8rKmpQe8HE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_LhBFdm4ajQ",
+   "title": "Motion in two dimensions (Edexcel IAL M1 4.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=_LhBFdm4ajQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_yiJLGus8LE",
+   "title": "Modelling Assumptions (Edexcel IAL M1 1.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=_yiJLGus8LE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "a6sQSuUDNxU",
+   "title": "Solving problems with vectors written using i and j notation (Edexcel IAL M1 3.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=a6sQSuUDNxU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "c6GNs5w4bcs",
+   "title": "Moments (Edexcel IAL M1 Chapter 8)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=c6GNs5w4bcs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "d7EHDIM6Ygc",
+   "title": "Constant acceleration formulae 2 (Edexcel IAL M1 2.5)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=d7EHDIM6Ygc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hCRaK0JV2T4",
+   "title": "Forces as Vectors (Edexcel IAL M1 4.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=hCRaK0JV2T4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jutTCUkwrNQ",
+   "title": "Quantities and Units (Edexcel IAL M1 1.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=jutTCUkwrNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kLCGcwKi1bc",
+   "title": "Equilibrium (Edexcel IAL M1 8.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=kLCGcwKi1bc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "khoDUL8Rodc",
+   "title": "Inclined Planes (Edexcel IAL M1 5.2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=khoDUL8Rodc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l-zWl6Dk3eY",
+   "title": "Constant Acceleration (Edexcel IAL M1 Chapter 2)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=l-zWl6Dk3eY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lnV2bxscbXs",
+   "title": "Pulleys (Edexcel IAL M1 4.6)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=lnV2bxscbXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "n1ICkYr6dD8",
+   "title": "Edexcel IAL M1 May 2023 Exam Paper",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=n1ICkYr6dD8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rkvvJMe1mjg",
+   "title": "Friction and static particles (Edexcel IAL M1 7.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=rkvvJMe1mjg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tGmmPgy47j4",
+   "title": "The velocity of a particle as a vector (Edexcel IAL M1 3.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=tGmmPgy47j4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tMJFkn29jrA",
+   "title": "Momentum in one dimension (Edexcel IAL M1 6.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=tMJFkn29jrA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tU0vLGO0sq4",
+   "title": "Working with Vectors (Edexcel IAL M1 3.1)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=tU0vLGO0sq4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yA3op0jXlaA",
+   "title": "Friction (Edexcel IAL M1 5.3)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=yA3op0jXlaA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yUUpzQDluXA",
+   "title": "Constant acceleration formulae 1 (Edexcel IAL M1 2.4)",
+   "provider": "mathsdeity",
+   "watchUrl": "https://www.youtube.com/watch?v=yUUpzQDluXA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "ial",
+   "boardNote": "Maths Deity — Edexcel IAL unit.section tutorial + paper-walkthrough channel (channelId UCODyYjai6abd1N5KGc1KacQ); oEmbed author verified per video",
    "identityMethod": "oembed"
   }
  ],
@@ -8743,20 +9186,643 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-mechanics-1"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "n1ICkYr6dD8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL M1 May 2023 Exam Paper\"; IAL module code IAL-M1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-maths-20-mechanics-1"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "NJSowk_wc2g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z",
+   "evidence": "title: \"Edexcel IAL M1 October 2021 Exam Paper\"; IAL module code IAL-M1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "PnVcTfUoU-E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 8.5) routes the course; title names the topic unambiguously and spec 6.1 'Moment of a force. Simple problems involving cop' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "ZM44YpZ22OE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 8.4) routes the course; title names the topic unambiguously and spec 6.1 'Moment of a force. Simple problems involving cop' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "kLCGcwKi1bc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 8.3) routes the course; title names 5.2 'Equilibrium of a particle under coplanar forces. Weight,' via token(s) ['equilibrium'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "CBEgdBoOy_U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 8.2) routes the course; title names 6.1 'Moment of a force. Simple problems involving coplanar pa' via token(s) ['moment'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "GyNNWfZsoPk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 8.1) routes the course; title names 6.1 'Moment of a force. Simple problems involving coplanar pa' via token(s) ['moment'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "rkvvJMe1mjg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 7.3) routes the course; title names 4.4 'Coefficient of friction.: • An understanding of F = μR w' via token(s) ['friction', 'particle'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "Ng9sNAadNiA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 7.2) routes the course; title names 5.2 'Equilibrium of a particle under coplanar forces. Weight,' via token(s) ['static'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "KbdSt83DI6k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 7.1) routes the course; title names 5.2 'Equilibrium of a particle under coplanar forces. Weight,' via token(s) ['particle', 'static'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "0XxZNNfv8K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 6.2) routes the course; title names 4.3 'Momentum and impulse. The impulse-momentum principle. Th' via token(s) ['conservation', 'momentum'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "tMJFkn29jrA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 6.1) routes the course; title names 4.3 'Momentum and impulse. The impulse-momentum principle. Th' via token(s) ['momentum', 'one'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "yA3op0jXlaA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 5.3) routes the course; title names 4.4 'Coefficient of friction.: • An understanding of F = μR w' via token(s) ['friction'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "khoDUL8Rodc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 5.2) routes the course; title names 4.2 'Simple applications including the motion of two connecte' via token(s) ['inclined', 'plane'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "VcWcRdqfqXo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 5.1) routes the course; title names 2.2 'Application of vectors to displacements, velocities, acc' via token(s) ['force'] (df 6); token df above the tightened bar within a 12-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "lnV2bxscbXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 4.6) routes the course; title names 4.2 'Simple applications including the motion of two connecte' via token(s) ['pulley'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "_8rKmpQe8HE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 4.5) routes the course; title names 4.2 'Simple applications including the motion of two connecte' via token(s) ['connected', 'particle'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "_LhBFdm4ajQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 4.4) routes the course; title names the topic unambiguously and spec 2.2 'Application of vectors to displacements, velocit' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "NaW5jsPkiz8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 4.3) routes the course; title names 2.2 'Application of vectors to displacements, velocities, acc' via token(s) ['acceleration', 'force'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "hCRaK0JV2T4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 4.2) routes the course; title names 2.1 'Magnitude and direction of a vector. Resultant of vector' via token(s) ['vector'] (df 4); token df above the tightened bar within a 12-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "PZbrPjKOQ58",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 4.1) routes the course; title names the topic unambiguously and spec 4.1 'The concept of a force. Newton’s laws of motion.' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "0XMbu2EnN4I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 3.4) routes the course; title names 2.1 'Magnitude and direction of a vector. Resultant of vector' via token(s) ['involving', 'vector'] (df 4); token df above the tightened bar within a 12-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "tGmmPgy47j4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 3.3) routes the course; title names 2.1 'Magnitude and direction of a vector. Resultant of vector' via token(s) ['vector'] (df 4); token df above the tightened bar within a 12-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "a6sQSuUDNxU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 3.2) routes the course; title names 2.1 'Magnitude and direction of a vector. Resultant of vector' via token(s) ['vector'] (df 4); token df above the tightened bar within a 12-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "tU0vLGO0sq4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 3.1) routes the course; title names 2.1 'Magnitude and direction of a vector. Resultant of vector' via token(s) ['vector'] (df 4); token df above the tightened bar within a 12-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "Xd0zN1QyizE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 2.6) routes the course; title names 3.1 'Motion in a straight line with constant acceleration. Gr' via token(s) ['motion'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "d7EHDIM6Ygc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 2.5) routes the course; title names 3.1 'Motion in a straight line with constant acceleration. Gr' via token(s) ['acceleration', 'constant', 'formulae'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "yUUpzQDluXA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 2.4) routes the course; title names 3.1 'Motion in a straight line with constant acceleration. Gr' via token(s) ['acceleration', 'constant', 'formulae'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "AYvA69z_bl0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 2.3) routes the course; title names 2.2 'Application of vectors to displacements, velocities, acc' via token(s) ['acceleration', 'time'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "YonyfphZrvo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 2.2) routes the course; title names 3.1 'Motion in a straight line with constant acceleration. Gr' via token(s) ['graph', 'time', 'velocity'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "BGzAz8hb6K0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 2.1) routes the course; title names 3.1 'Motion in a straight line with constant acceleration. Gr' via token(s) ['displacement', 'graph', 'time'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "jutTCUkwrNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 1.3) routes the course; title names the topic unambiguously and spec 1.1 'The basic ideas of mathematical modelling as app' is validated in the spine; textbook phrasing leaves zero pre-pass token overlap — direct class-table bind at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "_yiJLGus8LE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 1.2) routes the course; title names 1.1 'The basic ideas of mathematical modelling as applied in ' via token(s) ['assumption', 'modelling'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "POhWElVc88c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 1.1) routes the course; title names 1.1 'The basic ideas of mathematical modelling as applied in ' via token(s) ['model'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "l-zWl6Dk3eY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 2) routes the course; title names 3.1 'Motion in a straight line with constant acceleration. Gr' via token(s) ['acceleration', 'constant'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "H34QMDrJ7FU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 5) routes the course; title names 4.4 'Coefficient of friction.: • An understanding of F = μR w' via token(s) ['friction'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "9zlfUQghpdo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1"
+   ],
+   "confidence": "low",
+   "evidence": "unit.section marker (M1 4) routes the course; title names 4.1 'The concept of a force. Newton’s laws of motion.: • Simp' via token(s) ['dynamic', 'line', 'moving', 'particle'] (df 4); token df above the tightened bar within a 12-spec module — bound at the disclosed P4 cross-subject-style higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "9Nu7ZJOnZOM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 3) routes the course; title names 2.1 'Magnitude and direction of a vector. Resultant of vector' via token(s) ['mechanic', 'vector'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "c6GNs5w4bcs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 8) routes the course; title names 6.1 'Moment of a force. Simple problems involving coplanar pa' via token(s) ['moment'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "0pDdWjXlf-Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 7) routes the course; title names 5.2 'Equilibrium of a particle under coplanar forces. Weight,' via token(s) ['particle', 'static'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
+  },
+  {
+   "video": "ICdn_W0Putw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3"
+   ],
+   "confidence": "medium",
+   "evidence": "unit.section marker (M1 6) routes the course; title names 4.3 'Momentum and impulse. The impulse-momentum principle. Th' via token(s) ['impulse', 'momentum'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P10\")",
+   "reviewedUtc": "2026-11-13T11:04:04Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 12,
   "specPointsMapped": 12,
   "specPointsUnmapped": 0,
-  "videosTotal": 294,
-  "videosMapped": 292,
+  "videosTotal": 335,
+  "videosMapped": 333,
   "videosUnmapped": 2,
-  "mappingRows": 292,
+  "mappingRows": 333,
   "byConfidence": {
-   "high": 180,
-   "medium": 100,
-   "low": 12
+   "high": 182,
+   "medium": 127,
+   "low": 24
   }
  },
  "inputs": {
@@ -8775,7 +9841,13 @@
    "path": "Videos/drafts/ial-maths-20-mechanics-1/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p10": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-maths-20-mechanics-1/video-map.draft.external-p10.json",
+   "task": "T-VIDEOMAP-P10 (two-pool maths completion: MrArnoldsMaths + Maths Deity)",
+   "reviewAppliedUtc": "2026-11-13T11:04:04Z"
   }
  },
- "generatedUtc": "2026-11-13T06:52:02.293Z"
+ "generatedUtc": "2026-11-13T13:26:09.340Z"
 }

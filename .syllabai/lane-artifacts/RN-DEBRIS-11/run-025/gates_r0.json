@@ -1,0 +1,46 @@
+{
+ "artifact": "rn11-run-025-gates-r0",
+ "generatedUtc": "2026-11-13",
+ "gates": [
+  {
+   "gate": "G1-byte-scope",
+   "ok": true,
+   "detail": "git diff == exactly ['apps/hub/content-maps/cie-igcse-computer-science-23.json']"
+  },
+  {
+   "gate": "G2-record-scope",
+   "ok": true,
+   "detail": "1,345 map items + all other map roots + all 116 prior sid entries byte-identical (deep-equal); viol: []"
+  },
+  {
+   "gate": "G3-ruled-delta",
+   "ok": true,
+   "detail": "exactly two new entries, shape lineage/method/officialCode/officialCodes/officialId/score/tier/unit/via == the declared form; zero other registry bytes"
+  },
+  {
+   "gate": "G4-order-law",
+   "ok": true,
+   "detail": "registry ASCII-sorted 118/118; spcpt_3hpC7gNs8YZ6t7kd between spcpt_3WQhvN.. and spcpt_3jzz7R..; spcpt_rGVN6hJn6Mb9z2nR between spcpt_qZTkxK.. and spcpt_rYGQnC..; 9.1/9.3 live SPEC_POINTs, no new codes introduced"
+  },
+  {
+   "gate": "G5-witness-verbatim",
+   "ok": true,
+   "detail": "rn_pzFQ4MZnDWbnY6rf cites 3hpC7 and rn_KGhttHj9fT889Bm2 cites rGVN6 — unwrapped citations == spine == curriculum titles byte-exact (live re-pin post-apply); the registry rows now carry exactly these codes"
+  },
+  {
+   "gate": "G6-sid-law",
+   "ok": true,
+   "detail": "declaredUnresolved retained: 3hpC7=16 / rGVN6=17 users unchanged (byte-identical items); the 14 run-024 cards untouched at their ruled homes; fl_gHFr5vn3Z5ySMzxx (the unruled card) byte-identical — the resolved-sid-with-retained-declaration shape (the 7JRK in-file precedent)"
+  },
+  {
+   "gate": "G7-census",
+   "ok": true,
+   "detail": "cs-23 census unchanged vs the run-024 record: multi-id cards 257; null-code cards 60; coded map items 862; unmapped-true 483 (registry additions are census-neutral)"
+  },
+  {
+   "gate": "G8-dump-law",
+   "ok": true,
+   "detail": "the map still round-trips under its own dumper (indent=1, ensure_ascii=False)"
+  }
+ ]
+}

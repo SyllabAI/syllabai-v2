@@ -3,7 +3,7 @@ task:
   id: T-TEACHGENIE-008
   title: "The conditional ratification footnote — independent students shouldn't see 'your teacher ratifies': the picker + review footnotes render the teacher claim ONLY on an affirmative class_members enrollment flag (the teachermarking predicate); the independent copy stays honest (AI_SUGGESTED-only, no counts-toward-record promise — auto-commit is not live)"
   owner: 'Super Z (zai-web session web-7b4a27df-7d97-438a-849c-05a9c0003aa8, chat 0fade780-1ab5-4951-bfd9-13f43e897f40, dispatch trace 1a1d14ee9f267d55 — live operator order "the conditional ratification footnote (independent students shouldn''t see ''your teacher ratifies'')", 2026-11-13; execution confirmed "continue" trace 1a1d33ff11eaf835)'
-  status: 'run-002 OPEN (the landing footnote joins the conditional law — landing.tsx renders landingEvidenceFootnote(classroomStudent); classroom line byte-identical to the retired unconditional copy, independent line neutral) — branch t-teachgenie-008/run-002, authored against run-001 e75a1eff, REBASED onto main d0e57d15 after #978 merge-merged — run-001 (probe + envelope + picker/review conditional copy) = PR #978 of record, MERGED d0e57d15'
+  status: 'MERGED — the 008 lane closes: run-003 = PR #1001, merge commit b5439c38 (2026-11-13T12:57:48Z), the landing footnote REMOVED ENTIRELY (both voices — the landing states no AI_SUGGESTED / ratification copy at all); the evidence copy lives on the run-001 surfaces only (picker footer + review evidence lead, still conditional on the envelope flag, predicate of record unchanged) — history: run-001 = PR #978 MERGED d0e57d15 (picker + review conditional); run-002 = PR #987 MERGED 09a169e9 (landing conditional, superseded by run-003 removal); bookkeeping = PR #989 MERGED 02fed707 + this card flip'
   priority: P2
   band: T-TEACHGENIE (learner-visible truth copy + one read-only store probe; zero law bytes)
   deps: [T-COPYFIX-001]
@@ -14,11 +14,11 @@ task:
     - apps/api/src/teach-me/service.ts (listSessions envelope carries classroomStudent)
     - packages/contracts/src/teach-me.ts (sessionHistoryResponseSchema + SessionHistoryResponse)
     - apps/hub/src/lib/api.ts (teachMeListSessions → SessionHistoryResponse)
-    - apps/hub/src/components/hub/teach-genie/util.ts (pickerEvidenceFootnote + reviewEvidenceLead + landingEvidenceFootnote)
+    - apps/hub/src/components/hub/teach-genie/util.ts (pickerEvidenceFootnote + reviewEvidenceLead; run-003 retired landingEvidenceFootnote)
     - apps/hub/src/components/hub/teach-genie/teach-genie-client.tsx (flag state + prop threading)
     - apps/hub/src/components/hub/teach-genie/picker.tsx (footnote render)
     - apps/hub/src/components/hub/teach-genie/review-screen.tsx (evidence-lead render)
-    - apps/hub/src/components/hub/teach-genie/landing.tsx (run-002: the landing footnote render + prop)
+    - apps/hub/src/components/hub/teach-genie/landing.tsx (run-002: conditional render + prop; run-003: the footer <p> + prop REMOVED — no footnote at all)
     - apps/hub/src/components/hub/teach-genie/teach-genie-laws.test.ts (the copy law test)
     - apps/api/test/teach-me/fixtures.ts + apps/api/test/teach-me/behavioural.test.ts (fixture field + envelope assertions)
     - .syllabai/tasks/T-TEACHGENIE-008.yaml + .syllabai/receipts/T-TEACHGENIE-008/**

@@ -230,7 +230,7 @@ function ResourceRow({
           </span>
         )}
         <ChevronRight
-          className={`size-4 shrink-0 transition-opacity ${disabled ? "text-muted-foreground/30" : "text-muted-foreground/60"}`}
+          className={`size-4 shrink-0 transition-opacity ${disabled ? "text-muted-foreground/30" : "text-muted-foreground"}`}
           aria-hidden
         />
       </span>
@@ -240,7 +240,7 @@ function ResourceRow({
   const cls =
     "flex flex-col gap-0 rounded-md px-2 py-2 transition-colors " +
     (disabled
-      ? "cursor-not-allowed text-muted-foreground/60"
+      ? "cursor-not-allowed text-muted-foreground"
       : "hover:bg-muted hover:text-foreground");
   return (
     <li>
@@ -756,7 +756,14 @@ export function DashboardClient({
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+            {/* Base band needs an explicit shrinkable column: grid-cols-1 =
+                repeat(1, minmax(0,1fr)). Without it the implicit auto track
+                adopts the cards' nowrap truncate min-content (~394 px at a
+                390 px viewport) and the dashboard side-scrolls 20 px —
+                visual audit V-1, 2026-11-13. The sm/2xl bands are already
+                minmax(0,1fr); the terminator-law spans are sm:/2xl:-prefixed
+                so this base change cannot touch them. */}
             {mySubjects.map((c) => (
               <SubjectCard
                 key={c.slug}

@@ -19,10 +19,12 @@
   --font-sans: var(--app-font-sans);
   --font-mono: var(--app-font-mono);
   --font-display: var(--app-font-display);
-  /* T-HUB-AUDITFIX-1 run-003 — the sanctioned micro rung: 11px under
-     text-xs for badges/kickers/meta. Arbitrary px text sizes are retired;
-     anything smaller than 11px fails the review, not the build. */
-  --text-2xs: 0.6875rem;
+  /* audit-v3 T4 — micro rung lifted to the 12px legibility floor: 11px
+     is retired (~690 elements compiled to 11px, under the AA-legible
+     floor for badges/kickers/meta). text-2xs remains a distinct semantic
+     utility marking micro-copy; line-height keeps the text-xs rhythm.
+     Arbitrary px text sizes stay retired; <12px now fails the review. */
+  --text-2xs: 0.75rem;
   --text-2xs--line-height: 1rem;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -117,12 +119,12 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.541 0.238 264.7); /* SME brand blue #265bf6 */
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --secondary: #e5e5e5; /* audit-v3: split from --muted — hover/pressed surface. hover:bg-secondary/80 on white rows: dL* 2.8 -> 7.3; "filled" secondary buttons read as filled (L6) */
+  --secondary-foreground: oklch(0.205 0 0); /* 14.2:1 on the new secondary */
+  --muted: oklch(0.97 0 0); /* quiet fills — unchanged */
+  --muted-foreground: #5f5f5f; /* audit-v3: was oklch(0.556) = 4.73:1 on white -> 6.39:1; 5.9:1 on muted surfaces (was 4.34) */
+  --accent: #ebf2fe; /* audit-v3: split from --muted — selected/accent wash */
+  --accent-foreground: #183899; /* ink on the wash = 9.0:1 — same deep-ink family as run-004b's pill pair */
   /* run-004b — the MG/RD nav active-pill pair (RevisionDojo's
      #e1f3fe/#122731 is the strict template): a pale wash of the theme's own
      primary + an ink DEEPENED past the raw (62% primary + black) so the
@@ -195,12 +197,12 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.72 0.145 264.4); /* lighter SME blue for dark surfaces */
   --primary-foreground: oklch(0.145 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --secondary: #404040; /* audit-v3: split from --muted — dark hover surface. sec/80 over body: dL* +19.4, over card +15.8 */
+  --secondary-foreground: oklch(0.985 0 0); /* 9.9:1 on the new secondary */
+  --muted: oklch(0.269 0 0); /* unchanged */
+  --muted-foreground: oklch(0.708 0 0); /* unchanged — 6.9:1 on card, passes */
+  --accent: #081a35; /* audit-v3: split from --muted — navy selected wash */
+  --accent-foreground: #c9dcff; /* lightened ink on navy = 12.5:1 (run-004b dark pill pattern: ink lightens, not darkens) */
   /* run-004b — dark pill pair: deep tinted fill + LIGHTENED ink (MG's
      #002e5f/#46cbe3 template, derived per theme from the dark primary raw;
      ink at 50/50 with white — measured SME 6.3 / QG 4.6 / candy-shop 10.1 /
@@ -213,7 +215,7 @@
      matches --input below, so every dark hairline reads the same strength. */
   --border: oklch(1 0 0 / 15%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --ring: var(--primary); /* audit-v3: was gray oklch(0.556) — follow light mode's ring==primary; #76a1ff on dark bg = 7.9:1 (1.4.11) */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
