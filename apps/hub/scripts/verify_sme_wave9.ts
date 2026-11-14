@@ -1,13 +1,17 @@
 /**
  * ADR-039 wave-9 gate — the SME Revision-Notes picker layer. Tranche 1 (the
  * four-course CIE IGCSE maths family) + tranche 2 (the CIE A-level sciences-25
- * trio: biology 9700 / chemistry 9701 / physics 9702) — the W7 closeout
- * recommendation's build slices, worst tails first.
+ * trio: biology 9700 / chemistry 9701 / physics 9702) + tranche 3 (the
+ * Edexcel IGCSE maths pair: igcse-maths-b-16 4MB1 / igcse-maths-a-18-higher
+ * 4MA1 Higher) — the W7 closeout recommendation's build slices, worst tails
+ * first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
  * (buildSpecTreeIndex + smeRowOfQuestionSet + smeRowOfNote), extended to the
  * notes dimension — wave 9 is the first wave whose appends serve BOTH
- * selectors:
+ * selectors (tranche 3's b-16 is notes-only: its 65 SyllabAI past-paper sets
+ * keep their official spine homes by the smeRowOfQuestionSet null contract,
+ * asserted per-course by the fixtures setLaw):
  *
  *   1. spine intact   — official node family counts AND the official-node
  *                       digest (code/family/order/parents/title sha) match
@@ -48,7 +52,16 @@ interface RowFix { slug: string; title: string; corpusNotes: number; corpusSets:
 interface SecFix { i: number; slug: string; title: string; order: number; liveSubtopics: number; rows: RowFix[] }
 interface CourseFix {
   course: string; picker: string; code: string;
+  fetched?: string;
   spine: { officialNodes: number; families: Record<string, number>; officialNodeDigest: string };
+  // tranche-3 set-class law (the Edexcel maths pair): sets whose corpus
+  // sectionSlug is an official-home class (b-16's SyllabAI past-paper sets,
+  // the pdflane archive — NOT SME content) keep their official spine homes
+  // via the smeRowOfQuestionSet null contract (spec-tree.ts:246) and stay
+  // listed on the EQ selector through the smeActive Other-sets fallback;
+  // every REMAINING (topic) set resolves exactly once. Courses without
+  // setLaw keep the blanket tranche-1/2 law: ALL sets resolve.
+  setLaw?: { topicSets: number; officialHomeSets: number; officialHomeSectionSlugs: string[] };
   sections: SecFix[];
 }
 
@@ -70,7 +83,8 @@ interface Node {
 }
 
 // the live-only rows of record (teacher-only Mock Exams placeholder on 0580;
-// none on 0607; none on the sciences-25 trio) — mirrored verbatim as 0-note
+// none on 0607; none on the sciences-25 trio; SME past-paper placeholder
+// topics on the Edexcel maths-a tree) — mirrored verbatim as 0-note
 // 0-set rows, the wave-1/3 0-set precedent
 const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-maths-25-extended": new Set(["set-1-fl"]),
@@ -80,6 +94,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-a-level-biology-25": new Set(),
   "cie-a-level-chemistry-25": new Set(),
   "cie-a-level-physics-25": new Set(),
+  "igcse-maths-b-16": new Set(),
+  "igcse-maths-a-18-higher": new Set(["2023-june", "2023-june-r", "2023-november", "specimen"]),
 };
 
 for (const cf of FIXTURES.courses) {
@@ -200,21 +216,44 @@ for (const cf of FIXTURES.courses) {
   unNotes.length === 0
     ? ok(`all ${notes.length} notes resolve via smeRowOfNote (loose card empties)`)
     : fail(`${unNotes.length}/${notes.length} notes unresolved: ${unNotes.slice(0, 3).map((n) => n.noteId)}`);
-  // every set resolved (the EQ selector never hides a set)
-  const unSets = sets.filter((t) => !smeRowOfQuestionSet(t, index));
+  // set homes (the EQ selector never hides a set): the tranche-1/2 blanket
+  // law is every set resolves; under the tranche-3 set-class law the
+  // official-home sets resolve to null BY LAW (they keep their official
+  // spine homes, rendered via the smeActive Other-sets fallback) and every
+  // topic set resolves exactly once
+  const topicSets = cf.setLaw
+    ? sets.filter((t) => !cf.setLaw!.officialHomeSectionSlugs.includes(t.sectionSlug ?? ""))
+    : sets;
+  const homeSets = cf.setLaw
+    ? sets.filter((t) => cf.setLaw!.officialHomeSectionSlugs.includes(t.sectionSlug ?? ""))
+    : [];
+  if (cf.setLaw) {
+    (topicSets.length === cf.setLaw.topicSets && homeSets.length === cf.setLaw.officialHomeSets)
+      ? ok(`set classes: ${topicSets.length} topic sets on SME rows + ${homeSets.length} official-home sets (sectionSlug ${cf.setLaw.officialHomeSectionSlugs.join("|")})`)
+      : fail(`set-class counts drifted: topic ${topicSets.length} != ${cf.setLaw.topicSets} / official-home ${homeSets.length} != ${cf.setLaw.officialHomeSets}`);
+    const homeUnresolved = homeSets.filter((t) => smeRowOfQuestionSet(t, index) !== null);
+    homeUnresolved.length === 0
+      ? ok(`all ${homeSets.length} official-home sets keep their official spine homes (null contract)`)
+      : fail(`${homeUnresolved.length} official-home sets wrongly resolved onto SME rows: ${homeUnresolved.slice(0, 3).map((t) => t.slug)}`);
+  }
+  const unSets = topicSets.filter((t) => !smeRowOfQuestionSet(t, index));
   unSets.length === 0
-    ? ok(`all ${sets.length} sets resolve via smeRowOfQuestionSet`)
-    : fail(`${unSets.length}/${sets.length} sets unresolved: ${unSets.slice(0, 3).map((t) => t.slug)}`);
-  setsPlaced === sets.length
-    ? ok(`total sets placed: ${setsPlaced} (of ${sets.length})`)
-    : fail(`total placed ${setsPlaced} != ${sets.length}`);
+    ? ok(cf.setLaw
+        ? `all ${topicSets.length} topic sets resolve via smeRowOfQuestionSet`
+        : `all ${sets.length} sets resolve via smeRowOfQuestionSet`)
+    : fail(`${unSets.length}/${topicSets.length} topic sets unresolved: ${unSets.slice(0, 3).map((t) => t.slug)}`);
+  setsPlaced === topicSets.length
+    ? ok(`total sets placed: ${setsPlaced} (of ${sets.length}${cf.setLaw ? `; ${homeSets.length} official-home` : ""})`)
+    : fail(`total placed ${setsPlaced} != ${topicSets.length}`);
   notesPlaced === notes.length
     ? ok(`total notes placed: ${notesPlaced} (of ${notes.length})`)
     : fail(`total placed ${notesPlaced} != ${notes.length}`);
 
-  // single-match law: each slug touches exactly one row
+  // single-match law: each slug touches exactly one row (the set-side
+  // coverage check runs over TOPIC sets; official-home set slugs are
+  // by-law OFF the SME layer — assert they are exactly the uncovered ones)
   const noteSlugs = new Set(notes.filter((n) => n.topicSlug).map((n) => n.topicSlug as string));
-  const setSlugs = new Set(sets.map((t) => t.topicSlug));
+  const setSlugs = new Set(topicSets.map((t) => t.topicSlug));
   const rowSuffix = secs.flatMap((s) => s.subtopics.map((r) => r.code.split(":")[1] as string));
   const dupes = rowSuffix.filter((s, i) => rowSuffix.indexOf(s) !== i);
   dupes.length === 0
@@ -225,9 +264,16 @@ for (const cf of FIXTURES.courses) {
   noteMissing.length === 0
     ? ok(`all ${noteSlugs.size} note topicSlugs covered`)
     : fail(`${noteMissing.length} note slugs uncovered: ${noteMissing.slice(0, 3)}`);
-  setMissing.length === 0
-    ? ok(`all ${setSlugs.size} set topicSlugs covered`)
-    : fail(`${setMissing.length} set slugs uncovered: ${setMissing.slice(0, 3)}`);
+  const homeSlugs = new Set(homeSets.map((t) => t.topicSlug));
+  const setMissingAway = setMissing.filter((s) => !homeSlugs.has(s));
+  const homeOnLayer = [...homeSlugs].filter((s) => rowSuffix.includes(s));
+  cf.setLaw
+    ? (setMissingAway.length === 0 && homeOnLayer.length === 0
+        ? ok(`topic-set slugs covered; ${homeSlugs.size} official-home slugs correctly off the SME layer`)
+        : fail(`coverage law: uncovered topic-set slugs ${setMissingAway.slice(0, 3)} / official-home slugs on layer ${homeOnLayer.slice(0, 3)}`))
+    : (setMissing.length === 0
+        ? ok(`all ${setSlugs.size} set topicSlugs covered`)
+        : fail(`${setMissing.length} set slugs uncovered: ${setMissing.slice(0, 3)}`));
 
   // deep links + the official tree stays clean of SME codes
   const resolved = new Set(

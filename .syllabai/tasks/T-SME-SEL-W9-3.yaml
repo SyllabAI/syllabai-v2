@@ -1,0 +1,148 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-3
+  title: 'SME picker layer wave 9, tranche 3 — the Revision-Notes picker mirror
+    for the Edexcel IGCSE maths pair (igcse-maths-b-16 4MB1 /
+    igcse-maths-a-18-higher 4MA1 Higher; the #1006 merge record''s named
+    next-tranche queue: "igcse-maths-b-16 199 / igcse-maths-a-18-higher 191 /
+    cie-igcse-english-literature-21 173" — same build recipe, one coherent
+    Edexcel maths slice; first SME-aware selector-code amendment: the
+    smeMirror law + the honest Other-sets channel)'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 tranche 3 after tranche 2
+    #1006; the W1-W8 waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W9-2, T-SME-SEL-W9-1, T-SME-SEL-W8-1, T-SME-SEL-W7-1,
+    T-SME-SEL-W6-1, T-SME-SEL-W5-1, T-SME-SEL-W4-1, T-SME-SEL-W3-1,
+    T-SME-SEL-COSM-1, T-SME-SEL-W2-1, T-SME-SEL-W1-1]
+  scope:
+    allowed:
+    - apps/hub/content/igcse-maths-b-16/curriculum.json (+72
+      SME_REFERENCE nodes append-only: 10 section rows + 62 topic rows,
+      verbatim from the live Revision-Notes picker fetch 2026-11-14;
+      removal round-trip asserted byte-identical; the file's minified
+      single-line format detected and preserved byte-exactly — no
+      reformatting)
+    - apps/hub/content/igcse-maths-a-18-higher/curriculum.json (+69: 7+62)
+    - apps/hub/scripts/sme-wave9-fixtures.json (MERGED — the prior 7 course
+      blocks byte-preserved, asserted deep-equal by the builder; 17
+      sections / 124 rows appended; new per-course setLaw pin)
+    - apps/hub/scripts/verify_sme_wave9.ts (header + DRIFT_BY_COURSE rows
+      for the pair — a-18-higher carries the 4 live-only SME past-paper
+      placeholder topics 2023-june / 2023-june-r / 2023-november / specimen,
+      b-16 none; + the tranche-3 set-class law: official-home sets
+      (sectionSlug 'past-papers') keep their official spine homes by the
+      smeRowOfQuestionSet null contract, topic sets resolve exactly once)
+    - apps/hub/src/app/courses/[course]/exam-questions/page.tsx (the
+      tranche-3 selector-code amendment, disclosed: smeMirror = smeActive &&
+      smeAllRows.length > 0 — a notes-only SME layer (b-16: all 65 sets are
+      the SyllabAI pdflane past-paper archive, NOT SME content) keeps the
+      official EQ index instead of an empty mirror; the Other-sets channel
+      keys off SME resolution under the mirror so a partially-covered
+      course's official-home sets surface honestly — zero behavior change
+      on the existing 34 layered courses where every set resolves)
+    - apps/api/test/curriculum/bundle-seed.test.ts (DISCLOSED PIN-REFRESH,
+      the wave-6 run-003 class: T-MIG-135a/136a count contracts now count
+      OFFICIAL nodes only (provenanceTier != SME_REFERENCE) — exactly the
+      mapper/seeder's own W1/W2 class-2 exclusion, so the pins keep their
+      fail-close intent on the official spine; the SUBTOPIC-refuses
+      negative tests substitute official SUBTOPIC rows only — substituting
+      SME picker rows trips the mapper's earlier picker-shape guard (a
+      different error) instead of the grammar guard the pin tests; the SME
+      layer's own counts stay pinned by verify_sme_wave9's spine digests)
+    - .syllabai/tasks/T-SME-SEL-W9-3.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-3/run-001.md + lane artifacts + both worklogs
+      (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 4MB1/4MA1 spines (119/234 official nodes byte-untouched
+      — family counts + per-node digest pinned in the fixtures and asserted
+      by the gate; the minified JSON bytes verified round-trip identical)
+    - any set home, question content, note content, flashcard
+    - revision-notes/page.tsx (the W8 mirror law already serves notes
+      generically; no RN-side change needed)
+  evidence:
+  - baseline of record (both census engines at main 7c460e93): 106
+    note-bearing courses / 9,151 notes; resolved 3,400 (the 34 layered
+    courses); user-facing loose 5,651 — byte-identical to the #1006 merge
+    record's re-measure (PRs #1011/#1019/#1020 touched no note-bearing
+    content)
+  - tranche selection: the named next-tranche queue — user-facing ranks
+    1-2, one coherent Edexcel maths family: igcse-maths-b-16 199/199,
+    igcse-maths-a-18-higher 191/191; 390 notes, zero SME overlap
+  - live Revision-Notes picker fetches 2026-11-14 (polite curl,
+    __NEXT_DATA__, URLs of record taken from the corpus notes' own
+    sourceUrl): maths-b 10 sections/62 topics/199 subtopics; maths-a higher
+    7/62/191 — subtopics == corpus notes per course (199/199, 191/191), the
+    corpus was built 1:1 from the live tree
+  - bijection audit of record (lane w9t3_live_audit.py): 0 note slugs
+    missing, 0 topic-set slugs missing, 0 title mismatches, 0 note
+    sectionSlug mismatches, 0 duplicate topic slugs per course; live-only
+    drift rows exactly 4, all on maths-a (the SME past-paper placeholder
+    topics, wave-1/3 precedent) — b-16 has none
+  - SET-CLASS LAW OF RECORD (the tranche-3 wrinkle): b-16's 65 corpus sets
+    are SyllabAI past-paper sets (topicSlug 2018-06-4mb1-01..., sectionSlug
+    'past-papers', the pdflane archive — NOT SME content, no live RN
+    bijection duty); they keep their official spine homes via the
+    smeRowOfQuestionSet null contract (spec-tree.ts:246) and stay VISIBLE on
+    the EQ selector via the disclosed smeMirror law (a naive smeActive
+    render would empty the page — smeAllRows filters count>0 and every row
+    would be 0); maths-a's 58 topic sets are the clean 1:1 class and all
+    resolve
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS extended to 9 courses:
+    spine family counts + official-node digests intact (b-16 119
+    b81046df71cd8e1e / a-18 234 b6c48e937762d00b); 17 section rows + 124
+    topic rows all SME_REFERENCE verbatim; per-row CORPUS note+set counts
+    pinned (124 rows x 2 dimensions, set counts = topic-class only); all
+    390 notes resolve via smeRowOfNote; a-18 all 58 topic sets resolve +
+    b-16 all 65 official-home sets keep their official spine homes (the
+    null contract asserted in BOTH directions); drift rows exactly the
+    documented 4; deep links resolve; official tree.topics carries zero SME
+    codes; prior 7 fixture blocks byte-preserved (asserted by the builder)
+  - verify_sme_wave8 PASS (probe cie-as-chemistry-25, the tranche-2
+    rotation, untouched); wave1-5 + wave7 + cosmetics1 PASS; wire_r0 PASS
+    (2,574 placed / 0 unplaced, gen-row homes 14); corpus23a PASS; prebuild
+    chain PASS rc=0 (flashcard-sync, cie bundles, gradeb bundle,
+    subject-identity 106/106)
+  - bundle-seed.test.ts 64 pass / 0 fail AFTER the disclosed pin refresh
+    (the 4 tranche-3 fail-closes were the pins doing their job on the two
+    target courses; refresh = official-only counting, law intent kept);
+    api curriculum battery 101 pass / 0 fail
+  - hub tsc --noEmit rc=0 at the lane tree (with the page.tsx amendment)
+  - hub lib battery (src/lib) at the lane tree: fail set BYTE-EQUAL
+    (timing-stripped) to the pristine 7c460e93 detached-checkout baseline —
+    10 standing fails (T-UGM-RENDER-1 katex red + dual-run posture x6 +
+    store laws x4 — other lanes' surfaces; the tranche-2 record's 11 shrank
+    to 10 via #1011/#1019/#1020, requestPartRegrade fixed upstream), zero
+    new failures from this lane
+  - census re-measure at the lane tree (w9_sme_census.ts): resolved 3,400
+    -> 3,790 (+390 = the pair), layered 34 -> 36, user-facing loose 5,651
+    -> 5,261; targets LOOSE 0/0 (199/199 + 191/191 resolved);
+    rn_selector_census post-append: a-18 190/191 official-anchored,
+    b-16 197/199 (the residuals are official-spine loose notes the W8
+    mirror now serves — sidebar homes unchanged)
+  - KNOWN PRE-EXISTING debts disclosed NOT fixed here (zero contact with
+    this lane's files): verify_sme_wave6 2 failures 'spec points 34 != 36'
+    (RN-DEBRIS-11 run-023 class; W6-1 run-003 pin-refresh queued); the
+    standing T-UGM-RENDER-1 + dual-run + store-law lib fails (byte-equal
+    baseline, CI-green on the tip)
+  effect_of_record:
+  - the pair's /revision-notes selectors now mirror SaveMyExams' own
+    Revision-Notes organization verbatim with corpus-true counts; the
+    loose-notes cards empty (390 formerly-loose notes now have rows)
+  - maths-a's /exam-questions selector now mirrors the SME picker (58 topic
+    sets 1:1); maths-b's /exam-questions selector keeps its official
+    index — its 65 sets are the SyllabAI past-paper archive, not SME
+    content, and the smeMirror law renders them exactly as before (no
+    empty mirror, no vanishing, no double-listing)
+  - fleet-wide 36 layered courses / 3,790 resolved / user-facing loose
+    5,261; next-tranche queue re-measured at the lane tree (user-facing:
+    cie-igcse-english-literature-21 173, cie-a-level-accounting-21 159,
+    cie-a-level-economics-23 159, igcse-biology-19 142,
+    igcse-maths-a-18-foundation 139; both census engines re-measure per
+    tranche)
