@@ -1424,7 +1424,7 @@ export function TestBuilderClient({
           aria-label="No taught courses"
           className="mx-auto max-w-3xl rounded-lg border border-dashed p-10 text-center"
         >
-          <ClipboardList className="mx-auto size-8 text-muted-foreground/60" aria-hidden />
+          <ClipboardList className="mx-auto size-8 text-muted-foreground" aria-hidden />
           <p className="mt-3 font-medium">No classes with a question bank yet</p>
           <p className="mx-auto mt-1 max-w-sm text-sm leading-relaxed text-muted-foreground">
             The Test Builder opens from your classes — each class builds tests from its
@@ -1500,7 +1500,7 @@ export function TestBuilderClient({
           )}
           {courseTests.length === 0 ? (
             <div className="rounded-lg border border-dashed p-10 text-center">
-              <ClipboardList className="mx-auto size-8 text-muted-foreground/60" aria-hidden />
+              <ClipboardList className="mx-auto size-8 text-muted-foreground" aria-hidden />
               <p className="mt-3 font-medium">
                 No tests for {current?.label ?? "this class"} yet
               </p>

@@ -54,7 +54,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
             {review.strengths.map((s, i) => (
               <li key={i} className="border-l-2 border-emerald-500/50 pl-3 text-sm leading-relaxed">
                 <span className="text-muted-foreground">“{s.quote}”</span>
-                <span className="ml-1.5 text-2xs text-muted-foreground/60">
+                <span className="ml-1.5 text-2xs text-muted-foreground">
                   (your turn {s.messageSeq})
                 </span>
               </li>
@@ -184,7 +184,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
         </Section>
       )}
 
-      <p className="text-center text-2xs text-muted-foreground/60">
+      <p className="text-center text-2xs text-muted-foreground">
         Review generated {new Date(review.generatedAt).toLocaleString()}
       </p>
     </div>

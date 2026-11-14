@@ -544,7 +544,7 @@ export function AssistantClient({
               <span
                 key={m.value}
                 title="Question contexts only — attempt-gated in production"
-                className="cursor-not-allowed rounded-full border border-dashed px-2.5 py-0.5 text-2xs text-muted-foreground/60"
+                className="cursor-not-allowed rounded-full border border-dashed px-2.5 py-0.5 text-2xs text-muted-foreground"
               >
                 {m.label}
               </span>

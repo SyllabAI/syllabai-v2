@@ -305,7 +305,7 @@ export function LoginClient() {
             <div className="flex items-center justify-between">
               <Label htmlFor="login-password">Password</Label>
               <span
-                className="cursor-not-allowed text-xs text-muted-foreground/60"
+                className="cursor-not-allowed text-xs text-muted-foreground"
                 aria-disabled="true"
                 tabIndex={0}
                 title="Self-service password reset isn't available in the pilot — ask your teacher or administrator to reset it."

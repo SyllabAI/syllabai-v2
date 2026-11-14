@@ -244,7 +244,7 @@ function GeographyView({
                               >
                                 <span
                                   className={`min-w-0 text-xs ${
-                                    bare ? "text-muted-foreground/60" : "text-foreground"
+                                    bare ? "text-muted-foreground" : "text-foreground"
                                   }`}
                                 >
                                   <span className="font-mono">{s.label}</span> · {s.title}
@@ -254,7 +254,7 @@ function GeographyView({
                                 </span>
                                 <span className="flex shrink-0 items-center gap-3">
                                   {bare ? (
-                                    <span className="text-2xs uppercase tracking-wide text-muted-foreground/60">
+                                    <span className="text-2xs uppercase tracking-wide text-muted-foreground">
                                       no coverage yet
                                     </span>
                                   ) : null}

@@ -130,7 +130,7 @@ export function TeachMeWizard({ topics, onStart, busy }: TeachMeWizardProps) {
                   ? "border-primary/60 bg-primary/10 font-medium text-primary"
                   : i < step
                     ? "border-muted-foreground/20 text-muted-foreground"
-                    : "border-muted-foreground/15 text-muted-foreground/60"
+                    : "border-muted-foreground/15 text-muted-foreground"
               }`}
             >
               {i + 1}. {label}

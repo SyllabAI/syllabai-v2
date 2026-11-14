@@ -409,7 +409,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
                               {p.statement.items ? (
                                 <div className="min-w-0 flex-1 text-sm leading-relaxed">
                                   {p.statement.lead && <p>{p.statement.lead}</p>}
-                                  <ul className="ml-4 mt-1 list-disc space-y-1 marker:text-muted-foreground/60">
+                                  <ul className="ml-4 mt-1 list-disc space-y-1 marker:text-muted-foreground">
                                     {p.statement.items.map((lines, i) => (
                                       <li key={i}>
                                         {lines.map((line, j) =>
