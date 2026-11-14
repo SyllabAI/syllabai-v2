@@ -11,6 +11,11 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p13": {
+   "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) + A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
+   "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 202,
+  "rowsApproved": 246,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -42,6 +47,17 @@
     "ruledUtc": "2026-11-13T06:48:16Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
     "rowsApproved": 202,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 44,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2268,6 +2284,490 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0ozBXWyiz1Y",
+   "title": "Trigonometric Functions - The Four Quadrants | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=0ozBXWyiz1Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0ytjkYTJSo0",
+   "title": "Quadratics | The Quadratic Formula | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=0ytjkYTJSo0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4sMorY0uHZk",
+   "title": "The Second Derivative | Differentiation | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=4sMorY0uHZk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5dlpRxVvalo",
+   "title": "Completing the Square Part 1 | Quadratics | A Level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=5dlpRxVvalo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7TRTKP8-Atk",
+   "title": "Functions | Introduction to functions | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=7TRTKP8-Atk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7ryJYlKzxKg",
+   "title": "Trigonometric Functions  - The Four Quadrants | Trigonometry | A Level | Maths",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=7ryJYlKzxKg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7wMlT0W7NaQ",
+   "title": "Inverse Functions | Functions | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=7wMlT0W7NaQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8DrNn19JgQc",
+   "title": "Quadratic Inequalities | Quadratics | A Level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=8DrNn19JgQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Be3SUIlBLr4",
+   "title": "The Unit Circle & Trigonometric Identities | Trigonometry | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Be3SUIlBLr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Dsw87-Lg4CU",
+   "title": "The Unit Circle & Trigonometric Identities | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=Dsw87-Lg4CU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ELgklDiyq5k",
+   "title": "Area of a Sector | Circular Measure | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ELgklDiyq5k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EahV8_z6aEg",
+   "title": "Introduction to Functions | Functions | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=EahV8_z6aEg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "F5b7KVQp4OE",
+   "title": "The Unit Circle and Trigonometric Identities | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=F5b7KVQp4OE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ftn2naH4tZ8",
+   "title": "Introduction to Derivatives | Differentiation | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=Ftn2naH4tZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HrcWWjgbSs0",
+   "title": "Values of Trigonometric Functions | Trigonometry | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=HrcWWjgbSs0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IGKrX2TUrzU",
+   "title": "The Quadratic Formula | Quadratics | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=IGKrX2TUrzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JvfV8WdiHzs",
+   "title": "Restricted Domains | Functions | A Level | Maths",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=JvfV8WdiHzs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KrMAAj5kzpU",
+   "title": "Values of Trigonometric Functions | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=KrMAAj5kzpU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L6V6BwY1-48",
+   "title": "Functions | Inverse functions | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=L6V6BwY1-48",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MLtRJS6Zr3Y",
+   "title": "Volume of Revolution Around the Y Axis | Integration | A Level Math P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=MLtRJS6Zr3Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MSlB088ILv4",
+   "title": "Volume of Revolution Around the X Axis | Integration | A Level Math P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=MSlB088ILv4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NB_FG8kqjQ0",
+   "title": "Inverse Trigonometric Functions  | Trigonometry | A Level | Maths",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=NB_FG8kqjQ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NMs8aeuyALw",
+   "title": "Values of Trigonometric Functions | Trigonometry | A Level Math P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=NMs8aeuyALw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P-XYFQp1OXQ",
+   "title": "Inverse Trigonometric Functions | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=P-XYFQp1OXQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QivNCEvhATc",
+   "title": "Area of a Sector | Circular Measure | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=QivNCEvhATc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RJywCd7a4V0",
+   "title": "Functions | Introduction to Functions | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=RJywCd7a4V0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SJhbFic1sDA",
+   "title": "Differentiation of Parametric Equations: Exponential Function | Differentiation | A Level Math 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=SJhbFic1sDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TRszEUKZdEY",
+   "title": "Intro to Derivatives | Differentiation | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=TRszEUKZdEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XeBwqj4_MGk",
+   "title": "AS Maths P1 | Differentiation",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=XeBwqj4_MGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "b7HpJLkArSU",
+   "title": "Jun 2022 Paper 11 | Past Paper Solution | A level Math P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=b7HpJLkArSU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cPXwQCUZnkA",
+   "title": "Completing the Square Part 1 | Quadratics | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=cPXwQCUZnkA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fFVvutD7oUg",
+   "title": "Area of a Sector | Circular Measure | A Level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=fFVvutD7oUg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "g_Uj2kY3PbA",
+   "title": "Conversion between Radians and Degrees | Circular Measure | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=g_Uj2kY3PbA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "i6SjjWJZ2RA",
+   "title": "Completing the Square Part 1 | Quadratics | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=i6SjjWJZ2RA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ied2xuo7XMc",
+   "title": "Rules of Integration | Integration | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ied2xuo7XMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "j3BgqKRnapA",
+   "title": "Graphs of Trigonometric Functions | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=j3BgqKRnapA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lKPW9xMvyeE",
+   "title": "The radian, arc length | Circular Measure | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=lKPW9xMvyeE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nLsqpkl5AUo",
+   "title": "Restricted Domains | Functions | A Level Maths P1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=nLsqpkl5AUo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nYhTQ0jVSSo",
+   "title": "Inverse Trigonometric Functions | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=nYhTQ0jVSSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "otYCxIzkQDY",
+   "title": "Trigonometric functions: The 4 Quadrants | Trigonometry | A Level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=otYCxIzkQDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pmYYQGT3u-s",
+   "title": "Rules of Integration | Integration | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=pmYYQGT3u-s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pv__PnZw0sU",
+   "title": "Indefinite Integrals | Integration | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=pv__PnZw0sU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rfTJNbt5RcI",
+   "title": "The Quadratic Formula | Quadratics | A Level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=rfTJNbt5RcI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zpyQPHhB5tg",
+   "title": "The Radian, Arc Length | Circular Measure | A level Maths P1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=zpyQPHhB5tg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -6097,20 +6597,822 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-pure-1"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "b7HpJLkArSU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"Jun 2022 Paper 11 | Past Paper Solution | A level Math P1 9709\"; paper 1 + session 'Jun 2022' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "pmYYQGT3u-s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8.1",
+    "1.8.2",
+    "1.8.3",
+    "1.8.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "7ryJYlKzxKg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "NB_FG8kqjQ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "HrcWWjgbSs0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "ELgklDiyq5k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Circular measure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "lKPW9xMvyeE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Circular measure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "JvfV8WdiHzs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Functions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "L6V6BwY1-48",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Functions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "RJywCd7a4V0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Functions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "7TRTKP8-Atk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Functions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "0ytjkYTJSo0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Quadratics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "XeBwqj4_MGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1",
+    "1.7.2",
+    "1.7.3",
+    "1.7.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "NMs8aeuyALw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "F5b7KVQp4OE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "P-XYFQp1OXQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "0ozBXWyiz1Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "nLsqpkl5AUo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Functions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "KrMAAj5kzpU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "Dsw87-Lg4CU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "IGKrX2TUrzU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Quadratics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "ied2xuo7XMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8.1",
+    "1.8.2",
+    "1.8.3",
+    "1.8.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "7wMlT0W7NaQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Functions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "cPXwQCUZnkA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Quadratics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "TRszEUKZdEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1",
+    "1.7.2",
+    "1.7.3",
+    "1.7.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "QivNCEvhATc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Circular measure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "Ftn2naH4tZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1",
+    "1.7.2",
+    "1.7.3",
+    "1.7.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "pv__PnZw0sU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8.1",
+    "1.8.2",
+    "1.8.3",
+    "1.8.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "Be3SUIlBLr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "EahV8_z6aEg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Functions' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "i6SjjWJZ2RA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Quadratics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "fFVvutD7oUg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Circular measure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "g_Uj2kY3PbA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Circular measure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "zpyQPHhB5tg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Circular measure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "4sMorY0uHZk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1",
+    "1.7.2",
+    "1.7.3",
+    "1.7.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "MLtRJS6Zr3Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8.1",
+    "1.8.2",
+    "1.8.3",
+    "1.8.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "SJhbFic1sDA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7.1",
+    "1.7.2",
+    "1.7.3",
+    "1.7.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "MSlB088ILv4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.8.1",
+    "1.8.2",
+    "1.8.3",
+    "1.8.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "8DrNn19JgQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Quadratics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "j3BgqKRnapA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "otYCxIzkQDY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "nYhTQ0jVSSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.5.4",
+    "1.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "rfTJNbt5RcI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Quadratics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "5dlpRxVvalo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Quadratics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 34,
-  "specPointsMapped": 3,
-  "specPointsUnmapped": 31,
-  "videosTotal": 202,
-  "videosMapped": 202,
+  "specPointsMapped": 25,
+  "specPointsUnmapped": 9,
+  "videosTotal": 246,
+  "videosMapped": 246,
   "videosUnmapped": 0,
-  "mappingRows": 202,
+  "mappingRows": 246,
   "byConfidence": {
-   "high": 199,
+   "high": 200,
    "medium": 3,
-   "low": 0
+   "low": 43
   }
  },
  "inputs": {
@@ -6123,7 +7425,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-pure-1/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-pure-1/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.400Z"
+ "generatedUtc": "2026-11-14T19:16:03.944Z"
 }

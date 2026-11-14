@@ -11,6 +11,11 @@
    "provider": "A Level Business | Alt Academy (CIE 9609 AS/A2 unit-content lesson series) + The Teaching Student (CIE 9609 session-paper predictions with machine-checkable codes)",
    "method": "A Level Business | Alt Academy (CIE 9609 AS/A2 unit-content lesson series) flat-enumerated 2026-11-13T14:05:00Z; The Teaching Student (CIE 9609 session-paper predictions with machine-checkable codes) flat-enumerated 2026-11-13T14:05:00Z; routing: session/paper-code Tier B anchors + distinctive-token Tier A with topic-lecture (verbatim/multi-uniq/title-token/title-pair gates), section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-14T14:48:56Z"
+  },
+  "p13": {
+   "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus)",
+   "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"run P12\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"run P12\")",
   "evidenceBasis": "Identity: oEmbed sweep 119/119 author channel == channel-of-record via author_url UC id (0 mismatch, 0 dead). Tier B: session/paper codes regex-verified in titles (9609/42|22|12 O/N/26 predictions; 8021 GP session papers). Tier A: deduped distinctive-token binds (df<=3) then four-gate topic-lecture class (verbatim / multi-uniq / title-token / title-pair) and N.M section-marker narrowing over EVERY routed pair; degenerate single-generic-token binds (e.g. \"issues\"/\"changing\"/\"rural\") re-adjudicated to honest skips on review; technique/guidance registers and generic mentions skipped with reasons (304 ledgered in work/p12/skips.json); out-of-lane registers (IGCSE business/geo/EM, 0460/0450/0680) skipped as covered-or-out-of-scope.",
-  "rowsApproved": 12,
+  "rowsApproved": 50,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -31,6 +36,17 @@
     "ruledUtc": "2026-11-14T14:48:56Z",
     "evidenceBasis": "Identity: oEmbed sweep 119/119 author channel == channel-of-record via author_url UC id (0 mismatch, 0 dead). Tier B: session/paper codes regex-verified in titles (9609/42|22|12 O/N/26 predictions; 8021 GP session papers). Tier A: deduped distinctive-token binds (df<=3) then four-gate topic-lecture class (verbatim / multi-uniq / title-token / title-pair) and N.M section-marker narrowing over EVERY routed pair; degenerate single-generic-token binds (e.g. \"issues\"/\"changing\"/\"rural\") re-adjudicated to honest skips on review; technique/guidance registers and generic mentions skipped with reasons (304 ledgered in work/p12/skips.json); out-of-lane registers (IGCSE business/geo/EM, 0460/0450/0680) skipped as covered-or-out-of-scope.",
     "rowsApproved": 12,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 38,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -167,6 +183,424 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "A Level Business | Alt Academy (CIE 9609 AS/A2 unit-content lesson series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0SVa3d7Tg4c",
+   "title": "SWOT - 2 | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=0SVa3d7Tg4c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0hWE7YDLRHI",
+   "title": "Business Strategy | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=0hWE7YDLRHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "52YG5gILpr4",
+   "title": "Privatisation | External Influences on Business Activity | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=52YG5gILpr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "62KIKekQwL0",
+   "title": "Price Elasticity of Demand | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=62KIKekQwL0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7_hfHMtvHDw",
+   "title": "Critical Path Analysis | Operations Strategy |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=7_hfHMtvHDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8oihpjFet1A",
+   "title": "Functional Structures | Organizational Structure |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=8oihpjFet1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9QCRP-i4vHI",
+   "title": "Management's Role in Communication | Business Communication |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=9QCRP-i4vHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AUjwlePUojA",
+   "title": "What is communication | Business communication | A Level | Business",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=AUjwlePUojA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DIkIhgPZj-M",
+   "title": "Net Present Value Calculation | Business 9609 | A2 Level CAIE",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=DIkIhgPZj-M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Fea3r_gix0U",
+   "title": "Exporting | Marketing Strategy |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=Fea3r_gix0U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IsNdz8giEps",
+   "title": "Statement of Profit or Loss | Financial Statements | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=IsNdz8giEps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "K4gezQqbnY4",
+   "title": "Marketing Plan | Marketing Strategy |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=K4gezQqbnY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Lvyt51iXqE4",
+   "title": "Blue Ocean Strategy | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=Lvyt51iXqE4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "M4Am5MQylWM",
+   "title": "Levels of Business Activity | Business Structures |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=M4Am5MQylWM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "OmFEGjJtp_0",
+   "title": "Ansoff Matrix | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=OmFEGjJtp_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PdtK4IKhOE0",
+   "title": "CAIE A Level Business 9609 | Paper 33 Oct/Nov 2022 Solved | Step-by-Step with Exam Tips",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=PdtK4IKhOE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QoTKQMPvBz0",
+   "title": "Leadership | Leadership |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=QoTKQMPvBz0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RMkgL-Z7qnw",
+   "title": "International Decision | Location and Scale |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=RMkgL-Z7qnw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SI2q4HQjQTI",
+   "title": "CAIE A Level Business 9609 | Paper 42 Oct/Nov 2024 Solved",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=SI2q4HQjQTI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Uiy_pzIyxD4",
+   "title": "SWOT - 1 | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=Uiy_pzIyxD4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WWi0WzFq47k",
+   "title": "Force Field Analysis | Business Strategy | A Level | Business",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=WWi0WzFq47k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZXoFIRhe44M",
+   "title": "Moving Average - Centred Moving Average | Marketing Analysis | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ZXoFIRhe44M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_yTF3aTZ8T4",
+   "title": "Core Competencies | Business Strategy  |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=_yTF3aTZ8T4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dp-9SUIvxDE",
+   "title": "PESTEL Analysis | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=dp-9SUIvxDE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eaD3gm74qu8",
+   "title": "Barriers and Channels of Communication | Business Communication |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=eaD3gm74qu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gJiFwj5bdnk",
+   "title": "Corporate Culture | Business Strategy  |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=gJiFwj5bdnk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jdh_HrXguFY",
+   "title": "Emotional intelligence | Leadership | A Level | Business",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=jdh_HrXguFY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kPAWLGuoo74",
+   "title": "Net Present Value - Calculation |  Investment Appraisal | A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=kPAWLGuoo74",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mZtiNOeHQs0",
+   "title": "Importance and Drawbacks of CSR Practices | External Influences on Business Acitivity | A Level",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=mZtiNOeHQs0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ms19NwWU-6s",
+   "title": "Force Field Analysis | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ms19NwWU-6s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nR6_pyymfeA",
+   "title": "Corporate Social Responsibility | External Influences on Business Acitivity  |  ALevel Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=nR6_pyymfeA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ocSoT8eSlGM",
+   "title": "The Business Cycle | External Influences on Business Activity | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ocSoT8eSlGM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sTSFQ6bHNV4",
+   "title": "CAIE A Level Business 9609 | Paper 31 Oct/Nov 2024 | Selected Questions Solved",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=sTSFQ6bHNV4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tGdKX9_PhLE",
+   "title": "Enterprise Resource Planning | Operations Strategy |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=tGdKX9_PhLE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "thqBh82Xx7E",
+   "title": "Amending the Income Statement | Financial Statements | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=thqBh82Xx7E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tpii2qBdBrI",
+   "title": "Scale of Operations | Location and Scale |  A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=tpii2qBdBrI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uD-0d0BkCMQ",
+   "title": "Process and Importance of Strategic Management | Business Strategy | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=uD-0d0BkCMQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wkzAMZH-b-g",
+   "title": "Introduction to Investment Appraisal |  Investment Appraisal | A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=wkzAMZH-b-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -354,20 +788,670 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"run P12\")",
    "reviewedUtc": "2026-11-14T14:48:56Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-business-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "SI2q4HQjQTI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"CAIE A Level Business 9609 | Paper 42 Oct/Nov 2024 Solved\"; paper 4 + session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-business-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "sTSFQ6bHNV4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"CAIE A Level Business 9609 | Paper 31 Oct/Nov 2024 | Selected Questions Solved\"; paper 3 + session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-business-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "PdtK4IKhOE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"CAIE A Level Business 9609 | Paper 33 Oct/Nov 2022 Solved | Step-by-Step with Exam Tips\"; paper 3 + session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "RMkgL-Z7qnw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1",
+    "9.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Location and scale' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "kPAWLGuoo74",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.1",
+    "10.3.2",
+    "10.3.3",
+    "10.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "wkzAMZH-b-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.1",
+    "10.3.2",
+    "10.3.3",
+    "10.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "7_hfHMtvHDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.1",
+    "9.3.2",
+    "9.3.3",
+    "9.3.4",
+    "9.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Operations strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "tGdKX9_PhLE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.3.1",
+    "9.3.2",
+    "9.3.3",
+    "9.3.4",
+    "9.3.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Operations strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "tpii2qBdBrI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1",
+    "9.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Location and scale' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "Fea3r_gix0U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.1",
+    "8.2.2",
+    "8.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Marketing strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "K4gezQqbnY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.1",
+    "8.2.2",
+    "8.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Marketing strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "QoTKQMPvBz0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.3.1",
+    "7.3.2",
+    "7.3.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Leadership' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "9QCRP-i4vHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.1",
+    "7.2.2",
+    "7.2.3",
+    "7.2.4",
+    "7.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business communication' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "eaD3gm74qu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.1",
+    "7.2.2",
+    "7.2.3",
+    "7.2.4",
+    "7.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business communication' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "8oihpjFet1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 7.1.2 'Types of structure: functional, hierarchical (flat and narro' via token(s) ['functional', 'structure', 'structures'] (df 5); A2/strategy register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "gJiFwj5bdnk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "_yTF3aTZ8T4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "mZtiNOeHQs0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.1.3 'Social and demographic: • the impact of and issues associate' via token(s) ['csr', 'practices'] (df 2); A2/strategy register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "nR6_pyymfeA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.4.1 'Business objectives in the private sector and public sector:' via token(s) ['corporate', 'responsibility', 'social'] (df 4); A2/strategy register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "52YG5gILpr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1",
+    "6.1.2",
+    "6.1.3",
+    "6.1.4",
+    "6.1.5",
+    "6.1.6",
+    "6.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'External influences on business activity' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "M4Am5MQylWM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 7.1.2 'Types of structure: functional, hierarchical (flat and narro' via token(s) ['levels', 'structures'] (df 2); A2/strategy register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "jdh_HrXguFY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.3.1",
+    "7.3.2",
+    "7.3.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Leadership' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "AUjwlePUojA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.2.1",
+    "7.2.2",
+    "7.2.3",
+    "7.2.4",
+    "7.2.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business communication' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "WWi0WzFq47k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "Uiy_pzIyxD4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "uD-0d0BkCMQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "0hWE7YDLRHI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "0SVa3d7Tg4c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "62KIKekQwL0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "IsNdz8giEps",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1",
+    "10.1.2",
+    "10.1.3",
+    "10.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Financial statements' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "dp-9SUIvxDE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "DIkIhgPZj-M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 10.3.3 'Discounted cash flow method: net present value (NPV): • the ' via token(s) ['calculation', 'net', 'present', 'value'] (df 11); A2/strategy register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "ZXoFIRhe44M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.1",
+    "8.1.2",
+    "8.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Marketing analysis' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "ms19NwWU-6s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "Lvyt51iXqE4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "ocSoT8eSlGM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1",
+    "6.1.2",
+    "6.1.3",
+    "6.1.4",
+    "6.1.5",
+    "6.1.6",
+    "6.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'External influences on business activity' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "OmFEGjJtp_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Business strategy' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "thqBh82Xx7E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1",
+    "10.1.2",
+    "10.1.3",
+    "10.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Financial statements' — section points bound at the disclosed title-only bar; A2 register; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 116,
-  "specPointsMapped": 8,
-  "specPointsUnmapped": 108,
-  "videosTotal": 12,
-  "videosMapped": 12,
+  "specPointsMapped": 44,
+  "specPointsUnmapped": 72,
+  "videosTotal": 50,
+  "videosMapped": 50,
   "videosUnmapped": 0,
-  "mappingRows": 12,
+  "mappingRows": 50,
   "byConfidence": {
-   "high": 1,
-   "medium": 10,
-   "low": 1
+   "high": 4,
+   "medium": 14,
+   "low": 32
   }
  },
  "inputs": {
@@ -380,7 +1464,13 @@
    "path": "Videos/drafts/cie-a-level-business-23/video-map.draft.external-p12.json",
    "task": "T-VIDEOMAP-P12 (narrow CIE cluster lane: 9609 business / 9696 geography / 8291 EM / 8021 GP)",
    "reviewAppliedUtc": "2026-11-14T14:48:56Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-business-23/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.523Z"
+ "generatedUtc": "2026-11-14T19:16:03.926Z"
 }

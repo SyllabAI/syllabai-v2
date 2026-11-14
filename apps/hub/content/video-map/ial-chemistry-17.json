@@ -24,7 +24,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 70,
+  "rowsApproved": 99,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -35,7 +35,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 9,
+    "rowsApproved": 38,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -314,6 +314,325 @@
    "oembedAuthor": "freesciencelessons (uploads-playlist + thumbnail liveness)",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z",
    "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "BXE8wJnFA4Q",
+   "title": "Energy Changes | Chemical Energetics | A level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=BXE8wJnFA4Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FyV4ZTLlxPM",
+   "title": "Trends in Electron Affinity | Chemical Energetics | A Level | Chemistry",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=FyV4ZTLlxPM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IT1a947ukpI",
+   "title": "Electrochemistry 2: The Standard Hydrogen Electrode | Electrochemistry | CAIE A Level Chemistry 9701",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=IT1a947ukpI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KSaNogGGoZE",
+   "title": "Introduction to Transition Elements | Transition Elements | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=KSaNogGGoZE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KyBpJKcd550",
+   "title": "Calculating Solubility from Ksp | Equilibria | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=KyBpJKcd550",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MEPdip_GiWY",
+   "title": "Buffers | Equilibria | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=MEPdip_GiWY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NUeXvUo_gYQ",
+   "title": "Electrochemistry 1: Redox and Electrochemical Cells | Electrochemistry | CAIE A Level Chemistry 9701",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=NUeXvUo_gYQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ONZQJmVGuH0",
+   "title": "Nernst equation | Electrochemistry | A Level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=ONZQJmVGuH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T-Nnq8y4DuE",
+   "title": "Electrophilic Substitution | Arenes and Halogen Compounds | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=T-Nnq8y4DuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TRMi_0pvyRM",
+   "title": "Enthalpies Of Atomisation | Chemical Energetics | A Level 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=TRMi_0pvyRM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "V7NZBWjgBw0",
+   "title": "Shapes of Complexes | Transition Elements | A Level | Chemistry",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=V7NZBWjgBw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VH02F324PPQ",
+   "title": "Born–Haber Cycle 1 | Chemical Energetics | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=VH02F324PPQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X6SDjrz3b08",
+   "title": "Predicting Entropy Change | Chemical Energetics | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=X6SDjrz3b08",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XCBj796CvQg",
+   "title": "The d-Block and Transition Elements | Transition Elements | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=XCBj796CvQg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZPWul8WLmQg",
+   "title": "Structure of Benzene | Arenes and Halogen Compounds | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ZPWul8WLmQg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_caVfNDbggk",
+   "title": "D Block Elements | Transition Elements | A Level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=_caVfNDbggk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_vHi0bJUKzE",
+   "title": "D Orbitals | Transition Elements | A Level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=_vHi0bJUKzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ePoySEtJdjI",
+   "title": "Amines | Nitrogen Compounds | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ePoySEtJdjI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "g-AfTe6_erY",
+   "title": "Bond Enthalpies and Hess' Cycle | Chemical Energetics | A Level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=g-AfTe6_erY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "g7Qq_B_jy2E",
+   "title": "Lattice Enthalpies | Chemical Energetics | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=g7Qq_B_jy2E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gq8rbrylTNQ",
+   "title": "Born Haber cycle 1 | Chemical Energetics | A Level | Chemistry",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=gq8rbrylTNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ib1YWJxPc00",
+   "title": "Lattice Energy Worked Examples 3 | Chemical Energetics | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ib1YWJxPc00",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kqu40VO3dBM",
+   "title": "Molecular Polarity | Chemical Bonding | A Level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=kqu40VO3dBM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oMzaUnp1aRQ",
+   "title": "Polymerisation 1 | Polymerisation | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=oMzaUnp1aRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qAFPmhQrKa8",
+   "title": "Brønsted–Lowry Acids and Bases | Equilibria | CAIE A Level Chemistry 9701 (A2)",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=qAFPmhQrKa8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "q_IWSpmsaoU",
+   "title": "Redox in Terms of Oxidation States | Electrochemistry | A Level | Chemistry",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=q_IWSpmsaoU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "y7PgkZZ8OIk",
+   "title": "Measuring Enthalpy of Combustion | Chemical Energetics | A Level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=y7PgkZZ8OIk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yPO1iglnVSo",
+   "title": "Hess' Cycle for Formation Enthalpies | Chemical Energetics | A Level Chemistry 9701",
+   "provider": "alt-academy-chemistry",
+   "watchUrl": "https://www.youtube.com/watch?v=yPO1iglnVSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Chemistry | Alt Academy (CIE 9701 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yzLPqbxGSyY",
+   "title": "Intermolecular Forces: Polarity 2 | Chemical Bonding | A Level | Chemistry",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=yzLPqbxGSyY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   },
   {
    "id": "07V9FlJy7po",
@@ -1315,6 +1634,50 @@
    }
   },
   {
+   "video": "yzLPqbxGSyY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2",
+    "3.21",
+    "7.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical bonding' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "kqu40VO3dBM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2",
+    "3.21",
+    "7.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical bonding' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "4HS6D0hTzdg",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1323,6 +1686,259 @@
    ],
    "confidence": "medium",
    "evidence": "title names exothermic and endothermic reactions (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "FyV4ZTLlxPM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gq8rbrylTNQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "X6SDjrz3b08",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ib1YWJxPc00",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VH02F324PPQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "g7Qq_B_jy2E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BXE8wJnFA4Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TRMi_0pvyRM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "g-AfTe6_erY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "yPO1iglnVSo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "y7PgkZZ8OIk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "12.16",
+    "12.18",
+    "12.7",
+    "6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemical energetics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1355,6 +1971,90 @@
    }
   },
   {
+   "video": "q_IWSpmsaoU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.5",
+    "8.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electrochemistry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "IT1a947ukpI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.5",
+    "8.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electrochemistry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NUeXvUo_gYQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.5",
+    "8.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electrochemistry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ONZQJmVGuH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "16.5",
+    "8.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electrochemistry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "ACIhhP0rL4Y",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1363,6 +2063,46 @@
    ],
    "confidence": "low",
    "evidence": "title 'Covalent Bonding and Expansion of the Octet' names the expanded-octet spec 3.4.2 (SO2, PCl5 named in-spec — verified); the 3.7.1 ionic-diagram bind is wrong — trimmed (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "T-Nnq8y4DuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.7"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Halogen compounds' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ZPWul8WLmQg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.7"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Halogen compounds' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1415,6 +2155,69 @@
    }
   },
   {
+   "video": "KyBpJKcd550",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.5",
+    "14.18"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Equilibria' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MEPdip_GiWY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.5",
+    "14.18"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Equilibria' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "qAFPmhQrKa8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "13.5",
+    "14.18"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Equilibria' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "EUD33h9V9w4",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1423,6 +2226,146 @@
    ],
    "confidence": "medium",
    "evidence": "title names formation of haloalkanes from alcohols (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oMzaUnp1aRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "15.15"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Polymerisation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "V7NZBWjgBw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemistry of transition elements' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "XCBj796CvQg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemistry of transition elements' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KSaNogGGoZE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemistry of transition elements' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_caVfNDbggk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemistry of transition elements' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_vHi0bJUKzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "17.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Chemistry of transition elements' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-chemistry-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ePoySEtJdjI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "19.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Nitrogen compounds' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-chemistry-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2500,16 +3443,16 @@
  ],
  "coverage": {
   "specPointsTotal": 319,
-  "specPointsMapped": 34,
-  "specPointsUnmapped": 285,
-  "videosTotal": 70,
-  "videosMapped": 70,
+  "specPointsMapped": 44,
+  "specPointsUnmapped": 275,
+  "videosTotal": 99,
+  "videosMapped": 99,
   "videosUnmapped": 0,
-  "mappingRows": 70,
+  "mappingRows": 99,
   "byConfidence": {
    "high": 17,
    "medium": 23,
-   "low": 30
+   "low": 59
   }
  },
  "inputs": {
@@ -2544,5 +3487,5 @@
    "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.768Z"
+ "generatedUtc": "2026-11-14T19:16:04.175Z"
 }

@@ -11,6 +11,11 @@
    "provider": "AR Accounting (@AR Accounting — CIE IGCSE/O Level/A Level accounting 0452/9706) + Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel)",
    "method": "AR Accounting (@AR Accounting — CIE IGCSE/O Level/A Level accounting 0452/9706) flat-enumerated 2026-11-13T12:53:11Z; Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) flat-enumerated 2026-11-13T12:53:09Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p13": {
+   "provider": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) + Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus)",
+   "method": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) flat-enumerated 2026-11-14T14:55:00Z; Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
   "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
-  "rowsApproved": 20,
+  "rowsApproved": 79,
   "rowsRejected": 4,
   "rejects": [
    {
@@ -75,6 +80,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 59,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -297,6 +313,655 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "Cambridge Accounting IGCSE and A Level (CIE 0452/9706 register-explicit channel) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-IS2yzGatWc",
+   "title": "Introduction to Incomplete Records | Incomplete Records | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=-IS2yzGatWc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3XdQZYivgiU",
+   "title": "Liquidity and Efficiency | Ratios | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=3XdQZYivgiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3b9if0B92-4",
+   "title": "Dividend Yield - Investment ratios | Ratio Analysis | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=3b9if0B92-4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4CXNIggl0YI",
+   "title": "Profit Vs Net Cash Flow | Investment Appraisal | A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=4CXNIggl0YI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4NmqOApGGL0",
+   "title": "Gearing Ratios | Ratio Analysis | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=4NmqOApGGL0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6UcArosCmVQ",
+   "title": "Absorption Costing | Introduction to Overhead Absorption Rate (OAR) | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=6UcArosCmVQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "70QQkWFBpxk",
+   "title": "Net Present Value | Investment Appraisal | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=70QQkWFBpxk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7siO35guMeM",
+   "title": "Profitability and Efficiency | Ratios | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=7siO35guMeM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "84jIIfOJH3U",
+   "title": "Gross Profit Markup and Purchases | Budgeting | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=84jIIfOJH3U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8NuYyB-mNfE",
+   "title": "Price to Earnings Ratio - Investment Ratios | Ratio Analysis | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=8NuYyB-mNfE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AT09-G1aaD8",
+   "title": "Revaluation of Assets | Partnerships | A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=AT09-G1aaD8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AbHu84YSdGs",
+   "title": "Practice Set - Overhead Absorption Rate (OAR) | Absorption Costing | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=AbHu84YSdGs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AfcYjOWTeF4",
+   "title": "Over and Under Absorption of Overheads | Absorption Costing | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=AfcYjOWTeF4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CCqmR0H-KgI",
+   "title": "Forward and Backward Calculation | Incomplete Records | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=CCqmR0H-KgI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CqGgy33Gbi4",
+   "title": "Use of Overhead Absorption Rate | Absorption Costing | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=CqGgy33Gbi4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FYg7iOCWEg4",
+   "title": "Introduction to Incomplete Records | Incomplete Records | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=FYg7iOCWEg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FjhrtvZvmso",
+   "title": "Inventory Valuation | Perpetual Method | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=FjhrtvZvmso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GX5kz79qfPY",
+   "title": "Internal Rate Of Return | Investment Appraisal | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=GX5kz79qfPY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "J3fTQh-_GEQ",
+   "title": "Cash Budget | Budgeting | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=J3fTQh-_GEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KRw6H5oKw54",
+   "title": "Profitability and Liquidity Ratios Limitations | Analysis of Published Accounts | A Level Business",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=KRw6H5oKw54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MfKHYv8Dvkg",
+   "title": "Profitability and Efficiency | Ratios | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=MfKHYv8Dvkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NHCYtKaei0c",
+   "title": "Stakeholders Interest in Annual Accounts | Finance Strategy | A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=NHCYtKaei0c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P23EbEAgh8Y",
+   "title": "Cash Budget | Budgeting | A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=P23EbEAgh8Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PfjR01KNJHs",
+   "title": "Inventory Valuation | Periodic method | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=PfjR01KNJHs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QG_grdc9qlQ",
+   "title": "Accounting For Share Issue | Limited Companies | CAIE A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=QG_grdc9qlQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SISRZrUuME0",
+   "title": "Accounting Rate of Return | Investment Appraisals | A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=SISRZrUuME0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UKUMUVQkPfY",
+   "title": "Introduction to Inventory Valuation | Inventory Valuation | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=UKUMUVQkPfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UVTgHwIFM68",
+   "title": "Master Budgets | Budgeting | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=UVTgHwIFM68",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UuQg98x8no4",
+   "title": "Payback Period | Investment Appraisal | A Level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=UuQg98x8no4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VrfTeA24AKc",
+   "title": "Accounting Rate of Return | Investment Appraisal | A Level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=VrfTeA24AKc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WmgXqg0ABE8",
+   "title": "Margin and Mark-up | Incomplete Records | CAIE A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=WmgXqg0ABE8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Xb9owchdNag",
+   "title": "Marginal Costing  Introduction | Absorption Costing | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=Xb9owchdNag",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YOXib8RIQhE",
+   "title": "Profitability & Liquidity Ratio Limitations | Analysis of Published Accounts | A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=YOXib8RIQhE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Z8zHKgz4OV0",
+   "title": "Disposal Calculations Question 2 | Depreciation | CAIE A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=Z8zHKgz4OV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "abhFr1m6OCA",
+   "title": "Gearing Ratios | Ratio Analysis | A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=abhFr1m6OCA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bG9be3PKVs8",
+   "title": "Introduction to Activity Based Costing | Activity Based Costing | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=bG9be3PKVs8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bzUcFtdPz2A",
+   "title": "Auditing and Stewardship of Limited Companies | Auditing | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=bzUcFtdPz2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "clHlCUbAa0g",
+   "title": "Introduction to Standard Costing | Standard Costing | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=clHlCUbAa0g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cw-diBoNte0",
+   "title": "Inventory Valuation | Practice Set | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=cw-diBoNte0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cwPO-ch-HD4",
+   "title": "Liquidity Ratios | Published Accounts | A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=cwPO-ch-HD4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dbinfuBUGFc",
+   "title": "Accounting for Trade Receivables - Bad Debt | Basic Accounting | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=dbinfuBUGFc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ezzyUFHyqyc",
+   "title": "Introduction to Incomplete Records |  Incomplete Records |  A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ezzyUFHyqyc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "f0CkAygxJYc",
+   "title": "Margin and Mark Up | Incomplete Records | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=f0CkAygxJYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fUoo8Hw_HOQ",
+   "title": "Break Even Chart | Marginal Costing | CAIE A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=fUoo8Hw_HOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gjUtGCFnu0I",
+   "title": "Basic Accounting | Trial Balance | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=gjUtGCFnu0I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hnZrs_EeEzc",
+   "title": "Profitability and Efficiency | Rations | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=hnZrs_EeEzc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jQFkMMUzKMA",
+   "title": "Fixed Overhead Variances | Standard Costing | CAIE A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=jQFkMMUzKMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "knlvO970Jfg",
+   "title": "Payback Period | Investment Appraisal | A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=knlvO970Jfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "muGyLMU_8lg",
+   "title": "Introduction to Investment Appraisal | Investment Appraisal | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=muGyLMU_8lg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nQWL12JrULw",
+   "title": "Accounting Rate of Return | Analysis of Published Accounts | A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=nQWL12JrULw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nYeBR3G-GxM",
+   "title": "Accounting Rate of Return | Analysis of Published Accounts | CAIE A Level Business 9609",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=nYeBR3G-GxM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "neUDlFFwvso",
+   "title": "Purchase of Business Goodwill | Business Purchase and Merger | CAIE A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=neUDlFFwvso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oLNYwpsHybI",
+   "title": "Investment ratios - Dividend Cover | Ratio Analysis | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=oLNYwpsHybI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qQXdpP4HL28",
+   "title": "Backward and Forward Inventory | Inventory Valuation | CAIE A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=qQXdpP4HL28",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sL8lfuPiyoE",
+   "title": "Practice Set - Incomplete Records | Incomplete Records | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=sL8lfuPiyoE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vMseyLUQocE",
+   "title": "Sensitivity Analysis | Investment Appraisal | A Level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=vMseyLUQocE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vaa-6dfja0k",
+   "title": "Manufacturing Firms - Production and Raw Materials | Budgeting | A level Accounting 9706",
+   "provider": "alt-academy-accounting",
+   "watchUrl": "https://www.youtube.com/watch?v=vaa-6dfja0k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Accounting | Alt Academy (CIE 9706 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xGb7RDoF6gM",
+   "title": "Use of Overhead Absorption Rate | Absorption Costing | A Level | Accounting",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=xGb7RDoF6gM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xyoJNSLgoIw",
+   "title": "Payback Period | Investment Appraisal | A Level Accounting 9706",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=xyoJNSLgoIw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -600,20 +1265,905 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "Xb9owchdNag",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.3 'Marginal costing: • how to calculate the contribution of a p' via token(s) ['absorption', 'costing', 'marginal'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "xGb7RDoF6gM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost centre a' via token(s) ['absorption', 'costing', 'overhead'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "hnZrs_EeEzc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['efficiency', 'profitability'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "sL8lfuPiyoE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.3 'Clubs and societies: • the distinction between a receipts an' via token(s) ['incomplete', 'records'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "ezzyUFHyqyc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.3 'Clubs and societies: • the distinction between a receipts an' via token(s) ['incomplete', 'records'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "AbHu84YSdGs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost centre a' via token(s) ['absorption', 'costing', 'overhead'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "6UcArosCmVQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost centre a' via token(s) ['absorption', 'costing', 'overhead'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "cw-diBoNte0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.5.1 'Adjustments to draft financial statements: • how to calculat' via token(s) ['inventory', 'valuation'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "FjhrtvZvmso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.5.1 'Adjustments to draft financial statements: • how to calculat' via token(s) ['inventory', 'valuation'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "PfjR01KNJHs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.5.1 'Adjustments to draft financial statements: • how to calculat' via token(s) ['inventory', 'valuation'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "gjUtGCFnu0I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2.1 'The accounting system: • the principles of the double entry ' via token(s) ['balance', 'trial'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "knlvO970Jfg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "SISRZrUuME0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.1 'Investment appraisal: • future net cash inflows and outflows' via token(s) ['investment', 'rate', 'return'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "4CXNIggl0YI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "nQWL12JrULw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.1 'Investment appraisal: • future net cash inflows and outflows' via token(s) ['rate', 'return'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "NHCYtKaei0c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.5.1 'Analysis and communication of accounting information: • how ' via token(s) ['interest', 'stakeholders'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "YOXib8RIQhE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['limitations', 'liquidity', 'profitability', 'ratio'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "nYeBR3G-GxM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.1 'Investment appraisal: • future net cash inflows and outflows' via token(s) ['rate', 'return'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "AT09-G1aaD8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.2 'Partnerships: • goodwill and the difference between purchase' via token(s) ['partnerships', 'revaluation'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "neUDlFFwvso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3.1 'Business acquisition and merger: • the nature and purpose of' via token(s) ['goodwill', 'merger'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "xyoJNSLgoIw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "jQFkMMUzKMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Standard costing' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "abhFr1m6OCA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.5.1 'Analysis and communication of accounting information: • how ' via token(s) ['analysis', 'gearing', 'ratio', 'ratios'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "P23EbEAgh8Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.1 'Budgeting and budgetary control: • the advantages and disadv' via token(s) ['budget', 'budgeting', 'cash'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "KRw6H5oKw54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['limitations', 'liquidity', 'profitability', 'ratios'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "cwPO-ch-HD4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['liquidity', 'ratios'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "Z8zHKgz4OV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.3.2 'Changing asset values: • factors that cause the value of non' via token(s) ['depreciation', 'disposal'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "WmgXqg0ABE8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['margin', 'mark'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "fUoo8Hw_HOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.3 'Marginal costing: • how to calculate the contribution of a p' via token(s) ['break', 'chart', 'costing', 'even', 'marginal'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "QG_grdc9qlQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.5.4 'Limited companies: • the features and accounting treatment o' via token(s) ['companies', 'issue', 'limited', 'share'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "qQXdpP4HL28",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.5.1 'Adjustments to draft financial statements: • how to calculat' via token(s) ['inventory', 'valuation'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "bzUcFtdPz2A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2.3 'Auditing and stewardship of limited companies: • the role an' via token(s) ['auditing', 'companies', 'limited', 'stewardship'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "bG9be3PKVs8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.1.1 'Activity based costing: • the application of activity based ' via token(s) ['activity', 'based', 'costing'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "clHlCUbAa0g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Standard costing' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "muGyLMU_8lg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "MfKHYv8Dvkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['efficiency', 'profitability', 'ratios'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "FYg7iOCWEg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.3 'Clubs and societies: • the distinction between a receipts an' via token(s) ['incomplete', 'records'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "UKUMUVQkPfY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.5.1 'Adjustments to draft financial statements: • how to calculat' via token(s) ['inventory', 'valuation'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "vaa-6dfja0k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.1 'Budgeting and budgetary control: • the advantages and disadv' via token(s) ['budgeting', 'production'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "UVTgHwIFM68",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.1 'Budgeting and budgetary control: • the advantages and disadv' via token(s) ['budgeting', 'budgets', 'master'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "84jIIfOJH3U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.1 'Budgeting and budgetary control: • the advantages and disadv' via token(s) ['budgeting', 'profit', 'purchases'] (df 16); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "vMseyLUQocE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "J3fTQh-_GEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.1 'Budgeting and budgetary control: • the advantages and disadv' via token(s) ['budget', 'budgeting', 'cash'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "GX5kz79qfPY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "70QQkWFBpxk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "UuQg98x8no4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "VrfTeA24AKc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Investment appraisal' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "8NuYyB-mNfE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.5.1 'Analysis and communication of accounting information: • how ' via token(s) ['analysis', 'earnings', 'price', 'ratio', 'ratios'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "3b9if0B92-4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.5.1 'Analysis and communication of accounting information: • how ' via token(s) ['analysis', 'dividend', 'ratio', 'ratios', 'yield'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "oLNYwpsHybI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.5.1 'Analysis and communication of accounting information: • how ' via token(s) ['analysis', 'cover', 'dividend', 'ratio', 'ratios'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "4NmqOApGGL0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.5.1 'Analysis and communication of accounting information: • how ' via token(s) ['analysis', 'gearing', 'ratio', 'ratios'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "3XdQZYivgiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['efficiency', 'liquidity', 'ratios'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "7siO35guMeM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['efficiency', 'profitability', 'ratios'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "dbinfuBUGFc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['receivables', 'trade'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "CCqmR0H-KgI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.3 'Clubs and societies: • the distinction between a receipts an' via token(s) ['incomplete', 'records'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "-IS2yzGatWc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.3 'Clubs and societies: • the distinction between a receipts an' via token(s) ['incomplete', 'records'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "f0CkAygxJYc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.2 'Calculation and evaluation of ratios: • how to calculate key' via token(s) ['margin', 'mark'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "AfcYjOWTeF4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost centre a' via token(s) ['absorption', 'costing', 'over', 'overheads', 'under'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "CqGgy33Gbi4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.2 'Absorption costing: • the difference between a cost centre a' via token(s) ['absorption', 'costing', 'overhead'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 34,
-  "specPointsMapped": 5,
-  "specPointsUnmapped": 29,
-  "videosTotal": 20,
-  "videosMapped": 20,
+  "specPointsMapped": 17,
+  "specPointsUnmapped": 17,
+  "videosTotal": 79,
+  "videosMapped": 79,
   "videosUnmapped": 0,
-  "mappingRows": 20,
+  "mappingRows": 79,
   "byConfidence": {
    "high": 0,
-   "medium": 20,
-   "low": 0
+   "medium": 68,
+   "low": 11
   }
  },
  "inputs": {
@@ -626,7 +2176,13 @@
    "path": "Videos/drafts/cie-a-level-accounting-21/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-accounting-21/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.461Z"
+ "generatedUtc": "2026-11-14T19:16:03.917Z"
 }

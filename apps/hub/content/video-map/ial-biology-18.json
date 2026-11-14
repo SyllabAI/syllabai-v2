@@ -24,7 +24,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 105,
+  "rowsApproved": 114,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -35,7 +35,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 22,
+    "rowsApproved": 31,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -618,6 +618,105 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Amoeba Sisters",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "02luzmtTlR8",
+   "title": "Adaptive Immunity  T Cells | Immunity | A Level | Biology",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=02luzmtTlR8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0XZ1mAJsaXo",
+   "title": "Introduction to Cell Structure, Cell Membrane, & Cytoplasm | Cell Structure | A Level Biology 9700",
+   "provider": "alt-academy-biology",
+   "watchUrl": "https://www.youtube.com/watch?v=0XZ1mAJsaXo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Biology | Alt Academy (CIE 9700 intro series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7Z6A4s59Ecs",
+   "title": "Introduction to Immunity | Immunity | A Level Biology 9700",
+   "provider": "alt-academy-biology",
+   "watchUrl": "https://www.youtube.com/watch?v=7Z6A4s59Ecs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Biology | Alt Academy (CIE 9700 intro series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P344ZpBkixs",
+   "title": "Structure of Chromosomes | The Mitotic Cell Cycle | A Level | Biology",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=P344ZpBkixs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TLwVkx47uZA",
+   "title": "Blood | Transport in Mammals | A Level | Biology",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=TLwVkx47uZA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VBnGowm89kQ",
+   "title": "Importance of Mitosis | The Mitotic Cell Cycle | A Level Biology 9700",
+   "provider": "alt-academy-biology",
+   "watchUrl": "https://www.youtube.com/watch?v=VBnGowm89kQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Biology | Alt Academy (CIE 9700 intro series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X7sInY_xCWQ",
+   "title": "Introduction to Transport in Mammals | Transport in Mammals | A Level | Biology",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=X7sInY_xCWQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kYGQnvbnySU",
+   "title": "Importance of Mitosis | The Mitotic Cell Cycle | A Level | Biology",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=kYGQnvbnySU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "y_pBmoPLSaE",
+   "title": "Introduction to Immunity | Immunity | A Level | Biology",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=y_pBmoPLSaE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   },
   {
    "id": "2c0TJBiLDvI",
@@ -2004,6 +2103,46 @@
    }
   },
   {
+   "video": "TLwVkx47uZA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Transport in mammals' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "X7sInY_xCWQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Transport in mammals' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "7PJGaweLeOk",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2224,6 +2363,26 @@
    }
   },
   {
+   "video": "0XZ1mAJsaXo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Cell structure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "6Au1o25WHd0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2264,6 +2423,66 @@
    }
   },
   {
+   "video": "P344ZpBkixs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.14"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'The mitotic cell cycle' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "kYGQnvbnySU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.14"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'The mitotic cell cycle' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VBnGowm89kQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.14"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'The mitotic cell cycle' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "iFgAacVKCrc",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2292,6 +2511,66 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Vaccination & Immunity - Types of Immunity | Herd Immunity' = active/passive natural/artificial types, vaccines, herd immunity = 11.2.4-11.2.6 (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "02luzmtTlR8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.11"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Immunity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "y_pBmoPLSaE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.11"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Immunity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-biology-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7Z6A4s59Ecs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.11"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Immunity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-biology-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3692,14 +3971,14 @@
   "specPointsTotal": 170,
   "specPointsMapped": 54,
   "specPointsUnmapped": 116,
-  "videosTotal": 105,
-  "videosMapped": 105,
+  "videosTotal": 114,
+  "videosMapped": 114,
   "videosUnmapped": 0,
-  "mappingRows": 105,
+  "mappingRows": 114,
   "byConfidence": {
    "high": 16,
    "medium": 33,
-   "low": 56
+   "low": 65
   }
  },
  "inputs": {
@@ -3734,5 +4013,5 @@
    "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.764Z"
+ "generatedUtc": "2026-11-14T19:16:04.170Z"
 }

@@ -11,6 +11,11 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p13": {
+   "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus)",
+   "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 12,
+  "rowsApproved": 13,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -42,6 +47,17 @@
     "ruledUtc": "2026-11-13T06:48:16Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
     "rowsApproved": 12,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 1,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -178,6 +194,17 @@
    "lessonUrl": null,
    "levelTag": "as",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HxubShsvJrs",
+   "title": "Linear Equation | Equation of a line - Slope-intercept form | A Level | Math",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=HxubShsvJrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -409,19 +436,34 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
    "evidence": "title: \"[5] CAIE 9709/02/O/N/08 ,Oct/Nov2008, Paper 2, Q5, Integration, Reverse of lnx\"; paper code 9709/02 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "HxubShsvJrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2.4 'use logarithms to transform a given relationship e.g. to lin' via token(s) ['form', 'intercept', 'linear'] (df 2); unit inferred cross-course; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 17,
-  "specPointsMapped": 0,
-  "specPointsUnmapped": 17,
-  "videosTotal": 12,
-  "videosMapped": 12,
+  "specPointsMapped": 1,
+  "specPointsUnmapped": 16,
+  "videosTotal": 13,
+  "videosMapped": 13,
   "videosUnmapped": 0,
-  "mappingRows": 12,
+  "mappingRows": 13,
   "byConfidence": {
    "high": 12,
-   "medium": 0,
+   "medium": 1,
    "low": 0
   }
  },
@@ -435,7 +477,13 @@
    "path": "Videos/drafts/cie-as-maths-20-pure-2/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-as-maths-20-pure-2/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.408Z"
+ "generatedUtc": "2026-11-14T19:16:03.970Z"
 }
