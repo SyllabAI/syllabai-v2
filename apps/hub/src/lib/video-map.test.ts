@@ -146,9 +146,10 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
   test("anchor rows survive parse with level/ref/kind intact (ial-chemistry-17)", async () => {
     const map = await getVideoMap("ial-chemistry-17");
     expect(map).not.toBeNull();
-    // at rest: 70 mappings = 36 lesson rows (9 inherited + 27 P7 remaining-channel-pools)
-    // + 34 anchor rows (17 course, 17 topic) — P7 appended after inherit per the P2F shape
-    expect(map!.mappings.length).toBe(70);
+    // at rest: 99 mappings = 65 lesson rows (38 inherited — 29 derived from the parent's
+    // P13 Alt Academy rows — + 27 P7 remaining-channel-pools) + 34 anchor rows
+    // (17 course, 17 topic) — P7 appended after inherit per the P2F shape
+    expect(map!.mappings.length).toBe(99);
     const anchor = map!.mappings.filter(isAnchorRow);
     expect(anchor.length).toBe(34);
     for (const row of anchor) {

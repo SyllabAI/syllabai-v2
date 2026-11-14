@@ -11,6 +11,11 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p13": {
+   "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) + A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
+   "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 43,
+  "rowsApproved": 60,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -42,6 +47,17 @@
     "ruledUtc": "2026-11-13T06:48:16Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
     "rowsApproved": 43,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 17,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -519,6 +535,193 @@
    "lessonUrl": null,
    "levelTag": "as",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-utqtYQOAaI",
+   "title": "AS Maths | Permutations & Combinations",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=-utqtYQOAaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2G0iZa_pnLI",
+   "title": "Equally Likely Outcomes | Probability | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=2G0iZa_pnLI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2TMFJOfjv-U",
+   "title": "The Addition Rule | Probability | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=2TMFJOfjv-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BnZJqwytnYE",
+   "title": "Permutations Case 1 | Permutations and Combinations | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=BnZJqwytnYE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "C38hR8U47RY",
+   "title": "Combinations Case 1 | Permutations and Combinations | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=C38hR8U47RY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Fp0udUyZZgw",
+   "title": "CAIE A Level Maths 9709 | Statistics S1 Paper 53 Oct/Nov 2021 Solved",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=Fp0udUyZZgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KhzWUA-pq6c",
+   "title": "Factorial | Permutations and Combinations | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=KhzWUA-pq6c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "M_O5MV-fJWk",
+   "title": "Statistics | Descriptive Statistics | A level Maths S1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=M_O5MV-fJWk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NWeOhn0KxNU",
+   "title": "Introduction to Probability | Probability | A level Maths S1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=NWeOhn0KxNU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RROaHo3GuzY",
+   "title": "Introduction to Normal Distribution | Normal Distribution | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=RROaHo3GuzY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dfTO74kIR4E",
+   "title": "Introduction | Normal Distribution | A level Maths S1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=dfTO74kIR4E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lelRrtUb1UQ",
+   "title": "Mode | Descriptive Statistics | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=lelRrtUb1UQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "o4GQR3MRLKI",
+   "title": "Combinatorics | Permutation and Combination | CAIE A Level Maths 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=o4GQR3MRLKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tkhkEICXPJk",
+   "title": "Skewness | Descriptive Statistics | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=tkhkEICXPJk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "v0ZAFjjSCVA",
+   "title": "Factorial | Permutations and Combinations | A level Maths S1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=v0ZAFjjSCVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wNGtG8qXC3s",
+   "title": "Statistics | Descriptive Statistics | A Level Maths S1 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=wNGtG8qXC3s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xEtOftac9jg",
+   "title": "Introduction | Discrete Random Variables | A level Maths S1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=xEtOftac9jg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -1339,20 +1542,363 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
    "evidence": "title: \"S1 (CAIE) 9709/O/N/52/23, Nov 2023, Q1, Discrete Random Variables, Variance\"; paper code 9709/52 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-as-maths-20-probability-and-statistics-1"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Fp0udUyZZgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"CAIE A Level Maths 9709 | Statistics S1 Paper 53 Oct/Nov 2021 Solved\"; paper 5 + session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "-utqtYQOAaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Permutations and combinations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "2TMFJOfjv-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Probability' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "tkhkEICXPJk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.2.1",
+    "5.2.2",
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4",
+    "5.4.1",
+    "5.4.2",
+    "5.4.3",
+    "5.5.1",
+    "5.5.2",
+    "5.5.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Probability & Statistics 1' via topic-unique token(s) ['statistics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "wNGtG8qXC3s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.2.1",
+    "5.2.2",
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4",
+    "5.4.1",
+    "5.4.2",
+    "5.4.3",
+    "5.5.1",
+    "5.5.2",
+    "5.5.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Probability & Statistics 1' via topic-unique token(s) ['statistics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "BnZJqwytnYE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Permutations and combinations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "RROaHo3GuzY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5.1",
+    "5.5.2",
+    "5.5.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The normal distribution' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "KhzWUA-pq6c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Permutations and combinations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "lelRrtUb1UQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.2.1",
+    "5.2.2",
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4",
+    "5.4.1",
+    "5.4.2",
+    "5.4.3",
+    "5.5.1",
+    "5.5.2",
+    "5.5.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Probability & Statistics 1' via topic-unique token(s) ['statistics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "2G0iZa_pnLI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Probability' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "o4GQR3MRLKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.2.1 'understand the terms permutation and combination, and solve ' via token(s) ['combination', 'permutation'] (df 1); unit inferred cross-course; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "C38hR8U47RY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Permutations and combinations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "dfTO74kIR4E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5.1",
+    "5.5.2",
+    "5.5.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The normal distribution' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "xEtOftac9jg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.4.1",
+    "5.4.2",
+    "5.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Discrete random variables' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "NWeOhn0KxNU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Probability' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "v0ZAFjjSCVA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.2.1",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Permutations and combinations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "M_O5MV-fJWk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.2.1",
+    "5.2.2",
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4",
+    "5.4.1",
+    "5.4.2",
+    "5.4.3",
+    "5.5.1",
+    "5.5.2",
+    "5.5.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Probability & Statistics 1' via topic-unique token(s) ['statistics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 17,
-  "specPointsMapped": 0,
-  "specPointsUnmapped": 17,
-  "videosTotal": 43,
-  "videosMapped": 43,
+  "specPointsMapped": 17,
+  "specPointsUnmapped": 0,
+  "videosTotal": 60,
+  "videosMapped": 60,
   "videosUnmapped": 0,
-  "mappingRows": 43,
+  "mappingRows": 60,
   "byConfidence": {
-   "high": 43,
-   "medium": 0,
-   "low": 0
+   "high": 44,
+   "medium": 1,
+   "low": 15
   }
  },
  "inputs": {
@@ -1365,7 +1911,13 @@
    "path": "Videos/drafts/cie-as-maths-20-probability-and-statistics-1/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-as-maths-20-probability-and-statistics-1/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.414Z"
+ "generatedUtc": "2026-11-14T19:16:03.965Z"
 }

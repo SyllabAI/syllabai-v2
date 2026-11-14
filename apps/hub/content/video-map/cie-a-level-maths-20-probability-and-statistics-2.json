@@ -11,6 +11,11 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p13": {
+   "provider": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
+   "method": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 1,
+  "rowsApproved": 5,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -44,6 +49,17 @@
     "rowsApproved": 1,
     "rowsRejected": 0,
     "rejects": []
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 4,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -57,6 +73,50 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9pFzi5D5jCU",
+   "title": "Hypothesis Tests Basic | Hypotheses | A level Maths S2 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=9pFzi5D5jCU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MgDsxXvO3LY",
+   "title": "Linear Function of a Random Variable | Linear Combination | A level Maths S2 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=MgDsxXvO3LY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bXeXJ0EbfYU",
+   "title": "CRV Basics | Continuous Random Variable | A level Maths S2 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=bXeXJ0EbfYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yYt5eqM2K6Q",
+   "title": "Poisson Distribution - Basics | Poisson | A level Maths S2 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=yYt5eqM2K6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -79,20 +139,88 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
    "evidence": "title: \"[3] S1, (CAIE), 9709/61/O/N/19, Paper 5, November 2019, Q6, Permutations & Combinations\"; paper code 9709/61 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "9pFzi5D5jCU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.5.1",
+    "6.5.2",
+    "6.5.3",
+    "6.5.4",
+    "6.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Hypothesis tests' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "yYt5eqM2K6Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1",
+    "6.1.2",
+    "6.1.3",
+    "6.1.4",
+    "6.1.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'The Poisson distribution' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "MgDsxXvO3LY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.1 'understand the concept of a continuous random variable, and ' via token(s) ['function', 'random', 'variable'] (df 7); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "bXeXJ0EbfYU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.1 'understand the concept of a continuous random variable, and ' via token(s) ['continuous', 'random', 'variable'] (df 7); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 18,
-  "specPointsMapped": 0,
-  "specPointsUnmapped": 18,
-  "videosTotal": 1,
-  "videosMapped": 1,
+  "specPointsMapped": 11,
+  "specPointsUnmapped": 7,
+  "videosTotal": 5,
+  "videosMapped": 5,
   "videosUnmapped": 0,
-  "mappingRows": 1,
+  "mappingRows": 5,
   "byConfidence": {
    "high": 1,
-   "medium": 0,
-   "low": 0
+   "medium": 2,
+   "low": 2
   }
  },
  "inputs": {
@@ -105,7 +233,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-probability-and-statistics-2/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-probability-and-statistics-2/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.413Z"
+ "generatedUtc": "2026-11-14T19:16:03.941Z"
 }

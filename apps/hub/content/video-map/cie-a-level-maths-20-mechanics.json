@@ -11,6 +11,11 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p13": {
+   "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) + A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
+   "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked all 65 mapping rows (65 videos, lessonRef null) against the 22 spec points of the CIE 9709 Mechanics spine (4.1-4.5), title-only evidence, applying the higher cross-subject physics->maths-mechanics bar. Every bound title names spec-listed content (identify forces, resultants, Newton's laws, scalar/vector quantities, s-t/v-t graphs, SUVAT, momentum and its conservation, work/GPE/KE/power), and the lane correctly left 4.1.3, 4.1.5, 4.2.3, 4.4.4, 4.5.5 unbound since no title evidences equilibrium, smooth contact, calculus kinematics, connected particles or car-on-hill maths. No spec-level rejects: the weakest bindings (e.g. 'Contact and Non-contact Forces'->4.1.4, 'Elastic, Inelastic Collisions'->4.3.2, GCSE/KS3 friction->4.1.6) are genuine partials already held at low/medium and stay.",
-  "rowsApproved": 166,
+  "rowsApproved": 169,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -31,6 +36,17 @@
     "ruledUtc": "2026-11-13T06:48:16Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
     "rowsApproved": 101,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 3,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2164,6 +2180,39 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0aXWszNPS8U",
+   "title": "Basics of Laws of motion | Newton's Laws of Motion | A level Maths M1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=0aXWszNPS8U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1are0JzhMsE",
+   "title": "Momentum Basics | Momentum | A level Maths M1 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=1are0JzhMsE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8mDTtveX5aE",
+   "title": "CAIE A Level Maths 9709 | Mechanics M1 Paper 41 May/June 2022 Solved",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=8mDTtveX5aE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -5135,20 +5184,73 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
    "evidence": "title: \"[7] CAIE, 9709/04/M/J/03 Mechanics 1, Paper 4, Q5 Dynamics, Connected Particles\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-mechanics"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "8mDTtveX5aE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"CAIE A Level Maths 9709 | Mechanics M1 Paper 41 May/June 2022 Solved\"; paper 4 + session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "1are0JzhMsE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1",
+    "4.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Momentum' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "0aXWszNPS8U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1",
+    "4.4.2",
+    "4.4.3",
+    "4.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Newton’s laws of motion' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 22,
-  "specPointsMapped": 17,
-  "specPointsUnmapped": 5,
-  "videosTotal": 166,
-  "videosMapped": 166,
+  "specPointsMapped": 18,
+  "specPointsUnmapped": 4,
+  "videosTotal": 169,
+  "videosMapped": 169,
   "videosUnmapped": 0,
-  "mappingRows": 166,
+  "mappingRows": 169,
   "byConfidence": {
-   "high": 101,
+   "high": 102,
    "medium": 46,
-   "low": 19
+   "low": 21
   }
  },
  "inputs": {
@@ -5167,7 +5269,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-mechanics/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-mechanics/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.409Z"
+ "generatedUtc": "2026-11-14T19:16:03.938Z"
 }

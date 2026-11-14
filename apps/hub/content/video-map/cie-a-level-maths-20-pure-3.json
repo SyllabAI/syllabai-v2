@@ -11,6 +11,11 @@
    "provider": "mr-hassaans-maths (Mr Hassaan's Maths Channel — Edexcel IAL + CAIE paper-code walkthrough channel)",
    "method": "yt-dlp flat channel enumeration 2026-11-13 (3,150 public uploads, 0 overlap with the 1,556-video shipped union); routing: paper-code Tier B + unit-marker/idf Tier A with board-restricted candidates; judgment: class decision tables over every distinctive-candidate row",
    "enumeratedUtc": "2026-11-13T05:57:42Z"
+  },
+  "p13": {
+   "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) + A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
+   "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 89,
+  "rowsApproved": 114,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -42,6 +47,17 @@
     "ruledUtc": "2026-11-13T06:48:16Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
     "rowsApproved": 89,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 25,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1025,6 +1041,281 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0Wh6pgln0gM",
+   "title": "Factor Theorem | Algebra | A Level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=0Wh6pgln0gM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0_vIyKtmSZM",
+   "title": "Differentiation with the Quotient Rule | Differentiation | A Level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=0_vIyKtmSZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "10Tc_ujL-bU",
+   "title": "Loci Case 1: |z-(a+bi)| = r | Complex Numbers | A Level Math P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=10Tc_ujL-bU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3HoDOwqW_NM",
+   "title": "Basics of Parametric Equations | Differentiation | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=3HoDOwqW_NM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7ucfw9I9ACQ",
+   "title": "CAIE A Level Maths 9709 | Paper 32 Oct/Nov 2021 Solved",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=7ucfw9I9ACQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8QOVNGzmnpM",
+   "title": "Solving Trigonometric Equations for Angles in Degrees | Trigonometry | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=8QOVNGzmnpM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "F5cpI2EbRdM",
+   "title": "Double Angle Identities | Trigonometry | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=F5cpI2EbRdM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "H74N1oFYUiI",
+   "title": "Basic Techniques of Integration | Integration | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=H74N1oFYUiI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QCKBf7aWYkY",
+   "title": "Differential Equations (DFEQ) | Differential Equations | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=QCKBf7aWYkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RAsbtu4UQj8",
+   "title": "Sketch Cosec X | Trigonometry | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=RAsbtu4UQj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RRwJuWkofpo",
+   "title": "Chain rule | Integration | A Level Maths P3 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=RRwJuWkofpo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T_cZ1DQKvXs",
+   "title": "Integration using Chain Rule | Integration | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=T_cZ1DQKvXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ToHZAvuqaao",
+   "title": "Limits in Definite Integrals | Integration | A Level Maths P3 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ToHZAvuqaao",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WYrLAajaYko",
+   "title": "Equations of Gradient Tangents and Normals | Differentiation | A Level Math P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=WYrLAajaYko",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_ikUpoLAafU",
+   "title": "Conjugate of Complex Numbers | Complex Numbers | A Level Math P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=_ikUpoLAafU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aHR2VAwKzLc",
+   "title": "Integration of 1/ax+b | Integration | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=aHR2VAwKzLc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "djZSaSX9lm0",
+   "title": "Complex Numbers | Complex Numbers | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=djZSaSX9lm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hT0ROnG9AEY",
+   "title": "Basic Concepts in Algebraic Integration | Integration | A Level Maths P3 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=hT0ROnG9AEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hgI8co5BNVk",
+   "title": "Convert dy/dx to Equation of Curve | Integration | A Level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=hgI8co5BNVk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pm9J8xmiHLs",
+   "title": "Remainder Theorem | Algebra | A Level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=pm9J8xmiHLs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ueW-uQ9_D5A",
+   "title": "Equation of a Curve | Integration | A Level Math P3 9709",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ueW-uQ9_D5A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vEl_QwwEQuA",
+   "title": "Sketching Loci & Finding Argand Diagram (Argument Z) | Complex Numbers | A Level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=vEl_QwwEQuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wXY_j2BaHz0",
+   "title": "Differentiation of Parametric Equations: Trigonometric Functions | Differentiation | A Level Math P3",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=wXY_j2BaHz0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wtVJwDon1oE",
+   "title": "Basic Rules of Differentiation | Differentiation | A level Maths P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=wtVJwDon1oE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "y_mrqmbEBkU",
+   "title": "Basics of Argand Diagram | Complex Numbers | A Level Math P3 9709",
+   "provider": "alt-academy-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=y_mrqmbEBkU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -2719,20 +3010,490 @@
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
    "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q1, Logarithms & Exponential Equations\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "7ucfw9I9ACQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"CAIE A Level Maths 9709 | Paper 32 Oct/Nov 2021 Solved\"; paper 3 + session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "ueW-uQ9_D5A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "ToHZAvuqaao",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "RRwJuWkofpo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "hT0ROnG9AEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "QCKBf7aWYkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differential equations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "H74N1oFYUiI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "RAsbtu4UQj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "wtVJwDon1oE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "djZSaSX9lm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "F5cpI2EbRdM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "8QOVNGzmnpM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "hgI8co5BNVk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "T_cZ1DQKvXs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "aHR2VAwKzLc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "3HoDOwqW_NM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "WYrLAajaYko",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "y_mrqmbEBkU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "0_vIyKtmSZM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "vEl_QwwEQuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "10Tc_ujL-bU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "_ikUpoLAafU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "pm9J8xmiHLs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.4 'use the factor theorem and the remainder theorem' via token(s) ['remainder', 'theorem'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "0Wh6pgln0gM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.4 'use the factor theorem and the remainder theorem' via token(s) ['factor', 'theorem'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "wXY_j2BaHz0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 43,
-  "specPointsMapped": 0,
-  "specPointsUnmapped": 43,
-  "videosTotal": 89,
-  "videosMapped": 89,
+  "specPointsMapped": 24,
+  "specPointsUnmapped": 19,
+  "videosTotal": 114,
+  "videosMapped": 114,
   "videosUnmapped": 0,
-  "mappingRows": 89,
+  "mappingRows": 114,
   "byConfidence": {
-   "high": 89,
-   "medium": 0,
-   "low": 0
+   "high": 90,
+   "medium": 2,
+   "low": 22
   }
  },
  "inputs": {
@@ -2745,7 +3506,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-pure-3/video-map.draft.external-p9.json",
    "task": "T-VIDEOMAP-P9 (Mr Hassaan's Maths Channel completion)",
    "reviewAppliedUtc": "2026-11-13T06:48:16Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-pure-3/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.403Z"
+ "generatedUtc": "2026-11-14T19:16:03.949Z"
 }

@@ -11,6 +11,11 @@
    "provider": "James Gan (CIE 9618 AS&A CS chapter series + 9702 physics + 9709 maths)",
    "method": "James Gan (CIE 9618 AS&A CS chapter series + 9702 physics + 9709 maths) flat-enumerated 2026-11-13T12:52:58Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p13": {
+   "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus)",
+   "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
+   "enumeratedUtc": "2026-11-14T19:12:35Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 167,
+  "rowsApproved": 204,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -30,7 +35,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 164,
+    "rowsApproved": 200,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -170,6 +175,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-14 \"file it as lane P13\"",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+    "ruledUtc": "2026-11-14T19:12:35Z",
+    "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
+    "rowsApproved": 1,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ],
   "selfReviewNote": "Inherited rows derive deterministically from owner-approved parent rows; the containment map is committed and spot-checked (owner chat 2026-11-09 'approve and review yourself'). The parent lanes carry the title-only evidence rulings; below-threshold child specs stay honestly unmapped."
@@ -2754,6 +2770,402 @@
    "identityMethod": "oembed"
   },
   {
+   "id": "2zhr4_pBPdg",
+   "title": "Physical Quantities and SI Units | Prefixes and Significant Figures | A Level | Physics",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=2zhr4_pBPdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "58VRbi7Sy4I",
+   "title": "Physical Quantities and SI Units | Systematic and Random Errors | A Level | Physics",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=58VRbi7Sy4I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6erLsqYUpzg",
+   "title": "Diffraction and Interference | Superposition | CAIE A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=6erLsqYUpzg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7150MvIrB3M",
+   "title": "Physical Quantities and SI Units | Introduction | A Level | Physics",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=7150MvIrB3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7GWnkA0rh6A",
+   "title": "Projectile Motion | Kinematics | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=7GWnkA0rh6A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8ZXMETZzMNw",
+   "title": "Graphs | Kinematics | CAIE A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=8ZXMETZzMNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9k7RkjCKGGk",
+   "title": "Kirchoff's Voltage Laws Examples | DC Circuits | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=9k7RkjCKGGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AwYM-MikJ4s",
+   "title": "Introduction to Springs | Deformation of Solids | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=AwYM-MikJ4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BYVmCkEZGGo",
+   "title": "Equations of Motion 1 | Kinematics | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=BYVmCkEZGGo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IcEr7jWJzqc",
+   "title": "Physical Quantities and SI units | Physical Quantities and Units | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=IcEr7jWJzqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L9aEIoyTayc",
+   "title": "Atom's Composition | Particle and Nuclear Physics | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=L9aEIoyTayc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "OXEn0C1pXh4",
+   "title": "Power | Work, Energy and Power | A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=OXEn0C1pXh4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "OdPak3EVgbQ",
+   "title": "Distance vs Displacement | Kinematics | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=OdPak3EVgbQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RCDzqjCTIr0",
+   "title": "Introduction to Kinematics | Kinematics | CAIE A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=RCDzqjCTIr0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UHy9biJcvQE",
+   "title": "Physical Quantities and SI Units | Basic and derived units | A Level | Physics",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=UHy9biJcvQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W0FMhZudUJ8",
+   "title": "Full Projectile Motion Example Question | Kinematics | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=W0FMhZudUJ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XpjT7rrfzso",
+   "title": "Kirchoff's Current Laws Examples | DC Circuits | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=XpjT7rrfzso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZK0NH0GAloY",
+   "title": "Diffraction Calculations | Superposition | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=ZK0NH0GAloY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZmorRU6o1Lg",
+   "title": "Kirchhoff's Laws | DC Circuits | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=ZmorRU6o1Lg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Zp0mGF5cRY4",
+   "title": "Young's Modulus | Deformation of Solids | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=Zp0mGF5cRY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aoPfHcbaKCI",
+   "title": "Probing Matter | Particle and Nuclear Physics | A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=aoPfHcbaKCI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bK9sqG8Di5o",
+   "title": "Electric Current | Current Electricity | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=bK9sqG8Di5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bTzJf0UwyAs",
+   "title": "Introduction to Diffraction | Superposition | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=bTzJf0UwyAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cGASu8RMNFs",
+   "title": "Kirchhoff's Laws | D.C. Circuits | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=cGASu8RMNFs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hkfmboA_-ag",
+   "title": "Equations of Motion 2 (Freefall) | Kinematics | A Level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=hkfmboA_-ag",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "j6T7UzJQp8s",
+   "title": "CRO and Galvano Hall | Physical Quantities and Units | A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=j6T7UzJQp8s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jLZh4Dkp_JA",
+   "title": "Energy | Work, Energy, and Power | A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=jLZh4Dkp_JA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jt6hCvWBUoE",
+   "title": "Kinetic & Potential Energy | Work, Energy and Power | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=jt6hCvWBUoE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lmIA6s9QHSs",
+   "title": "Turning Effect of a Force | Forces, Density and Pressure | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=lmIA6s9QHSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lsSKVYHWaEY",
+   "title": "Acceleration | Kinematics | A level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=lsSKVYHWaEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oZIm8JkRyqU",
+   "title": "Speed and Velocity | Kinematics | A level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=oZIm8JkRyqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qCx6AK6Whz4",
+   "title": "Atomic Structure and Radioactivity | Particle and Nuclear Physics | A Level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=qCx6AK6Whz4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rUPZBZdT2nI",
+   "title": "Newton's Second Law | Dynamics | A level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=rUPZBZdT2nI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vhESaXHU_ws",
+   "title": "Newton's First Law | Dynamics | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=vhESaXHU_ws",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wFL7d4nrX9w",
+   "title": "Introduction to Superposition of Waves | Superposition | A level Physics 9702",
+   "provider": "alt-academy-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=wFL7d4nrX9w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "A Level Physics | Alt Academy (CIE 9702 topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ymj1DBDY264",
+   "title": "Newton's First Law | Dynamics | A level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=ymj1DBDY264",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
    "id": "DhBNeQFNLCk",
    "title": "AS & A Level Physics (9702) - Chapter 7: Matter and Materials",
    "provider": "james-gan",
@@ -2785,9 +3197,206 @@
    "levelTag": "a-level",
    "boardNote": "James Gan (CIE 9618 AS&A CS chapter series + 9702 physics + 9709 maths) (oEmbed author verified per video)",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "AL7FHYPncgA",
+   "title": "Nov 2022 Paper 22 | Past Paper Solution | A level Physics 9702",
+   "provider": "alt-academy-main",
+   "watchUrl": "https://www.youtube.com/watch?v=AL7FHYPncgA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
+  {
+   "video": "58VRbi7Sy4I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.4.1",
+    "1.4.2",
+    "1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Physical quantities and units' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "UHy9biJcvQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.4.1",
+    "1.4.2",
+    "1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Physical quantities and units' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2zhr4_pBPdg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.4.1",
+    "1.4.2",
+    "1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Physical quantities and units' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7150MvIrB3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.4.1",
+    "1.4.2",
+    "1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Physical quantities and units' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "j6T7UzJQp8s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.4.1",
+    "1.4.2",
+    "1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Physical quantities and units' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "IcEr7jWJzqc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3",
+    "1.2.4",
+    "1.3.1",
+    "1.3.2",
+    "1.3.3",
+    "1.4.1",
+    "1.4.2",
+    "1.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Physical quantities and units' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "Sb8cxC4lOy8",
    "lessonRef": null,
@@ -3094,6 +3703,258 @@
    }
   },
   {
+   "video": "lsSKVYHWaEY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oZIm8JkRyqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "RCDzqjCTIr0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8ZXMETZzMNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "OdPak3EVgbQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7GWnkA0rh6A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "hkfmboA_-ag",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BYVmCkEZGGo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Equations of motion' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "W0FMhZudUJ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "2.1.7",
+    "2.1.8",
+    "2.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Kinematics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "C6vBeydZZqo",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3365,6 +4226,102 @@
    ],
    "confidence": "medium",
    "evidence": "title names the independence of horizontal and vertical motion (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "rUPZBZdT2nI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.3.1",
+    "3.3.2",
+    "3.3.3",
+    "3.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ymj1DBDY264",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.3.1",
+    "3.3.2",
+    "3.3.3",
+    "3.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vhESaXHU_ws",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.3.1",
+    "3.3.2",
+    "3.3.3",
+    "3.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3803,6 +4760,35 @@
    }
   },
   {
+   "video": "lmIA6s9QHSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.2",
+    "4.1.3",
+    "4.1.4",
+    "4.2.1",
+    "4.2.2",
+    "4.2.3",
+    "4.3.3",
+    "4.3.5",
+    "4.3.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Forces, density and pressure' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "7x6SpYdkjC4",
    "lessonRef": null,
    "lessonUrl": null,
@@ -3933,6 +4919,90 @@
    ],
    "confidence": "medium",
    "evidence": "title names work done (force x displacement) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jLZh4Dkp_JA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.1.7",
+    "5.2.1",
+    "5.2.1a",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "OXEn0C1pXh4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.1.7",
+    "5.2.1",
+    "5.2.1a",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jt6hCvWBUoE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.1.7",
+    "5.2.1",
+    "5.2.1a",
+    "5.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4116,6 +5186,62 @@
    ],
    "confidence": "medium",
    "evidence": "title names Hooke's law (tensile deformation) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "AwYM-MikJ4s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1",
+    "6.1.2",
+    "6.1.4",
+    "6.1.5",
+    "6.1.6",
+    "6.2.1",
+    "6.2.1a",
+    "6.2.2",
+    "6.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Deformation of solids' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Zp0mGF5cRY4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1",
+    "6.1.2",
+    "6.1.4",
+    "6.1.5",
+    "6.1.6",
+    "6.2.1",
+    "6.2.1a",
+    "6.2.2",
+    "6.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Deformation of solids' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -4978,6 +6104,93 @@
    }
   },
   {
+   "video": "6erLsqYUpzg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.1.3",
+    "8.1.4",
+    "8.2.1",
+    "8.2.2",
+    "8.3.1",
+    "8.3.2",
+    "8.3.3",
+    "8.3.4",
+    "8.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Superposition' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wFL7d4nrX9w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.1.3",
+    "8.1.4",
+    "8.2.1",
+    "8.2.2",
+    "8.3.1",
+    "8.3.2",
+    "8.3.3",
+    "8.3.4",
+    "8.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Superposition' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ZK0NH0GAloY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.1.3",
+    "8.1.4",
+    "8.2.1",
+    "8.2.2",
+    "8.3.1",
+    "8.3.2",
+    "8.3.3",
+    "8.3.4",
+    "8.4.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Superposition' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "25ZG6LtUVWc",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4986,6 +6199,27 @@
    ],
    "confidence": "medium",
    "evidence": "title names stationary-wave analysis with results (wavelength from node positions) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bTzJf0UwyAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.2.1",
+    "8.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Diffraction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -5269,6 +6503,28 @@
    ],
    "confidence": "medium",
    "evidence": "title names electric current (flow of charge carriers) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bK9sqG8Di5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.1.1",
+    "9.1.2",
+    "9.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electric current' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -5567,6 +6823,76 @@
    }
   },
   {
+   "video": "9k7RkjCKGGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1",
+    "10.1.2",
+    "10.1.3",
+    "10.1.4",
+    "10.1.5",
+    "10.2.1",
+    "10.2.2",
+    "10.2.3",
+    "10.2.4",
+    "10.2.5",
+    "10.2.6",
+    "10.2.7",
+    "10.3.1",
+    "10.3.2",
+    "10.3.3",
+    "10.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'D.C. circuits' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "XpjT7rrfzso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.1.1",
+    "10.1.2",
+    "10.1.3",
+    "10.1.4",
+    "10.1.5",
+    "10.2.1",
+    "10.2.2",
+    "10.2.3",
+    "10.2.4",
+    "10.2.5",
+    "10.2.6",
+    "10.2.7",
+    "10.3.1",
+    "10.3.2",
+    "10.3.3",
+    "10.3.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'D.C. circuits' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "3OEJ6eok-Zs",
    "lessonRef": null,
    "lessonUrl": null,
@@ -5675,6 +7001,58 @@
    ],
    "confidence": "medium",
    "evidence": "title names Kirchhoff's first law (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cGASu8RMNFs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2.1",
+    "10.2.2",
+    "10.2.3",
+    "10.2.4",
+    "10.2.5",
+    "10.2.6",
+    "10.2.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Kirchhoff’s laws' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ZmorRU6o1Lg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.2.1",
+    "10.2.2",
+    "10.2.3",
+    "10.2.4",
+    "10.2.5",
+    "10.2.6",
+    "10.2.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Kirchhoff’s laws' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -5905,6 +7283,117 @@
    ],
    "confidence": "medium",
    "evidence": "title 'The Size, Mass and Density of the Nucleus - A Level Physics' -> 11.1.1 'infer from the results of the α -particle scat' via distinctive token(s) nucleu, size (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "aoPfHcbaKCI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1",
+    "11.1.10",
+    "11.1.11",
+    "11.1.12",
+    "11.1.2",
+    "11.1.3",
+    "11.1.4",
+    "11.1.5",
+    "11.1.6",
+    "11.1.7",
+    "11.1.8",
+    "11.1.9",
+    "11.2.1",
+    "11.2.2",
+    "11.2.3",
+    "11.2.4",
+    "11.2.5",
+    "11.2.6"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Particle physics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "qCx6AK6Whz4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1",
+    "11.1.10",
+    "11.1.11",
+    "11.1.12",
+    "11.1.2",
+    "11.1.3",
+    "11.1.4",
+    "11.1.5",
+    "11.1.6",
+    "11.1.7",
+    "11.1.8",
+    "11.1.9",
+    "11.2.1",
+    "11.2.2",
+    "11.2.3",
+    "11.2.4",
+    "11.2.5",
+    "11.2.6"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Particle physics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "L9aEIoyTayc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "11.1.1",
+    "11.1.10",
+    "11.1.11",
+    "11.1.12",
+    "11.1.2",
+    "11.1.3",
+    "11.1.4",
+    "11.1.5",
+    "11.1.6",
+    "11.1.7",
+    "11.1.8",
+    "11.1.9",
+    "11.2.1",
+    "11.2.2",
+    "11.2.3",
+    "11.2.4",
+    "11.2.5",
+    "11.2.6"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Particle physics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -6148,20 +7637,39 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-as-physics-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "AL7FHYPncgA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
+   "reviewedUtc": "2026-11-14T19:12:35Z",
+   "evidence": "title: \"Nov 2022 Paper 22 | Past Paper Solution | A level Physics 9702\"; paper 2 + session 'Nov 2022' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 145,
-  "specPointsMapped": 100,
-  "specPointsUnmapped": 45,
-  "videosTotal": 167,
-  "videosMapped": 167,
+  "specPointsMapped": 125,
+  "specPointsUnmapped": 20,
+  "videosTotal": 204,
+  "videosMapped": 204,
   "videosUnmapped": 0,
-  "mappingRows": 167,
+  "mappingRows": 204,
   "byConfidence": {
-   "high": 0,
+   "high": 1,
    "medium": 145,
-   "low": 22
+   "low": 58
   }
  },
  "inputs": {
@@ -6189,7 +7697,13 @@
    "path": "Videos/drafts/cie-as-physics-25/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p13": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-as-physics-25/video-map.draft.external-p13.json",
+   "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
+   "reviewAppliedUtc": "2026-11-14T19:12:35Z"
   }
  },
- "generatedUtc": "2026-11-14T14:50:22.762Z"
+ "generatedUtc": "2026-11-14T19:16:04.165Z"
 }
