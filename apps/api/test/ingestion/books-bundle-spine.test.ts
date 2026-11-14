@@ -39,7 +39,10 @@ const FOUNDATION_BUNDLE = join(
 // re-pinned after 2e6dbe80 (RN-DEBRIS-11 run-004: 16 spec-point title repairs from the official
 // 4MA1 printed text — scatter/jam debris removed, zero node-structure change; conscious repair
 // disclosed in .syllabai/receipts/RN-DEBRIS-11/run-004-spec-page-scatter-jam-r0.json)
-const HIGHER_SHA256 = "55aad22c689df82904b87754013e834d2aeb3cf8ca271f74b7498c32550b9bd5";
+// re-pinned after 84f2fce0 (T-SME-SEL-W9-3 run-001: the disclosed +69-node SME Revision-Notes
+// picker-layer append — official spine byte-untouched at the JSON level, navigation rows added
+// at the tail; census made SME-aware in the same receipt)
+const HIGHER_SHA256 = "b78d6500066a397ffad20f0bde675cabfa501c6731107cd544baeaa6e4bef215";
 
 const higherBytes = readFileSync(HIGHER_BUNDLE, "utf8");
 const higherBundle = JSON.parse(higherBytes) as BundleCurriculumLike;

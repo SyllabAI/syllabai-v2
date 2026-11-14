@@ -53,6 +53,22 @@ task:
       SME picker rows trips the mapper's earlier picker-shape guard (a
       different error) instead of the grammar guard the pin tests; the SME
       layer's own counts stay pinned by verify_sme_wave9's spine digests)
+    - apps/api/src/services/ingestion/books/bundle-spine.ts (DISCLOSED
+      RUN-001 AMENDMENT, the CI verify Test-step finding: the books-spine
+      adapter predates the SME fleet and counted every node, so the +69
+      4MA1 appends tripped the 133f census pin (234 -> 303); the adapter
+      now skips provenanceTier SME_REFERENCE rows for census + spine —
+      the same W1/W2 class-2 exclusion the bundle-seed mapper/seeder
+      already enforce; official globalOrder positions unchanged (appends
+      sit at the nodes-array tail); BundleNodeLike gains the optional
+      provenanceTier marker)
+    - apps/api/test/ingestion/books-bundle-spine.test.ts (DISCLOSED
+      RUN-001 AMENDMENT: the 133f byte-digest pin HIGHER_SHA256 re-pinned
+      per its own documented convention (2ece53b / 2e6dbe80 precedents)
+      to the post-append bytes b78d6500...bef215 with a comment naming
+      this receipt; the census pin stays 234/6/39/188/byTier — intent
+      kept; band re-run 15 pass / 0 fail; full CI Test-step battery
+      bun test apps/api packages -> 3,535 pass / 0 fail / 13 skip)
     - .syllabai/tasks/T-SME-SEL-W9-3.yaml + .syllabai/receipts/
       T-SME-SEL-W9-3/run-001.md + lane artifacts + both worklogs
       (append-only)
