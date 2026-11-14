@@ -230,7 +230,7 @@ function ResourceRow({
           </span>
         )}
         <ChevronRight
-          className={`size-4 shrink-0 transition-opacity ${disabled ? "text-muted-foreground/30" : "text-muted-foreground/60"}`}
+          className={`size-4 shrink-0 transition-opacity ${disabled ? "text-muted-foreground/30" : "text-muted-foreground"}`}
           aria-hidden
         />
       </span>
@@ -240,7 +240,7 @@ function ResourceRow({
   const cls =
     "flex flex-col gap-0 rounded-md px-2 py-2 transition-colors " +
     (disabled
-      ? "cursor-not-allowed text-muted-foreground/60"
+      ? "cursor-not-allowed text-muted-foreground"
       : "hover:bg-muted hover:text-foreground");
   return (
     <li>

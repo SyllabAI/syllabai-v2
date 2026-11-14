@@ -163,7 +163,7 @@ export default function PastPapersArchivePage() {
                         <div key={subject} className="overflow-hidden rounded-xl border">
                           <p className="border-b bg-muted/30 px-3 py-2 text-xs font-semibold sm:px-4">
                             {subject}
-                            <span className="font-normal text-muted-foreground/60"> · {rows.length}</span>
+                            <span className="font-normal text-muted-foreground"> · {rows.length}</span>
                           </p>
                           <ul>
                             {rows.map((s) => (

@@ -194,7 +194,7 @@ export default async function PastPapersPage({
                 {sessionLabel(sessionId)}
                 {/* t-ui-polish run-002 — the MG session header carries its
                     size; the count rides the same quiet recipe. */}
-                <span className="font-normal text-muted-foreground/60"> · {group.length}</span>
+                <span className="font-normal text-muted-foreground"> · {group.length}</span>
               </h2>
               <ul className="overflow-hidden rounded-xl border">
                 {group.map((p) => (
@@ -351,7 +351,7 @@ function ReconstructionArchive({
       <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
         Interactive reconstructions
         {/* t-ui-polish run-002 — same session-count recipe as above. */}
-        <span className="font-normal text-muted-foreground/60"> · {papers.length}</span>
+        <span className="font-normal text-muted-foreground"> · {papers.length}</span>
       </h2>
       <p className="text-xs text-muted-foreground">
         Papers the question corpus has parsed (partial reconstructions — the questions we hold, in
@@ -389,7 +389,7 @@ function ReconstructionArchive({
                     </span>
                   )}
                 </span>
-                <ChevronRight className="size-4 shrink-0 text-muted-foreground/60" aria-hidden />
+                <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
               </Link>
             </li>
           );

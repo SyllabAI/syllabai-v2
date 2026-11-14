@@ -619,7 +619,7 @@ export function HistoryTab({ drawer }: { drawer: LearnerDrawerState }) {
   if (drawer.events.length === 0) {
     return (
       <div className="flex flex-col items-center gap-2 rounded-lg border border-dashed px-6 py-10 text-center">
-        <ListChecks className="size-7 text-muted-foreground/60" aria-hidden />
+        <ListChecks className="size-7 text-muted-foreground" aria-hidden />
         <p className="max-w-xs text-xs text-muted-foreground">
           No signals recorded yet. Answer and self-mark a question in Practice or Exam
           Questions — every marked attempt, note read and flashcard rating will appear here.

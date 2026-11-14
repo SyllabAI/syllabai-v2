@@ -131,7 +131,7 @@ function SubjectRow({
         ) : (
           <Skeleton className="h-3 w-24 shrink-0" />
         )}
-        <ChevronRight className="size-4 shrink-0 text-muted-foreground/60" aria-hidden />
+        <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
       </Link>
     </li>
   );
