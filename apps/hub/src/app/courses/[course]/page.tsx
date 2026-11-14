@@ -611,7 +611,7 @@ export default async function CourseHubPage({
               Content for this course is on its way
             </CardTitle>
             <CardDescription>
-              This course is registered and its materials are in preparation — the full hub
+              This course's materials are in preparation — the full hub
               switches on here the moment the content lands.
             </CardDescription>
           </CardHeader>

@@ -105,8 +105,7 @@ export default function PastPapersArchivePage() {
         }
         description={
           <>
-            Every specification held in the{" "}
-            <span className="font-mono text-xs">syllabai-pastpapers</span> corpus — grouped by
+            Every specification in the past-papers library — grouped by
             board, qualification and subject. Specs with a hub course open the full archive
             (mocks, interactive play); the rest open a direct PDF browser.
           </>

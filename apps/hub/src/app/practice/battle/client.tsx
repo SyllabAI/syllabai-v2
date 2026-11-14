@@ -285,8 +285,8 @@ export function BattleClient({ course }: { course: string }) {
               ))}
             </div>
             <p className="text-xs text-muted-foreground">
-              Opponent: {settlement.opponent.law} — a seeded fair-coin sparring partner, not a model. Over-clock
-              answers stay real drill evidence (your strength bars still read them); they simply score zero in the
+              Opponent: {settlement.opponent.law} — a fair random sparring partner, not an AI. Late
+              answers still count for your strength bars; they simply score zero in the
               battle.
             </p>
             <div className="flex flex-wrap gap-2">
@@ -443,9 +443,9 @@ export function BattleClient({ course }: { course: string }) {
           </CardContent>
         </Card>
         <p className="text-xs text-muted-foreground">
-          Part {pos + 1} of {battle.parts.length} · {answeredCount} locked in · vs {battle.opponent.law} · the
-          server clock is the law: answers landing after {new Date(deadlineMs).toISOString().slice(11, 19)} stay real
-          evidence but score zero here.
+          Part {pos + 1} of {battle.parts.length} · {answeredCount} locked in · vs {battle.opponent.law} · answers
+          landing after {new Date(deadlineMs).toISOString().slice(11, 19)} still count for your strength bars but
+          score zero here.
         </p>
       </div>
     );

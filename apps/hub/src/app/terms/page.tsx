@@ -43,7 +43,7 @@ export default function TermsPage() {
           <p className="mt-1 text-muted-foreground">
             SyllabAI is a revision hub for Edexcel and Cambridge International
             qualifications: specification-mapped notes, exam questions,
-            flashcards, past papers and a grounded AI tutor. It is offered as
+            flashcards, past papers and an AI tutor that cites its sources. It is offered as
             a pilot — features are labelled honestly (including a visible{" "}
             <em>coming soon</em> marker where something is not ready yet) and
             the service may change as the pilot develops.
