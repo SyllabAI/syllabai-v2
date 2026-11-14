@@ -116,9 +116,7 @@ export function QuestionHistoryPanel({
       <section className="rounded-xl border bg-muted/30 p-6 text-sm text-muted-foreground">
         <p className="font-medium text-foreground">Editors only</p>
         <p className="mt-1">
-          The per-question edit history is the editor plane&apos;s provenance surface (ADR-044).
-          Signed-in accounts hold it through an editor grant issued by the operator; ask the
-          operator if you need one.
+          Edit history is only available to content editors.
         </p>
       </section>
     );
@@ -184,7 +182,7 @@ function HistoryResult({
     <div className="space-y-4">
       <div className="rounded-xl border bg-muted/30 p-4 text-sm">
         <p>
-          <span className="font-medium">Bank path of record:</span>{" "}
+          <span className="font-medium">Question bank:</span>{" "}
           <code className="break-all text-xs">{payload.bank.path}</code>{" "}
           <span className="text-muted-foreground">({payload.bank.kind} bank)</span>
         </p>
@@ -199,7 +197,7 @@ function HistoryResult({
 
       {payload.commits.length === 0 && (
         <p className="rounded-xl border bg-muted/30 p-4 text-sm text-muted-foreground">
-          No commits of record for this bank path.
+          No commits recorded for this question bank yet.
         </p>
       )}
 
@@ -247,7 +245,7 @@ function HistoryResult({
       {selected && (
         <p className="text-xs text-muted-foreground">
           Viewing per-question history for Q{selected.order + 1}. Nothing here is editable —
-          edits arrive through the ADR-044 proposal pipeline (Phase 2), never directly.
+          edits go through a review process, never directly.
         </p>
       )}
     </div>

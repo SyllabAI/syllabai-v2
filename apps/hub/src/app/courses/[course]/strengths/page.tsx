@@ -52,9 +52,9 @@ export default async function StrengthsPage({
           About this data
         </summary>
         <p className="mt-2">
-          <span className="font-medium text-foreground">Where this data lives:</span> the bars read ONLY the
-          drill&apos;s own practice log (the zero-stakes lane — never your gradebook or progress rings), and
-          every decayed value is computed at read and never stored (ADR-031). Structured (written) drill
+          <span className="font-medium text-foreground">Where this data lives:</span> the bars read only the
+          drill&apos;s own practice log — never your progress rings or marks — and every
+          decayed value is recomputed each time and never stored. Written drill
           parts stay ungraded until you self-check them against the mark scheme.
         </p>
       </details>

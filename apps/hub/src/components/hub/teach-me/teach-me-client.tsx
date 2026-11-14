@@ -321,7 +321,7 @@ export function TeachMeClient({ course, courseLabel, topics }: TeachMeClientProp
           {view.name === "review" && <span className="text-muted-foreground">Session review</span>}
           {view.name === "history" && <span className="text-muted-foreground">Your sessions</span>}
           {view.name === "detail" && (
-            <span className="text-muted-foreground">Session of record</span>
+            <span className="text-muted-foreground">Session detail</span>
           )}
         </div>
         <Button size="sm" variant="ghost" onClick={openHistory}>

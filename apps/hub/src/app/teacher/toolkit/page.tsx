@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Teaching Toolkit · Teacher workspace",
   description:
-    "The four AI generators — lesson plans, rubrics, schemes of work and the learning coach — grounded in each class's subject. The picked class resolves the subject server-side; there is no subject picker.",
+    "The four AI generators — lesson plans, rubrics, schemes of work and the learning coach — matched to each class's subject. The picked class sets the subject automatically; there is no subject picker.",
 };
 
 export default async function TeacherToolkitPage({

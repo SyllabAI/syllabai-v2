@@ -9,20 +9,21 @@
  * convergence receipt .syllabai/receipts/T-CONSUME-EDX-1/
  * run-002-maths-b-attach-refresh-convergence-r0.json). For every other course
  * the default copy stays truthful: the upstream mapping is still in progress,
- * so "not yet anchored … will slot them into the tree" is accurate there.
+ * so "the mapping is still in progress … they'll slot into the topic tree" is
+ * accurate there (student register per T-REGISTER run-001).
  */
 const ADJUDICATED_NO_SPEC_HOME: Record<string, { title: string; body: string }> = {
   "igcse-maths-b-16": {
-    title: "No spec-point home on the official specification",
+    title: "Not on the official specification",
     body:
-      "The spec-point mapping for this course is complete: these notes match no statement on the official specification, so they are listed at course level rather than under a subtopic. This is an adjudicated outcome of the spec-mapping lane, not pending work.",
+      "These notes don't match any statement on the official specification, so they're listed at course level rather than under a subtopic. That's a deliberate decision, not pending work.",
   },
 };
 
 const DEFAULT_COPY: { title: string; body: string } = {
-  title: "Not yet anchored to a spec point",
+  title: "Not tied to a spec point yet",
   body:
-    "These notes exist in the corpus without a machine-readable specification anchor — the spec-point mapping (still in progress upstream) will slot them into the tree.",
+    "These notes don't match a specific spec point yet — the mapping is still in progress, and they'll slot into the topic tree when it's done.",
 };
 
 export function looseAnchorCopy(course: string): { title: string; body: string } {

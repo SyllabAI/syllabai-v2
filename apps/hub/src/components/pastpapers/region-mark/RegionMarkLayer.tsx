@@ -633,8 +633,8 @@ function PanelBody({
             ? // T-MG-MARK-DELTA-1: the identical re-mark short-circuit — the
               // standing award served from the content-hash cache (zero new
               // writes; "mark again" forces a fresh run).
-              "Ledger: served from your standing mark — identical content, no new run."
-            : `Ledger: ${snap.receipt.emitted} written${snap.receipt.suppressed > 0 ? `, ${snap.receipt.suppressed} duplicate write(s) absorbed` : ""}.`}
+              "Served from your saved mark — identical work, no new run."
+            : `Recorded: ${snap.receipt.emitted} saved${snap.receipt.suppressed > 0 ? `, ${snap.receipt.suppressed} duplicate${snap.receipt.suppressed === 1 ? "" : "s"} skipped` : ""}.`}
         </p>
       )}
       <Button size="sm" variant="outline" onClick={onDismiss}>
