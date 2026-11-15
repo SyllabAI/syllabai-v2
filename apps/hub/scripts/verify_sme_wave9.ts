@@ -4,8 +4,9 @@
  * trio: biology 9700 / chemistry 9701 / physics 9702) + tranche 3 (the
  * Edexcel IGCSE maths pair: igcse-maths-b-16 4MB1 / igcse-maths-a-18-higher
  * 4MA1 Higher) + tranche 4 (the queue pair: cie-igcse-english-literature-21
- * 0455 lit / cie-a-level-accounting-21 9706, both CIE 2023-2025) — the W7
- * closeout recommendation's build slices, worst tails first.
+ * 0455 lit / cie-a-level-accounting-21 9706, both CIE 2023-2025) + tranche 5
+ * (cie-a-level-economics-23 CIE 9708 / igcse-biology-19 Pearson Edexcel
+ * 4BI1) — the W7 closeout recommendation's build slices, worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
  * (buildSpecTreeIndex + smeRowOfQuestionSet + smeRowOfNote), extended to the
@@ -96,7 +97,8 @@ interface Node {
 
 // the live-only rows of record (teacher-only Mock Exams placeholder on 0580;
 // none on 0607; none on the sciences-25 trio; SME past-paper placeholder
-// topics on the Edexcel maths-a tree) — mirrored verbatim as 0-note
+// topics on the Edexcel maths-a tree; SME's own skills/exam-technique
+// placeholders on the 4BI1 tree) — mirrored verbatim as 0-note
 // 0-set rows, the wave-1/3 0-set precedent
 const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-maths-25-extended": new Set(["set-1-fl"]),
@@ -110,6 +112,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-maths-a-18-higher": new Set(["2023-june", "2023-june-r", "2023-november", "specimen"]),
   "cie-igcse-english-literature-21": new Set(),
   "cie-a-level-accounting-21": new Set(),
+  "cie-a-level-economics-23": new Set(),
+  "igcse-biology-19": new Set(["exam-technique", "handling-data-and-maths-skills", "practical-and-investigative-skills"]),
 };
 
 for (const cf of FIXTURES.courses) {
