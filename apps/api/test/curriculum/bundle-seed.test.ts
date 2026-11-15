@@ -456,8 +456,14 @@ const mathsBundle = JSON.parse(readFileSync(MATHS_BUNDLE_PATH, "utf8")) as Bundl
 
 describe("T-MIG-135a maths bundle — the dotted :SUB grammar (igcse-maths-a-18-higher)", () => {
   test("the count contract fail-closes at the exact maths bundle numbers", () => {
+    // ADR-039 wave-9 tranche-3 pin refresh (the wave-6 run-003 class): the
+    // contract pins the OFFICIAL spec structure — SME_REFERENCE picker rows
+    // are excluded here exactly as mapBundleNodes/seedBundleCurriculum
+    // already exclude them (the W1/W2 class-2 law); the SME layer's own
+    // counts stay pinned by verify_sme_wave9's spine digests.
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of mathsBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of mathsBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE"))
+      fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams.SUBJECT).toBe(1);
     expect(fams.TOPIC).toBe(6);
     expect(fams.SUBTOPIC).toBe(39);
@@ -523,10 +529,16 @@ describe("T-MIG-135a maths bundle — the dotted :SUB grammar (igcse-maths-a-18-
   });
 
   test("a SUBTOPIC code carrying neither the letter nor the dotted suffix still refuses", () => {
+    // tranche-3 pin refresh: the substitution targets OFFICIAL SUBTOPIC rows
+    // only — substituting the SME picker rows trips the mapper's earlier
+    // picker-shape guard (a different error) instead of the grammar guard
+    // this pin exists to test.
     const broken: BundleCurriculum = {
       ...mathsBundle,
       nodes: mathsBundle.nodes.map((n) =>
-        n.family === "SUBTOPIC" ? { ...n, code: "igcse-maths-a-T1:SUB" } : n,
+        n.family === "SUBTOPIC" && n.provenanceTier !== "SME_REFERENCE"
+          ? { ...n, code: "igcse-maths-a-T1:SUB" }
+          : n,
       ),
     };
     expect(() => mapBundleNodes(broken, "x")).toThrow(
@@ -552,8 +564,14 @@ const MATHS_B_SOURCE = {
 
 describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec grammar (igcse-maths-b-16)", () => {
   test("the count contract fail-closes at the exact maths-b bundle numbers", () => {
+    // ADR-039 wave-9 tranche-3 pin refresh (the wave-6 run-003 class): the
+    // contract pins the OFFICIAL spec structure — SME_REFERENCE picker rows
+    // are excluded here exactly as mapBundleNodes/seedBundleCurriculum
+    // already exclude them (the W1/W2 class-2 law); the SME layer's own
+    // counts stay pinned by verify_sme_wave9's spine digests.
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of mathsBBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of mathsBBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE"))
+      fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams.SUBJECT).toBe(1);
     expect(fams.TOPIC).toBe(10);
     expect(fams.SUBTOPIC).toBe(10);
@@ -668,10 +686,16 @@ describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec gramm
   });
 
   test("a maths-b SUBTOPIC code carrying neither letter, dotted, nor placeholder suffix still refuses", () => {
+    // tranche-3 pin refresh: the substitution targets OFFICIAL SUBTOPIC rows
+    // only — substituting the SME picker rows trips the mapper's earlier
+    // picker-shape guard (a different error) instead of the grammar guard
+    // this pin exists to test.
     const broken: BundleCurriculum = {
       ...mathsBBundle,
       nodes: mathsBBundle.nodes.map((n) =>
-        n.family === "SUBTOPIC" ? { ...n, code: "igcse-maths-b-T1:SUB" } : n,
+        n.family === "SUBTOPIC" && n.provenanceTier !== "SME_REFERENCE"
+          ? { ...n, code: "igcse-maths-b-T1:SUB" }
+          : n,
       ),
     };
     expect(() => mapBundleNodes(broken, "x")).toThrow(

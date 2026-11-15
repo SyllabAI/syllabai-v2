@@ -408,7 +408,7 @@ function SubjectCard({
             </div>
             {!meta.hasBundle && (
               <p className="text-xs text-muted-foreground">
-                Content import pending — hub not available yet.
+                Content is on its way — nothing is here yet.
               </p>
             )}
           </div>

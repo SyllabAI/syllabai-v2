@@ -172,7 +172,7 @@ export default async function HubPage() {
 
       {/* corpus stats — scoped honestly: these are the 4CH1 pilot's numbers
           (UX audit P2-6: they were presented as global totals) */}
-      <section aria-label="Pilot corpus stats" className="space-y-2">
+      <section aria-label="Hub stats" className="space-y-2">
         <h2 className="text-sm font-medium text-muted-foreground">
           Inside the {manifest.curriculum.code} {manifest.curriculum.subject} hub
         </h2>

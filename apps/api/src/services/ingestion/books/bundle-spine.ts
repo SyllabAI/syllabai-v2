@@ -48,6 +48,8 @@ export interface BundleNodeLike {
   family?: unknown;
   title?: unknown;
   applicability?: BundleApplicability | null;
+  /** ADR-039 wave-9: the disclosed SME picker-layer provenance marker. */
+  provenanceTier?: unknown;
 }
 
 export interface BundleCurriculumLike {
@@ -101,9 +103,22 @@ export function buildBundleSpine(
   const spine: BundleSpineResult["spine"] = [];
   const seenOfficial = new Set<string>();
 
+  let officialNodes = 0;
   for (let i = 0; i < bundle.nodes.length; i++) {
     const n = bundle.nodes[i] as BundleNodeLike;
     const family = familyOf(n);
+    // ADR-039 wave-9 tranche-3 — the disclosed picker-layer class (the
+    // T-SME-SEL-W1/W2 class-2 law, already enforced by the bundle-seed
+    // mapper/seeder) never enters the books spine or its census: the SME
+    // Revision-Notes rows (provenanceTier SME_REFERENCE) are navigation
+    // layer, not spec anchoring — the 4MA1 appends tripped the 133f census
+    // pin (234 -> 303 nodes) exactly as a structure change would. Skipping
+    // them here keeps the census pinned to the OFFICIAL spine (the wave-9
+    // gate pins the SME layer's own counts via its spine digests). The
+    // appends sit at the tail of the nodes array, so official globalOrder
+    // positions are unchanged either way.
+    if (n.provenanceTier === "SME_REFERENCE") continue;
+    officialNodes += 1;
     if (family === "TOPIC") topics += 1;
     else if (family === "SUBTOPIC") subtopics += 1;
     else if (family === "SPEC_POINT") {
@@ -138,7 +153,7 @@ export function buildBundleSpine(
     spine,
     census: {
       specCode,
-      nodes: bundle.nodes.length,
+      nodes: officialNodes,
       topics,
       subtopics,
       specPoints: spine.length,

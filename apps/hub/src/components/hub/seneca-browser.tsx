@@ -310,7 +310,7 @@ export function SenecaBrowser({
   return (
     <div className="space-y-3">
       {bundles.length > 1 && (
-        <div className="flex flex-wrap items-center gap-1.5" role="tablist" aria-label="Seneca source course">
+        <div className="flex flex-wrap items-center gap-1.5" role="tablist" aria-label="Seneca course">
           {bundles.map((b) => (
             <Button
               key={b.slug}
@@ -451,7 +451,7 @@ export function SenecaBrowser({
             <div className="p-6 text-sm text-muted-foreground">
               {loading
                 ? "Loading Seneca content…"
-                : "This Seneca course mapping carries no browsable resources."}
+                : "No Seneca resources for this course yet."}
             </div>
           ) : selected ? (
             <div>

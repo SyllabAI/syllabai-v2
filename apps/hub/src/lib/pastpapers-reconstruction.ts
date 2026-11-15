@@ -291,7 +291,7 @@ export function coverageTitle(c: ReconstructionCoverage): string {
       case "complete":
         return `Complete reconstruction — all ${c.officialQuestions} questions held, every optional-choice question included · ${marks}`;
       case "marks-differ":
-        return `All ${c.officialQuestions} questions held · ${marks} — parsed marks differ slightly from the official paper`;
+        return `All ${c.officialQuestions} questions held · ${marks} — the marks differ slightly from the official paper`;
       case "partial":
         return `Partial reconstruction — ${c.heldQuestions} of ${c.officialQuestions} questions held${c.missing.length ? ` (missing ${q})` : ""} · ${marks}`;
       case "unverified":
@@ -305,9 +305,9 @@ export function coverageTitle(c: ReconstructionCoverage): string {
       // two honest flavours: near-total corpora with ±1 mark reallocations,
       // vs corpora that hold only some of every question's parts
       if (c.heldMarks < c.officialMarks * 0.85) {
-        return `Every official question is represented, but the corpus holds only part of each — ${c.heldMarks} of ${c.officialMarks} marks' worth vs the official paper`;
+        return `Every official question is represented, but we hold only part of each — ${c.heldMarks} of ${c.officialMarks} marks' worth vs the official paper`;
       }
-      return `All ${c.officialQuestions} questions held · ${c.heldMarks}/${c.officialMarks} marks — parsed marks differ slightly from the official paper`;
+      return `All ${c.officialQuestions} questions held · ${c.heldMarks}/${c.officialMarks} marks — the marks differ slightly from the official paper`;
     }
     case "partial":
       return `Partial reconstruction — ${c.heldQuestions} of ${c.officialQuestions} questions held${c.missing.length ? ` (missing ${q})` : ""} · ${c.heldMarks}/${c.officialMarks} marks vs the official paper`;

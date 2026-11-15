@@ -142,6 +142,12 @@ export default async function ExamQuestionsIndexPage({
   // course). Every other surface keeps the official spine: sidebar, notes,
   // flashcards, Teach-Me, and legacy ?spec=/official ?subtopic= deep links
   // (those still resolve through allRows below).
+  // ADR-039 wave 9 tranche 3: the mirror renders only when it has content
+  // (smeMirror) — a notes-only SME layer (igcse-maths-b-16: all 65 sets are
+  // the SyllabAI past-paper archive, official-spine class by law) keeps the
+  // official EQ index instead of an empty mirror, while a partially-covered
+  // course's official-home sets still surface via the honest Other-sets
+  // channel below (never hidden, never double-listed).
   const smeSections = hub.index.tree.smeSections ?? [];
   const smeActive = smeSections.length > 0;
   const smeRowTopic = new Map(
@@ -171,10 +177,14 @@ export default async function ExamQuestionsIndexPage({
         .filter((r) => r.count > 0),
     }))
     .filter((g) => g.subs.length > 0);
+  // the mirror law: SME rows render when they carry sets; a notes-only SME
+  // layer (zero sets placed anywhere) keeps the official EQ index
+  const smeMirror = smeActive && smeAllRows.length > 0;
   // rings read counts per row code — give SME rows the same questions-only
-  // denominator the select-page law fixes for official rows
+  // denominator the select-page law fixes for official rows (only when the
+  // mirror renders; SME codes never appear on the official index)
   const pageCounts = { ...hub.counts };
-  if (smeActive) {
+  if (smeMirror) {
     for (const sec of smeSections) {
       const secCell = pageCounts[sec.code] ?? { notes: 0, questions: 0, flashcards: 0 };
       for (const row of sec.subtopics) {
@@ -224,7 +234,7 @@ export default async function ExamQuestionsIndexPage({
       .map((t) => ({ ...t, subs: t.subs.filter((s) => s.code === scopedCode) }))
       .filter((t) => t.subs.length > 0);
   const rows: QbTopic[] = !scopedCode
-    ? smeActive
+    ? smeMirror
       ? smeAllRows
       : allRows
     : smeRowTopic.has(scopedCode)
@@ -232,9 +242,17 @@ export default async function ExamQuestionsIndexPage({
       : scopedFilter(allRows);
 
   // sets whose canonical home resolved to nothing — never listed under any
-  // sub-topic — keep the honest "Other sets" section
+  // sub-topic — keep the honest "Other sets" section. Under the SME mirror
+  // the listing's canonical home IS the SME row: official-home-class sets
+  // (they keep their official spine homes by the smeRowOfQuestionSet null
+  // contract) surface here instead of vanishing. Courses where every set
+  // resolves compute the same empty list either way.
   const placed = new Set(
-    Object.values(hub.setListsBySubtopic).flatMap((sets) => sets.map((s) => s.slug)),
+    smeMirror
+      ? hub.questionTopics
+          .filter((t) => smeRowOfQuestionSet(t, hub.index) !== null)
+          .map((t) => t.slug)
+      : Object.values(hub.setListsBySubtopic).flatMap((sets) => sets.map((s) => s.slug)),
   );
   const unplaced: QbLooseSet[] = scopedCode
     ? []

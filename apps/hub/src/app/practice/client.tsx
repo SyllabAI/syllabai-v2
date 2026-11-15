@@ -105,7 +105,7 @@ export function PracticeClient({ topics }: Props) {
             Practice
           </span>
         }
-        description="Real exam-question parts with in-browser attempt telemetry (confidence, self-doubt). Marks self-assess against the mark scheme — the illustrative mastery overlay updates from that, exactly as the governed pipeline would from server-marked evidence."
+        description="Real exam-question parts answered in your browser (confidence, self-doubt). Marks self-assess against the mark scheme — the illustrative mastery overlay updates from that."
       />
 
       <SimulatedBanner>

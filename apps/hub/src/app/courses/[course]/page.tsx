@@ -357,7 +357,7 @@ export default async function CourseHubPage({
           title: "Grade Boundaries",
           desc: gradeBoundaries
             ? "Official boundaries for every recent session — the trend graph, boundary tables and a mark-to-grade calculator."
-            : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — landing with the corpus rollout.",
+            : "Official session-by-session grade boundaries with a trend graph and mark-to-grade calculator — coming soon.",
           href: gradeBoundaries ? `${base}/grade-boundaries` : undefined,
           ctaLabel: gradeBoundaries ? "See boundaries" : undefined,
           countLabel: gradeBoundaries
@@ -380,7 +380,7 @@ export default async function CourseHubPage({
           title: "Revision Notes",
           desc: officialTree
             ? "Concise notes for every topic in the official specification."
-            : "Concise notes for every topic — official-spec mapping in progress.",
+            : "Concise notes for every topic — more topics are on the way.",
           href: `${base}/revision-notes`,
           countLabel: `${fmtCount(stats.notes)} note${stats.notes === 1 ? "" : "s"}`,
           ready: stats.notes > 0,

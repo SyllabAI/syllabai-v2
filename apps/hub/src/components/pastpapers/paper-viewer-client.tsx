@@ -47,6 +47,7 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { InkLayer } from "@/components/pastpapers/ink/InkLayer";
+import type { GesturePinchBridge } from "@/components/pastpapers/ink/paperGestures";
 import { RegionMarkLayer } from "@/components/pastpapers/region-mark/RegionMarkLayer";
 import { resolvePaperAssetCached } from "@/lib/regions";
 import {
@@ -150,6 +151,11 @@ export function PaperViewerClient({
   // (via the pane's text index), labelled "auto-detected", manual fallback.
   const qpPaneRef = useRef<PdfPaneHandle | null>(null);
   const msPaneRef = useRef<PdfPaneHandle | null>(null);
+  // T-MG-INK-13 run-001: the shared gesture plane — the QP pane fills it
+  // with zoomStep (its zoomBy ladder); the ink layer's PaperGestures
+  // coordinator routes two-finger pinch through it. One object, both
+  // consumers (see pdf-pane's gesturePlane prop and InkLayer's).
+  const qpGesturePlane = useRef<GesturePinchBridge | undefined>(undefined);
   // T-MG-INK-1 run-003: the ink layer's host wrapper (the view-mode QP
   // pane's positioning + observation root; see the composition block).
   const qpInkHostRef = useRef<HTMLDivElement | null>(null);
@@ -731,10 +737,10 @@ export function PaperViewerClient({
           <Button asChild size="sm" variant="ghost" className="h-8">
             <Link
               href={sourceHref}
-              title="The verbatim parsed text this paper's evidence is served from"
+              title="The paper's own text — read it right here"
             >
               <FileText className="size-4" aria-hidden />
-              Parsed text
+              Paper text
             </Link>
           </Button>
         )}
@@ -863,6 +869,7 @@ export function PaperViewerClient({
               label={`Question paper — ${paper.ref}`}
               active={doc === "qp" || doc === "split"}
               initialPage={initialPageDoc !== "ms" ? initialPage : undefined}
+              gesturePlane={qpGesturePlane}
               /* s140 audit: the old split-mode "lg:block" OVERRODE the pane's
                  base `flex` at lg → display:block → the flex-1 scroller lost
                  its bounds and grew to the full 25k-px document height (the
@@ -877,6 +884,7 @@ export function PaperViewerClient({
             <InkLayer
               hostRef={qpInkHostRef}
               sourceUrl={paper.qpPath ? corpusRawUrl(paper.qpPath) : null}
+              gesturePlane={qpGesturePlane}
             />
             {/* T-MG-CROPMARK-1 run-002 (plan §3.4): the crop producer's
              * trigger UI — clickable region rects + the 202/poll mark

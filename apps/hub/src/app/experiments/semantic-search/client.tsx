@@ -150,7 +150,7 @@ export function SemanticSearchExperiment({
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search everything — e.g. “diffusion”, “electronic configuration”, “separation”…"
         className="w-full rounded-md border px-3.5 py-2.5 text-sm outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]"
-        aria-label="Search the corpus"
+        aria-label="Search everything"
       />
 
       <div className="flex flex-wrap gap-1.5">

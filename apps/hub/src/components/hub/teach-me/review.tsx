@@ -88,7 +88,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
         </Section>
       )}
 
-      <Section title="Spec point verdicts">
+      <Section title="Spec point checks">
         <ul className="flex flex-wrap gap-2">
           {review.specPointVerdicts.map((v) => (
             <li
@@ -128,7 +128,7 @@ export function TeachMeReview({ review }: { review: ReviewCard }) {
       )}
 
       {review.examAnchors.length > 0 && (
-        <Section title="Where the exam asks this" hint="Real past-paper anchors from this course's serving corpus — never invented.">
+        <Section title="Where the exam asks this" hint="Real past-paper questions from this course — never invented.">
           <ul className="space-y-1.5 text-sm">
             {review.examAnchors.map((a, i) => (
               <li key={i} className="flex flex-wrap items-baseline gap-x-2">
