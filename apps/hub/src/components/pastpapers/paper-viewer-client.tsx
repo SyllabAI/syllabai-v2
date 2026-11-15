@@ -731,10 +731,10 @@ export function PaperViewerClient({
           <Button asChild size="sm" variant="ghost" className="h-8">
             <Link
               href={sourceHref}
-              title="The verbatim parsed text this paper's evidence is served from"
+              title="The paper's own text — read it right here"
             >
               <FileText className="size-4" aria-hidden />
-              Parsed text
+              Paper text
             </Link>
           </Button>
         )}

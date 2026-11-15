@@ -211,7 +211,7 @@ function MisconceptionWatchCard({ watch, live = false }: { watch: MisconceptionW
           <span>
             {live
               ? "Probabilities from the backend's misconception model over your real attempt evidence — likelihoods update as you practise."
-              : `${watch.disclaimer ?? "Simulated demo learner state over the course misconception corpus."} The patterns themselves are SME / mark-scheme-documented; the active / watching state is a deterministic demo overlay, not measured evidence.`}
+              : `${watch.disclaimer ?? "Simulated demo learner state for this course."} The patterns come from real mark schemes and subject-expert write-ups; the active / watching state is a demo overlay, not measured evidence.`}
           </span>
         </p>
       </footer>

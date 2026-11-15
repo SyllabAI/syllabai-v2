@@ -1996,7 +1996,7 @@ function markFlowError(e: unknown): string {
   }
   return aiAskErrorMessage(
     e,
-    "The backend marking pipeline is unavailable right now — your answers are saved locally; try again in a moment.",
+    "Smart Mark isn't available right now — your answers are saved here; try again in a moment.",
   );
 }
 
@@ -2099,7 +2099,7 @@ function CoreMarkingFlow({
             ...prev,
             [t.hubPartId]: {
               kind: "failed",
-              message: poll.snapshot?.error?.message ?? "The marking pipeline could not complete this mark.",
+              message: poll.snapshot?.error?.message ?? "Smart Mark couldn't complete this mark.",
             },
           }));
         } else if (poll.status === "lost") {
@@ -2403,7 +2403,7 @@ function CoreMarkingFlow({
             )}
           </Button>
           <span className="text-2xs text-muted-foreground">
-            AI marks each part through the marking pipeline; marks drive your mastery
+            AI marks each part; the marks feed your mastery
           </span>
         </div>
       )}
@@ -2417,7 +2417,7 @@ function CoreMarkingFlow({
             <span className="text-2xs text-muted-foreground">
               {anyAuthoritative
                 ? "authoritative marks — they feed your mastery and review schedule"
-                : "indicative marks — the pipeline's κ release gate hasn't certified this batch yet, so treat them as AI-suggested and check against the scheme"}
+                : "indicative marks — a final check on this batch is still pending, so treat them as a first pass and check against the mark scheme"}
             </span>
             {!applied && !progress.selfScores[question.id] && (
               <Button

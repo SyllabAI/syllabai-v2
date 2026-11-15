@@ -226,7 +226,7 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
                 href={official.url}
                 target="_blank"
                 rel="noreferrer noopener"
-                title={`Official Pearson past-papers page (verified HTTP ${official.httpStatus}, retrieved ${OFFICIAL.meta.retrievedAt}) — use it for sessions missing from this archive`}
+                title={`Pearson's own past-papers page — use it for papers missing from this library`}
               >
                 Official source
                 <ExternalLink className="size-3" aria-hidden />

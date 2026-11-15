@@ -103,7 +103,7 @@ function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
         )}
         {row.confidence && (
           <Badge variant="outline" className="text-2xs">
-            {row.confidence}-confidence match
+            match: {row.confidence}
           </Badge>
         )}
         {row.boardMismatch && (
@@ -117,7 +117,7 @@ function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
       )}
       {row.evidence && (
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-          Matched by title: {row.evidence}
+          Match: {row.evidence}
         </p>
       )}
     </li>
@@ -380,8 +380,8 @@ export default async function VideosPage({
           <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
             Whole-paper walkthroughs anchored to the course — typically full papers
             whose Edexcel paper code is stated in the title. They sit outside the
-            spec-point coverage: they teach the paper, not a single point, so they
-            never inflate the numbers above.
+            spec-point coverage: they teach the paper, not a single point, so they don't count toward the
+            coverage numbers above.
           </p>
           <ul className="mt-3 space-y-2">
             {courseRows.map((row) => (
@@ -479,8 +479,8 @@ export default async function VideosPage({
           <section aria-label="Subject-wide videos">
             <h2 className="text-base font-semibold tracking-tight">Subject-wide</h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Board-agnostic technique and skills videos that apply across the
-              whole subject — zero spec-point weight.
+              Technique and skills videos that aren't tied to one exam board — they apply
+              across the whole subject, not to any single spec point.
             </p>
             <ul className="mt-3 space-y-2">
               {buckets.subject.map((row) => (

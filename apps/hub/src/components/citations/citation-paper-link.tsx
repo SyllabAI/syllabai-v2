@@ -417,8 +417,8 @@ export function CitationPaperLink({
               </DialogHeader>
               <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
                 <p className="mb-2 text-xs text-muted-foreground">
-                  Page {parsed?.page ?? 1} of {state.data.doc.pageCount} · verbatim parsed text —
-                  the same text the tutor&apos;s evidence was served from
+                  Page {parsed?.page ?? 1} of {state.data.doc.pageCount} · the paper’s own text —
+                  the same text the tutor quotes from
                 </p>
                 <article className="whitespace-pre-wrap text-sm leading-relaxed">
                   {state.data.doc.text === ""
@@ -445,7 +445,7 @@ export function CitationPaperLink({
                     className="h-7 px-2 text-xs"
                     onClick={() => setMode(mode === "note" ? "text" : "note")}
                   >
-                    {mode === "note" ? "Parsed text" : "Back to note"}
+                    {mode === "note" ? "Paper text" : "Back to note"}
                   </Button>
                   <Button asChild size="sm" variant="ghost" className="h-7 px-2 text-xs">
                     <a href={state.data.fullReaderHref} title="Open the full source reader">
@@ -475,8 +475,8 @@ export function CitationPaperLink({
               ) : (
                 <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
                   <p className="mb-2 text-xs text-muted-foreground">
-                    Page {parsed?.page ?? 1} of {state.data.doc.pageCount} · verbatim parsed text —
-                    the same text the tutor&apos;s evidence was served from
+                    Page {parsed?.page ?? 1} of {state.data.doc.pageCount} · the paper’s own text —
+                    the same text the tutor quotes from
                   </p>
                   <article className="whitespace-pre-wrap text-sm leading-relaxed">
                     {state.data.doc.text === ""
@@ -509,7 +509,7 @@ export function CitationPaperLink({
                     className="h-7 px-2 text-xs"
                     onClick={() => setMode(mode === "pdf" ? "text" : "pdf")}
                   >
-                    {mode === "pdf" ? "Parsed text" : "Back to PDF"}
+                    {mode === "pdf" ? "Paper text" : "Back to PDF"}
                   </Button>
                   <Button asChild size="sm" variant="ghost" className="h-7 px-2 text-xs">
                     <a href={state.data.viewerHref} title="Open the full past-paper viewer">
@@ -530,8 +530,8 @@ export function CitationPaperLink({
               ) : (
                 <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
                   <p className="mb-2 text-xs text-muted-foreground">
-                    Page {parsed?.page ?? 1} of {state.data.doc.pageCount} · verbatim parsed text —
-                    the same text the tutor&apos;s evidence was served from
+                    Page {parsed?.page ?? 1} of {state.data.doc.pageCount} · the paper’s own text —
+                    the same text the tutor quotes from
                   </p>
                   <article className="whitespace-pre-wrap text-sm leading-relaxed">
                     {state.data.doc.text === ""

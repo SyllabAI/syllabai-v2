@@ -247,16 +247,16 @@ function DirectoryCard({
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {c.status === "pilot" && (
                   <Badge className="rounded-full">
-                    pilot corpus · official spec tree
+                    new · official specification
                   </Badge>
                 )}
                 {ghost && (
                   <Badge
                     variant="outline"
                     className="rounded-full text-muted-foreground"
-                    title="This lane is registered; its full corpus — notes, exam questions, flashcards and the past-paper archive — is queued for import. Nothing is rendered for it yet."
+                    title="This course is on its way — notes, exam questions, flashcards and past papers are still being added. Nothing is here yet."
                   >
-                    import pending
+                    coming soon
                   </Badge>
                 )}
               </div>
