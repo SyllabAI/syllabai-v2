@@ -1,0 +1,85 @@
+{
+ "receipt": "run-029-merge-record-ride",
+ "family": "RN-DEBRIS-11",
+ "run": "run-029",
+ "kind": "the run-028 merge record ride receipts — the standing ride-along law's obligatory next unit (the run-028 merge record rides THIS run's receipts: entry A in both worklogs, the run-028-merge-record-ride.json merged block); zero content bytes",
+ "operatorOrder": "run-029 scope (trace 1a1db87033d48bad) + Continue (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, trace 1a1dd72bbc5bc28d, 2026-11-15)",
+ "generatedUtc": "2026-11-15",
+ "baseTip": "d46e3ff4496ffc46623d99b2544fe863165b8e88",
+ "mergedRecordRode": {
+  "pr": 1017,
+  "sha": "6ff8bad7f7a54beb51d15b50171d32545355ef16",
+  "mergedAt": "2026-11-14T19:21:58Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "b26fa48bc607bf2f7db5933b9eebeb22868fa7a3",
+  "parents": [
+   "889e16634fcf4b8a6bf4fa811d69eae9180caf07",
+   "b26fa48bc607bf2f7db5933b9eebeb22868fa7a3"
+  ],
+  "verified": "API pulls/1017 merged=true + merge_commit_sha == sha + ls-remote main tip == sha at merge time; parents API-verified (2, first == the pre-merge tip 889e1663)"
+ },
+ "landedStateVerification": {
+  "method": "re-derived read-only from the committed tree at the base tip via git show, with the OF-RECORD census logic (the rn27_apply.py shapes: multi-id over the flashcards file specPointIds; null-code over specPointCode; coded/unmapped over the map items dict; pops over the declaredUnresolved sid lists); G8 dump law json.dumps(indent=1, ensure_ascii=False) newline-terminated",
+  "census": {
+   "multiIdCards": 257,
+   "nullCodeCards": 60,
+   "codedMapItems": 876,
+   "unmappedTrueItems": 469
+  },
+  "matchesRun027CensusOfRecord": true,
+  "sidPopulations": {
+   "spcpt_3hpC7gNs8YZ6t7kd": 16,
+   "spcpt_rGVN6hJn6Mb9z2nR": 17,
+   "spcpt_7JRKzsBqqdfPqf5t": 6
+  },
+  "a1": {
+   "items": 14,
+   "declarationsRetained": true,
+   "unmappedKeys": 0,
+   "viaSids": [
+    "spcpt_3hpC7gNs8YZ6t7kd",
+    "spcpt_rGVN6hJn6Mb9z2nR"
+   ]
+  },
+  "aggregatesOfRecord": {
+   "contentCoverage": {
+    "flashcards": {
+     "coded": 499,
+     "total": 905,
+     "unmapped": 406,
+     "viaSubtopicScope": 0
+    },
+    "notes": {
+     "coded": 77,
+     "total": 97,
+     "unmapped": 20,
+     "viaSubtopicScope": 4
+    },
+    "questionParts": {
+     "coded": 272,
+     "total": 343,
+     "unmapped": 71,
+     "viaSubtopicScope": 0
+    }
+   },
+   "spcptUnmappedCount": 66
+  },
+  "driftVerification": {
+   "questionParts": "items-of-truth coded 285 vs the aggregate 272 == exactly the 13 A1 q-parts (the run-027 apply) — carried over of record",
+   "notes": "items-of-truth coded 78 vs the aggregate 77 == exactly the A1 note rn_KGhttHj9fT889Bm2 (the run-027 apply) — carried over of record",
+   "flashcards": "per the of-record disclosure: stale by the 14 run-024 card codings (the aggregate's coded definition is the compile.ts algorithm of record; not recomputed here)",
+   "spcptUnmapped": "the 2 run-025-resolved sids spcpt_3hpC7gNs8YZ6t7kd + spcpt_rGVN6hJn6Mb9z2nR still listed (verified at the base tip)",
+   "disposition": "the run-024/025/027/028 zero-collateral precedent stands (build-time aggregates untouched, CI-green of record, disclosed); remediation desk-re-ruleable in a later run — NOT remediated in this receipts run (zero content bytes)",
+   "carriedOverBy": "blob-identity: the map + the flashcards + the course questions/notes planes byte-identical vs 74768c11 (asserted at build time)"
+  }
+ },
+ "boundaries": "zero content bytes — no map/spine/registry/curriculum plane touched; the content map byte-identical vs the base tip (gate G5) + the flashcards byte-identical vs the base tip (gate G5b); scope == exactly the 7 declared paths",
+ "artifacts": [
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-029/scripts/rn29_gates.py",
+  ".syllabai/lane-artifacts/RN-DEBRIS-11/run-029/gates_r0.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-029-merge-record-ride.json",
+  ".syllabai/receipts/RN-DEBRIS-11/run-029-postReview.json"
+ ],
+ "standingReminder": "the PAT remains exposed from chat transmission and MUST be revoked/rotated (the twenty-fifth filing of the standing reminder)",
+ "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028 precedents); no force-push; fetch-first race-guard at push"
+}
