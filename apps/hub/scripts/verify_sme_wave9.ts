@@ -3,15 +3,19 @@
  * four-course CIE IGCSE maths family) + tranche 2 (the CIE A-level sciences-25
  * trio: biology 9700 / chemistry 9701 / physics 9702) + tranche 3 (the
  * Edexcel IGCSE maths pair: igcse-maths-b-16 4MB1 / igcse-maths-a-18-higher
- * 4MA1 Higher) — the W7 closeout recommendation's build slices, worst tails
- * first.
+ * 4MA1 Higher) + tranche 4 (the queue pair: cie-igcse-english-literature-21
+ * 0455 lit / cie-a-level-accounting-21 9706, both CIE 2023-2025) — the W7
+ * closeout recommendation's build slices, worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
  * (buildSpecTreeIndex + smeRowOfQuestionSet + smeRowOfNote), extended to the
  * notes dimension — wave 9 is the first wave whose appends serve BOTH
  * selectors (tranche 3's b-16 is notes-only: its 65 SyllabAI past-paper sets
  * keep their official spine homes by the smeRowOfQuestionSet null contract,
- * asserted per-course by the fixtures setLaw):
+ * asserted per-course by the fixtures setLaw; tranche 4 carries the wave-9
+ * first multi-match course — accounting's "overview"/"financial-statements-
+ * for-partnerships" slugs duplicate across live sections and resolve
+ * exact-one by the corpus sectionSlug, declared per-course as multiMatch):
  *
  *   1. spine intact   — official node family counts AND the official-node
  *                       digest (code/family/order/parents/title sha) match
@@ -62,6 +66,14 @@ interface CourseFix {
   // every REMAINING (topic) set resolves exactly once. Courses without
   // setLaw keep the blanket tranche-1/2 law: ALL sets resolve.
   setLaw?: { topicSets: number; officialHomeSets: number; officialHomeSectionSlugs: string[] };
+  // tranche-4 multi-match law (the wave-7 exact-one class, first in wave 9):
+  // a course may carry the SAME topic slug under several live sections
+  // (accounting: "overview" x4, "financial-statements-for-partnerships" x2).
+  // Declared slugs are exempt from the zero-duplicate single-match law; the
+  // exact-one resolution is proven by the per-row CORPUS count pins above
+  // (a failed smeSectionSlug agreement would file rows to the wrong section
+  // and the pins would drift). Undeclared duplicates still fail the gate.
+  multiMatch?: string[];
   sections: SecFix[];
 }
 
@@ -96,6 +108,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-a-level-physics-25": new Set(),
   "igcse-maths-b-16": new Set(),
   "igcse-maths-a-18-higher": new Set(["2023-june", "2023-june-r", "2023-november", "specimen"]),
+  "cie-igcse-english-literature-21": new Set(),
+  "cie-a-level-accounting-21": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
@@ -256,9 +270,15 @@ for (const cf of FIXTURES.courses) {
   const setSlugs = new Set(topicSets.map((t) => t.topicSlug));
   const rowSuffix = secs.flatMap((s) => s.subtopics.map((r) => r.code.split(":")[1] as string));
   const dupes = rowSuffix.filter((s, i) => rowSuffix.indexOf(s) !== i);
-  dupes.length === 0
-    ? ok(`single-match law: ${rowSuffix.length} row slugs, 0 duplicate suffixes`)
-    : fail(`duplicate row suffixes need smeSectionSlug disambiguation: ${[...new Set(dupes)]}`);
+  // tranche-4: declared multiMatch slugs are exempt from the zero-duplicate
+  // law — their exact-one resolution is proven by the per-row corpus pins
+  const declaredMulti = new Set(cf.multiMatch ?? []);
+  const undeclaredDupes = [...new Set(dupes)].filter((s) => !declaredMulti.has(s));
+  undeclaredDupes.length === 0
+    ? ok(declaredMulti.size === 0
+        ? `single-match law: ${rowSuffix.length} row slugs, 0 duplicate suffixes`
+        : `single-match law: ${rowSuffix.length} row slugs; duplicates ${[...declaredMulti].sort().join(", ")} declared multi-match (exact-one via the per-row pins)`)
+    : fail(`duplicate row suffixes not declared multiMatch: ${undeclaredDupes}`);
   const noteMissing = [...noteSlugs].filter((s) => !rowSuffix.includes(s));
   const setMissing = [...setSlugs].filter((s) => !rowSuffix.includes(s));
   noteMissing.length === 0
