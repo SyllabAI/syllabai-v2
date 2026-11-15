@@ -47,6 +47,18 @@ task:
       its 4PH1 sibling at tranche 8) takes the probe slot; the roster
       comment documents the rotation chain tranche-2 -> tranche-7 ->
       tranche-8; same disclosed pin-refresh class as the wave-6 run-002)
+    - apps/api/test/curriculum/bundle-seed.test.ts (the DISCLOSED CI-caught
+      bundle-contract pin-refresh: the T-MIG-134 band-134a count contract
+      fail-closes on igcse-physics-19's raw family counts — the +32
+      SME_REFERENCE rows moved TOPIC 8->16 / SUBTOPIC 30->54 — so the pin
+      now filters the OFFICIAL spine (provenanceTier !== "SME_REFERENCE",
+      every official pin unchanged) and adds fail-closed pins for the
+      layer itself (32 = 8 TOPIC + 24 SUBTOPIC, bundle total 266); the
+      seed and code-mapping tests unchanged (the service serves VALIDATED
+      nodes only — 234 held); physics-19 is the repo's ONLY pinned bundle
+      contract (verified repo-wide); CI-caught on the first lane head —
+      the lane's band check read its summary with tail -2, hiding the fail
+      line; battery summaries are read by grep from now on)
     - .syllabai/tasks/T-SME-SEL-W9-8.yaml + .syllabai/receipts/
       T-SME-SEL-W9-8/run-001.md + lane artifacts + both worklogs
       (append-only)
