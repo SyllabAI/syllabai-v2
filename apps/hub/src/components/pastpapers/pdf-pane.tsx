@@ -134,6 +134,9 @@ import {
   useRef,
   useState,
 } from "react";
+// T-MG-INK-13: type-only — the pane stays a runtime monolith; the ink
+// layer's gesture coordinator routes pinch INTO the pane via this shape.
+import type { GesturePinchBridge } from "./ink/paperGestures";
 import {
   AlertTriangle,
   BookOpen,
@@ -190,6 +193,17 @@ export interface PdfPaneProps {
   /** F-022 tranche 2: deep-linked landing page — the pane scrolls there once
    *  the doc is ready and the page holders exist (one-shot; page 1 = no-op) */
   initialPage?: number;
+  /**
+   * T-MG-INK-13 run-001: the ink layer's two-finger gesture bridge. The
+   * ink coordinator owns draw-armed touches (they never reach the s144
+   * plane — the data-ink-drawing contract stands, the stroke guard is
+   * untouched) and routes PINCH through this plane's zoomStep, which the
+   * pane fills with its zoomBy ladder (honest ceiling + anchor-preserving
+   * refreeze — the same zoom path as the toolbar and s144). Pan never
+   * crosses here: the coordinator mutates the scroll ancestor directly
+   * (the beginPan mechanics).
+   */
+  gesturePlane?: { current: GesturePinchBridge | undefined };
   className?: string;
 }
 
@@ -364,7 +378,7 @@ function rotRect(
 // older build (shorter ladder, no spread) degrades safely.
 
 export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
-  { url, fallbackUrl, downloadUrl, label, active, initialPage, className },
+  { url, fallbackUrl, downloadUrl, label, active, initialPage, className, gesturePlane },
   ref,
 ) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -1884,6 +1898,24 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       wheelAccRef.current = 0;
     };
   }, [phase, active, zoomBy]);
+
+  // ── T-MG-INK-13: the ink layer's two-finger gesture bridge ──
+  // Draw-armed touches never reach the s144 plane above (the
+  // data-ink-drawing contract stands — the stroke guard that keeps a
+  // resting palm from stepping the zoom under a live stroke). The ink
+  // layer's PaperGestures coordinator drives pinch through THIS bridge
+  // instead: the same zoomBy ladder (honest ceiling clamp +
+  // anchor-preserving refreeze), so "pinch always zooms" lands on the
+  // identical zoom path in every tool state. Assignment rides zoomBy's
+  // identity so a zoomBy rebuild re-binds.
+  useEffect(() => {
+    const plane = gesturePlane?.current;
+    if (!plane) return;
+    plane.zoomStep = (dir: 1 | -1) => zoomBy(dir);
+    return () => {
+      if (gesturePlane?.current === plane) delete plane.zoomStep;
+    };
+  }, [gesturePlane, zoomBy]);
 
   /** The zoom buttons' honest read-out — the base is named: fit width, fit
    *  page, or the halved spread width when pairs are on (s143). */
