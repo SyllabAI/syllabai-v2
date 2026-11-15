@@ -47,6 +47,7 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { InkLayer } from "@/components/pastpapers/ink/InkLayer";
+import { ScientificCalculator } from "@/components/pastpapers/calc/ScientificCalculator";
 import { createGesturePlane, type GesturePlaneRef } from "@/components/pastpapers/ink/gesturePlane";
 import { RegionMarkLayer } from "@/components/pastpapers/region-mark/RegionMarkLayer";
 import { resolvePaperAssetCached } from "@/lib/regions";
@@ -166,6 +167,10 @@ export function PaperViewerClient({
   // T-MG-INK-1 run-003: the ink layer's host wrapper (the view-mode QP
   // pane's positioning + observation root; see the composition block).
   const qpInkHostRef = useRef<HTMLDivElement | null>(null);
+  // T-MG-CALC run-001: ONE calculator instance at the viewer level (card
+  // L1) — the panes' strips toggle it; the overlay spans split view and
+  // rides the L7 gesture seam (two-finger relay onto the paper).
+  const [calcOpen, setCalcOpen] = useState(false);
   const [breakState, setBreakState] = useState<BreakState>("loading");
   const [breakSource, setBreakSource] = useState<BreakSource>("manual");
   const [rows, setRows] = useState<BreakRow[]>([]);
@@ -874,6 +879,8 @@ export function PaperViewerClient({
               fallbackUrl={qpUrl}
               downloadUrl={qpUrl}
               label={`Question paper — ${paper.ref}`}
+              calcOpen={calcOpen}
+              onToggleCalc={() => setCalcOpen((v) => !v)}
               active={doc === "qp" || doc === "split"}
               initialPage={initialPageDoc !== "ms" ? initialPage : undefined}
               gesturePlane={qpGesturePlane}
@@ -911,6 +918,8 @@ export function PaperViewerClient({
             fallbackUrl={msUrl}
             downloadUrl={msUrl}
             label={`Mark scheme — ${paper.ref}`}
+            calcOpen={calcOpen}
+            onToggleCalc={() => setCalcOpen((v) => !v)}
             active={doc === "ms" || doc === "split"}
             initialPage={initialPageDoc === "ms" ? initialPage : undefined}
             className={cn(
@@ -927,6 +936,11 @@ export function PaperViewerClient({
             No PDFs are held for this paper in the archive yet.
           </p>
         )}
+        {/* T-MG-CALC run-001: the ONE calculator overlay — viewer level,
+            spanning split view; z-law pill(50) > calc(40) > ink toolbar.
+            The panes' strips toggle it; the L7 gesture seam (relay) lives
+            on the overlay root itself. */}
+        <ScientificCalculator open={calcOpen} onClose={() => setCalcOpen(false)} />
       </div>
     </div>
   );
