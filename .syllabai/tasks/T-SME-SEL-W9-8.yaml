@@ -1,0 +1,119 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-8
+  title: 'SME picker layer wave 9, tranche 8 — the Revision-Notes picker mirror
+    for the queue pair (igcse-physics-19 Pearson Edexcel 4PH1 2017 /
+    cie-as-biology-25 CIE AS 9700 2025-2027; the #1038 merge record''s
+    named next-tranche queue, user-facing ranks 1-2: physics 127, as-bio
+    124 — same build recipe; ZERO drift rows on either tree (the feared
+    4BI1 skills-placeholder class did NOT appear on the 4PH1 tree and the
+    sciences-25 0-drift class holds on the AS 9700 tree), both single-match,
+    both trees perfect 1:1s; the wave-8 fleet-safety probe roster rotates
+    its as-biology-25 slot (rotation #2) to the next no-layer
+    Pearson-science sibling igcse-chemistry-19)'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 tranche 8 after tranche 7
+    #1038; the W1-W8 waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W9-7, T-SME-SEL-W9-6, T-SME-SEL-W9-5, T-SME-SEL-W9-4,
+    T-SME-SEL-W9-3, T-SME-SEL-W9-2, T-SME-SEL-W9-1, T-SME-SEL-W8-1,
+    T-SME-SEL-W7-1, T-SME-SEL-W6-1, T-SME-SEL-W5-1, T-SME-SEL-W4-1,
+    T-SME-SEL-W3-1, T-SME-SEL-COSM-1, T-SME-SEL-W2-1, T-SME-SEL-W1-1]
+  scope:
+    allowed:
+    - apps/hub/content/igcse-physics-19/curriculum.json (+32 SME_REFERENCE
+      nodes append-only: 8 section rows + 24 topic rows, verbatim from the
+      live Revision-Notes picker fetch 2026-11-15; removal round-trip
+      asserted byte-identical; byte format auto-detected and preserved
+      byte-exactly — no reformatting)
+    - apps/hub/content/cie-as-biology-25/curriculum.json (+35: 11+24; ZERO
+      drift rows — the sciences-25 trio class holds on the AS 9700 tree)
+    - apps/hub/scripts/sme-wave9-fixtures.json (MERGED — the prior 17 course
+      blocks byte-preserved, asserted deep-equal by the builder; 19 sections
+      / 48 rows appended; per-course fetched 2026-11-15; NO setLaw pin —
+      blanket tranche-1/2 set law on both (physics 24 topic-class sets /
+      as-bio 48, all resolve); NO multiMatch declaration — both courses
+      single-match throughout; NO DRIFT_BY_COURSE entries — both empty)
+    - apps/hub/scripts/verify_sme_wave9.ts (header tranche-8 + DRIFT_BY_COURSE
+      rows for the pair, both empty Sets; ZERO runtime-code change)
+    - apps/hub/scripts/verify_sme_wave8.ts (the DISCLOSED fleet-safety probe
+      pin-refresh rotation #2: cie-as-biology-25 rotated OUT of the no-layer
+      probe roster — it GAINED its SME layer in this tranche, alongside
+      igcse-physics-19 — and the next no-layer Pearson-science sibling
+      igcse-chemistry-19 (its 4BI1 sibling gained the layer at tranche 5,
+      its 4PH1 sibling at tranche 8) takes the probe slot; the roster
+      comment documents the rotation chain tranche-2 -> tranche-7 ->
+      tranche-8; same disclosed pin-refresh class as the wave-6 run-002)
+    - .syllabai/tasks/T-SME-SEL-W9-8.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-8/run-001.md + lane artifacts + both worklogs
+      (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 234/159 spines (byte-untouched — family counts + per-node
+      digest pinned in the fixtures and asserted by the gate)
+    - any set home, question content, note content, flashcard
+    - revision-notes/page.tsx + exam-questions/page.tsx + spec-tree.ts (the
+      W7/W8 runtime already serves the layer generically; zero-code tranche)
+  evidence:
+  - baseline of record (fleet census at main 4ef09e31 — the tip of record
+    carrying tranches 1-7; no advances during the lane): 106 note-bearing
+    courses / 9,151 notes; resolved 4,973 (the 44 layered courses);
+    user-facing loose 4,086; targets of the queue: igcse-physics-19 127
+    loose, cie-as-biology-25 124 loose — 251 notes, zero SME overlap
+  - tranche selection: the #1038 merge record's named next-tranche queue,
+    user-facing ranks 1-2 (re-measured at the tranche-7 lane tree and
+    re-confirmed at 4ef09e31): igcse-physics-19 127, cie-as-biology-25 124
+  - live Revision-Notes picker fetches 2026-11-15 (polite curl,
+    __NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl —
+    physics at /igcse/physics/edexcel/19/, the AS biology tree at SME's
+    AS-level path /as/biology/cie/25/): physics 8 sections/24 topics/127
+    subtopics and as-bio 11/24/124 — BOTH live subtopic counts equal their
+    corpus note counts (perfect 1:1s)
+  - bijection audit of record (lane w9t8_live_audit.py): 0 note slugs
+    missing, 0 set slugs missing, 0 title mismatches, 0 exact-one failures,
+    both courses single-match throughout (no multiMatch class), ZERO drift
+    rows on either course
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS extended to 19 courses:
+    spine family counts + official-node digests intact (physics 234
+    446ddd054c64dd17 / as-bio 159 e8f7308919c76085); 19 section rows + 48
+    topic rows all SME_REFERENCE verbatim; per-row CORPUS note+set counts
+    pinned through the resolution law; physics ALL 127 notes + 24 sets
+    resolve; as-bio ALL 124 notes + 48 sets resolve; drift rows exactly
+    documented (none on both); deep links resolve; official tree.topics
+    carries zero SME codes; prior 17 fixture blocks byte-preserved
+    (asserted by the builder)
+  - wave1 + wave7 + cosmetics1 PASS; wave8 PASS (after the DISCLOSED probe
+    rotation #2 — the fleet-safety roster's as-biology-25 slot rotates to
+    igcse-chemistry-19, 0 SME-row hits on all three probes); wire_r0 PASS
+    (2,574 placed / 0 unplaced — byte-identical to the tranche-3..7
+    records); bun run typecheck (root, CI parity) rc=0; bundle-seed +
+    books-bundle-spine band 79 pass / 0 fail
+  - hub lib battery at the lane tree: the SAME 6 standing fails (1,043
+    tests / 39,866 expects — the identical set stash-verified pre-existing
+    at the tranche-7 base): the T-UGM-RENDER-1 katex red plus 5 dual-run
+    (NEXT_PUBLIC_API_V2_BASE_URL set) v2-flip reds (apiPath exact v2 URLs /
+    every flipped hub-emitted path / T-MIG-106 / T-MIG-110 / T-MIG-133j).
+    Zero new failures from this lane
+  - census re-measure at the lane tree (w9_sme_census.ts): resolved 4,973
+    -> 5,224 (+251 = the pair), layered 44 -> 46, user-facing loose 4,086
+    -> 3,835; targets LOOSE 0/0 (physics 127/127, as-bio 124/124)
+  - PRE-EXISTING DEBTS DISCLOSED NOT TOUCHED (zero contact with this lane's
+    files): verify_sme_wave6 2 failures (RN-DEBRIS-11 run-023 class;
+    W6-1 run-003 pin-refresh queued); the 5 dual-run v2-flip reds
+    (upstream, pre-existing at the #1038 base); the standing credential
+    rotation reminder (TWENTY-EIGHTH filing)
+  effect_of_record:
+  - the queue pair's /revision-notes selectors now mirror SaveMyExams' own
+    Revision-Notes organization verbatim with corpus-true counts; the
+    loose-notes cards empty (251 formerly-loose notes now have rows)
+  - fleet-wide 46 layered courses / 5,224 resolved / user-facing loose
+    3,835; next-tranche queue re-measured at the lane tree (user-facing:
+    igcse-chemistry-19 112, cie-igcse-geography-25 112,
+    igcse-science-double-award-17-biology 110, cie-igcse-accounting-25 105,
+    igcse-biology-modular-24-unit-2 99, igcse-maths-a-modular-24-higher-
+    unit-1 98)

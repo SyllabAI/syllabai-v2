@@ -168,9 +168,13 @@ totalResolved === totalNotes
   // probe slot. cie-as-chemistry-25 rotated out at tranche 7 (it GAINED
   // its SME layer there, alongside cie-a-level-business-23); the next
   // no-layer AS sibling — cie-as-biology-25 (its A-level 9700 sibling
-  // gained the layer at tranche 2) — takes the probe slot. Same disclosed
+  // gained the layer at tranche 2) — took the probe slot. cie-as-biology-25
+  // rotated out at tranche 8 (it GAINED its SME layer there, alongside
+  // igcse-physics-19); the next no-layer Pearson-science sibling —
+  // igcse-chemistry-19 (its 4BI1 sibling gained the layer at tranche 5,
+  // its 4PH1 sibling at tranche 8) — takes the probe slot. Same disclosed
   // pin-refresh class as the wave-6 run-002.
-  const probes = ["cie-as-biology-25", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
+  const probes = ["igcse-chemistry-19", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;
