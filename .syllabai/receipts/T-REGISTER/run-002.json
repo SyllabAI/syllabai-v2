@@ -1,0 +1,49 @@
+{
+  "task": "T-REGISTER",
+  "run": "run-002",
+  "date": "2026-11-15",
+  "operator_order": {
+    "orders": [
+      "Well, you proposed these a while pack. T-REGISTER run-001 — Cluster A+B+C …; T-REGISTER run-002 — Cluster D (record/AI_SUGGESTED; legal test fixed updated); T-REGISTER run-003 — Cluster E (pipeline terminology, failure card, loose notes, homepage statistics). (trace 1a1dcd16c975ba05)",
+      "Well, you gave a summary while back. Here is the part of it. It is in chinese, so dont start thinking or working in chinese. Reply in english only. [the original 42-item cluster inventory, A-E, verbatim] (trace 1a1dcd383870c289)",
+      "prior orders carried: 'Register copy leak … Find it all' (trace 1a1d7eb7) + 'start T-REGISTER run-001' (trace 1a1da597c5f3500d) + 'review+self merge' (trace 1a1db56ca58cedc5 — the standing self-merge authorisation for this lane's PRs)"
+    ],
+    "channel": "zai-web",
+    "session": "web-7b4a27df-7d97-438a-849c-05a9c0003aa8",
+    "chat": "0fade780-1ab5-4951-bfd9-13f43e897f40",
+    "traces": ["1a1dcd16c975ba05", "1a1dcd383870c289", "1a1d7eb7", "1a1da597c5f3500d", "1a1db56ca58cedc5"]
+  },
+  "change": {
+    "summary": "The residue sweep (part 2 of the register sweep): post-run-001 reconciliation against the operator's original 42-item cluster inventory (A-E) found the executed run-001 (#1018 sweep + #1023 addendum-2, 67 surfaces) had retired clusters A/B/C/D except two stragglers (A#3 the Official-source HTTP-status tooltip family, A#6/C#16 the verbatim-parsed-text family), left cluster E standing (pipeline nouns, failure-card voice, corpus-speak badges, pilot-corpus chip, attempt-telemetry voice, misconception-corpus disclaimer, Seneca mapping line, mock provider labels), and scoped-but-did-not-execute the data-side boardNote/evidence interface decision. Run-002 closes all three: 16 hub src files (student strings only, meaning kept, zero engine bytes) + 95 content/video-map data files (evidence ~6,700 rows + boardNote values stripped of emitter QA, base prose preserved; governance metadata source.*/review.*/inputs.* untouched — not learner-visible). Row prefix 'Matched by title:' -> 'Match:' so the cleaned values read naturally; the titles-alone disclosure stays in the section footnote.",
+    "prs_of_record": [
+      {
+        "pr": 1028,
+        "merge_commit": "f0eb626a0937820992f1761ef643630a0b5d867f",
+        "commits": ["8685c652 (the residue sweep: 95 data files + 16 hub src files, +13,858 -13,859)"],
+        "base_head": "02205984"
+      }
+    ],
+    "files": [
+      "cluster E hub strings: exam-questions question-player (marking pipeline / kappa release gate / AI-suggested x4), course-directory (pilot corpus chip, import pending badge + lane/corpus title), dashboard-client (content import pending), grade-boundaries (corpus-yet + GradeBoundaries lane paragraph), topic-tree (corpus-yet), course page (official-spec mapping in progress), practice/client (attempt telemetry + governed pipeline), state-drawer (misconception corpus + SME/deterministic disclaimer), seneca-browser (Seneca course mapping), mock.ts (Bundled corpus (real import) + generated stamp)",
+      "cluster A/C stragglers: past-papers index + per-paper Official-source tooltips (verified HTTP/retrieved), paper-viewer (verbatim parsed text tooltip + Parsed text button -> Paper text), citation-paper-link x3 popup lines + 2 toggle buttons, source-reader meta line",
+      "cluster C voice: videos page (never inflate the numbers above, Board-agnostic / zero spec-point weight, {n}-confidence match badge -> match: {n}, Matched by title -> Match)",
+      "data-side: apps/hub/content/video-map/*.json x95 — evidence values stop carrying '(inherited from the owner-approved … via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)', 'title-only posture/binding rule (df<=3)', arrow-format 'title X -> code spec via token(s)' -> 'X names spec', 'title: …; session/syllabus/paper code … machine-checkable' -> 'the title carries the session and paper code (…)', 'topic anchor … (idf containment…)' -> 'the title names this topic's content', 'topic-complete lecture (…) / section-marker narrowing' -> 'the title names the topic/section …', 'chapter.section marker … narrows the candidate pool' -> 'this video is a chapter opener …'; boardNote values stop carrying '(oEmbed author verified per video)', '(channelId …)', 'register-explicit', 'adjudicated per row on title-only evidence' -> 'each video's fit was checked by hand', 'identityMethod: thumb-fallback' phrasing, 'machine-checkable codes' -> 'syllabus codes', 'old-register … mapped …, disclosed' -> 'older C12/C34 paper codes — same content as the current P1-P4 units', 'UK spines' -> 'UK course outlines', Amoeba Sisters divergence line -> student prose"
+    ],
+    "reconciliation": "42-item inventory status after run-002: A(1-7) retired — #3,#6 by this run, rest by #1018; B(8-11) retired by #1018; C(12-22) retired — #15 badge, #17 data-side, #20, #21 by this run, rest by #1018; D(23-29) retired by #1018 (law test hardened, not.toContain('AI_SUGGESTED')); E(30-42) retired by this run (#33, #34 were already clean; #36's student face retired by #1018, its teacher marking face deferred; #37's homepage aria retired by #1018, the directory chip by this run). Deliberate keeps intact: 'Auto-matched' chip, spec-point vocabulary, about/provenance page, 'Flag self-doubt' button, teacher-ops register (separate lane decision)."
+  },
+  "gates": {
+    "tsc": "hub exit 0; api exit 0; contracts exit 0 (all at the PR head tree)",
+    "bun_test": "video-map + components/hub 41 pass; mark-scheme + editor-history + paper-marks + teach-genie components 90 pass; grade-boundaries + tutor + assistant 78 pass; teach-genie laws 5 pass — 214 pass 0 fail total (the run-001-disclosed video-map 5-fail debt is gone on the current tree)",
+    "eslint": "0 NEW problems on all 16 touched files; seneca-browser 1 error + 1 warning pre-existing, byte-identical on the pristine stashed file (stash-verify)",
+    "ci": "PR head 8685c652 check-runs 6/6 success (verify, law-readback, census, coordination, hub, Vercel Preview Comments); the Vercel deploy commit-status pending is infra-side non-blocking per the lane's CI discipline"
+  },
+  "review_loop": "self-review per the standing review+self-merge authorisation: every string replacement asserted by expected-count regex (24 edit rules, zero misses after fixing one double-comma typo the tsc gate caught); data transform iterated to an asserted ZERO ops-token hits across all learner-visible evidence/boardNote fields in all 95 files; a fresh 42-item sweep on the final tree shows only comments, internal identifiers, teacher-side deferrals, and the deliberate keeps; src diff readback reviewed before merge",
+  "disclosures": [
+    "the syllabai-resources emitter should adopt the same evidence/boardNote rewrite — the next emit over these drafts would otherwise re-introduce the QA tails hub-side (the hub's copies are what render)",
+    "video-map governance metadata (source.provider/method, review.evidenceBasis, inputs paths) still speaks ops BY DESIGN — it is the audit trail and is not learner-visible (the videos page renders only row boardNote/evidence)",
+    "the teacher test-builder/marking ops register (kappa, 'validated-assembly receipt', 'never fabricated', cohort 'honest gaps') remains standing — teacher-ops surface, separate lane decision, unchanged from the run-001 disclosure",
+    "the count of evidence values changed (4,669 + 479 + 826 + 3,143 across transform iterations) reflects the iterative classifier work; the final tree is what ships and its assertion is the 0-hit gate, not the iteration counts",
+    "root worklog.md not touched (not this lane's log); this receipt + task card + .syllabai/worklog.md only"
+  ],
+  "verdict": "SHIP — the run-002 residue is closed: every learner-visible surface from the operator's original 42-item inventory now reads in student register, the data-side boardNote/evidence decision is executed with the mapping meaning kept, and the lane's zero-hit law holds on the merged tree."
+}
