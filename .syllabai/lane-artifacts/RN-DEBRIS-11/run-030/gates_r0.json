@@ -1,0 +1,106 @@
+{
+ "receipt": "run-030-gates",
+ "family": "RN-DEBRIS-11",
+ "run": "run-030",
+ "kind": "build-time gates (pre-commit, vs the base tip + staged worktree)",
+ "generatedUtc": "2026-11-15",
+ "baseTip": "a558f9ad6ac5487569700710cbb41454d7d17928",
+ "gates": [
+  {
+   "name": "B1-prefix-worklog.md",
+   "ok": true,
+   "detail": "append-only"
+  },
+  {
+   "name": "B1-ride-sha-worklog.md",
+   "ok": true,
+   "detail": "the run-029 merge record entry present with the merge sha (the house worklog sha form)"
+  },
+  {
+   "name": "B1-entry-once-worklog.md",
+   "ok": true,
+   "detail": "each entry exactly once"
+  },
+  {
+   "name": "B1-marks-worklog.md-<<<",
+   "ok": true,
+   "detail": "count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-worklog.md->>>",
+   "ok": true,
+   "detail": "count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-worklog.md-===",
+   "ok": true,
+   "detail": "count unchanged vs base"
+  },
+  {
+   "name": "B1-prefix-.syllabai/worklog.md",
+   "ok": true,
+   "detail": "append-only"
+  },
+  {
+   "name": "B1-ride-sha-.syllabai/worklog.md",
+   "ok": true,
+   "detail": "the run-029 merge record entry present with the merge sha (the house worklog sha form)"
+  },
+  {
+   "name": "B1-entry-once-.syllabai/worklog.md",
+   "ok": true,
+   "detail": "each entry exactly once"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md-<<<",
+   "ok": true,
+   "detail": "count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md->>>",
+   "ok": true,
+   "detail": "count unchanged vs base"
+  },
+  {
+   "name": "B1-marks-.syllabai/worklog.md-===",
+   "ok": true,
+   "detail": "count unchanged vs base"
+  },
+  {
+   "name": "G2-diff-shape",
+   "ok": true,
+   "detail": "-1/+11 (the comma replace + the merged block additions)"
+  },
+  {
+   "name": "G2-merged-block",
+   "ok": true,
+   "detail": "merged block fields of record"
+  },
+  {
+   "name": "G3-ride-receipt",
+   "ok": true,
+   "detail": "ride receipt + census + 26th reminder"
+  },
+  {
+   "name": "G3-postReview",
+   "ok": true,
+   "detail": "postReview receipt"
+  },
+  {
+   "name": "G4-scope-7",
+   "ok": true,
+   "detail": "the staged set == the 7 declared paths (asserted at commit time by the union battery)"
+  },
+  {
+   "name": "G5-byte-identity-cie-igcse-computer-science-23.json",
+   "ok": true,
+   "detail": "apps/hub/content-maps/cie-igcse-computer-science-23.json byte-identical vs base (zero content bytes by construction; re-asserted vs base at commit time)"
+  },
+  {
+   "name": "G5-byte-identity-flashcards.json",
+   "ok": true,
+   "detail": "apps/hub/content/cie-igcse-computer-science-23/flashcards.json byte-identical vs base (zero content bytes by construction; re-asserted at commit time)"
+  }
+ ],
+ "allOk": true
+}
