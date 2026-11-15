@@ -144,7 +144,7 @@ export function AddCourseOverlay({
             Add a course
           </DialogTitle>
           <DialogDescription id="add-course-desc">
-            Choose the exam board, then the level, then the subject lane. Added courses appear in
+            Choose the exam board, then the level, then the subject. Added courses appear in
             My subjects instantly. Signed in? You can also set an optional exam series per
             course — it powers your exam countdown and the future study planner.
           </DialogDescription>
@@ -239,7 +239,7 @@ export function AddCourseOverlay({
                 <p className="py-6 text-center text-sm text-muted-foreground">
                   {q
                     ? `No ${board} ${level} course matches “${q}”.`
-                    : `No ${board} ${level} lanes in the registry yet.`}
+                    : `No ${board} ${level} courses are available yet.`}
                 </p>
               ) : (
                 list.map((c) => {
@@ -302,7 +302,7 @@ export function AddCourseOverlay({
           <p className="text-xs text-muted-foreground">
             {level
               ? `${list.length - addedCount} of ${list.length} ${
-                  list.length === 1 ? "lane" : "lanes"
+                  list.length === 1 ? "course" : "courses"
                 } not yet added`
               : "You can add several subjects before closing."}
           </p>
