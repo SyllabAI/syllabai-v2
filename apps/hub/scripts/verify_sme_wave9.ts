@@ -7,8 +7,9 @@
  * 0455 lit / cie-a-level-accounting-21 9706, both CIE 2023-2025) + tranche 5
  * (cie-a-level-economics-23 CIE 9708 / igcse-biology-19 Pearson Edexcel
  * 4BI1) + tranche 6 (igcse-maths-a-18-foundation 4MA1 Foundation /
- * cie-igcse-physics-23 CIE 0625 2023-2025) — the W7 closeout
- * recommendation's build slices, worst tails first.
+ * cie-igcse-physics-23 CIE 0625 2023-2025) + tranche 7 (cie-as-chemistry-25
+ * CIE AS 9701 2025-2027 / cie-a-level-business-23 CIE 9609 2023-2025) —
+ * the W7 closeout recommendation's build slices, worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
  * (buildSpecTreeIndex + smeRowOfQuestionSet + smeRowOfNote), extended to the
@@ -102,7 +103,9 @@ interface Node {
 // topics on the Edexcel maths-a trees — the 18-higher and the 18-foundation
 // siblings carry the same 4; SME's own skills/exam-technique placeholders
 // on the 4BI1 and 0625 trees, 0625 also carrying the june-2023 past-paper
-// placeholder) — mirrored verbatim as 0-note 0-set rows, the wave-1/3
+// placeholder; NONE on the tranche-7 pair — the 9701-AS and 9609 trees run
+// the sciences-25 trio's 0-drift class, every live topic carrying corpus
+// traffic) — mirrored verbatim as 0-note 0-set rows, the wave-1/3
 // 0-set precedent
 const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-maths-25-extended": new Set(["set-1-fl"]),
@@ -120,6 +123,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-biology-19": new Set(["exam-technique", "handling-data-and-maths-skills", "practical-and-investigative-skills"]),
   "igcse-maths-a-18-foundation": new Set(["2023-june", "2023-june-r", "2023-november", "specimen"]),
   "cie-igcse-physics-23": new Set(["exam-technique", "handling-data-and-maths-skills", "practical-and-investigative-skills", "june-2023"]),
+  "cie-as-chemistry-25": new Set(),
+  "cie-a-level-business-23": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {

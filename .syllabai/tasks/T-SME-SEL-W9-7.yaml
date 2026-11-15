@@ -1,0 +1,129 @@
+version: 1
+task:
+  id: T-SME-SEL-W9-7
+  title: 'SME picker layer wave 9, tranche 7 — the Revision-Notes picker mirror
+    for the queue pair (cie-as-chemistry-25 CIE AS 9701 2025-2027 /
+    cie-a-level-business-23 CIE 9609 2023-2025; the #1036 merge record''s
+    named next-tranche queue, user-facing ranks 1-2: as-chem 134, business
+    131 — same build recipe; the cleanest tranche yet: ZERO drift rows on
+    either tree, both courses single-match, blanket set law; the wave-8
+    fleet-safety probe roster rotates its as-chem slot to the next no-layer
+    AS sibling cie-as-biology-25)'
+  owner: Super Z (zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6,
+    chat 1f3003b6-0cd7-44ff-9024-7cedd8ac7b83)
+  status: IN_REVIEW # run-001 opened as a PR; integrator merges
+  priority: P1
+  band: T-SME-SEL (the SME selector band — wave 9 tranche 7 after tranche 6
+    #1036; the W1-W8 waves #867/#878/#886/#890/#907/#932/#942/#949/#952/#970)
+  wave: sme-selector
+  deps: [T-SME-SEL-W9-6, T-SME-SEL-W9-5, T-SME-SEL-W9-4, T-SME-SEL-W9-3,
+    T-SME-SEL-W9-2, T-SME-SEL-W9-1, T-SME-SEL-W8-1, T-SME-SEL-W7-1,
+    T-SME-SEL-W6-1, T-SME-SEL-W5-1, T-SME-SEL-W4-1, T-SME-SEL-W3-1,
+    T-SME-SEL-COSM-1, T-SME-SEL-W2-1, T-SME-SEL-W1-1]
+  scope:
+    allowed:
+    - apps/hub/content/cie-as-chemistry-25/curriculum.json (+73 SME_REFERENCE
+      nodes append-only: 22 section rows + 51 topic rows, verbatim from the
+      live Revision-Notes picker fetch 2026-11-15 — the AS-level tree served
+      under SME's own /as/ path; removal round-trip asserted byte-identical;
+      byte format auto-detected and preserved byte-exactly — no reformatting)
+    - apps/hub/content/cie-a-level-business-23/curriculum.json (+41: 6+35;
+      ZERO drift rows — every live topic carries corpus traffic, the
+      sciences-25 trio class; the exam-technique section's topics carry the
+      8 census examTech-class notes (contentKind "exam-technique"), which
+      resolve through the same topicSlug law)
+    - apps/hub/scripts/sme-wave9-fixtures.json (MERGED — the prior 15 course
+      blocks byte-preserved, asserted deep-equal by the builder; 28 sections
+      / 86 rows appended; per-course fetched 2026-11-15; NO setLaw pin —
+      blanket tranche-1/2 set law on both (as-chem 102 topic-class sets /
+      business 33, all resolve); NO multiMatch declaration — both courses
+      single-match throughout; NO DRIFT_BY_COURSE entries — both empty)
+    - apps/hub/scripts/verify_sme_wave9.ts (header tranche-7 + DRIFT_BY_COURSE
+      rows for the pair, both empty Sets; ZERO runtime-code change)
+    - apps/hub/scripts/verify_sme_wave8.ts (the DISCLOSED fleet-safety probe
+      pin-refresh: cie-as-chemistry-25 rotated OUT of the no-layer probe
+      roster — it GAINED its SME layer in this tranche — and the next
+      no-layer AS sibling cie-as-biology-25 (its A-level 9700 sibling gained
+      the layer at tranche 2) takes the probe slot; the roster comment
+      documents the rotation chain; same disclosed pin-refresh class as the
+      wave-6 run-002 and the roster's own tranche-2 rotation)
+    - .syllabai/tasks/T-SME-SEL-W9-7.yaml + .syllabai/receipts/
+      T-SME-SEL-W9-7/run-001.md + lane artifacts + both worklogs
+      (append-only)
+    forbidden:
+    - notes.json / questions.json (content untouched; homes are runtime via
+      smeRowOfNote / smeRowOfQuestionSet by the carried slugs)
+    - the official 278/161 spines (byte-untouched — family counts + per-node
+      digest pinned in the fixtures and asserted by the gate)
+    - any set home, question content, note content, flashcard
+    - revision-notes/page.tsx + exam-questions/page.tsx + spec-tree.ts (the
+      W7/W8 runtime already serves the layer generically; zero-code tranche)
+  evidence:
+  - baseline of record (fleet census at main 074f165f — the tip of record
+    carrying tranches 1-6 plus the late-merging #1024 videomap, #1035
+    receipts ride and #1037 ink fix; no advances during the lane): 106
+    note-bearing courses / 9,151 notes; resolved 4,700 (the 42 layered
+    courses); user-facing loose 4,351; targets of the queue: as-chem 134
+    loose, business 131 loose (131 = the census LOOSE column; business also
+    carries 8 examTech-class notes (contentKind "exam-technique") excluded
+    from the user-facing loose — 139 unresolved notes in total)
+  - tranche selection: the #1036 merge record's named next-tranche queue,
+    user-facing ranks 1-2 (re-measured at the tranche-6 lane tree and
+    re-confirmed at 074f165f): cie-as-chemistry-25 134,
+    cie-a-level-business-23 131; 273 unresolved notes (134+139), zero SME
+    overlap
+  - live Revision-Notes picker fetches 2026-11-15 (polite curl,
+    __NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl —
+    the AS chemistry tree lives at SME's AS-level path /as/chemistry/cie/25/,
+    business at /a-level/business/cie/23/): as-chem 22 sections/51
+    topics/134 subtopics (live subtopic count == corpus note count — a
+    perfect 1:1); business 6/35/139
+  - bijection audit of record (lane w9t7_live_audit.py): 0 note slugs
+    missing, 0 set slugs missing, 0 title mismatches, 0 exact-one failures,
+    both courses single-match throughout (no multiMatch class), ZERO drift
+    rows on either course (the sciences-25 trio class — every live topic
+    carries corpus traffic)
+  verification:
+  - bun apps/hub/scripts/verify_sme_wave9.ts PASS extended to 17 courses:
+    spine family counts + official-node digests intact (as-chem 278
+    3713e53ea30df18c / business 161 01aa641f7da6111d); 28 section rows + 86
+    topic rows all SME_REFERENCE verbatim; per-row CORPUS note+set counts
+    pinned through the resolution law; as-chem ALL 134 notes + 102 sets
+    resolve; business ALL 139 notes + 33 sets resolve (the 8 examTech-class
+    notes included); drift rows exactly documented (none on both); deep
+    links resolve; official tree.topics carries zero SME codes; prior 15
+    fixture blocks byte-preserved (asserted by the builder)
+  - wave1 + wave7 + cosmetics1 PASS; wave8 PASS (after the DISCLOSED probe
+    pin-refresh — the fleet-safety roster's as-chem slot rotates to
+    cie-as-biology-25, 0 SME-row hits on all three probes); wire_r0 PASS
+    (2,574 placed / 0 unplaced — byte-identical to the tranche-3..6
+    records); bun run typecheck (root, CI parity) rc=0, 5/5 turbo tasks;
+    bundle-seed + books-bundle-spine band 79 pass / 0 fail
+  - hub lib battery at the lane tree: 6 standing fails (1,043 tests /
+    39,866 expects), the standing set's upstream drift continuing (10 -> 9
+    -> 5 -> 1 -> 6): the T-UGM-RENDER-1 katex red PLUS 5 dual-run
+    (NEXT_PUBLIC_API_V2_BASE_URL set) v2-flip reds (apiPath exact v2 URLs /
+    every flipped hub-emitted path / T-MIG-106 / T-MIG-110 / T-MIG-133j)
+    that landed upstream between the tranche-6 battery and 074f165f (the
+    #1024/#1035/#1037 advance window). STASH-VERIFIED PRE-EXISTING AT BASE:
+    the identical 6-fail set reproduces with this lane's changes stashed.
+    Zero new failures from this lane
+  - census re-measure at the lane tree (w9_sme_census.ts): resolved 4,700
+    -> 4,973 (+273 = 134 as-chem + 139 business — ALL 139 business notes
+    resolve, the 8 examTech-class included), layered 42 -> 44, user-facing
+    loose 4,351 -> 4,086; targets LOOSE 0/0 (as-chem 134/134, business
+    139/139 incl. the 8 examTech notes)
+  - PRE-EXISTING DEBTS DISCLOSED NOT TOUCHED (zero contact with this lane's
+    files): verify_sme_wave6 2 failures (RN-DEBRIS-11 run-023 class;
+    W6-1 run-003 pin-refresh queued); the 5 dual-run v2-flip reds (upstream
+    window #1024/#1035/#1037, stash-verified pre-existing)
+  effect_of_record:
+  - the queue pair's /revision-notes selectors now mirror SaveMyExams' own
+    Revision-Notes organization verbatim with corpus-true counts; the
+    loose-notes cards empty (273 formerly-unresolved notes now have rows;
+    the user-facing loose count drops 265 and the examTech bucket empties)
+  - fleet-wide 44 layered courses / 4,973 resolved / user-facing loose
+    4,086; next-tranche queue re-measured at the lane tree (user-facing:
+    igcse-physics-19 127, cie-as-biology-25 124, igcse-chemistry-19 112,
+    cie-igcse-geography-25 112, igcse-science-double-award-17-biology 110,
+    cie-igcse-accounting-25 105)
