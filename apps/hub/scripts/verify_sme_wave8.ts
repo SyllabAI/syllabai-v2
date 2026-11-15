@@ -164,9 +164,13 @@ totalResolved === totalNotes
 {
   // probe roster of record: cie-a-level-chemistry-25 rotated out at wave-9
   // tranche 2 (it GAINED its SME layer there — the fleet-safety law only
-  // binds courses still without one); its no-layer AS sibling takes the
-  // probe slot. Same disclosed pin-refresh class as the wave-6 run-002.
-  const probes = ["cie-as-chemistry-25", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
+  // binds courses still without one); its no-layer AS sibling took the
+  // probe slot. cie-as-chemistry-25 rotated out at tranche 7 (it GAINED
+  // its SME layer there, alongside cie-a-level-business-23); the next
+  // no-layer AS sibling — cie-as-biology-25 (its A-level 9700 sibling
+  // gained the layer at tranche 2) — takes the probe slot. Same disclosed
+  // pin-refresh class as the wave-6 run-002.
+  const probes = ["cie-as-biology-25", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;
