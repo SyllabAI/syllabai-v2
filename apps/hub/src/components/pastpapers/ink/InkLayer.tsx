@@ -101,6 +101,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { createPortal } from "react-dom";
 
 import { computePenModeOnLoad, penAutoArm, type InkPenPref } from "./ink-penmode";
+import { isStrayStroke, PaperGestures, type GesturePinchBridge } from "./paperGestures";
 import {
   AlertTriangle,
   Check,
@@ -240,6 +241,16 @@ export interface InkLayerProps {
   hostRef: React.RefObject<HTMLElement | null>;
   /** The canonical document URL — the sourceUrl persistence key. */
   sourceUrl: string | null;
+  /**
+   * T-MG-INK-13 run-001: the pinch bridge — a shared plane object the
+   * pane fills with `zoomStep` (its zoomBy ladder). The layer's
+   * PaperGestures coordinator routes two-finger pinch through it so the
+   * operator's "pinch always zooms, no matter the tool" lands on the
+   * SAME zoom path as the toolbar and s144. Optional: direct test
+   * mounts omit it (pan laws pin without it; pinch pins inject a
+   * counting bridge via the InkCanvas prop).
+   */
+  gesturePlane?: { current: GesturePinchBridge | undefined };
 }
 
 interface HolderEntry {
@@ -256,7 +267,20 @@ type LocalInkMigration =
   | { phase: "uploading"; localShapes: InkShape[] }
   | { phase: "failed"; localShapes: InkShape[] };
 
-export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
+export function InkLayer({ hostRef, sourceUrl, gesturePlane }: InkLayerProps) {
+  // ── T-MG-INK-13 run-001: the layer-level two-finger gesture plane ──
+  // Every page's InkCanvas registers its TOUCH pointers here (two fingers
+  // may straddle pages — the coordinator is shared, the canvases' local
+  // state is not). Pinch steps route through gesturePlane.zoomStep (the
+  // pane's zoomBy); pan mutates the scroll ancestor directly. The wrapper
+  // reads the plane at CALL time — the pane fills it after mount.
+  const gesturesRef = useRef<PaperGestures | null>(null);
+  if (!gesturesRef.current) {
+    gesturesRef.current = new PaperGestures(
+      gesturePlane ? { zoomStep: (dir) => gesturePlane.current?.zoomStep?.(dir) } : null,
+    );
+  }
+  const gestures = gesturesRef.current;
   const [token, setToken] = useState<string | null>(null);
   // T-MG-INK-11: MG's law — the annotator toolbar is ALWAYS visible on a
   // paper page (extracted live: all 18 buttons render with no gate, no
@@ -1298,6 +1322,7 @@ export function InkLayer({ hostRef, sourceUrl }: InkLayerProps) {
               penMode={penMode}
               penModeRef={penModeRef}
               onPenSeen={markPenSeen}
+              gestures={gestures}
               guideSlot={
                 <>
                   {rulerGuide?.page === page && (
@@ -1438,6 +1463,14 @@ export interface InkCanvasProps {
    * existed). Idempotent at the parent — the canvas may call it freely.
    */
   onPenSeen?: () => void;
+  /**
+   * T-MG-INK-13 run-001: the LAYER gesture coordinator (paperGestures).
+   * The production InkLayer passes ONE instance for every page (two
+   * fingers may straddle pages); a direct test mount omitting it gets a
+   * per-instance coordinator with no pinch bridge (pan laws still pin;
+   * pinch pins inject a counting bridge by passing their own).
+   */
+  gestures?: PaperGestures;
 }
 
 type DragKind = "freehand" | "line" | "ruler" | "protractor" | "compasses" | "guide" | "erase" | "move";
@@ -1514,7 +1547,14 @@ export function InkCanvas({
   penMode = false,
   penModeRef,
   onPenSeen,
+  gestures: gesturesProp,
 }: InkCanvasProps) {
+  // T-MG-INK-13: the production InkLayer passes the LAYER coordinator
+  // (two fingers may straddle pages); a direct test mount gets its own
+  // instance with no pinch bridge (the pan laws still pin).
+  const localGesturesRef = useRef<PaperGestures | null>(null);
+  if (!localGesturesRef.current) localGesturesRef.current = new PaperGestures(null);
+  const gesturesApi = gesturesProp ?? localGesturesRef.current;
   // T-HUB-INK-BRK run-003: the mirror the gesture handlers read. The
   // production InkLayer passes its layer-level liveToolsRef (written at
   // arm time, before any commit); a direct mount (the test harness) gets
@@ -1535,6 +1575,11 @@ export function InkCanvas({
   // finger) is swallowed instead of clobbering the live stroke. Cleared
   // by endStroke and the pen-precedence discard.
   const activePointerIdRef = useRef<number | null>(null);
+  // T-MG-INK-13: the live stroke's start facts — the L5 stray-steal law
+  // reads age (≤150ms) and travel (≤8px) from these at the second
+  // finger's down. Set on every freehand start, cleared by endStroke and
+  // the discard paths.
+  const strokeStartRef = useRef<{ at: number; x: number; y: number } | null>(null);
   // The pen-session law (palm rejection): the timestamp of the last pen
   // EVENT. A TOUCH gesture may not start within PEN_SESSION_MS of it —
   // the palm rests and taps while the stylus writes. T-MG-INK-12 run-001
@@ -1555,7 +1600,9 @@ export function InkCanvas({
   // client point, and the scroll target resolved at gesture start. A
   // draw-family tool holds touch-action:none, so the finger's native pan
   // is dead — this gesture pans the paper in JS instead. Never draws.
-  const panRef = useRef<{ id: number; x: number; y: number; el: HTMLElement | null } | null>(null);
+  // T-MG-INK-13: the touch-pan state moved into the layer's PaperGestures
+  // coordinator (paperGestures.ts) — single-finger pan is its "pan1" mode,
+  // two fingers arm the pan/pinch gesture. This file keeps no pan refs.
   const rafRef = useRef(0);
   const [draft, setDraft] = useState<{ x: number; y: number; value: string; editId?: string } | null>(null);
   // T-HUB-INK-BRK (operator: "the pdf viewer has many problems, sometimes
@@ -1778,7 +1825,10 @@ export function InkCanvas({
   // move box would outlive its dead gesture otherwise). No-op when
   // nothing is in flight (the pan gesture's pointerId plane still clears).
   const discardGesture = useCallback(() => {
-    panRef.current = null;
+    // T-MG-INK-13: the gesture plane goes with it (a pen landing
+    // mid-gesture tears the two-finger plane down — pen precedence L4).
+    gesturesApi.cancelAll();
+    strokeStartRef.current = null;
     if (!dragKindRef.current) return;
     activeRef.current = null;
     activePressuresRef.current = null;
@@ -1791,7 +1841,7 @@ export function InkCanvas({
     setMovePreview(null);
     setSweepDeg(null);
     repaint();
-  }, [repaint]);
+  }, [repaint, gesturesApi]);
   // The pen-event anchor: EVERY pen event (hover, down, draw move, lift)
   // refreshes the palm window from the last pen event (the Addendum 20
   // gap kill), and the FIRST sighting fires onPenSeen (the parent's
@@ -1826,13 +1876,17 @@ export function InkCanvas({
   // pan alive across the page holders (real events capture fine — the
   // runbook's synthetic-events law).
   const beginPan = useCallback((e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (panRef.current && e.pointerId !== panRef.current.id) return;
+    // T-MG-INK-13: the pan plane moved into the layer's PaperGestures
+    // coordinator — single-finger pan is its "pan1" mode (beginPan
+    // parity: immediate, no threshold); a second finger upgrades it to
+    // the two-finger pan/pinch gesture. Capture semantics unchanged
+    // (real events capture fine — the runbook's synthetic-events law).
     const canvas = canvasRef.current;
     if (!canvas) return;
     canvas.setPointerCapture(e.pointerId);
     activePointerIdRef.current = e.pointerId;
-    panRef.current = { id: e.pointerId, x: e.clientX, y: e.clientY, el: findScrollAncestor(canvas) };
-  }, []);
+    gesturesApi.pointerDown(e.pointerId, e.clientX, e.clientY, "pan", findScrollAncestor(canvas));
+  }, [gesturesApi]);
 
   const onPointerDown = useCallback(
     (e: React.PointerEvent<HTMLCanvasElement>) => {
@@ -1872,6 +1926,47 @@ export function InkCanvas({
       }
       const penModeLive = penModeRef ? penModeRef.current : penMode;
       if (e.pointerType === "touch" && (dragKindRef.current !== null || now - penSeenAtRef.current < PEN_SESSION_MS)) {
+        // ── T-MG-INK-13 run-001: the L5 stray-steal ──
+        // A second finger landing on a YOUNG freehand stroke (≤150ms old,
+        // ≤8px of travel — the accidental dot) cancels the stroke WITHOUT
+        // a commit and both fingers become a two-finger pan/pinch
+        // gesture. A MATURE stroke keeps the one-gesture isolation law
+        // (the user is drawing; the second contact is a resting palm),
+        // and the palm window gates the steal: a touch inside it is a
+        // palm, never a gesture (pen priority L4).
+        if (
+          dragKindRef.current === "freehand" &&
+          now - penSeenAtRef.current >= PEN_SESSION_MS &&
+          m !== "select" &&
+          activePointerIdRef.current !== null &&
+          // the in-flight stroke must not be a PEN stroke (pen priority:
+          // a finger never steals the stylus — pen strokes carry the
+          // pressure channel, touch/mouse strokes carry none)
+          activePressuresRef.current === null &&
+          strokeStartRef.current !== null
+        ) {
+          const strokeLast = lastPxRef.current;
+          // the stray test measures the STROKE's travel (its own last
+          // point vs its start), not the second finger's position
+          if (
+            strokeLast !== null &&
+            isStrayStroke(
+              strokeStartRef.current.at,
+              strokeStartRef.current,
+              now,
+              strokeLast[0],
+              strokeLast[1],
+            )
+          ) {
+            const strokePointer = activePointerIdRef.current;
+            discardGesture();
+            if (strokePointer) {
+              gesturesApi.pointerDown(strokePointer, strokeLast[0], strokeLast[1], "pan", findScrollAncestor(canvas));
+            }
+            gesturesApi.pointerDown(e.pointerId, e.clientX, e.clientY, "tool", findScrollAncestor(canvas));
+            return;
+          }
+        }
         // ── T-MG-INK-12 run-002: the stylus-mode pan carve-out ──
         // Inside the 1500ms palm window BUT past the 600ms pan beat, a
         // draw-armed stylus-mode canvas PANS the touch instead of
@@ -1899,6 +1994,14 @@ export function InkCanvas({
       if (e.pointerType === "touch" && penModeLive && m !== "select") {
         beginPan(e);
         return;
+      }
+      // ── T-MG-INK-13: register the classic touch pointer with the
+      // gesture plane (role "tool": tracked for the L5 steal's centroid,
+      // never pans alone; a second finger's verdict happens above).
+      // Select stays unregistered — its native pan + the s144 pinch are
+      // the shipped resting plane, untouched.
+      if (e.pointerType === "touch" && m !== "select" && !gesturesApi.owns(e.pointerId)) {
+        gesturesApi.pointerDown(e.pointerId, e.clientX, e.clientY, "tool", findScrollAncestor(canvas));
       }
       if (dragKindRef.current !== null && e.pointerId !== activePointerIdRef.current) return;
       if (m === "text") {
@@ -2080,11 +2183,13 @@ export function InkCanvas({
       activePointerIdRef.current = e.pointerId;
       activePressuresRef.current = e.pointerType === "pen" ? [e.pressure] : null;
       dragKindRef.current = "freehand";
+      // T-MG-INK-13: the L5 stray-steal reads age/travel from this.
+      strokeStartRef.current = { at: performance.now(), x: e.clientX, y: e.clientY };
       activeRef.current = [frac];
       lastPxRef.current = [e.clientX, e.clientY];
       scheduleLive();
     },
-    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts, commitDraft, commitMathDraft, repaint, beginPan, discardGesture, page, penEvent, penMode, penModeRef, tools],
+    [mode, armSeq, ruler, protractor, onGuideDown, onGuideCreate, scheduleLive, displayShapes, readMeasured, measureMtexts, commitDraft, commitMathDraft, repaint, beginPan, discardGesture, page, penEvent, penMode, penModeRef, tools, gesturesApi],
   );
 
   const onPointerMove = useCallback(
@@ -2105,18 +2210,10 @@ export function InkCanvas({
       // needs no arming tap. Every pen move re-anchors the palm window
       // (the draw-move case: the window survives strokes of any length).
       if (e.pointerType === "pen") penEvent();
-      // The pen-mode pan: the owning touch pans the paper while a
-      // draw-family tool holds touch-action:none. Never appends ink.
-      if (panRef.current && e.pointerId === panRef.current.id) {
-        const p = panRef.current;
-        if (p.el) {
-          p.el.scrollTop -= e.clientY - p.y;
-          p.el.scrollLeft -= e.clientX - p.x;
-        }
-        p.x = e.clientX;
-        p.y = e.clientY;
-        return;
-      }
+      // ── T-MG-INK-13: the gesture plane ── pan/gesture moves are
+      // consumed here (never ink); tool pointers are observed so the
+      // plane's centroid is fresh if the L5 steal promotes them.
+      if (e.pointerType === "touch" && gesturesApi.pointerMove(e.pointerId, e.clientX, e.clientY)) return;
       // T-MG-INK-10: while an editor tool is armed and no editor is
       // open, the hover chip follows the cursor (MG's affordance).
       // Position-only tracking — drags are untouched below.
@@ -2244,12 +2341,13 @@ export function InkCanvas({
         scheduleLive();
       }
     },
-    [mode, draft, mathDraft, armSeq, ruler, protractor, onGuideMove, scheduleLive, displayShapes, readMeasured, penEvent, tools],
+    [mode, draft, mathDraft, armSeq, ruler, protractor, onGuideMove, scheduleLive, displayShapes, readMeasured, penEvent, tools, gesturesApi],
   );
 
   const endStroke = useCallback(() => {
     const kind = dragKindRef.current;
     dragKindRef.current = null;
+    strokeStartRef.current = null;
     const active = activeRef.current;
     activeRef.current = null;
     lastPxRef.current = null;
@@ -2458,19 +2556,32 @@ export function InkCanvas({
           // T-MG-INK-12 run-001: the pen LIFT re-anchors the palm window
           // (the post-stroke palm gap — the window now runs from the last
           // pen event), and the pan gesture ends on its own pointer.
+          // T-MG-INK-13: the gesture plane releases its own pointers
+          // (pan/gesture) BEFORE the stroke-commit guard — a tool pointer
+          // the plane merely observed falls through to endStroke as
+          // shipped.
           if (e.pointerType === "pen") penEvent();
-          if (panRef.current && e.pointerId === panRef.current.id) {
-            panRef.current = null;
-            activePointerIdRef.current = null;
-            return;
+          if (e.pointerType === "touch") {
+            const owned = gesturesApi.owns(e.pointerId);
+            gesturesApi.pointerUp(e.pointerId);
+            if (owned) {
+              if (activePointerIdRef.current === e.pointerId) activePointerIdRef.current = null;
+              return;
+            }
           }
           if (activePointerIdRef.current === null || e.pointerId === activePointerIdRef.current) endStroke();
         }}
         onPointerCancel={(e) => {
-          if (panRef.current && e.pointerId === panRef.current.id) {
-            panRef.current = null;
-            activePointerIdRef.current = null;
-            return;
+          // T-MG-INK-13: the plane releases cancelled pointers with the
+          // same ownership law as the up path (the browser reclaiming the
+          // gesture must not commit a half-panned stroke).
+          if (e.pointerType === "touch") {
+            const owned = gesturesApi.owns(e.pointerId);
+            gesturesApi.pointerUp(e.pointerId);
+            if (owned) {
+              if (activePointerIdRef.current === e.pointerId) activePointerIdRef.current = null;
+              return;
+            }
           }
           if (activePointerIdRef.current === null || e.pointerId === activePointerIdRef.current) endStroke();
         }}
