@@ -39,6 +39,7 @@ import {
 } from "./ink-layer-pointerdown.harness";
 
 import { InkCanvas, type InkCanvasProps } from "./InkLayer";
+import { createGesturePlane } from "./gesturePlane";
 import { isStrayStroke, PaperGestures } from "./paperGestures";
 import type { InkColor, InkShape, InkTextShape } from "./ink";
 
@@ -195,6 +196,14 @@ describe("(P) paperGestures pure laws", () => {
     g2.pointerUp(2);
     g2.pointerMove(1, 100, 140); // remaining pointer pans
     expect(el2.scrollTop).toBe(-40);
+  });
+});
+
+describe("(P-e) the shared plane factory (the live pinch-kill regression)", () => {
+  test("(P-e) createGesturePlane() is born POPULATED — pdf-pane's bridge effect reads gesturePlane?.current once per zoomBy identity; an undefined current returned forever and draw-armed pinch silently no-opped live (pan worked, pinch dead both directions)", () => {
+    const plane = createGesturePlane();
+    expect(plane.current).toBeDefined();
+    expect(typeof plane.current).toBe("object");
   });
 });
 
