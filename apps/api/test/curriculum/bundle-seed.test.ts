@@ -5,7 +5,10 @@
  *
  *   - the REAL BUNDLE CONTRACT (apps/hub/content/igcse-physics-19/
  *     curriculum.json, the pinned bytes of record): 1 SUBJECT / 8 TOPIC /
- *     30 SUBTOPIC / 195 SPEC_POINT / 233 PART_OF edges; the code mapping
+ *     30 SUBTOPIC / 195 SPEC_POINT / 233 PART_OF edges (the OFFICIAL spine;
+ *     the wave-9 tranche-8 disclosed SME picker layer — 32 SME_REFERENCE
+ *     rows — rides outside the spine and carries its own pins; T-SME-SEL-
+ *     W9-8 run-001); the code mapping
  *     (4PH1 root, 4PH1-S1 UNIT, 4PH1-S1-a TOPIC, 4PH1-1.1 / 4PH1-1.2P
  *     SPEC_POINT spec codes — the T-MIG-139 F.5 §7 gate-G2 CONVERGED
  *     landing, was SUBTOPIC pre-139) + the T-C24 applicability verbatim
@@ -65,12 +68,27 @@ const bundle = JSON.parse(readFileSync(BUNDLE_PATH, "utf8")) as BundleCurriculum
 
 describe("second-subject bundle — the pinned content contract (igcse-physics-19)", () => {
   test("the count contract fail-closes at the exact bundle numbers", () => {
+    // T-SME-SEL-W9-8 tranche-8 disclosed pin-refresh: the wave-9 SME picker
+    // layer appended 32 SME_REFERENCE rows (8 section rows, family TOPIC +
+    // 24 topic rows, family SUBTOPIC) to this bundle's nodes — the OFFICIAL
+    // spine pins below are unchanged and now filter the layer out; the layer
+    // gets its own fail-closed pins. The seed and the code mapping stay
+    // official-only (the service serves VALIDATED nodes; the SME rows are
+    // skipped there — 234 held).
+    const official = bundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of bundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of official) fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams.SUBJECT).toBe(1);
     expect(fams.TOPIC).toBe(8);
     expect(fams.SUBTOPIC).toBe(30);
     expect(fams.SPEC_POINT).toBe(195);
+    // the wave-9 tranche-8 disclosed SME layer (T-SME-SEL-W9-8 run-001)
+    const sme = bundle.nodes.filter((n) => n.provenanceTier === "SME_REFERENCE");
+    expect(sme.length).toBe(32);
+    expect(sme.filter((n) => n.family === "TOPIC").length).toBe(8);
+    expect(sme.filter((n) => n.family === "SUBTOPIC").length).toBe(24);
+    expect(new Set(sme.map((n) => n.provenanceTier))).toEqual(new Set(["SME_REFERENCE"]));
+    expect(bundle.nodes.length).toBe(266);
     expect(bundle.edges.length).toBe(233);
     expect(new Set(bundle.edges.map((e) => e.relation))).toEqual(new Set(["PART_OF"]));
     expect(bundle.code).toBe("4PH1");
