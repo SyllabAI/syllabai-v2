@@ -47,7 +47,7 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { InkLayer } from "@/components/pastpapers/ink/InkLayer";
-import type { GesturePinchBridge } from "@/components/pastpapers/ink/paperGestures";
+import { createGesturePlane, type GesturePlaneRef } from "@/components/pastpapers/ink/gesturePlane";
 import { RegionMarkLayer } from "@/components/pastpapers/region-mark/RegionMarkLayer";
 import { resolvePaperAssetCached } from "@/lib/regions";
 import {
@@ -155,7 +155,14 @@ export function PaperViewerClient({
   // with zoomStep (its zoomBy ladder); the ink layer's PaperGestures
   // coordinator routes two-finger pinch through it. One object, both
   // consumers (see pdf-pane's gesturePlane prop and InkLayer's).
-  const qpGesturePlane = useRef<GesturePinchBridge | undefined>(undefined);
+  // T-MG-INK-13 run-002 (the live-gate regression): the ref is born from
+  // the POPULATED factory — useRef(undefined) left pdf-pane's bridge
+  // effect returning forever (plane undefined) and draw-armed pinch
+  // silently no-opped in BOTH directions while pan worked. Pinned in
+  // paper-gestures.test.ts (P-e).
+  const qpGesturePlaneHolder = useRef<GesturePlaneRef | null>(null);
+  if (!qpGesturePlaneHolder.current) qpGesturePlaneHolder.current = createGesturePlane();
+  const qpGesturePlane = qpGesturePlaneHolder.current;
   // T-MG-INK-1 run-003: the ink layer's host wrapper (the view-mode QP
   // pane's positioning + observation root; see the composition block).
   const qpInkHostRef = useRef<HTMLDivElement | null>(null);
