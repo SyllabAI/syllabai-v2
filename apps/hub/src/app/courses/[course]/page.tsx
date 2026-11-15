@@ -380,7 +380,7 @@ export default async function CourseHubPage({
           title: "Revision Notes",
           desc: officialTree
             ? "Concise notes for every topic in the official specification."
-            : "Concise notes for every topic — official-spec mapping in progress.",
+            : "Concise notes for every topic — more topics are on the way.",
           href: `${base}/revision-notes`,
           countLabel: `${fmtCount(stats.notes)} note${stats.notes === 1 ? "" : "s"}`,
           ready: stats.notes > 0,

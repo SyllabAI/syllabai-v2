@@ -245,7 +245,7 @@ function SourceReaderInner() {
             </p>
             <h1 className="text-lg font-semibold leading-snug">{state.doc.title}</h1>
             <p className="text-xs text-muted-foreground">
-              {state.doc.pageCount} {state.doc.pageCount === 1 ? "page" : "pages"} · verbatim parsed text
+              {state.doc.pageCount} {state.doc.pageCount === 1 ? "page" : "pages"} · the paper’s own text
             </p>
           </div>
 

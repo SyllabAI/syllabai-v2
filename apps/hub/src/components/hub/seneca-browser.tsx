@@ -451,7 +451,7 @@ export function SenecaBrowser({
             <div className="p-6 text-sm text-muted-foreground">
               {loading
                 ? "Loading Seneca content…"
-                : "This Seneca course mapping carries no browsable resources."}
+                : "No Seneca resources for this course yet."}
             </div>
           ) : selected ? (
             <div>

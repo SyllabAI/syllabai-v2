@@ -60,12 +60,11 @@ export default async function GradeBoundariesPage({
       ) : (
         <div className="mx-auto mt-6 max-w-3xl">
           <div className="rounded-2xl border-2 bg-card p-8 text-center">
-            <p className="text-sm font-medium">No boundaries in the corpus yet</p>
+            <p className="text-sm font-medium">No grade boundaries yet</p>
             <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-              The GradeBoundaries lane fetches and parses the awarding bodies&apos;
-              official documents session by session. When this course&apos;s
-              specification lands there, this page lights up with its full
-              tables, graph and calculator.
+              We add grade boundaries from the awarding bodies&apos; official
+              documents, session by session. When this course&apos;s boundaries are
+              in, this page lights up with its full tables, graph and calculator.
             </p>
           </div>
         </div>
