@@ -1,0 +1,24 @@
+{
+  "task": "T-LESSON-DEFECT-SWEEP",
+  "run": "run-001",
+  "date": "2026-11-13",
+  "lane": "Operator order: check current state + proceed with work — the visual-consistency micro-program from the disclosed defect ledger, plus the folded battery triage",
+  "surface": "apps/hub/src/app/globals.css (the motion token block + the four button-curve sites)",
+  "base": "origin/main f0ec3eb2 (verified; racing main advanced through the turn — branch is fresh-main, so the 4-check ruleset is satisfied natively)",
+  "the_fix": "The candy/plum bezier dedupe (defect-ledger candidate): the SAME curve pair was hardcoded twice — once in the [data-theme=candy-shop] button block, once in [data-theme=chat-app-plum] (hover 0.22,1,0.36,1 + active 0.34,1.56,0.64,1 at lines 731/735/1126/1130 of record). THE FIX: --motion-ease-out and --motion-ease-spring tokens added to the :root block next to --motion-ease (the file's own line-164 comment already anticipated 'tokenization renders identically'), the 4 sites re-pointed to var(). Rendered output is IDENTICAL (var substitution); the sheet.tsx iOS curve stays (separate component voice, documented in-situ).",
+  "census_verdicts_of_record": [
+    "RED-VS-ROSE (defect-ledger candidate): REFUTED as a mixing defect — the census found ZERO components containing both families; rose is the coherent light/dark danger voice of the rail widgets + teaching-toolkit renderers (mcq-embed, eq-builder, table-fill, num-stepper, glossary-chips: text-rose-700 dark:text-rose-300, bg-rose-50 dark:..., dark:border-rose-800 pattern), red is the other 7 files' voice. Unifying would RE-HUE 6-7 files' rendered colors — a DESIGN decision (which family is THE danger voice, or migrate to semantic --destructive tokens), not a bug fix. Logged for the operator; no unilateral re-hue in this lane.",
+    "BATTERY TRIAGE (folded diagnostic, report-only): the old 6-file fail class is GONE on fresh main f0ec3eb2 — other lanes paid that debt (1456 tests / 100 files now). ONE survivor: T-UGM-RENDER-1 'the display-math repair never adds katex errors' — a REAL assertion failure, not a timeout (13s is corpus render cost): the committed IGCSE corpus renders 118 katex errors against the <=93 law (25 over). Belongs to the UGM content-pipeline lane (malformed math bodies or a repair regression; next step there: dump the failing bodies). No cross-lane fix made."
+  ],
+  "gates": {
+    "typecheck": "tsc --noEmit: 0 errors",
+    "lesson_trio": "24 tests / 42 expects / 0 fail",
+    "full_battery": "1456 tests / 1 error (the triaged ugm.render known failure) / 42,866 expects across 100 files — fail set A/B-IDENTICAL to the clean-tree baseline captured in the same worktree (diff empty)",
+    "emission": "@tailwindcss/cli proof: motion-ease-out/spring tokens appear 6x in compiled CSS (2 definitions + 4 var consumers); each raw curve string appears exactly 1x — inside its token definition; the 4 hardcoded sites are retired",
+    "var_usages": "4 var() consumers in source (the two curve forms, 2 sites each)"
+  },
+  "disclosures": [
+    "The red/rose candidate and the UGM failure are REPORTED, not fixed — the first is a design decision, the second another lane's surface; both verdicts are census-backed.",
+    "The lesson trio + battery baselines were captured BEFORE the edit in the same worktree (989-package clean install)."
+  ]
+}
