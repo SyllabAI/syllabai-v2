@@ -45,7 +45,19 @@ function anchorCodes(curriculum: unknown): string[] {
       const node = n as Record<string, unknown>;
       if (
         typeof node.code === "string" &&
-        (node.family === "TOPIC" || node.family === "SUBTOPIC")
+        (node.family === "TOPIC" || node.family === "SUBTOPIC") &&
+        // the wave-9 SME picker layer (provenanceTier SME_REFERENCE) rides
+        // OUTSIDE the core-sync anchor contract: those rows are selector
+        // metadata (course-slug-prefixed, colon-shaped by the wave-7 shape
+        // law), never flashcard rating targets — decks anchor to the
+        // OFFICIAL spec-tree codes. First encounter of record: tranche 9
+        // layered the core-sync pilot course igcse-chemistry-19
+        // (T-SME-SEL-W9-9) and the unfiltered walk dropped it from the
+        // derived set, drifting the committed manifest (CI hub red on the
+        // union head). Filtering the layer here preserves the pre-layer
+        // behavior byte-identically (chem-19 stays eligible, manifest
+        // unchanged).
+        node.provenanceTier !== "SME_REFERENCE"
       ) {
         codes.push(node.code);
       }
