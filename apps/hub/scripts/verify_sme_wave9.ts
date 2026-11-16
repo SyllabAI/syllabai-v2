@@ -11,8 +11,10 @@
  * CIE AS 9701 2025-2027 / cie-a-level-business-23 CIE 9609 2023-2025) +
  * tranche 8 (igcse-physics-19 Pearson Edexcel 4PH1 2017 / cie-as-biology-25
  * CIE AS 9700 2025-2027) + tranche 9 (igcse-chemistry-19 Pearson Edexcel
- * 4CH1 2017 Issue 3 / cie-igcse-geography-25 CIE 0460 2025-2026) — the W7
- * closeout recommendation's build slices, worst tails first.
+ * 4CH1 2017 Issue 3 / cie-igcse-geography-25 CIE 0460 2025-2026) + tranche
+ * 10 (igcse-science-double-award-17-biology Pearson Edexcel 4SD0 2017 /
+ * cie-igcse-accounting-25 CIE 0452 2027-2029) — the W7 closeout
+ * recommendation's build slices, worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
  * (buildSpecTreeIndex + smeRowOfQuestionSet + smeRowOfNote), extended to the
@@ -112,8 +114,10 @@ interface Node {
 // its 4BI1 sibling's skills-placeholder class and the AS 9700 tree holds
 // the trio's 0-drift class; NONE on the tranche-9 pair — the 4CH1 tree
 // runs the 4PH1 class (NOT the 4BI1 one) and the new 0460 family lands
-// clean) — mirrored verbatim as 0-note 0-set rows, the wave-1/3 0-set
-// precedent
+// clean; NONE on the tranche-10 pair — the 4SD0 Double-Award tree does
+// NOT run its 4BI1 sibling's class and the new 0452 family lands clean
+// (a notes-only corpus, 0 sets)) — mirrored verbatim as 0-note 0-set
+// rows, the wave-1/3 0-set precedent
 const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-maths-25-extended": new Set(["set-1-fl"]),
   "cie-igcse-maths-25-core": new Set(["set-1-fl"]),
@@ -136,6 +140,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-as-biology-25": new Set(),
   "igcse-chemistry-19": new Set(),
   "cie-igcse-geography-25": new Set(),
+  "igcse-science-double-award-17-biology": new Set(),
+  "cie-igcse-accounting-25": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
