@@ -218,7 +218,12 @@ function ResourceRow({
     <>
       <span className="flex w-full items-center gap-2.5">
         <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-        <span className="flex-1 truncate text-sm">{label}</span>
+        <span
+          className="min-w-0 flex-1 line-clamp-2 text-sm"
+          title={label}
+        >
+          {label}
+        </span>
         {value}
         {percent !== undefined && (
           <span

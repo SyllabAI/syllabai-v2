@@ -245,7 +245,13 @@ export function AppShell({
               <span className="hidden sm:inline">Study tools</span>
               <ChevronDown className="size-3.5 text-muted-foreground" aria-hidden />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-64">
+            <DropdownMenuContent align="start" className="w-72">
+              {/* w-72 (V-4, visual audit 2026-11-13): the label + desc rows now
+                  hold one line each — at w-64 the desc squeezed the first three
+                  labels ("Revision / Notes"…) into 2-line wraps while the
+                  desc-less More-tools rows stayed single-line. Both spans are
+                  nowrap below, so the widened menu is what guarantees the
+                  single-line rhythm on every row. */}
               {/* run-014 (audit F8): the in-menu title only where the trigger
                   is icon-only (phones) — at sm+ the trigger already names the
                   menu and the label read as a duplicate. */}
@@ -274,9 +280,9 @@ export function AppShell({
                       )}
                     >
                       <t.icon className="size-4" aria-hidden />
-                      <span className="flex-1">{t.label}</span>
+                      <span className="flex-1 whitespace-nowrap">{t.label}</span>
                       {"desc" in t && t.desc && (
-                        <span className="text-2xs text-muted-foreground">{t.desc}</span>
+                        <span className="whitespace-nowrap text-2xs text-muted-foreground">{t.desc}</span>
                       )}
                       {active && <Check className="size-3.5 text-primary" aria-hidden />}
                     </Link>

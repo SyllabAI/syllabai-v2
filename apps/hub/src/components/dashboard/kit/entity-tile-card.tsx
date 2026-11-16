@@ -67,7 +67,15 @@ export function EntityTileCard({
         {(eyebrow || badge) && (
           <div className="flex items-center justify-between gap-2">
             {eyebrow ? (
-              <p className="min-w-0 truncate text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
+              // V-3 (visual audit 2026-11-13): the eyebrow chip ("Mixed boards
+              // · 2 subjects") clipped with no recovery — the native title is
+              // the hover floor. Kept single-line: this shared kit card's
+              // eyebrow row is meta, not content, and the tile rhythm depends
+              // on it staying one line.
+              <p
+                className="min-w-0 truncate text-2xs font-semibold uppercase tracking-wide text-muted-foreground"
+                title={typeof eyebrow === "string" ? eyebrow : undefined}
+              >
                 {eyebrow}
               </p>
             ) : (

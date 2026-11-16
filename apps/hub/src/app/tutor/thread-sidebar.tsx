@@ -210,6 +210,7 @@ export function ThreadSidebar({
                             "w-full truncate text-xs leading-tight",
                             active && "font-semibold",
                           )}
+                          title={c.title?.trim() || "Empty conversation"}
                         >
                           {c.title?.trim() || "Empty conversation"}
                         </span>
@@ -342,6 +343,7 @@ export function ThreadSidebar({
                                 "w-full truncate text-xs leading-tight",
                                 active && "font-semibold",
                               )}
+                              title={t.title}
                             >
                               {t.title}
                             </span>
