@@ -24,6 +24,7 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
+import type { GesturePinchBridge } from "../ink/paperGestures";
 import {
   bufferToTex,
   formatNatural,
@@ -36,6 +37,16 @@ import {
 export interface ScientificCalculatorProps {
   open: boolean;
   onClose: () => void;
+  /**
+   * T-MG-CALC run-002: the pane's populated pinch bridge (the SAME
+   * GesturePlaneRef the viewer hands the QP pane). The L7 relay uses it
+   * for SELECT-mode two-finger pinch over the overlay — in select mode
+   * the coordinator does not own touches (they ride the native plane,
+   * which a relayed synthetic stream cannot trigger), so the relay pans
+   * the scroller directly and steps zoom through this bridge. Optional:
+   * without it, select-mode pinch degrades to pan-only.
+   */
+  gesturePlane?: { current: GesturePinchBridge | undefined };
 }
 
 interface KeyDef {
@@ -138,14 +149,18 @@ export function keyFromKeyboard(k: string): CalcKey | null {
   return null;
 }
 
-export function ScientificCalculator({ open, onClose }: ScientificCalculatorProps) {
+export function ScientificCalculator({ open, onClose, gesturePlane }: ScientificCalculatorProps) {
   const [state, setState] = useState<CalcState>(() => initialCalcState("DEG"));
   const [setupOpen, setSetupOpen] = useState(false);
-  const relayRef = useRef<{ ids: Map<number, { x: number; y: number }>; active: boolean; canvas: HTMLCanvasElement | null }>({
-    ids: new Map(),
-    active: false,
-    canvas: null,
-  });
+  const relayRef = useRef<{
+    ids: Map<number, { x: number; y: number }>;
+    active: boolean;
+    canvas: HTMLCanvasElement | null;
+    selectMode: boolean;
+    scroller: HTMLElement | null;
+    centroid: { x: number; y: number } | null;
+    spread0: number;
+  }>({ ids: new Map(), active: false, canvas: null, selectMode: false, scroller: null, centroid: null, spread0: 0 });
 
   // L8 keyboard parity — mounted only while open
   useEffect(() => {
@@ -207,30 +222,100 @@ export function ScientificCalculator({ open, onClose }: ScientificCalculatorProp
     });
     canvas.dispatchEvent(ev);
   };
+  /**
+   * T-MG-CALC run-002: which ink tool is ARMED (aria-pressed on the
+   * toolbar's tool buttons), or null when the resting SELECT is up. The
+   * relay needs this at gesture start: an armed tool hands the stream to
+   * the shared PaperGestures coordinator via the canvas; SELECT owns
+   * nothing (its touches ride the native s144 plane — unreachable from a
+   * relayed synthetic stream), so the relay pans the scroller itself and
+   * steps zoom through the gesturePlane bridge. The scan is the same
+   * honest-DOM posture the live gates use; the labels are the shipped
+   * tool set (Fit/Find/Calculator carry aria-pressed too and are
+   * excluded by the prefix list).
+   */
+  const armedTool = (): string | null => {
+    const toolLabels = ["Draw", "Text", "Math text box", "Erase", "Line", "Ruler", "Protractor", "Compasses"];
+    const pressed = Array.from(document.querySelectorAll<HTMLButtonElement>('button[aria-pressed="true"]'));
+    const b = pressed.find((x) => {
+      const label = x.getAttribute("aria-label") || "";
+      return toolLabels.some((l) => label.startsWith(l));
+    });
+    return b ? b.getAttribute("aria-label") || null : null;
+  };
+
+  /** the visible canvas's scroll ancestor (the pane scroller). */
+  const findScrollerFromCanvas = (canvas: HTMLCanvasElement): HTMLElement | null => {
+    let el: HTMLElement | null = canvas.parentElement;
+    while (el && el !== document.body) {
+      const cs = getComputedStyle(el);
+      if (/(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 50) return el;
+      el = el.parentElement;
+    }
+    return null;
+  };
+
   const onOverlayPointerDown = (e: React.PointerEvent) => {
     if (e.pointerType !== "touch") return;
     const r = relayRef.current;
     r.ids.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (r.ids.size >= 2 && !r.active) {
       r.active = true;
-      r.canvas = visibleInkCanvas();
-      if (r.canvas) for (const [id, p] of r.ids) fireCanvasPointer(r.canvas, "pointerdown", id, p.x, p.y);
+      const tool = armedTool();
+      r.selectMode = tool === null || tool.startsWith("Select");
+      r.canvas = r.selectMode ? null : visibleInkCanvas();
+      if (r.selectMode) {
+        const cv = visibleInkCanvas();
+        r.scroller = cv ? findScrollerFromCanvas(cv) : null;
+        const pts = [...r.ids.values()];
+        r.centroid = { x: pts.reduce((a, p) => a + p.x, 0) / pts.length, y: pts.reduce((a, p) => a + p.y, 0) / pts.length };
+        r.spread0 = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+      } else if (r.canvas) {
+        for (const [id, p] of r.ids) fireCanvasPointer(r.canvas, "pointerdown", id, p.x, p.y);
+      }
     }
   };
   const onOverlayPointerMove = (e: React.PointerEvent) => {
     const r = relayRef.current;
-    if (!r.active || !r.canvas || !r.ids.has(e.pointerId)) return;
+    if (!r.active || !r.ids.has(e.pointerId)) return;
     r.ids.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (r.selectMode) {
+      // ── run-002: the SELECT-mode relay — pan the paper directly, step
+      // zoom through the pane's bridge (the coordinator's 1.2× rule) ──
+      const pts = [...r.ids.values()];
+      if (pts.length < 2) return;
+      const cx = pts.reduce((a, p) => a + p.x, 0) / pts.length;
+      const cy = pts.reduce((a, p) => a + p.y, 0) / pts.length;
+      if (r.scroller && r.centroid) {
+        r.scroller.scrollTop -= cy - r.centroid.y;
+        r.scroller.scrollLeft -= cx - r.centroid.x;
+      }
+      r.centroid = { x: cx, y: cy };
+      const spread = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+      if (r.spread0 > 0 && spread / r.spread0 >= 1.2) {
+        gesturePlane?.current?.zoomStep?.(1);
+        r.spread0 = spread;
+      } else if (r.spread0 > 0 && spread / r.spread0 <= 1 / 1.2) {
+        gesturePlane?.current?.zoomStep?.(-1);
+        r.spread0 = spread;
+      }
+      return;
+    }
+    if (!r.canvas) return;
     fireCanvasPointer(r.canvas, "pointermove", e.pointerId, e.clientX, e.clientY);
   };
   const onOverlayPointerUp = (e: React.PointerEvent) => {
     const r = relayRef.current;
-    if (!r.active || !r.canvas || !r.ids.has(e.pointerId)) return;
-    fireCanvasPointer(r.canvas, "pointerup", e.pointerId, e.clientX, e.clientY);
+    if (!r.active || !r.ids.has(e.pointerId)) return;
+    if (!r.selectMode && r.canvas) fireCanvasPointer(r.canvas, "pointerup", e.pointerId, e.clientX, e.clientY);
     r.ids.delete(e.pointerId);
     if (r.ids.size === 0) {
       r.active = false;
       r.canvas = null;
+      r.scroller = null;
+      r.selectMode = false;
+      r.centroid = null;
+      r.spread0 = 0;
     }
   };
 
@@ -307,6 +392,26 @@ export function ScientificCalculator({ open, onClose }: ScientificCalculatorProp
         <div className="min-h-[1.4rem] text-right font-mono text-lg text-zinc-100" data-calc-result>
           {resultText ?? ""}
         </div>
+        {/* T-MG-CALC run-002: the P2-lite copy affordance (card §6) — the
+            displayed value to the clipboard; the answer-box handoff stays
+            out until the operator names its home. */}
+        {state.shown === "result" && state.result && (
+          <div className="text-right">
+            <button
+              type="button"
+              aria-label="Copy result"
+              data-calc-copy
+              className="text-xs text-zinc-400 hover:text-zinc-100"
+              onPointerDown={(e) => {
+                e.stopPropagation();
+                const text = formatNatural(state.result!, state.resultForm, state.fix);
+                if (navigator.clipboard?.writeText) navigator.clipboard.writeText(text).catch(() => {});
+              }}
+            >
+              Copy result
+            </button>
+          </div>
+        )}
       </div>
 
       {/* SETUP chips (MODE toggles): angle mode + display fix */}
