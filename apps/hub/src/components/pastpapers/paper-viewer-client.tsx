@@ -939,8 +939,9 @@ export function PaperViewerClient({
         {/* T-MG-CALC run-001: the ONE calculator overlay — viewer level,
             spanning split view; z-law pill(50) > calc(40) > ink toolbar.
             The panes' strips toggle it; the L7 gesture seam (relay) lives
-            on the overlay root itself. */}
-        <ScientificCalculator open={calcOpen} onClose={() => setCalcOpen(false)} />
+            on the overlay root itself. Run-002: the pane's populated
+            pinch bridge rides in for SELECT-mode two-finger zoom. */}
+        <ScientificCalculator open={calcOpen} onClose={() => setCalcOpen(false)} gesturePlane={qpGesturePlane} />
       </div>
     </div>
   );
