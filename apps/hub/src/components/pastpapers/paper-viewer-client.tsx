@@ -937,7 +937,9 @@ export function PaperViewerClient({
           </p>
         )}
         {/* T-MG-CALC run-001: the ONE calculator overlay — viewer level,
-            spanning split view; z-law pill(50) > calc(40) > ink toolbar.
+            spanning split view. Run-003 z-law: calc(55) > pill(50) — the
+            run-001 law (pill > calc) let the mobile QP/MS pill float
+            bottom-center OVER the keypad's bottom row (./+/S⇔D buried).
             The panes' strips toggle it; the L7 gesture seam (relay) lives
             on the overlay root itself. Run-002: the pane's populated
             pinch bridge rides in for SELECT-mode two-finger zoom. */}

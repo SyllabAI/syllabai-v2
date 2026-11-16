@@ -407,3 +407,61 @@ describe("(U8) run-002: the copy affordance (card §6 P2-lite)", () => {
     delete (window.navigator as unknown as { clipboard?: unknown }).clipboard;
   });
 });
+
+// ── T-MG-CALC run-003: the keyboard as a USER sees it ─────────────────
+// The operator's receipt: the run-001/002 verifies fired synthetic
+// pointerdowns and never LOOKED at the rendered keyboard. The mobile
+// screenshot showed the QP/MS pill (z-50) floating over the keypad's
+// bottom row (./+/S⇔D buried), a bare black display with no resting
+// "0", and keys wired pointer-only (real clicks / keyboard activation
+// did nothing). Pins for all three, plus the z-law.
+
+describe("(U9) run-003: the keyboard reads as a device and works by click/keyboard", () => {
+  test("(U9a) at rest the display shows the device's muted '0'; it leaves on the first digit", () => {
+    const { root, el } = mount({ open: true });
+    const zero = el.querySelector("[data-calc-zero]");
+    expect(zero?.textContent).toBe("0");
+    clickKey(el, "5");
+    expect(el.querySelector("[data-calc-zero]")).toBeNull();
+    expect(el.querySelector("[data-calc-input]")?.textContent).toContain("5");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U9c) a real CLICK (no pointerdown) presses exactly once — keyboard/mouse a11y path", () => {
+    const { root, el } = mount({ open: true });
+    const key = el.querySelector<HTMLButtonElement>('[data-calc-key="7"]');
+    expect(key).not.toBeNull();
+    act(() => {
+      key!.dispatchEvent(new window.MouseEvent("click", { bubbles: true, cancelable: true }));
+    });
+    expect(el.querySelector("[data-calc-input]")?.textContent).toContain("7");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U9d) pointerdown + trailing click stays ONE press (the guard)", () => {
+    const { root, el } = mount({ open: true });
+    const key = el.querySelector<HTMLButtonElement>('[data-calc-key="7"]');
+    act(() => {
+      key!.dispatchEvent(new window.MouseEvent("pointerdown", { bubbles: true, cancelable: true }));
+      key!.dispatchEvent(new window.MouseEvent("click", { bubbles: true, cancelable: true }));
+    });
+    expect(el.querySelector("[data-calc-input]")?.textContent).toContain("7");
+    expect(el.querySelector("[data-calc-input]")?.textContent).not.toContain("77");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U9e) the z-law: the overlay rides ABOVE the viewer's floating QP/MS pill (55 > 50)", () => {
+    const { root, el } = mount({ open: true });
+    const rootEl = el.querySelector("[data-calc-root]") as HTMLElement;
+    expect(rootEl.style.zIndex).toBe("55");
+    act(() => {
+      root.unmount();
+    });
+  });
+});
