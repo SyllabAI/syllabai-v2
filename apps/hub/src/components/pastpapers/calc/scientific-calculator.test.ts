@@ -429,6 +429,15 @@ describe("(U9) run-003: the keyboard reads as a device and works by click/keyboa
     });
   });
 
+  test("(U9b) the input line carries a LIGHT text color — run-003 fixup: the typed expression rendered near-black on the near-black panel (invisible until '=')", () => {
+    const { root, el } = mount({ open: true });
+    const line = el.querySelector("[data-calc-input]") as HTMLElement;
+    expect(line.className).toContain("text-zinc-100");
+    act(() => {
+      root.unmount();
+    });
+  });
+
   test("(U9c) a real CLICK (no pointerdown) presses exactly once — keyboard/mouse a11y path", () => {
     const { root, el } = mount({ open: true });
     const key = el.querySelector<HTMLButtonElement>('[data-calc-key="7"]');
