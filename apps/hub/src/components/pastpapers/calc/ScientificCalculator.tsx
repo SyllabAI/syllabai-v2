@@ -408,7 +408,7 @@ export function ScientificCalculator({ open, onClose, gesturePlane }: Scientific
       <div className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2" aria-live="polite" data-calc-display>
         {/* T-MG-CALC run-003: the device shows a resting "0" — a bare
             black void read as broken (the operator's run-003 receipt). */}
-        <div className="min-h-[1.6rem] text-right" data-calc-input>
+        <div className="min-h-[1.6rem] text-right text-zinc-100" data-calc-input>
           {/* katex.renderToString("") still emits markup, so the resting
               state is detected on the BUFFER, not the html */}
           {state.shown === "input" && state.buf.length === 0 ? (
