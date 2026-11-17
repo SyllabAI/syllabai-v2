@@ -7,10 +7,13 @@
  * calculator logged-out, so this models the device MG's ecosystem
  * trains students on, plus the UI conventions extracted in prior lanes).
  *
- * EXAM HONESTY (card L2): no history beyond the live Ans chain, no
- * persistence, no solver/CAS/graphing/STAT/QR, nothing leaves the
- * client, nothing touches localStorage. Everything here is deterministic
- * and pinned in calc-engine.test.ts.
+ * EXAM HONESTY (card L2, amended by the T-MG-CALC-2 chase ruling): no
+ * history beyond the live Ans chain, no solver/CAS/graphing/STAT, no
+ * network. The ENGINE itself stays pure — no module state, no storage
+ * calls (pinned in calc-engine.test.ts C10c); the SETTINGS/MODEL
+ * persistence the chase card ruled in lives in the COMPONENT layer
+ * (calc-models.ts) and never carries calculations. Everything here is
+ * deterministic and pinned in calc-engine.test.ts.
  *
  * THE RATIONAL CORE (card L4, amended 2026-11-15 — see the task card
  * amendment note): evaluation carries EXACT BigInt rationals through
@@ -30,6 +33,8 @@
  */
 
 // (no self-import — removed; the types below are local)
+
+import type { CalcVarName } from "./calc-models";
 
 /** Angle modes of the SETUP screen. GRA = gon (90° = 100 gon). */
 export type CalcAngle = "DEG" | "RAD" | "GRA";
@@ -58,6 +63,12 @@ export type CalcAtom =
   | { kind: "rparen" }
   | { kind: "const"; name: "π" | "e" }
   | { kind: "ans" }
+  // T-MG-CALC-2 phase A: the variable-store atoms (A–F, x, y, z — the
+  // CW's variable keys) and the substitution carrier (an EXACT value
+  // injected by a f/g call — never a decimal string, so 1/3 arguments
+  // substitute without drift, the C6d law).
+  | { kind: "var"; name: CalcVarName }
+  | { kind: "val"; v: CalcValue }
   | CalcFracAtom;
 
 export interface CalcState {
@@ -82,7 +93,20 @@ export interface CalcState {
   fix: number;
   mods: CalcMods;
   error: "Syntax ERROR" | "Math ERROR" | null;
+  /** T-MG-CALC-2 phase A: the variable store. Unset names evaluate to
+   * the device's 0; assigned from the VARIABLE sheet's Store; never
+   * persisted (the L2 amendment keeps calculations out of storage). */
+  vars: Partial<Record<CalcVarName, CalcValue>>;
+  /** the f(x)/g(x) definitions — atom buffers written in terms of var x. */
+  fns: CalcFns;
+  /** the ⇄ display law: improper (n/d) vs mixed (a b/d) fractions. */
+  fractionFormat: "improper" | "mixed";
+  /** the Norm display law: the exponential switch band (Casio: Norm 1
+   * goes exponential below 10^-2, Norm 2 below 10^-9). */
+  normVariant: 1 | 2;
 }
+
+export type CalcFns = { f: CalcAtom[] | null; g: CalcAtom[] | null };
 
 /**
  * A computed value: EXACT rational when the computation stayed rational
@@ -127,7 +151,20 @@ export type CalcKey =
   | { k: "mode" }
   // the SETUP screen's own selections (the component's chips map here)
   | { k: "setup-angle"; angle: CalcAngle }
-  | { k: "setup-fix"; fix: number };
+  | { k: "setup-fix"; fix: number }
+  // T-MG-CALC-2 phase A: the CW shell's engine-reachable keys
+  | { k: "setup-fraction"; format: "improper" | "mixed" }
+  | { k: "setup-numformat"; variant: 1 | 2 }
+  | { k: "mixtoggle" }
+  | { k: "var"; name: CalcVarName }
+  | { k: "sto"; name: CalcVarName }
+  | { k: "clear-var"; name: CalcVarName }
+  | { k: "def-fn"; name: "f" | "g" }
+  | { k: "clear-fn"; name: "f" | "g" }
+  | { k: "fn-call"; name: "f" | "g" }
+  // the CATALOG's insert (T-MG-CALC-2 phase A): a named function the
+  // engine already evaluates — validated against FN_NAMES below
+  | { k: "fn-insert"; name: string };
 
 // ── rational helpers (BigInt; the exactness core) ─────────────────────
 
@@ -223,6 +260,10 @@ export class CalcError extends Error {
   }
 }
 
+/** the function names the engine evaluates — the CATALOG's fn-insert
+ * validates against this set (anything else is inert, never a crash). */
+const FN_NAMES = new Set(["sin", "cos", "tan", "asin", "acos", "atan", "hsin", "hcos", "htan", "hasin", "hacos", "hatan", "log", "ln", "√", "³√", "10^", "e^"]);
+
 // ── state constructors ────────────────────────────────────────────────
 
 export function initialCalcState(angle: CalcAngle = "DEG"): CalcState {
@@ -238,6 +279,10 @@ export function initialCalcState(angle: CalcAngle = "DEG"): CalcState {
     fix: 0,
     mods: { shift: false, hyp: false },
     error: null,
+    vars: {},
+    fns: { f: null, g: null },
+    fractionFormat: "improper",
+    normVariant: 2,
   };
 }
 
@@ -247,8 +292,8 @@ type Insertable = CalcAtom | "digit-into-current";
 
 function needsImplicitMul(prev: CalcAtom | undefined, next: CalcAtom): boolean {
   if (!prev) return false;
-  const prevCloses = prev.kind === "num" || prev.kind === "const" || prev.kind === "ans" || prev.kind === "rparen" || prev.kind === "postfix" || prev.kind === "frac";
-  const nextOpens = next.kind === "lparen" || next.kind === "fn" || next.kind === "const" || next.kind === "ans" || next.kind === "num" || next.kind === "frac";
+  const prevCloses = prev.kind === "num" || prev.kind === "const" || prev.kind === "ans" || prev.kind === "rparen" || prev.kind === "postfix" || prev.kind === "frac" || prev.kind === "var" || prev.kind === "val";
+  const nextOpens = next.kind === "lparen" || next.kind === "fn" || next.kind === "const" || next.kind === "ans" || next.kind === "num" || next.kind === "frac" || next.kind === "var" || next.kind === "val";
   return prevCloses && nextOpens;
 }
 
@@ -269,6 +314,10 @@ function currentEditableAtom(state: CalcState): CalcAtom | undefined {
 export function pressKey(prev: CalcState, key: CalcKey): CalcState {
   let s: CalcState = prev;
   const mods = { ...prev.mods };
+  // the sto/def-fn laws read the PRE-reset screen state ('=' commits set
+  // shown=result and the continuation reset below clears the buffer)
+  const shownBefore = prev.shown;
+  const resultBefore = prev.result;
 
   // one-shot modifiers first
   if (key.k === "shift") return { ...s, mods: { shift: !mods.shift, hyp: mods.hyp } };
@@ -277,12 +326,20 @@ export function pressKey(prev: CalcState, key: CalcKey): CalcState {
   // the SETUP screen selections (wired from the component's chips)
   if (key.k === "setup-angle") return { ...s, angle: key.angle, mods: { shift: false, hyp: false } };
   if (key.k === "setup-fix") return { ...s, fix: key.fix, mods: { shift: false, hyp: false } };
+  if (key.k === "setup-fraction") return { ...s, fractionFormat: key.format, mods: { shift: false, hyp: false } };
+  if (key.k === "setup-numformat") return { ...s, normVariant: key.variant, mods: { shift: false, hyp: false } };
+  // the CW ⇄ key: improper ⇔ mixed display (the device's a⇔b/c law)
+  if (key.k === "mixtoggle") {
+    return { ...s, fractionFormat: s.fractionFormat === "mixed" ? "improper" : "mixed", mods: { shift: false, hyp: false } };
+  }
 
   const consume = (st: CalcState): CalcState => ({ ...st, mods: { shift: false, hyp: false } });
 
   // ── result-display keys (S⇔D / ENG act on the committed value) ──
   if (key.k === "sd") {
     if (s.shown !== "result" || !s.result) return consume(s);
+    // T-MG-CALC-1 fix pin: the device HIDES S⇔D under Fix — inert.
+    if (s.fix > 0) return consume(s);
     // Casio law: S⇔D is INERT when no exact alternative form exists
     if (!s.result.exact) return consume(s);
     const nextForm = s.resultForm === "fraction" ? "decimal" : "fraction";
@@ -301,6 +358,10 @@ export function pressKey(prev: CalcState, key: CalcKey): CalcState {
       ...initialCalcState(s.angle),
       fix: s.fix,
       ans: s.ans,
+      vars: s.vars,
+      fns: s.fns,
+      fractionFormat: s.fractionFormat,
+      normVariant: s.normVariant,
       mods: { shift: false, hyp: false },
     });
   }
@@ -380,7 +441,12 @@ export function pressKey(prev: CalcState, key: CalcKey): CalcState {
     case "cube":
     case "recip":
     case "pct": {
-      const op: "²" | "³" | "⁻¹" | "%" = key.k === "sq" ? "²" : key.k === "cube" ? "³" : key.k === "recip" ? "⁻¹" : "%";
+      // T-MG-CALC-1 fix pin — structural SHIFT remaps: the device law is
+      // that the shift legend is the key's primary shifted function
+      // (SHIFT+x² → x³; the CW has no dedicated cube key). The one-shot
+      // consume law is preserved by the consume() wrapper below.
+      const isCube = key.k === "cube" || (key.k === "sq" && mods.shift);
+      const op: "²" | "³" | "⁻¹" | "%" = isCube ? "³" : key.k === "recip" ? "⁻¹" : key.k === "pct" ? "%" : "²";
       buf.splice(cur, 0, { kind: "postfix", op });
       cur += 1;
       fracField = null;
@@ -405,7 +471,11 @@ export function pressKey(prev: CalcState, key: CalcKey): CalcState {
         name = mods.shift ? "a" + key.f : mods.hyp ? "h" + key.f : key.f;
         if (mods.shift && mods.hyp) name = "ha" + key.f; // arc-hyperbolic
       } else {
-        name = key.k === "sqrt" ? "√" : key.k === "cbrt" ? "³√" : key.k === "log" ? "log" : key.k === "ln" ? "ln" : key.k === "pow10" ? "10^" : "e^";
+        // T-MG-CALC-1 fix pin — structural SHIFT remaps: SHIFT+√ → ³√,
+        // SHIFT+log → 10^ (the shift legend is the key's primary
+        // shifted function; the CW carries no dedicated ³√/10ˣ keys).
+        name =
+          key.k === "sqrt" ? (mods.shift ? "³√" : "√") : key.k === "cbrt" ? "³√" : key.k === "log" ? (mods.shift ? "10^" : "log") : key.k === "ln" ? "ln" : key.k === "pow10" ? "10^" : "e^";
       }
       buf.splice(cur, 0, { kind: "fn", name });
       cur += 1;
@@ -504,7 +574,7 @@ export function pressKey(prev: CalcState, key: CalcKey): CalcState {
       // the device: '=' on an EMPTY buffer is a no-op (no error)
       if (buf.length === 0) return consume(s);
       try {
-        const v = evaluateAtoms(buf, s.angle, s.ans);
+        const v = clampDevice(evaluateAtoms(buf, s.angle, s.ans, s.vars, s.fns));
         const result: CalcValue = clampDevice(v);
         shown = "result";
         return consume({
@@ -524,6 +594,62 @@ export function pressKey(prev: CalcState, key: CalcKey): CalcState {
         }
         throw err;
       }
+    }
+    case "var": {
+      // the CW's variable keys: insert the name (implicit-mul applies,
+      // the device law — 2A means 2×A)
+      const atom: CalcAtom = { kind: "var", name: key.name };
+      if (needsImplicitMul(buf[cur - 1], atom)) buf.splice(cur, 0, { kind: "op", op: "×" }), (cur += 1);
+      buf.splice(cur, 0, atom);
+      cur += 1;
+      fracField = null;
+      break;
+    }
+    case "sto": {
+      // the VARIABLE sheet's Store: the RESULT when one is shown, else
+      // the current entry evaluated; empty → no-op. Errors surface like '='.
+      if (shownBefore === "result" && resultBefore) {
+        return consume({ ...s, vars: { ...s.vars, [key.name]: resultBefore } });
+      }
+      if (buf.length === 0) break;
+      try {
+        const v = clampDevice(evaluateAtoms(buf, s.angle, s.ans, s.vars, s.fns));
+        return consume({ ...s, vars: { ...s.vars, [key.name]: v }, shown: "input", error: null });
+      } catch (err) {
+        if (err instanceof CalcError) return consume({ ...s, shown: "error", error: err.cls });
+        throw err;
+      }
+    }
+    case "clear-var": {
+      if (!(key.name in s.vars)) break;
+      const vars = { ...s.vars };
+      delete vars[key.name];
+      return consume({ ...s, vars });
+    }
+    case "def-fn": {
+      // the FUNCTION sheet's Store: the current ENTRY defines f/g (in
+      // terms of var x). Empty buffer → no-op.
+      if (buf.length === 0) break;
+      return consume({ ...s, fns: { ...s.fns, [key.name]: buf.map((a) => ({ ...a })) } });
+    }
+    case "clear-fn":
+      return consume({ ...s, fns: { ...s.fns, [key.name]: null } });
+    case "fn-call": {
+      // inserting f( / g( — an implicit-paren fn like sin(
+      buf.splice(cur, 0, { kind: "fn", name: key.name });
+      cur += 1;
+      fracField = null;
+      break;
+    }
+    case "fn-insert": {
+      // the CATALOG's insert: only names the engine evaluates
+      if (!FN_NAMES.has(key.name)) break;
+      const atom: CalcAtom = { kind: "fn", name: key.name };
+      if (needsImplicitMul(buf[cur - 1], atom)) buf.splice(cur, 0, { kind: "op", op: "×" }), (cur += 1);
+      buf.splice(cur, 0, atom);
+      cur += 1;
+      fracField = null;
+      break;
     }
     default:
       break;
@@ -547,10 +673,10 @@ function clampDevice(v: CalcValue): CalcValue {
 
 type AtomCursor = { at: number };
 
-export function evaluateAtoms(buf: CalcAtom[], angle: CalcAngle, ans: CalcValue | null): CalcValue {
+export function evaluateAtoms(buf: CalcAtom[], angle: CalcAngle, ans: CalcValue | null, vars: Partial<Record<CalcVarName, CalcValue>> = {}, fns: CalcFns = { f: null, g: null }): CalcValue {
   const padded = padAutoClose(buf);
   const c: AtomCursor = { at: 0 };
-  const v = parseExpr(padded, c, angle, ans, null);
+  const v = parseExpr(padded, c, angle, ans, vars, fns);
   if (c.at !== padded.length) throw new CalcError("Syntax ERROR");
   return v;
 }
@@ -576,22 +702,22 @@ function peek(buf: CalcAtom[], c: AtomCursor): CalcAtom | undefined {
   return buf[c.at];
 }
 
-/** implicit multiplication: 2π, 3(, )(, )sin(, Ans(, ½π — the Casio law. */
+/** implicit multiplication: 2π, 3(, )(, )sin(, Ans(, ½π, 2A — the Casio law. */
 function implicitMul(a: CalcAtom | undefined, b: CalcAtom): boolean {
   if (!a) return false;
-  const prevCloses = a.kind === "num" || a.kind === "const" || a.kind === "ans" || a.kind === "rparen" || a.kind === "postfix" || a.kind === "frac";
-  const nextOpens = b.kind === "lparen" || b.kind === "fn" || b.kind === "const" || b.kind === "ans" || b.kind === "num" || b.kind === "frac";
+  const prevCloses = a.kind === "num" || a.kind === "const" || a.kind === "ans" || a.kind === "rparen" || a.kind === "postfix" || a.kind === "frac" || a.kind === "var" || a.kind === "val";
+  const nextOpens = b.kind === "lparen" || b.kind === "fn" || b.kind === "const" || b.kind === "ans" || b.kind === "num" || b.kind === "frac" || b.kind === "var" || b.kind === "val";
   return prevCloses && nextOpens;
 }
 
-function parseExpr(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null, _p: null): CalcValue {
-  let left = parseTerm(buf, c, angle, ans);
+function parseExpr(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null, vars: Partial<Record<CalcVarName, CalcValue>>, fns: CalcFns): CalcValue {
+  let left = parseTerm(buf, c, angle, ans, vars, fns);
   for (;;) {
     const t = peek(buf, c);
     if (t && t.kind === "op" && (t.op === "+" || t.op === "-")) {
       c.at += 1;
       const rightStart = c.at;
-      const right = parseTerm(buf, c, angle, ans);
+      const right = parseTerm(buf, c, angle, ans, vars, fns);
       // ── the Casio % law: 50+10% = 55 — a % directly on the RIGHT
       // operand of ± makes it a fraction OF THE LEFT ──
       if (endsWithPct(buf, rightStart, c.at)) {
@@ -619,19 +745,19 @@ function endsWithPct(buf: CalcAtom[], start: number, end: number): boolean {
   return false;
 }
 
-function parseTerm(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null): CalcValue {
-  let left = parseUnary(buf, c, angle, ans);
+function parseTerm(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null, vars: Partial<Record<CalcVarName, CalcValue>>, fns: CalcFns): CalcValue {
+  let left = parseUnary(buf, c, angle, ans, vars, fns);
   for (;;) {
-    // implicit multiplication binds at term level: 2π, 3sin(, (1+2)(3)
+    // implicit multiplication binds at term level: 2π, 3sin(, (1+2)(3), 2A
     const t = peek(buf, c);
     if (t && implicitMul(buf[c.at - 1], t)) {
-      const right = parseUnary(buf, c, angle, ans);
+      const right = parseUnary(buf, c, angle, ans, vars, fns);
       left = ratMul(left, right);
       continue;
     }
     if (t && t.kind === "op" && (t.op === "×" || t.op === "÷")) {
       c.at += 1;
-      const right = parseUnary(buf, c, angle, ans);
+      const right = parseUnary(buf, c, angle, ans, vars, fns);
       left = t.op === "×" ? ratMul(left, right) : ratDiv(left, right);
       continue;
     }
@@ -640,22 +766,22 @@ function parseTerm(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcVa
   return left;
 }
 
-function parseUnary(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null): CalcValue {
+function parseUnary(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null, vars: Partial<Record<CalcVarName, CalcValue>>, fns: CalcFns): CalcValue {
   const t = peek(buf, c);
   if (t && t.kind === "op" && t.op === "-") {
     c.at += 1;
     // Casio: −2² = −4 — the postfix binds TIGHTER than negation
-    return ratMul(parsePostfix(buf, c, angle, ans), rat(-BigInt(1)));
+    return ratMul(parsePostfix(buf, c, angle, ans, vars, fns), rat(-BigInt(1)));
   }
   if (t && t.kind === "op" && t.op === "+") {
     c.at += 1;
-    return parseUnary(buf, c, angle, ans);
+    return parseUnary(buf, c, angle, ans, vars, fns);
   }
-  return parsePostfix(buf, c, angle, ans);
+  return parsePostfix(buf, c, angle, ans, vars, fns);
 }
 
-function parsePostfix(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null): CalcValue {
-  let v = parsePower(buf, c, angle, ans);
+function parsePostfix(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null, vars: Partial<Record<CalcVarName, CalcValue>>, fns: CalcFns): CalcValue {
+  let v = parsePower(buf, c, angle, ans, vars, fns);
   for (;;) {
     const t = peek(buf, c);
     if (t && t.kind === "postfix") {
@@ -671,19 +797,19 @@ function parsePostfix(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: Cal
   return v;
 }
 
-function parsePower(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null): CalcValue {
-  const base = parsePrimary(buf, c, angle, ans);
+function parsePower(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null, vars: Partial<Record<CalcVarName, CalcValue>>, fns: CalcFns): CalcValue {
+  const base = parsePrimary(buf, c, angle, ans, vars, fns);
   const t = peek(buf, c);
   if (t && t.kind === "pow") {
     c.at += 1;
     // RIGHT-associative: 2^3^2 = 2^(3^2) = 512 (pinned Casio law)
-    const exp = parseUnary(buf, c, angle, ans);
+    const exp = parseUnary(buf, c, angle, ans, vars, fns);
     return ratPow(base, exp);
   }
   return base;
 }
 
-function parsePrimary(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null): CalcValue {
+function parsePrimary(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: CalcValue | null, vars: Partial<Record<CalcVarName, CalcValue>>, fns: CalcFns): CalcValue {
   const t = peek(buf, c);
   if (!t) throw new CalcError("Syntax ERROR");
   if (t.kind === "num") {
@@ -691,6 +817,16 @@ function parsePrimary(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: Cal
     const x = Number(t.text);
     if (!Number.isFinite(x)) throw new CalcError("Syntax ERROR");
     return ratFromNumber(x);
+  }
+  if (t.kind === "val") {
+    // the f/g substitution carrier — an EXACT value rides verbatim
+    c.at += 1;
+    return t.v;
+  }
+  if (t.kind === "var") {
+    c.at += 1;
+    // the device: an UNSET variable evaluates to 0
+    return vars[t.name] ?? rat(BigInt(0));
   }
   if (t.kind === "frac") {
     c.at += 1;
@@ -711,7 +847,7 @@ function parsePrimary(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: Cal
   }
   if (t.kind === "lparen") {
     c.at += 1;
-    const v = parseExpr(buf, c, angle, ans, null);
+    const v = parseExpr(buf, c, angle, ans, vars, fns);
     const close = peek(buf, c);
     if (!close || close.kind !== "rparen") throw new CalcError("Syntax ERROR");
     c.at += 1;
@@ -720,10 +856,20 @@ function parsePrimary(buf: CalcAtom[], c: AtomCursor, angle: CalcAngle, ans: Cal
   if (t.kind === "fn") {
     c.at += 1;
     // the fn opens an implicit paren; the argument runs to its matching )
-    const arg = parseExpr(buf, c, angle, ans, null);
+    const arg = parseExpr(buf, c, angle, ans, vars, fns);
     const close = peek(buf, c);
     if (!close || close.kind !== "rparen") throw new CalcError("Syntax ERROR");
     c.at += 1;
+    // T-MG-CALC-2 phase A: the f(x)/g(x) calls — substitute var x with
+    // the argument as an EXACT val atom (no decimal drift) and drop the
+    // callee from the inner scope (the recursion guard: a self-call is
+    // an undefined function in the body → Math ERROR, never a hang).
+    if (t.name === "f" || t.name === "g") {
+      const body = fns[t.name];
+      if (!body) throw new CalcError("Math ERROR");
+      const substituted = body.map((a) => (a.kind === "var" && a.name === "x" ? ({ kind: "val", v: arg } as CalcAtom) : a));
+      return evaluateAtoms(substituted, angle, ans, vars, t.name === "f" ? { f: null, g: fns.g } : { f: fns.f, g: null });
+    }
     return applyFn(t.name, arg, angle);
   }
   throw new CalcError("Syntax ERROR");
@@ -862,23 +1008,63 @@ function snapTrig(r: number, angle: CalcAngle, v: number, f: "sin" | "cos" | "ta
 
 const SIG_DIGITS = 10;
 
-/** The decimal display: 10 significant digits, trailing zeros trimmed. */
-export function formatDecimal(v: CalcValue, fix = 0): string {
+/**
+ * T-MG-CALC-2 phase A: the display-format options (the CW SETTINGS
+ * screen's rows). Defaults keep every pre-phase-A pin byte-stable:
+ * Norm 2 band, dot mark, no grouping (the device ships grouping ON —
+ * OUR law of record ships it OFF and the settings row turns it on).
+ */
+export interface CalcDisplayFmt {
+  /** mixed fraction rendering for exact values (the ⇄ law). */
+  mixed?: boolean;
+  /** the Norm band: 1 → exponential below 10^-2, 2 → below 10^-9. */
+  normVariant?: 1 | 2;
+  /** the decimal mark (Dot/Comma; the separator swaps with it). */
+  decimalMark?: "." | ",";
+  /** digit grouping on the integer part. */
+  separator?: boolean;
+}
+
+/** the decimal mark swap + integer grouping, applied to the mantissa
+ * segment only (an "×10^e" tail passes through untouched). */
+function applyMarkAndGroup(s: string, mark: "." | ",", separator?: boolean): string {
+  const idx = s.indexOf("×10^");
+  const head = idx >= 0 ? s.slice(0, idx) : s;
+  const tail = idx >= 0 ? s.slice(idx) : "";
+  let h = head;
+  if (mark === ",") h = h.replace(/\./g, ",");
+  if (separator) {
+    const sep = mark === "." ? "," : ".";
+    h = h.replace(/-?\d+/, (m) => m.replace(/\B(?=(\d{3})+(?!\d))/g, sep));
+  }
+  return h + tail;
+}
+
+/** The decimal display: 10 significant digits, trailing zeros trimmed;
+ * Fix N pins N decimals (overriding everything); below the Norm band
+ * the value goes exponential in the device's ×10^e rendering. */
+export function formatDecimal(v: CalcValue, fix = 0, fmt: CalcDisplayFmt = {}): string {
   const x = toNumber(v);
   if (!Number.isFinite(x)) throw new CalcError("Math ERROR");
-  if (x === 0) return fix > 0 ? (0).toFixed(fix) : "0";
+  const mark = fmt.decimalMark ?? ".";
+  if (x === 0) return applyMarkAndGroup(fix > 0 ? (0).toFixed(fix) : "0", mark, fmt.separator);
   let out: string;
-  if (fix > 0) out = x.toFixed(fix);
-  else {
-    out = x.toPrecision(SIG_DIGITS);
-    if (out.includes("e")) {
-      // toPrecision may go exponential; keep it honest and readable
-      out = trimZeros(out);
+  if (fix > 0) {
+    out = x.toFixed(fix);
+  } else {
+    const nv = fmt.normVariant ?? 2;
+    // the Casio Norm law: decimals BELOW the band go exponential
+    // (Norm 1 < 10^-2, Norm 2 < 10^-9); the 10-sig count is unchanged
+    if (Math.abs(x) < Math.pow(10, -(nv === 1 ? 2 : 9))) {
+      const exp = Math.floor(Math.log10(Math.abs(x)));
+      const mant = x / Math.pow(10, exp);
+      const m = trimZeros(Number(mant.toPrecision(SIG_DIGITS)).toString());
+      out = exp === 0 ? m : `${m}×10^${exp}`;
     } else {
-      out = trimZeros(out);
+      out = trimZeros(x.toPrecision(SIG_DIGITS));
     }
   }
-  return out;
+  return applyMarkAndGroup(out, mark, fmt.separator);
 }
 
 function trimZeros(s: string): string {
@@ -891,27 +1077,42 @@ function trimZeros(s: string): string {
 
 /**
  * The natural display of a committed value (card L4): exact rational →
- * "n/d" (reduced); float → the 10-sig decimal. ENG renders the decimal
- * as mantissa ×10^(multiple of 3) — the Casio engineering stepping.
+ * "n/d" (reduced; mixed a b/d when the ⇄ law asks); float → the 10-sig
+ * decimal. ENG renders the decimal as mantissa ×10^(multiple of 3) —
+ * the Casio engineering stepping. T-MG-CALC-1 fix pin: Fix N overrides
+ * the exact-fraction branch (the device shows fixed decimals for EVERY
+ * value under Fix) and fixes the ENG mantissa too.
  */
-export function formatNatural(v: CalcValue, form: "fraction" | "decimal" | "eng", fix = 0): string {
+export function formatNatural(v: CalcValue, form: "fraction" | "decimal" | "eng", fix = 0, fmt: CalcDisplayFmt = {}): string {
   if (form === "fraction") {
+    if (fix > 0) return formatDecimal(v, fix, fmt);
     if (v.exact) {
       // an integer result renders PLAIN (5, never 5/1 — the device law)
       if (v.d === BigInt(1)) return `${v.n}`;
+      // the ⇄ law: mixed renders a b/d when improper and |n|>|d|
+      if (fmt.mixed) {
+        const neg = v.n < BigInt(0);
+        const n = neg ? -v.n : v.n;
+        if (n > v.d) {
+          const whole = n / v.d;
+          const rem = n % v.d;
+          if (rem !== BigInt(0)) return `${neg ? "-" : ""}${whole} ${rem}/${v.d}`;
+        }
+      }
       return `${v.n}/${v.d}`;
     }
-    return formatDecimal(v, fix);
+    return formatDecimal(v, fix, fmt);
   }
   if (form === "eng") {
     const x = toNumber(v);
-    if (x === 0 || !Number.isFinite(x)) return formatDecimal(v, fix);
+    if (x === 0 || !Number.isFinite(x)) return formatDecimal(v, fix, fmt);
     const exp = Math.floor(Math.log10(Math.abs(x)) / 3) * 3;
     const mant = x / Math.pow(10, exp);
-    const m = trimZeros(Number(mant.toPrecision(SIG_DIGITS)).toString());
-    return exp === 0 ? m : `${m}×10^${exp}`;
+    // Fix N fixes the mantissa's decimals (the device's Fix+ENG law)
+    const m = fix > 0 ? Number(mant).toFixed(fix) : trimZeros(Number(mant.toPrecision(SIG_DIGITS)).toString());
+    return applyMarkAndGroup(exp === 0 ? m : `${m}×10^${exp}`, fmt.decimalMark ?? ".", fmt.separator);
   }
-  return formatDecimal(v, fix);
+  return formatDecimal(v, fix, fmt);
 }
 
 /**
@@ -946,6 +1147,12 @@ export function bufferToTex(buf: CalcAtom[]): string {
         break;
       case "ans":
         out += "\\mathrm{Ans}";
+        break;
+      case "var":
+        out += a.name;
+        break;
+      case "val":
+        out += formatNatural(a.v, "decimal");
         break;
       case "frac":
         out += `\\frac{${a.n || "\\square"}}{${a.d || "\\square"}}`;

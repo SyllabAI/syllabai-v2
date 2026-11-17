@@ -18,6 +18,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 import { ScientificCalculator } from "./ScientificCalculator";
+import { defaultPersisted, loadPersisted } from "./calc-models";
 
 const doc = window.document;
 
@@ -25,14 +26,46 @@ function mount(props: {
   open: boolean;
   onClose?: () => void;
   gesturePlane?: { current: { zoomStep?: (dir: 1 | -1) => void } | undefined };
+  /** T-MG-CALC-2 phase A: the paper's level hint (the course slug). */
+  levelHint?: string;
+  /** the persisted record seeded before render. The EXISTING pins ride
+   * the classic layout (byte-identical run-001 behaviour); the CW-shell
+   * pins seed "cw" explicitly. */
+  seed?: { layout?: "cw" | "classic"; model?: string | null };
 }): { root: ReturnType<typeof createRoot>; el: HTMLElement } {
   const container = doc.createElement("div");
   doc.body.appendChild(container);
+  window.localStorage.setItem(
+    "syllab-calculator-v1",
+    JSON.stringify({
+      v: 1,
+      layout: props.seed?.layout ?? "classic",
+      model: props.seed && "model" in props.seed ? props.seed.model : "fx-83gt-cw",
+      settings: { io: "mathI/mathO", angle: "deg", numberFormat: { kind: "norm", variant: 2 }, fraction: "improper", decimalMark: ".", digitSeparator: false },
+    }),
+  );
   const root = createRoot(container);
   act(() => {
     root.render(React.createElement(ScientificCalculator, { onClose: () => {}, ...props }));
   });
   return { root, el: container };
+}
+
+/** phase A: a CW-layout mount (the new default posture). */
+function mountCW(props?: Parameters<typeof mount>[0]) {
+  return mount({ open: true, ...props, seed: { layout: "cw", ...(props?.seed ?? {}) } });
+}
+
+/** a click on ANY surfaced control (the shell screens' buttons carry
+ * data-calc-screen-btn / data-calc-app, not data-calc-key). */
+function clickCtl(el: HTMLElement, dataAttr: string, value: string) {
+  const btn =
+    el.querySelector<HTMLButtonElement>(`[${dataAttr}="${value}"]`) ??
+    el.querySelector<HTMLButtonElement>(`[aria-label="${value}"]`);
+  if (!btn) throw new Error(`no control "${dataAttr}=${value}"`);
+  act(() => {
+    btn.dispatchEvent(new window.MouseEvent("pointerdown", { bubbles: true, cancelable: true }));
+  });
 }
 
 function clickKey(el: HTMLElement, aria: string) {
@@ -472,5 +505,201 @@ describe("(U9) run-003: the keyboard reads as a device and works by click/keyboa
     act(() => {
       root.unmount();
     });
+  });
+});
+
+// ── T-MG-CALC-2 phase A: the CW device shell ───────────────────────────
+// The chase card's spec pins, verified against the REAL component: the
+// shell posture, the level-driven picker, the OK-dial + the staged-
+// rollout notice (MG's captured pattern), the numbered SETTINGS dialog
+// with the FIX law end-to-end, the CATALOG, the VARIABLE ⇄x store, the
+// FUNCTION f(x) sheet, and the classic round-trip.
+
+describe("(U10) phase A: the CW shell anatomy (the default posture)", () => {
+  test("(U10a) the CW grid carries the shell keys, the interleave and the wide EXE; no MODE key", () => {
+    const { root, el } = mountCW();
+    expect(el.querySelector("[data-calc-layout]")?.getAttribute("data-calc-layout")).toBe("cw");
+    for (const aria of ["Home", "Variable", "Settings", "Catalog", "Tools", "Function", "OK", "Execute", "Off", "Back", "variable A", "variable x", "variable z", "Times ten to the power", "Toggle mixed improper"]) {
+      expect(el.querySelector(`[data-calc-key="${aria}"]`)).not.toBeNull();
+    }
+    expect(el.querySelector('[data-calc-key="Mode setup"]')).toBeNull();
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U10b) EXE computes; the header names the model layout", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "5");
+    clickKey(el, "Add");
+    clickKey(el, "3");
+    expect(resultText(el)).toBe("");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("8");
+    expect(el.textContent).toContain("fx-83GT CW layout");
+    expect(el.textContent).toContain("Not affiliated with Casio.");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U10c) SHIFT relabels the structural keys AND computes the remap (2 SHIFT x² = 8)", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "2"); // the value first — SHIFT is one-shot and ANY key consumes it (the device law)
+    clickKey(el, "Shift");
+    expect(el.querySelector('[data-calc-key="Cube"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-key="Square"]')).toBeNull();
+    clickKey(el, "Cube");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("8");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U10d) the picker defaults by the level hint (MG's map) and the solar skin rides the model", () => {
+    const igcse = mount({ open: true, levelHint: "igcse-chemistry-19", seed: { layout: "cw", model: null } });
+    expect(igcse.el.textContent).toContain("fx-991 CW layout");
+    expect(igcse.el.querySelector("[data-calc-solar]")).not.toBeNull();
+    const picker = igcse.el.querySelector<HTMLSelectElement>("[data-calc-model-picker]")!;
+    expect([...picker.options].map((o) => o.value)).toEqual(["fx-83gt-cw", "fx-85gt-cw", "fx-991cw"]);
+    expect(picker.value).toBe("fx-991cw");
+    act(() => {
+      igcse.root.unmount();
+    });
+    const gcse = mount({ open: true, levelHint: "gcse-maths-edexcel", seed: { layout: "cw", model: null } });
+    expect(gcse.el.textContent).toContain("fx-83GT CW layout");
+    expect(gcse.el.querySelector("[data-calc-solar]")).toBeNull();
+    act(() => {
+      gcse.root.unmount();
+    });
+  });
+  test("(U10e) the layout toggle returns the run-001 classic keypad byte-for-byte", () => {
+    const { root, el } = mountCW();
+    act(() => {
+      (el.querySelector("[data-calc-layout-toggle]") as HTMLButtonElement).click();
+    });
+    expect(el.querySelector('[data-calc-key="Equals"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-key="Mode setup"]')).not.toBeNull();
+    act(() => {
+      root.unmount();
+    });
+  });
+});
+
+describe("(U11) phase A: the shell screens", () => {
+  test("(U11a) HOME lists the model's apps; the dial+OK flow lands an unimplemented app on MG's notice", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "Home");
+    expect(el.querySelector('[data-calc-screen="home"]')).not.toBeNull();
+    for (const app of ["calculate", "statistics", "table", "ratio", "mathBox"]) {
+      expect(el.querySelector(`[data-calc-app="${app}"]`)).not.toBeNull();
+    }
+    clickKey(el, "Cursor down");
+    clickKey(el, "Cursor down");
+    clickKey(el, "Cursor down");
+    clickKey(el, "OK");
+    expect(el.querySelector('[data-calc-screen="notice"]')).not.toBeNull();
+    expect(el.querySelector("[data-calc-notice]")?.textContent).toBe("Ratio. This app isn't on the simulator yet.");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U11b) SETTINGS: Fix 2 flows to the display law end-to-end (5÷3 → 1.67, S⇔D inert)", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "Settings");
+    expect(el.querySelector('[data-calc-screen="settings"]')).not.toBeNull();
+    clickCtl(el, "data-calc-screen-btn", "Fixed decimals 2");
+    clickCtl(el, "data-calc-screen-btn", "Settings done");
+    clickKey(el, "5");
+    clickKey(el, "Divide");
+    clickKey(el, "3");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("1.67");
+    clickKey(el, "Toggle fraction decimal");
+    expect(resultText(el)).toBe("1.67");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U11c) CATALOG: the 7 categories; Numeric → log inserts and computes log(100) = 2", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "Catalog");
+    expect(el.querySelectorAll("[data-calc-cat]").length).toBe(7);
+    clickCtl(el, "data-calc-cat", "numeric");
+    clickCtl(el, "data-calc-screen-btn", "Logarithm base 10");
+    clickKey(el, "1");
+    clickKey(el, "0");
+    clickKey(el, "0");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("2");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U11d) VARIABLE ⇄x: Store from the result, the sheet shows it, Insert evaluates (A×2 = 16)", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "5");
+    clickKey(el, "Add");
+    clickKey(el, "3");
+    clickKey(el, "Execute");
+    clickKey(el, "Variable");
+    expect(el.querySelector('[data-calc-screen="vars"]')).not.toBeNull();
+    clickCtl(el, "data-calc-screen-btn", "Store variable A");
+    expect(el.querySelector('[data-calc-var-value="A"]')?.textContent).toContain("A = 8");
+    clickCtl(el, "data-calc-screen-btn", "Insert variable A");
+    clickKey(el, "Multiply");
+    clickKey(el, "2");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("16");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U11e) FUNCTION f(x): the entry defines f, the call substitutes exactly (f(4) = 5)", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "variable x");
+    clickKey(el, "Add");
+    clickKey(el, "1");
+    clickKey(el, "Function");
+    expect(el.querySelector('[data-calc-screen="fns"]')).not.toBeNull();
+    clickCtl(el, "data-calc-screen-btn", "Define function f from entry");
+    expect(el.querySelector('[data-calc-fn-value="f"]')?.textContent).toContain("x+1");
+    clickCtl(el, "data-calc-screen-btn", "Insert function f");
+    clickKey(el, "4");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("5");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U11f) OFF closes the overlay (the device-true power key)", () => {
+    let closed = false;
+    const { root, el } = mount({ open: true, onClose: () => (closed = true), seed: { layout: "cw" } });
+    clickKey(el, "Off");
+    expect(closed).toBe(true);
+    act(() => {
+      root.unmount();
+    });
+  });
+});
+
+describe("(U12) phase A: the persisted record", () => {
+  test("(U12a) a manual model choice persists to the record", () => {
+    const { root, el } = mountCW();
+    const picker = el.querySelector<HTMLSelectElement>("[data-calc-model-picker]")!;
+    const set = Object.getOwnPropertyDescriptor(window.HTMLSelectElement.prototype, "value")!.set!;
+    act(() => {
+      set.call(picker, "fx-991cw");
+      picker.dispatchEvent(new window.Event("change", { bubbles: true }));
+    });
+    expect(window.localStorage.getItem("syllab-calculator-v1")).toContain('"fx-991cw"');
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U12b) a malformed record falls back to the defaults — never bricks the overlay", () => {
+    window.localStorage.setItem("syllab-calculator-v1", "{definitely not json");
+    const p = loadPersisted();
+    expect(p.layout).toBe("cw");
+    expect(p.settings.angle).toBe("deg");
+    window.localStorage.setItem("syllab-calculator-v1", JSON.stringify(defaultPersisted()));
   });
 });
