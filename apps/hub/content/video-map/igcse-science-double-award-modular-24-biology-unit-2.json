@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 28,
+  "rowsApproved": 35,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 28,
+    "rowsApproved": 35,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -452,6 +452,83 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Freesciencelessons",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "39YE7hv1D18",
+   "title": "Genotype, Phenotype & Punnett Squares | 9-1 GCSE and IGCSE Biology | AQA, Edexcel, CIE, OCR, WJEC",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=39YE7hv1D18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "62745-iPhO0",
+   "title": "Female Reproductive System | A Level and IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=62745-iPhO0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CmHZeysBoso",
+   "title": "Sex Determination | A LEVEL & IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=CmHZeysBoso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W7tmWNpW-u0",
+   "title": "Food Chains & Food Webs | A LEVEL & IB BIOLOGY",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=W7tmWNpW-u0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bDQTh92PZec",
+   "title": "Male and Female Reproductive System | 9-1 GCSE and IGCSE Biology | AQA, Edexcel, CIE, OCR, WJEC",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=bDQTh92PZec",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cgQ695-qbw4",
+   "title": "Male Reproductive System | A Level and IB Biology",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=cgQ695-qbw4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "r2HUxd7hB5w",
+   "title": "The Greenhouse Effect & Global Warming | A LEVEL & IB BIOLOGY",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=r2HUxd7hB5w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -464,7 +541,7 @@
     "4.29"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Biology Revision \"Sexual and Asexual Reproduction\"' names 'understand the differences between sexual and '",
+   "evidence": "title 'GCSE Biology Revision \"Sexual and Asexual Reproduction\"' -> 3.1 'understand the differences between sexual and ' via distinctive token(s) asexual, sexual; 3.29 'understand that mitosis occurs during growth, ' via distinctive token(s) asexual (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -485,7 +562,7 @@
     "4.29"
    ],
    "confidence": "medium",
-   "evidence": "'Asexual and Sexual Reproduction' names 'understand the differences between sexual and '",
+   "evidence": "title 'Asexual and Sexual Reproduction' -> 3.1 'understand the differences between sexual and ' via distinctive token(s) asexual, sexual; 3.29 'understand that mitosis occurs during growth, ' via distinctive token(s) asexual (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -505,7 +582,7 @@
     "4.4"
    ],
    "confidence": "medium",
-   "evidence": "title 'Angiosperm (Flowering Plants) Reproduction' covers pollen tube, fertilisation, seed and fruit formation (3.4); clause order; US channel",
+   "evidence": "title 'Angiosperm (Flowering Plants) Reproduction' covers pollen tube, fertilisation, seed and fruit formation (3.4); clause order title-only; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -525,7 +602,7 @@
     "4.7"
    ],
    "confidence": "medium",
-   "evidence": "AQA 'Cloning Plants' includes tissue culture = micropropagation of 5.17B and commercial-quantity identical plants of 5.18B; explant/in-vitro detail",
+   "evidence": "AQA 'Cloning Plants' includes tissue culture = micropropagation of 5.17B and commercial-quantity identical plants of 5.18B; explant/in-vitro detail title-only (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -545,7 +622,67 @@
     "4.8"
    ],
    "confidence": "low",
-   "evidence": "Cognito KS3 tier: title 'Human Reproductive Systems' = the structure/function of 3.8, but below IGCSE level; adaptation language unverified",
+   "evidence": "Cognito KS3 tier: title 'Human Reproductive Systems' = the structure/function of 3.8, but below IGCSE level; adaptation language unverified (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "62745-iPhO0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.8 'understand how the structure of the male and female reproduc' via token(s) ['female', 'reproductive'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "cgQ695-qbw4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.8 'understand how the structure of the male and female reproduc' via token(s) ['male', 'reproductive'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bDQTh92PZec",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.8 'understand how the structure of the male and female reproduc' via token(s) ['female', 'male', 'reproductive'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -566,7 +703,7 @@
     "4.12"
    ],
    "confidence": "low",
-   "evidence": "Cognito KS3 tier: title 'Fertilisation & Pregnancy' covers placenta nutrition (3.11) and amniotic protection (3.12) contextually, below IGCSE level; clause detail unverified",
+   "evidence": "Cognito KS3 tier: title 'Fertilisation & Pregnancy' covers placenta nutrition (3.11) and amniotic protection (3.12) contextually, below IGCSE level; clause detail unverified (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -586,7 +723,7 @@
     "4.14"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Biology Revision \"DNA and the Genome\"' names 'understand that the genome is the entire DNA o'",
+   "evidence": "title 'GCSE Biology Revision \"DNA and the Genome\"' -> 3.14 'understand that the genome is the entire DNA o' via distinctive token(s) genome (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -606,7 +743,7 @@
     "4.19"
    ],
    "confidence": "low",
-   "evidence": "'Alleles and Genes' names 'understand how genes exist in alternative form'",
+   "evidence": "title 'Alleles and Genes' -> 3.19 'understand how genes exist in alternative form' via distinctive token(s) allele (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -626,7 +763,27 @@
     "4.19"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Biology Revision \"Alleles\"' names 'understand how genes exist in alternative form'",
+   "evidence": "title 'GCSE Biology Revision \"Alleles\"' -> 3.19 'understand how genes exist in alternative form' via distinctive token(s) allele (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "39YE7hv1D18",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.20"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.20 'understand the meaning of the terms: dominant, recessive, ho' via token(s) ['genotype', 'phenotype'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -646,7 +803,7 @@
     "4.24"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Biology Revision \"Family Trees\"' names 'understand how to interpret family pedigrees'",
+   "evidence": "title 'GCSE Biology Revision \"Family Trees\"' -> 3.24 'understand how to interpret family pedigrees' via distinctive token(s) family (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -667,7 +824,27 @@
     "4.27"
    ],
    "confidence": "medium",
-   "evidence": "title 'Inheritance of Sex' = the XX/XY sex-chromosome determination of 3.26 and the genetic-diagram offspring sex of 3.27; clause detail (unverified)",
+   "evidence": "title 'Inheritance of Sex' = the XX/XY sex-chromosome determination of 3.26 and the genetic-diagram offspring sex of 3.27; clause detail title-only (unverified) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CmHZeysBoso",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.27"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.27 'describe the determination of the sex of offspring at fertil' via token(s) ['determination', 'sex'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -687,7 +864,7 @@
     "4.30"
    ],
    "confidence": "low",
-   "evidence": "'Meiosis (Older Video 2017 )' names 'understand how division of a cell by meiosis p'",
+   "evidence": "title 'Meiosis (Older Video 2017 )' -> 3.30 'understand how division of a cell by meiosis p' via distinctive token(s) meiosi (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -707,7 +884,7 @@
     "4.30"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Biology Revision \"Meiosis and Fertilisation\"' names 'understand how division of a cell by meiosis p'",
+   "evidence": "title 'GCSE Biology Revision \"Meiosis and Fertilisation\"' -> 3.30 'understand how division of a cell by meiosis p' via distinctive token(s) meiosi (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -728,7 +905,7 @@
     "4.33"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Biology Revision \"Variation\"' names 'understand that variation within a species can'",
+   "evidence": "title 'GCSE Biology Revision \"Variation\"' -> 3.33 'understand that variation within a species can' via distinctive token(s) variation; 3.31 'understand how random fertilisation produces g' via distinctive token(s) variation (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -748,7 +925,7 @@
     "4.38"
    ],
    "confidence": "medium",
-   "evidence": "title 'Darwin and Natural Selection' names Darwin's theory spec 3.38 directly",
+   "evidence": "title 'Darwin and Natural Selection' names Darwin's theory spec 3.38 directly; the 3.7 asexual-plant bind is nonsense adjacency (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -768,7 +945,7 @@
     "4.38"
    ],
    "confidence": "medium",
-   "evidence": "title 'Evolution by Natural Selection' names spec 3.38 directly",
+   "evidence": "title 'Evolution by Natural Selection' names spec 3.38 directly; the 3.7 bind is nonsense adjacency (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -788,7 +965,7 @@
     "4.38"
    ],
    "confidence": "low",
-   "evidence": "title 'Natural Selection' names spec 3.38",
+   "evidence": "title 'Natural Selection' names spec 3.38; the 3.7 bind is nonsense adjacency (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -808,7 +985,7 @@
     "4.39"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Biology Revision \"Antibiotics\"' names 'understand how resistance to antibiotics can i'",
+   "evidence": "title 'GCSE Biology Revision \"Antibiotics\"' -> 3.39 'understand how resistance to antibiotics can i' via distinctive token(s) antibiotic (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -828,7 +1005,7 @@
     "5.5"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Biology Revision \"Biotic and Abiotic Factors\"' names 'understand how abiotic and biotic factors affe'",
+   "evidence": "title 'GCSE Biology Revision \"Biotic and Abiotic Factors\"' -> 4.5 'understand how abiotic and biotic factors affe' via distinctive token(s) abiotic, biotic (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -848,7 +1025,7 @@
     "5.7"
    ],
    "confidence": "medium",
-   "evidence": "'Food Webs and Energy Pyramids: Bedrocks of Biodiversity' names 'understand the concepts of food chains, food w'",
+   "evidence": "title 'Food Webs and Energy Pyramids: Bedrocks of Biodiversity' -> 4.7 'understand the concepts of food chains, food w' via distinctive token(s) pyramid, web (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -869,7 +1046,7 @@
     "5.8"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Biology Revision \"Food Chains and Predator-Prey Cycles\"' names 'understand the transfer of substances and ener'",
+   "evidence": "title 'GCSE Biology Revision \"Food Chains and Predator-Prey Cycles\"' -> 4.8 'understand the transfer of substances and ener' via distinctive token(s) chain; 4.7 'understand the concepts of food chains, food w' via distinctive token(s) chain (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -889,7 +1066,7 @@
     "5.7"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Biology Revision \"Pyramids of Biomass\" (Triple)' names 'understand the concepts of food chains, food w'",
+   "evidence": "title 'GCSE Biology Revision \"Pyramids of Biomass\" (Triple)' -> 4.7 'understand the concepts of food chains, food w' via distinctive token(s) biomas, pyramid (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -910,7 +1087,27 @@
     "5.8"
    ],
    "confidence": "medium",
-   "evidence": "'Ecology Review: Food Chains & Webs, Relationships, Nitrogen & Carbon C' names 'understand the concepts of food chains, food w'",
+   "evidence": "title 'Ecology Review: Food Chains & Webs, Relationships, Nitrogen & Carbon C' -> 4.7 'understand the concepts of food chains, food w' via distinctive token(s) chain, web; 4.8 'understand the transfer of substances and ener' via distinctive token(s) chain (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "W7tmWNpW-u0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.7"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.7 'understand the concepts of food chains, food webs, pyramids ' via token(s) ['chains', 'food', 'webs'] (df 12); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -930,7 +1127,7 @@
     "5.10"
    ],
    "confidence": "low",
-   "evidence": "title 'Decomposition' names the carbon-cycle spec 4.10 (decomposers named in-spec); the 4.9 bind (10% energy transfer) is a different spec — trimmed",
+   "evidence": "title 'Decomposition' names the carbon-cycle spec 4.10 (decomposers named in-spec); the 4.9 bind (10% energy transfer) is a different spec — trimmed (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -950,7 +1147,7 @@
     "5.10"
    ],
    "confidence": "low",
-   "evidence": "'Required Practical 10: Decay' — the decay practical demonstrates decomposer action; bound on the carbon-cycle spec 4.10 as a genuine partial (the AQA rate-of-decay procedure itself has no 4BI1 spec)",
+   "evidence": "title 'Required Practical 10: Decay' — the decay practical demonstrates decomposer action; bound on the carbon-cycle spec 4.10 as a genuine partial (the AQA rate-of-decay procedure itself has no 4BI1 spec) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -970,7 +1167,27 @@
     "5.15"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Biology Revision \"Global Warming\"' names 'understand how an increase in greenhouse gases'",
+   "evidence": "title 'GCSE Biology Revision \"Global Warming\"' -> 4.15 'understand how an increase in greenhouse gases' via distinctive token(s) global, warming (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-biology-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "r2HUxd7hB5w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.15"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.15 'understand how an increase in greenhouse gases results in an' via token(s) ['effect', 'global', 'greenhouse', 'warming'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -993,7 +1210,7 @@
     "6.4"
    ],
    "confidence": "medium",
-   "evidence": "same title covers fertiliser use (5.3) and pest control incl. pesticides vs biological (5.4); pros/cons detail",
+   "evidence": "same title covers fertiliser use (5.3) and pest control incl. pesticides vs biological (5.4); pros/cons detail title-only (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1013,7 +1230,7 @@
     "6.5"
    ],
    "confidence": "medium",
-   "evidence": "title 'Fermentation' = yeast anaerobic respiration incl. bread/food production (5.5); yoghurt is bacterial (separate spec 5.7) — not title-evidenced here; US channel",
+   "evidence": "title 'Fermentation' = yeast anaerobic respiration incl. bread/food production (5.5); yoghurt is bacterial (separate spec 5.7) — not title-evidenced here; US channel (inherited from the owner-approved igcse-biology-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1028,15 +1245,15 @@
  ],
  "coverage": {
   "specPointsTotal": 60,
-  "specPointsMapped": 27,
-  "specPointsUnmapped": 33,
-  "videosTotal": 28,
-  "videosMapped": 28,
+  "specPointsMapped": 28,
+  "specPointsUnmapped": 32,
+  "videosTotal": 35,
+  "videosMapped": 35,
   "videosUnmapped": 0,
-  "mappingRows": 28,
+  "mappingRows": 35,
   "byConfidence": {
    "high": 0,
-   "medium": 16,
+   "medium": 23,
    "low": 12
   }
  },
@@ -1060,5 +1277,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-14T19:16:04.121Z"
+ "generatedUtc": "2026-11-17T14:41:11.501Z"
 }

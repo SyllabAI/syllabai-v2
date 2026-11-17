@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { loadHubCourse } from "@/lib/courses";
 import {
-  corpusIndex,
   findCorpusPaper,
   sessionLabel as sessionLabelOf,
 } from "@/lib/pastpapers-corpus";
@@ -93,7 +92,6 @@ export default async function CorpusPaperPage({
         sessionLabelStr={sessionLabelOf(session)}
         initialDoc={docParam}
         mode={mockMode ? "mock" : "view"}
-        metaGeneratedAt={corpusIndex.meta.generatedAt}
         examCode={meta.code}
         initialPage={initialPage}
         initialPageDoc={docParam === "ms" ? "ms" : "qp"}

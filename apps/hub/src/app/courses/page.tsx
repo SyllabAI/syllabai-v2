@@ -169,20 +169,15 @@ export default async function CoursesIndexPage() {
               </summary>
               <div className="mt-2 space-y-2 text-sm leading-relaxed text-muted-foreground">
                 <p>
-                  The bundles are imported from the operator-authorized Save My
-                  Exams corpus — revision notes, exam questions and flashcards
-                  organised around each course&apos;s corpus specification tree.
-                  The Cambridge International lanes run the same import: the
-                  resource wave has landed, their teaching banks are live alongside
-                  the official QP+MS past-paper archive on every course page the
-                  archive covers.
+                  Licensed from Save My Exams — revision notes, exam questions
+                  and flashcards organised around each course&apos;s specification
+                  tree. Cambridge International lanes run the same import, with
+                  the official past-paper archive on every course page it covers.
                 </p>
                 <p>
-                  The few lanes the publisher never shipped (no SME exam questions;
-                  the newest wave has no past papers yet) stay honestly empty
-                  rather than fabricated. The 4CH1 Chemistry pilot additionally
-                  runs on the official Pearson specification tree with its concept
-                  graph.
+                  Lanes the publisher never shipped stay empty rather than
+                  fabricated. The 4CH1 Chemistry pilot additionally runs on the
+                  official Pearson specification tree with its concept graph.
                 </p>
               </div>
             </details>

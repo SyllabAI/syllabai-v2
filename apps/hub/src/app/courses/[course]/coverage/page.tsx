@@ -55,11 +55,9 @@ export default async function CoveragePage({
             never mastery: exposure only, never proven.
           </p>
           <p>
-            Where the data lives: the syllabus map is the course&apos;s own specification graph; your
-            evidence is this browser&apos;s local progress lane (the same lane the knowledge graph reads),
-            or your live account when one is connected. Nothing here is invented — points the evidence
-            join cannot attribute render as not started, and if a source fails, the page says so instead
-            of showing zeros.
+            Your evidence comes from this browser, or from your account when
+            signed in. Points the evidence can&apos;t attribute show as not
+            started — never invented zeros.
           </p>
         </div>
       </details>

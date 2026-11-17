@@ -26,6 +26,11 @@
    "provider": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
    "method": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) flat-enumerated 2026-11-13T12:53:08Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p14": {
+   "provider": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) + Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane)",
+   "method": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) flat-enumerated 2026-11-17T04:07:29Z; Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-17T14:02:23Z"
   }
  },
  "review": {
@@ -34,7 +39,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. Two rejects where the title names the domain but not the spec's distinctive frame.",
-  "rowsApproved": 69,
+  "rowsApproved": 79,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -237,6 +242,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p14 (channel recon judgment lane: ETphysics 9702 session walkthroughs; Prosperity Academy CIE SOLVED 9702/9701/9700; Dr Hanaa Assil IAL chemistry unit papers; Zainematics 0580/9709/0606/9618; Craig'n'Dave CAMBRIDGE 0478 series; Science with Hazel Edexcel-IGCSE; Mega Lecture CIE aggregator; ExamSolutions IAL-legacy composites; Sir Faizan Pasha + CK A-level Physics 9702; IGCSESUCCESS FLE 0500; MrAstburyMaths 4MA1; + the Allery-CIE re-adjudication group)",
+    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\"; judgment lane run 2026-11-17",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+    "ruledUtc": "2026-11-17T14:02:23Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
+    "rowsApproved": 10,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -369,7 +385,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -380,7 +396,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -391,7 +407,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -402,7 +418,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -413,7 +429,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -424,7 +440,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -435,7 +451,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -446,7 +462,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -457,7 +473,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -468,7 +484,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -479,7 +495,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -490,7 +506,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -501,7 +517,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -512,7 +528,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -523,7 +539,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -534,7 +550,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -545,7 +561,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -556,7 +572,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -567,7 +583,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -578,7 +594,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -589,7 +605,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -600,7 +616,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -611,7 +627,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -622,7 +638,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -633,7 +649,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -644,7 +660,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -655,7 +671,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -666,7 +682,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -677,7 +693,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -688,7 +704,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -699,7 +715,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -710,7 +726,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -721,7 +737,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -732,7 +748,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -743,7 +759,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -754,7 +770,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -765,7 +781,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -776,7 +792,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -787,7 +803,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -798,7 +814,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -809,7 +825,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -820,7 +836,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -831,7 +847,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -842,7 +858,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -853,7 +869,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -864,7 +880,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -875,7 +891,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -886,7 +902,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -897,7 +913,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -908,7 +924,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel",
+   "boardNote": "MrArnoldsMaths — legacy Edexcel GCSE/GCE channel (channelId UCwa84m5RqSJEkP9pYdeDYnw); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -919,7 +935,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -930,7 +946,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -941,7 +957,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -952,7 +968,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -963,7 +979,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -974,7 +990,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -985,7 +1001,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -996,7 +1012,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1007,7 +1023,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1018,7 +1034,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1029,7 +1045,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1040,7 +1056,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1051,7 +1067,117 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs)",
+   "boardNote": "Mindful Maths (@MindfulMaths — Edexcel IAL D1 WDM11 chapter course + WMA11-14/4MA1 paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Alxtp19-oV0",
+   "title": "Rearranging Equations Where The Subject Appears Twice | GCSE & IGCSE Maths | AQA, Edexcel, CIE, OCR",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=Alxtp19-oV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "F74_eKUWzbQ",
+   "title": "Best Method For Working Out Lowest Common Multiples | GCSE & IGCSE Maths | AQA, Edexcel, CIE, OCR",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=F74_eKUWzbQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FIjvJtRZhI0",
+   "title": "#52 Sine and Cosine Rules - Edexcel IGCSE Exam Questions",
+   "provider": "mr-astbury-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=FIjvJtRZhI0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JQqh7x6AzoM",
+   "title": "Solving Fractional Coefficients | GCSE & IGCSE Maths | AQA, Edexcel, CIE, OCR",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=JQqh7x6AzoM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P3-GQi1EjDQ",
+   "title": "#59 Arithmetic Sequences - Series 2 Edexcel IGCSE Exam Questions",
+   "provider": "mr-astbury-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=P3-GQi1EjDQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Pa5gs7eEVKw",
+   "title": "Percentage Increase And Decrease | GCSE & IGCSE Maths | AQA, Edexcel, CIE, OCR",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=Pa5gs7eEVKw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "a59lGHsAGt4",
+   "title": "#44 Direct and Inverse Proportion - Edexcel IGCSE Exam Questions",
+   "provider": "mr-astbury-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=a59lGHsAGt4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jAy46iX4Igg",
+   "title": "#52 Sine and Cosine Rules - Series 2 Edexcel IGCSE Exam Questions",
+   "provider": "mr-astbury-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=jAy46iX4Igg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ynvc3mvgxlM",
+   "title": "#1 Prime Factors, HCF, LCM - Series 2 Edexcel IGCSE Exam Questions",
+   "provider": "mr-astbury-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ynvc3mvgxlM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yuw4J9XneAo",
+   "title": "#1 Prime Factors, HCF, LCM - Edexcel IGCSE Exam Questions",
+   "provider": "mr-astbury-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=yuw4J9XneAo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -1163,7 +1289,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H, June 2023, Q25, Straight Line Graphs, Perpendicular Bisector\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1182,7 +1308,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H, June 2023, Q24, Similarity, Volume, Area, length\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1201,7 +1327,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019,Q23, Probability, Algebraic Fractions\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1220,7 +1346,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q20, Simultaneous Equations (Non- Linear)\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1239,7 +1365,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q18, Differentiation, Applications\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1258,7 +1384,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2019, Q17, Direct Variation, Algebraic Terms\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1277,7 +1403,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q23, Arithmetic Series, Sum\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1296,7 +1422,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q22, Circle Theorems, Intersecting Chords, (Proof)\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1315,7 +1441,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q20, Statistics, Histograms\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1334,7 +1460,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q17, Differentiation, Cubic Curves\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1353,7 +1479,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (4MA1/2H)"
+   "evidence": "title: \"IGCSE, (Edexcel), 4MA1/2H,  June 2018, Q16, Direct & Inverse Variation\"; paper code 4MA1/2H in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "video": "R3ObU2jG7WY",
@@ -1363,7 +1489,7 @@
     "1.1E"
    ],
    "confidence": "low",
-   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat'",
+   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat' via distinctive token(s) ['division', 'multiplication'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1378,7 +1504,7 @@
     "4.4B"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.4B 'calculate time intervals in terms of the 24-hour and the'",
+   "evidence": "title names 4.4B 'calculate time intervals in terms of the 24-hour and the' via distinctive token(s) ['12'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1393,7 +1519,7 @@
     "1.1H"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.1H 'identify prime factors, common factors and common multip'",
+   "evidence": "title names 1.1H 'identify prime factors, common factors and common multip' via distinctive token(s) ['factor', 'prime'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1408,7 +1534,7 @@
     "1.1G"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.1G 'use the terms ‘odd’, ‘even’, ‘prime numbers’, ‘factors’ '",
+   "evidence": "title names 1.1G 'use the terms ‘odd’, ‘even’, ‘prime numbers’, ‘factors’ ' via distinctive token(s) ['factor', 'number', 'prime'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1423,7 +1549,7 @@
     "1.1F"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.1F 'use brackets and the hierarchy of operations'",
+   "evidence": "title names 1.1F 'use brackets and the hierarchy of operations' via distinctive token(s) ['operation'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1438,7 +1564,7 @@
     "3.1C"
    ],
    "confidence": "low",
-   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie'",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1453,7 +1579,7 @@
     "1.1E"
    ],
    "confidence": "low",
-   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat'",
+   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat' via distinctive token(s) ['addition', 'subtraction'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1468,7 +1594,7 @@
     "3.1C"
    ],
    "confidence": "low",
-   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie'",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1483,7 +1609,7 @@
     "3.1C"
    ],
    "confidence": "low",
-   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie'",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1498,7 +1624,7 @@
     "3.1C"
    ],
    "confidence": "low",
-   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie'",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via distinctive token(s) ['arithmetic'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1513,7 +1639,7 @@
     "1.9A"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.9A 'solve problems involving standard form'",
+   "evidence": "title names 1.9A 'solve problems involving standard form' via distinctive token(s) ['form', 'standard'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1528,7 +1654,7 @@
     "1.9A"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.9A 'solve problems involving standard form'",
+   "evidence": "title names 1.9A 'solve problems involving standard form' via distinctive token(s) ['form', 'standard'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1543,7 +1669,7 @@
     "1.8D"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.8D 'use estimation to evaluate approximations to numerical c'",
+   "evidence": "title names 1.8D 'use estimation to evaluate approximations to numerical c' via distinctive token(s) ['approximation'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1558,7 +1684,7 @@
     "1.9A"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.9A 'solve problems involving standard form'",
+   "evidence": "title names 1.9A 'solve problems involving standard form' via distinctive token(s) ['form', 'standard'] (df 3); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1573,7 +1699,7 @@
     "1.3A"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.3A 'convert recurring decimals into fractions'",
+   "evidence": "title names 1.3A 'convert recurring decimals into fractions' via distinctive token(s) ['decimal', 'fraction', 'recurring'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1588,7 +1714,7 @@
     "4.4F"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.4F 'understand and use the relationship between average spee'",
+   "evidence": "title names 4.4F 'understand and use the relationship between average spee' via distinctive token(s) ['speed', 'time'] (df 2); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1603,7 +1729,7 @@
     "1.6E"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.6E 'solve simple percentage problems, including percentage i'",
+   "evidence": "title names 1.6E 'solve simple percentage problems, including percentage i' via distinctive token(s) ['decrease', 'percentage'] (df 1); title-only posture, tightened binding rule (distinctive df<=3)",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1618,7 +1744,7 @@
     "1.1G"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.1G 'use the terms ‘odd’, ‘even’, ‘prime numbers’, ‘factors’ '",
+   "evidence": "title names 1.1G 'use the terms ‘odd’, ‘even’, ‘prime numbers’, ‘factors’ ' via token(s) ['factor', 'prime'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1633,7 +1759,7 @@
     "4.4G"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.4G 'use compound measure such as speed, density and pressure'",
+   "evidence": "title names 4.4G 'use compound measure such as speed, density and pressure' via token(s) ['compound'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1648,7 +1774,7 @@
     "1.2I"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.2I 'multiply and divide fractions and mixed numbers'",
+   "evidence": "title names 1.2I 'multiply and divide fractions and mixed numbers' via token(s) ['fraction', 'mixed', 'number'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1663,7 +1789,7 @@
     "1.6F"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.6F 'use reverse percentages'",
+   "evidence": "title names 1.6F 'use reverse percentages' via token(s) ['reverse'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1678,7 +1804,7 @@
     "2.5A"
    ],
    "confidence": "medium",
-   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion a'",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion a' via token(s) ['proportion'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1693,7 +1819,7 @@
     "6.3C"
    ],
    "confidence": "medium",
-   "evidence": "title names 6.3C 'use simple conditional probability when combining events'",
+   "evidence": "title names 6.3C 'use simple conditional probability when combining events' via token(s) ['conditional', 'probability'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1708,7 +1834,7 @@
     "6.3B"
    ],
    "confidence": "medium",
-   "evidence": "title names 6.3B 'determine the probability that two or more independent e'",
+   "evidence": "title names 6.3B 'determine the probability that two or more independent e' via token(s) ['independent', 'probability'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1723,7 +1849,7 @@
     "2.1D"
    ],
    "confidence": "medium",
-   "evidence": "title names 2.1D 'use index laws in simple cases'",
+   "evidence": "title names 2.1D 'use index laws in simple cases' via token(s) ['law'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1738,7 +1864,7 @@
     "6.2A"
    ],
    "confidence": "medium",
-   "evidence": "title names 6.2A 'estimate the median from a cumulative frequency diagram'",
+   "evidence": "title names 6.2A 'estimate the median from a cumulative frequency diagram' via token(s) ['median'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1753,7 +1879,7 @@
     "4.11C"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.11C 'use areas and volumes of similar figures in solving prob'",
+   "evidence": "title names 4.11C 'use areas and volumes of similar figures in solving prob' via token(s) ['area', 'similar', 'volume'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1768,7 +1894,7 @@
     "1.10C"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.10C 'understand and carry out calculations using time, and ca'",
+   "evidence": "title names 1.10C 'understand and carry out calculations using time, and ca' via token(s) ['converting'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1783,7 +1909,7 @@
     "1.10C"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.10C 'understand and carry out calculations using time, and ca'",
+   "evidence": "title names 1.10C 'understand and carry out calculations using time, and ca' via token(s) ['converting'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1798,7 +1924,7 @@
     "1.10C"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.10C 'understand and carry out calculations using time, and ca'",
+   "evidence": "title names 1.10C 'understand and carry out calculations using time, and ca' via token(s) ['converting'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1813,7 +1939,7 @@
     "1.1E"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat'",
+   "evidence": "title names 1.1E 'use the four rules of addition, subtraction, multiplicat' via token(s) ['multiplication'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1828,7 +1954,7 @@
     "2.7D"
    ],
    "confidence": "medium",
-   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equati'",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equati' via token(s) ['equation', 'linear', 'simultaneou'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1843,7 +1969,7 @@
     "4.5D"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.5D 'use straight edge and compasses to: (i) construct the pe'",
+   "evidence": "title names 4.5D 'use straight edge and compasses to: (i) construct the pe' via token(s) ['angle', 'bisector'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1858,7 +1984,7 @@
     "4.5D"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.5D 'use straight edge and compasses to: (i) construct the pe'",
+   "evidence": "title names 4.5D 'use straight edge and compasses to: (i) construct the pe' via token(s) ['bisector', 'line', 'perpendicular'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1873,7 +1999,7 @@
     "1.2A"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.2A 'understand and use equivalent fractions, simplifying a f'",
+   "evidence": "title names 1.2A 'understand and use equivalent fractions, simplifying a f' via token(s) ['simplifying'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1888,7 +2014,7 @@
     "1.6F"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.6F 'use reverse percentages'",
+   "evidence": "title names 1.6F 'use reverse percentages' via token(s) ['percentage', 'reverse'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1903,7 +2029,7 @@
     "1.2A"
    ],
    "confidence": "medium",
-   "evidence": "title names 1.2A 'understand and use equivalent fractions, simplifying a f'",
+   "evidence": "title names 1.2A 'understand and use equivalent fractions, simplifying a f' via token(s) ['fraction', 'simplifying'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1918,7 +2044,7 @@
     "4.8F"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.8F 'apply trigonometrical methods to solve problems in three'",
+   "evidence": "title names 4.8F 'apply trigonometrical methods to solve problems in three' via token(s) ['finding'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1933,7 +2059,7 @@
     "4.11C"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.11C 'use areas and volumes of similar figures in solving prob'",
+   "evidence": "title names 4.11C 'use areas and volumes of similar figures in solving prob' via token(s) ['solving'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -1957,7 +2083,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"May 2018 Paper 1H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1976,7 +2102,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"January 2021 Paper 1HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1995,7 +2121,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"January 2022 Paper 2HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2014,7 +2140,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"January 2022 Paper 1HR - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2033,7 +2159,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"IGCSE Foundation Mathematics Practice Paper 6 - 4MA1/1F\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2052,7 +2178,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"IGCSE Foundation Mathematics Practice Paper 5 - 4MA1/1F\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2071,7 +2197,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"January 2020 Paper 1H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2090,7 +2216,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (4MA1)"
+   "evidence": "title: \"January 2020 Paper 2H - Edexcel IGCSE Mathematics (4MA1) - Complete Walkthrough\"; syllabus/paper code 4MA1 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "video": "VdWAKm8SlV8",
@@ -2100,7 +2226,7 @@
     "5.1G"
    ],
    "confidence": "medium",
-   "evidence": "title names 5.1G 'apply vector methods for simple geometrical proofs'",
+   "evidence": "title names 5.1G 'apply vector methods for simple geometrical proofs' via token(s) ['proof'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -2115,7 +2241,7 @@
     "2.3D"
    ],
    "confidence": "medium",
-   "evidence": "title names 2.3D 'use formulae from mathematics and other real-life contex'",
+   "evidence": "title names 2.3D 'use formulae from mathematics and other real-life contex' via token(s) ['mathematic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -2130,7 +2256,7 @@
     "2.3D"
    ],
    "confidence": "medium",
-   "evidence": "title names 2.3D 'use formulae from mathematics and other real-life contex'",
+   "evidence": "title names 2.3D 'use formulae from mathematics and other real-life contex' via token(s) ['mathematic'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -2145,7 +2271,7 @@
     "3.4E"
    ],
    "confidence": "medium",
-   "evidence": "title names 3.4E 'apply calculus to linear kinematics and to other simple '",
+   "evidence": "title names 3.4E 'apply calculus to linear kinematics and to other simple ' via token(s) ['calculu'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -2160,26 +2286,176 @@
     "3.1C"
    ],
    "confidence": "medium",
-   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie'",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic serie' via token(s) ['arithmetic', 'sequence'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "Alxtp19-oV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3A 'understand the process of manipulating formulae or equations' via token(s) ['equations', 'subject', 'twice', 'where'] (df 25); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Pa5gs7eEVKw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6E 'solve simple percentage problems, including percentage incre' via token(s) ['decrease', 'increase', 'percentage'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "F74_eKUWzbQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['common', 'lowest', 'multiples'] (df 7); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "JQqh7x6AzoM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.4A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.4A 'solve linear equations, with integer or fractional coefficie' via token(s) ['coefficients', 'fractional'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "jAy46iX4Igg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8C"
+   ],
+   "confidence": "low",
+   "evidence": "title names 4.8C 'understand and use the sine and cosine rules for any triangl' via token(s) ['cosine', 'rules', 'sine'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "P3-GQi1EjDQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic series (S' via token(s) ['arithmetic', 'series'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "ynvc3mvgxlM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['factors', 'hcf', 'lcm'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "FIjvJtRZhI0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.8C"
+   ],
+   "confidence": "low",
+   "evidence": "title names 4.8C 'understand and use the sine and cosine rules for any triangl' via token(s) ['cosine', 'rules', 'sine'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "a59lGHsAGt4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion and r' via token(s) ['direct', 'inverse', 'proportion'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "yuw4J9XneAo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['factors', 'hcf', 'lcm'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 188,
-  "specPointsMapped": 32,
-  "specPointsUnmapped": 156,
-  "videosTotal": 71,
-  "videosMapped": 69,
+  "specPointsMapped": 36,
+  "specPointsUnmapped": 152,
+  "videosTotal": 81,
+  "videosMapped": 79,
   "videosUnmapped": 2,
-  "mappingRows": 69,
+  "mappingRows": 79,
   "byConfidence": {
    "high": 19,
-   "medium": 44,
-   "low": 6
+   "medium": 52,
+   "low": 8
   }
  },
  "inputs": {
@@ -2216,7 +2492,13 @@
    "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p14": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external-p14.json",
+   "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:03.907Z"
+ "generatedUtc": "2026-11-17T14:41:11.281Z"
 }

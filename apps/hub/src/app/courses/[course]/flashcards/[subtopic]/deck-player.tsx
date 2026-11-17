@@ -51,6 +51,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { CalendarClock, ChevronLeft, ListFilter, RotateCcw, Shuffle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ProvenanceBadge } from "@/components/provenance";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -519,9 +520,7 @@ export function DeckPlayer({
       >
         <CardContent className="flex min-h-64 flex-col justify-between gap-4 p-6">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <Badge variant="outline" className="text-2xs">
-              {current.provenanceTier}
-            </Badge>
+            <ProvenanceBadge tier={current.provenanceTier} studentVoice />
             {scheduleById.get(current.id)?.due && (
               <Badge
                 variant="outline"

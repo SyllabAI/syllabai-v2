@@ -317,7 +317,7 @@ export function MarkingConsoleClient() {
         const result: SmartMarkView = await api.runSmartMark(answerId);
         if (result.validationPassed) {
           setActionNotice(
-            `Smart Mark awarded ${result.marksAwarded} mark(s) — provisional until the κ gate passes.`,
+            `Smart Mark awarded ${result.marksAwarded} marks — provisional until human-checked.`,
           );
         } else {
           setActionError(
@@ -443,7 +443,7 @@ export function MarkingConsoleClient() {
       {/* T-HEADER-1: the shared tool-page header. */}
       <PageHeader
         title="Marking review"
-        description="Live from the SyllabAI backend: the class list is the whole pilot cohort (classes are a Cycle-2+ concept). Human marks are the authoritative grade; Smart Mark results are provisional until the κ agreement gate passes. This surface presents facts only — no recommendations."
+        description="The marking queue and class marks. Human marks are the grade of record; Smart Mark stays provisional until validated."
       />
 
       <TeacherNav />

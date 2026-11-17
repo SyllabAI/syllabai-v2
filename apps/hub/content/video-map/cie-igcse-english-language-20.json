@@ -11,6 +11,11 @@
    "provider": "Mr Salles Teaches English (@MrSallesTeachesEnglish — Cambridge IGCSE 0500/0522 First Language English + Edexcel IGCSE English pool)",
    "method": "Mr Salles Teaches English (@MrSallesTeachesEnglish — Cambridge IGCSE 0500/0522 First Language English + Edexcel IGCSE English pool) flat-enumerated 2026-11-13T12:53:30Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p14": {
+   "provider": "IGCSESUCCESS (First Language English 0500 register; the 0475 Literature titles are RESERVED pending the lit-21 owner decision — not silently dropped)",
+   "method": "IGCSESUCCESS (First Language English 0500 register; the 0475 Literature titles are RESERVED pending the lit-21 owner decision — not silently dropped) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-17T14:02:23Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
   "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
-  "rowsApproved": 21,
+  "rowsApproved": 22,
   "rowsRejected": 2,
   "rejects": [
    {
@@ -55,6 +60,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p14 (channel recon judgment lane: ETphysics 9702 session walkthroughs; Prosperity Academy CIE SOLVED 9702/9701/9700; Dr Hanaa Assil IAL chemistry unit papers; Zainematics 0580/9709/0606/9618; Craig'n'Dave CAMBRIDGE 0478 series; Science with Hazel Edexcel-IGCSE; Mega Lecture CIE aggregator; ExamSolutions IAL-legacy composites; Sir Faizan Pasha + CK A-level Physics 9702; IGCSESUCCESS FLE 0500; MrAstburyMaths 4MA1; + the Allery-CIE re-adjudication group)",
+    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\"; judgment lane run 2026-11-17",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+    "ruledUtc": "2026-11-17T14:02:23Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
+    "rowsApproved": 1,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -289,6 +305,17 @@
    "levelTag": "igcse",
    "boardNote": "Mr Salles Teaches English (@MrSallesTeachesEnglish — Cambridge IGCSE 0500/0522 First Language English + Edexcel IGCSE English pool)",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "aXkDLlpEnKM",
+   "title": "iGCSE First Language English - Directed Writing (Know your audience and purpose!)",
+   "provider": "igcsesuccess",
+   "watchUrl": "https://www.youtube.com/watch?v=aXkDLlpEnKM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "IGCSESUCCESS (First Language English 0500 register; the 0475 Literature titles are RESERVED pending the lit-21 owner decision — not silently dropped) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -300,7 +327,7 @@
     "S3.001"
    ],
    "confidence": "low",
-   "evidence": "title names the S3.001 skill/section unambiguously and spec S3.001 'Express what is thought, felt and imagined' is validated in the spine",
+   "evidence": "title names the S3.001 skill/section unambiguously and spec S3.001 'Express what is thought, felt and imagined' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -315,7 +342,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -330,7 +357,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -345,7 +372,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -360,7 +387,7 @@
     "S2.010"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine",
+   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -375,7 +402,7 @@
     "S2.010"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine",
+   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -390,7 +417,7 @@
     "S3.001"
    ],
    "confidence": "low",
-   "evidence": "title names the S3.001 skill/section unambiguously and spec S3.001 'Express what is thought, felt and imagined' is validated in the spine",
+   "evidence": "title names the S3.001 skill/section unambiguously and spec S3.001 'Express what is thought, felt and imagined' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -405,7 +432,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -420,7 +447,7 @@
     "S2.010"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine",
+   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -435,7 +462,7 @@
     "S2.010"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine",
+   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -450,7 +477,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -465,7 +492,7 @@
     "S2.010"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine",
+   "evidence": "title names the S2.010 skill/section unambiguously and spec S2.010 'Demonstrate understanding of how writers achieve' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -480,7 +507,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -495,7 +522,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -510,7 +537,7 @@
     "S2.007"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine",
+   "evidence": "title names the S2.007 skill/section unambiguously and spec S2.007 'Demonstrate understanding of written texts, and ' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -525,7 +552,7 @@
     "S3.001"
    ],
    "confidence": "low",
-   "evidence": "title names the S3.001 skill/section unambiguously and spec S3.001 'Express what is thought, felt and imagined' is validated in the spine",
+   "evidence": "title names the S3.001 skill/section unambiguously and spec S3.001 'Express what is thought, felt and imagined' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -540,7 +567,7 @@
     "S2.009"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine",
+   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -555,7 +582,7 @@
     "S2.009"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine",
+   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -570,7 +597,7 @@
     "S2.009"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine",
+   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -585,7 +612,7 @@
     "S2.008"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.008 skill/section unambiguously and spec S2.008 'Summarise and use material for a specific contex' is validated in the spine",
+   "evidence": "title names the S2.008 skill/section unambiguously and spec S2.008 'Summarise and use material for a specific contex' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -600,25 +627,40 @@
     "S2.009"
    ],
    "confidence": "low",
-   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine",
+   "evidence": "title names the S2.009 skill/section unambiguously and spec S2.009 'Develop, analyse and evaluate facts, ideas and o' is validated in the spine; direct class-table bind at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "aXkDLlpEnKM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "S3.005"
+   ],
+   "confidence": "medium",
+   "evidence": "title names S3.005 'Demonstrate an understanding of audience, purpose and form' via token(s) ['audience', 'purpose'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 18,
-  "specPointsMapped": 5,
-  "specPointsUnmapped": 13,
-  "videosTotal": 21,
-  "videosMapped": 21,
+  "specPointsMapped": 6,
+  "specPointsUnmapped": 12,
+  "videosTotal": 22,
+  "videosMapped": 22,
   "videosUnmapped": 0,
-  "mappingRows": 21,
+  "mappingRows": 22,
   "byConfidence": {
    "high": 0,
-   "medium": 0,
+   "medium": 1,
    "low": 21
   }
  },
@@ -632,7 +674,13 @@
    "path": "Videos/drafts/cie-igcse-english-language-20/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p14": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-english-language-20/video-map.draft.external-p14.json",
+   "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:03.853Z"
+ "generatedUtc": "2026-11-17T14:41:11.215Z"
 }
