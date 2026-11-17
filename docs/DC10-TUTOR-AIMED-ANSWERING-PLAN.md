@@ -38,9 +38,11 @@ time and is therefore rationed to one optional post-answer probe.
    served-evidence-grounded learner graph.
 3. **Consultation brief** issued to an external reviewer — Appendix A
    (reconstructed from session records; the original text lives in operator
-   chat, trace 1a1b23049c206ef1).
+   chat, trace 1a1b23049c206ef1). The full reconstruction lives as
+   `DC10-APPENDIX-A-CONSULTATION-BRIEF.md`.
 4. **GLM substitute review** — Appendix B (position summary; ran on the same
-   brief when no direct Claude path existed).
+   brief when no direct Claude path existed). The position-level
+   reconstruction lives as `DC10-APPENDIX-B-GLM-SUBSTITUTE-REVIEW.md`.
 5. **External review (Claude, relayed by operator)** — the decisive input.
    Its full text lives in operator chat; §9 carries the condensed decision
    log with the load-bearing quotes.
@@ -438,6 +440,10 @@ drills with decay; Teach SillyAI); the seven learnharness mechanisms; the
 v1/v2/v3 proposal; and the eight questions reproduced in §9. The brief's
 closing instruction to the reviewer: challenge, don't admire.
 
+The full reconstruction of the brief — all sections, the eight questions
+and the closing instruction — lives as
+`DC10-APPENDIX-A-CONSULTATION-BRIEF.md`.
+
 ## Appendix B — GLM substitute review (position summary)
 
 Ran on the identical brief when no direct Claude path was available; clearly
@@ -448,3 +454,7 @@ one pass; binary confidence rather than three buttons (rejected — §7.4 keeps
 three buttons with the log-first gate); opt-in diagnose mode (rejected —
 §7.6 keeps the collapsed post-answer probe instead). Full text was produced
 in-session and lives in operator chat.
+
+The position-level reconstruction — each surviving position, its convergence
+or divergence, and how DC10 resolved it — lives as
+`DC10-APPENDIX-B-GLM-SUBSTITUTE-REVIEW.md`.
