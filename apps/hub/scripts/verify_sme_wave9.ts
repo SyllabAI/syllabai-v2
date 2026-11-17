@@ -33,6 +33,10 @@
  * cie-igcse-environmental-management-25 CIE 0680 2027-2029) + tranche 18
  * (igcse-science-double-award-17-chemistry Pearson 4SD0 2017 — the THIRD
  * 4SD0 strand / igcse-business-19 Pearson 4BS1 — the decimal T-code family)
+ * + tranche 19 (igcse-maths-a-modular-24-foundation-unit-1 Pearson
+ * 4XMAF/4XMAH 2024 — the modular-UNIT shape / igcse-economics-17 Pearson
+ * 4EC1 2017 — the FOURTH DRIFT EVENT: one live-only exam-skills topic
+ * documented in DRIFT_BY_COURSE)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -188,6 +192,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-environmental-management-25": new Set(),
   "igcse-science-double-award-17-chemistry": new Set(),
   "igcse-business-19": new Set(),
+  "igcse-maths-a-modular-24-foundation-unit-1": new Set(),
+  "igcse-economics-17": new Set(["structuring-your-responses"]),
 };
 
 for (const cf of FIXTURES.courses) {
