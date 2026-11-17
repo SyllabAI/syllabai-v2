@@ -182,9 +182,13 @@ totalResolved === totalNotes
 // Pearson-science family is now EXHAUSTED (4BI1/4CH1/4PH1/4SD0 all
 // layered), so the chain's next no-layer sibling — the queue's rank-3
 // Edexcel-science family member igcse-biology-modular-24-unit-2 (the
-// Pearson modular 2024 strand) — takes the probe slot. Same disclosed
-// pin-refresh class as the wave-6 run-002.
-  const probes = ["igcse-biology-modular-24-unit-2", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
+// Pearson modular 2024 strand) — took the probe slot.
+// igcse-biology-modular-24-unit-2 rotated out at tranche 11 (it GAINED its
+// SME layer there, alongside igcse-maths-a-modular-24-higher-unit-1); the
+// modular-24 family continues, so its next no-layer sibling — the SAME
+// subject's unit-1 strand igcse-biology-modular-24-unit-1 — takes the
+// probe slot. Same disclosed pin-refresh class as the wave-6 run-002.
+  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;
