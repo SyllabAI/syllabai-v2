@@ -1,38 +1,53 @@
 {
  "task": "T-TUTOR-AIM-P2",
  "run": "run-001",
- "kind": "DC10 Phase 2 — confidence capture (log-first) + aimed answering + single optional probe + the §7.3 classifier refinement, one changeset",
+ "kind": "DC10 Phase 2 \u2014 confidence capture (log-first) + aimed answering + single optional probe + the \u00a77.3 classifier refinement, one changeset",
  "agent": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1ea412609f6f91)",
  "date": "2026-11-18",
- "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §6 P2 (§7.4/§7.5/§7.6) + §13.1/§13.2 — merged plan (#880 base, #889 amendments, #1057 appendices)",
+ "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md \u00a76 P2 (\u00a77.4/\u00a77.5/\u00a77.6) + \u00a713.1/\u00a713.2 \u2014 merged plan (#880 base, #889 amendments, #1057 appendices)",
  "implemented": {
   "s74_confidence_capture": {
-   "wire": "packages/contracts/src/tutor.ts tutorAskRequestSchema — confidence z.enum([sure,think_so,guessing]).optional(); NO server-side default (absent = null downstream; a no-tap is never recorded as a guessing)",
-   "pipeline": "karag.ts — karagAsk/karagAskStream carry the raw selection into BOTH TutorAnsweredEvent telemetry calls (refusals log the tap too); TutorModule.ask/askStream pass it through; routes/tutor.ts validates the closed enum (invalid value → validation_failed 'must match sure|think_so|guessing', the @Pattern class)",
-   "persistence": "apps/api/src/services/learner/engagement-recorder.ts — appendConfidence: one pure-append row per SELECTING ask over tutor_ask_confidence (migration 0029), same append-guard class; a no-tap and an anonymous preview write NOTHING",
+   "wire": "packages/contracts/src/tutor.ts tutorAskRequestSchema \u2014 confidence z.enum([sure,think_so,guessing]).optional(); NO server-side default (absent = null downstream; a no-tap is never recorded as a guessing)",
+   "pipeline": "karag.ts \u2014 karagAsk/karagAskStream carry the raw selection into BOTH TutorAnsweredEvent telemetry calls (refusals log the tap too); TutorModule.ask/askStream pass it through; routes/tutor.ts validates the closed enum (invalid value \u2192 validation_failed 'must match sure|think_so|guessing', the @Pattern class)",
+   "persistence": "apps/api/src/services/learner/engagement-recorder.ts \u2014 appendConfidence: one pure-append row per SELECTING ask over tutor_ask_confidence (migration 0029), same append-guard class; a no-tap and an anonymous preview write NOTHING",
    "hub": "composer.tsx the three-button row (no default, tap selects, second tap deselects, reset after every send) + api/ai/chat relay forwards the field on both delivery paths only when present",
-   "law": "LOG-FIRST: nothing reads tutor_ask_confidence; consumption is gated on §7.4 rules 1/2/5 (per-learner normalisation after ~15 responses; never the sole basis of a misconception reading; the ~10-point noise gate) plus weeks of pure logging (rule 4)"
+   "law": "LOG-FIRST: nothing reads tutor_ask_confidence; consumption is gated on \u00a77.4 rules 1/2/5 (per-learner normalisation after ~15 responses; never the sole basis of a misconception reading; the ~10-point noise gate) plus weeks of pure logging (rule 4)"
   },
   "s75_aimed_answering": {
-   "aim": "apps/api/src/services/tutor/context.ts assembleAim (pure, unit-pinned) — computed INSIDE assembleTutorContext from the reads it already holds (M3 preserved, zero new reads, zero LLM): correction = the strongest active reading (effective >= 0.5, the assembler's active gate) on a KG-attached misconception of a matched topic (catalog node id + title — the §11 injection law); proven = prerequisites at mastery >= AIM_PROVEN_MASTERY 0.70 (cap 4); strongAreas = depth-1 adjacent nodes at proven mastery excluding matched topics (cap 3); decayDue flagged for the §7.8 hook (renders nothing in P2); null when nothing aims (decayDue alone aims nothing)",
-   "prompt": "tutor/prompt.ts — the v19 bump (registry tutor-grounded): the AIM law (open with the correction per the voice law; compress PROVEN to one line; bias examples to the strong areas; aim shapes selection and emphasis ONLY — sourcing/citations/disclosure sovereign; no AIM block = answered exactly as before); the user prompt renders ONE unfenced AIM block after the INTERVENTION PLAN only when the aim is non-null",
-   "byte_stability": "test/tutor/aim.test.ts — the EMPTY-tables userPrompt is byte-identical to the pre-P2 PromptContext call shape, and the pipeline test pins no-AIM/no-pin/no-probe on the empty learner posture (the EMPTY-tables posture of learner-model.ts as regression test, per §7.5)"
+   "aim": "apps/api/src/services/tutor/context.ts assembleAim (pure, unit-pinned) \u2014 computed INSIDE assembleTutorContext from the reads it already holds (M3 preserved, zero new reads, zero LLM): correction = the strongest active reading (effective >= 0.5, the assembler's active gate) on a KG-attached misconception of a matched topic (catalog node id + title \u2014 the \u00a711 injection law); proven = prerequisites at mastery >= AIM_PROVEN_MASTERY 0.70 (cap 4); strongAreas = depth-1 adjacent nodes at proven mastery excluding matched topics (cap 3); decayDue flagged for the \u00a77.8 hook (renders nothing in P2); null when nothing aims (decayDue alone aims nothing)",
+   "prompt": "tutor/prompt.ts \u2014 the v19 bump (registry tutor-grounded): the AIM law (open with the correction per the voice law; compress PROVEN to one line; bias examples to the strong areas; aim shapes selection and emphasis ONLY \u2014 sourcing/citations/disclosure sovereign; no AIM block = answered exactly as before); the user prompt renders ONE unfenced AIM block after the INTERVENTION PLAN only when the aim is non-null",
+   "byte_stability": "test/tutor/aim.test.ts \u2014 the EMPTY-tables userPrompt is byte-identical to the pre-P2 PromptContext call shape, and the pipeline test pins no-AIM/no-pin/no-probe on the empty learner posture (the EMPTY-tables posture of learner-model.ts as regression test, per \u00a77.5)"
   },
   "s73_classifier_refinement": {
-   "module": "apps/api/src/services/tutor/command-word.ts (pure) — precision-first: only a question OPENING with one of the six exam command words pins (noun usages, inflections, mid-sentence verbs and natural-language markers classify null); the user prompt renders one COMMAND WORD OF RECORD line when pinned, NOTHING otherwise; the v18 shape law stays the governing law byte-unchanged"
+   "module": "apps/api/src/services/tutor/command-word.ts (pure) \u2014 precision-first: only a question OPENING with one of the six exam command words pins (noun usages, inflections, mid-sentence verbs and natural-language markers classify null); the user prompt renders one COMMAND WORD OF RECORD line when pinned, NOTHING otherwise; the v18 shape law stays the governing law byte-unchanged"
   },
   "s76_single_optional_probe": {
-   "selection": "apps/api/src/services/tutor/probe.ts selectProbe (pure) — at most ONE offer per ask: a DIRECT (depth-1) prerequisite carrying (a) a weak practiced skill state (attempts >= 1 AND mastery < PROBE_WEAK_MASTERY 0.5) or (b) an active attached misconception (effective >= 0.5); order = misconception-gap first, then lowest mastery, then node id asc (deterministic total order); depth-2 never probes",
-   "wire": "AskResult.probe + the stream completed event.probe (after the full answer) + contracts tutorProbeOfferSchema on the answer view and the done frame (optional, additive); NULL on every refusal; §13.2 offer-not-claim: metadata only (node id + corpus title), claims nothing, consumes nothing until the learner's tap",
-   "hub": "threads.ts Turn.probe + chat.tsx renders the done-frame offer as the 'Quick check — <title>?' chip after the answer (message-item.tsx); the tap PRE-FILLS the composer (nothing is sent until the learner sends); ignoring it does nothing"
+   "selection": "apps/api/src/services/tutor/probe.ts selectProbe (pure) \u2014 at most ONE offer per ask: a DIRECT (depth-1) prerequisite carrying (a) a weak practiced skill state (attempts >= 1 AND mastery < PROBE_WEAK_MASTERY 0.5) or (b) an active attached misconception (effective >= 0.5); order = misconception-gap first, then lowest mastery, then node id asc (deterministic total order); depth-2 never probes",
+   "wire": "AskResult.probe + the stream completed event.probe (after the full answer) + contracts tutorProbeOfferSchema on the answer view and the done frame (optional, additive); NULL on every refusal; \u00a713.2 offer-not-claim: metadata only (node id + corpus title), claims nothing, consumes nothing until the learner's tap",
+   "hub": "threads.ts Turn.probe + chat.tsx renders the done-frame offer as the 'Quick check \u2014 <title>?' chip after the answer (message-item.tsx); the tap PRE-FILLS the composer (nothing is sent until the learner sends); ignoring it does nothing"
   },
-  "schema": "packages/db/drizzle/0029_tutor-ask-confidence.sql — ONE additive table (id, learner_id, session_id nullable, confidence CHECK IN (sure,think_so,guessing), created_at) + the learner/created_at index; raw SQL per the 0007 disclosure law (journal entry, no snapshot, the 0027 precedent)"
+  "schema": "packages/db/drizzle/0029_tutor-ask-confidence.sql \u2014 ONE additive table (id, learner_id, session_id nullable, confidence CHECK IN (sure,think_so,guessing), created_at) + the learner/created_at index; raw SQL per the 0007 disclosure law (journal entry, no snapshot, the 0027 precedent)"
  },
  "gates": {
   "typecheck": "apps/api tsc --noEmit rc=0; apps/hub tsc rc=0; packages/contracts tsc rc=0",
-  "full_suite": "2979 pass / 13 skip / 0 fail (43,404 expects, 169 files) — up from P1's 2935 pass",
+  "full_suite": "2979 pass / 13 skip / 0 fail (43,404 expects, 169 files) \u2014 up from P1's 2935 pass",
   "new_pins": "command-word 6/6; aim 13/13 (incl. the byte-stability law); probe 8/8; aim-pipeline 7/7 (confidence both paths, no-default, refusal-logs-tap, probe both paths, metadata-only, byte-stable empty posture); recorder confidence 4/4; routes confidence/probe 5/5; budget lint 3/3 (v19 chemistry 120 / general 118 non-blank lines vs cap 200, headroom pin >= 40 intact)"
  },
  "boundaries": "NO risk-tier path touched; the two-tier disclosure law, sourcing, citations, the v18 voice/shape/refusal laws byte-unchanged (still pinned in tutor-core/cla tests); zero new LLM calls; the ONE new read-free seam (aim) consumes the M3 read. Deviations disclosed in the task card: CLA surface carries no confidence/aim in P2; the probe tap pre-fills the composer (the inline bank-question probe is P3 with the drill loop); the books rail ask does not forward confidence.",
- "identity": "tutor-grounded/v19"
+ "identity": "tutor-grounded/v19",
+ "review_of_record": {
+  "reviewer": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, trace 1a1ea9aa48ea48d1)",
+  "date": "2026-11-18",
+  "verdict": "CONFORMANT with one review fix folded pre-merge \u2014 approved of record",
+  "spec_cross_reference": "reviewed line-against-line against the DC10 plan \u00a77.4/\u00a77.5/\u00a77.6 + \u00a713.1/\u00a713.2/\u00a713.3 AND against an independent second implementation of the same spec (built spec-first, then discarded on discovering this PR of record \u2014 the cross-read found NO spec divergence): the aim/probe selections are deterministic + fully ordered; the M3 law holds (no new reads); byte-stability is pinned twice (prompt + pipeline); the probe is \u00a713.2-conformant (metadata only, prefill-not-send \u2014 MORE conservative than the spec requires); the \u00a77.3 classifier closes the P1 disclosure debt (precision-first, first-word-only, noun/natural-language usages render nothing); refusals log the tap but probe nothing",
+  "review_fix_folded": "the migration's own cited 0027 fold precedent was INCOMPLETE: tutor_ask_confidence existed only in the raw-SQL migration plane \u2014 NOT in schema.ts or the checked-in 0000_snapshot.json (the drift detector was structurally blind to the table; a future drizzle-kit pull would have emitted it as untracked churn). Folded: schema.ts + snapshot (5 cols / 1 index / 0 fks per the raw migration of record / 1 check), the rebaseline pin moved deliberately with the recorded delta -> 103/958/136/103/187, 0 drifts; the runtime-loader pin asserts the table",
+  "reconciliation": "origin/main merged into the branch (1468047) \u2014 the worklog append-vs-append race union-resolved per the run-032 law (main's W9-17/W9-18 entries verbatim; the run entry re-appended at tail, byte-intact)",
+  "post_fix_gates": "FULL suite 3605 pass / 13 skip / 0 fail (44,927 expects, 205 files) on the merged head; hub battery 1454 pass with the SAME pre-existing 20-fail/3-error set as clean main; rebaseline verify PASS 0 drifts"
+ },
+ "residuals": [
+  "the confidence consumption stays log-only (\u00a77.4 rule 4: 2\u20133 weeks pure logging; rules 1/2/5 gate any future consumption \u2014 a separate \u00a713.3 default-on decision, never silent)",
+  "the CLA surface carries no confidence capture in P2 (the disclosed residual \u2014 the buttons ship on the tutor chat first; the sink records nothing for CONTEXTUAL_ASSISTANT)",
+  "the probe tap PREFILLS the composer (the conservative \u00a713.2 posture \u2014 nothing sent until the learner presses send)",
+  "the standing credential-rotation reminder: the GitHub PAT remains exposed from chat transmission and MUST be revoked/rotated"
+ ]
 }

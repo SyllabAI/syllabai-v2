@@ -1472,6 +1472,26 @@ export const tutorTopicEngagements = pgTable("tutor_topic_engagements", {
         check("ck_tte_surface", sql`(surface)::text = ANY (ARRAY[('FREE_TUTOR'::character varying)::text, ('CONTEXTUAL_ASSISTANT'::character varying)::text])`),
 ]);
 
+// T-TUTOR-AIM-P2 run-001 (DC10 §7.4, migration 0029_tutor-ask-confidence):
+// the confidence LOG plane — one append-only row per SELECTING tutor ask.
+// LOG-FIRST: nothing in v2 reads this table (§7.4 rules 1/2/5 gate every
+// consumption; rule 4's pure-logging window governs). A no-tap ask inserts
+// NOTHING (the row's absence IS the null — no server-side default);
+// anonymous previews log nothing (account-only). Deliberately FK-free per
+// the raw-SQL migration of record (the 0027 fold precedent: the snapshot
+// documents the migration plane's end-state exactly). session_id is the §22
+// anchor when the ask carried one (nullable — sessionless asks log too).
+export const tutorAskConfidence = pgTable("tutor_ask_confidence", {
+        id: uuid().primaryKey().default(sql`gen_random_uuid()`).notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        sessionId: uuid("session_id"),
+        confidence: text("confidence").notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("tutor_ask_confidence_learner_created_idx").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+        check("tutor_ask_confidence_confidence_check", sql`confidence IN ('sure', 'think_so', 'guessing')`),
+]);
+
 export const roles = pgTable("roles", {
         name: varchar({ length: 16 }).primaryKey().notNull(),
         description: varchar({ length: 200 }).notNull(),
