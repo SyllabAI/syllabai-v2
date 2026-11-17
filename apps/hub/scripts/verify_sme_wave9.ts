@@ -20,7 +20,11 @@
  * cie-as-accounting-21 CIE AS 9706 2023-2025) + tranche 13
  * (cie-igcse-religious-studies-23 CIE 0490 2025-2027 /
  * igcse-science-double-award-17-physics Pearson Edexcel 4SD0 2017 — the
- * THIRD 4SD0 strand) — the W7 closeout recommendation's build slices,
+ * THIRD 4SD0 strand) + tranche 14 (cie-igcse-computer-science-23 CIE 0478
+ * 2023-2025 / igcse-maths-a-modular-24-higher-unit-2 Pearson 4XMAF/4XMAH
+ * dual-code 2024) + tranche 15 (cie-as-physics-25 CIE AS 9702 2025-2027 —
+ * the AS-shares-A-level code prefix class / cie-igcse-business-23 CIE 0450
+ * 2023-2025) — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
@@ -155,6 +159,10 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-as-accounting-21": new Set(),
   "cie-igcse-religious-studies-23": new Set(),
   "igcse-science-double-award-17-physics": new Set(),
+  "cie-igcse-computer-science-23": new Set(),
+  "igcse-maths-a-modular-24-higher-unit-2": new Set(),
+  "cie-as-physics-25": new Set(),
+  "cie-igcse-business-23": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
