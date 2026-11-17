@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""T-SME-SEL-W9-19 run-001 — dual worklog append (append-only; prefix
+byte-identity asserted pre/post)."""
+import sys
+
+REPO = "/home/z/my-project/repos/syllabai-v2"
+
+ENTRY = ("- T-SME-SEL-W9-19 run-001 — SME picker layer wave 9, tranche 19: the Revision-Notes "
+         "picker mirror for the queue pair (PR of record opened for the integrator; branch "
+         "t-sme-sel-w9-19/run-001 from origin/main ad0c13ae). Operator order 'Proceed with "
+         "next' executes the tranche-18 merge record's next-queue ranks 1-2 — "
+         "igcse-maths-a-modular-24-foundation-unit-1 (Pearson Edexcel 4XMAF/4XMAH 2024) / "
+         "igcse-economics-17 (Pearson Edexcel 4EC1 2017). BASE OF RECORD: main ad0c13ae — "
+         "main ADVANCED between turns (74ef6159 -> ad0c13ae, PR #1073 the copy/verbosity "
+         "rewrite pass over user-facing page surfaces, ZERO selector-surface contact); "
+         "census at that tip: resolved 7,151 (66 layered) / user-facing loose 1,946. "
+         "TRANCHE: fu1 79 + econ17 79 loose = 158 notes (econ17's full corpus is 80 notes "
+         "in 17 pairs — 1 set-bearing). LIVE FETCHES 2026-11-17 (polite curl, "
+         "__NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl — fu1 at "
+         "/igcse/maths/edexcel/a-modular/24/foundation-unit-1/ (the modular-UNIT shape), "
+         "econ17 at /igcse/economics/edexcel/17/ (the 2-level un-numbered shape)): fu1 4 "
+         "sections/25 topics/80 subtopics and econ17 5/18/85. BIJECTION AUDIT OF RECORD "
+         "(lane w9t19_live_audit.py): the TENTH consecutive FULLY-CLEAN audit — 0 note "
+         "slugs missing / 0 set slugs missing / 0 exact-one failures; BOTH COURSES "
+         "SINGLE-MATCH throughout; ZERO TITLE MISMATCHES; fu1 clean (4/25/80, "
+         "+1-subtopic delta under a traffic-bearing topic, NOT the drift class, 25 sets "
+         "across all 25 pairs, ZERO drift rows); econ17 carries ONE live-only drift row "
+         "— structuring-your-responses (0-note AND 0-set): the wave's FOURTH drift "
+         "event (after T5 econ-23's 24 paper-organization rows, T9's DT slugs and T16 "
+         "combsci-physics's six), documented in DRIFT_BY_COURSE per the T16 precedent "
+         "and appended with corpus-true 0/0 counts. fu1 runs the SHARED "
+         "igcse-maths-a-modular T-code family (the higher-unit-1/2 siblings are "
+         "ALREADY layered — their fixture blocks of record sit in sme-wave9-fixtures."
+         "json; SME row codes are course-prefixed so no collision) with letter-suffixed "
+         "spec codes (1.1A); econ17 the DECIMAL family (igcse-economics-T1.1:SUB1.1.1). "
+         "PIN SEARCHES (resolved BEFORE building): the by-CODE searches (rg "
+         "igcse-maths-a-modular-T | igcse-economics-T1.1) found ZERO pins — the fixture "
+         "hits are the higher-unit siblings' OWN course blocks, already layered. No "
+         "multiMatch declaration; no setLaw pin; no byte-format event. APPENDS +52 "
+         "SME_REFERENCE nodes: fu1 +29 (4+25; official 121 intact, digest "
+         "75479d4f0acc801b), econ17 +23 (5+18 incl. the drift row; official 131 intact, "
+         "digest 653edb8cd23baed1); removal round-trips asserted byte-identical per "
+         "course; official nodes list-equal per course; FIXTURES MERGED into "
+         "sme-wave9-fixtures.json (41 courses) with the prior 39 blocks byte-preserved "
+         "(asserted deep-equal by the builder), each new block carrying fetched "
+         "2026-11-17. GATE verify_sme_wave9.ts extended to 41 courses: PASS — spine "
+         "digests + 9 section rows + 43 topic rows all SME_REFERENCE verbatim, per-row "
+         "CORPUS counts pinned through the resolution law, fu1 ALL 79 notes + 25 sets "
+         "resolve, econ17 ALL 80 notes + 16 sets resolve, drift rows exactly documented "
+         "(econ17 {structuring-your-responses}), deep links resolve, official "
+         "tree.topics carries zero SME codes. NO WAVE-8 PROBE ROTATION THIS TRANCHE: "
+         "bio-mod-U1 holds the no-layer probe slot from the tranche-11 rotation #5 and "
+         "stays no-layer — the roster is UNTOUCHED (verify_sme_wave8.ts byte-unchanged). "
+         "LESSONS APPLIED BEFORE PUSH: #2 by-CODE pin search (above); #3 the prebuild "
+         "chain on the lane BEFORE push (verify_corpus_23a PASSED; flashcard core-sync "
+         "manifest matches [igcse-chemistry-19]; validate_cie_bundles PASS 106 rows; "
+         "validate_gradeb_bundle clean; verify_subject_identity PASS 106/106) — NO "
+         "CI-hub surprise. ACCEPTANCE: wave1 + wave7 + cosmetics1 + wave8 PASS; wire_r0 "
+         "PASS (2,574 placed / 0 unplaced — byte-identical to the tranche-3..18 "
+         "records); bun x turbo run typecheck (the CI script) rc=0; CI-verify "
+         "reproduction 0 fail (3,561 tests / 44,805 expects) — no pin events; hub lib "
+         "battery: the 6 standing fails of record at the pristine base (the #1041 "
+         "window's set) — zero new failures from this lane; the wave6 gate is GREEN of "
+         "record since W6-1 run-003 (#1058). EFFECT OF RECORD: the queue pair's "
+         "/revision-notes selectors now mirror SaveMyExams' own Revision-Notes "
+         "organization verbatim with corpus-true counts; the loose-notes cards empty "
+         "(158 formerly-loose notes now have rows); fleet-wide 68 layered courses / "
+         "7,310 resolved / user-facing loose 1,946 -> 1,788; next-tranche queue "
+         "re-measured (user-facing: cie-igcse-economics-20 79, cie-igcse-ict-21 78, "
+         "cie-igcse-business-25 77, cie-as-computer-science-19 77, "
+         "igcse-science-double-award-modular-24-biology-unit-2 75). Census engines: "
+         "rn_selector_census.ts (untouched) + w9_sme_census.ts (read-only). Lane "
+         "artifacts .syllabai/lane-artifacts/T-SME-SEL-W9-19/run-001/ (parsed live RN "
+         "trees + builder + audit + worklog scripts); receipt "
+         ".syllabai/receipts/T-SME-SEL-W9-19/run-001.md; task card T-SME-SEL-W9-19.yaml "
+         "IN_REVIEW; author does not self-merge; no DB contact; fetch-first race-guard "
+         "at push (EXPECT pinned to the lane base ad0c13ae); no force")
+
+REMINDER = ("Standing reminder (FORTY-FIRST filing): the PAT remains exposed from chat "
+            "transmission and MUST be revoked/rotated (the Vercel token likewise).")
+
+SUFFIX = f"{ENTRY}\n{REMINDER}\n"
+
+for f in ["worklog.md", ".syllabai/worklog.md"]:
+    p = f"{REPO}/{f}"
+    before = open(p, encoding="utf-8").read()
+    open(p, "w", encoding="utf-8").write(before + SUFFIX)
+    after = open(p, encoding="utf-8").read()
+    assert after.startswith(before) and after.endswith(SUFFIX) and after.count(SUFFIX) == 1
+    print(f"{f}: +{len(SUFFIX)}B appended at tail (prefix byte-identity asserted)")
+print("DUAL WORKLOG APPEND OK")
