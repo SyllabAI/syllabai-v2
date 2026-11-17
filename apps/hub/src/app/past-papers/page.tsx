@@ -157,7 +157,11 @@ export default function PastPapersArchivePage() {
                         // no longer repeat the subject inline). The header
                         // rides the quiet recipe, count included.
                         <div key={subject} className="overflow-hidden rounded-xl border">
-                          <p className="border-b bg-muted/30 px-3 py-2 text-xs font-semibold sm:px-4">
+                          {/* visual audit V-9: raw corpus slugs ("accounting",
+                              "bangla") rendered lowercase under the uppercase
+                              qualification header — capitalize at display,
+                              data stays canonical */}
+                          <p className="border-b bg-muted/30 px-3 py-2 text-xs font-semibold capitalize sm:px-4">
                             {subject}
                             <span className="font-normal text-muted-foreground"> · {rows.length}</span>
                           </p>

@@ -17,10 +17,13 @@ export default function NotFound() {
       <h1 className="text-2xl font-semibold tracking-tight">
         This page doesn&apos;t exist
       </h1>
+      {/* visual audit V-9: the copy was course-specific ("Course pages live
+          under /courses/…") but this 404 renders for every unmatched route
+          (/study-plan, /tutor typos, …) — route-neutral wording now; the
+          Browse courses CTA stays as the recovery path */}
       <p className="text-sm leading-relaxed text-muted-foreground">
-        The link may be stale, or the course may have moved. Course pages live
-        under <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">/courses/…</code>{" "}
-        — the directory below lists everything that is real right now.
+        The link may be stale, or the page may have moved. The directory below
+        lists every course that is real right now.
       </p>
       <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
         <Link

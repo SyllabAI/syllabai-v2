@@ -483,12 +483,15 @@ export function CourseDirectory({
             chips at sm+ (they wrap as a stack below sm, exactly as before). */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* T-HUB-COURSES-UI-3: w-80 clipped the placeholder's own tail
-              ("…exam code or" — 47 chars do not fit 320px); w-96 carries
-              the full copy at the same toolbar rhythm. */}
+              ("…exam code or" — 47 chars do not fit 320px); w-96 carried
+              the full copy at the same toolbar rhythm. Visual audit V-9:
+              w-full still clips mid-word on phones ("…exam c…"), so the
+              placeholder is now the short form everywhere — the live count
+              survives, the full description lives in the aria-label. */}
           <Input
             value={q}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={`Search ${courses.length} courses by subject, exam code or board…`}
+            placeholder={`Search ${courses.length} courses…`}
             aria-label="Search courses"
             className="w-full sm:w-96"
           />

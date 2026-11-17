@@ -342,14 +342,19 @@ export function LoginClient() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Label htmlFor="login-password">Password</Label>
-              <span
-                className="cursor-not-allowed text-xs text-muted-foreground"
-                aria-disabled="true"
-                tabIndex={0}
-                title="Self-service password reset isn't available in the pilot — ask your teacher or administrator to reset it."
-              >
-                Forgot password?
-              </span>
+              {/* visual audit V-9: the disabled "Forgot password?" affordance
+                  is sign-in-only context — the register form (self-service
+                  password IS chosen here) never had a reset to forget */}
+              {mode === "login" && (
+                <span
+                  className="cursor-not-allowed text-xs text-muted-foreground"
+                  aria-disabled="true"
+                  tabIndex={0}
+                  title="Self-service password reset isn't available in the pilot — ask your teacher or administrator to reset it."
+                >
+                  Forgot password?
+                </span>
+              )}
             </div>
             <Input
               id="login-password"

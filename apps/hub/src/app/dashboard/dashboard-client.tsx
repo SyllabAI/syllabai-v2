@@ -79,7 +79,7 @@ import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
 // UX audit 2026-10-02 #17: the dashboard's sub-1%-decimal formatting is now
 // the shared contract (progress-ring and strengths-panel had rounded to 0%)
-import { formatPercent, percentLabel } from "@/lib/format";
+import { fmtCount, formatPercent, percentLabel } from "@/lib/format";
 // Tier-3 follow-up 5: the trailing tile is the grid's terminator — its
 // span/shape adapt to the row it lands in (the parity law + its tests live
 // in lib/subject-grid.ts).
@@ -124,7 +124,10 @@ function rowValue(value: number | undefined, unit: string) {
   if (value === undefined) return <Skeleton className="h-3 w-10" />;
   return (
     <span className="text-xs font-medium tabular-nums text-foreground">
-      {value} {unit}
+      {/* visual audit V-9: dashboard cards printed raw counts ("2703
+          questions") while course pages comma-group ("1,336 questions") —
+          same fmtCount device as the rest of the site (F-15 law) */}
+      {fmtCount(value)} {unit}
       {value === 1 ? "" : "s"}
     </span>
   );
