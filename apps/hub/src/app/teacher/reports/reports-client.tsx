@@ -159,7 +159,7 @@ export function ReportsClient() {
       <PageHeader
         className="print:hidden"
         title="Reports"
-        description="Live, read-only class evidence — printable summary plus per-student and per-topic CSV exports. Term grouping is pending a term entity in the core; exports stamp the evidence window instead."
+        description="Read-only class evidence — printable summary and CSV exports, stamped with the period covered."
         actions={
           <div className="flex items-center gap-2">
             <label htmlFor="report-subject" className="text-sm text-muted-foreground">

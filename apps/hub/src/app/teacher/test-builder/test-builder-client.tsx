@@ -1389,7 +1389,7 @@ export function TestBuilderClient({
           </span>
         }
         title="Test Builder"
-        description="Pick questions from the bank, arrange them, and print — or auto-build from the class's weakest areas. Every part keeps its corpus provenance; export a clean student handout or the full teacher copy with the mark scheme."
+        description="Pick questions from the bank, arrange them and print — or auto-build from the class's weakest areas. Export a clean student handout or the full teacher copy."
       />
 
       {taughtCourses === null ? (

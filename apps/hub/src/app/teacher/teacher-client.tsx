@@ -328,7 +328,7 @@ export function TeacherClient({ courses }: { courses: TeacherCourseLite[] }) {
       <PageHero
         eyebrow="Teacher workspace"
         title={<>Hi {identity?.name ?? "there"} 👋</>}
-        description="Add a class, pick the subjects it covers, and every tool and course resource for them lives inside it. Marking review and class intelligence read live cohort data; the corpus tools run on the local sample bank."
+        description="Add a class and pick its subjects — its tools and resources live inside it."
         stats={
           <>
             <StatChip

@@ -120,13 +120,13 @@ export default function PastPapersArchivePage() {
 
       <div className="mt-4 rounded-xl border bg-muted/30 p-3 text-xs leading-relaxed text-muted-foreground print:hidden">
         <p>
-          Official exam documents — question papers, mark schemes and examiner reports —
-          matched to each course.
+          Official question papers, mark schemes and examiner reports, grouped
+          by session.
         </p>
         <p className="mt-1">
-          Where sessions are missing (cancelled exams, unpublished mark schemes), the course
-          carries an <span className="font-medium text-foreground">Official source</span> link
-          to Pearson&apos;s own past-papers page — last checked {OFFICIAL.meta.retrievedAt}.
+          Missing a session? The{" "}
+          <span className="font-medium text-foreground">Official source</span> link
+          goes to the exam board&apos;s own site.
         </p>
       </div>
 
