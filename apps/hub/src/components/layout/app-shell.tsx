@@ -50,7 +50,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { AigniteBadge } from "@/components/brand/aignite-badge";
 import { clearIdentity, useEditorCapabilitySync, useIdentity } from "@/lib/identity";
 import { unmirrorRoutingSession } from "@/lib/session-cookie";
 import { roleHome } from "@/lib/role-home";
@@ -197,21 +196,6 @@ export function AppShell({
           main landmark either way. */}
       {!viewerRoute && (
       <>
-      {/* T-BRAND-AIGNITE-101 — buildathon compliance strip: the official
-          "Built For Ostad Presents YUNet AIgnite Buildathon 2026" sticker
-          rides directly above the navbar (the buildathon's "navbar or
-          another prominent area near the top" placement) on every route the
-          header itself renders, at every width — the packed h-14 header row
-          has no slack for a 3.4:1 badge between lg and xl, where the
-          quick-nav joins. Announcement-bar posture: NOT sticky (the header
-          keeps the sticky slot), scrolls away with the page, and the paper
-          viewer keeps its header-stands-down contract. Removal with the
-          task: components/brand/aignite-badge.tsx documents the checklist. */}
-      <aside aria-label="Buildathon badge" className="border-b bg-muted/40 print:hidden">
-        <div className="flex h-11 items-center justify-center px-4">
-          <AigniteBadge className="h-9 w-auto" />
-        </div>
-      </aside>
       <header className="sticky top-0 z-40 border-b bg-background print:hidden">
         <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
           {/* C-5 (frontend-flow audit): the logo means "home". For a
