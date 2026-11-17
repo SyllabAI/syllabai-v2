@@ -54,6 +54,7 @@ function markPointRowsFor(p: SmePart): number {
   return p.markPoints != null && p.markPoints.length > 0 ? p.markPoints.length : 1;
 }
 import { ArchiveFormatError, readEach, zipLimitsDefaults, type ZipLimits } from "./zip";
+import { checkOptionMisconceptionTag } from "./misconception-law";
 import {
   buildAlternativeInserts,
   extractAcceptableAnswers,
@@ -253,10 +254,59 @@ export class SmeQuestionIngestService {
         optionsN = 0,
         markPointsN = 0,
         spN = 0,
-        topicN = 0;
+        topicN = 0,
+        misconceptionTagged = 0,
+        misconceptionUntaggedNoCatalog = 0;
+
+      // ── T-TUTOR-AIM-P1 (DC10 §7.1): resolve the misconception catalog per
+      // primary topic ONCE, then enforce the tag law on every MCQ option this
+      // package emits (top-level MCQ options and MIXED option parts ride the
+      // same law). The edge convention is of-record (knowledge/index.ts):
+      // MISCONCEPTION_OF edges POINT AT the topic — source = the misconception
+      // node. Fail-closed: a violating package is refused, never rewritten.
+      // The catalog query runs ONLY for packages that actually emit options —
+      // structured-only packages never consult it.
+      const miscoByTopic = new Map<string, Set<string>>();
+      const packageEmitsOptions = questions.some(
+        (q) =>
+          (q.options !== null && q.options.length > 0) ||
+          (q.parts !== null && q.parts.some((p) => p.options !== null && p.options.length > 0)),
+      );
+      const primaryTopicIds = packageEmitsOptions
+        ? [
+            ...new Set(
+              questions
+                .filter((q) => q.primaryTopicCode !== null)
+                .map((q) => byCode.get(q.primaryTopicCode as string))
+                .filter((id): id is string => id !== undefined),
+            ),
+          ]
+        : [];
+      if (primaryTopicIds.length > 0) {
+        const miscoRows = (await tx`
+          select e.source_node_id as misco_id, e.target_node_id as topic_id
+          from knowledge_edges e
+          join knowledge_nodes n on n.id = e.source_node_id
+          where e.relation_type = 'MISCONCEPTION_OF'
+            and e.target_node_id = any(${primaryTopicIds}::uuid[])
+            and n.node_type = 'MISCONCEPTION'
+        `) as unknown as Array<{ misco_id: string; topic_id: string }>;
+        for (const r of miscoRows) {
+          const set = miscoByTopic.get(r.topic_id) ?? new Set<string>();
+          set.add(r.misco_id);
+          miscoByTopic.set(r.topic_id, set);
+        }
+      }
 
       for (const q of questions) {
         const isMcq = q.questionType === "MCQ_SINGLE";
+        // T-TUTOR-AIM-P1 (DC10 §7.1): this question's primary-topic catalog
+        const qTopicCatalog =
+          q.primaryTopicCode === null
+            ? new Set<string>()
+            : (miscoByTopic.get(byCode.get(q.primaryTopicCode as string) as string) ??
+              new Set<string>());
+        const qHasCatalog = qTopicCatalog.size > 0;
         let primaryRow: string | null = null; // first emitted row of this family
         if (isMcq) {
           mcq++;
@@ -269,8 +319,13 @@ export class SmeQuestionIngestService {
           markPointsN++;
           let order = 0;
           for (const o of q.options ?? []) {
+            checkOptionMisconceptionTag(o, q.externalRef as string, qHasCatalog, qTopicCatalog);
             await this.insertOption(tx, primaryRow, o, order++);
             optionsN++;
+            if (!o.isCorrect) {
+              if (o.misconceptionNodeId !== null) misconceptionTagged++;
+              else if (!qHasCatalog) misconceptionUntaggedNoCatalog++;
+            }
           }
           topicN += await this.saveTopicRows(tx, q, byCode, primaryRow);
         } else {
@@ -304,8 +359,13 @@ export class SmeQuestionIngestService {
               markPointsN++;
               let order = 0;
               for (const o of p.options ?? []) {
+                checkOptionMisconceptionTag(o, (q.externalRef as string) + " part " + pIdx, qHasCatalog, qTopicCatalog);
                 await this.insertOption(tx, mcqRow, o, order++);
                 optionsN++;
+                if (!o.isCorrect) {
+                  if (o.misconceptionNodeId !== null) misconceptionTagged++;
+                  else if (!qHasCatalog) misconceptionUntaggedNoCatalog++;
+                }
               }
               topicN += await this.saveTopicRows(tx, q, byCode, mcqRow);
             }
@@ -357,6 +417,8 @@ export class SmeQuestionIngestService {
         assets: assetBytes.size,
         deactivated,
         corpusVersion: pkg.corpusVersion,
+        misconceptionTagged,
+        misconceptionUntaggedNoCatalog,
       };
     });
   }
@@ -583,18 +645,23 @@ export class SmeQuestionIngestService {
     return q.secondaryTopicCodes.length;
   }
 
-  /** one option row (misconceptionNodeId null — the corpus carries none) */
+  /** one option row — T-TUTOR-AIM-P1 (DC10 §7.1): the tag rides the package
+   *  (the retired law was "misconceptionNodeId null — the corpus carries
+   *  none"; the apply flow's misconception-tag law now guarantees a wrong
+   *  option's tag resolves into the topic's catalog whenever that catalog
+   *  is live, and topics with no catalog rows pass untagged as the
+   *  disclosed progressive-coverage residual). */
   private async insertOption(
     tx: SqlFn,
     questionId: string,
-    o: { label: string | null; text: string | null; isCorrect: boolean },
+    o: { label: string | null; text: string | null; isCorrect: boolean; misconceptionNodeId: string | null },
     order: number,
   ): Promise<void> {
     await tx`
       insert into question_options (id, question_id, label, option_text, is_correct,
         misconception_node_id, ordering, created_at)
       values (${this.clock.newId()}, ${questionId}, ${o.label}, ${o.text}, ${o.isCorrect},
-        ${null}, ${order}, ${this.clock.now().toISOString()})
+        ${o.misconceptionNodeId ?? null}, ${order}, ${this.clock.now().toISOString()})
     `;
   }
 

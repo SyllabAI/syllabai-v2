@@ -33,6 +33,12 @@ export interface SmeOption {
   label: string | null;
   text: string | null;
   isCorrect: boolean;
+  /** T-TUTOR-AIM-P1 (DC10 §7.1), additive: the KG misconception node this
+   *  WRONG option expresses — the tag the read side (assessment submit →
+   *  learner-model updateMisconceptions) has consumed all along. Null =
+   *  untagged; the apply flow's misconception-tag law decides whether null
+   *  is legal (legal only when the topic's catalog carries no rows). */
+  misconceptionNodeId: string | null;
 }
 
 /**
@@ -104,6 +110,14 @@ export interface SmeIngestSummary {
   assets: number;
   deactivated: number;
   corpusVersion: string | null;
+  /** T-TUTOR-AIM-P1 (DC10 §7.1): wrong options that landed WITH a
+   *  catalog-resolved misconception tag. */
+  misconceptionTagged: number;
+  /** T-TUTOR-AIM-P1 (DC10 §7.1) disclosed residual: wrong options that
+   *  landed untagged because the topic's catalog carries no rows (L4) —
+   *  the catalog is progressive; this count is the honest per-package
+   *  observability of that coverage gap. */
+  misconceptionUntaggedNoCatalog: number;
 }
 
 // ── parsing (Jackson readValue parity, fail-closed) ─────────────────────────
@@ -147,7 +161,14 @@ function list(v: unknown): unknown[] | null {
 
 function parseOption(v: unknown): SmeOption {
   if (!isObj(v)) throw new PackageFormatError("expected option object");
-  return { label: str(v.label), text: str(v.text), isCorrect: boolean(v.isCorrect) };
+  return {
+    label: str(v.label),
+    text: str(v.text),
+    isCorrect: boolean(v.isCorrect),
+    // T-TUTOR-AIM-P1 (DC10 §7.1), additive: unknown to packages that predate
+    // it (the additive parse law — a missing component binds as null)
+    misconceptionNodeId: str(v.misconceptionNodeId),
+  };
 }
 
 function parseOptions(v: unknown): SmeOption[] | null {

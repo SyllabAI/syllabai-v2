@@ -105,7 +105,15 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  stonewalled a mid-chat topic pivot with no way forward for the
  *  learner, and the turn recorded refused=false (evidence present but
  *  wrong — the analytics gap the refusal-truth patch closes). */
-export const PROMPT_VERSION = "17";
+export const PROMPT_VERSION = "18";
+/** v18 (T-TUTOR-AIM-P1, operator trace 1a1e9d1c569d7ac9; DC10 §7.2/§7.3):
+ *  the VOICE law (no praise padding, no premise-agreement — correction
+ *  first) and the COMMAND-WORD shape law (state/describe/explain/
+ *  calculate/compare/evaluate answer shapes; presentation only, sourcing
+ *  and the two-tier disclosure law untouched). The v17 refusal shape law
+ *  is byte-unchanged. Prior bumps: v11 spec-is-a-map quiz law (run-014);
+ *  v12 QUIZ SCAFFOLD serving rule (run-015); v17 refusal shape law
+ *  (T-TUTOR-PIVOT-1). */
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -151,6 +159,34 @@ const REFUSAL_SHAPE_LAW = `- Refusal shape. When the SOURCES cannot answer the Q
   topic pivot is often best served by a fresh ask. Never refuse a part
   the SOURCES do cover, and never open a refusal with any other
   apology wording.`;
+
+// ── v18 voice + command-word shape laws (T-TUTOR-AIM-P1, DC10 §7.2/§7.3) ────
+
+/** DC10 §7.2 voice law: no praise padding, no premise-agreement bias — the
+ *  correction comes first and plainly. The register law is presentation
+ *  only: it never touches sourcing (everything stays cited) or the
+ *  refusal/disclosure laws. */
+const VOICE_LAW = `- Voice. Open with the substance — never with praise or pleasantries
+  ("great question", "good thinking"): no padding before or after the
+  answer. If the QUESTION rests on a false premise, correct the premise
+  plainly first, then answer what remains; never open by agreeing with
+  a wrong premise to be kind.`;
+
+/** DC10 §7.3 command-word / mark-scheme shape law: the answer takes the
+ *  shape the exam's own command word is marked for. Presentation only —
+ *  every claim still comes from the SOURCES with its citation, and the
+ *  two-tier disclosure law still governs WHAT may be stated (at tier 1
+ *  the shape names technique and the shape of a good answer, never
+ *  awardable marking points). */
+const COMMAND_WORD_SHAPE_LAW = `- Command-word shape. When the QUESTION carries an exam command
+  word, answer in the shape that word is marked for: "state"/"give"/
+  "name" — the answer alone, one line, no reasoning; "describe" — the
+  pattern, not the reasons; "explain" — the because/therefore chain,
+  every step cited; "calculate" — the full working with units;
+  "compare" — both sides on the same dimension; "evaluate" — both
+  sides plus an explicit judgement. The shape governs presentation
+  only: every claim still comes from the SOURCES with its citation,
+  and the two-tier disclosure law still governs what may be stated.`;
 
 // ── fence codes (v6 prompt-injection defence, :77-97 + :449-465) ────────────
 
@@ -212,6 +248,8 @@ Rules:
 - If the SOURCES are insufficient to answer safely, say exactly what is
   missing and stop. Never fill gaps from general knowledge.
 ${REFUSAL_SHAPE_LAW}
+${VOICE_LAW}
+${COMMAND_WORD_SHAPE_LAW}
 - When the QUESTION names a specific exam-paper question and the SOURCES
   carry its question text and/or mark scheme, answer part by part in the
   paper's own order and label each part exactly as the paper labels it

@@ -1,0 +1,69 @@
+version: 1
+task:
+  id: T-TUTOR-AIM-P1
+  title: "DC10 Phase 1 — misconception-tagged distractors (§7.1) + voice law (§7.2) + command-word shapes (§7.3) + prompt budget lint (§13.1), one changeset run-001"
+  owner: "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1e9d1c569d7ac9)"
+  status: "IN_REVIEW — PR of record opened; receipts attached; author does not self-merge this run (the operator's go is the next word)"
+  priority: P1
+  band: T-TUTOR-AIM (DC10 — keep the grounding, add the aim)
+  deps: []
+  execution_record: >
+    Plan of record: docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md (merged via #880
+    + #889). This run implements the P1 scope exactly as phased: §7.1 the
+    corpus-side half of the distractor law — the SME ingest retires the
+    "misconceptionNodeId null — the corpus carries none" hardcode; packages
+    carry misconceptionNodeId per option (additive parse, package + bundle);
+    the apply flow resolves the primary topic's misconception catalog ONCE
+    (knowledge_edges MISCONCEPTION_OF pointing AT the topic, source = the
+    misconception node — the of-record direction in knowledge/index.ts) and
+    enforces the tag law fail-closed BEFORE any option row is written
+    (L1 correct options never carry tags; L2 tags must resolve into the
+    catalog; L3 untagged wrong options refuse when the catalog is live;
+    L4 untagged passes only when the catalog carries no rows — the disclosed
+    progressive-coverage residual, counted in the ingest summary). The read
+    side and the model-update side predate this run and were already wired
+    (assessment submit expressedMisconceptionIds → learner-model
+    updateMisconceptions) — they were dormant because the corpus carried no
+    tags. §7.2/§7.3 the tutor prompt bump v17→v18 (registry tutor-grounded):
+    the VOICE law (no praise padding, no premise-agreement — correction
+    first) and the COMMAND-WORD shape law (state/describe/explain/calculate/
+    compare/evaluate; presentation only — sourcing and the two-tier
+    disclosure law untouched); the v17 refusal shape law byte-unchanged.
+    §13.1 the prompt instruction budget as a build-time lint test
+    (prompt-budget.test.ts): non-blank-line cap 200 on both system-prompt
+    variants, subtractive-promotion failure message, headroom pin. NO
+    learner-data reads added; NO new LLM calls; zero schema changes (the
+    option column predates the run). Deviation disclosed: the DC10 §7.3
+    deterministic ask-side command-word classifier is NOT in this changeset —
+    the shape law rides the bump (the model applies it from the ask's own
+    wording); the classifier is a P2 refinement. Second deviation disclosed:
+    the DC10 "generation-prompt bump" half of §7.1 applies to the SME
+    package AUTHORING toolchain (external); in-repo, the enforcement point
+    is the ingest validation law + the bundle/package parsers accepting the
+    tag — the authoring-side prompt bump is the content team's follow-up.
+    Residual: topics whose KG catalog carries no misconception rows ingest
+    untagged packages (L4) — counted per package in
+    SmeIngestSummary.misconceptionUntaggedNoCatalog.
+base:
+  repo: "syllabai-v2 @ 2e11920 (origin/main at claim; the DC10 appendix merge)"
+basis: >
+  Operator directive 2026-11-17 (trace 1a1e9d1c569d7ac9, zai-web): "kick off
+  the DC10 P1 build". Plan of record: DC10 §6 P1 + §13.1 (operator phasing:
+  distractors + voice law first).
+scope:
+  allowed:
+    - "apps/api/src/services/tutor/prompt.ts"
+    - "apps/api/src/services/sme/**"
+    - "apps/api/test/tutor/**"
+    - "apps/api/test/sme/**"
+    - "apps/api/test/cla/cla-service.test.ts (the prompt identity pin)"
+    - "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md (status line + §7.1 run note only)"
+    - ".syllabai/tasks/T-TUTOR-AIM-P1.yaml (this file)"
+    - ".syllabai/receipts/T-TUTOR-AIM-P1/**"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - ".github/** (risk tier — untouched)"
+    - "packages/contracts/** (risk tier — untouched; zero contract changes)"
+    - "packages/db/** + Neon migrations (risk tier — untouched; zero schema changes)"
+    - "golden/** (risk tier — untouched)"
+    - "apps/hub/** (untouched)"
