@@ -16,7 +16,9 @@
  * cie-igcse-accounting-25 CIE 0452 2027-2029) + tranche 11
  * (igcse-biology-modular-24-unit-2 Pearson 4XBI1 modular 2024 /
  * igcse-maths-a-modular-24-higher-unit-1 Pearson 4XMAF/4XMAH modular 2024)
- * — the W7 closeout recommendation's build slices, worst tails first.
+ * + tranche 12 (igcse-geography-19 Pearson Edexcel 4GE1 2017 /
+ * cie-as-accounting-21 CIE AS 9706 2023-2025) — the W7 closeout
+ * recommendation's build slices, worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
  * (buildSpecTreeIndex + smeRowOfQuestionSet + smeRowOfNote), extended to the
@@ -146,6 +148,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-accounting-25": new Set(),
   "igcse-biology-modular-24-unit-2": new Set(),
   "igcse-maths-a-modular-24-higher-unit-1": new Set(),
+  "igcse-geography-19": new Set(),
+  "cie-as-accounting-21": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
