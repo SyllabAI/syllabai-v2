@@ -1,0 +1,23 @@
+version: 1
+task:
+  id: T-ADR044-PHASE2
+  title: "ADR-044 Phase 2 — the Editor Workbench MVP, Tier 1 only: the gate engine as one shared package with its test corpus (G-CANON/G-SER/G-FIELD/G-CHAR/G-ASSET/G-EYES/G-SCOPE typed refusals), the proposal plane API (GET /banks, POST /preflight, POST /proposals with server-side tier classification, GET /proposals(/:id), GET /proposals/:id/receipts; the §7 state machine; the pinned caps 10/200/512KB), the Tier 1 auto-merge path with the PR transport DISCLOSED-SIMULATED (the Phase 3 GitHub App swap), and the hub Workbench surfaces (bank browser, question view with structured edit toggle, pre-flight panel, proposal journal) verified against the MVP golden path"
+  owner: "r0 (Super Z, zai-web)"
+  status: FILED # preregistration of record — the BUILD awaits the operator's go (or the next standing-authorization turn)
+  claimed_at: "2026-11-17T07:05:00+08:00"
+  claimed_by_order: "ADR-044 §10 phasing (ACCEPTED on merge, PR #904 lineage); preregistration filed by run-010 under the standing-authorization session of 2026-11-17 (the run-009 Gate-2 close)"
+  priority: P1
+  wave: adr-044-editor-role
+  deps: [T-ADR044-PHASE1, ADR-044-run-009-cutover-gate2]
+  execution_record: >
+    Preregistration of record: .syllabai/receipts/ADR-044/
+    run-010-phase2-preregistration-r0.md. Phase 1 landed (run-002 PR + the
+    grants saga runs 003-006 + the run-007 probe + run-008 cutover lane +
+    run-009 Gate-2 cutover executed and live-verified — the app connects AS
+    syllabai_v2_app_w3r3, the editor planes' append-only law provable at the
+    DB layer). Phase 2 build units B1-B5 are scoped in the preregistration:
+    each independently shippable and revertible, each a receipts-carrying PR,
+    ZERO bytes under apps/hub/content/**, no editor-reachable serve or
+    merge-to-main endpoint in any unit (E-0), Tier 2 review queue and the
+    real PR transport stay Phase 3. Acceptance law: the MVP golden path
+    (API golden path + browser flow green; the reference bar 20/20 + 10/10).
