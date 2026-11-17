@@ -30,7 +30,9 @@
  * CIE strand-QUALIFIER URL class and the FIRST DRIFT EVENT of the wave:
  * six live-only paper-organization topics documented in DRIFT_BY_COURSE)
  * + tranche 17 (cie-igcse-economics-25 CIE 0455 2027-2029 /
- * cie-igcse-environmental-management-25 CIE 0680 2027-2029)
+ * cie-igcse-environmental-management-25 CIE 0680 2027-2029) + tranche 18
+ * (igcse-science-double-award-17-chemistry Pearson 4SD0 2017 — the THIRD
+ * 4SD0 strand / igcse-business-19 Pearson 4BS1 — the decimal T-code family)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -184,6 +186,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   ]),
   "cie-igcse-economics-25": new Set(),
   "cie-igcse-environmental-management-25": new Set(),
+  "igcse-science-double-award-17-chemistry": new Set(),
+  "igcse-business-19": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
