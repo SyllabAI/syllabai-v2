@@ -1,6 +1,6 @@
 # DC10 — Tutor upgrade: keep the grounding, add the aim (T-TUTOR-AIM-1)
 
-**Status:** P1 implemented (T-TUTOR-AIM-P1 run-001 — §7.1/§7.2/§7.3 + §13.1; PR of record) · P2/P3 proposed · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
+**Status:** P1 implemented (T-TUTOR-AIM-P1 run-001, merged #1061) · P2 implemented (T-TUTOR-AIM-P2 run-001 — §7.4/§7.5/§7.6 + the §7.3 refinement; PR of record) · P3 proposed · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
 
 ## 1. Thesis
 
@@ -174,6 +174,38 @@ catalog rows pass untagged as the disclosed progressive-coverage residual,
 counted per package). The read side and the model-update write law were
 already wired and now have something to consume. The authoring-toolchain
 prompt bump is the content team's follow-up.
+
+**Run-001 (T-TUTOR-AIM-P2, 2026-11-18):** the P2 changeset shipped as ONE
+run. §7.4 capture-only, log-first: the three buttons (sure / think_so /
+guessing) ride the ask wire as an optional closed enum with NO server-side
+default (a no-tap ask logs NOTHING — the absence of a row is the null);
+the raw selection lands in the new append-only `tutor_ask_confidence`
+table (migration 0029) through the FREE_TUTOR sink's second guarded
+append; refusals still log the tap; anonymous previews log nothing
+(account-only); NOTHING reads the table — rule 4 gates every consumption
+on weeks of pure logging. §7.5 the aim lives: `assembleAim` (pure) is
+computed inside `assembleTutorContext` from the reads that call already
+holds — M3 stands, zero new reads, zero LLM. The strongest active
+misconception on a matched topic (catalog node id + title per the §11
+injection law) drives the correction-first opening; proven prerequisites
+(mastery ≥ 0.70) compress to one line; proven-strong depth-1 adjacent
+areas bias examples; the decay-due flag computes for the §7.8 hook and
+renders nothing in P2. The v19 bump (registry `tutor-grounded`) carries
+the AIM law; the aim renders as one unfenced block ONLY when it has
+something to aim — the EMPTY-tables user prompt is byte-identical to the
+pre-P2 composition (test-pinned at the prompt level AND the pipeline
+level). §7.3 refinement: the ask-side classifier (precision-first — only
+a question OPENING with one of the six exam command words pins) renders
+one COMMAND WORD OF RECORD line; the v18 shape law is byte-unchanged.
+§7.6 the probe: `selectProbe` offers at most ONE depth-1 prerequisite
+with an active gap signal (weak practiced state or an active attached
+misconception), offer-not-claim per §13.2 — metadata only on the answer
+view and the done frame, null on every refusal; the hub chip pre-fills
+the composer on tap (nothing is sent until the learner sends); ignoring
+it does nothing. Disclosed residuals: the CLA surface carries no
+confidence/aim in P2; the probe's tap pre-fills rather than serving an
+inline bank question (the inline probe is P3 with the drill loop); the
+books rail does not forward confidence.
 
 ### 7.2 Voice law (P1)
 Pinned-prompt additions to the tutor generation bump: no praise padding ("great

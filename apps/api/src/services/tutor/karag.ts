@@ -72,6 +72,7 @@ import {
   MarkConformanceStreamSanitizer,
   type ConformanceReport,
 } from "./mark-conformance";
+import { selectProbe, type ProbeOffer } from "./probe";
 import {
   StreamSanitizer,
   sanitizeAnswer,
@@ -246,6 +247,14 @@ export interface TutorAnsweredEvent {
   /** DC-5: the marked-part turn's conformance report (null on tier-1
    *  turns and refusals — the lint only activates on tier-2 turns). */
   conformance?: ConformanceReport | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.4): the learner's self-reported confidence
+   *  ("sure" | "think_so" | "guessing"), logged raw on the ask event —
+   *  LOG-FIRST (the capture-only phase): absent/null when the learner
+   *  tapped nothing (no server-side default — a no-tap is NOT a guessing;
+   *  the confidence law's consumption rules gate on weeks of pure logging
+   *  before anything consumes it). Anonymous previews carry null (the
+   *  account-only law). */
+  confidence?: "sure" | "think_so" | "guessing" | null;
 }
 export type TelemetrySink = (event: TutorAnsweredEvent) => void;
 
@@ -662,6 +671,11 @@ export type TutorStreamEvent =
       topics: Array<{ code: string; title: string; matchScore: number }>;
       /** run-013: honest truncation disclosure (token-cap finish) */
       truncated: boolean;
+      /** T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer —
+       *  after the full answer, offer-not-claim (§13.2 metadata only);
+       *  null when no adjacent prerequisite carries an active gap signal
+       *  and on every refusal (a refusal offers nothing). */
+      probe: ProbeOffer | null;
     };
 
 function matchedTopicIds(knowledge: KnowledgeContext): string[] {
@@ -690,13 +704,18 @@ export interface AskResult {
    *  discloses it; the text itself is delivered verbatim */
   truncated: boolean;
   latencyMs: number;
+  /** T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer — AFTER
+   *  the full answer, offer-not-claim (§13.2: metadata only), null when no
+   *  adjacent prerequisite carries an active gap signal (most asks) and on
+   *  every refusal (a refusal offers nothing). */
+  probe: ProbeOffer | null;
 }
 
 async function assembleContext(
   deps: KaragDeps,
   prep: PreparedAsk,
   learnerId: string | null,
-): Promise<TutorContext> {
+): Promise<{ context: TutorContext; probe: ProbeOffer | null }> {
   const learnerModel = deps.learnerModel;
   const states: SkillState[] =
     learnerId == null || learnerModel == null ? [] : await learnerModel.skillStates(learnerId);
@@ -715,7 +734,7 @@ async function assembleContext(
     learnerId == null || learnerModel == null
       ? []
       : await learnerModel.pendingReviews(learnerId, nodeIds);
-  return assembleTutorContext({
+  const context = assembleTutorContext({
     knowledge: prep.knowledge,
     evidence: prep.evidence,
     learnerId,
@@ -729,8 +748,16 @@ async function assembleContext(
     markContext: prep.markContext,
     disclosureTier: prep.disclosureTier,
     courseCode: prep.scopeCode,
+    // T-TUTOR-AIM-P2 (DC10 §7.3): the ask-side command-word pin rides the
+    // ONE assembly (deterministic — no read, no LLM)
+    query: prep.query,
     now: deps.clock.now(),
   });
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe — deterministic
+  // selection over the SAME read set (M3: no new read), offer-not-claim
+  // (§13.2: metadata only, claims nothing until the learner's tap)
+  const probe = selectProbe(prep.knowledge, states, readings);
+  return { context, probe };
 }
 
 /** The blocking ask (:194-248). */
@@ -742,6 +769,9 @@ export async function karagAsk(
   sessionId: string | null,
   courseRef: string | null,
   paperPinId: string | null = null,
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw confidence selection —
+  // log-first, no server-side default (absent = null = no-tap, NOT guessing)
+  confidence: "sure" | "think_so" | "guessing" | null = null,
 ): Promise<AskResult> {
   const startedAt = Date.now();
   const prep = await prepare(deps, learnerId, question, history, courseRef, paperPinId);
@@ -750,6 +780,9 @@ export async function karagAsk(
 
   let generated: GeneratedAnswer;
   let interventionType: string | null = null;
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer — null on every refusal
+  // (a refusal offers nothing), selected by assembleContext on the served path
+  let probe: ProbeOffer | null = null;
   if (refused) {
     if (prep.unresolvedCourseRef) {
       generated = {
@@ -774,7 +807,9 @@ export async function karagAsk(
       };
     }
   } else {
-    const context = await assembleContext(deps, prep, learnerId);
+    const assembled = await assembleContext(deps, prep, learnerId);
+    const context = assembled.context;
+    probe = assembled.probe;
     interventionType =
       context.interventionPlan?.type == null ? null : context.interventionPlan.type;
     generated = await deps.generator.generate(prep.query, prep.turns, context);
@@ -821,6 +856,8 @@ export async function karagAsk(
     provider: generated.provider,
     // DC-5: the marked-part turn's conformance report (null on tier-1)
     conformance: generated.conformance ?? null,
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the raw self-reported confidence
+    confidence,
   });
 
   return {
@@ -833,6 +870,7 @@ export async function karagAsk(
     refused: refusedFinal,
     truncated: isTruncationFinish(generated.finishReason),
     latencyMs,
+    probe,
   };
 }
 
@@ -850,6 +888,9 @@ export async function* karagAskStream(
   sessionId: string | null,
   courseRef: string | null,
   paperPinId: string | null = null,
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw confidence selection —
+  // log-first, no server-side default (absent = null = no-tap, NOT guessing)
+  confidence: "sure" | "think_so" | "guessing" | null = null,
 ): AsyncGenerator<TutorStreamEvent> {
   const startedAt = Date.now();
   const prep = await prepare(deps, learnerId, question, history, courseRef, paperPinId);
@@ -887,6 +928,8 @@ export async function* karagAskStream(
       historyTurns: prep.turns.length,
       sessionId,
       provider,
+      // T-TUTOR-AIM-P2 (DC10 §7.4): a refusal still logs the tap (log-first)
+      confidence,
     });
     yield { kind: "citations", citations, sufficient: false };
     yield { kind: "meta", provider, model: null, refused: true, evidenceCount: 0 };
@@ -901,13 +944,18 @@ export async function* karagAskStream(
       latencyMs,
       topics,
       truncated: false,
+      // a refusal offers nothing (§7.6)
+      probe: null,
     };
     return;
   }
 
-  const context = await assembleContext(deps, prep, learnerId);
+  const assembled = await assembleContext(deps, prep, learnerId);
+  const context = assembled.context;
   const interventionType =
     context.interventionPlan?.type == null ? null : context.interventionPlan.type;
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the probe rides the terminal event, AFTER
+  // the full answer (offer-not-claim — §13.2 metadata only)
 
   // generation: the first delta carries the Meta event (identity commits
   // with the first token); every delta flows sanitized in order (:340-354)
@@ -981,6 +1029,8 @@ export async function* karagAskStream(
     historyTurns: prep.turns.length,
     sessionId,
     provider,
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the raw self-reported confidence
+    confidence,
   });
   yield {
     kind: "completed",
@@ -992,6 +1042,9 @@ export async function* karagAskStream(
     latencyMs,
     topics,
     truncated: isTruncationFinish(lastFinishReason),
+    // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer rides the terminal event,
+    // after the full answer; a model-worded refusal offers nothing
+    probe: modelRefused ? null : assembled.probe,
   };
 }
 

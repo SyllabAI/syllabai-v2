@@ -49,6 +49,12 @@ export interface Turn {
    *  append to the §22 server session (the append happens upstream on ask
    *  Completed only) — disclosed. */
   band?: TurnBand;
+  /** T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer, AFTER the
+   *  full answer — offer-not-claim (§13.2): metadata only (the gap node's
+   *  id + corpus title), claims nothing until the learner's explicit tap
+   *  (the tap pre-fills the composer; nothing is sent until THEY send).
+   *  Ignoring it does nothing. Absent on older upstreams / refusals. */
+  probe?: { nodeId: string; title: string } | null;
 }
 
 /** Structural mirrors of the v2 bank-band contracts

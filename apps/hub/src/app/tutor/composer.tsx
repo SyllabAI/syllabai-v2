@@ -24,6 +24,20 @@ import { Mic, MicOff, Paperclip, ArrowUp, Square } from "lucide-react";
 /** Server body cap for `question` (api/ai/chat zod schema). */
 export const QUESTION_CAP = 2000;
 
+/** T-TUTOR-AIM-P2 (DC10 §7.4): the learner's self-reported confidence —
+ *  three buttons, NO default: none is pre-selected, a tap selects, a
+ *  second tap on the selected chip deselects (a no-tap ask sends no
+ *  field — the server never infers a value). The capture is per-ask: the
+ *  chat resets the selection after every send. The answer NEVER references
+ *  the selection (the DC10 honesty rule — capture-side copy stays neutral
+ *  and the capture is invisible in the reply). */
+export type ConfidenceValue = "sure" | "think_so" | "guessing";
+const CONFIDENCE_OPTIONS: ReadonlyArray<{ value: ConfidenceValue; label: string }> = [
+  { value: "sure", label: "Sure" },
+  { value: "think_so", label: "Think so" },
+  { value: "guessing", label: "Guessing" },
+];
+
 /** The subject context pill's DEFAULT label — the legacy no-course entry
  *  resolves to the chemistry pilot, so the default stays chemistry; the
  *  scoped entry passes the active course's label (T-MIG-135d). */
@@ -49,6 +63,8 @@ export function Composer({
   onSend,
   onStop,
   subjectLabel,
+  confidence,
+  onConfidenceChange,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -60,6 +76,12 @@ export function Composer({
   /** T-MIG-135d: the active course's pill label ("Maths (Higher) · 4MA1");
    *  absent keeps the chemistry default (the legacy entry's pilot course). */
   subjectLabel?: string | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.4): the ask's confidence selection — null =
+   *  nothing selected (the NO-DEFAULT law; the ask sends no field). */
+  confidence?: ConfidenceValue | null;
+  /** the selection toggle — a tap selects, a tap on the selected chip
+   *  deselects back to null (per-ask capture, never persisted across asks) */
+  onConfidenceChange?: (v: ConfidenceValue | null) => void;
 }) {
   const { toast } = useToast();
   const taRef = useRef<HTMLTextAreaElement>(null);
@@ -130,6 +152,33 @@ export function Composer({
           {subjectLabel ?? SUBJECT_LABEL}
         </span>
       </div>
+      {/* T-TUTOR-AIM-P2 (DC10 §7.4): the confidence capture row — neutral
+          copy, no default, per-ask. Capture-side only: nothing downstream
+          ever tells the learner their confidence influenced anything. */}
+      {onConfidenceChange != null && (
+        <div className="flex flex-wrap items-center gap-1 px-3.5 pt-1.5">
+          <span className="mr-0.5 text-2xs text-muted-foreground">How confident are you feeling?</span>
+          {CONFIDENCE_OPTIONS.map((o) => {
+            const selected = confidence === o.value;
+            return (
+              <button
+                key={o.value}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => onConfidenceChange(selected ? null : o.value)}
+                className={cn(
+                  "rounded-full border px-2 py-0.5 text-2xs transition-colors",
+                  selected
+                    ? "border-primary/40 bg-primary/10 text-primary"
+                    : "border-transparent bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground",
+                )}
+              >
+                {o.label}
+              </button>
+            );
+          })}
+        </div>
+      )}
       <div className="flex items-end gap-1.5 p-1.5">
         <Button
           type="button"

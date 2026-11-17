@@ -43,7 +43,7 @@ describe("prompt instruction budget (DC10 §13.1)", () => {
   });
 
   test("the budget leaves headroom recorded at the v18 bump", () => {
-    // v18 (T-TUTOR-AIM-P1) landed with real headroom so P2/P3 bumps do not
+    // v19 (T-TUTOR-AIM-P2) landed with real headroom so P3 bumps do not
     // immediately hit the cap; when this pin breaks, the raise is a
     // deliberate, recorded decision — never a silent one.
     const n = nonBlankLines(systemPrompt("chemistry"));

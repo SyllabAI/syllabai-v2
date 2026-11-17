@@ -345,20 +345,32 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // survives actor-account deletion) on top of the T-MG-MARK-DELTA-1 baseline
   // -> 102/953/135/103/186 (measured: rebaseline.ts verify PASS, 0 drifts, on
   // the union end-state).
-  test("102/953/135/103/186 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // REVIEW FIX (T-TUTOR-AIM-P2 run-001, the pre-merge review pass 2026-11-18):
+  // the PR's own migration 0029_tutor-ask-confidence (the §7.4 confidence LOG
+  // plane — one append-only row per SELECTING ask) is FOLDED into the
+  // schema-of-record planes per its own cited 0027 precedent (the migration
+  // comment cited 0027 but the fold was missing — the drift detector was
+  // structurally blind to the table). tutor_ask_confidence: 5 cols (id
+  // gen_random_uuid(), learner_id, session_id nullable, confidence
+  // text-CHECKed, created_at now()), 1 index (learner_id, created_at DESC),
+  // 0 fks (deliberately, per the raw-SQL migration of record), 1 check (the
+  // three-value vocabulary) on top of the ADR-044 run-002 baseline
+  // -> 103/958/136/103/187 (measured: rebaseline.ts verify PASS, 0 drifts, on
+  // the union end-state).
+  test("103/958/136/103/187 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 102/102");
-    expect(v.inventory).toContain("columns 953");
-    expect(v.inventory).toContain("indexes 135");
+    expect(v.inventory).toContain("tables 103/103");
+    expect(v.inventory).toContain("columns 958");
+    expect(v.inventory).toContain("indexes 136");
     expect(v.inventory).toContain("fks 103");
-    expect(v.inventory).toContain("checks 186");
+    expect(v.inventory).toContain("checks 187");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(102);
+    expect(run.size).toBe(103);
     expect(run.has("public.teach_sessions")).toBe(true); // T-TEACHME-001 — the learn-by-teaching lane
     expect(run.has("public.teach_messages")).toBe(true); // T-TEACHME-001 run-002 — the transcript plane
     expect(run.has("public.teach_review_cards")).toBe(true); // T-TEACHME-001 run-002 — the ReviewCard of record
@@ -368,6 +380,7 @@ describe("verifyBaseline (checked-in baseline)", () => {
     expect(run.has("public.teacher_teaching_coverage")).toBe(true); // T-TIER1 run-002 — the per-course taught-codes overlay
     expect(run.has("public.teacher_content_reviews")).toBe(true); // T-TIER1 run-002 — the AI-content validation verdicts
     expect(run.has("public.user_documents")).toBe(true); // T-AUDIT-TIER1 run-003 — the workspace-document plane
+    expect(run.has("public.tutor_ask_confidence")).toBe(true); // T-TUTOR-AIM-P2 run-001 — the §7.4 confidence LOG plane (log-first)
     expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
     expect(run.has("public.mark_point_rects")).toBe(true); // T-MG-MP-RECT-1 — the geometry plane on the definition join
     expect(run.has("public.mark_awards")).toBe(true); // T-MG-AWARDS-1 — the award plane (per-award ledger, the DC-7 claim)

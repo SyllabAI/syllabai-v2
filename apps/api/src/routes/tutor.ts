@@ -119,6 +119,10 @@ const ASK_DEFAULTS: Record<string, Record<string, string>> = {
   history: { size: "size must be between 0 and 12" },
   "history.role": { absent: "must not be blank", pattern: 'must match "user|assistant"' },
   "history.text": { absent: "must not be blank", size: "size must be between 0 and 2000" },
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the closed confidence enum — a wrong value
+  // is a @Pattern-class constraint violation (validation_failed), matching
+  // the history.role precedent
+  confidence: { pattern: 'must match "sure|think_so|guessing"' },
 };
 
 /**
@@ -218,6 +222,10 @@ interface ParsedAskBody {
   sessionId?: string;
   courseRef?: string;
   paperId?: string;
+  /** T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw self-reported confidence
+   *  selection — closed enum, OPTIONAL, NO server-side default (absent =
+   *  null downstream; a no-tap is never recorded as a guessing). */
+  confidence?: "sure" | "think_so" | "guessing";
 }
 
 /**
@@ -278,6 +286,7 @@ export function createTutorRouter(module: TutorModule): Hono {
         parsed.data.sessionId ?? null,
         courseRef,
         parsed.data.paperId ?? null,
+        parsed.data.confidence ?? null,
       );
       // §22 session append AFTER the pipeline (:177-191); the append guard:
       // a persistence failure must not 5xx an answer the learner already
@@ -329,7 +338,7 @@ export function createTutorRouter(module: TutorModule): Hono {
       const paperPinId = parsed.data.paperId ?? null;
       return streamSSE(c, async (stream) => {
         try {
-          for await (const event of module.askStream(learnerId, question, history, sessionId, courseRef, paperPinId)) {
+          for await (const event of module.askStream(learnerId, question, history, sessionId, courseRef, paperPinId, parsed.data.confidence ?? null)) {
             if (event.kind === "citations") {
               await stream.writeSSE({
                 event: "citations",
@@ -369,7 +378,17 @@ export function createTutorRouter(module: TutorModule): Hono {
                   // the delivered answer (:314-318)
                 }
               }
-              await stream.writeSSE({ event: "done", data: JSON.stringify({ ok: true, truncated: event.truncated }) });
+              // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer rides the done
+              // frame when the ask earned one (offer-not-claim, §13.2 —
+              // metadata only); absent otherwise, the wire stays lean
+              await stream.writeSSE({
+                event: "done",
+                data: JSON.stringify({
+                  ok: true,
+                  truncated: event.truncated,
+                  ...(event.probe != null ? { probe: event.probe } : {}),
+                }),
+              });
             }
           }
         } catch {

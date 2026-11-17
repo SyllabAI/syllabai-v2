@@ -47,6 +47,11 @@ const Body = z.object({
    *  VALIDATED in-scope papers and only when the ask names no complete
    *  identity of its own. */
   paperId: z.string().uuid().optional(),
+  /** T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw self-reported confidence
+   *  — three buttons, NO default (absent = the learner tapped nothing; the
+   *  field forwards ONLY when present, so the server never sees an inferred
+   *  value). */
+  confidence: z.enum(["sure", "think_so", "guessing"]).optional(),
 });
 
 /** Core TutorAnswerView (lib/types.ts mirror — kept local so this route
@@ -362,6 +367,10 @@ export async function POST(req: NextRequest) {
     // run-013: the session paper pin rides both delivery paths too (an
     // upstream without the field ignores it — the contract field is optional)
     ...(parsed.paperId ? { paperId: parsed.paperId } : {}),
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the confidence capture rides BOTH paths
+    // with the same deploy-skew posture (absent when the learner tapped
+    // nothing — the NO-DEFAULT law)
+    ...(parsed.confidence ? { confidence: parsed.confidence } : {}),
   };
 
   // the per-ask citation surface: when the ask is course-scoped and that
@@ -563,6 +572,7 @@ async function legacyBlockingFallback(
     sessionId?: string;
     courseRef?: string;
     paperId?: string;
+    confidence?: "sure" | "think_so" | "guessing";
   },
   surface: CitationSurface,
 ): Promise<Response> {

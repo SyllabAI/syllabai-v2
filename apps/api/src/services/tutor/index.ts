@@ -241,6 +241,9 @@ export interface TutorModule {
     sessionId: string | null,
     courseRef: string | null,
     paperPinId?: string | null,
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw confidence selection —
+    // log-first, no server-side default (absent = null = no-tap)
+    confidence?: "sure" | "think_so" | "guessing" | null,
   ) => ReturnType<typeof karagAsk>;
   askStream: (
     learnerId: string | null,
@@ -249,6 +252,9 @@ export interface TutorModule {
     sessionId: string | null,
     courseRef: string | null,
     paperPinId?: string | null,
+    // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw confidence selection —
+    // log-first, no server-side default (absent = null = no-tap)
+    confidence?: "sure" | "think_so" | "guessing" | null,
   ) => AsyncGenerator<TutorStreamEvent>;
 }
 
@@ -284,9 +290,9 @@ export function buildTutorModule(
   };
   return {
     sessionStore: buildTutorSessionStore(sql, clock),
-    ask: (learnerId, question, history, sessionId, courseRef, paperPinId) =>
-      karagAsk(karag, learnerId, question, history, sessionId, courseRef, paperPinId ?? null),
-    askStream: (learnerId, question, history, sessionId, courseRef, paperPinId) =>
-      karagAskStream(karag, learnerId, question, history, sessionId, courseRef, paperPinId ?? null),
+    ask: (learnerId, question, history, sessionId, courseRef, paperPinId, confidence) =>
+      karagAsk(karag, learnerId, question, history, sessionId, courseRef, paperPinId ?? null, confidence ?? null),
+    askStream: (learnerId, question, history, sessionId, courseRef, paperPinId, confidence) =>
+      karagAskStream(karag, learnerId, question, history, sessionId, courseRef, paperPinId ?? null, confidence ?? null),
   };
 }

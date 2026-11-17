@@ -47,7 +47,7 @@ import { api, getToken } from "@/lib/api";
 import { useIdentity } from "@/lib/identity";
 import { toast } from "@/hooks/use-toast";
 import type { TutorSessionSummary, TutorSessionTurnView } from "@/lib/types";
-import { Composer, QUESTION_CAP } from "./composer";
+import { Composer, QUESTION_CAP, type ConfidenceValue } from "./composer";
 import { MessageItem } from "./message-item";
 import { SidebarBrand, ThreadSidebar } from "./thread-sidebar";
 import type { Thread, Turn, TurnBand } from "./threads";
@@ -273,6 +273,10 @@ export function TutorChat({
   const identity = useIdentity();
 
   const [input, setInput] = useState("");
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the per-ask confidence capture — NO default
+  // (null = the ask sends no field; the server never infers one), reset to
+  // null after every send (the capture is per-ask, never sticky)
+  const [confidence, setConfidence] = useState<ConfidenceValue | null>(null);
   const [streamingId, setStreamingId] = useState<string | null>(null);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
   const [atBottom, setAtBottom] = useState(true);
@@ -371,7 +375,7 @@ export function TutorChat({
 
   // ── the grounded turn ───────────────────────────────────────────────
   const ask = useCallback(
-    async (threadId: string, question: string) => {
+    async (threadId: string, question: string, askConfidence?: ConfidenceValue | null) => {
       const trimmed = question.trim();
       if (!trimmed) return;
 
@@ -384,6 +388,9 @@ export function TutorChat({
         { role: "assistant", content: "", at: Date.now() },
       ]);
       setInput("");
+      // T-TUTOR-AIM-P2 (DC10 §7.4): the capture is per-ask — the next ask
+      // starts with nothing selected (no sticky default, ever)
+      setConfidence(null);
       setAtBottom(true);
       requestAnimationFrame(() => scrollToBottom(false));
 
@@ -429,6 +436,10 @@ export function TutorChat({
             // fail-closed and refuses cross-course asks deterministically
             ...(courseRef ? { courseRef } : {}),
             ...(activePaperId ? { paperId: activePaperId } : {}),
+            // T-TUTOR-AIM-P2 (DC10 §7.4): the confidence capture rides ONLY
+            // when the learner tapped one — absent = no-tap (the NO-DEFAULT
+            // law; the server must never see an inferred value)
+            ...(askConfidence ? { confidence: askConfidence } : {}),
           }),
           signal: controller.signal,
         });
@@ -484,6 +495,8 @@ export function TutorChat({
               message?: string;
               band?: TurnBand;
               truncated?: boolean;
+              // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer on the done frame
+              probe?: { nodeId: string; title: string };
             };
             try {
               data = JSON.parse(dataLine);
@@ -513,6 +526,10 @@ export function TutorChat({
               // run-013: the upstream's honest truncation disclosure rides
               // the terminal event — surface it on the turn
               if (data.truncated === true) patchTurn({ truncated: true });
+              // T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer
+              // rides the terminal event when the ask earned one (offer-
+              // not-claim, §13.2) — it renders AFTER the full answer
+              if (data.probe) patchTurn({ probe: data.probe });
             }
           }
         }
@@ -673,7 +690,7 @@ export function TutorChat({
     // the first controller (Stop goes blind) and both streams patch the same
     // last message, interleaving output (audit 2026-10-02, P1-2)
     if (streamingId === thread.id) return;
-    void ask(thread.id, q);
+    void ask(thread.id, q, confidence);
   };
 
   /** Drop everything from the assistant turn onward and re-ask its question. */
@@ -934,6 +951,12 @@ export function TutorChat({
                     onEditResend={(text) => editResend(i, text)}
                     onFeedback={(v) => setFeedback(i, v)}
                     courseSlug={activeThread?.courseSlug ?? null}
+                    onProbeTap={(p) =>
+                      // T-TUTOR-AIM-P2 (DC10 §7.6): the offer's explicit
+                      // opt-in — pre-fill the composer; nothing is sent
+                      // until the learner presses send themselves
+                      setInput(`Quick check me on ${p.title}.`)
+                    }
                   />
                 ))}
                 {/* run-012 chat-parity band (trace 1a14af4dde23b471): the
@@ -1002,6 +1025,8 @@ export function TutorChat({
               onChange={setInput}
               busy={busyHere}
               maxLen={maxLen}
+              confidence={confidence}
+              onConfidenceChange={setConfidence}
               subjectLabel={
                 courseLabel
                   ? `${courseLabel}${courseRef ? ` · ${courseRef.split("-")[0]}` : ""}`
