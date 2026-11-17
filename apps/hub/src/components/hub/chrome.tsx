@@ -24,7 +24,10 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
         <span className="sr-only sm:not-sr-only">Home</span>
       </Link>
       {items.map((c, i) => (
-        <span key={`${c.label}-${i}`} className="inline-flex items-center gap-1">
+        <span key={`${c.label}-${i}`} className="inline-flex items-center gap-1 whitespace-nowrap">
+          {/* visual audit V-11: labels never break mid-compound ("Chemistry —
+              A–Level" used to orphan-wrap under the home icon); the trail
+              still wraps between whole items when space runs out */}
           {/* /80: /50 measured 1.96:1 (P3-13) — decorative but needlessly faint */}
           <span aria-hidden className="text-muted-foreground/80">/</span>
           {c.href && i < items.length - 1 ? (

@@ -380,7 +380,12 @@ export function AppShell({
                   )}
                 >
                   <User className="size-3.5" aria-hidden />
-                  <span className="max-w-12 truncate sm:max-w-28">{identity.name}</span>
+                  {/* visual audit V-11: max-w-12 clipped even short names to
+                      "HNA 2…" on phones; 24 (96px) fits real names while the
+                      header keeps room for the icon-only CTAs */}
+                  <span className="max-w-24 truncate sm:max-w-28" title={identity.name}>
+                    {identity.name}
+                  </span>
                   <ChevronDown className="size-3 text-muted-foreground hidden sm:block" aria-hidden />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
