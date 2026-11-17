@@ -1090,6 +1090,11 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
               className="rounded px-2 py-1 text-xs text-zinc-100 hover:bg-zinc-700"
               onPointerDown={(e) => {
                 e.stopPropagation();
+                pointerPressAt.current = Date.now();
+                press({ k: "setup-angle", angle: a });
+              }}
+              onClick={() => {
+                if (Date.now() - pointerPressAt.current < 500) return;
                 press({ k: "setup-angle", angle: a });
               }}
             >
@@ -1102,7 +1107,15 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
             aria-label="Fixed decimals off"
             aria-pressed={state.fix === 0}
             className="rounded px-2 py-1 text-xs text-zinc-100 hover:bg-zinc-700"
-            onClick={() => press({ k: "setup-fix", fix: 0 })}
+            onPointerDown={(e) => {
+              e.stopPropagation();
+              pointerPressAt.current = Date.now();
+              press({ k: "setup-fix", fix: 0 });
+            }}
+            onClick={() => {
+              if (Date.now() - pointerPressAt.current < 500) return;
+              press({ k: "setup-fix", fix: 0 });
+            }}
           >
             Fix off
           </button>
@@ -1115,6 +1128,11 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
               className="rounded px-2 py-1 text-xs text-zinc-100 hover:bg-zinc-700"
               onPointerDown={(e) => {
                 e.stopPropagation();
+                pointerPressAt.current = Date.now();
+                press({ k: "setup-fix", fix: n });
+              }}
+              onClick={() => {
+                if (Date.now() - pointerPressAt.current < 500) return;
                 press({ k: "setup-fix", fix: n });
               }}
             >
