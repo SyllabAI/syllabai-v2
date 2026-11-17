@@ -29,6 +29,8 @@
  * cie-igcse-science-combined-science-23-physics CIE 0653 2023-2024 — the
  * CIE strand-QUALIFIER URL class and the FIRST DRIFT EVENT of the wave:
  * six live-only paper-organization topics documented in DRIFT_BY_COURSE)
+ * + tranche 17 (cie-igcse-economics-25 CIE 0455 2027-2029 /
+ * cie-igcse-environmental-management-25 CIE 0680 2027-2029)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -180,6 +182,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
     "paper-5-practical-test",
     "paper-6-alternative-to-practical",
   ]),
+  "cie-igcse-economics-25": new Set(),
+  "cie-igcse-environmental-management-25": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
