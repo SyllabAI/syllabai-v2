@@ -523,6 +523,14 @@ describe("(U10) phase A: the CW shell anatomy (the default posture)", () => {
       expect(el.querySelector(`[data-calc-key="${aria}"]`)).not.toBeNull();
     }
     expect(el.querySelector('[data-calc-key="Mode setup"]')).toBeNull();
+    // the digit COMPLETENESS law (the prod battery caught the grid
+    // shipping without 7/8/9 once — never again)
+    for (const d of "0123456789") {
+      expect(el.querySelector(`[data-calc-key="${d}"]`)).not.toBeNull();
+    }
+    for (const aria of ["Add", "Subtract", "Multiply", "Divide", "Percent", "Engineering notation", "Euler constant"]) {
+      expect(el.querySelector(`[data-calc-key="${aria}"]`)).not.toBeNull();
+    }
     act(() => {
       root.unmount();
     });

@@ -219,9 +219,9 @@ const CW_GRID: KeyDef[][] = [
     { label: "cos", aria: "Cosine", key: { k: "trig", f: "cos" } },
     { label: "tan", aria: "Tangent", key: { k: "trig", f: "tan" } },
     { label: "π", aria: "Pi", key: { k: "pi" } },
-    { label: "e", aria: "Euler constant", key: { k: "econst" } },
-    { label: "(−)", aria: "Negate", key: { k: "neg" } },
-    { label: "÷", aria: "Divide", key: { k: "op", op: "÷" } },
+    { label: "7", aria: "7", key: { k: "digit", d: "7" } },
+    { label: "8", aria: "8", key: { k: "digit", d: "8" } },
+    { label: "9", aria: "9", key: { k: "digit", d: "9" } },
   ],
   [
     { label: "A", aria: "variable A", key: { k: "var", name: "A" } },
@@ -230,7 +230,7 @@ const CW_GRID: KeyDef[][] = [
     { label: "5", aria: "5", key: { k: "digit", d: "5" } },
     { label: "C", aria: "variable C", key: { k: "var", name: "C" } },
     { label: "6", aria: "6", key: { k: "digit", d: "6" } },
-    { label: "×", aria: "Multiply", key: { k: "op", op: "×" } },
+    { label: "÷", aria: "Divide", key: { k: "op", op: "÷" } },
   ],
   [
     { label: "D", aria: "variable D", key: { k: "var", name: "D" } },
@@ -239,7 +239,7 @@ const CW_GRID: KeyDef[][] = [
     { label: "2", aria: "2", key: { k: "digit", d: "2" } },
     { label: "F", aria: "variable F", key: { k: "var", name: "F" } },
     { label: "3", aria: "3", key: { k: "digit", d: "3" } },
-    { label: "−", aria: "Subtract", key: { k: "op", op: "-" } },
+    { label: "×", aria: "Multiply", key: { k: "op", op: "×" } },
   ],
   [
     { label: "x", aria: "variable x", key: { k: "var", name: "x" } },
@@ -247,10 +247,16 @@ const CW_GRID: KeyDef[][] = [
     { label: "y", aria: "variable y", key: { k: "var", name: "y" } },
     { label: "·", aria: "Decimal point", key: { k: "digit", d: "." } },
     { label: "z", aria: "variable z", key: { k: "var", name: "z" } },
-    { label: "ENG", aria: "Engineering notation", key: { k: "eng" } },
+    { label: "−", aria: "Subtract", key: { k: "op", op: "-" } },
     { label: "+", aria: "Add", key: { k: "op", op: "+" } },
   ],
-  [{ label: "EXE", aria: "Execute", key: { k: "eq" }, accent: true, span: 7 }],
+  [
+    { label: "e", aria: "Euler constant", key: { k: "econst" } },
+    { label: "%", aria: "Percent", key: { k: "pct" } },
+    { label: "ENG", aria: "Engineering notation", key: { k: "eng" } },
+    { label: "(−)", aria: "Negate", key: { k: "neg" } },
+    { label: "EXE", aria: "Execute", key: { k: "eq" }, accent: true, span: 3 },
+  ],
 ];
 
 const VAR_NAMES: CalcVarName[] = ["A", "B", "C", "D", "E", "F", "x", "y", "z"];
