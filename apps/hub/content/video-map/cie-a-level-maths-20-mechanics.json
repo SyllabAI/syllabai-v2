@@ -16,6 +16,11 @@
    "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) + A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
    "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-14T19:12:35Z"
+  },
+  "p14": {
+   "provider": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly)",
+   "method": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-17T14:02:23Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked all 65 mapping rows (65 videos, lessonRef null) against the 22 spec points of the CIE 9709 Mechanics spine (4.1-4.5), title-only evidence, applying the higher cross-subject physics->maths-mechanics bar. Every bound title names spec-listed content (identify forces, resultants, Newton's laws, scalar/vector quantities, s-t/v-t graphs, SUVAT, momentum and its conservation, work/GPE/KE/power), and the lane correctly left 4.1.3, 4.1.5, 4.2.3, 4.4.4, 4.5.5 unbound since no title evidences equilibrium, smooth contact, calculus kinematics, connected particles or car-on-hill maths. No spec-level rejects: the weakest bindings (e.g. 'Contact and Non-contact Forces'->4.1.4, 'Elastic, Inelastic Collisions'->4.3.2, GCSE/KS3 friction->4.1.6) are genuine partials already held at low/medium and stay.",
-  "rowsApproved": 169,
+  "rowsApproved": 176,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -47,6 +52,17 @@
     "ruledUtc": "2026-11-14T19:12:35Z",
     "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
     "rowsApproved": 3,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p14 (channel recon judgment lane: ETphysics 9702 session walkthroughs; Prosperity Academy CIE SOLVED 9702/9701/9700; Dr Hanaa Assil IAL chemistry unit papers; Zainematics 0580/9709/0606/9618; Craig'n'Dave CAMBRIDGE 0478 series; Science with Hazel Edexcel-IGCSE; Mega Lecture CIE aggregator; ExamSolutions IAL-legacy composites; Sir Faizan Pasha + CK A-level Physics 9702; IGCSESUCCESS FLE 0500; MrAstburyMaths 4MA1; + the Allery-CIE re-adjudication group)",
+    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\"; judgment lane run 2026-11-17",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+    "ruledUtc": "2026-11-17T14:02:23Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
+    "rowsApproved": 7,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -106,7 +122,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 195,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -152,7 +168,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 273,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -168,7 +184,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 547,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -199,7 +215,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 299,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -215,7 +231,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 401,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -231,7 +247,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 309,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -262,7 +278,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 147,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -278,7 +294,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 282,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -294,7 +310,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 146,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -340,7 +356,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 214,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -356,7 +372,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 211,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -388,7 +404,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 323,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -404,7 +420,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 388,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -420,7 +436,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 241,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -436,7 +452,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 303,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -452,7 +468,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 191,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -468,7 +484,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 306,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -484,7 +500,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 287,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -515,7 +531,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 177,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -577,7 +593,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 389,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -593,7 +609,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 186,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -640,7 +656,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 240,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -656,7 +672,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 173,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -672,7 +688,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 134,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -688,7 +704,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 369,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -719,7 +735,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 272,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -735,7 +751,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 348,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -751,7 +767,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 407,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -767,7 +783,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 248,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -813,7 +829,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 158,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -874,7 +890,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 134,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -890,7 +906,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 145,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -906,7 +922,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 153,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -922,7 +938,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 87,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -938,7 +954,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 133,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -954,7 +970,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 164,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -970,7 +986,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 177,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1031,7 +1047,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 364,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1047,7 +1063,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 139,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1063,7 +1079,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 80,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1079,7 +1095,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1090,7 +1106,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1101,7 +1117,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1112,7 +1128,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1123,7 +1139,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1134,7 +1150,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1145,7 +1161,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1156,7 +1172,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1167,7 +1183,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1178,7 +1194,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1189,7 +1205,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1200,7 +1216,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1211,7 +1227,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1222,7 +1238,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1233,7 +1249,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1244,7 +1260,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1255,7 +1271,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1266,7 +1282,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1277,7 +1293,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1288,7 +1304,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1299,7 +1315,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1310,7 +1326,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1321,7 +1337,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1332,7 +1348,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1343,7 +1359,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1354,7 +1370,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1365,7 +1381,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1376,7 +1392,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1387,7 +1403,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1398,7 +1414,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1409,7 +1425,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1420,7 +1436,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1431,7 +1447,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1442,7 +1458,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1453,7 +1469,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1464,7 +1480,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1475,7 +1491,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1486,7 +1502,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1497,7 +1513,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1508,7 +1524,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1519,7 +1535,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1530,7 +1546,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1541,7 +1557,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1552,7 +1568,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1563,7 +1579,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1574,7 +1590,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1585,7 +1601,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1596,7 +1612,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1607,7 +1623,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1618,7 +1634,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1629,7 +1645,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1640,7 +1656,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1651,7 +1667,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1662,7 +1678,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1673,7 +1689,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1684,7 +1700,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1695,7 +1711,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1706,7 +1722,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1717,7 +1733,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1728,7 +1744,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1739,7 +1755,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1750,7 +1766,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1761,7 +1777,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1772,7 +1788,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1783,7 +1799,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1794,7 +1810,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1805,7 +1821,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1816,7 +1832,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1827,7 +1843,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1838,7 +1854,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1849,7 +1865,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1860,7 +1876,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1871,7 +1887,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1882,7 +1898,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1893,7 +1909,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1904,7 +1920,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1915,7 +1931,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1926,7 +1942,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1937,7 +1953,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1948,7 +1964,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1959,7 +1975,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1970,7 +1986,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1981,7 +1997,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -1992,7 +2008,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2003,7 +2019,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2014,7 +2030,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2025,7 +2041,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2036,7 +2052,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2047,7 +2063,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2058,7 +2074,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2069,7 +2085,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2080,7 +2096,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2091,7 +2107,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2102,7 +2118,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2113,7 +2129,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2124,7 +2140,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2135,7 +2151,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2146,7 +2162,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2157,7 +2173,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2168,7 +2184,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2179,7 +2195,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel",
+   "boardNote": "Mr Hassaan's Maths Channel — Edexcel IAL / CAIE paper-code walkthrough channel (channelId UCTFUlHukTAHgjhS2HT6jNWg); oEmbed author verified per video",
    "identityMethod": "oembed"
   },
   {
@@ -2213,6 +2229,83 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HT2wRt180C0",
+   "title": "M1| FORCES | KINEMATICS TYPE 1| CONNECTED PARTICLES |A LEVELS | 9709 |",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=HT2wRt180C0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RoD-o2QMnnI",
+   "title": "M1| FORCES | KINEMATICS TYPE 1| CONNECTED PARTICLES |A LEVELS | 9709 |",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=RoD-o2QMnnI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "T7cFmi_wIp8",
+   "title": "M1 | FRICTION | CONNECTED PARTICLES | WORK POWER ENERGY | WORKSHEET 9709 A LEVELS PART 3",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=T7cFmi_wIp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZCjBkU6MPZ8",
+   "title": "M1 | FRICTION | CONNECTED PARTICLES | WORKSHEET 9709 A LEVELS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=ZCjBkU6MPZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nMmDuJh7-B4",
+   "title": "M1 MOMENTUM  A LEVELS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=nMmDuJh7-B4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p-NTNQrmhxI",
+   "title": "M1 | FRICTION | CONNECTED PARTICLES | WORKSHEET 9709 A LEVELS PART 2",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=p-NTNQrmhxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xNr6Y3RYh0M",
+   "title": "MOMENTUM | MECHANICS | WITH ADVANCE PRACTICE | M1 A LEVEL 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=xNr6Y3RYh0M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -3130,7 +3223,7 @@
     "4.5.3"
    ],
    "confidence": "medium",
-   "evidence": "title names conservation of energy",
+   "evidence": "title names conservation of energy via potential-to-kinetic transfer: the GPE/KE formulae (4.5.2) and the conservation principle (4.5.3)",
    "method": "llm-draft-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3283,7 +3376,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE), 9709/43/M/J/24, June 2024, Paper 43, Q7, Inclined Planes, Work Energy Principle\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3302,7 +3395,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE), 9709/41/M/J/25, June 2025, Paper 41, Q6,Connected Particles, Work Energy Principle\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3321,7 +3414,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 42, Q8, Kinematics, Constant Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3340,7 +3433,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/24, March 2024, Paper 4, Q7, Momentum, Friction, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3359,7 +3452,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 4, Q5, Vertical Motion Under Gravity, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3378,7 +3471,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/24, March 2024, Paper 4,  Q4 Statics, Forces\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3397,7 +3490,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"CAIE, 9709/42/O/N/18 Mechanics, November 2018, Paper 42, Q7, Work, Energy & Power, suvat\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3416,7 +3509,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/23, March 2023, Paper 42, Q5, Statics, Thrust in Rods & Struts\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3435,7 +3528,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/F/M/22, March 2022, Paper 42, Q7, Momentum, Dynamics, Inclined Planes, Beads\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3454,7 +3547,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[4] M1 (CAIE) 9709/O/N/42/19, November 2019, Q4, Work Energy & Power\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3473,7 +3566,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[2] M1 (CAIE) 9709/O/N/04/02, November 2002, Q1, Work, Energy & Power, Force & Velocity\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3492,7 +3585,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[9] M1 (CAIE) 9709/O/N/42/19, November 2019, Q3, Statics, Perpendicular Forces\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3511,7 +3604,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[2] M1 (CAIE) 9709/M/J/04/05, June 2005, Q4, Statics, Limiting Equilibrium\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3530,7 +3623,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[10] M1 (CAIE) 9709/M/J/42/16, June 2016, Q7, Dynamics, Forces & Friction, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3549,7 +3642,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[9] M1 (CAIE) 9709/O/N/42/19, November 2019, Q6, Dynamics, Forces & Friction\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3568,7 +3661,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[6] M1 (CAIE) 9709/O/N/04/09, June 2009, Q6, Dynamics, Connected Particles, suvat\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3587,7 +3680,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[4] M1 (CAIE) 9709/O/N/04/07, June 2007, Q4, Dynamics, Connected Particles, suvat\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3606,7 +3699,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[5] M1 (CAIE) 9709/O/N/42/13, June 2019, Q7, Velocity - Time Graphs, Dynamics, Lifts\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3625,7 +3718,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q6, Variable Acceleration\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3644,7 +3737,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q5, Work, Energy & Power\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3663,7 +3756,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q4, Statics, Resultant Forces\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3682,7 +3775,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q3, Statics, Limiting Equilibrium\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3701,7 +3794,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q2, Dynamics, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3720,7 +3813,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q1, Constant Acceleration, Velocity Time Graphs\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3739,7 +3832,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[6] CAIE, 9709/42/M/J/14 Mechanics 1, Paper 42, Q6, Dynamics, Forces in One Direction\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3758,7 +3851,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"[7] CAIE, 9709/41/M/J/18 Mechanics 1, Paper 41, Q5, Constant Acceleration, Travel Graphs\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3777,7 +3870,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"[6] M1 (CAIE) 9709/M/J/41/19, June 2019, Q2, Constant Acceleration, Vertical Motion Under Gravity\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3796,7 +3889,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[4] CAIE, 9709/04/M/J/04 Mechanics 1, Paper 4, Q3 Velocity & Displacement Graphs\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3815,7 +3908,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[3] CAIE, 9709/04/M/J/03 Mechanics 1, Paper 4, Q3, Velocity Time Graphs\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3834,7 +3927,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/24, November 2024, Paper 4, Q7, Inclined Planes, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3853,7 +3946,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE), 9709/43/M/J/23, June 2023, Paper 4, Q2, Connected Particles, Dynamics\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3872,7 +3965,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q6, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3891,7 +3984,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q4, Power, Force, Velocity, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3910,7 +4003,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/J/24, June 2024, Paper 4, Q7, Inclined Planes, Work Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3929,7 +4022,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q4(ii), Connected Particles, Pulleys, Work-Energy Principle\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3948,7 +4041,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q4, Connected Particles, Pulleys, suvat (new)\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3967,7 +4060,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/21, November 2021, Paper 4,  Q1, Velocity Time Graphs\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3986,7 +4079,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/21, November 2021, Paper 4, Q2, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4005,7 +4098,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[1] M1 (CAIE), 9709/04/M/J/04, June 2004, Paper 4, Q2, Forces, Resultant Forces\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4024,7 +4117,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/43/19, Nov 2019, Q4, Kinematics, Constant Acceleration, suvat\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4043,7 +4136,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/42/21, Nov 2021, Q7, Dynamics, Friction, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4062,7 +4155,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/42/21, Nov 2021, Q6, Statics, Limiting Equilibrium\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4081,7 +4174,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/21, November 2021, Q7, [2] Work & Energy, Inclined Planes, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4100,7 +4193,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/21, November 2021, Q7, [1] Suvat, Inclined Planes, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4119,7 +4212,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/21, June 2021, Q6, Vertical Motion Under Gravity, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4138,7 +4231,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/21, June 2021, Q7, Work & Energy Principle, Inclined Planes, Friction\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4157,7 +4250,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q5, Kinematics, Variable Acceleration\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4176,7 +4269,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q4,  Dynamics, Friction. suvat\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4195,7 +4288,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q3, Dynamics, Inclined Planes, Connected Particles\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4214,7 +4307,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q2,  Momentum, Energy\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4233,7 +4326,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q1,  Statics, Equilibrium, Resolving Forces\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4252,7 +4345,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE), 9709/43/M/J/23 Mechanics, June 2023, Paper 41, Q3 Statics, Rings\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4271,7 +4364,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE), 9709/41/M/J/23 Mechanics, June 2023, Paper 41, Q7, Power and Work, Work-Energy Principle\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4290,7 +4383,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/23 March 2023, Q7,  Momentum, Energy.\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4309,7 +4402,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE), 9709/41/M/J/23 Mechanics, June 2023, Paper 41, Q6 Statics, Dynamics, Friction\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4328,7 +4421,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/20,June 2020 Paper 41, Q5, Work, Energy, Friction\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4347,7 +4440,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q7, Variable Acceleration  Displacement, Velocity, Distance\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4366,7 +4459,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q6 Dynamics, Tow Bars, suvat, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4385,7 +4478,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q1 Work, Power & Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4404,7 +4497,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/23, Nov 2023 Paper 41, Q5,  Statics, Inclined Planes\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4423,7 +4516,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q7, Dynamics, Connected Particles, Friction\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4442,7 +4535,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"CAIE, 9709/42/J/N/23 Mechanics, June 2023, Paper 4, Q3, Statics\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4461,7 +4554,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q2, Momentum, Dynamics, Work, Energy\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4480,7 +4573,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q3, Dynamics, Inclined Planes, Friction\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4499,7 +4592,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q4, Work, Energy & Power\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4518,7 +4611,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q5, Statics\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4537,7 +4630,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43, Q1, Constant Acceleration, Vertical Motion\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4556,7 +4649,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/23 Mechanics, November 2023, Paper 43,  Q6, Variable Acceleration\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4575,7 +4668,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/13, June 2013, Q3, Statics\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4594,7 +4687,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q5, Inclined Particles, Work Energy Principle\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4613,7 +4706,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/19, June 2019, Q4,  Connected Particles, Pulleys, suvat\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4632,7 +4725,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/43/15, November 2015, Q2, Statics, Rings (Horizontal Rod), R which way?\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4651,7 +4744,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/41/22, June 2022, Q7,  Momentum, Inclined Plane\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4670,7 +4763,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/43/22, June 2022, Q4,  Statics, Perpendicular Forces\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4689,7 +4782,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/17,  June 2017, Q2, Kinematics, Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4708,7 +4801,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/M/J/42/22,  June 2022, Q4, Kinematics, Displacement Time Graphs\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4727,7 +4820,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/41)"
+   "evidence": "title: \"M1 (CAIE) 9709/O/N/41/22, Nov 2022, Q6,  Statics, Limiting Equilibrium, Energy\"; paper code 9709/41 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4746,7 +4839,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/M/N/20 Mechanics, Nov 2020, Paper 42, Q5 Constant Acceleration, Vertical Motion\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4765,7 +4858,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020, Q5, Statics, Resultant Forces, Resolving Forces\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4784,7 +4877,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q4, Constant Acceleration (suvat)\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4803,7 +4896,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE), 9709/42/O/N/22 Mechanics, November 2022, Paper 42, Q6, Momentum\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4822,7 +4915,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[9] M1 (CAIE) 9709/F/M/42/20 March 2020- Q3 Work- Energy Principle\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4841,7 +4934,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"M1 (CAIE) 9709/F/M/42/20 March 2020- Q2 Dynamics, Forces & Friction (Resolving Forces)\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4860,7 +4953,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/O/N/22 Mechanics, November 2022, Paper 43, Q4, Kinematics, Constant Acceleration\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4879,7 +4972,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"CAIE, 9709/42/O/N/22 Mechanics, November 2022, Paper 42, Q3, Statics,\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4898,7 +4991,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"CAIE, 9709/42/F/M/21, Mechanics, March 2021, Paper 42, Q7(b), Work Energy Principle\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4917,7 +5010,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"CAIE, 9709/42/F/M/21 Mechanics, March 2021, Paper 42, Q7(a),  Dynamics, Connected Particles\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4936,7 +5029,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"CAIE, 9709/43/M/J/10 Mechanics, November 2010, Paper 43, Q7, Statics,  Dynamics, Forces & Friction\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4955,7 +5048,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"CAIE, 9709/42/O/N/18 Mechanics, November 2018, Paper 42, Q5, Variable Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4974,7 +5067,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"CAIE, 9709/42/M/J/19 Mechanics,June 2019, Paper 42, Q7, Variable Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -4993,7 +5086,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"(CAIE), 9709/42/SP20, AS Mechanics, Paper 42, Q7, Dynamics, Connected Particles, Pulleys, Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5012,7 +5105,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[10] (CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q6, Kinematics, Variable Acceleration\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5031,7 +5124,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"[8] (CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q5, Dynamics, Connected Particles, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5050,7 +5143,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q4, Statics, Limiiting Equilibrium\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5069,7 +5162,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/43)"
+   "evidence": "title: \"[10] CAIE, 9709/43/O/N/22 M1, June 2022, Paper 43, Q3, Statics, Rings\"; paper code 9709/43 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5088,7 +5181,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q3, Momentum, Coalescing, Kinetic Energy\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5107,7 +5200,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q2, Work Energy Power, Inclined Planes\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5126,7 +5219,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/42)"
+   "evidence": "title: \"(CAIE), 9709/42/SP20 AS Mechanics, Paper 42, Q1, Kinematics, Constant Acceleration, Vertical Motion\"; paper code 9709/42 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5145,7 +5238,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[6] CAIE, 9709/04/M/J/07 M1, June 2007, Paper4, Q5, Statics, Rings\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5164,7 +5257,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"CAIE, 9709/04/O/N/01 M1, November 2001 Paper4, Q6, Dynamics, Connected Particles, Pulleys\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5183,7 +5276,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/04)"
+   "evidence": "title: \"[7] CAIE, 9709/04/M/J/03 Mechanics 1, Paper 4, Q5 Dynamics, Connected Particles\"; paper code 9709/04 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -5237,20 +5330,127 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
    "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "T7cFmi_wIp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.4 'solve simple problems which may be modelled as e.g. particle' via token(s) ['connected', 'particles'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "p-NTNQrmhxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.4 'solve simple problems which may be modelled as e.g. particle' via token(s) ['connected', 'particles'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "ZCjBkU6MPZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.4 'solve simple problems which may be modelled as e.g. particle' via token(s) ['connected', 'particles'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "RoD-o2QMnnI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.4 'solve simple problems which may be modelled as e.g. particle' via token(s) ['connected', 'particles'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "HT2wRt180C0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.4.4 'solve simple problems which may be modelled as e.g. particle' via token(s) ['connected', 'particles'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "nMmDuJh7-B4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1",
+    "4.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Momentum' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "xNr6Y3RYh0M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1",
+    "4.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Momentum' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 22,
   "specPointsMapped": 18,
   "specPointsUnmapped": 4,
-  "videosTotal": 169,
-  "videosMapped": 169,
+  "videosTotal": 176,
+  "videosMapped": 176,
   "videosUnmapped": 0,
-  "mappingRows": 169,
+  "mappingRows": 176,
   "byConfidence": {
-   "medium": 46,
-   "low": 21,
-   "high": 102
+   "high": 102,
+   "medium": 51,
+   "low": 23
   }
  },
  "inputs": {
@@ -5275,7 +5475,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-mechanics/video-map.draft.external-p13.json",
    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
    "reviewAppliedUtc": "2026-11-14T19:12:35Z"
+  },
+  "p14": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-mechanics/video-map.draft.external-p14.json",
+   "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:03.938Z"
+ "generatedUtc": "2026-11-17T14:41:11.159Z"
 }

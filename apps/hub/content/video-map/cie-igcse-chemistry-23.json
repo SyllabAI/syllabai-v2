@@ -21,6 +21,11 @@
    "provider": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
    "method": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) flat-enumerated 2026-11-13T12:53:01Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p14": {
+   "provider": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly)",
+   "method": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-17T14:02:23Z"
   }
  },
  "review": {
@@ -29,7 +34,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 15 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 95,
+  "rowsApproved": 96,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -249,6 +254,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p14 (channel recon judgment lane: ETphysics 9702 session walkthroughs; Prosperity Academy CIE SOLVED 9702/9701/9700; Dr Hanaa Assil IAL chemistry unit papers; Zainematics 0580/9709/0606/9618; Craig'n'Dave CAMBRIDGE 0478 series; Science with Hazel Edexcel-IGCSE; Mega Lecture CIE aggregator; ExamSolutions IAL-legacy composites; Sir Faizan Pasha + CK A-level Physics 9702; IGCSESUCCESS FLE 0500; MrAstburyMaths 4MA1; + the Allery-CIE re-adjudication group)",
+    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\"; judgment lane run 2026-11-17",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+    "ruledUtc": "2026-11-17T14:02:23Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
+    "rowsApproved": 1,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -1416,7 +1432,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 197,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1431,7 +1447,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 194,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1446,7 +1462,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 236,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1461,7 +1477,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 225,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1476,7 +1492,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 182,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1491,7 +1507,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 307,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1506,7 +1522,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 297,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1521,7 +1537,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 304,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1536,7 +1552,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 257,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1551,7 +1567,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 244,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1566,7 +1582,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 223,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1581,7 +1597,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 288,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1596,7 +1612,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA topic wording. Most A-level videos can't be embedded here, so the links open on the channel's own page.",
+   "boardNote": "AQA-focused UK revision channel (GCSE + A-level); titles carry AQA wording bound on topic, not board wording; boardMismatch disclosed per row. Most A-level videos have embedding disabled — identity via thumbnail liveness + uploads-playlist enumeration (identityMethod: thumb-fallback)",
    "durationS": 261,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1611,7 +1627,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing matched by topic to UK course outlines",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
    "durationS": 849,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -1626,7 +1642,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1637,7 +1653,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1648,7 +1664,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -1659,7 +1675,18 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YCOO92_uYp8",
+   "title": "iGCSE Chemistry 0620 Past Paper | 0620_s22_qp_61",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=YCOO92_uYp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -1994,7 +2021,7 @@
     "3.3.8"
    ],
    "confidence": "medium",
-   "evidence": "title 'Purity & Formulations' = assessing purity",
+   "evidence": "title 'Purity & Formulations' = assessing purity via melting point and percentage purity calculations",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-12: 'file it as the next lane (P5)')",
@@ -2921,7 +2948,7 @@
     "11.3.5"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Chemistry Revision \"Fractional Distillation of Crude Oil\"' names 'Describe and explain methods of separation and'",
+   "evidence": "title 'GCSE Chemistry Revision \"Fractional Distillation of Crude Oil\"' -> 12.4.1 'Describe and explain methods of separation and' via distinctive token(s) distillation, fractional; 11.3.5 'Describe the separation of petroleum into usef' via distinctive token(s) distillation, fractional",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -2951,7 +2978,7 @@
     "3.3.8"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Chemistry Revision \"Calculating Percentage Yield 2\" (Triple)' names 'Calculate percentage yield, percentage composi'",
+   "evidence": "title 'GCSE Chemistry Revision \"Calculating Percentage Yield 2\" (Triple)' -> 3.3.8 'Calculate percentage yield, percentage composi' via distinctive token(s) percentage, yield",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -2967,7 +2994,7 @@
     "8.4.1"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Transition Elements\" (Triple)' names 'Describe transition elements as having ions wi'",
+   "evidence": "title 'GCSE Chemistry Revision \"Transition Elements\" (Triple)' -> 8.4.2 'Describe transition elements as having ions wi' via distinctive token(s) transition; 8.4.1 'Describe the transition elements as metals tha' via distinctive token(s) transition",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -2982,7 +3009,7 @@
     "11.8.12"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Amino Acids\" (Triple)' names 'Describe proteins as natural polyamides and th'",
+   "evidence": "title 'GCSE Chemistry Revision \"Amino Acids\" (Triple)' -> 11.8.12 'Describe proteins as natural polyamides and th' via distinctive token(s) amino",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -2997,7 +3024,7 @@
     "3.3.5"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Limiting reactant\"' names 'Calculate stoichiometric reacting masses, limi'",
+   "evidence": "title 'GCSE Chemistry Revision \"Limiting reactant\"' -> 3.3.5 'Calculate stoichiometric reacting masses, limi' via distinctive token(s) limiting",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3012,7 +3039,7 @@
     "3.3.8"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Calculating Percentage by Mass\"' names 'Calculate percentage yield, percentage composi'",
+   "evidence": "title 'GCSE Chemistry Revision \"Calculating Percentage by Mass\"' -> 3.3.8 'Calculate percentage yield, percentage composi' via distinctive token(s) percentage",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3028,7 +3055,7 @@
     "10.1.5"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Life-Cycle Assessment\"' names 'State that some of these substances are potent'",
+   "evidence": "title 'GCSE Chemistry Revision \"Life-Cycle Assessment\"' -> 10.1.6 'State that some of these substances are potent' via distinctive token(s) life; 10.1.5 'State that some of these substances are benefi' via distinctive token(s) life",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3044,7 +3071,7 @@
     "8.3.2"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Group 7 Part 2 Compounds of the Halogens\"' names 'Describe and explain the displacement reaction'",
+   "evidence": "title 'GCSE Chemistry Revision \"Group 7 Part 2 Compounds of the Halogens\"' -> 8.3.3 'Describe and explain the displacement reaction' via distinctive token(s) halogen; 8.3.2 'State the appearance of the halogens at r.t.p.' via distinctive token(s) halogen",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3060,7 +3087,7 @@
     "4.2.1"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Fuel Cells\" (Triple)' names 'Describe the advantages and disadvantages of u'",
+   "evidence": "title 'GCSE Chemistry Revision \"Fuel Cells\" (Triple)' -> 4.2.2 'Describe the advantages and disadvantages of u' via distinctive token(s) cell; 4.2.1 'State that a hydrogen–oxygen fuel cell uses hy' via distinctive token(s) cell",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3075,7 +3102,7 @@
     "10.1.7"
    ],
    "confidence": "low",
-   "evidence": "title 'Waste Water Treatment' names the domestic-water-treatment spec 10.1.7 directly",
+   "evidence": "title 'Waste Water Treatment' names the domestic-water-treatment spec 10.1.7 directly; the 10.3.2 noble-gases bind is nonsense adjacency",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3091,7 +3118,7 @@
     "10.2.1"
    ],
    "confidence": "medium",
-   "evidence": "'GCSE Chemistry Revision \"NPK Fertilisers\" (Triple)' names 'Describe the use of NPK fertilisers to provide'",
+   "evidence": "title 'GCSE Chemistry Revision \"NPK Fertilisers\" (Triple)' -> 10.2.2 'Describe the use of NPK fertilisers to provide' via distinctive token(s) fertiliser, npk; 10.2.1 'State that ammonium salts and nitrates are use' via distinctive token(s) fertiliser",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3107,7 +3134,7 @@
     "4.2.1"
    ],
    "confidence": "low",
-   "evidence": "'GCSE Chemistry Revision \"Cells and Batteries\" (Triple)' names 'Describe the advantages and disadvantages of u'",
+   "evidence": "title 'GCSE Chemistry Revision \"Cells and Batteries\" (Triple)' -> 4.2.2 'Describe the advantages and disadvantages of u' via distinctive token(s) cell; 4.2.1 'State that a hydrogen–oxygen fuel cell uses hy' via distinctive token(s) cell",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3122,7 +3149,7 @@
     "7.1.8"
    ],
    "confidence": "low",
-   "evidence": "'Neutralisation Titration - GCSE Science Required Practical (Triple)' names 'Describe the neutralisation reaction between a'",
+   "evidence": "title 'Neutralisation Titration - GCSE Science Required Practical (Triple)' -> 7.1.8 'Describe the neutralisation reaction between a' via distinctive token(s) neutralisation",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -3146,7 +3173,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z",
-   "evidence": "the title carries the session and paper code (0620/2)"
+   "evidence": "title: \"IGCSE Chemistry 0620 Feb/March 2018 paper 2 walkthrough\"; syllabus/paper code 0620/2 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "video": "kYXrJ4Tv7tk",
@@ -3156,7 +3183,7 @@
     "4.2.1"
    ],
    "confidence": "medium",
-   "evidence": "title names 4.2.1 'State that a hydrogen–oxygen fuel cell uses hydrogen and'",
+   "evidence": "title names 4.2.1 'State that a hydrogen–oxygen fuel cell uses hydrogen and' via token(s) ['electricity'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -3171,7 +3198,7 @@
     "1.2.2"
    ],
    "confidence": "low",
-   "evidence": "this video is the chapter opener, so it maps to the chapter's opening topics",
+   "evidence": "Chapter 1 marker of a syllabus-structured series narrows the pool to section 1 specs; title binds 1.2.2 'Describe and explain the effect of relative molecular ma' via token(s) ['matter'] (df 8); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
@@ -3186,24 +3213,43 @@
     "1.2.2"
    ],
    "confidence": "low",
-   "evidence": "this video is the chapter opener, so it maps to the chapter's opening topics",
+   "evidence": "Chapter 1 marker of a syllabus-structured series narrows the pool to section 1 specs; title binds 1.2.2 'Describe and explain the effect of relative molecular ma' via token(s) ['matter'] (df 8); bound at the disclosed higher title-only bar, confidence low; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows",
    "method": "llm-draft-external",
    "boardMismatch": true,
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-chemistry-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YCOO92_uYp8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z",
+   "evidence": "title: \"iGCSE Chemistry 0620 Past Paper | 0620_s22_qp_61\"; IGCSE paper 6 + session in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 252,
   "specPointsMapped": 146,
   "specPointsUnmapped": 106,
-  "videosTotal": 95,
-  "videosMapped": 95,
+  "videosTotal": 96,
+  "videosMapped": 96,
   "videosUnmapped": 0,
-  "mappingRows": 95,
+  "mappingRows": 96,
   "byConfidence": {
-   "high": 1,
+   "high": 2,
    "medium": 79,
    "low": 15
   }
@@ -3236,7 +3282,13 @@
    "path": "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p14": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-chemistry-23/video-map.draft.external-p14.json",
+   "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:03.843Z"
+ "generatedUtc": "2026-11-17T14:41:11.209Z"
 }

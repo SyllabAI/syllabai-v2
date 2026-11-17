@@ -16,6 +16,11 @@
    "provider": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
    "method": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-14T19:12:35Z"
+  },
+  "p14": {
+   "provider": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly)",
+   "method": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-17T14:02:23Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 5,
+  "rowsApproved": 8,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -58,6 +63,17 @@
     "ruledUtc": "2026-11-14T19:12:35Z",
     "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
     "rowsApproved": 4,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p14 (channel recon judgment lane: ETphysics 9702 session walkthroughs; Prosperity Academy CIE SOLVED 9702/9701/9700; Dr Hanaa Assil IAL chemistry unit papers; Zainematics 0580/9709/0606/9618; Craig'n'Dave CAMBRIDGE 0478 series; Science with Hazel Edexcel-IGCSE; Mega Lecture CIE aggregator; ExamSolutions IAL-legacy composites; Sir Faizan Pasha + CK A-level Physics 9702; IGCSESUCCESS FLE 0500; MrAstburyMaths 4MA1; + the Allery-CIE re-adjudication group)",
+    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\"; judgment lane run 2026-11-17",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+    "ruledUtc": "2026-11-17T14:02:23Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
+    "rowsApproved": 3,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -118,6 +134,39 @@
    "levelTag": "a-level",
    "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "SEcyEt-11fk",
+   "title": "CONTINUOUS RANDOM VARIABLE PRACTICE S2:9709 A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=SEcyEt-11fk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pyttCeO85IM",
+   "title": "CONTINUOUS RANDOM VARIABLE PRACTICE cont  S2:9709 A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=pyttCeO85IM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ya-euNtC6eI",
+   "title": "CONTINUOUS RANDOM VARIABLE S2:9709 A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=ya-euNtC6eI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -138,7 +187,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/61)"
+   "evidence": "title: \"[3] S1, (CAIE), 9709/61/O/N/19, Paper 5, November 2019, Q6, Permutations & Combinations\"; paper code 9709/61 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "video": "9pFzi5D5jCU",
@@ -207,20 +256,65 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
    "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "video": "pyttCeO85IM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.1 'understand the concept of a continuous random variable, and ' via token(s) ['continuous', 'random', 'variable'] (df 7); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "SEcyEt-11fk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.1 'understand the concept of a continuous random variable, and ' via token(s) ['continuous', 'random', 'variable'] (df 7); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "ya-euNtC6eI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.1 'understand the concept of a continuous random variable, and ' via token(s) ['continuous', 'random', 'variable'] (df 7); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 18,
   "specPointsMapped": 11,
   "specPointsUnmapped": 7,
-  "videosTotal": 5,
-  "videosMapped": 5,
+  "videosTotal": 8,
+  "videosMapped": 8,
   "videosUnmapped": 0,
-  "mappingRows": 5,
+  "mappingRows": 8,
   "byConfidence": {
    "high": 1,
-   "low": 2,
-   "medium": 2
+   "medium": 5,
+   "low": 2
   }
  },
  "inputs": {
@@ -239,7 +333,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-probability-and-statistics-2/video-map.draft.external-p13.json",
    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
    "reviewAppliedUtc": "2026-11-14T19:12:35Z"
+  },
+  "p14": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-probability-and-statistics-2/video-map.draft.external-p14.json",
+   "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:03.941Z"
+ "generatedUtc": "2026-11-17T14:41:11.163Z"
 }

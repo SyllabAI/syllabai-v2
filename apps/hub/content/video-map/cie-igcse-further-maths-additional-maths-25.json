@@ -6,7 +6,12 @@
   "provider": "cognito (Cognito Edu YouTube channel)",
   "label": "cie-igcse-further-maths-additional-maths-25",
   "method": "yt-dlp flat channel enumeration + oEmbed identity sweep + LLM title-to-spec adjudication; evidence is TITLE-ONLY (no high rows); tightened binding rule (title must name the spec's distinctive content); sewage filter applied (promo/announcement/non-teaching uploads excluded)",
-  "enumeratedUtc": "2026-11-10T03:03:19Z"
+  "enumeratedUtc": "2026-11-10T03:03:19Z",
+  "p14": {
+   "provider": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly)",
+   "method": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-17T14:02:23Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: cie-igcse-further-maths-additional-maths-25)",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Checked every mapping row of the 6-row draft against the cie-igcse-further-maths-additional-maths-25 spine, judging each of the 8 (video,spec) bindings independently. Rejected 5 spec-level bindings: both linear-inequality videos off 2.5.1/2.5.2 (spec 2.5 is quadratic inequalities; the example forms '–3 < x < 4' and 'x < 1 or x > 6' are solution-set shapes, not compound-linear topics) and the physics resultant-forces video off 13.3.2 (vector geometry ≠ force resultants). Kept the three rows whose titles name the spec's own body: sequence-type recognition for 12.3.1, nth-term-of-arithmetic as genuine partial for 12.4.1, and arc/sector naming 9.1.1's head clause.",
-  "rowsApproved": 3,
+  "rowsApproved": 94,
   "rowsRejected": 5,
   "rejects": [
    {
@@ -47,6 +52,19 @@
     "spec": "13.3.2",
     "reason": "'GCSE Physics - Resolving Vectors & Scale Drawing | How to Find Resultant Forces' names force resultants and scale drawing; 13.3.2 is 'solving problems using vector geometry, with a diagram given in more complex cases' (equating like vectors, unknown scalars) — vector geometry is not named and the evidence itself concedes the video is physics-branded. Keyword-adjacent on 'vectors', bound to the wrong sub-clause of 13.3; rejected at low."
    }
+  ],
+  "lanes": [
+   {
+    "lane": "external-channels-p14 (channel recon judgment lane: ETphysics 9702 session walkthroughs; Prosperity Academy CIE SOLVED 9702/9701/9700; Dr Hanaa Assil IAL chemistry unit papers; Zainematics 0580/9709/0606/9618; Craig'n'Dave CAMBRIDGE 0478 series; Science with Hazel Edexcel-IGCSE; Mega Lecture CIE aggregator; ExamSolutions IAL-legacy composites; Sir Faizan Pasha + CK A-level Physics 9702; IGCSESUCCESS FLE 0500; MrAstburyMaths 4MA1; + the Allery-CIE re-adjudication group)",
+    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\"; judgment lane run 2026-11-17",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+    "ruledUtc": "2026-11-17T14:02:23Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
+    "rowsApproved": 91,
+    "rowsRejected": 0,
+    "rejects": []
+   }
   ]
  },
  "videos": [
@@ -58,7 +76,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Cognito Edu channel; titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 353,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -74,7 +92,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Cognito Edu channel; titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 375,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -90,7 +108,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Cognito Edu channel; titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 339,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -106,7 +124,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Cognito Edu channel; titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 271,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -122,7 +140,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Cognito Edu channel; titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 273,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -138,12 +156,1013 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "igcse",
-   "boardNote": "Cognito Edu channel; titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "Cognito Edu channel; titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 280,
    "guestVisible": null,
    "subelementOfPrimary": false,
    "oembedAuthor": "Cognito",
    "oembedVerifiedUtc": "2026-11-11T14:25:13Z",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-NmiEWF-6Wg",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 9 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=-NmiEWF-6Wg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-g56YSCWv-U",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 3 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=-g56YSCWv-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "04aArsaVRKE",
+   "title": "Trigonometry | LEC 5 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=04aArsaVRKE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0n-lkQCbTHk",
+   "title": "Trigonometry | LEC 25 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=0n-lkQCbTHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "17meSciKvg8",
+   "title": "COORDINATE GEOMETRY | LEC 18 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=17meSciKvg8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4Qxrwp6yD-g",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 18 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=4Qxrwp6yD-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5Kz4P0xnYME",
+   "title": "Trigonometry | LEC 15 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=5Kz4P0xnYME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5O95iq-nNEw",
+   "title": "Trigonometry | LEC 16 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=5O95iq-nNEw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5dWQ6Ab6vy0",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 13 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=5dWQ6Ab6vy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6MnnnwMDGE0",
+   "title": "Trigonometry | LEC 7 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=6MnnnwMDGE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6lBGAPc080I",
+   "title": "SIMULTANEOUS EQUATIONS | LECTURE 2 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=6lBGAPc080I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7Mgsr-GHDaI",
+   "title": "Trigonometry | LEC 28 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=7Mgsr-GHDaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8W9x_dZS_tQ",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 5 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=8W9x_dZS_tQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9041sQ2b-v8",
+   "title": "Trigonometry | LEC 31 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=9041sQ2b-v8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AO95ju55Uj8",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 2 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=AO95ju55Uj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CFh0oMCVXhw",
+   "title": "Trigonometry | LEC 32 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=CFh0oMCVXhw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Cnwaxkzj9b8",
+   "title": "COORDINATE GEOMETRY | LEC 1 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Cnwaxkzj9b8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "D3Y35zytlWI",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 15 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=D3Y35zytlWI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DHpj66qls84",
+   "title": "Trigonometry | LEC 13 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=DHpj66qls84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EO5aFlLAWrM",
+   "title": "COORDINATE GEOMETRY | LEC 13 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=EO5aFlLAWrM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ev_HiR7Slp0",
+   "title": "COORDINATE GEOMETRY | LEC 7 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Ev_HiR7Slp0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Frloak8XcME",
+   "title": "Trigonometry | LEC 12 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Frloak8XcME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FxVaZEsyjcE",
+   "title": "COORDINATE GEOMETRY | LEC 24 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=FxVaZEsyjcE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "G1SqWxUe7QQ",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 17 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=G1SqWxUe7QQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GG6auArLR_0",
+   "title": "Trigonometry | LEC 27 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=GG6auArLR_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Gc0gt9M10xc",
+   "title": "SIMULTANEOUS EQUATIONS | LECTURE 3 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Gc0gt9M10xc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "H1JntKGm73w",
+   "title": "COORDINATE GEOMETRY | LEC 19 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=H1JntKGm73w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HaPxlQAcy_M",
+   "title": "COORDINATE GEOMETRY | LEC 11 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=HaPxlQAcy_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "I1Mt-p_l_O8",
+   "title": "COORDINATE GEOMETRY | LEC 22 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=I1Mt-p_l_O8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "It444iZhG1A",
+   "title": "Trigonometry - Basic Concept | LEC 1 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=It444iZhG1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JtieX2ANiKE",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 10 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=JtieX2ANiKE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KM8jI0Tb4f8",
+   "title": "Trigonometry | LEC 14 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=KM8jI0Tb4f8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LEzzVHK9_hg",
+   "title": "COORDINATE GEOMETRY | LEC 21 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=LEzzVHK9_hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NckCqtDjhuA",
+   "title": "Trigonometry | LEC 24 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=NckCqtDjhuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "OubOHVi6Am8",
+   "title": "Trigonometry | LEC 6 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=OubOHVi6Am8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PwYmsDJNQEI",
+   "title": "COORDINATE GEOMETRY | LEC 5 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=PwYmsDJNQEI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RlZdUqJ2CQc",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 16 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=RlZdUqJ2CQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SWsIS8grVKI",
+   "title": "COORDINATE GEOMETRY | LEC 14 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=SWsIS8grVKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SXayzVDLJi4",
+   "title": "COORDINATE GEOMETRY | LEC 15 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=SXayzVDLJi4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TRacrZAHt3A",
+   "title": "Trigonometry | LEC 8 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=TRacrZAHt3A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TjuDdmfZJ4g",
+   "title": "COORDINATE GEOMETRY | LEC 23 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=TjuDdmfZJ4g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ttur8sKsIIs",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 2 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Ttur8sKsIIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UaHycrcKhZU",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 7 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=UaHycrcKhZU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VP51Wu5gjHU",
+   "title": "COORDINATE GEOMETRY | LEC 2 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=VP51Wu5gjHU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WhTcsOR5o9A",
+   "title": "Trigonometry | LEC 20 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=WhTcsOR5o9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WoOCPSqZAfQ",
+   "title": "SIMULTANEOUS EQUATIONS | LECTURE 1 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=WoOCPSqZAfQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Wta15IHYI4M",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 7 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Wta15IHYI4M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XiqtPQbL8JQ",
+   "title": "COORDINATE GEOMETRY | LEC 16 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=XiqtPQbL8JQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YKMW7kauqQc",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 11 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=YKMW7kauqQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZAxxINxDst8",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 1 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=ZAxxINxDst8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aq-6Cd1VJcQ",
+   "title": "Trigonometry | LEC 18 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=aq-6Cd1VJcQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bxVtsqTnEmI",
+   "title": "Trigonometry | LEC 4 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=bxVtsqTnEmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "c4PcEP7sG68",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 3 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=c4PcEP7sG68",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "e4NTZXyFgv4",
+   "title": "EXPONENTIAL EQUATIONS | LECTURE 1 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=e4NTZXyFgv4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eDldwsCNRdY",
+   "title": "COORDINATE GEOMETRY | LEC 26 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=eDldwsCNRdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eyPoNXR0ODA",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 5 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=eyPoNXR0ODA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fAXmMFqegEU",
+   "title": "COORDINATE GEOMETRY | LEC 3 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=fAXmMFqegEU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fDaHQ9FnhLQ",
+   "title": "COORDINATE GEOMETRY | LEC 6 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=fDaHQ9FnhLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fIQAkzzKYsc",
+   "title": "COORDINATE GEOMETRY | LEC 4 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=fIQAkzzKYsc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fWXDnreZoOQ",
+   "title": "COORDINATE GEOMETRY | LEC 25 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=fWXDnreZoOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "g-1jNNq1MAU",
+   "title": "Trigonometry | LEC 30 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=g-1jNNq1MAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gHm3dXzVRY8",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 14 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=gHm3dXzVRY8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hNtU_N-CflE",
+   "title": "Trigonometry | LEC 2 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=hNtU_N-CflE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iQRUSNpfdGA",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 12 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=iQRUSNpfdGA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iRBvrU2Pr78",
+   "title": "Trigonometry | LEC 29 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=iRBvrU2Pr78",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kEo5m9M12WQ",
+   "title": "Trigonometry | LEC 17 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=kEo5m9M12WQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lQn-K5S15Y8",
+   "title": "Trigonometry | LEC 21 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=lQn-K5S15Y8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "li7YyquBHr0",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 8 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=li7YyquBHr0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mWmdxNWK-LQ",
+   "title": "EXPONENTIAL EQUATIONS | LECTURE 2 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=mWmdxNWK-LQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mj3sxSKnnx0",
+   "title": "Trigonometry | LEC 3 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=mj3sxSKnnx0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nNN_yJjPVSA",
+   "title": "Trigonometry | LEC 10 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=nNN_yJjPVSA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oLK0b9KIE3o",
+   "title": "Trigonometry | LEC 22 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=oLK0b9KIE3o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pgPIU3LYl-8",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 6 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=pgPIU3LYl-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qLiMr9IV5qA",
+   "title": "Trigonometry | LEC 26 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=qLiMr9IV5qA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qfwhOcjOJMQ",
+   "title": "COORDINATE GEOMETRY | LEC 10 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=qfwhOcjOJMQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "r6UmAYaHMzM",
+   "title": "Trigonometry | LEC 23 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=r6UmAYaHMzM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rPR2d2h4rqA",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 4 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=rPR2d2h4rqA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sjSWwdLBivU",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 1 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=sjSWwdLBivU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "smBpWwyk_aY",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 9 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=smBpWwyk_aY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sqbyate21qo",
+   "title": "SIMULTANEOUS EQUATIONS | LECTURE 4 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=sqbyate21qo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "syNknAxVFgk",
+   "title": "COORDINATE GEOMETRY | LEC 12 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=syNknAxVFgk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "syT8Bczh8iY",
+   "title": "COORDINATE GEOMETRY | LEC 9 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=syT8Bczh8iY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uLqq02Rc52E",
+   "title": "Trigonometry | LEC 11 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=uLqq02Rc52E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uqKg3eT8uM8",
+   "title": "Trigonometry | LEC 19 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=uqKg3eT8uM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uxwv7b3YxR4",
+   "title": "COORDINATE GEOMETRY | LEC 20 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=uxwv7b3YxR4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wXiJmh0FpUg",
+   "title": "COORDINATE GEOMETRY | LEC 17 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=wXiJmh0FpUg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "whoMXPO4TW8",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 6 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=whoMXPO4TW8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wvwWqioTiiM",
+   "title": "COORDINATE GEOMETRY | LEC 8 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=wvwWqioTiiM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yaqaOF0ppmU",
+   "title": "Trigonometry | LEC 9 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=yaqaOF0ppmU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ystihAuFqRY",
+   "title": "REMAINDER & FACTOR THEOREM | LEC 4 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=ystihAuFqRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zc2SgTJ6VRg",
+   "title": "LOGARITHMIC EQUATIONS | LECTURE 8 | (P1 & P2) | O LEVELS (4037) & IGCSE (0606) | 2025 | Sir Eisar",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=zc2SgTJ6VRg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -192,20 +1211,1784 @@
    "boardMismatch": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
    "reviewedUtc": "2026-11-11T14:44:22Z"
+  },
+  {
+   "video": "CFh0oMCVXhw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "9041sQ2b-v8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "g-1jNNq1MAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "iRBvrU2Pr78",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "7Mgsr-GHDaI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "GG6auArLR_0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "qLiMr9IV5qA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "0n-lkQCbTHk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "NckCqtDjhuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "r6UmAYaHMzM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "oLK0b9KIE3o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "lQn-K5S15Y8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "WhTcsOR5o9A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "uqKg3eT8uM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "aq-6Cd1VJcQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "kEo5m9M12WQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "5O95iq-nNEw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "5Kz4P0xnYME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "KM8jI0Tb4f8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "DHpj66qls84",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Frloak8XcME",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "uLqq02Rc52E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "nNN_yJjPVSA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "yaqaOF0ppmU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "TRacrZAHt3A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "6MnnnwMDGE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "OubOHVi6Am8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "04aArsaVRKE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "bxVtsqTnEmI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "mj3sxSKnnx0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "hNtU_N-CflE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "It444iZhG1A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.4.2",
+    "10.5.1",
+    "10.5.2",
+    "10.5.3",
+    "10.5.4",
+    "10.6.1",
+    "10.6.1a",
+    "10.6.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "eDldwsCNRdY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "fWXDnreZoOQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "FxVaZEsyjcE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "TjuDdmfZJ4g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "I1Mt-p_l_O8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "LEzzVHK9_hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "uxwv7b3YxR4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "H1JntKGm73w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "17meSciKvg8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "wXiJmh0FpUg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "XiqtPQbL8JQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "SXayzVDLJi4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "SWsIS8grVKI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "EO5aFlLAWrM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "syNknAxVFgk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "HaPxlQAcy_M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "qfwhOcjOJMQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "syT8Bczh8iY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "wvwWqioTiiM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Ev_HiR7Slp0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "fDaHQ9FnhLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "PwYmsDJNQEI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "fIQAkzzKYsc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "fAXmMFqegEU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "VP51Wu5gjHU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Cnwaxkzj9b8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "8.1.2",
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.4.1",
+    "8.4.2",
+    "8.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Coordinate geometry of the circle' via topic-unique token(s) ['geometry', 'coordinate'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "4Qxrwp6yD-g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "G1SqWxUe7QQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "RlZdUqJ2CQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "D3Y35zytlWI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "gHm3dXzVRY8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "5dWQ6Ab6vy0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "iQRUSNpfdGA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "YKMW7kauqQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "JtieX2ANiKE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "-NmiEWF-6Wg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "li7YyquBHr0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "UaHycrcKhZU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "whoMXPO4TW8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "8W9x_dZS_tQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "ystihAuFqRY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "c4PcEP7sG68",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "AO95ju55Uj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "ZAxxINxDst8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.1 'Know and use the remainder and factor theorems.' via token(s) ['factor', 'remainder'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "sqbyate21qo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Simultaneous equations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Gc0gt9M10xc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Simultaneous equations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "6lBGAPc080I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Simultaneous equations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "WoOCPSqZAfQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Simultaneous equations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "smBpWwyk_aY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "zc2SgTJ6VRg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Wta15IHYI4M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "pgPIU3LYl-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "eyPoNXR0ODA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "rPR2d2h4rqA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "-g56YSCWv-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Ttur8sKsIIs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "sjSWwdLBivU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['logarithmic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "mWmdxNWK-LQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['exponential'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "e4NTZXyFgv4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Logarithmic and exponential functions' via topic-unique token(s) ['exponential'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 77,
-  "specPointsMapped": 3,
-  "specPointsUnmapped": 74,
-  "videosTotal": 6,
-  "videosMapped": 3,
+  "specPointsMapped": 24,
+  "specPointsUnmapped": 53,
+  "videosTotal": 97,
+  "videosMapped": 94,
   "videosUnmapped": 3,
-  "mappingRows": 3,
+  "mappingRows": 94,
   "byConfidence": {
    "high": 0,
-   "medium": 1,
-   "low": 2
+   "medium": 19,
+   "low": 75
   }
  },
  "inputs": {
@@ -218,7 +3001,13 @@
    "path": "Videos/drafts/cie-igcse-further-maths-additional-maths-25/video-map.draft.external.json",
    "task": "T-VIDEOMAP-P4 (shelf-direct lane, Cognito maths shelf: cie-igcse-further-maths-additional-maths-25)",
    "reviewAppliedUtc": "2026-11-11T14:41:20Z"
+  },
+  "p14": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-further-maths-additional-maths-25/video-map.draft.external-p14.json",
+   "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:03.563Z"
+ "generatedUtc": "2026-11-17T14:41:11.217Z"
 }

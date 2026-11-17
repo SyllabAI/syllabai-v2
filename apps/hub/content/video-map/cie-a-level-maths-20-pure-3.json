@@ -16,6 +16,11 @@
    "provider": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) + A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series)",
    "method": "Alt Academy main channel (CAIE multi-subject hub: per-syllabus topic-lecture series + past-paper solutions + the AS chemistry walkthrough corpus) flat-enumerated 2026-11-14T14:55:00Z; A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) flat-enumerated 2026-11-14T14:55:00Z; routing: session/paper-code Tier B anchors + section-name binding (verbatim field match) + distinctive-token Tier A with the four-gate topic-lecture class (verbatim/multi-uniq/title-token/title-pair), N.M section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-14T19:12:35Z"
+  },
+  "p14": {
+   "provider": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) + Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly)",
+   "method": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) flat-enumerated 2026-11-17T04:07:29Z; Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-17T14:02:23Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"file as lane P9\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
   "evidenceBasis": "Identity: oEmbed sweep 2,825/2,825 author \"Mr Hassaan's Maths Channel\" (0 mismatch, 0 dead). Tier B: paper codes regex-verified in titles, 0 sewage found (the pool has no promo/community content; full-paper walkthroughs with worked explanations pass per ANCHOR-GRANULARITY §8). Tier A: deterministic distinctive-token pre-pass (df<=3) then class decision tables over EVERY distinctive-candidate row; rebinds validated against the target spine; degenerate token binds (paper-part labels) and cross-board routes dropped.",
-  "rowsApproved": 114,
+  "rowsApproved": 175,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -58,6 +63,17 @@
     "ruledUtc": "2026-11-14T19:12:35Z",
     "evidenceBasis": "Identity: oEmbed sweep 587/587 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject; maths shared units anchored to BOTH the AS and A-level course). Tier A: the section-name binding gate (verbatim pipe-field equality against TOPIC/SUBTOPIC titles) over the structured \"Topic | Section | register\" series, deduped distinctive-token binds (df<=3), the four-gate topic-lecture class and N.M section-marker narrowing over EVERY routed pair; maths unit tokens (S2/S1/M1/P1/P2/P3) route to the spine's unit courses; degenerate generic-token binds (2: the S2 \"between/two\" hypothesis-test bind and the terse \"Pricing strategies Short term\" finance bind) re-adjudicated to honest skips on review; guidance/advice/marketing registers, the O-Level register and CIE 9990 psychology (no spine course) skipped with reasons (310 ledgered in work/p13/skips.json).",
     "rowsApproved": 25,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p14 (channel recon judgment lane: ETphysics 9702 session walkthroughs; Prosperity Academy CIE SOLVED 9702/9701/9700; Dr Hanaa Assil IAL chemistry unit papers; Zainematics 0580/9709/0606/9618; Craig'n'Dave CAMBRIDGE 0478 series; Science with Hazel Edexcel-IGCSE; Mega Lecture CIE aggregator; ExamSolutions IAL-legacy composites; Sir Faizan Pasha + CK A-level Physics 9702; IGCSESUCCESS FLE 0500; MrAstburyMaths 4MA1; + the Allery-CIE re-adjudication group)",
+    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\"; judgment lane run 2026-11-17",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+    "ruledUtc": "2026-11-17T14:02:23Z",
+    "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
+    "rowsApproved": 61,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -1317,6 +1333,677 @@
    "levelTag": "a-level",
    "boardNote": "A Level Maths | Alt Academy (CIE 9709 S2/M1 unit lecture series) (oEmbed author verified per video)",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "-NLBsiBNjNs",
+   "title": "P3 INTEGRATION - WITH PRACTICE|TYPE 4| INTEGRATION WITH TRIGONOMETRIC IDENTITIES A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=-NLBsiBNjNs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0FjOPylMCKU",
+   "title": "P3 INTEGRATION - WITH PRACTICE| INTEGRATION OF ODD AND EVEN POWERS OF SIN COS TAN ALEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=0FjOPylMCKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0QT3pl4e6fY",
+   "title": "P3 | TRIGONOMETRY | TYPE 2 | WORKSHEET | 9709 | A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=0QT3pl4e6fY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0TCbSkqcgto",
+   "title": "P3 INTEGRATION - WITH PRACTICE | TYPE 6 | INTEGRATION WITH SUBSTITUTION | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=0TCbSkqcgto",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1abPR--YtZs",
+   "title": "P3 INTEGRATION - WITH PRACTICE | ln (log natural) AS AN OPERATOR | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=1abPR--YtZs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3M7zeQNeDVg",
+   "title": "P3 DIFFERENTIATION D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-5",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=3M7zeQNeDVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5E4GhdoJr-I",
+   "title": "P3 DIFFERENTIATION - WITH PRACTICE (MULTIPLE OPERATORS) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=5E4GhdoJr-I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5jFAlFpx19w",
+   "title": "P3 INTEGRATION I-6 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-1",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=5jFAlFpx19w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "69DbEzJxI1U",
+   "title": "P3 DIFFERENTIATION - WITH PRACTICE (TANGENT, NORMAL, NATURE OF STATIONARY POINT) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=69DbEzJxI1U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6NuEz2TosVM",
+   "title": "P3 | TRIGONOMETRY | TYPE 1 | WORKSHEET | 9709 | A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=6NuEz2TosVM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6cI7SOI_Pg0",
+   "title": "P3 DIFFERENTIATION D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-4",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=6cI7SOI_Pg0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7sHB2JvK4Ss",
+   "title": "P3 DIFFERENTIATION PRACTICE (TYPE 1: Multiple Operators) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=7sHB2JvK4Ss",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8oEQEeIQTis",
+   "title": "P3 DIFFERENTIATION (BASICS AND OPERATORS) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=8oEQEeIQTis",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9NrHIWHSfLQ",
+   "title": "P3 BINOMIAL & PARTIAL FRACTIONS PRACTICE QUESTIONS (PART 1) PAST PAPERS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=9NrHIWHSfLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9zoe_2gw24s",
+   "title": "P3 INTEGRATION - WITH PRACTICE | TYPE 2 SINGLE PART | DOUBLE BYPARTS INTEGRATION A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=9zoe_2gw24s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BtQcJoDfnPI",
+   "title": "P3 TRIGONOMETRY - WITH PAST PAPER PRACTICE | COMPOUND ANGLE (TYPE 2 ) | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=BtQcJoDfnPI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DOTv8av5ez0",
+   "title": "A LEVELS MATHEMATICS 9709 PAST PAPER JUNE 2020 P3 V 31",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=DOTv8av5ez0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "F7_SlhtYVKc",
+   "title": "P3 DIFFERENTIATION - WITH PRACTICE (TYPE 1 : STATIONARY POINTS) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=F7_SlhtYVKc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HZhn3KqKLSQ",
+   "title": "P3 DIFFERENTIATION D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-6",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=HZhn3KqKLSQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KiVVPjRVS1c",
+   "title": "P3 DIFFERENTIATION D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-1",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=KiVVPjRVS1c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L--2l0x1-aM",
+   "title": "P3 INTEGRATION - WITH PRACTICE | INTEGRATION WITH MULTIPLE OPERATORS | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=L--2l0x1-aM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MV2ApVKBV0g",
+   "title": "P3 INTEGRATION | INTEGRATION OF ln x (Log Natural) | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=MV2ApVKBV0g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "N7FPn-uS-M8",
+   "title": "P3 COMPLEX NUMBERS ALL TYPES QUESTIONS SINCE 2020| TOPICAL PRACTICE |MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=N7FPn-uS-M8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NYdKYW_neXo",
+   "title": "P3 DIFFERENTIATION D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-4",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=NYdKYW_neXo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QGBejpBIARk",
+   "title": "P3 DIFFERENTIAL EQUATIONS D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=QGBejpBIARk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QoYrdaXll7I",
+   "title": "P3 TRIGONOMETRY (INTRO TO ALL IDENTITIES) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=QoYrdaXll7I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QwRkLdlfJSg",
+   "title": "A2 Maths vectors l scalar products l 9709",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=QwRkLdlfJSg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RT1SqsKJJzE",
+   "title": "A2 Mathematics - Vectors - Scalar Products - 9709",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=RT1SqsKJJzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RVLwlOdget0",
+   "title": "P3 COMPLEX NUMBERS PART-2 | COMPLETE WORKSHEET | TOPICAL PRACTICE | A LEVELS MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=RVLwlOdget0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SH9-jtfTqLM",
+   "title": "A LEVELS PAST PAPERS MATHEMATICS 9709 P3 JUNE 2019 V33",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=SH9-jtfTqLM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SklnH_abIWw",
+   "title": "P3 TRIGONOMETRY (BASICS) | A LEVELS | MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=SklnH_abIWw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Tns7mw6FlAQ",
+   "title": "P3 DIFFERENTIATION - WITH PRACTICE (TYPE 3: IMPLICIT DIFFERENTIATION ) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Tns7mw6FlAQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UzCdjhYvRNU",
+   "title": "P3 INTEGRATION - WITH PRACTICE | TYPE 5 | INTEGRATION WITH DIFFERENTIATION | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=UzCdjhYvRNU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "V-iP34MTlNw",
+   "title": "P3 | TRIGONOMETRY | TYPE 2 | WORKSHEET | 9709 | A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=V-iP34MTlNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Y4whrsca0n8",
+   "title": "P3 DIFFERENTIATION (MULTIPLE OPERATORS EXTENDED PRACTICE) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=Y4whrsca0n8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aNfYWB0aaRE",
+   "title": "P3 DIFFERENTIAL EQUATIONS ALL TYPES QUESTIONS SINCE 2020| PART 3 |TOPICAL PRACTICE |MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=aNfYWB0aaRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "btwO0AYY5Ig",
+   "title": "P3 COMPLEX NUMBERS PART-1 | COMPLETE WORKSHEET | TOPICAL PRACTICE | A LEVELS MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=btwO0AYY5Ig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cXkDYDQg7Tg",
+   "title": "A2 Mathematics - Double Angle Formulae - 9709",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=cXkDYDQg7Tg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "d6aL71OLilQ",
+   "title": "P3 | TRIGONOMETRY | TYPE 2 | WORKSHEET | 9709 | A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=d6aL71OLilQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dk2orb51moE",
+   "title": "P3 | TRIGONOMETRY | TYPE 1 | WORKSHEET | 9709 | A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=dk2orb51moE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dvmnH7ezDMA",
+   "title": "P3 | TRIGONOMETRY | TYPE 3 | WORKSHEET | 9709 | A LEVELS MATHEMATICS",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=dvmnH7ezDMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "flV6wqRgFH0",
+   "title": "P3 DIFFERENTIAL EQUATIONS ALL TYPES QUESTIONS SINCE 2020| TOPICAL PRACTICE |MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=flV6wqRgFH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iW7hLcSJj_Y",
+   "title": "P3 COMPLEX NUMBERS ALL TYPES QUESTIONS SINCE 2020| TOPICAL PRACTICE |MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=iW7hLcSJj_Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ib4SSeuxcdM",
+   "title": "P3 INTEGRATION - WITH PRACTICE | INTEGRATION OF INVERSE TAN OPERATOR | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=ib4SSeuxcdM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "j0B_c8QRgLo",
+   "title": "P3 PARTIAL FRACTIONS IMPROPER FRACTIONS ALEVELS MATHS 9709 ( PART 3 )",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=j0B_c8QRgLo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kRNq_AjQezw",
+   "title": "P3 DIFFERENTIATION D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-2",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=kRNq_AjQezw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lUnfFQyQdEo",
+   "title": "P3 DIFFERENTIATION - WITH PRACTICE (INVERSE TAN OPERATOR) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=lUnfFQyQdEo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nq1Kr5pU2mI",
+   "title": "P3 INTEGRATION - WITH PRACTICE | TYPE 1 | INTEGRATION WITH PARTIAL FRACTIONS | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=nq1Kr5pU2mI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oKUtXgtg8T8",
+   "title": "P3 VECTORS COMPLETE TOPIC & PRACTICE TYPE WISE A LEVELS MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=oKUtXgtg8T8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p7GjbzfxtNg",
+   "title": "P3 TRIGONOMETRY - WITH PRACTICE | TYPE 1 (Rcos) | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=p7GjbzfxtNg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "r2DreCRXTAk",
+   "title": "P3 TRIGONOMETRY - WITH PRACTICE | PROVING IDENTITIES (TYPE 3) | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=r2DreCRXTAk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tEKb7n21LV0",
+   "title": "P3 DIFFERENTIATION D1-D2-D3 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-3",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=tEKb7n21LV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tKU7oyyAGyw",
+   "title": "P3 DIFFERENTIAL EQUATIONS ALL TYPES QUESTIONS SINCE 2020| PART 2 |TOPICAL PRACTICE |MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=tKU7oyyAGyw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tYr7oRth_zo",
+   "title": "P3 INTEGRATION -WITH PRACTICE | TYPE 3 | INTEGRATION WITH R COS (x + α) |  A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=tYr7oRth_zo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vnNh4tsOgUQ",
+   "title": "P3 INTEGRATION - WITH PRACTICE | RULES OF INTEGRATION AND OPERATORS | A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=vnNh4tsOgUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vpRD6P2EZSw",
+   "title": "A LEVELS PAST PAPERS MATHEMATICS 9709 P3 JUNE 2019 V33",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=vpRD6P2EZSw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xMTQqsiGvnE",
+   "title": "A LEVELS PAST PAPERS MATHEMATICS 9709 P3 JUNE 2019 V32",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=xMTQqsiGvnE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xYBO_LKnTOA",
+   "title": "P3 DIFFERENTIATION - WITH PRACTICE (PRODUCT AND QUOTIENT RULE ) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=xYBO_LKnTOA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yNaFQMxuJqI",
+   "title": "P3 COMPLEX NUMBERS PART-2 | COMPLETE WORKSHEET | TOPICAL PRACTICE | A LEVELS MATHEMATICS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=yNaFQMxuJqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ymWyFdvebsM",
+   "title": "P3 INTEGRATION I-6 | A LEVELS 9709 | COMPLETE WORKSHEETS PART-2",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=ymWyFdvebsM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yucVPhO42TI",
+   "title": "P3 DIFFERENTIATION - WITH PRACTICE (TYPE 2 : PARAMETRIC EQUATION ) A LEVELS MATHS 9709",
+   "provider": "zainematics",
+   "watchUrl": "https://www.youtube.com/watch?v=yucVPhO42TI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Zainematics (CIE umbrella: 0580/9709/0606/9618 code-bearing titles; the O-Level-branded remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -1337,7 +2024,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/25 P32, March 2025, Q3, Complex Numbers, Argand Diagrams, Loci & Region\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1356,7 +2043,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/22 Pure Maths 3, June 2022, Paper 31, Q3, Trig Identities, Addition Formulae\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1375,7 +2062,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/M/J/25 P32, June 2025, Q3, Complex Numbers, Argand Diagrams, Loci & Regions\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1394,7 +2081,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/M/J/25 P32, June 2025, Q10, Algebraic Fractions, Integration by Parts (DI), inv tan\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1413,7 +2100,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/25 Pure Maths 3, June 2025, Paper 31, Q10, Partial Fractions, Differential Eq\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1432,7 +2119,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/25 Pure Maths 3, June 2025, Paper 31, Q11(a), Differentiation, Maximum Points\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1451,7 +2138,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/25 Pure Maths 3, June 2025, Paper 31, Q11(b), Integration, Vol of Revolution\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1470,7 +2157,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/M/J/18 P33, June 2018, Paper 33, Q5, Trig Identities & Equations\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1489,7 +2176,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[4] CAIE, 9709/03/M/J/05 P32, June 2005, Paper 03, Q5, Algebraic Division, Roots\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1508,7 +2195,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"[9] P3 (CAIE), 9709/31/M/J/11 Pure Maths 31, Q9, Trigonometric Identities & Equations, Integration\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1527,7 +2214,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/O/N/24, Pure Maths 3, Q10, Constructing & Solving Differential Eqns\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1546,7 +2233,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"P3 (CAIE), 9709/33/M/J/23 Pure Maths 3, June 2023, Paper 33, Q9, Vector Equations of Lines\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1565,7 +2252,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"P3 (CAIE), 9709/33/M/J/23 Pure Maths 3, June 2023, Paper 33, Q3, Complex Numbers, Argand Diagrams\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1584,7 +2271,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/24, Pure Maths 3,  Q7, Complex Numbers, Argand Diagrams, Loci\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1603,7 +2290,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"P3 (CAIE), 9709/33/O/N/24 Pure Maths 3,  Q1, Complex Numbers, Argand Diagrams, Loci\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1622,7 +2309,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"[10]CAIE, 9709/32/F/M/24 P32, March 2024, Paper 32, Q3, Complex Numbers, Modulus, Argument\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1641,7 +2328,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"P3 (CAIE), 9709/32/O/N/24, Pure Maths 3, Q5, Complex Numbers, Exponential Form, Conjugates\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1660,7 +2347,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"CAIE, 9709/31/M/J/24 P31, Paper 31,  Q4, Complex Numbers, Modulus Argument & Exponential Form\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1679,7 +2366,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/O/N/20 Pure Maths 3, November 2020, Paper 31, Q6, Trig Identities & Equations\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1698,7 +2385,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"CAIE, 9709/31/M/J/24 P31, June, Paper 31,  Q11, Constructing & Solving Differential Equations\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1717,7 +2404,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q9, Integration by Parts, Iteration\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1736,7 +2423,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q8, Partial Fractions, Integration\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1755,7 +2442,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q7, Differential Equations, Trig\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1774,7 +2461,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q5, Implicit Differentiation\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1793,7 +2480,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q3, Binomial Expansion\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1812,7 +2499,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q2, Modulus Graphs & Inequalities\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1831,7 +2518,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q1, Exponential Equations, Logarithms\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1850,7 +2537,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q4, Trig Identities & Equations\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1869,7 +2556,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32,  Q10b Argand Diagrams, Loci\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1888,7 +2575,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32, Q10a Complex Numbers Algebra\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1907,7 +2594,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32, Q9b Binomial Expansion\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1926,7 +2613,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32,   Q9a Partial Fractions\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1945,7 +2632,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32,  Q8 Vector Equations of Lines, Perpendicular Vectors\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1964,7 +2651,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32, Q7, Implicit  Differentiation\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -1983,7 +2670,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32, Q6, Differential Equations\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2002,7 +2689,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32,  Q4, Integration by Parts (DI)\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2021,7 +2708,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32, Q3, Iterative Methods\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2040,7 +2727,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32, Q2, Logarithm Equations\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2059,7 +2746,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"CAIE, 9709/32/F/M/20 P32, March 2020, Paper 32, Q1 Modulus Graphs & Inequalities\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2078,7 +2765,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[9] (CAIE - 9709 -P3), Solomon J, C3, Q3, Algebraic Fractions, Differentiation, Quotient Rule\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2097,7 +2784,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"P3 (CAIE), 9709/32/F/M/20 Pure Maths 3, Q3, Trig Identities & Equations\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2116,7 +2803,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[P3], (CAIE), TYU, P3, Chapter 3.36,  Q4 a-c, Further Logarithm Problems, Modulus Inequalities\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2135,7 +2822,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"P3 (CAIE), 9709/32/M/J/23, Pure Maths 3,  Q10(a), Differentiation, The Product Rule, Maximum Point\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2154,7 +2841,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"P3 (CAIE), 9709/32/M/J/23, Pure Maths 3,  Q10(b), Integration by Substitution, Area Under Curve\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2173,7 +2860,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/O/N/24, Pure Maths 3, Q8, Complex Numbers, Argand Diagrams\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2192,7 +2879,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/20, Pure Maths 3, Q7(b) Integration, Reversing The Chain Rule\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2211,7 +2898,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/20, Pure Maths 3, Q7(a), Differentiation, The Quotient Rule, Decreasing\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2230,7 +2917,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"P3 (CAIE), 9709/32/O/N/23 Pure Maths 3,  Q10, Vectors, Angles, Perpendicular Lines\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2249,7 +2936,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"P3 (CAIE), 9709/32/O/N/23 Pure Maths 3, Q8, Complex Numbers, Simplifying\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2268,7 +2955,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"P3 (CAIE), 9709/33/O/N/21 Pure Maths 3, Q8, Vector Equation of Lines, Geometry, Perpendicular Lines\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2287,7 +2974,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q10, Complex Numbers, Complex Roots\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2306,7 +2993,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023 Paper 31, Q6, Vectors, Angles, Area\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2325,7 +3012,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/22 Pure Maths 3, June 2022 Paper 31, Q7, Complex Numbers, exp, sq root\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2344,7 +3031,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"P3 (CAIE), 9709/31/M/J/23 Pure Maths 3, June 2023, Paper 31, Q4, Trig Identities & Equations\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2363,7 +3050,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q11(b), Integration (ln), Inverse Tan\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2382,7 +3069,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q11(a), Partial Fractions\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2401,7 +3088,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22, P3, November 2022,  Q10, Differential Equations\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2420,7 +3107,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q9, Vector Equation of Lines, Intersection\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2439,7 +3126,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q8, Differentiation, The Quotient Rule, Iteration\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2458,7 +3145,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q7, Trig Identities & Equations, Rcos(x+a)\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2477,7 +3164,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q6, Complex Numbers, Equations\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2496,7 +3183,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q5, Complex Numbers, Argand Diagrams, Loci\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2515,7 +3202,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Q4, Parametric Eqns, Differention, Trig Identities\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2534,7 +3221,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Paper 33, Q3, Integration by Parts (Traditional and DI)\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2553,7 +3240,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Paper 33, Q2, Binomial Expansion, Fractions\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2572,7 +3259,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/33)"
+   "evidence": "title: \"CAIE, 9709/33/O/N/22 P3, November 2022, Paper 33, Q1, Log Equations\"; paper code 9709/33 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2591,7 +3278,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"CAIE, 9709/31/M/J/22 P3, June 2022, Paper 31, Q10(b-d), Iteration, Numerical Methods\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2610,7 +3297,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/31)"
+   "evidence": "title: \"CAIE, 9709/31/M/J/22 P3, June 2022, Paper 31, Q10(a), Differentiation, The Product Rule\"; paper code 9709/31 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2629,7 +3316,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[1], CAIE, 9709/03/O/N/04, November 2004, Paper 03, Q6, Complex Numbers, Arg, Argand Diagram\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2648,7 +3335,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"[9ii] CAIE, 9709/32/O/N/09, P3, Nov 2008, Paper 3, Q8(ii),  Binomial Expansion\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2667,7 +3354,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/32)"
+   "evidence": "title: \"[9i] CAIE, 9709/32/O/N/09, P3, Nov 2008, Paper 3, Q8(i),  Partial Fractions - Quadratic Factor\"; paper code 9709/32 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2686,7 +3373,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[5] CAIE, 9709/03/M/J/08, P3, June 2008, Paper 3, Q7,  Implicit Differentiation\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2705,7 +3392,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[10] (CAIE - 9709 -P3), Solomon J, C3, Q5, Exponential Equations, Range Equation of Tangent\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2724,7 +3411,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[7] (CAIE - 9709 -P3), Solomon I, C3, Q3, Differentiation, The Quotient Rule, Increasing Functions\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2743,7 +3430,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[2], CAIE, 9709/03/O/N/05, November 2005, Paper 03, Q2, Complex Numbers, Roots, Loci\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2762,7 +3449,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[2], CAIE, 9709/03/O/N/04, November 2004, Paper 03, Q3, Factor Theorem, Division, Inequalities\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2781,7 +3468,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[4] (CAIE - 9709 -P3), Solomon H C3, Q5, Exponential Models, Rate of Change\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2800,7 +3487,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q10, Constructing and Solving Differential Equations\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2819,7 +3506,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[7b] CAIE 9709/03/SP/20, Specimen Paper P3, Q9(b), Integration, Substitution, Trig Identities\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2838,7 +3525,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"[7a] CAIE 9709/03/SP/20, Specimen Paper P3, Q9(a), Differentiation, Trigonometric Identities\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2857,7 +3544,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q8, Vector Geometry, Angle Between Vectors\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2876,7 +3563,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q7, Trigonometric Identities (R,a) & Equations\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2895,7 +3582,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q5(b), Integration by Parts\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2914,7 +3601,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q5(a), Differentiation, Inverse Tan Function\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2933,7 +3620,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q4(a), Parametric Equations, Differentiation\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2952,7 +3639,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q2, Binomial Expansion, Valid Range\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2971,7 +3658,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q4(b),(c), Numerical Methods, Iteration\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -2990,7 +3677,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q3, Modulus Functions, Sketching, Inequalities\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3009,7 +3696,7 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"file as lane P9\")",
    "reviewedUtc": "2026-11-13T06:48:16Z",
-   "evidence": "the title carries the session and paper code (9709/03)"
+   "evidence": "title: \"CAIE 9709/03/SP/20, Specimen Paper P3, (2020), Q1, Logarithms & Exponential Equations\"; paper code 9709/03 in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   },
   {
    "anchor": {
@@ -3480,20 +4167,1342 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-14: \"file it as lane P13\")",
    "reviewedUtc": "2026-11-14T19:12:35Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DOTv8av5ez0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z",
+   "evidence": "title: \"A LEVELS MATHEMATICS 9709 PAST PAPER JUNE 2020 P3 V 31\"; 9709 paper 3 + session in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "vpRD6P2EZSw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z",
+   "evidence": "title: \"A LEVELS PAST PAPERS MATHEMATICS 9709 P3 JUNE 2019 V33\"; 9709 paper 3 + session in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "SH9-jtfTqLM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z",
+   "evidence": "title: \"A LEVELS PAST PAPERS MATHEMATICS 9709 P3 JUNE 2019 V33\"; 9709 paper 3 + session in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-a-level-maths-20-pure-3"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "xMTQqsiGvnE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z",
+   "evidence": "title: \"A LEVELS PAST PAPERS MATHEMATICS 9709 P3 JUNE 2019 V32\"; 9709 paper 3 + session in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "9NrHIWHSfLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.5 'recall an appropriate form for expressing rational functions' via token(s) ['fractions', 'partial'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "iW7hLcSJj_Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "3.3.1",
+    "3.3.2",
+    "3.4.1",
+    "3.4.2",
+    "3.4.3",
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6",
+    "3.6.1",
+    "3.6.2",
+    "3.6.3",
+    "3.7.1",
+    "3.7.2",
+    "3.7.3",
+    "3.7.4",
+    "3.7.5",
+    "3.7.6",
+    "3.7.7",
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4",
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Pure Mathematics 3' via topic-unique token(s) ['mathematics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "N7FPn-uS-M8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "3.3.1",
+    "3.3.2",
+    "3.4.1",
+    "3.4.2",
+    "3.4.3",
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6",
+    "3.6.1",
+    "3.6.2",
+    "3.6.3",
+    "3.7.1",
+    "3.7.2",
+    "3.7.3",
+    "3.7.4",
+    "3.7.5",
+    "3.7.6",
+    "3.7.7",
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4",
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Pure Mathematics 3' via topic-unique token(s) ['mathematics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "aNfYWB0aaRE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "3.3.1",
+    "3.3.2",
+    "3.4.1",
+    "3.4.2",
+    "3.4.3",
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6",
+    "3.6.1",
+    "3.6.2",
+    "3.6.3",
+    "3.7.1",
+    "3.7.2",
+    "3.7.3",
+    "3.7.4",
+    "3.7.5",
+    "3.7.6",
+    "3.7.7",
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4",
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Pure Mathematics 3' via topic-unique token(s) ['mathematics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "tKU7oyyAGyw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "3.3.1",
+    "3.3.2",
+    "3.4.1",
+    "3.4.2",
+    "3.4.3",
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6",
+    "3.6.1",
+    "3.6.2",
+    "3.6.3",
+    "3.7.1",
+    "3.7.2",
+    "3.7.3",
+    "3.7.4",
+    "3.7.5",
+    "3.7.6",
+    "3.7.7",
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4",
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Pure Mathematics 3' via topic-unique token(s) ['mathematics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "flV6wqRgFH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "3.3.1",
+    "3.3.2",
+    "3.4.1",
+    "3.4.2",
+    "3.4.3",
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6",
+    "3.6.1",
+    "3.6.2",
+    "3.6.3",
+    "3.7.1",
+    "3.7.2",
+    "3.7.3",
+    "3.7.4",
+    "3.7.5",
+    "3.7.6",
+    "3.7.7",
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4",
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Pure Mathematics 3' via topic-unique token(s) ['mathematics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "QGBejpBIARk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differential equations' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "ymWyFdvebsM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "5jFAlFpx19w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "HZhn3KqKLSQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "3M7zeQNeDVg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "NYdKYW_neXo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "6cI7SOI_Pg0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "tEKb7n21LV0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "kRNq_AjQezw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "KiVVPjRVS1c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "RVLwlOdget0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "yNaFQMxuJqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "btwO0AYY5Ig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Complex numbers' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "dvmnH7ezDMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "V-iP34MTlNw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "0QT3pl4e6fY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "d6aL71OLilQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "dk2orb51moE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "6NuEz2TosVM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "r2DreCRXTAk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "BtQcJoDfnPI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "QoYrdaXll7I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "p7GjbzfxtNg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "SklnH_abIWw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3.1",
+    "3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Trigonometry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "oKUtXgtg8T8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.1",
+    "3.1.2",
+    "3.1.3",
+    "3.1.4",
+    "3.1.5",
+    "3.1.6",
+    "3.2.1",
+    "3.2.2",
+    "3.2.3",
+    "3.2.4",
+    "3.3.1",
+    "3.3.2",
+    "3.4.1",
+    "3.4.2",
+    "3.4.3",
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6",
+    "3.6.1",
+    "3.6.2",
+    "3.6.3",
+    "3.7.1",
+    "3.7.2",
+    "3.7.3",
+    "3.7.4",
+    "3.7.5",
+    "3.7.6",
+    "3.7.7",
+    "3.8.1",
+    "3.8.2",
+    "3.8.3",
+    "3.8.4",
+    "3.9.1",
+    "3.9.2",
+    "3.9.3",
+    "3.9.4",
+    "3.9.5",
+    "3.9.6",
+    "3.9.7",
+    "3.9.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (title-token): title names topic 'Pure Mathematics 3' via topic-unique token(s) ['mathematics'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "j0B_c8QRgLo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1.5 'recall an appropriate form for expressing rational functions' via token(s) ['fractions', 'partial'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "0TCbSkqcgto",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "UzCdjhYvRNU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "0FjOPylMCKU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "ib4SSeuxcdM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "-NLBsiBNjNs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "tYr7oRth_zo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "9zoe_2gw24s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "nq1Kr5pU2mI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "1abPR--YtZs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "MV2ApVKBV0g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "L--2l0x1-aM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "vnNh4tsOgUQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.1",
+    "3.5.2",
+    "3.5.3",
+    "3.5.4",
+    "3.5.5",
+    "3.5.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Integration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "7sHB2JvK4Ss",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "69DbEzJxI1U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Tns7mw6FlAQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "yucVPhO42TI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "F7_SlhtYVKc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "xYBO_LKnTOA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "Y4whrsca0n8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "5E4GhdoJr-I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "lUnfFQyQdEo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "8oEQEeIQTis",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4.1",
+    "3.4.2",
+    "3.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Differentiation' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "QwRkLdlfJSg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.7.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.7.6 'use formulae to calculate the scalar product of e.g. finding' via token(s) ['products', 'scalar', 'vectors'] (df 9); unit inferred cross-course; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "RT1SqsKJJzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.7.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.7.6 'use formulae to calculate the scalar product of e.g. finding' via token(s) ['products', 'scalar', 'vectors'] (df 9); unit inferred cross-course; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "video": "cXkDYDQg7Tg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.7.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.7.6 'use formulae to calculate the scalar product of e.g. finding' via token(s) ['angle', 'formulae'] (df 3); unit inferred cross-course; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
+   "reviewedUtc": "2026-11-17T14:02:23Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 43,
-  "specPointsMapped": 24,
-  "specPointsUnmapped": 19,
-  "videosTotal": 114,
-  "videosMapped": 114,
+  "specPointsMapped": 43,
+  "specPointsUnmapped": 0,
+  "videosTotal": 175,
+  "videosMapped": 175,
   "videosUnmapped": 0,
-  "mappingRows": 114,
+  "mappingRows": 175,
   "byConfidence": {
-   "high": 90,
-   "low": 22,
-   "medium": 2
+   "high": 94,
+   "medium": 7,
+   "low": 74
   }
  },
  "inputs": {
@@ -3512,7 +5521,13 @@
    "path": "Videos/drafts/cie-a-level-maths-20-pure-3/video-map.draft.external-p13.json",
    "task": "T-VIDEOMAP-P13 (Alt Academy family lane: 9701/9708/9709/9702/9700/9706/9609 CIE-native hub + 8 subject channels)",
    "reviewAppliedUtc": "2026-11-14T19:12:35Z"
+  },
+  "p14": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-a-level-maths-20-pure-3/video-map.draft.external-p14.json",
+   "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:03.949Z"
+ "generatedUtc": "2026-11-17T14:41:11.171Z"
 }

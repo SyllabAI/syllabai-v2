@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 36,
+  "rowsApproved": 42,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 36,
+    "rowsApproved": 42,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -371,7 +371,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 396,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -387,7 +387,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 226,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -403,7 +403,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 282,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -419,7 +419,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 181,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -435,7 +435,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 206,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -451,7 +451,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 154,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -467,7 +467,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 470,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -483,7 +483,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 225,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -499,7 +499,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 907,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -515,7 +515,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 169,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -582,6 +582,72 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "DoodleScience",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "5DcXR1iShGk",
+   "title": "CIE IGCSE Physics | Magnetism & Electromagnetism | Past Paper Questions Talk Through | SwH Learning",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=5DcXR1iShGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SBcb40SG4O0",
+   "title": "Electricity | 9-1 GCSE and IGCSE Physics | AQA, Edexcel, CIE, OCR, WJEC",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=SBcb40SG4O0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W-SGHSB44nk",
+   "title": "Astrophysics - IGCSE Physics - SCIENCE WITH HAZEL",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=W-SGHSB44nk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dWHBYnQwMfA",
+   "title": "CIE IGCSE Physics | Electricity | Past Paper Questions Talk Through | SwH Learning",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=dWHBYnQwMfA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gafeX4l_hRg",
+   "title": "Static Electricity | Edexcel IGCSE Physics",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=gafeX4l_hRg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "np8hVq__0HI",
+   "title": "Electricity | Edexcel IGCSE Physics",
+   "provider": "science-with-hazel",
+   "watchUrl": "https://www.youtube.com/watch?v=np8hVq__0HI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
@@ -595,7 +661,7 @@
     "6.6"
    ],
    "confidence": "medium",
-   "evidence": "particle motion in gases = random motion/pressure on walls (5.15) + temperature-speed link (5.18) + qualitative p-V-T (5.20)",
+   "evidence": "particle motion in gases = random motion/pressure on walls (5.15) + temperature-speed link (5.18) + qualitative p-V-T (5.20) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -615,7 +681,87 @@
     "6.6"
    ],
    "confidence": "medium",
-   "evidence": "pressure in gases = qualitative relationship (5.20) + pV=pV calculations (5.22)",
+   "evidence": "pressure in gases = qualitative relationship (5.20) + pV=pV calculations (5.22) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gafeX4l_hRg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Electricity' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "np8hVq__0HI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electricity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dWHBYnQwMfA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electricity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "SBcb40SG4O0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electricity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -637,7 +783,7 @@
     "7.5"
    ],
    "confidence": "medium",
-   "evidence": "permanent and induced magnets = repel/attract (6.2) + hard/soft materials (6.3) + induced magnetism (6.5)",
+   "evidence": "permanent and induced magnets = repel/attract (6.2) + hard/soft materials (6.3) + induced magnetism (6.5) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -658,7 +804,38 @@
     "7.3"
    ],
    "confidence": "medium",
-   "evidence": "title names permanent magnets (repel/attract; hard/soft magnetic materials)",
+   "evidence": "title names permanent magnets (repel/attract; hard/soft magnetic materials) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "5DcXR1iShGk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "7.12",
+    "7.13",
+    "7.14",
+    "7.15",
+    "7.16",
+    "7.2",
+    "7.3",
+    "7.4",
+    "7.5",
+    "7.6",
+    "7.7",
+    "7.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Magnetism and electromagnetism' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -680,7 +857,7 @@
     "7.7"
    ],
    "confidence": "medium",
-   "evidence": "magnetic fields = field-line term (6.4) + field-pattern practical (6.6) + uniform field between two magnets (6.7)",
+   "evidence": "magnetic fields = field-line term (6.4) + field-pattern practical (6.6) + uniform field between two magnets (6.7) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -700,7 +877,7 @@
     "7.8"
    ],
    "confidence": "medium",
-   "evidence": "electromagnets = current produces field (6.8) + construction (6.9P) + field patterns of wire/coil/solenoid (6.10P)",
+   "evidence": "electromagnets = current produces field (6.8) + construction (6.9P) + field patterns of wire/coil/solenoid (6.10P) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -722,7 +899,7 @@
     "7.14"
    ],
    "confidence": "medium",
-   "evidence": "motor effect = force on current-carrying wire (6.12) + left-hand rule (6.13) + magnitude/direction factors (6.14)",
+   "evidence": "motor effect = force on current-carrying wire (6.12) + left-hand rule (6.13) + magnitude/direction factors (6.14) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -742,7 +919,7 @@
     "7.12"
    ],
    "confidence": "medium",
-   "evidence": "electric motor = the application clause of 6.12",
+   "evidence": "electric motor = the application clause of 6.12 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -762,7 +939,7 @@
     "7.12"
    ],
    "confidence": "medium",
-   "evidence": "title 'The Power of a Motor' names the force-on-current-carrying-wire motor effect of 6.12",
+   "evidence": "title 'The Power of a Motor' names the force-on-current-carrying-wire motor effect of 6.12 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -783,7 +960,7 @@
     "7.16"
    ],
    "confidence": "medium",
-   "evidence": "generator effect = induced voltage in conductor/coil (6.15) + rotating magnet/coil generation (6.16)",
+   "evidence": "generator effect = induced voltage in conductor/coil (6.15) + rotating magnet/coil generation (6.16) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -803,7 +980,7 @@
     "7.16"
    ],
    "confidence": "medium",
-   "evidence": "alternator and dynamo = the rotation generation of 6.16 (alt)",
+   "evidence": "alternator and dynamo = the rotation generation of 6.16 (alt) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -823,7 +1000,7 @@
     "8.2"
    ],
    "confidence": "medium",
-   "evidence": "atomic structure = protons/neutrons/electrons + nuclide symbols of 7.2",
+   "evidence": "atomic structure = protons/neutrons/electrons + nuclide symbols of 7.2 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -843,7 +1020,7 @@
     "8.2"
    ],
    "confidence": "medium",
-   "evidence": "title names the parts of the atom (protons, neutrons, electrons)",
+   "evidence": "title names the parts of the atom (protons, neutrons, electrons) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -864,7 +1041,7 @@
     "8.3"
    ],
    "confidence": "medium",
-   "evidence": "title names representing atoms (nuclide symbols; atomic/mass numbers)",
+   "evidence": "title names representing atoms (nuclide symbols; atomic/mass numbers) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -885,7 +1062,7 @@
     "8.3"
    ],
    "confidence": "low",
-   "evidence": "'Atoms and Isotopes - GCSE Physics Worksheet Answers EXPLAINED' names 'describe the structure of an atom in terms of '",
+   "evidence": "title 'Atoms and Isotopes - GCSE Physics Worksheet Answers EXPLAINED' -> 7.2 'describe the structure of an atom in terms of ' via distinctive token(s) atom; 7.3 'know the terms atomic (proton) number, mass (n' via distinctive token(s) isotope (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -905,7 +1082,7 @@
     "8.3"
    ],
    "confidence": "medium",
-   "evidence": "atomic and mass numbers = the 7.3 terms",
+   "evidence": "atomic and mass numbers = the 7.3 terms (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -925,7 +1102,7 @@
     "8.3"
    ],
    "confidence": "medium",
-   "evidence": "title names a representing-atoms worked example",
+   "evidence": "title names a representing-atoms worked example (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -945,7 +1122,7 @@
     "8.3"
    ],
    "confidence": "medium",
-   "evidence": "title names ions and isotopes",
+   "evidence": "title names ions and isotopes (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -966,7 +1143,7 @@
     "8.5"
    ],
    "confidence": "medium",
-   "evidence": "radioactivity = alpha/beta/gamma as ionising radiations from unstable nuclei (7.4) + their nature (7.5)",
+   "evidence": "radioactivity = alpha/beta/gamma as ionising radiations from unstable nuclei (7.4) + their nature (7.5) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -987,7 +1164,7 @@
     "8.6"
    ],
    "confidence": "medium",
-   "evidence": "properties of alpha/beta/gamma = nature/ranges (7.5) + penetration practical (7.6)",
+   "evidence": "properties of alpha/beta/gamma = nature/ranges (7.5) + penetration practical (7.6) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1008,7 +1185,7 @@
     "8.8"
    ],
    "confidence": "medium",
-   "evidence": "nuclear equations = emission effects on atomic/mass numbers (7.7) + balancing (7.8)",
+   "evidence": "nuclear equations = emission effects on atomic/mass numbers (7.7) + balancing (7.8) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1029,7 +1206,7 @@
     "8.8"
    ],
    "confidence": "medium",
-   "evidence": "title names alpha decay equations (effects on atomic/mass numbers; balancing nuclear equations)",
+   "evidence": "title names alpha decay equations (effects on atomic/mass numbers; balancing nuclear equations) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1050,7 +1227,7 @@
     "8.8"
    ],
    "confidence": "medium",
-   "evidence": "title names beta decay and its nuclear equations (A-level-titled; clauses match)",
+   "evidence": "title names beta decay and its nuclear equations (A-level-titled; clauses match) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1070,7 +1247,7 @@
     "8.10"
    ],
    "confidence": "medium",
-   "evidence": "background radiation = the Earth/space sources of 7.10",
+   "evidence": "background radiation = the Earth/space sources of 7.10 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1091,7 +1268,7 @@
     "8.13"
    ],
    "confidence": "medium",
-   "evidence": "half-life = the definition (7.12) + activity calculations incl. graphical (7.13)",
+   "evidence": "half-life = the definition (7.12) + activity calculations incl. graphical (7.13) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1112,7 +1289,7 @@
     "8.13"
    ],
    "confidence": "medium",
-   "evidence": "'Half-Life | GCSE Physics | Doodle Science' names 'use the concept of the half-life to carry out '",
+   "evidence": "title 'Half-Life | GCSE Physics | Doodle Science' -> 7.13 'use the concept of the half-life to carry out ' via distinctive token(s) half, life; 7.12 'know the definition of the term 'half-life' an' via distinctive token(s) half, life (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1132,7 +1309,7 @@
     "8.14"
    ],
    "confidence": "medium",
-   "evidence": "radiation in medicine = the industry/medicine uses of 7.14",
+   "evidence": "radiation in medicine = the industry/medicine uses of 7.14 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1152,7 +1329,7 @@
     "8.15"
    ],
    "confidence": "medium",
-   "evidence": "irradiation and contamination = the 7.15 distinction",
+   "evidence": "irradiation and contamination = the 7.15 distinction (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1177,7 +1354,7 @@
     "8.24"
    ],
    "confidence": "medium",
-   "evidence": "fission vs fusion = the difference (7.23) + fusion as larger-nuclei creation with mass loss (7.24)",
+   "evidence": "fission vs fusion = the difference (7.23) + fusion as larger-nuclei creation with mass loss (7.24) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1197,7 +1374,7 @@
     "8.17"
    ],
    "confidence": "low",
-   "evidence": "title names a nuclear energy overview; nuclear reactions as energy source partially evidenced",
+   "evidence": "title names a nuclear energy overview; nuclear reactions as energy source partially evidenced (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1219,7 +1396,35 @@
     "8.25"
    ],
    "confidence": "medium",
-   "evidence": "title names fusion reactors (fusion vs fission; fusion as energy source)",
+   "evidence": "title names fusion reactors (fusion vs fission; fusion as energy source) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "W-SGHSB44nk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "9.10",
+    "9.2",
+    "9.3",
+    "9.4",
+    "9.5",
+    "9.6",
+    "9.7",
+    "9.8",
+    "9.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Astrophysics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1240,7 +1445,7 @@
     "9.5"
    ],
    "confidence": "medium",
-   "evidence": "the solar system = gravity causing orbits (8.4) + orbit differences of comets/moons/planets (8.5)",
+   "evidence": "the solar system = gravity causing orbits (8.4) + orbit differences of comets/moons/planets (8.5) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1260,7 +1465,7 @@
     "9.4"
    ],
    "confidence": "low",
-   "evidence": "title 'Kinetic Energy of Satellites' names the gravitational-orbit content of 8.4 (satellites orbiting under gravity)",
+   "evidence": "title 'Kinetic Energy of Satellites' names the gravitational-orbit content of 8.4 (satellites orbiting under gravity); KE-maths framing exceeds the spec, disclosed (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1280,7 +1485,7 @@
     "9.6"
    ],
    "confidence": "medium",
-   "evidence": "orbital motion = the orbital-speed relationship of 8.6",
+   "evidence": "orbital motion = the orbital-speed relationship of 8.6 (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1300,7 +1505,7 @@
     "9.6"
    ],
    "confidence": "medium",
-   "evidence": "title names orbital speed (v = 2 pi r / T)",
+   "evidence": "title names orbital speed (v = 2 pi r / T) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1321,7 +1526,7 @@
     "9.9"
    ],
    "confidence": "medium",
-   "evidence": "lifecycle of stars = Sun-mass evolution (8.9) + larger-mass evolution (8.10)",
+   "evidence": "lifecycle of stars = Sun-mass evolution (8.9) + larger-mass evolution (8.10) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1336,16 +1541,16 @@
  ],
  "coverage": {
   "specPointsTotal": 57,
-  "specPointsMapped": 39,
-  "specPointsUnmapped": 18,
-  "videosTotal": 36,
-  "videosMapped": 36,
+  "specPointsMapped": 44,
+  "specPointsUnmapped": 13,
+  "videosTotal": 42,
+  "videosMapped": 42,
   "videosUnmapped": 0,
-  "mappingRows": 36,
+  "mappingRows": 42,
   "byConfidence": {
    "high": 0,
    "medium": 33,
-   "low": 3
+   "low": 9
   }
  },
  "inputs": {
@@ -1369,5 +1574,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-14T19:16:04.134Z"
+ "generatedUtc": "2026-11-17T14:41:11.517Z"
 }
