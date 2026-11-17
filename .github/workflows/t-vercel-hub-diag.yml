@@ -69,6 +69,9 @@ jobs:
           be = one.get("blockingError")
           print("blockingError:", json.dumps(be) if be else "(none)")
           print("disabledReason:", one.get("disabledReason"))
+          print("errorMessage:", one.get("errorMessage"))
+          print("createdAt/createdBy:", one.get("createdAt"), one.get("creator", {}).get("username"))
+          print("meta:", json.dumps(one.get("meta"))[:400])
           data = vapi(f"https://api.vercel.com/v3/deployments/{failed.get('uid')}/events?limit=100&builds=1")
           events = data.get("events", []) if isinstance(data, dict) else data
           lines = []
@@ -81,4 +84,6 @@ jobs:
                   lines.append(str(txt))
           for ln in lines[-60:]:
               print(ln[:300])
+          if not lines:
+              print("NO-EVENTS raw first 1500 chars:", json.dumps(data)[:1500])
           PY
