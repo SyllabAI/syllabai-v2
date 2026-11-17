@@ -26,6 +26,11 @@ function kgRoutes(codes: string[]): Route[] {
           .map((c, i) => ({ id: c === "4CH1-S1-c" ? NODE_4CH1 : "20000000-0000-4000-8000-" + i, code: c }));
       },
     },
+    // T-TUTOR-AIM-P1 (DC10 §7.1): the misconception-catalog route — the
+    // fake graph carries NO misconception edges, so every topic resolves
+    // to an empty catalog (the L4 pass-through); tag-law route tests pin
+    // their own rows when needed
+    { match: /relation_type = 'MISCONCEPTION_OF'/, rows: [] },
     { match: /update questions set active = false/, rows: [] },
     { match: /insert into questions/, rows: [] },
     { match: /insert into question_versions/, rows: [] },
@@ -76,7 +81,80 @@ describe("ingest replace flow (frozen :138-299)", () => {
     expect(summary).toEqual({
       questions: 1, mcq: 1, structured: 0, parts: 0, options: 2, markPoints: 1,
       specPointMappings: 0, topicMappings: 0, assets: 0, deactivated: 2, corpusVersion: "cor-9",
+      misconceptionTagged: 0, misconceptionUntaggedNoCatalog: 1,
     });
+  });
+
+  test("misconception-tag law L2: an unresolved tag refuses the package (DC10 §7.1)", async () => {
+    const routes = kgRoutes(["4CH1-S1-c"]).map((r) =>
+      /relation_type = 'MISCONCEPTION_OF'/.test(String(r.match))
+        ? {
+            match: r.match,
+            rows: [],
+            rowsFor: () => [{ misco_id: "33333333-3333-4333-8333-333333333333", topic_id: NODE_4CH1 }],
+          }
+        : r,
+    );
+    const s = svc(routes);
+    const q = mcq({
+      options: [
+        { label: "A", text: "wrong", isCorrect: false, misconceptionNodeId: "44444444-4444-4444-8444-444444444444" },
+        { label: "B", text: "right", isCorrect: true, misconceptionNodeId: null },
+      ],
+    });
+    await expect(s.ingest(buildZip([{ name: "package.json", data: pkgJson([q]) }]))).rejects.toThrow(
+      /does not resolve/,
+    );
+  });
+
+  test("misconception-tag law L3: an untagged wrong option under a live catalog refuses the package", async () => {
+    const routes = kgRoutes(["4CH1-S1-c"]).map((r) =>
+      /relation_type = 'MISCONCEPTION_OF'/.test(String(r.match))
+        ? {
+            match: r.match,
+            rows: [],
+            rowsFor: () => [{ misco_id: "33333333-3333-4333-8333-333333333333", topic_id: NODE_4CH1 }],
+          }
+        : r,
+    );
+    const s = svc(routes);
+    await expect(s.ingest(buildZip([{ name: "package.json", data: pkgJson([mcq()]) }]))).rejects.toThrow(
+      /every distractor must name its node/,
+    );
+  });
+
+  test("misconception-tag law happy path: a resolved tag lands in question_options.misconception_node_id", async () => {
+    const TAG = "33333333-3333-4333-8333-333333333333";
+    const optionInserts: unknown[][] = [];
+    const routes = kgRoutes(["4CH1-S1-c"]).map((r) => {
+      if (/relation_type = 'MISCONCEPTION_OF'/.test(String(r.match))) {
+        return { match: r.match, rows: [], rowsFor: () => [{ misco_id: TAG, topic_id: NODE_4CH1 }] };
+      }
+      if (/insert into question_options/.test(String(r.match))) {
+        return { match: r.match, rows: [], rowsFor: (params: unknown[]) => (optionInserts.push(params), []) };
+      }
+      return r;
+    });
+    const s = svc(routes);
+    const q = mcq({
+      options: [
+        { label: "A", text: "wrong", isCorrect: false, misconceptionNodeId: TAG },
+        { label: "B", text: "right", isCorrect: true, misconceptionNodeId: null },
+      ],
+    });
+    const summary = await s.ingest(buildZip([{ name: "package.json", data: pkgJson([q]) }]));
+    expect(summary.misconceptionTagged).toBe(1);
+    expect(summary.misconceptionUntaggedNoCatalog).toBe(0);
+    // the WRONG option's row binds the tag at the misconception_node_id slot
+    // (values order: id, question_id, label, option_text, is_correct,
+    //  misconception_node_id, ordering, created_at)
+    expect(optionInserts.length).toBe(2);
+    const wrongRow = optionInserts[0]!;
+    const correctRow = optionInserts[1]!;
+    expect(wrongRow[4]).toBe(false);
+    expect(wrongRow[5]).toBe(TAG);
+    expect(correctRow[4]).toBe(true);
+    expect(correctRow[5]).toBe(null);
   });
 
   test("asset-bearing ingest replaces the store wholesale (one delete + inserts, SVG demoted at the wire)", async () => {
@@ -177,6 +255,8 @@ describe("ingest replace flow (frozen :138-299)", () => {
         rows: [{ id: NODE_4CH1, code: "4CH1-S1-c" }],
         rowsFor: (p) => (p[0] as string[]).map((c) => ({ id: NODE_4CH1, code: c })),
       },
+      // T-TUTOR-AIM-P1 (DC10 §7.1): empty misconception catalog → L4 pass-through
+      { match: /relation_type = 'MISCONCEPTION_OF'/, rows: [] },
       {
         match: /update questions set active = false/,
         rows: [],

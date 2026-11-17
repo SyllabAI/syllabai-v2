@@ -1,6 +1,6 @@
 # DC10 — Tutor upgrade: keep the grounding, add the aim (T-TUTOR-AIM-1)
 
-**Status:** proposed, not started · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
+**Status:** P1 implemented (T-TUTOR-AIM-P1 run-001 — §7.1/§7.2/§7.3 + §13.1; PR of record) · P2/P3 proposed · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
 
 ## 1. Thesis
 
@@ -164,6 +164,16 @@ on model updates. The work is discipline and closure, not schema:
 independent signals and no effect on downstream drill performance over 4
 weeks, revert the generation law to optional. Cheap kill: it is a lint rule
 and a prompt bump.
+
+**Run-001 (T-TUTOR-AIM-P1, 2026-11-17):** the corpus-side half shipped — the
+`insertOption` null hardcode is retired; packages carry `misconceptionNodeId`
+per option (additive parse); the apply flow enforces the tag law fail-closed
+(every wrong option names a catalog node when its topic's catalog is live;
+unresolvable or correct-option tags refuse the package; topics with no
+catalog rows pass untagged as the disclosed progressive-coverage residual,
+counted per package). The read side and the model-update write law were
+already wired and now have something to consume. The authoring-toolchain
+prompt bump is the content team's follow-up.
 
 ### 7.2 Voice law (P1)
 Pinned-prompt additions to the tutor generation bump: no praise padding ("great

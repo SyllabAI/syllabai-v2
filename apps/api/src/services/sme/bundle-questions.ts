@@ -80,7 +80,8 @@
  *                          skipped past the first occurrence (dupOrder).
  *     sourcePaper          the first part's sourcePaper object verbatim.
  *     options              part.choices → SmeOption (label/textMd/
- *                          isCorrect → label/text/isCorrect).
+ *                          isCorrect → label/text/isCorrect;
+ *                          misconceptionNodeId rides through when present).
  *     packageVersion       "1.0" (the shim's normalized envelope — the
  *                          SOURCE envelope 1.1 is carried in corpusVersion
  *                          and in the receipt).
@@ -126,6 +127,9 @@ interface BundleChoice {
   label: string;
   isCorrect: boolean;
   textMd?: string;
+  /** T-TUTOR-AIM-P1 (DC10 §7.1), additive: the KG misconception node this
+   *  WRONG option expresses; absent on bundles that predate the law. */
+  misconceptionNodeId?: string;
 }
 
 interface BundlePart {
@@ -498,6 +502,10 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
             label: c.label,
             text: c.textMd ?? "",
             isCorrect: c.isCorrect,
+            // T-TUTOR-AIM-P1 (DC10 §7.1): the tag rides through when the
+            // bundle carries it; the apply flow's misconception-tag law
+            // decides whether its presence/absence is legal
+            misconceptionNodeId: c.misconceptionNodeId ?? null,
           }));
           optionCount += options.length;
         }

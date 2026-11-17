@@ -1,128 +1,161 @@
 version: 1
 task:
   id: T-MG-CALC-2
-  title: "The device-shell chase (operator ruling 2026-11-17: 'chase their device-shell depth (HOME/CATALOG/EXE posture, model picker) also all of their calc features') — the complete MG ClassWiz emulator feature map extracted from their served bundle + live anonymous probes, and the parity spec for our overlay: CW shell posture, model picker with level-default, persisted settings model, CATALOG, Statistics/Table apps, per-model shift legends"
-  owner: "main agent (Z.ai)"
+  title: 'The device-shell chase (operator ruling 2026-11-17: ''chase their device-shell depth (HOME/CATALOG/EXE
+    posture, model picker) also all of their calc features'') — the complete MG ClassWiz emulator feature
+    map extracted from their served bundle + live anonymous probes, and the parity spec for our overlay:
+    CW shell posture, model picker with level-default, persisted settings model, CATALOG, Statistics/Table
+    apps, per-model shift legends'
+  owner: main agent (Z.ai)
   status: OPEN
   priority: P1
-  band: "T-MG-CALC (the past-paper viewer's scientific calculator overlay — engine, keypad, copy affordance, gesture seam)"
+  band: T-MG-CALC (the past-paper viewer's scientific calculator overlay — engine, keypad, copy affordance,
+    gesture seam)
   wave: mg-calc-fidelity
-  deps: [T-MG-CALC-1]
-  plan_of_record: "download/t-mg-ch1-mark-1/T-MG-CALC-task-card-scientific-calculator.md (Addendum C) + download/t-mg-ch1-mark-1/STATE-AND-FOLLOWUP.md Addendum 34; parent card T-MG-CALC-1 (amendment 1, PR #1054) established MG parity as the second reference implementation"
+  deps:
+  - T-MG-CALC-1
+  plan_of_record: 'download/t-mg-ch1-mark-1/T-MG-CALC-task-card-scientific-calculator.md (Addendum C)
+    + download/t-mg-ch1-mark-1/STATE-AND-FOLLOWUP.md Addendum 34; parent card T-MG-CALC-1 (amendment 1,
+    PR #1054) established MG parity as the second reference implementation'
   parent: T-MG-MARK-PARITY-1
-  id_note: >
-    Second T-MG-CALC card — the chase card. T-MG-CALC-1 proved the
-    negative finding wrong and pinned MG parity as an open question; the
-    operator then ruled to chase the full depth. This card holds the
-    complete extracted feature map (the evidence) and the parity spec
-    (the pins). Implementation ordering: T-MG-CALC-1's two fidelity
-    fixes (FIX-vs-exact, structural SHIFT remaps) land FIRST — the shell
-    work builds on the corrected base.
-  what_it_is: >
-    The chase: MG's emulator (chunk 2m9-y4bg7mmjk.js ≈ 2.67 MB pure JS,
-    no wasm — an in-house, DOM-native, skin-driven ClassWiz simulator)
-    is the second reference implementation for our overlay. Its complete
-    observable feature set is mapped below in evidence_map. The parity
-    spec targets: (A) the CW device shell — HOME app grid, OK-dial
-    navigation, SETTINGS numbered dialog, CATALOG, TOOLS, QR, VARIABLE
-    ⇄x, FUNCTION f(x), EXE posture, A–F variable store keys; (B) the
-    model picker — fx-83GT CW / fx-85GT CW / fx-991 CW with per-model
-    skins (shift color, solar), apps masks, shift legends, feature flags,
-    and the LEVEL-DRIVEN DEFAULT (gcse/ks2 → fx-83GT CW; a-level/
-    as-level/igcse/international → fx-991 CW); (C) the persisted settings
-    model — io mathI/DecimalI, angle deg/rad/gra, numberFormat
-    norm1/norm2/fix/sci, fraction improper/mixed, decimalMark dot/comma,
-    digitSeparator, variables store, ans, f/g function slots; (D) the
-    CATALOG — 7 device-true categories (trig, angle, function-analysis,
-    numeric, probability, statistics, other); (E) the apps MG actually
-    ENABLES — Calculate, Statistics, Table only (everything else renders
-    'This app isn't on the simulator yet.' — their staged rollout is also
-    the exam-honest scope: no spreadsheet/matrix/vector/baseN app
-    surfaces even on the 991CW skin); (F) per-model shift legends
-    (83/85GT: x²-shift → recurring-decimal ■̇ entry; 991CW: x²-shift →
-    log, ( -shift → =, d9-shift → i); (G) the error set with HINTS
-    (Math/Syntax/Stack/Argument/Range ERROR + .cw-error-hint); (H) the
-    popup architecture — minimized-state persistence, shared settings
-    across model switches.
+  id_note: 'Second T-MG-CALC card — the chase card. T-MG-CALC-1 proved the negative finding wrong and
+    pinned MG parity as an open question; the operator then ruled to chase the full depth. This card holds
+    the complete extracted feature map (the evidence) and the parity spec (the pins). Implementation ordering:
+    T-MG-CALC-1''s two fidelity fixes (FIX-vs-exact, structural SHIFT remaps) land FIRST — the shell work
+    builds on the corrected base.
+
+    '
+  what_it_is: 'The chase: MG''s emulator (chunk 2m9-y4bg7mmjk.js ≈ 2.67 MB pure JS, no wasm — an in-house,
+    DOM-native, skin-driven ClassWiz simulator) is the second reference implementation for our overlay.
+    Its complete observable feature set is mapped below in evidence_map. The parity spec targets: (A)
+    the CW device shell — HOME app grid, OK-dial navigation, SETTINGS numbered dialog, CATALOG, TOOLS,
+    QR, VARIABLE ⇄x, FUNCTION f(x), EXE posture, A–F variable store keys; (B) the model picker — fx-83GT
+    CW / fx-85GT CW / fx-991 CW with per-model skins (shift color, solar), apps masks, shift legends,
+    feature flags, and the LEVEL-DRIVEN DEFAULT (gcse/ks2 → fx-83GT CW; a-level/ as-level/igcse/international
+    → fx-991 CW); (C) the persisted settings model — io mathI/DecimalI, angle deg/rad/gra, numberFormat
+    norm1/norm2/fix/sci, fraction improper/mixed, decimalMark dot/comma, digitSeparator, variables store,
+    ans, f/g function slots; (D) the CATALOG — 7 device-true categories (trig, angle, function-analysis,
+    numeric, probability, statistics, other); (E) the apps MG actually ENABLES — Calculate, Statistics,
+    Table only (everything else renders ''This app isn''t on the simulator yet.'' — their staged rollout
+    is also the exam-honest scope: no spreadsheet/matrix/vector/baseN app surfaces even on the 991CW skin);
+    (F) per-model shift legends (83/85GT: x²-shift → recurring-decimal ■̇ entry; 991CW: x²-shift → log,
+    ( -shift → =, d9-shift → i); (G) the error set with HINTS (Math/Syntax/Stack/Argument/Range ERROR
+    + .cw-error-hint); (H) the popup architecture — minimized-state persistence, shared settings across
+    model switches.
+
+    '
   evidence_map:
-    bundle_extraction_20261117: >
-      From MG's served chunks (downloaded from the anonymous page; the
-      registry lives in the viewer route chunks, the engine in the lazy
-      chunk): model registry 'fx-83gt-cw' {label 'fx-83GT CW',
-      skin {shiftColor blue, solar false}, apps l, shiftOverrides
-      {sq → {label ■̇, glyph recur, aria 'Recurring decimal'},
-      lparen null, d9 null}, features {recurringDecimal true, complex
-      false, engineerSymbol false}}; 'fx-85gt-cw' (same, solar TRUE);
-      'fx-991cw' {label 'fx-991CW', skin {shiftColor gold, solar true},
-      shiftOverrides {sq → {label log, aria 'Logarithm base 10'},
-      lparen → {label =, aria Equals}, d9 → {label i, aria
-      'Imaginary unit'}}, features {recurringDecimal false, complex
-      true, engineerSymbol true}}; level→model map n {gcse, ks2 →
-      fx-83gt-cw; a-level, as-level, igcse, international-* → fx-991cw};
-      app registry 12 registrations (t(name,label,enabled)):
-      calculate ✓ statistics ✓ table ✓ ratio ✗ mathBox ✗
-      distribution ✗ spreadsheet ✗ equation ✗ inequality ✗
-      complex ✗ baseN ✗ matrix ✗ vector ✗ (per-model lists l = 5 apps
-      for 83/85GT, a = 12 for 991CW); CATALOG categories
-      catalog/{trig, angle, function-analysis, numeric, probability,
-      statistics, other}; key aria map includes the full CW shell
-      (Home/Settings/Tools/Catalog/Shift/Variable/OK/On/Off, A–F
-      'variable a'…'variable f', Mixed fraction, 'Logarithm with base',
-      'Times ten to the power', 'QR code'); error strings Math/Syntax/
-      Stack/Argument/Range ERROR; CSS component inventory cw-lcd/
-      cw-entry-line/cw-result-line/cw-frac/cw-mixed/cw-sqrt/cw-radical/
-      cw-root-index/cw-recur-digit/cw-abs/cw-keypad/cw-key/cw-home-grid/
-      cw-nav-grid/cw-menu-row/cw-list-row/cw-form-row/cw-error-title/
-      cw-error-hint/cw-solar/cw-indicators — a DOM-native natural-
-      display renderer, not canvas.
-    live_probes_20261117: >
-      Anonymous (no login): More controls → Calculator opens the device;
-      GCSE paper defaults to fx-83GT CW (level-driven default confirmed).
-      HOME menu on 83GT lists Calculate/Statistics/Table/Ratio/Math Box;
-      arrow+OK navigation is device-true (direct clicks do NOT launch —
-      the OK-dial flow is required); Ratio launches to the staged-rollout
-      notice 'This app isn't on the simulator yet.'; the settings dialog
-      is a numbered device-true list (1 Input/Output MathI/MathO,
-      2 Angle Unit Degree, 3 Number Format Norm 2, 4 Fraction Result
-      Improp Fraction, …); the persisted state
-      localStorage['genie-calculator-v1'] = {v 1, settings {io
-      mathI/mathO, angle deg, numberFormat {kind norm, variant 2},
-      fraction improper, decimalMark dot, digitSeparator true},
-      variables {}, ans null, functions {f null, g null}} — settings
-      survive reloads AND are shared across model switches; a companion
-      key win/genie-calculator-popup {isMinimized false} persists the
-      popup state. Screenshot evidence: download/mg-classwiz-anonymous-
-      evidence.png (fx-83GT CW layout, full CW shell). Statististics/
-      Table app screens were not captured (cursor state machine resists
-      blind automation) — the registry marks them ENABLED; their screen
+    bundle_extraction_20261117: 'From MG''s served chunks (downloaded from the anonymous page; the registry
+      lives in the viewer route chunks, the engine in the lazy chunk): model registry ''fx-83gt-cw'' {label
+      ''fx-83GT CW'', skin {shiftColor blue, solar false}, apps l, shiftOverrides {sq → {label ■̇, glyph
+      recur, aria ''Recurring decimal''}, lparen null, d9 null}, features {recurringDecimal true, complex
+      false, engineerSymbol false}}; ''fx-85gt-cw'' (same, solar TRUE); ''fx-991cw'' {label ''fx-991CW'',
+      skin {shiftColor gold, solar true}, shiftOverrides {sq → {label log, aria ''Logarithm base 10''},
+      lparen → {label =, aria Equals}, d9 → {label i, aria ''Imaginary unit''}}, features {recurringDecimal
+      false, complex true, engineerSymbol true}}; level→model map n {gcse, ks2 → fx-83gt-cw; a-level,
+      as-level, igcse, international-* → fx-991cw}; app registry 12 registrations (t(name,label,enabled)):
+      calculate ✓ statistics ✓ table ✓ ratio ✗ mathBox ✗ distribution ✗ spreadsheet ✗ equation ✗ inequality
+      ✗ complex ✗ baseN ✗ matrix ✗ vector ✗ (per-model lists l = 5 apps for 83/85GT, a = 12 for 991CW);
+      CATALOG categories catalog/{trig, angle, function-analysis, numeric, probability, statistics, other};
+      key aria map includes the full CW shell (Home/Settings/Tools/Catalog/Shift/Variable/OK/On/Off, A–F
+      ''variable a''…''variable f'', Mixed fraction, ''Logarithm with base'', ''Times ten to the power'',
+      ''QR code''); error strings Math/Syntax/ Stack/Argument/Range ERROR; CSS component inventory cw-lcd/
+      cw-entry-line/cw-result-line/cw-frac/cw-mixed/cw-sqrt/cw-radical/ cw-root-index/cw-recur-digit/cw-abs/cw-keypad/cw-key/cw-home-grid/
+      cw-nav-grid/cw-menu-row/cw-list-row/cw-form-row/cw-error-title/ cw-error-hint/cw-solar/cw-indicators
+      — a DOM-native natural- display renderer, not canvas.
+
+      '
+    live_probes_20261117: 'Anonymous (no login): More controls → Calculator opens the device; GCSE paper
+      defaults to fx-83GT CW (level-driven default confirmed). HOME menu on 83GT lists Calculate/Statistics/Table/Ratio/Math
+      Box; arrow+OK navigation is device-true (direct clicks do NOT launch — the OK-dial flow is required);
+      Ratio launches to the staged-rollout notice ''This app isn''t on the simulator yet.''; the settings
+      dialog is a numbered device-true list (1 Input/Output MathI/MathO, 2 Angle Unit Degree, 3 Number
+      Format Norm 2, 4 Fraction Result Improp Fraction, …); the persisted state localStorage[''genie-calculator-v1'']
+      = {v 1, settings {io mathI/mathO, angle deg, numberFormat {kind norm, variant 2}, fraction improper,
+      decimalMark dot, digitSeparator true}, variables {}, ans null, functions {f null, g null}} — settings
+      survive reloads AND are shared across model switches; a companion key win/genie-calculator-popup
+      {isMinimized false} persists the popup state. Screenshot evidence: download/mg-classwiz-anonymous-
+      evidence.png (fx-83GT CW layout, full CW shell). Statististics/ Table app screens were not captured
+      (cursor state machine resists blind automation) — the registry marks them ENABLED; their screen
       design remains open for the implementation run to probe interactively.
+
+      '
   acceptance_pins:
-    - "(spec pin — shell posture, phase A) our overlay gains the CW shell without losing the classic keypad: HOME (app grid), SETTINGS (numbered dialog), CATALOG, TOOLS, VARIABLE ⇄x, FUNCTION f(x), QR (display-only, device-true), OK-dial (▲▼◀▶ + OK) driving app/menu navigation, EXE as the device-true equals, and the A–F variable store keys with x⁻¹/³√ column — the existing 5-column layout remains reachable via the classic/compact toggle so nothing regresses for current users"
-    - "(spec pin — model picker, phase A) a 'Calculator model' picker in the overlay header offering fx-83GT CW / fx-85GT CW / fx-991 CW with a 'Not affiliated with Casio'-style disclaimer, defaulting BY THE PAPER'S LEVEL exactly as MG does (gcse/ks2 → fx-83GT CW; a-level/as-level/igcse/international → fx-991 CW), manual override persisted; per-model skin (shift color blue/gold, solar panel), app mask, shift legends and feature flags drive the whole keypad from ONE registry in our code"
-    - "(spec pin — settings model, phase B) the numbered settings dialog writes a persisted state shaped like MG's (io mathI/DecimalI, angle deg/rad/gra, numberFormat norm1/norm2/fix/sci, fraction improper/mixed, decimalMark dot/comma, digitSeparator on/off, variables store, ans, f/g slots) — localStorage versioned, surviving reloads, shared across model switches; Fix/Sci wiring also CLOSES the T-MG-CALC-1 FIX-vs-exact deviation (FIX overrides exact-fraction display)"
-    - "(spec pin — catalog, phase B) CATALOG exposes the 7 device-true categories (trig, angle, function-analysis, numeric, probability, statistics, other) with the device's function inventory per category; catalog insertion obeys the mathI auto-close laws already in calc-engine"
-    - "(spec pin — apps, phase C, exam-honest scope) Statistics (1-variable/2-variable lists + summary stats) and Table (f(x)/g(x) generation) are the ONLY apps shipped — matching MG's enabled set exactly; every other registered app renders the staged-rollout notice pattern ('This app isn't on the simulator yet.') which doubles as the exam-honest fence; f/g slots feed the Table app and the FUNCTION key"
-    - "(spec pin — shift legends, phase B, pairs with T-MG-CALC-1) per-model shift legends come from the registry: on fx-83GT CW, SHIFT+x² inserts the recurring-decimal entry (■̇ glyph with cw-recur-digit rendering) and SHIFT+( / SHIFT+×10^e follow the 83GT device sheet; on fx-991 CW, SHIFT+x² = log, SHIFT+( = =, SHIFT+×10^e = i with complex numbers enabled (a+bi / r∠θ via the settings io) — the one-shot consume law from T-MG-CALC-1 is preserved"
-    - "(spec pin — error hints, phase B) every Math/Syntax/Stack/Argument/Range ERROR renders a hint line under the message (the .cw-error-hint pattern) using the device's hint text where known"
-    - "(regression pin) the T-MG-CALC-1 battery (scripts/mg-calc-battery.js + battery2/3/4) stays green through every phase; the z-law, gesture relay, copy affordance and split-view spanning are byte-identical in behaviour; the FIX-vs-exact and structural-SHIFT fixes from T-MG-CALC-1 land BEFORE phase A"
-    - "(fence pin) zero contracts/api/db bytes; no paid-tier or account gating added to the calculator (MG ships it anonymous — ours stays inside the viewer's existing gate, nothing stricter); no spreadsheet/matrix/vector/baseN/inequality/distribution app surfaces (out of the exam class even on 991CW); no physical-keyboard mapping without the T-MG-CALC-1 open-question ruling"
+  - '(spec pin — shell posture, phase A) our overlay gains the CW shell without losing the classic keypad:
+    HOME (app grid), SETTINGS (numbered dialog), CATALOG, TOOLS, VARIABLE ⇄x, FUNCTION f(x), QR (display-only,
+    device-true), OK-dial (▲▼◀▶ + OK) driving app/menu navigation, EXE as the device-true equals, and
+    the A–F variable store keys with x⁻¹/³√ column — the existing 5-column layout remains reachable via
+    the classic/compact toggle so nothing regresses for current users'
+  - (spec pin — model picker, phase A) a 'Calculator model' picker in the overlay header offering fx-83GT
+    CW / fx-85GT CW / fx-991 CW with a 'Not affiliated with Casio'-style disclaimer, defaulting BY THE
+    PAPER'S LEVEL exactly as MG does (gcse/ks2 → fx-83GT CW; a-level/as-level/igcse/international → fx-991
+    CW), manual override persisted; per-model skin (shift color blue/gold, solar panel), app mask, shift
+    legends and feature flags drive the whole keypad from ONE registry in our code
+  - (spec pin — settings model, phase B) the numbered settings dialog writes a persisted state shaped
+    like MG's (io mathI/DecimalI, angle deg/rad/gra, numberFormat norm1/norm2/fix/sci, fraction improper/mixed,
+    decimalMark dot/comma, digitSeparator on/off, variables store, ans, f/g slots) — localStorage versioned,
+    surviving reloads, shared across model switches; Fix/Sci wiring also CLOSES the T-MG-CALC-1 FIX-vs-exact
+    deviation (FIX overrides exact-fraction display)
+  - (spec pin — catalog, phase B) CATALOG exposes the 7 device-true categories (trig, angle, function-analysis,
+    numeric, probability, statistics, other) with the device's function inventory per category; catalog
+    insertion obeys the mathI auto-close laws already in calc-engine
+  - (spec pin — apps, phase C, exam-honest scope) Statistics (1-variable/2-variable lists + summary stats)
+    and Table (f(x)/g(x) generation) are the ONLY apps shipped — matching MG's enabled set exactly; every
+    other registered app renders the staged-rollout notice pattern ('This app isn't on the simulator yet.')
+    which doubles as the exam-honest fence; f/g slots feed the Table app and the FUNCTION key
+  - '(spec pin — shift legends, phase B, pairs with T-MG-CALC-1) per-model shift legends come from the
+    registry: on fx-83GT CW, SHIFT+x² inserts the recurring-decimal entry (■̇ glyph with cw-recur-digit
+    rendering) and SHIFT+( / SHIFT+×10^e follow the 83GT device sheet; on fx-991 CW, SHIFT+x² = log, SHIFT+(
+    = =, SHIFT+×10^e = i with complex numbers enabled (a+bi / r∠θ via the settings io) — the one-shot
+    consume law from T-MG-CALC-1 is preserved'
+  - (spec pin — error hints, phase B) every Math/Syntax/Stack/Argument/Range ERROR renders a hint line
+    under the message (the .cw-error-hint pattern) using the device's hint text where known
+  - (regression pin) the T-MG-CALC-1 battery (scripts/mg-calc-battery.js + battery2/3/4) stays green through
+    every phase; the z-law, gesture relay, copy affordance and split-view spanning are byte-identical
+    in behaviour; the FIX-vs-exact and structural-SHIFT fixes from T-MG-CALC-1 land BEFORE phase A
+  - (fence pin) zero contracts/api/db bytes; no paid-tier or account gating added to the calculator (MG
+    ships it anonymous — ours stays inside the viewer's existing gate, nothing stricter); no spreadsheet/matrix/vector/baseN/inequality/distribution
+    app surfaces (out of the exam class even on 991CW); no physical-keyboard mapping without the T-MG-CALC-1
+    open-question ruling
   non_goals:
-    - "no pixel-perfect MG clone — our visual identity stays; the CHASE is depth (shell/settings/catalog/apps/picker), not cosmetics"
-    - "no engine rewrite: the exact-rational BigInt engine is AHEAD of MG's (our S⇔D exact law passed their device class battery) — the shell wraps it, it does not replace it"
-    - "no graphing/CAS (out of class for all three models)"
-    - "no implementation in this card — T-MG-CALC-2 is the map + spec; implementation runs get their own cards per phase with the operator's sequencing"
-  execution_record: >
-    chase run of record 2026-11-17 (this card's authoring run, no code
-    changed): re-harvested MG's 145 served chunks + the 2.67 MB lazy
-    emulator chunk after the /tmp recycle; extracted the full model
-    registry, level→model map, 12-app registry, CATALOG categories, key
-    aria map, error set and the cw-* component inventory from the
-    bundles; then probed the live device anonymously (fresh sessions,
-    real clicks): level-driven default confirmed, HOME menu captured,
-    device-true arrow+OK navigation discovered (direct clicks no-op),
-    the staged-rollout notice captured on Ratio, the numbered settings
-    dialog captured, and the full persisted state JSON read from
-    localStorage (genie-calculator-v1 + win/genie-calculator-popup).
-    Model-switch probing via the custom dropdown and Statistics/Table
-    screen capture remain open (blind automation limits) — flagged for
-    the implementation run's interactive pass.
+  - no pixel-perfect MG clone — our visual identity stays; the CHASE is depth (shell/settings/catalog/apps/picker),
+    not cosmetics
+  - 'no engine rewrite: the exact-rational BigInt engine is AHEAD of MG''s (our S⇔D exact law passed their
+    device class battery) — the shell wraps it, it does not replace it'
+  - no graphing/CAS (out of class for all three models)
+  - no implementation in this card — T-MG-CALC-2 is the map + spec; implementation runs get their own
+    cards per phase with the operator's sequencing
+  execution_record: "chase run of record 2026-11-17 (this card's authoring run, no code changed): re-harvested\
+    \ MG's 145 served chunks + the 2.67 MB lazy emulator chunk after the /tmp recycle; extracted the full\
+    \ model registry, level→model map, 12-app registry, CATALOG categories, key aria map, error set and\
+    \ the cw-* component inventory from the bundles; then probed the live device anonymously (fresh sessions,\
+    \ real clicks): level-driven default confirmed, HOME menu captured, device-true arrow+OK navigation\
+    \ discovered (direct clicks no-op), the staged-rollout notice captured on Ratio, the numbered settings\
+    \ dialog captured, and the full persisted state JSON read from localStorage (genie-calculator-v1 +\
+    \ win/genie-calculator-popup). Model-switch probing via the custom dropdown and Statistics/Table screen\
+    \ capture remain open (blind automation limits) — flagged for the implementation run's interactive\
+    \ pass.\n\n    IMPLEMENTATION RUN — PHASE A, 2026-11-17 (same day as the chase):\n    the shell +\
+    \ picker SHIPPED on the corrected base (T-MG-CALC-1's two\n    fidelity fixes landed first, per the\
+    \ regression pin). What landed:\n    calc-models.ts (the ONE registry — the three models with MG-verbatim\n\
+    \    skins/features/app-masks/shift-overrides, MG's level→model map, the\n    device-true CATALOG\
+    \ categories with engine-supported items only, the\n    MG-shaped persisted record with load/save\
+    \ validation); the engine's\n    variable store (A–F, x, y, z; unset = 0, the device law), f(x)/g(x)\n\
+    \    definitions with EXACT val-atom substitution (no decimal drift) and\n    the recursion guard,\
+    \ the ⇄ mixed⇔improper law, the Norm band law\n    (Norm 1 < 10^-2, Norm 2 < 10^-9, ×10^e rendering),\
+    \ the dot/comma\n    decimal mark + digit-separator display opts, and the fn-insert key\n    (the\
+    \ catalog's insert, validated against the engine's own name set);\n    the component's CW posture\
+    \ (7-col device grid, A–F/x/y/z interleave,\n    OK-dial, wide EXE bar, shell row HOME/VARIABLE/SETTINGS/CATALOG/\n\
+    \    TOOLS/FUNCTION/OFF, the LCD indicator row, the solar skin, the\n    level-driven picker with\
+    \ the Not-affiliated disclaimer, the\n    staged-rollout notice pattern for unimplemented apps, the\
+    \ classic\n    toggle). RULINGS TAKEN IN THE RUN (documented, no silent growth):\n    (1) the QR key\
+    \ moves to phase B — no verifiable QR encoder exists in\n    the repo and an unverifiable QR is dishonest\
+    \ (the phase-A shell pin\n    is amended accordingly); (2) MG's 991CW app array is 11 VERIFIED\n \
+    \   names (the bundle truncates a 12th registration — it lands on a\n    re-extract); (3) the CW posture\
+    \ is the DEFAULT with the classic\n    keypad behind the layout toggle (the pin's \"remains reachable\
+    \ via\n    the toggle\" reading), and the battery scripts seed the classic\n    posture for the regression\
+    \ run; (4) direct clicks ALSO launch from\n    the HOME grid (our a11y law — run-003 receipt: pointer-only\
+    \ surfaces\n    were the bug class; MG ignores clicks, we do not); (5) the digit-\n    separator setting\
+    \ ships OFF by default (the run-001 display pins\n    are the law of record; the device ships it ON\
+    \ — a documented\n    deviation the settings row flips). Verification: 101/101 pins local\n    (engine\
+    \ C1–C15 + component U1–U12, both layouts); tsc clean; the\n    prod battery re-runs post-merge (classic\
+    \ seeded) + battery6-cw\n    drives the new shell on prod."

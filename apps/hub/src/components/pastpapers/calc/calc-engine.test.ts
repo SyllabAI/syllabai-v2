@@ -20,6 +20,7 @@ import {
   pressKey,
   type CalcKey,
 } from "./calc-engine";
+import { CALC_MODELS, MODEL_BY_LEVEL, defaultModelForLevel } from "./calc-models";
 
 // ── harness: type the key sequences tersely ───────────────────────────
 
@@ -350,5 +351,158 @@ describe("(C10) purity + exam honesty", () => {
   test("(C10e) the CalcError classes are exactly the Casio pair", () => {
     expect(new CalcError("Syntax ERROR").cls).toBe("Syntax ERROR");
     expect(new CalcError("Math ERROR").cls).toBe("Math ERROR");
+  });
+});
+
+// ── T-MG-CALC-1 fix pins (the two fidelity deviations, closed) ─────────
+
+describe("(C11) the T-MG-CALC-1 fidelity fixes", () => {
+  test("(C11a) FIX-vs-exact: Fix 2 renders 5÷3 as 1.67 (the device overrides the fraction branch)", () => {
+    const s = run(...D("5"), op("÷"), ...D("3"), { k: "eq" });
+    expect(formatNatural(s.result!, s.resultForm, s.fix)).toBe("5/3"); // Fix off: the exact law
+    expect(formatNatural(s.result!, s.resultForm, 2)).toBe("1.67"); // Fix 2: the device law
+    expect(formatNatural({ exact: true, n: BigInt(5), d: BigInt(1) }, "fraction", 2)).toBe("5.00"); // integers too
+  });
+  test("(C11b) S⇔D is INERT under Fix (the device hides it); Fix off restores the exact law", () => {
+    let s = run(...D("5"), op("÷"), ...D("3"), { k: "eq" }, { k: "setup-fix", fix: 2 });
+    const form = s.resultForm;
+    s = pressKey(s, { k: "sd" });
+    expect(s.resultForm).toBe(form);
+    s = pressKey(s, { k: "setup-fix", fix: 0 });
+    s = pressKey(s, { k: "sd" });
+    expect(s.resultForm).not.toBe(form);
+  });
+  test("(C11c) structural SHIFT remaps: SHIFT+x² → x³, SHIFT+√ → ³√, SHIFT+log → 10^", () => {
+    expect(evalTo(...D("2"), { k: "shift" }, { k: "sq" })).toBe("8");
+    expect(evalTo({ k: "shift" }, { k: "sqrt" }, ...D("2"), ...D("7"))).toBe("3");
+    expect(evalTo({ k: "shift" }, { k: "log" }, ...D("3"))).toBe("1000");
+  });
+  test("(C11d) the structural remap consumes the one-shot SHIFT (no leak)", () => {
+    const s = run({ k: "shift" }, { k: "sq" });
+    expect(s.mods.shift).toBe(false);
+  });
+});
+
+// ── T-MG-CALC-2 phase A: Norm / mark / separator / mixed display laws ──
+
+describe("(C12) the phase-A display laws", () => {
+  test("(C12a) Norm 1: decimals below 10^-2 go exponential (the device band law)", () => {
+    expect(formatDecimal({ exact: false, v: 0.00123 }, 0, { normVariant: 1 })).toBe("1.23×10^-3");
+    expect(formatDecimal({ exact: false, v: 0.5 }, 0, { normVariant: 1 })).toBe("0.5"); // inside the band
+  });
+  test("(C12b) Norm 2 (the default): the band is 10^-9 — 0.00123 stays decimal", () => {
+    expect(formatDecimal({ exact: false, v: 0.00123 })).toBe("0.00123");
+    expect(formatDecimal({ exact: false, v: 1e-10 })).toBe("1×10^-10");
+  });
+  test("(C12c) the decimal mark + the digit separator (the settings rows)", () => {
+    expect(formatDecimal({ exact: false, v: 12345.678 }, 0, { separator: true })).toBe("12,345.678");
+    expect(formatDecimal({ exact: false, v: 1234.5 }, 0, { decimalMark: "," })).toBe("1234,5");
+    expect(formatDecimal({ exact: false, v: 12345.678 }, 0, { decimalMark: ",", separator: true })).toBe("12.345,678");
+    // the ENG mantissa's integer part is < 1000 by definition — grouping
+    // is a no-op there (the invariant the device obeys too)
+    let s = run(...D("1"), ...D("2"), ...D("3"), ...D("4"), ...D("5"), { k: "eq" });
+    s = pressKey(s, { k: "eng" });
+    expect(formatNatural(s.result!, s.resultForm, s.fix, { separator: true })).toBe("12.345×10^3");
+  });
+  test("(C12d) the ⇄ mixed-fraction law: 7/3 → '2 1/3', proper fractions unchanged, negation honest", () => {
+    expect(formatNatural({ exact: true, n: BigInt(7), d: BigInt(3) }, "fraction")).toBe("7/3");
+    expect(formatNatural({ exact: true, n: BigInt(7), d: BigInt(3) }, "fraction", 0, { mixed: true })).toBe("2 1/3");
+    expect(formatNatural({ exact: true, n: BigInt(-7), d: BigInt(3) }, "fraction", 0, { mixed: true })).toBe("-2 1/3");
+    expect(formatNatural({ exact: true, n: BigInt(1), d: BigInt(3) }, "fraction", 0, { mixed: true })).toBe("1/3");
+    const s = run(...D("7"), op("÷"), ...D("3"), { k: "eq" }, { k: "mixtoggle" });
+    expect(s.fractionFormat).toBe("mixed");
+  });
+});
+
+// ── T-MG-CALC-2 phase A: the variable store ────────────────────────────
+
+describe("(C13) the variable store (A–F, x, y, z)", () => {
+  test("(C13a) Store from the RESULT assigns the exact value; Insert + implicit mul evaluate", () => {
+    let s = run(...D("5"), op("+"), ...D("3"), { k: "eq" });
+    s = pressKey(s, { k: "sto", name: "A" });
+    expect(s.vars.A).toEqual({ exact: true, n: BigInt(8), d: BigInt(1) });
+    s = pressKey(s, dig("2"));
+    s = pressKey(s, { k: "var", name: "A" });
+    s = pressKey(s, { k: "eq" });
+    expect(formatNatural(s.result!, s.resultForm)).toBe("16");
+  });
+  test("(C13b) an UNSET variable evaluates to 0 (the device law)", () => {
+    expect(evalTo(...D("2"), { k: "var", name: "B" })).toBe("0");
+  });
+  test("(C13c) Store from the ENTRY evaluates it; Clear removes; the exact law survives (x = 1/3)", () => {
+    let s = run(...D("1"), op("÷"), ...D("3"), { k: "sto", name: "x" });
+    expect(s.vars.x).toEqual({ exact: true, n: BigInt(1), d: BigInt(3) });
+    s = pressKey(s, { k: "ac" }); // Store leaves the entry; AC keeps the store
+    s = pressKey(s, { k: "var", name: "x" });
+    s = pressKey(s, op("×"));
+    s = pressKey(s, dig("3"));
+    s = pressKey(s, { k: "eq" });
+    expect(formatNatural(s.result!, s.resultForm)).toBe("1"); // no drift
+    s = pressKey(s, { k: "clear-var", name: "x" });
+    expect(s.vars.x).toBeUndefined();
+  });
+});
+
+// ── T-MG-CALC-2 phase A: f(x)/g(x) + the catalog insert ────────────────
+
+describe("(C14) the function definitions + the catalog insert", () => {
+  test("(C14a) defining f from the entry and calling f(4) substitutes EXACTLY", () => {
+    let s = run({ k: "var", name: "x" }, op("+"), ...D("1"), { k: "def-fn", name: "f" });
+    expect(s.fns.f).not.toBeNull();
+    s = pressKey(s, { k: "fn-call", name: "f" });
+    s = pressKey(s, dig("4"));
+    s = pressKey(s, { k: "eq" });
+    expect(formatNatural(s.result!, s.resultForm)).toBe("5");
+  });
+  test("(C14b) g(x) = x÷3, g(1) = 1/3 — substitution carries the EXACT rational (no drift)", () => {
+    expect(
+      formatNatural(
+        run({ k: "var", name: "x" }, op("÷"), ...D("3"), { k: "def-fn", name: "g" }, { k: "ac" }, { k: "fn-call", name: "g" }, ...D("1"), { k: "eq" }).result!,
+        "fraction",
+      ),
+    ).toBe("1/3");
+  });
+  test("(C14c) calling an UNDEFINED function is a Math ERROR, and a self-call cannot recurse", () => {
+    expect(run({ k: "fn-call", name: "f" }, ...D("2"), { k: "eq" }).error).toBe("Math ERROR");
+    const s = run({ k: "fn-call", name: "f" }, ...D("2"), { k: "def-fn", name: "f" }, { k: "fn-call", name: "f" }, ...D("3"), { k: "eq" });
+    expect(s.error).toBe("Math ERROR");
+  });
+  test("(C14d) the catalog fn-insert: sinh(1) evaluates; an unknown name is inert", () => {
+    const s = run({ k: "fn-insert", name: "hsin" }, ...D("1"), { k: "eq" });
+    expect(formatNatural(s.result!, s.resultForm)).toBe("1.175201194");
+    const t = run({ k: "fn-insert", name: "notAFunction" }, dig("1"), { k: "eq" });
+    expect(t.shown).toBe("result"); // the bogus atom never entered
+    expect(formatNatural(t.result!, t.resultForm)).toBe("1");
+  });
+});
+
+// ── T-MG-CALC-2 phase A: the model registry (MG verbatim) ──────────────
+
+describe("(C15) the model registry — the chase card's verbatim data", () => {
+  test("(C15a) the three models carry MG's skins, features and app masks", () => {
+    expect(CALC_MODELS["fx-83gt-cw"].label).toBe("fx-83GT CW");
+    expect(CALC_MODELS["fx-83gt-cw"].skin).toEqual({ shiftColor: "blue", solar: false });
+    expect(CALC_MODELS["fx-83gt-cw"].features).toEqual({ recurringDecimal: true, complex: false, engineerSymbol: false });
+    expect(CALC_MODELS["fx-85gt-cw"].skin.solar).toBe(true);
+    expect(CALC_MODELS["fx-991cw"].skin).toEqual({ shiftColor: "gold", solar: true });
+    expect(CALC_MODELS["fx-991cw"].features).toEqual({ recurringDecimal: false, complex: true, engineerSymbol: true });
+    expect(CALC_MODELS["fx-83gt-cw"].apps.map((a) => a.name)).toEqual(["calculate", "statistics", "table", "ratio", "mathBox"]);
+    // 11 names verified verbatim; MG's bundle truncates the 12th registration (the chase card notes it)
+    expect(CALC_MODELS["fx-991cw"].apps.length).toBe(11);
+    // the phase-A implementation truth: only Calculate launches
+    for (const id of ["fx-83gt-cw", "fx-85gt-cw", "fx-991cw"] as const) {
+      expect(CALC_MODELS[id].implementedApps).toEqual(["calculate"]);
+    }
+  });
+  test("(C15b) the level→model map is MG's own (gcse/ks2 → 83GT; a-level/igcse/international → 991CW)", () => {
+    expect(MODEL_BY_LEVEL.gcse).toBe("fx-83gt-cw");
+    expect(MODEL_BY_LEVEL.ks2).toBe("fx-83gt-cw");
+    expect(MODEL_BY_LEVEL["a-level"]).toBe("fx-991cw");
+    expect(MODEL_BY_LEVEL.igcse).toBe("fx-991cw");
+    expect(defaultModelForLevel("igcse-chemistry-19")).toBe("fx-991cw");
+    expect(defaultModelForLevel("gcse-maths-edexcel")).toBe("fx-83gt-cw");
+    expect(defaultModelForLevel("international-a-level-maths")).toBe("fx-991cw");
+    expect(defaultModelForLevel(undefined)).toBe("fx-83gt-cw");
+    expect(defaultModelForLevel("ks3-science")).toBe("fx-83gt-cw"); // unknown → the GCSE default
   });
 });

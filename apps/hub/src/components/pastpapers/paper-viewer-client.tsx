@@ -943,7 +943,7 @@ export function PaperViewerClient({
             The panes' strips toggle it; the L7 gesture seam (relay) lives
             on the overlay root itself. Run-002: the pane's populated
             pinch bridge rides in for SELECT-mode two-finger zoom. */}
-        <ScientificCalculator open={calcOpen} onClose={() => setCalcOpen(false)} gesturePlane={qpGesturePlane} />
+        <ScientificCalculator open={calcOpen} onClose={() => setCalcOpen(false)} gesturePlane={qpGesturePlane} levelHint={course} />
       </div>
     </div>
   );
