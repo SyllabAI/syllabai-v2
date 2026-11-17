@@ -1,0 +1,36 @@
+{
+ "task": "T-TUTOR-AIM-P1",
+ "run": "run-001",
+ "kind": "DC10 Phase 1 — misconception-tagged distractors + voice law + command-word shapes + prompt budget lint, one changeset",
+ "agent": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1e9d1c569d7ac9)",
+ "date": "2026-11-17",
+ "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §6 P1 (§7.1/§7.2/§7.3) + §13.1 — merged plan (#880 base, #889 amendments)",
+ "implemented": {
+  "s71_distractor_tags": {
+   "law_module": "apps/api/src/services/sme/misconception-law.ts (pure, unit-pinned) — L1 correct options never carry tags; L2 tags must resolve into the primary topic's catalog; L3 untagged wrong options refuse when the catalog is live; L4 untagged passes only when the catalog carries no rows (disclosed progressive-coverage residual)",
+   "apply_flow": "apps/api/src/services/sme/index.ts — the catalog resolves ONCE per package (knowledge_edges MISCONCEPTION_OF pointing AT the topic, source = the misconception node — the of-record direction per knowledge/index.ts §misconceptions), runs ONLY for option-emitting packages, enforced BEFORE any option row is written (the package is refused, never rewritten); insertOption retires the 'misconceptionNodeId null — the corpus carries none' hardcode",
+   "parse": "package.ts parseOption + bundle-questions.ts BundleChoice — misconceptionNodeId rides additively (unknown to older packages, binds null); SmeIngestSummary gains misconceptionTagged + misconceptionUntaggedNoCatalog",
+   "already_dormant_wiring": "the read side (assessment/history + submit → expressedMisconceptionIds) and the write side (learner-model updateMisconceptions: 'wrong strengthens only the expressed distractor's; an untagged wrong answer is ambiguous evidence and updates nothing') predate this run — P1 makes the corpus actually carry tags"
+  },
+  "s72_voice_law": "tutor prompt bump v17→v18 (registry tutor-grounded): VOICE_LAW — no praise padding, no premise-agreement, correction-first; presentation-only by construction (sourcing/refusal/disclosure untouched); the v17 refusal shape law byte-unchanged",
+  "s73_command_word_shapes": "COMMAND_WORD_SHAPE_LAW in the same bump — state/give/name, describe, explain, calculate, compare, evaluate answer shapes; every claim still cited; the two-tier disclosure law still governs what may be stated",
+  "s13_1_prompt_budget": "apps/api/test/tutor/prompt-budget.test.ts — non-blank-line cap 200 on BOTH system-prompt variants, the failure message enforces subtractive promotion (subtract law text or raise the cap deliberately + record the raise), plus a headroom pin so P2/P3 bumps never silently exhaust the budget; v18 landed with ≥40 lines of headroom"
+ },
+ "deviations_disclosed": [
+  "the §7.3 deterministic ask-side command-word classifier is NOT in this changeset — the shape law rides the bump; the classifier is a P2 refinement",
+  "the §7.1 'generation-prompt bump' half lives in the external SME authoring toolchain; the in-repo enforcement point is the ingest law + the additive parsers — the authoring-side bump is the content team's follow-up",
+  "the package-format version stays unchanged — the tag is additive under the documented additive-parse law, no envelope bump needed"
+ ],
+ "gates": {
+  "typecheck": "apps/api bun run typecheck (tsc --noEmit) clean",
+  "full_api_suite": "bun test apps/api — 2935 pass / 13 skip / 0 fail, 43283 expect() calls, 165 files (was 2933 pass pre-run: +2 net from the new law tests minus the two re-shaped pins)",
+  "targeted_new": "prompt-budget.test.ts 3/3 · misconception-law.test.ts 5/5 · tutor-core v18 identity + voice/command-word pins · ingest-flow L2/L3 refusals + the tagged-insert binding (optionInserts[0][5] === TAG, correct-option slot binds null)",
+  "identity_pins": "tutor-grounded/v18 pinned in tutor-core.test.ts + cla-service.test.ts"
+ },
+ "boundaries": "apps/api/src/services/tutor/prompt.ts · apps/api/src/services/sme/** · apps/api/test/{tutor,sme}/** · apps/api/test/cla/cla-service.test.ts · docs/DC10 (status + §7.1 note) · .syllabai/{tasks,receipts}/T-TUTOR-AIM-P1 · .syllabai/worklog.md (append). ZERO contact with .github/**, packages/contracts/**, packages/db/**, golden/**, apps/hub/** — no risk-tier path touched; zero schema changes; zero new LLM calls; zero learner-data reads added",
+ "residuals": [
+  "topics with no KG misconception rows ingest untagged (L4) — per-package observability rides SmeIngestSummary.misconceptionUntaggedNoCatalog",
+  "the DC10 §13.2/§13.3 governance laws bind P2/P3 surfaces (probe/drill/teach nudges; default-on gates) — not exercisable in P1",
+  "the standing credential-rotation reminder (THIRTY-FIFTH filing): the GitHub PAT remains exposed from chat transmission and MUST be revoked/rotated"
+ ]
+}
