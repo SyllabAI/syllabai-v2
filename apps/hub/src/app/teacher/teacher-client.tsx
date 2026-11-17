@@ -381,7 +381,7 @@ export function TeacherClient({ courses }: { courses: TeacherCourseLite[] }) {
             role="note"
             className="rounded-md border border-warn/30 bg-warn/10 px-3 py-2 text-xs leading-relaxed text-warn-ink"
           >
-            {coreError} Your browser-local containers are unaffected and still listed below.
+            {coreError} Your locally saved classes are unaffected and still listed below.
           </p>
         )}
 

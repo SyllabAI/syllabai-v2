@@ -135,7 +135,10 @@ const TOOLS = [
     icon: ClipboardList,
     title: "Test Builder",
     desc: "Assemble a printable, marks-aware test from the committed question bank — target the class's weakest areas, answer key included.",
-    badge: "§6",
+    // V-7 (visual audit): the "§6" badge was a spec-section reference
+    // (TEACHER_ARCHITECTURE §6) rendered to teachers — "Beta" says the same
+    // maturity state without internal document numbers.
+    badge: "Beta",
   },
   {
     href: (slug: string) => `/teacher/assignments?course=${slug}`,
