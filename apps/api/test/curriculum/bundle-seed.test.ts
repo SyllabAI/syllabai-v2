@@ -1337,12 +1337,27 @@ const chemBundle = JSON.parse(readFileSync(CHEM_BUNDLE_PATH, "utf8")) as BundleC
 
 describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-chemistry-19)", () => {
   test("the real chemistry bundle contract: 1 SUBJECT / 4 TOPIC / 28 SUBTOPIC / 182 SPEC_POINT, bare codes, Edexcel board", () => {
+    // T-SME-SEL-W9-9 tranche-9 disclosed pin-refresh: the wave-9 SME picker
+    // layer appended 32 SME_REFERENCE rows (4 section rows, family TOPIC +
+    // 28 topic rows, family SUBTOPIC) to this bundle — the OFFICIAL pins
+    // below filter the layer out (unchanged law), and the layer carries its
+    // own fail-closed pins. The mapping/gate tests below keep official-only
+    // iteration (the fifth shape is an official-code law; SME rows ride
+    // outside it).
+    const official = chemBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
     const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
-    for (const n of chemBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    for (const n of official) fams[n.family] = (fams[n.family] ?? 0) + 1;
     expect(fams).toEqual({ SUBJECT: 1, TOPIC: 4, SUBTOPIC: 28, SPEC_POINT: 182 });
+    // the wave-9 tranche-9 disclosed SME layer (T-SME-SEL-W9-9 run-001)
+    const sme = chemBundle.nodes.filter((n) => n.provenanceTier === "SME_REFERENCE");
+    expect(sme.length).toBe(32);
+    expect(sme.filter((n) => n.family === "TOPIC").length).toBe(4);
+    expect(sme.filter((n) => n.family === "SUBTOPIC").length).toBe(28);
+    expect(new Set(sme.map((n) => n.provenanceTier))).toEqual(new Set(["SME_REFERENCE"]));
+    expect(chemBundle.nodes.length).toBe(247);
     expect(chemBundle.board).toBe("Pearson Edexcel");
     expect(chemBundle.code).toBe("4CH1");
-    for (const n of chemBundle.nodes) {
+    for (const n of official) {
       if (n.family !== "SUBTOPIC") continue;
       expect(n.code).toMatch(/^4CH1-S\d+-[a-z]$/);
       expect(n.code.includes(":SUB")).toBe(false);
@@ -1350,11 +1365,15 @@ describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-che
   });
 
   test("the fifth shape lands dbCode = the bundle code VERBATIM, byte-identical with the seeded DB of record", () => {
-    const mapped = mapBundleNodes(chemBundle, "4CH1 official specification structure");
+    // tranche-9 refresh: the fifth shape is an OFFICIAL-code law — map the
+    // official-only bundle (identical to the pre-layer bytes' behavior) so
+    // the SME_REFERENCE rows ride outside every assertion here
+    const officialNodes = chemBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
+    const mapped = mapBundleNodes({ ...chemBundle, nodes: officialNodes }, "4CH1 official specification structure");
     // the 28 bare-tail TOPICs: verbatim dbCodes (the lane C DB probe of record:
     // knowledge_nodes carries 4CH1-S1-a..4CH1-S4-h byte-identical)
     let topics = 0;
-    for (const n of chemBundle.nodes) {
+    for (const n of officialNodes) {
       if (n.family !== "SUBTOPIC") continue;
       const m = mapped.get(n.code)!;
       expect(m.nodeType).toBe("TOPIC");
@@ -1387,15 +1406,17 @@ describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-che
   test("the CIE gate at the SUBTOPIC branch itself: a CIE-shaped hybrid still refuses the bare tail", () => {
     // give the TOPICs their official -T tails (CIE UNIT law passes) + rewire
     // every parent reference; the SUBTOPIC branch must then refuse the bare
-    // tail because the fifth shape is non-CIE-gated
+    // tail because the fifth shape is non-CIE-gated. (tranche-9 refresh:
+    // official-only construction — the SME rows ride outside the gate law)
+    const officialNodes = chemBundle.nodes.filter((n) => n.provenanceTier !== "SME_REFERENCE");
     const tMap: Record<string, string> = {};
-    for (const n of chemBundle.nodes) {
+    for (const n of officialNodes) {
       if (n.family === "TOPIC") tMap[n.code] = n.code + "-T1";
     }
     const hybrid: BundleCurriculum = {
       ...chemBundle,
       board: "Cambridge International",
-      nodes: chemBundle.nodes.map((n) => ({
+      nodes: officialNodes.map((n) => ({
         ...n,
         code: tMap[n.code] ?? n.code,
         parents: n.parents.map((p) => tMap[p] ?? p),

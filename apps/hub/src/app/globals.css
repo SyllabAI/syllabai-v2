@@ -166,6 +166,12 @@
 :root {
   --motion-duration-fast: 150ms;
   --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  /* The candy-shop + chat-app-plum button curves, tokenized (the same pair
+     was hardcoded twice — once per theme block). Same dedupe law as
+     --motion-ease above: var() substitution renders identically; a theme
+     may re-point either var. */
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 /* The prefers-reduced-motion law rides the token: one re-point turns every
    token consumer instant, and future consumers inherit the law for free.
@@ -728,11 +734,11 @@
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 0.04em;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-timing-function: var(--motion-ease-out);
 }
 [data-theme="candy-shop"] [data-slot="button"]:active {
   transform: scale(0.97);
-  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-timing-function: var(--motion-ease-spring);
 }
 [data-theme="candy-shop"] [data-slot="button"].bg-primary:hover {
   background: var(--primary-cs-hover);
@@ -1123,11 +1129,11 @@
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.04em;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-timing-function: var(--motion-ease-out);
 }
 [data-theme="chat-app-plum"] [data-slot="button"]:active {
   transform: scale(0.97);
-  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-timing-function: var(--motion-ease-spring);
 }
 [data-theme="chat-app-plum"] [data-slot="button"].bg-primary:hover {
   background: var(--primary-pm-hover);

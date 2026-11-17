@@ -162,6 +162,19 @@ export function ScientificCalculator({ open, onClose, gesturePlane }: Scientific
     spread0: number;
   }>({ ids: new Map(), active: false, canvas: null, selectMode: false, scroller: null, centroid: null, spread0: 0 });
 
+  /** run-003: timestamp of the last POINTER press on a keypad key — the
+   * click-path guard (a mouse/touch press already acted on pointerdown;
+   * its trailing click must not double-fire). */
+  const pointerPressAt = useRef(0);
+
+  /** run-003: the keypad key's action, shared by the pointer path and the
+   * click path (keyboard Enter/Space on a focused button fires click
+   * WITHOUT pointerdown — without this, the keypad was mouse/touch-only). */
+  const keyDefPress = (def: { key: CalcKey | "mode" | "close-setup" }, isMode: boolean) => {
+    if (isMode) setSetupOpen((v) => !v);
+    else if (def.key !== "close-setup") press(def.key as CalcKey);
+  };
+
   // L8 keyboard parity — mounted only while open
   useEffect(() => {
     if (!open) return;
@@ -365,7 +378,12 @@ export function ScientificCalculator({ open, onClose, gesturePlane }: Scientific
       role="dialog"
       aria-label="Scientific calculator"
       className="fixed bottom-3 right-3 w-[min(360px,calc(100vw-16px))] max-h-[70vh] overflow-y-auto rounded-xl border border-zinc-700 bg-zinc-900/95 p-3 shadow-2xl"
-      style={{ zIndex: 40, touchAction: "none" }}
+      /* T-MG-CALC run-003: zIndex 55 — ABOVE the viewer's floating QP/MS
+         pill (z-50, mobile-only). The run-001 law (pill 50 > calc 40)
+         buried the keypad's bottom row on a phone: the pill floats
+         bottom-center exactly over ./+/S⇔D. The calculator is the focused
+         surface while open — the pill yields (Escape / the X restores it). */
+      style={{ zIndex: 55, touchAction: "none" }}
       onPointerDown={onOverlayPointerDown}
       onPointerMove={onOverlayPointerMove}
       onPointerUp={onOverlayPointerUp}
@@ -388,7 +406,19 @@ export function ScientificCalculator({ open, onClose, gesturePlane }: Scientific
 
       {/* display: input preview (textbook math) + result/error line */}
       <div className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2" aria-live="polite" data-calc-display>
-        <div className="min-h-[1.6rem] text-right" data-calc-input dangerouslySetInnerHTML={{ __html: inputHtml }} />
+        {/* T-MG-CALC run-003: the device shows a resting "0" — a bare
+            black void read as broken (the operator's run-003 receipt). */}
+        <div className="min-h-[1.6rem] text-right text-zinc-100" data-calc-input>
+          {/* katex.renderToString("") still emits markup, so the resting
+              state is detected on the BUFFER, not the html */}
+          {state.shown === "input" && state.buf.length === 0 ? (
+            <span className="text-zinc-500" data-calc-zero>
+              0
+            </span>
+          ) : (
+            <span dangerouslySetInnerHTML={{ __html: inputHtml }} />
+          )}
+        </div>
         <div className="min-h-[1.4rem] text-right font-mono text-lg text-zinc-100" data-calc-result>
           {resultText ?? ""}
         </div>
@@ -488,9 +518,16 @@ export function ScientificCalculator({ open, onClose, gesturePlane }: Scientific
               ].join(" ")}
               onPointerDown={(e) => {
                 e.stopPropagation();
+                pointerPressAt.current = Date.now();
                 if (relayRef.current.active) return; // a relayed gesture is never a press
-                if (isMode) setSetupOpen((v) => !v);
-                else if (def.key !== "close-setup") press(def.key as CalcKey);
+                keyDefPress(def, isMode);
+              }}
+              /* run-003: real clicks and keyboard activation (Enter/Space)
+                 fire click WITHOUT pointerdown — the a11y path. */
+              onClick={() => {
+                if (Date.now() - pointerPressAt.current < 500) return;
+                if (relayRef.current.active) return;
+                keyDefPress(def, isMode);
               }}
             >
               {keyLabel(def)}
