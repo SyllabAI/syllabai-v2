@@ -24,7 +24,12 @@
  * 2023-2025 / igcse-maths-a-modular-24-higher-unit-2 Pearson 4XMAF/4XMAH
  * dual-code 2024) + tranche 15 (cie-as-physics-25 CIE AS 9702 2025-2027 —
  * the AS-shares-A-level code prefix class / cie-igcse-business-23 CIE 0450
- * 2023-2025) — the W7 closeout recommendation's build slices,
+ * 2023-2025) + tranche 16 (cie-igcse-history-18 CIE 0470 2024-2026 — the
+ * TS-prefixed code family, the TOPIC==SUBTOPIC spine /
+ * cie-igcse-science-combined-science-23-physics CIE 0653 2023-2024 — the
+ * CIE strand-QUALIFIER URL class and the FIRST DRIFT EVENT of the wave:
+ * six live-only paper-organization topics documented in DRIFT_BY_COURSE)
+ * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
  * Same law as the wave-3 gate, proved against the REAL runtime code
@@ -163,6 +168,18 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-maths-a-modular-24-higher-unit-2": new Set(),
   "cie-as-physics-25": new Set(),
   "cie-igcse-business-23": new Set(),
+  "cie-igcse-history-18": new Set(),
+  "cie-igcse-science-combined-science-23-physics": new Set([
+    // tranche 16: the FIRST drift event of wave 9 — six live-only
+    // paper-organization topics (0 corpus notes AND 0 sets) that layer as
+    // verbatim 0-count rows per the mirror law; documented exactly.
+    "mcq-core",
+    "mcq-extended",
+    "paper-3-theory-core",
+    "paper-4-theory-extended",
+    "paper-5-practical-test",
+    "paper-6-alternative-to-practical",
+  ]),
 };
 
 for (const cf of FIXTURES.courses) {
