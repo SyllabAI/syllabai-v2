@@ -204,7 +204,7 @@ export function ClassIntelligenceClient() {
       {/* header — T-HEADER-1: the shared tool-page header. */}
       <PageHeader
         title="Class insights"
-        description="Live from the SyllabAI backend — class-level facts over the whole pilot cohort, separated by evidence kind."
+        description="Live class data, grouped by evidence kind."
       />
 
       <TeacherNav />

@@ -185,13 +185,12 @@ export default async function GuidedLessonPage({
           </details>
 
           {/* provenance — the pinned upstream, verbatim from the artifacts */}
-          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t pt-4 text-xs text-muted-foreground">
+          <p
+            className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t pt-4 text-xs text-muted-foreground"
+            title={`note ${imported.source.noteId} · ${index.upstream.repo}@${index.upstream.commit.slice(0, 12)}`}
+          >
             <Pin className="size-3" aria-hidden />
-            <span>
-              Guided content from the SME authoring corpus — note {imported.source.noteId}, pinned
-              at <span className="font-mono">{imported.source.pinnedRef.slice(0, 12)}</span> ·
-              promoted {index.upstream.repo} <span className="font-mono">{index.upstream.commit.slice(0, 12)}</span>
-            </span>
+            <span>Checked against the official specification.</span>
           </p>
 
           <div className="flex flex-wrap gap-3">

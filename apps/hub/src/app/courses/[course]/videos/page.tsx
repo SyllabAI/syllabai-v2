@@ -103,7 +103,7 @@ function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
         )}
         {row.confidence && (
           <Badge variant="outline" className="text-2xs">
-            match: {row.confidence}
+            {row.confidence} match
           </Badge>
         )}
         {row.boardMismatch && (
@@ -115,9 +115,9 @@ function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
       {row.boardMismatch && video.boardNote && (
         <p className="mt-1 text-xs text-muted-foreground">{video.boardNote}</p>
       )}
-      {row.evidence && (
+      {row.evidence && row.confidence !== "high" && (
         <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-          Match: {row.evidence}
+          {row.evidence}
         </p>
       )}
     </li>
@@ -340,12 +340,6 @@ export default async function VideosPage({
       />
 
       <div className="mt-6 flex flex-wrap items-center gap-2">
-        <Badge
-          variant="outline"
-          className="border-muted-foreground/30 text-2xs text-muted-foreground"
-        >
-          Reviewed{map.qual ? ` · ${map.qual}` : ""}
-        </Badge>
         <Badge variant="secondary" className="text-2xs">
           {c.specPointsMapped}/{c.specPointsTotal} spec points
         </Badge>
@@ -358,12 +352,10 @@ export default async function VideosPage({
           </Badge>
         )}
         <p className="w-full max-w-3xl text-xs leading-relaxed text-muted-foreground">
-          Matches are made from video titles alone — the chip on each row shows how
-          closely the title fits the spec point&apos;s content, so watch a medium or
-          low match before relying on it. Rows marked &ldquo;different board&rdquo; come
-          from channels that follow a different exam board — the note on the row says
-          which. Links open the original channel or lesson page; nothing you watch
-          here is saved to your progress.
+          Matches are title-based — the chip says how close the fit is, so skim
+          a medium/low match before relying on it. &ldquo;Different board&rdquo; rows
+          come from another exam board&apos;s channel. Watching here doesn&apos;t
+          affect your progress.
         </p>
       </div>
 
@@ -378,10 +370,8 @@ export default async function VideosPage({
             </span>
           </div>
           <p className="mt-1 max-w-3xl text-xs leading-relaxed text-muted-foreground">
-            Whole-paper walkthroughs anchored to the course — typically full papers
-            whose Edexcel paper code is stated in the title. They sit outside the
-            spec-point coverage: they teach the paper, not a single point, so they don't count toward the
-            coverage numbers above.
+            Full-paper walkthroughs — they teach the paper, not one spec point,
+            so they don&apos;t count toward the coverage totals above.
           </p>
           <ul className="mt-3 space-y-2">
             {courseRows.map((row) => (
@@ -464,8 +454,7 @@ export default async function VideosPage({
           <section aria-label="Topic videos outside the spine render">
             <h2 className="text-base font-semibold tracking-tight">Topic videos</h2>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Anchored to topic areas that don&apos;t resolve in this spine render —
-              listed flat rather than dropped.
+              General topic videos that sit outside the sections above.
             </p>
             <ul className="mt-3 space-y-2">
               {topicAreaFlat.map((row) => (

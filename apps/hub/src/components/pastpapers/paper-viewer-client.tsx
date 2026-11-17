@@ -81,8 +81,6 @@ export interface PaperViewerClientProps {
   sessionLabelStr: string;
   initialDoc: Doc;
   mode: "view" | "mock";
-  /** corpus provenance string for the honesty note */
-  metaGeneratedAt: string;
   /** spec exam code pill (e.g. 4CH1) — shown in the compact toolbar row;
    *  T-COURSE-SPECPILL-2: it links to /courses/[course]/specification */
   examCode?: string;
@@ -106,7 +104,6 @@ export function PaperViewerClient({
   sessionLabelStr,
   initialDoc,
   mode,
-  metaGeneratedAt,
   examCode,
   initialPage,
   initialPageDoc,
@@ -762,13 +759,6 @@ export function PaperViewerClient({
           {paper.variantChip ? ` · ${paper.variantChip}` : ""} · {sessionLabelStr}
         </span>
         {examCode && <ExamCodePill code={examCode} href={`/courses/${course}/specification`} className="hidden py-1 text-2xs sm:inline-flex" />}
-        <Badge
-          variant="outline"
-          className="hidden text-2xs md:inline-flex"
-          title={`Matched to this course automatically — last updated ${metaGeneratedAt.slice(0, 10)}`}
-        >
-          Auto-matched
-        </Badge>
         {/* doc switch — three states on desktop (QP | MS | Split). Gated to
             lg+: the two-pane split grid only exists at lg, so exposing the
             Split tab in the 640–1023px band made it a silent no-op. Below lg

@@ -1719,10 +1719,9 @@ function McqPart({
           </p>
           {letterOnly && !optionsVisible && (
             <div className="rounded-md border border-warn/30 bg-warn/10 px-3 py-2 text-xs leading-relaxed text-warn-ink">
-              The option artwork for this question (diagrams on the source site) was not captured
-              by the authorized import — the demo never fabricates content. Refer to your past
-              paper, or use <span className="font-medium">Question help</span> to work through it
-              with the tutor. The answer key is attested, so you can still commit an answer below.
+              Diagrams didn&apos;t come through for this question — check your
+              past paper, or use <span className="font-medium">Question help</span>.
+              Answers still mark as normal.
             </div>
           )}
           {keyedText || multiWithText ? (
