@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""T-SME-SEL-W9-17 run-001 — dual worklog append (append-only; prefix
+byte-identity asserted pre/post)."""
+import sys
+
+REPO = "/home/z/my-project/repos/syllabai-v2"
+
+ENTRY = ("- T-SME-SEL-W9-17 run-001 — SME picker layer wave 9, tranche 17: the Revision-Notes "
+         "picker mirror for the queue pair (PR of record opened for the integrator; branch "
+         "t-sme-sel-w9-17/run-001 from origin/main e0544f07). Operator order 'Proceed with "
+         "next' executes the tranche-16 merge record's next-queue ranks 1-2 — "
+         "cie-igcse-economics-25 (CIE IGCSE 0455 2027-2029) / "
+         "cie-igcse-environmental-management-25 (CIE IGCSE 0680 2027-2029). BASE OF RECORD: "
+         "main e0544f07 — main ADVANCED between turns (a79059f2 -> e0544f07, PR #1070 the "
+         "calc2 CW-grid-digits lane: 3 paths, all ScientificCalculator component/test files "
+         "+ the T-MG-CALC-2 card, ZERO selector-surface contact); the node_modules cache "
+         "was recycled with the sandbox and the frozen-lockfile install re-ran; census at "
+         "that tip: resolved 6,808 (62 layered) / user-facing loose 2,272. TRANCHE: "
+         "economics 84 + env-mgmt 82 loose = 166 notes (economics's full corpus is 92 notes "
+         "in 39 pairs — 8 set-bearing). LIVE FETCHES 2026-11-17 (polite curl, "
+         "__NEXT_DATA__, URLs of record from the corpus notes' own sourceUrl — economics at "
+         "/igcse/economics/cie/25/ (the NUMBERED-SECTION shape), env-mgmt at "
+         "/igcse/environmental-management/cie/25/ (the 2-level UN-NUMBERED shape)): "
+         "economics 7 sections/39 topics/92 subtopics and env-mgmt 7/30/84. BIJECTION AUDIT "
+         "OF RECORD (lane w9t17_live_audit.py): the EIGHTH consecutive FULLY-CLEAN audit — "
+         "0 note slugs missing / 0 set slugs missing / 0 exact-one failures; BOTH COURSES "
+         "SINGLE-MATCH throughout; ZERO DRIFT ROWS; ZERO TITLE MISMATCHES; economics a "
+         "perfect 1:1 mirror (92==92) with 36 sets across 36 of its 39 pairs; env-mgmt's "
+         "+2-subtopic delta sits under traffic-bearing topics (NOT the drift class) with "
+         "14 sets across 14 of its 30 pairs. ENVIRONMENT EVENT OF RECORD (disclosed, NOT a "
+         "lane defect): the first fresh install dropped 40 type-dep packages (@types/js-"
+         "yaml among them — declared apps/api/package.json ^4.0.9) and did not link the "
+         "turbo binary (root typecheck = turbo run typecheck); first attempt rc=127 "
+         "(turbo: command not found), second via bunx rc=2 (TS7016 on apps/api/src/"
+         "vercel-shims.ts(18) — untouched by every lane of the band); a SECOND "
+         "frozen-lockfile install pass (+40 packages) restored the type deps and bun x "
+         "turbo run typecheck went rc=0 — CI parity restored; root cause: install-state "
+         "artifacts of the recycle. PIN SEARCHES (resolved BEFORE building): the by-CODE "
+         "searches (rg economics-2027-2029-T | environmental-management-2027-2029-T) found "
+         "ZERO pins. No multiMatch declaration, no DRIFT_BY_COURSE entries, no setLaw pin; "
+         "no byte-format event. APPENDS +83 SME_REFERENCE nodes: economics +46 (7+39; "
+         "official 156 intact, digest 5b662c375bfb2662), env-mgmt +37 (7+30; official 180 "
+         "intact, digest a63fa4a18e8a589a); removal round-trips asserted byte-identical "
+         "per course; official nodes list-equal per course; FIXTURES MERGED into "
+         "sme-wave9-fixtures.json (37 courses) with the prior 35 blocks byte-preserved "
+         "(asserted deep-equal by the builder), each new block carrying fetched "
+         "2026-11-17. GATE verify_sme_wave9.ts extended to 37 courses: PASS — spine "
+         "digests + 14 section rows + 69 topic rows all SME_REFERENCE verbatim, per-row "
+         "CORPUS counts pinned through the resolution law, economics ALL 92 notes + 36 "
+         "sets resolve, env-mgmt ALL 82 notes + 14 sets resolve, drift rows exactly "
+         "documented (none on both), deep links resolve, official tree.topics carries "
+         "zero SME codes. NO WAVE-8 PROBE ROTATION THIS TRANCHE: bio-mod-U1 holds the "
+         "no-layer probe slot from the tranche-11 rotation #5 and stays no-layer — the "
+         "roster is UNTOUCHED (verify_sme_wave8.ts byte-unchanged). LESSONS APPLIED "
+         "BEFORE PUSH: #2 by-CODE pin search (above); #3 the prebuild chain on the lane "
+         "BEFORE push (verify_corpus_23a PASSED; flashcard core-sync manifest matches "
+         "[igcse-chemistry-19]; validate_cie_bundles PASS 106 rows; validate_gradeb_bundle "
+         "clean; verify_subject_identity PASS 106/106) — NO CI-hub surprise. ACCEPTANCE: "
+         "wave1 + wave7 + cosmetics1 + wave8 PASS; wire_r0 PASS (2,574 placed / 0 "
+         "unplaced — byte-identical to the tranche-3..16 records); bun x turbo run "
+         "typecheck (the CI script) rc=0; CI-verify reproduction 0 fail (3,561 tests / "
+         "44,805 expects) — no pin events; hub lib battery: the 6 standing fails of "
+         "record at the pristine base (the #1041 window's set) — zero new failures from "
+         "this lane; the wave6 gate is GREEN of record since W6-1 run-003 (#1058). EFFECT "
+         "OF RECORD: the queue pair's /revision-notes selectors now mirror SaveMyExams' "
+         "own Revision-Notes organization verbatim with corpus-true counts; the "
+         "loose-notes cards empty (166 formerly-loose notes now have rows); fleet-wide 64 "
+         "layered courses / 6,982 resolved / user-facing loose 2,272 -> 2,106; "
+         "next-tranche queue re-measured (user-facing: igcse-science-double-award-17-"
+         "chemistry 80, igcse-business-19 80, igcse-maths-a-modular-24-foundation-unit-1 "
+         "79, igcse-economics-17 79, cie-igcse-economics-20 79). Census engines: "
+         "rn_selector_census.ts (untouched) + w9_sme_census.ts (read-only). Lane "
+         "artifacts .syllabai/lane-artifacts/T-SME-SEL-W9-17/run-001/ (parsed live RN "
+         "trees + builder + audit + worklog scripts); receipt "
+         ".syllabai/receipts/T-SME-SEL-W9-17/run-001.md; task card T-SME-SEL-W9-17.yaml "
+         "IN_REVIEW; author does not self-merge; no DB contact; fetch-first race-guard at "
+         "push (EXPECT pinned to the lane base e0544f07); no force")
+
+REMINDER = ("Standing reminder (THIRTY-NINTH filing): the PAT remains exposed from chat "
+            "transmission and MUST be revoked/rotated (the Vercel token likewise).")
+
+SUFFIX = f"{ENTRY}\n{REMINDER}\n"
+
+for f in ["worklog.md", ".syllabai/worklog.md"]:
+    p = f"{REPO}/{f}"
+    before = open(p, encoding="utf-8").read()
+    open(p, "w", encoding="utf-8").write(before + SUFFIX)
+    after = open(p, encoding="utf-8").read()
+    assert after.startswith(before) and after.endswith(SUFFIX) and after.count(SUFFIX) == 1
+    print(f"{f}: +{len(SUFFIX)}B appended at tail (prefix byte-identity asserted)")
+print("DUAL WORKLOG APPEND OK")
