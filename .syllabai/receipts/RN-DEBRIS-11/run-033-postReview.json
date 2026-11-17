@@ -1,0 +1,14 @@
+{
+ "receipt": "run-033-postReview",
+ "family": "RN-DEBRIS-11",
+ "run": "run-033",
+ "kind": "the author self-review record before the desk merge of the run-033 receipts PR (the run-018/019/020/021/022/023/024/025/026/027/028/029/030/031/032 postReview flow; the battery scope asserted vs its own first parent, no self-referential sha)",
+ "generatedUtc": "2026-11-18",
+ "baseTip": "e0544f07238038bc7e42f4a613bb34d8abe0e8fd",
+ "pr": "lane/rn-debris-11-run-033-merge-record-ride -> main (the run-032 merge record ride receipts)",
+ "review": {
+  "netDiff": "the PR net diff == exactly the 7 declared run-033 paths: both worklogs (the append-only union entries — TWO entries: the run-032 merge record riding this run's receipts (entry A), then the run-033 receipts entry (entry B), 4737 bytes each), the run-032-merge-record-ride.json merged block (the run-025/026/027/028/029/030/031/032 flow shape), the two run-033 receipts (run-033-merge-record-ride.json + this postReview), the battery script rn33_gates.py + gates_r0.json; zero bytes outside the declared set",
+  "zeroCollateral": "the content map apps/hub/content-maps/cie-igcse-computer-science-23.json byte-identical vs the base tip (gate G5) and the flashcards file apps/hub/content/cie-igcse-computer-science-23/flashcards.json byte-identical (gate G5b); no map/spine/registry/curriculum plane touched; the worklogs append-only (prefix byte-identity, zero markers introduced — per-marker counts equal vs the base)",
+  "battery": "rn33_gates.py G1-G6 committed at .syllabai/lane-artifacts/RN-DEBRIS-11/run-033/scripts/rn33_gates.py — re-runnable at the pushed head vs its own first parent; build-time gates_r0.json ALL ok"
+ }
+}
