@@ -14,7 +14,12 @@
 name: t-vercel-hub-diag
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      uid:
+        description: "deployment uid to diagnose (empty = newest non-READY, ERROR preferred)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -27,6 +32,7 @@ jobs:
         env:
           VERCEL_BAKE_TOKEN: ${{ secrets.VERCEL_BAKE_TOKEN }}
           HUB_PROJECT_ID: prj_idqk5yM3leODE1Rmm2pPNKxy2x6m
+          TARGET_UID: ${{ inputs.uid }}
         run: |
           python3 - <<'PY'
           import json, os, urllib.request
@@ -47,10 +53,14 @@ jobs:
               ts = datetime.datetime.utcfromtimestamp(d.get("createdAt", 0) / 1000).isoformat()
               sha = (d.get("meta") or {}).get("githubCommitSha", "(none)")[:10]
               print(f"  {d.get('uid')} | {d.get('state')} | {ts} | sha {sha} | ready {d.get('readyState')}")
-              if failed is None and d.get("state") == "ERROR":
-                  failed = d  # real build failures first (CANCELED = superseded, no events)
-              if failed is None and d.get("state") not in ("READY", "CANCELED"):
+              if os.environ.get("TARGET_UID", "").strip() and d.get("uid") == os.environ["TARGET_UID"].strip():
                   failed = d
+              if failed is None and os.environ.get("TARGET_UID", "").strip() == "" and d.get("state") == "ERROR":
+                  failed = d  # real build failures first (CANCELED = superseded, no events)
+              if failed is None and os.environ.get("TARGET_UID", "").strip() == "" and d.get("state") not in ("READY", "CANCELED"):
+                  failed = d
+          if os.environ.get("TARGET_UID", "").strip() and failed is None:
+              failed = {"uid": os.environ["TARGET_UID"].strip(), "state": "TARGETED(not-in-recent-list)"}
           if not failed:
               print("no failed deployment found — nothing to diagnose")
               raise SystemExit(0)
