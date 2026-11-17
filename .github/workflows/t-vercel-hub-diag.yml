@@ -79,7 +79,7 @@ jobs:
               if not isinstance(ev, dict):
                   continue
               payload = ev.get("payload", {}) or {}
-              txt = payload.get("text") or payload.get("info", {}).get("name", "")
+              txt = ev.get("text") or payload.get("text") or payload.get("info", {}).get("name", "")
               if txt:
                   lines.append(str(txt))
           for ln in lines[-60:]:
