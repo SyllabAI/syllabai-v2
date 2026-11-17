@@ -1,0 +1,38 @@
+{
+ "task": "T-TUTOR-AIM-P2",
+ "run": "run-001",
+ "kind": "DC10 Phase 2 — confidence capture (log-first) + aimed answering + single optional probe + the §7.3 classifier refinement, one changeset",
+ "agent": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1ea412609f6f91)",
+ "date": "2026-11-18",
+ "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §6 P2 (§7.4/§7.5/§7.6) + §13.1/§13.2 — merged plan (#880 base, #889 amendments, #1057 appendices)",
+ "implemented": {
+  "s74_confidence_capture": {
+   "wire": "packages/contracts/src/tutor.ts tutorAskRequestSchema — confidence z.enum([sure,think_so,guessing]).optional(); NO server-side default (absent = null downstream; a no-tap is never recorded as a guessing)",
+   "pipeline": "karag.ts — karagAsk/karagAskStream carry the raw selection into BOTH TutorAnsweredEvent telemetry calls (refusals log the tap too); TutorModule.ask/askStream pass it through; routes/tutor.ts validates the closed enum (invalid value → validation_failed 'must match sure|think_so|guessing', the @Pattern class)",
+   "persistence": "apps/api/src/services/learner/engagement-recorder.ts — appendConfidence: one pure-append row per SELECTING ask over tutor_ask_confidence (migration 0029), same append-guard class; a no-tap and an anonymous preview write NOTHING",
+   "hub": "composer.tsx the three-button row (no default, tap selects, second tap deselects, reset after every send) + api/ai/chat relay forwards the field on both delivery paths only when present",
+   "law": "LOG-FIRST: nothing reads tutor_ask_confidence; consumption is gated on §7.4 rules 1/2/5 (per-learner normalisation after ~15 responses; never the sole basis of a misconception reading; the ~10-point noise gate) plus weeks of pure logging (rule 4)"
+  },
+  "s75_aimed_answering": {
+   "aim": "apps/api/src/services/tutor/context.ts assembleAim (pure, unit-pinned) — computed INSIDE assembleTutorContext from the reads it already holds (M3 preserved, zero new reads, zero LLM): correction = the strongest active reading (effective >= 0.5, the assembler's active gate) on a KG-attached misconception of a matched topic (catalog node id + title — the §11 injection law); proven = prerequisites at mastery >= AIM_PROVEN_MASTERY 0.70 (cap 4); strongAreas = depth-1 adjacent nodes at proven mastery excluding matched topics (cap 3); decayDue flagged for the §7.8 hook (renders nothing in P2); null when nothing aims (decayDue alone aims nothing)",
+   "prompt": "tutor/prompt.ts — the v19 bump (registry tutor-grounded): the AIM law (open with the correction per the voice law; compress PROVEN to one line; bias examples to the strong areas; aim shapes selection and emphasis ONLY — sourcing/citations/disclosure sovereign; no AIM block = answered exactly as before); the user prompt renders ONE unfenced AIM block after the INTERVENTION PLAN only when the aim is non-null",
+   "byte_stability": "test/tutor/aim.test.ts — the EMPTY-tables userPrompt is byte-identical to the pre-P2 PromptContext call shape, and the pipeline test pins no-AIM/no-pin/no-probe on the empty learner posture (the EMPTY-tables posture of learner-model.ts as regression test, per §7.5)"
+  },
+  "s73_classifier_refinement": {
+   "module": "apps/api/src/services/tutor/command-word.ts (pure) — precision-first: only a question OPENING with one of the six exam command words pins (noun usages, inflections, mid-sentence verbs and natural-language markers classify null); the user prompt renders one COMMAND WORD OF RECORD line when pinned, NOTHING otherwise; the v18 shape law stays the governing law byte-unchanged"
+  },
+  "s76_single_optional_probe": {
+   "selection": "apps/api/src/services/tutor/probe.ts selectProbe (pure) — at most ONE offer per ask: a DIRECT (depth-1) prerequisite carrying (a) a weak practiced skill state (attempts >= 1 AND mastery < PROBE_WEAK_MASTERY 0.5) or (b) an active attached misconception (effective >= 0.5); order = misconception-gap first, then lowest mastery, then node id asc (deterministic total order); depth-2 never probes",
+   "wire": "AskResult.probe + the stream completed event.probe (after the full answer) + contracts tutorProbeOfferSchema on the answer view and the done frame (optional, additive); NULL on every refusal; §13.2 offer-not-claim: metadata only (node id + corpus title), claims nothing, consumes nothing until the learner's tap",
+   "hub": "threads.ts Turn.probe + chat.tsx renders the done-frame offer as the 'Quick check — <title>?' chip after the answer (message-item.tsx); the tap PRE-FILLS the composer (nothing is sent until the learner sends); ignoring it does nothing"
+  },
+  "schema": "packages/db/drizzle/0029_tutor-ask-confidence.sql — ONE additive table (id, learner_id, session_id nullable, confidence CHECK IN (sure,think_so,guessing), created_at) + the learner/created_at index; raw SQL per the 0007 disclosure law (journal entry, no snapshot, the 0027 precedent)"
+ },
+ "gates": {
+  "typecheck": "apps/api tsc --noEmit rc=0; apps/hub tsc rc=0; packages/contracts tsc rc=0",
+  "full_suite": "2979 pass / 13 skip / 0 fail (43,404 expects, 169 files) — up from P1's 2935 pass",
+  "new_pins": "command-word 6/6; aim 13/13 (incl. the byte-stability law); probe 8/8; aim-pipeline 7/7 (confidence both paths, no-default, refusal-logs-tap, probe both paths, metadata-only, byte-stable empty posture); recorder confidence 4/4; routes confidence/probe 5/5; budget lint 3/3 (v19 chemistry 120 / general 118 non-blank lines vs cap 200, headroom pin >= 40 intact)"
+ },
+ "boundaries": "NO risk-tier path touched; the two-tier disclosure law, sourcing, citations, the v18 voice/shape/refusal laws byte-unchanged (still pinned in tutor-core/cla tests); zero new LLM calls; the ONE new read-free seam (aim) consumes the M3 read. Deviations disclosed in the task card: CLA surface carries no confidence/aim in P2; the probe tap pre-fills the composer (the inline bank-question probe is P3 with the drill loop); the books rail ask does not forward confidence.",
+ "identity": "tutor-grounded/v19"
+}

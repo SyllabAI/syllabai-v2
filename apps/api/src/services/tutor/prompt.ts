@@ -17,6 +17,8 @@ import { MAX_TURN_CHARS, ROLE_ASSISTANT, isAssistantTurn, type ConversationTurn 
 import type { EvidenceItem } from "./evidence";
 import { QUIZ_STEM_BOUND, type QuizScaffold } from "./quiz-scaffold";
 import type { MarkContext } from "./mark-context";
+import type { AimBrief } from "./context";
+import type { CommandWordClassification } from "./command-word";
 
 // ── refusal texts (KaRagService.java :48-83, byte-verbatim) ─────────────────
 
@@ -105,15 +107,19 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  stonewalled a mid-chat topic pivot with no way forward for the
  *  learner, and the turn recorded refused=false (evidence present but
  *  wrong — the analytics gap the refusal-truth patch closes). */
-export const PROMPT_VERSION = "18";
-/** v18 (T-TUTOR-AIM-P1, operator trace 1a1e9d1c569d7ac9; DC10 §7.2/§7.3):
- *  the VOICE law (no praise padding, no premise-agreement — correction
- *  first) and the COMMAND-WORD shape law (state/describe/explain/
- *  calculate/compare/evaluate answer shapes; presentation only, sourcing
- *  and the two-tier disclosure law untouched). The v17 refusal shape law
- *  is byte-unchanged. Prior bumps: v11 spec-is-a-map quiz law (run-014);
- *  v12 QUIZ SCAFFOLD serving rule (run-015); v17 refusal shape law
- *  (T-TUTOR-PIVOT-1). */
+export const PROMPT_VERSION = "19";
+/** v19 (T-TUTOR-AIM-P2, DC10 §7.5): the AIM law — when the user message
+ *  carries the deterministic AIM block (computed from the learner's own
+ *  record), open with the correction it names, compress what it marks
+ *  PROVEN to one line, bias examples toward the strong areas it lists.
+ *  Aim shapes selection and emphasis only; sourcing, citations, the
+ *  refusal shape law and the two-tier disclosure law are untouched, and
+ *  an ask with no AIM block is answered exactly as before (the
+ *  empty-context byte-stability law). The command-word DETECTION is now
+ *  pinned ask-side (§7.3 refinement) — the v18 shapes are byte-unchanged.
+ *  Prior bumps: v11 spec-is-a-map quiz law (run-014); v12 QUIZ SCAFFOLD
+ *  serving rule (run-015); v17 refusal shape law (T-TUTOR-PIVOT-1); v18
+ *  voice + command-word shape laws + §13.1 budget lint (T-TUTOR-AIM-P1). */
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -188,6 +194,19 @@ const COMMAND_WORD_SHAPE_LAW = `- Command-word shape. When the QUESTION carries 
   only: every claim still comes from the SOURCES with its citation,
   and the two-tier disclosure law still governs what may be stated.`;
 
+/** DC10 §7.5 aim law (v19): how to consume the deterministic AIM block.
+ *  Presentation/emphasis only — the aim selects and orders what the SOURCES
+ *  already back; it never introduces a claim class, and its absence (the
+ *  empty-context ask) leaves the answer path byte-unchanged. */
+const AIM_LAW = `- AIM. When the user message carries an AIM block, it was computed
+  from this learner's own record for THIS question. Open with the
+  correction it names (plainly, per the voice law) before anything
+  else; compress what it marks PROVEN to at most one line — never
+  re-derive it; pick examples from the strong areas it lists when the
+  answer needs an example. The aim shapes selection and emphasis only:
+  every claim still comes from the SOURCES with its citation, and an
+  ask without an AIM block is answered exactly as before.`;
+
 // ── fence codes (v6 prompt-injection defence, :77-97 + :449-465) ────────────
 
 /** unambiguous alphabet: no 0/O/1/I/L lookalikes inside a fence code */
@@ -250,6 +269,7 @@ Rules:
 ${REFUSAL_SHAPE_LAW}
 ${VOICE_LAW}
 ${COMMAND_WORD_SHAPE_LAW}
+${AIM_LAW}
 - When the QUESTION names a specific exam-paper question and the SOURCES
   carry its question text and/or mark scheme, answer part by part in the
   paper's own order and label each part exactly as the paper labels it
@@ -355,6 +375,15 @@ export interface PromptContext {
    *  the submitted answer inside the fence pair — it is the learner's
    *  data). null = no mark state (the ordinary grounded ask). */
   markContext?: MarkContext | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.5): the deterministic aim — OUR scaffolding
+   *  (computed from the learner's own record + KG catalog node ids/titles,
+   *  outside the fences like INTERVENTION PLAN). null = no aim — NOTHING
+   *  renders (the empty-context byte-stability law). */
+  aim?: AimBrief | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.3): the ask-side command-word pin — OUR
+   *  deterministic classification of the fenced question. null = no pin —
+   *  nothing renders. */
+  commandWord?: CommandWordClassification | null;
 }
 
 /** Paper evidence renders to the larger bound (:368-376). */
@@ -463,6 +492,17 @@ export function userPrompt(
   }
   // the learner's raw question is data, not instructions (H2) — fenced
   sb.push(`QUESTION:\n${open}${query.trim()}${close}\n\n`);
+  // T-TUTOR-AIM-P2 (DC10 §7.3): the deterministic command-word pin — ONE
+  // line of OUR scaffolding (the classifier's verdict on the question above;
+  // outside the fences like the pin label). Absent ⇒ nothing renders — the
+  // composed prompt keeps the pre-DC10 bytes (byte-stability).
+  if (context.commandWord != null) {
+    sb.push(
+      `COMMAND WORD OF RECORD: ${context.commandWord.family} — the question opens with ` +
+        `"${context.commandWord.word}"; apply the matching answer shape from the ` +
+        `system prompt.\n\n`,
+    );
+  }
   sb.push(`LEARNER CONTEXT:\n${context.learnerBrief}\n\n`);
   // s140 episodic memory: omitted entirely when the learner has no history
   // on the matched topics (or on the CLA surface)
@@ -565,6 +605,40 @@ export function userPrompt(
   sb.push(`INTERVENTION PLAN:\n${plan.type} — ${plan.rationale}\n`);
   for (const action of plan.actions) {
     sb.push(`- ${action}\n`);
+  }
+  // T-TUTOR-AIM-P2 (DC10 §7.5): the deterministic AIM block — unfenced
+  // (OUR scaffolding computed from the learner's own record + KG catalog
+  // node ids/titles; the §11 injection law keeps free-text readings out).
+  // Rendered ONLY when the aim has something to aim: an empty-context ask
+  // renders NOTHING here — the composed prompt keeps the pre-DC10 bytes
+  // (the empty-context byte-stability law, test-pinned). The decay-due
+  // flag is §7.8's (P3) input and renders nothing in P2.
+  const aim = context.aim;
+  if (aim != null) {
+    sb.push(`AIM (computed from this learner's own record for THIS question):\n`);
+    if (aim.correction != null) {
+      sb.push(
+        `- CORRECTION-FIRST: the learner carries the active misconception ` +
+          `"${aim.correction.title}" on this topic — open by correcting it ` +
+          `plainly (per the voice law), then answer the question.\n`,
+      );
+    }
+    if (aim.provenPrerequisites.length > 0) {
+      sb.push(
+        `- PROVEN (do NOT re-derive; at most one acknowledging line): ` +
+          aim.provenPrerequisites.map((p) => `"${p.title}"`).join(", ") +
+          `\n`,
+      );
+    }
+    if (aim.strongAreas.length > 0) {
+      sb.push(
+        `- EXAMPLES: bias any example toward the learner's proven-strong ` +
+          `adjacent areas: ` +
+          aim.strongAreas.map((s) => `"${s.title}"`).join(", ") +
+          `\n`,
+      );
+    }
+    sb.push(`\n`);
   }
   sb.push("\nSOURCES (cite these as [n]):\n");
   let rendered = 0;

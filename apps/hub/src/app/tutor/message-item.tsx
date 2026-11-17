@@ -123,6 +123,7 @@ export function MessageItem({
   onEditResend,
   onFeedback,
   courseSlug,
+  onProbeTap,
 }: {
   message: Turn;
   /** this row is the turn currently receiving tokens */
@@ -137,6 +138,11 @@ export function MessageItem({
   /** the thread's course hint — scopes the band card's paper-PDF reader
    *  matches (the F-022 chip's course param, T-MIG-130) */
   courseSlug?: string | null;
+  /** T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer's explicit opt-in tap —
+   *  offer-not-claim (§13.2): the chip claims nothing and renders only
+   *  when the upstream offered one AFTER the full answer; the tap
+   *  pre-fills the composer (nothing is sent until the learner sends). */
+  onProbeTap?: (probe: { nodeId: string; title: string }) => void;
 }) {
   const isUser = message.role === "user";
   const [editing, setEditing] = useState(false);
@@ -293,6 +299,21 @@ export function MessageItem({
               )}
               {message.band && !message.error && (
                 <BandCard band={message.band} courseSlug={courseSlug} />
+              )}
+              {/* T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe —
+                  AFTER the full answer, at most ONE per ask, explicit
+                  opt-in copy; ignoring it does nothing (§13.2). */}
+              {message.probe != null && !message.error && !streaming && onProbeTap != null && (
+                <button
+                  type="button"
+                  onClick={() => onProbeTap(message.probe!)}
+                  className="inline-flex w-fit items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs text-primary transition-colors hover:bg-primary/10"
+                >
+                  <GraduationCap className="size-3.5 shrink-0" aria-hidden />
+                  <span>
+                    Quick check — {message.probe.title}?
+                  </span>
+                </button>
               )}
               {streaming && message.content && (
                 <span className="inline-block h-3.5 w-[2px] animate-pulse rounded-full bg-primary align-middle" aria-hidden />

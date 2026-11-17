@@ -58,6 +58,11 @@ export const tutorAskRequestSchema = z.object({
   // identity, and only VALIDATED in-scope papers pin. Absent = the
   // unpinned ask (behavior unchanged).
   paperId: z.string().uuid().optional(),
+  // T-TUTOR-AIM-P2 (DC10 §7.4): the learner's raw self-reported confidence
+  // — three buttons, NO default: the field is OPTIONAL and the server
+  // applies NO default (absent = null downstream; a no-tap is never
+  // recorded as a guessing — the log-first law logs only real taps).
+  confidence: z.enum(["sure", "think_so", "guessing"]).optional(),
 });
 export type TutorAskRequest = z.infer<typeof tutorAskRequestSchema>;
 
@@ -90,6 +95,19 @@ export const tutorTopicMatchSchema = z.object({
 });
 export type TutorTopicMatch = z.infer<typeof tutorTopicMatchSchema>;
 
+// ── T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer ─────────────
+
+/** Offer-not-claim (DC10 §13.2): the offer carries METADATA ONLY — the gap
+ *  node's id and its corpus title (KG data, the same class as the topics[]
+ *  titles already on the wire) — never learner-derived free text, and it
+ *  claims/consumes nothing until the learner's explicit tap. Optional on
+ *  both the answer view and the done frame; absent = no offer (most asks). */
+export const tutorProbeOfferSchema = z.object({
+  nodeId: z.string().uuid(),
+  title: z.string(),
+});
+export type TutorProbeOffer = z.infer<typeof tutorProbeOfferSchema>;
+
 export const tutorAnswerViewSchema = z.object({
   // the tutor's answer text ([n] markers reference citations)
   answer: z.string(),
@@ -107,6 +125,11 @@ export const tutorAnswerViewSchema = z.object({
   // verbatim — the flag is presentation truth, never surgery.
   truncated: z.boolean(),
   latencyMs: z.number(),
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe offer, AFTER the
+  // full answer (offer-not-claim, §13.2). Absent on older upstreams and on
+  // every refusal (a refusal offers nothing) — the hub reads probe only
+  // when present.
+  probe: tutorProbeOfferSchema.nullable().optional(),
 });
 export type TutorAnswerView = z.infer<typeof tutorAnswerViewSchema>;
 
@@ -187,6 +210,10 @@ export const tutorStreamDoneEventSchema = z.object({
   // knowable when meta commits with the first delta). Absent on older
   // upstreams — the hub reads data.truncated === true only.
   truncated: z.boolean().optional(),
+  // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer rides the terminal event
+  // when the ask earned one (offer-not-claim, §13.2 — metadata only);
+  // absent on older upstreams and on every refusal.
+  probe: tutorProbeOfferSchema.optional(),
 });
 
 export const tutorStreamErrorEventSchema = z.object({

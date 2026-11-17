@@ -924,3 +924,53 @@ describe("run-013 route pins (trace 1a14e30a57a96385)", () => {
     expect(text).toContain('"truncated":true');
   });
 });
+
+// ── T-TUTOR-AIM-P2: the confidence capture + the probe offer on the wire ────
+
+describe("T-TUTOR-AIM-P2 — confidence validation and passthrough (DC10 §7.4)", () => {
+  test("a value outside the closed enum is a @Pattern-class constraint violation", async () => {
+    const { app } = makeApp({});
+    const res = await ask(app, { question: "q", confidence: "definitely" });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe('confidence: must match "sure|think_so|guessing"');
+  });
+
+  test("a confidence value rides the ask into the telemetry event verbatim (even on the refusal path)", async () => {
+    const events: unknown[] = [];
+    const { app } = makeApp({}, { telemetry: (e: unknown) => events.push(e) });
+    const res = await ask(app, { question: "q", confidence: "think_so" });
+    expect(res.status).toBe(200);
+    const tel = events[0] as { confidence: string | null; refused: boolean };
+    expect(tel.confidence).toBe("think_so");
+    expect(tel.refused).toBe(true);
+  });
+
+  test("a no-tap ask sends no field and the event carries null — never an inferred value", async () => {
+    const events: unknown[] = [];
+    const { app } = makeApp({}, { telemetry: (e: unknown) => events.push(e) });
+    const res = await ask(app, { question: "q" });
+    expect(res.status).toBe(200);
+    expect((events[0] as { confidence: string | null }).confidence).toBeNull();
+  });
+
+  test("the blocking refusal view carries probe: null (a refusal offers nothing)", async () => {
+    const { app } = makeApp({});
+    const res = await ask(app, { question: "q" });
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.refused).toBe(true);
+    expect(body.probe).toBeNull();
+  });
+});
+
+describe("T-TUTOR-AIM-P2 — the probe offer on the stream wire (DC10 §7.6)", () => {
+  test("a refusal stream's done frame carries NO probe key (offer-not-claim; the wire stays lean)", async () => {
+    const { app } = makeApp({});
+    const res = await ask(app, { question: "why is that?" }, "/api/v1/tutor/ask/stream");
+    const text = await res.text();
+    const doneLine = text.split("\n").find((l) => l.startsWith("data:") && l.includes('"ok":true'));
+    expect(doneLine).toBeDefined();
+    expect(doneLine).not.toContain("probe");
+  });
+});
