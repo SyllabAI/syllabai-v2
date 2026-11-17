@@ -1,0 +1,79 @@
+version: 1
+task:
+  id: T-MG-CALC-1
+  title: "The exam-honest fx-83GT CW calculator keypad — formalize the lane's first YAML card: prod functional map (23-case battery + SHIFT relabel law, all real-click driven), the two remaining device-fidelity gaps (FIX-vs-exact display; structural-key SHIFT remaps), and the MG negative finding (mathsgenie.co.uk ships NO calculator — the fidelity anchor is the Casio fx-83GT CW device, not MG parity)"
+  owner: "main agent (Z.ai)"
+  status: OPEN
+  priority: P2
+  band: "T-MG-CALC (the past-paper viewer's scientific calculator overlay — engine, keypad, copy affordance, gesture seam)"
+  wave: mg-calc-fidelity
+  deps: []
+  plan_of_record: "download/t-mg-ch1-mark-1/T-MG-CALC-task-card-scientific-calculator.md (the lane's working card, runs 001–003 receipted there) + download/t-mg-ch1-mark-1/STATE-AND-FOLLOWUP.md Addenda 29–31; this YAML is the first .syllabai card for the lane"
+  parent: T-MG-MARK-PARITY-1
+  id_note: >
+    First T-MG-CALC card — no CALC YAML existed before (runs 001–003 were
+    receipted in the download card only). Numbering starts at 1. The MG
+    negative finding is recorded IN the card so no future lane re-derives
+    it: MG parity is NOT the fidelity target for the calculator because
+    MG has nothing to be faithful to.
+  what_it_is: >
+    The viewer-level calculator overlay (ScientificCalculator.tsx +
+    calc-engine.ts): a Casio fx-83GT CW class replica — 45-key keypad in
+    the device's 5-column posture (SHIFT/MODE/cursor row, function rows,
+    numeric block with ÷×−+ column, S⇔D and Ans), an exact-rational engine
+    (BigInt rationals; exact results render as fractions, S⇔D toggles
+    decimal), MathI/O honest-parse (auto-close at =), Math ERROR posture,
+    one-shot SHIFT/HYP modifiers, FIX/angle setup, ENG ladder, Ans chain,
+    percent, and the run-002 Copy-result affordance. Runs 001–003 shipped:
+    compute/S⇔D/Ans/%/ERROR + the two-finger relay (run-001), SELECT-mode
+    gestures over the overlay + copy (run-002), the keyboard-as-a-user
+    fixes (run-003: z-law 55 over the mobile pill, resting "0",
+    click/keyboard a11y with single-fire guard, light input line).
+  evidence_map:
+    mg_negative_finding: >
+      PROVEN three ways, 2026-11-17: (1) mathsgenie.co.uk/papers.html —
+      no calculator element/script/iframe/link (the word appears only as
+      Edexcel paper-variant titles); (2) LIVE DOM pass on the paper viewer
+      (gcse-maths-2025-june-1ma1-2h) — zero calculator/keypad/math-tool
+      hits in the mounted DOM; scripts are Next.js chunks + Intercom only;
+      (3) the site's only "calculator" is the predicted-grade FORM (marks
+      → grade, no keypad) and a "Using a Calculator" revision LESSON.
+      MG's interactive tool is ink-on-paper marking. CONSEQUENCE: the
+      calculator's fidelity anchor is the Casio fx-83GT CW device itself
+      (the UK exam-standard class named on the overlay).
+    prod_battery_20261117: >
+      23-case battery driven by REAL click events on prod
+      (scripts/mg-calc-battery.js + spot-checks; desktop 1440×900 and
+      mobile 390×844): PASS — 5+3=8; right-assoc 2^3^2=512; parens;
+      1÷3 exact 1/3 ⇔ 0.3333333333 both directions; sin30 = exact 1/2
+      ⇔ 0.5 (the device's exact-rational law, S⇔D verified); log100=2;
+      √9 auto-closed=3; 200×10%=20; 1÷0 Math ERROR; Ans chain =9;
+      4 x⁻¹ = 1/4 (exact law); 10³=1000; ³√27=3; 2×π=6.283185307;
+      ENG 12000 → 12×10^3; fraction-atom entry 1/3 via Cursor-right; 
+      sinh(1)=1.175201194; 5−(−3)=8; DEL; SHIFT flag in title; FIX chip
+      interaction; Copy result affordance; two presses → two digits (no
+      auto-repeat bug); SHIFT+Sine → the grid RELABELS Sine→Arcsin live
+      and one-shot-consumes back after use (Arcsin(0.5)=30 verified);
+      mobile: 9×9=81, the previously-buried bottom-row keys reachable,
+      the QP/MS pill occluded behind the overlay, geometry fits 390×844.
+  acceptance_pins:
+    - "(fix pin — FIX-vs-exact) FIX N must override the display of exact rationals the way the device does: with Fix 2 set, 5÷3 renders 1.67 (today formatNatural's fraction branch returns n/d for every exact value and ignores fix — a real fidelity deviation, verified on prod); S⇔D under FIX stays device-honest (the device hides S⇔D under FIX — check the device law before wiring) and Fix off restores the exact law"
+    - "(fix pin — structural SHIFT remaps) SHIFT must remap the structural keys whose shifted function exists as a standalone key today: SHIFT+Square → Cube insert, SHIFT+Square root → Cube root insert, SHIFT+Logarithm → Ten-to-the-power insert (the device law: the shift legend is the key's primary shifted function — today only the trig family remaps, to Arcsin/Arccos/Arctan, which is correct); the shift relabel must swap the legends the way the trig row already does, and the one-shot consume law is preserved"
+    - "(open-question pin — physical keyboard) the overlay accepts NO physical-keyboard input today (no keydown mapping; the DEVICE has no qwerty either, so this is not a fidelity gap) — decide with the operator whether browser-native digit/operator typing should press the corresponding keys (an accessibility nicety) or stay pointer/keyboard-activation-only as shipped; no silent scope growth"
+    - "(regression pin) every battery case of record keeps passing after any fix (the battery scripts are persisted at scripts/mg-calc-battery.js and battery2/3 — re-run them on prod after deploy, desktop AND mobile); the engine's 50 pins + the component's U1–U9 pins stay green"
+    - "(fence pin) zero contracts/api/db bytes; the overlay stays viewer-level spanning split view; the run-003 z-law (calc 55 > pill 50) and the gesture relay laws are byte-identical in behaviour"
+  non_goals:
+    - "no graphing, no complex numbers, no equation SOLVE/STAT modes (fx-83GT CW class does not have them — out of class)"
+    - "no physical-keyboard mapping without an operator ruling (open-question pin)"
+    - "no MS-pane gesture work here — that is T-MG-INK-9's scope (this card's fence keeps the lanes separable)"
+    - "no re-litigation of the exam-honest laws (exact rational preference, no currency, no step-by-step answer leak)"
+  execution_record: >
+    research run of record 2026-11-17 (this card's authoring run): rollback
+    tag t-mg-calc-keyboard-baseline-20261117 pushed at 319a057 BEFORE any
+    change; prod battery executed desktop+mobile with real clicks
+    (18/23 naive-pass, the 5 discrepancies resolved by classification:
+    3 were the exact-rational device law with wrong test expectations,
+    1 was a mislabeled case, 1 — FIX-vs-exact — is the real deviation
+    pinned above; the SHIFT gap narrowed from 'flag only' to
+    'structural keys only' after the live relabel discovery); MG negative
+    finding proven per the evidence map. No code changed in this run.
