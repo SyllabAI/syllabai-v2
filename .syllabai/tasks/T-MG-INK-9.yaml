@@ -1,0 +1,47 @@
+version: 1
+task:
+  id: T-MG-INK-9
+  title: "Double-finger gestures on the MS pane — the SELECT-mode relay's pan and the pinch bridge currently serve the QP only (the viewer's MS PdfPane render site receives no gesturePlane and a mark-scheme document has no ink canvas for the relay's scroller discovery, so select-mode two-finger gestures on an MS doc degrade to nothing at best, and in split mode the MS-side gesture can only ever find the QP's canvas)"
+  owner: "main agent (Z.ai)"
+  status: OPEN
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking) — the gesture seam's follow-up card, discharged from the run-002/003 receipts (STATE-AND-FOLLOWUP.md Addenda 29–31, "run-004 candidate")
+  wave: mg-parity-phase3-ink
+  deps: []
+  plan_of_record: "inherits the shipped gesture laws: paperGestures.ts (the PaperGestures coordinator: pan/pinch/select branch), gesturePlane.ts (T-MG-INK-13 run-002: the shared plane's ref, populated by the pane's zoomBy ladder binding), ScientificCalculator.tsx (the SELECT relay), paper-viewer-client.tsx (the seam); disclosure numbering in id_note"
+  parent: T-MG-MARK-PARITY-1
+  id_note: >
+    Numbered 9: 8 is RESERVED (T-MG-INK-7's non_goals name T-MG-INK-8 for
+    the MG cursor affordance candidate — do not reuse). The shipped
+    SELECT-gesture work is plan-numbered T-MG-INK-13 in the seam
+    docstrings (gesturePlane.ts) but never had a YAML card; this card
+    continues that line and pins both names so no number is silently
+    reused. No T-MG-INK-13/14 YAML exists today (verified by grep).
+  evidence_pin: >
+    PROVEN, 2026-11-17 (code read at the current tip + prod reasoning):
+    the viewer's QP render site passes gesturePlane={qpGesturePlane} and
+    hosts an InkLayer whose visible canvas anchors the relay's scroller
+    discovery; the MS render site (~paper-viewer-client.tsx line 916,
+    'Mark scheme — …') receives NO gesturePlane and the MS host has no
+    InkLayer — so on doc=ms the relay's visibleInkCanvas scan finds
+    nothing (pan dies), zoomStep is unreachable (the overlay's relay
+    reads gesturePlane?.current?.zoomStep — the calculator's plane IS
+    bound but the MS pane's zoom is not), and in split mode a gesture
+    over the MS half can only ever anchor to the QP's canvas (wrong
+    scroller risk). The mock-mode panes deliberately carry no ink and no
+    calculator — out of scope by exam-honesty law.
+  acceptance_pins:
+    - "(plane pin) the MS PdfPane receives gesturePlane (the same holder or a symmetric msGesturePlane holder — decide in design; the holder must bind zoomStep through the pane's own zoomBy ladder exactly as the QP binding does, pdf-pane's bridge effect is pane-agnostic) and the binding survives mount/unmount and the pane's active-phase gating"
+    - "(scroller pin) the relay's scroller discovery gains a nearest-pane fallback: when no visible ink canvas anchors the scroller, the gesture's viewport position selects the pane scroller nearest the gesture point (the split-mode hijack guard: a gesture over the MS half must never pan the QP scroller — pin the wrong-pane case by test)"
+    - "(parity pin) on an MS document: resting-SELECT two-finger pan scrolls the MS pane (a live tracer on prod after deploy, the run-002 recipe), select-mode pinch steps the MS pane's zoom ladder through the bridge, and the armed (Draw) path on MS behaves per the same palm law as QP (the coordinator's own pan — the MS pane has no ink layer, so arming is impossible there: pin THAT posture instead — armed tools are QP-only and the overlay relay must not stroke)"
+    - "(zero-touch pin) the QP behaviours of record are byte-identical in behaviour: the run-002 QP verify (select-pan +120px, pinch ladder via the zoom readout, armed relay) re-verified after deploy; the run-003 keyboard laws untouched; mock-mode panes untouched"
+    - "(fence pin) zero contracts/api/db bytes; container syllabai-ink/1 VERBATIM; the pane stays ignorant of the ink layer (no pdf-pane.tsx behavioral change — the gesturePlane prop pass-through and the relay's discovery fallback are the only changed files: paper-viewer-client.tsx, ScientificCalculator.tsx (relay), paperGestures.ts (+ tests))"
+  non_goals:
+    - "no MS ink annotation (marking the MS is a separate parity question — MS pane stays annotation-free)"
+    - "no pinch-zoom redesign (the ladder, ceiling clamp and anchor refreeze laws are shipped and stay)"
+    - "no cursor affordance work (T-MG-INK-8's reserved scope)"
+    - "no schema, contract or API change of any kind"
+  execution_record: >
+    carded 2026-11-17 from the run-002/003 receipts' follow-up note +
+    this run's code verification (the render-site prop diff and the
+    no-canvas discovery gap are pinned in evidence_pin). No code changed.
