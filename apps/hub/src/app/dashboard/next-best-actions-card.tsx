@@ -248,7 +248,7 @@ export function NextBestActionsCard({ courses }: { courses: CourseMeta[] }) {
   const provenance = coreReplacedResolved
     ? localCourses.length > 0
       ? `Ranked from your account's progress (${resolvedSubject}); your other courses from this device's activity.`
-      : "Ranked from your account's progress — the same read model the workbench consumes."
+      : "Ranked from your account's progress."
     : "Ranked from this device's study activity — marks, mastery and the review schedule.";
 
   const bridgeFailed =

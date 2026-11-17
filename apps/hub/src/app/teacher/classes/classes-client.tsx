@@ -119,7 +119,7 @@ export function TeacherClassesClient({
             Classes
           </span>
         }
-        description="Your classes per subject — rosters, announcements and class-targeted assignments. Live from the SyllabAI backend; members see the classroom overlay inside their subject workspace, and independent students are never touched by it."
+        description="Your classes per subject — rosters, announcements and assignments."
         actions={
           <Button onClick={() => setShowCreate((v) => !v)} aria-expanded={showCreate}>
             <Plus className="size-4" aria-hidden /> New class

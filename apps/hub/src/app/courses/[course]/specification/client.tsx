@@ -326,8 +326,8 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
       {chipsSeen === 0 ? (
         <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">
-            Paper, unit and tier filters aren't available for this course yet —
-            everything below comes straight from the official specification.
+            No paper/unit/tier filters for this course — every statement below
+            is from the official specification.
           </CardContent>
         </Card>
       ) : (
@@ -357,11 +357,7 @@ export function SpecificationExplorer({ topics, totalPoints, legend }: Props) {
             {tierOptions.length === 1 &&
               renderLocked("lk-tier", <GraduationCap className="size-3.5" aria-hidden />, "Tier", tierOptions[0].value)}
             <p className="text-xs leading-relaxed text-muted-foreground sm:col-span-3">
-              Where each part is examined comes from the official specification (content
-              summaries &amp; assessment overviews). Hover a chip for the exact rule.
-              Filters appear only where the qualification has that structure — an
-              IGCSE has no unit filter, and only Maths A splits Foundation /
-              Higher tiers.
+              Chips show where each statement is examined — hover one for the exact rule.
             </p>
           </CardContent>
         </Card>
