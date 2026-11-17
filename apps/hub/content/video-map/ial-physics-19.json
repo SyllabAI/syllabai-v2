@@ -24,7 +24,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 58,
+  "rowsApproved": 165,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -35,7 +35,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 25,
+    "rowsApproved": 132,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -100,7 +100,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-aligned A-level/GCSE channel; where the AQA and Cambridge courses differ, each video was checked by hand",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
    "durationS": 212,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -116,7 +116,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "gcse",
-   "boardNote": "AQA-aligned A-level/GCSE channel; where the AQA and Cambridge courses differ, each video was checked by hand",
+   "boardNote": "AQA-aligned A-level/GCSE channel; AQA<->CIE divergence adjudicated per row (title-only evidence)",
    "durationS": 255,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -164,7 +164,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 186,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -180,7 +180,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 140,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -196,7 +196,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 539,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -212,7 +212,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 322,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -228,7 +228,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; each video's fit was checked by hand",
+   "boardNote": "one channel behind gcsephysicsonline.com + alevelphysicsonline.com (Lewis Matheson, Physics Online Ltd); titles are board-agnostic; board fit adjudicated per row on title-only evidence",
    "durationS": 292,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -244,7 +244,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "James Gan (CIE 9618 AS&A CS chapter series + 9702 physics + 9709 maths)",
+   "boardNote": "James Gan (CIE 9618 AS&A CS chapter series + 9702 physics + 9709 maths) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -402,6 +402,1183 @@
    "identityMethod": "oembed"
   },
   {
+   "id": "-LFeZFxbW-A",
+   "title": "5.1a Ex1 FM18 P12 Q18 Work Done on Boxes | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=-LFeZFxbW-A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-Sc_4TmFluQ",
+   "title": "Gravitational Field Strength Graphs | Gravitation | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=-Sc_4TmFluQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "01GOJogs-EM",
+   "title": "5.2a Ex4 MJ15 P23 Q3 Car Power | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=01GOJogs-EM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "04ODD9lBlFI",
+   "title": "Past Paper Questions (Part 3) | Electromagnetic Induction | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=04ODD9lBlFI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0cPiJgP2a6s",
+   "title": "5.1e Ex1 MJ14 P13 Q18 KE Changes During Contact | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=0cPiJgP2a6s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0iR4VPGQNNg",
+   "title": "5.1f Ex3 ON19 P13 Q16 Falling in Oil Energy Graph | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=0iR4VPGQNNg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1db_ri7UGjE",
+   "title": "5.1d Gravitational Potential Energy W=mgh | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=1db_ri7UGjE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2JHtuSAnk-o",
+   "title": "20.4d Ex3 ON19 P42 Q8 Hall Voltage Polarity | A2 Magnetic Fields | CAIE A 9702 Levels",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=2JHtuSAnk-o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2LcfXxI8mpk",
+   "title": "20.3c Mass Spectrometer | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=2LcfXxI8mpk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2xLo9GzEJEA",
+   "title": "A2 Physics 9702 Past Papers Of Magnetic Fields pt 3",
+   "provider": "sir-faizan-pasha",
+   "watchUrl": "https://www.youtube.com/watch?v=2xLo9GzEJEA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Learn With Sir Faizan Pasha (CIE 9702 past-paper lectures with 9702/pp/MM/J/yy codes + the AS/A2 teaching register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3Ushm08Fozo",
+   "title": "Basics - Faraday's and Lenz's law | Electromagnetic Induction | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=3Ushm08Fozo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4lxne6siM6E",
+   "title": "20.5a Faraday, Lenz and Flux Linkage | A2 Electromagnetic Induction | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=4lxne6siM6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4q64i0b8ScY",
+   "title": "5.1d Ex3 MJ15 P12 Q15 Falling Block | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=4q64i0b8ScY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4rQJT0iwQmY",
+   "title": "5.1f Ex5 MJ19 P12 Q18 Bungee Jumper Graph | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=4rQJT0iwQmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "56FOMuNNBlc",
+   "title": "3.4b Ex1 MJ18 P11 Q9 Collision Statements | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=56FOMuNNBlc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7vCCYVy47qI",
+   "title": "5.1e Ex2 MJ13 P11 Q17 Ball Rebound KE | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=7vCCYVy47qI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "827Fmei0_NU",
+   "title": "A2 20 BONUS: Electric Guitar Pickups | Electromagnetic Induction | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=827Fmei0_NU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8KSV_wKMdTc",
+   "title": "Past Paper Questions (Part 2) | Electromagnetic Induction | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=8KSV_wKMdTc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8nXnZDyNpUY",
+   "title": "Comparing Fields: Gravitational, Electric and Magnetic Fields | A2 | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=8nXnZDyNpUY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9ouRh_xK2ak",
+   "title": "AS Phy 9702 WORK ENERGY POWER  Lecture 2",
+   "provider": "sir-faizan-pasha",
+   "watchUrl": "https://www.youtube.com/watch?v=9ouRh_xK2ak",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Learn With Sir Faizan Pasha (CIE 9702 past-paper lectures with 9702/pp/MM/J/yy codes + the AS/A2 teaching register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9sFrZJeA0Rk",
+   "title": "Old Past Paper Questions | Thermodynamics | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=9sFrZJeA0Rk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "APxttcckfD8",
+   "title": "16.1b ON15 P41 Q3 1st Law of Thermodynamics Explanations | A2 | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=APxttcckfD8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AzbIK9FOwow",
+   "title": "5.2b Ex3 ON11 P21 Q4 Hydroelectric Reservoir | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=AzbIK9FOwow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BKT6OQN59E4",
+   "title": "20.4d Ex2 ON17 P42 Q8 Explaining Hall Voltage  | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=BKT6OQN59E4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BquNTOLc6q8",
+   "title": "5.1c Work Done by Gas (W = PΔV) | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=BquNTOLc6q8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BtuKco9071s",
+   "title": "5.2a Ex3 MJ13 P11 Q19 Wheel Motor Power | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=BtuKco9071s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BycnWocq0vA",
+   "title": "16.1c Application of 1st Law's to Ideal Gas Laws | A2 Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=BycnWocq0vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "C2A6OBwugjs",
+   "title": "20.1b Types of Electromagnets | A2 Magnetic Fields | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=C2A6OBwugjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CMomoQH_pBI",
+   "title": "AS Phy 9702 WORK ENERGY POWER  Lecture 1",
+   "provider": "sir-faizan-pasha",
+   "watchUrl": "https://www.youtube.com/watch?v=CMomoQH_pBI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Learn With Sir Faizan Pasha (CIE 9702 past-paper lectures with 9702/pp/MM/J/yy codes + the AS/A2 teaching register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CylBD4QtIt4",
+   "title": "The Basics of Thermodynamics | Thermodynamics | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=CylBD4QtIt4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "E6Y_s8j2Vic",
+   "title": "5.2a Power as Rate of Work Done | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=E6Y_s8j2Vic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EWem7Z3tIuE",
+   "title": "A2 Physics 9702 Past Papers Of Magnetic Fields pt 1",
+   "provider": "sir-faizan-pasha",
+   "watchUrl": "https://www.youtube.com/watch?v=EWem7Z3tIuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Learn With Sir Faizan Pasha (CIE 9702 past-paper lectures with 9702/pp/MM/J/yy codes + the AS/A2 teaching register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FOcbvNeFKlM",
+   "title": "A2 Physics - Electromagnetic Induction - Part 2 -  9702",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=FOcbvNeFKlM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GLyAG4Fd2TU",
+   "title": "Past Papers on Radioactive Decay (Part 1) | Radioactivity | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=GLyAG4Fd2TU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GSZUfHUUeuk",
+   "title": "5.1d Ex2 MJ14 P12 Q14 GPE Change in G-field | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=GSZUfHUUeuk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GWrjJMrz6Uo",
+   "title": "3.5b Ex1 MJ18 P22 Q2 Firework Explosion Fragments | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=GWrjJMrz6Uo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HrjWuHh5PjY",
+   "title": "20.4b Hall Effect and Hall Voltage | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=HrjWuHh5PjY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IVb7vozVK54",
+   "title": "20.2c Ex1 MJ13 P42 Q5 Parallel Wires Forces | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=IVb7vozVK54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ifr-3FRg3Aw",
+   "title": "22.3 Force On Parallel Wires | Magnetic Field (A2) | CAIE 9702 Physics",
+   "provider": "ck-a-level-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=Ifr-3FRg3Aw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "CK A-level Physics (archived 9702 AS/A2 teaching series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JB0v6W6kgYs",
+   "title": "5.1a Ex4 ON19 P12 Q16 Floating Cylinder | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=JB0v6W6kgYs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JG4iJFUIdRM",
+   "title": "15.2c Kinetic Energy & Internal Energy | A2 Ideal Gas & Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=JG4iJFUIdRM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JT-21IqHhLY",
+   "title": "20.5 Electric Potential Energy & Potential  | Electric Field (A2) | CAIE 9702 Physics",
+   "provider": "ck-a-level-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=JT-21IqHhLY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "CK A-level Physics (archived 9702 AS/A2 teaching series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KHUHvcSmcp0",
+   "title": "3 - 9702/22/O/N/19 - Newton's Law of Motion, Conservation of Momentum, Forces and Dynamics",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=KHUHvcSmcp0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KkIDTkJlHEw",
+   "title": "20.2a Ex1 MJ10 P42 Q6 Force, Current & Angle Graph | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=KkIDTkJlHEw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ko9ly508JAw",
+   "title": "Past Papers on Radioactive Decay (Part 2) | Radioactivity | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=Ko9ly508JAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KtMxweGe6Ac",
+   "title": "Thermodynamics (Part 1) – The MOST IMPORTANT Concepts You Need! | A2 Physics 9702",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=KtMxweGe6Ac",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L08W0xC2fD0",
+   "title": "5.1f Ex2 ON18 P11 Q15 Gas Expansion and GPE | AS work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=L08W0xC2fD0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LV01aPYaeLQ",
+   "title": "3.5b Ex3 FM16 P12 Q10 Vector Momenta Diagram | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=LV01aPYaeLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LiuNfAT7K30",
+   "title": "3.4b Ex3 MJ09 P2 Q2 Ball Collision Graph | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=LiuNfAT7K30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LrpzwBvRKYk",
+   "title": "20.3a Ex2 ON11 P43 Q6 Particle Curve and Spiral | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=LrpzwBvRKYk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MKJqYgnH6rM",
+   "title": "20.2b Ex1 FM20 P42 Q8ab Force on Current Balance | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=MKJqYgnH6rM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NetibceKzco",
+   "title": "A2 Physics - Electromagnetic Induction - Part 1 -  9702",
+   "provider": "mega-lecture",
+   "watchUrl": "https://www.youtube.com/watch?v=NetibceKzco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NfqhhH1BAiw",
+   "title": "5.1a Ex2 ON20 P12 Q17 Hammer Nail | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=NfqhhH1BAiw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ov5GdkqXUIU",
+   "title": "20.3b Ex2 FM16 P42 Q9 Particle Analysis | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=Ov5GdkqXUIU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P9Sfhp5gMiw",
+   "title": "MJ18 P41 Q9 Rotated Wire Between Magnets | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=P9Sfhp5gMiw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PRuFisTVjBo",
+   "title": "Thermodynamics Part 2 – FIRST LAW MASTERED 💎 | A2 Physics 9702",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=PRuFisTVjBo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Pw0eZnM-teo",
+   "title": "16.1 Ideal Gases Introduction | Ideal Gases (A2) | CAIE 9702 Physics",
+   "provider": "ck-a-level-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=Pw0eZnM-teo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "CK A-level Physics (archived 9702 AS/A2 teaching series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QgdGLWoNtiY",
+   "title": "5.1e Kinetic Energy | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=QgdGLWoNtiY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RHRxUYCAMu8",
+   "title": "5.1b Ex2 ON15 P22 Q3 Compressing Spring | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=RHRxUYCAMu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "S5A93l4CSqE",
+   "title": "3.4a Ex3 MJ18 P12 Q9 KE after Collision | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=S5A93l4CSqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VrgbCbUFqaQ",
+   "title": "5.2b Efficiency and Energy Loss | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=VrgbCbUFqaQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WQNtMMvGB70",
+   "title": "20.3c Ex2 MJ18 P42 Q8 Sketching paths of charges | A2 Magnetic Fields | CAIE 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=WQNtMMvGB70",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WS2DwB_XrIE",
+   "title": "5.1e Ex3 MJ19 P23 Q2 Projectile Energy | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=WS2DwB_XrIE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WbG04ZEPqVw",
+   "title": "13.3b Ex2 MJ10 P42 Q1 Deflected Meteorite | A2 Gravitational Fields | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=WbG04ZEPqVw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "X3SprbnVSR4",
+   "title": "20.3a Ex3 MJ19 P42 Q8 Particle Helical Path | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=X3SprbnVSR4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Z4FsHq_obCw",
+   "title": "26.3 Radioactive Decay | Nuclear Physics (A2) | CAIE 9702 Physics",
+   "provider": "ck-a-level-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=Z4FsHq_obCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "CK A-level Physics (archived 9702 AS/A2 teaching series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_Esm31ED1uk",
+   "title": "20.2b Current Balance Experiment  | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=_Esm31ED1uk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aPhgBZIanJM",
+   "title": "ON18 P42 Q8 Wire Torque Balance | A2 Magnetic Fields | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=aPhgBZIanJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bEQUrGBJ4OA",
+   "title": "A2 Physics 9702 Past Papers Of Magnetic Fields pt 2",
+   "provider": "sir-faizan-pasha",
+   "watchUrl": "https://www.youtube.com/watch?v=bEQUrGBJ4OA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Learn With Sir Faizan Pasha (CIE 9702 past-paper lectures with 9702/pp/MM/J/yy codes + the AS/A2 teaching register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bfcVKDv8a_4",
+   "title": "20.3a Force on Moving Charged Particles | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=bfcVKDv8a_4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ch5l585Aj9k",
+   "title": "20.4a Semiconductors: n-type and p-type [BONUS] | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=ch5l585Aj9k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "d-pHDLXQgWw",
+   "title": "3.5a Collisions in 2D | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=d-pHDLXQgWw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dZJaabjikr4",
+   "title": "AS Phy 9702 WORK ENERGY POWER  Lecture 3",
+   "provider": "sir-faizan-pasha",
+   "watchUrl": "https://www.youtube.com/watch?v=dZJaabjikr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Learn With Sir Faizan Pasha (CIE 9702 past-paper lectures with 9702/pp/MM/J/yy codes + the AS/A2 teaching register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fICbR5yCcaY",
+   "title": "23.2 Principle of Electromagnetic Induction | EM Induction (A2) | CAIE 9702 Physics",
+   "provider": "ck-a-level-physics",
+   "watchUrl": "https://www.youtube.com/watch?v=fICbR5yCcaY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "CK A-level Physics (archived 9702 AS/A2 teaching series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fTQGN5vo9LY",
+   "title": "20.6b Magnets in Solenoids | A2 Electromagnetic Induction | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=fTQGN5vo9LY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fWDqE1OQT1Q",
+   "title": "MJ20 P41 Q8 Current Balance Torque | A2 Magnetic Fields | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=fWDqE1OQT1Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fWOyETpmkyc",
+   "title": "The New trend of Past Paper Questions | Thermodynamics | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=fWOyETpmkyc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gBt7Bg9R7OM",
+   "title": "20.3a Ex4 ON18 P41 Q8 Changing Charge Magnitude | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=gBt7Bg9R7OM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gh-W8CWUZqU",
+   "title": "Summary: Four Pillars of Gravitational Fields | A2 G-fields | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=gh-W8CWUZqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hO5Z2aCJ3ys",
+   "title": "15.2d Ex1 ON11 P41 Q2 Kinetic Theory | A2 Ideal Gas & Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=hO5Z2aCJ3ys",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iMg96svbbRI",
+   "title": "20.3a Ex5 MJ17 P41 Q7 Charge Momentum in Magnetic Fields | A2 | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=iMg96svbbRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "id3o3uF-ADA",
+   "title": "13.4b Ex3 ON13 P41 Q1 Rock Escape from Moon | A2 Gravitational Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=id3o3uF-ADA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "irvHPvrF-DQ",
+   "title": "5.1c Ex1 ON19 P11 Q16 PV Graph Gas Cycle | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=irvHPvrF-DQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jwn4lrxDQUs",
+   "title": "Magnetic Fields (Ch20 Part 1) | A2 Review Session | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=jwn4lrxDQUs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lKzIEipBvKk",
+   "title": "3.5b Ex4 ON17 P23 Q3 Ball 2D Collision | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=lKzIEipBvKk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m4J1FaKRBDw",
+   "title": "5.2a Ex2 MJ20 P12 Q17 Escalator Power | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=m4J1FaKRBDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mK3lro1lG7o",
+   "title": "5.2b Ex1 MJ13 P11 Q18 Turbine Power | AS Work Energy Power | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=mK3lro1lG7o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mr9I6iaeq7Q",
+   "title": "3.4b Ex2 ON20 P12 Q10 Possible Speeds in Collision | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=mr9I6iaeq7Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "n-n7m1UWB1E",
+   "title": "5.1e Ex4 MJ14 P12 Q16 Bowl Energies | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=n-n7m1UWB1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oGxYavvQGk8",
+   "title": "16.1b MJ19 P41 Q2 Charles Law Thermodynamics | A2 Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=oGxYavvQGk8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p2shUOQTTns",
+   "title": "16.1 Further Physics: Area as Work Done [BONUS] | A2 Ideal Gas | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=p2shUOQTTns",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pTag5LPD4k8",
+   "title": "Past Paper Questions (Part 1) | Electromagnetic Induction | 9702 A2 Physics Urdu/Hindi",
+   "provider": "prosperity-academy",
+   "watchUrl": "https://www.youtube.com/watch?v=pTag5LPD4k8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Prosperity Academy (CIE SOLVED session papers + topic lectures across 9702/9701/9700; content register Urdu/Hindi-dubbed CAIE instruction — recon-approved T1, disclosed) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rpKm03fPF1Y",
+   "title": "3.5b Ex2 MJ18 P13 Q9 Inelastic Collision Angle | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=rpKm03fPF1Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "svyGHozTBmo",
+   "title": "15.2d Ex2 MJ17 P41 Q4 Kinetic Theory Calculation | A2 Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=svyGHozTBmo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tu2i2y6ijss",
+   "title": "20.1c ON09 P41 Q6 B-field of Earth vs Wire | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=tu2i2y6ijss",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uQurUhVSj70",
+   "title": "16.1d ON18 P41 Q2 Gas Cycle Graph | A2 Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=uQurUhVSj70",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uxPSAqe4S9Q",
+   "title": "3.4a Ex2 ON20 P11 Q9 Rock and Star Elliptical Orbit | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=uxPSAqe4S9Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vSAI__98d8E",
+   "title": "20.2a Force on Conductor F=BIL sin θ | A2 Magnetic Fields | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=vSAI__98d8E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vhEOVQLDMpk",
+   "title": "20.2c Ex2 MJ12 P41 Q7 Parallel Wires with AC | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=vhEOVQLDMpk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wRMLN5I38eo",
+   "title": "5.1d Ex1 ON17 P12 Q16 Work Done on Projectile | AS Work Energy Power | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=wRMLN5I38eo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wfMQa4nIEQ4",
+   "title": "16.1b ON19 P42 Q2 Brownian Motion & 1st Law | A2 Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=wfMQa4nIEQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "x6jjpIOtyqw",
+   "title": "16.1b ON15 P43 Q3 Constant Pressure Heating | A2 Thermodynamics | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=x6jjpIOtyqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yMBuGHSv0Yo",
+   "title": "3.3c ON18 P22 Q3 Car Propeller Force | AS Dynamics | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=yMBuGHSv0Yo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yR4dDX3pfYo",
+   "title": "ON14 P41 Q1 Rock Entering Planet | A2 Gravitational Fields | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=yR4dDX3pfYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "z09THceOEnE",
+   "title": "Electromagnetic Induction (Ch20 Part 2) | A2 Review Session | Cambridge A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=z09THceOEnE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zZidjyuqYEQ",
+   "title": "20.4d Ex1 MJ16 P42 Q9 Semiconducting Material | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=zZidjyuqYEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zsdvP1ZGqxI",
+   "title": "20.3b Ex1 MJ20 P42 Q9 Undeviated Path | A2 Magnetic Fields | CAIE A Level 9702 Physics",
+   "provider": "etphysics",
+   "watchUrl": "https://www.youtube.com/watch?v=zsdvP1ZGqxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "ETphysics (CIE 9702 session-walkthrough channel: compact ON/MJ/FM-session paper walkthroughs + the numbered AS/A2 topic series) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
    "id": "X31bjQpjb9s",
    "title": "Motor Effect F=BIL - Physics A-level Practical",
    "provider": "malmesbury-education",
@@ -409,7 +1586,7 @@
    "lessonRef": null,
    "lessonUrl": null,
    "levelTag": "a-level",
-   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing matched by topic to UK course outlines",
+   "boardNote": "Malmesbury Education GCSE/A-level science required-practical channel; AQA practical framing bound on topic against the UK spines",
    "durationS": 275,
    "guestVisible": null,
    "subelementOfPrimary": false,
@@ -906,7 +2083,7 @@
     "22"
    ],
    "confidence": "medium",
-   "evidence": "title names energy transfer and efficiency",
+   "evidence": "title names energy transfer and efficiency (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -926,7 +2103,7 @@
     "22"
    ],
    "confidence": "medium",
-   "evidence": "title names efficiency",
+   "evidence": "title names efficiency (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -999,6 +2176,566 @@
    }
   },
   {
+   "video": "AzbIK9FOwow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VrgbCbUFqaQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "01GOJogs-EM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BtuKco9071s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mK3lro1lG7o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "E6Y_s8j2Vic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4rQJT0iwQmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "L08W0xC2fD0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0iR4VPGQNNg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "n-n7m1UWB1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WS2DwB_XrIE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7vCCYVy47qI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "0cPiJgP2a6s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "QgdGLWoNtiY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4q64i0b8ScY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GSZUfHUUeuk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wRMLN5I38eo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "1db_ri7UGjE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BquNTOLc6q8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "irvHPvrF-DQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "RHRxUYCAMu8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JB0v6W6kgYs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NfqhhH1BAiw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-LFeZFxbW-A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "m4J1FaKRBDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Work, energy and power' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dZJaabjikr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Work, energy and power' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9ouRh_xK2ak",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Work, energy and power' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CMomoQH_pBI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "22"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Work, energy and power' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "T602kBo16ok",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1006,7 +2743,7 @@
     "33"
    ],
    "confidence": "medium",
-   "evidence": "title names wavelength, period, amplitude and phase difference",
+   "evidence": "title names wavelength, period, amplitude and phase difference (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1026,7 +2763,7 @@
     "33"
    ],
    "confidence": "medium",
-   "evidence": "title names phase and phase difference",
+   "evidence": "title names phase and phase difference (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1047,7 +2784,28 @@
     "62"
    ],
    "confidence": "medium",
-   "evidence": "title names 22.3.1 '\u0007understand that the photoelectric effect provides evide'",
+   "evidence": "title names 22.3.1 '\u0007understand that the photoelectric effect provides evide' via token(s) ['phenomena', 'physic', 'wave'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Ifr-3FRg3Aw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "53",
+    "62"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 22.3 'Wave-particle duality' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1067,7 +2825,7 @@
     "83"
    ],
    "confidence": "medium",
-   "evidence": "title names conservation of momentum",
+   "evidence": "title names conservation of momentum (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1087,7 +2845,7 @@
     "83"
    ],
    "confidence": "medium",
-   "evidence": "title names conservation of momentum (A-Level)",
+   "evidence": "title names conservation of momentum (A-Level) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1107,7 +2865,7 @@
     "83"
    ],
    "confidence": "medium",
-   "evidence": "title names elastic and inelastic collisions (momentum conservation; KE conserved in elastic collisions)",
+   "evidence": "title names elastic and inelastic collisions (momentum conservation; KE conserved in elastic collisions) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1180,6 +2938,246 @@
    }
   },
   {
+   "video": "lKzIEipBvKk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "LV01aPYaeLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "rpKm03fPF1Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GWrjJMrz6Uo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "d-pHDLXQgWw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "LiuNfAT7K30",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "S5A93l4CSqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mr9I6iaeq7Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "56FOMuNNBlc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "yMBuGHSv0Yo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "uxPSAqe4S9Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Dynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KHUHvcSmcp0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "83"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Dynamics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "xFGXkOqh6rY",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1187,7 +3185,7 @@
     "105"
    ],
    "confidence": "medium",
-   "evidence": "title names magnetic flux linkage",
+   "evidence": "title names magnetic flux linkage (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1280,6 +3278,826 @@
    }
   },
   {
+   "video": "LrpzwBvRKYk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vhEOVQLDMpk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "z09THceOEnE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jwn4lrxDQUs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "827Fmei0_NU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "fTQGN5vo9LY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4lxne6siM6E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8nXnZDyNpUY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Magnetic fields' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2JHtuSAnk-o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BKT6OQN59E4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zZidjyuqYEQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ch5l585Aj9k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "HrjWuHh5PjY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2LcfXxI8mpk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WQNtMMvGB70",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Ov5GdkqXUIU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zsdvP1ZGqxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "iMg96svbbRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Magnetic fields' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gBt7Bg9R7OM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "X3SprbnVSR4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bfcVKDv8a_4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "IVb7vozVK54",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "aPhgBZIanJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "P9Sfhp5gMiw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "fWDqE1OQT1Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KkIDTkJlHEw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vSAI__98d8E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MKJqYgnH6rM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_Esm31ED1uk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "tu2i2y6ijss",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "C2A6OBwugjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "04ODD9lBlFI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8KSV_wKMdTc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pTag5LPD4k8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "3Ushm08Fozo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "FOcbvNeFKlM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NetibceKzco",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electromagnetic induction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "2xLo9GzEJEA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bEQUrGBJ4OA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "EWem7Z3tIuE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Magnetic fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JT-21IqHhLY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "105"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 20.5 'Electromagnetic induction' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "5WVT5NR0iLA",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1287,7 +4105,407 @@
     "128"
    ],
    "confidence": "medium",
-   "evidence": "title names internal energy",
+   "evidence": "title names internal energy (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "hO5Z2aCJ3ys",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Thermodynamics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "p2shUOQTTns",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 16.1 'Internal energy' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "uQurUhVSj70",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "APxttcckfD8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Thermodynamics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "x6jjpIOtyqw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "wfMQa4nIEQ4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "oGxYavvQGk8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BycnWocq0vA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "svyGHozTBmo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "JG4iJFUIdRM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Thermodynamics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "PRuFisTVjBo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Thermodynamics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KtMxweGe6Ac",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Thermodynamics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "fWOyETpmkyc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9sFrZJeA0Rk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "CylBD4QtIt4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Thermodynamics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Pw0eZnM-teo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "128"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 16.1 'Internal energy' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Ko9ly508JAw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "141"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactive decay' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "GLyAG4Fd2TU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "141"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactive decay' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "fICbR5yCcaY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "141"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 23.2 'Radioactive decay' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Z4FsHq_obCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "141"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Radioactive decay' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1307,7 +4525,7 @@
     "156"
    ],
    "confidence": "low",
-   "evidence": "field named; g=GM/r^2 derivation not in title",
+   "evidence": "field named; g=GM/r^2 derivation not in title (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1400,6 +4618,106 @@
    }
   },
   {
+   "video": "WbG04ZEPqVw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "156"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Gravitational fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "yR4dDX3pfYo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "156"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Gravitational fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "id3o3uF-ADA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "156"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Gravitational fields' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gh-W8CWUZqU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "156"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Gravitational fields' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-Sc_4TmFluQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "156"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 13.3.1 '\u0007derive, from Newton’s law of gravitation and the definition' via token(s) ['field', 'gravitation', 'gravitational', 'strength'] (df 35); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-a-level-physics-25 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-a-level-physics-25",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "X31bjQpjb9s",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1407,7 +4725,7 @@
     "107"
    ],
    "confidence": "medium",
-   "evidence": "title 'Motor Effect F=BIL - Physics A-level Practical' names the F=BIl(sin theta) force-on-conductor spec 107 directly",
+   "evidence": "title 'Motor Effect F=BIL - Physics A-level Practical' names the F=BIl(sin theta) force-on-conductor spec 107 directly; the 62 photoelectric bind is nonsense adjacency",
    "method": "llm-draft-external",
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself'; lane authorized 2026-11-13: 'Proceed with remaining channel pools')",
@@ -1678,7 +4996,7 @@
    "reviewed": true,
    "reviewer": "delegated-self-review",
    "reviewedUtc": "2026-11-11T18:05:50Z",
-   "evidence": "title: \"EDEXCEL IAL PHYSICS UNIT-1 | WPH11/01 | MAY 2026 PAPER | FULL WALKTHROUGH | (paper in comment)\"; paper code WPH11; session MAY 2026"
+   "evidence": "title: \"EDEXCEL IAL PHYSICS UNIT-1  | WPH11/01 | MAY 2026 PAPER | FULL WALKTHROUGH | (paper in comment)\"; paper code WPH11; session MAY 2026"
   },
   {
    "anchor": {
@@ -2025,16 +5343,16 @@
  ],
  "coverage": {
   "specPointsTotal": 171,
-  "specPointsMapped": 9,
-  "specPointsUnmapped": 162,
-  "videosTotal": 58,
-  "videosMapped": 58,
+  "specPointsMapped": 10,
+  "specPointsUnmapped": 161,
+  "videosTotal": 165,
+  "videosMapped": 165,
   "videosUnmapped": 0,
-  "mappingRows": 58,
+  "mappingRows": 165,
   "byConfidence": {
    "high": 32,
-   "medium": 15,
-   "low": 11
+   "medium": 16,
+   "low": 117
   }
  },
  "inputs": {
@@ -2070,5 +5388,5 @@
    "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-14T19:16:04.178Z"
+ "generatedUtc": "2026-11-17T14:41:11.662Z"
 }

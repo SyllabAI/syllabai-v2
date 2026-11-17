@@ -146,12 +146,14 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
   test("anchor rows survive parse with level/ref/kind intact (ial-chemistry-17)", async () => {
     const map = await getVideoMap("ial-chemistry-17");
     expect(map).not.toBeNull();
-    // at rest: 99 mappings = 65 lesson rows (38 inherited — 29 derived from the parent's
-    // P13 Alt Academy rows — + 27 P7 remaining-channel-pools) + 34 anchor rows
-    // (17 course, 17 topic) — P7 appended after inherit per the P2F shape
-    expect(map!.mappings.length).toBe(99);
+    // at rest: 510 mappings = 403 lesson rows (the P4-inherit base grown by the P14
+    // parent's channel-recon rows cascading from igcse-chemistry-19/cie-a-level-chemistry-25
+    // + 27 P7 remaining-channel-pools) + 107 anchor rows (90 course — 17 P2F W-code
+    // + 73 P14B Dr Hanaa Assil "Unit N <session>" unit-paper anchors — and 17 topic)
+    // — P14B appended after inherit per the P11B/P13B shape, P2F after that
+    expect(map!.mappings.length).toBe(510);
     const anchor = map!.mappings.filter(isAnchorRow);
-    expect(anchor.length).toBe(34);
+    expect(anchor.length).toBe(107);
     for (const row of anchor) {
       // the accounting rule: coarse anchors are zero-weight enrichment
       expect(row.specs).toEqual([]);
@@ -160,7 +162,7 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
       expect(row.anchor!.ref).toBeTruthy();
       expect(row.reviewed).toBe(true);
     }
-    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(17);
+    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(90);
     expect(anchor.filter((r) => r.anchor!.level === "topic")).toHaveLength(17);
     for (const row of anchor.filter((r) => r.anchor!.level === "course"))
       expect(row.kind).toBe("past-paper-walkthrough");
@@ -198,9 +200,11 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
   test("the four P2F courses carry exactly the shipped anchor rows at rest", async () => {
     const expected: Record<string, number> = {
       "ial-biology-18": 16,
-      "ial-chemistry-17": 34,
+      // 34 P2F (17 course + 17 topic) + 73 P14B Dr Hanaa Assil course anchors
+      "ial-chemistry-17": 107,
       "ial-physics-19": 32,
-      "igcse-chemistry-19": 8,
+      // 8 P2F + 39 P14 Dr Hanaa Assil Ed-IGCSE course anchors
+      "igcse-chemistry-19": 47,
     };
     for (const [slug, count] of Object.entries(expected)) {
       const map = await getVideoMap(slug);
