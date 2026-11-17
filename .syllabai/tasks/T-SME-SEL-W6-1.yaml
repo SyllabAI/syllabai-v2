@@ -12,7 +12,11 @@ task:
     # run-002 = the SPINE re-pin bookkeeping of record (verify_sme_wave6.ts
     # SPINE constants points 33->36 x2, resolving the #953-derived wave-6 gate
     # debt disclosed in the #949 and #952 squash messages; receipt
-    # T-SME-SEL-W6-1/run-002.md)
+    # T-SME-SEL-W6-1/run-002.md); run-003 = the SECOND re-pin (points 36->34
+    # x2, same two lines — RN-DEBRIS-11 run-023 PR #979 removed the letter-tail
+    # 1.3.1a/1.3.2a variants and the gate was not re-pinned again; the
+    # disclosed-not-touched debt of the tranche-5..12 lanes; receipt
+    # T-SME-SEL-W6-1/run-003.md)
   priority: P1
   band: T-SME-SEL (the SME selector band — wave 6 after the merged
     physics/chemistry #867, biology #878, cosmetics #886, chem-23 #890,

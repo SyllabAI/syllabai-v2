@@ -81,5 +81,15 @@
   ".syllabai/receipts/RN-DEBRIS-11/run-031-postReview.json"
  ],
  "standingReminder": "the PAT remains exposed from chat transmission and MUST be revoked/rotated (the twenty-seventh filing of the standing reminder)",
- "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030 precedents); no force-push; fetch-first race-guard at push"
+ "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030 precedents); no force-push; fetch-first race-guard at push",
+ "updatedUtc": "2026-11-17 (post-merge record: PR #1043 merged of record; the merged block rides the run-032 receipts per the standing ride-along law)",
+ "merged": {
+  "sha": "54175e3c9d5f8ef9292b1843a3e6b8ae10d838bd",
+  "mergedAt": "2026-11-17T03:37:50Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "979a9e24ce0664af83e237c7a5ef4af13a082d9e",
+  "mainTipAfter": "54175e3c9d5f8ef9292b1843a3e6b8ae10d838bd == the merge commit (verified via API merged=true; parents [f18f538edb1fc4ffecb4fdae14c4efc90e92de9d, f420ff2f485f7a434937f228ac96ba90e14ee8bc]; the sha verified an ancestor of the live main tip post-merge)",
+  "raceGuard": "the base of record at merge time == f18f538edb1fc4ffecb4fdae14c4efc90e92de9d (the merge commit first parent — API-verified); the base moved after filing (9b389dd7 -> 319a0573 -> f18f538e — the concurrent landings of record) and the branch merged origin/main into itself as f420ff2f485f7a434937f228ac96ba90e14ee8bc (parents [979a9e24ce0664af83e237c7a5ef4af13a082d9e, f18f538edb1fc4ffecb4fdae14c4efc90e92de9d]) — landed by the concurrent executor of record (the desk's twin session, the same playbook) and byte-verified by the merging session against the law before the PUT (scope == exactly the 7 declared paths, both worklogs == main verbatim + the 4283-byte lane suffix, the other 5 paths byte-verbatim, battery exit 0 at the receipts head); the pre-PUT probe re-verified PR state open / head f420ff2f unchanged / CI 5/5 success at the head (verify, hub, law-readback, coordination, Vercel Preview Comments); no force-push",
+  "operatorOrder": "the desk self-merge orders of record — 'self merge and proceed' (zai-web trace 1a1e290351aee3b9) at filing and 'self-merge #1043' (zai-web trace 1a1e77ed5b70bea1) executed the PUT in-session (merged=true, merged_at 2026-11-17T03:37:50Z, merged_by SyllabAI, zero lost segments); the filing-time no-self-merge mergePlan superseded in the execution of record, disclosed"
+ }
 }
