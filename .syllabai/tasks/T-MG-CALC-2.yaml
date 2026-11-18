@@ -125,57 +125,77 @@ task:
   - no graphing/CAS (out of class for all three models)
   - no implementation in this card — T-MG-CALC-2 is the map + spec; implementation runs get their own
     cards per phase with the operator's sequencing
-  execution_record: "chase run of record 2026-11-17 (this card's authoring run, no code changed): re-harvested\
-    \ MG's 145 served chunks + the 2.67 MB lazy emulator chunk after the /tmp recycle; extracted the full\
-    \ model registry, level→model map, 12-app registry, CATALOG categories, key aria map, error set and\
-    \ the cw-* component inventory from the bundles; then probed the live device anonymously (fresh sessions,\
-    \ real clicks): level-driven default confirmed, HOME menu captured, device-true arrow+OK navigation\
-    \ discovered (direct clicks no-op), the staged-rollout notice captured on Ratio, the numbered settings\
-    \ dialog captured, and the full persisted state JSON read from localStorage (genie-calculator-v1 +\
-    \ win/genie-calculator-popup). Model-switch probing via the custom dropdown and Statistics/Table screen\
-    \ capture remain open (blind automation limits) — flagged for the implementation run's interactive\
-    \ pass.\n\n    IMPLEMENTATION RUN — PHASE A, 2026-11-17 (same day as the chase):\n    the shell +\
-    \ picker SHIPPED on the corrected base (T-MG-CALC-1's two\n    fidelity fixes landed first, per the\
-    \ regression pin). What landed:\n    calc-models.ts (the ONE registry — the three models with MG-verbatim\n\
-    \    skins/features/app-masks/shift-overrides, MG's level→model map, the\n    device-true CATALOG\
-    \ categories with engine-supported items only, the\n    MG-shaped persisted record with load/save\
-    \ validation); the engine's\n    variable store (A–F, x, y, z; unset = 0, the device law), f(x)/g(x)\n\
-    \    definitions with EXACT val-atom substitution (no decimal drift) and\n    the recursion guard,\
-    \ the ⇄ mixed⇔improper law, the Norm band law\n    (Norm 1 < 10^-2, Norm 2 < 10^-9, ×10^e rendering),\
-    \ the dot/comma\n    decimal mark + digit-separator display opts, and the fn-insert key\n    (the\
-    \ catalog's insert, validated against the engine's own name set);\n    the component's CW posture\
-    \ (7-col device grid, A–F/x/y/z interleave,\n    OK-dial, wide EXE bar, shell row HOME/VARIABLE/SETTINGS/CATALOG/\n\
-    \    TOOLS/FUNCTION/OFF, the LCD indicator row, the solar skin, the\n    level-driven picker with\
-    \ the Not-affiliated disclaimer, the\n    staged-rollout notice pattern for unimplemented apps, the\
-    \ classic\n    toggle). RULINGS TAKEN IN THE RUN (documented, no silent growth):\n    (1) the QR key\
-    \ moves to phase B — no verifiable QR encoder exists in\n    the repo and an unverifiable QR is dishonest\
-    \ (the phase-A shell pin\n    is amended accordingly); (2) MG's 991CW app array is 11 VERIFIED\n \
-    \   names (the bundle truncates a 12th registration — it lands on a\n    re-extract); (3) the CW posture\
-    \ is the DEFAULT with the classic\n    keypad behind the layout toggle (the pin's \"remains reachable\
-    \ via\n    the toggle\" reading), and the battery scripts seed the classic\n    posture for the regression\
-    \ run; (4) direct clicks ALSO launch from\n    the HOME grid (our a11y law — run-003 receipt: pointer-only\
-    \ surfaces\n    were the bug class; MG ignores clicks, we do not); (5) the digit-\n    separator setting\
-    \ ships OFF by default (the run-001 display pins\n    are the law of record; the device ships it ON\
-    \ — a documented\n    deviation the settings row flips). Verification: 101/101 pins local\n    (engine\
-    \ C1–C15 + component U1–U12, both layouts); tsc clean; the\n    prod battery re-runs post-merge (classic\
-    \ seeded) + battery6-cw\n    drives the new shell on prod.\n\n    BATTERY-OF-RECORD RUN (phase A,\
-    \ same day): the prod batteries ran\n    post-merge — the classic battery of record 24/24 (the run-001\
-    \ stale\n    expectations amended to the laws of record: sin30 → 1/2, 4x⁻¹ → 1/4,\n    the SHIFT+Square\
-    \ gap probe → the shipped end-to-end remap; the FIX\n    case's chip click exposed the pointer-only\
-    \ chips — fixed in the same\n    cycle, the a11y click now arms Fix and 5÷3 renders 1.67 ON PROD);\n\
-    \    spot-check batteries 2/3/4 ALL GOOD (their arias amended to the\n    relabel law: Arcsin, Decimal\
-    \ point); battery5-mobile consistent with\n    the run-003 receipt; battery6-cw (NEW, persisted) ran\
-    \ the shell on\n    prod: 13/15 first pass — the 2 failures were the LEVEL DEFAULT\n    verified (igcse-chemistry-19\
-    \ → fx-991 CW + solar + picker, MG's map\n    LIVE in our viewer), a REAL grid bug (the CW posture\
-    \ shipped without\n    the 7/8/9 row — restored in the device's own posture: π 7 (e) 8 9\n    above\
-    \ the A–F/x/y/z interleave; a digit-completeness pin now guards\n    it locally), and a battery sequencing\
-    \ fix (Fix overrides Norm — the\n    battery clears Fix before the Norm band case). The re-run completes\n\
-    \    this record.\n\n    BATTERY6 RE-RUN OF RECORD, 2026-11-17 (the #1070 deploy): **15/15**\n   \
-    \ on prod — the CW shell battery completes: the picker (3 models +\n    the disclaimer), EXE, the\
-    \ A–F/x/y/z interleave, the structural\n    SHIFT remap end-to-end (2 SHIFT x² = 8), HOME listing\
-    \ the 991CW's\n    11 apps verbatim, MG's staged-rollout notice + back, the FIX law\n    (5÷3 → 1.67\
-    \ with S⇔D inert), the Norm 1 band (0.00123 → 1.23×10^-3),\n    the CATALOG insert (log(100) = 2),\
-    \ the VARIABLE store (A×2 = 16),\n    the FUNCTION substitution (f(4) = 5), the ⇄ mixed law (7÷3 →\
-    \ 2 1/3),\n    and OFF closing the overlay — every value CLEAN (the Fix-off\n    sequencing holds;\
-    \ no display leak). Receipt:\n    download/battery6-cw-rerun-15of15.json. PHASE A IS COMPLETE AND\n\
-    \    FULLY VERIFIED ON PROD — the next ruling opens phase B."
+  execution_record: |-
+    chase run of record 2026-11-17 (this card's authoring run, no code changed): re-harvested MG's 145 served chunks + the 2.67 MB lazy emulator chunk after the /tmp recycle; extracted the full model registry, level→model map, 12-app registry, CATALOG categories, key aria map, error set and the cw-* component inventory from the bundles; then probed the live device anonymously (fresh sessions, real clicks): level-driven default confirmed, HOME menu captured, device-true arrow+OK navigation discovered (direct clicks no-op), the staged-rollout notice captured on Ratio, the numbered settings dialog captured, and the full persisted state JSON read from localStorage (genie-calculator-v1 + win/genie-calculator-popup). Model-switch probing via the custom dropdown and Statistics/Table screen capture remain open (blind automation limits) — flagged for the implementation run's interactive pass.
+
+        IMPLEMENTATION RUN — PHASE A, 2026-11-17 (same day as the chase):
+        the shell + picker SHIPPED on the corrected base (T-MG-CALC-1's two
+        fidelity fixes landed first, per the regression pin). What landed:
+        calc-models.ts (the ONE registry — the three models with MG-verbatim
+        skins/features/app-masks/shift-overrides, MG's level→model map, the
+        device-true CATALOG categories with engine-supported items only, the
+        MG-shaped persisted record with load/save validation); the engine's
+        variable store (A–F, x, y, z; unset = 0, the device law), f(x)/g(x)
+        definitions with EXACT val-atom substitution (no decimal drift) and
+        the recursion guard, the ⇄ mixed⇔improper law, the Norm band law
+        (Norm 1 < 10^-2, Norm 2 < 10^-9, ×10^e rendering), the dot/comma
+        decimal mark + digit-separator display opts, and the fn-insert key
+        (the catalog's insert, validated against the engine's own name set);
+        the component's CW posture (7-col device grid, A–F/x/y/z interleave,
+        OK-dial, wide EXE bar, shell row HOME/VARIABLE/SETTINGS/CATALOG/
+        TOOLS/FUNCTION/OFF, the LCD indicator row, the solar skin, the
+        level-driven picker with the Not-affiliated disclaimer, the
+        staged-rollout notice pattern for unimplemented apps, the classic
+        toggle). RULINGS TAKEN IN THE RUN (documented, no silent growth):
+        (1) the QR key moves to phase B — no verifiable QR encoder exists in
+        the repo and an unverifiable QR is dishonest (the phase-A shell pin
+        is amended accordingly); (2) MG's 991CW app array is 11 VERIFIED
+        names (the bundle truncates a 12th registration — it lands on a
+        re-extract); (3) the CW posture is the DEFAULT with the classic
+        keypad behind the layout toggle (the pin's "remains reachable via
+        the toggle" reading), and the battery scripts seed the classic
+        posture for the regression run; (4) direct clicks ALSO launch from
+        the HOME grid (our a11y law — run-003 receipt: pointer-only surfaces
+        were the bug class; MG ignores clicks, we do not); (5) the digit-
+        separator setting ships OFF by default (the run-001 display pins
+        are the law of record; the device ships it ON — a documented
+        deviation the settings row flips). Verification: 101/101 pins local
+        (engine C1–C15 + component U1–U12, both layouts); tsc clean; the
+        prod battery re-runs post-merge (classic seeded) + battery6-cw
+        drives the new shell on prod.
+
+        BATTERY-OF-RECORD RUN (phase A, same day): the prod batteries ran
+        post-merge — the classic battery of record 24/24 (the run-001 stale
+        expectations amended to the laws of record: sin30 → 1/2, 4x⁻¹ → 1/4,
+        the SHIFT+Square gap probe → the shipped end-to-end remap; the FIX
+        case's chip click exposed the pointer-only chips — fixed in the same
+        cycle, the a11y click now arms Fix and 5÷3 renders 1.67 ON PROD);
+        spot-check batteries 2/3/4 ALL GOOD (their arias amended to the
+        relabel law: Arcsin, Decimal point); battery5-mobile consistent with
+        the run-003 receipt; battery6-cw (NEW, persisted) ran the shell on
+        prod: 13/15 first pass — the 2 failures were the LEVEL DEFAULT
+        verified (igcse-chemistry-19 → fx-991 CW + solar + picker, MG's map
+        LIVE in our viewer), a REAL grid bug (the CW posture shipped without
+        the 7/8/9 row — restored in the device's own posture: π 7 (e) 8 9
+        above the A–F/x/y/z interleave; a digit-completeness pin now guards
+        it locally), and a battery sequencing fix (Fix overrides Norm — the
+        battery clears Fix before the Norm band case). The re-run completes
+        this record.
+
+        BATTERY6 RE-RUN OF RECORD, 2026-11-17 (the #1070 deploy): **15/15**
+        on prod — the CW shell battery completes: the picker (3 models +
+        the disclaimer), EXE, the A–F/x/y/z interleave, the structural
+        SHIFT remap end-to-end (2 SHIFT x² = 8), HOME listing the 991CW's
+        11 apps verbatim, MG's staged-rollout notice + back, the FIX law
+        (5÷3 → 1.67 with S⇔D inert), the Norm 1 band (0.00123 → 1.23×10^-3),
+        the CATALOG insert (log(100) = 2), the VARIABLE store (A×2 = 16),
+        the FUNCTION substitution (f(4) = 5), the ⇄ mixed law (7÷3 → 2 1/3),
+        and OFF closing the overlay — every value CLEAN (the Fix-off
+        sequencing holds; no display leak). Receipt:
+        download/battery6-cw-rerun-15of15.json. PHASE A IS COMPLETE AND
+        FULLY VERIFIED ON PROD — the next ruling opens phase B.
+    PHASE B — IMPLEMENTATION RUN AND BATTERY OF RECORD, 2026-11-18 (PR #1082, merged 6031964bd, CI 5/5): all five phase-B spec pins landed — (1) the settings model: the persisted record gains MG's io row (mathI/mathO ⇄ mathI/DecimalI) and the ONE numberFormat union (norm1/norm2/fix/sci), versioned localStorage shared across model switches, seeding the engine at mount; Fix AND Sci override the exact-fraction display (the T-MG-CALC-1 deviation closes for both; S⇔D inert under both); (2) the CATALOG inventory: probability = exact BigInt nPr/nCr with the comma-argument law (nPr(5,2) = 20), the factorial postfix (5! = 120), Abs in Numeric, the [Other]-menu comma on the 991 (the manual's own law); Ran#/RanInt stay OUT (they would break the engine's determinism pins — no fake determinism); (3) the per-model shift legends from the registry, the one-shot consume law preserved: fx-83GT CW — SHIFT+x² opens the ■̇ recurring-decimal template (the device-verified flow: the cursor lands in the REPEATING box; the entry evaluates EXACTLY: 0.5̇8̇ = 58/99), SHIFT+×10ˣ carries OUR documented ',' binding (MG's sheet extracted null there — claimed for the binary comma); fx-991 CW — SHIFT+x² = log, SHIFT+( = = (a Syntax ERROR in Calculate: the device law, pinned — the Equation app is phase C, not a fake), SHIFT+×10ˣ = i with complex numbers: + − × ÷, integer-real powers, √(−4) = 2i exact, √(−9) = 3i, Abs(3+4i) = 5; the wider complex function set honestly Math-ERRORs; the io row flips the family a+bi ⇄ r∠θ (1+i → 1.414213562∠45); (4) the error hints: the .cw-error-hint line under every Math/Syntax/Stack ERROR; Stack ERROR = 16 nested parens; Argument/Range stay vocabulary-only with NO raise site (no fake errors); (5) the QR key — verifiable or nothing: a byte-mode v1–6 ECL-M encoder shipped with TWO verification layers — 24/24 forced-mask golden matrices equal to the INDEPENDENT python qrcode oracle (placement + RS + format info verified for EVERY mask, v1 ASCII + v2 multibyte) and the matrix reads back to codewords whose RS syndromes are ALL ZERO (with a corruption pin proving the check has teeth); the QR screen says verbatim that it encodes the displayed result, NOT the Casio web service.
+
+    RULINGS TAKEN IN THE RUN (documented): (1) the 83GT's ×10ˣ shift ',' — the registry's null slot claimed for the binary comma; (2) the recur template's cursor starts in the repeating box (the device flow); (3) the complex scope boundary: arithmetic + √ + Abs only, the rest refuses; (4) the python qrcode lib's lost_point mask selection deviates from the spec's penalty rules — the golden verification drives FORCED masks on both sides (24/24) and pins the auto choice against the grid; (5) U10c amended to the model-sheet law: on the CW grid SHIFT+x² follows the MODEL's ■̇/log, while the classic grid keeps the structural cube remap byte-identical. Fences held: zero contracts/api/db bytes; no new dependencies; no app surfaces (Statistics/Table stay the phase-C notice). Verification: 140/140 pins local (the 101 existing incl. the amended U10c + 39 new: Q1–Q3 QR, C16–C20 engine, U13 component); tsc clean.
+
+    BATTERY7 OF RECORD ON PROD, 2026-11-18 (the deployed bundle): battery7a settings 5/5 real passes + the reload stage (the io toggle persists, the indicator follows, Sci 2 → 1.7×10^0, S⇔D inert under Sci, the union record {kind:sci,digits:2}); battery7b legends 18/18 — the post-reload Sci seed, the Norm 2 reset, SHIFT+x² = log (log(100) = 2), SHIFT+×10ˣ = i (1+2i), (1+2i)(3−i) = 5+5i, √(−9) = 3i, SHIFT+( = = Syntax ERROR + the hint line, Math ERROR + its hint, the io flip live (1+i → 1.414213562∠45), nPr(5,2) = 20 via the catalog comma, 5! = 120, Abs(−3) = 3, the model switch SHARES the io setting, the 83GT's ■̇ (58/99 EXACT), the 83GT's √(−9) Math ERROR gate, the 83GT's ',' binding, and the QR key (the 5/3 matrix, canvas 168×168, the honest note). Receipts: download/battery7a-phaseb-settings-receipt.json, download/battery7b-phaseb-legends-receipt.json. PHASE B IS COMPLETE AND FULLY VERIFIED ON PROD — the phase-C ruling (the Statistics and Table apps) opens next.
