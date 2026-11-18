@@ -68,6 +68,10 @@
  * modular-UNIT shape; the SIXTEENTH consecutive FULLY-CLEAN audit with
  * the SEVENTH DRIFT EVENT — the biggest paper-cluster yet: six live-only
  * exam-paper topics documented in DRIFT_BY_COURSE)
+ * + tranche 26 (igcse-chemistry-modular-24-unit-1 Pearson 4CH1 2024 /
+ * igcse-physics-modular-24-unit-1 Pearson 4PH1 2024 — the modular-UNIT
+ * shape; the SEVENTEENTH consecutive FULLY-CLEAN audit with ZERO DRIFT on
+ * both courses — the first two-course tranche with no drift event)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -237,6 +241,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-as-business-23": new Set(["june-2023", "june-2024", "specimen"]),
   "cie-igcse-science-combined-science-23-chemistry": new Set(["mcq-core", "mcq-extended", "paper-3-theory-core", "paper-4-theory-extended", "paper-5-practical-test", "paper-6-alternative-to-practical"]),
   "igcse-physics-modular-24-unit-2": new Set(),
+  "igcse-chemistry-modular-24-unit-1": new Set(),
+  "igcse-physics-modular-24-unit-1": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
