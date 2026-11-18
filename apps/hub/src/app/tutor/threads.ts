@@ -55,6 +55,29 @@ export interface Turn {
    *  (the tap pre-fills the composer; nothing is sent until THEY send).
    *  Ignoring it does nothing. Absent on older upstreams / refusals. */
   probe?: { nodeId: string; title: string } | null;
+  /** T-TUTOR-AIM-P3 (DC10 §7.8): the tutor→drill loop's scheduling
+   *  directive, AFTER the full answer — offer-not-claim (§13.2): metadata
+   *  only (the decay-due nodes' ids/codes/titles, the planned count, the
+   *  course scope). The claim is exactly-once server-side (the two guards);
+   *  the turn tracks the claim outcome locally so a re-render renders the
+   *  claimed state, never a second chip tap. Absent on older upstreams /
+   *  sessionless asks / refusals / when nothing decayed. */
+  drillDirective?: TutorDrillDirectiveWire | null;
+  /** the claim's local outcome (this device's view of the exactly-once
+   *  server act; the server remains the artefact of record) */
+  drillClaim?: { scheduledCount: number } | null;
+}
+
+/** Structural mirror of the v2 directive contract
+ *  (packages/contracts/src/tutor.ts tutorDrillDirectiveSchema) — the relay
+ *  passes the upstream frame through unreshaped (wire truth). */
+export interface TutorDrillDirectiveWire {
+  directiveId: string;
+  turnId: number;
+  nodes: Array<{ nodeId: string; code: string; title: string }>;
+  courseRef: string | null;
+  plannedCount: number;
+  teachHandoff: { nodeId: string; title: string } | null;
 }
 
 /** Structural mirrors of the v2 bank-band contracts

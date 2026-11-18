@@ -10798,6 +10798,203 @@
 			},
 			"isRLSEnabled": false
 		},
+		"public.tutor_served_evidence": {
+			"name": "tutor_served_evidence",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true,
+					"default": "gen_random_uuid()"
+				},
+				"learner_id": {
+					"name": "learner_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"spec_node_id": {
+					"name": "spec_node_id",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"chunk_id": {
+					"name": "chunk_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"session_id": {
+					"name": "session_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"turn_id": {
+					"name": "turn_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"surface": {
+					"name": "surface",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"kind": {
+					"name": "kind",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"served_at": {
+					"name": "served_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				}
+			},
+			"indexes": {
+				"tutor_served_evidence_learner_node_served_idx": {
+					"name": "tutor_served_evidence_learner_node_served_idx",
+					"columns": {
+						"learner_id": {
+							"name": "learner_id"
+						},
+						"spec_node_id": {
+							"name": "spec_node_id"
+						},
+						"served_at": {
+							"name": "served_at",
+							"opclass": "timestamptz_ops",
+							"order": "DESC"
+						}
+					},
+					"isUnique": false
+				},
+				"tutor_served_evidence_session_idx": {
+					"name": "tutor_served_evidence_session_idx",
+					"columns": {
+						"session_id": {
+							"name": "session_id"
+						},
+						"turn_id": {
+							"name": "turn_id"
+						}
+					},
+					"isUnique": false
+				}
+			},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {
+				"tutor_served_evidence_surface_check": {
+					"name": "tutor_served_evidence_surface_check",
+					"value": "surface IN ('tutor_answer', 'probe', 'drill', 'mock_mark')"
+				},
+				"tutor_served_evidence_kind_check": {
+					"name": "tutor_served_evidence_kind_check",
+					"value": "kind IN ('citation', 'correction', 'example', 'prereq_recap')"
+				}
+			},
+			"isRLSEnabled": false
+		},
+		"public.tutor_drill_directives": {
+			"name": "tutor_drill_directives",
+			"schema": "",
+			"columns": {
+				"directive_id": {
+					"name": "directive_id",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"learner_id": {
+					"name": "learner_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"session_id": {
+					"name": "session_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"turn_id": {
+					"name": "turn_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"course_ref": {
+					"name": "course_ref",
+					"type": "varchar(64)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"node_ids": {
+					"name": "node_ids",
+					"type": "jsonb",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"correction_node_id": {
+					"name": "correction_node_id",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"scheduled_count": {
+					"name": "scheduled_count",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"served_at": {
+					"name": "served_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true,
+					"default": "now()"
+				},
+				"claimed_at": {
+					"name": "claimed_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {
+				"tutor_drill_directives_learner_served_idx": {
+					"name": "tutor_drill_directives_learner_served_idx",
+					"columns": {
+						"learner_id": {
+							"name": "learner_id"
+						},
+						"served_at": {
+							"name": "served_at",
+							"opclass": "timestamptz_ops",
+							"order": "DESC"
+						}
+					},
+					"isUnique": false
+				}
+			},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
 		"public.user_roles": {
 			"name": "user_roles",
 			"schema": "",

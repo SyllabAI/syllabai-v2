@@ -357,20 +357,41 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // three-value vocabulary) on top of the ADR-044 run-002 baseline
   // -> 103/958/136/103/187 (measured: rebaseline.ts verify PASS, 0 drifts, on
   // the union end-state).
-  test("103/958/136/103/187 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-TUTOR-AIM-P3 run-001 (0030_tutor-served-evidence): the §7.7 served-
+  // evidence LEDGER + the §7.8 drill-loop DIRECTIVE plane, folded into the
+  // schema-of-record planes per the 0029 fold precedent (the raw-SQL
+  // migration of record + schema.ts + the snapshot, all three planes).
+  // tutor_served_evidence: 9 cols (id gen_random_uuid(), learner_id,
+  // spec_node_id text — the plan's own type of record, admitting both the
+  // KG uuid id class AND the (course, code) drill address class, chunk_id
+  // nullable — corrections may not map to a chunk, session_id + turn_id
+  // NOT NULL — the ledger is session-scoped, surface text-CHECKed to the
+  // four-surface taxonomy, kind text-CHECKed to the four-kind taxonomy,
+  // served_at now()), 2 indexes (the plan's (learner_id, spec_node_id,
+  // served_at) consumer index + the (session_id, turn_id) turn anchor), 0
+  // fks (deliberately, per the raw-SQL migration of record), 2 checks (the
+  // two vocabularies). tutor_drill_directives: 10 cols (directive_id text
+  // PK — the DETERMINISTIC hash of (learner, session, turn), learner_id,
+  // session_id, turn_id, course_ref varchar64, node_ids jsonb,
+  // correction_node_id text nullable, scheduled_count integer nullable,
+  // served_at now(), claimed_at nullable — the §13.2 exactly-once CAS
+  // guard), 1 index, 0 fks, 0 checks on top of the T-TUTOR-AIM-P2 baseline
+  // -> 105/977/139/103/189 (measured: rebaseline.ts verify PASS, 0 drifts,
+  // on the union end-state).
+  test("105/977/139/103/189 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 103/103");
-    expect(v.inventory).toContain("columns 958");
-    expect(v.inventory).toContain("indexes 136");
+    expect(v.inventory).toContain("tables 105/105");
+    expect(v.inventory).toContain("columns 977");
+    expect(v.inventory).toContain("indexes 139");
     expect(v.inventory).toContain("fks 103");
-    expect(v.inventory).toContain("checks 187");
+    expect(v.inventory).toContain("checks 189");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(103);
+    expect(run.size).toBe(105);
     expect(run.has("public.teach_sessions")).toBe(true); // T-TEACHME-001 — the learn-by-teaching lane
     expect(run.has("public.teach_messages")).toBe(true); // T-TEACHME-001 run-002 — the transcript plane
     expect(run.has("public.teach_review_cards")).toBe(true); // T-TEACHME-001 run-002 — the ReviewCard of record
@@ -381,6 +402,8 @@ describe("verifyBaseline (checked-in baseline)", () => {
     expect(run.has("public.teacher_content_reviews")).toBe(true); // T-TIER1 run-002 — the AI-content validation verdicts
     expect(run.has("public.user_documents")).toBe(true); // T-AUDIT-TIER1 run-003 — the workspace-document plane
     expect(run.has("public.tutor_ask_confidence")).toBe(true); // T-TUTOR-AIM-P2 run-001 — the §7.4 confidence LOG plane (log-first)
+    expect(run.has("public.tutor_served_evidence")).toBe(true); // T-TUTOR-AIM-P3 run-001 — the §7.7 served-evidence LEDGER
+    expect(run.has("public.tutor_drill_directives")).toBe(true); // T-TUTOR-AIM-P3 run-001 — the §7.8 drill-loop DIRECTIVE plane
     expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
     expect(run.has("public.mark_point_rects")).toBe(true); // T-MG-MP-RECT-1 — the geometry plane on the definition join
     expect(run.has("public.mark_awards")).toBe(true); // T-MG-AWARDS-1 — the award plane (per-award ledger, the DC-7 claim)

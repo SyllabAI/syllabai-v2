@@ -1,6 +1,6 @@
 # DC10 — Tutor upgrade: keep the grounding, add the aim (T-TUTOR-AIM-1)
 
-**Status:** P1 implemented (T-TUTOR-AIM-P1 run-001, merged #1061) · P2 implemented (T-TUTOR-AIM-P2 run-001 — §7.4/§7.5/§7.6 + the §7.3 refinement; PR of record) · P3 proposed · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
+**Status:** P1 implemented (T-TUTOR-AIM-P1 run-001, merged #1061) · P2 implemented (T-TUTOR-AIM-P2 run-001 — §7.4/§7.5/§7.6 + the §7.3 refinement; merged #1068) · P3 implemented (T-TUTOR-AIM-P3 run-001 — §7.7 ledger + §7.8 loop + §7.9 calibration surfaces; PR of record; exam-date awareness parked) · **Date:** 2026-11-09 · **Provenance:** operator-directed upgrade study — learnharness mechanism analysis → internal v1/v2/v3 proposal → adversarial external review (Claude, relayed by operator, 2026-11) + GLM substitute review + ai-memory governance review (hardening only, 2026-11) · **Trace:** 1a1bcaac733073a1 · **Succeeds:** DC7 / DC9 (tutor retrieval, pivot, refusal — untouched; this plan layers above them)
 
 ## 1. Thesis
 
