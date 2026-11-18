@@ -46,8 +46,10 @@ import type { Turn } from "./threads";
 import {
   Check,
   Copy,
+  Dumbbell,
   FileText,
   GraduationCap,
+  MessagesSquare,
   Pencil,
   RefreshCw,
   RotateCcw,
@@ -124,6 +126,8 @@ export function MessageItem({
   onFeedback,
   courseSlug,
   onProbeTap,
+  onDrillClaim,
+  onTeachTap,
 }: {
   message: Turn;
   /** this row is the turn currently receiving tokens */
@@ -143,6 +147,16 @@ export function MessageItem({
    *  when the upstream offered one AFTER the full answer; the tap
    *  pre-fills the composer (nothing is sent until the learner sends). */
   onProbeTap?: (probe: { nodeId: string; title: string }) => void;
+  /** T-TUTOR-AIM-P3 (DC10 §7.8): the drill directive's claim tap — the
+   *  exactly-once server-side act delivers on THIS call; the chip's
+   *  claimed state renders from the turn's drillClaim record (a re-render
+   *  cannot double-schedule — the server's CAS answers already_claimed
+   *  with the SAME artefact). */
+  onDrillClaim?: (turnId: number) => void;
+  /** T-TUTOR-AIM-P3 (DC10 §7.8): the Teach SillyAI handoff's tap — the
+   *  predict→teach→check cadence; the tap pre-fills the composer (nothing
+   *  is sent until the learner sends). */
+  onTeachTap?: (handoff: { nodeId: string; title: string }) => void;
 }) {
   const isUser = message.role === "user";
   const [editing, setEditing] = useState(false);
@@ -312,6 +326,50 @@ export function MessageItem({
                   <GraduationCap className="size-3.5 shrink-0" aria-hidden />
                   <span>
                     Quick check — {message.probe.title}?
+                  </span>
+                </button>
+              )}
+              {/* T-TUTOR-AIM-P3 (DC10 §7.8 + §13.2): the tutor→drill loop's
+                  scheduling directive — the tonight-chip. Offer-not-claim:
+                  the chip shows the offer (metadata only), the claim is
+                  exactly-once SERVER-SIDE (the two guards), and the local
+                  drillClaim record flips the chip to its claimed copy — a
+                  re-render never double-schedules. */}
+              {message.drillDirective != null && !message.error && !streaming && onDrillClaim != null && (
+                message.drillClaim == null ? (
+                  <button
+                    type="button"
+                    onClick={() => onDrillClaim(message.drillDirective!.turnId)}
+                    className="inline-flex w-fit items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs text-primary transition-colors hover:bg-primary/10"
+                  >
+                    <Dumbbell className="size-3.5 shrink-0" aria-hidden />
+                    <span>
+                      Add {message.drillDirective.plannedCount} practice items for tonight?
+                    </span>
+                  </button>
+                ) : (
+                  <div className="inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 px-3 py-1.5 text-xs text-emerald-600 dark:text-emerald-400">
+                    <Dumbbell className="size-3.5 shrink-0" aria-hidden />
+                    <span>
+                      Added {message.drillClaim.scheduledCount} practice item{message.drillClaim.scheduledCount === 1 ? "" : "s"} for tonight — they are waiting in your practice tab.
+                    </span>
+                  </div>
+                )
+              )}
+              {/* T-TUTOR-AIM-P3 (DC10 §7.8): the Teach SillyAI handoff —
+                  rides when a misconception correction landed (the
+                  predict→teach→check cadence home, §5.2). Offer-not-claim:
+                  the tap pre-fills the composer; nothing is consumed until
+                  the learner sends. */}
+              {message.drillDirective?.teachHandoff != null && !message.error && !streaming && onTeachTap != null && (
+                <button
+                  type="button"
+                  onClick={() => onTeachTap(message.drillDirective!.teachHandoff!)}
+                  className="inline-flex w-fit items-center gap-1.5 rounded-full border border-primary/30 bg-primary/5 px-3 py-1.5 text-xs text-primary transition-colors hover:bg-primary/10"
+                >
+                  <MessagesSquare className="size-3.5 shrink-0" aria-hidden />
+                  <span>
+                    Want to test this by teaching it back?
                   </span>
                 </button>
               )}

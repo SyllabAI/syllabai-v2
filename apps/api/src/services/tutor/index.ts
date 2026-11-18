@@ -217,7 +217,51 @@ export {
   // the search SQL, never a per-hit re-read)
   buildSqlVectorArm,
 } from "./vector-arm";
+export {
+  // T-TUTOR-AIM-P3 (DC10 §7.7): the served-evidence LEDGER — the
+  // deterministic projection + the append-guard write + the retention sweep
+  projectServedEvidence,
+  appendServedEvidence,
+  purgeExpiredServedEvidence,
+  SERVED_EVIDENCE_RETENTION_DAYS,
+  type ServedEvidenceRow,
+  type ServedEvidenceSurface,
+  type ServedEvidenceKind,
+} from "./served-evidence";
+export {
+  // T-TUTOR-AIM-P3 (DC10 §7.8): the tutor→drill loop — the decision half,
+  // the minted wire shape, the claimable-row persistence + the §13.2
+  // exactly-once claim guards
+  selectDrillDirectiveBasis,
+  directiveIdOf,
+  mintDrillDirective,
+  insertDrillDirective,
+  claimDirectiveRow,
+  loadDirectiveTargets,
+  releaseDirectiveClaim,
+  recordDirectiveOutcome,
+  DRILL_DRAW_SIZE,
+  type DrillDirectiveBasis,
+  type DrillDirective,
+  type DrillDirectiveClaimOutcome,
+} from "./drill-directive";
 export type { SqlFn } from "./sql";
+export {
+  // T-TUTOR-AIM-P3 (DC10 §7.9): the calibration read-out — the §7.4-gated
+  // deterministic surface over the confidence log (consume-later, per-learner)
+  readCalibration,
+  calibrationReadout,
+  CALIBRATION_MIN_ASKS,
+  CALIBRATION_NOISE_GAP,
+  CALIBRATION_OUTCOME_WINDOW_DAYS,
+  CALIBRATION_CORRECT_RATIO,
+  ASK_PAIRING_WINDOW_MS,
+  type CalibrationReadout,
+  type CalibrationBand,
+  type LoggedAskRow,
+  type ServedRow,
+  type OutcomeRow,
+} from "./calibration";
 
 export interface TutorModule {
   sessionStore: {
@@ -232,7 +276,10 @@ export interface TutorModule {
       sessionId: string,
       courseRef: string | null,
     ): Promise<void>;
-    append(learnerId: string, exchange: AppendRequest): Promise<void>;
+    append(
+      learnerId: string,
+      exchange: AppendRequest,
+    ): Promise<{ assistantSeq: number }>;
   };
   ask: (
     learnerId: string | null,

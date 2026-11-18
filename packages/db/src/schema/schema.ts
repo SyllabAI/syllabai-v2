@@ -1492,6 +1492,62 @@ export const tutorAskConfidence = pgTable("tutor_ask_confidence", {
         check("tutor_ask_confidence_confidence_check", sql`confidence IN ('sure', 'think_so', 'guessing')`),
 ]);
 
+// T-TUTOR-AIM-P3 run-001 (DC10 §7.7, migration 0030_tutor-served-evidence):
+// the served-evidence LEDGER — what was actually served to this learner,
+// written by the serving path (deterministic, zero LLM, zero extraction).
+// One row per distinct (session turn, spec node, chunk, kind). spec_node_id
+// is TEXT per the plan's sketch of record: tutor-surface rows carry the KG
+// node id (uuid-shaped), the drill/mock_mark surfaces carry (course, code)
+// drill addresses — one text column admits both id spaces. chunk_id is
+// nullable (corrections may not map to a chunk). session_id + turn_id NOT
+// NULL: the ledger is SESSION-SCOPED — a sessionless ask persists nothing
+// here. FK-free per the raw-SQL migration of record (the 0029 precedent).
+// Retention of record: 180 days (the §12 open question 4, fixed at build
+// time) — purgeExpiredServedEvidence in services/tutor/served-evidence.ts.
+export const tutorServedEvidence = pgTable("tutor_served_evidence", {
+        id: uuid().primaryKey().default(sql`gen_random_uuid()`).notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        specNodeId: text("spec_node_id").notNull(),
+        chunkId: uuid("chunk_id"),
+        sessionId: uuid("session_id").notNull(),
+        turnId: integer("turn_id").notNull(),
+        surface: text("surface").notNull(),
+        kind: text("kind").notNull(),
+        servedAt: timestamp("served_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("tutor_served_evidence_learner_node_served_idx").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.specNodeId.asc().nullsLast().op("text_ops"), table.servedAt.desc().nullsFirst().op("timestamptz_ops")),
+        index("tutor_served_evidence_session_idx").using("btree", table.sessionId.asc().nullsLast().op("uuid_ops"), table.turnId.asc().nullsLast().op("integer_ops")),
+        check("tutor_served_evidence_surface_check", sql`surface IN ('tutor_answer', 'probe', 'drill', 'mock_mark')`),
+        check("tutor_served_evidence_kind_check", sql`kind IN ('citation', 'correction', 'example', 'prereq_recap')`),
+]);
+
+// T-TUTOR-AIM-P3 run-001 (DC10 §7.8 + §13.2, migration 0030): the drill-loop
+// DIRECTIVE plane — the claimable artefact's home of record. One row per
+// answer that earned a scheduling directive (decay-due matched topics under
+// the reads the ask already held — M3 stands, no new read, no LLM).
+// directive_id is the DETERMINISTIC hash of (learner, session, turn) — a
+// re-render cannot mint a second directive for the same turn. claimed_at is
+// the claim's CAS guard (guard 2: flipped only under `where claimed_at is
+// null` — exactly-once under concurrency); the row's server-issued existence
+// + learner ownership is guard 1. node_ids is the jsonb array of the target
+// KG node ids (catalog metadata only — §13.2 never learner-derived free
+// text). scheduled_count records the claim outcome for the honest idempotent
+// re-render answer. FK-free per the raw-SQL migration of record (0029).
+export const tutorDrillDirectives = pgTable("tutor_drill_directives", {
+        directiveId: text("directive_id").primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        sessionId: uuid("session_id").notNull(),
+        turnId: integer("turn_id").notNull(),
+        courseRef: varchar("course_ref", { length: 64 }),
+        nodeIds: jsonb("node_ids").notNull(),
+        correctionNodeId: text("correction_node_id"),
+        scheduledCount: integer("scheduled_count"),
+        servedAt: timestamp("served_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+        claimedAt: timestamp("claimed_at", { withTimezone: true, mode: 'string' }),
+}, (table) => [
+        index("tutor_drill_directives_learner_served_idx").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.servedAt.desc().nullsFirst().op("timestamptz_ops")),
+]);
+
 export const roles = pgTable("roles", {
         name: varchar({ length: 16 }).primaryKey().notNull(),
         description: varchar({ length: 200 }).notNull(),

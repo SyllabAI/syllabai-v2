@@ -56,14 +56,30 @@
 import { Hono } from "hono";
 import { streamSSE } from "hono/streaming";
 import type { ZodError } from "zod";
-import { tutorAskRequestSchema } from "@syllabai/contracts";
+import { tutorAskRequestSchema, tutorDrillClaimRequestSchema } from "@syllabai/contracts";
+import { drawForLearner } from "../services/drill/serve";
+import { bundleBank, type DrillBank } from "../services/drill/bank";
+import { createDrillStore, type DrillStore } from "../services/drill/store";
+import type { SqlFn } from "../services/tutor/sql";
+import type { Clock } from "../services/tutor/session-store";
 import {
   buildGroundedTutorGenerator,
   buildPaperQuestionResolver,
   buildSqlVectorArm,
   buildTutorModule,
   TUTOR_COMPLETION_BUDGET_DEFAULT,
+  appendServedEvidence,
+  claimDirectiveRow,
+  directiveIdOf,
+  insertDrillDirective,
+  loadDirectiveTargets,
+  mintDrillDirective,
+  readCalibration,
+  recordDirectiveOutcome,
+  releaseDirectiveClaim,
+  type DrillDirective,
   type LlmProvider,
+  type ServedEvidenceRow,
   type TutorModule,
 } from "../services/tutor";
 import { CurriculumScopeResolver } from "../services/content/scope";
@@ -257,7 +273,20 @@ async function askPreFlight(
   return { history, courseRef };
 }
 
-export function createTutorRouter(module: TutorModule): Hono {
+/**
+ * T-TUTOR-AIM-P3 — the P3 plane's deps (optional: the router degrades to the
+ * pre-P3 posture without them — no ledger write, no directive, the claim
+ * route serves the honest 503). sql/clock ride the composition root's own
+ * instances; drill is the F-182 serve seam (the claim draws at the
+ * directive row's OWN course/targets — the learner never names a draw).
+ */
+export interface TutorRouterP3Deps {
+  sql: SqlFn;
+  clock: Clock;
+  drill: { bankOf: (course: string) => DrillBank; store: DrillStore };
+}
+
+export function createTutorRouter(module: TutorModule, p3?: TutorRouterP3Deps | null): Hono {
   const r = new Hono();
   // authz shell FIRST (SecurityConfig.java:91 fall-through parity)
   r.use("*", async (c, next) => {
@@ -292,9 +321,10 @@ export function createTutorRouter(module: TutorModule): Hono {
       // a persistence failure must not 5xx an answer the learner already
       // paid the full pipeline for — the exchange is lost from the
       // transcript, the answer itself is delivered
+      let drillDirective: DrillDirective | null = null;
       if (parsed.data.sessionId != null) {
         try {
-          await module.sessionStore.append(auth.userId, {
+          const { assistantSeq } = await module.sessionStore.append(auth.userId, {
             sessionId: parsed.data.sessionId,
             question: parsed.data.question,
             answer: answer.answer,
@@ -305,11 +335,54 @@ export function createTutorRouter(module: TutorModule): Hono {
             latencyMs: answer.latencyMs,
             courseRef,
           });
+          // T-TUTOR-AIM-P3 (DC10 §7.7): the served-evidence ledger — the
+          // append fixed the turn identity, the projection is deterministic;
+          // post-delivery fire-and-forget (the append-guard class — a lost
+          // ledger row never corrupts the delivered answer)
+          if (p3 != null) {
+            void appendServedEvidence(p3.sql, p3.clock, {
+              learnerId: auth.userId,
+              sessionId: parsed.data.sessionId,
+              turnId: assistantSeq,
+              rows: answer.servedEvidence,
+            }).catch(() => {
+              // logged class — see the append guard above
+            });
+          }
+          // T-TUTOR-AIM-P3 (DC10 §7.8): the claimable directive row — the
+          // id mints off the FIXED turn; the insert lands before the wire
+          // moves so the claim's guard 1 (row exists) is deterministic.
+          // An insert failure degrades to no directive on the wire (the
+          // append guard — degrade-never-block).
+          if (p3 != null && answer.drillBasis != null) {
+            const directive = mintDrillDirective(
+              answer.drillBasis,
+              auth.userId,
+              parsed.data.sessionId,
+              assistantSeq,
+            );
+            await insertDrillDirective(
+              p3.sql,
+              p3.clock,
+              directive,
+              auth.userId,
+              parsed.data.sessionId,
+              assistantSeq,
+            );
+            drillDirective = directive;
+          }
         } catch {
           // logged-only by the frozen law (log.error :188-189)
         }
       }
-      return c.json(answer, 200);
+      // the wire view: the ledger projection and the directive basis stay
+      // OFF the body (internal carriers — the contracts view carries the
+      // MINTED directive only)
+      const { servedEvidence: _served, drillBasis: _basis, ...view } = answer;
+      return c.json(
+        drillDirective != null ? { ...view, drillDirective } : view,
+        200,
+      );
     } catch (e) {
       const mapped = mapTutorErrors(e, c);
       if (mapped) return mapped;
@@ -360,9 +433,10 @@ export function createTutorRouter(module: TutorModule): Hono {
               // completed (:304-321): the §22 append on success only — a
               // failed stream persists nothing; the wire shape stays the
               // lean {ok:true} the browser ignores-but-tolerates
+              let drillDirective: DrillDirective | null = null;
               if (sessionId != null) {
                 try {
-                  await module.sessionStore.append(learnerId, {
+                  const { assistantSeq } = await module.sessionStore.append(learnerId, {
                     sessionId,
                     question,
                     answer: event.fullAnswer,
@@ -373,6 +447,38 @@ export function createTutorRouter(module: TutorModule): Hono {
                     latencyMs: event.latencyMs,
                     courseRef,
                   });
+                  // T-TUTOR-AIM-P3 (DC10 §7.7): the ledger — post-delivery
+                  // fire-and-forget (the append-guard class)
+                  if (p3 != null) {
+                    void appendServedEvidence(p3.sql, p3.clock, {
+                      learnerId,
+                      sessionId,
+                      turnId: assistantSeq,
+                      rows: event.servedEvidence,
+                    }).catch(() => {
+                      // logged class — see the append guard above
+                    });
+                    // T-TUTOR-AIM-P3 (DC10 §7.8): the claimable directive
+                    // row — the insert lands inside the append guard; an
+                    // insert failure degrades to no directive on the wire
+                    if (event.drillBasis != null) {
+                      const directive = mintDrillDirective(
+                        event.drillBasis,
+                        learnerId,
+                        sessionId,
+                        assistantSeq,
+                      );
+                      await insertDrillDirective(
+                        p3.sql,
+                        p3.clock,
+                        directive,
+                        learnerId,
+                        sessionId,
+                        assistantSeq,
+                      );
+                      drillDirective = directive;
+                    }
+                  }
                 } catch {
                   // the append guard: a persistence failure must not corrupt
                   // the delivered answer (:314-318)
@@ -380,13 +486,17 @@ export function createTutorRouter(module: TutorModule): Hono {
               }
               // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer rides the done
               // frame when the ask earned one (offer-not-claim, §13.2 —
-              // metadata only); absent otherwise, the wire stays lean
+              // metadata only); absent otherwise, the wire stays lean.
+              // T-TUTOR-AIM-P3 (DC10 §7.8): the drill directive rides the
+              // same offer-not-claim law — metadata only, claimed exactly
+              // once under the two server-side guards on tap.
               await stream.writeSSE({
                 event: "done",
                 data: JSON.stringify({
                   ok: true,
                   truncated: event.truncated,
                   ...(event.probe != null ? { probe: event.probe } : {}),
+                  ...(drillDirective != null ? { drillDirective } : {}),
                 }),
               });
             }
@@ -405,6 +515,105 @@ export function createTutorRouter(module: TutorModule): Hono {
       if (mapped) return mapped;
       throw e;
     }
+  });
+
+  // T-TUTOR-AIM-P3 (DC10 §7.8 + §13.2) — POST /drill-directives/claim: the
+  // tonight-chip's tap. THE EXACTLY-ONCE CLAIM under two independent state
+  // guards: (1) the directive row must exist server-side (minted by the
+  // serving path off the deterministic (learner, session, turn) hash — the
+  // id arrives recomputed from the caller's OWN ids, never trusted from the
+  // wire) and is learner-owned; (2) the claim is a claimed_at CAS — a
+  // re-render / double-tap / racing client cannot double-schedule. The
+  // draws are created at the ROW's own course + node targets (never the
+  // caller's), by the drill serve path's own F-185 law — the zero-stakes
+  // drill law is untouched (drill_draws rows only, via drawForLearner).
+  r.post("/drill-directives/claim", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
+    const body = await readJsonBody(c);
+    if (body === null) return c.json(malformedBody(), 400);
+    const parsed = tutorDrillClaimRequestSchema.safeParse(body);
+    if (!parsed.success) {
+      return c.json(apiError(400, "validation_failed", "sessionId must be a uuid and turnId a positive integer"), 400);
+    }
+    if (p3 == null) {
+      // the dormant posture (no P3 deps wired): the honest 503, never a fake claim
+      return c.json(apiError(503, "tutor_unavailable", TUTOR_UNAVAILABLE_MESSAGE), 503);
+    }
+    const directiveId = directiveIdOf(auth.userId, parsed.data.sessionId, parsed.data.turnId);
+    // guard 1 + guard 2 (the CAS) — the claim row is the artefact of record
+    const outcome = await claimDirectiveRow(p3.sql, p3.clock, directiveId, auth.userId);
+    if (outcome.status === "not_found") {
+      return c.json(
+        apiError(404, "not_found", "no schedulable drill directive for this turn"),
+        404,
+      );
+    }
+    if (outcome.status === "already_claimed") {
+      // the re-render's honest idempotent answer — the SAME artefact, never a second one
+      return c.json(
+        { status: "already_claimed", scheduledCount: outcome.scheduledCount ?? 0 },
+        200,
+      );
+    }
+    // the CAS won — schedule the draws at the ROW's own targets
+    try {
+      const resolved = await loadDirectiveTargets(p3.sql, directiveId, auth.userId);
+      let scheduled = 0;
+      const targets = resolved?.targets ?? [];
+      const courseRef = resolved?.courseRef ?? null;
+      if (courseRef != null && courseRef.trim().length > 0) {
+        for (const t of targets) {
+          try {
+            const bank = p3.drill.bankOf(courseRef);
+            const draw = await drawForLearner(
+              bank,
+              p3.drill.store,
+              auth.userId,
+              { course: courseRef, code: t.code },
+              { now: p3.clock.now() },
+            );
+            scheduled += draw.parts.length;
+          } catch {
+            // this address cannot serve right now (no pool / unknown
+            // course / below the floor) — the honest per-address skip; the
+            // claim stands for the addresses that DID schedule
+          }
+        }
+      }
+      if (scheduled === 0) {
+        // a claim that scheduled nothing is not a claim (the compensating
+        // write re-opens the CAS so the learner can retry)
+        await releaseDirectiveClaim(p3.sql, directiveId, auth.userId);
+        return c.json(
+          apiError(409, "conflict", "no practice items are available for this topic right now"),
+          409,
+        );
+      }
+      await recordDirectiveOutcome(p3.sql, directiveId, auth.userId, scheduled);
+      return c.json({ status: "claimed", scheduledCount: scheduled }, 201);
+    } catch (e) {
+      // the scheduling lane failed mid-flight — release the claim (retryable)
+      await releaseDirectiveClaim(p3.sql, directiveId, auth.userId).catch(() => {
+        // the compensating write never corrupts the mapped error
+      });
+      const mapped = mapTutorErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // T-TUTOR-AIM-P3 (DC10 §7.9) — GET /calibration: the learner-visible
+  // calibration read-out over the P2 confidence log + the P3 ledger.
+  // Per-learner ONLY (the §7.4 rule-1 law: the learner's OWN baseline,
+  // never population stats); the §7.4 gates surface honestly (gathering /
+  // no_signal); read-only, deterministic, zero LLM.
+  r.get("/calibration", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
+    if (p3 == null) {
+      return c.json(apiError(503, "tutor_unavailable", TUTOR_UNAVAILABLE_MESSAGE), 503);
+    }
+    const readout = await readCalibration(p3.sql, p3.clock, auth.userId);
+    return c.json(readout, 200);
   });
 
   return r;
@@ -494,7 +703,14 @@ export function buildTutorRouters(
   });
   return {
     module,
-    tutorRoute: createTutorRouter(module),
+    tutorRoute: createTutorRouter(module, {
+      sql,
+      clock: defaultClock,
+      // T-TUTOR-AIM-P3: the claim draws through the SAME F-182 serve seam
+      // the drill router composes (bundleBank + the sql-backed store) —
+      // the drill's zero-stakes law is untouched (drill_draws rows only)
+      drill: { bankOf: bundleBank, store: createDrillStore(sql) },
+    }),
     tutorSessionsRoute: createTutorSessionsRouter(module),
   };
 }

@@ -497,6 +497,9 @@ export function TutorChat({
               truncated?: boolean;
               // T-TUTOR-AIM-P2 (DC10 §7.6): the probe offer on the done frame
               probe?: { nodeId: string; title: string };
+              // T-TUTOR-AIM-P3 (DC10 §7.8): the drill directive on the done
+              // frame (offer-not-claim, §13.2 — metadata only)
+              drillDirective?: import("./threads").TutorDrillDirectiveWire;
             };
             try {
               data = JSON.parse(dataLine);
@@ -530,6 +533,11 @@ export function TutorChat({
               // rides the terminal event when the ask earned one (offer-
               // not-claim, §13.2) — it renders AFTER the full answer
               if (data.probe) patchTurn({ probe: data.probe });
+              // T-TUTOR-AIM-P3 (DC10 §7.8): the drill-loop scheduling
+              // directive rides the terminal event when the ask earned one
+              // (offer-not-claim, §13.2 — metadata only; the claim is
+              // exactly-once server-side, the chip only ever SHOWS the offer)
+              if (data.drillDirective) patchTurn({ drillDirective: data.drillDirective });
             }
           }
         }
@@ -734,6 +742,35 @@ export function TutorChat({
       messages[idx] = { ...cur, feedback: cur.feedback === v ? null : v };
       return { ...t, messages };
     });
+  };
+
+  /** T-TUTOR-AIM-P3 (DC10 §7.8 + §13.2): the tonight-chip's tap — the claim.
+   *  The claim is exactly-once SERVER-SIDE (the two guards: the server-issued
+   *  directive row + the claimed_at CAS); this handler only DELIVERS the tap
+   *  and records the outcome locally so the chip renders its claimed state
+   *  (a re-render cannot double-schedule — a racing client answers
+   *  already_claimed with the SAME artefact). The body is the §22 identity
+   *  pair only; the directive id never travels from the client. */
+  const claimDrillSet = async (threadId: string, turnId: number) => {
+    const thread = getThreads().find((t) => t.id === threadId);
+    const sessionId = thread?.sessionId;
+    if (!sessionId) return; // sessionless ask — no claimable directive exists
+    try {
+      const res = await fetch("/api/tutor/drill-directives/claim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, turnId }),
+      });
+      if (!res.ok) return; // 404/409/503: the honest degrade — the chip stays as-is
+      const data = (await res.json()) as { status: string; scheduledCount: number };
+      patchLastMessage(threadId, (m) => ({
+        ...m,
+        drillClaim: { scheduledCount: data.scheduledCount },
+      }));
+    } catch {
+      // transport failure — the chip stays unclaimed; the server's
+      // exactly-once guarantee makes a later retry safe
+    }
   };
 
   /** Per-scope clear (the rail's "Clear all conversations"): this tutor's
@@ -957,6 +994,19 @@ export function TutorChat({
                       // until the learner presses send themselves
                       setInput(`Quick check me on ${p.title}.`)
                     }
+                    onDrillClaim={(turnId) => {
+                      // T-TUTOR-AIM-P3 (DC10 §7.8): the tonight-chip's
+                      // claim — exactly-once server-side; the chip's local
+                      // state renders the outcome
+                      void claimDrillSet(activeThread?.id ?? "", turnId);
+                    }}
+                    onTeachTap={(p) => {
+                      // T-TUTOR-AIM-P3 (DC10 §7.8): the Teach SillyAI
+                      // handoff — the predict→teach→check cadence; the tap
+                      // pre-fills the composer (the P2 probe-chip pattern —
+                      // nothing is sent until the learner sends)
+                      setInput(`Let me teach back "${p.title}" — check whether my explanation is right.`)
+                    }}
                   />
                 ))}
                 {/* run-012 chat-parity band (trace 1a14af4dde23b471): the

@@ -96,6 +96,10 @@ import { NextBestActionsCard } from "./next-best-actions-card";
 import { ReviewDueStrip } from "./review-due-strip";
 import { SetWorkCard } from "./set-work-card";
 import { ProgressAttributionCard } from "./progress-attribution-card";
+// T-TUTOR-AIM-P3 (DC10 §7.9): the calibration read-out lives with the tutor
+// surfaces it reads (the tutor chat's own client component folder) — the
+// dashboard renders it as a per-learner section of its own.
+import { CalibrationCard } from "@/app/tutor/calibration-card";
 import { ExamSeriesPicker } from "./exam-series-picker";
 import { AddCourseOverlay } from "./add-course-overlay";
 import type { CourseMeta } from "@/lib/courses";
@@ -824,6 +828,15 @@ export function DashboardClient({
           old bare wrapper shipped an empty labelled landmark (UX review
           2026-11-04). ---- */}
       <ProgressAttributionCard courses={mySubjects} />
+
+      {/* ---- T-TUTOR-AIM-P3 (DC10 §7.9): the calibration read-out — the
+          learner's own confidence-vs-outcome curve over the P2 confidence
+          log + the P3 served-evidence ledger. The §7.4 gates render
+          honestly (gathering / no_signal / ok); per-learner only; renders
+          nothing on a transport failure. ---- */}
+      <section aria-label="Confidence calibration">
+        <CalibrationCard />
+      </section>
 
       {/* ---- Next best actions (recommendation output — advice, not facts) ---- */}
       <section aria-label="Next best actions">
