@@ -46,6 +46,11 @@
  * cie-as-computer-science-19 CIE 9618 2024-2025 — the AS-level /as/ URL
  * class, sibling of the already-layered a-level course; the TWELFTH
  * consecutive FULLY-CLEAN audit with ZERO drift events)
+ * + tranche 22 (igcse-science-double-award-modular-24-biology-unit-2
+ * Pearson 4XSD1 2024 — the modular-UNIT shape, the wave's FIRST ZERO-SET
+ * course (the set law vacuous) / cie-igcse-accounting-21 CIE 0452
+ * 2023-2025 — the FIFTH DRIFT EVENT: four live-only paper-resources
+ * topics documented in DRIFT_BY_COURSE)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -207,6 +212,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-ict-21": new Set(),
   "cie-igcse-business-25": new Set(),
   "cie-as-computer-science-19": new Set(),
+  "igcse-science-double-award-modular-24-biology-unit-2": new Set(),
+  "cie-igcse-accounting-21": new Set(["june-2023", "november-2023", "specimen", "templates"]),
 };
 
 for (const cf of FIXTURES.courses) {
