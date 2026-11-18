@@ -1,0 +1,43 @@
+{
+  "run": "run-009",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-11-18T17:44-17:52Z (wire-observed UTC)",
+  "trace": "1a1efc27959ada21",
+  "operator_order": "\"Can we safely move the project to the backup database?\"",
+  "basis": "Cutover-readiness sweep answering the operator's question: live Neon console-API meter reads (napi_ org key, per-project GET /consumption) - CLOSES the run-005/006 meter-unverifiable gap; backup + W1 health pings over the pooler; GitHub Actions secrets admin discovery (leg-2 executability); runway math; safe-cutover sequence + straggler-merge law filed of-record. Read-only sweep: zero DB writes, zero Vercel mutations, no new credential transits.",
+  "meter_of_record": {
+    "MAIN_billowing-cherry-15418366": "data_transfer_bytes 4,736,203,120 = 4.736 GB of 5 GB (94.7%), REMAINING 0.264 GB; compute_time_seconds 85,068 = 23.63 CU-h of 100 (23.6%); MAIN alive at 17:47:56Z (no suspension yet). Breach ETA: 1.08 d at run-005's 0.245 GB/day, 3.14 d at the recent 0.084 GB/day (11-12 -> 11-18 observed) -> breach inside Nov-19~21, live-read confirmed. METERING-LAG GAP CLOSED: the 11-12 (4.23 GB, run-005) -> 11-18 (4.736 GB) delta of +0.506 GB ~= the run-006 seed egress (~0.5 GB) LANDING - budgeted-as-landed was correct.",
+    "BACKUP_patient-frost-80179806": "transfer 46,388 B (lane reads only), compute 307 s = 0.09 CU-h, logical 457 MB - virgin meter. Health ping: users 741 / answers 703 = snapshot-frozen at the run-006 seed (dormant, correct), reachable.",
+    "W1_flat-leaf-09845356": "transfer 278,489 B, compute 2,000 s = 0.56 CU-h - idle, unchanged.",
+    "backup_burn_projection_post_cutover": "13 days to the Dec-1 reset: 13 x 0.245 = 3.19 GB (64% of 5 GB) + compute ~23.6 CU-h (24% of 100) -> FITS with headroom; levers L1-L4 still recommended to stretch the December cycle.",
+    "api_note": "GET /orgs/{org}/consumption -> 'not allowed for organization API keys'; per-project /consumption reads are sufficient (used)."
+  },
+  "verdict": "SAFE TO MOVE NOW - and NOW is the optimal window. (1) Data gap is minimal: the backup seeded THIS MORNING (06:44-06:48Z), stranded delta ~tens of rows (8 churn tables, verified in run-008); (2) the backup meter is virgin with a Dec-1 reset - post-cutover burn fits (3.19 GB / 23.6 CU-h projections); (3) executing now AVOIDS the emergency path: if MAIN suspends first, the pre-cutover sync window dies with it (suspended project = no queries -> stragglers locked until Dec-1) and learner data written since the snapshot is stranded for weeks. Planned cutover today = near-zero loss; emergency cutover after suspension = worst case. The failover itself is an env repoint + REDEPLOY on the C account (api.syllab-ai.com project) - outside the lane's current credentials; the operator executes that leg or grants a C-account PAT.",
+  "cutover_sequence_of_record": [
+    "P1 (lane, on operator go): final incremental sync MAIN->backup over the run-006 watermark (2026-11-18T06:48Z): per churn table, rows created_at/updated_at > watermark, applied as upserts (ON CONFLICT DO UPDATE); parity re-verified; watermark W1 recorded.",
+    "C1 (operator, or lane with a C-account PAT): flip carrier DATABASE_URL on the C-account project serving api.syllab-ai.com to the BACKUP pooled URI + REDEPLOY (Vercel env baked per deployment; the existing deployment keeps serving MAIN until the new one is READY -> atomic traffic switch).",
+    "C2 (lane): record W2 at the new deployment READY.",
+    "C3 (lane): merge [W1, W2] MAIN-only stragglers into backup with ON CONFLICT DO NOTHING (live backup rows always win - never clobber).",
+    "C4 (lane): repoint repo Actions Secrets SIB_PROD_DATABASE_URL, SIB_W3R3_DATABASE_URL, T138_PROD_DATABASE_URL, SMOKE_DB_URI to the backup URI via the secrets API (admin verified this run; values write-only, sealed-box PUT). NEON_API_KEY secret unchanged (org-scoped key, not per-DB).",
+    "C5 (operator): broadcast leg-3 to sibling lanes - repoint their lane-held conn strings to the backup URI.",
+    "C6 (lane): freeze verification - MAIN delta re-check must show ZERO new rows post-cutover; any new row identifies an unfixed writer (split-brain alarm).",
+    "POST (lane): monitor backup meters + freeze state via napi_ per-project reads; Dec-1 reset: merge MAIN strays FIRST, then full re-sync backup->MAIN (~0.5 GB egress on the backup's meter), then flip back on operator call."
+  ],
+  "straggler_merge_law": "Cutover straddling live traffic is made lossless by watermark bracketing: W1 = sync start, W2 = new deployment READY. Rows written on MAIN inside [W1, W2] are merged post-cutover with ON CONFLICT DO NOTHING - the live database (backup) always wins; MAIN rows never clobber newer backup state. The same law applies in reverse at the Dec-1 return trip: merge MAIN-side strays first, then full re-sync backup->MAIN. Watermarks recorded in the cutover receipt of-record.",
+  "risks_register": [
+    "Straggler window rows: HANDLED by the W1/W2 DO-NOTHING merge (lossless, no clobber).",
+    "Split-brain (missed repoint leg): DETECTED by C6 (zero-new-rows freeze check on MAIN).",
+    "Rollback: trivial pre-reset (flip env back to MAIN + redeploy; MAIN intact); backup-side writes stranded on backup are handled by the merge law reversed.",
+    "MAIN suspends mid-cutover: sync window dies (no queries on a suspended project) -> stragglers locked until Dec-1 reset; service still restores via backup - the argument for executing NOW.",
+    "Backup compute wall: projected 24% by Dec-1 - low risk, watched via napi_."
+  ],
+  "secrets": "No new credentials transited. napi_ used READ-ONLY (project list, consumption). Actions secrets NAMES enumerated under admin (16): DB legs for repoint = SIB_PROD_DATABASE_URL, SIB_W3R3_DATABASE_URL, T138_PROD_DATABASE_URL, SMOKE_DB_URI (+ NEON_API_KEY noted, unchanged); VERCEL_BAKE_TOKEN noted as an Actions-held Vercel token (rotation-debt candidate). Secret VALUES write-only - never readable, never persisted in repo files; the backup URI travels in chat memory only.",
+  "open_items": [
+    "OPERATOR GO required (this message is a question, not the failover signal - no auto-switch law unchanged) + the C-account flip: operator dashboard (env DATABASE_URL -> backup pooled URI + redeploy) OR a C-account PAT (env-write + deploy scope) handed to the lane.",
+    "Lane pre-builds the incremental upsert sync script on go (churn tables + watermark bracketing).",
+    "Leg-3 broadcast to sibling lanes is operator-side.",
+    "L1-L4 levers approval unchanged (the structural fix - the backup buys ~2.5 weeks, not a cure).",
+    "api.syllab-ai.com route-surface gap + fleet base-URL migration unchanged (run-008).",
+    "PRs #1088/#1089/#1093/#1096 still open (desk merges)."
+  ]
+}
