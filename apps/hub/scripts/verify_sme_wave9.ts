@@ -92,6 +92,12 @@
  * 24-physics-unit-2 Pearson 4XSD1 2024 — the double-award-modular shape,
  * SETLESS; the TWENTIETH consecutive FULLY-CLEAN audit with ZERO DRIFT
  * on both courses — the second two-course tranche with no drift event)
+ * + tranche 30 (igcse-science-double-award-modular-24-chemistry-unit-1
+ * Pearson 4XSD1 2024 — the double-award-modular shape, SETLESS — the
+ * wave-8 probe holder, rotated out at this tranche (#8) /
+ * igcse-chemistry-modular-24-unit-2 Pearson 4XCH1 2024 — the modular-UNIT
+ * shape; the TWENTY-FIRST consecutive FULLY-CLEAN audit with ZERO DRIFT
+ * on both courses — the third two-course tranche with no drift event)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -269,6 +275,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-english-language-25": new Set(["exam-skills-grammar", "exam-skills-punctuation", "exam-skills-spelling", "exam-tips-speaking-and-listening", "exam-tips-writing"]),
   "cie-as-environmental-management-20": new Set(),
   "igcse-science-double-award-modular-24-physics-unit-2": new Set(),
+  "igcse-science-double-award-modular-24-chemistry-unit-1": new Set(),
+  "igcse-chemistry-modular-24-unit-2": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
