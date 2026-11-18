@@ -62,6 +62,12 @@
  * a-level-business code family; the FIFTEENTH consecutive FULLY-CLEAN
  * audit with the SIXTH DRIFT EVENT: as-business-23's three live-only
  * paper-resources topics documented in DRIFT_BY_COURSE)
+ * + tranche 25 (cie-igcse-science-combined-science-23-chemistry CIE 0653
+ * 2023-2024 — the combined-science shape, the component-scoped TC-code
+ * family / igcse-physics-modular-24-unit-2 Pearson 4XPH1 2024 — the
+ * modular-UNIT shape; the SIXTEENTH consecutive FULLY-CLEAN audit with
+ * the SEVENTH DRIFT EVENT — the biggest paper-cluster yet: six live-only
+ * exam-paper topics documented in DRIFT_BY_COURSE)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -229,6 +235,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-geography-20": new Set(),
   "cie-igcse-further-maths-additional-maths-25": new Set(),
   "cie-as-business-23": new Set(["june-2023", "june-2024", "specimen"]),
+  "cie-igcse-science-combined-science-23-chemistry": new Set(["mcq-core", "mcq-extended", "paper-3-theory-core", "paper-4-theory-extended", "paper-5-practical-test", "paper-6-alternative-to-practical"]),
+  "igcse-physics-modular-24-unit-2": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
