@@ -217,7 +217,19 @@ totalResolved === totalNotes
 // rotates OUT when IT gains its layer; as-maths-20-pure-2 (slot 2)
 // likewise when reached. Same disclosed pin-refresh class as the wave-6
 // run-002.
-  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "igcse-accounting-17-introduction-to-bookkeeping-and-accounting"];
+// tranche 32 is the FIRST DOUBLE ROTATION: BOTH its courses sat on the
+// roster (bio-mod-U1 slot 1, accounting-17-intro slot 3 — the census TIE
+// at 43 loose made them the queue's ranks 1-2). Layering BOTH trips
+// slots 1 AND 3 of the fleet-safety check; the replacements of record
+// (the T10 rank-pick precedent, the not-already-on-the-roster law):
+// slot 1 -> igcse-science-double-award-modular-24-biology-unit-1 (32
+// loose), slot 3 -> igcse-science-double-award-modular-24-chemistry-unit-2
+// (29 loose); cie-as-maths-20-pure-2 (39 loose) is NOT layered this
+// tranche and STAYS at slot 2. NOTE for tranche 33: sdaw-bio-U1 +
+// sdaw-chem-U2 rotate OUT when THEY gain their layers; as-maths-20-pure-2
+// likewise when reached. Same disclosed pin-refresh class as the wave-6
+// run-002.
+  const probes = ["igcse-science-double-award-modular-24-biology-unit-1", "cie-as-maths-20-pure-2", "igcse-science-double-award-modular-24-chemistry-unit-2"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;
