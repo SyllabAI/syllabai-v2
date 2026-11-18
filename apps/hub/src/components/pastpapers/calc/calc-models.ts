@@ -23,9 +23,17 @@ export type CalcModelId = "fx-83gt-cw" | "fx-85gt-cw" | "fx-991cw";
 
 export type CalcVarName = "A" | "B" | "C" | "D" | "E" | "F" | "x" | "y" | "z";
 
-/** Per-model shift overrides (MG verbatim). The DATA rides the registry
- * now; the recurring-decimal entry (83GT) and complex i (991) are wired
- * in phase B per the chase card's shift-legends pin. */
+/** Per-model shift overrides (MG verbatim). The DATA rides the registry;
+ * the phase-B dispatch wires the BEHAVIOUR per model in the component:
+ * fx-83GT/85GT CW — SHIFT+x² inserts the recurring-decimal entry (the
+ * device-true ■̇ key: press SHIFT, then x², then the repeating digits) and
+ * SHIFT+×10ˣ carries OUR structural "," binding (MG's sheet extracted
+ * null for that slot — phase B claims the null for the binary-function
+ * comma, a documented deviation, same posture as the digitSeparator
+ * default); fx-991 CW — SHIFT+x² = log, SHIFT+( = =, SHIFT+×10ˣ = i
+ * (MG verbatim), with the complex numbers the i implies. The one-shot
+ * consume law is preserved (every override inserts through the engine's
+ * consume wrapper). */
 export interface CalcShiftOverrides {
   sq: { label: string; glyph?: string; aria: string } | null;
   lparen: { label: string; aria: string } | null;
@@ -52,7 +60,7 @@ export interface CalcModel {
 const SHIFT_OVERRIDES_GT: CalcShiftOverrides = {
   sq: { label: "■̇", glyph: "recur", aria: "Recurring decimal" },
   lparen: null,
-  d9: null,
+  d9: { label: ",", aria: "Comma" },
 };
 
 const SHIFT_OVERRIDES_991: CalcShiftOverrides = {
@@ -164,7 +172,12 @@ export interface CatalogItem {
     | { k: "pct" }
     | { k: "pi" }
     | { k: "econst" }
-    | { k: "ans" };
+    | { k: "ans" }
+    // phase B: the factorial postfix (the probability category's x!) and
+    // the argument comma (the device exposes it through the [Other] menu
+    // when the key sheet carries no dedicated binding)
+    | { k: "fact" }
+    | { k: "comma" };
 }
 
 export interface CatalogCategory {
@@ -213,12 +226,22 @@ export const CALC_CATALOG: CatalogCategory[] = [
       fn("ln", "Natural logarithm", "ln"),
       fn("10ˣ", "Ten to the power", "10^"),
       fn("eˣ", "Exponential", "e^"),
+      fn("Abs", "Absolute value", "abs"),
     ],
   },
   {
     name: "probability",
     label: "Probability",
-    items: [], // nPr/nCr/! — out of the phase-A engine vocabulary
+    items: [
+      // phase B: the engine gained the exact nPr/nCr (binary, comma
+      // argument) and the factorial postfix — the exam-class core of the
+      // device's probability inventory. Ran#/RanInt stay out (a random
+      // value would break the engine's determinism pins — no fake
+      // determinism for an RNG).
+      fn("nPr", "Permutations nPr", "nPr"),
+      fn("nCr", "Combinations nCr", "nCr"),
+      { label: "x!", aria: "Factorial", key: { k: "fact" } },
+    ],
   },
   {
     name: "statistics",
@@ -232,6 +255,11 @@ export const CALC_CATALOG: CatalogCategory[] = [
       { label: "π", aria: "Pi", key: { k: "pi" } },
       { label: "e", aria: "Euler constant", key: { k: "econst" } },
       { label: "Ans", aria: "Ans", key: { k: "ans" } },
+      // phase B: the argument comma — the CW manual's [Other] menu law
+      // ("functions and symbols that can be input with the calculator
+      // keys can also be input using the [Other] menu") puts it here on
+      // the 991, whose ×10ˣ shift carries i instead
+      { label: ",", aria: "Comma", key: { k: "comma" } },
       fn("sinh", "Hyperbolic sine", "hsin"),
       fn("cosh", "Hyperbolic cosine", "hcos"),
       fn("tanh", "Hyperbolic tangent", "htan"),
@@ -246,7 +274,20 @@ export const CALC_CATALOG: CatalogCategory[] = [
  * Shape mirrors MG's `genie-calculator-v1` (evidence: the chase card's
  * live_probes) with OUR additions marked. NEVER holds history/Ans —
  * the exam-honesty law survives the ruling (settings and model choice
- * persist; calculations do not). */
+ * persist; calculations do not).
+ *
+ * PHASE B: the settings dialog writes THIS record — the io row gained
+ * MG's mathI/DecimalI (our reading: the polar r∠θ display family for
+ * complex results, per the shift-legends pin) and Number Format is the
+ * ONE union MG's row exposes (Norm 1/Norm 2/Fix n/Sci n) replacing the
+ * phase-A norm-only pair. The record stays shared across model switches
+ * and survives reloads (one versioned key, the load/save validation
+ * below repairs anything malformed to the defaults). */
+export type CalcNumberFormat =
+  | { kind: "norm"; variant: 1 | 2 }
+  | { kind: "fix"; digits: number }
+  | { kind: "sci"; digits: number };
+
 export interface CalcPersisted {
   v: 1;
   /** our addition: the keypad posture ("cw" default | "classic"). */
@@ -254,9 +295,9 @@ export interface CalcPersisted {
   /** our addition: the manual model override; null → level default. */
   model: CalcModelId | null;
   settings: {
-    io: "mathI/mathO";
+    io: "mathI/mathO" | "mathI/DecimalI";
     angle: "deg" | "rad" | "gra";
-    numberFormat: { kind: "norm"; variant: 1 | 2 };
+    numberFormat: CalcNumberFormat;
     fraction: "improper" | "mixed";
     decimalMark: "." | ",";
     digitSeparator: boolean;
@@ -297,8 +338,16 @@ export function loadPersisted(): CalcPersisted {
     const s = p.settings;
     if (s && typeof s === "object") {
       if (s.angle === "deg" || s.angle === "rad" || s.angle === "gra") out.settings.angle = s.angle;
-      if (s.numberFormat && (s.numberFormat.variant === 1 || s.numberFormat.variant === 2)) {
-        out.settings.numberFormat = { kind: "norm", variant: s.numberFormat.variant };
+      if (s.io === "mathI/mathO" || s.io === "mathI/DecimalI") out.settings.io = s.io;
+      const nf = s.numberFormat;
+      if (nf && typeof nf === "object") {
+        if (nf.kind === "norm" && (nf.variant === 1 || nf.variant === 2)) {
+          out.settings.numberFormat = { kind: "norm", variant: nf.variant };
+        } else if (nf.kind === "fix" && typeof nf.digits === "number" && Number.isInteger(nf.digits) && nf.digits >= 0 && nf.digits <= 9) {
+          out.settings.numberFormat = { kind: "fix", digits: nf.digits };
+        } else if (nf.kind === "sci" && typeof nf.digits === "number" && Number.isInteger(nf.digits) && nf.digits >= 1 && nf.digits <= 9) {
+          out.settings.numberFormat = { kind: "sci", digits: nf.digits };
+        }
       }
       if (s.fraction === "improper" || s.fraction === "mixed") out.settings.fraction = s.fraction;
       if (s.decimalMark === "." || s.decimalMark === ",") out.settings.decimalMark = s.decimalMark;

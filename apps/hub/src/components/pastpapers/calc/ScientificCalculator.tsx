@@ -56,9 +56,11 @@ import {
   loadPersisted,
   savePersisted,
   type CalcModelId,
+  type CalcNumberFormat,
   type CalcPersisted,
   type CalcVarName,
 } from "./calc-models";
+import { qrEncode } from "./qr-encoder";
 
 export interface ScientificCalculatorProps {
   open: boolean;
@@ -82,9 +84,9 @@ export interface ScientificCalculatorProps {
   gesturePlane?: { current: GesturePinchBridge | undefined };
 }
 
-type ShellCmd = "home" | "settings" | "catalog" | "tools" | "vars" | "fns" | "off" | "back";
+type ShellCmd = "home" | "settings" | "catalog" | "tools" | "vars" | "fns" | "off" | "back" | "qr";
 type DialCmd = "up" | "down" | "ok" | "left" | "right";
-type Screen = "calc" | "home" | "settings" | "catalog" | "catalog-cat" | "vars" | "fns" | "tools" | "notice";
+type Screen = "calc" | "home" | "settings" | "catalog" | "catalog-cat" | "vars" | "fns" | "tools" | "notice" | "qr";
 
 interface KeyDef {
   label: string;
@@ -255,7 +257,8 @@ const CW_GRID: KeyDef[][] = [
     { label: "%", aria: "Percent", key: { k: "pct" } },
     { label: "ENG", aria: "Engineering notation", key: { k: "eng" } },
     { label: "(−)", aria: "Negate", key: { k: "neg" } },
-    { label: "EXE", aria: "Execute", key: { k: "eq" }, accent: true, span: 3 },
+    { label: "QR", aria: "QR code of the result", key: { k: "ac" }, shell: "qr" },
+    { label: "EXE", aria: "Execute", key: { k: "eq" }, accent: true, span: 2 },
   ],
 ];
 
@@ -289,6 +292,22 @@ export function keyFromKeyboard(k: string): CalcKey | null {
 
 const ANGLE_FROM_SETTINGS = { deg: "DEG", rad: "RAD", gra: "GRA" } as const;
 
+/**
+ * the error-hint map (the .cw-error-hint law): every error class renders
+ * a hint line under the message. Math/Syntax/Stack are raised by the
+ * engine; Argument/Range stay in the vocabulary for completeness — the
+ * engine raises no fake errors, so those lines simply never show until a
+ * genuine raise site exists. The wording is OURS (the device's hint text
+ * was not extractable from MG's bundle — no fabricated strings).
+ */
+const ERROR_HINTS: Record<"Math ERROR" | "Syntax ERROR" | "Stack ERROR" | "Argument ERROR" | "Range ERROR", string> = {
+  "Math ERROR": "Check the values and ranges — a domain, a division by zero, or a result beyond ±9.999…×10^99.",
+  "Syntax ERROR": "Check the structure and order of the calculation (misplaced operators, or a bare = / ,).",
+  "Stack ERROR": "Too many nested levels — split the calculation into smaller parts.",
+  "Argument ERROR": "Check the function's arguments (count and type).",
+  "Range ERROR": "Check the input range for this function.",
+};
+
 export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }: ScientificCalculatorProps) {
   // ── the persisted record (settings + model choice + layout; NEVER a
   // calculation — the amended L2 law) ──
@@ -297,12 +316,25 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
   const modelId: CalcModelId = persisted.model ?? defaultModelForLevel(levelHint);
   const model = CALC_MODELS[modelId];
 
-  const [state, setState] = useState<CalcState>(() => initialCalcState(ANGLE_FROM_SETTINGS[persisted.settings.angle]));
+  // the engine's mount state seeds from the persisted record: the
+  // numberFormat union → fix/sciDigits/normVariant, the fraction law,
+  // and the model's complex feature (the 991CW's i path).
+  const [state, setState] = useState<CalcState>(() => {
+    const nf = persisted.settings.numberFormat;
+    return initialCalcState(ANGLE_FROM_SETTINGS[persisted.settings.angle], {
+      fix: nf.kind === "fix" ? nf.digits : 0,
+      sciDigits: nf.kind === "sci" ? nf.digits : 0,
+      normVariant: nf.kind === "norm" ? nf.variant : 2,
+      fractionFormat: persisted.settings.fraction,
+      complex: CALC_MODELS[persisted.model ?? defaultModelForLevel(levelHint)].features.complex,
+    });
+  });
   const [setupOpen, setSetupOpen] = useState(false);
   const [screen, setScreen] = useState<Screen>("calc");
   const [noticeApp, setNoticeApp] = useState<string>("");
   const [openCat, setOpenCat] = useState<number>(0);
   const [menuCursor, setMenuCursor] = useState(0);
+  const qrCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const relayRef = useRef<{
     ids: Map<number, { x: number; y: number }>;
@@ -323,10 +355,28 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
     savePersisted(persisted);
   }, [persisted]);
 
+  // the model switch re-arms the engine's complex feature (the 991CW's
+  // i/√ law flips with the registry's features — settings SHARED across
+  // models: the persisted record never changes on a switch)
+  useEffect(() => {
+    setState((s) => (s.complex === model.features.complex ? s : { ...s, complex: model.features.complex }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modelId]);
+
   const patchPersisted = (patch: Partial<CalcPersisted>) => setPersisted((p) => ({ ...p, ...patch }));
   const patchSettings = (patch: Partial<CalcPersisted["settings"]>) => setPersisted((p) => ({ ...p, settings: { ...p.settings, ...patch } }));
 
   const press = (k: CalcKey) => setState((s) => pressKey(s, k));
+
+  /** phase B: the numberFormat union flows to BOTH layers at once —
+   * the engine (the setup keys enforce Norm/Fix/Sci exclusivity) and
+   * the persisted record (the settings dialog's row 3 reads it back). */
+  const applyNumberFormat = (nf: CalcNumberFormat) => {
+    patchSettings({ numberFormat: nf });
+    if (nf.kind === "fix") press({ k: "setup-fix", fix: nf.digits });
+    else if (nf.kind === "sci") press({ k: "setup-sci", digits: nf.digits });
+    else press({ k: "setup-numformat", variant: nf.variant });
+  };
 
   const launchApp = (name: string, label: string) => {
     if (name === "calculate" && model.implementedApps.includes("calculate")) {
@@ -386,6 +436,10 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       onClose();
       return;
     }
+    if (cmd === "qr") {
+      setScreen("qr");
+      return;
+    }
     if (cmd === "back") {
       if (screen === "catalog-cat") {
         setScreen("catalog");
@@ -403,7 +457,41 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
     else setScreen(cmd);
   };
 
+  /**
+   * phase B: the per-model SHIFT dispatch (the shift-legends pin). The
+   * registry's per-model override maps the DEVICE key's shifted legend
+   * to the engine key it inserts; the one-shot consume law rides the
+   * engine's own consume() wrapper (every override key returns through
+   * it). The CLASSIC layout never dispatches (the run-001 regression
+   * law: byte-identical), and a null override keeps the structural
+   * engine law (e.g. the 83GT's "(" — its sheet extracted null).
+   */
+  const shiftOverrideKey = (def: KeyDef): CalcKey | null => {
+    if (layout !== "cw") return null;
+    if (typeof def.key !== "object" || def.key === null) return null;
+    if (!state.mods.shift) return null;
+    const ov = model.shiftOverrides;
+    const k = def.key as CalcKey;
+    if (k.k === "sq" && ov.sq) {
+      // fx-83/85GT CW: the recurring-decimal entry (the device-true ■̇
+      // template); fx-991 CW: log (MG verbatim)
+      return ov.sq.glyph === "recur" ? { k: "recur" } : { k: "fn-insert", name: "log" };
+    }
+    if (k.k === "paren" && k.p === "(" && ov.lparen) return { k: "eq-ins" }; // the 991's "="
+    if (k.k === "pow10" && ov.d9) {
+      // fx-991 CW: i (complex on); fx-83/85GT CW: our documented ","
+      // binding (the sheet's null slot claimed for the binary comma)
+      return ov.d9.label === "i" ? { k: "i" } : { k: "comma" };
+    }
+    return null;
+  };
+
   const keyDefPress = (def: KeyDef) => {
+    const ovr = shiftOverrideKey(def);
+    if (ovr) {
+      press(ovr);
+      return;
+    }
     if (def.shell) handleShell(def.shell);
     else if (def.dial) handleDial(def.dial);
     else if (def.key === "mode") setSetupOpen((v) => !v);
@@ -441,6 +529,40 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
     return () => window.removeEventListener("keydown", h);
     // the closures read the current screen/cursor state
   }, [open, onClose, screen, menuCursor, openCat, state.ans]);
+
+  // ── phase B: the QR canvas — draw the encoded matrix whenever the QR
+  // screen shows a result (the encoder refuses honestly when the payload
+  // cannot fit; the empty line renders instead — never a fake code) ──
+  useEffect(() => {
+    if (!open || screen !== "qr") return;
+    const canvas = qrCanvasRef.current;
+    if (!canvas) return;
+    if (state.shown !== "result" || !state.result) return;
+    const text = formatNatural(state.result, state.resultForm, state.fix, {
+      mixed: state.fractionFormat === "mixed",
+      normVariant: state.normVariant,
+      sciDigits: state.sciDigits,
+      decimalMark: persisted.settings.decimalMark,
+      separator: persisted.settings.digitSeparator,
+      io: persisted.settings.io,
+      angleUnit: state.angle,
+    });
+    const code = qrEncode(text);
+    if (!code) return;
+    const scale = 8;
+    canvas.width = code.size * scale;
+    canvas.height = code.size * scale;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#000000";
+    for (let r = 0; r < code.size; r++) {
+      for (let c = 0; c < code.size; c++) {
+        if (code.modules[r][c]) ctx.fillRect(c * scale, r * scale, scale, scale);
+      }
+    }
+  }, [open, screen, state, persisted.settings]);
 
   // ── L7: the two-finger relay onto the paper's gesture coordinator ──
   const visibleInkCanvas = (): HTMLCanvasElement | null => {
@@ -594,20 +716,21 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
   const hyp = state.mods.hyp;
 
   /** the display-format options from the engine state + the settings
-   * rows (the format law lives in the engine; the record carries it). */
+   * rows (the format law lives in the engine; the record carries it).
+   * Phase B: Sci n, the complex io family and the ∠ unit ride it. */
   const fmt: CalcDisplayFmt = {
     mixed: state.fractionFormat === "mixed",
     normVariant: state.normVariant,
+    sciDigits: state.sciDigits,
     decimalMark: persisted.settings.decimalMark,
     separator: persisted.settings.digitSeparator,
+    io: persisted.settings.io,
+    angleUnit: state.angle,
   };
 
-  const resultText =
-    screen === "calc" && state.shown === "error"
-      ? state.error
-      : screen === "calc" && state.shown === "result" && state.result
-        ? formatNatural(state.result, state.resultForm, state.fix, fmt)
-        : null;
+  // the committed display text (screen-independent — the QR screen encodes it)
+  const committedText = state.shown === "result" && state.result ? formatNatural(state.result, state.resultForm, state.fix, fmt) : null;
+  const resultText = screen === "calc" ? (state.shown === "error" ? state.error : committedText) : null;
 
   const shiftColor = model.skin.shiftColor === "gold" ? "text-amber-300" : "text-sky-300";
 
@@ -620,6 +743,14 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       if (shift) return `Arc${f}`;
       if (hyp) return `Hyperbolic ${full}`;
       return def.aria;
+    }
+    // phase B: the per-model shift legends first (the registry is the
+    // law — ■̇ / log on x², = on (, i / "," on ×10ˣ)
+    if (typeof def.key === "object" && shift && layout === "cw") {
+      const ov = model.shiftOverrides;
+      if (def.key.k === "sq" && ov.sq) return ov.sq.aria;
+      if (def.key.k === "paren" && def.key.p === "(" && ov.lparen) return ov.lparen.aria;
+      if (def.key.k === "pow10" && ov.d9) return ov.d9.aria;
     }
     // T-MG-CALC-1 fix pin: the structural SHIFT relabels (the same law
     // the trig row already obeys)
@@ -638,6 +769,12 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       if (shift) return `${f}⁻¹`;
       if (hyp) return `${f}h`;
       return def.label;
+    }
+    if (typeof def.key === "object" && shift && layout === "cw") {
+      const ov = model.shiftOverrides;
+      if (def.key.k === "sq" && ov.sq) return ov.sq.label;
+      if (def.key.k === "paren" && def.key.p === "(" && ov.lparen) return ov.lparen.label;
+      if (def.key.k === "pow10" && ov.d9) return ov.d9.label;
     }
     if (typeof def.key === "object" && shift) {
       if (def.key.k === "sq") return "x³";
@@ -658,7 +795,7 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
         data-calc-key={aria}
         className={[
           "rounded-md py-2 text-sm select-none",
-          def.span ? "col-span-7" : "",
+          def.span ? (def.span === 2 ? "col-span-2" : "col-span-7") : "",
           def.accent ? "bg-zinc-700 text-zinc-100 hover:bg-zinc-600" : "bg-zinc-800 text-zinc-100 hover:bg-zinc-700",
           isShift ? shiftColor : "",
         ].join(" ")}
@@ -712,7 +849,10 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
   );
 
   const apps = model.apps;
-  const hasResult = screen === "calc" && state.shown === "result" && !!state.result;
+  // a committed result exists (screen-independent — the QR screen reads it);
+  // hasResult adds the calc-screen condition for the copy affordance
+  const hasCommittedResult = state.shown === "result" && !!state.result;
+  const hasResult = screen === "calc" && hasCommittedResult;
 
   return (
     <div
@@ -783,7 +923,8 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
             {shift && <span className={shiftColor}>SHIFT </span>}
             <span>{state.angle === "DEG" ? "D" : state.angle === "RAD" ? "R" : "G"} </span>
             {state.fix > 0 && <span className="text-zinc-300">Fix{state.fix} </span>}
-            <span>MathI</span>
+            {state.sciDigits > 0 && <span className="text-zinc-300">Sci{state.sciDigits} </span>}
+            <span>{persisted.settings.io === "mathI/DecimalI" ? "MathI/DecimalI" : "MathI/MathO"}</span>
           </span>
         </span>
       </div>
@@ -809,6 +950,14 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
           <div className="min-h-[1.4rem] text-right font-mono text-lg text-zinc-100" data-calc-result>
             {resultText ?? ""}
           </div>
+          {/* phase B: the .cw-error-hint law — every error class renders
+              a hint line under the message (Argument/Range stay in the
+              map's vocabulary; the engine raises no fake errors). */}
+          {screen === "calc" && state.shown === "error" && state.error && (
+            <div className="cw-error-hint text-left text-[10px] leading-snug text-zinc-400" data-calc-error-hint>
+              {ERROR_HINTS[state.error]}
+            </div>
+          )}
           {/* T-MG-CALC run-002: the P2-lite copy affordance (card §6) — the
               displayed value to the clipboard; the answer-box handoff stays
               out until the operator names its home. */}
@@ -867,16 +1016,19 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       )}
 
       {/* SETTINGS — the numbered device-true dialog (MG's captured rows)
-          with every setting OUR engine honors; the Input/Output row
-          displays the fixed MathI/MathO law (DecimalI is not shipped —
-          no fake options). */}
+          with every setting OUR engine honors. PHASE B: row 1 toggles the
+          io family (mathI/DecimalI — the complex display law reads it)
+          and row 3 is the ONE numberFormat union (Norm/Fix/Sci). */}
       {screen === "settings" && (
         <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="settings" aria-live="polite">
           <div className="mb-2 text-xs text-zinc-400">Settings</div>
           <div className="space-y-2 text-xs text-zinc-100">
             <div className="flex items-center justify-between gap-2">
               <span>1 Input/Output</span>
-              <span className="text-zinc-400">MathI/MathO</span>
+              <span className="flex gap-1">
+                {screenBtn("Input output MathI MathO", "MathI/MathO", () => patchSettings({ io: "mathI/mathO" }), { pressed: persisted.settings.io === "mathI/mathO", k: "io-matho" })}
+                {screenBtn("Input output MathI DecimalI", "MathI/DecimalI", () => patchSettings({ io: "mathI/DecimalI" }), { pressed: persisted.settings.io === "mathI/DecimalI", k: "io-decimal" })}
+              </span>
             </div>
             <div className="flex items-center justify-between gap-2">
               <span>2 Angle Unit</span>
@@ -893,12 +1045,27 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
               <span>3 Number Format</span>
               <span className="flex flex-wrap gap-1">
                 {[1, 2].map((v) =>
-                  screenBtn(`Norm ${v}`, `Norm ${v}`, () => press({ k: "setup-numformat", variant: v as 1 | 2 }), { pressed: state.fix === 0 && state.normVariant === v, k: `norm${v}` }),
+                  screenBtn(`Norm ${v}`, `Norm ${v}`, () => applyNumberFormat({ kind: "norm", variant: v as 1 | 2 }), {
+                    pressed: persisted.settings.numberFormat.kind === "norm" && persisted.settings.numberFormat.variant === v,
+                    k: `norm${v}`,
+                  }),
                 )}
                 <span className="mx-1 text-zinc-600">|</span>
-                {screenBtn("Fixed decimals off", "Fix off", () => press({ k: "setup-fix", fix: 0 }), { pressed: state.fix === 0 })}
+                {screenBtn("Fixed decimals off", "Fix off", () => applyNumberFormat({ kind: "fix", digits: 0 }), {
+                  pressed: persisted.settings.numberFormat.kind === "fix" && persisted.settings.numberFormat.digits === 0,
+                })}
                 {[1, 2, 3, 4, 6].map((n) =>
-                  screenBtn(`Fixed decimals ${n}`, `Fix ${n}`, () => press({ k: "setup-fix", fix: n }), { pressed: state.fix === n, k: `fix${n}` }),
+                  screenBtn(`Fixed decimals ${n}`, `Fix ${n}`, () => applyNumberFormat({ kind: "fix", digits: n }), {
+                    pressed: persisted.settings.numberFormat.kind === "fix" && persisted.settings.numberFormat.digits === n,
+                    k: `fix${n}`,
+                  }),
+                )}
+                <span className="mx-1 text-zinc-600">|</span>
+                {[1, 2, 3, 4, 6].map((n) =>
+                  screenBtn(`Scientific digits ${n}`, `Sci ${n}`, () => applyNumberFormat({ kind: "sci", digits: n }), {
+                    pressed: persisted.settings.numberFormat.kind === "sci" && persisted.settings.numberFormat.digits === n,
+                    k: `sci${n}`,
+                  }),
                 )}
               </span>
             </div>
@@ -1079,6 +1246,31 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
             {noticeApp}. This app isn&apos;t on the simulator yet.
           </div>
           <div className="mt-2">{screenBtn("Back to home", "Back", () => setScreen("home"), { data: "Notice back" })}</div>
+        </div>
+      )}
+
+      {/* QR — the phase-B key: the displayed result encoded as a QR
+          matrix by OUR verified encoder (qr-encoder.ts — golden-matrix
+          cross-checked against an independent implementation). The real
+          device encodes a Casio web-service URL; ours says honestly what
+          it encodes. */}
+      {screen === "qr" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="qr" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">QR · {model.label}</div>
+          {hasCommittedResult ? (
+            <div className="space-y-2 text-xs">
+              <canvas ref={qrCanvasRef} data-calc-qr className="mx-auto block w-full max-w-[220px]" />
+              <div className="text-center font-mono text-zinc-100" data-calc-qr-text>
+                {committedText}
+              </div>
+              <div className="text-center text-[10px] text-zinc-500">Encodes the displayed result as plain text — not the Casio web service.</div>
+            </div>
+          ) : (
+            <div className="text-xs text-zinc-500" data-calc-qr-empty>
+              No result to encode yet — EXE a calculation first.
+            </div>
+          )}
+          <div className="mt-2">{screenBtn("Back to calculator", "Back", () => setScreen("calc"), { data: "QR back" })}</div>
         </div>
       )}
 

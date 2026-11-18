@@ -31,7 +31,7 @@ function mount(props: {
   /** the persisted record seeded before render. The EXISTING pins ride
    * the classic layout (byte-identical run-001 behaviour); the CW-shell
    * pins seed "cw" explicitly. */
-  seed?: { layout?: "cw" | "classic"; model?: string | null };
+  seed?: { layout?: "cw" | "classic"; model?: string | null; settings?: Record<string, unknown> };
 }): { root: ReturnType<typeof createRoot>; el: HTMLElement } {
   const container = doc.createElement("div");
   doc.body.appendChild(container);
@@ -41,7 +41,7 @@ function mount(props: {
       v: 1,
       layout: props.seed?.layout ?? "classic",
       model: props.seed && "model" in props.seed ? props.seed.model : "fx-83gt-cw",
-      settings: { io: "mathI/mathO", angle: "deg", numberFormat: { kind: "norm", variant: 2 }, fraction: "improper", decimalMark: ".", digitSeparator: false },
+      settings: { io: "mathI/mathO", angle: "deg", numberFormat: { kind: "norm", variant: 2 }, fraction: "improper", decimalMark: ".", digitSeparator: false, ...(props.seed?.settings ?? {}) },
     }),
   );
   const root = createRoot(container);
@@ -52,7 +52,7 @@ function mount(props: {
 }
 
 /** phase A: a CW-layout mount (the new default posture). */
-function mountCW(props?: Parameters<typeof mount>[0]) {
+function mountCW(props?: Omit<Parameters<typeof mount>[0], "open">) {
   return mount({ open: true, ...props, seed: { layout: "cw", ...(props?.seed ?? {}) } });
 }
 
@@ -549,17 +549,33 @@ describe("(U10) phase A: the CW shell anatomy (the default posture)", () => {
       root.unmount();
     });
   });
-  test("(U10c) SHIFT relabels the structural keys AND computes the remap (2 SHIFT x² = 8)", () => {
+  test("(U10c) SHIFT on the CW grid follows the MODEL sheet (83GT: the ■̇ recurring-decimal entry — the phase-B law of record, device-verified) and the structural cube remap end-to-end stays on the classic grid", () => {
+    // CW + fx-83GT CW (the mountCW seed): SHIFT+x² is the device's
+    // recurring-decimal key (press SHIFT, then x², then the repeating
+    // digits — the phase-B shift-legends pin supersedes the phase-A
+    // structural-cube reading ON THE CW GRID; the engine law stays the
+    // classic-grid default and the regression pin below keeps it)
     const { root, el } = mountCW();
-    clickKey(el, "2"); // the value first — SHIFT is one-shot and ANY key consumes it (the device law)
     clickKey(el, "Shift");
-    expect(el.querySelector('[data-calc-key="Cube"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-key="Recurring decimal"]')).not.toBeNull();
     expect(el.querySelector('[data-calc-key="Square"]')).toBeNull();
-    clickKey(el, "Cube");
+    clickKey(el, "Recurring decimal"); // the ■̇ template — cursor in the repeating box
+    clickKey(el, "5");
+    clickKey(el, "8");
     clickKey(el, "Execute");
-    expect(resultText(el)).toBe("8");
+    expect(resultText(el)).toBe("58/99");
     act(() => {
       root.unmount();
+    });
+    // the classic grid keeps the run-001 structural remap byte-identical
+    const cl = mount({ open: true, seed: { layout: "classic", model: "fx-83gt-cw" } });
+    clickKey(cl.el, "2"); // the value first — SHIFT is one-shot and ANY key consumes it (the device law)
+    clickKey(cl.el, "Shift");
+    clickKey(cl.el, "Cube");
+    clickKey(cl.el, "Equals"); // the classic grid's aria (the CW grid's wide bar is "Execute")
+    expect(resultText(cl.el)).toBe("8");
+    act(() => {
+      cl.root.unmount();
     });
   });
   test("(U10d) the picker defaults by the level hint (MG's map) and the solar skin rides the model", () => {
@@ -709,5 +725,159 @@ describe("(U12) phase A: the persisted record", () => {
     expect(p.layout).toBe("cw");
     expect(p.settings.angle).toBe("deg");
     window.localStorage.setItem("syllab-calculator-v1", JSON.stringify(defaultPersisted()));
+  });
+});
+
+describe("(U13) phase B: the settings model, the shift legends, the hints and the QR key", () => {
+  test("(U13a) the io row toggles + persists; the indicator follows (MathI/DecimalI)", () => {
+    const { root, el } = mountCW({ seed: { model: "fx-991cw" } });
+    clickKey(el, "Settings");
+    expect(el.querySelector('[data-calc-screen="settings"]')!.textContent).toContain("MathI/MathO");
+    clickCtl(el, "data-calc-screen-btn", "Input output MathI DecimalI");
+    expect(el.querySelector('[data-calc-screen="settings"]')!.textContent).toContain("MathI/DecimalI");
+    const rec = JSON.parse(window.localStorage.getItem("syllab-calculator-v1")!);
+    expect(rec.settings.io).toBe("mathI/DecimalI");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U13b) Sci 2 drives the display AND persists in the unified numberFormat (5÷3 → 1.7×10^0; S⇔D inert)", () => {
+    const { root, el } = mountCW({ seed: { model: "fx-991cw" } });
+    clickKey(el, "Settings");
+    clickCtl(el, "data-calc-screen-btn", "Scientific digits 2");
+    clickCtl(el, "data-calc-screen-btn", "Settings done");
+    clickKey(el, "5");
+    clickKey(el, "Divide");
+    clickKey(el, "3");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("1.7×10^0");
+    clickKey(el, "Toggle fraction decimal");
+    expect(resultText(el)).toBe("1.7×10^0");
+    const rec = JSON.parse(window.localStorage.getItem("syllab-calculator-v1")!);
+    expect(rec.settings.numberFormat).toEqual({ kind: "sci", digits: 2 });
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U13c) the persisted Sci record seeds the engine on the NEXT mount (survives reload)", () => {
+    const { root, el } = mountCW({ seed: { model: "fx-991cw", settings: { numberFormat: { kind: "sci", digits: 2 } } } });
+    clickKey(el, "5");
+    clickKey(el, "Divide");
+    clickKey(el, "3");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("1.7×10^0");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U13d) the fx-991 CW's shift legends: SHIFT+x² = log (computes log(100) = 2); SHIFT+×10ˣ = i; SHIFT+( = =", () => {
+    const { root, el } = mountCW({ seed: { model: "fx-991cw" } });
+    clickKey(el, "Shift");
+    expect(el.querySelector('[data-calc-key="Logarithm base 10"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-key="Square"]')).toBeNull();
+    clickKey(el, "Logarithm base 10");
+    clickKey(el, "1");
+    clickKey(el, "0");
+    clickKey(el, "0");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("2");
+    clickKey(el, "Shift");
+    expect(el.querySelector('[data-calc-key="Imaginary unit"]')).not.toBeNull();
+    clickKey(el, "Imaginary unit");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("i");
+    clickKey(el, "Shift");
+    expect(el.querySelector('[data-calc-key="Equals"]')).not.toBeNull();
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U13e) the complex io family: mathI/DecimalI renders r∠θ (1+i → 1.414213562∠45)", () => {
+    const { root, el } = mountCW({ seed: { model: "fx-991cw", settings: { io: "mathI/DecimalI" } } });
+    clickKey(el, "1");
+    clickKey(el, "Add");
+    clickKey(el, "Shift");
+    clickKey(el, "Imaginary unit");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("1.414213562∠45");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U13f) the error hint rides the message (1÷0 → Math ERROR + the hint line)", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "1");
+    clickKey(el, "Divide");
+    clickKey(el, "0");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("Math ERROR");
+    const hint = el.querySelector("[data-calc-error-hint]");
+    expect(hint).not.toBeNull();
+    expect(hint!.textContent!.length).toBeGreaterThan(10);
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U13g) the QR key encodes the displayed result with the verified encoder (5÷3 → the 5/3 matrix); no result → the honest line", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "5");
+    clickKey(el, "Divide");
+    clickKey(el, "3");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("5/3");
+    clickKey(el, "QR code of the result");
+    expect(el.querySelector('[data-calc-screen="qr"]')).not.toBeNull();
+    const canvas = el.querySelector<HTMLCanvasElement>("[data-calc-qr]");
+    expect(canvas).not.toBeNull();
+    expect(canvas!.width).toBe(168); // 21 modules × 8 px
+    expect(el.querySelector("[data-calc-qr-text]")?.textContent).toBe("5/3");
+    act(() => {
+      root.unmount();
+    });
+    const empty = mountCW();
+    clickKey(empty.el, "QR code of the result");
+    expect(empty.el.querySelector("[data-calc-qr-empty]")).not.toBeNull();
+    act(() => {
+      empty.root.unmount();
+    });
+  });
+  test("(U13h) the probability catalog: nPr inserts with the comma argument and computes (nPr(5,2) = 20)", () => {
+    const { root, el } = mountCW();
+    clickKey(el, "Catalog");
+    clickCtl(el, "data-calc-cat", "probability");
+    clickCtl(el, "data-calc-screen-btn", "Permutations nPr");
+    clickKey(el, "5");
+    clickKey(el, "Catalog");
+    clickCtl(el, "data-calc-cat", "other");
+    clickCtl(el, "data-calc-screen-btn", "Comma");
+    clickKey(el, "2");
+    clickKey(el, "Close paren");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("20");
+    act(() => {
+      root.unmount();
+    });
+  });
+  test("(U13i) the model's complex feature gates √(negative): 991 → 3i; 83GT → Math ERROR; the 83GT ×10ˣ shift is our ,", () => {
+    const { root, el } = mountCW({ seed: { model: "fx-991cw" } });
+    clickKey(el, "Square root");
+    clickKey(el, "Negate");
+    clickKey(el, "9");
+    clickKey(el, "Execute");
+    expect(resultText(el)).toBe("3i");
+    act(() => {
+      root.unmount();
+    });
+    const gt = mountCW({ seed: { model: "fx-83gt-cw" } });
+    clickKey(gt.el, "Square root");
+    clickKey(gt.el, "Negate");
+    clickKey(gt.el, "9");
+    clickKey(gt.el, "Execute");
+    expect(resultText(gt.el)).toBe("Math ERROR");
+    clickKey(gt.el, "Shift");
+    expect(gt.el.querySelector('[data-calc-key="Comma"]')).not.toBeNull();
+    act(() => {
+      gt.root.unmount();
+    });
   });
 });
