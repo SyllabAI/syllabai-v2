@@ -51,6 +51,11 @@
  * course (the set law vacuous) / cie-igcse-accounting-21 CIE 0452
  * 2023-2025 — the FIFTH DRIFT EVENT: four live-only paper-resources
  * topics documented in DRIFT_BY_COURSE)
+ * + tranche 23 (igcse-ict-17 Pearson 4IT1 2017 — the un-numbered Edexcel
+ * shape with UNDERSCORE subcodes / cie-igcse-geography-20 CIE 0460
+ * 2025-2026 — the numbered CIE shape; the FOURTEENTH consecutive
+ * FULLY-CLEAN audit with ZERO drift events — the SECOND double-perfect
+ * tranche, both courses PERFECT 1:1)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -214,6 +219,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-as-computer-science-19": new Set(),
   "igcse-science-double-award-modular-24-biology-unit-2": new Set(),
   "cie-igcse-accounting-21": new Set(["june-2023", "november-2023", "specimen", "templates"]),
+  "igcse-ict-17": new Set(),
+  "cie-igcse-geography-20": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
