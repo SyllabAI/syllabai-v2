@@ -72,6 +72,13 @@
  * igcse-physics-modular-24-unit-1 Pearson 4PH1 2024 — the modular-UNIT
  * shape; the SEVENTEENTH consecutive FULLY-CLEAN audit with ZERO DRIFT on
  * both courses — the first two-course tranche with no drift event)
+ * + tranche 27 (cie-igcse-science-combined-science-23-biology CIE 0653
+ * 2023-2024 — the combined-science shape, the component-scoped TB-code
+ * family / igcse-maths-a-modular-24-foundation-unit-2 Pearson 4XMAF 2024
+ * — the a-modular shape; the EIGHTEENTH consecutive FULLY-CLEAN audit
+ * with the EIGHTH DRIFT EVENT — the combined-science exam-paper cluster
+ * again (the six slugs, the T25 chem sibling's exact set), documented in
+ * DRIFT_BY_COURSE)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -243,6 +250,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-physics-modular-24-unit-2": new Set(),
   "igcse-chemistry-modular-24-unit-1": new Set(),
   "igcse-physics-modular-24-unit-1": new Set(),
+  "cie-igcse-science-combined-science-23-biology": new Set(["mcq-core", "mcq-extended", "paper-3-theory-core", "paper-4-theory-extended", "paper-5-practical-test", "paper-6-alternative-to-practical"]),
+  "igcse-maths-a-modular-24-foundation-unit-2": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
