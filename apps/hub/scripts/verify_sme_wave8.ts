@@ -207,7 +207,17 @@ totalResolved === totalNotes
 // tranche) — takes the probe slot. NOTE for tranche 31: english-language-20
 // rotates OUT when IT gains its layer. Same disclosed pin-refresh class
 // as the wave-6 run-002.
-  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "cie-igcse-english-language-20"];
+// cie-igcse-english-language-20 rotated out at tranche 31 (it GAINED its
+// SME layer there, alongside igcse-science-double-award-modular-24-
+// physics-unit-1); the next no-layer course not already on the roster —
+// igcse-accounting-17-introduction-to-bookkeeping-and-accounting (43
+// loose; tied with igcse-biology-modular-24-unit-1, which is ALREADY
+// slot 1 — the census slug-descending tie-break keeps bio-mod-U1 there)
+// — takes the probe slot. NOTE for later tranches: accounting-17-intro
+// rotates OUT when IT gains its layer; as-maths-20-pure-2 (slot 2)
+// likewise when reached. Same disclosed pin-refresh class as the wave-6
+// run-002.
+  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "igcse-accounting-17-introduction-to-bookkeeping-and-accounting"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;
