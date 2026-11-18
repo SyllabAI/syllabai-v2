@@ -1,0 +1,20 @@
+{
+  "run": "run-005",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-11-18T06:30-06:45Z (wire-observed UTC)",
+  "trace": "1a18bda10cd31f9d (continuation; run-004 plan of-record @ 5ae6ba93 verified on origin)",
+  "operator_order": "\"How do we reduce network transfer usage next time?\" — answered of-record by run-004; this run adds the post-resume live sweep that turns the plan urgent",
+  "basis": "Daily-watch sweep via scripts/run002_neon_scan.py (read-only console.neon.tech/api/v2 GETs, napi_ via argv). Fresh shallow clone v2-run004 at tip 23ca5924; the v2-run003 path was found repurposed by foreign UUID lineage again post-recycle (left untouched per lane law).",
+  "findings": [
+    "MAIN (billowing-cherry-15418366) AUTO-RESUMED on schedule: quota_reset_at rolled 2026-11-01 -> 2026-12-01, endpoint ep-ancient-cake idle + enabled, ops active Nov-17/18 (last_active 2026-11-18T06:24Z). Learner DB plane back up; carrier no longer blocked by 423.",
+    "NOVEMBER METER ALREADY AT 4.2326 GB / 5 GB = 84.7% in 17.3 days -> 0.2451 GB/day run-rate, 17% HOTTER than the October breach rate (5.60 GB / 26.7 d = 0.2098). The 4.0 GB (80%) alarm threshold has ALREADY been passed — the L6 daily watch was not wired to a cron, so no alarm fired.",
+    "PROJECTION (code-arithmetic): remaining 0.767 GB at 0.2451 GB/day = wall re-trips in ~3.1 days, ~2026-11-21; cycle has 12.7 days left -> if unchanged, MAIN is suspended again for ~9.6 days until the Dec-1 reset.",
+    "Other MAIN metrics healthy: compute 83,380 s = 23.2 CU-hrs (23% of 100); logical size 514.8 MB = 48% of 1 GiB (grew +83 MB since suspension, still fine). The burn remains EGRESS-shaped — consistent with run-004 driver ranking; heavy ops cadence Nov-17/18 (17:00-21:45Z, 01:02/03:47/06:24Z) suggests drain-pass/lane activity is the dominant current driver, but pg_stat_statements attribution (run-004 day-1 task) is still NOT enabled.",
+    "W1 (flat-leaf-09845356): transfer 270,500 B = 0.27 MB (0.005% of quota), compute 0.53 CU-hrs, logical 264 MB, endpoint idle — healthy, negligible egress; the sibling lane went quiet-lean on W1 while working MAIN."
+  ],
+  "urgency": "run-004 levers are no longer 'next time' — they have a ~72-hour window. L1 (ETag/immutable caching on asset+figure routes, disclosed parity delta), L3 (extract-don't-ship-whole-docs for paper-figures), L4 (drain discipline: keyset pagination + work-queue instead of full re-scans) are code-side and buildable immediately; L2 (bytea offload to Neon Object Storage via 302 presigned) is executable NOW while MAIN is alive; L5 (auth hot-path cache) still needs operator sign-off. L6 must be wired to an actual scheduler (sandbox-local cron dies with the sandbox; GitHub-Action wrapper = operator secrets-surface decision).",
+  "budget_target": "unchanged of-record: MAIN < 2.5 GB/mo at pilot scale. November already exceeds it (4.23 GB); the plan's levers must land before the Dec-1 meter, not after.",
+  "parity_law_note": "unchanged: frozen-parity surfaces (asset headers, auth core) ship as disclosed deltas with ADR notes + capture-backed parity checks.",
+  "secrets": "napi_ volatile-only via argv (5th transit, scrub-verified, never persisted); no npg_ used this run (zero DB connects, API GETs only); zero writes, zero Vercel mutations.",
+  "receipt_culture": "fresh shallow clone v2-run004 at tip 23ca5924, fetch-first race-guard, bookkeeping-only .syllabai/**; DIRECT main push declined by new repository rules ('push declined due to repository rule violations', first seen after run-004's direct filing) -> filed via lane branch t-ops-plane-001/neon-pause-001-run-005 + PR of-record for the integrator, no force"
+}
