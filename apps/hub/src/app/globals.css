@@ -1677,3 +1677,33 @@ math-field.answer-mathfield:focus {
     animation: none;
   }
 }
+
+/*
+ * P1 verdict juice (guided-lessons redesign plan §6, 2026-11-18): a correct
+ * verdict pops (scale 1.02, green fill, 200ms), an incorrect verdict shakes
+ * gently (300ms) while the correct option highlights. Applied in stage mode
+ * only; reduced-motion honoured; CSS-only, no animation library.
+ */
+@keyframes verdict-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+@keyframes verdict-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+}
+.verdict-pop {
+  animation: verdict-pop 200ms ease-out;
+}
+.verdict-shake {
+  animation: verdict-shake 300ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .verdict-pop,
+  .verdict-shake {
+    animation: none;
+  }
+}
