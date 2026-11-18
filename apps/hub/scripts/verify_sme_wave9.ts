@@ -37,6 +37,10 @@
  * 4XMAF/4XMAH 2024 — the modular-UNIT shape / igcse-economics-17 Pearson
  * 4EC1 2017 — the FOURTH DRIFT EVENT: one live-only exam-skills topic
  * documented in DRIFT_BY_COURSE)
+ * + tranche 20 (cie-igcse-economics-20 CIE 0455 2023-2025 — the numbered
+ * 3-level CIE shape / cie-igcse-ict-21 CIE 0417 2023-2025 — the
+ * un-numbered CIE shape; the ELEVENTH consecutive FULLY-CLEAN audit with
+ * ZERO drift events — both courses PERFECT 1:1)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -194,6 +198,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-business-19": new Set(),
   "igcse-maths-a-modular-24-foundation-unit-1": new Set(),
   "igcse-economics-17": new Set(["structuring-your-responses"]),
+  "cie-igcse-economics-20": new Set(),
+  "cie-igcse-ict-21": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
