@@ -114,6 +114,15 @@
  * carried as corpus-zero rows + DRIFT_BY_COURSE; *** THE FIRST DOUBLE
  * ROTATION *** — slots 1 AND 3 tripped, replaced by sdaw-bio-U1 and
  * sdaw-chem-U2; as-maths-20-pure-2 stays)
+ * + tranche 33 (cie-as-maths-20-pure-2 CIE 9709 2023-2025 — the AS
+ * PURE-2 sub-strand of the a-level-maths spine family, roster slot 2 /
+ * igcse-science-double-award-modular-24-biology-unit-1 Pearson 4XSD1
+ * 2024 — the double-award-modular shape, SETLESS, roster slot 1; the
+ * TWENTY-FOURTH consecutive FULLY-CLEAN audit with ZERO DRIFT on both
+ * courses; the wave-6 header's historical pure-2 exclusion disclosure
+ * SUPERSEDED (header only, zero contact); *** THE SECOND DOUBLE
+ * ROTATION *** — slots 1 AND 2 tripped, replaced by ial-fp1-18 and
+ * as-english-gp-21; sdaw-chem-U2 stays)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -297,6 +306,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-science-double-award-modular-24-physics-unit-1": new Set(),
   "igcse-biology-modular-24-unit-1": new Set(),
   "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": new Set(["2019-june", "2020-january", "2020-november", "2021-june", "2021-november", "2022-june", "2023-january", "2023-june", "2023-november", "2024-june"]),
+  "cie-as-maths-20-pure-2": new Set(),
+  "igcse-science-double-award-modular-24-biology-unit-1": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
