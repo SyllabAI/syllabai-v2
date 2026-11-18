@@ -12,6 +12,7 @@
 import { describe, expect, test } from "bun:test";
 
 import {
+  type CalcDisplayFmt,
   bufferToTex,
   CalcError,
   formatDecimal,
@@ -19,6 +20,7 @@ import {
   initialCalcState,
   pressKey,
   type CalcKey,
+  type CalcState,
 } from "./calc-engine";
 import { CALC_MODELS, MODEL_BY_LEVEL, defaultModelForLevel } from "./calc-models";
 
@@ -504,5 +506,174 @@ describe("(C15) the model registry — the chase card's verbatim data", () => {
     expect(defaultModelForLevel("international-a-level-maths")).toBe("fx-991cw");
     expect(defaultModelForLevel(undefined)).toBe("fx-83gt-cw");
     expect(defaultModelForLevel("ks3-science")).toBe("fx-83gt-cw"); // unknown → the GCSE default
+  });
+});
+
+// ── phase B (T-MG-CALC-2): the settings model, the complex path, the
+// probability inventory, the recurring decimal and the error classes ──
+
+const fmtOf = (s: CalcState, extra: Partial<CalcDisplayFmt> = {}): CalcDisplayFmt => ({
+  mixed: s.fractionFormat === "mixed",
+  normVariant: s.normVariant,
+  sciDigits: s.sciDigits,
+  ...extra,
+});
+
+const runWith = (opts: Parameters<typeof initialCalcState>[1], ...keys: CalcKey[]) => {
+  let s = initialCalcState("DEG", opts);
+  for (const k of keys) s = pressKey(s, k);
+  return s;
+};
+
+describe("(C16) the numberFormat union: Norm/Fix/Sci exclusivity + the display laws", () => {
+  test("(C16a) Sci N resets fix; Fix N resets sci; Norm resets both", () => {
+    const a = run({ k: "setup-fix", fix: 2 }, { k: "setup-sci", digits: 3 });
+    expect(a.sciDigits).toBe(3);
+    expect(a.fix).toBe(0);
+    const b = run({ k: "setup-sci", digits: 3 }, { k: "setup-fix", fix: 2 });
+    expect(b.fix).toBe(2);
+    expect(b.sciDigits).toBe(0);
+    const c = run({ k: "setup-sci", digits: 2 }, { k: "setup-numformat", variant: 1 });
+    expect(c.sciDigits).toBe(0);
+    expect(c.fix).toBe(0);
+    expect(c.normVariant).toBe(1);
+  });
+  test("(C16b) Sci n renders n significant digits in ×10^e", () => {
+    const s = runWith({ sciDigits: 2 }, dig("1"), op("÷"), dig("3"), { k: "eq" });
+    expect(s.shown).toBe("result");
+    expect(formatNatural(s.result!, s.resultForm, s.fix, fmtOf(s))).toBe("3.3×10^-1");
+    const t = runWith({ sciDigits: 6 }, dig("5"), op("÷"), dig("3"), { k: "eq" });
+    expect(formatNatural(t.result!, t.resultForm, t.fix, fmtOf(t))).toBe("1.66667×10^0");
+  });
+  test("(C16c) S⇔D is inert under Sci (the Fix law extends)", () => {
+    const s = runWith({ sciDigits: 2 }, dig("1"), op("÷"), dig("3"), { k: "eq" }, { k: "sd" });
+    expect(s.resultForm).toBe("fraction");
+  });
+  test("(C16d) Sci overrides the exact-fraction display (the FIX-vs-exact deviation closes for Sci too)", () => {
+    const s = runWith({ sciDigits: 2 }, dig("1"), op("÷"), dig("3"), { k: "eq" });
+    expect(s.result && "exact" in s.result && s.result.exact).toBe(true); // 1/3 stays EXACT in the core
+    expect(formatNatural(s.result!, s.resultForm, s.fix, fmtOf(s))).toBe("3.3×10^-1"); // but renders Sci
+  });
+});
+
+describe("(C17) the complex path (the fx-991 CW's i)", () => {
+  test("(C17a) i evaluates: 2+3i renders a+bi", () => {
+    const s = runWith({ complex: true }, dig("2"), op("+"), dig("3"), { k: "i" }, { k: "eq" });
+    expect(s.shown).toBe("result");
+    expect(formatNatural(s.result!, "fraction", 0, fmtOf(s))).toBe("2+3i");
+  });
+  test("(C17b) the arithmetic: (1+2i)(3−i) = 5+5i; i² = −1; (1+i)² = 2i; 1÷(1+i) = 0.5−0.5i", () => {
+    const m = runWith({ complex: true }, { k: "paren", p: "(" }, dig("1"), op("+"), dig("2"), { k: "i" }, { k: "paren", p: ")" }, { k: "paren", p: "(" }, dig("3"), op("-"), { k: "i" }, { k: "paren", p: ")" }, { k: "eq" });
+    expect(formatNatural(m.result!, "fraction", 0, fmtOf(m))).toBe("5+5i");
+    const sq = runWith({ complex: true }, { k: "i" }, { k: "sq" }, { k: "eq" });
+    expect(formatNatural(sq.result!, "fraction", 0, fmtOf(sq))).toBe("-1");
+    const p2 = runWith({ complex: true }, { k: "paren", p: "(" }, dig("1"), op("+"), { k: "i" }, { k: "paren", p: ")" }, { k: "sq" }, { k: "eq" });
+    expect(formatNatural(p2.result!, "fraction", 0, fmtOf(p2))).toBe("2i");
+    const dv = runWith({ complex: true }, dig("1"), op("÷"), { k: "paren", p: "(" }, dig("1"), op("+"), { k: "i" }, { k: "paren", p: ")" }, { k: "eq" });
+    expect(formatNatural(dv.result!, "fraction", 0, fmtOf(dv))).toBe("0.5-0.5i");
+  });
+  test("(C17c) √(negative) is the complex root exactly when the model has complex (√(−4) = 2i; √(−9) = 3i)", () => {
+    const on = runWith({ complex: true }, { k: "sqrt" }, { k: "neg" }, dig("4"), { k: "eq" });
+    expect(formatNatural(on.result!, "fraction", 0, fmtOf(on))).toBe("2i");
+    const nine = runWith({ complex: true }, { k: "sqrt" }, { k: "neg" }, dig("9"), { k: "eq" });
+    expect(formatNatural(nine.result!, "fraction", 0, fmtOf(nine))).toBe("3i");
+    const off = runWith({ complex: false }, { k: "sqrt" }, { k: "neg" }, dig("4"), { k: "eq" });
+    expect(off.shown).toBe("error");
+    expect(off.error).toBe("Math ERROR");
+  });
+  test("(C17d) real-only collapse: 2+0i renders 2 (the device law)", () => {
+    const s = runWith({ complex: true }, dig("2"), op("+"), dig("0"), { k: "i" }, { k: "eq" });
+    expect(formatNatural(s.result!, "fraction", 0, fmtOf(s))).toBe("2");
+  });
+  test("(C17e) the honest boundaries: sin(complex) and a complex exponent are Math ERROR; ÷0i too; Abs(3+4i) = 5", () => {
+    const sn = runWith({ complex: true }, { k: "trig", f: "sin" }, dig("1"), op("+"), { k: "i" }, { k: "eq" });
+    expect(sn.shown).toBe("error");
+    const pw = runWith({ complex: true }, dig("2"), op("+"), { k: "i" }, { k: "pow" }, { k: "i" }, { k: "eq" });
+    expect(pw.shown).toBe("error");
+    const dz = runWith({ complex: true }, dig("1"), op("÷"), dig("0"), { k: "i" }, { k: "eq" });
+    expect(dz.shown).toBe("error");
+    const ab = runWith({ complex: true }, { k: "fn-insert", name: "abs" }, dig("3"), op("+"), dig("4"), { k: "i" }, { k: "eq" });
+    expect(formatNatural(ab.result!, "fraction", 0, fmtOf(ab))).toBe("5");
+  });
+  test("(C17f) the polar family: mathI/DecimalI renders r∠θ (1+i, DEG → 1.414213562∠45)", () => {
+    const s = runWith({ complex: true }, dig("1"), op("+"), { k: "i" }, { k: "eq" });
+    expect(formatNatural(s.result!, s.resultForm, s.fix, fmtOf(s, { io: "mathI/DecimalI" }))).toBe("1.414213562∠45");
+  });
+  test("(C17g) S⇔D is inert on a complex result", () => {
+    const s = runWith({ complex: true }, dig("1"), op("+"), dig("2"), { k: "i" }, { k: "eq" }, { k: "sd" });
+    expect(s.resultForm).toBe("fraction");
+  });
+});
+
+describe("(C18) the probability inventory: exact nPr/nCr/factorial/Abs", () => {
+  test("(C18a) nPr(5,2) = 20 and nCr(5,2) = 10 (the comma argument)", () => {
+    const p = run({ k: "fn-insert", name: "nPr" }, dig("5"), { k: "comma" }, dig("2"), { k: "eq" });
+    expect(p.shown).toBe("result");
+    expect(formatNatural(p.result!, "fraction", 0, fmtOf(p))).toBe("20");
+    const c = run({ k: "fn-insert", name: "nCr" }, dig("5"), { k: "comma" }, dig("2"), { k: "eq" });
+    expect(formatNatural(c.result!, "fraction", 0, fmtOf(c))).toBe("10");
+  });
+  test("(C18b) 5! = 120; 0! = 1; the non-integer refuses", () => {
+    const f = run(dig("5"), { k: "fact" }, { k: "eq" });
+    expect(formatNatural(f.result!, "fraction", 0, fmtOf(f))).toBe("120");
+    const z = run(dig("0"), { k: "fact" }, { k: "eq" });
+    expect(formatNatural(z.result!, "fraction", 0, fmtOf(z))).toBe("1");
+    const bad = run(dig("3"), { k: "digit", d: "." }, dig("5"), { k: "fact" }, { k: "eq" });
+    expect(bad.shown).toBe("error");
+  });
+  test("(C18c) nPr refuses r > n; nCr refuses a non-integer r", () => {
+    const bad = run({ k: "fn-insert", name: "nPr" }, dig("5"), { k: "comma" }, dig("9"), { k: "eq" });
+    expect(bad.shown).toBe("error");
+    const dec = run({ k: "fn-insert", name: "nCr" }, dig("5"), { k: "comma" }, { k: "digit", d: "." }, dig("5"), { k: "eq" });
+    expect(dec.shown).toBe("error");
+  });
+  test("(C18d) Abs(−3) = 3 exactly", () => {
+    const a = run({ k: "fn-insert", name: "abs" }, { k: "neg" }, dig("3"), { k: "eq" });
+    expect(formatNatural(a.result!, "fraction", 0, fmtOf(a))).toBe("3");
+  });
+});
+
+describe("(C19) the recurring decimal (the fx-83/85GT CW's ■̇ entry)", () => {
+  test("(C19a) 0.5̇8̇ = 58/99 EXACTLY (the rational core applies to the template)", () => {
+    const s = run({ k: "recur" }, dig("5"), dig("8"), { k: "eq" });
+    expect(s.shown).toBe("result");
+    expect(s.result).toEqual({ exact: true, n: BigInt(58), d: BigInt(99) });
+    expect(formatNatural(s.result!, s.resultForm, s.fix, fmtOf(s))).toBe("58/99");
+  });
+  test("(C19b) 1.2̇3̇ = 122/99 (◀ reaches the whole part, ▶ returns)", () => {
+    const s = run({ k: "recur" }, dig("2"), dig("3"), { k: "left" }, dig("1"), { k: "right" }, { k: "right" }, { k: "eq" });
+    expect(s.shown).toBe("result");
+    expect(s.result).toEqual({ exact: true, n: BigInt(122), d: BigInt(99) });
+  });
+  test("(C19c) an empty repeating box is a Syntax ERROR", () => {
+    const s = run({ k: "recur" }, { k: "eq" });
+    expect(s.shown).toBe("error");
+    expect(s.error).toBe("Syntax ERROR");
+  });
+});
+
+describe("(C20) the error classes: the = atom, the bare comma, Stack", () => {
+  test("(C20a) the 991CW's SHIFT+( '=' evaluates as a Syntax ERROR in Calculate (the device law)", () => {
+    const s = run(dig("2"), op("+"), dig("3"), { k: "eq-ins" }, dig("4"), { k: "eq" });
+    expect(s.shown).toBe("error");
+    expect(s.error).toBe("Syntax ERROR");
+    const bare = run({ k: "eq-ins" }, { k: "eq" });
+    expect(bare.shown).toBe("error");
+  });
+  test("(C20b) a bare comma outside a binary function is a Syntax ERROR", () => {
+    const s = run(dig("1"), { k: "comma" }, dig("2"), { k: "eq" });
+    expect(s.shown).toBe("error");
+  });
+  test("(C20c) 16 nested parens is the device's Stack ERROR; 15 evaluates", () => {
+    const L = (n: number, k: "(" | ")") => Array.from({ length: n }, () => ({ k: "paren", p: k }) as CalcKey);
+    const deep = run(...L(16, "("), dig("1"), ...L(16, ")"), { k: "eq" });
+    expect(deep.shown).toBe("error");
+    expect(deep.error).toBe("Stack ERROR");
+    const ok = run(...L(15, "("), dig("1"), ...L(15, ")"), { k: "eq" });
+    expect(ok.shown).toBe("result");
+  });
+  test("(C20d) ÷0 stays the Math ERROR of record (Argument/Range remain vocabulary-only — no fake sites)", () => {
+    const s = run(dig("1"), op("÷"), dig("0"), { k: "eq" });
+    expect(s.error).toBe("Math ERROR");
   });
 });
