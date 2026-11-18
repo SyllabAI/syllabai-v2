@@ -56,6 +56,12 @@
  * 2025-2026 — the numbered CIE shape; the FOURTEENTH consecutive
  * FULLY-CLEAN audit with ZERO drift events — the SECOND double-perfect
  * tranche, both courses PERFECT 1:1)
+ * + tranche 24 (cie-igcse-further-maths-additional-maths-25 CIE 0606
+ * 2025-2027 — the un-numbered CIE shape / cie-as-business-23 CIE 9609
+ * 2023-2025 — the wave's SECOND AS-level course on the SHARED
+ * a-level-business code family; the FIFTEENTH consecutive FULLY-CLEAN
+ * audit with the SIXTH DRIFT EVENT: as-business-23's three live-only
+ * paper-resources topics documented in DRIFT_BY_COURSE)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -221,6 +227,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "cie-igcse-accounting-21": new Set(["june-2023", "november-2023", "specimen", "templates"]),
   "igcse-ict-17": new Set(),
   "cie-igcse-geography-20": new Set(),
+  "cie-igcse-further-maths-additional-maths-25": new Set(),
+  "cie-as-business-23": new Set(["june-2023", "june-2024", "specimen"]),
 };
 
 for (const cf of FIXTURES.courses) {
