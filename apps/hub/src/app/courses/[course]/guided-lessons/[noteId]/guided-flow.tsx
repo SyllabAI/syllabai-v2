@@ -48,10 +48,28 @@
  * (syllabai.guided-flow.v1.*) adopt ONCE per tab (the engine's legacy
  * adoption — they commit up only when the account has no doc of its own)
  * and then retire. Progress never writes to canonical content.
+ *
+ * P0 RESTAGE (2026-11-18, operator-approved redesign plan §5.1): when the
+ * course flag (lib/guided-stage.ts) is on, the SAME walk renders inside a
+ * full-height stage takeover — document chrome covered, stage header with
+ * progress dots, a single 640px card column, 17-18px teaching typography
+ * and framed figures. Presentation-only: stage mechanics, payloads and
+ * progress persistence are untouched, and flag-off renders unchanged.
  */
-import { useMemo, useState, useSyncExternalStore } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { createPortal } from "react-dom";
 import {
   ArrowRight,
+  BookOpen,
   BookOpenCheck,
   Calculator,
   Check,
@@ -119,6 +137,9 @@ interface Props {
    *  or the course-level page when no per-topic target resolves. */
   examQuestionsHref: string;
   flashcardsHref: string;
+  /** P0 Restage rollout flag (lib/guided-stage.ts): true → the walk renders
+   *  inside the full-height stage takeover; false → the pre-P0 layout. */
+  stageUI?: boolean;
 }
 
 const STORAGE_PREFIX = "syllabai.guided-flow.v1."; // RETIRED (legacy adoption pin)
@@ -134,6 +155,34 @@ const RATING_HELP: Record<Rating, string> = {
   medium: "I've seen this — remind me how it fits together.",
   high: "Solid on this — take me straight to the checks.",
 };
+
+/* ─────────────────── P0 Restage — the stage presentation layer ───────────────────
+ * Plan §5.1/§6 (operator approval 2026-11-18): with the course flag on, the
+ * walk renders inside the full-height stage. The stage UI reads this context
+ * (true inside the takeover overlay, false in the document layout), and every
+ * presentation delta — typography, spacing, figure frames — goes through
+ * pick(S, stageCls, legacyCls), so the flag-off path compiles to the exact
+ * pre-P0 class strings. Teaching body moves 14px muted → 17-18px ink
+ * (audit failure F4), card titles 20-22px, card padding 24-32px. */
+const StageUIContext = createContext(false);
+
+/** True inside the stage takeover; false in the legacy document layout. */
+const useStageUI = () => useContext(StageUIContext);
+
+/** No-op subscribe for the mounted probe above. */
+const subscribeNoop = () => () => {};
+
+/** Stage/legacy class picker — one conditional per node. */
+function pick(stage: boolean, stageCls: string, legacyCls: string) {
+  return stage ? stageCls : legacyCls;
+}
+
+/** Teaching body (§6): 17-18px dark ink. */
+const STAGE_BODY = "text-[17px] leading-relaxed text-foreground sm:text-lg";
+/** Secondary teaching text (definitions, explanations, model answers). */
+const STAGE_BODY_SOFT = "text-[15px] leading-relaxed text-foreground/85 sm:text-base";
+/** Card titles (§6): 20-22px. */
+const STAGE_TITLE = "text-xl font-semibold tracking-tight sm:text-[22px]";
 
 function freshState(): FlowState {
   return { v: 1, moduleIndex: 0, stage: 0, ratings: {}, recalibrated: {}, answers: {}, finished: false };
@@ -333,7 +382,12 @@ export function GuidedLessonFlow({
   base,
   examQuestionsHref,
   flashcardsHref,
+  stageUI = false,
 }: Props) {
+  // False by construction here — the flow component itself renders in the
+  // document layout; only the overlay subtree (below) sits inside the
+  // provider, so the picker and any inline chrome read the legacy strings.
+  const S = useStageUI();
   const lessonId = lesson.lesson.id;
   const store = useMemo(() => getFlowStore(lessonId), [lessonId]);
   const state = useSyncExternalStore(store.subscribe, store.get, () => SERVER_STATE);
@@ -415,6 +469,7 @@ export function GuidedLessonFlow({
   const reset = () => {
     setPicked(false);
     setListOpen(null);
+    setStageDismissed(false);
     store.set(() => freshState());
   };
 
@@ -454,26 +509,95 @@ export function GuidedLessonFlow({
   const [listOpen, setListOpen] = useState<boolean | null>(null);
   const listExpanded = listOpen ?? !engaged;
 
-  if (state.finished) {
-    return (
-      <FinishedView
-        modules={modules}
-        state={state}
-        totalChecks={totalChecks}
-        totalCorrect={totalCorrect}
-        noteTitle={noteTitle}
-        noteHref={noteHref}
-        base={base}
-        examQuestionsHref={examQuestionsHref}
-        flashcardsHref={flashcardsHref}
-        onReview={(mi) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0, finished: false }))}
-        onFeedback={(fb) =>
-          store.set((s) => (s.feedback === fb ? s : { ...s, feedback: fb }))
-        }
-        onReset={reset}
-      />
-    );
-  }
+  // ── P0 Restage — the stage takeover (plan §5.1) ── the overlay is open
+  // whenever the learner is inside a lesson (engaged, or has just picked
+  // one) and hasn't explicitly exited; the picker card stays as the
+  // pre-start screen in the document layout underneath. Exit keeps the
+  // flow state (the account pool persists it); picking a lesson re-enters.
+  const [stageDismissed, setStageDismissed] = useState(false);
+  // hydration-safe mounted probe: the portal target only exists client-side
+  // (SSR and no-JS render the document layout either way) — useSyncExternalStore
+  // instead of the setState-in-effect pattern the compiler lint forbids
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
+  const stageOpen = stageUI && !stageDismissed && (engaged || picked);
+  const stageScrollRef = useRef<HTMLDivElement>(null);
+  const stageHeaderRef = useRef<HTMLHeadingElement>(null);
+  const exitStage = useCallback(() => {
+    setStageDismissed(true);
+    setListOpen(null);
+  }, [setStageDismissed, setListOpen]);
+  // the document behind the stage does not scroll while the stage is up
+  useEffect(() => {
+    if (!mounted || !stageOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mounted, stageOpen]);
+  // Escape exits the stage (flow state persists — the zero-DB pool law)
+  useEffect(() => {
+    if (!mounted || !stageOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") exitStage();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mounted, stageOpen, exitStage]);
+  // entering the stage: land at the top and move focus into the header
+  useEffect(() => {
+    if (!mounted || !stageOpen) return;
+    window.scrollTo(0, 0);
+    stageHeaderRef.current?.focus();
+  }, [mounted, stageOpen]);
+  // each beat lands at the top of the column — the lesson paces one card
+  // at a time, not one scroll at a time
+  useEffect(() => {
+    if (!stageOpen) return;
+    stageScrollRef.current?.scrollTo({ top: 0 });
+  }, [stageOpen, moduleIndex, stage]);
+
+  const finishedElement = (
+    <FinishedView
+      modules={modules}
+      state={state}
+      totalChecks={totalChecks}
+      totalCorrect={totalCorrect}
+      noteTitle={noteTitle}
+      noteHref={noteHref}
+      base={base}
+      examQuestionsHref={examQuestionsHref}
+      flashcardsHref={flashcardsHref}
+      onReview={(mi) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0, finished: false }))}
+      onFeedback={(fb) =>
+        store.set((s) => (s.feedback === fb ? s : { ...s, feedback: fb }))
+      }
+      onReset={reset}
+    />
+  );
+
+  const stageViewElement = (
+    <StageView
+      stage={allStages[stage]}
+      module={m}
+      moduleOrdinal={moduleIndex}
+      moduleCount={modules.length}
+      lesson={lesson}
+      questionsById={questionsById}
+      state={state}
+      rating={rating}
+      prevRecalibrated={prevRecalibrated}
+      prevDone={prevDone}
+      examQuestionsHref={examQuestionsHref}
+      flashcardsHref={flashcardsHref}
+      recalChoice={recalChoice[m.id]}
+      onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
+      onChooseRating={chooseRating}
+      onRecalibrate={recalibrate}
+      onAnswer={answer}
+      onNext={handleNext}
+    />
+  );
 
   return (
     <div className="space-y-5">
@@ -482,7 +606,7 @@ export function GuidedLessonFlow({
           once a lesson is being walked the card collapses to a slim header
           so the content leads — the full list stays one click away, and
           picking a concept from the expanded list re-collapses it. */}
-      <Card>
+      <Card className={cn(state.finished && "hidden")}>
         <CardContent className="p-4 sm:p-5">
           {listExpanded ? (
             <div id="lesson-set-list" className="space-y-3">
@@ -528,6 +652,7 @@ export function GuidedLessonFlow({
                         onClick={() => {
                           setPicked(true);
                           setListOpen(null);
+                          setStageDismissed(false); // re-enter the stage takeover
                           gotoModule(mi);
                         }}
                         className={cn(
@@ -552,7 +677,7 @@ export function GuidedLessonFlow({
                           {done ? <Check className="size-3.5" /> : mi + 1}
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block text-xs font-medium">{mod.title}</span>
+                          <span className={pick(S, "text-[15px] font-medium", "block text-xs font-medium")}>{mod.title}</span>
                           <span className="block truncate text-xs text-muted-foreground">{mod.opening}</span>
                         </span>
                         <span className="shrink-0 text-xs font-medium text-muted-foreground">
@@ -607,27 +732,100 @@ export function GuidedLessonFlow({
         </CardContent>
       </Card>
 
-      {/* the active module's current stage */}
-      <StageView
-        stage={allStages[stage]}
-        module={m}
-        moduleOrdinal={moduleIndex}
-        moduleCount={modules.length}
-        lesson={lesson}
-        questionsById={questionsById}
-        state={state}
-        rating={rating}
-        prevRecalibrated={prevRecalibrated}
-        prevDone={prevDone}
-        examQuestionsHref={examQuestionsHref}
-        flashcardsHref={flashcardsHref}
-        recalChoice={recalChoice[m.id]}
-        onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
-        onChooseRating={chooseRating}
-        onRecalibrate={recalibrate}
-        onAnswer={answer}
-        onNext={handleNext}
-      />
+      {/* the active module's current stage — inline in the document layout
+          when the stage is off or exited; inside the takeover the SAME
+          elements render in the portal below */}
+      {!stageOpen && (state.finished ? finishedElement : stageViewElement)}
+
+      {/* ── P0 Restage — the full-height stage (plan §5.1). Portal-mounted
+          after hydration: SSR and no-JS render the document layout, so the
+          picker, breadcrumbs and the read-as-page fallback stay crawlable
+          and reachable; the overlay covers the document chrome once the
+          learner is inside a lesson, and Exit returns to it with the flow
+          state intact (the account pool keeps it). */}
+      {mounted &&
+        stageOpen &&
+        createPortal(
+          <StageUIContext.Provider value={true}>
+            <div
+              ref={stageScrollRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Guided lesson — ${noteTitle}`}
+              className="guided-stage-in fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-muted"
+            >
+              <header className="sticky top-0 z-10 border-b bg-background/85 backdrop-blur">
+                <div className="mx-auto flex h-14 max-w-3xl items-center gap-2 px-4 sm:gap-3 sm:px-6">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Exit the guided lesson"
+                    onClick={exitStage}
+                  >
+                    <X className="size-4.5" aria-hidden />
+                  </Button>
+                  <div className="min-w-0 flex-1">
+                    <h1
+                      ref={stageHeaderRef}
+                      tabIndex={-1}
+                      className="truncate text-sm font-semibold leading-tight outline-none"
+                    >
+                      {m.title}
+                    </h1>
+                    <p className="truncate text-2xs text-muted-foreground">
+                      Lesson {moduleIndex + 1} of {modules.length} · {noteTitle}
+                    </p>
+                  </div>
+                  {rating && allStages.length > 1 && (
+                    <StageDots
+                      index={stage}
+                      count={allStages.length}
+                      className="hidden sm:flex"
+                    />
+                  )}
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Read the full lesson as a page"
+                    onClick={() => {
+                      setStageDismissed(true);
+                      setListOpen(null);
+                      // let the overlay unmount and the body lock clear before
+                      // scrolling the document to the fallback
+                      requestAnimationFrame(() =>
+                        requestAnimationFrame(() => {
+                          const d = document.getElementById(
+                            "guided-read-as-page",
+                          ) as HTMLDetailsElement | null;
+                          if (d) {
+                            d.open = true;
+                            d.scrollIntoView({ behavior: "smooth", block: "start" });
+                          }
+                        }),
+                      );
+                    }}
+                  >
+                    <BookOpen className="size-4.5" aria-hidden />
+                  </Button>
+                </div>
+                {rating && allStages.length > 1 && (
+                  <div className="px-4 pb-3 sm:hidden">
+                    <StageDots index={stage} count={allStages.length} className="flex" />
+                  </div>
+                )}
+              </header>
+              <main className="mx-auto w-full max-w-[640px] px-4 pb-24 pt-5 sm:px-0 sm:pt-8">
+                {/* keyed per beat — each card lands fresh at the top of the
+                    column (the scroll effect above), and the enter animation
+                    marks it as new */}
+                <div key={`${moduleIndex}-${stage}`} className="guided-stage-beat">
+                  {state.finished ? finishedElement : stageViewElement}
+                </div>
+              </main>
+            </div>
+          </StageUIContext.Provider>,
+          document.body,
+        )}
     </div>
   );
 }
@@ -680,8 +878,49 @@ function StageView(p: StageProps) {
   }
 }
 
+/* ───────────────────────── P0 Restage stage chrome ───────────────────────── */
+
+/**
+ * Progress dots (plan §6, pattern P6): one dot per stage of the current
+ * module's arc — filled for done, position-ring on the active beat, quiet
+ * ahead — 150ms fill. They materialise once the gate rating fixes the arc;
+ * before that the header chip carries the position (the arc is adaptive,
+ * so the count is only honest once the band is chosen).
+ */
+function StageDots({
+  index,
+  count,
+  className,
+}: {
+  index: number;
+  count: number;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn("items-center gap-1.5", className)}
+      role="img"
+      aria-label={`Step ${index + 1} of ${count}`}
+    >
+      {Array.from({ length: count }, (_, i) => (
+        <span
+          key={i}
+          className={cn(
+            "size-2 rounded-full transition-colors duration-150",
+            i < index && "bg-primary",
+            i === index && "bg-primary ring-2 ring-primary/25",
+            i > index && "bg-primary/20",
+          )}
+          aria-hidden
+        />
+      ))}
+    </div>
+  );
+}
+
 function GateStage(p: StageProps) {
   const { module: m, lesson, moduleOrdinal, state, rating, prevRecalibrated, prevDone, onChooseRating, onNext } = p;
+  const S = useStageUI();
   // pre-selection from the previous module's recalibration is visual only —
   // the write-once rating happens on the learner's explicit radio click
   const selected = rating ?? prevRecalibrated ?? null;
@@ -706,20 +945,20 @@ function GateStage(p: StageProps) {
   // without figures renders nothing (fail-closed, identical to earlier generations).
   const moduleFigures = figuresForModule(lesson, moduleOrdinal);
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Lesson {moduleOrdinal + 1} of {p.moduleCount}
           </p>
-          <h2 className="text-lg font-semibold tracking-tight">{m.title}</h2>
-          <p className="text-xs leading-relaxed text-muted-foreground">{m.opening}</p>
+          <h2 className={pick(S, STAGE_TITLE, "text-lg font-semibold tracking-tight")}>{m.title}</h2>
+          <p className={pick(S, STAGE_BODY, "text-xs leading-relaxed text-muted-foreground")}>{m.opening}</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-medium">What you know already</p>
+          <p className={pick(S, "text-[15px] font-semibold", "text-sm font-medium")}>What you know already</p>
           {moduleOrdinal === 0 ? (
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className={pick(S, STAGE_BODY, "text-xs leading-relaxed text-muted-foreground")}>
               {lesson.lesson.primer.text}
             </p>
           ) : (
@@ -730,8 +969,8 @@ function GateStage(p: StageProps) {
                 </p>
                 <ul className="space-y-1.5">
                   {prevKeyPoints.map((kp, i) => (
-                    <li key={i} className="flex gap-2.5 text-xs leading-relaxed">
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+                    <li key={i} className={pick(S, "flex gap-2.5 text-[17px] leading-relaxed text-foreground sm:text-lg", "flex gap-2.5 text-xs leading-relaxed")}>
+                      <span className={pick(S, "mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/60", "mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60")} aria-hidden />
                       <span>{kp}</span>
                     </li>
                   ))}
@@ -752,11 +991,11 @@ function GateStage(p: StageProps) {
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-medium">Key points of understanding</p>
+          <p className={pick(S, "text-[15px] font-semibold", "text-sm font-medium")}>Key points of understanding</p>
           <ul className="space-y-1.5">
             {m.keyPoints.map((kp, i) => (
-              <li key={i} className="flex gap-2.5 text-xs leading-relaxed">
-                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+              <li key={i} className={pick(S, "flex gap-2.5 text-[17px] leading-relaxed text-foreground sm:text-lg", "flex gap-2.5 text-xs leading-relaxed")}>
+                <span className={pick(S, "mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/60", "mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60")} aria-hidden />
                 <span>{kp}</span>
               </li>
             ))}
@@ -766,7 +1005,7 @@ function GateStage(p: StageProps) {
         {moduleFigures.length > 0 && <ModuleFigures figures={moduleFigures} />}
 
         <fieldset className="space-y-2">
-          <legend className="text-sm font-semibold">Tell us your confidence level against the key points</legend>
+          <legend className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Tell us your confidence level against the key points</legend>
           {(["low", "medium", "high"] as const).map((r) => {
             const isSelected = selected === r;
             return (
@@ -794,7 +1033,7 @@ function GateStage(p: StageProps) {
                   {isSelected && <span className="size-2 rounded-full bg-primary" />}
                 </span>
                 <span>
-                  <span className="block text-xs font-medium">
+                  <span className={pick(S, "text-[15px] font-medium", "block text-xs font-medium")}>
                     {RATING_LABEL[r]}
                     {written && isSelected && (
                       <span className="ml-2 text-xs font-normal text-muted-foreground">
@@ -837,17 +1076,42 @@ function GateStage(p: StageProps) {
  *  part of the lesson, not a provenance gallery). Fail-closed: a module without figures
  *  renders nothing. */
 function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
+  const S = useStageUI();
   return (
     <div className="space-y-3">
       {figures.map((f) => (
-        <figure key={f.id} className="space-y-1.5">
-          <span className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40">
-            {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
+        <figure
+          key={f.id}
+          className={pick(
+            S,
+            // §6 figure frame: consistent radius, caption INSIDE the frame,
+            // 340px height cap — the diagram teaches inside the card column
+            // instead of dominating it
+            "overflow-hidden rounded-xl border bg-card shadow-sm",
+            "space-y-1.5",
+          )}
+        >
+          <span
+            className={pick(
+              S,
+              "flex aspect-video max-h-[340px] items-center justify-center overflow-hidden bg-muted/30",
+              "block aspect-video w-full overflow-hidden rounded-md border bg-muted/40",
+            )}
+          >
+            {/* corpus hotlink law, identical to the notes reader img: branch */}
             <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
           </span>
           {f.caption && (
-            <figcaption className="space-y-0.5">
-              <p className="text-xs leading-relaxed">{f.caption}</p>
+            <figcaption className={pick(S, "border-t bg-muted/20 px-4 py-2.5", "space-y-0.5")}>
+              <p
+                className={pick(
+                  S,
+                  "text-[13px] leading-relaxed text-foreground/80",
+                  "text-xs leading-relaxed",
+                )}
+              >
+                {f.caption}
+              </p>
             </figcaption>
           )}
         </figure>
@@ -858,18 +1122,19 @@ function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
 
 function LayerStage(p: StageProps & { stage: Extract<Stage, { kind: "layer" }> }) {
   const { module: m, stage, onNext } = p;
+  const S = useStageUI();
   const layer = m.depthLayers[stage.band][stage.field];
   const isLast = stage.i === stage.n - 1;
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{stage.label}</p>
           <Badge variant="secondary" className="text-2xs">
             Layer {stage.i + 1} of {stage.n}
           </Badge>
         </div>
-        <p className="text-[15px] leading-relaxed">{layer}</p>
+        <p className={pick(S, STAGE_BODY, "text-[15px] leading-relaxed")}>{layer}</p>
         <Button onClick={onNext} className="w-full sm:w-auto">
           {isLast ? "Continue" : "Continue — reveal the next layer"}
           <ArrowRight className="size-4" aria-hidden />
@@ -881,12 +1146,13 @@ function LayerStage(p: StageProps & { stage: Extract<Stage, { kind: "layer" }> }
 
 function RefresherStage(p: StageProps) {
   const { module: m, onNext } = p;
+  const S = useStageUI();
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
-          <p className="text-sm font-semibold">Straight to the checks</p>
-          <p className="text-xs text-muted-foreground">
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Straight to the checks</p>
+          <p className={pick(S, STAGE_BODY_SOFT, "text-xs text-muted-foreground")}>
             You rated yourself confident — so no walkthrough layers. If anything feels shaky, the
             refresher below unpacks it in plain words first.
           </p>
@@ -910,29 +1176,31 @@ function RefresherStage(p: StageProps) {
 }
 
 function LayerBlock({ label, text }: { label: string; text: string }) {
+  const S = useStageUI();
   return (
     <div>
       <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</p>
-      <p className="mt-1 text-xs leading-relaxed">{text}</p>
+      <p className={pick(S, STAGE_BODY_SOFT, "mt-1 text-xs leading-relaxed")}>{text}</p>
     </div>
   );
 }
 
 function GlossaryStage(p: StageProps) {
   const { lesson, moduleOrdinal, onNext } = p;
+  const S = useStageUI();
   const terms = glossaryFor(lesson, moduleOrdinal);
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
-          <p className="text-sm font-semibold">Helpful terms</p>
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Helpful terms</p>
           <p className="text-xs text-muted-foreground">The vocabulary this lesson leans on.</p>
         </div>
         <dl className="grid gap-3 sm:grid-cols-2">
           {terms.map((g) => (
             <div key={g.term} className="rounded-md border p-3">
-              <dt className="text-xs font-semibold">{g.term}</dt>
-              <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">{g.definition}</dd>
+              <dt className={pick(S, "text-[15px] font-semibold sm:text-base", "text-xs font-semibold")}>{g.term}</dt>
+              <dd className={pick(S, STAGE_BODY_SOFT, "mt-1 text-xs leading-relaxed text-muted-foreground")}>{g.definition}</dd>
             </div>
           ))}
         </dl>
@@ -947,22 +1215,23 @@ function GlossaryStage(p: StageProps) {
 
 function ExampleStage(p: StageProps) {
   const { lesson, onNext } = p;
+  const S = useStageUI();
   const we = lesson.lesson.assets.workedExample;
   if (!we) return null;
   return (
-    <Card>
-      <CardContent className="space-y-3 p-4 sm:p-5">
-        <p className="flex items-center gap-2 text-sm font-semibold">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-3 p-5 sm:p-7", "space-y-3 p-4 sm:p-5")}>
+        <p className={pick(S, "flex items-center gap-2 text-base font-semibold", "flex items-center gap-2 text-sm font-semibold")}>
           <Lightbulb className="size-4 text-primary" aria-hidden />
           An example
         </p>
-        <p className="text-xs font-medium leading-relaxed">{we.prompt}</p>
-        <ol className="list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-muted-foreground">
+        <p className={pick(S, STAGE_BODY, "text-xs font-medium leading-relaxed")}>{we.prompt}</p>
+        <ol className={pick(S, "list-decimal space-y-1.5 pl-5 text-[15px] leading-relaxed text-foreground/85 sm:text-base", "list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-muted-foreground")}>
           {we.steps.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ol>
-        <p className="rounded-md bg-muted px-3 py-2 text-xs font-medium">{we.finalAnswer}</p>
+        <p className={pick(S, "rounded-md bg-muted px-3.5 py-2.5 text-[15px] font-medium sm:text-base", "rounded-md bg-muted px-3 py-2 text-xs font-medium")}>{we.finalAnswer}</p>
         <Button onClick={onNext} className="w-full sm:w-auto">
           Continue to the checks
           <ArrowRight className="size-4" aria-hidden />
@@ -974,6 +1243,7 @@ function ExampleStage(p: StageProps) {
 
 function CheckStage(p: StageProps) {
   const { module: m, lesson, moduleOrdinal, questionsById, state, onAnswer, onNext } = p;
+  const S = useStageUI();
   const questions = m.checkRefs
     .map((ref) => questionsById.get(ref))
     .filter((q): q is GuidedQuestion => q !== undefined);
@@ -989,10 +1259,10 @@ function CheckStage(p: StageProps) {
   const score = questions.filter((x) => state.answers[x.id]?.correct).length;
 
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="flex items-center gap-2 text-sm font-semibold">
+          <p className={pick(S, "flex items-center gap-2 text-base font-semibold", "flex items-center gap-2 text-sm font-semibold")}>
             <ListChecks className="size-4 text-primary" aria-hidden />
             Understanding check
           </p>
@@ -1020,7 +1290,7 @@ function CheckStage(p: StageProps) {
         )}
         {answered && clampedQi === questions.length - 1 && (
           <div className="space-y-3 rounded-md border bg-muted/40 p-3">
-            <p className="text-sm font-semibold">
+            <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>
               Check complete — {score} of {questions.length} correct.
             </p>
             <Button onClick={onNext} className="w-full sm:w-auto">
@@ -1047,14 +1317,15 @@ function CheckStage(p: StageProps) {
 
 function RecalibrateStage(p: StageProps) {
   const { module: m, rating, recalChoice, onRecalChoice, onRecalibrate, onNext } = p;
+  const S = useStageUI();
   const choice = recalChoice ?? rating ?? "medium";
   const answered = m.checkRefs.filter((r) => p.state.answers[r]?.correct).length;
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
-          <p className="text-sm font-semibold">How confident do you feel now?</p>
-          <p className="text-xs text-muted-foreground">
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>How confident do you feel now?</p>
+          <p className={pick(S, STAGE_BODY_SOFT, "text-xs text-muted-foreground")}>
             You got {answered} of {m.checkRefs.length} checks correct. Re-rate for next time —
             we&apos;ll pre-select this as your starting confidence for the next lesson. You can
             always change it there.
@@ -1086,7 +1357,7 @@ function RecalibrateStage(p: StageProps) {
               >
                 {choice === r && <span className="size-2 rounded-full bg-primary" />}
               </span>
-              <span className="text-xs font-medium">{RATING_LABEL[r]}</span>
+              <span className={pick(S, "text-[15px] font-medium", "text-xs font-medium")}>{RATING_LABEL[r]}</span>
             </button>
           ))}
         </fieldset>
@@ -1170,6 +1441,7 @@ function CheckQuestion({
   answered: { picked: string; correct: boolean } | null;
   onAnswer: (qid: string, picked: string, correct: boolean) => void;
 }) {
+  const S = useStageUI();
   const mode = checkMode(question);
   // R3 written kinds: gradable == known written kind WITH keywords; otherwise the
   // flow offers reveal-only settle (model answer shown, no verdict, never graded)
@@ -1182,7 +1454,7 @@ function CheckQuestion({
     const modelAnswer = question.modelAnswer;
     return (
       <fieldset className="space-y-2.5">
-        <legend className="text-sm font-medium leading-snug">
+        <legend className={pick(S, "text-[17px] font-medium leading-snug sm:text-lg", "text-sm font-medium leading-snug")}>
           <span className="mr-2 text-muted-foreground">{index}.</span>
           {question.stem}
         </legend>
@@ -1201,7 +1473,11 @@ function CheckQuestion({
               disabled={settled}
               rows={2}
               className={cn(
-                "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-xs leading-relaxed",
+                pick(
+                  S,
+                  "min-h-[72px] w-full rounded-md border bg-transparent px-3.5 py-2.5 text-[15px] leading-relaxed sm:text-base",
+                  "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-xs leading-relaxed",
+                ),
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 "disabled:cursor-default disabled:opacity-70",
               )}
@@ -1233,15 +1509,15 @@ function CheckQuestion({
           <div className="space-y-2" role="status">
             {gradable &&
               (answered.correct ? (
-                <p className="flex items-center gap-2 text-xs font-semibold text-success">
+                <p className={pick(S, "flex items-center gap-2 text-[15px] font-semibold text-success", "flex items-center gap-2 text-xs font-semibold text-success")}>
                   <ThumbsUp className="size-4" aria-hidden />
                   Great job!
                 </p>
               ) : (
-                <p className="text-xs font-semibold text-destructive">Not quite.</p>
+                <p className={pick(S, "text-[15px] font-semibold text-destructive", "text-xs font-semibold text-destructive")}>Not quite.</p>
               ))}
             {modelAnswer ? (
-              <p className="text-xs leading-relaxed text-muted-foreground">
+              <p className={pick(S, STAGE_BODY_SOFT, "text-xs leading-relaxed text-muted-foreground")}>
                 Model answer: <span className="font-medium text-foreground">{modelAnswer}</span>
               </p>
             ) : (
@@ -1258,7 +1534,7 @@ function CheckQuestion({
 
   return (
     <fieldset className="space-y-2.5">
-      <legend className="text-sm font-medium leading-snug">
+      <legend className={pick(S, "text-[17px] font-medium leading-snug sm:text-lg", "text-sm font-medium leading-snug")}>
         <span className="mr-2 text-muted-foreground">{index}.</span>
         {question.stem}
       </legend>
@@ -1283,7 +1559,11 @@ function CheckQuestion({
               disabled={settled}
               onClick={() => setPicked(o.key)}
               className={cn(
-                "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-xs transition-colors",
+                pick(
+                  S,
+                  "flex items-start gap-3 rounded-md border px-3.5 py-3 text-left text-[15px] transition-colors sm:text-base",
+                  "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-xs transition-colors",
+                ),
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 // t-ui-polish run-007: the idle hover speaks the house voice,
                 // matching the picked state's border-primary/60 below.
@@ -1327,16 +1607,16 @@ function CheckQuestion({
       {settled && answered && (
         <div className="space-y-2" role="status">
           {answered.correct ? (
-            <p className="flex items-center gap-2 text-xs font-semibold text-success">
+            <p className={pick(S, "flex items-center gap-2 text-[15px] font-semibold text-success", "flex items-center gap-2 text-xs font-semibold text-success")}>
               <ThumbsUp className="size-4" aria-hidden />
               Great job!
             </p>
           ) : (
-            <p className="text-xs font-semibold text-destructive">
+            <p className={pick(S, "text-[15px] font-semibold text-destructive", "text-xs font-semibold text-destructive")}>
               Not quite — the answer is {correctOption?.key}.
             </p>
           )}
-          <p className="text-xs leading-relaxed text-muted-foreground">{correctOption?.explanation}</p>
+          <p className={pick(S, STAGE_BODY_SOFT, "text-xs leading-relaxed text-muted-foreground")}>{correctOption?.explanation}</p>
           {!answered.correct && pickedOption?.misconception && (
             <p className="text-xs text-muted-foreground">Misconception flagged: {pickedOption.misconception}</p>
           )}
@@ -1375,16 +1655,17 @@ function FinishedView({
   onFeedback: (fb: "up" | "down") => void;
   onReset: () => void;
 }) {
+  const S = useStageUI();
   return (
-    <Card>
-      <CardContent className="space-y-4 p-5 sm:p-6">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-5 sm:p-6")}>
         <div className="space-y-1">
           <p className="flex items-center gap-2 text-sm font-semibold text-success">
             <BookOpenCheck className="size-4" aria-hidden />
             Lesson set complete
           </p>
-          <h2 className="text-lg font-semibold tracking-tight">{noteTitle}</h2>
-          <p className="text-xs text-muted-foreground">
+          <h2 className={pick(S, STAGE_TITLE, "text-lg font-semibold tracking-tight")}>{noteTitle}</h2>
+          <p className={pick(S, STAGE_BODY_SOFT, "text-xs text-muted-foreground")}>
             You worked through all {modules.length} lessons — {totalCorrect} of {totalChecks} checks
             correct across the set.
           </p>
@@ -1398,7 +1679,7 @@ function FinishedView({
               <li key={mod.id} className="flex items-center gap-3 rounded-md border px-3 py-2.5">
                 <Check className="size-4 shrink-0 text-success" aria-hidden />
                 <span className="min-w-0 flex-1">
-                  <span className="block text-xs font-medium">{mod.title}</span>
+                  <span className={pick(S, "text-[15px] font-medium", "block text-xs font-medium")}>{mod.title}</span>
                   {/* R-6: the confidence trajectory this lesson actually had */}
                   {walkedIn && (
                     <span className="mt-1 block">
@@ -1422,7 +1703,7 @@ function FinishedView({
             state, is never scored (moduleDone untouched) and never leaves
             the device. */}
         <div className="space-y-2 border-t pt-4">
-          <p className="text-sm font-semibold">Was this guided lesson helpful?</p>
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Was this guided lesson helpful?</p>
           {state.feedback ? (
             <p className="text-xs text-muted-foreground" role="status">
               {state.feedback === "up"
