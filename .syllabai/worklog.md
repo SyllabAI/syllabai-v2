@@ -2838,3 +2838,19 @@ Standing reminder (FORTY-SEVENTH filing): the PAT remains exposed from chat tran
 - BOUNDARIES: no contact with .github/**, golden/** — no risk-tier path; ZERO new LLM calls (every P3 surface deterministic); ONE additive migration (0030); NO prompt edits of any kind. Deviations disclosed in the task card: exam-date awareness PARKED; the ledger's writer covers tutor_answer rows only (the probe/drill/mock_mark writers ride those surfaces' own builds — the plan's own forward-compatible enum); the retention purge's nightly wiring is the disclosed residual; the calibration outcome join matches drill evidence by CODE (the address space's own disclosed residual); the directive's OFFER decision rides the held pendingReviews read while the F184 decay law picks the CLAIM's items via the F-185 reading; the CLA surface carries none of P3 (the P2 posture continues).
 - Receipt: .syllabai/receipts/T-TUTOR-AIM-P3/run-001.json. Task card: .syllabai/tasks/T-TUTOR-AIM-P3.yaml (IN_REVIEW; the CI-green merge is the operator's standing order of record — the #1061 review+merge precedent).
 - Standing reminder (FORTY-EIGHTH filing): the GitHub PAT remains exposed from chat transmission and MUST be revoked/rotated. Agent: Super Z <agent@syllabai.local>
+
+---
+Task ID: NEON-PAUSE-001 run-007 (operator order trace 1a1ee27ad348a28d: "other agents will automatically push to new DB or the old DB? Also, is the frontend and backend syllabai also connected to old or new?")
+Agent: main (Z.ai, session web-590847c1)
+Task: Topology verification of-record + new Vercel incident surfaced.
+
+Work Log:
+- ANSWER 1 (agents): no auto-discovery — sibling lanes write OLD (MAIN) with the conn strings distributed in their lane contexts; backup URI exists only in this chat; all writers must switch together during failover or data forks.
+- ANSWER 2 (planes): carrier (syllabai-v2) DATABASE_URL -> MAIN (old) of-record (behavioral correlation chain: run-001 500s exactly at MAIN suspension, recovered at Nov-1 resume; env-level read blocked: Vercel envs API 404 = PAT lacks env scope). Hub/static + frontends DB-less. Backup connected to nobody until repoint.
+- INCIDENT VERCEL-SUSPENSION-001: ALL Vercel projects 402 'Payment required' DEPLOYMENT_DISABLED live (hub, carrier, web, workbench x2, demo probed). API says plan hobby/legacy, billing active, limited false; cause not PAT-visible (usage/billing/env endpoints 404). Window: carrier last READY Nov-5 05:56Z, hub latest CANCELED Nov-5 19:17Z, last healthy probe of-record Oct-30 -> started on/after Nov-5. Operator action required: dashboard billing/spending controls. Deployments intact -> all planes return on un-suspend, no re-deploy.
+- RUNBOOK GAP: failover step-1 (env repoint via API) likely blocked by same PAT scope -> operator dashboard repoint or scoped-up PAT needed at failover time.
+- Environment: v2-run004 clone replaced by foreign UUID lineage (3rd occurrence) — left untouched; fresh clone v2-run007 at tip be73361; mirror + 168 MB dump archive verified intact outside repos/; PRs #1088/#1089 still open on origin.
+- Filed: receipts/NEON-PAUSE-001/run-007-topology-vercel-suspension-r0.json.
+
+Stage Summary:
+- Two simultaneous planes now: Neon transfer meter (run-005 ETA Nov 19-21, backup ready) and Vercel account suspension (VERCEL-SUSPENSION-001, operator billing action). LANE: ACTIVE x2.
