@@ -1,0 +1,23 @@
+{
+  "run": "run-007",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-11-18T07:20-07:45Z (wire-observed UTC)",
+  "trace": "1a1ee27ad348a28d",
+  "operator_order": "\"So, other agents will automatically push to new DB or the old DB? Also, is the frontend and backend syllabai also connected to old or new?\"",
+  "basis": "Topology verification sweep: Vercel project/env/deployment API (read-only), live HTTP probes of all serving planes, Neon estate state of-record. Attempted env-level DATABASE_URL read: Vercel API envs route 404 (PAT lacks env scope) — of-record basis for carrier wiring is the behavioral correlation chain instead (run-001: carrier DB-plane endpoints 500 exactly when MAIN was suspended; recovered when MAIN auto-resumed Nov-1) + zero Vercel mutations of-record since.",
+  "answers_of_record": [
+    "OTHER AGENTS -> OLD (MAIN). There is NO auto-discovery: sibling lanes hold the conn strings distributed in their own lane contexts (npg_MAIN, npg_W1); the backup project's npg_ exists ONLY in this chat (volatile law). They keep writing MAIN until (a) an operator repoint order distributes the backup URI, or (b) MAIN suspends and they start receiving 53000. During any failover window ALL writers must switch together or the data forks.",
+    "FRONTEND/BACKEND -> OLD (MAIN) for the DB plane. Roles: hub (syllabai-hub-v2) = static plane, no DB; carrier (syllabai-v2) = backend API holding DATABASE_URL -> MAIN pooled URI of-record; syllabai-web / teacher-workbenches / demo = frontends calling the carrier API, no DB creds of-record. The backup is connected to NOBODY until the runbook repoint."
+  ],
+  "incident": {
+    "tag": "VERCEL-SUSPENSION-001",
+    "finding": "ACCOUNT-LEVEL serving suspension: EVERY Vercel project returns 402 'Payment required' / DEPLOYMENT_DISABLED live (probed: syllabai-v2 /actuator/health + /books, syllabai-hub-v2 /actuator/health, syllabai-web, syllabai-teacher-workbench, syllabai-demo — all 402). Not a database event: the DB planes (MAIN/backup/W1) are unaffected and reachable.",
+    "api_state": "Team syllab-ai (team_ULL54qkhzKBmnKrpO6BD4mYX): plan 'hobby' (legacy iteration), billing.status 'active', 'limited': false, plusMigrationEnabled true. Cause NOT exposed to PAT: usage + billing-plans endpoints 404, env reads 404.",
+    "window": "Carrier last READY deploy 2026-11-05T05:56Z; hub latest deployment CANCELED 2026-11-05T19:17Z; last healthy carrier probe of-record = run-003 (2026-10-30). Disablement therefore started on/after 2026-11-05 (exact hour not determinable via PAT).",
+    "operator_action": "Vercel dashboard -> team billing / spending controls (payment method, invoice, or hobby-plan usage limit). PAT cannot resolve billing; lane law forbids billing mutations anyway. Once un-suspended, all planes return simultaneously (no re-deploy needed — deployments are intact, READY of-record)."
+  },
+  "pat_scope_finding": "Vercel PAT cannot read env vars or usage/billing (404 on /v9/projects/{id}/envs, /v1/usage, /billing/plans) -> FAILOVER RUNBOOK GAP: run-006 step 1 (DATABASE_URL repoint via API) may be blocked by the same scope; either the operator performs the repoint in the dashboard at failover time, or supplies a scoped-up PAT. Added to the runbook of-record.",
+  "secrets": "No new credentials transited; Vercel PAT used for read-only GETs (projects, deployments, teams) — value-level scrub verified; zero DB connects this run; zero Vercel mutations.",
+  "environment": "v2-run004 clone found REPLACED by foreign UUID lineage AGAIN (3rd occurrence: v2-np, v2-run003, v2-run004) — left untouched per lane law; fresh shallow clone v2-run007 at tip be73361 (main advanced fc6b250c -> be73361 with PRs #1091/#1092 merged); local session mirror + backup dump archive (168 MB) verified intact outside repos/; run-005/006 receipts safe on origin branches (PRs #1088/#1089 open, awaiting integrator).",
+  "receipt_culture": "fresh shallow clone v2-run007, fetch-first, branch + PR of-record (direct main rule-declined), no force, no self-merge"
+}
