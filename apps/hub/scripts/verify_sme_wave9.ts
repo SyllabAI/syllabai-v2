@@ -41,6 +41,11 @@
  * 3-level CIE shape / cie-igcse-ict-21 CIE 0417 2023-2025 — the
  * un-numbered CIE shape; the ELEVENTH consecutive FULLY-CLEAN audit with
  * ZERO drift events — both courses PERFECT 1:1)
+ * + tranche 21 (cie-igcse-business-25 CIE 0264 2027-2029 — the numbered
+ * CIE shape with an exam-technique strand that carries notes (no drift) /
+ * cie-as-computer-science-19 CIE 9618 2024-2025 — the AS-level /as/ URL
+ * class, sibling of the already-layered a-level course; the TWELFTH
+ * consecutive FULLY-CLEAN audit with ZERO drift events)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -200,6 +205,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-economics-17": new Set(["structuring-your-responses"]),
   "cie-igcse-economics-20": new Set(),
   "cie-igcse-ict-21": new Set(),
+  "cie-igcse-business-25": new Set(),
+  "cie-as-computer-science-19": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
