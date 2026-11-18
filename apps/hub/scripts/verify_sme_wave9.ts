@@ -86,6 +86,12 @@
  * TENTH DRIFT EVENTS — the first tranche where BOTH courses carry drift:
  * fm19's six paper-resources rows + eng25's five exam-skills/tips rows
  * (a NEW class), documented in DRIFT_BY_COURSE)
+ * + tranche 29 (cie-as-environmental-management-20 CIE 8291 2025-2027 —
+ * the AS environmental-management shape — the wave-8 probe holder,
+ * rotated out at this tranche (#7) / igcse-science-double-award-modular-
+ * 24-physics-unit-2 Pearson 4XSD1 2024 — the double-award-modular shape,
+ * SETLESS; the TWENTIETH consecutive FULLY-CLEAN audit with ZERO DRIFT
+ * on both courses — the second two-course tranche with no drift event)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -261,6 +267,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-maths-a-modular-24-foundation-unit-2": new Set(),
   "igcse-further-maths-19": new Set(["jan-2023", "june-2023", "june-2024", "november-2023", "november-2024", "specimen-papers"]),
   "cie-igcse-english-language-25": new Set(["exam-skills-grammar", "exam-skills-punctuation", "exam-skills-spelling", "exam-tips-speaking-and-listening", "exam-tips-writing"]),
+  "cie-as-environmental-management-20": new Set(),
+  "igcse-science-double-award-modular-24-physics-unit-2": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {

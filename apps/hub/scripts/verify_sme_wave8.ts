@@ -193,7 +193,14 @@ totalResolved === totalNotes
 // no-layer course — cie-as-environmental-management-20 (52 loose; the
 // T10 rank-pick precedent) — takes the probe slot. Same disclosed
 // pin-refresh class as the wave-6 run-002.
-  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "cie-as-environmental-management-20"];
+// cie-as-environmental-management-20 rotated out at tranche 29 (it GAINED
+// its SME layer there, alongside igcse-science-double-award-modular-24-
+// physics-unit-2); the queue's rank-3 no-layer course — igcse-science-
+// double-award-modular-24-chemistry-unit-1 (51 loose; the rank-1/2
+// courses are layered THIS tranche) — takes the probe slot. NOTE for
+// tranche 30: chem-U1 rotates OUT when IT gains its layer. Same disclosed
+// pin-refresh class as the wave-6 run-002.
+  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "igcse-science-double-award-modular-24-chemistry-unit-1"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;
