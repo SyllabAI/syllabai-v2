@@ -105,6 +105,15 @@
  * TWENTY-SECOND consecutive FULLY-CLEAN audit with ZERO DRIFT on both
  * courses — the fourth two-course tranche with no drift event; the turn
  * opened with a RECONCILIATION of a stale tranche-3-era checkpoint)
+ * + tranche 32 (igcse-biology-modular-24-unit-1 Pearson 4XBI1 2024 — the
+ * modular-UNIT shape, roster slot 1 / igcse-accounting-17-introduction-
+ * to-bookkeeping-and-accounting Edexcel 4AC1 2017 — the ACCOUNTING shape,
+ * roster slot 3; the census TIE at 43; the TWENTY-THIRD consecutive
+ * FULLY-CLEAN audit with the wave's ELEVENTH DRIFT EVENT — acct17's TEN
+ * live-only paper-session rows 2019-june..2024-june (the fm19 class),
+ * carried as corpus-zero rows + DRIFT_BY_COURSE; *** THE FIRST DOUBLE
+ * ROTATION *** — slots 1 AND 3 tripped, replaced by sdaw-bio-U1 and
+ * sdaw-chem-U2; as-maths-20-pure-2 stays)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -286,6 +295,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-chemistry-modular-24-unit-2": new Set(),
   "cie-igcse-english-language-20": new Set(),
   "igcse-science-double-award-modular-24-physics-unit-1": new Set(),
+  "igcse-biology-modular-24-unit-1": new Set(),
+  "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": new Set(["2019-june", "2020-january", "2020-november", "2021-june", "2021-november", "2022-june", "2023-january", "2023-june", "2023-november", "2024-june"]),
 };
 
 for (const cf of FIXTURES.courses) {
