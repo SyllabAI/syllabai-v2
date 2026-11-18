@@ -188,7 +188,12 @@ totalResolved === totalNotes
 // modular-24 family continues, so its next no-layer sibling — the SAME
 // subject's unit-1 strand igcse-biology-modular-24-unit-1 — takes the
 // probe slot. Same disclosed pin-refresh class as the wave-6 run-002.
-  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "cie-igcse-english-language-25"];
+// cie-igcse-english-language-25 rotated out at tranche 28 (it GAINED its
+// SME layer there, alongside igcse-further-maths-19); the queue's rank-1
+// no-layer course — cie-as-environmental-management-20 (52 loose; the
+// T10 rank-pick precedent) — takes the probe slot. Same disclosed
+// pin-refresh class as the wave-6 run-002.
+  const probes = ["igcse-biology-modular-24-unit-1", "cie-as-maths-20-pure-2", "cie-as-environmental-management-20"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;

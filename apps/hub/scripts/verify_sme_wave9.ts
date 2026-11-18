@@ -79,6 +79,13 @@
  * with the EIGHTH DRIFT EVENT — the combined-science exam-paper cluster
  * again (the six slugs, the T25 chem sibling's exact set), documented in
  * DRIFT_BY_COURSE)
+ * + tranche 28 (igcse-further-maths-19 Pearson 4PM1 2017 — the
+ * FURTHER-maths shape / cie-igcse-english-language-25 CIE 0500 2027-2029
+ * — the ENGLISH-language shape with the NEW 2027-2029 strand; the
+ * NINETEENTH consecutive FULLY-CLEAN audit with the wave's NINTH and
+ * TENTH DRIFT EVENTS — the first tranche where BOTH courses carry drift:
+ * fm19's six paper-resources rows + eng25's five exam-skills/tips rows
+ * (a NEW class), documented in DRIFT_BY_COURSE)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -252,6 +259,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-physics-modular-24-unit-1": new Set(),
   "cie-igcse-science-combined-science-23-biology": new Set(["mcq-core", "mcq-extended", "paper-3-theory-core", "paper-4-theory-extended", "paper-5-practical-test", "paper-6-alternative-to-practical"]),
   "igcse-maths-a-modular-24-foundation-unit-2": new Set(),
+  "igcse-further-maths-19": new Set(["jan-2023", "june-2023", "june-2024", "november-2023", "november-2024", "specimen-papers"]),
+  "cie-igcse-english-language-25": new Set(["exam-skills-grammar", "exam-skills-punctuation", "exam-skills-spelling", "exam-tips-speaking-and-listening", "exam-tips-writing"]),
 };
 
 for (const cf of FIXTURES.courses) {
