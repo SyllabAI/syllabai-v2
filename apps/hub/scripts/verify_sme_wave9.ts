@@ -123,6 +123,17 @@
  * SUPERSEDED (header only, zero contact); *** THE SECOND DOUBLE
  * ROTATION *** — slots 1 AND 2 tripped, replaced by ial-fp1-18 and
  * as-english-gp-21; sdaw-chem-U2 stays)
+ * + tranche 34 (igcse-science-double-award-modular-24-chemistry-unit-2
+ * Pearson 4XSD1 2024 — the double-award-modular shape, SETLESS, roster
+ * slot 3 / ial-further-maths-18-further-pure-1 Pearson YFM01 2018 — the
+ * IAL further-maths shape, the ial-maths-T family with the new SUB_
+ * subcode pattern, roster slot 1; the TWENTY-FIFTH consecutive
+ * FULLY-CLEAN audit with the wave's TWELFTH DRIFT EVENT — ial-fp1's
+ * ELEVEN live-only paper-session rows october-2020..specimen-paper (the
+ * fm19 class), carried as corpus-zero rows + DRIFT_BY_COURSE; *** THE
+ * THIRD DOUBLE ROTATION *** — slots 1 AND 3 tripped, replaced by
+ * accounting-17-financial-statements and eng-lang-a-16-paper-2;
+ * as-english-gp-21 stays)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -308,6 +319,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": new Set(["2019-june", "2020-january", "2020-november", "2021-june", "2021-november", "2022-june", "2023-january", "2023-june", "2023-november", "2024-june"]),
   "cie-as-maths-20-pure-2": new Set(),
   "igcse-science-double-award-modular-24-biology-unit-1": new Set(),
+  "igcse-science-double-award-modular-24-chemistry-unit-2": new Set(),
+  "ial-further-maths-18-further-pure-1": new Set(["january-2021", "january-2022", "january-2023", "january-2024", "june-2021", "june-2022", "june-2023", "june-2024", "november-2021", "october-2020", "specimen-paper"]),
 };
 
 for (const cf of FIXTURES.courses) {
