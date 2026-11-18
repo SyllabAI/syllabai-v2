@@ -60,12 +60,47 @@ interface TopicGroup {
  * the P2F course shelf, topic-area blocks and the subject shelf. Chips run
  * source → duration → kind/unit scope → confidence → board; the evidence
  * line stays verbatim. Unknown videos (data drift) render nothing.
+ *
+ * Body-size law (FALLBACK_BODY_TOO_LARGE, wave-9): a row renders FULL markup
+ * (badges + evidence) at its anchor spec point and a compact title +
+ * confidence/board line everywhere else it maps — see anchorByVideo in the
+ * page. Nothing is hidden; badges and evidence render once, where anchored.
  */
-function VideoRowItem({ map, row }: { map: VideoMapData; row: VideoMapRow }) {
+function VideoRowItem({
+  map,
+  row,
+  compact = false,
+}: {
+  map: VideoMapData;
+  row: VideoMapRow;
+  compact?: boolean;
+}) {
   const video = map.videoById.get(row.video);
   if (!video) return null;
   const href = videoHref(video, row);
   const title = video.title ?? video.id;
+  if (compact) {
+    return (
+      <li className="rounded-md border bg-background/60 px-2.5 py-1.5">
+        {href ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium underline-offset-4 hover:underline"
+          >
+            {title}
+          </a>
+        ) : (
+          <span className="text-sm font-medium">{title}</span>
+        )}
+        <span className="ml-2 text-2xs text-muted-foreground">
+          {row.confidence ?? "unrated"} match
+          {row.boardMismatch ? " · different board" : ""}
+        </span>
+      </li>
+    );
+  }
   const kind = anchorKindLabel(row.kind);
   const unit = formatUnitScope(row.unitScope);
   return (
@@ -275,6 +310,25 @@ export default async function VideosPage({
   const topics = groupByTopics(map, curriculum);
   const c = map.coverage;
 
+  // Body-size law (FALLBACK_BODY_TOO_LARGE, wave-9): a mapping renders its
+  // FULL row (badges + evidence) at its anchor spec point — the first
+  // mapped code that exists on the spine — and a compact title + chip row
+  // at every other point it maps to. Each row stays reachable from every
+  // point it maps to; badges and evidence render once, where the match is
+  // anchored. Keeps the prerendered ISR bodies bounded as maps grow
+  // (chemistry-25 alone was 9,430 row×point pairs → a 55 MB body).
+  const spineCodes = new Set(
+    (curriculum?.nodes ?? [])
+      .filter((n) => n.family === "SPEC_POINT")
+      .map((n) => n.code),
+  );
+  const anchorByVideo = new Map<VideoMapRow, string>();
+  for (const m of map.mappings) {
+    const specs = m.specs ?? [];
+    const anchor = specs.find((code) => spineCodes.has(code)) ?? specs[0];
+    if (anchor && !anchorByVideo.has(m)) anchorByVideo.set(m, anchor);
+  }
+
   // P2F anchor rows (granularity spec §7): course rows → the "Past papers
   // & walkthroughs" shelf; topic/subtopic rows → the matching topic
   // section; subject rows → a flat subject-wide shelf. All are zero-weight
@@ -432,7 +486,12 @@ export default async function VideosPage({
                     </div>
                     <ul className="mt-2 space-y-2">
                       {point.rows.map((row) => (
-                        <VideoRowItem key={row.video} map={map} row={row} />
+                        <VideoRowItem
+                          key={row.video}
+                          map={map}
+                          row={row}
+                          compact={anchorByVideo.get(row) !== point.code}
+                        />
                       ))}
                     </ul>
                   </div>
