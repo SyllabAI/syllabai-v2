@@ -17,6 +17,11 @@
    "method": "Dr Hanaa Assil — Chemistry Teacher (Edexcel IAL 'Unit N <session>' paper reviews -> ial-chemistry-17 anchors + Edexcel IGCSE chemistry register) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
    "enumeratedUtc": "2026-11-17T14:02:23Z"
   },
+  "p15": {
+   "provider": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps)",
+   "method": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
+  },
   "p2f": {
    "provider": "Edexcel-native channels: Exam Essentials, Sergei's Chemistry, Allery Chemistry, Omar's Biology Lab, A-star Solution, MedDude",
    "method": "yt-dlp flat enumeration + machine-verified Edexcel paper-code binding (method paper-code, confidence high, boardMismatch false) + idf topic-title containment (>= 0.55, >= 3 informative tokens, P4 rule) for topic anchors; oEmbed identity sweep with thumbnail-liveness fallback; sewage filter (promos, results-day, shorts/vlog); evidence posture title-only",
@@ -29,7 +34,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 510,
+  "rowsApproved": 517,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -169,6 +174,17 @@
     "ruledUtc": "2026-11-17T14:02:23Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
     "rowsApproved": 91,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 7,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -5596,6 +5612,83 @@
    "lessonUrl": null,
    "levelTag": "a-level",
    "boardNote": "Dr Hanaa Assil — Chemistry Teacher (Edexcel IAL 'Unit N <session>' paper reviews -> ial-chemistry-17 anchors + Edexcel IGCSE chemistry register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3h8bH-gwXXc",
+   "title": "The most frequently asked questions in IAL Chemistry Unit 2 - Nucleophilic Substitution (2026 exams)",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=3h8bH-gwXXc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "B2sSG88wb1I",
+   "title": "The most important IAL Chemistry Unit 1 Questions Solved Live for 2026 exams",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=B2sSG88wb1I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ES68Hc0KatE",
+   "title": "🔴 Predicted questions for IAL Chemistry 2026 Exams – Hess’s Law (how to perfectly draw the cycle)",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=ES68Hc0KatE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TYd1TQq3gq4",
+   "title": "IAL Chemistry Unit 1 · January 2027 | The Plan for an A",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=TYd1TQq3gq4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nCq23DvWJkc",
+   "title": "IAL Chemistry Unit 1 Jan 2027: Easy Marks on Shapes of Molecules, Bond Angles & Polarity",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=nCq23DvWJkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "np3JnAATSk4",
+   "title": "Avogadro’s Number & the Mole Explained | IAL Chemistry",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=np3JnAATSk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wxZJqW3xDI8",
+   "title": "20 Past Papers, 3 Stages Boost Your IAL Chemistry Unit 1 Grade Fast",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=wxZJqW3xDI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   },
   {
@@ -15945,6 +16038,127 @@
     "ref": "ial-chemistry-17"
    },
    "kind": "past-paper-walkthrough",
+   "video": "TYd1TQq3gq4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IAL Chemistry Unit 1 · January 2027 | The Plan for an A\"; IAL chemistry Unit 1 + session/paper reference — unit-paper review anchor (the P14 Assil law analog) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-chemistry-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "nCq23DvWJkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IAL Chemistry Unit 1 Jan 2027: Easy Marks on Shapes of Molecules, Bond Angles & Polarity\"; IAL chemistry Unit 1 + session/paper reference — unit-paper review anchor (the P14 Assil law analog) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-chemistry-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "wxZJqW3xDI8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"20 Past Papers, 3 Stages Boost Your IAL Chemistry Unit 1 Grade Fast\"; IAL chemistry Unit 1 + session/paper reference — unit-paper review anchor (the P14 Assil law analog) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-chemistry-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "B2sSG88wb1I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"The most important IAL Chemistry Unit 1 Questions Solved Live for 2026 exams\"; IAL chemistry Unit 1 + session/paper reference — unit-paper review anchor (the P14 Assil law analog) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "np3JnAATSk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.2 'know that the mole (mol) is the unit for the amount of a sub' via token(s) ['avogadro', 'mole'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "ES68Hc0KatE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.6 'know Hess’s Law and be able to apply it to: i constructing e' via token(s) ['hess', 'law'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "3h8bH-gwXXc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "10.9"
+   ],
+   "confidence": "low",
+   "evidence": "title names 10.9 'understand the mechanisms of the nucleophilic substitution r' via token(s) ['nucleophilic', 'substitution', 'unit'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "ial-chemistry-17"
+   },
+   "kind": "past-paper-walkthrough",
    "video": "1LQzIbr9jEQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -16590,14 +16804,14 @@
   "specPointsTotal": 319,
   "specPointsMapped": 150,
   "specPointsUnmapped": 169,
-  "videosTotal": 510,
-  "videosMapped": 510,
+  "videosTotal": 517,
+  "videosMapped": 517,
   "videosUnmapped": 0,
-  "mappingRows": 510,
+  "mappingRows": 517,
   "byConfidence": {
-   "high": 90,
-   "medium": 26,
-   "low": 394
+   "high": 94,
+   "medium": 28,
+   "low": 395
   }
  },
  "inputs": {
@@ -16631,6 +16845,12 @@
    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
    "reviewAppliedUtc": "2026-11-17T14:02:23Z"
   },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/ial-chemistry-17/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
+  },
   "p2f": {
    "repo": "SyllabAI/syllabai-resources",
    "path": "Videos/drafts/ial-chemistry-17/video-map.draft.external-p2f.json",
@@ -16638,5 +16858,5 @@
    "reviewAppliedUtc": "2026-11-11T18:05:50Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:11.655Z"
+ "generatedUtc": "2026-11-19T14:58:52.147Z"
 }

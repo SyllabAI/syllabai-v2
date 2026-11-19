@@ -146,14 +146,15 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
   test("anchor rows survive parse with level/ref/kind intact (ial-chemistry-17)", async () => {
     const map = await getVideoMap("ial-chemistry-17");
     expect(map).not.toBeNull();
-    // at rest: 510 mappings = 403 lesson rows (the P4-inherit base grown by the P14
+    // at rest: 517 mappings = 406 lesson rows (the P4-inherit base grown by the P14
     // parent's channel-recon rows cascading from igcse-chemistry-19/cie-a-level-chemistry-25
-    // + 27 P7 remaining-channel-pools) + 107 anchor rows (90 course — 17 P2F W-code
-    // + 73 P14B Dr Hanaa Assil "Unit N <session>" unit-paper anchors — and 17 topic)
-    // — P14B appended after inherit per the P11B/P13B shape, P2F after that
-    expect(map!.mappings.length).toBe(510);
+    // + 27 P7 remaining-channel-pools) + 111 anchor rows (94 course — 17 P2F W-code
+    // + 73 P14B Dr Hanaa Assil + 4 P15B chem-bio-by-Hosni "Unit N <session>" unit-paper
+    // anchors — and 17 topic) — P14B appended after inherit per the P11B/P13B shape,
+    // P15B after that, P2F after that
+    expect(map!.mappings.length).toBe(517);
     const anchor = map!.mappings.filter(isAnchorRow);
-    expect(anchor.length).toBe(107);
+    expect(anchor.length).toBe(111);
     for (const row of anchor) {
       // the accounting rule: coarse anchors are zero-weight enrichment
       expect(row.specs).toEqual([]);
@@ -162,7 +163,7 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
       expect(row.anchor!.ref).toBeTruthy();
       expect(row.reviewed).toBe(true);
     }
-    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(90);
+    expect(anchor.filter((r) => r.anchor!.level === "course")).toHaveLength(94);
     expect(anchor.filter((r) => r.anchor!.level === "topic")).toHaveLength(17);
     for (const row of anchor.filter((r) => r.anchor!.level === "course"))
       expect(row.kind).toBe("past-paper-walkthrough");
@@ -174,7 +175,8 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
     const map = await getVideoMap("ial-physics-19");
     expect(map).not.toBeNull();
     const buckets = anchorBuckets(map!);
-    expect(buckets.course.length).toBe(32);
+    // 32 P2F/P7-era + 41 P15B Doctor-No Does Science WPH unit-paper course anchors
+    expect(buckets.course.length).toBe(73);
     expect(buckets.topicArea.length).toBe(0);
     expect(buckets.subject.length).toBe(0);
     // buckets + lesson rows = every served mapping, no double counting
@@ -199,12 +201,14 @@ describe("P2F anchor granularity — the zero-weight passthrough law", () => {
 
   test("the four P2F courses carry exactly the shipped anchor rows at rest", async () => {
     const expected: Record<string, number> = {
-      "ial-biology-18": 16,
-      // 34 P2F (17 course + 17 topic) + 73 P14B Dr Hanaa Assil course anchors
-      "ial-chemistry-17": 107,
-      "ial-physics-19": 32,
-      // 8 P2F + 39 P14 Dr Hanaa Assil Ed-IGCSE course anchors
-      "igcse-chemistry-19": 47,
+      // 16 P2F/P7-era + 5 P15B chem-bio-by-Hosni WBI unit-paper course anchors
+      "ial-biology-18": 21,
+      // 34 P2F (17 course + 17 topic) + 73 P14B Dr Hanaa Assil + 4 P15B Hosni course anchors
+      "ial-chemistry-17": 111,
+      // 32 P2F/P7-era + 41 P15B Doctor-No Does Science WPH course anchors
+      "ial-physics-19": 73,
+      // 8 P2F + 39 P14 Dr Hanaa Assil + 19 P15 Belal Sir Ed-IGCSE course anchors
+      "igcse-chemistry-19": 66,
     };
     for (const [slug, count] of Object.entries(expected)) {
       const map = await getVideoMap(slug);

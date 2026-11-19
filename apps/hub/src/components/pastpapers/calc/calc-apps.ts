@@ -100,6 +100,53 @@
  * double-based complex path (the phase-B law), so their display is
  * decimal where the device's MathI/mathO shows the exact surd form —
  * the pinned gap, same posture as σx.
+ *
+ * Solver (phase E — the operator's 'proceed with next' ruling: it
+ * closes phase D's only fence gap by exam value) — the manual's
+ * "Equation Calculations" page, Solver section: [Solver] opens the
+ * Solver equation input screen; the accepted input forms are "y = x +
+ * 5", "x = sin(A)" and "xy + C (Treated as xy + C = 0)" — a bare
+ * expression is implicitly equated to zero; the = sign comes from a
+ * MENU path ("[Equation] > [=]") — our Insert = screen button mirrors
+ * it and inserts the engine's own eqtok atom (the phase-B SHIFT+( law:
+ * a bare = evaluates as Syntax ERROR in Calculate). A key press
+ * REGISTERS the equation → the Solve Target screen lists the equation's
+ * variables ("confirm that [x] is selected") → the initial-value screen
+ * ([Execute] solves; "The initial value when you press this key becomes
+ * the initial value you last used"). The solution display has three
+ * labeled parts: (1) the variable solved for (2) the solution (3) the
+ * (Left Side) − (Right Side) result; "Solutions are always displayed in
+ * decimal form"; "The closer the (Left Side) − (Right Side) result is
+ * to zero, the higher the accuracy of the solution." The manual's
+ * Important! block: "Solver performs convergence a preset number of
+ * times. If it cannot find a solution, it displays a confirmation
+ * screen" — [Continue] resumes, [Exit] cancels; the caveats: "Solver
+ * may not be able to determine the correct solution, even when one
+ * exists", only one of multiple solutions is returned, and equations
+ * like y=sin x, y=e^x, y=√x are hard for Newton. After solving, the
+ * input expression is STORED and the flow returns to the input screen
+ * (the manual's step-9 law). Variables must hold values before the
+ * solve (Example 5: 4 stored to B before solving x²−B²=0 for x).
+ *
+ * OUR RULINGS (documented): the Solve Target list order = the order of
+ * first appearance (the device's order is not machine-readable); the
+ * default target = x when present (the manual's own law); ONE top-level
+ * = only, more is a Syntax ERROR; the empty-equation register is a
+ * Syntax ERROR; the no-variable equation → Variable ERROR (the class
+ * from the PDF's error list — "Variable ERROR (Equation app's Solver
+ * feature only)" — the cause-law is ours); the unstored variable reads
+ * as 0 (the engine's own var law — the manual's Example-5 note is the
+ * teaching, not an error law); the convergence preset = 40 Newton
+ * iterations with the central-difference derivative, converged when
+ * |Δx| < 1e-12 or |f| < 1e-12 (the device's preset count is not
+ * stated); a probe error (the domain/complex boundary — the table's
+ * complex-cell law) lands on the non-convergence confirmation screen
+ * (the device's own mechanism); the confirmation screen's wording is
+ * ours ("No solution found — Continue?") — the manual's screen text is
+ * not machine-readable; the decimal display rides the engine's
+ * formatDecimal (the Fix/Sci laws apply); the session: the Calculate
+ * buffer is SNAPSHOTTED and restored around the Solver (the retention
+ * table — the Solver session is separate from Calculate's).
  */
 import { CalcAtom, CalcError, CalcFns, CalcValue, CalcAngle, evaluateAtoms } from "./calc-engine";
 import type { CalcVarName } from "./calc-models";
@@ -756,3 +803,93 @@ export function solveSimultaneous(n: 2 | 3 | 4, rows: CalcValue[][]): SimulResul
   return { kind: "solved", values: vals };
 }
 
+
+// ── the Solver engine (phase E) ──
+
+export interface SolverEquation {
+  left: CalcAtom[];
+  right: CalcAtom[];
+}
+
+/** split the input buffer on ONE top-level "=" (the manual's input
+ * forms); no "=" → the right side is 0 ("xy + C (Treated as xy + C =
+ * 0)"); a second top-level "=" is a Syntax ERROR (our ruling). */
+export function splitSolverEquation(buf: CalcAtom[]): SolverEquation {
+  const top = buf.findIndex((a) => a.kind === "eqtok");
+  if (top < 0) return { left: buf, right: [{ kind: "num", text: "0" }] };
+  if (buf.some((a, i) => i > top && a.kind === "eqtok")) throw new CalcError("Syntax ERROR");
+  return { left: buf.slice(0, top), right: buf.slice(top + 1) };
+}
+
+/** the equation's variables in order of first appearance (our scroll
+ * ruling — the device's list order is not machine-readable). */
+export function solverVariables(eq: SolverEquation): CalcVarName[] {
+  const seen: CalcVarName[] = [];
+  for (const a of [...eq.left, ...eq.right]) {
+    if (a.kind === "var" && !seen.includes(a.name)) seen.push(a.name);
+  }
+  return seen;
+}
+
+export interface SolverCtx {
+  angle: CalcAngle;
+  ans: CalcValue | null;
+  vars: Partial<Record<CalcVarName, CalcValue>>;
+  fns: CalcFns;
+}
+
+export type SolverResult =
+  | { kind: "solved"; variable: CalcVarName; solution: number; lr: number }
+  | { kind: "no-convergence"; variable: CalcVarName; lastX: number };
+
+/** one probe: the side evaluated at the target = t (real-valued — a
+ * complex value at any probe is the Math ERROR boundary, the table's
+ * complex-cell law). */
+function sideValue(atoms: CalcAtom[], t: number, ctx: SolverCtx, variable: CalcVarName): number {
+  const v = evaluateAtoms(atoms, ctx.angle, ctx.ans, { ...ctx.vars, [variable]: { exact: false, v: t } }, ctx.fns, false);
+  if ("c" in v) throw new CalcError("Math ERROR");
+  return v.exact ? Number(v.n) / Number(v.d) : v.v;
+}
+
+/** Newton's method — the manual's law: "Solver uses Newton's method to
+ * approximate the solution of equations ... performs convergence a
+ * preset number of times. If it cannot find a solution, it displays a
+ * confirmation screen." Our preset: 40 iterations; converged when
+ * |Δx| < 1e-12 or |f| < 1e-12; the central-difference derivative; a
+ * probe failure (the domain/complex boundary) lands on the same
+ * confirmation screen (our ruling — the device's Continue/Exit
+ * mechanism). The returned lr is the (Left Side) − (Right Side)
+ * residual — the manual's accuracy indicator. */
+export function solveByNewton(eq: SolverEquation, variable: CalcVarName, initial: number, ctx: SolverCtx, maxIters = 40): SolverResult {
+  if (!Number.isFinite(initial)) throw new CalcError("Math ERROR");
+  const f = (t: number): number => sideValue(eq.left, t, ctx, variable) - sideValue(eq.right, t, ctx, variable);
+  let x = initial;
+  try {
+    for (let i = 0; i < maxIters; i++) {
+      const fx = f(x);
+      if (!Number.isFinite(fx)) break;
+      const h = Math.max(1e-7, Math.abs(x) * 1e-7);
+      const d = (f(x + h) - f(x - h)) / (2 * h);
+      if (!Number.isFinite(d) || Math.abs(d) < 1e-300) break; // the horizontal tangent → the confirmation screen
+      const next = x - fx / d;
+      if (!Number.isFinite(next)) break;
+      const dx = Math.abs(next - x);
+      x = next;
+      // the acceptance needs BOTH gates: the step converged AND the
+      // residual small (the manual's "the closer L−R is to zero, the
+      // higher the accuracy"). Either alone accepts junk: the Δx-only
+      // gate accepts the stalled-flat points (sin in DEG from a poor
+      // initial value), the residual-only gate accepts a no-root march
+      // (e^x = 0: the steps are always 1, the residual underflows).
+      // Both fail → the preset exhausts → the confirmation screen.
+      const fx2 = f(x);
+      if (dx < 1e-12 && Number.isFinite(fx2) && Math.abs(fx2) < 1e-6) {
+        return { kind: "solved", variable, solution: x, lr: fx2 };
+      }
+    }
+  } catch (e) {
+    if (e instanceof CalcError && e.cls === "Math ERROR") return { kind: "no-convergence", variable, lastX: x };
+    throw e;
+  }
+  return { kind: "no-convergence", variable, lastX: x };
+}

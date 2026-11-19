@@ -6,7 +6,12 @@
   "provider": "inherited (multi (freesciencelessons / doodlescience / amoeba-sisters / cognito channel-only))",
   "label": "igcse-maths-a-modular-24-higher-unit-2",
   "method": "deterministic spec-title-containment inheritance (>= 0.55, min 3 informative tokens) of the owner-approved external-lane rows of igcse-maths-a-18-higher; map: Videos/drafts/_p4/inheritance-map.json; no new LLM mapping decisions",
-  "enumeratedUtc": "2026-11-01T01:04:15Z"
+  "enumeratedUtc": "2026-11-01T01:04:15Z",
+  "p15": {
+   "provider": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) + The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs)",
+   "method": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) flat-enumerated 2026-11-19T14:37:11Z; The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
+  }
  },
  "review": {
   "task": "T-VIDEOMAP-P4 (inheritance lane)",
@@ -14,7 +19,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 32,
+  "rowsApproved": 138,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +30,18 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 32,
+    "rowsApproved": 103,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 35,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -400,9 +416,1215 @@
    "levelTag": "a-level",
    "boardNote": "MrAstburyMaths (Edexcel IGCSE maths exam-question series; the Edexcel GCE A-level maths register skipped per ANCHOR-GRANULARITY §6) (oEmbed author verified per video)",
    "identityMethod": "oembed"
+  },
+  {
+   "id": "--TSEBrq7s8",
+   "title": "3 Steps to the Inverse of a Function 🤯#satmath #satprep #igcsemaths #gcsemath #fyp #trending #maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=--TSEBrq7s8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-KLrHWW-BMA",
+   "title": "Topic 57: Cones & Spheres | Volume & Surface Area | Geometry | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=-KLrHWW-BMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-UnZmeNNjTQ",
+   "title": "Is this the HARDEST Coordinate Geometry Question? | Midpoint | Intersection Points | IGCSE Extended",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=-UnZmeNNjTQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "41lML4McAww",
+   "title": "Topic 31: Area of Shaded Shapes | Shapes & Geometry | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=41lML4McAww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "54u-4B05Rrk",
+   "title": "Learn to Solve Tricky Algebraic Proofs | Algebra | GCSE | Edexcel Maths | Higher & Foundation",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=54u-4B05Rrk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6trNh86x04s",
+   "title": "Geometry Quiz⏱️#maths #shorts #quiz #geometry #gradient #shortvideo #algebra #backstreetboys",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=6trNh86x04s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7CnpJDFYanI",
+   "title": "Inverse & Composite Functions | Algebra | CIE | IGCSE | 0580 | 0980 | Extended | Olevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=7CnpJDFYanI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7FnfE2Xsno0",
+   "title": "Chapter 5: Sequence & Series | Arithmetic Series | IAL Edexcel Maths Pure 2 Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=7FnfE2Xsno0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7WQDJ_qmsWg",
+   "title": "Topic 54: Volume & Surface Area | Geometry | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=7WQDJ_qmsWg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7lDlqPkuHeI",
+   "title": "Shortcut to finding the midpoint in #geometry. #satprep #satmath #fyp #igcsemaths #shorts",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=7lDlqPkuHeI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8k4CTrsoaQs",
+   "title": "Composite and Inverse Functions - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=8k4CTrsoaQs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9wYYdohZ92w",
+   "title": "Direct & Inverse Proportion👩🏻‍🏫 #maths #youtubeshorts #proportional #ytshorts #shorts",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=9wYYdohZ92w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9xHRV32TmB0",
+   "title": "Equation of a Straight Line Basics | Coordinate Geometry | CIE | AS | Pure 1 | 9709 | Alevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=9xHRV32TmB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Adjq6LbJlzE",
+   "title": "Differentiation & Nature of Stationary Points (ALL IN ONE!!!) | AS Math Pure 1 | 9709 | A Level",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=Adjq6LbJlzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "B45GYSVmlms",
+   "title": "Topic 33: Inverse and Direct Proportion | Algebra | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=B45GYSVmlms",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BpcZEqAvcCw",
+   "title": "Easiest way to learn about slopes(DON'T MISS OUT) #trending #maths #mathshorts #fyp #geometry",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=BpcZEqAvcCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "COJOSMd7cuU",
+   "title": "More IGCSE Extended Stationary Points and Differentiation Questions | 0580 | 0980 | O Level",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=COJOSMd7cuU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DNIrOZHkSUI",
+   "title": "Inverse & Direct Proportion | Algebra - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=DNIrOZHkSUI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Dgx9SJI_HjE",
+   "title": "Finding the Inverse Function and Composite Function IGCSE",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=Dgx9SJI_HjE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "F84SWSnishg",
+   "title": "The diagram shows a frustum of a cone, and a sphere.The frustum, shown shaded in the diagram,",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=F84SWSnishg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FbUQUrZI8v0",
+   "title": "Coordinate Geometry - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=FbUQUrZI8v0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HxMyEnfSvOA",
+   "title": "Best Question for Area of Sector under 30 SEC!!!#igcse #satmath #satprep #shorts #fyp #geometry",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=HxMyEnfSvOA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IprBr_s7X7U",
+   "title": "1MA1/1F MAY 2026 Q 16-20 Edexcel GCSE Maths Paper 1 Foundation Tier (Non-Calculator)  Full Solutions",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=IprBr_s7X7U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IuV74FZQfcc",
+   "title": "Differentiation Basics and Stationary Points on a Curve | IGCSE | 0580 | 0980 | O Level | Extended",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=IuV74FZQfcc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L7fbEklPJEA",
+   "title": "Relatable? #shorts #memes #breakingbad #circletheorem #angles #geometry #maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=L7fbEklPJEA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MZM2ct-xRhg",
+   "title": "Equation of Circles Basics | Coordinate Geometry | CIE | AS | Pure 1 | 9709 | Alevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=MZM2ct-xRhg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Mw84Pli6Lq4",
+   "title": "Complete Coordinate Geometry IGCSE in 15 MINUTES | GCSE & O Level | Algebra 1 |",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=Mw84Pli6Lq4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "O6l8qtcxKPs",
+   "title": "1 HCF & LCM",
+   "provider": "gilbert-phoon",
+   "watchUrl": "https://www.youtube.com/watch?v=O6l8qtcxKPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Gilbert Phoon (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PCmJe6iVPZ8",
+   "title": "Algebraic Proofs Walkthrough | GCSE | Algebra | Edexcel Maths | Higher & Foundation",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=PCmJe6iVPZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QbZ0SBOiOoI",
+   "title": "Master Differentiation, Stationary Points & their Nature | IGCSE Core & Extended 0580 | Alevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=QbZ0SBOiOoI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Qm80YRpg0es",
+   "title": "Subscribe for more👩🏻‍🏫#shorts #symmetry #rotational #shapes #geometry #maths #mathshorts",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=Qm80YRpg0es",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RxnyLzL9UZY",
+   "title": "Prime Factors, HCF and LCM | GCSE | Edexcel Maths | Higher & Foundation",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=RxnyLzL9UZY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TBr4vTXfgi0",
+   "title": "Check the link below for #mensuration questions🌶️🥵#shorts #lisa #geometry #lisaedit #blackpink",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=TBr4vTXfgi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "URfMMPsnLj8",
+   "title": "Intersection of Curve & Straight Line | Midpoints | Coordinate Geometry | Algebra IGCSE | GCSE",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=URfMMPsnLj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VoDLkBIOM5o",
+   "title": "Learn Both Arithmetic & Geometric Series in 5 MIN!!! | Sequences | AS Math | Pure 1 | 9709 | A Level",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=VoDLkBIOM5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WABMN_W3RdQ",
+   "title": "Quick Guide to Differentiation and Stationary Points | IGCSE Extended Maths | 0580 | 0980 | O Level",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=WABMN_W3RdQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WeqX4DH6bU8",
+   "title": "Mensuration | Geometry | IGCSE | Oct/Nov 2023 | Q22 | 0580/21 | Extended",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=WeqX4DH6bU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XtLs8i-Gcdo",
+   "title": "All of Trigonometry | Geometry - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=XtLs8i-Gcdo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZeDO3AR2JOk",
+   "title": "Learn All About Arithmetic and Geometric Sequences Series in CIE Alevels Pure Math (9709) P1",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=ZeDO3AR2JOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZgrO_GVZ4C4",
+   "title": "Slope Intercept Form in 10 Seconds‼️#geometry #coordinategeometry #equation #igcsemaths #maths #fyp",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=ZgrO_GVZ4C4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_bGAdq1QoC4",
+   "title": "Learn All About Coordinate Geometry in CIE Alevels Pure Math (9709) P1",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=_bGAdq1QoC4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dFUeJc0qWTM",
+   "title": "Topic 56: Volume & Surface Area | 3D Trigonometry | Geometry | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=dFUeJc0qWTM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dPPEYj-cEFU",
+   "title": "1MA1/1F MAY 2026 Q 11-15 Edexcel GCSE Maths Paper 1 Foundation Tier (Non-Calculator)  Full Solutions",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=dPPEYj-cEFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eNEgvVJI_zw",
+   "title": "HCF, LCM and Product of Prime Factors - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=eNEgvVJI_zw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ejcNkOWYUj4",
+   "title": "1MA1/1F MAY 2026 Q 21-27 Edexcel GCSE Maths Paper 1 Foundation Tier (Non-Calculator)  Full Solutions",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=ejcNkOWYUj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "etkXSSWo2aM",
+   "title": "Finding perimeter of a sector (DON'T MISS OUT) #satmath #satprep #igcsemaths #fyp #maths #geometry",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=etkXSSWo2aM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gtBnBHidFgM",
+   "title": "Equation of a Straight Line Advanced | Coordinate Geometry | CIE | AS | Pure 1 | 9709 | Alevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=gtBnBHidFgM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hB-edIjGozw",
+   "title": "Algebraic Proofs & Sequences in One Go!  | Algebra | GCSE | Edexcel Maths | Higher & Foundation",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=hB-edIjGozw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jN-wptA6SWs",
+   "title": "Topic 1: Prime Factors, HCF and LCM | IGCSE Edexcel Maths | Exam Style Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=jN-wptA6SWs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jbswcqSnQRI",
+   "title": "ALL-IN-ONE Coordinate Geometry Math Exam Questions | IGCSE, GCSE & O Level | Algebra",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=jbswcqSnQRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jzFJ0dNDjlM",
+   "title": "BAC is a sector of a circle, centre ABCD is a sector of a circle, centre CAngle",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=jzFJ0dNDjlM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "krxsAJkALDs",
+   "title": "Given that k= m+n express 75 k− m in the form a b d 2where a, b and c are integers and d is prime.",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=krxsAJkALDs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "n6O2SPMl8cs",
+   "title": "Topic 41: Intersecting Chord & Secant Theorem | Circle Theoem | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=n6O2SPMl8cs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "nqq4idvE7l0",
+   "title": "Geometry: Circumference and Area of Circle in One Go!! #satprep #igcsemaths #gcsemath #math #shorts",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=nqq4idvE7l0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p0tWH1-JbTU",
+   "title": "3D Pythagoras & Trigonometry | IGCSE Extended | Oct/Nov 2023 | Q22 | 0580/21 | Geometry",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=p0tWH1-JbTU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pEG6WxQgnyg",
+   "title": "Chapter 1: Algebraic Methods | Proofs | IAL Edexcel Maths Pure 2 Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=pEG6WxQgnyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "pHdVGb6-7Xc",
+   "title": "Master Quadratics & Algebraic Proofs | Algebra | GCSE | Edexcel Maths | Higher & Foundation",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=pHdVGb6-7Xc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sSDLT16J-pM",
+   "title": "Product of Prime Factors👩🏻‍🏫 #maths #primenumber #primefactorisation #mathshorts #ytshorts #shorts",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=sSDLT16J-pM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "siDtgRVzLnk",
+   "title": "Subscribe for more!🔔#shorts #geometry #symmetry #maths #polygon",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=siDtgRVzLnk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "srAEAib9uX4",
+   "title": "1MA1/1F MAY 2026 Q 01-10 Edexcel GCSE Maths Paper 1 Foundation Tier (Non-Calculator)  Full Solutions",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=srAEAib9uX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tPoxe0OM2Nw",
+   "title": "Topic 35: Equation of Straight Lines | Coordinate Geometry | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=tPoxe0OM2Nw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ttVXlkxb_lY",
+   "title": "Direct and Inverse Proportion | Algebra | CIE | IGCSE | 0580 | 0980 | Extended | Olevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=ttVXlkxb_lY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vDBb-cz8fyM",
+   "title": "Learn All About Differentiation, Rate of Change & Stationary Value CIE Alevels Pure Math (9709) P1",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=vDBb-cz8fyM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vsq3HODJlrs",
+   "title": "Circle Theorem",
+   "provider": "gilbert-phoon",
+   "watchUrl": "https://www.youtube.com/watch?v=vsq3HODJlrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Gilbert Phoon (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xwGKeeIbF5A",
+   "title": "Solve Tricky Algebraic Proofs | Algebra | GCSE | Edexcel Maths | Higher & Foundation",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=xwGKeeIbF5A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ygjtjQkCHvY",
+   "title": "MUST WATCH Algebraic Proofs GCSE Maths Question | Algebra | Edexcel Maths | Higher & Foundation",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=ygjtjQkCHvY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zMxLcSnhPBg",
+   "title": "Figure 3 shows a water tank in the shape of a hollow right circular cone fixed with its axis of symm",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=zMxLcSnhPBg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zOgyUFr7S9c",
+   "title": "Geometry | Arc Length | Circle Circumference#satprep #satmath #maths #fyp #satmathpractice #trending",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=zOgyUFr7S9c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zX8URyi6N_I",
+   "title": "Revise Stationary Points of Curves & their Nature | Differentiation I IGCSE | Extended | 0580 | 0980",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=zX8URyi6N_I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "z_laaPLF6oc",
+   "title": "Figure 2 shows a sector DOBCD of a circle with centre O a right-angled triangle OAB with the right a",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=z_laaPLF6oc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zoXy5RlNSgk",
+   "title": "Chapter 2: Coordinate Geometry in the Plane | IAL Edexcel Maths Pure 2 Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=zoXy5RlNSgk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "-5Np9oWyn8o",
+   "title": "Linear & Quadratic Simultaneous Equations | Algebra - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=-5Np9oWyn8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2kfm8CZzBPw",
+   "title": "Inverse Proportion Questions #maths #shorts #short #shortvideo #ytshorts #inverseproportion #algebra",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=2kfm8CZzBPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7U6FlhMqXqI",
+   "title": "Finding the y-intercept of a Quadratic Equation in 20 sec!!! #satmathprep #satmath #mathshorts #fyp",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=7U6FlhMqXqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8IhgWJtwQgw",
+   "title": "Area Formulas for Different Shapes #shorts #maths #area #areaoftriangle #class6maths #class5 #circle",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=8IhgWJtwQgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BCroVdJr4bI",
+   "title": "Total surface area of this hemisphere is 243 π",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=BCroVdJr4bI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CUFROVm5qvA",
+   "title": "Turning Points of a Parabola | Nature of Turning Points #maths #quadraticequation #quadratic #shorts",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=CUFROVm5qvA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CyQsrgyA1s4",
+   "title": "Tricky AS Math Quadratic Equation Question Solved Using Discriminant | Algebra | Pure 1 | A Level",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=CyQsrgyA1s4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DWUSbK_TFns",
+   "title": "Chapter 1: Algebraic Expressions | Surds & Indices | IAL Edexcel Maths Pure 1 Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=DWUSbK_TFns",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DYghxS4SEWE",
+   "title": "Area of Triangles Basics | Trigonometry | CIE | IGCSE | 0580 | 0980 | Extended | Olevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=DYghxS4SEWE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FJBf9PArQK4",
+   "title": "Area of Triangles Advanced | Trigonometry | CIE | IGCSE | 0580 | 0980 | Extended | Olevels",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=FJBf9PArQK4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FJO_J3P_NCY",
+   "title": "Volume of 3D Shapes 🔵#maths #shapes #volume #prism #cone #pyramid #mathshorts #volumeandsurfacearea",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=FJO_J3P_NCY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ku5-ZhZLoAU",
+   "title": "Topic 45: Quadratic Simultaneous Equations - Hard Questions | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=Ku5-ZhZLoAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LHc1RIhrfSE",
+   "title": "Using Nature of Roots for AS Math Quadratic Equation | Discriminant | Algebra | Pure 1 | A Level",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=LHc1RIhrfSE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "R2PdBQcjgvs",
+   "title": "Learn how to factorize a quadratic equation under 40 seconds. #gcses #igcse #viral #review #maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=R2PdBQcjgvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SPmSF7wSNP0",
+   "title": "Given that M =18 2 3124 3 6 21 42n × (n2 − n) × ( − n) find the values of n for which M = 2",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=SPmSF7wSNP0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TzpBOWOb1Ig",
+   "title": "Congruency & Similarity | Areas & Volumes | O Level | Paper 22 |4024 | M/J2023",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=TzpBOWOb1Ig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "U2-xQAt3gLk",
+   "title": "Quadratic Inequalities in one go!!#maths #shorts #quadratic #inequalities #algebra #addmath",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=U2-xQAt3gLk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Wl2hGuU2qkw",
+   "title": "Topic 50: Volume & Surface Area of Similar Shapes | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=Wl2hGuU2qkw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XwvfxvbSoDc",
+   "title": "Master Solving Quadratic Simultaneous Equations by Substitution Method | IGCSE Core & Extended",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=XwvfxvbSoDc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZpIjWWCOFUc",
+   "title": "Mensuration (Surface Area & Volume) | O Level | Oct/Nov 2020 | 4024/22 | Mathematics Syllabus D",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=ZpIjWWCOFUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "atcAXYzAqMc",
+   "title": "Topic 12: Compound Interest | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=atcAXYzAqMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dHHJfyGINGw",
+   "title": "4WM2H/01 NOV 2026 Q 01-06 EDEXCEL IGCSE MATHEMATICS A MODULAR UNIT 2H HIGHER TIER FULL SOLUTIONS",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=dHHJfyGINGw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "etPHUuEHGO8",
+   "title": "Subtracting Negative Integers Correctly‼️#algebra #integers #integer #integersclass7 #class5 #maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=etPHUuEHGO8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lIwnHkOTIII",
+   "title": "Similar Shapes | Area and Volume - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=lIwnHkOTIII",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mEnSe42bIPM",
+   "title": "Adding Negative Integers the Right Way‼️#algebra #integers #integer #integersclass7 #class5 #maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=mEnSe42bIPM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p-PNVQPr-iM",
+   "title": "4WM2H/01 NOV 2026 Q 07-10 EDEXCEL IGCSE MATHEMATICS A MODULAR UNIT 2H HIGHER TIER FULL SOLUTIONS",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=p-PNVQPr-iM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rZABAAgVO-U",
+   "title": "Topic 24: Angles in Polygons | IGCSE Edexcel Maths | Exam Questions",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=rZABAAgVO-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sBabx0tgO-U",
+   "title": "Simple Interest & Compound Interest - IGCSE 0580 Extended Maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=sBabx0tgO-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ssyjhaxbTPA",
+   "title": "Type of Roots for AS Math Quadratic Equation | Discriminant | Algebra | Pure 1 | A Level",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=ssyjhaxbTPA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "swyitrGYxiU",
+   "title": "Express 2x^2 - 12x + 23 in the form a(x + b)^2 + c where a, b and c are integers",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=swyitrGYxiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uRnZObUaMjA",
+   "title": "4WM2H/01 NOV 2026 Q 11-15 EDEXCEL IGCSE MATHEMATICS A MODULAR UNIT 2H HIGHER TIER FULL SOLUTIONS",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=uRnZObUaMjA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wLEn_eZnADA",
+   "title": "Probability and equations Algebraic probability igcse hard probability questions solutions",
+   "provider": "libra-maths",
+   "watchUrl": "https://www.youtube.com/watch?v=wLEn_eZnADA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "Libra Maths (Edexcel IGCSE maths-A 4MA1 + CIE 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xU-Tv9S43-Q",
+   "title": "Multiplying Negative Integers✍🏻#maths #short #integer #orderofoperations #class6maths #grade5maths",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=xU-Tv9S43-Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xxXgvq9XTg4",
+   "title": "Learn All About Integration, Area Under Curve and Volume in CIE Alevels Pure Math (9709) P1",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=xxXgvq9XTg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "yc4qxKBfjYM",
+   "title": "Become a Pro at Solving Quadratic Simultaneous Equations - Add Maths IGCSE/O-Level (0606)",
+   "provider": "the-math-pad",
+   "watchUrl": "https://www.youtube.com/watch?v=yc4qxKBfjYM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "a-level",
+   "boardNote": "The Math Pad (Edexcel IGCSE maths-A 4MA1 higher/foundation/modular register: session-paper walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
+  {
+   "video": "sSDLT16J-pM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4D"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.4D 'express integers as a product of powers of prime factors' via token(s) ['factors', 'prime', 'product'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "krxsAJkALDs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4D"
+   ],
+   "confidence": "low",
+   "evidence": "title names 1.4D 'express integers as a product of powers of prime factors' via token(s) ['express', 'integers', 'prime'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "F74_eKUWzbQ",
    "lessonRef": null,
@@ -452,6 +1674,86 @@
    ],
    "confidence": "medium",
    "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['factors', 'hcf', 'lcm'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "eNEgvVJI_zw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['factors', 'hcf', 'lcm'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jN-wptA6SWs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['factors', 'hcf', 'lcm'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "RxnyLzL9UZY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['factors', 'hcf', 'lcm'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "O6l8qtcxKPs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4E 'find highest common factors (HCF) and lowest common multiple' via token(s) ['hcf', 'lcm'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -604,6 +1906,126 @@
    }
   },
   {
+   "video": "PCmJe6iVPZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2E 'use algebra to support and construct proofs' via token(s) ['algebra', 'proofs'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "hB-edIjGozw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2E 'use algebra to support and construct proofs' via token(s) ['algebra', 'proofs'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "pHdVGb6-7Xc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2E 'use algebra to support and construct proofs' via token(s) ['algebra', 'proofs'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ygjtjQkCHvY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2E 'use algebra to support and construct proofs' via token(s) ['algebra', 'proofs'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "xwGKeeIbF5A",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2E 'use algebra to support and construct proofs' via token(s) ['algebra', 'proofs'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "54u-4B05Rrk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.2E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.2E 'use algebra to support and construct proofs' via token(s) ['algebra', 'proofs'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "Alxtp19-oV0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -704,6 +2126,86 @@
    }
   },
   {
+   "video": "DNIrOZHkSUI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion and r' via token(s) ['direct', 'inverse', 'proportion'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9wYYdohZ92w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion and r' via token(s) ['direct', 'inverse', 'proportion'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "B45GYSVmlms",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion and r' via token(s) ['direct', 'inverse', 'proportion'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ttVXlkxb_lY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion and r' via token(s) ['direct', 'inverse', 'proportion'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "N7Zk-FQ6YeA",
    "lessonRef": null,
    "lessonUrl": null,
@@ -732,6 +2234,26 @@
    ],
    "confidence": "medium",
    "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equati' via token(s) ['equation', 'linear', 'simultaneou'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for marker rows (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7FnfE2Xsno0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1A 'understand and use common difference (d) and first term (a) ' via token(s) ['arithmetic', 'sequence'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -864,6 +2386,346 @@
    }
   },
   {
+   "video": "ZeDO3AR2JOk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic series (S' via token(s) ['arithmetic', 'series'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "VoDLkBIOM5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.1C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.1C 'find the sum of the first n terms of an arithmetic series (S' via token(s) ['arithmetic', 'series'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8k4CTrsoaQs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2D 'understand and find the composite function fg and the invers' via token(s) ['composite', 'inverse'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Dgx9SJI_HjE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2D 'understand and find the composite function fg and the invers' via token(s) ['composite', 'function', 'inverse'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7CnpJDFYanI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2D 'understand and find the composite function fg and the invers' via token(s) ['composite', 'inverse'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "--TSEBrq7s8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2D 'understand and find the composite function fg and the invers' via token(s) ['function', 'inverse'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ejcNkOWYUj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3E 'find the intersection points of two graphs, one linear (y₁) ' via token(s) ['non', 'solutions'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "IprBr_s7X7U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3E 'find the intersection points of two graphs, one linear (y₁) ' via token(s) ['non', 'solutions'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dPPEYj-cEFU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3E 'find the intersection points of two graphs, one linear (y₁) ' via token(s) ['non', 'solutions'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "srAEAib9uX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.3E"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.3E 'find the intersection points of two graphs, one linear (y₁) ' via token(s) ['non', 'solutions'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vDBb-cz8fyM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['change', 'differentiation', 'stationary'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "QbZ0SBOiOoI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['differentiation', 'points', 'stationary'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "COJOSMd7cuU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['differentiation', 'points', 'stationary'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "IuV74FZQfcc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['differentiation', 'points', 'stationary'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zX8URyi6N_I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['differentiation', 'points', 'stationary'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WABMN_W3RdQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['differentiation', 'points', 'stationary'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Adjq6LbJlzE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['differentiation', 'points', 'stationary'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "64crxjOpQI8",
    "lessonRef": null,
    "lessonUrl": null,
@@ -884,6 +2746,1167 @@
    }
   },
   {
+   "video": "zoXy5RlNSgk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "FbUQUrZI8v0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "XtLs8i-Gcdo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "L7fbEklPJEA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "_bGAdq1QoC4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-KLrHWW-BMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "dFUeJc0qWTM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7WQDJ_qmsWg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "tPoxe0OM2Nw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "41lML4McAww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "siDtgRVzLnk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "TBr4vTXfgi0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "6trNh86x04s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "p0tWH1-JbTU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WeqX4DH6bU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "ZgrO_GVZ4C4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "-UnZmeNNjTQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "URfMMPsnLj8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "etkXSSWo2aM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jbswcqSnQRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Mw84Pli6Lq4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "HxMyEnfSvOA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7lDlqPkuHeI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "BpcZEqAvcCw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MZM2ct-xRhg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gtBnBHidFgM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9xHRV32TmB0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A",
+    "4.10C",
+    "4.10D",
+    "4.10E",
+    "4.10F",
+    "4.11A",
+    "4.11B",
+    "4.11C",
+    "4.2D",
+    "4.2E",
+    "4.2F",
+    "4.2G",
+    "4.3A",
+    "4.4A",
+    "4.4B",
+    "4.4C",
+    "4.4E",
+    "4.5A",
+    "4.5B",
+    "4.5C",
+    "4.5D",
+    "4.6A",
+    "4.6B",
+    "4.6C"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Geometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "jVObqHDVOdQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -892,6 +3915,26 @@
    ],
    "confidence": "medium",
    "evidence": "Cognito channel-only: lines of symmetry = the 4.3A identification (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Qm80YRpg0es",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3A 'identify any lines of symmetry and the order of rotational s' via token(s) ['rotational', 'symmetry'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -964,6 +4007,166 @@
    }
   },
   {
+   "video": "n6O2SPMl8cs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.6A 'understand and use the internal and external intersecting ch' via token(s) ['chord', 'intersecting'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zOgyUFr7S9c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.6C 'understand and use angle properties of the circle including:' via token(s) ['arc', 'circle', 'circumference'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "nqq4idvE7l0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.6C 'understand and use angle properties of the circle including:' via token(s) ['circle', 'circumference'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "z_laaPLF6oc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.6C 'understand and use angle properties of the circle including:' via token(s) ['centre', 'circle', 'right'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jzFJ0dNDjlM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.6C 'understand and use angle properties of the circle including:' via token(s) ['centre', 'circle'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vsq3HODJlrs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.6C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.6C 'understand and use angle properties of the circle including:' via token(s) ['circle', 'theorem'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "zMxLcSnhPBg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['circular', 'cone', 'right'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "F84SWSnishg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['cone', 'sphere'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "iBvxSnLqupg",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1024,6 +4227,26 @@
    }
   },
   {
+   "video": "pEG6WxQgnyg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1G"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.1G 'apply vector methods for simple geometrical proofs' via token(s) ['methods', 'proofs'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-maths-a-18-higher external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-maths-a-18-higher",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "5YhV0_Wt42o",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1042,20 +4265,557 @@
     "threshold": 0.55,
     "map": "Videos/drafts/_p4/inheritance-map.json"
    }
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-modular-24-higher-unit-2"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "uRnZObUaMjA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"4WM2H/01 NOV 2026 Q 11-15 EDEXCEL IGCSE MATHEMATICS A MODULAR UNIT 2H HIGHER TIER FULL SOLUTIONS\"; 4MA1 maths-A paper anchor (higher), session 'NOV 2026' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-modular-24-higher-unit-2"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "p-PNVQPr-iM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"4WM2H/01 NOV 2026 Q 07-10 EDEXCEL IGCSE MATHEMATICS A MODULAR UNIT 2H HIGHER TIER FULL SOLUTIONS\"; 4MA1 maths-A paper anchor (higher), session 'NOV 2026' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-maths-a-modular-24-higher-unit-2"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "dHHJfyGINGw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"4WM2H/01 NOV 2026 Q 01-06 EDEXCEL IGCSE MATHEMATICS A MODULAR UNIT 2H HIGHER TIER FULL SOLUTIONS\"; 4MA1 maths-A paper anchor (higher), session 'NOV 2026' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "DWUSbK_TFns",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3B 'use correct notational conventions for algebraic expressions' via token(s) ['algebraic', 'expressions'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "-5Np9oWyn8o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equations', 'linear', 'quadratic', 'simultaneous'] (df 12); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "sBabx0tgO-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6B 'solve compound interest problems' via token(s) ['compound', 'interest'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "lIwnHkOTIII",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['area', 'volume'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "xxXgvq9XTg4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['area', 'volume'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "Wl2hGuU2qkw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['area', 'surface', 'volume'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "Ku5-ZhZLoAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equations', 'quadratic', 'simultaneous'] (df 12); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "rZABAAgVO-U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.2D 'understand the term ‛regular polygon’ and calculate interior' via token(s) ['angles', 'polygons'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "atcAXYzAqMc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6B"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6B 'solve compound interest problems' via token(s) ['compound', 'interest'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "yc4qxKBfjYM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equations', 'quadratic', 'simultaneous'] (df 12); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "U2-xQAt3gLk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.8A"
+   ],
+   "confidence": "low",
+   "evidence": "title names 2.8A 'solve quadratic inequalities in one unknown and represent th' via token(s) ['inequalities', 'one', 'quadratic'] (df 5); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "2kfm8CZzBPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion and r' via token(s) ['inverse', 'proportion'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "FJO_J3P_NCY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['cone', 'volume'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "ZpIjWWCOFUc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['area', 'surface', 'volume'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "CUFROVm5qvA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.4C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.4C 'determine gradients, rates of change, stationary points, tur' via token(s) ['points', 'turning'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "xU-Tv9S43-Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3C 'substitute positive and negative integers, decimals and frac' via token(s) ['integers', 'negative'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "8IhgWJtwQgw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10C 'find the surface area of simple shapes using the area formul' via token(s) ['area', 'shapes'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "etPHUuEHGO8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3C 'substitute positive and negative integers, decimals and frac' via token(s) ['integers', 'negative'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "mEnSe42bIPM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3C 'substitute positive and negative integers, decimals and frac' via token(s) ['integers', 'negative'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "TzpBOWOb1Ig",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.11C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.11C 'use areas and volumes of similar figures in solving problems' via token(s) ['areas', 'volumes'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "XwvfxvbSoDc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equations', 'quadratic', 'simultaneous'] (df 12); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "LHc1RIhrfSE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equation', 'quadratic'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "ssyjhaxbTPA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equation', 'quadratic'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "CyQsrgyA1s4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equation', 'quadratic'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "7U6FlhMqXqI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equation', 'quadratic'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "R2PdBQcjgvs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.7D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.7D 'solve simultaneous equations in two unknowns, one equation b' via token(s) ['equation', 'quadratic'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "FJBf9PArQK4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10C 'find the surface area of simple shapes using the area formul' via token(s) ['area', 'triangles'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "DYghxS4SEWE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10C 'find the surface area of simple shapes using the area formul' via token(s) ['area', 'triangles'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "SPmSF7wSNP0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2C"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2C 'understand the terms ‛domain’ and ‛range’ and which values m' via token(s) ['values', 'which'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "swyitrGYxiU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.4D"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.4D 'express integers as a product of powers of prime factors' via token(s) ['express', 'integers'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "BCroVdJr4bI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.10A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.10A 'find the surface area and volume of a sphere and a right cir' via token(s) ['area', 'surface'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "wLEn_eZnADA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.5A"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.5A 'set up problems involving direct or inverse proportion and r' via token(s) ['algebraic', 'equations', 'solutions'] (df 12); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 97,
-  "specPointsMapped": 17,
-  "specPointsUnmapped": 80,
-  "videosTotal": 32,
-  "videosMapped": 32,
+  "specPointsMapped": 47,
+  "specPointsUnmapped": 50,
+  "videosTotal": 138,
+  "videosMapped": 138,
   "videosUnmapped": 0,
-  "mappingRows": 32,
+  "mappingRows": 138,
   "byConfidence": {
-   "high": 0,
-   "medium": 28,
-   "low": 4
+   "high": 3,
+   "medium": 101,
+   "low": 34
   }
  },
  "inputs": {
@@ -1076,7 +4836,13 @@
     "Videos/drafts/igcse-maths-a-18-higher/video-map.draft.external.json"
    ],
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-maths-a-modular-24-higher-unit-2/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:11.466Z"
+ "generatedUtc": "2026-11-19T14:58:52.134Z"
 }

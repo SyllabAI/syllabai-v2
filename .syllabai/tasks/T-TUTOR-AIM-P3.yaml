@@ -188,3 +188,25 @@ run_003_execution_record: >
   empty on any miss; ZERO migration, ZERO hub files, ZERO wire change, ZERO
   LLM calls; the v19 identity pins moved to v20 deliberately (5 spots, the
   bump's own version comment records).
+  RUN-004 (the post-close stress verification of record, 2026-11-20,
+  operator trace 1a1f492be0421fc1 — "Stress test. Check if everything is
+  working properly."): ZERO code paths — receipt + worklog + task card
+  only. Executed at main 94c037f80 (the #1125 merge moment), re-verified
+  at the lane head: turbo typecheck 6/6 rc=0 (the editor-gates surface
+  joined via ADR-044); FULL API suite 3105 pass / 13 skip / 0 fail
+  (43,767 expects, 177 files — the run-003 baseline 3074 + the calc/
+  editor lanes' 31, ZERO regressions); test/tutor 463/463; test/cla
+  237/237; test/cron 25/25 (the run-002 purge wiring green); the DC10
+  spot pins served-evidence + drill-directive + calibration 52/52 incl.
+  the §13.2 metadata-law pin. THE NO-EXAM-DATE POSTURES (the operator's
+  named concern) PINNED GREEN at five spots in exam-calendar.test.ts —
+  no target / anonymous / unscoped → the honest null; no declared target
+  → the honest empty (pipeline byte-stability); the ONE-read short-
+  circuit; the REAL-registry ambiguity 9701-2025-2027 → null; the
+  unmapped-code honest empty: a learner who never declares a target gets
+  the PRE-run-003 answer bytes. CI at the tip: hub / verify / law-readback
+  SUCCESS, coordination skipped (by design). Disclosed: hub unit battery
+  not re-run locally (typecheck + the CI hub lane cover it); production
+  runtime stays watch-only (the nightly [served-evidence-purge] log line;
+  the §10 windows open on their 2–4-week clocks). Receipt:
+  .syllabai/receipts/T-TUTOR-AIM-P3/run-004.json.
