@@ -110,3 +110,32 @@ task:
     already-built law; (6) the CLA surface carries no ledger/directive/
     calibration in P3 (the tutor chat ships first — the P2 disclosure's
     posture continues).
+run_002_execution_record: >
+  The run-001 disclosed residual CLOSED on operator trace 1a1f2737f3f80841
+  "proceed" (2026-11-19): the nightly wiring of the §7.7 retention sweep.
+  runNightlyDispatch (services/cron/nightly-decay.ts, the RUN-002 ADDENDUM)
+  composes the T-MIG-126 window law UNTOUCHED + purgeExpiredServedEvidence
+  (180 days, the staleness tau of record) riding AFTER the window
+  transaction's COMMIT — the placement law (degrade-never-block): never
+  inside (a purge failure there would poison Postgres transaction state —
+  block or silent rollback, both forbidden); after, the sweep is idempotent
+  housekeeping, guarded (a throw logs under [served-evidence-purge] and
+  degrades to servedEvidencePurged = null — the window result rides
+  UNTOUCHED), riding BOTH outcomes (ok AND already-run). THE COUNT LAW: the
+  sweep reports the HONEST count via the data-modifying CTE (WITH deleted
+  AS (DELETE ... RETURNING 1) SELECT count(*)::int) — the createSql adapter
+  surfaces rows only (the Neon rowCount + the postgres.js .count are
+  dropped at the adapter boundary; the bare DELETE of record was a
+  dishonest 0 through that seam forever); the T-MIG-126 real-counts law
+  applied to the sweep. THE WIRE LAW: the response shape byte-identical
+  (status + ledgerRow — the hub seam forwards exactly that; the count
+  discloses via the deployment log line, the §4 watch posture). The auth
+  law unchanged. GATES: typecheck 5/5; FULL API suite 3043 pass / 13 skip /
+  0 fail (43,565 expects, 174 files — the run-001 baseline + 6 new pins,
+  zero regressions); test/cron 41/41 byte-green; ZERO migration, ZERO hub
+  files, ZERO LLM calls, v19 UNTOUCHED. Deviations disclosed: the sweep
+  rides every authenticated dispatch incl. re-hits (idempotence is the
+  exactly-once substitute); the count lives in logs only; no
+  served_at-leading index (the nightly scan is bounded by the
+  tutor_answer-only growth envelope — a migration-0031 decision of its
+  own); no DB contact (the zero-DB mock posture of record).

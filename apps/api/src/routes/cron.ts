@@ -34,12 +34,23 @@
  * decayed/reviewsScheduled are now the pass's honest counts, the 042
  * zero-cell era ends by law). A quiet night still records its row
  * (0/0 = zero idle states, never a silent skip).
+ *
+ * T-TUTOR-AIM-P3 RUN-002 ADDENDUM (the retention sweep's nightly wiring):
+ * the handler dispatches runNightlyDispatch — the window law UNTOUCHED,
+ * plus the served-evidence retention sweep (DC10 §7.7, 180 days) riding
+ * AFTER the window's commit, guarded, degrade-never-block. The RESPONSE
+ * SHAPE STAYS BYTE-IDENTICAL (status ok/already-run + the ledgerRow — the
+ * hub seam forwards {status, ledgerRow} only; the sweep's count lives in
+ * the deployment logs under [served-evidence-purge], the §4 watch
+ * posture, never on the wire). The auth law is UNCHANGED: the sweep runs
+ * only after the bearer passes and the window composed — every 401 path
+ * still touches zero DB.
  */
 import { Hono } from "hono";
 import { timingSafeEqual } from "node:crypto";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
-import { runNightlyDecayWindow } from "../services/cron/nightly-decay";
+import { runNightlyDispatch } from "../services/cron/nightly-decay";
 import { defaultModelUpdateClock } from "../services/learner-model/model-update";
 
 /** Constant-time bearer compare on the full "Bearer <secret>" payload,
@@ -86,11 +97,14 @@ export function buildCronRouters(env: Record<string, string | undefined> = proce
     // T-MIG-126 window law composes the review-scheduler pass INTO the
     // exactly-once transaction (gate -> pass -> bare ledger INSERT with
     // the pass's real counts; a window race rolls the loser back, C-4).
+    // RUN-002: the dispatch adds the served-evidence retention sweep
+    // AFTER that transaction's commit (guarded, degrade-never-block) —
+    // the response rides the window's result only, byte-identical wire.
     const windowStart = new Date().toISOString().slice(0, 10);
-    const result = await runNightlyDecayWindow(sql, defaultModelUpdateClock, {
+    const dispatch = await runNightlyDispatch(sql, defaultModelUpdateClock, {
       windowStart,
     });
-    return c.json(result, 200);
+    return c.json(dispatch.result, 200);
   });
 
   return { cronRoute: r };
