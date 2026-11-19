@@ -35,9 +35,11 @@
  *   - RETENTION (§12 open question 4, FIXED AT BUILD TIME): 180 days — the
  *     learner-model's own staleness tau (TUTOR_BDT_PAPER_DEFAULTS
  *     .stalenessTauDays, context.ts). purgeExpiredServedEvidence is the
- *     purge of record (unit-pinned); the nightly wiring is the disclosed
- *     residual (the cron hook rides the next window band — the nightly flow
- *     is a heavily pinned transaction this run does not touch).
+ *     purge of record; run-002 CLOSED the run-001 disclosed residual by
+ *     wiring the sweep into the nightly cron dispatch (runNightlyDispatch,
+ *     services/cron/nightly-decay.ts) — AFTER the window transaction
+ *     commits, guarded, degrade-never-block (housekeeping never fails the
+ *     decay window; see the dispatch's header law).
  */
 
 import type { EvidenceItem } from "./evidence";
@@ -152,17 +154,30 @@ export async function appendServedEvidence(
 
 /**
  * purgeExpiredServedEvidence — the retention sweep of record (the 180-day
- * window above). Returns the deleted row count; the nightly wiring is the
- * disclosed residual (see the header).
+ * window above). Returns the HONEST deleted row count.
+ *
+ * RUN-002 NOTE (the count law): the count rides the data-modifying CTE
+ * (`WITH deleted AS (DELETE ... RETURNING 1) SELECT count(*)::int`) — the
+ * createSql adapter surfaces ROWS ONLY (identity/users.ts drops the Neon
+ * rowCount and the postgres.js .count at the adapter boundary), so a bare
+ * DELETE would report a dishonest 0 through this seam forever. ONE
+ * statement, ONE row back, the real count — the T-MIG-126 real-counts law
+ * applied to the sweep. The nightly dispatch (runNightlyDispatch) calls
+ * this AFTER the window transaction commits — the sweep is housekeeping:
+ * idempotent by construction (served_at < cutoff), never transaction-
+ * bound, never window-blocking.
  */
 export async function purgeExpiredServedEvidence(sql: SqlFn, clock: Clock): Promise<number> {
   const cutoff = new Date(
     clock.now().getTime() - SERVED_EVIDENCE_RETENTION_DAYS * 86_400_000,
   );
   const rows = (await sql`
-    delete from tutor_served_evidence where served_at < ${cutoff}
-  `) as unknown as { rowCount?: number | string } | Array<unknown>;
-  const direct = (rows as { rowCount?: number | string } | null)?.rowCount;
-  if (direct != null) return Number(direct);
-  return Array.isArray(rows) ? rows.length : 0;
+    with deleted as (
+      delete from tutor_served_evidence where served_at < ${cutoff} returning 1
+    )
+    select count(*)::int as deleted from deleted
+  `) as unknown as Array<Record<string, unknown>>;
+  const row = rows[0];
+  if (row === undefined) return 0;
+  return Number(row.deleted ?? 0);
 }
