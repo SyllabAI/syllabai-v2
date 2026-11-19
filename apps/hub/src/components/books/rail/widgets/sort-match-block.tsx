@@ -13,7 +13,7 @@ import { useMemo, useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
-import { CheckResetButtons, LiveHint, VerdictChip, WidgetCard, type Verdict } from "../check-shared";
+import { CheckResetButtons, echoCap, LiveHint, VerdictChip, WidgetCard, type InteractionVerdictListener, type Verdict } from "../check-shared";
 
 interface SortItem {
   id: string;
@@ -24,7 +24,19 @@ interface SortTarget {
   text: string;
 }
 
-export function SortMatchBlock({ block }: { block: RailBlock }) {
+export function SortMatchBlock({
+  block,
+  embedded = false,
+  onVerdict,
+}: {
+  block: RailBlock;
+  /** P2 interaction bridge: guided check slots mount the widget embedded —
+   *  same practice UI, the verdict chip dropped (the flow renders the
+   *  verdict of record) and the settle reported upward. Absent = the
+   *  books-rail behavior, byte-identical. */
+  embedded?: boolean;
+  onVerdict?: InteractionVerdictListener;
+}) {
   const c = block.content;
   const rawItems = Array.isArray(c.items) ? c.items : [];
   const items: SortItem[] = rawItems
@@ -66,12 +78,26 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
   const check = () => {
     if (isMatch) {
       const wrong = items.filter((i) => assign[i.id] !== solution![i.id]).length;
-      setVerdict(wrong === 0 ? "correct" : wrong === items.length ? "wrong" : "partial");
-      setDetail(wrong === 0 ? null : `${items.length - wrong}/${items.length} matched`);
+      const verdict: Verdict = wrong === 0 ? "correct" : wrong === items.length ? "wrong" : "partial";
+      const detail = wrong === 0 ? null : `${items.length - wrong}/${items.length} matched`;
+      setVerdict(verdict);
+      setDetail(detail);
+      onVerdict?.({
+        verdict,
+        detail,
+        echo: echoCap(items.map((i) => `${i.text} → ${targetById.get(assign[i.id])?.text ?? "?"}`).join("; ")),
+      });
     } else {
       const wrong = order.filter((id, i) => correctOrder![i] !== id).length;
-      setVerdict(wrong === 0 ? "correct" : "wrong");
-      setDetail(wrong === 0 ? null : "order differs from the mark-scheme order");
+      const verdict: Verdict = wrong === 0 ? "correct" : "wrong";
+      const detail = wrong === 0 ? null : "order differs from the mark-scheme order";
+      setVerdict(verdict);
+      setDetail(detail);
+      onVerdict?.({
+        verdict,
+        detail,
+        echo: echoCap(order.map((id) => byId.get(id)?.text ?? "").join(" → ")),
+      });
     }
   };
 
@@ -81,10 +107,11 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
     setSelectedItem(null);
     setVerdict("unchecked");
     setDetail(null);
+    onVerdict?.({ verdict: "unchecked", detail: null, echo: null });
   };
 
   return (
-    <WidgetCard ord={block.ord} typeLabel={isMatch ? "Sort & match" : "Put in order"} prompt={prompt}>
+    <WidgetCard ord={block.ord} typeLabel={isMatch ? "Sort & match" : "Put in order"} prompt={prompt} hideMeta={embedded}>
       <LiveHint text={selectedItem ? `Selected ${byId.get(selectedItem)?.text ?? ""}` : ""} />
       {isMatch ? (
         <div className="space-y-1.5">
@@ -161,9 +188,11 @@ export function SortMatchBlock({ block }: { block: RailBlock }) {
         </ol>
       )}
       <CheckResetButtons onCheck={check} onReset={reset} />
-      <div className="mt-1.5">
-        <VerdictChip verdict={verdict} detail={detail} />
-      </div>
+      {!embedded && (
+        <div className="mt-1.5">
+          <VerdictChip verdict={verdict} detail={detail} />
+        </div>
+      )}
     </WidgetCard>
   );
 }

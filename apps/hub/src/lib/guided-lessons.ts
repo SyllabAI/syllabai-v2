@@ -195,7 +195,56 @@ export interface GuidedQuestion {
   /** Written kinds: case-insensitive whole-token auto-grade keys (tokenized with the
    *  same law as the learner text). Absent/empty -> reveal-only, never a silent grade. */
   keywords?: string[];
+  /** P2 interaction bridge (redesign plan §5.4, additive — absent == the existing
+   *  MCQ/written UI, byte-back-compat with every live payload): when the FIRST
+   *  entry is a known kind with a valid payload, the stage-mode check renders the
+   *  book reader's widget as the answering surface; the authored options stay the
+   *  fallback UI and their explanations the teaching moment on settle. Unknown
+   *  kinds / malformed payloads fail closed to the standard UI (never a blank check).
+   *  The live three courses carry none of these until the P3 backfill run. */
+  interactions?: GuidedCheckInteraction[];
 }
+
+/** P2 interaction bridge — one optional widget interaction on a check. The
+ *  payload shapes mirror the books rail's own block content fields verbatim
+ *  (components/books/rail/widgets) so the SAME widget parsers serve both
+ *  surfaces; validation is lib/guided-interactions.ts (the honest-empty laws
+ *  of each widget, restated pure). */
+export type GuidedCheckInteraction =
+  | {
+      kind: "sort-match";
+      prompt?: string;
+      items: { id: string; text: string }[];
+      /** match mode: the pairing targets — absent means order mode */
+      targets?: { id: string; text: string }[];
+      /** order mode: the mark-scheme order of item ids */
+      correctOrder?: string[];
+      /** match mode: itemId -> targetId */
+      solution?: Record<string, string>;
+    }
+  | {
+      kind: "table-fill";
+      prompt?: string;
+      columns: string[];
+      rows: { label?: string; cells: { accepts: string[]; hint?: string }[] }[];
+    }
+  | {
+      kind: "drag-label";
+      prompt?: string;
+      labels: string[];
+      slots: { id: string; answer: string; alt?: string[] }[];
+      diagramCaption?: string;
+    }
+  | {
+      kind: "eq-builder";
+      prompt?: string;
+      /** the target equation the learner assembles toward (the assembly law:
+       *  the widget never free-types species text) */
+      target: string;
+      tokens: string[];
+      /** reversible reactions use the equilibrium arrow */
+      arrow?: "->" | "⇌";
+    };
 
 /** The discovery index for a course, or null when the course has none. */
 export async function loadGuidedIndex(course: string): Promise<GuidedImportIndex | null> {
