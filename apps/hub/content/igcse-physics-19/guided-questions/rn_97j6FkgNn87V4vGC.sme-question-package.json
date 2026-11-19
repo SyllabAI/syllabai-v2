@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -525,6 +525,24 @@
           "explanation": "The scale reads volume, not mass.",
           "misconception": "quantity swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "read it directly from the cylinder's scale",
+            "multiply the volume by the density",
+            "weigh the liquid in an open beaker only",
+            "subtract the empty cylinder's mass from the filled cylinder's reading"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "subtract the empty cylinder's mass from the filled cylinder's reading"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -560,6 +578,24 @@
           "correct": true,
           "explanation": "Zeroing kills the constant bias; repeats cannot.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "because the balance cannot read a cylinder",
+            "to remove the systematic offset the cylinder's own mass would add",
+            "to warm the balance up",
+            "to reduce the random error of pouring"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "to remove the systematic offset the cylinder's own mass would add"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -597,6 +633,24 @@
           "explanation": "No pressurised equipment is used.",
           "misconception": "absurd limit"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "pressure vessels bursting",
+            "radioactive samples under test",
+            "pouring water onto the electric balance risks a shock",
+            "the eureka can's steam burns"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "pouring water onto the electric balance risks a shock"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +687,26 @@
           "explanation": "The fix is statistical, not moral.",
           "misconception": "absurd limit"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "random error"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -668,6 +742,36 @@
           "correct": false,
           "explanation": "That includes the cylinder.",
           "misconception": "subtraction slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "180 g"
+            },
+            {
+              "id": "1",
+              "text": "50 g"
+            },
+            {
+              "id": "3",
+              "text": "80 g"
+            },
+            {
+              "id": "4",
+              "text": "130 g"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "3",
+            "4",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

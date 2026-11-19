@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Clicks belong to the GM tube.",
           "misconception": "tube confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it changes colour to blue only",
+            "it warms up measurably",
+            "it clicks audibly",
+            "it darkens as it absorbs radiation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it darkens as it absorbs radiation"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The tube detects; it does not emit.",
           "misconception": "emission myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "emits radiation of its own",
+            "develops a patch of film",
+            "stores the radiation inside",
+            "transmits an electrical pulse to a counting circuit"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "transmits an electrical pulse to a counting circuit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "Falling is what happens when you move away.",
           "misconception": "distance inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "it rises",
+                    "rises"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Absorber layers let the developed film separate contributions.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "to keep the badge lightweight",
+            "the layers discriminate the dose delivered by different radiation types",
+            "to make the film develop faster",
+            "to shield the wearer completely"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the layers discriminate the dose delivered by different radiation types"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,27 @@
           "correct": false,
           "explanation": "Absorbers modify radiation; the tube measures it.",
           "misconception": "absorber confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the Geiger-Müller tube",
+                    "Geiger-Müller tube"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -525,6 +621,26 @@
           "explanation": "That skips the division by 60.",
           "misconception": "no division"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "0.4 counts per second"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -560,6 +676,26 @@
           "correct": true,
           "explanation": "285 − 24 = 261.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "261 counts per minute"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -597,6 +733,26 @@
           "explanation": "Carbon-14 is natural.",
           "misconception": "natural confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "nuclear medicine"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -633,6 +789,24 @@
           "explanation": "Tube drift is not the named cause.",
           "misconception": "drift reason"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "because background changes every minute",
+            "because the randomness of decay makes single counts scatter",
+            "because the source weakens while you count",
+            "because the GM tube drifts between readings"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "because the randomness of decay makes single counts scatter"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +842,24 @@
           "correct": false,
           "explanation": "The 24 is entirely background here.",
           "misconception": "double counting"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "0 — the source’s radiation is fully absorbed by the air before the tube",
+            "48 — add the two measurements",
+            "24 — the source contributes everything",
+            "negative — subtract twice"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "0 — the source’s radiation is fully absorbed by the air before the tube"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

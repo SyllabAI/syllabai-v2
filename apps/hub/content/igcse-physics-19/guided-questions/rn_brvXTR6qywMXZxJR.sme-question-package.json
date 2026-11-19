@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "White is hot but blue is hotter.",
           "misconception": "ordering error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "blue stars"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Ten times too cool.",
           "misconception": "scale error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "3000 K"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "Blue is the hot end for stars.",
           "misconception": "colour inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "backwards — red stars are the coolest",
+            "true only for white dwarfs",
+            "irrelevant, since colour shows size",
+            "correct — red stars are hottest"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "backwards — red stars are the coolest"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,26 @@
           "explanation": "Expansion costs temperature, and cooler means redder.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "cools as it expands"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "Stars emit their own light.",
           "misconception": "emission error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "reflects light from nearby stars",
+            "has expanded and cooled",
+            "contracts and heats up, shifting its colour whiter",
+            "is covered in white gas"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "contracts and heats up, shifting its colour whiter"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +381,26 @@
           "explanation": "Radio is the low-energy end, not the warm-body band.",
           "misconception": "spectrum error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "infrared radiation"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +436,24 @@
           "correct": false,
           "explanation": "That is the white dwarf transition.",
           "misconception": "stage swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "contracts and heats, so it whitens",
+            "expands and cools, so the star reddens",
+            "stays at the same temperature",
+            "turns blue from the pressure"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "expands and cools, so the star reddens"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +491,24 @@
           "explanation": "Temperature decides the emitted colour.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "its distance from Earth",
+            "the size of its planets",
+            "how hot the star is",
+            "its chemical paint"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "how hot the star is"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +545,26 @@
           "explanation": "Its colour is self-emitted.",
           "misconception": "emission error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "contracts and heats up"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +600,24 @@
           "correct": false,
           "explanation": "White sits between blue and red.",
           "misconception": "ordering error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "red → white → blue",
+            "blue → red → white",
+            "blue → white → yellow → red",
+            "yellow → blue → red"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "blue → white → yellow → red"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

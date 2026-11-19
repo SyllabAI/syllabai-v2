@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Owning electrons is not the same as moving them; current needs flow.",
           "misconception": "inventory myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the number of electrons sitting inside a wire",
+            "the energy transferred per unit charge",
+            "how fast electric charge streams past a point",
+            "the force pushing electrons through a wire"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "how fast electric charge streams past a point"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": true,
           "explanation": "One amp means one coulomb arriving every second.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "one volt across one ohm of resistance",
+            "one joule of energy carried by one coulomb",
+            "one coulomb of charge flowing past each second",
+            "one watt delivered for one second"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "one coulomb of charge flowing past each second"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Placing it across the cell measures the cell, not the component in question.",
           "misconception": "terminal myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "in parallel across the component",
+            "in series with the component being measured",
+            "anywhere convenient in the loop",
+            "directly across the cell terminals"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "in series with the component being measured"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "Current travels the whole loop, wires included.",
           "misconception": "loop myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "positive terminal out to the negative one",
+            "in the same direction as the electrons move",
+            "only inside the cell itself",
+            "negative terminal back to the positive one"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "positive terminal out to the negative one"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,36 @@
           "correct": false,
           "explanation": "Adding the two quantities is meaningless here.",
           "misconception": "addition slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "3 A"
+            },
+            {
+              "id": "4",
+              "text": "8 A"
+            },
+            {
+              "id": "1",
+              "text": "12 A"
+            },
+            {
+              "id": "2",
+              "text": "0.33 A"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -288,6 +390,24 @@
           "explanation": "Atoms stay in the lattice; only their loose electrons travel.",
           "misconception": "atom myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "whole atoms drifting along the wire",
+            "protons escaping from the nuclei",
+            "positive ions fixed in the metal lattice",
+            "free electrons, which carry negative charge"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "free electrons, which carry negative charge"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -323,6 +443,24 @@
           "correct": false,
           "explanation": "Different units cannot simply be added.",
           "misconception": "operation slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Q = I × t",
+            "Q = I ÷ t",
+            "Q = t ÷ I",
+            "Q = I + t"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Q = I × t"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -360,6 +498,36 @@
           "explanation": "That divides current by time, giving the wrong direction.",
           "misconception": "division slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "40 C"
+            },
+            {
+              "id": "2",
+              "text": "2.5 C"
+            },
+            {
+              "id": "4",
+              "text": "0.4 C"
+            },
+            {
+              "id": "3",
+              "text": "14 C"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -396,6 +564,24 @@
           "explanation": "Fixed electrons could never carry a current.",
           "misconception": "static myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "positive to negative, like conventional current",
+            "nowhere — electrons stay fixed in the metal",
+            "both directions at once",
+            "negative to positive, opposite to conventional current"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "negative to positive, opposite to conventional current"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -431,6 +617,26 @@
           "correct": true,
           "explanation": "10 mA = 10 ÷ 1000 = 0.01 A.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "0.01 A"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

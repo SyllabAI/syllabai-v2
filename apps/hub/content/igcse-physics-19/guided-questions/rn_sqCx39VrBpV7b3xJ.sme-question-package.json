@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Magnetic forces act at a distance through the field.",
           "misconception": "contact requirement"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "poles only interact through contact",
+            "all poles attract each other",
+            "all poles repel each other",
+            "opposite poles attract; like poles repel"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "opposite poles attract; like poles repel"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Strength varies sharply from poles to middle.",
           "misconception": "uniformity claim"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "at the poles"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "No magnet has two like poles; attraction to both points to induced magnetism.",
           "misconception": "impossible object"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the bar is a magnetic substance but not necessarily a magnet",
+            "the bar must be a magnet with two south poles",
+            "the bar must be a magnet with two north poles",
+            "the test proves nothing at all"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the bar is a magnetic substance but not necessarily a magnet"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Only another magnet can repel a pole, so repulsion is conclusive.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it is attracted to a known magnet",
+            "it sticks to a wall",
+            "it is made of iron",
+            "it repels the north pole of a known magnet"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it repels the north pole of a known magnet"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,27 @@
           "correct": false,
           "explanation": "Bring poles together does not demagnetise them here.",
           "misconception": "property invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "they repel each other",
+                    "repel each other"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

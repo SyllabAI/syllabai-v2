@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Neutrons play no part in acid-base chemistry.",
           "misconception": "wrong particle chosen"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A proton donor",
+                    "proton donor"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "Electrons are not released into solution by acids; protons are.",
           "misconception": "redox particle imported"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Nothing is released; the acid stays whole",
+            "The hydroxide ion, OH-",
+            "The hydrogen ion, H+, which is a proton",
+            "The electron"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The hydrogen ion, H+, which is a proton"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,26 @@
           "explanation": "Those are the ions of sodium hydroxide, the base example.",
           "misconception": "base example copied"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "H+ and Cl-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +212,24 @@
           "explanation": "Because every acid releases H+, the chemistry of the solution is the chemistry of that one ion.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They all have the same colour",
+            "They all come from the same laboratory bottle",
+            "They all contain chloride ions",
+            "They all contain the same reactive particle, the hydrogen ion"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They all contain the same reactive particle, the hydrogen ion"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +265,24 @@
           "correct": false,
           "explanation": "Stirring only speeds dissolving; the ions cause the acidity.",
           "misconception": "process blamed for property"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The OH- ions released by the acid",
+            "The water molecules alone",
+            "The stirring that dissolves the acid",
+            "The H+ ions released by the acid"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The H+ ions released by the acid"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -297,6 +392,27 @@
           "explanation": "Electron transfer belongs to redox chemistry, not acid-base work.",
           "misconception": "redox vocabulary imported"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A proton acceptor",
+                    "proton acceptor"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -332,6 +448,27 @@
           "correct": false,
           "explanation": "Na+ is a spectator here; the hydroxide does the accepting.",
           "misconception": "spectator ion credited"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The hydroxide ion, OH-",
+                    "hydroxide ion, OH-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -369,6 +506,26 @@
           "explanation": "The note's example shows sodium hydroxide giving one sodium ion and one hydroxide ion.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Na+ and OH-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -405,6 +562,24 @@
           "explanation": "That would make it an acid; bases accept instead.",
           "misconception": "role contradicted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because it tastes salty",
+            "Because its released hydroxide ions make the solution alkaline",
+            "Because it only dissolves in acid",
+            "Because it donates protons like an acid"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because its released hydroxide ions make the solution alkaline"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -440,6 +615,24 @@
           "correct": false,
           "explanation": "Na+ carries no proton to give; it watches the transfer happen.",
           "misconception": "spectator given a role"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "NaOH donates a proton and Cl- accepts it",
+            "HCl donates a proton and the OH- ion accepts it",
+            "Cl- donates a proton to OH-",
+            "Na+ donates a proton to H+"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "HCl donates a proton and the OH- ion accepts it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

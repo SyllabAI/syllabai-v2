@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -284,6 +284,27 @@
           "explanation": "Chlorine is one possible attached group, not the requirement.",
           "misconception": "example treated as rule"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A C=C double bond",
+                    "C=C double bond"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -319,6 +340,24 @@
           "correct": false,
           "explanation": "The bond is consumed in linking, not reinforced.",
           "misconception": "fate inverted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It strengthens and shortens",
+            "It turns the molecule into an ion",
+            "It disappears completely without doing anything",
+            "It breaks and forms the bond with the adjacent monomer"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It breaks and forms the bond with the adjacent monomer"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -356,6 +395,26 @@
           "explanation": "The opened double bonds all become single bonds in the chain.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Single bonds only"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -392,6 +451,24 @@
           "explanation": "No reversal occurs; only the prefix and brackets are added.",
           "misconception": "nonsense rule invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Reverse the letters of the monomer's name",
+            "Use the monomer's name with no changes",
+            "Put the monomer's name in brackets and add poly- in front",
+            "Add -ide to the end of the monomer's name"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Put the monomer's name in brackets and add poly- in front"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +504,26 @@
           "correct": false,
           "explanation": "Polyethene comes from ethene, a different monomer.",
           "misconception": "monomer misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Polypropene"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

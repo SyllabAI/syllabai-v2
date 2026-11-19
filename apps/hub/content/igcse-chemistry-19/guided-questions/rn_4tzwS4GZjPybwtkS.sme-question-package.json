@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Saturation is a separate idea about the maximum that can dissolve; nothing here says maximum.",
           "misconception": "extra property invoked"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The solute",
+                    "solute"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "Mass alone ignores the volume it is spread through.",
           "misconception": "amount-only reading"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The volume of solvent alone",
+            "The mass of solute alone",
+            "The amount of solute in a specific volume of solvent",
+            "The strength of the solvent"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The amount of solute in a specific volume of solvent"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "The specification quotes dm3, not cm3; cm3 values must be converted before concentration working.",
           "misconception": "volume unit downshifted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "dm3 / mol",
+            "mol / g or g / mol",
+            "g / dm3 or mol / dm3",
+            "g / cm3 or mol / cm3"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "g / dm3 or mol / dm3"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Going from cm3 to dm3 means dividing by 1000, so 500 cm3 is 0.5 dm3.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "500 x 1000 = 500,000 dm3",
+            "500 / 1000 = 0.5 dm3",
+            "500 / 100 = 5 dm3",
+            "500 x 10 = 5,000 dm3"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "500 / 1000 = 0.5 dm3"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,36 @@
           "correct": false,
           "explanation": "Adding has no place in the triangle; the operation is multiplication.",
           "misconception": "values added"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "12.5 mol"
+            },
+            {
+              "id": "1",
+              "text": "0.5 mol"
+            },
+            {
+              "id": "4",
+              "text": "2.7 mol"
+            },
+            {
+              "id": "2",
+              "text": "0.08 mol"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -291,6 +396,36 @@
           "explanation": "Adding 16 twice double-counts the single oxygen atom.",
           "misconception": "oxygen counted twice"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "23"
+            },
+            {
+              "id": "4",
+              "text": "57"
+            },
+            {
+              "id": "3",
+              "text": "39"
+            },
+            {
+              "id": "2",
+              "text": "40"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "3",
+            "2",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -326,6 +461,36 @@
           "correct": false,
           "explanation": "40 / 80 answers a different question; the mass divides by the Mr.",
           "misconception": "division inverted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "40 mol"
+            },
+            {
+              "id": "1",
+              "text": "3200 mol"
+            },
+            {
+              "id": "4",
+              "text": "0.5 mol"
+            },
+            {
+              "id": "3",
+              "text": "2 mol"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -363,6 +528,26 @@
           "explanation": "Concentration = moles / volume, so 2 / 0.5 = 4.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "4 mol / dm3"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -399,6 +584,24 @@
           "explanation": "That mixes a concentration with a raw volume; moles must come first.",
           "misconception": "concentration divided by volume with no moles step"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Write the ratio as 1 : 2 straight away",
+            "Divide 0.05 by 0.025",
+            "Convert the acid volume: 20 / 1000 = 0.02 dm3",
+            "Find the moles of sodium carbonate: 0.05 x 25 / 1000 = 0.00125"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Find the moles of sodium carbonate: 0.05 x 25 / 1000 = 0.00125"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -434,6 +637,36 @@
           "correct": false,
           "explanation": "Halving puts the carbonate's coefficient on the acid; the acid is the doubled side.",
           "misconception": "ratio inverted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "0.000625 mol"
+            },
+            {
+              "id": "2",
+              "text": "0.0025 mol"
+            },
+            {
+              "id": "1",
+              "text": "0.00375 mol"
+            },
+            {
+              "id": "3",
+              "text": "0.00125 mol"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

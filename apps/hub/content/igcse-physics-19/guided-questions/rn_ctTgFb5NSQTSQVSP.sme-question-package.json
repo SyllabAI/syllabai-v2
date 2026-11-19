@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The source emits unchanged; the shift is observed.",
           "misconception": "source change myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "observed wavelength and frequency from a moving source",
+            "the speed of the wave",
+            "the source frequency itself",
+            "the amplitude only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "observed wavelength and frequency from a moving source"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "The wavefronts spread as expanding rings.",
           "misconception": "shape myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "symmetrically in all directions"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Wavefronts bunch up ahead of the motion.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a longer wavelength and a lower frequency",
+            "an unchanged wavelength",
+            "a shorter wavelength and a higher frequency",
+            "a shorter wavelength and a lower frequency"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a shorter wavelength and a higher frequency"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The sound continues, just at lower pitch.",
           "misconception": "exaggeration error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "rises, because the car gains distance",
+            "drops to silence immediately",
+            "stays the same as when it approached",
+            "drops, because the wavefronts stretch behind the car"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "drops, because the wavefronts stretch behind the car"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The effect is apparent, caused by motion, not a changed emitter.",
           "misconception": "source change myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "emitting at a lower frequency by nature",
+            "moving towards the Earth",
+            "stationary relative to the Earth",
+            "moving away from the Earth"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "moving away from the Earth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

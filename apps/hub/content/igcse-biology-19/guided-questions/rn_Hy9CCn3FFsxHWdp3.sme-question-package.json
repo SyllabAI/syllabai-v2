@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Position does not change — diameter does.",
           "misconception": "claim invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They disappear entirely",
+            "Their muscles relax, so the vessels widen and carry more blood",
+            "Their muscles contract, narrowing the vessels",
+            "They move deeper into the body"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Their muscles relax, so the vessels widen and carry more blood"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Reflection is not the cooling route.",
           "misconception": "mechanism invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Evaporation uses heat from the body to turn water into vapour",
+            "Sweat carries heat in urine form",
+            "Sweat insulates the skin like a blanket",
+            "Sweat reflects sunlight"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Evaporation uses heat from the body to turn water into vapour"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Deep organs sit far from the environmental interface.",
           "misconception": "location wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "At the body's surface, where blood runs closest to the surroundings",
+            "In the marrow of bones",
+            "Deep inside the liver",
+            "Inside the spinal cord"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "At the body's surface, where blood runs closest to the surroundings"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "Flat hairs let air move and heat leave by radiation.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It stops the insulating air layer forming, so heat radiates away",
+            "It narrows the blood vessels",
+            "Hairs sweat more when flat",
+            "Flat hairs absorb sunlight"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It stops the insulating air layer forming, so heat radiates away"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,26 @@
           "correct": false,
           "explanation": "Thermoregulation responds automatically.",
           "misconception": "response denied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Vasodilation and heavy sweating"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -283,6 +375,24 @@
           "explanation": "Arterioles regulate diameter, not pumping.",
           "misconception": "function confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They dissolve into the capillaries",
+            "They pump blood faster",
+            "They relax, widening the vessels",
+            "They contract, narrowing the vessels so less blood reaches the skin"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They contract, narrowing the vessels so less blood reaches the skin"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -318,6 +428,24 @@
           "correct": false,
           "explanation": "Time of day is irrelevant.",
           "misconception": "reason invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because muscles cannot contract",
+            "Because it only works at night",
+            "Because it heats the skin directly",
+            "Because it reduces heat loss rather than raising the blood's temperature"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because it reduces heat loss rather than raising the blood's temperature"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -355,6 +483,24 @@
           "explanation": "Shivering burns fuel in exothermic reactions to warm the blood.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A conscious decision to move briskly",
+            "A reflex of rapid, regular muscle contractions generating heat",
+            "Sweat glands secreting extra fluid",
+            "Hair muscles pulling hairs flat"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A reflex of rapid, regular muscle contractions generating heat"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -391,6 +537,26 @@
           "explanation": "Those widen heat loss — wrong direction.",
           "misconception": "scenario inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Vasoconstriction and reduced sweating"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -426,6 +592,24 @@
           "correct": false,
           "explanation": "No such mechanism exists here.",
           "misconception": "claim invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They conduct heat into the ground",
+            "Lying flat, they release more heat",
+            "Standing on end, they trap an insulating air layer over the skin",
+            "They change colour to absorb sun"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Standing on end, they trap an insulating air layer over the skin"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -522,6 +706,26 @@
           "explanation": "Five degrees low — enzymes would suffer.",
           "misconception": "figure wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "About 37 °C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -557,6 +761,24 @@
           "correct": true,
           "explanation": "Beyond roughly 2 °C of drift the system fails fatally.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "More than about ten degrees",
+            "No drift is dangerous",
+            "Half a degree",
+            "More than about two degrees"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "More than about two degrees"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -594,6 +816,24 @@
           "explanation": "Urine is an output, not a sensor site.",
           "misconception": "site invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In the urine",
+            "In the skin and the hypothalamus",
+            "In the foot muscles only",
+            "Only in the eyeball"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "In the skin and the hypothalamus"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -630,6 +870,24 @@
           "explanation": "The set point holds; responses correct the drift.",
           "misconception": "logic inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Ignores small changes entirely",
+            "Switches temperature regulation off",
+            "Coordinates a cooling or heating response as required",
+            "Changes the set point to match"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Coordinates a cooling or heating response as required"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -665,6 +923,24 @@
           "correct": false,
           "explanation": "Growth is not the criterion.",
           "misconception": "reason wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because sweat is a chemical messenger",
+            "Because the temperature is maintained within a constant internal range",
+            "Because the skin grows thicker",
+            "Because only plants do it"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because the temperature is maintained within a constant internal range"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

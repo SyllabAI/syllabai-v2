@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The equation supplies ratios, not amounts; the ratio step comes after the moles are found.",
           "misconception": "ratio used before moles"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Multiply the mass by its relative formula mass",
+            "Read the moles straight off the balanced equation",
+            "Divide the mass by the atomic number",
+            "Divide the mass by its relative formula mass"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Divide the mass by its relative formula mass"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,36 @@
           "correct": false,
           "explanation": "Nothing is halved here; a one-to-one ratio leaves the amount exactly as it was.",
           "misconception": "ratio inverted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "0.75"
+            },
+            {
+              "id": "2",
+              "text": "0.25"
+            },
+            {
+              "id": "3",
+              "text": "0.5"
+            },
+            {
+              "id": "4",
+              "text": "0.125"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -117,6 +165,36 @@
           "explanation": "This reads the ratio as one-to-one; the balancing numbers 2 and 4 double the product.",
           "misconception": "ratio read as one-to-one"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "8"
+            },
+            {
+              "id": "3",
+              "text": "4"
+            },
+            {
+              "id": "4",
+              "text": "2"
+            },
+            {
+              "id": "1",
+              "text": "6"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "3",
+            "1",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +231,36 @@
           "explanation": "Mass = moles x Mr: 0.25 x 40 = 10 g of magnesium oxide.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "10 g"
+            },
+            {
+              "id": "1",
+              "text": "40 g"
+            },
+            {
+              "id": "3",
+              "text": "4 g"
+            },
+            {
+              "id": "2",
+              "text": "8 g"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -188,6 +296,24 @@
           "correct": false,
           "explanation": "Skipping the ratio ignores the equation; every reacting-mass answer depends on it.",
           "misconception": "ratio seen as optional"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A different formula replaces the mole route",
+            "The masses must be rounded up at the end",
+            "The ratio step can be skipped for the maximum",
+            "Nothing - the moles, ratio, mass route applies exactly as usual"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Nothing - the moles, ratio, mass route applies exactly as usual"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -292,6 +418,36 @@
           "explanation": "This doubles the oxygen; ZnO holds one O only.",
           "misconception": "oxygen doubled"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "49"
+            },
+            {
+              "id": "4",
+              "text": "97"
+            },
+            {
+              "id": "3",
+              "text": "65"
+            },
+            {
+              "id": "2",
+              "text": "81"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "3",
+            "2",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -327,6 +483,36 @@
           "correct": false,
           "explanation": "This counts one oxygen; the subscript 2 doubles the 16.",
           "misconception": "subscript ignored on oxygen"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "44"
+            },
+            {
+              "id": "2",
+              "text": "12"
+            },
+            {
+              "id": "1",
+              "text": "60"
+            },
+            {
+              "id": "4",
+              "text": "28"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "4",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -364,6 +550,36 @@
           "explanation": "16.2 / 81 = 0.2 mol of zinc oxide.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "0.2"
+            },
+            {
+              "id": "1",
+              "text": "5"
+            },
+            {
+              "id": "2",
+              "text": "0.02"
+            },
+            {
+              "id": "3",
+              "text": "0.5"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "4",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -400,6 +616,24 @@
           "explanation": "This swaps the middle entries; CO2 matched C at 0.1, not ZnO.",
           "misconception": "substances mispaired"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "1 : 2 : 2 : 1",
+            "1 : 1 : 1 : 1",
+            "2 : 1 : 2 : 1",
+            "1 : 2 : 1 : 2"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "1 : 2 : 1 : 2"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -435,6 +669,21 @@
           "correct": false,
           "explanation": "Doubling lands on the wrong substance here; the ratio doubles ZnO and Zn together.",
           "misconception": "ratio applied to one side only"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "eq-builder",
+          "target": "C + 2ZnO → CO2 + 2Zn",
+          "tokens": [
+            "2Zn",
+            "ZnO",
+            "2ZnO",
+            "CO2",
+            "C",
+            "2C"
+          ],
+          "prompt": "Build the equation — tap species tokens to add them to a side, then check."
         }
       ]
     },

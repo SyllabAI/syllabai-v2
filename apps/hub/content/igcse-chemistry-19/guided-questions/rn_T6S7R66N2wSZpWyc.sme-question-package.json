@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -524,6 +524,24 @@
           "explanation": "That arrangement is the oxygen test.",
           "misconception": "oxygen test swapped in"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A glowing splint inside the tube",
+            "A burning splint at the tube mouth",
+            "A wet splint anywhere",
+            "An extinguished splint at the mouth"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A burning splint at the tube mouth"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -559,6 +577,27 @@
           "correct": true,
           "explanation": "The rapid burn of hydrogen with air makes the characteristic squeaky pop.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A squeaky pop",
+                    "squeaky pop"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -596,6 +635,24 @@
           "explanation": "Loudness is not a safety constraint in the method.",
           "misconception": "invented consequence"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The gas would escape faster",
+            "The hydrogen needs air at the mouth to burn",
+            "Deep insertion always breaks the tube",
+            "The pop would be too loud"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The hydrogen needs air at the mouth to burn"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -632,6 +689,26 @@
           "explanation": "Flame colours belong to flame tests, not to this gas test.",
           "misconception": "flame-test colour intrudes"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Relights"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -667,6 +744,24 @@
           "correct": false,
           "explanation": "The mapping is exactly reversed from the tests.",
           "misconception": "hook reversed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Both splints test for the same gas",
+            "Burning means oxygen, glowing means hydrogen",
+            "A ligHted splint has an H for hydrogen, a glOwing splint an O for oxygen",
+            "The sound, not the splint, decides oxygen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A ligHted splint has an H for hydrogen, a glOwing splint an O for oxygen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

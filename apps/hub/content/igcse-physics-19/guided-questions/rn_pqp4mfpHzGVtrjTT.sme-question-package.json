@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "That divides the units instead of multiplying them.",
           "misconception": "unit inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "kg m/s"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "The law covers every object; parked ones simply score zero.",
           "misconception": "exemption myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "engine is switched off",
+            "parked objects are exempt from the momentum law",
+            "mass is zero",
+            "velocity is zero, and p = m × v then gives zero"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "velocity is zero, and p = m × v then gives zero"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "A changed mass changes the product m × v.",
           "misconception": "mass-change slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Reversing the object's direction of travel",
+            "Speeding the object up",
+            "Keeping the mass and velocity exactly as they were",
+            "Loading extra mass onto the object"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Keeping the mass and velocity exactly as they were"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "The size is 0.060 kg × 2 m/s = 0.12 kg m/s, and the reversed direction makes it negative.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "−0.12 kg m/s"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "The equation compares momenta along one line without trouble.",
           "misconception": "comparison myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "impossible to compare",
+            "equal in size but opposite in sign",
+            "both zero, because the speeds match",
+            "equal in size and in sign"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "equal in size but opposite in sign"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -286,6 +380,24 @@
           "explanation": "That equality is exactly what conservation states.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "stays fixed only for explosions",
+            "decreases, because each object slows",
+            "increases while the objects interact",
+            "is the same before and after the collision"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "is the same before and after the collision"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -321,6 +433,26 @@
           "correct": false,
           "explanation": "No such mass condition appears in the principle.",
           "misconception": "identity myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Both collisions and explosions"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -358,6 +490,26 @@
           "explanation": "The moving trolley does carry momentum, so the total is not zero.",
           "misconception": "rest-only myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "3 kg m/s"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -394,6 +546,24 @@
           "explanation": "Rebounding objects stay in the system and in the equation.",
           "misconception": "exclusion myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "left out entirely once it rebounds",
+            "positive, because momentum cannot be negative",
+            "always zero, because it reversed",
+            "negative, because its velocity now points the other way"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "negative, because its velocity now points the other way"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -429,6 +599,24 @@
           "correct": true,
           "explanation": "Equal sizes with opposite signs sum to zero.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "double either skater's momentum",
+            "zero, because the equal and opposite momenta cancel",
+            "undefined for opposite motions",
+            "equal to one skater's momentum"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "zero, because the equal and opposite momenta cancel"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

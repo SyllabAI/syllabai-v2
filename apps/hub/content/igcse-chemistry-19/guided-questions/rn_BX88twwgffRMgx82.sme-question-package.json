@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The gas produced in positive tests is hydrogen; the glasses guard against acid splashes, not poison.",
           "misconception": "product hazard invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because dilute acids are being handled directly",
+            "Because the products are always poisonous gases",
+            "Because the lighted splint could ignite the whole tube",
+            "Because the metals are radioactive"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because dilute acids are being handled directly"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Oxygen relights a glowing splint, and it is not the product of these acid-metal reactions.",
           "misconception": "wrong gas and wrong observation combined"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Oxygen, which dissolves the metal",
+            "Carbon dioxide, which turns the splint brighter",
+            "Steam, which condenses on the tube wall",
+            "Hydrogen, which makes the splint go pop"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Hydrogen, which makes the splint go pop"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Filling to the brim would make fizzing overflow and gives no controlled volume to compare.",
           "misconception": "uncontrolled quantity assumed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The tubes are filled to the brim",
+            "About 5 cm3, measured with a small measuring cylinder",
+            "One drop of acid in each tube",
+            "The volume varies so that each metal gets a fairer amount"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "About 5 cm3, measured with a small measuring cylinder"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "These are exactly the metals named in the aim and added one per tube.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Magnesium, iron and zinc"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Nothing in the method depends on leftovers; the repeat is part of the planned comparison.",
           "misconception": "housekeeping motive invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because hydrochloric acid alone cannot react with metals",
+            "To see whether the same reactivity pattern appears with a different acid",
+            "To use up the leftover metal pieces",
+            "To make the results more accurate by averaging two pop tests"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To see whether the same reactivity pattern appears with a different acid"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

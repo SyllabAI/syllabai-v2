@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Each component takes its own share of the supply.",
           "misconception": "zero myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "shared between the components"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "That would be quartering the supply, not halving it.",
           "misconception": "quarter myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "6 V each"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "In series, more resistance claims more of the supply voltage.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the smaller share of the voltage",
+            "the same share as the other resistor",
+            "the larger share of the voltage",
+            "zero voltage"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the larger share of the voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Every branch sees the supply voltage, wherever it sits.",
           "misconception": "zero myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "zero across the inner branches",
+            "half the supply voltage",
+            "shared out between the branches",
+            "equal to the supply voltage"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "equal to the supply voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,36 @@
           "correct": false,
           "explanation": "A connected branch always sees the supply voltage.",
           "misconception": "zero myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "3 V"
+            },
+            {
+              "id": "4",
+              "text": "0 V"
+            },
+            {
+              "id": "2",
+              "text": "6 V"
+            },
+            {
+              "id": "3",
+              "text": "12 V"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "1",
+            "2",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -289,6 +395,26 @@
           "explanation": "Series lamps share the supply voltage between them.",
           "misconception": "parallel behaviour"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "fewer wires are needed"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -324,6 +450,24 @@
           "correct": false,
           "explanation": "Series current never splits at all — it is one loop.",
           "misconception": "parallel behaviour"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the lamps cannot share the voltage",
+            "the current splits unfairly between lamps",
+            "too many switches are needed",
+            "one failed lamp stops all of them working"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "one failed lamp stops all of them working"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -361,6 +505,24 @@
           "explanation": "Independent switching plus failure isolation is exactly why homes choose parallel.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "each light can be controlled and one failure leaves the rest lit",
+            "a single switch controls every room",
+            "parallel circuits need fewer wires",
+            "parallel lamps take zero current"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "each light can be controlled and one failure leaves the rest lit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -397,6 +559,24 @@
           "explanation": "The topology of the circuit does not change when a branch fails.",
           "misconception": "nonsense myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the supply voltage doubles",
+            "the other branches keep working",
+            "the junctions disappear",
+            "all branches stop"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the other branches keep working"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -432,6 +612,24 @@
           "correct": false,
           "explanation": "Parallel branches survive each other's failures.",
           "misconception": "series behaviour"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "more wiring and connections are required",
+            "components cannot be controlled individually",
+            "branches receive different voltages",
+            "one break stops everything"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "more wiring and connections are required"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

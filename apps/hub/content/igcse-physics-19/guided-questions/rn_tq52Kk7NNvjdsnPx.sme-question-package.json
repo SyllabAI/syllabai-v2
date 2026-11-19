@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Sublimation jumps solid straight to gas.",
           "misconception": "vocabulary swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "condensation"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Condensation releases energy while melting absorbs it.",
           "misconception": "mixed pairing"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "melting and boiling"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "Evaporation is endothermic — it takes energy in, it does not give it out.",
           "misconception": "direction slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "evaporating water releases energy into the skin",
+            "water conducts heat better than skin",
+            "the water condenses on the skin and cools it",
+            "evaporating water absorbs energy from the skin"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "evaporating water absorbs energy from the skin"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Bubbles form everywhere once the boiling point is reached.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "boiling absorbs no energy because the temperature is constant",
+            "boiling occurs throughout the liquid at a fixed temperature",
+            "boiling happens only at the surface at any temperature",
+            "boiling turns a solid directly into a gas"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "boiling occurs throughout the liquid at a fixed temperature"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "Solid particles still vibrate, so the energy store never empties completely.",
           "misconception": "zero-store slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it stays constant because temperature is constant during freezing",
+            "it decreases as energy is released to the surroundings",
+            "it becomes zero when the acid is fully solid",
+            "it increases because particles move faster"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it decreases as energy is released to the surroundings"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

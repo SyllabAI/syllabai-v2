@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That inverts the relationship and yields s/m, not the m/s the quantity is defined with.",
           "misconception": "reciprocal inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "480 s divided by 1200 m, to report seconds per metre",
+            "The pace measured during the fastest street only",
+            "The mean of the fastest and slowest paces recorded",
+            "1200 m divided by 480 s, the totals for the whole run"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "1200 m divided by 480 s, the totals for the whole run"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "A direction change leaves the pace itself untouched, which is exactly why speed ignores direction.",
           "misconception": "direction-change conflation"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It changes when the object changes direction",
+            "It has a magnitude but no direction attached",
+            "It always takes positive values on a journey",
+            "It can be measured with a stopwatch and a tape measure"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It has a magnitude but no direction attached"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "No weighting rule sets the answer to 5.0 m/s; the totals give 6.0 m/s.",
           "misconception": "guessed weighting"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "600 m over 100 s, which is 6.0 m/s",
+            "7.5 m/s, the mean of 15 m/s and 0 m/s",
+            "15 m/s, the pace of the moving sections",
+            "5.0 m/s, because the crawl consumes most of the clock"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "600 m over 100 s, which is 6.0 m/s"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "Per second squared belongs to the rate of change of velocity, a different quantity met later in this topic.",
           "misconception": "quantity substitution"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "metres per second (m/s)"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Equal averages allow completely different pacing profiles; only the trip-wide summary is pinned.",
           "misconception": "average-implies-instant equality"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Their average speeds across the loop are equal",
+            "The non-stop cyclist must have ridden more slowly overall",
+            "Their instantaneous paces matched at every moment",
+            "The picnicking cyclist travelled a shorter distance"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Their average speeds across the loop are equal"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

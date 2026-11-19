@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "No surface touches the object, so no reaction acts.",
           "misconception": "catalogue mix-up"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Weight and air resistance"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": true,
           "explanation": "More speed means more collisions with air particles — more drag.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Increases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,26 @@
           "explanation": "The weight points downward throughout.",
           "misconception": "direction myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Stays constant"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +213,24 @@
           "explanation": "Gravity is independent of the fall's speed.",
           "misconception": "nonsense cause"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Gravity weakens with speed",
+            "More air particles are struck each second",
+            "The object's weight grows",
+            "The air thickens with altitude changes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "More air particles are struck each second"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "Nothing pushes the diver upward.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Equal to the weight, directed downward",
+            "Upward, launching the dive",
+            "Equal to the drag, directed upward",
+            "Zero, because they are momentarily still"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Equal to the weight, directed downward"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +381,24 @@
           "explanation": "The balance happens in mid-fall.",
           "misconception": "stage swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The drag falls to zero",
+            "The drag has grown to equal the weight",
+            "The weight has worn away to nothing",
+            "The object lands"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The drag has grown to equal the weight"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +434,26 @@
           "correct": false,
           "explanation": "g applies only while the weight is unopposed.",
           "misconception": "stage swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Zero"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +491,24 @@
           "explanation": "Weight-minus-drag shrinks as drag builds — the acceleration decays with it.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It is largest at release and decreases to zero",
+            "It grows throughout",
+            "It reverses halfway",
+            "It stays at g throughout"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is largest at release and decreases to zero"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +545,24 @@
           "explanation": "No oscillation appears in the law of record.",
           "misconception": "invented oscillation"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Falling back toward zero",
+            "Still rising slowly",
+            "Constant at its maximum for the fall",
+            "Oscillating around the balance point"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Constant at its maximum for the fall"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +598,26 @@
           "correct": false,
           "explanation": "Nothing doubles the forces here.",
           "misconception": "invented arithmetic"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "700 N, upward"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

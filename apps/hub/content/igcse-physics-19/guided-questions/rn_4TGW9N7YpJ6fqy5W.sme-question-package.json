@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Oxygen is not a stellar fuel at this level.",
           "misconception": "element error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "hydrogen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "The helium nucleus is the main product.",
           "misconception": "product error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "helium-4 and one neutron"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "Magnetism is not the balancing force here.",
           "misconception": "force error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a solid rocky crust",
+            "fusion heat supplies outward pressure that balances gravity",
+            "the solar wind pushing outward",
+            "magnetic fields around the star"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "fusion heat supplies outward pressure that balances gravity"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Solar fusion is the origin of the energy that sustains life.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "fusion generates the Earth's oxygen",
+            "fusion creates fossil fuels directly",
+            "the Sun's fusion output supplies the energy Earth depends on",
+            "fusion blocks harmful radiation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the Sun's fusion output supplies the energy Earth depends on"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Surface evaporation is unrelated to core fusion.",
           "misconception": "nonsense option"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "fuse into heavier elements"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -285,6 +381,24 @@
           "explanation": "Gravity pulls masses together, not apart.",
           "misconception": "direction error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "because gravity pulls them apart",
+            "because they carry no charge",
+            "because they are too heavy to move",
+            "their positive charges repel each other electrostatically"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "their positive charges repel each other electrostatically"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +434,24 @@
           "correct": false,
           "explanation": "Cooler nuclei move slower and fuse less.",
           "misconception": "direction error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "very high kinetic energy from extreme temperatures",
+            "adding electrons to the nuclei",
+            "wrapping them in shielding",
+            "cooling the nuclei down"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "very high kinetic energy from extreme temperatures"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +489,24 @@
           "explanation": "Only stellar cores reach the millions of degrees needed.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "in the Earth's mantle",
+            "in the cores of stars",
+            "in lightning strikes",
+            "in ordinary power-station boilers"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "in the cores of stars"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +543,24 @@
           "explanation": "Mass is unchanged by pressure.",
           "misconception": "nonsense reason"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "nuclei slow down and stick",
+            "the repulsion vanishes",
+            "nuclei are squeezed into a smaller space and collide more often",
+            "nucleon mass increases"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "nuclei are squeezed into a smaller space and collide more often"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +596,26 @@
           "correct": false,
           "explanation": "Still millions short of the requirement.",
           "misconception": "scale error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "millions of degrees"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

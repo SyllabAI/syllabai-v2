@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Those are i and r; n is not an angle.",
           "misconception": "symbol swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the number of refractions per second",
+            "the refractive index of the material",
+            "the speed of light in the material",
+            "the angle between the ray and the normal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the refractive index of the material"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The slowing is steady and predictable, not burst-like.",
           "misconception": "mechanism invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "faster than it did in the vacuum",
+            "at exactly the same speed",
+            "slower than it did in the vacuum",
+            "in bursts whose average is unpredictable"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "slower than it did in the vacuum"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,36 @@
           "explanation": "That adds the two values instead of dividing.",
           "misconception": "operation slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "1.789"
+            },
+            {
+              "id": "3",
+              "text": "5.91"
+            },
+            {
+              "id": "1",
+              "text": "0.396"
+            },
+            {
+              "id": "2",
+              "text": "0.169"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +219,24 @@
           "explanation": "The index differs between materials: about 1.5 for glass, about 2.4 for diamond.",
           "misconception": "overgeneralisation"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It is always larger than 1 and has no units.",
+            "It is identical for every transparent material.",
+            "It is measured in degrees.",
+            "It is always smaller than 1."
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is always larger than 1 and has no units."
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +272,27 @@
           "correct": false,
           "explanation": "Equipment plays no role in defining the angles.",
           "misconception": "context slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the normal",
+                    "normal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That inverts the rule; below hydrogen means no reaction with dilute acids.",
           "misconception": "rule inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Only the Group 1 metals",
+            "All metals without exception",
+            "Those above hydrogen in the reactivity series",
+            "Only metals below hydrogen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Those above hydrogen in the reactivity series"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "That triple belongs to carbonate reactions, not metals.",
           "misconception": "carbonate products copied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A metal oxide only",
+            "A salt, water and carbon dioxide",
+            "A salt and hydrogen gas",
+            "A salt and water"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A salt and hydrogen gas"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "They react far too well; danger, not inertness, excludes them.",
           "misconception": "reactivity misjudged"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They do not react with acids at all",
+            "They dissolve without any reaction",
+            "They react with acids explosively, which is far too dangerous",
+            "They are too rare and expensive"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They react with acids explosively, which is far too dangerous"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "Sulfuric acid always stamps sulfate onto the metal's name.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Zinc sulfate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The table shows clearly different vigour for each metal.",
           "misconception": "differences flattened"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Magnesium, the most reactive",
+            "Zinc, because it is the densest",
+            "All three react at the same speed",
+            "Iron, the least reactive of the three"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Iron, the least reactive of the three"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -296,6 +388,27 @@
           "explanation": "Carbon dioxide needs a carbonate; copper(II) oxide contains none.",
           "misconception": "carbonate products copied"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A salt and water",
+                    "salt and water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -331,6 +444,24 @@
           "correct": false,
           "explanation": "That is the metal family's pair; carbonates release carbon dioxide instead.",
           "misconception": "metal products copied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Carbon monoxide and steam",
+            "A salt, carbon dioxide and water",
+            "A salt and hydrogen",
+            "A salt and water only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A salt, carbon dioxide and water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -368,6 +499,24 @@
           "explanation": "The note names both families as bases that neutralise acids to salt and water.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Other acids",
+            "Metal carbonates only",
+            "Metal oxides and metal hydroxides",
+            "Reactive metals such as magnesium"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Metal oxides and metal hydroxides"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -404,6 +553,26 @@
           "explanation": "Carbonates are reactants in this family, never products.",
           "misconception": "reaction direction confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Zinc nitrate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -439,6 +608,24 @@
           "correct": false,
           "explanation": "Metals release hydrogen, and only if they are reactive enough; oxygen never appears here.",
           "misconception": "wrong gas assigned"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The solid is a metal carbonate, releasing carbon dioxide",
+            "The solid is a metal, releasing oxygen",
+            "The acid is boiling",
+            "The solid is a metal oxide, releasing hydrogen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The solid is a metal carbonate, releasing carbon dioxide"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

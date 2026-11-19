@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The circles close on themselves; they do not spiral in.",
           "misconception": "shape invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "spirals into the wire",
+            "straight parallel lines",
+            "lines from end to end of the wire",
+            "circles centred on the wire"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "circles centred on the wire"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "In-page directions are drawn as arrows, not crosses.",
           "misconception": "convention confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "into the page"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Circles get LARGER with radius; spacing is the cue.",
           "misconception": "geometry confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the circles change into squares",
+            "the circles get smaller with distance",
+            "the drawing cannot show strength",
+            "the circles are spaced further apart with distance"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the circles are spaced further apart with distance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The grip rule fixes the circulation sense.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "weighing the wire",
+            "counting the number of circles",
+            "applying the right-hand grip rule with the thumb along the current",
+            "measuring the wire with a ruler"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "applying the right-hand grip rule with the thumb along the current"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The pattern of one wire stands alone.",
           "misconception": "element invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the current direction marked with a cross or dot",
+            "coloured shading inside the circles",
+            "a second wire for comparison",
+            "at least ten circles"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the current direction marked with a cross or dot"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +377,24 @@
           "explanation": "Wire thickness is uniform around the coil.",
           "misconception": "geometry invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the coil's wire is thicker at the centre",
+            "the centre is closer to the battery",
+            "every turn contributes field in the same direction there",
+            "the coil stores charge at the centre"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "every turn contributes field in the same direction there"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +430,24 @@
           "correct": false,
           "explanation": "The central field has one clear direction.",
           "misconception": "chaos claim"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "crossing at the centre point",
+            "randomly curved in every direction",
+            "absent — the centre has no field",
+            "nearly straight along the axis, crowded together"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "nearly straight along the axis, crowded together"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +485,26 @@
           "explanation": "More turns, more contributing fields.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "strengthens it"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +541,24 @@
           "explanation": "The contributions still add — in the new direction.",
           "misconception": "vanishing claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the pattern is mirrored — every field direction reverses",
+            "the central field vanishes",
+            "the pattern is unchanged",
+            "the pattern becomes a straight-wire pattern"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the pattern is mirrored — every field direction reverses"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +594,24 @@
           "correct": false,
           "explanation": "Turn count changes the sum.",
           "misconception": "equality claim"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the many-turn coil has the stronger central field",
+            "neither has a central field",
+            "both have equal central fields",
+            "the single turn has the stronger central field"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the many-turn coil has the stronger central field"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

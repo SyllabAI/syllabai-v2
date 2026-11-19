@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Electrons are not created, only set in motion.",
           "misconception": "creation myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only carries protons",
+            "lets charge flow through it easily",
+            "blocks all charge movement",
+            "generates electrons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "lets charge flow through it easily"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": true,
           "explanation": "All four are metals, and metals conduct.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "silver, copper, aluminium, steel"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Electrons are negative.",
           "misconception": "sign slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "positively charged",
+            "locked to one ion",
+            "absent",
+            "delocalised and free to move"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "delocalised and free to move"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "The ions stay in the lattice.",
           "misconception": "particle confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "electrons"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Lattice vibration is unrelated to the electron mobility claim.",
           "misconception": "irrelevant effect"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "better it conducts"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -289,6 +385,26 @@
           "explanation": "Nothing in the definition involves attracting protons.",
           "misconception": "invented property"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "has no free charges"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -324,6 +440,26 @@
           "correct": false,
           "explanation": "Silver and aluminium conduct.",
           "misconception": "mixed list"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "rubber, plastic, glass, wood"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -361,6 +497,24 @@
           "explanation": "Contact lets the gathered charge be conducted away.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it touches another material that can carry the charge away",
+            "it heats up",
+            "the insulator melts",
+            "the charge doubles"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it touches another material that can carry the charge away"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -397,6 +551,24 @@
           "explanation": "Even insulators pass a little static.",
           "misconception": "absolutism myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "not at all, ever",
+            "far worse, though a little static can pass",
+            "identically",
+            "much better"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "far worse, though a little static can pass"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -432,6 +604,26 @@
           "correct": false,
           "explanation": "Some charge passes on contact.",
           "misconception": "absolutism myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "partially conducts across"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

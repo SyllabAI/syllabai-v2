@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That is the normal contact force.",
           "misconception": "force confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the gravitational pull acting on the object",
+            "the object's speed while falling",
+            "the amount of matter in an object",
+            "the push of the ground on the object"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the gravitational pull acting on the object"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Atmosphere thickness is not the driver.",
           "misconception": "nonsense factor"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "greater mass"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "The Moon's field is weaker than Earth's.",
           "misconception": "direction error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "zero, because the Moon has no gravity",
+            "identical, because mass is fixed",
+            "less, so lifting a mass there is easier",
+            "greater, so lifting is harder"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "less, so lifting a mass there is easier"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Their greater mass gives stronger fields.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "irrelevant to weight",
+            "exactly 10 N/kg",
+            "more than on Earth, making lifting harder",
+            "less than on Earth"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "more than on Earth, making lifting harder"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Mass does not decrease on arrival.",
           "misconception": "mass weight swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "mass, though its weight increases",
+            "mass and weight together",
+            "weight, though its mass decreases",
+            "weight, though its mass increases"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "mass, though its weight increases"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

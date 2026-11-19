@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -281,6 +281,26 @@
           "explanation": "Monoxide comes from incomplete burning and is toxic, not a greenhouse driver.",
           "misconception": "hazard swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Carbon dioxide"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +336,26 @@
           "correct": false,
           "explanation": "Without chlorine there is nothing to make hydrogen chloride.",
           "misconception": "composition ignored"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "PVC, which contains chlorine"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -353,6 +393,26 @@
           "explanation": "Limited oxygen supply leaves carbon only partly oxidised, producing the toxic gas.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Carbon monoxide"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -389,6 +449,24 @@
           "explanation": "Solvent action on plastics is irrelevant to its toxicity.",
           "misconception": "harm invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It stops the blood carrying as much oxygen as it should",
+            "It burns the skin on contact",
+            "It explodes in the lungs",
+            "It dissolves plastic equipment"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It stops the blood carrying as much oxygen as it should"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +502,24 @@
           "correct": false,
           "explanation": "The method is precisely the source of several hazardous gases.",
           "misconception": "hazard denied"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Burning makes the polymers biodegradable",
+            "Burning polymers gives out a great deal of heat energy",
+            "Incineration needs no fuel to run",
+            "Incineration produces no gases at all"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Burning polymers gives out a great deal of heat energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

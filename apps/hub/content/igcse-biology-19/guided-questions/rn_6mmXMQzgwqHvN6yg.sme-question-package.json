@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -283,6 +283,26 @@
           "explanation": "That is dangerously high and outside the limits.",
           "misconception": "figure wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "About 37 °C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -318,6 +338,26 @@
           "correct": false,
           "explanation": "Tears are negligible and not a named control route.",
           "misconception": "route invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Water lost in urine"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -355,6 +395,26 @@
           "explanation": "Reabsorption happens specifically from the collecting ducts.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the collecting ducts"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -391,6 +451,24 @@
           "explanation": "Sweating would lose still more water.",
           "misconception": "cross-system confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Increases sweating to cool the blood",
+            "Reabsorbs less water, producing dilute urine",
+            "Stops producing urine altogether",
+            "Reabsorbs more water, producing a small volume of concentrated urine"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Reabsorbs more water, producing a small volume of concentrated urine"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -426,6 +504,26 @@
           "correct": false,
           "explanation": "Adrenaline prepares the body for emergencies.",
           "misconception": "hormone swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "ADH"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

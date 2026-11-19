@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -281,6 +281,26 @@
           "explanation": "Igniting a flammable distillate is not part of this method.",
           "misconception": "unsafe technique"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "By smelling the distillate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +336,24 @@
           "correct": false,
           "explanation": "Flavouring happens in food factories, not in this purification.",
           "misconception": "purpose invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To dry the ester",
+            "To add flavour to the ester",
+            "To catalyse the reaction further",
+            "To remove the acidic impurities"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To remove the acidic impurities"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -353,6 +391,24 @@
           "explanation": "Carbonate plus acid always releases the gas, and the fizzing shows it leaving.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Ester vapour escaping early",
+            "Carbon dioxide released as the carbonate meets the acids",
+            "Oxygen bubbling out of solution",
+            "Hydrogen escaping from the ester"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Carbon dioxide released as the carbonate meets the acids"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -389,6 +445,27 @@
           "explanation": "The product is what the washing is protecting, not removing.",
           "misconception": "target reversed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The leftover ethanol",
+                    "leftover ethanol"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -424,6 +501,24 @@
           "correct": false,
           "explanation": "Neither metal nor its gas plays any part in this practical.",
           "misconception": "reaction crossed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Water only",
+            "Sodium chloride only",
+            "Ethanoic acid, sulfuric acid and ethanol",
+            "Magnesium and hydrogen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Ethanoic acid, sulfuric acid and ethanol"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

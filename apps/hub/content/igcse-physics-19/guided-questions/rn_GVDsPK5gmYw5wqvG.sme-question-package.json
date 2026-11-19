@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Radio and microwave are swapped here.",
           "misconception": "order shuffle"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "radio, visible, microwave, infrared, gamma ray, x-ray, ultraviolet",
+            "microwave, radio, visible, infrared, x-ray, ultraviolet, gamma ray",
+            "gamma ray, x-ray, ultraviolet, visible, infrared, microwave, radio",
+            "radio, gamma, infrared, x-ray, microwave, ultraviolet, visible"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "gamma ray, x-ray, ultraviolet, visible, infrared, microwave, radio"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "All EM waves are transverse.",
           "misconception": "family swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "are longitudinal",
+            "travel at speeds set by their frequency",
+            "travel at the same speed",
+            "need a material medium"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "travel at the same speed"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "Vision covers just the visible slice of the continuum.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the visible band only",
+                    "visible band only"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "That is the opposite of continuity.",
           "misconception": "inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the waves never stop moving",
+            "each band is physically separated from the next",
+            "all waves have the same wavelength",
+            "the bands blend without gaps into one spectrum"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the bands blend without gaps into one spectrum"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,26 @@
           "correct": false,
           "explanation": "The shared free-space speed is source-independent.",
           "misconception": "speed myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "at the same speed"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -289,6 +384,26 @@
           "explanation": "Microwaves are second from the long end.",
           "misconception": "band confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "radio waves"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -324,6 +439,26 @@
           "correct": true,
           "explanation": "Wavelength and frequency are inversely proportional.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "increases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -361,6 +496,26 @@
           "explanation": "Yellow is between green and red, not the extreme.",
           "misconception": "band confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "red"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -397,6 +552,24 @@
           "explanation": "All EM waves are transverse.",
           "misconception": "family swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a higher speed in free space",
+            "a longitudinal geometry",
+            "shorter wavelength and higher frequency",
+            "longer wavelength and lower frequency"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "shorter wavelength and higher frequency"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -432,6 +605,24 @@
           "correct": true,
           "explanation": "Higher frequency forces shorter wavelength at fixed speed.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "impossible to compare",
+            "longer, to keep the speed constant",
+            "shorter, by the inverse relationship",
+            "the same"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "shorter, by the inverse relationship"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

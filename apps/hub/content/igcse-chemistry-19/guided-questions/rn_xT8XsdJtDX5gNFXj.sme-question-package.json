@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Reactivity is a chemical property unrelated to how much is present.",
           "misconception": "links amount of substance to reactivity"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The amount of a substance",
+            "The reactivity of a substance",
+            "The mass of a substance",
+            "The volume of a substance"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The amount of a substance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "A mole is a bundle of 6.02 × 10^23 particles, not a single one.",
           "misconception": "treats the mole as a single particle"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "6.02 × 10^23 atoms"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "The masses follow the relative atomic masses, 12 g for carbon and 4 g for helium.",
           "misconception": "assumes equal moles must have equal masses"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They have the same mass",
+            "Carbon contains twice as many atoms",
+            "Helium contains more atoms because its atoms are lighter",
+            "They contain the same number of atoms"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They contain the same number of atoms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "The molar mass of an element equals its relative atomic mass written in grams.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "7 g"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,36 @@
           "correct": false,
           "explanation": "The oxygen contribution alone is 16 g; hydrogen adds 2 g more.",
           "misconception": "ignores the hydrogen contribution entirely"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "16 g"
+            },
+            {
+              "id": "3",
+              "text": "17 g"
+            },
+            {
+              "id": "1",
+              "text": "18 g"
+            },
+            {
+              "id": "2",
+              "text": "34 g"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "3",
+            "1",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -288,6 +394,24 @@
           "explanation": "Moles count particles of solids, liquids and gases alike.",
           "misconception": "restricts the mole to one state of matter"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Balances cannot measure solids",
+            "Balances measure grams while reactions proceed in molar ratios",
+            "Moles only apply to gases",
+            "Grams are only used for products"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Balances measure grams while reactions proceed in molar ratios"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -323,6 +447,26 @@
           "correct": false,
           "explanation": "Dividing the molar mass by the mass gives the reciprocal quantity.",
           "misconception": "inverts the moles-mass relationship"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "m ÷ M"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -360,6 +504,36 @@
           "explanation": "Mass = 0.250 × 65.38 = 16.345, which rounds to 16.3 g at three significant figures.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "0.0038 g"
+            },
+            {
+              "id": "4",
+              "text": "16.3 g"
+            },
+            {
+              "id": "2",
+              "text": "65.63 g"
+            },
+            {
+              "id": "3",
+              "text": "163 g"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "2",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -396,6 +570,26 @@
           "explanation": "The quotient is 0.0077125; the decimal point sits one position too high here.",
           "misconception": "places the decimal point one position too high"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "7.71 × 10^-3 mol"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -431,6 +625,36 @@
           "correct": false,
           "explanation": "58.5 g is the mass of one whole mole, but the sample holds only 0.100 mol.",
           "misconception": "reports the molar mass instead of the sample mass"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "0.0017 g"
+            },
+            {
+              "id": "2",
+              "text": "5.85 g"
+            },
+            {
+              "id": "1",
+              "text": "585 g"
+            },
+            {
+              "id": "4",
+              "text": "58.5 g"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A C=C bond marks an alkene and has nothing to do with acidity.",
           "misconception": "alkene confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A carbon-carbon double bond",
+            "-COO- between two chains",
+            "-OH on its own",
+            "-COOH at the end of a chain"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "-COOH at the end of a chain"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Hydrogens follow as 2n+1; n itself counts carbons in the chain.",
           "misconception": "subscript swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The number of oxygen atoms",
+            "The number of hydrogen atoms",
+            "Every carbon in the molecule including the acid carbon",
+            "Only the carbons in the alkyl chain"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Only the carbons in the alkyl chain"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "That one carbon is the acid carbon, which never enters the count.",
           "misconception": "total carbon misread"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Two, counting the carbon and one oxygen",
+            "Zero, because there is no alkyl chain at all",
+            "One, because one carbon is visible in the formula",
+            "It is undefined for the first member"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Zero, because there is no alkyl chain at all"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "R is the placeholder for the varying chain that the acid group sits upon.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A hydrocarbon chain of any length",
+            "A metal atom",
+            "A water molecule",
+            "The acid group itself"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A hydrocarbon chain of any length"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,26 @@
           "correct": false,
           "explanation": "That recipe fits alkenes, not the acid family.",
           "misconception": "family crossed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "RCOOH"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -281,6 +373,26 @@
           "explanation": "Butanoic acid carries four carbons, one more than shown.",
           "misconception": "count misread"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Propanoic acid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +428,26 @@
           "correct": false,
           "explanation": "That two-carbon structure is ethanoic acid.",
           "misconception": "member shifted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "CH3CH2CH2COOH"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -353,6 +485,24 @@
           "explanation": "The CH3 contributes one carbon and the -COOH contributes the other.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Two, one in the chain and one in the acid group",
+            "Three",
+            "One, because only the CH3 is visible",
+            "Four"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Two, one in the chain and one in the acid group"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -389,6 +539,24 @@
           "explanation": "Citric acid souring fruit is a different acid; vinegar is firmly ethanoic.",
           "misconception": "acid swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Ethanol with flavourings added",
+            "A solution of citric acid",
+            "An aqueous solution of ethanoic acid at about 5 percent",
+            "Pure ethanoic acid"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An aqueous solution of ethanoic acid at about 5 percent"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +592,24 @@
           "correct": false,
           "explanation": "The first four members carry no branches at all.",
           "misconception": "branching invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The -COOH group sits in the middle of the chain",
+            "Side branches appear from three carbons upward",
+            "Rings form once four carbons are present",
+            "One straight chain with the -COOH group at the end"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "One straight chain with the -COOH group at the end"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

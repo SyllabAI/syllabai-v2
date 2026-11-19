@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Colour may decorate the axis, but temperature is plotted.",
           "misconception": "axis error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "normally, hottest on the right",
+            "not at all",
+            "backwards, from hottest on the left to coolest on the right",
+            "as a colour bar only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "backwards, from hottest on the left to coolest on the right"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The bottom strip is white dwarfs' neighbourhood.",
           "misconception": "region swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a band running from top left to bottom right where most stars lie",
+            "a single point",
+            "a strip along the very bottom",
+            "a cluster in the top right"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a band running from top left to bottom right where most stars lie"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "That is the red giants' region.",
           "misconception": "region swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "above the main sequence on the right",
+            "below the main sequence, slightly to the left",
+            "in the centre only",
+            "at the extreme top left"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "below the main sequence, slightly to the left"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "Cool (right) and bright (top) is their home.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "in the bottom left corner",
+            "directly above the red giants, in the cool bright corner",
+            "below the main sequence",
+            "on the main sequence band only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "directly above the red giants, in the cool bright corner"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,26 @@
           "correct": false,
           "explanation": "Hot and bright, not cool.",
           "misconception": "corner swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "red supergiants"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -285,6 +377,24 @@
           "explanation": "That is 10 000 times, not 100 times.",
           "misconception": "power error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "10⁴",
+            "0.01",
+            "1",
+            "100 on the luminosity axis"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "100 on the luminosity axis"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +430,26 @@
           "correct": false,
           "explanation": "The Sun shines; its value is not zero.",
           "misconception": "value error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +487,24 @@
           "explanation": "Hotter sits further left.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "at the extreme right",
+            "towards the left side of the reversed temperature axis",
+            "nowhere, as it exceeds the axis",
+            "halfway only if the star is red"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "towards the left side of the reversed temperature axis"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +541,24 @@
           "explanation": "X is far too luminous for that region.",
           "misconception": "region swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "top right with the supergiants",
+            "bottom right with the red dwarfs",
+            "top left, among the hottest brightest main sequence stars",
+            "bottom left with the white dwarfs"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "top left, among the hottest brightest main sequence stars"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +594,24 @@
           "correct": false,
           "explanation": "Kelvin is the temperature axis, not luminosity.",
           "misconception": "axis mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "left as a sentence in the margin",
+            "divided by the Sun's radius",
+            "converted to solar units: 10 000 × 1 = 10⁴",
+            "plotted at 10 000 kelvin"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "converted to solar units: 10 000 × 1 = 10⁴"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

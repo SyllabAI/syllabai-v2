@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -282,6 +282,26 @@
           "explanation": "That formula belongs to the acid family, not the alcohols.",
           "misconception": "family crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "C2H5OH"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -317,6 +337,24 @@
           "correct": false,
           "explanation": "The stem stays; only the ending changes.",
           "misconception": "stem replaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The final e of the alkane name is replaced with ol",
+            "The stem is replaced with the word alcohol",
+            "A prefix hydro- is added to the alkane name",
+            "The suffix ane is replaced with ene"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The final e of the alkane name is replaced with ol"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -354,6 +392,24 @@
           "explanation": "The number is the address of the hydroxyl group along the three-carbon chain.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "That the OH group sits on the first carbon atom",
+            "That the alcohol is the first member of the family",
+            "That one water molecule is attached",
+            "That the molecule contains one carbon"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "That the OH group sits on the first carbon atom"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -390,6 +446,26 @@
           "explanation": "That belongs to the ketone family beyond this course.",
           "misconception": "family crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Propanol"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -425,6 +501,24 @@
           "correct": false,
           "explanation": "A double bond would make it an alkene; alcohol chains are single-bonded.",
           "misconception": "bond inserted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A four-carbon chain with a C=C double bond",
+            "A four-carbon chain with the OH group bonded to the end carbon",
+            "A four-carbon chain with OH on every carbon",
+            "A three-carbon chain with OH in the middle"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A four-carbon chain with the OH group bonded to the end carbon"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

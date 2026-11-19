@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "The comparison is a standard fact.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "shorter"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Solar-mass endpoint.",
           "misconception": "stage swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "red supergiant"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "Carbon is the lower-mass product.",
           "misconception": "element swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only carbon",
+            "even heavier elements such as iron",
+            "hydrogen",
+            "nothing, fusion stops"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "even heavier elements such as iron"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,26 @@
           "explanation": "Carbon is the quoted lower-mass product.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "carbon"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "Red signals the cooler surface.",
           "misconception": "colour inversion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "turns blue from compression",
+            "expands and cools, turning the star red",
+            "stays fixed in size",
+            "contracts and heats"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "expands and cools, turning the star red"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -525,6 +621,24 @@
           "explanation": "Stages do not reverse.",
           "misconception": "sequence error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "evaporates into gas",
+            "stops moving entirely",
+            "continues collapsing under gravity into a black hole",
+            "turns back into a red supergiant"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "continues collapsing under gravity into a black hole"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -560,6 +674,24 @@
           "correct": true,
           "explanation": "Both density and the light-trapping gravity are required.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "an extremely dense object with gravity so strong not even light escapes",
+            "a giant cloud of glowing gas",
+            "a star that emits mainly blue light",
+            "a hole in the Earth's surface"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "an extremely dense object with gravity so strong not even light escapes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -597,6 +729,26 @@
           "explanation": "Repulsion pushes apart; collapse needs attraction.",
           "misconception": "force error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "gravity"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -633,6 +785,24 @@
           "explanation": "Gravity overwhelms light there.",
           "misconception": "physics error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "light speeds up enormously",
+            "light orbits it as a satellite",
+            "light is unaffected",
+            "not even light can escape its gravity"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "not even light can escape its gravity"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +838,27 @@
           "correct": false,
           "explanation": "That endpoint belongs to solar-mass stars.",
           "misconception": "stage swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a black hole",
+                    "black hole"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

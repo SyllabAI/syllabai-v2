@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Carbon holds a middle seat between aluminium and zinc; it does not top the metal list.",
           "misconception": "non-metal misplaced at the top"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Potassium"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Carbon outranks several metals including zinc and iron; it is not the bottom entry.",
           "misconception": "carbon placed too low"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Between aluminium and zinc"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "Copper's seat below hydrogen blocks the acid reaction; only iron qualifies.",
           "misconception": "acid rule misapplied to copper"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Neither iron nor copper reacts with dilute acids",
+            "Both iron and copper react with dilute acids",
+            "Iron reacts with dilute acids but copper does not",
+            "Hydrogen displaces copper from its salts"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Iron reacts with dilute acids but copper does not"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,26 @@
           "explanation": "Magnesium sits above aluminium, which sits above zinc, so this rung-to-rung run is correct.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Magnesium, aluminium, zinc"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "Hydrogen, also a non-metal, holds a seat too; carbon's importance comes from its extraction role.",
           "misconception": "uniqueness claim invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because it is the element that extracts metals from their oxides",
+            "Because it is the only non-metal ever placed on the series",
+            "Because it reacts violently with cold water",
+            "Because it makes the series longer"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because it is the element that extracts metals from their oxides"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

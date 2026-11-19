@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Sulfur impurities produce SO2, a separate pollutant family.",
           "misconception": "pollutants merged"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "From the sulfur impurities in the fuel",
+            "From the catalytic converter",
+            "From the petrol molecules themselves",
+            "From the air drawn into the engine"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "From the air drawn into the engine"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Water plays no part in forming nitrogen oxides.",
           "misconception": "water invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The cold of the exhaust pipe",
+            "A spark plug made of platinum",
+            "The presence of water in the fuel line",
+            "The very high temperature and pressure reached there"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The very high temperature and pressure reached there"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "The trioxide needs a further step; direct burning gives the dioxide.",
           "misconception": "oxide overreached"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "SO2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The combustion of the impurity is the route; no petrol molecule contains sulfur by design.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because the fuel carries sulfur impurities that burn with it",
+            "Because nitrogen in air reacts with sulfur",
+            "Because sulfur dissolves from engine oil into the exhaust",
+            "Because the converter manufactures it from clean gases"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because the fuel carries sulfur impurities that burn with it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Smog and breathing effects are explicit in the note.",
           "misconception": "list truncated"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Photochemical smog and breathing difficulties for people with asthma",
+            "They dye surfaces black with soot",
+            "They cool the engine cylinders",
+            "They have no effects beyond acid rain"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Photochemical smog and breathing difficulties for people with asthma"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -281,6 +373,26 @@
           "explanation": "No chlorine is present anywhere in this story.",
           "misconception": "acid invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Sulfuric acid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +428,24 @@
           "correct": false,
           "explanation": "Sulfuric acid is the sulfur dioxide route; NO2 makes the two nitrogen acids.",
           "misconception": "routes crossed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Only nitric acid, with nothing else",
+            "Sulfuric acid only",
+            "Nitrogen gas and hydrogen gas",
+            "A mixture of nitrous and nitric acids"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A mixture of nitrous and nitric acids"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -353,6 +483,26 @@
           "explanation": "The note records lightning as a natural trigger for nitrogen monoxide and dioxide formation.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Lightning strikes"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -389,6 +539,24 @@
           "explanation": "Damage to aquatic organisms and irritation of lungs and eyes are explicit.",
           "misconception": "biology excluded"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It bleaches the colour from fabrics only",
+            "Corrosion of metal structures and carbonate statues",
+            "It strengthens concrete buildings",
+            "It has no effect on living things"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Corrosion of metal structures and carbonate statues"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +592,24 @@
           "correct": false,
           "explanation": "The delivery is rainfall, not a gas pouring downhill.",
           "misconception": "mechanism misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The acids fall as dry powder from the clouds",
+            "They never reach the ground at all",
+            "Cloud droplets grow heavier as they rise and cool, then fall as rain",
+            "They sink to the ground as heavy gas"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Cloud droplets grow heavier as they rise and cool, then fall as rain"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

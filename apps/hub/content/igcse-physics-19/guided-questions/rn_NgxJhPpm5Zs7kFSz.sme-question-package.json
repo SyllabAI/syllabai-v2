@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A working circuit carries current.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "in neither direction",
+            "back and forth rapidly",
+            "one way only, positive to negative",
+            "from negative to positive only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "one way only, positive to negative"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,27 @@
           "correct": true,
           "explanation": "A battery's positive and negative terminals stay fixed.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a battery",
+                    "battery"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +156,26 @@
           "explanation": "A battery in a closed circuit drives current.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "direct current"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +212,24 @@
           "explanation": "An open switch stops the flow.",
           "misconception": "switch slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "in alternating directions",
+            "in one direction around the circuit",
+            "nowhere",
+            "only while the switch is open"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "in one direction around the circuit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +265,24 @@
           "correct": false,
           "explanation": "The trace is steady, not noisy.",
           "misconception": "trace invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a sawtooth",
+            "a sine wave",
+            "a random scatter",
+            "a flat line at fixed height"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a flat line at fixed height"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -290,6 +385,26 @@
           "explanation": "The polarity swaps — that is the point.",
           "misconception": "contradiction"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "continuous reversal of direction"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -325,6 +440,26 @@
           "correct": false,
           "explanation": "That is transmission-line territory.",
           "misconception": "value slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "230 V"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -362,6 +497,36 @@
           "explanation": "UK mains alternates at 50 Hz.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "230 Hz"
+            },
+            {
+              "id": "3",
+              "text": "5 Hz"
+            },
+            {
+              "id": "4",
+              "text": "50 Hz"
+            },
+            {
+              "id": "2",
+              "text": "60 Hz"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "4",
+            "2",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -398,6 +563,24 @@
           "explanation": "They connect to the circuit by definition.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "insulated from the circuit",
+            "both always negative",
+            "fixed positive and negative",
+            "identical and constantly swapping polarity"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "identical and constantly swapping polarity"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -433,6 +616,26 @@
           "correct": false,
           "explanation": "Photocopiers consume mains electricity, they do not make it.",
           "misconception": "device confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "generators"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

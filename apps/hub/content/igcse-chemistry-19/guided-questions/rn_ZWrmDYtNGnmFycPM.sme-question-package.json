@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Dissolving releases the ions at room temperature; heating is not required.",
           "misconception": "heating made a condition"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Hydrogen ions, H+"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Water is the solvent; the alkali adds hydroxide ions to it.",
           "misconception": "dissolution misdescribed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Negative hydroxide ions, OH-"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "Hazard is not what pH reports; the ion concentration is.",
           "misconception": "safety conflated with chemistry"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The total volume of liquid present",
+            "The temperature of the solution",
+            "The amount of hydrogen ions present in the solution",
+            "How dangerous the solution is to touch"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The amount of hydrogen ions present in the solution"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "The released H+ ions make the solution acidic, and litmus signals acidity with red.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because hydrochloric acid contains chloride ions",
+            "Because litmus reacts to the green colour of the solution",
+            "Because the dissolved acid releases hydrogen ions into the water",
+            "Because water itself is acidic"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because the dissolved acid releases hydrogen ions into the water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "Pure water reads pH 7; a reading of 13 requires dissolved alkali.",
           "misconception": "solvent-only assumption"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Neither ion type, since 13 is neutral",
+            "Water molecules only",
+            "Hydroxide ions, OH-, making it strongly alkaline",
+            "Hydrogen ions, H+, making it strongly acidic"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Hydroxide ions, OH-, making it strongly alkaline"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

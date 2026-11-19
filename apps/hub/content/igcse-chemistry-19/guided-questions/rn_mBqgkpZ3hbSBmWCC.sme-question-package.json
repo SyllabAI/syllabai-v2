@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Electron totals differ at every step down the group; only the outer count is shared.",
           "misconception": "total electron count assumed equal"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They have the same number of occupied shells",
+            "They have similar atomic masses",
+            "They have the same total number of electrons",
+            "Their atoms each carry the same count of outer-shell electrons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Their atoms each carry the same count of outer-shell electrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The group counts only the outer shell, not every electron the atom owns.",
           "misconception": "total count confused with outer count"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "How many electrons sit in the outer shell",
+            "How many electrons the atom loses in every reaction",
+            "The atom's total electron count",
+            "How many shells the atom fills in total"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "How many electrons sit in the outer shell"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Only most noble gases carry eight; helium's lone shell closes at two.",
           "misconception": "exception denied"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Its outer shell holds eight electrons and its inner shell two",
+            "It is not actually a noble gas",
+            "It has eight outer electrons like every other noble gas",
+            "Its single shell holds only 2 electrons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Its single shell holds only 2 electrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,27 @@
           "explanation": "The Group 1 metals react more and more vigorously with each step down the group.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "It increases",
+                    "increases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "The observed chemistry pairs Group 1 metals with Group 7 elements, not with each other.",
           "misconception": "reaction partners misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It reacts only with other Group 1 metals",
+            "It reacts with chlorine to form a covalent compound",
+            "It does not react with chlorine at all",
+            "It reacts similarly with chlorine to form an ionic compound"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It reacts similarly with chlorine to form an ionic compound"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -286,6 +379,24 @@
           "explanation": "They are not short of electrons; they have exactly the full set their outer shell can hold.",
           "misconception": "electron poverty assumed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They have too few electrons to react",
+            "Their nuclei are unstable",
+            "They are metals that resist reaction",
+            "Their outer shells are already full"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Their outer shells are already full"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -321,6 +432,24 @@
           "correct": false,
           "explanation": "Two-atom units are diatomic molecules, the opposite of monatomic.",
           "misconception": "diatomic assumption"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They exist as two-atom molecules",
+            "They are all radioactive",
+            "They carry an electric charge",
+            "They exist as single atoms"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They exist as single atoms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -358,6 +487,36 @@
           "explanation": "Argon fills two, then eight, then eight, completing its outer shell in the simplified model.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "2,8,8,8"
+            },
+            {
+              "id": "1",
+              "text": "2,8"
+            },
+            {
+              "id": "2",
+              "text": "2,8,1"
+            },
+            {
+              "id": "4",
+              "text": "2,8,8"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -394,6 +553,24 @@
           "explanation": "Eighteen appears inside krypton's inner shells (2,8,18,8); the outer count is still eight.",
           "misconception": "inner-shell total misread as the outer count"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Neon, with seven outer electrons",
+            "Krypton, with eighteen outer electrons",
+            "Helium, with eight like the others",
+            "Helium, with two outer electrons"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Helium, with two outer electrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -429,6 +606,26 @@
           "correct": false,
           "explanation": "They are gases, and their defining trait is not reacting readily.",
           "misconception": "state and reactivity misstated"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Colourless, non-flammable gases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

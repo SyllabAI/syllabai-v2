@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The electrical transfer warms, not cools.",
           "misconception": "direction slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the voltage cools the wire",
+            "moving electrons collide inside the wire",
+            "protons flow through the metal",
+            "the resistor generates charge"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "moving electrons collide inside the wire"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": true,
           "explanation": "Some of the transferred energy escapes to the surroundings by heating.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "partly dissipated to the surroundings as heat",
+            "destroyed",
+            "converted into light only",
+            "stored as charge"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "partly dissipated to the surroundings as heat"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,27 @@
           "explanation": "A radio is an electronic device.",
           "misconception": "contrast slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "an electric toaster",
+                    "electric toaster"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Energy is measured in joules, current in amperes.",
           "misconception": "unit confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a kind of force",
+            "a store of electrons",
+            "the rate of flow of charge",
+            "a unit of energy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the rate of flow of charge"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "Static is unrelated to the mains element.",
           "misconception": "mechanism myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "static discharge",
+            "trapped sunlight",
+            "friction with the pan base",
+            "electrical transfer of energy in the element"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "electrical transfer of energy in the element"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -306,6 +306,24 @@
           "explanation": "Magnesium, zinc and iron all react with dilute acids; the rule is about position, not group membership.",
           "misconception": "scope narrowed wrongly"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "All metals react with dilute acids",
+            "Only metals below hydrogen",
+            "Only the Group 1 metals",
+            "Only those above hydrogen in the reactivity series"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Only those above hydrogen in the reactivity series"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -341,6 +359,24 @@
           "correct": false,
           "explanation": "The opposite is true: they react so vigorously that the reaction is dangerous.",
           "misconception": "non-reaction mistaken for the hazard"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because they dissolve the glass containers",
+            "Because their reactions with acids are explosive",
+            "Because they do not react with acids at all",
+            "Because they are too rare to use in schools"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because their reactions with acids are explosive"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -378,6 +414,26 @@
           "explanation": "Metal plus acid gives salt plus hydrogen, and the salt of zinc with sulfuric acid is zinc sulfate.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Zinc sulfate and hydrogen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -414,6 +470,24 @@
           "explanation": "That is the correct equation for sulfuric acid, not for the hydrochloric acid named in the question.",
           "misconception": "right pattern, wrong acid"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Fe + HCl gives FeCl + H2",
+            "Fe + H2SO4 gives FeSO4 + H2",
+            "Fe + 2HCl gives FeCl2 + H2",
+            "Fe + 2HCl gives FeCl3 + H2"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Fe + 2HCl gives FeCl2 + H2"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -449,6 +523,24 @@
           "correct": false,
           "explanation": "Neither acid works; the position below hydrogen blocks both chloride and sulfate reactions.",
           "misconception": "acid-specific exception invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They react only with sulfuric acid",
+            "They react explosively, being dense metals",
+            "They do not react, which is why they resist acids in everyday use",
+            "They react only when powdered finely"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They do not react, which is why they resist acids in everyday use"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

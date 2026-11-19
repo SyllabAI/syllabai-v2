@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Crystal size depends on evaporation speed, not on leftover solid.",
           "misconception": "crystal-size purpose invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To speed up the filtering step",
+            "So the crystals grow larger",
+            "So that all of the acid reacts",
+            "To make the salt more soluble"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "So that all of the acid reacts"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "There is nothing left for the acid to react with, so it stays as acid.",
           "misconception": "acid-to-salt conversion imagined"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It would evaporate away harmlessly first",
+            "It would become dangerously concentrated",
+            "It would neutralise the excess base",
+            "It would turn into more salt"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It would become dangerously concentrated"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,26 @@
           "explanation": "Evaporation removes water later; it cannot separate a solid from a solution.",
           "misconception": "separation methods swapped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "By filtration"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The first crystals mark the point where the solution is concentrated enough to crystallise.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Before the solution is warm",
+            "Only when every drop of water has gone",
+            "When the solution starts boiling vigorously",
+            "When small crystals begin to appear"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "When small crystals begin to appear"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Repeat filtering changes nothing about how the crystals grow.",
           "misconception": "ritual repetition"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "By letting the solution evaporate slowly over several days",
+            "By heating the solution as fast as possible",
+            "By adding extra acid at the end",
+            "By filtering more than once"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "By letting the solution evaporate slowly over several days"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -283,6 +375,24 @@
           "explanation": "Hydrochloric acid would give the chloride, not the sulfate.",
           "misconception": "wrong acid chosen"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Copper(II) carbonate and dilute hydrochloric acid",
+            "Copper metal and dilute sulfuric acid",
+            "Copper(II) sulfate and water",
+            "Copper(II) oxide and dilute sulfuric acid"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Copper(II) oxide and dilute sulfuric acid"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -318,6 +428,24 @@
           "correct": false,
           "explanation": "That is the anhydrous copper(II) sulfate water test, not this reaction.",
           "misconception": "water-test colours misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A colour change from blue to white",
+            "Effervescence as carbon dioxide is released",
+            "Nothing, because carbonates are insoluble",
+            "The mixture turns alkaline"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Effervescence as carbon dioxide is released"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -355,6 +483,24 @@
           "explanation": "The safe window is above hydrogen yet below the metals that react explosively.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Magnesium, which sits above hydrogen but is not dangerously reactive",
+            "Gold, which is unreactive but above hydrogen",
+            "Sodium, which reacts explosively",
+            "Copper, which is below hydrogen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Magnesium, which sits above hydrogen but is not dangerously reactive"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -391,6 +537,26 @@
           "explanation": "Those are fragments of the reactants, not the products.",
           "misconception": "ions named as products"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Copper(II) sulfate and water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -426,6 +592,24 @@
           "correct": false,
           "explanation": "Filtration removes solid; it adds nothing to the solution.",
           "misconception": "concept misplaced"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "So only the salt and water remain in the solution",
+            "To add water of crystallisation",
+            "To concentrate the acid further",
+            "To remove the blue colour"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "So only the salt and water remain in the solution"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

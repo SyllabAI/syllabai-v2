@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The coil gains voltage, not permanent magnetism.",
           "misconception": "outcome confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "an induced alternating voltage in the coil",
+            "a magnetic force on the coil",
+            "permanent magnetism in the coil",
+            "a steady direct voltage"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "an induced alternating voltage in the coil"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "The field through the coil must change.",
           "misconception": "geometry error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "winding more wire but never moving anything",
+            "rotating a coil of wire inside a magnetic field",
+            "holding a coil still inside a steady field",
+            "sliding a magnet along beside the coil without entering"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "rotating a coil of wire inside a magnetic field"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Resistance is not the cause of alternation.",
           "misconception": "electrical confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the wires overheat and flicker",
+            "the rotation reverses the field change every half turn",
+            "the magnet switches off twice per turn",
+            "the coil's resistance oscillates"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the rotation reverses the field change every half turn"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "Faster change of field gives larger induced voltage.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "spinning the magnet faster"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The lamp needs the circuit to glow at all.",
           "misconception": "absurd action"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "remove turns from the generator coil",
+            "disconnect the lamp briefly",
+            "crank faster to induce a larger voltage",
+            "crank more slowly"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "crank faster to induce a larger voltage"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +377,24 @@
           "explanation": "The dynamo is a working generator.",
           "misconception": "denial claim"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "current whose direction is random",
+            "no current at all",
+            "alternating current",
+            "direct current in one direction only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "direct current in one direction only"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +430,24 @@
           "correct": false,
           "explanation": "The coil keeps spinning; the contacts follow it.",
           "misconception": "function invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "amplifies the induced voltage",
+            "disconnects the circuit twice per turn",
+            "swaps the external connection every half turn",
+            "stops the coil from spinning"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "swaps the external connection every half turn"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +485,24 @@
           "explanation": "Rectification happens outside the coil, at the contacts.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "direct current, because it is a dynamo",
+            "alternating, as in any rotating generator",
+            "zero",
+            "steadily increasing"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "alternating, as in any rotating generator"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +539,26 @@
           "explanation": "Axle length is electrically irrelevant.",
           "misconception": "irrelevant change"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "two full slip rings"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +594,24 @@
           "correct": false,
           "explanation": "More rotation means more voltage, not none.",
           "misconception": "denial claim"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "goes out",
+            "glows brighter, with current still flowing one way",
+            "glows the same",
+            "starts flickering in polarity"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "glows brighter, with current still flowing one way"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

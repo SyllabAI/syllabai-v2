@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Resolution is an instrument property, not an experimental variable.",
           "misconception": "category slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "independent variable"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "More points improve reliability, but never give the index.",
           "misconception": "method confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the area under the line",
+            "the y-intercept",
+            "the gradient of the line",
+            "the number of data points"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the gradient of the line"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "True but incomplete — the block and light frequency are controlled too.",
           "misconception": "understatement"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the incidence angle, the refraction angle and the block used",
+            "the protractor cost, the room colour and the time of day",
+            "the beam width only",
+            "the block used, the beam width and the light frequency"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the block used, the beam width and the light frequency"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Graphs are plotted afterwards from the results table.",
           "misconception": "stage confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "plot the graph of sin i against sin r",
+            "draw the outline of the block",
+            "provide a narrow beam of light that refracts in the block",
+            "measure the angles to 1°"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "provide a narrow beam of light that refracts in the block"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "It affects accuracy, not safety.",
           "misconception": "category slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "no measurable effect on the results",
+            "a random error reduced by repeating trials",
+            "a safety hazard rather than an error",
+            "a systematic error; use a set square to draw them"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a systematic error; use a set square to draw them"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

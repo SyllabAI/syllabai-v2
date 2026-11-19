@@ -41,5 +41,8 @@ feed and violations FAIL-CLOSED before landing.
 The three live courses (chem/phys/bio) predate this law and are
 grandfathered in **report mode**: their budget drift (bridge/opener/layer
 word counts) is reported at import and by the census, but never blocks.
-The P3 backfill generation that authors `interactions[]` re-pins those
-artifacts and must declare `chunk_law: "enforce"`.
+The P3 backfill landed in two declared runs: **run-002** (the
+`interactions[]` generation — packages-only delta, zero lesson bytes, report
+mode) and **run-003** (the beat-compression lane — re-pins the over-budget
+beats and flips `chunk_law: "enforce"`, so the drift the census table makes
+visible can never re-land).

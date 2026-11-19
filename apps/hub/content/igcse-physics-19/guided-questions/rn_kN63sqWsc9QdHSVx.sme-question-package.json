@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Resolution is an instrument property, not a variable.",
           "misconception": "confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The applied force",
+                    "applied force"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,27 @@
           "correct": false,
           "explanation": "Repeats are method, not the measured variable.",
           "misconception": "confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The extension",
+                    "extension"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +159,36 @@
           "explanation": "Two orders too large.",
           "misconception": "conversion slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "1.0 N"
+            },
+            {
+              "id": "3",
+              "text": "10 N"
+            },
+            {
+              "id": "1",
+              "text": "0.1 N"
+            },
+            {
+              "id": "4",
+              "text": "100 N"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +225,24 @@
           "explanation": "The marker's alignment with the scale is the accuracy device of record.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Add force to the spring",
+            "Clamp the stand",
+            "Hold the masses",
+            "Read the extension from the ruler accurately"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Read the extension from the ruler accurately"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +278,24 @@
           "correct": false,
           "explanation": "Mass checking is not the rationale.",
           "misconception": "invented rationale"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The masses can be checked for wear",
+            "An average length is calculated at each load",
+            "Three different springs can be compared",
+            "The spring stretches further each time"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An average length is calculated at each load"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

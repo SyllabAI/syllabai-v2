@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Substitution with halogens builds haloalkanes, a different family.",
           "misconception": "route crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "An alkene and water",
+            "A metal and a carbonate",
+            "An alcohol and a carboxylic acid",
+            "An alkane and a halogen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An alcohol and a carboxylic acid"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "No carbonate is present, so no carbon dioxide can form.",
           "misconception": "gas invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Water"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,26 @@
           "explanation": "Phosphoric acid catalyses ethene hydration, a different process.",
           "misconception": "catalyst crossed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Concentrated sulfuric acid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "The R-COO-R arrangement is the ester signature.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A terminal -COOH group",
+            "A lone -OH group",
+            "A carbon-carbon double bond",
+            "A -COO- link sitting between two carbon chains"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "A -COO- link sitting between two carbon chains"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Propyl would need propanol, one carbon longer than ethanol.",
           "misconception": "chain lengthened"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Ethyl ethanoate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -281,6 +377,26 @@
           "explanation": "The acid half stays ethanoate because ethanoic acid supplies it.",
           "misconception": "acid half misread"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Methyl ethanoate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +432,26 @@
           "correct": false,
           "explanation": "That pair would be named methyl propanoate, the mirror mix-up.",
           "misconception": "parts reversed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Propanol and methanoic acid"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -353,6 +489,24 @@
           "explanation": "Easy evaporation carries the scent, and the smells are exactly the sweet kind wanted.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They are the cheapest liquids available",
+            "They are volatile with distinctive pleasant smells",
+            "They are completely unreactive on skin",
+            "They dissolve metal salts readily"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They are volatile with distinctive pleasant smells"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -389,6 +543,24 @@
           "explanation": "Catalysts never appear in the product name.",
           "misconception": "role invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The four-carbon chain donated by the alcohol",
+            "The catalyst used",
+            "The chain donated by the acid",
+            "The water released"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The four-carbon chain donated by the alcohol"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +596,24 @@
           "correct": false,
           "explanation": "Esters boil below water in many cases, which is why they smell at all.",
           "misconception": "boiling point inflated"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Volatility makes them gases at room temperature",
+            "Their low boiling points let vapours reach the nose readily",
+            "They never evaporate at room temperature",
+            "They only evaporate above 100 degrees"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Their low boiling points let vapours reach the nose readily"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

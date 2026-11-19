@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Coal is non-renewable.",
           "misconception": "category slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "wind, hydroelectricity, geothermal, tidal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Geography does not define renewability.",
           "misconception": "criterion swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it never needs a generator",
+            "it produces no carbon dioxide at all",
+            "it is replenished at least as fast as it is used up",
+            "it can be used in any country"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it is replenished at least as fast as it is used up"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Wind and water burn nothing.",
           "misconception": "resource swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "sunlight focused on panels",
+            "a turbine that turns a generator",
+            "burning fuel in a furnace",
+            "a dam holding water at height"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a turbine that turns a generator"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Light is converted directly, no spinning shaft involved.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they store electricity for later use",
+            "they heat water in pipes for households",
+            "they generate electricity without turning a turbine",
+            "they can never be used on a large scale"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they generate electricity without turning a turbine"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "No such rule is part of the physics.",
           "misconception": "invented mechanism"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "each resource produces at different times, so a mix covers the gaps",
+            "a single resource would wear out the generators",
+            "the law requires at least three resources",
+            "electricity from different resources is different"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "each resource produces at different times, so a mix covers the gaps"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -525,6 +617,26 @@
           "explanation": "Gas is a separate fossil route.",
           "misconception": "resource swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "hot rocks underground"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -560,6 +672,24 @@
           "correct": true,
           "explanation": "Heat in the rocks is the opening deposit.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the gravitational store of dammed water",
+            "the kinetic store of the wind",
+            "the nuclear store of the Sun",
+            "the thermal store of the hot rocks"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the thermal store of the hot rocks"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -597,6 +727,24 @@
           "explanation": "Cells convert; they do not store.",
           "misconception": "function swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they store sunlight for winter use",
+            "they need the hottest water of any resource",
+            "they generate electricity without a turbine",
+            "they are the only renewable resource"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they generate electricity without a turbine"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +781,24 @@
           "explanation": "Generation is the solar cells' role.",
           "misconception": "technology swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they spin small turbines on rooftops",
+            "they generate electricity for the National Grid",
+            "they cool houses in summer",
+            "they warm water in pipes for households to use"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they warm water in pipes for households to use"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +834,24 @@
           "correct": false,
           "explanation": "The rocks heat the water, not the reverse.",
           "misconception": "direction slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "rocks kinetic, water thermal, turbine thermal",
+            "rocks thermal, water thermal, turbine kinetic, generator kinetic",
+            "water thermal, rocks thermal, generator kinetic",
+            "rocks thermal, water kinetic, turbine thermal"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "rocks thermal, water thermal, turbine kinetic, generator kinetic"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

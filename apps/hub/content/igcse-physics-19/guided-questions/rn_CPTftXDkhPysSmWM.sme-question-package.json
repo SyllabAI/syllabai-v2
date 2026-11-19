@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "Neutrons always accompany the split.",
           "misconception": "count error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "two radioactive daughter nuclei and two or three neutrons",
+            "three daughter nuclei and no neutrons",
+            "one daughter nucleus and one neutron",
+            "two stable daughters with nothing else emitted"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "two radioactive daughter nuclei and two or three neutrons"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,26 @@
           "correct": false,
           "explanation": "Alphas are not the listed fission emission.",
           "misconception": "alpha confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "gamma rays"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +395,24 @@
           "explanation": "The stored nuclear energy becomes motion of the products.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "nuclear potential energy has been transferred to their kinetic energy",
+            "the reactor core heats them up",
+            "air pressure pushes them apart",
+            "gravity pulls the fragments together"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "nuclear potential energy has been transferred to their kinetic energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +449,26 @@
           "explanation": "U-236 is the pre-split nucleus, not a daughter.",
           "misconception": "stage error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "barium-144 and krypton-89"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +504,26 @@
           "correct": false,
           "explanation": "That overcounts the small neutron yield.",
           "misconception": "count error"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "two or three"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
