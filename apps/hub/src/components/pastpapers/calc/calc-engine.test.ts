@@ -500,7 +500,7 @@ describe("(C15) the model registry — the chase card's verbatim data", () => {
     for (const id of ["fx-83gt-cw", "fx-85gt-cw"] as const) {
       expect(CALC_MODELS[id].implementedApps).toEqual(["calculate", "statistics", "table"]);
     }
-    expect(CALC_MODELS["fx-991cw"].implementedApps).toEqual(["calculate", "statistics", "table", "equation"]);
+    expect(CALC_MODELS["fx-991cw"].implementedApps).toEqual(["calculate", "statistics", "table", "equation", "inequality"]); // phase F: Inequality joins the 991CW only
   });
   test("(C15b) the level→model map is MG's own (gcse/ks2 → 83GT; a-level/igcse/international → 991CW)", () => {
     expect(MODEL_BY_LEVEL.gcse).toBe("fx-83gt-cw");

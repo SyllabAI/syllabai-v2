@@ -128,7 +128,8 @@ export const CALC_MODELS: Record<CalcModelId, CalcModel> = {
     // phase D: the Equation app joins the enabled set ON THE 991CW —
     // the GT's captured home mask (MG's own rollout) has no Equation
     // slot, and we mirror MG's home masks (the exam-honest scope law)
-    implementedApps: ["calculate", "statistics", "table", "equation"],
+    // phase F: the Inequality app joins the same way (the 991CW only)
+    implementedApps: ["calculate", "statistics", "table", "equation", "inequality"],
     shiftOverrides: SHIFT_OVERRIDES_991,
     features: { recurringDecimal: false, complex: true, engineerSymbol: true },
   },

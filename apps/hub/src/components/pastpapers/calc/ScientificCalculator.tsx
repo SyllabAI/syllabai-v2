@@ -56,6 +56,7 @@ import {
   buildNumberTable,
   SIMUL_UNKNOWN_NAMES,
   solveByNewton,
+  solveInequality,
   solvePolynomial,
   solveSimultaneous,
   solverVariables,
@@ -65,6 +66,9 @@ import {
   statEntryToValue,
   TABLE_ROWS_BOTH,
   TABLE_ROWS_SINGLE,
+  type IneqInterval,
+  type IneqRelation,
+  type IneqResult,
   type PolyResult,
   type SimulResult,
   type SolverResult,
@@ -145,7 +149,13 @@ type Screen =
   | "eq-solver-in"
   | "eq-solver-target"
   | "eq-solver-init"
-  | "eq-solver-res";
+  | "eq-solver-res"
+  // phase F: the Inequality (the manual's flow — the 991CW only, the
+  // GT's captured home mask has no Inequality slot)
+  | "ineq-degree"
+  | "ineq-type"
+  | "ineq-coeff"
+  | "ineq-sol";
 
 interface KeyDef {
   label: string;
@@ -435,6 +445,16 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
   const [solverResult, setSolverResult] = useState<SolverResult | null>(null);
   const [solverTargetCursor, setSolverTargetCursor] = useState(0);
   const [solverTargets, setSolverTargets] = useState<CalcVarName[]>([]);
+  // ── phase F: the Inequality session (the degree menu → the type menu
+  // → the Coefficient Editor → the solution; the manual's back-nav) ──
+  const [ineqDegree, setIneqDegree] = useState<2 | 3 | 4 | null>(null);
+  const [ineqRel, setIneqRel] = useState<IneqRelation | null>(null);
+  const [ineqCoeffs, setIneqCoeffs] = useState<string[]>([]);
+  const [ineqField, setIneqField] = useState(0);
+  const [ineqEntry, setIneqEntry] = useState("");
+  const [ineqResult, setIneqResult] = useState<IneqResult | null>(null);
+  const [ineqDegCursor, setIneqDegCursor] = useState(0);
+  const [ineqTypeCursor, setIneqTypeCursor] = useState(0);
   const [calcSnapshot, setCalcSnapshot] = useState<CalcState | null>(null);
   const [appError, setAppError] = useState<string | null>(null);
 
@@ -759,6 +779,55 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       setAppError("Syntax ERROR");
     }
   };
+  // ── phase F: the Inequality flow — the manual's laws: the degrees
+  // menu (2nd/3rd/4th — no linear) → the symbol menu (>, <, ≥, ≤ — the
+  // manual's order) → the Coefficient Editor → the solution with the
+  // "No Solution"/"All Real Numbers" laws; the back-nav chain the
+  // manual gives (the solution → the editor → the type menu → the
+  // degrees menu). The empty entries read as 0 (the eq editors' law). ──
+  const INEQ_LETTERS = ["a", "b", "c", "d", "e"];
+  const ineqTypeLabel = (rel: IneqRelation): string => {
+    const t = ineqDegree === 2 ? "ax²+bx+c" : ineqDegree === 3 ? "ax³+bx²+cx+d" : "ax⁴+bx³+cx²+dx+e";
+    return `${t}${rel}0`;
+  };
+  const commitIneqCell = (atField?: number) => {
+    setAppError(null);
+    const field = atField ?? ineqField;
+    const text = ineqEntry || "0";
+    try {
+      statEntryToValue(text);
+    } catch {
+      setAppError("Syntax ERROR");
+      return;
+    }
+    const last = field === ineqDegree!; // degree+1 coefficients, 0-indexed
+    setIneqCoeffs((cs) => {
+      const next = [...cs];
+      next[field] = text;
+      return next;
+    });
+    setIneqEntry("");
+    if (last) {
+      // the final coefficient commits → solve (the eq editors' flow)
+      const all = [...ineqCoeffs.slice(0, field), text];
+      solveIneqNow(all);
+    } else {
+      setIneqField(Math.min(field + 1, ineqDegree!));
+    }
+  };
+  const solveIneqNow = (vals: string[]) => {
+    setAppError(null);
+    if (!ineqDegree || !ineqRel) return;
+    try {
+      const desc = vals.map((t) => statEntryToValue(t || "0"));
+      const r = solveInequality(ineqDegree, desc, ineqRel);
+      setIneqResult(r);
+      setScreen("ineq-sol");
+    } catch (e) {
+      if (e instanceof CalcError) setAppError(e.cls);
+      else throw e;
+    }
+  };
   const qrCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const relayRef = useRef<{
@@ -856,6 +925,21 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       setEqMenuCursor(0);
       setAppError(null);
       setScreen("eq-menu");
+      return;
+    }
+    // phase F: the Inequality app launches into its degrees menu (the
+    // manual's flow) — the 991CW only (the GT's home mask has no slot)
+    if (name === "inequality" && model.implementedApps.includes("inequality")) {
+      setIneqDegree(null);
+      setIneqRel(null);
+      setIneqCoeffs([]);
+      setIneqField(0);
+      setIneqEntry("");
+      setIneqResult(null);
+      setIneqDegCursor(0);
+      setIneqTypeCursor(0);
+      setAppError(null);
+      setScreen("ineq-degree");
       return;
     }
     // the staged-rollout notice — MG's own captured pattern (the chase
@@ -1013,6 +1097,41 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       if (d === "ok") setScreen("eq-solver-in"); // the step-9 law: the equation stored, return to the input
       return;
     }
+    if (screen === "ineq-degree") {
+      if (d === "up") setIneqDegCursor((c) => (c + 2) % 3);
+      else if (d === "down") setIneqDegCursor((c) => (c + 1) % 3);
+      else if (d === "ok") {
+        const deg = ([2, 3, 4] as const)[ineqDegCursor];
+        setIneqDegree(deg);
+        setIneqCoeffs(Array(deg + 1).fill(""));
+        setIneqField(0);
+        setIneqEntry("");
+        setScreen("ineq-type");
+      }
+      return;
+    }
+    if (screen === "ineq-type") {
+      if (d === "up") setIneqTypeCursor((c) => (c + 3) % 4);
+      else if (d === "down") setIneqTypeCursor((c) => (c + 1) % 4);
+      else if (d === "ok") {
+        setIneqRel((([">", "<", "≥", "≤"] as const)[ineqTypeCursor]));
+        setScreen("ineq-coeff");
+      }
+      return;
+    }
+    if (screen === "ineq-coeff") {
+      if (d === "left") setIneqField((f) => Math.max(0, f - 1));
+      else if (d === "right") setIneqField((f) => Math.min(ineqDegree!, f + 1));
+      else if (d === "ok") {
+        if (ineqEntry) commitIneqCell();
+        else solveIneqNow(ineqCoeffs);
+      }
+      return;
+    }
+    if (screen === "ineq-sol") {
+      if (d === "ok") setScreen("ineq-coeff"); // the manual's back-nav: the solution → the editor
+      return;
+    }
     if (screen === "notice" && d === "ok") setScreen("home");
   };
 
@@ -1160,6 +1279,32 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
         }
         if (k.k === "ac") {
           setSolverInit("");
+          return;
+        }
+        return;
+      }
+      // phase F: the Inequality Coefficient Editor takes the entry
+      // column (the eq editors' pattern); AC clears ALL the coefficients
+      if (screen === "ineq-coeff") {
+        if (k.k === "digit") {
+          setIneqEntry((e) => (e.length < 12 ? e + k.d : e));
+          return;
+        }
+        if (k.k === "neg") {
+          setIneqEntry((e) => (e.startsWith("-") ? e.slice(1) : "-" + e));
+          return;
+        }
+        if (k.k === "del") {
+          setIneqEntry((e) => e.slice(0, -1));
+          return;
+        }
+        if (k.k === "eq") {
+          commitIneqCell();
+          return;
+        }
+        if (k.k === "ac") {
+          setIneqEntry("");
+          setIneqCoeffs((cs) => cs.map(() => "0"));
           return;
         }
         return;
@@ -2565,6 +2710,117 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
             </div>
           )}
           <div className="mt-2">{screenBtn("Back to equation input (the equation is stored)", "Back to input", () => setScreen("eq-solver-in"), { data: "Back to solver input" })}</div>
+        </div>
+      )}
+
+      {/* ── phase F: the Inequality — the manual's flow: the degrees
+          menu (2nd/3rd/4th — no linear) → the symbol menu (>, <, ≥, ≤)
+          → the Coefficient Editor → the solution (the interval rows in
+          ascending order; "No Solution" / "All Real Numbers" per the
+          manual's Note). The exact boundary values ride the phase-C
+          polynomial root display. ── */}
+      {screen === "ineq-degree" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="ineq-degree" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Inequality · Degrees</div>
+          {[
+            { deg: 2 as const, label: "ax²+bx+c" },
+            { deg: 3 as const, label: "ax³+bx²+cx+d" },
+            { deg: 4 as const, label: "ax⁴+bx³+cx²+dx+e" },
+          ].map((it, i) => (
+            <div key={it.deg} className="flex items-center justify-between gap-2 py-1">
+              <span className={`text-sm ${ineqDegCursor === i ? "text-zinc-50" : "text-zinc-300"}`}>
+                {ineqDegCursor === i ? "▶ " : "  "}
+                {it.label}
+              </span>
+              {screenBtn(`Select inequality degree ${it.deg}`, it.label, () => {
+                setIneqDegree(it.deg);
+                setIneqCoeffs(Array(it.deg + 1).fill(""));
+                setIneqField(0);
+                setIneqEntry("");
+                setScreen("ineq-type");
+              }, { pressed: ineqDegCursor === i, data: `Inequality degree ${it.deg}` })}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {screen === "ineq-type" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="ineq-type" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Inequality · Symbol Type</div>
+          {([">", "<", "≥", "≤"] as IneqRelation[]).map((rel, i) => (
+            <div key={rel} className="flex items-center justify-between gap-2 py-1">
+              <span className={`text-sm ${ineqTypeCursor === i ? "text-zinc-50" : "text-zinc-300"}`}>
+                {ineqTypeCursor === i ? "▶ " : "  "}
+                {ineqTypeLabel(rel)}
+              </span>
+              {screenBtn(`Select inequality type ${ineqTypeLabel(rel)}`, ineqTypeLabel(rel), () => {
+                setIneqRel(rel);
+                setScreen("ineq-coeff");
+              }, { pressed: ineqTypeCursor === i, data: `Inequality type ${rel}` })}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {screen === "ineq-coeff" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="ineq-coeff" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Inequality · Coefficient Editor · {ineqRel ? ineqTypeLabel(ineqRel) : ""}</div>
+          {ineqCoeffs.map((c, i) => (
+            <div key={i} className="flex items-center justify-between gap-2 py-0.5 text-xs font-mono">
+              <span className={ineqField === i ? "text-zinc-50" : "text-zinc-400"}>
+                {INEQ_LETTERS[i]}
+                {ineqField === i ? " ▸" : ""}
+              </span>
+              <span className="text-zinc-100">{c || "0"}</span>
+            </div>
+          ))}
+          <div className="mt-1 rounded-md border border-zinc-700 bg-zinc-900 px-2 py-1 text-left text-sm font-mono text-zinc-100 outline outline-1 outline-zinc-600" data-calc-ineq-entry>
+            {ineqEntry}
+          </div>
+          {appError && (
+            <div className="cw-error-hint mt-1 text-left text-[10px] leading-snug text-zinc-400" data-calc-app-error>
+              {appError}: check the coefficients.
+            </div>
+          )}
+          <div className="mt-2 flex flex-wrap gap-1">
+            {ineqCoeffs.map((_, i) => (
+              <span key={i}>
+                {screenBtn(`Commit coefficient ${INEQ_LETTERS[i]}`, `Set ${INEQ_LETTERS[i]}`, () => commitIneqCell(i), { data: `Execute inequality ${INEQ_LETTERS[i]}` })}
+              </span>
+            ))}
+          </div>
+          <div className="mt-2">{screenBtn("Back to symbol type menu", "Back", () => setScreen("ineq-type"), { data: "Ineq coeff back" })}</div>
+        </div>
+      )}
+
+      {screen === "ineq-sol" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="ineq-sol" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Inequality · Solution</div>
+          {ineqResult?.allReal ? (
+            <div className="text-sm text-zinc-100" data-calc-ineq-special>
+              All Real Numbers
+            </div>
+          ) : ineqResult?.noSolution ? (
+            <div className="text-sm text-zinc-100" data-calc-ineq-special>
+              No Solution
+            </div>
+          ) : (
+            <div className="space-y-1 text-xs font-mono text-zinc-100">
+              {ineqResult?.intervals.map((iv, i) => (
+                <div key={i} data-calc-ineq-interval>
+                  {iv.kind === "ray"
+                    ? iv.side === "left"
+                      ? `x ${iv.strict ? "<" : "≤"} ${formatNatural(iv.end, state.resultForm, state.fix, fmt)}`
+                      : `x ${iv.strict ? ">" : "≥"} ${formatNatural(iv.end, state.resultForm, state.fix, fmt)}`
+                    : iv.kind === "pt"
+                      ? `x = ${formatNatural(iv.v, state.resultForm, state.fix, fmt)}`
+                      : `${formatNatural(iv.lo, state.resultForm, state.fix, fmt)} ${iv.loStrict ? "<" : "≤"} x ${iv.hiStrict ? "<" : "≤"} ${formatNatural(iv.hi, state.resultForm, state.fix, fmt)}`}
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="mt-1 text-[10px] leading-snug text-zinc-500">Boundary values are exact where the math lands exactly (the MathI/MathO family).</div>
+          <div className="mt-2">{screenBtn("Back to Coefficient Editor", "Back", () => setScreen("ineq-coeff"), { data: "Ineq sol back" })}</div>
         </div>
       )}
 
