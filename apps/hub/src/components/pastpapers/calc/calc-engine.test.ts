@@ -495,9 +495,12 @@ describe("(C15) the model registry — the chase card's verbatim data", () => {
     // Calculate, Statistics, Table (spec pin 5); the other registered
     // apps keep the staged-rollout notice. (Amended from phase A's
     // calculate-only truth.)
-    for (const id of ["fx-83gt-cw", "fx-85gt-cw", "fx-991cw"] as const) {
+    // phase D: the Equation app joins ON THE 991CW ONLY — the GT's
+    // captured home mask has no Equation slot (we mirror MG's masks)
+    for (const id of ["fx-83gt-cw", "fx-85gt-cw"] as const) {
       expect(CALC_MODELS[id].implementedApps).toEqual(["calculate", "statistics", "table"]);
     }
+    expect(CALC_MODELS["fx-991cw"].implementedApps).toEqual(["calculate", "statistics", "table", "equation"]);
   });
   test("(C15b) the level→model map is MG's own (gcse/ks2 → 83GT; a-level/igcse/international → 991CW)", () => {
     expect(MODEL_BY_LEVEL.gcse).toBe("fx-83gt-cw");
