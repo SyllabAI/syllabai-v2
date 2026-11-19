@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "They belong to different families — the whole point of the pairing.",
           "misconception": "equivalence myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Velocity is speed with the direction of travel included",
+            "Velocity is speed measured over a longer time",
+            "Velocity and speed are interchangeable names",
+            "Velocity is speed divided by distance"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Velocity is speed with the direction of travel included"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,24 @@
           "correct": false,
           "explanation": "Without the angle the description is incomplete; the direction is essential.",
           "misconception": "magnitude-only myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It specifies the direction of the force relative to the horizontal",
+            "It converts the force into a scalar",
+            "It fixes the arrow's length on the diagram",
+            "It is decorative — the force is fully described by 100 N"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It specifies the direction of the force relative to the horizontal"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +393,24 @@
           "explanation": "Equal forces cancel only when opposed.",
           "misconception": "equality myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Only a 50 N resultant, whatever the arrangement",
+            "Zero if they oppose, 100 N if they align",
+            "Always zero because they are equal",
+            "Always 100 N because both are 50 N"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Zero if they oppose, 100 N if they align"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +447,26 @@
           "explanation": "Equal scale means length proportional to magnitude: half the arrow, 30 N.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "30 N"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +502,24 @@
           "correct": false,
           "explanation": "Naming the object does not describe the force.",
           "misconception": "short-cut myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Its size in newtons and its downward direction",
+            "Its direction only",
+            "Nothing more once the object is named",
+            "Its size in kilograms"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Its size in newtons and its downward direction"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

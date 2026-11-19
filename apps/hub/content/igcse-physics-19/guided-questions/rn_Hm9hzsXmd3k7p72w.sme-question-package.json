@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Temperature is irrelevant here.",
           "misconception": "irrelevant variable"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the source-to-tube distance",
+            "the absorber material between source and detector",
+            "the count rate",
+            "the temperature of the room"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the absorber material between source and detector"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,27 @@
           "correct": false,
           "explanation": "The source is controlled, not measured.",
           "misconception": "control confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the count rate",
+                    "count rate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "Distance does not change decay behaviour.",
           "misconception": "decay speed myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "to save absorber material",
+            "so that count-rate changes can only be due to the absorber",
+            "to make the source decay faster",
+            "because the tube only works at 3 cm"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "so that count-rate changes can only be due to the absorber"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "The three absorbers separate alpha, beta and gamma.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "paper and water only",
+            "paper, aluminium of several thicknesses, lead",
+            "plastic sheets of different colours",
+            "aluminium only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "paper, aluminium of several thicknesses, lead"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,24 @@
           "correct": false,
           "explanation": "The counter is independent of storage shielding.",
           "misconception": "equipment confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "lead stops the source decaying",
+            "lead shielding keeps emissions contained between measurements",
+            "lead makes the source more active",
+            "the counter needs lead to work"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "lead shielding keeps emissions contained between measurements"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +378,24 @@
           "explanation": "Absorbers need no calibration by background.",
           "misconception": "calibration confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "to check the source is working",
+            "to subtract it from later readings for corrected count rates",
+            "to make the source decay slower",
+            "to calibrate the absorbers"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "to subtract it from later readings for corrected count rates"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +431,26 @@
           "correct": false,
           "explanation": "Beta penetrates paper.",
           "misconception": "beta misread"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "alpha"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +488,24 @@
           "explanation": "Only gamma survives modest lead shielding.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the GM tube is faulty",
+            "alpha is passing through",
+            "the lead has become radioactive",
+            "a gamma component is still penetrating"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a gamma component is still penetrating"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +542,24 @@
           "explanation": "The comparison itself is the method working as intended.",
           "misconception": "method doubt"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the absorber emits its own radiation",
+            "the source has decayed away completely",
+            "background was measured wrongly",
+            "it fully absorbed the emitted radiation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it fully absorbed the emitted radiation"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +595,24 @@
           "correct": false,
           "explanation": "Beta alone would pass paper unchanged.",
           "misconception": "single component"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "gamma only",
+            "alpha only",
+            "alpha and beta, with some gamma",
+            "beta only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "alpha and beta, with some gamma"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

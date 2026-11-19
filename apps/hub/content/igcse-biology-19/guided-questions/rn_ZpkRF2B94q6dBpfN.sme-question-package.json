@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Stimuli are changes; constant conditions stimulate nothing.",
           "misconception": "change requirement missed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The action taken after detection",
+            "The cell that detects change",
+            "A constant, unchanging condition",
+            "Any detectable change in the surroundings"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Any detectable change in the surroundings"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Receptors are not limited to one organ.",
           "misconception": "location truncated"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the sense organs"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Plants have no eyes.",
           "misconception": "structure invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "With specialised cells sensitive to light, gravity or water",
+            "With eyes similar to animals'",
+            "Through their flowers only",
+            "They cannot detect anything"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "With specialised cells sensitive to light, gravity or water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Those are the three named response categories.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Moving toward or away, secreting chemicals, adjusting body processes",
+            "Changing DNA sequence",
+            "Only running away",
+            "Growing feathers and fur"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Moving toward or away, secreting chemicals, adjusting body processes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Mating display is not the purpose named here.",
           "misconception": "purpose invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "To grow bigger faster",
+            "To look attractive to mates",
+            "To raise their chance of survival",
+            "To use up spare energy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "To raise their chance of survival"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

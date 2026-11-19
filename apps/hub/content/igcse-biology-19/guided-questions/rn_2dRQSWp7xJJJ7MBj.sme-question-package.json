@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Overshoots the stated figure tenfold.",
           "misconception": "figure wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Up to about 1000 metres per second",
+            "Up to about 100 metres per hour",
+            "Up to about 100 metres per second",
+            "Up to about 10 metres per second"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Up to about 100 metres per second"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "That is transport of gas, not of information.",
           "misconception": "function confused"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Electrical impulses along neurones"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Digestion is chemical and slow.",
           "misconception": "timescale mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Jerking a hand back the instant it touches a flame",
+            "Digesting a meal over hours",
+            "Healing a cut over a week",
+            "Growing taller over several years"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Jerking a hand back the instant it touches a flame"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "All three are coordinated in one loop by the nervous system.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The blood cells transporting oxygen",
+            "Only the muscles of the legs",
+            "Sensory receptors, central decision-making centres and effectors",
+            "Endocrine glands alone"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Sensory receptors, central decision-making centres and effectors"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Growth is developmental, not instant control.",
           "misconception": "system mismatched"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "An instant withdrawal from a hot surface",
+            "Long-term growth of organs",
+            "Adjusting body chemistry over many hours",
+            "Releasing stored energy slowly overnight"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "An instant withdrawal from a hot surface"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -283,6 +375,26 @@
           "explanation": "No such tubes exist; glands release into blood.",
           "misconception": "structure invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the blood plasma"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -318,6 +430,26 @@
           "correct": false,
           "explanation": "No acoustic signalling exists between organs.",
           "misconception": "medium invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Chemical hormones"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -355,6 +487,24 @@
           "explanation": "Hormones alter the activity of specific target organs.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "On neurones exclusively",
+            "On its specific target organs",
+            "On every cell equally",
+            "On the gland that released it only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "On its specific target organs"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -391,6 +541,24 @@
           "explanation": "Reversed — hormones act widely, nerves locally.",
           "misconception": "row inverted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Nervous effects last long; endocrine effects stop quickly",
+            "Nervous action is very fast; endocrine action is slower",
+            "Nervous message is chemical; endocrine message is electrical",
+            "Nervous effect is widespread; endocrine effect is localised"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Nervous action is very fast; endocrine action is slower"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -426,6 +594,24 @@
           "correct": false,
           "explanation": "Hormones do not reproduce.",
           "misconception": "claim invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because glands keep firing impulses",
+            "Because hormones replicate inside target cells",
+            "Because hormones continue acting until they are broken down",
+            "Because nerves fire for hours at a time"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because hormones continue acting until they are broken down"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

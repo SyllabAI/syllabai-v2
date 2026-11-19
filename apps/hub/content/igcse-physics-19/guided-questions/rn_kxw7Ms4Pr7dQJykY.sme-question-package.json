@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,36 @@
           "explanation": "Mains voltage is dangerous, but the quoted hazard threshold is far lower.",
           "misconception": "anchor slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "230 V"
+            },
+            {
+              "id": "3",
+              "text": "50 V"
+            },
+            {
+              "id": "1",
+              "text": "1 V"
+            },
+            {
+              "id": "2",
+              "text": "12 V"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -80,6 +110,24 @@
           "correct": false,
           "explanation": "The current is set by the appliance, not the coiling.",
           "misconception": "quantity myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "coils store static charge",
+            "the trapped current overheats the wire",
+            "the current doubles in a coil",
+            "the insulation thickens"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the trapped current overheats the wire"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +165,24 @@
           "explanation": "Damp provides a conducting path for a short circuit or an electrocution.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "cool the cable down",
+            "improve the insulation",
+            "conduct electricity and start a fire or deliver a shock",
+            "increase the fuse rating"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "conduct electricity and start a fire or deliver a shock"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +219,26 @@
           "explanation": "Glass is an insulator.",
           "misconception": "material myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "copper or another metal"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +274,26 @@
           "correct": false,
           "explanation": "Both are conductors.",
           "misconception": "category slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "rubber and plastic"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -290,6 +396,26 @@
           "explanation": "Insulated wires plus a non-metallic case are the two layers.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "double insulated"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -325,6 +451,24 @@
           "correct": false,
           "explanation": "Copper conducts — it is the core, not an insulator.",
           "misconception": "material slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "live and neutral",
+            "rubber and copper",
+            "the wire insulation and the non-metallic case",
+            "a fuse and a breaker"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the wire insulation and the non-metallic case"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -362,6 +506,24 @@
           "explanation": "Without an earth path the fault current stays small, so nothing trips.",
           "misconception": "protection myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "becomes electrified and shocks anyone touching it",
+            "shuts the mains off",
+            "melts",
+            "charges positively only"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "becomes electrified and shocks anyone touching it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -398,6 +560,26 @@
           "explanation": "The earth wire is bonded to the case.",
           "misconception": "wiring myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "low resistance"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -433,6 +615,24 @@
           "correct": true,
           "explanation": "The surge through the live wire melts the fuse and isolates the appliance.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "melts and cuts the supply",
+            "raises the current",
+            "resets itself",
+            "stores the charge"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "melts and cuts the supply"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -534,6 +734,27 @@
           "explanation": "No timing mechanism is involved.",
           "misconception": "mechanism myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "an electromagnet switch",
+                    "electromagnet switch"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -569,6 +790,24 @@
           "correct": false,
           "explanation": "Placement is irrelevant to its operation.",
           "misconception": "context myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "carries no current",
+            "blows once and must be replaced",
+            "only works outdoors",
+            "works faster and can be reset"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "works faster and can be reset"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -606,6 +845,27 @@
           "explanation": "No iron ring is involved.",
           "misconception": "structure myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a glass cylinder",
+                    "glass cylinder"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -642,6 +902,26 @@
           "explanation": "The misleadingly named 'fuse box' holds resettable breakers.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "circuit breakers"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -677,6 +957,26 @@
           "correct": false,
           "explanation": "That describes nothing real in a breaker.",
           "misconception": "invented mechanism"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "nothing in it melts"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

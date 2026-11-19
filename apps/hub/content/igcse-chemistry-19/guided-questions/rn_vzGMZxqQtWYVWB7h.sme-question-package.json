@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -284,6 +284,24 @@
           "explanation": "The division by 100 comes once, after the weighted sum, not to each mass.",
           "misconception": "division applied too early"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Subtract the smaller percentage from the larger",
+            "Divide both masses by 100",
+            "Add the two percentages together",
+            "Multiply each percentage by its own mass number"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Multiply each percentage by its own mass number"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -319,6 +337,36 @@
           "correct": false,
           "explanation": "That adds the mass numbers and percentages in a tangle instead of multiplying within each term.",
           "misconception": "mixed-up operation order"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "172"
+            },
+            {
+              "id": "1",
+              "text": "6120"
+            },
+            {
+              "id": "3",
+              "text": "8556"
+            },
+            {
+              "id": "2",
+              "text": "243600"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -356,6 +404,36 @@
           "explanation": "The full-precision average keeps the digits needed for a correct final round.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "85.6"
+            },
+            {
+              "id": "2",
+              "text": "8.556"
+            },
+            {
+              "id": "3",
+              "text": "855.6"
+            },
+            {
+              "id": "4",
+              "text": "85.56"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "4",
+            "1",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -392,6 +470,24 @@
           "explanation": "The full value is correct working but ignores the requested format.",
           "misconception": "format instruction overlooked"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "85.5, dropping everything after the first decimal",
+            "85.56, decimals kept as they are",
+            "86, rounding to the nearest whole number",
+            "85.6, rounding the second decimal up"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "85.6, rounding the second decimal up"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +523,24 @@
           "correct": false,
           "explanation": "With equal shares no isotope can dominate the average.",
           "misconception": "lighter isotope assumed default"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "86.0, the plain midpoint of 85 and 87",
+            "85, the lighter isotope winning",
+            "172, the mass numbers added",
+            "85.6, the same as before"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "86.0, the plain midpoint of 85 and 87"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

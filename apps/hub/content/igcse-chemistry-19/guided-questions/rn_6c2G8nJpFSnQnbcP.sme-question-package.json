@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Alkanes burn, crack and react with halogens; they are just generally unreactive.",
           "misconception": "inertness overstated"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It cannot undergo any reaction whatsoever",
+            "It contains the maximum possible oxygen",
+            "It has only single carbon-carbon bonds and no double bonds",
+            "It is dissolved in water to full concentration"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It has only single carbon-carbon bonds and no double bonds"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Two extra hydrogens break both the formula and the bonding rules.",
           "misconception": "arithmetic slipped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "C3H8"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Origin plays no part in the hydrocarbon definition.",
           "misconception": "history misused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because they contain only hydrogen and carbon atoms",
+            "Because they always contain a C=C bond",
+            "Because they were first found in living things",
+            "Because they burn to give carbon dioxide"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because they contain only hydrogen and carbon atoms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The note lists exactly these three as the chemistry of this generally unreactive family.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "None at all, because they are fully saturated",
+            "Only addition reactions across their double bonds",
+            "Combustion, cracking, and reaction with halogens in light",
+            "They react readily with most reagents at room temperature"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Combustion, cracking, and reaction with halogens in light"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The statement is about which molecule dominates, not element purity.",
           "misconception": "claim distorted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Because natural gas consists mainly of CH4 molecules",
+            "Because methane is the largest alkane molecule",
+            "Because natural gas is pure liquid methane",
+            "Because natural gas contains no other elements"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Because natural gas consists mainly of CH4 molecules"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -281,6 +373,26 @@
           "explanation": "Four carbons is butane, one rung below pentane.",
           "misconception": "rung miscounted"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "C5H12"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -316,6 +428,36 @@
           "correct": false,
           "explanation": "Four hydrogens would leave two carbon bonds unfilled.",
           "misconception": "bonds unfilled"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "3",
+              "text": "6"
+            },
+            {
+              "id": "1",
+              "text": "8"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "4",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -353,6 +495,26 @@
           "explanation": "The stems run meth, eth, prop, but, pent; so butane follows propane.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Butane"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -389,6 +551,24 @@
           "explanation": "Carbon always shows four bonds in these displayed structures.",
           "misconception": "bond count short"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "A double bond to one neighbour",
+            "Four bonds to hydrogen atoms",
+            "Two bonds to carbon neighbours and two to hydrogen atoms",
+            "Three bonds, with one spare"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Two bonds to carbon neighbours and two to hydrogen atoms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -424,6 +604,24 @@
           "correct": false,
           "explanation": "Colour is irrelevant to a structural drawing.",
           "misconception": "property imported"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The boiling point of the compound",
+            "Every individual bond between the atoms",
+            "The simplest ratio of atoms",
+            "The colour of the liquid"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Every individual bond between the atoms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The force exists because of the field, not its absence.",
           "misconception": "nonsense condition"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only when it moves parallel to the field",
+            "only when the field is switched off",
+            "when it moves across the field lines instead of running along them",
+            "whenever it is inside the field, moving or not"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "when it moves across the field lines instead of running along them"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "No component across the field means no sideways push.",
           "misconception": "deflection invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "zero"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Parallel gives zero, the minimum not the maximum.",
           "misconception": "geometry inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "at 45 degrees to the field lines",
+            "opposite to the field direction",
+            "perpendicular to the field lines",
+            "parallel to the field lines"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "perpendicular to the field lines"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The force direction follows the charge sign, so the two bend apart.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they deflect towards opposite sides",
+            "neither deflects",
+            "they deflect the same way",
+            "only the proton deflects"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they deflect towards opposite sides"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Speed is untouched throughout the deflection.",
           "misconception": "oscillation guess"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the speed increases as it bends",
+            "the speed stays the same; only the direction changes",
+            "the speed decreases to zero",
+            "the speed first rises then falls"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the speed stays the same; only the direction changes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

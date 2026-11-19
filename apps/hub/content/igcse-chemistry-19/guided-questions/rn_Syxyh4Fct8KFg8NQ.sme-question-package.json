@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A shell must be complete before electrons move to the next one, so the first shell closes at two first.",
           "misconception": "capacity rule misapplied"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The second shell, before the first shell is full",
+            "The shell closest to the nucleus",
+            "The shell furthest from the nucleus",
+            "Any shell with space, chosen at random"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The shell closest to the nucleus"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,36 @@
           "correct": false,
           "explanation": "Two is the first shell's capacity; the third shell holds eight in this model.",
           "misconception": "first-shell capacity reused"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "18"
+            },
+            {
+              "id": "2",
+              "text": "8"
+            },
+            {
+              "id": "4",
+              "text": "2"
+            },
+            {
+              "id": "1",
+              "text": "32"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -117,6 +165,36 @@
           "explanation": "The third shell never takes a ninth electron in this model; the nineteenth electron starts the fourth shell.",
           "misconception": "third shell overfilled past eight"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "2,8,9"
+            },
+            {
+              "id": "1",
+              "text": "2,9"
+            },
+            {
+              "id": "3",
+              "text": "2,8,8,1"
+            },
+            {
+              "id": "2",
+              "text": "2,8,8,2"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +231,36 @@
           "explanation": "Two electrons complete the first shell and the remaining four occupy the second shell.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "4,2"
+            },
+            {
+              "id": "1",
+              "text": "6"
+            },
+            {
+              "id": "3",
+              "text": "2,2,2"
+            },
+            {
+              "id": "4",
+              "text": "2,4"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "2",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -188,6 +296,26 @@
           "correct": false,
           "explanation": "Configuration counts run from the nucleus outward, so the smallest shell is written first.",
           "misconception": "counting order from outside in"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Three; 2,8,7"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -286,6 +414,26 @@
           "explanation": "Two is the first shell's count; the period comes from the number of shells, not the first entry.",
           "misconception": "first shell read as period"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Period 3"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -321,6 +469,26 @@
           "correct": false,
           "explanation": "Three is the period, taken from the number of occupied shells.",
           "misconception": "period read as group"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Group 6"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -358,6 +526,26 @@
           "explanation": "Three occupied shells give Period 3, and the seven outer electrons give Group 7.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Group 7, Period 3"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -394,6 +582,27 @@
           "explanation": "That pattern would describe one period, not one group.",
           "misconception": "period pattern mistaken for group pattern"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The same final number",
+                    "same final number"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -429,6 +638,36 @@
           "correct": false,
           "explanation": "Two number-groups mean two occupied shells, which is Period 2.",
           "misconception": "shell dropped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "2,8,3"
+            },
+            {
+              "id": "2",
+              "text": "2,8,5"
+            },
+            {
+              "id": "4",
+              "text": "2,5"
+            },
+            {
+              "id": "3",
+              "text": "2,8,8,5"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "1",
+            "2",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

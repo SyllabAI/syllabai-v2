@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,24 @@
           "explanation": "Flowers handle reproduction in this note's scope.",
           "misconception": "site wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "In the tips of growing shoots",
+            "In the flowers",
+            "In the leaves at night",
+            "In the root hairs"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "In the tips of growing shoots"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -320,6 +338,26 @@
           "correct": false,
           "explanation": "The exam hint is explicit — auxin elongates existing cells, it does not multiply them.",
           "misconception": "process misnamed"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Stimulates them to elongate"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +395,24 @@
           "explanation": "Auxin concentrates on the side away from the light.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "On the sunlit side",
+            "It drains out of the roots",
+            "On the shaded side of the shoot",
+            "Evenly on both sides"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "On the shaded side of the shoot"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +449,24 @@
           "explanation": "Growth continues — unevenly.",
           "misconception": "outcome invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The shoot stops growing",
+            "The shoot bends and grows in the direction of the light",
+            "The shoot snaps",
+            "The shoot bends away from the light"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The shoot bends and grows in the direction of the light"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +502,24 @@
           "correct": false,
           "explanation": "The note concerns shoot elongation; cell number is unchanged.",
           "misconception": "scope confused"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Auxin makes the cells that already exist get longer",
+            "Auxin removes old cells",
+            "Auxin increases the number of cells in the shoot",
+            "Cell number changes only in roots"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Auxin makes the cells that already exist get longer"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

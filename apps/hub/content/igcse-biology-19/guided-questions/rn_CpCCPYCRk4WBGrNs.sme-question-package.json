@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "That is the alveoli.",
           "misconception": "structure confused"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The lung's exchange surface",
+            "The abdomen's lower part",
+            "The chest cavity containing the breathing structures",
+            "The windpipe itself"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The chest cavity containing the breathing structures"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "The trachea comes first.",
           "misconception": "order scrambled"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Trachea, bronchus, bronchiole, alveolus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Exchange belongs to the alveoli.",
           "misconception": "function wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They filter incoming dust",
+            "They produce the voice",
+            "They exchange gases directly",
+            "They wrap around the lungs and coat the thorax's inner lining"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They wrap around the lungs and coat the thorax's inner lining"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "The trachea splits into exactly two.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Hundreds",
+            "Two, one for each lung",
+            "One, shared by both lungs",
+            "None — air reaches the lungs directly"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Two, one for each lung"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,27 @@
           "correct": false,
           "explanation": "They line and lubricate, not exchange.",
           "misconception": "structure wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The alveoli",
+                    "alveoli"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

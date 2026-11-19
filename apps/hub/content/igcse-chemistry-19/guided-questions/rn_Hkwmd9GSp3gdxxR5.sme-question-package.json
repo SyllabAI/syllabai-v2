@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Both formulae imply a mass once Ar values are applied; the distinction is about atom counts.",
           "misconception": "mass property misassigned"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The compound's state at room temperature",
+            "The actual number of each type of atom in one molecule",
+            "The simplest whole-number ratio",
+            "The compound's relative formula mass"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The actual number of each type of atom in one molecule"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Iron holds the smaller mole value, so iron takes the 2 after scaling, not the 3.",
           "misconception": "ratio order swapped"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Fe2O3"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Ignoring oxygen would silently drop a third of the compound; every element needs a column.",
           "misconception": "missing element ignored"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The table is built with carbon and hydrogen only",
+            "The percentages are converted to grams by weighing",
+            "The molecular formula is guessed from carbon's percentage",
+            "The oxygen percentage is found as 100 - 31.58 - 5.26 = 63.16"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The oxygen percentage is found as 100 - 31.58 - 5.26 = 63.16"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,26 @@
           "explanation": "The empirical mass is (12 x 4) + (1 x 10) + (32 x 1) = 90, so 180 / 90 = 2 and every subscript doubles.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "C8H20S2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Dividing by two still leaves a common factor; keep going until none remains.",
           "misconception": "partial division again"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "CH"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

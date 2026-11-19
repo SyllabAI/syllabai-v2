@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "A change of speed is not required; any movement along the force counts.",
           "misconception": "over-narrow reading"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only when the object moves along the direction of the force",
+            "only when the object speeds up afterwards",
+            "only when the force is very large",
+            "whenever a force is applied, moving or not"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "only when the object moves along the direction of the force"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Muscle effort is not the measure of mechanical work here.",
           "misconception": "energy-source confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a large amount, because the push is strong",
+            "a small non-zero amount",
+            "none, because the wall never moves",
+            "an amount equal to the pusher's tiredness"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "none, because the wall never moves"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "Nothing about the pull changes height.",
           "misconception": "store mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "its thermal store fills immediately and only",
+            "its stores stay exactly as they were",
+            "its gravitational store empties as it is pulled",
+            "its kinetic store fills as energy is transferred to it"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "its kinetic store fills as energy is transferred to it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,24 @@
           "explanation": "An opposing force drains the mover's store and dissipates energy by heating.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it removes energy from the cart, transferring it to the surroundings",
+            "it only changes the cart's direction of travel",
+            "it adds energy to the cart's kinetic store",
+            "it does no work because it opposes the motion"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it removes energy from the cart, transferring it to the surroundings"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +260,27 @@
           "correct": false,
           "explanation": "Kilograms measure mass.",
           "misconception": "unit swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "the joule",
+                    "joule"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -525,6 +618,24 @@
           "explanation": "Dividing gives one rearrangement for finding force, not the definition.",
           "misconception": "operation slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "mass × distance moved",
+            "force × speed",
+            "force ÷ distance moved",
+            "force × distance moved along the force"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "force × distance moved along the force"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -560,6 +671,36 @@
           "correct": true,
           "explanation": "20 × 3 = 60, so 60 J of energy is transferred.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "6.7 J"
+            },
+            {
+              "id": "4",
+              "text": "60 J"
+            },
+            {
+              "id": "2",
+              "text": "23 J"
+            },
+            {
+              "id": "3",
+              "text": "200 J"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -597,6 +738,24 @@
           "explanation": "Centimetres must be converted to metres first.",
           "misconception": "unit slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "mass in kilograms, distance in metres",
+            "force in newtons, distance in centimetres",
+            "force in newtons, time in seconds",
+            "force in newtons, distance in metres"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "force in newtons, distance in metres"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +792,24 @@
           "explanation": "That layout would encode d = W × F, which is wrong.",
           "misconception": "layout slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the triangle only works for speed, distance and time",
+            "F on top, with W and d along the base",
+            "W on top, with F and d along the base",
+            "d on top, with W and F along the base"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "W on top, with F and d along the base"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -668,6 +845,24 @@
           "correct": false,
           "explanation": "Off-axis movement earns nothing from that force.",
           "misconception": "over-counting slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only the distance component along the pull counts toward the work done",
+            "no work is done because of the angle",
+            "the full 5 m counts regardless of the angle",
+            "the work done doubles because of the angle"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "only the distance component along the pull counts toward the work done"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

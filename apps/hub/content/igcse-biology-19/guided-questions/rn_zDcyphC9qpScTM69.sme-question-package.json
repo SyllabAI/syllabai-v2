@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -284,6 +284,26 @@
           "explanation": "Blood cells stay in the blood; they never cross the filter.",
           "misconception": "component invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Water, urea and ions"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -319,6 +339,24 @@
           "correct": false,
           "explanation": "The urea load hardly changes; it is the water fraction that falls.",
           "misconception": "cause invented"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Exercise damages the filters so protein leaks out",
+            "Water lost in sweat leaves less to dilute the urea",
+            "Exercise stops ADH release completely",
+            "Exercise makes the kidneys produce extra urea"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Water lost in sweat leaves less to dilute the urea"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -356,6 +394,26 @@
           "explanation": "Surplus water is excreted, so volume rises and the urea is diluted to a pale colour.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Large quantity, pale yellow"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -392,6 +450,24 @@
           "explanation": "Exercise drives sweat loss in the same direction.",
           "misconception": "real variable"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The amount of fluid drunk",
+            "The level of physical activity",
+            "The surrounding temperature",
+            "The colour of the clothing worn"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The colour of the clothing worn"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +503,24 @@
           "correct": false,
           "explanation": "Urea is always present; dilution is not removal.",
           "misconception": "extreme claim"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It becomes more concentrated",
+            "It is less concentrated because it is dissolved in more water",
+            "It disappears entirely",
+            "It turns into ions"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is less concentrated because it is dissolved in more water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "A force can change speed as well as direction.",
           "misconception": "direction-only myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "A change in momentum",
+                    "change in momentum"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "The contact time divides the change; multiplying is the inverse operation.",
           "misconception": "division flip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "F = (mv − mu)/t",
+            "F = (mv − mu) × t",
+            "F = mv − mu",
+            "F = (mv + mu)/t"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "F = (mv − mu)/t"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,26 @@
           "explanation": "Kilograms measure mass alone.",
           "misconception": "symbol unit bleed"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "kg m/s"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +212,27 @@
           "explanation": "u is the initial velocity; v is the final one.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The initial velocity",
+                    "initial velocity"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +268,26 @@
           "correct": false,
           "explanation": "A direction has been declared here, and velocity always carries a sign in this equation.",
           "misconception": "sign deferral"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Negative"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -287,6 +387,27 @@
           "explanation": "A fixed momentum change divided by twice the time gives half the force.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "It halves",
+                    "halves"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -322,6 +443,24 @@
           "correct": false,
           "explanation": "That mixes unrelated quantities; mass multiplies, it does not divide here.",
           "misconception": "quantity swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Momentum change multiplied by the time taken",
+            "Momentum change on its own, time ignored",
+            "Velocity change divided by the object's mass",
+            "Momentum change divided by the time taken"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Momentum change divided by the time taken"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -359,6 +498,36 @@
           "explanation": "That flips the division and computes 0.1 / 0.5.",
           "misconception": "division flip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "0.2 N"
+            },
+            {
+              "id": "1",
+              "text": "5.0 N"
+            },
+            {
+              "id": "3",
+              "text": "0.25 N"
+            },
+            {
+              "id": "2",
+              "text": "0.05 N"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "4",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -395,6 +564,26 @@
           "explanation": "That divides only the initial momentum (10000 / 2), losing the final-momentum term.",
           "misconception": "term dropped"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "−6000 N"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -430,6 +619,24 @@
           "correct": true,
           "explanation": "Divide the time by 4 and the force multiplies by 4.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "increases by a factor of 4",
+            "stays the same",
+            "decreases by a factor of 4",
+            "increases by a factor of 16"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "increases by a factor of 4"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

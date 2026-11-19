@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Nickel is one of the magnetic elements.",
           "misconception": "metal conflation"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "aluminium drinks can"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Non-magnetic materials are never pulled.",
           "misconception": "material confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a non-magnetic material pulled by a magnet",
+            "a magnet that keeps its field for years",
+            "a magnetic material magnetised while in another magnet's field",
+            "a magnet made in a factory"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a magnetic material magnetised while in another magnet's field"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,26 @@
           "explanation": "Repulsion needs two independent magnets with like poles facing.",
           "misconception": "force inversion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "attractive"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +211,26 @@
           "explanation": "Losing magnetism as soon as the field goes is soft behaviour.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "magnetically soft"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "Hard permanent magnets resist casual demagnetising.",
           "misconception": "property invention"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "demagnetises when tapped lightly",
+            "keeps its field with no external help; can repel another magnet",
+            "gains poles only near a magnet; loses them when removed",
+            "attracted to either pole; never repels"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "keeps its field with no external help; can repel another magnet"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -284,6 +380,26 @@
           "explanation": "Copper is non-magnetic.",
           "misconception": "non-magnetic pick"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "magnetically hard steel"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -319,6 +435,27 @@
           "correct": false,
           "explanation": "A near north pole would repel — induction instead attracts.",
           "misconception": "pole swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a south pole",
+                    "south pole"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -356,6 +493,24 @@
           "explanation": "Induced magnetism persists only while the field is present.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "becomes non-magnetic to future fields",
+            "loses most of its induced magnetism",
+            "reverses its poles",
+            "keeps its full induced magnetism forever"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "loses most of its induced magnetism"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -392,6 +547,24 @@
           "explanation": "Earth's field induces that alignment even in soft materials.",
           "misconception": "earth-field confusion"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it hangs pointing north-south when freely suspended",
+            "it attracts a known magnet",
+            "it still attracts pins an hour after being far from any other magnet",
+            "it is made of iron"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it still attracts pins an hour after being far from any other magnet"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +600,24 @@
           "correct": false,
           "explanation": "Texture is irrelevant to the magnetic class.",
           "misconception": "term confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it is difficult to cut or drill",
+            "it keeps its magnetism and resists demagnetising",
+            "it feels hard to the touch",
+            "it only magnetises under heat"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it keeps its magnetism and resists demagnetising"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

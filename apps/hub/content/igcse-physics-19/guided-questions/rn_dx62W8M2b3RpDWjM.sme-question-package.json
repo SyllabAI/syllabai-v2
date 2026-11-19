@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "That is the gamma and x-ray hazard.",
           "misconception": "band swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "heat internal body tissue"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Microwaves heat tissue internally rather than browning skin.",
           "misconception": "band swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "infrared"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,26 @@
           "explanation": "That is irrelevant to the human-body harm list.",
           "misconception": "context slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "blindness"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +213,24 @@
           "explanation": "Cell death from these ionising radiations leads to cancer and mutation risks.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "heat the skin gently",
+            "only harm equipment",
+            "cause sunburn only",
+            "kill cells, causing cancer and mutation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "kill cells, causing cancer and mutation"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +266,24 @@
           "correct": false,
           "explanation": "The trend runs with frequency, not with air blocking.",
           "misconception": "trend inversion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "higher-frequency waves are louder",
+            "higher-frequency waves travel faster",
+            "higher-frequency waves carry more energy and can ionise atoms",
+            "lower-frequency waves are blocked by air"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "higher-frequency waves carry more energy and can ionise atoms"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,26 @@
           "explanation": "The wrong denominator (42 − 50 used against 30 mistakenly altered) is not the relationship; Δv/30 is.",
           "misconception": "denominator invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "−0.27 m/s²"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +340,24 @@
           "correct": false,
           "explanation": "The sum of velocities is not a rearrangement of the acceleration relationship.",
           "misconception": "cross-equation mixing"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Δv = a × t, acceleration beside time",
+            "Δv = v + u",
+            "Δv = t ÷ a, time over acceleration",
+            "Δv = a ÷ t"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Δv = a × t, acceleration beside time"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +395,24 @@
           "explanation": "−30 m/s is Δv; the division by 12 s is still owed before calling it an acceleration.",
           "misconception": "delta-v as rate"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It is 0 m/s², because the car ends at rest",
+            "It is −30 m/s², quoting the velocity change as the rate",
+            "It is −2.5 m/s², since Δv = 0 − 30 and 12 s divides it",
+            "It is +2.5 m/s² because magnitudes are quoted positive"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It is −2.5 m/s², since Δv = 0 − 30 and 12 s divides it"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +449,24 @@
           "explanation": "A constant rate still accumulates over time; 5.0 s of it changes the velocity by 40 m/s.",
           "misconception": "rate-vs-amount"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "+13 m/s, from 8.0 + 5.0",
+            "+1.6 m/s, from 8.0 ÷ 5.0",
+            "+8.0 m/s, unchanged because the rate is constant",
+            "+40 m/s, from 8.0 × 5.0"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "+40 m/s, from 8.0 × 5.0"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +502,24 @@
           "correct": false,
           "explanation": "The unit is m/s² with or without the sign; sign and unit are separate features.",
           "misconception": "sign-unit confusion"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Markers deduct a fixed mark for any positive acceleration",
+            "The sign carries the physical claim that the velocity is decreasing",
+            "The negative sign converts the unit to m/s²",
+            "Negative numbers are always larger in physics equations"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The sign carries the physical claim that the velocity is decreasing"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

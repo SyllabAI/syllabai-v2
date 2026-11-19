@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -285,6 +285,26 @@
           "explanation": "That is the acceleration's unit.",
           "misconception": "unit slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Newtons"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +340,26 @@
           "correct": false,
           "explanation": "That adds the two values.",
           "misconception": "addition slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "3 m/s²"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +397,26 @@
           "explanation": "Doubling m halves a for the same F.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Halved"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +453,24 @@
           "explanation": "Squaring has no place in the law.",
           "misconception": "invented step"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The force acts opposite to the passenger's motion",
+            "The passenger's mass is negative",
+            "The force is a mistake",
+            "The answer should be squared"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The force acts opposite to the passenger's motion"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +506,36 @@
           "correct": false,
           "explanation": "That double-counts the time.",
           "misconception": "arithmetic slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "7200 N"
+            },
+            {
+              "id": "3",
+              "text": "21600 N"
+            },
+            {
+              "id": "2",
+              "text": "200 N"
+            },
+            {
+              "id": "1",
+              "text": "3600 N"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

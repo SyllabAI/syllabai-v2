@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "A rising line records current growing with voltage.",
           "misconception": "zero myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a constant resistance",
+                    "constant resistance"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,27 @@
           "correct": false,
           "explanation": "An LDR's resistance moves with the light level.",
           "misconception": "non-linear component"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a fixed resistor",
+                    "fixed resistor"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +159,24 @@
           "explanation": "Reading voltage and current at a point still gives the resistance there.",
           "misconception": "impossibility myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "is always zero",
+            "cannot be found at any point",
+            "is constant",
+            "changes as the current changes"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "changes as the current changes"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +213,26 @@
           "explanation": "That acceleration belongs to a forward-biased diode, not a wire.",
           "misconception": "diode behaviour"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "doubles the current"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +268,24 @@
           "correct": true,
           "explanation": "A steady-temperature wire keeps one resistance across the voltage range.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it stays constant as the voltage varies",
+            "it falls as the voltage rises",
+            "it depends on the voltmeter used",
+            "it rises with the current"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it stays constant as the voltage varies"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -289,6 +387,24 @@
           "explanation": "The current still grows; only its rate slows.",
           "misconception": "direction myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "increases at a proportionally faster rate",
+            "increases at a proportionally slower rate",
+            "stays exactly proportional",
+            "falls"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "increases at a proportionally slower rate"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -324,6 +440,24 @@
           "correct": false,
           "explanation": "Charge carriers are never manufactured by the current.",
           "misconception": "creation myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the filament's temperature rises and its atoms vibrate more",
+            "the filament loses mass",
+            "electrons multiply inside the wire",
+            "the voltage destroys resistance"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the filament's temperature rises and its atoms vibrate more"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -361,6 +495,24 @@
           "explanation": "The reverse direction is the diode's blocked direction.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "melts open",
+            "behaves like a straight-line graph",
+            "has a very high resistance and passes essentially no current",
+            "carries a large current"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "has a very high resistance and passes essentially no current"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -397,6 +549,26 @@
           "explanation": "Diode behaviour is about direction, not alternation.",
           "misconception": "AC myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "in one direction only"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -432,6 +604,24 @@
           "correct": false,
           "explanation": "Both graphs start near zero and rise from there.",
           "misconception": "nonsense"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "never passes through the origin region at all",
+            "has a negative slope",
+            "bends as the resistance climbs with temperature",
+            "is also perfectly straight"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "bends as the resistance climbs with temperature"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -533,6 +723,24 @@
           "explanation": "Wire length is inside the variable resistor, not the measured variable.",
           "misconception": "component myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the voltage",
+            "the wire length",
+            "the resistance of the ammeter",
+            "the current, adjusted with the variable resistor"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the current, adjusted with the variable resistor"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -568,6 +776,26 @@
           "correct": false,
           "explanation": "The source provides the push; the resistor does the adjusting.",
           "misconception": "source slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "variable resistor"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -605,6 +833,26 @@
           "explanation": "Direction of flow has nothing to do with the resistance size.",
           "misconception": "AC myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "smaller"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -641,6 +889,24 @@
           "explanation": "Direction does not set a resistor's value.",
           "misconception": "direction myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "adding more cells",
+            "heating itself up",
+            "altering the length of wire in the circuit",
+            "reversing its terminals"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "altering the length of wire in the circuit"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -676,6 +942,26 @@
           "correct": true,
           "explanation": "A longer wire carries more opposition for the charge to pass.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "more resistance"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "The period number counts occupied shells; it carries no mass value.",
           "misconception": "period position mistaken for mass"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The smaller of the two numbers beside the symbol",
+            "The larger of the two numbers beside the symbol",
+            "The number of the period it sits in",
+            "The charge on its ion"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The larger of the two numbers beside the symbol"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "Mr is a mass total, not a count; the subscripts give the count and the Ar values give the mass.",
           "misconception": "count treated as mass"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The number of atoms in the formula",
+            "The mass of one mole of the substance in grams",
+            "The mass of a single atom of the element",
+            "The total mass of all the atoms present in one formula"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The total mass of all the atoms present in one formula"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,36 @@
           "explanation": "This forgets to double the hydrogen: two H atoms contribute 2, not 1.",
           "misconception": "subscript ignored on hydrogen"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "16"
+            },
+            {
+              "id": "3",
+              "text": "18"
+            },
+            {
+              "id": "2",
+              "text": "34"
+            },
+            {
+              "id": "4",
+              "text": "17"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -153,6 +219,26 @@
           "explanation": "Two hydrogen atoms each contribute 1, so the formula mass is 2 x 1 = 2.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +274,24 @@
           "correct": false,
           "explanation": "Conservation applies to every balanced equation, so the totals always match.",
           "misconception": "conservation seen as case-by-case"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "They are equal, because mass is conserved",
+            "The reactants total more, because some mass is used up",
+            "The products total more, because new material is made",
+            "The comparison depends on the particular equation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "They are equal, because mass is conserved"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -284,6 +388,24 @@
           "explanation": "The subscript 2 applies to the oxygen inside the bracket as well as the hydrogen.",
           "misconception": "multiplier applied to hydrogen only"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "One Ca, two O and two H",
+            "One Ca, one O and one H",
+            "Two Ca, two O and two H",
+            "One Ca, one O and two H"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "One Ca, two O and two H"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -319,6 +441,36 @@
           "correct": false,
           "explanation": "This misses the bracket doubling, counting only one O and one H.",
           "misconception": "bracket multiplier ignored"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "57"
+            },
+            {
+              "id": "3",
+              "text": "74"
+            },
+            {
+              "id": "1",
+              "text": "72"
+            },
+            {
+              "id": "2",
+              "text": "98"
+            }
+          ],
+          "correctOrder": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },
@@ -356,6 +508,36 @@
           "explanation": "(2 x 39) + (1 x 12) + (3 x 16) = 78 + 12 + 48 = 138.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "4",
+              "text": "138"
+            },
+            {
+              "id": "3",
+              "text": "140"
+            },
+            {
+              "id": "2",
+              "text": "122"
+            },
+            {
+              "id": "1",
+              "text": "99"
+            }
+          ],
+          "correctOrder": [
+            "1",
+            "2",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -392,6 +574,24 @@
           "explanation": "The subscript doubles the nitrogen inside the bracket just as it doubles the hydrogen.",
           "misconception": "multiplier applied to hydrogen only"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Two N, eight H, one S and four O",
+            "One N, four H, one S and four O",
+            "Two N, six H, one S and four O",
+            "One N, eight H, one S and four O"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Two N, eight H, one S and four O"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -427,6 +627,36 @@
           "correct": false,
           "explanation": "This counts six hydrogens; the bracket gives 4 x 2 = 8.",
           "misconception": "hydrogen miscounted"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "114"
+            },
+            {
+              "id": "2",
+              "text": "132"
+            },
+            {
+              "id": "4",
+              "text": "130"
+            },
+            {
+              "id": "1",
+              "text": "148"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "4",
+            "2",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

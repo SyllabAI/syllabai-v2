@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Nothing turns light into gamma rays here.",
           "misconception": "nonsense option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "gamma-ray brightening",
+            "blueshift — its wavelength has decreased",
+            "no change, light is too fast",
+            "redshift — its wavelength has increased"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "redshift — its wavelength has increased"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,24 @@
           "correct": false,
           "explanation": "No emission, no shift to observe.",
           "misconception": "nonsense option"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "stops emitting entirely",
+            "moves away, stretching the wavelength",
+            "changes colour artificially",
+            "moves towards the observer, shortening the wavelength"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "moves towards the observer, shortening the wavelength"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +153,24 @@
           "explanation": "That describes blue.",
           "misconception": "end swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "no wavelength at all",
+            "a longer wavelength and a smaller frequency",
+            "the same wavelength as blue",
+            "a shorter wavelength and a higher frequency"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a longer wavelength and a smaller frequency"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +207,26 @@
           "explanation": "The two quantities move oppositely.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "decreases"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Departure gives redshift.",
           "misconception": "direction swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "blueshift of a departing star",
+            "approaching sources raising wavelength",
+            "receding sources lowering frequency, as redshift does for light",
+            "light slowing down in air"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "receding sources lowering frequency, as redshift does for light"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

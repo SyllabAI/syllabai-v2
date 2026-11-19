@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Strength is not the exchange reason.",
           "misconception": "function invented"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "It shortens the diffusion distance into the cells",
+            "It blocks water loss",
+            "It increases the surface area",
+            "It strengthens the leaf"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "It shortens the diffusion distance into the cells"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "Stomata are epidermal pores, not internal gaps.",
           "misconception": "position wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "In the lower epidermis"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,26 @@
           "explanation": "The spaces are air-filled; moisture films coat the cells.",
           "misconception": "substance wrong"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Air spaces"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "That is the named diffusion pathway.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Stomata, phloem, cell",
+            "Atmosphere, air spaces, mesophyll cells, chloroplast",
+            "Atmosphere, xylem, chloroplast",
+            "Roots, stem, leaf cells"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Atmosphere, air spaces, mesophyll cells, chloroplast"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,24 @@
           "correct": false,
           "explanation": "If anything, easy gas passage trades off against water retention.",
           "misconception": "function wrong"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Thin walls let light through",
+            "Thin walls stop water escaping",
+            "Thin walls store more gases",
+            "Gases pass easily through thin walls into the cells"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Gases pass easily through thin walls into the cells"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "That treats 0.3 as 3, shifting the decimal place.",
           "misconception": "place-value slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "207 N m"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "Nothing removes the weight; balance is about the two moment totals.",
           "misconception": "zero myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The ruler's weight falls to zero",
+            "The forces on both sides are equal",
+            "The clockwise moments total more than the anticlockwise moments",
+            "Its total clockwise moment equals its total anticlockwise moment"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Its total clockwise moment equals its total anticlockwise moment"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Force times perpendicular distance from the pivot defines the moment.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "force × the beam's total length",
+            "force × perpendicular distance from the pivot",
+            "mass × distance from the pivot",
+            "force ÷ distance from the pivot"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "force × perpendicular distance from the pivot"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Adding forces to distances mixes incompatible quantities.",
           "misconception": "term swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "F2 × d2 = F1 × d1 + F3 × d3",
+            "F2 × d2 = F1 × d1 − F3 × d3",
+            "F2 + d2 = F1 + d1 + F3 + d3",
+            "F2 × d2 = (F1 + F3) × (d1 + d3)"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "F2 × d2 = F1 × d1 + F3 × d3"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,26 @@
           "correct": true,
           "explanation": "Force in newtons times distance in metres gives the newton metre.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "newton metres (N m)"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -286,6 +380,24 @@
           "explanation": "The supports still hold the beam up; only the beam's weight disappears.",
           "misconception": "overreach"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Its weight doubles the load's weight",
+            "Its length can be ignored",
+            "The supports can be dropped from the picture",
+            "Its own weight is ignored because it is modelled as massless"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Its own weight is ignored because it is modelled as massless"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -321,6 +433,24 @@
           "correct": true,
           "explanation": "The support the crate approaches carries more of the weight.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Both forces stay equal wherever the crate sits",
+            "Left support force rises; right support force falls",
+            "Left support force falls; right support force rises",
+            "Both forces rise steadily"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Left support force falls; right support force rises"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -358,6 +488,36 @@
           "explanation": "That is the whole load, but the left support already carries 38 N of it.",
           "misconception": "whole-load myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "3",
+              "text": "98 N"
+            },
+            {
+              "id": "4",
+              "text": "60 N"
+            },
+            {
+              "id": "2",
+              "text": "0 N"
+            },
+            {
+              "id": "1",
+              "text": "22 N"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -394,6 +554,24 @@
           "explanation": "The load's weight produces a clockwise moment about the surviving support.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Pivots anticlockwise about the left-hand support",
+            "Stays exactly where it is",
+            "Balances on the load alone",
+            "Pivots clockwise about the left-hand support"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Pivots clockwise about the left-hand support"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -429,6 +607,36 @@
           "correct": false,
           "explanation": "That assigns the entire load to the far support, reversing the trend.",
           "misconception": "direction flip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "1",
+              "text": "25 N"
+            },
+            {
+              "id": "3",
+              "text": "0 N"
+            },
+            {
+              "id": "2",
+              "text": "100 N"
+            },
+            {
+              "id": "4",
+              "text": "50 N"
+            }
+          ],
+          "correctOrder": [
+            "3",
+            "1",
+            "4",
+            "2"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
         }
       ]
     },

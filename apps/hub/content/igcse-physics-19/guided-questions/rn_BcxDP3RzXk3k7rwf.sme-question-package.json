@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,24 @@
           "explanation": "Voltage is a per-coulomb quantity, not an energy total.",
           "misconception": "quantity slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the energy transferred per unit charge between two points",
+            "the rate of flow of charge",
+            "the opposition to the flow of charge",
+            "the total energy in a circuit"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the energy transferred per unit charge between two points"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -80,6 +98,26 @@
           "correct": false,
           "explanation": "That combination belongs to electric field strength, not voltage.",
           "misconception": "unit mashup"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "one joule per coulomb"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "A voltmeter can read any component, not just the cell.",
           "misconception": "terminal myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "only at the cell terminals",
+            "in parallel across the component",
+            "in series with the component",
+            "anywhere along the loop"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "in parallel across the component"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "Cells move charge; they do not manufacture it.",
           "misconception": "charge-creation myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "gains 12 C of extra charge",
+            "loses 12 J of energy",
+            "gains 12 J of energy",
+            "gains 12 N of force"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "gains 12 J of energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "The drift keeps one direction around the whole loop.",
           "misconception": "direction myth"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "transfer energy to the components and wires they pass through",
+            "reverse direction at every component",
+            "keep gaining energy indefinitely",
+            "hold all their energy until they return to the cell"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "transfer energy to the components and wires they pass through"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -289,6 +381,24 @@
           "explanation": "Different units cannot simply be added.",
           "misconception": "operation slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "E = Q × V",
+            "E = V ÷ Q",
+            "E = Q ÷ V",
+            "E = Q + V"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "E = Q × V"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -324,6 +434,26 @@
           "correct": false,
           "explanation": "Subtracting the values is meaningless here.",
           "misconception": "subtraction slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "25 200 J"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -361,6 +491,24 @@
           "explanation": "Addition cannot rearrange a product.",
           "misconception": "operation slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Q = E + V",
+            "Q = V ÷ E",
+            "Q = E × V",
+            "Q = E ÷ V"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Q = E ÷ V"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -397,6 +545,36 @@
           "explanation": "Subtracting the values is meaningless here.",
           "misconception": "subtraction slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "sort-match",
+          "items": [
+            {
+              "id": "2",
+              "text": "4.5 J"
+            },
+            {
+              "id": "4",
+              "text": "7 J"
+            },
+            {
+              "id": "1",
+              "text": "18 J"
+            },
+            {
+              "id": "3",
+              "text": "11 J"
+            }
+          ],
+          "correctOrder": [
+            "2",
+            "4",
+            "3",
+            "1"
+          ],
+          "prompt": "Order the values from smallest to largest — move items, then check."
+        }
       ]
     },
     {
@@ -432,6 +610,24 @@
           "correct": false,
           "explanation": "Resistance belongs to the voltage-current-resistance equation.",
           "misconception": "quantity swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the total energy it transfers for the given charge",
+            "the power it dissipates each second",
+            "the current through its filament",
+            "the resistance of its filament"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the total energy it transfers for the given charge"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

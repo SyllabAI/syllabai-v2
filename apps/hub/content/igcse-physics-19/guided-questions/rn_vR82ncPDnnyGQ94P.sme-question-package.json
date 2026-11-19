@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Those price energy transferred per second of doing.",
           "misconception": "equation tangle"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "mass and speed"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,24 @@
           "correct": false,
           "explanation": "That misses both the half and the square.",
           "misconception": "equation tangle"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "KE = m × v",
+            "KE = m × g × h",
+            "KE = ½ × m × v",
+            "KE = ½ × m × v²"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "KE = ½ × m × v²"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +155,24 @@
           "explanation": "Doubling would only hold if speed entered linearly.",
           "misconception": "linearity slip"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "it doubles",
+            "it quadruples, because speed is squared",
+            "it halves",
+            "it stays the same"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "it quadruples, because speed is squared"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +209,24 @@
           "explanation": "That combination evaluates to joules.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "mass in grams, speed in kilometres per hour",
+            "mass in newtons, speed in metres per second",
+            "mass in kilograms, speed in metres per second",
+            "mass in kilograms, speed in seconds"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "mass in kilograms, speed in metres per second"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +262,24 @@
           "correct": false,
           "explanation": "Motion alone fills the store; acceleration is irrelevant.",
           "misconception": "condition slip"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "neither holds energy without accelerating",
+            "the heavier car holds twice the energy",
+            "they hold equal energy",
+            "the lighter car holds more energy"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the heavier car holds twice the energy"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

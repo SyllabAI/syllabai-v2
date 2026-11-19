@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -525,6 +525,24 @@
           "explanation": "That is the moderator's role inside the core.",
           "misconception": "rod swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "absorb hazardous radiation so the area outside stays safe",
+            "slow neutrons for the chain reaction",
+            "absorb neutrons to control the rate",
+            "cool the fuel rods"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "absorb hazardous radiation so the area outside stays safe"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -560,6 +578,26 @@
           "correct": true,
           "explanation": "The of-record shielding combination is steel plus concrete.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "steel and concrete"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -597,6 +635,24 @@
           "explanation": "They persist and keep decaying.",
           "misconception": "lifetime myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "they are strongly magnetic",
+            "they are extremely light",
+            "they disappear immediately",
+            "they are radioactive and keep emitting radiation"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "they are radioactive and keep emitting radiation"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -633,6 +689,26 @@
           "explanation": "An order of magnitude too thin.",
           "misconception": "scale error"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "2 metres thick"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -668,6 +744,26 @@
           "correct": false,
           "explanation": "Shielding protects people, not the fuel.",
           "misconception": "object swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "workers around the reactor"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },

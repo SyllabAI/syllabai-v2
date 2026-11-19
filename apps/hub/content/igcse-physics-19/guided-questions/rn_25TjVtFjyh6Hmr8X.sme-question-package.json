@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,26 @@
           "explanation": "Pressure waves are longitudinal.",
           "misconception": "family swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "transverse waves"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +100,26 @@
           "correct": false,
           "explanation": "Absorption is not the pair the spec names here.",
           "misconception": "scope narrowing"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "reflection and refraction"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +157,24 @@
           "explanation": "The peak-and-trough profile is the transverse picture.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "a spiral",
+            "a wavy line with peaks and troughs",
+            "lines of varying spacing along the travel direction",
+            "a single straight arrow"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "a wavy line with peaks and troughs"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +211,24 @@
           "explanation": "Light is transverse and space is not squeezed.",
           "misconception": "family swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "is electromagnetic and needs no medium",
+            "borrows air particles along the way",
+            "slows to a stop without a medium",
+            "is longitudinal and squeezes space"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "is electromagnetic and needs no medium"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +264,26 @@
           "correct": false,
           "explanation": "Dispersion is colour splitting, not this pair.",
           "misconception": "concept swap"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "reflection and refraction"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -285,6 +381,26 @@
           "explanation": "Sound cannot travel in vacuum at all.",
           "misconception": "medium myth"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "longitudinal waves"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +436,27 @@
           "correct": true,
           "explanation": "Echo is the standard name for reflected sound.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "an echo",
+                    "echo"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -357,6 +494,26 @@
           "explanation": "No dotted convention is used here.",
           "misconception": "convention invention"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "lines drawn closer together"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -393,6 +550,26 @@
           "explanation": "That is an ultraviolet effect.",
           "misconception": "subject swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "reflection and refraction"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -428,6 +605,24 @@
           "correct": true,
           "explanation": "Longitudinal mechanical waves require a material medium.",
           "misconception": null
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "sound is too fast for space",
+            "space blocks all waves",
+            "sound refracts away in vacuum",
+            "sound needs particles and space has almost none"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "sound needs particles and space has almost none"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

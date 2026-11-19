@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "Cells are full of cytoplasm.",
           "misconception": "absurd option"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The cytoplasm",
+                    "cytoplasm"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,26 @@
           "correct": false,
           "explanation": "Chromosomes live inside the nucleus.",
           "misconception": "term mismatch"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Organelles"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
@@ -117,6 +158,26 @@
           "explanation": "Those are plant additions, not the named eukaryote trio.",
           "misconception": "list mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "Nucleus, ribosomes, mitochondria"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -153,6 +214,24 @@
           "explanation": "Singular 'mitochondrion' paired with 'one'.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "One mitochondrion contains the enzymes for aerobic respiration",
+            "The mitochondrias are double-membraned",
+            "One mitochondria contains the enzymes",
+            "Many mitochondrion are visible"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "One mitochondrion contains the enzymes for aerobic respiration"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +267,24 @@
           "correct": false,
           "explanation": "Absurd.",
           "misconception": "absurd option"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Solid protein fibres only",
+            "Water with dissolved substances in a jelly-like substance",
+            "Pure ethanol",
+            "Air pockets and lipids"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Water with dissolved substances in a jelly-like substance"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -285,6 +382,27 @@
           "explanation": "Ribosomes build proteins.",
           "misconception": "function mismatch"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "The nucleus",
+                    "nucleus"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -320,6 +438,24 @@
           "correct": false,
           "explanation": "That is mitochondria.",
           "misconception": "function mismatch"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Releasing energy through respiration",
+            "Controlling entry of substances",
+            "Absorbing light with chlorophyll to drive photosynthesis",
+            "Storing cell sap"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Absorbing light with chlorophyll to drive photosynthesis"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -357,6 +493,24 @@
           "explanation": "The wall's support clause includes preventing bursting.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Protein misfolding",
+            "Bursting when the cell takes in water",
+            "DNA loss",
+            "Light shortage"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Bursting when the cell takes in water"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -393,6 +547,24 @@
           "explanation": "Correct pairing.",
           "misconception": "correct pairing misjudged"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "Vacuole — site of aerobic respiration",
+            "Nucleus — genetic material",
+            "Ribosome — protein synthesis",
+            "Membrane — controls entry and exit"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "Vacuole — site of aerobic respiration"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -428,6 +600,24 @@
           "correct": false,
           "explanation": "Synthesis and photosynthesis.",
           "misconception": "function mismatch"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "The nucleus and the membrane",
+            "Mitochondria and cytoplasm",
+            "Ribosomes and chloroplasts",
+            "The cell wall and the vacuole"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "The cell wall and the vacuole"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },

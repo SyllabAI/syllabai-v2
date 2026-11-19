@@ -1,5 +1,5 @@
 {
-  "format": "sme-question-package/1.2",
+  "format": "sme-question-package/1.5",
   "adapter": "guided-lesson-0.6--hub-lesson-import-1.5",
   "source": {
     "sourceFormat": "guided-lesson/0.6",
@@ -45,6 +45,27 @@
           "explanation": "The time base sets the horizontal scale; it detects nothing.",
           "misconception": "instrument swap"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "a microphone",
+                    "microphone"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
+        }
       ]
     },
     {
@@ -80,6 +101,24 @@
           "correct": false,
           "explanation": "Nothing on the screen identifies material.",
           "misconception": "absurd limit"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "the time period of the wave",
+            "the loudness of the source",
+            "the amplitude of the wave",
+            "the material of the source"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "the time period of the wave"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
         }
       ]
     },
@@ -117,6 +156,24 @@
           "explanation": "That is what a LOWER frequency does.",
           "misconception": "inverted relation"
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "more complete waves fit on the screen",
+            "nothing changes",
+            "the trace becomes taller only",
+            "fewer complete waves fit on the screen"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "more complete waves fit on the screen"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -153,6 +210,24 @@
           "explanation": "Height measured from the centre is the amplitude, and amplitude carries loudness.",
           "misconception": null
         }
+      ],
+      "interactions": [
+        {
+          "kind": "drag-label",
+          "labels": [
+            "large amplitude, so a loud sound",
+            "low frequency and loud",
+            "high pitch and quiet",
+            "ultrasound, because the wave is tall"
+          ],
+          "slots": [
+            {
+              "id": "Answer",
+              "answer": "large amplitude, so a loud sound"
+            }
+          ],
+          "prompt": "Tap a label, then tap the answer box to place it."
+        }
       ]
     },
     {
@@ -188,6 +263,27 @@
           "correct": false,
           "explanation": "A steady d.c. is not a rapidly changing signal.",
           "misconception": "concept mix-up"
+        }
+      ],
+      "interactions": [
+        {
+          "kind": "table-fill",
+          "columns": [
+            "Your answer"
+          ],
+          "rows": [
+            {
+              "cells": [
+                {
+                  "accepts": [
+                    "an alternating current",
+                    "alternating current"
+                  ]
+                }
+              ]
+            }
+          ],
+          "prompt": "Type the answer — spelling it as in the options grades best."
         }
       ]
     },
