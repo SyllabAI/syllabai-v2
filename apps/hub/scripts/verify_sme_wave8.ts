@@ -242,20 +242,22 @@ totalResolved === totalNotes
 // ANOTHER double — slots 3 and the new slot 1); as-english-gp-21
 // likewise when reached. Same disclosed pin-refresh class as the wave-6
 // run-002.
-// tranche 34 is the THIRD DOUBLE ROTATION: BOTH its courses sat on the
-// roster (igcse-science-double-award-modular-24-chemistry-unit-2 slot 3,
-// ial-further-maths-18-further-pure-1 slot 1 — the queue's ranks 1-2 at
-// 29/25 loose). Layering BOTH trips slots 1 AND 3 of the fleet-safety
-// check; the replacements of record (the T10 rank-pick precedent, the
-// not-already-on-the-roster law): slot 1 -> igcse-accounting-17-financial-
-// statements (20 loose), slot 3 -> igcse-english-language-a-16-paper-2-
-// poetry-and-prose-texts-and-imaginative-writing (11 loose); cie-as-
-// english-general-paper-21 (22 loose) is NOT layered this tranche and
-// STAYS at slot 2. NOTE for tranche 35: as-english-gp-21 + accounting-17-
-// financial-statements are the next queue pair (likely ANOTHER double —
-// slots 2 and the new slot 1); eng-lang-a-16-paper-2 likewise when
-// reached. Same disclosed pin-refresh class as the wave-6 run-002.
-  const probes = ["igcse-accounting-17-financial-statements", "cie-as-english-general-paper-21", "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing"];
+// tranche 35 is the FOURTH DOUBLE ROTATION: BOTH its courses sat on the
+// roster (cie-as-english-general-paper-21 slot 2, igcse-accounting-17-
+// financial-statements slot 1 — the queue's ranks 1-2 at 22/20 loose).
+// Layering BOTH trips slots 1 AND 2 of the fleet-safety check; the
+// replacements of record (the T10 rank-pick precedent, the
+// not-already-on-the-roster law): slot 1 -> igcse-english-language-a-16-
+// paper-1-non-fiction-texts-and-transactional-writing (10 loose), slot 2
+// -> igcse-english-language-a-16-paper-3-coursework (1 loose);
+// igcse-english-language-a-16-paper-2 (11 loose) is NOT layered this
+// tranche and STAYS at slot 3. NOTE for tranche 36: paper-2 + paper-1
+// are the next queue pair (ANOTHER double — slots 3 and the new slot 1;
+// the roster then shrinks toward its edge case as only paper-3 remains
+// as a replacement candidate); T37 = paper-3 alone (the LAST probe
+// trips; the roster empties and fleet-safety goes trivially green).
+// Same disclosed pin-refresh class as the wave-6 run-002.
+  const probes = ["igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing", "igcse-english-language-a-16-paper-3-coursework", "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;

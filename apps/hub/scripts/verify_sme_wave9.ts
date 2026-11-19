@@ -134,6 +134,17 @@
  * THIRD DOUBLE ROTATION *** — slots 1 AND 3 tripped, replaced by
  * accounting-17-financial-statements and eng-lang-a-16-paper-2;
  * as-english-gp-21 stays)
+ * + tranche 35 (cie-as-english-general-paper-21 CIE 8021 2028-2030 — the
+ * GENERAL-PAPER shape, the new TS-strand T-code pattern, roster slot 2 /
+ * igcse-accounting-17-financial-statements Edexcel 4AC1 2017 — the
+ * ACCOUNTING family's T4 strand, roster slot 1; the TWENTY-SIXTH
+ * consecutive FULLY-CLEAN audit with the wave's THIRTEENTH DRIFT EVENT —
+ * acctfs's TEN live-only paper-session rows 2019-june..2024-june (the
+ * fm19 class, the acct17-intro twin), carried as corpus-zero rows +
+ * DRIFT_BY_COURSE; *** THE FOURTH DOUBLE ROTATION *** — slots 1 AND 2
+ * tripped, replaced by eng-lang-a-16-paper-1 and eng-lang-a-16-paper-3;
+ * paper-2 stays; the turn opened with a SANDBOX-RECYCLE reconciliation
+ * of a stale pre-wave-9 checkout)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -321,6 +332,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-science-double-award-modular-24-biology-unit-1": new Set(),
   "igcse-science-double-award-modular-24-chemistry-unit-2": new Set(),
   "ial-further-maths-18-further-pure-1": new Set(["january-2021", "january-2022", "january-2023", "january-2024", "june-2021", "june-2022", "june-2023", "june-2024", "november-2021", "october-2020", "specimen-paper"]),
+  "cie-as-english-general-paper-21": new Set(),
+  "igcse-accounting-17-financial-statements": new Set(["2019-june", "2020-june", "2020-november", "2021-june", "2021-november", "2022-june", "2023-january", "2023-june", "2023-november", "2024-june"]),
 };
 
 for (const cf of FIXTURES.courses) {
