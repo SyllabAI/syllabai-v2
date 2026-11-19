@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 32,
+  "rowsApproved": 55,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 32,
+    "rowsApproved": 55,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -512,9 +512,328 @@
    "subelementOfPrimary": false,
    "oembedAuthor": "Freesciencelessons",
    "oembedVerifiedUtc": "2026-11-12T18:15:29Z"
+  },
+  {
+   "id": "-DGTMaauqgQ",
+   "title": "IGCSE Chemistry 0620 l Chapter 6 : Chemical Reactions",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=-DGTMaauqgQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4iniUPhNB1U",
+   "title": "IGCSE 0620 CHEMISTRY | Chapter 2 - Atoms, Elements & Compounds",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=4iniUPhNB1U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8d1BfGtXrvE",
+   "title": "IGCSE 0620 CHEMISTRY | Chapter 1 - States Of Matter",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=8d1BfGtXrvE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "91C4BDaCknM",
+   "title": "Stoichiometry- concept of moles  (IGCSE/GCE O Level CHEMISTRY) 0620",
+   "provider": "shawn-hew",
+   "watchUrl": "https://www.youtube.com/watch?v=91C4BDaCknM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Shawn Hew (maths & sciences) (CIE 0620 chemistry + 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "93zdN7QCimw",
+   "title": "🔴 IGCSE Chemistry Predicted Questions for 2026 Exams – 4 Markers Metallic bonding",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=93zdN7QCimw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9ToNtQSUG3M",
+   "title": "IGCSE Chemistry 🧪:  Electrolysis ⚡",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=9ToNtQSUG3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "AFInzHr0vLA",
+   "title": "IGCSE Chemistry Predicted Concepts for 2026 Exams – The Hydrogen Fuel Cell (Energetics)",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=AFInzHr0vLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "E6b8SZ1ng8I",
+   "title": "IGCSE Chemistry 0620 l Chapter 3 : Stoichiometry",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=E6b8SZ1ng8I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KtgsbB1GXFI",
+   "title": "IGCSE Chemistry 0620 l Chapter 2 : Atoms, Elements & Compounds",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=KtgsbB1GXFI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MmrkoKhRGaQ",
+   "title": "IGCSE Chemistry | Heating & Cooling Curves Explained | Phase Changes, Energy, Graph",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=MmrkoKhRGaQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NUfQ0YqMvvk",
+   "title": "IGCSE Chemistry 2027 Exams: Electrolysis Full Explanation, Simplified | Electrochemistry",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=NUfQ0YqMvvk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RCdXHlkvQ14",
+   "title": "live tuition for IGCSE chemistry about metallic 🪙 bonding #igcsechemistry",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=RCdXHlkvQ14",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "S11v_JPkf3E",
+   "title": "🔴 IGCSE Chemistry Essential Concepts for 2026 - Electrolysis",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=S11v_JPkf3E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "U3g9jVXos8Q",
+   "title": "IGCSE Chemistry 0620 l Chapter 5 : Chemical Energetics",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=U3g9jVXos8Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "arzTkQcuvNU",
+   "title": "Electrochemistry (IGCSE/GCE O Level CHEMISTRY) 0620",
+   "provider": "shawn-hew",
+   "watchUrl": "https://www.youtube.com/watch?v=arzTkQcuvNU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Shawn Hew (maths & sciences) (CIE 0620 chemistry + 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bCMRIxJst-I",
+   "title": "IGCSE Chemistry 0620 l Chapter 4 : Electrochemistry",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=bCMRIxJst-I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eqHQnA3ZjSs",
+   "title": "IGCSE Chemistry the basics 👌 of electrolysis ⚡",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=eqHQnA3ZjSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kWcsR2_bEjs",
+   "title": "3-Mark Answer: Ionisation Energy Across a Period",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=kWcsR2_bEjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mIB1CaFDMGY",
+   "title": "Chromatography Exam Question | IGCSE Chemistry 2027",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=mIB1CaFDMGY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tnt5I7rAFMA",
+   "title": "IGCSE States of Matter",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=tnt5I7rAFMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "v9jt1trhys4",
+   "title": "IGCSE Chemistry: States of matter",
+   "provider": "chem-bio-hosni",
+   "watchUrl": "https://www.youtube.com/watch?v=v9jt1trhys4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "chem bio by Hosni (CIE IGCSE sciences 0610/0620 + Edexcel IAL biology 'Unit N <session>' unit-paper reviews + IAL chemistry — the sweep's densest find: one channel over the two biggest residual gaps) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vWkPBgCCGN0",
+   "title": "Periodic Table (IGCSE/GCE O Level CHEMISTRY) 0620",
+   "provider": "shawn-hew",
+   "watchUrl": "https://www.youtube.com/watch?v=vWkPBgCCGN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Shawn Hew (maths & sciences) (CIE 0620 chemistry + 0606 additional maths) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xuF-y5I2Dsk",
+   "title": "IGCSE CHEMISTRY PAPER 6 | Filtration, Distillation, Chromatography WITH PAST PAPER QNS ",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=xuF-y5I2Dsk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
   }
  ],
  "mappings": [
+  {
+   "video": "v9jt1trhys4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "tnt5I7rAFMA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8d1BfGtXrvE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.1",
+    "C1.1.2",
+    "C1.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'States of matter' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
   {
    "video": "hkBrw2fG75U",
    "lessonRef": null,
@@ -537,6 +856,26 @@
    }
   },
   {
+   "video": "MmrkoKhRGaQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C1.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1.5 'Explain changes of state in terms of kinetic particle theory' via token(s) ['changes', 'cooling', 'curves', 'heating'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "TdJ57SQ6GAQ",
    "lessonRef": null,
    "lessonUrl": null,
@@ -546,6 +885,27 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Paper Chromatography' = chromatogram separation, interpretation and Rf values (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "mIB1CaFDMGY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.2.1",
+    "C2.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Chromatography' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -618,6 +978,28 @@
    }
   },
   {
+   "video": "-DGTMaauqgQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.1.1",
+    "C7.1.1",
+    "C7.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Chemical reactions' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "nUzOXy9V-K0",
    "lessonRef": null,
    "lessonUrl": null,
@@ -658,6 +1040,122 @@
    }
   },
   {
+   "video": "93zdN7QCimw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.1",
+    "C3.3.1",
+    "C3.3.4",
+    "C3.4.2",
+    "C3.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Atoms, elements and compounds' via topic-unique token(s) ['bonding', 'metallic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "RCdXHlkvQ14",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.1",
+    "C3.3.1",
+    "C3.3.4",
+    "C3.4.2",
+    "C3.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Atoms, elements and compounds' via topic-unique token(s) ['bonding', 'metallic'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "4iniUPhNB1U",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.1",
+    "C3.3.1",
+    "C3.3.4",
+    "C3.4.2",
+    "C3.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Atoms, elements and compounds' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "KtgsbB1GXFI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.1",
+    "C3.3.1",
+    "C3.3.4",
+    "C3.4.2",
+    "C3.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Atoms, elements and compounds' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "xuF-y5I2Dsk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 12.1.3 'Describe a: solvent dissolved in a solvent the maximum conce' via token(s) ['distillation', 'filtration'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "zuQ469vjwgo",
    "lessonRef": null,
    "lessonUrl": null,
@@ -667,6 +1165,160 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Atoms & Ions | Protons, Neutrons, Electrons' = atomic structure and subatomic charges (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NUfQ0YqMvvk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electrochemistry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "AFInzHr0vLA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'Electrochemistry' via topic-unique token(s) ['fuel', 'hydrogen'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "S11v_JPkf3E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electrolysis' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "eqHQnA3ZjSs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electrolysis' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "9ToNtQSUG3M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Electrolysis' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "bCMRIxJst-I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Electrochemistry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "arzTkQcuvNU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C3.4.1",
+    "C5.1.1",
+    "C5.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Electrochemistry' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -708,6 +1360,48 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Ionic Compounds - Structure | Properties | Formula' = giant ionic lattice properties and formulae (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "E6b8SZ1ng8I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Stoichiometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "91C4BDaCknM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C4.1.1",
+    "C4.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Stoichiometry' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -789,6 +1483,28 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Bond Energies - Exothermic or Endothermic' = calculating enthalpy from bond breaking and making (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "U3g9jVXos8Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C6.1.2",
+    "C6.1.3",
+    "C6.1.4"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Chemical energetics' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -889,6 +1605,48 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Metals & Non-metals: Electron Arrangement & Properties' = comparing metal and non-metal properties (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "kWcsR2_bEjs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 8.1.2 'Describe the change from metallic to non-metallic character ' via token(s) ['across', 'period'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "vWkPBgCCGN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C9.2.1",
+    "C9.4.1",
+    "C9.5.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'The Periodic Table' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1163,16 +1921,16 @@
  ],
  "coverage": {
   "specPointsTotal": 82,
-  "specPointsMapped": 28,
-  "specPointsUnmapped": 54,
-  "videosTotal": 32,
-  "videosMapped": 32,
+  "specPointsMapped": 35,
+  "specPointsUnmapped": 47,
+  "videosTotal": 55,
+  "videosMapped": 55,
   "videosUnmapped": 0,
-  "mappingRows": 32,
+  "mappingRows": 55,
   "byConfidence": {
    "high": 0,
-   "medium": 29,
-   "low": 3
+   "medium": 32,
+   "low": 23
   }
  },
  "inputs": {
@@ -1195,5 +1953,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-17T14:41:11.405Z"
+ "generatedUtc": "2026-11-19T14:58:51.811Z"
 }

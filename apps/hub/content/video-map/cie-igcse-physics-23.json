@@ -41,6 +41,11 @@
    "provider": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly)",
    "method": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
    "enumeratedUtc": "2026-11-17T14:02:23Z"
+  },
+  "p15": {
+   "provider": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) + Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) + Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs)",
+   "method": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) flat-enumerated 2026-11-19T14:37:11Z; Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) flat-enumerated 2026-11-19T14:37:11Z; Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
   }
  },
  "review": {
@@ -49,7 +54,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "Same title-only posture. All 16 mappings passed: every title names its spec's distinctive content exactly.",
-  "rowsApproved": 246,
+  "rowsApproved": 329,
   "rowsRejected": 1,
   "rejects": [
    {
@@ -1819,6 +1824,17 @@
     "ruledUtc": "2026-11-17T14:02:23Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
     "rowsApproved": 7,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 83,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -5565,6 +5581,919 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "Mega Lecture (mixed CIE aggregator: qp session walkthroughs + the AS/A2 class series; the non-qualifier remainder skipped honestly) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0O88S-Cv9r4",
+   "title": "IGCSE Physics Paper 41 - Oct/Nov 2023 - 0625/41/O/N/23 (Q6-10) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=0O88S-Cv9r4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "0jeiEj3w7-M",
+   "title": "Physics Paper 3 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=0jeiEj3w7-M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0kJPvRBBQ7Y",
+   "title": "IGCSE Physics Paper 41 - Oct/Nov 2023 - 0625/41/O/N/23 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=0kJPvRBBQ7Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1-BA_1JNtxU",
+   "title": "A quick summary of the Celsius and Kelvin temperature scales",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=1-BA_1JNtxU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "16qXivTN13g",
+   "title": "Physics Paper 1 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=16qXivTN13g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1G6aEb42Eew",
+   "title": "Physics Paper 62 - Summer 2017 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=1G6aEb42Eew",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1IMKokWZpUI",
+   "title": "IGCSE Physics Paper 22 - Feb/Mar 2024 - 0625/22/F/M/24 FULLY SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=1IMKokWZpUI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3CBeTopYA1E",
+   "title": "Stars & The Universe IGCSE Physics",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=3CBeTopYA1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3opKTIy_S5k",
+   "title": "IGCSE Physics Paper 62 - Oct/Nov 2023 - 0625/62/O/N/23 FULLY SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=3opKTIy_S5k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4wNpru6QGv0",
+   "title": "Physics Paper 4 - Winter 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=4wNpru6QGv0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6gPzYF47Ods",
+   "title": "IGCSE PHYSICS THIN LENSES PAST PAPER QN #shorts #physics #igcse",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=6gPzYF47Ods",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6rzZpskMhkY",
+   "title": "Physics Paper 6 - Summer 2017 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=6rzZpskMhkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8m6xfnJO8dY",
+   "title": "Physics Paper 42 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=8m6xfnJO8dY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ABq47stRHc0",
+   "title": "Physics Paper 2 - Winter 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=ABq47stRHc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Apc7K0xG1k0",
+   "title": "IGCSE Physics Paper 42 - Oct/Nov 2023 - 0625/42/O/N/23 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=Apc7K0xG1k0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "BY73dBuSGaY",
+   "title": "IGCSE Physics Paper 43 - Oct/Nov 2023 - 0625/43/O/N/23 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=BY73dBuSGaY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Bwj5qYQdbrE",
+   "title": "FEB/MARCH 0625 IGCSE PHYSICS PAPER 6 SOLVED 2025",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=Bwj5qYQdbrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DQnaqP73Ivo",
+   "title": "0625 PAPER 61 OCT/NOV 2025 SOLVED | IGCSE PHYSICS ",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=DQnaqP73Ivo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DVZUqpZ9eLI",
+   "title": "Physics Paper 62 - Winter 2017 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=DVZUqpZ9eLI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EU2NIKzbW8M",
+   "title": "IGCSE Physics Paper 62 - May/June 2026 - 0625/62/M/J/26 FULLY SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=EU2NIKzbW8M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EhFBSi7kmOg",
+   "title": "IGCSE Physics Paper 42 - Oct/Nov 2024 - 0625/42/O/N/24 (Q6-11) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=EhFBSi7kmOg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "EjNaF83WXHo",
+   "title": "Physics Paper 22 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=EjNaF83WXHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ez2eNsKGzHg",
+   "title": "IGCSE Physics Paper 42 - May/June 2023 - 0625/42/M/J/23 (Q6-10) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=Ez2eNsKGzHg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "G3uzqb7-v1M",
+   "title": "IGCSE Physics Paper 42 - May/June 2026 - 0625/42/M/J/26 (Q6-11) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=G3uzqb7-v1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "G9_sxUi7YmU",
+   "title": "Physics Paper 42 - Winter 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=G9_sxUi7YmU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HQH1ZXZzwAU",
+   "title": "IGCSE Physics Paper 42 - Feb/Mar 2025 - 0625/42/F/M/25 (Q5-10) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=HQH1ZXZzwAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Hf1gzjZZCvE",
+   "title": "Physics Paper 6 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=Hf1gzjZZCvE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JKkmj8PjVGQ",
+   "title": "Physics Paper 2 - Summer 2016 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=JKkmj8PjVGQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JN8Fv3_uHkg",
+   "title": "IGCSE Physics Paper 41 - Oct/Nov 2024 - 0625/41/O/N/24 (Q6-9) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=JN8Fv3_uHkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "JR5Kbv7ZYP8",
+   "title": "IGCSE Physics Paper 22 - Oct/Nov 2023 - 0625/22/O/N/23 (Q17-40) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=JR5Kbv7ZYP8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Jg1cnYKzNVo",
+   "title": "Physics Paper 3 - Summer 2016 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=Jg1cnYKzNVo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "L7ixKMNoCm0",
+   "title": "Physics Paper 1 - Summer 2016 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=L7ixKMNoCm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LZ8AWthshEM",
+   "title": "Physics Paper 4 - Summer 2016 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=LZ8AWthshEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MJzq25XQxHM",
+   "title": "Physics Paper 2 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=MJzq25XQxHM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MaOxvWTWwkc",
+   "title": "IGCSE Physics Paper 42 - May/June 2026 - 0625/42/M/J/26 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=MaOxvWTWwkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MmOob1tJuc4",
+   "title": "IGCSE Physics Paper 41 - May/June 2023 - 0625/41/M/J/23 (Q6-10) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=MmOob1tJuc4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "N6ErhvL7nxI",
+   "title": "IGCSE Physics Paper 62 - Feb/Mar 2024 - 0625/62/F/M/24 FULLY SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=N6ErhvL7nxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NCQqF2i-OWs",
+   "title": "IGCSE Physics Paper 42 - May/June 2024 - 0625/42/M/J/24 (Q1-6) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=NCQqF2i-OWs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "O86E4Ys7XTs",
+   "title": "IGCSE Physics Paper 63 - May/June 2023 - 0625/63/M/J/23 SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=O86E4Ys7XTs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "OZ2ow3v_gwU",
+   "title": "IGCSE Physics Paper 62 - Feb/Mar 2023 - 0625/62/F/M//23 SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=OZ2ow3v_gwU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "P7RqlH5lvss",
+   "title": "IGCSE Physics Paper 62 - May/June 2023 - 0625/62/M/J/23 SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=P7RqlH5lvss",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "PJSKw3Q2ykc",
+   "title": "IGCSE Physics Paper 22 - May/June 2026 - 0625/22/M/J/26 (FULLY SOLVED)",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=PJSKw3Q2ykc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QXf3dAEPBSk",
+   "title": "IGCSE Physics Paper 23 - May/June 2023 - 0625/23/M/J/23 SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=QXf3dAEPBSk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QpnqrJVMOYw",
+   "title": "IGCSE Physics Paper 21 - May/June 2023 - 0625/21/M/J/23 SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=QpnqrJVMOYw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RbWah8qpFvk",
+   "title": "Physics Paper 6 - Summer 2016 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=RbWah8qpFvk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "SPRJmBCR9VE",
+   "title": "Physics Paper 3 - Summer 2017 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=SPRJmBCR9VE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Silmj10gMmY",
+   "title": "IGCSE PHYSICS LIGHT | THIN LENSES EXPLAINED WITH PAST PAPER QNS SOLVED ",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=Silmj10gMmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "U0lA3eB6RCY",
+   "title": "IGCSE Physics Paper 42 - Oct/Nov 2023 - 0625/42/O/N/23 (Q6-10) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=U0lA3eB6RCY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Uykc1YhOCgY",
+   "title": "0625 Physics -May/June 2022 - Paper 41 - Question 8 #igcse #igcsephysics #study #pastpapers",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=Uykc1YhOCgY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VYBROesZ-GI",
+   "title": "Physics Paper 2 - Summer 2017 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=VYBROesZ-GI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "W1CoISoUqbc",
+   "title": "IGCSE Physics Paper 62 - May/June 2024 - 0625/62/M/J/24 FULLY SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=W1CoISoUqbc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WCoTtKs2GpU",
+   "title": "IGCSE PHYSICS PAPER 2 SOLVED & EXPLAINED | 0625/22/o/n/25",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=WCoTtKs2GpU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WGl6lNVe4XY",
+   "title": "IGCSE Physics 0625 | Unit 1 - Physical Quantities & Measurement Techniques",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=WGl6lNVe4XY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Wy8oF3Jervo",
+   "title": "IGCSE Physics Paper 41 - May/June 2023 - 0625/41/M/J/23 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=Wy8oF3Jervo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YLihNREkr4k",
+   "title": "IGCSE Physics Paper 42 - Feb/Mar 2024 - 0625/42/F/M/24 (Q1-6) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=YLihNREkr4k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YnMO12Q__r8",
+   "title": "IGCSE Physics Paper 43 - May/June 2023 - 0625/43/M/J/23 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=YnMO12Q__r8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Z5YWh5Wf8Lk",
+   "title": "Physics Paper 63 - Winter 2016 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=Z5YWh5Wf8Lk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZKzKg-9Tpxs",
+   "title": "Base Units, Homogenous Eqn, Scalar/Vector, Vector/ Closed Triangle |Part 1 ",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=ZKzKg-9Tpxs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_y5GIe3-AdU",
+   "title": "0625/41/m/j/24 PHYSICS MAY JUNE IGCSE P41 2024 SOLVED WITH DETAILED EXPLANATION",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=_y5GIe3-AdU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aQmKxrcACug",
+   "title": "Physics Paper 3 - Winter 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=aQmKxrcACug",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aWegciXfItA",
+   "title": "IGCSE Physics Paper 61 - May/June 2023 - 0625/61/M/J/23 SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=aWegciXfItA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "b1l9Uja4y3E",
+   "title": "IGCSE Physics Paper 43 - Oct/Nov 2023 - 0625/43/O/N/23 (Q6-10) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=b1l9Uja4y3E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bCXtcl_T6ic",
+   "title": "Physics Paper 6 - Winter 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=bCXtcl_T6ic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bIa9A_FsQDc",
+   "title": "Physics Paper 63 - Winter 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=bIa9A_FsQDc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dG2DE0DO2ow",
+   "title": "Physics Paper 62 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=dG2DE0DO2ow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "dPyqZr8mpk4",
+   "title": "Physics Paper 1 - Summer 2019 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=dPyqZr8mpk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "e5q7Ki6jZUs",
+   "title": "IGCSE Physics Paper 42 - Feb/Mar 2024 - 0625/42/F/M/24 (Q7-11) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=e5q7Ki6jZUs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gSdFcNkwVCE",
+   "title": "0625 IGCSE PHYSICS | All of Chapter 4: Electricity & Magnetism Questions",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=gSdFcNkwVCE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hTN8OH-t_Kw",
+   "title": "IGCSE Physics Paper 42 - May/June 2024 - 0625/42/M/J/24 (Q7-11) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=hTN8OH-t_Kw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iRV-8VauhnI",
+   "title": "Physics Paper 1 - Summer 2017 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=iRV-8VauhnI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k-rqZlCdvS8",
+   "title": "0625/o/n/61/24  IGCSE PHYSICS P61 2024 OCT/NOV ALTERNATIVE TO PRACTICAL",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=k-rqZlCdvS8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lBs_AFy3pSU",
+   "title": "IGCSE Physics Paper 42 - May/June 2023 - 0625/42/M/J/23 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=lBs_AFy3pSU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lrFCujJtWUU",
+   "title": "Physics Paper 22 - Winter 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=lrFCujJtWUU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mseZBFUTIng",
+   "title": "IGCSE Physics Paper 22 - Oct/Nov 2023 - 0625/22/O/N/23 (Q1-Q16) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=mseZBFUTIng",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mtVQWaN8urw",
+   "title": "IGCSE Physics Paper 43 - May/June 2023 - 0625/43/M/J/23 (Q6-10) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=mtVQWaN8urw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "oJ8221ErteA",
+   "title": "IGCSE Physics Paper 42 - Oct/Nov 2024 - 0625/42/O/N/24 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=oJ8221ErteA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p1KATXTt9J4",
+   "title": "Physics Paper 4 - Summer 2017 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=p1KATXTt9J4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "q31v-cpddLc",
+   "title": "IGCSE Physics Paper 41 - Oct/Nov 2024 - 0625/41/O/N/24 (Q1-5) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=q31v-cpddLc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rlZM1G34znE",
+   "title": "IGCSE Physics Paper 22 - May/June 2023 - 0625/22/M/J/23 SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=rlZM1G34znE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "u1FoMPnem_k",
+   "title": "IGCSE Physics Paper 42 - Feb/Mar 2025 - 0625/42/F/M/25 (Q1-4) SOLVED",
+   "provider": "learn-today-igcse",
+   "watchUrl": "https://www.youtube.com/watch?v=u1FoMPnem_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Today IGCSE (CIE IGCSE physics/chemistry/biology register: session walkthroughs + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uZGCSnNY3Jk",
+   "title": "IGCSE PHYSICS ELECTROMAGNETISM PART-2 | Transformers, AC Generators and DC Motors",
+   "provider": "caie-made-easier",
+   "watchUrl": "https://www.youtube.com/watch?v=uZGCSnNY3Jk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "CAIE made easier (CIE IGCSE sciences trio register: 0610/0620/0625 session papers + topic lectures) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vX5kHbeRnWc",
+   "title": "Physics Paper 6 - Winter 2016 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=vX5kHbeRnWc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "zVYn5ss9jDU",
+   "title": "Physics Paper 4 - Summer 2018 - IGCSE (CIE 0625) Exam Practice",
+   "provider": "science-and-stuff",
+   "watchUrl": "https://www.youtube.com/watch?v=zVYn5ss9jDU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Science and Stuff (CIE 0654 co-ordinated double award + 0653 combined + single-science session walkthroughs) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -9385,20 +10314,1657 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
    "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DQnaqP73Ivo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"0625 PAPER 61 OCT/NOV 2025 SOLVED | IGCSE PHYSICS \"; session/paper register anchor: 0625, paper 6, session 'OCT/NOV' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "WCoTtKs2GpU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE PHYSICS PAPER 2 SOLVED & EXPLAINED | 0625/22/o/n/25\"; session/paper register anchor: 0625, paper 2, session '/o/n/25' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Bwj5qYQdbrE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"FEB/MARCH 0625 IGCSE PHYSICS PAPER 6 SOLVED 2025\"; session/paper register anchor: 0625, paper 6, session 'FEB/MARCH' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "k-rqZlCdvS8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"0625/o/n/61/24  IGCSE PHYSICS P61 2024 OCT/NOV ALTERNATIVE TO PRACTICAL\"; session/paper register anchor: 0625, paper 6, session '/o/n/61' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "_y5GIe3-AdU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"0625/41/m/j/24 PHYSICS MAY JUNE IGCSE P41 2024 SOLVED WITH DETAILED EXPLANATION\"; session/paper register anchor: 0625, paper 4, session '/m/j/24' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "PJSKw3Q2ykc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 22 - May/June 2026 - 0625/22/M/J/26 (FULLY SOLVED)\"; session/paper register anchor: 0625, paper 2, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "EU2NIKzbW8M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 62 - May/June 2026 - 0625/62/M/J/26 FULLY SOLVED\"; session/paper register anchor: 0625, paper 6, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "G3uzqb7-v1M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - May/June 2026 - 0625/42/M/J/26 (Q6-11) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "MaOxvWTWwkc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - May/June 2026 - 0625/42/M/J/26 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "HQH1ZXZzwAU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Feb/Mar 2025 - 0625/42/F/M/25 (Q5-10) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Feb/Mar' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "u1FoMPnem_k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Feb/Mar 2025 - 0625/42/F/M/25 (Q1-4) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Feb/Mar' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "EhFBSi7kmOg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Oct/Nov 2024 - 0625/42/O/N/24 (Q6-11) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "oJ8221ErteA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Oct/Nov 2024 - 0625/42/O/N/24 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "JN8Fv3_uHkg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 41 - Oct/Nov 2024 - 0625/41/O/N/24 (Q6-9) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "q31v-cpddLc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 41 - Oct/Nov 2024 - 0625/41/O/N/24 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "W1CoISoUqbc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 62 - May/June 2024 - 0625/62/M/J/24 FULLY SOLVED\"; session/paper register anchor: 0625, paper 6, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "hTN8OH-t_Kw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - May/June 2024 - 0625/42/M/J/24 (Q7-11) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "NCQqF2i-OWs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - May/June 2024 - 0625/42/M/J/24 (Q1-6) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "1IMKokWZpUI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 22 - Feb/Mar 2024 - 0625/22/F/M/24 FULLY SOLVED\"; session/paper register anchor: 0625, paper 2, session 'Feb/Mar' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "N6ErhvL7nxI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 62 - Feb/Mar 2024 - 0625/62/F/M/24 FULLY SOLVED\"; session/paper register anchor: 0625, paper 6, session 'Feb/Mar' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "e5q7Ki6jZUs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Feb/Mar 2024 - 0625/42/F/M/24 (Q7-11) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Feb/Mar' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YLihNREkr4k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Feb/Mar 2024 - 0625/42/F/M/24 (Q1-6) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Feb/Mar' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "JR5Kbv7ZYP8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 22 - Oct/Nov 2023 - 0625/22/O/N/23 (Q17-40) SOLVED\"; session/paper register anchor: 0625, paper 2, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "mseZBFUTIng",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 22 - Oct/Nov 2023 - 0625/22/O/N/23 (Q1-Q16) SOLVED\"; session/paper register anchor: 0625, paper 2, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "3opKTIy_S5k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 62 - Oct/Nov 2023 - 0625/62/O/N/23 FULLY SOLVED\"; session/paper register anchor: 0625, paper 6, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "b1l9Uja4y3E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 43 - Oct/Nov 2023 - 0625/43/O/N/23 (Q6-10) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "BY73dBuSGaY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 43 - Oct/Nov 2023 - 0625/43/O/N/23 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "0O88S-Cv9r4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 41 - Oct/Nov 2023 - 0625/41/O/N/23 (Q6-10) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "0kJPvRBBQ7Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 41 - Oct/Nov 2023 - 0625/41/O/N/23 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "U0lA3eB6RCY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Oct/Nov 2023 - 0625/42/O/N/23 (Q6-10) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Apc7K0xG1k0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - Oct/Nov 2023 - 0625/42/O/N/23 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'Oct/Nov' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "QXf3dAEPBSk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 23 - May/June 2023 - 0625/23/M/J/23 SOLVED\"; session/paper register anchor: 0625, paper 2, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "QpnqrJVMOYw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 21 - May/June 2023 - 0625/21/M/J/23 SOLVED\"; session/paper register anchor: 0625, paper 2, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "rlZM1G34znE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 22 - May/June 2023 - 0625/22/M/J/23 SOLVED\"; session/paper register anchor: 0625, paper 2, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "OZ2ow3v_gwU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 62 - Feb/Mar 2023 - 0625/62/F/M//23 SOLVED\"; session/paper register anchor: 0625, paper 6, session 'Feb/Mar' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "O86E4Ys7XTs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 63 - May/June 2023 - 0625/63/M/J/23 SOLVED\"; session/paper register anchor: 0625, paper 6, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "P7RqlH5lvss",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 62 - May/June 2023 - 0625/62/M/J/23 SOLVED\"; session/paper register anchor: 0625, paper 6, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "aWegciXfItA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 61 - May/June 2023 - 0625/61/M/J/23 SOLVED\"; session/paper register anchor: 0625, paper 6, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "mtVQWaN8urw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 43 - May/June 2023 - 0625/43/M/J/23 (Q6-10) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YnMO12Q__r8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 43 - May/June 2023 - 0625/43/M/J/23 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Ez2eNsKGzHg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - May/June 2023 - 0625/42/M/J/23 (Q6-10) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "lBs_AFy3pSU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 42 - May/June 2023 - 0625/42/M/J/23 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "MmOob1tJuc4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 41 - May/June 2023 - 0625/41/M/J/23 (Q6-10) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Wy8oF3Jervo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Physics Paper 41 - May/June 2023 - 0625/41/M/J/23 (Q1-5) SOLVED\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Uykc1YhOCgY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"0625 Physics -May/June 2022 - Paper 41 - Question 8 #igcse #igcsephysics #study #pastpapers\"; session/paper register anchor: 0625, paper 4, session 'May/June' in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "dPyqZr8mpk4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 1 - Summer 2019 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ABq47stRHc0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 2 - Winter 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "lrFCujJtWUU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 22 - Winter 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "EjNaF83WXHo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 22 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "aQmKxrcACug",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 3 - Winter 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "8m6xfnJO8dY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 42 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "G9_sxUi7YmU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 42 - Winter 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "vX5kHbeRnWc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 6 - Winter 2016 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DVZUqpZ9eLI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 62 - Winter 2017 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "1G6aEb42Eew",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 62 - Summer 2017 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "dG2DE0DO2ow",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 62 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "bCXtcl_T6ic",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 6 - Winter 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "bIa9A_FsQDc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 63 - Winter 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "4wNpru6QGv0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 4 - Winter 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Z5YWh5Wf8Lk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 63 - Winter 2016 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "RbWah8qpFvk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 6 - Summer 2016 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "LZ8AWthshEM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 4 - Summer 2016 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Jg1cnYKzNVo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 3 - Summer 2016 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "JKkmj8PjVGQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 2 - Summer 2016 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6rzZpskMhkY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 6 - Summer 2017 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "p1KATXTt9J4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 4 - Summer 2017 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "SPRJmBCR9VE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 3 - Summer 2017 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "L7ixKMNoCm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 1 - Summer 2016 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "iRV-8VauhnI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 1 - Summer 2017 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "VYBROesZ-GI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 2 - Summer 2017 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Hf1gzjZZCvE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 6 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "zVYn5ss9jDU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 4 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "0jeiEj3w7-M",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 3 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "MJzq25XQxHM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 2 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-physics-23"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "16qXivTN13g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Physics Paper 1 - Summer 2018 - IGCSE (CIE 0625) Exam Practice\"; CIE IGCSE science session/paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "uZGCSnNY3Jk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.1 '\u0007Draw and interpret circuit diagrams containing cells, batte' via token(s) ['generators', 'motors', 'transformers'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "6gPzYF47Ods",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1b"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2.1b '\u0007Describe the action of thin converging and thin diverging l' via token(s) ['lenses', 'thin'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "Silmj10gMmY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.2.1b"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.2.1b '\u0007Describe the action of thin converging and thin diverging l' via token(s) ['lenses', 'light', 'thin'] (df 20); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "ZKzKg-9Tpxs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1.4 '\u0007Understand that a scalar quantity has magnitude (size) only' via token(s) ['scalar', 'vector'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "gSdFcNkwVCE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.2",
+    "4.1.3",
+    "4.1.4",
+    "4.1.5",
+    "4.1.6",
+    "4.1.7",
+    "4.1.8",
+    "4.1.9",
+    "4.1.10",
+    "4.1.11",
+    "4.2.1",
+    "4.2.1a",
+    "4.2.1b",
+    "4.2.1c",
+    "4.2.1d",
+    "4.2.2",
+    "4.2.2a",
+    "4.2.2b",
+    "4.2.2c",
+    "4.2.2d",
+    "4.2.3",
+    "4.2.3a",
+    "4.2.3b",
+    "4.2.3c",
+    "4.2.3d",
+    "4.2.4",
+    "4.2.4a",
+    "4.2.4b",
+    "4.2.4c",
+    "4.2.5",
+    "4.2.5a",
+    "4.2.6",
+    "4.2.6a",
+    "4.2.7",
+    "4.2.7a",
+    "4.2.8",
+    "4.2.9",
+    "4.2.10",
+    "4.3.1",
+    "4.3.1a",
+    "4.3.1b",
+    "4.3.1c",
+    "4.3.2",
+    "4.3.2a",
+    "4.3.2b",
+    "4.3.2c",
+    "4.3.3",
+    "4.3.3a",
+    "4.3.4",
+    "4.3.5",
+    "4.3.6",
+    "4.3.7",
+    "4.4.1",
+    "4.4.2",
+    "4.4.3",
+    "4.4.4",
+    "4.4.5",
+    "4.5.1",
+    "4.5.1a",
+    "4.5.1b",
+    "4.5.1c",
+    "4.5.1d",
+    "4.5.1e",
+    "4.5.2",
+    "4.5.2a",
+    "4.5.2b",
+    "4.5.2c",
+    "4.5.2d",
+    "4.5.3",
+    "4.5.3a",
+    "4.5.3b",
+    "4.5.3c",
+    "4.5.4",
+    "4.5.4a",
+    "4.5.5",
+    "4.5.5a"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Electricity and magnetism' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "WGl6lNVe4XY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.1.4",
+    "1.1.5",
+    "1.1.6",
+    "1.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Physical quantities and measurement techniques' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "3CBeTopYA1E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.1",
+    "6.2.2",
+    "6.2.3",
+    "6.2.4",
+    "6.2.5",
+    "6.2.6",
+    "6.2.7",
+    "6.2.8",
+    "6.2.9",
+    "6.2.10",
+    "6.2.11"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Stars and the Universe' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "1-BA_1JNtxU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.2b"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.1.2b '\u0007Convert temperatures between kelvin and degrees Celsius; re' via token(s) ['celsius', 'kelvin'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 294,
-  "specPointsMapped": 176,
-  "specPointsUnmapped": 118,
-  "videosTotal": 246,
-  "videosMapped": 246,
+  "specPointsMapped": 220,
+  "specPointsUnmapped": 74,
+  "videosTotal": 329,
+  "videosMapped": 329,
   "videosUnmapped": 0,
-  "mappingRows": 246,
+  "mappingRows": 329,
   "byConfidence": {
-   "high": 0,
-   "medium": 182,
-   "low": 64
+   "high": 75,
+   "medium": 187,
+   "low": 67
   }
  },
  "inputs": {
@@ -9453,7 +12019,13 @@
    "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p14.json",
    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
    "reviewAppliedUtc": "2026-11-17T14:02:23Z"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-physics-23/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:11.239Z"
+ "generatedUtc": "2026-11-19T14:58:51.654Z"
 }
