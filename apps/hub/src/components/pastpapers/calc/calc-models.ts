@@ -102,6 +102,8 @@ export const CALC_MODELS: Record<CalcModelId, CalcModel> = {
     skin: { shiftColor: "blue", solar: false },
     apps: APPS_GT,
     // phase C: the enabled set matches MG exactly — Calculate, Statistics, Table
+    // (phase D adds Equation on the 991CW ONLY — the GT's captured home
+    // mask has no Equation slot; we mirror MG's home masks)
     implementedApps: ["calculate", "statistics", "table"],
     shiftOverrides: SHIFT_OVERRIDES_GT,
     features: { recurringDecimal: true, complex: false, engineerSymbol: false },
@@ -112,6 +114,8 @@ export const CALC_MODELS: Record<CalcModelId, CalcModel> = {
     skin: { shiftColor: "blue", solar: true },
     apps: APPS_GT,
     // phase C: the enabled set matches MG exactly — Calculate, Statistics, Table
+    // (phase D adds Equation on the 991CW ONLY — the GT's captured home
+    // mask has no Equation slot; we mirror MG's home masks)
     implementedApps: ["calculate", "statistics", "table"],
     shiftOverrides: SHIFT_OVERRIDES_GT,
     features: { recurringDecimal: true, complex: false, engineerSymbol: false },
@@ -121,8 +125,10 @@ export const CALC_MODELS: Record<CalcModelId, CalcModel> = {
     label: "fx-991 CW",
     skin: { shiftColor: "gold", solar: true },
     apps: APPS_991,
-    // phase C: the enabled set matches MG exactly — Calculate, Statistics, Table
-    implementedApps: ["calculate", "statistics", "table"],
+    // phase D: the Equation app joins the enabled set ON THE 991CW —
+    // the GT's captured home mask (MG's own rollout) has no Equation
+    // slot, and we mirror MG's home masks (the exam-honest scope law)
+    implementedApps: ["calculate", "statistics", "table", "equation"],
     shiftOverrides: SHIFT_OVERRIDES_991,
     features: { recurringDecimal: false, complex: true, engineerSymbol: true },
   },
