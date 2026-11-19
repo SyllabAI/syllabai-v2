@@ -14,6 +14,9 @@ import {
   buildNumberTable,
   quartilesOf,
   SIMUL_UNKNOWN_NAMES,
+  solveByNewton,
+  solverVariables,
+  splitSolverEquation,
   solvePolynomial,
   solveSimultaneous,
   stat1Var,
@@ -293,5 +296,84 @@ describe("(T2) Polynomial — the manual's 2nd–4th degree laws", () => {
   test("(T2p) the shape laws: a zero leading coefficient is a Math ERROR (our ruling); the wrong length is a Syntax ERROR", () => {
     expect(() => solvePolynomial(2, [rat(0), rat(1), rat(2)], false)).toThrow(CalcError);
     expect(() => solvePolynomial(3, [rat(1), rat(2), rat(3)] as never, false)).toThrow(CalcError);
+  });
+});
+
+// ── (T3) the Solver engine — the phase-E manual laws ──
+
+const SOLVER_CTX = { angle: "DEG" as const, ans: null, vars: {}, fns: { f: null, g: null } };
+const atoms = (...a: CalcAtom[]): CalcAtom[] => a;
+const EQ: CalcAtom = { kind: "eqtok" };
+
+describe("(T3) the Solver — the manual's input forms and the Newton laws", () => {
+  test("(T3a) the split: no '=' → the right side is 0 ('xy + C treated as xy + C = 0'); one top-level '=' splits", () => {
+    const bare = splitSolverEquation(atoms({ kind: "var", name: "x" }, op("-"), num("5")));
+    expect(bare.right).toEqual([{ kind: "num", text: "0" }]);
+    const eq = splitSolverEquation(atoms({ kind: "var", name: "y" }, EQ, { kind: "var", name: "x" }, op("+"), num("5")));
+    expect(eq.left).toEqual([{ kind: "var", name: "y" }]);
+    expect(eq.right).toEqual([vx, op("+"), num("5")]);
+  });
+  test("(T3b) a second top-level '=' is a Syntax ERROR (our ruling)", () => {
+    expect(() => splitSolverEquation(atoms(vx, EQ, vx, EQ))).toThrow(CalcError);
+  });
+  test("(T3c) the variables in order of first appearance", () => {
+    const eq = splitSolverEquation(atoms({ kind: "var", name: "y" }, EQ, { kind: "var", name: "x" }, op("+"), { kind: "var", name: "y" }));
+    expect(solverVariables(eq)).toEqual(["y", "x"]);
+  });
+  test("(T3d) Newton: x−5 from 0 → x=5, L−R≈0; 2x+3 → x=−1.5 (the decimal-only law)", () => {
+    const r1 = solveByNewton(splitSolverEquation(atoms(vx, op("-"), num("5"))), "x", 0, SOLVER_CTX);
+    expect(r1.kind).toBe("solved");
+    if (r1.kind === "solved") {
+      expect(Math.abs(r1.solution - 5)).toBeLessThan(1e-9);
+      expect(Math.abs(r1.lr)).toBeLessThan(1e-9);
+    }
+    const r2 = solveByNewton(splitSolverEquation(atoms(num("2"), op("×"), vx, op("+"), num("3"))), "x", 0, SOLVER_CTX);
+    if (r2.kind === "solved") expect(Math.abs(r2.solution + 1.5)).toBeLessThan(1e-9);
+  });
+  test("(T3e) the initial-value law: x²−4 from 3 → 2, from −3 → −2 (one solution returned — the manual's caveat)", () => {
+    const eq = splitSolverEquation(atoms(vx, { kind: "postfix", op: "²" }, op("-"), num("4")));
+    const a = solveByNewton(eq, "x", 3, SOLVER_CTX);
+    const b = solveByNewton(eq, "x", -3, SOLVER_CTX);
+    if (a.kind === "solved" && b.kind === "solved") {
+      expect(Math.abs(a.solution - 2)).toBeLessThan(1e-9);
+      expect(Math.abs(b.solution + 2)).toBeLessThan(1e-9);
+    } else throw new Error("no convergence on a trivial quadratic");
+  });
+  test("(T3f) the '=' form: y=x+5 solved for x with y unstored (0) → x=−5 (the engine's var law; the manual's Example-5 teaching)", () => {
+    const eq = splitSolverEquation(atoms({ kind: "var", name: "y" }, EQ, vx, op("+"), num("5")));
+    const r = solveByNewton(eq, "x", 0, SOLVER_CTX);
+    if (r.kind === "solved") expect(Math.abs(r.solution + 5)).toBeLessThan(1e-9);
+    else throw new Error("no convergence");
+  });
+  test("(T3g) the stored-variable precondition: x²−B² with B=4 → x=±4 (the manual's Example 5)", () => {
+    const eq = splitSolverEquation(atoms(vx, { kind: "postfix", op: "²" }, op("-"), { kind: "var", name: "B" }, { kind: "postfix", op: "²" }));
+    const ctx = { ...SOLVER_CTX, vars: { B: rat(4) } };
+    const r = solveByNewton(eq, "x", 1, ctx);
+    if (r.kind === "solved") expect(Math.abs(Math.abs(r.solution) - 4)).toBeLessThan(1e-9);
+    else throw new Error("no convergence");
+  });
+  test("(T3h) the non-convergence: 1÷x=0 has no solution → the confirmation screen (the Continue/Exit mechanism)", () => {
+    const eq = splitSolverEquation(atoms(num("1"), op("÷"), vx));
+    const r = solveByNewton(eq, "x", 1, SOLVER_CTX);
+    expect(r.kind).toBe("no-convergence");
+    if (r.kind === "no-convergence") expect(Number.isFinite(r.lastX)).toBe(true);
+  });
+  test("(T3i) the manual's caveat VERIFIED: y=√x is hard for Newton — √(x−5) oscillates (from 6) and the domain-failing start (from 0) both land on the confirmation screen", () => {
+    const eq = splitSolverEquation(atoms({ kind: "fn", name: "√" }, vx, op("-"), num("5"), { kind: "rparen" }));
+    const osc = solveByNewton(eq, "x", 6, SOLVER_CTX); // Newton on √(x−5) doubles the distance: 6 → 4 → the complex probes
+    expect(osc.kind).toBe("no-convergence");
+    const bad = solveByNewton(eq, "x", 0, SOLVER_CTX); // √(−5) → Math ERROR → the confirmation screen (our ruling)
+    expect(bad.kind).toBe("no-convergence");
+  });
+  test("(T3j) the trig + the initial-value law: sin(x)−1/2 (DEG) from 40 → x=30; from 1 → the confirmation screen (the manual's 'the initial value may need moving closer' caveat, verified)", () => {
+    const eq = splitSolverEquation(atoms({ kind: "fn", name: "sin" }, vx, { kind: "rparen" }, op("-"), frac("1", "2")));
+    const good = solveByNewton(eq, "x", 40, SOLVER_CTX);
+    if (good.kind === "solved") expect(Math.abs(good.solution - 30)).toBeLessThan(1e-6);
+    else throw new Error("the initial value near the root must solve");
+    const far = solveByNewton(splitSolverEquation(atoms({ kind: "fn", name: "e^" }, vx, { kind: "rparen" })), "x", 0, SOLVER_CTX);
+    expect(far.kind).toBe("no-convergence"); // the manual's own caveat case y=e^x: no root — the Newton marches to −∞ and exhausts the preset → the confirmation screen
+  });
+  test("(T3k) the non-finite initial value is a Math ERROR", () => {
+    expect(() => solveByNewton(splitSolverEquation(atoms(vx)), "x", Infinity, SOLVER_CTX)).toThrow(CalcError);
   });
 });

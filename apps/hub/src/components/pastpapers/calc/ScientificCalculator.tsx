@@ -43,8 +43,10 @@ import {
   bufferToTex,
   CalcError,
   formatNatural,
+  formatDecimal,
   initialCalcState,
   pressKey,
+  type CalcAtom,
   type CalcDisplayFmt,
   type CalcKey,
   type CalcState,
@@ -53,8 +55,11 @@ import {
 import {
   buildNumberTable,
   SIMUL_UNKNOWN_NAMES,
+  solveByNewton,
   solvePolynomial,
   solveSimultaneous,
+  solverVariables,
+  splitSolverEquation,
   stat1Var,
   stat2Var,
   statEntryToValue,
@@ -62,6 +67,7 @@ import {
   TABLE_ROWS_SINGLE,
   type PolyResult,
   type SimulResult,
+  type SolverResult,
   type Stat1Var,
   type Stat2Var,
   type TableType,
@@ -133,7 +139,13 @@ type Screen =
   | "eq-sol"
   | "eq-degree"
   | "eq-poly-coeff"
-  | "eq-poly-sol";
+  | "eq-poly-sol"
+  // phase E: the Solver (the manual's flow) — the fence item from
+  // phase D is now implemented
+  | "eq-solver-in"
+  | "eq-solver-target"
+  | "eq-solver-init"
+  | "eq-solver-res";
 
 interface KeyDef {
   label: string;
@@ -413,6 +425,17 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
   const [eqPolyCoeffs, setEqPolyCoeffs] = useState<string[]>([]);
   const [eqComplexRoots, setEqComplexRoots] = useState(false); // the manual's initial default: Off
   const [eqResults, setEqResults] = useState<PolyResult | null>(null);
+  // ── phase E: the Solver session. The Calculate buffer is SNAPSHOTTED
+  // around the Solver (the retention table — the Solver session is
+  // separate from Calculate's); the equation is stored after a solve
+  // (the manual's step-9 law); the initial value is the last used. ──
+  const [solverEquation, setSolverEquation] = useState<CalcAtom[] | null>(null);
+  const [solverTarget, setSolverTarget] = useState<CalcVarName | null>(null);
+  const [solverInit, setSolverInit] = useState("");
+  const [solverResult, setSolverResult] = useState<SolverResult | null>(null);
+  const [solverTargetCursor, setSolverTargetCursor] = useState(0);
+  const [solverTargets, setSolverTargets] = useState<CalcVarName[]>([]);
+  const [calcSnapshot, setCalcSnapshot] = useState<CalcState | null>(null);
   const [appError, setAppError] = useState<string | null>(null);
 
   /** the manual's editor row caps: 160 rows for one column, 80 for two. */
@@ -646,6 +669,96 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       else throw e;
     }
   };
+  // ── phase E: the Solver flow — the manual's laws: the register →
+  // the Solve Target screen ([x] selected) → the initial-value screen
+  // ([Execute] solves; the initial value = the last used) → the
+  // solution display ((1) the variable (2) the solution (3) L−R,
+  // decimal-only) with the Continue/Exit confirmation on
+  // non-convergence; the equation is STORED after a solve (the step-9
+  // law). The Calculate buffer is snapshotted around the Solver. ──
+  const restoreCalc = () => {
+    if (calcSnapshot) setState(calcSnapshot);
+    setCalcSnapshot(null);
+  };
+  const openSolver = () => {
+    setAppError(null);
+    if (!calcSnapshot) {
+      // the first entry: the Calculate session is separate (the
+      // retention table) — snapshot and clear; a re-entry after a solve
+      // KEEPS the stored equation (the manual's step-9 law)
+      setCalcSnapshot(state);
+      setState((s2) => ({ ...s2, buf: [], cur: 0, result: null }));
+    }
+    setScreen("eq-solver-in");
+  };
+  const registerSolver = () => {
+    setAppError(null);
+    if (!state.buf.length) {
+      setAppError("Syntax ERROR");
+      return;
+    }
+    try {
+      const eq = splitSolverEquation(state.buf);
+      const targets = solverVariables(eq);
+      if (!targets.length) {
+        setAppError("Variable ERROR"); // our ruling: nothing to solve for (the class from the PDF's error list)
+        return;
+      }
+      // the syntax validation: a one-iteration probe surfaces
+      // Syntax/Stack errors at registration; the value errors are the
+      // solve's business (the domain → the confirmation screen)
+      try {
+        solveByNewton(eq, targets[0], 0, { angle: state.angle, ans: state.ans, vars: state.vars, fns: state.fns }, 1);
+      } catch (e) {
+        if (e instanceof CalcError && (e.cls === "Syntax ERROR" || e.cls === "Stack ERROR")) {
+          setAppError(e.cls);
+          return;
+        }
+      }
+      setSolverEquation(state.buf);
+      setSolverTargets(targets);
+      setSolverTarget(targets.includes("x") ? "x" : targets[0]); // the manual's own law: confirm [x]
+      setSolverTargetCursor(targets.includes("x") ? targets.indexOf("x") : 0);
+      setScreen("eq-solver-target");
+    } catch (e) {
+      if (e instanceof CalcError) setAppError(e.cls);
+      else throw e;
+    }
+  };
+  const solveNow = (initial: number) => {
+    setAppError(null);
+    if (!solverEquation || !solverTarget) return;
+    try {
+      const eq = splitSolverEquation(solverEquation);
+      const r = solveByNewton(eq, solverTarget, initial, { angle: state.angle, ans: state.ans, vars: state.vars, fns: state.fns });
+      setSolverResult(r);
+      setScreen("eq-solver-res");
+    } catch (e) {
+      if (e instanceof CalcError) setAppError(e.cls);
+      else throw e;
+    }
+  };
+  // the initial-value law: the field shows the variable's STORED value
+  // ("The initial value when you press this key becomes the initial
+  // value you last used" — our edit persists in solverInit)
+  const solverInitDefault = (): string => {
+    if (solverTarget) {
+      const v = state.vars[solverTarget];
+      if (v && !("c" in v)) return v.exact ? String(Number(v.n) / Number(v.d)) : String(v.v);
+    }
+    return "0";
+  };
+  const commitSolverInit = () => {
+    setAppError(null);
+    const text = solverInit || solverInitDefault();
+    try {
+      const v = statEntryToValue(text);
+      const initial = "c" in v ? 0 : v.exact ? Number(v.n) / Number(v.d) : v.v;
+      solveNow(initial);
+    } catch {
+      setAppError("Syntax ERROR");
+    }
+  };
   const qrCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const relayRef = useRef<{
@@ -692,6 +805,7 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
 
   const launchApp = (name: string, label: string) => {
     if (name === "calculate" && model.implementedApps.includes("calculate")) {
+      restoreCalc(); // the Calculate session resumes (the snapshot law)
       setScreen("calc");
       return;
     }
@@ -716,6 +830,18 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
     // ①); the Complex Roots setting resets to Off (the manual's
     // initial default).
     if (name === "equation" && model.implementedApps.includes("equation")) {
+      // the retention: another launch discards the Solver session and
+      // restores the Calculate buffer (the snapshot law)
+      if (calcSnapshot) {
+        setState(calcSnapshot);
+        setCalcSnapshot(null);
+      }
+      setSolverEquation(null);
+      setSolverTarget(null);
+      setSolverTargets([]);
+      setSolverInit("");
+      setSolverResult(null);
+      setSolverTargetCursor(0);
       setEqUnknowns(2);
       setEqUnkCursor(0);
       setEqCoeffs([]);
@@ -825,10 +951,7 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       else if (d === "ok") {
         if (eqMenuCursor === 0) setScreen("eq-unknowns");
         else if (eqMenuCursor === 1) setScreen("eq-degree");
-        else {
-          setNoticeApp("Solver");
-          setScreen("notice");
-        }
+        else openSolver(); // phase E: Solver implemented (the phase-D fence item closed)
       }
       return;
     }
@@ -864,6 +987,32 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       }
       return;
     }
+    if (screen === "eq-solver-in") {
+      // the arrows drive the ENGINE's buffer cursor (the calc keypad is
+      // live on this screen); OK registers (the manual's law)
+      if (d === "left") press({ k: "left" });
+      else if (d === "right") press({ k: "right" });
+      else if (d === "ok") registerSolver();
+      return;
+    }
+    if (screen === "eq-solver-target") {
+      if (d === "up") setSolverTargetCursor((c) => (c + solverTargets.length - 1) % Math.max(1, solverTargets.length));
+      else if (d === "down") setSolverTargetCursor((c) => (c + 1) % Math.max(1, solverTargets.length));
+      else if (d === "ok" && solverTargets.length) {
+        setSolverTarget(solverTargets[solverTargetCursor]);
+        setSolverInit(""); // the field shows the variable's stored value (the initial-value law)
+        setScreen("eq-solver-init");
+      }
+      return;
+    }
+    if (screen === "eq-solver-init") {
+      if (d === "ok") commitSolverInit();
+      return;
+    }
+    if (screen === "eq-solver-res") {
+      if (d === "ok") setScreen("eq-solver-in"); // the step-9 law: the equation stored, return to the input
+      return;
+    }
     if (screen === "notice" && d === "ok") setScreen("home");
   };
 
@@ -889,7 +1038,14 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       return;
     }
     setMenuCursor(0);
-    if (cmd === "home") setScreen(screen === "home" ? "calc" : "home");
+    if (cmd === "home") {
+      // leaving the Equation app's screens restores the Calculate
+      // session (the snapshot law); the HOME toggle still applies
+      const eqScreens = ["eq-menu", "eq-unknowns", "eq-coeff", "eq-sol", "eq-degree", "eq-poly-coeff", "eq-poly-sol", "eq-solver-in", "eq-solver-target", "eq-solver-init", "eq-solver-res"];
+      if (calcSnapshot && eqScreens.includes(screen)) restoreCalc();
+      setScreen(screen === "home" ? "calc" : "home");
+      return;
+    }
     else setScreen(cmd);
   };
 
@@ -972,6 +1128,38 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
         }
         if (k.k === "ac") {
           setTableRange((r) => ({ ...r, [tableField]: "" }));
+          return;
+        }
+        return;
+      }
+      // phase E: on the Solver input screen EXE REGISTERS the equation
+      // (the manual's law); every other keypad key falls through to the
+      // engine (the calc keypad is live — the equation is typed with
+      // the full math vocabulary)
+      if (screen === "eq-solver-in" && k.k === "eq") {
+        registerSolver();
+        return;
+      }
+      // phase E: the Solver initial-value screen takes the entry column
+      if (screen === "eq-solver-init") {
+        if (k.k === "digit") {
+          setSolverInit((e) => (e.length < 12 ? e + k.d : e));
+          return;
+        }
+        if (k.k === "neg") {
+          setSolverInit((e) => (e.startsWith("-") ? e.slice(1) : "-" + e));
+          return;
+        }
+        if (k.k === "del") {
+          setSolverInit((e) => e.slice(0, -1));
+          return;
+        }
+        if (k.k === "eq") {
+          commitSolverInit();
+          return;
+        }
+        if (k.k === "ac") {
+          setSolverInit("");
           return;
         }
         return;
@@ -2037,10 +2225,7 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
                 {screenBtn(`Select ${label}`, label, () => {
                   if (i === 0) setScreen("eq-unknowns");
                   else if (i === 1) setScreen("eq-degree");
-                  else {
-                    setNoticeApp("Solver");
-                    setScreen("notice");
-                  }
+                  else openSolver(); // phase E: Solver implemented (the phase-D fence item closed)
                 }, { pressed: eqMenuCursor === i, data: label })}
               </div>
             ))}
@@ -2251,6 +2436,135 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
             )}
           </div>
           <div className="mt-2">{screenBtn("Back to Coefficient Editor", "Back", () => setScreen("eq-poly-coeff"), { data: "Poly sol back" })}</div>
+        </div>
+      )}
+
+      {/* ── phase E: the Solver — the manual's flow. The input screen
+          keeps the CALC KEYPAD live (the full math vocabulary; the =
+          comes from the Insert button — the manual's own "[Equation] >
+          [=]" menu-path law); EXE registers → the Solve Target screen →
+          the initial-value screen → the solution display ((1) the
+          variable (2) the solution (3) L−R — decimal-only) with the
+          Continue/Exit confirmation on non-convergence. ── */}
+      {screen === "eq-solver-in" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-solver-in" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Solver · Equation Input</div>
+          <div className="min-h-8 rounded-md border border-zinc-800 bg-zinc-900 px-2 py-1 text-left text-sm text-zinc-100" data-calc-solver-equation>
+            {state.buf.length ? (
+              <span dangerouslySetInnerHTML={{ __html: bufferToTex(state.buf) }} />
+            ) : (
+              <span className="text-zinc-500">Type the equation — a bare expression is treated as … = 0</span>
+            )}
+          </div>
+          <div className="mt-1 text-[10px] leading-snug text-zinc-500">
+            Forms: y = x + 5 · x = sin(A) · xy + C (= 0) — the = sign rides the Insert button (the manual&apos;s menu path)
+          </div>
+          {appError && (
+            <div className="cw-error-hint mt-1 text-left text-[10px] leading-snug text-zinc-400" data-calc-app-error>
+              {appError}: {appError === "Variable ERROR" ? "the equation has no variable to solve for." : "check the equation."}
+            </div>
+          )}
+          <div className="mt-2 flex flex-wrap gap-1">
+            {screenBtn("Insert equals sign", "=", () => press({ k: "eq-ins" }), { data: "Insert =" })}
+            {screenBtn("Register equation and choose the solve target", "Register", () => registerSolver(), { data: "Register equation" })}
+            {screenBtn("Back to Equation menu", "Back", () => {
+              restoreCalc();
+              setScreen("eq-menu");
+            }, { data: "Solver in back" })}
+          </div>
+        </div>
+      )}
+
+      {screen === "eq-solver-target" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-solver-target" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Solver · Solve Target</div>
+          <div className="space-y-1.5">
+            {solverTargets.map((v, i) => (
+              <div key={v} className="flex items-center justify-between gap-2">
+                <span className={`text-sm ${solverTargetCursor === i ? "text-zinc-50" : "text-zinc-300"}`}>
+                  {solverTargetCursor === i ? "▶ " : "  "}
+                  {v}
+                </span>
+                {screenBtn(`Select solve target ${v}`, v, () => {
+                  setSolverTarget(v);
+                  setSolverInit("");
+                  setScreen("eq-solver-init");
+                }, { pressed: solverTargetCursor === i, data: `Target ${v}` })}
+              </div>
+            ))}
+          </div>
+          <div className="mt-1 text-[10px] leading-snug text-zinc-500">
+            [x] is the default target. Unstored variables read as 0 — store values first (the manual&apos;s Example 5: 4 → B before x²−B²=0).
+          </div>
+          <div className="mt-2">{screenBtn("Back to equation input", "Back", () => setScreen("eq-solver-in"), { data: "Target back" })}</div>
+        </div>
+      )}
+
+      {screen === "eq-solver-init" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-solver-init" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Solver · Initial Value for {solverTarget}</div>
+          <div className="rounded-md border border-zinc-700 bg-zinc-900 px-2 py-1 text-left text-sm font-mono text-zinc-100 outline outline-1 outline-zinc-600" data-calc-solver-init-field>
+            {solverInit || solverInitDefault()}
+          </div>
+          <div className="mt-1 text-[10px] leading-snug text-zinc-500">
+            The stored value is the default. Newton&apos;s method needs a start near the solution — Solver may not find it even when one exists.
+          </div>
+          {appError && (
+            <div className="cw-error-hint mt-1 text-left text-[10px] leading-snug text-zinc-400" data-calc-app-error>
+              {appError}: check the initial value.
+            </div>
+          )}
+          <div className="mt-2 flex flex-wrap gap-1">
+            {screenBtn("Execute solve", "Execute", () => commitSolverInit(), { data: "Execute solve" })}
+            {screenBtn("Back to solve targets", "Back", () => setScreen("eq-solver-target"), { data: "Init back" })}
+          </div>
+        </div>
+      )}
+
+      {screen === "eq-solver-res" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-solver-res" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Solver · Solution</div>
+          {solverResult?.kind === "solved" ? (
+            <div className="text-xs font-mono">
+              <div className="flex justify-between gap-3 py-0.5">
+                <span className="text-zinc-400">Variable</span>
+                <span className="text-zinc-100" data-calc-solver-var>
+                  {solverResult.variable}
+                </span>
+              </div>
+              <div className="flex justify-between gap-3 py-0.5">
+                <span className="text-zinc-400">Solution</span>
+                <span className="text-zinc-100" data-calc-solver-solution>
+                  {formatDecimal({ exact: false, v: solverResult.solution }, state.fix, fmt)}
+                </span>
+              </div>
+              <div className="flex justify-between gap-3 py-0.5">
+                <span className="text-zinc-400">L−R</span>
+                <span className="text-zinc-100" data-calc-solver-lr>
+                  {formatDecimal({ exact: false, v: solverResult.lr }, state.fix, fmt)}
+                </span>
+              </div>
+              <div className="mt-1 text-[10px] text-zinc-500">Solutions are always decimal — the closer L−R is to 0, the higher the accuracy.</div>
+            </div>
+          ) : solverResult?.kind === "no-convergence" ? (
+            <div className="text-xs">
+              <div className="text-zinc-100" data-calc-solver-message>
+                No solution found — Continue?
+              </div>
+              <div className="mt-1 text-[10px] leading-snug text-zinc-500">
+                Solver performed its preset number of iterations without converging. Moving the initial value closer to a solution may help.
+              </div>
+              <div className="mt-2 flex flex-wrap gap-1">
+                {screenBtn("Continue solving from the last point", "Continue", () => solveNow(solverResult.lastX), { data: "Continue solving" })}
+                {screenBtn("Exit the Solver operation", "Exit", () => setScreen("eq-solver-in"), { data: "Exit solver" })}
+              </div>
+            </div>
+          ) : (
+            <div className="text-xs text-zinc-500" data-calc-solver-message>
+              —
+            </div>
+          )}
+          <div className="mt-2">{screenBtn("Back to equation input (the equation is stored)", "Back to input", () => setScreen("eq-solver-in"), { data: "Back to solver input" })}</div>
         </div>
       )}
 
