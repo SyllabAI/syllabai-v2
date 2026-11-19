@@ -1,0 +1,75 @@
+{
+  "run": "run-011",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-11-19T05:52Z (rename executed); filed ~2026-11-19T06:05Z",
+  "traces": {
+    "operator_order": "1a1f25ba6b4ca455 ('rename MAIN')",
+    "delete_safety_question": "1a1f2552020d2989 ('Can we safely delete the old database now (the one that is over the network transfer limit)?')",
+    "run010_cron_inspection": "1a1efcab3bcf57bd-cron-agent-loop-202611191200"
+  },
+  "action": {
+    "kind": "neon_project_rename",
+    "api_call": "PATCH /v2/projects/billowing-cherry-15418366 {\"project\":{\"name\":\"SyllabAI-MAIN-TOMBSTONE-DO-NOT-USE\"}}",
+    "http_status": 200,
+    "updated_at": "2026-11-19T05:52:10Z",
+    "old_name": "SyllabAI",
+    "new_name": "SyllabAI-MAIN-TOMBSTONE-DO-NOT-USE",
+    "project_id": "billowing-cherry-15418366",
+    "verified": "GET /v2/projects re-listed: patient-frost-80179806 SyllabAI-Main-Backup (PRODUCTION) / flat-leaf-09845356 SyllabAI-Warehouse-1 (W1) / billowing-cherry-15418366 SyllabAI-MAIN-TOMBSTONE-DO-NOT-USE (TOMBSTONE)",
+    "scope_note": "Rename-only: connection host ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech UNCHANGED - zero connection-string impact; purpose = prevent accidental repoint/confusion ahead of decommission."
+  },
+  "main_state_of_record": {
+    "compute": "suspended by the transfer-quota kill switch; psql refused 'ERROR: Your account or project has exceeded the quota'",
+    "consumption_period_aggregates": {
+      "data_transfer_bytes": 5839692134,
+      "data_transfer_gb_of_5": 5.84,
+      "note": "was 5.60 at incident start; +233 MB = production reads up to the 18:53Z failover + lane verification reads",
+      "compute_time_seconds": 86419,
+      "logical_size_for_root_bytes": 514850816,
+      "pitr_history_size_for_root_bytes": 2895728
+    },
+    "branch": "production br-muddy-bar-a5huwldd (created 2026-09-08T17:15:36Z)",
+    "suspension_window": "bounded [2026-11-18T18:53Z failover, 2026-11-19T04:02Z first refused connection]; endpoint last_active not exposed by this API shape"
+  },
+  "delete_safety_adjudication": {
+    "question": "Can we safely delete the old database now?",
+    "verdict": "NOT YET - tombstone path adopted (operator approved the rename step)",
+    "reasons": [
+      "suspended compute = pg_dump impossible today; deleting = destroying the second copy of production data with no possibility of a last export",
+      "the [18:53Z failover, suspension] window is unverified for straggler writers (undeclared crons/agents/dev machines); MAIN-vs-BACKUP equality of-record was proven at failover (telemetry 5702 / decay 58 both sides, run-010 PR #1107) but not since; MAIN unreadable while paused",
+      "a paused project burns ZERO compute and ZERO transfer - deletion saves nothing today; the transfer quota is per-project and monthly - removal does not relax BACKUP's own 5 GB cap"
+    ],
+    "decommission_plan_of_record": [
+      "0. DONE run-011: tombstone rename (this receipt)",
+      "1. quota reset expected 2026-12-01..08 (org org-withered-mud-59985156 free plan, anchor day = the 8th); MAIN auto-resumes",
+      "2. at resume: pg_dump full logical export (~515 MB logical; fits the fresh 5 GB quota) archived OUTSIDE Neon",
+      "3. same session: per-table count + checksum differential audit vs BACKUP (patient-frost-80179806); zero-diff conclusively rules out straggler writes",
+      "4. only on zero-diff: DELETE /v2/projects/billowing-cherry-15418366 (or hold one more cycle as tombstone)"
+    ]
+  },
+  "run010_cron_inspection_of_record": {
+    "disposition": "read-only PASS, brief-only per its own criteria (no separate receipt); facts recorded here for the audit trail",
+    "at": "2026-11-19T04:02-04:05Z",
+    "backup_decay_job_runs": "59 (+1 vs failover baseline 58); the landing row: window_start 2026-11-19T00:00Z, executed_at 2026-11-19T00:57:06.155Z, trigger_kind vercel-cron, decayed=178, reviews_scheduled=0; prior row 2026-11-18T00:57:06.136Z (pre-failover) -> nightly decay cron LANDED on BACKUP",
+    "backup_telemetry_events": "5702 flat; last occurred_at 2026-11-18T12:12:34.899Z = the pre-failover final MAIN write",
+    "health": "GET https://api.syllab-ai.com/actuator/health -> 200 UP {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"} in 2.0s",
+    "main": "refused (quota) = benign pause; split-brain impossible while compute-suspended",
+    "verdict": "WRITE PATH PROVEN on BACKUP"
+  },
+  "backup_egress_warning": {
+    "transfer": "1,043,059,102 B = 1.043/5 GB (20.9%)",
+    "compute_time_seconds": 1555,
+    "logical_size_bytes": 485154816,
+    "burn_rate": "1.17 GB/day (creation-anchored, project created 2026-11-18T06:44:57Z) .. 2.72 GB/day (failover-anchored upper bound)",
+    "cap_eta": "~2026-11-20 evening .. 2026-11-22 UTC - hitting the cap suspends PRODUCTION exactly like MAIN",
+    "metering_note": "org-level consumption_history route = 404 on the free-plan org; metering only via GET /v2/projects/{id}/consumption (period aggregates)",
+    "recommendation": "L2 bytea offload + L6 egress watch are now the most urgent levers, ahead of MAIN decommission"
+  },
+  "secrets": "Neon API key (napi_) used for the PATCH mutation (operator-ordered rename) + read-only GETs (projects/endpoints/consumption); GitHub PAT used for the filing chain; no DB writes; no other infra mutations; no credential values printed to disk.",
+  "open_items": [
+    "PRs #1088 (run-005), #1089 (run-006), #1096 (run-008), #1106 (run-009), #1107 (run-010) still OPEN for the integrator.",
+    "Dec-reset tombstone exit: dump -> audit -> delete per the decommission plan of record (above).",
+    "BACKUP egress ceiling ~Nov-20..22: L2 bytea offload executable on operator signal; L6 egress dashboard still needs a scheduler home.",
+    "Credential rotation debt: GitHub PAT + Neon API key (napi_) + Vercel token(s) + owner DSNs exposed in-chat."
+  ]
+}
