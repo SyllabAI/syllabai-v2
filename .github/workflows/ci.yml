@@ -120,3 +120,12 @@ jobs:
       # payload law untouched).
       - name: KG T1 feedback schema + fork contract (T-KG-TRIPWIRE-1)
         run: bun test apps/hub/src/lib/kg-prereq-feedback.test.ts
+
+      # T-GL-STAGE-P3 run-001: the chunking law of record as CI law — the
+      # budgets/mapping module shared by the renderer's arc, the import
+      # runner's G-CHUNK gate and the QA census cannot drift (§5.2/§6/§8).
+      - name: Guided chunking law (T-GL-STAGE-P3)
+        run: bun test apps/hub/src/lib/guided-chunk-law.test.ts
+
+      - name: Guided interactions bridge fail-closed law (T-GL-STAGE-P2)
+        run: bun test apps/hub/src/lib/guided-interactions.test.ts
