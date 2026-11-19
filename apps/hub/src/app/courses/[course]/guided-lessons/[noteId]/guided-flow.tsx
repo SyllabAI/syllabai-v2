@@ -66,6 +66,21 @@
  * The arc stays a pure function of (payload, rating); the end block keeps
  * every check with resume-at-first-unanswered, so saved sessions — from
  * either arc — still reach their unanswered checks.
+ *
+ * P2 INTERACTION BRIDGE AND ERROR LOOP (2026-11-19, "proceed" on plan
+ * §5.4/§5.5): in stage mode a check carrying a valid interactions[0] renders
+ * the book reader's OWN widget (sort-match / table-fill / drag-label /
+ * eq-builder) as its answering surface — the same components, the same
+ * a11y keyboard paths, no new runtime; unknown kinds and malformed payloads
+ * fail closed to the standard MCQ/written UI, and the 5,355 live checks
+ * (no interactions[]) render byte-identically until the P3 backfill. The
+ * error loop keeps the misconception flag and explanation on a wrong
+ * verdict and adds two actions: "See it again" replays the mapped key-point
+ * card inline (stage indices untouched — the arc stays pure), and the
+ * tutor affordance deep-links the existing tutor anchored on this beat
+ * (/tutor?course=&q=&spec= — the hub's anchored-entry law). The plan's
+ * "Ask SillyAI" label rides the §9 open brand decision; the affordance
+ * uses the product's own tutor voice.
  */
 import {
   createContext,
@@ -106,6 +121,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { figuresForModule } from "@/lib/guided-figures";
 import { checkMode, gradeWritten } from "@/lib/guided-written";
+import {
+  interactionBlock,
+  tutorAskHref,
+  usableInteraction,
+} from "@/lib/guided-interactions";
+import type { InteractionVerdict } from "@/components/books/rail/check-shared";
+import { SortMatchBlock } from "@/components/books/rail/widgets/sort-match-block";
+import { TableFillBlock } from "@/components/books/rail/widgets/table-fill-block";
+import { DragLabelBlock } from "@/components/books/rail/widgets/drag-label-block";
+import { EqBuilderBlock } from "@/components/books/rail/widgets/eq-builder-block";
 import type {
   GuidedDepthLayer,
   GuidedFigure,
@@ -145,6 +170,9 @@ interface Props {
   noteTitle: string;
   noteHref: string;
   base: string;
+  /** the course slug — P2 remediation: the "ask the tutor" deep link is
+   *  course-anchored (/tutor?course=…) per the hub's anchored-entry law. */
+  course: string;
   /** R-2 deep links (resolved server-side, see the flow's call site): the
    *  exam-questions set / flashcard deck anchored to this note's subtopic,
    *  or the course-level page when no per-topic target resolves. */
@@ -480,6 +508,7 @@ export function GuidedLessonFlow({
   noteTitle,
   noteHref,
   base,
+  course,
   examQuestionsHref,
   flashcardsHref,
   stageUI = false,
@@ -727,6 +756,7 @@ export function GuidedLessonFlow({
       prevDone={prevDone}
       examQuestionsHref={examQuestionsHref}
       flashcardsHref={flashcardsHref}
+      course={course}
       recalChoice={recalChoice[m.id]}
       onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
       onChooseRating={chooseRating}
@@ -987,6 +1017,8 @@ interface StageProps {
    *  another lesson follows in the set. */
   examQuestionsHref: string;
   flashcardsHref: string;
+  /** P2 remediation: the course slug for the tutor deep link (§5.5). */
+  course: string;
   /** the current module's post-check recalibration choice, pre-continue */
   recalChoice: Rating | undefined;
   onRecalChoice: (r: Rating) => void;
@@ -1616,11 +1648,23 @@ function ExampleStage(p: StageProps) {
 }
 
 function CheckStage(p: StageProps & { stage: Extract<Stage, { kind: "check" }> }) {
-  const { module: m, lesson, moduleOrdinal, questionsById, state, onAnswer, onNext, stage } = p;
+  const { module: m, lesson, moduleOrdinal, questionsById, state, onAnswer, onNext, stage, course } = p;
   const S = useStageUI();
   const questions = stage.qids
     .map((ref) => questionsById.get(ref))
     .filter((q): q is GuidedQuestion => q !== undefined);
+  // P2 remediation mapping (§5.5): the key-point group that teaches each
+  // check — recomputed from the SAME deterministic helpers the arc builder
+  // uses (identical inputs, identical mapping). An unmapped check keeps
+  // only the tutor affordance: the conservative fallback law of record —
+  // the action never names a concept it cannot identify.
+  const replay = useMemo(() => {
+    const moduleQuestions = m.checkRefs
+      .map((ref) => questionsById.get(ref))
+      .filter((q): q is GuidedQuestion => q !== undefined);
+    const groups = keyPointGroups(m.keyPoints);
+    return { groups, mapped: mapChecksToGroups(groups, moduleQuestions) };
+  }, [m, questionsById]);
   // resume at the first unanswered question of this block — with the end
   // block holding every check, a resumed session (or a fresh walk whose
   // interleaved checks are done) lands exactly on what is still open
@@ -1637,6 +1681,10 @@ function CheckStage(p: StageProps & { stage: Extract<Stage, { kind: "check" }> }
   // ("Question 4 of 9") so the journey reads continuously across the arc
   const single = questions.length === 1;
   const modulePosition = m.checkRefs.indexOf(q.id) + 1;
+  const replayKps = (() => {
+    const gi = replay.mapped.get(q.id);
+    return gi !== undefined ? (replay.groups[gi] ?? null) : null;
+  })();
 
   return (
     <Card className={pick(S, "shadow-md", "")}>
@@ -1664,6 +1712,9 @@ function CheckStage(p: StageProps & { stage: Extract<Stage, { kind: "check" }> }
           index={single ? modulePosition : clampedQi + 1}
           answered={answered}
           onAnswer={onAnswer}
+          course={course}
+          replayKps={replayKps}
+          specRef={m.specRefs[0] ?? null}
         />
 
         {single ? (
@@ -1830,20 +1881,51 @@ function CheckQuestion({
   index,
   answered,
   onAnswer,
+  course,
+  replayKps,
+  specRef,
 }: {
   question: GuidedQuestion;
   index: number;
   answered: { picked: string; correct: boolean } | null;
   onAnswer: (qid: string, picked: string, correct: boolean) => void;
+  /** P2 remediation context (§5.5): the course slug anchors the tutor deep
+   *  link; replayKps is the mapped key-point group behind "See it again"
+   *  (null = unmapped — the conservative law keeps only the tutor
+   *  affordance); specRef anchors retrieval to the module's spec code. */
+  course: string;
+  replayKps: string[] | null;
+  specRef: string | null;
 }) {
   const S = useStageUI();
   const mode = checkMode(question);
+  // P2 interaction bridge (§5.4): STAGE MODE ONLY — when the check carries a
+  // valid interactions[0], the book reader's own widget replaces the option
+  // grid / textarea as the answering surface. Unknown kinds and malformed
+  // payloads yield null → the standard UI (the fail-closed fallback law);
+  // the live 5,355 checks carry no interactions and never enter this path.
+  const interaction = S ? usableInteraction(question) : null;
   // R3 written kinds: gradable == known written kind WITH keywords; otherwise the
   // flow offers reveal-only settle (model answer shown, no verdict, never graded)
   const gradable = mode === "written" && !!question.keywords && question.keywords.length > 0;
   const [text, setText] = useState(answered?.picked ?? "");
   const [picked, setPicked] = useState<string | null>(answered?.picked ?? null);
   const settled = answered !== null;
+  // the write-once guard for the widget settle: the FIRST check verdict
+  // records the attempt; a reset fires "unchecked" and never settles
+  const settledRef = useRef(answered !== null);
+  const settleFromWidget = (r: InteractionVerdict) => {
+    if (r.verdict === "unchecked" || settledRef.current) return;
+    settledRef.current = true;
+    // the learner's assembly rides the answer record (the picked slot) so a
+    // resumed session can show what was actually built — the same slot the
+    // written kinds use for the learner text
+    onAnswer(question.id, r.echo ?? "", r.verdict === "correct");
+  };
+  const tutorHref = useMemo(
+    () => tutorAskHref(course, question.stem, replayKps, specRef),
+    [course, question.stem, replayKps, specRef],
+  );
 
   if (mode !== "mcq") {
     const modelAnswer = question.modelAnswer;
@@ -1918,6 +2000,9 @@ function CheckQuestion({
             ) : (
               <p className="text-xs text-muted-foreground">Model answer unavailable for this item.</p>
             )}
+            {S && !answered.correct && gradable && (
+              <RemediationRow replayKps={replayKps} tutorHref={tutorHref} />
+            )}
           </div>
         )}
       </fieldset>
@@ -1988,17 +2073,53 @@ function CheckQuestion({
         })}
       </div>
 
-      {!settled && (
-        <Button
-          size="sm"
-          disabled={picked === null}
-          onClick={() => {
-            if (picked === null || !pickedOption || !correctOption) return;
-            onAnswer(question.id, picked, pickedOption.correct);
-          }}
-        >
-          Submit answer
-        </Button>
+      {!settled && interaction != null ? (
+        // §5.4: the book reader's OWN widget is the answering surface — the
+        // same component the rail ships, its practice furniture intact; the
+        // flow's verdict panel takes over on settle.
+        <div className="space-y-1">
+          {interaction.kind === "sort-match" && (
+            <SortMatchBlock
+              block={interactionBlock(question.id, interaction, index)}
+              embedded
+              onVerdict={settleFromWidget}
+            />
+          )}
+          {interaction.kind === "table-fill" && (
+            <TableFillBlock
+              block={interactionBlock(question.id, interaction, index)}
+              embedded
+              onVerdict={settleFromWidget}
+            />
+          )}
+          {interaction.kind === "drag-label" && (
+            <DragLabelBlock
+              block={interactionBlock(question.id, interaction, index)}
+              embedded
+              onVerdict={settleFromWidget}
+            />
+          )}
+          {interaction.kind === "eq-builder" && (
+            <EqBuilderBlock
+              block={interactionBlock(question.id, interaction, index)}
+              embedded
+              onVerdict={settleFromWidget}
+            />
+          )}
+        </div>
+      ) : (
+        !settled && (
+          <Button
+            size="sm"
+            disabled={picked === null}
+            onClick={() => {
+              if (picked === null || !pickedOption || !correctOption) return;
+              onAnswer(question.id, picked, pickedOption.correct);
+            }}
+          >
+            Submit answer
+          </Button>
+        )
       )}
 
       {settled && answered && (
@@ -2010,16 +2131,87 @@ function CheckQuestion({
             </p>
           ) : (
             <p className={pick(S, "text-[15px] font-semibold text-destructive verdict-shake", "text-xs font-semibold text-destructive")}>
-              Not quite — the answer is {correctOption?.key}.
+              {interaction != null
+                ? // a widget verdict has no option letter to name
+                  "Not quite."
+                : `Not quite — the answer is ${correctOption?.key}.`}
             </p>
           )}
+          {(() => {
+            // the widget echo rides the picked slot; a legacy (pre-P2) MCQ
+            // record holds an option key there — show it only when it is
+            // genuinely the learner's assembly (honest resume)
+            const isOptionKey = question.options.some((o) => o.key === answered.picked);
+            if (interaction == null || answered.picked === "" || isOptionKey) return null;
+            return (
+              <p className={pick(S, STAGE_BODY_SOFT, "text-xs leading-relaxed text-muted-foreground")}>
+                Your answer: <span className="font-medium text-foreground">{answered.picked}</span>
+              </p>
+            );
+          })()}
           <p className={pick(S, STAGE_BODY_SOFT, "text-xs leading-relaxed text-muted-foreground")}>{correctOption?.explanation}</p>
           {!answered.correct && pickedOption?.misconception && (
             <p className="text-xs text-muted-foreground">Misconception flagged: {pickedOption.misconception}</p>
           )}
+          {!answered.correct && S && <RemediationRow replayKps={replayKps} tutorHref={tutorHref} />}
         </div>
       )}
     </fieldset>
+  );
+}
+
+/**
+ * §5.5 error loop — the two actions a wrong verdict carries. "See it again"
+ * replays the key-point card that teaches the missed concept INLINE: the
+ * walk's stage indices stay untouched (the arc remains a pure function of
+ * (payload, rating), resume stays stable), the card re-renders the same
+ * beat language the key-point stages use. When the P1 mapping cannot
+ * identify ONE teaching group (the conservative fallback law), the action
+ * is withheld rather than guessing. "Ask the tutor" deep-links the existing
+ * tutor anchored on this beat (/tutor?course=…&q=…&spec=…, the hub's
+ * anchored-entry law — retrieval anchoring only, nothing writes to
+ * canonical data). The plan's "Ask SillyAI" naming rides the §9 open brand
+ * decision; the affordance keeps the product's own tutor voice.
+ * Stage mode only — the row never renders with the flag off.
+ */
+function RemediationRow({ replayKps, tutorHref }: { replayKps: string[] | null; tutorHref: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="space-y-2.5 pt-1">
+      <div className="flex flex-wrap gap-2">
+        {replayKps != null && (
+          <Button size="sm" variant="outline" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
+            <BookOpen className="size-4" aria-hidden />
+            {open ? "Hide the key point" : "See it again"}
+          </Button>
+        )}
+        <Button asChild size="sm" variant="outline">
+          <a href={tutorHref} target="_blank" rel="noopener noreferrer">
+            <MessageCircleQuestion className="size-4" aria-hidden />
+            Ask the tutor
+          </a>
+        </Button>
+      </div>
+      {open && replayKps != null && (
+        <div
+          className="rounded-md border-l-4 border-l-primary bg-primary/[0.04] px-4 py-3"
+          role="region"
+          aria-label="The key point this check teaches"
+        >
+          <BeatKicker icon={BEAT_ACCENT.learn.icon} tone={BEAT_ACCENT.learn.kicker}>
+            The key point this check teaches
+          </BeatKicker>
+          <ul className="mt-2.5 space-y-2">
+            {replayKps.map((kp, i) => (
+              <li key={i} className="flex gap-2.5 text-[15px] leading-relaxed text-foreground sm:text-base">
+                <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+                <span>{kp}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }
 

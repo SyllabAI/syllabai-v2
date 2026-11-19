@@ -149,6 +149,7 @@ export default async function GuidedLessonPage({
             noteTitle={note.title}
             noteHref={`${base}/revision-notes/${note.noteId}`}
             base={base}
+            course={slug}
             examQuestionsHref={examQuestionsHref}
             flashcardsHref={flashcardsHref}
             stageUI={stageUI}

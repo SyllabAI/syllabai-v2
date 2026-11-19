@@ -16,10 +16,21 @@ import { useMemo, useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
-import { CheckResetButtons, VerdictChip, WidgetCard, type Verdict } from "../check-shared";
+import { CheckResetButtons, echoCap, VerdictChip, WidgetCard, type InteractionVerdictListener, type Verdict } from "../check-shared";
 import { verdictFor, type EqVerdict } from "@/lib/books-chem";
 
-export function EqBuilderBlock({ block }: { block: RailBlock }) {
+export function EqBuilderBlock({
+  block,
+  embedded = false,
+  onVerdict,
+}: {
+  block: RailBlock;
+  /** P2 interaction bridge (guided check slots): see sort-match-block. The
+   *  atom/charge/state verdict lines stay visible here — they are the
+   *  chemistry teaching value; only the overall chip is dropped. */
+  embedded?: boolean;
+  onVerdict?: InteractionVerdictListener;
+}) {
   const c = block.content;
   const target = typeof c.target === "string" ? c.target : null;
   const tokens = Array.isArray(c.tokens)
@@ -70,16 +81,21 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
   const check = () => {
     const v = verdictFor(equation, target);
     setVerdict(v);
+    let overall: Verdict;
+    let detail: string | null;
     if (v.matchesTarget && v.atoms.balanced && v.charges.balanced) {
-      setOverall("correct");
-      setDetail(null);
+      overall = "correct";
+      detail = null;
     } else if (v.parsed) {
-      setOverall("wrong");
-      setDetail(v.matchesTarget ? null : "does not match the target equation");
+      overall = "wrong";
+      detail = v.matchesTarget ? null : "does not match the target equation";
     } else {
-      setOverall("wrong");
-      setDetail("the assembly does not parse — check the species tokens");
+      overall = "wrong";
+      detail = "the assembly does not parse — check the species tokens";
     }
+    setOverall(overall);
+    setDetail(detail);
+    onVerdict?.({ verdict: overall, detail, echo: equation || null });
   };
 
   const reset = () => {
@@ -88,10 +104,11 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
     setVerdict(null);
     setOverall("unchecked");
     setDetail(null);
+    onVerdict?.({ verdict: "unchecked", detail: null, echo: null });
   };
 
   return (
-    <WidgetCard ord={block.ord} typeLabel="Build the equation" prompt={prompt} accent>
+    <WidgetCard ord={block.ord} typeLabel="Build the equation" prompt={prompt} accent hideMeta={embedded}>
       {/* the assembly strip */}
       <div className="rounded-md border bg-muted/40 p-2">
         <div className="flex flex-wrap items-center gap-1" aria-label={`Equation so far: ${equation || "empty"}`} role="status">
@@ -165,9 +182,11 @@ export function EqBuilderBlock({ block }: { block: RailBlock }) {
           <VerdictLine ok={verdict.matchesTarget} label="matches the target" detail={verdict.matchesTarget ? "this is the target equation" : ""} />
         </div>
       )}
-      <div className="mt-1.5">
-        <VerdictChip verdict={overall} detail={detail} />
-      </div>
+      {!embedded && (
+        <div className="mt-1.5">
+          <VerdictChip verdict={overall} detail={detail} />
+        </div>
+      )}
     </WidgetCard>
   );
 }

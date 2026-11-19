@@ -69,19 +69,23 @@ export function CheckResetButtons({
   );
 }
 
-/** The interactive card shell — ord/type header + prompt + children. */
+/** The interactive card shell — ord/type header + prompt + children.
+ *  `hideMeta` (embedded/guided mode) drops the "block {ord}" furniture —
+ *  the guided check header already names the question. */
 export function WidgetCard({
   ord,
   typeLabel,
   prompt,
   children,
   accent = false,
+  hideMeta = false,
 }: {
   ord: number;
   typeLabel: string;
   prompt?: string | null;
   children: ReactNode;
   accent?: boolean;
+  hideMeta?: boolean;
 }) {
   return (
     <div
@@ -93,7 +97,9 @@ export function WidgetCard({
     >
       <p className="mb-1 flex items-center gap-2 text-2xs font-medium uppercase tracking-wide text-muted-foreground">
         <span>{typeLabel}</span>
-        <span className="text-2xs font-normal normal-case opacity-60">block {ord}</span>
+        {!hideMeta && (
+          <span className="text-2xs font-normal normal-case opacity-60">block {ord}</span>
+        )}
       </p>
       {prompt && <p className="mb-2 whitespace-pre-line font-medium leading-snug">{prompt}</p>}
       {children}
@@ -108,4 +114,28 @@ export function LiveHint({ text }: { text: string }) {
       {text}
     </span>
   );
+}
+
+/* ── P2 interaction bridge (guided-lessons redesign plan §5.4) ───────────
+ * The guided check slots can mount these SAME widgets as their answering
+ * surface (embedded mode): the widget keeps its practice furniture and
+ * self-check law, hides its own verdict chip (the flow renders the verdict
+ * + remediation of record), and reports the settle upward so the flow can
+ * record the attempt. Additive: absent listeners change nothing here. */
+
+/** The settle payload a widget reports in embedded mode. `echo` is the
+ *  learner's final assembly verbatim (the sort applied, the equation built,
+ *  the cells filled) — the guided flow rides it on the answer record so a
+ *  resumed session can show what was answered. */
+export interface InteractionVerdict {
+  verdict: Verdict;
+  detail: string | null;
+  echo: string | null;
+}
+
+export type InteractionVerdictListener = (r: InteractionVerdict) => void;
+
+/** Echo length cap — the answer record carries a readable line, not a dump. */
+export function echoCap(s: string, n = 160): string {
+  return s.length > n ? `${s.slice(0, n - 1)}…` : s;
 }
