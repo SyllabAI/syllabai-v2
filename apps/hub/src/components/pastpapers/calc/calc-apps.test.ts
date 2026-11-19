@@ -9,12 +9,13 @@
 
 import { describe, expect, test } from "bun:test";
 
-import { CalcError, type CalcAtom, type CalcFns } from "./calc-engine";
+import { CalcError, type CalcAtom, type CalcFns , type CalcValue } from "./calc-engine";
 import {
   buildNumberTable,
   quartilesOf,
   SIMUL_UNKNOWN_NAMES,
   solveByNewton,
+  solveInequality,
   solverVariables,
   splitSolverEquation,
   solvePolynomial,
@@ -377,3 +378,103 @@ describe("(T3) the Solver — the manual's input forms and the Newton laws", () 
     expect(() => solveByNewton(splitSolverEquation(atoms(vx)), "x", Infinity, SOLVER_CTX)).toThrow(CalcError);
   });
 });
+
+// ── (T4) the Inequality engine — the phase-F manual laws ──
+
+const ratC = (n: bigint, d = BigInt(1)): CalcValue => ({ exact: true, n, d });
+const INEQ_REL = ">";
+
+describe("(T4) the Inequality — the manual's degree/orientation laws and the sign analysis", () => {
+  test("(T4a) the manual's Example 1: x²+2x−3 ≥ 0 → x ≤ −3, x ≥ 1 (the two inclusive rays)", () => {
+    const r = solveInequality(2, [ratC(BigInt(1)), ratC(BigInt(2)), ratC(BigInt(-3))], "≥");
+    expect(r.allReal).toBe(false);
+    expect(r.noSolution).toBe(false);
+    expect(r.intervals.length).toBe(2);
+    expect(r.intervals[0].kind).toBe("ray");
+    expect(r.intervals[1].kind).toBe("ray");
+    const [a, b] = r.intervals as { kind: "ray"; side: "left" | "right"; end: CalcValue; strict: boolean }[];
+    expect(a.side).toBe("left");
+    expect(Math.abs(ineqNum(a.end) + 3)).toBeLessThan(1e-9);
+    expect(a.strict).toBe(false);
+    expect(b.side).toBe("right");
+    expect(Math.abs(ineqNum(b.end) - 1)).toBeLessThan(1e-9);
+    expect(b.strict).toBe(false);
+  });
+  test("(T4b) the orientation order (>, <, ≥, ≤): the same polynomial flips the set exactly", () => {
+    const d = [ratC(BigInt(1)), ratC(BigInt(2)), ratC(BigInt(-3))];
+    const gt = solveInequality(2, d, ">");
+    const lt = solveInequality(2, d, "<");
+    const le = solveInequality(2, d, "≤");
+    // > → the two STRICT rays
+    expect(gt.intervals.every((iv) => iv.kind === "ray" && (iv as { strict: boolean }).strict)).toBe(true);
+    // < → one strict segment (−3, 1)
+    expect(lt.intervals.length).toBe(1);
+    const seg = lt.intervals[0] as { kind: "seg"; loStrict: boolean; hiStrict: boolean };
+    expect(seg.kind).toBe("seg");
+    expect(seg.loStrict && seg.hiStrict).toBe(true);
+    // ≤ → one inclusive segment [−3, 1] (the merged run through the points)
+    expect(le.intervals.length).toBe(1);
+    const seg2 = le.intervals[0] as { kind: "seg"; loStrict: boolean; hiStrict: boolean };
+    expect(seg2.kind).toBe("seg");
+    expect(!seg2.loStrict && !seg2.hiStrict).toBe(true);
+    expect(Math.abs(ineqNum((le.intervals[0] as { lo: CalcValue }).lo) + 3)).toBeLessThan(1e-9);
+    expect(Math.abs(ineqNum((le.intervals[0] as { hi: CalcValue }).hi) - 1)).toBeLessThan(1e-9);
+  });
+  test("(T4c) the manual's Note laws: x²≥0 → All Real Numbers; x²<0 → No Solution; x²≤0 → the single point x=0", () => {
+    const d = [ratC(BigInt(1)), ratC(BigInt(0)), ratC(BigInt(0))];
+    expect(solveInequality(2, d, "≥").allReal).toBe(true);
+    expect(solveInequality(2, d, "<").noSolution).toBe(true);
+    const le = solveInequality(2, d, "≤");
+    expect(le.intervals.length).toBe(1);
+    expect(le.intervals[0].kind).toBe("pt");
+    expect(Math.abs(ineqNum((le.intervals[0] as { v: CalcValue }).v))).toBeLessThan(1e-12);
+  });
+  test("(T4d) the odd degree: x³−x ≥ 0 → [−1, 0] ∪ [1, +∞) (the sign alternation)", () => {
+    const r = solveInequality(3, [ratC(BigInt(1)), ratC(BigInt(0)), ratC(BigInt(-1)), ratC(BigInt(0))], "≥");
+    expect(r.intervals.length).toBe(2);
+    const seg = r.intervals[0] as { kind: "seg"; lo: CalcValue; hi: CalcValue };
+    expect(seg.kind).toBe("seg");
+    expect(Math.abs(ineqNum(seg.lo) + 1)).toBeLessThan(1e-9);
+    expect(Math.abs(ineqNum(seg.hi))).toBeLessThan(1e-9);
+    const ray = r.intervals[1] as { kind: "ray"; side: string; end: CalcValue };
+    expect(ray.side).toBe("right");
+    expect(Math.abs(ineqNum(ray.end) - 1)).toBeLessThan(1e-9);
+  });
+  test("(T4e) the quartic: x⁴−1 > 0 → x < −1, x > 1 (the strict rays)", () => {
+    const r = solveInequality(4, [ratC(BigInt(1)), ratC(BigInt(0)), ratC(BigInt(0)), ratC(BigInt(0)), ratC(BigInt(-1))], ">");
+    expect(r.intervals.length).toBe(2);
+    const [a, b] = r.intervals as { kind: "ray"; side: "left" | "right"; end: CalcValue; strict: boolean }[];
+    expect(a.side).toBe("left");
+    expect(a.strict).toBe(true);
+    expect(Math.abs(ineqNum(a.end) + 1)).toBeLessThan(1e-9);
+    expect(b.side).toBe("right");
+    expect(Math.abs(ineqNum(b.end) - 1)).toBeLessThan(1e-9);
+  });
+  test("(T4f) the double-root law VERIFIED: (x−1)²(x−2) < 0 → x < 1 ∪ 1 < x < 2 — the double root flips NO sign and is EXCLUDED from both", () => {
+    // (x−1)²(x−2) = x³ − 4x² + 5x − 2
+    const r = solveInequality(3, [ratC(BigInt(1)), ratC(BigInt(-4)), ratC(BigInt(5)), ratC(BigInt(-2))], "<");
+    expect(r.intervals.length).toBe(2);
+    const ray = r.intervals[0] as { kind: "ray"; side: string; end: CalcValue; strict: boolean };
+    expect(ray.side).toBe("left");
+    expect(ray.strict).toBe(true); // the double root at 1 excluded
+    expect(Math.abs(ineqNum(ray.end) - 1)).toBeLessThan(1e-9);
+    const seg = r.intervals[1] as { kind: "seg"; lo: CalcValue; hi: CalcValue; loStrict: boolean; hiStrict: boolean };
+    expect(seg.kind).toBe("seg");
+    expect(seg.loStrict).toBe(true);
+    expect(Math.abs(ineqNum(seg.hi) - 2)).toBeLessThan(1e-9);
+    expect(seg.hiStrict).toBe(true);
+  });
+  test("(T4g) a = 0 → Math ERROR (the phase-C zero-leading law rides along)", () => {
+    expect(() => solveInequality(2, [ratC(BigInt(0)), ratC(BigInt(1)), ratC(BigInt(2))], ">")).toThrow(CalcError);
+  });
+  test("(T4h) the irrational boundaries ride the float path: x²−2 ≥ 0 → ±√2", () => {
+    const r = solveInequality(2, [ratC(BigInt(1)), ratC(BigInt(0)), ratC(BigInt(-2))], "≥");
+    const [a, b] = r.intervals as { kind: "ray"; end: CalcValue }[];
+    expect(Math.abs(ineqNum(a.end) + Math.SQRT2)).toBeLessThan(1e-6);
+    expect(Math.abs(ineqNum(b.end) - Math.SQRT2)).toBeLessThan(1e-6);
+  });
+});
+
+function ineqNum(v: CalcValue): number {
+  return "c" in v ? NaN : v.exact ? Number(v.n) / Number(v.d) : v.v;
+}

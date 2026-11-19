@@ -1326,3 +1326,73 @@ describe("(U16) the Solver — the manual's flow end to end", () => {
     });
   });
 });
+
+// ── (U17) T-MG-CALC-2 phase F: the Inequality — the manual's flow end to end ──
+
+describe("(U17) the Inequality — the manual's flow end to end", () => {
+  test("(U17a) the launch law: the degrees menu (2nd/3rd/4th — no linear); the GT models keep the notice fence", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "inequality");
+    expect(screenOf(el)).toBe("ineq-degree");
+    expect(el.querySelector('[data-calc-screen-btn="Inequality degree 2"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-screen-btn="Inequality degree 3"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-screen-btn="Inequality degree 4"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-screen-btn="Inequality degree 1"]')).toBeNull(); // no linear type (the manual's degree law)
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U17b) the manual's Example 1 end-to-end: x²+2x−3 ≥ 0 → x ≤ −3, x ≥ 1 (the type menu order >, <, ≥, ≤)", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "inequality");
+    clickCtl(el, "data-calc-screen-btn", "Inequality degree 2");
+    expect(screenOf(el)).toBe("ineq-type");
+    const types = [...el.querySelectorAll("[data-calc-screen-btn]")].map((n) => n.getAttribute("data-calc-screen-btn")).filter((t) => (t || "").startsWith("Inequality type "));
+    expect(types).toEqual(["Inequality type >", "Inequality type <", "Inequality type ≥", "Inequality type ≤"]); // the manual's orientation order
+    clickCtl(el, "data-calc-screen-btn", "Inequality type ≥");
+    expect(screenOf(el)).toBe("ineq-coeff");
+    for (const [field, digits] of [["a", "1"], ["b", "2"], ["c", "3"]] as const) {
+      for (const d of digits) clickKey(el, d);
+      if (field === "c") clickKey(el, "Negate"); // the negate precedes the commit (the entry-column law)
+      clickCtl(el, "data-calc-screen-btn", `Execute inequality ${field}`);
+    }
+    expect(screenOf(el)).toBe("ineq-sol");
+    const rows = [...el.querySelectorAll("[data-calc-ineq-interval]")].map((n) => n.textContent);
+    expect(rows.length).toBe(2);
+    expect(rows[0]).toContain("≤"); // x ≤ −3
+    expect(rows[1]).toContain("≥"); // x ≥ 1
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U17c) the Note laws on screen: x²<0 → 'No Solution'; x²≥0 → 'All Real Numbers'", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "inequality");
+    clickCtl(el, "data-calc-screen-btn", "Inequality degree 2");
+    clickCtl(el, "data-calc-screen-btn", "Inequality type <");
+    clickKey(el, "1");
+    clickCtl(el, "data-calc-screen-btn", "Execute inequality a"); // x²; the empty entries commit as 0 (the eq editors' law)
+    clickCtl(el, "data-calc-screen-btn", "Execute inequality b");
+    clickCtl(el, "data-calc-screen-btn", "Execute inequality c");
+    expect(screenOf(el)).toBe("ineq-sol");
+    expect(cellText(el, "[data-calc-ineq-special]")).toContain("No Solution");
+    clickCtl(el, "data-calc-screen-btn", "Ineq sol back"); // the manual's back-nav: the solution → the editor
+    expect(screenOf(el)).toBe("ineq-coeff");
+    clickCtl(el, "data-calc-screen-btn", "Ineq coeff back");
+    expect(screenOf(el)).toBe("ineq-type");
+    clickCtl(el, "data-calc-screen-btn", "Inequality type ≥");
+    clickKey(el, "1");
+    clickCtl(el, "data-calc-screen-btn", "Execute inequality a");
+    clickCtl(el, "data-calc-screen-btn", "Execute inequality b");
+    clickCtl(el, "data-calc-screen-btn", "Execute inequality c");
+    expect(cellText(el, "[data-calc-ineq-special]")).toContain("All Real Numbers");
+    act(() => {
+      root.unmount();
+    });
+  });
+});

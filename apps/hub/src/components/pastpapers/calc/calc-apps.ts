@@ -147,6 +147,39 @@
  * formatDecimal (the Fix/Sci laws apply); the session: the Calculate
  * buffer is SNAPSHOTTED and restored around the Solver (the retention
  * table — the Solver session is separate from Calculate's).
+ *
+ * Inequality (phase F — the operator's 'proceed' ruling: the highest
+ * exam value among the fence apps) — the manual's "Inequality
+ * Calculations" page: "You can use the Inequality app to solve a 2nd,
+ * 3rd, or 4th degree inequality" — NO linear type; [MENU] → the
+ * Inequality icon → "the number of degrees menu" (the worked example
+ * selects [ax2+bx+c]; the cubic/quartic entries implied by the degree
+ * law) → "select the inequality symbol type and orientation (>, <, ≥,
+ * ≤)" (the complete parenthetical recovered from the search index of
+ * the same page — the page HTML renders it truncated in our capture) →
+ * the Coefficient Editor → "This will display the solution." The Note
+ * block: "'No Solution' appears on the solution screen when no
+ * solution exists for an inequality (such as x2 < 0)" and "'All Real
+ * Numbers' appears on the solution screen when the solution of an
+ * inequality is all numbers (such as x2 ≥ 0)"; "Solutions are
+ * displayed as shown in the screen below when something other than
+ * MathI/MathO is selected" — the exact boundary forms ride the
+ * MathI/MathO family. Back-navigation: the solution → the Coefficient
+ * Editor → the type menu → the degrees menu.
+ *
+ * OUR RULINGS (documented): the solution-display anatomy is
+ * image-only on the manual page — our layout shows each qualifying
+ * interval as its own row in ascending order ("x ≤ −3, x ≥ 1" /
+ * "−3 ≤ x ≤ 1" / "x = 0" for a single point), the boundary values
+ * riding the phase-C polynomial root display (the exact surd/fraction
+ * when it lands, the float otherwise — the S⇔D family); the sign
+ * analysis probes INTERVAL MIDPOINTS (multiplicity-free — a double
+ * root does not flip the sign and the probe never sees it), so the
+ * roots come from the same solvePolynomial machinery (a=0 → Math
+ * ERROR, the phase-C zero-leading law); the float-noise guard |f| <
+ * 1e-12; the degree menu order 2,3,4 and the orientation order
+ * (>, <, ≥, ≤) per the manual; the empty coefficient entries read as
+ * 0 (the eq editors' law).
  */
 import { CalcAtom, CalcError, CalcFns, CalcValue, CalcAngle, evaluateAtoms } from "./calc-engine";
 import type { CalcVarName } from "./calc-models";
@@ -892,4 +925,122 @@ export function solveByNewton(eq: SolverEquation, variable: CalcVarName, initial
     throw e;
   }
   return { kind: "no-convergence", variable, lastX: x };
+}
+
+// ── the Inequality engine (phase F) ──
+
+export type IneqRelation = ">" | "<" | "≥" | "≤";
+
+export type IneqInterval =
+  | { kind: "ray"; end: CalcValue; side: "left" | "right"; strict: boolean }
+  | { kind: "seg"; lo: CalcValue; hi: CalcValue; loStrict: boolean; hiStrict: boolean }
+  | { kind: "pt"; v: CalcValue };
+
+export interface IneqResult {
+  intervals: IneqInterval[];
+  allReal: boolean; // the manual's "All Real Numbers"
+  noSolution: boolean; // the manual's "No Solution"
+}
+
+const ineqCvToNum = (v: CalcValue): number => ("c" in v ? NaN : v.exact ? Number(v.n) / Number(v.d) : v.v);
+
+/** the Horner evaluation of the descending coefficient list at t */
+function ineqPolyEval(desc: CalcValue[], t: number): number {
+  let acc = 0;
+  for (const c of desc) acc = acc * t + ineqCvToNum(c);
+  return acc;
+}
+
+/** solve the polynomial inequality a·x^n + … + e R 0 by SIGN ANALYSIS
+ * over the real roots of the same solvePolynomial machinery (a = 0 →
+ * Math ERROR, the phase-C zero-leading law). The multiplicity-free
+ * honest law: each open interval's sign comes from a midpoint probe —
+ * a double root does not flip the sign and the probe never sees it;
+ * the boundary points qualify iff the relation is inclusive (≥/≤ —
+ * f(root) = 0). Consecutive qualifying pieces merge into one interval
+ * (x²−4 ≤ 0 → one segment [−2, 2], not four pieces). */
+export function solveInequality(degree: 2 | 3 | 4, desc: CalcValue[], rel: IneqRelation): IneqResult {
+  const pr = solvePolynomial(degree, desc, false);
+  const roots: number[] = [];
+  const rootVals: CalcValue[] = [];
+  for (const sol of pr.solutions) {
+    if ("c" in sol) continue;
+    const n = ineqCvToNum(sol);
+    if (!roots.some((r) => Math.abs(r - n) < 1e-9)) {
+      roots.push(n);
+      rootVals.push(sol);
+    }
+  }
+  const k = roots.length;
+  const wantPositive = rel === ">" || rel === "≥";
+  const inclusive = rel === "≥" || rel === "≤";
+  const signAt = (t: number): number => {
+    const v = ineqPolyEval(desc, t);
+    if (!Number.isFinite(v) || Math.abs(v) < 1e-12) return 0;
+    return v > 0 ? 1 : -1;
+  };
+  const ok = (s: number): boolean => s !== 0 && ((wantPositive && s > 0) || (!wantPositive && s < 0));
+
+  if (k === 0) {
+    const s = signAt(0);
+    if (ok(s)) return { intervals: [], allReal: true, noSolution: false };
+    return { intervals: [], allReal: false, noSolution: true };
+  }
+
+  // the atomic pieces in ascending order: the left tail, then per root
+  // the point and the segment to the next root, the right tail
+  type Piece = { kind: "seg" | "pt"; loIdx: number; hiIdx: number; qual: boolean };
+  const pieces: Piece[] = [];
+  const leftTail: number = roots[0] - (Math.abs(roots[0]) + 1);
+  pieces.push({ kind: "seg", loIdx: -1, hiIdx: 0, qual: ok(signAt(leftTail)) });
+  for (let i = 0; i < k; i++) {
+    pieces.push({ kind: "pt", loIdx: i, hiIdx: i, qual: inclusive });
+    if (i + 1 < k) {
+      const mid = (roots[i] + roots[i + 1]) / 2;
+      pieces.push({ kind: "seg", loIdx: i, hiIdx: i + 1, qual: ok(signAt(mid)) });
+    }
+  }
+  const rightTail: number = roots[k - 1] + (Math.abs(roots[k - 1]) + 1);
+  pieces.push({ kind: "seg", loIdx: k - 1, hiIdx: k, qual: ok(signAt(rightTail)) });
+
+  // merge the consecutive qualifying pieces into the display intervals
+  const intervals: IneqInterval[] = [];
+  let i = 0;
+  while (i < pieces.length) {
+    if (!pieces[i].qual) {
+      i += 1;
+      continue;
+    }
+    let j = i;
+    while (j + 1 < pieces.length && pieces[j + 1].qual) j += 1;
+    if (pieces[i].loIdx === -1 && pieces[j].hiIdx === k) {
+      return { intervals: [], allReal: true, noSolution: false }; // the whole ℝ qualifies
+    }
+    const loP = pieces[i];
+    const hiP = pieces[j];
+    const leftIsTail = loP.kind === "seg" && loP.loIdx === -1;
+    const rightIsTail = hiP.kind === "seg" && hiP.hiIdx === k;
+    if (leftIsTail) {
+      // the left ray → (−∞, the run's right root); the right end is a
+      // pt or a seg whose hiIdx < k (the full-ℝ run was caught above)
+      const end = rootVals[hiP.hiIdx];
+      intervals.push({ kind: "ray", side: "left", end, strict: !inclusive });
+    } else if (rightIsTail) {
+      // the right ray → (the run's left root, +∞); the left end is a
+      // pt or a seg whose loIdx ≥ 0
+      const end = rootVals[loP.loIdx];
+      intervals.push({ kind: "ray", side: "right", end, strict: !inclusive });
+    } else if (i === j && loP.kind === "pt") {
+      intervals.push({ kind: "pt", v: rootVals[loP.loIdx] });
+    } else {
+      const lo = rootVals[loP.loIdx];
+      const hi = rootVals[hiP.hiIdx];
+      const loStrict = loP.kind === "pt" ? false : !inclusive;
+      const hiStrict = hiP.kind === "pt" ? false : !inclusive;
+      intervals.push({ kind: "seg", lo, hi, loStrict, hiStrict });
+    }
+    i = j + 1;
+  }
+  if (!intervals.length) return { intervals: [], allReal: false, noSolution: true };
+  return { intervals, allReal: false, noSolution: false };
 }
