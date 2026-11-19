@@ -353,21 +353,27 @@ export function AppShell({
 
           {/* SME header parity: persistent primary CTA + session identity
               (core-auth-backed) + dual-theme toggle */}
-          <div className="ml-auto flex items-center gap-1.5">
+          <div className="ml-auto flex min-w-0 items-center gap-1.5">
             <ThemeToggle />
             {identity ? (
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className={cn(
-                    "inline-flex h-8 items-center gap-1.5 rounded-md border px-2 sm:px-2.5 text-xs font-medium transition-colors",
+                    "inline-flex h-8 min-w-0 items-center gap-1.5 rounded-md border px-2 sm:px-2.5 text-xs font-medium transition-colors",
                     "hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   )}
                 >
-                  <User className="size-3.5" aria-hidden />
+                  <User className="size-3.5 shrink-0" aria-hidden />
                   {/* visual audit V-11: max-w-12 clipped even short names to
-                      "HNA 2…" on phones; 24 (96px) fits real names while the
-                      header keeps room for the icon-only CTAs */}
-                  <span className="max-w-24 truncate sm:max-w-28" title={identity.name}>
+                      "HNA 2…" on phones; 24 (96px) fits real names. R-1
+                      (2026-11-14 retest): the widened chip sat in a cluster
+                      whose min-width:auto floors left nothing able to give —
+                      the 390px header row overflowed by 6px. The min-w-0
+                      chain (cluster → this trigger → chip) makes the chip
+                      the row's sole shrinkable member: under real pressure
+                      it ellipsizes (the title floor keeps the full name);
+                      every other width renders exactly as before. */}
+                  <span className="min-w-0 max-w-24 truncate sm:max-w-28" title={identity.name}>
                     {identity.name}
                   </span>
                   <ChevronDown className="size-3 text-muted-foreground hidden sm:block" aria-hidden />

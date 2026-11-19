@@ -72,6 +72,68 @@
  * igcse-physics-modular-24-unit-1 Pearson 4PH1 2024 — the modular-UNIT
  * shape; the SEVENTEENTH consecutive FULLY-CLEAN audit with ZERO DRIFT on
  * both courses — the first two-course tranche with no drift event)
+ * + tranche 27 (cie-igcse-science-combined-science-23-biology CIE 0653
+ * 2023-2024 — the combined-science shape, the component-scoped TB-code
+ * family / igcse-maths-a-modular-24-foundation-unit-2 Pearson 4XMAF 2024
+ * — the a-modular shape; the EIGHTEENTH consecutive FULLY-CLEAN audit
+ * with the EIGHTH DRIFT EVENT — the combined-science exam-paper cluster
+ * again (the six slugs, the T25 chem sibling's exact set), documented in
+ * DRIFT_BY_COURSE)
+ * + tranche 28 (igcse-further-maths-19 Pearson 4PM1 2017 — the
+ * FURTHER-maths shape / cie-igcse-english-language-25 CIE 0500 2027-2029
+ * — the ENGLISH-language shape with the NEW 2027-2029 strand; the
+ * NINETEENTH consecutive FULLY-CLEAN audit with the wave's NINTH and
+ * TENTH DRIFT EVENTS — the first tranche where BOTH courses carry drift:
+ * fm19's six paper-resources rows + eng25's five exam-skills/tips rows
+ * (a NEW class), documented in DRIFT_BY_COURSE)
+ * + tranche 29 (cie-as-environmental-management-20 CIE 8291 2025-2027 —
+ * the AS environmental-management shape — the wave-8 probe holder,
+ * rotated out at this tranche (#7) / igcse-science-double-award-modular-
+ * 24-physics-unit-2 Pearson 4XSD1 2024 — the double-award-modular shape,
+ * SETLESS; the TWENTIETH consecutive FULLY-CLEAN audit with ZERO DRIFT
+ * on both courses — the second two-course tranche with no drift event)
+ * + tranche 30 (igcse-science-double-award-modular-24-chemistry-unit-1
+ * Pearson 4XSD1 2024 — the double-award-modular shape, SETLESS — the
+ * wave-8 probe holder, rotated out at this tranche (#8) /
+ * igcse-chemistry-modular-24-unit-2 Pearson 4XCH1 2024 — the modular-UNIT
+ * shape; the TWENTY-FIRST consecutive FULLY-CLEAN audit with ZERO DRIFT
+ * on both courses — the third two-course tranche with no drift event)
+ * + tranche 31 (cie-igcse-english-language-20 CIE 0500 2024-2026 — the
+ * ENGLISH-language shape — the wave-8 probe holder, rotated out at this
+ * tranche (#9) / igcse-science-double-award-modular-24-physics-unit-1
+ * Pearson 4XSD1 2024 — the double-award-modular shape, SETLESS; the
+ * TWENTY-SECOND consecutive FULLY-CLEAN audit with ZERO DRIFT on both
+ * courses — the fourth two-course tranche with no drift event; the turn
+ * opened with a RECONCILIATION of a stale tranche-3-era checkpoint)
+ * + tranche 32 (igcse-biology-modular-24-unit-1 Pearson 4XBI1 2024 — the
+ * modular-UNIT shape, roster slot 1 / igcse-accounting-17-introduction-
+ * to-bookkeeping-and-accounting Edexcel 4AC1 2017 — the ACCOUNTING shape,
+ * roster slot 3; the census TIE at 43; the TWENTY-THIRD consecutive
+ * FULLY-CLEAN audit with the wave's ELEVENTH DRIFT EVENT — acct17's TEN
+ * live-only paper-session rows 2019-june..2024-june (the fm19 class),
+ * carried as corpus-zero rows + DRIFT_BY_COURSE; *** THE FIRST DOUBLE
+ * ROTATION *** — slots 1 AND 3 tripped, replaced by sdaw-bio-U1 and
+ * sdaw-chem-U2; as-maths-20-pure-2 stays)
+ * + tranche 33 (cie-as-maths-20-pure-2 CIE 9709 2023-2025 — the AS
+ * PURE-2 sub-strand of the a-level-maths spine family, roster slot 2 /
+ * igcse-science-double-award-modular-24-biology-unit-1 Pearson 4XSD1
+ * 2024 — the double-award-modular shape, SETLESS, roster slot 1; the
+ * TWENTY-FOURTH consecutive FULLY-CLEAN audit with ZERO DRIFT on both
+ * courses; the wave-6 header's historical pure-2 exclusion disclosure
+ * SUPERSEDED (header only, zero contact); *** THE SECOND DOUBLE
+ * ROTATION *** — slots 1 AND 2 tripped, replaced by ial-fp1-18 and
+ * as-english-gp-21; sdaw-chem-U2 stays)
+ * + tranche 34 (igcse-science-double-award-modular-24-chemistry-unit-2
+ * Pearson 4XSD1 2024 — the double-award-modular shape, SETLESS, roster
+ * slot 3 / ial-further-maths-18-further-pure-1 Pearson YFM01 2018 — the
+ * IAL further-maths shape, the ial-maths-T family with the new SUB_
+ * subcode pattern, roster slot 1; the TWENTY-FIFTH consecutive
+ * FULLY-CLEAN audit with the wave's TWELFTH DRIFT EVENT — ial-fp1's
+ * ELEVEN live-only paper-session rows october-2020..specimen-paper (the
+ * fm19 class), carried as corpus-zero rows + DRIFT_BY_COURSE; *** THE
+ * THIRD DOUBLE ROTATION *** — slots 1 AND 3 tripped, replaced by
+ * accounting-17-financial-statements and eng-lang-a-16-paper-2;
+ * as-english-gp-21 stays)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -243,6 +305,22 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-physics-modular-24-unit-2": new Set(),
   "igcse-chemistry-modular-24-unit-1": new Set(),
   "igcse-physics-modular-24-unit-1": new Set(),
+  "cie-igcse-science-combined-science-23-biology": new Set(["mcq-core", "mcq-extended", "paper-3-theory-core", "paper-4-theory-extended", "paper-5-practical-test", "paper-6-alternative-to-practical"]),
+  "igcse-maths-a-modular-24-foundation-unit-2": new Set(),
+  "igcse-further-maths-19": new Set(["jan-2023", "june-2023", "june-2024", "november-2023", "november-2024", "specimen-papers"]),
+  "cie-igcse-english-language-25": new Set(["exam-skills-grammar", "exam-skills-punctuation", "exam-skills-spelling", "exam-tips-speaking-and-listening", "exam-tips-writing"]),
+  "cie-as-environmental-management-20": new Set(),
+  "igcse-science-double-award-modular-24-physics-unit-2": new Set(),
+  "igcse-science-double-award-modular-24-chemistry-unit-1": new Set(),
+  "igcse-chemistry-modular-24-unit-2": new Set(),
+  "cie-igcse-english-language-20": new Set(),
+  "igcse-science-double-award-modular-24-physics-unit-1": new Set(),
+  "igcse-biology-modular-24-unit-1": new Set(),
+  "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": new Set(["2019-june", "2020-january", "2020-november", "2021-june", "2021-november", "2022-june", "2023-january", "2023-june", "2023-november", "2024-june"]),
+  "cie-as-maths-20-pure-2": new Set(),
+  "igcse-science-double-award-modular-24-biology-unit-1": new Set(),
+  "igcse-science-double-award-modular-24-chemistry-unit-2": new Set(),
+  "ial-further-maths-18-further-pure-1": new Set(["january-2021", "january-2022", "january-2023", "january-2024", "june-2021", "june-2022", "june-2023", "june-2024", "november-2021", "october-2020", "specimen-paper"]),
 };
 
 for (const cf of FIXTURES.courses) {
