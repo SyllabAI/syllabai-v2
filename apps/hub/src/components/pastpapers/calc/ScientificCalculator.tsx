@@ -52,11 +52,16 @@ import {
 } from "./calc-engine";
 import {
   buildNumberTable,
+  SIMUL_UNKNOWN_NAMES,
+  solvePolynomial,
+  solveSimultaneous,
   stat1Var,
   stat2Var,
   statEntryToValue,
   TABLE_ROWS_BOTH,
   TABLE_ROWS_SINGLE,
+  type PolyResult,
+  type SimulResult,
   type Stat1Var,
   type Stat2Var,
   type TableType,
@@ -118,7 +123,17 @@ type Screen =
   | "stat-menu"
   | "stat-res"
   | "table-setup"
-  | "table-res";
+  | "table-res"
+  // T-MG-CALC-2 phase D: the Equation app (the operator's exam-value
+  // ruling; Simul Equation + Polynomial implemented, Solver pinned out —
+  // its menu slot renders the staged-rollout notice, our honest fence)
+  | "eq-menu"
+  | "eq-unknowns"
+  | "eq-coeff"
+  | "eq-sol"
+  | "eq-degree"
+  | "eq-poly-coeff"
+  | "eq-poly-sol";
 
 interface KeyDef {
   label: string;
@@ -383,6 +398,21 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
   const [tableRange, setTableRange] = useState<{ start: string; end: string; step: string }>({ start: "", end: "", step: "" });
   const [tableField, setTableField] = useState<"start" | "end" | "step">("start");
   const [tableRows, setTableRows] = useState<{ x: CalcValue; f: CalcValue | null; g: CalcValue | null }[] | null>(null);
+  // ── phase D: the Equation session state (in-memory, the device's
+  // retention table; the Coefficient Editors START at zero per the
+  // manual's AC law — AC clears all the coefficients to zero). ──
+  const [eqMenuCursor, setEqMenuCursor] = useState(0);
+  const [eqUnknowns, setEqUnknowns] = useState<2 | 3 | 4>(2);
+  const [eqUnkCursor, setEqUnkCursor] = useState(0);
+  const [eqCoeffs, setEqCoeffs] = useState<string[][]>([]);
+  const [eqCell, setEqCell] = useState({ row: 0, col: 0 });
+  const [eqEntry, setEqEntry] = useState("");
+  const [eqSolutions, setEqSolutions] = useState<SimulResult | null>(null);
+  const [eqDegree, setEqDegree] = useState<2 | 3 | 4>(2);
+  const [eqDegCursor, setEqDegCursor] = useState(0);
+  const [eqPolyCoeffs, setEqPolyCoeffs] = useState<string[]>([]);
+  const [eqComplexRoots, setEqComplexRoots] = useState(false); // the manual's initial default: Off
+  const [eqResults, setEqResults] = useState<PolyResult | null>(null);
   const [appError, setAppError] = useState<string | null>(null);
 
   /** the manual's editor row caps: 160 rows for one column, 80 for two. */
@@ -532,6 +562,90 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       else throw e;
     }
   };
+  /** phase D: the Equation app flows. The Coefficient Editors start at
+   * zero (the manual's AC law); EXE commits the cell and advances
+   * row-major, and on the LAST cell it solves (the manual's flow:
+   * input the coefficients, press EXE → the solution). */
+  const openEqCoeff = (n: 2 | 3 | 4) => {
+    setEqUnknowns(n);
+    setEqCoeffs(Array.from({ length: n }, () => Array.from({ length: n + 1 }, () => "0")));
+    setEqCell({ row: 0, col: 0 });
+    setEqEntry("");
+    setEqSolutions(null);
+    setAppError(null);
+    setScreen("eq-coeff");
+  };
+  const openEqPoly = (deg: 2 | 3 | 4) => {
+    setEqDegree(deg);
+    setEqPolyCoeffs(Array.from({ length: deg + 1 }, () => "0"));
+    setEqCell({ row: 0, col: 0 });
+    setEqEntry("");
+    setEqResults(null);
+    setAppError(null);
+    setScreen("eq-poly-coeff");
+  };
+  const commitEqCell = () => {
+    setAppError(null);
+    const text = eqEntry || "0";
+    try {
+      statEntryToValue(text);
+    } catch {
+      setAppError("Syntax ERROR");
+      return;
+    }
+    const grid = screen === "eq-poly-coeff";
+    if (grid) {
+      const last = eqCell.row === eqPolyCoeffs.length - 1;
+      setEqPolyCoeffs((cs) => {
+        const next = [...cs];
+        next[eqCell.row] = text;
+        return next;
+      });
+      setEqEntry("");
+      if (last) solvePolyNow([...eqPolyCoeffs.slice(0, eqCell.row), text]);
+      else setEqCell((c) => ({ ...c, row: c.row + 1 }));
+    } else {
+      const last = eqCell.row === eqUnknowns - 1 && eqCell.col === eqUnknowns;
+      setEqCoeffs((cs) => {
+        const next = cs.map((r) => [...r]);
+        next[eqCell.row][eqCell.col] = text;
+        return next;
+      });
+      setEqEntry("");
+      if (last) {
+        const rows = eqCoeffs.map((r, ri) => r.map((v, ci) => (ri === eqCell.row && ci === eqCell.col ? text : v)));
+        solveSimulNow(rows);
+      } else {
+        // row-major advance
+        setEqCell((c) => {
+          const nc = c.col + 1;
+          return nc > eqUnknowns ? { row: c.row + 1, col: 0 } : { row: c.row, col: nc };
+        });
+      }
+    }
+  };
+  const solveSimulNow = (rowsText: string[][]) => {
+    setAppError(null);
+    try {
+      const rows = rowsText.map((r) => r.map(statEntryToValue));
+      setEqSolutions(solveSimultaneous(eqUnknowns, rows));
+      setScreen("eq-sol");
+    } catch (e) {
+      if (e instanceof CalcError) setAppError(e.cls);
+      else throw e;
+    }
+  };
+  const solvePolyNow = (coeffsText: string[]) => {
+    setAppError(null);
+    try {
+      const coeffs = coeffsText.map(statEntryToValue);
+      setEqResults(solvePolynomial(eqDegree, coeffs, eqComplexRoots));
+      setScreen("eq-poly-sol");
+    } catch (e) {
+      if (e instanceof CalcError) setAppError(e.cls);
+      else throw e;
+    }
+  };
   const qrCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const relayRef = useRef<{
@@ -595,6 +709,27 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       setTableRows(null);
       setAppError(null);
       setScreen("table-setup");
+      return;
+    }
+    // phase D: the Equation app launches into its Equation menu (the
+    // manual's flow). The session data resets here (the retention table
+    // ①); the Complex Roots setting resets to Off (the manual's
+    // initial default).
+    if (name === "equation" && model.implementedApps.includes("equation")) {
+      setEqUnknowns(2);
+      setEqUnkCursor(0);
+      setEqCoeffs([]);
+      setEqCell({ row: 0, col: 0 });
+      setEqEntry("");
+      setEqSolutions(null);
+      setEqDegree(2);
+      setEqDegCursor(0);
+      setEqPolyCoeffs([]);
+      setEqComplexRoots(false);
+      setEqResults(null);
+      setEqMenuCursor(0);
+      setAppError(null);
+      setScreen("eq-menu");
       return;
     }
     // the staged-rollout notice — MG's own captured pattern (the chase
@@ -682,6 +817,51 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
       if (d === "left") setTableField((f) => (f === "step" ? "end" : "start"));
       else if (d === "right") setTableField((f) => (f === "start" ? "end" : "step"));
       else if (d === "ok") executeTable();
+      return;
+    }
+    if (screen === "eq-menu") {
+      if (d === "up") setEqMenuCursor((c) => (c + 2) % 3);
+      else if (d === "down") setEqMenuCursor((c) => (c + 1) % 3);
+      else if (d === "ok") {
+        if (eqMenuCursor === 0) setScreen("eq-unknowns");
+        else if (eqMenuCursor === 1) setScreen("eq-degree");
+        else {
+          setNoticeApp("Solver");
+          setScreen("notice");
+        }
+      }
+      return;
+    }
+    if (screen === "eq-unknowns") {
+      if (d === "up") setEqUnkCursor((c) => (c + 2) % 3);
+      else if (d === "down") setEqUnkCursor((c) => (c + 1) % 3);
+      else if (d === "ok") openEqCoeff((eqUnkCursor + 2) as 2 | 3 | 4); // the counts are 2/3/4 — the index is 0-based
+      return;
+    }
+    if (screen === "eq-coeff") {
+      if (d === "up") setEqCell((c) => ({ ...c, row: Math.max(0, c.row - 1) }));
+      else if (d === "down") setEqCell((c) => ({ ...c, row: Math.min(c.row + 1, eqUnknowns - 1) }));
+      else if (d === "left") setEqCell((c) => ({ ...c, col: Math.max(0, c.col - 1) }));
+      else if (d === "right") setEqCell((c) => ({ ...c, col: Math.min(c.col + 1, eqUnknowns) }));
+      else if (d === "ok") {
+        if (eqEntry) commitEqCell();
+        else solveSimulNow(eqCoeffs);
+      }
+      return;
+    }
+    if (screen === "eq-degree") {
+      if (d === "up") setEqDegCursor((c) => (c + 2) % 3);
+      else if (d === "down") setEqDegCursor((c) => (c + 1) % 3);
+      else if (d === "ok") openEqPoly((eqDegCursor + 2) as 2 | 3 | 4);
+      return;
+    }
+    if (screen === "eq-poly-coeff") {
+      if (d === "up") setEqCell((c) => ({ ...c, row: Math.max(0, c.row - 1) }));
+      else if (d === "down") setEqCell((c) => ({ ...c, row: Math.min(c.row + 1, eqDegree) }));
+      else if (d === "ok") {
+        if (eqEntry) commitEqCell();
+        else solvePolyNow(eqPolyCoeffs);
+      }
       return;
     }
     if (screen === "notice" && d === "ok") setScreen("home");
@@ -792,6 +972,34 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
         }
         if (k.k === "ac") {
           setTableRange((r) => ({ ...r, [tableField]: "" }));
+          return;
+        }
+        return;
+      }
+      // phase D: the Equation Coefficient Editors take over the entry
+      // column (the device's per-app entry line); AC clears ALL the
+      // coefficients to zero — the manual's own law for this editor.
+      if (screen === "eq-coeff" || screen === "eq-poly-coeff") {
+        if (k.k === "digit") {
+          setEqEntry((e) => (e.length < 12 ? e + k.d : e));
+          return;
+        }
+        if (k.k === "neg") {
+          setEqEntry((e) => (e.startsWith("-") ? e.slice(1) : "-" + e));
+          return;
+        }
+        if (k.k === "del") {
+          setEqEntry((e) => e.slice(0, -1));
+          return;
+        }
+        if (k.k === "eq") {
+          commitEqCell();
+          return;
+        }
+        if (k.k === "ac") {
+          setEqEntry("");
+          if (screen === "eq-poly-coeff") setEqPolyCoeffs((cs) => cs.map(() => "0"));
+          else setEqCoeffs((cs) => cs.map((r) => r.map(() => "0")));
           return;
         }
         return;
@@ -1806,6 +2014,243 @@ export function ScientificCalculator({ open, onClose, levelHint, gesturePlane }:
             </table>
           </div>
           <div className="mt-2">{screenBtn("Back to table range", "Back", () => setScreen("table-setup"), { data: "Table back" })}</div>
+        </div>
+      )}
+
+      {/* ── phase D: the Equation app — the manual's flow: the Equation
+          menu ([Simul Equation]/[Polynomial]/[Solver]), the
+          number-of-unknowns / degrees menus, the Coefficient Editor
+          (starts at zero — the manual's AC law), then the solution
+          screen. Solver is pinned out of phase D (the phase-C "no
+          silent growth" precedent) and renders the staged-rollout
+          notice. ── */}
+      {screen === "eq-menu" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-menu" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Equation · Equation Menu</div>
+          <div className="space-y-1.5">
+            {(["Simul Equation", "Polynomial", "Solver"] as const).map((label, i) => (
+              <div key={label} className="flex items-center justify-between gap-2">
+                <span className={`text-sm ${eqMenuCursor === i ? "text-zinc-50" : "text-zinc-300"}`}>
+                  {eqMenuCursor === i ? "▶ " : "  "}
+                  {label}
+                </span>
+                {screenBtn(`Select ${label}`, label, () => {
+                  if (i === 0) setScreen("eq-unknowns");
+                  else if (i === 1) setScreen("eq-degree");
+                  else {
+                    setNoticeApp("Solver");
+                    setScreen("notice");
+                  }
+                }, { pressed: eqMenuCursor === i, data: label })}
+              </div>
+            ))}
+          </div>
+          <div className="mt-2">{screenBtn("Back to home", "Back", () => setScreen("home"), { data: "Equation back" })}</div>
+        </div>
+      )}
+
+      {screen === "eq-unknowns" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-unknowns" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Simul Equation · Unknowns?</div>
+          <div className="space-y-1.5">
+            {(["2 Unknowns", "3 Unknowns", "4 Unknowns"] as const).map((label, i) => (
+              <div key={label} className="flex items-center justify-between gap-2">
+                <span className={`text-sm ${eqUnkCursor === i ? "text-zinc-50" : "text-zinc-300"}`}>
+                  {eqUnkCursor === i ? "▶ " : "  "}
+                  {label}
+                </span>
+                {screenBtn(`Select ${label}`, label, () => openEqCoeff((i + 2) as 2 | 3 | 4), { pressed: eqUnkCursor === i, data: label })}
+              </div>
+            ))}
+          </div>
+          <div className="mt-2">{screenBtn("Back to Equation menu", "Back", () => setScreen("eq-menu"), { data: "Unknowns back" })}</div>
+        </div>
+      )}
+
+      {screen === "eq-coeff" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-coeff" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Simul Equation · Coefficient Editor · {eqUnknowns} Unknowns</div>
+          <div className="max-h-44 overflow-y-auto rounded-md border border-zinc-800">
+            <table className="w-full text-xs font-mono">
+              <thead className="bg-zinc-900 text-zinc-400">
+                <tr>
+                  {SIMUL_UNKNOWN_NAMES.slice(0, eqUnknowns).map((v) => (
+                    <th key={v} className="px-2 py-1 text-left">{v}</th>
+                  ))}
+                  <th className="px-2 py-1 text-left">=</th>
+                </tr>
+              </thead>
+              <tbody>
+                {eqCoeffs.map((row, r) => (
+                  <tr key={r} className={eqCell.row === r ? "bg-zinc-800/60" : ""}>
+                    {row.map((v, c) => {
+                      const active = eqCell.row === r && eqCell.col === c;
+                      const text = active && eqEntry ? eqEntry : v;
+                      return (
+                        <td
+                          key={c}
+                          className={`px-2 py-1 text-zinc-100 ${active ? "outline outline-1 outline-zinc-500" : ""}`}
+                          data-calc-eq-cell={`${r}-${c}`}
+                        >
+                          {text}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-1 text-[10px] leading-snug text-zinc-500">
+            Type on the keypad · EXE commits the cell · EXE on the last cell solves · AC clears all coefficients
+          </div>
+          {appError && (
+            <div className="cw-error-hint mt-1 text-left text-[10px] leading-snug text-zinc-400" data-calc-app-error>
+              {appError}: check the coefficient entry.
+            </div>
+          )}
+          <div className="mt-2 flex flex-wrap gap-1">
+            {screenBtn("Solve simultaneous equations", "Solve", () => solveSimulNow(eqCoeffs), { data: "Solve simul" })}
+            {screenBtn("Back to unknowns menu", "Back", () => setScreen("eq-unknowns"), { data: "Coeff back" })}
+          </div>
+        </div>
+      )}
+
+      {screen === "eq-sol" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-sol" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Simul Equation · Solutions · {eqUnknowns} Unknowns</div>
+          <div className="text-xs font-mono">
+            {eqSolutions?.kind === "solved" ? (
+              eqSolutions.values.map((v, i) => (
+                <div key={SIMUL_UNKNOWN_NAMES[i]} className="flex justify-between gap-3 py-0.5">
+                  <span className="text-zinc-400">{SIMUL_UNKNOWN_NAMES[i]}</span>
+                  <span className="text-zinc-100" data-calc-eq-solution={SIMUL_UNKNOWN_NAMES[i]}>
+                    {formatNatural(v, state.resultForm, state.fix, fmt)}
+                  </span>
+                </div>
+              ))
+            ) : (
+              <div className="text-zinc-100" data-calc-eq-singular>
+                {eqSolutions?.kind === "no-solution" ? "No Solution" : eqSolutions?.kind === "infinite-solution" ? "Infinite Solution" : "—"}
+              </div>
+            )}
+          </div>
+          <div className="mt-2">{screenBtn("Back to Coefficient Editor", "Back", () => setScreen("eq-coeff"), { data: "Sol back" })}</div>
+        </div>
+      )}
+
+      {screen === "eq-degree" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-degree" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Polynomial · Degree?</div>
+          <div className="space-y-1.5">
+            {(["ax²+bx+c=0", "ax³+bx²+cx+d=0", "ax⁴+bx³+cx²+dx+e=0"] as const).map((label, i) => (
+              <div key={label} className="flex items-center justify-between gap-2">
+                <span className={`text-sm ${eqDegCursor === i ? "text-zinc-50" : "text-zinc-300"}`}>
+                  {eqDegCursor === i ? "▶ " : "  "}
+                  {label}
+                </span>
+                {screenBtn(`Select degree ${i + 2}`, label, () => openEqPoly((i + 2) as 2 | 3 | 4), { pressed: eqDegCursor === i, data: label })}
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 flex flex-wrap items-center gap-1">
+            <span className="text-xs text-zinc-400">Complex Roots</span>
+            {screenBtn("Complex Roots Off — the initial default", "Off", () => setEqComplexRoots(false), { pressed: !eqComplexRoots, data: "Complex roots off" })}
+            {screenBtn("Complex Roots On — complex solutions display in the a+bi form", "On", () => setEqComplexRoots(true), { pressed: eqComplexRoots, data: "Complex roots on" })}
+          </div>
+          <div className="mt-2">{screenBtn("Back to Equation menu", "Back", () => setScreen("eq-menu"), { data: "Degree back" })}</div>
+        </div>
+      )}
+
+      {screen === "eq-poly-coeff" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-poly-coeff" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">
+            Polynomial · Coefficient Editor · {["ax²+bx+c=0", "ax³+bx²+cx+d=0", "ax⁴+bx³+cx²+dx+e=0"][eqDegree - 2]}
+            {eqComplexRoots ? " · Complex Roots On" : ""}
+          </div>
+          <div className="max-h-40 overflow-y-auto rounded-md border border-zinc-800">
+            <table className="w-full text-xs font-mono">
+              <thead className="bg-zinc-900 text-zinc-400">
+                <tr>
+                  {["a", "b", "c", "d", "e"].slice(0, eqDegree + 1).map((v) => (
+                    <th key={v} className="px-2 py-1 text-left">{v}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  {eqPolyCoeffs.map((v, i) => {
+                    const active = eqCell.row === i;
+                    const text = active && eqEntry ? eqEntry : v;
+                    return (
+                      <td
+                        key={i}
+                        className={`px-2 py-1 text-zinc-100 ${active ? "outline outline-1 outline-zinc-500" : ""}`}
+                        data-calc-eq-cell={`p-${i}`}
+                      >
+                        {text}
+                      </td>
+                    );
+                  })}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-1 text-[10px] leading-snug text-zinc-500">
+            Descending coefficients · EXE commits the cell · EXE on the last cell solves · AC clears all coefficients
+          </div>
+          {appError && (
+            <div className="cw-error-hint mt-1 text-left text-[10px] leading-snug text-zinc-400" data-calc-app-error>
+              {appError}: check the coefficient entry (the leading coefficient must not be zero).
+            </div>
+          )}
+          <div className="mt-2 flex flex-wrap gap-1">
+            {screenBtn("Solve polynomial equation", "Solve", () => solvePolyNow(eqPolyCoeffs), { data: "Solve poly" })}
+            {screenBtn("Back to degree menu", "Back", () => setScreen("eq-degree"), { data: "Poly coeff back" })}
+          </div>
+        </div>
+      )}
+
+      {screen === "eq-poly-sol" && (
+        <div className="rounded-lg border border-zinc-700 bg-zinc-950 p-3" data-calc-screen="eq-poly-sol" aria-live="polite">
+          <div className="mb-2 text-xs text-zinc-400">Polynomial · Solutions · {["ax²+bx+c=0", "ax³+bx²+cx+d=0", "ax⁴+bx³+cx²+dx+e=0"][eqDegree - 2]}</div>
+          <div className="max-h-44 overflow-y-auto text-xs font-mono">
+            {eqResults && eqResults.noRealRoots ? (
+              <div className="text-zinc-100" data-calc-eq-message>No Real Roots</div>
+            ) : (
+              <>
+                {(eqResults?.solutions ?? []).map((v, i) => (
+                  <div key={`s-${i}`} className="flex justify-between gap-3 py-0.5">
+                    <span className="text-zinc-400">x{i + 1}</span>
+                    <span className="text-zinc-100" data-calc-eq-solution={`x${i + 1}`}>
+                      {formatNatural(v, state.resultForm, state.fix, fmt)}
+                    </span>
+                  </div>
+                ))}
+                {(eqResults?.extrema ?? []).map((pt, i) => (
+                  <div key={`e-${i}`} className="mt-1 border-t border-zinc-800 pt-1">
+                    <div className="text-zinc-400" data-calc-eq-extrema-label={pt.kind}>
+                      {pt.kind === "min" ? "Min" : "Max"} Coordinates (x, y)
+                    </div>
+                    <div className="flex justify-between gap-3 py-0.5">
+                      <span className="text-zinc-400">x</span>
+                      <span className="text-zinc-100" data-calc-eq-extrema-x={pt.kind}>
+                        {formatNatural(pt.x, state.resultForm, state.fix, fmt)}
+                      </span>
+                    </div>
+                    <div className="flex justify-between gap-3 py-0.5">
+                      <span className="text-zinc-400">y</span>
+                      <span className="text-zinc-100" data-calc-eq-extrema-y={pt.kind}>
+                        {formatNatural(pt.y, state.resultForm, state.fix, fmt)}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+                {eqResults?.noLocalMaxMin && <div className="text-zinc-100" data-calc-eq-message>No Local Max/Min</div>}
+              </>
+            )}
+          </div>
+          <div className="mt-2">{screenBtn("Back to Coefficient Editor", "Back", () => setScreen("eq-poly-coeff"), { data: "Poly sol back" })}</div>
         </div>
       )}
 

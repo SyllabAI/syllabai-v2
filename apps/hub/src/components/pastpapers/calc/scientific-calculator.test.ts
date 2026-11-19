@@ -1090,3 +1090,130 @@ describe("(U15) the Table app — the manual's flow, end to end", () => {
     });
   });
 });
+
+// ── (U15) T-MG-CALC-2 phase D: the Equation app — the manual's flow,
+// end to end (the a11y path: the screen buttons by data attr) ──
+
+describe("(U15) the Equation app — Simul Equation + Polynomial end to end", () => {
+  test("(U15a) the launch law: the Equation menu with the three functions; Solver rides the notice fence; the relaunch resets", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    expect(screenOf(el)).toBe("eq-menu");
+    expect(el.querySelector('[data-calc-screen-btn="Simul Equation"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-screen-btn="Polynomial"]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-screen-btn="Solver"]')).not.toBeNull();
+    clickCtl(el, "data-calc-screen-btn", "Solver");
+    expect(screenOf(el)).toBe("notice"); // the pinned-out fence holds
+    clickCtl(el, "data-calc-screen-btn", "Notice back");
+    clickCtl(el, "data-calc-app", "equation"); // the relaunch (the retention law)
+    expect(screenOf(el)).toBe("eq-menu");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U15b) Simul 2×2 end-to-end: the editor starts at zero (the manual's AC law), the entry commits row-major, the last EXE solves — x=1, y=2 exact", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Simul Equation");
+    expect(screenOf(el)).toBe("eq-unknowns");
+    clickCtl(el, "data-calc-screen-btn", "2 Unknowns");
+    expect(screenOf(el)).toBe("eq-coeff");
+    // the Coefficient Editor STARTS at zero (the manual's AC law)
+    expect(cellText(el, '[data-calc-eq-cell="0-0"]')).toBe("0");
+    expect(cellText(el, '[data-calc-eq-cell="1-2"]')).toBe("0");
+    // x + y = 3; 2x − y = 0  →  x=1, y=2
+    const seq: string[] = ["1", "Execute", "1", "Execute", "3", "Execute", "2", "Execute", "Negate", "1", "Execute", "0", "Execute"];
+    for (const k of seq) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-sol");
+    expect(cellText(el, '[data-calc-eq-solution="x"]')).toBe("1");
+    expect(cellText(el, '[data-calc-eq-solution="y"]')).toBe("2");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U15c) the singular system is a DISPLAYED result: x+y=1, x+y=2 → No Solution (no fake solve)", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Simul Equation");
+    clickCtl(el, "data-calc-screen-btn", "2 Unknowns");
+    const seq: string[] = ["1", "Execute", "1", "Execute", "1", "Execute", "1", "Execute", "1", "Execute", "2", "Execute"];
+    for (const k of seq) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-sol");
+    expect(cellText(el, "[data-calc-eq-singular]")).toBe("No Solution");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U15d) the polynomial end-to-end: x²−3x+2 → x1=1, x2=2 with the Min coordinates (x 3/2, y −1/4) — the manual's coordinate display", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Polynomial");
+    expect(screenOf(el)).toBe("eq-degree");
+    clickCtl(el, "data-calc-screen-btn", "ax²+bx+c=0");
+    expect(screenOf(el)).toBe("eq-poly-coeff");
+    const seq: string[] = ["1", "Execute", "Negate", "3", "Execute", "2", "Execute"];
+    for (const k of seq) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-poly-sol");
+    expect(cellText(el, '[data-calc-eq-solution="x1"]')).toBe("1");
+    expect(cellText(el, '[data-calc-eq-solution="x2"]')).toBe("2");
+    expect(cellText(el, '[data-calc-eq-extrema-label="min"]')).toContain("Min");
+    expect(cellText(el, '[data-calc-eq-extrema-x="min"]')).toBe("3/2");
+    expect(cellText(el, '[data-calc-eq-extrema-y="min"]')).toBe("-1/4");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U15e) the Complex Roots setting: Off (the initial default) → 'No Real Roots' for x²+1; On → the a+bi pair", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Polynomial");
+    // Off is the initial default (the manual's initial default law)
+    expect(el.querySelector('[data-calc-screen-btn="Complex roots off"]')!.getAttribute("aria-pressed")).toBe("true");
+    clickCtl(el, "data-calc-screen-btn", "ax²+bx+c=0");
+    const seq: string[] = ["1", "Execute", "0", "Execute", "1", "Execute"];
+    for (const k of seq) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-poly-sol");
+    expect(cellText(el, "[data-calc-eq-message]")).toBe("No Real Roots");
+    // back to the degree menu, flip On, re-solve
+    clickCtl(el, "data-calc-screen-btn", "Poly sol back");
+    clickCtl(el, "data-calc-screen-btn", "Poly coeff back");
+    clickCtl(el, "data-calc-screen-btn", "Complex roots on");
+    clickCtl(el, "data-calc-screen-btn", "ax²+bx+c=0"); // the re-entry resets the editor (our ruling)
+    const seq2: string[] = ["1", "Execute", "0", "Execute", "1", "Execute"]; // retype x²+1
+    for (const k of seq2) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-poly-sol");
+    const s1 = cellText(el, '[data-calc-eq-solution="x1"]');
+    const s2 = cellText(el, '[data-calc-eq-solution="x2"]');
+    expect(s1).toContain("i");
+    expect(s2).toContain("i");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U15f) the AC law on the Coefficient Editor: partial entries clear ALL coefficients to zero (the manual's own law)", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Simul Equation");
+    clickCtl(el, "data-calc-screen-btn", "3 Unknowns");
+    clickKey(el, "7");
+    clickKey(el, "Execute");
+    expect(cellText(el, '[data-calc-eq-cell="0-0"]')).toBe("7");
+    clickKey(el, "All clear");
+    expect(cellText(el, '[data-calc-eq-cell="0-0"]')).toBe("0");
+    expect(cellText(el, '[data-calc-eq-cell="2-3"]')).toBe("0");
+    act(() => {
+      root.unmount();
+    });
+  });
+});

@@ -10,7 +10,18 @@
 import { describe, expect, test } from "bun:test";
 
 import { CalcError, type CalcAtom, type CalcFns } from "./calc-engine";
-import { buildNumberTable, quartilesOf, stat1Var, stat2Var, statEntryToValue, TABLE_ROWS_BOTH, TABLE_ROWS_SINGLE } from "./calc-apps";
+import {
+  buildNumberTable,
+  quartilesOf,
+  SIMUL_UNKNOWN_NAMES,
+  solvePolynomial,
+  solveSimultaneous,
+  stat1Var,
+  stat2Var,
+  statEntryToValue,
+  TABLE_ROWS_BOTH,
+  TABLE_ROWS_SINGLE,
+} from "./calc-apps";
 import { bufferToTex } from "./calc-engine";
 
 const rat = (n: number, d = 1) => ({ exact: true, n: BigInt(n), d: BigInt(d) } as const);
@@ -148,5 +159,139 @@ describe("(T3) the number table — the manual's own example and the range laws"
   });
   test("(T3g) the defining equations render from the SAME buffer language", () => {
     expect(bufferToTex(X2P_HALF)).toContain("x");
+  });
+});
+
+// ── (T2) the Equation app engines — the phase-D manual laws ──
+
+describe("(T2) Simul Equation — the manual's 2–4 unknowns, exact throughout", () => {
+  test("(T2a) 2×2 exact: x+y=3, 2x−y=0 → x=1, y=2", () => {
+    const r = solveSimultaneous(2, [
+      [rat(1), rat(1), rat(3)],
+      [rat(2), rat(-1), rat(0)],
+    ]);
+    expect(r.kind).toBe("solved");
+    if (r.kind === "solved") {
+      expect(r.values[0]).toEqual(rat(1));
+      expect(r.values[1]).toEqual(rat(2));
+    }
+  });
+  test("(T2b) 3×3 exact with fractional solutions: x+y=1, y+z=2, x+z=3 → x=1, y=0, z=2", () => {
+    const r = solveSimultaneous(3, [
+      [rat(1), rat(1), rat(0), rat(1)],
+      [rat(0), rat(1), rat(1), rat(2)],
+      [rat(1), rat(0), rat(1), rat(3)],
+    ]);
+    expect(r.kind).toBe("solved");
+    if (r.kind === "solved") {
+      expect(r.values).toEqual([rat(1), rat(0), rat(2)]);
+    }
+  });
+  test("(T2c) singular systems are DISPLAYED results: no-solution vs infinite", () => {
+    const no = solveSimultaneous(2, [
+      [rat(1), rat(1), rat(1)],
+      [rat(1), rat(1), rat(2)],
+    ]);
+    expect(no.kind).toBe("no-solution");
+    const inf = solveSimultaneous(2, [
+      [rat(1), rat(1), rat(1)],
+      [rat(2), rat(2), rat(2)],
+    ]);
+    expect(inf.kind).toBe("infinite-solution");
+  });
+  test("(T2d) 4×4 exact and the device's variable row x, y, z, t", () => {
+    const r = solveSimultaneous(4, [
+      [rat(1), rat(0), rat(0), rat(0), rat(1)],
+      [rat(0), rat(1), rat(0), rat(0), rat(2)],
+      [rat(0), rat(0), rat(1), rat(0), rat(3)],
+      [rat(0), rat(0), rat(0), rat(1), rat(4)],
+    ]);
+    expect(r.kind).toBe("solved");
+    if (r.kind === "solved") expect(r.values).toEqual([rat(1), rat(2), rat(3), rat(4)]);
+    expect(SIMUL_UNKNOWN_NAMES).toEqual(["x", "y", "z", "t"]);
+  });
+  test("(T2e) shape errors: the wrong grid is a Syntax ERROR", () => {
+    expect(() => solveSimultaneous(2, [[rat(1), rat(1), rat(1)]])).toThrow(CalcError);
+    expect(() => solveSimultaneous(2, [[rat(1), rat(1), rat(3)], [rat(1), rat(0)]] as never)).toThrow(CalcError);
+  });
+});
+
+describe("(T2) Polynomial — the manual's 2nd–4th degree laws", () => {
+  test("(T2f) the exact quadratic: x²−3x+2 → 1, 2 with the MIN vertex (3/2, −1/4)", () => {
+    const r = solvePolynomial(2, [rat(1), rat(-3), rat(2)], false);
+    expect(r.solutions).toEqual([rat(1), rat(2)]);
+    expect(r.extrema).toEqual([{ x: rat(3, 2), y: rat(-1, 4), kind: "min" }]);
+    expect(r.noRealRoots).toBe(false);
+  });
+  test("(T2g) the float path — the manual's own example x²+2x−2: the roots −1±√3, the vertex (−1, −3) exact", () => {
+    const r = solvePolynomial(2, [rat(1), rat(2), rat(-2)], false);
+    const s3 = Math.sqrt(3);
+    expect(r.solutions).toEqual([{ exact: false, v: -1 - s3 }, { exact: false, v: -1 + s3 }]);
+    expect(r.extrema).toEqual([{ x: rat(-1), y: rat(-3), kind: "min" }]);
+  });
+  test("(T2h) Complex Roots Off (the initial default): x²+1 → 'No Real Roots'", () => {
+    const off = solvePolynomial(2, [rat(1), rat(0), rat(1)], false);
+    expect(off.noRealRoots).toBe(true);
+    expect(off.solutions).toEqual([]);
+    const on = solvePolynomial(2, [rat(1), rat(0), rat(1)], true);
+    expect(on.noRealRoots).toBe(false);
+    expect(on.solutions).toEqual([
+      { c: true, re: 0, im: -1 },
+      { c: true, re: 0, im: 1 },
+    ]);
+  });
+  test("(T2i) the complex pair — the manual's example 2x²+3x+4 On: re −3/4, ±√23/4 (the engine's double-based complex path)", () => {
+    const r = solvePolynomial(2, [rat(2), rat(3), rat(4)], true);
+    const mag = Math.sqrt(23) / 4;
+    expect(r.solutions).toEqual([
+      { c: true, re: -0.75, im: -mag },
+      { c: true, re: -0.75, im: mag },
+    ]);
+  });
+  test("(T2j) the repeated root renders one row (our ruling): x²−2x+1 → [1]", () => {
+    const r = solvePolynomial(2, [rat(1), rat(-2), rat(1)], false);
+    expect(r.solutions).toEqual([rat(1)]);
+  });
+  test("(T2k) the cubic factoring: x³−6x²+11x−6 → 1, 2, 3; the extrema float-path with a>0 → max first", () => {
+    const r = solvePolynomial(3, [rat(1), rat(-6), rat(11), rat(-6)], false);
+    expect(r.solutions).toEqual([rat(1), rat(2), rat(3)]);
+    expect(r.extrema).not.toBeNull();
+    if (r.extrema) {
+      expect(r.extrema.length).toBe(2);
+      expect(r.extrema[0].kind).toBe("max");
+      expect(r.extrema[1].kind).toBe("min");
+    }
+  });
+  test("(T2l) x³−3x: the root 0 exact (the trailing-zero strip), ±√3 float; the EXACT extrema max (−1, 2), min (1, −2)", () => {
+    const r = solvePolynomial(3, [rat(1), rat(0), rat(-3), rat(0)], false);
+    const s3 = Math.sqrt(3);
+    expect(r.solutions).toEqual([{ exact: false, v: -s3 }, rat(0), { exact: false, v: s3 }]);
+    expect(r.extrema).toEqual([
+      { x: rat(-1), y: rat(2), kind: "max" },
+      { x: rat(1), y: rat(-2), kind: "min" },
+    ]);
+  });
+  test("(T2m) 'No Local Max/Min' — x³ has a stationary inflection only (our D'=0 ruling)", () => {
+    const r = solvePolynomial(3, [rat(1), rat(0), rat(0), rat(0)], false);
+    expect(r.noLocalMaxMin).toBe(true);
+    expect(r.extrema).toBeNull();
+    expect(r.solutions).toEqual([rat(0)]);
+  });
+  test("(T2n) the quartic factoring: x⁴−5x²+4 → −2, −1, 1, 2 (roots only — the quartic law)", () => {
+    const r = solvePolynomial(4, [rat(1), rat(0), rat(-5), rat(0), rat(4)], false);
+    expect(r.solutions).toEqual([rat(-2), rat(-1), rat(1), rat(2)]);
+    expect(r.extrema).toBeNull();
+    expect(r.noLocalMaxMin).toBe(false);
+  });
+  test("(T2o) the float path via Durand–Kerner — x³−x−1 → the plastic number ≈ 1.324717957 (the rational-root probe misses)", () => {
+    const r = solvePolynomial(3, [rat(1), rat(0), rat(-1), rat(-1)], false);
+    expect(r.solutions).toHaveLength(1);
+    const v = r.solutions[0] as { exact: false; v: number };
+    expect(v.exact).toBe(false);
+    expect(Math.abs(v.v - 1.324717957244746)).toBeLessThan(1e-6);
+  });
+  test("(T2p) the shape laws: a zero leading coefficient is a Math ERROR (our ruling); the wrong length is a Syntax ERROR", () => {
+    expect(() => solvePolynomial(2, [rat(0), rat(1), rat(2)], false)).toThrow(CalcError);
+    expect(() => solvePolynomial(3, [rat(1), rat(2), rat(3)] as never, false)).toThrow(CalcError);
   });
 });
