@@ -157,6 +157,14 @@
  * paper-3 remains no-layer and it is ALREADY slot 2), so THE ROSTER
  * SHRINKS to the single remaining no-layer course; T37 trips it and the
  * roster EMPTIES)
+ * + tranche 37 — THE WAVE-9 CLOSER (igcse-english-language-a-16-paper-3-
+ * coursework Edexcel 4EA1 2016 — the same family's T3 strand, the
+ * ROSTER'S SOLE MEMBER; the TWENTY-EIGHTH consecutive FULLY-CLEAN audit
+ * with ZERO DRIFT — PERFECT 1:1 (7 = 7), SETLESS; *** THE FINAL ROTATION
+ * *** — the last probe trips and THE ROSTER EMPTIES (probes = [];
+ * fleet-safety trivially green): EVERY note-bearing course in the
+ * 106-course fleet now carries its SME layer and THE WAVE-9 QUEUE IS
+ * EXHAUSTED — user-facing loose 0)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -348,6 +356,7 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "igcse-accounting-17-financial-statements": new Set(["2019-june", "2020-june", "2020-november", "2021-june", "2021-november", "2022-june", "2023-january", "2023-june", "2023-november", "2024-june"]),
   "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing": new Set(),
   "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing": new Set(),
+  "igcse-english-language-a-16-paper-3-coursework": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {

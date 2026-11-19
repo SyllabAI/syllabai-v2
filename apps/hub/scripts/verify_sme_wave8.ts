@@ -270,7 +270,17 @@ totalResolved === totalNotes
 // final probe and THE ROSTER EMPTIES (fleet-safety trivially green; the
 // wave-9 queue exhausted). Same disclosed pin-refresh class as the
 // wave-6 run-002.
-  const probes = ["igcse-english-language-a-16-paper-3-coursework"];
+// tranche 37 is THE FINAL ROTATION — THE ROSTER EMPTIES: paper-3-
+// coursework WAS the roster's sole member; it GAINED its SME layer at
+// tranche 37, trips the final probe, and probes = []. The fleet-safety
+// check iterates an empty array and passes trivially — there is no
+// no-layer course left in the 106-course fleet to probe: EVERY
+// note-bearing course now carries its SME layer and the wave-9 queue is
+// EXHAUSTED (census of record: user-facing loose 0). The roster retires
+// with the queue; any future course additions re-seed it per the T10
+// rank-pick precedent. Same disclosed pin-refresh class as the wave-6
+// run-002.
+  const probes = [];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;
