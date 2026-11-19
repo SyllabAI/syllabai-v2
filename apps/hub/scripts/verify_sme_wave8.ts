@@ -257,7 +257,20 @@ totalResolved === totalNotes
 // as a replacement candidate); T37 = paper-3 alone (the LAST probe
 // trips; the roster empties and fleet-safety goes trivially green).
 // Same disclosed pin-refresh class as the wave-6 run-002.
-  const probes = ["igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing", "igcse-english-language-a-16-paper-3-coursework", "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing"];
+// tranche 36 is the FIFTH DOUBLE ROTATION + THE ROSTER EDGE CASE: BOTH
+// its courses sat on the roster (paper-2 slot 3, paper-1 slot 1 — the
+// queue's ranks 1-2). Layering BOTH trips slots 1 AND 3 — and the ONLY
+// remaining no-layer course in the whole fleet is
+// igcse-english-language-a-16-paper-3-coursework (1 loose), which is
+// ALREADY slot 2 and NOT layered this tranche — the
+// not-already-on-the-roster law yields NO third replacement: THE ROSTER
+// SHRINKS to the single remaining no-layer course. The fleet-safety law
+// (every probe has no SME layer) holds with a 1-probe roster. NOTE for
+// tranche 37: paper-3 is the LAST loose course — layering it trips the
+// final probe and THE ROSTER EMPTIES (fleet-safety trivially green; the
+// wave-9 queue exhausted). Same disclosed pin-refresh class as the
+// wave-6 run-002.
+  const probes = ["igcse-english-language-a-16-paper-3-coursework"];
   for (const course of probes) {
     const dir = new URL(`${course}/`, contentDir);
     if (!existsSync(new URL("curriculum.json", dir))) continue;

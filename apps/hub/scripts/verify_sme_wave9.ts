@@ -145,6 +145,18 @@
  * tripped, replaced by eng-lang-a-16-paper-1 and eng-lang-a-16-paper-3;
  * paper-2 stays; the turn opened with a SANDBOX-RECYCLE reconciliation
  * of a stale pre-wave-9 checkout)
+ * + tranche 36 (igcse-english-language-a-16-paper-2-poetry-and-prose-
+ * texts-and-imaginative-writing Edexcel 4EA1 2016 — the ENGLISH-LANGUAGE-
+ * A shape, the IGCSE_ENGLISH_LANGUAGE_A spec-code family, T2 strand,
+ * roster slot 3 / igcse-english-language-a-16-paper-1-non-fiction-texts-
+ * and-transactional-writing 4EA1 2016 — the same family's T1 strand,
+ * roster slot 1; the TWENTY-SEVENTH consecutive FULLY-CLEAN audit with
+ * ZERO DRIFT on both courses — both PERFECT 1:1 (20 = 20 with 33 sets /
+ * 40 = 40 with 29 sets); *** THE FIFTH DOUBLE ROTATION + THE ROSTER EDGE
+ * CASE *** — slots 1 AND 3 tripped, no third replacement exists (only
+ * paper-3 remains no-layer and it is ALREADY slot 2), so THE ROSTER
+ * SHRINKS to the single remaining no-layer course; T37 trips it and the
+ * roster EMPTIES)
  * — the W7 closeout recommendation's build slices,
  * worst tails first.
  *
@@ -334,6 +346,8 @@ const DRIFT_BY_COURSE: Record<string, ReadonlySet<string>> = {
   "ial-further-maths-18-further-pure-1": new Set(["january-2021", "january-2022", "january-2023", "january-2024", "june-2021", "june-2022", "june-2023", "june-2024", "november-2021", "october-2020", "specimen-paper"]),
   "cie-as-english-general-paper-21": new Set(),
   "igcse-accounting-17-financial-statements": new Set(["2019-june", "2020-june", "2020-november", "2021-june", "2021-november", "2022-june", "2023-january", "2023-june", "2023-november", "2024-june"]),
+  "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing": new Set(),
+  "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing": new Set(),
 };
 
 for (const cf of FIXTURES.courses) {
