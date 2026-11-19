@@ -124,9 +124,9 @@ describe("T-TUTOR-AIM-P2 — the confidence capture (DC10 §7.4, log-first)", ()
     await mod.ask(LEARNER, QUESTION, [], null, null, null, "guessing");
     const tel = captured.events[0] as { confidence: string | null; promptIdentity: string };
     expect(tel.confidence).toBe("guessing");
-    // the identity of record is the v19 bump
-    expect(tel.promptIdentity).toBe("tutor-grounded/v19");
-    expect(promptIdentity()).toBe("tutor-grounded/v19");
+    // the identity of record is the v20 bump (run-003, the §7.9 gate release)
+    expect(tel.promptIdentity).toBe("tutor-grounded/v20");
+    expect(promptIdentity()).toBe("tutor-grounded/v20");
   });
 
   test("streaming ask: stream parity — the selection rides the event verbatim", async () => {

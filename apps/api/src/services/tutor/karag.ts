@@ -41,6 +41,8 @@ import {
 import { resolveCitations, type Citation } from "./citations";
 import { ArgumentError, TutorGenerationError } from "./errors";
 import { projectServedEvidence, type ServedEvidenceRow } from "./served-evidence";
+import { matchExamTarget } from "./exam-calendar";
+import type { CourseExamTargetView } from "@syllabai/contracts";
 import {
   selectDrillDirectiveBasis,
   type DrillDirectiveBasis,
@@ -278,6 +280,13 @@ export interface LearnerModelPort {
     learnerId: string,
     nodeIds: string[],
   ): Promise<ReviewSchedulePendingRow[]>;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9) — the M3 EXTENSION of record (the
+   *  P2 precedent, documented in the receipt): the learner's DECLARED exam
+   *  targets (enrolments ∩ exam_series, the canonical ExamTargetReader
+   *  seam). OPTIONAL for call-site compatibility — a port predating this
+   *  band degrades to the no-exam-context ask honestly (the empty-context
+   *  byte-stability law); absent = never a fabricated date. */
+  examTargets?(learnerId: string): Promise<CourseExamTargetView[]>;
 }
 
 // ── PreparedAsk (:399-408) ──────────────────────────────────────────────────
@@ -336,6 +345,13 @@ export interface KaragDeps {
    *  matched topic codes yield a non-empty boost set, TEXTBOOK evidence
    *  whose chunk spec_codes intersect fuses at the anchor tier (1.0). */
   specBoostIndex?: SpecBoostIndex | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9) — the served-registry bridge
+   *  (OPTIONAL — absent = the ask carries no exam context honestly, the
+   *  degrade-never-block posture): the ask's curriculum code → the course
+   *  slug of record (apps/hub/content/courses.json — the hub's OWN mapping,
+   *  never a duplicate). Production wires buildCourseSlugOf(); tests inject
+   *  their own or omit. */
+  courseSlugOf?: (curriculumCode: string) => string | null;
 }
 
 /**
@@ -756,6 +772,23 @@ async function assembleContext(
     learnerId == null || learnerModel == null
       ? []
       : await learnerModel.pendingReviews(learnerId, nodeIds);
+  // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the exam-calendar read — the M3
+  // EXTENSION of record (the P2 precedent, documented in the receipt): the
+  // learner's DECLARED exam targets join the ask path (ONE indexed
+  // enrolments read + ONE batched series read; anonymous askers read
+  // NOTHING, the account-only law). The match is PURE: the ask's curriculum
+  // code → the served registry's slug of record (deps.courseSlugOf — absent
+  // dep = no exam context honestly) → the target for THAT course. No
+  // declared target / no mapping / unscoped ask = the honest empty — the
+  // prompt renders nothing (the byte-stability law).
+  const examTarget: CourseExamTargetView | null =
+    learnerId == null || learnerModel == null || learnerModel.examTargets == null
+      ? null
+      : matchExamTarget(
+          await learnerModel.examTargets(learnerId),
+          (code) => deps.courseSlugOf?.(code) ?? null,
+          prep.scopeCode,
+        );
   const context = assembleTutorContext({
     knowledge: prep.knowledge,
     evidence: prep.evidence,
@@ -773,6 +806,9 @@ async function assembleContext(
     // T-TUTOR-AIM-P2 (DC10 §7.3): the ask-side command-word pin rides the
     // ONE assembly (deterministic — no read, no LLM)
     query: prep.query,
+    // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the prematched exam target rides
+    // the ONE assembly (pure brief computation — no read, no LLM)
+    examTarget,
     now: deps.clock.now(),
   });
   // T-TUTOR-AIM-P2 (DC10 §7.6): the single optional probe — deterministic
@@ -782,12 +818,18 @@ async function assembleContext(
   // T-TUTOR-AIM-P3 (DC10 §7.8): the drill-loop directive's DECISION half —
   // the decay-due matched topics from the SAME pendingReviews read (M3:
   // no new read, no LLM), the turn-free basis the route mints into a
-  // claimable directive after the §22 append fixes the turn id
+  // claimable directive after the §22 append fixes the turn id.
+  // RUN-003 (DC10 §7.9, the SPACING arm): when the declared sitting is
+  // NEAR or IN_WINDOW the planned count tightens (×2, the build-time
+  // constant of record) — the pendingReview loop's spacing weights the
+  // calendar; FAR and every no-calendar ask keep the base law byte-identical.
+  const examUrgency = context.exam?.urgency ?? null;
   const drillBasis = selectDrillDirectiveBasis(
     context.aim,
     prep.knowledge.topics,
     pending.map((r) => r.nodeId),
     prep.courseRef ?? null,
+    examUrgency === "NEAR" || examUrgency === "IN_WINDOW" ? examUrgency : null,
   );
   return { context, probe, drillBasis };
 }
