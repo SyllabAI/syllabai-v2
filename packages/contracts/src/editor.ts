@@ -139,3 +139,146 @@ export const editorEditReceiptSchema = z.object({
   createdAt: z.string(),
 });
 export type EditorEditReceipt = z.infer<typeof editorEditReceiptSchema>;
+
+// ── the Phase 2 proposal plane (§8 — requests, verdicts, inventory) ──────────
+//
+// The wire law of the run-011 build. The typed refusal/warning shapes here
+// are the WIRE IMAGE of @syllabai/editor-gates' GateRefusal/GateWarning —
+// the engine stays dependency-free, so this module mirrors its shapes by
+// law (the parity is pinned by the api service tests, which run the real
+// engine through these schemas on every golden-path case). Request schemas
+// are two-envelope-shaped: the shell classifies malformed_body BEFORE
+// validation_failed (the workspace-docs R-1 law, verbatim).
+
+/** The G-SCOPE/G-CANON/G-SER/G-FIELD/G-CHAR/G-ASSET/G-EYES families (the
+ * engine's own vocabulary, mirrored verbatim — a drifted family refuses). */
+const GATE_FAMILIES_WIRE = [
+  "G-CANON",
+  "G-SER",
+  "G-FIELD",
+  "G-CHAR",
+  "G-ASSET",
+  "G-EYES",
+  "G-SCOPE",
+] as const;
+
+/** The typed gate refusal (the editor-readable refusal of record). */
+export const editorGateRefusalSchema = z.object({
+  code: z.string().min(1).max(80),
+  family: z.enum(GATE_FAMILIES_WIRE),
+  field: z.string().max(200).nullable(),
+  message: z.string().max(500),
+  hint: z.string().max(500),
+});
+export type EditorGateRefusal = z.infer<typeof editorGateRefusalSchema>;
+
+/** Non-preflight advisory (never blocks a proposal). */
+export const editorGateWarningSchema = z.object({
+  code: z.string().min(1).max(80),
+  field: z.string().max(200).nullable(),
+  message: z.string().max(500),
+});
+export type EditorGateWarning = z.infer<typeof editorGateWarningSchema>;
+
+/** Base-shape context derived from the SERVED artifact (advisory data the
+ * engine validates field references against — the hub derives it from the
+ * served question it renders; the server cannot independently verify it in
+ * Phase 2, which every affected receipt discloses). */
+export const editorBaseCtxSchema = z.object({
+  partCount: z.number().int().positive().max(50).optional(),
+  choiceLabels: z
+    .record(z.string().regex(/^\d+$/), z.array(z.string().regex(/^[A-F]$/)).max(8))
+    .optional(),
+  assetPaths: z.array(z.string().min(1).max(300)).max(2000).optional(),
+});
+export type EditorBaseCtx = z.infer<typeof editorBaseCtxSchema>;
+
+/** POST /api/v1/editor/preflight — stateless gate run (persists nothing). */
+export const editorPreflightRequestSchema = z.object({
+  bank: editorBankSchema,
+  targetPath: z.string().min(1).max(400),
+  fields: z.array(editorFieldDeltaSchema).min(1).max(EDITOR_FIELDS_PER_PROPOSAL_MAX),
+  baseCtx: editorBaseCtxSchema.optional(),
+});
+export type EditorPreflightRequest = z.infer<typeof editorPreflightRequestSchema>;
+
+export const editorPreflightResponseSchema = z.object({
+  ok: z.boolean(),
+  tier: z.union([z.literal(1), z.literal(2), z.literal(3)]).nullable(),
+  tierReasons: z.array(z.string().max(400)),
+  refusals: z.array(editorGateRefusalSchema),
+  warnings: z.array(editorGateWarningSchema),
+  disclosure: z.string().max(1000),
+});
+export type EditorPreflightResponse = z.infer<typeof editorPreflightResponseSchema>;
+
+/** POST /api/v1/editor/proposals — create (the server re-runs the engine;
+ * the client's tier is advisory, never authoritative, ADR §6). */
+export const editorCreateProposalRequestSchema = editorPreflightRequestSchema.extend({
+  baseSha: z.string().min(7).max(80),
+});
+export type EditorCreateProposalRequest = z.infer<typeof editorCreateProposalRequestSchema>;
+
+export const editorProposalCreateResponseSchema = z.object({
+  proposal: editorEditProposalSchema,
+  receipts: z.array(editorEditReceiptSchema).max(EDITOR_RECEIPT_ROWS_PER_PROPOSAL_MAX),
+  autoMerged: z.boolean(),
+  /** The server-side engine verdict that decided the outcome (the client's
+   * own preflight was advisory; this verdict is the one of record). */
+  verdict: editorPreflightResponseSchema,
+  disclosure: z.string().max(1000),
+});
+export type EditorProposalCreateResponse = z.infer<typeof editorProposalCreateResponseSchema>;
+
+export const editorProposalListSchema = z.object({
+  proposals: z.array(editorEditProposalSchema),
+});
+export type EditorProposalList = z.infer<typeof editorProposalListSchema>;
+
+export const editorProposalReceiptsSchema = z.object({
+  proposal: editorEditProposalSchema,
+  receipts: z.array(editorEditReceiptSchema),
+});
+export type EditorProposalReceipts = z.infer<typeof editorProposalReceiptsSchema>;
+
+/** GET /api/v1/editor/banks — the corpus inventory of record. Phase 2
+ * derives it from the LIVE resources HEAD (read-only GitHub REST; the
+ * commit/PR transport is what stays simulated until Phase 3). */
+export const editorBankCountsSchema = z.object({
+  questions: z.number().int().nonnegative(),
+  notes: z.number().int().nonnegative(),
+  flashcards: z.number().int().nonnegative(),
+});
+export type EditorBankCounts = z.infer<typeof editorBankCountsSchema>;
+
+export const editorBankInventorySchema = z.object({
+  headSha: z.string().min(7).max(80),
+  fetchedAt: z.string(),
+  disclosure: z.string().max(1000),
+  truncated: z.boolean().optional(),
+  courses: z
+    .array(
+      z.object({
+        slug: editorKebabSlugSchema,
+        counts: editorBankCountsSchema,
+      }),
+    )
+    .max(300),
+});
+export type EditorBankInventory = z.infer<typeof editorBankInventorySchema>;
+
+/** The error codes of record — the router raises exactly these (the caps
+ * are the contracts law; the upstream class mirrors editor-history's). */
+export const EDITOR_ERR_OPEN_PROPOSALS_CAP = "editor_cap_open_proposals" as const;
+export const EDITOR_ERR_FIELD_DELTA_CAP = "editor_field_delta_too_large" as const;
+export const EDITOR_ERR_UPSTREAM = "upstream_unavailable" as const;
+export const EDITOR_ERR_RATE_LIMITED = "rate_limited" as const;
+export const EDITOR_ERR_NOT_FOUND = "not_found" as const;
+/** Tier 3 is refused, never carried (ADR §6: the Workbench discloses the
+ * classification and stops; the lane pipeline owns structural surgery). */
+export const EDITOR_ERR_TIER3_REFUSED = "editor_tier3_refused" as const;
+/** The Phase 2 merge-transport disclosure — the string lives in
+ * @syllabai/shared (byte-identical across planes by law: the hub renders
+ * it in the Workbench banner and cannot consume this package), re-exported
+ * here so the api's wire law keeps ONE import path. */
+export { EDITOR_PHASE2_MERGE_DISCLOSURE } from "@syllabai/shared";

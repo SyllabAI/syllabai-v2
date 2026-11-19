@@ -167,3 +167,118 @@ describe("editorEditReceipt (the 0028 wire image, append-only)", () => {
     expect(editorEditReceiptSchema.safeParse({ ...base, action: "self_merge" }).success).toBe(false);
   });
 });
+
+// ── the Phase 2 proposal plane (run-011 — requests, verdicts, inventory) ─────
+
+import {
+  EDITOR_ERR_FIELD_DELTA_CAP,
+  EDITOR_ERR_OPEN_PROPOSALS_CAP,
+  EDITOR_PHASE2_MERGE_DISCLOSURE,
+  editorBankInventorySchema,
+  editorBaseCtxSchema,
+  editorCreateProposalRequestSchema,
+  editorGateRefusalSchema,
+  editorPreflightRequestSchema,
+  editorPreflightResponseSchema,
+} from "./editor";
+
+describe("editor preflight/proposal requests (two-envelope wire law)", () => {
+  const field = { field: "parts[0].problemMd", before: "A ball", after: "A ball." };
+
+  test("preflight request binds with bank/targetPath/fields (+ optional baseCtx)", () => {
+    const parsed = editorPreflightRequestSchema.parse({
+      bank: "questions",
+      targetPath: "SME-ExamQuestion/igcse-physics-19/1-forces-and-motion/questions.md",
+      fields: [field],
+      baseCtx: { partCount: 2, choiceLabels: { "0": ["A", "B"] }, assetPaths: ["assets/a.png"] },
+    });
+    expect(parsed.fields).toHaveLength(1);
+    expect(parsed.baseCtx?.partCount).toBe(2);
+  });
+
+  test("create-proposal request demands the baseSha envelope", () => {
+    const ok = editorCreateProposalRequestSchema.safeParse({
+      bank: "questions",
+      targetPath: "x/y/questions.md",
+      fields: [field],
+      baseSha: "cf1c8378b7ffdb58",
+    });
+    expect(ok.success).toBe(true);
+    const missing = editorCreateProposalRequestSchema.safeParse({
+      bank: "questions",
+      targetPath: "x/y/questions.md",
+      fields: [field],
+    });
+    expect(missing.success).toBe(false);
+  });
+
+  test("empty fields array refuses (a proposal is never an empty envelope)", () => {
+    const bad = editorPreflightRequestSchema.safeParse({
+      bank: "questions",
+      targetPath: "x/y/questions.md",
+      fields: [],
+    });
+    expect(bad.success).toBe(false);
+  });
+
+  test("baseCtx shape bounds refuse drift (labels A–F, digit part keys)", () => {
+    expect(editorBaseCtxSchema.safeParse({ choiceLabels: { x: ["A"] } }).success).toBe(false);
+    expect(editorBaseCtxSchema.safeParse({ choiceLabels: { "0": ["Z"] } }).success).toBe(false);
+    expect(editorBaseCtxSchema.safeParse({ partCount: 0 }).success).toBe(false);
+  });
+});
+
+describe("editor gate refusal (the engine's wire image)", () => {
+  const refusal = {
+    code: "G-CHAR-PUA",
+    family: "G-CHAR",
+    field: "parts[0].problemMd",
+    message: "the value contains a private-use character (U+E00F)",
+    hint: "delete the invisible character",
+  };
+
+  test("a faithful engine refusal round-trips", () => {
+    const parsed = editorGateRefusalSchema.parse(refusal);
+    expect(parsed.code).toBe("G-CHAR-PUA");
+    expect(parsed.family).toBe("G-CHAR");
+  });
+
+  test("an unknown family refuses (the vocabulary is the engine's, verbatim)", () => {
+    expect(editorGateRefusalSchema.safeParse({ ...refusal, family: "G-NOPE" }).success).toBe(false);
+  });
+
+  test("the preflight response schema mirrors the engine verdict shape", () => {
+    const parsed = editorPreflightResponseSchema.parse({
+      ok: false,
+      tier: 3,
+      tierReasons: ["structural shape"],
+      refusals: [refusal],
+      warnings: [{ code: "G-ASSET-UNVERIFIED", field: null, message: "unverified ref" }],
+      disclosure: "Phase 2 pre-flight is advisory-only.",
+    });
+    expect(parsed.tier).toBe(3);
+    expect(parsed.warnings).toHaveLength(1);
+  });
+});
+
+describe("editor bank inventory + error codes + disclosure (run-011)", () => {
+  test("bank inventory binds with the live-HEAD law shape", () => {
+    const parsed = editorBankInventorySchema.parse({
+      headSha: "cf1c8378b7ffdb581360c1e6b79bac157443c08c",
+      fetchedAt: "2026-11-19T15:00:00.000Z",
+      disclosure: "derived from the resources HEAD",
+      courses: [{ slug: "igcse-physics-19", counts: { questions: 40, notes: 12, flashcards: 30 } }],
+    });
+    expect(parsed.courses[0]?.counts.questions).toBe(40);
+  });
+
+  test("the cap error codes hold their values (the router raises exactly these)", () => {
+    expect(EDITOR_ERR_OPEN_PROPOSALS_CAP).toBe("editor_cap_open_proposals");
+    expect(EDITOR_ERR_FIELD_DELTA_CAP).toBe("editor_field_delta_too_large");
+  });
+
+  test("the Phase 2 merge disclosure is pinned verbatim (the B4 simulated-transport law)", () => {
+    expect(EDITOR_PHASE2_MERGE_DISCLOSURE).toContain("SIMULATED PR transport");
+    expect(EDITOR_PHASE2_MERGE_DISCLOSURE).toContain("census-guard");
+  });
+});

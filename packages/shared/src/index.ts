@@ -61,6 +61,15 @@ export * from "./specQuiz";
 export * from "./smeRef";
 
 /**
+ * ADR-044 run-011 (the Editor Workbench Phase 2): the cross-plane constants
+ * the disclosure law needs — the Phase 2 merge-transport disclosure renders
+ * IN THE PRODUCT verbatim, so it must be byte-identical on both sides of
+ * the api/hub boundary (the hub cannot consume @syllabai/contracts; shared
+ * is the one safe home). Pinned first-hand in editor-planes.test.ts.
+ */
+export * from "./editor-planes";
+
+/**
  * Tier-3 follow-up 4 (dashboard UX review 2026-11-04): the synthetic
  * assignment-title filter as the ONE implementation for both learner
  * surfaces — the api's `fetchAssignmentLists` source filter (probe rows

@@ -1,0 +1,35 @@
+{
+  "question": {
+    "id": "qstn_fixture_physics_w3_003",
+    "order": 3,
+    "difficulty": "hard",
+    "style": "structured",
+    "totalMarks": 8,
+    "parts": [
+      {
+        "id": "qstnprt_fixture_physics_w3_003a",
+        "order": 0,
+        "questionType": "structured",
+        "marks": 3,
+        "commandWord": "Calculate",
+        "specPointIds": ["spcpt_fixture_w3_1"],
+        "specPointCodes": ["3.7"],
+        "problemMd": "Water waves of frequency $2.5\\,\\text{Hz}$ travel across a tank at $1.2\\,\\text{m/s}$. Calculate the wavelength.",
+        "solutionMd": "$\\lambda = \\frac{v}{f} = \\frac{1.2}{2.5} = 0.48\\,\\text{m}$ (3)",
+        "choices": null
+      },
+      {
+        "id": "qstnprt_fixture_physics_w3_003b",
+        "order": 1,
+        "questionType": "structured",
+        "marks": 5,
+        "commandWord": "Explain",
+        "specPointIds": ["spcpt_fixture_w3_2"],
+        "specPointCodes": ["3.9"],
+        "problemMd": "Explain, in terms of **wavefronts**, why the waves bend as they move from deep water into shallow water.",
+        "solutionMd": "The waves slow down in shallower water, so the wavefronts crowd together: the wavelength decreases while the frequency stays constant. If the wavefronts meet the boundary at an angle, one end slows first and the direction of travel bends towards the normal (5)",
+        "choices": null
+      }
+    ]
+  }
+}
