@@ -1645,3 +1645,65 @@ math-field.answer-mathfield:focus {
   color: color-mix(in srgb, var(--subj-fg) 60%, white);
   border-color: color-mix(in srgb, var(--subj-fg) 28%, transparent);
 }
+
+/*
+ * P0 RESTAGE (guided-lessons redesign plan §5.1/§6, operator approval
+ * 2026-11-18) — the guided-lesson stage takeover's two motions, CSS-only:
+ *   .guided-stage-in    the fixed overlay fades in as the document chrome
+ *                       collapses beneath it (200ms);
+ *   .guided-stage-beat  each beat card lands with a 240ms rise-and-fade, so
+ *                       Continue reads as "next card", not "text swap".
+ * No JS animation loop ships; the prefers-reduced-motion law applies, and
+ * everything else (wash, header, column, frames) is token-driven so all
+ * course skins re-skin the stage for free.
+ */
+@keyframes guided-stage-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes guided-stage-beat {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.guided-stage-in {
+  animation: guided-stage-in 200ms ease-out;
+}
+.guided-stage-beat {
+  animation: guided-stage-beat 240ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .guided-stage-in,
+  .guided-stage-beat {
+    animation: none;
+  }
+}
+
+/*
+ * P1 verdict juice (guided-lessons redesign plan §6, 2026-11-18): a correct
+ * verdict pops (scale 1.02, green fill, 200ms), an incorrect verdict shakes
+ * gently (300ms) while the correct option highlights. Applied in stage mode
+ * only; reduced-motion honoured; CSS-only, no animation library.
+ */
+@keyframes verdict-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+@keyframes verdict-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+}
+.verdict-pop {
+  animation: verdict-pop 200ms ease-out;
+}
+.verdict-shake {
+  animation: verdict-shake 300ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .verdict-pop,
+  .verdict-shake {
+    animation: none;
+  }
+}

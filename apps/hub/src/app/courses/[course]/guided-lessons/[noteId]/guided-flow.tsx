@@ -48,10 +48,39 @@
  * (syllabai.guided-flow.v1.*) adopt ONCE per tab (the engine's legacy
  * adoption — they commit up only when the account has no doc of its own)
  * and then retire. Progress never writes to canonical content.
+ *
+ * P0 RESTAGE (2026-11-18, operator-approved redesign plan §5.1): when the
+ * course flag (lib/guided-stage.ts) is on, the SAME walk renders inside a
+ * full-height stage takeover — document chrome covered, stage header with
+ * progress dots, a single 640px card column, 17-18px teaching typography
+ * and framed figures. Presentation-only: stage mechanics, payloads and
+ * progress persistence are untouched, and flag-off renders unchanged.
+ *
+ * P1 RE-CHUNK AND INTERLEAVE (2026-11-18, "go" on plan §5.2/§5.3): in stage
+ * mode the gate decomposes into beat cards (opener → bridge → key-point
+ * cards with their figures → confidence as three large tappable cards) and
+ * the authored checks interleave after the key-point group that teaches
+ * them (keyword mapping, conservative fallback to the end block). Depth
+ * layers pace on "Got it", the worked example steps line by line, verdicts
+ * pop/shake, and the recap lands inverted with stat chips and a count-up.
+ * The arc stays a pure function of (payload, rating); the end block keeps
+ * every check with resume-at-first-unanswered, so saved sessions — from
+ * either arc — still reach their unanswered checks.
  */
-import { useMemo, useState, useSyncExternalStore } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { createPortal } from "react-dom";
 import {
   ArrowRight,
+  BookOpen,
   BookOpenCheck,
   Calculator,
   Check,
@@ -63,10 +92,12 @@ import {
   PenLine,
   RotateCcw,
   Sparkles,
+  Target,
   ThumbsDown,
   ThumbsUp,
   X,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -119,6 +150,9 @@ interface Props {
    *  or the course-level page when no per-topic target resolves. */
   examQuestionsHref: string;
   flashcardsHref: string;
+  /** P0 Restage rollout flag (lib/guided-stage.ts): true → the walk renders
+   *  inside the full-height stage takeover; false → the pre-P0 layout. */
+  stageUI?: boolean;
 }
 
 const STORAGE_PREFIX = "syllabai.guided-flow.v1."; // RETIRED (legacy adoption pin)
@@ -134,6 +168,35 @@ const RATING_HELP: Record<Rating, string> = {
   medium: "I've seen this — remind me how it fits together.",
   high: "Solid on this — take me straight to the checks.",
 };
+
+/* ─────────────────── P0 Restage — the stage presentation layer ───────────────────
+ * Plan §5.1/§6 (operator approval 2026-11-18): with the course flag on, the
+ * walk renders inside the full-height stage. The stage UI reads this context
+ * (true inside the takeover overlay, false in the document layout), and every
+ * presentation delta — typography, spacing, figure frames — goes through
+ * pick(S, stageCls, legacyCls), so the flag-off path compiles to the exact
+ * pre-P0 class strings. Teaching body moves 14px muted → 17-18px ink
+ * (audit failure F4), card titles 20-22px, card padding 24-32px. */
+const StageUIContext = createContext(false);
+
+/** True inside the stage takeover; false in the legacy document layout. */
+const useStageUI = () => useContext(StageUIContext);
+
+/** No-op subscribe for the mounted probe above. */
+const subscribeNoop = () => () => {};
+
+/** Stage/legacy class picker — one conditional per node. The legacy slot is
+ *  optional so pure stage-mode nodes can pass nothing. */
+function pick(stage: boolean, stageCls: string, legacyCls?: string) {
+  return stage ? stageCls : (legacyCls ?? "");
+}
+
+/** Teaching body (§6): 17-18px dark ink. */
+const STAGE_BODY = "text-[17px] leading-relaxed text-foreground sm:text-lg";
+/** Secondary teaching text (definitions, explanations, model answers). */
+const STAGE_BODY_SOFT = "text-[15px] leading-relaxed text-foreground/85 sm:text-base";
+/** Card titles (§6): 20-22px. */
+const STAGE_TITLE = "text-xl font-semibold tracking-tight sm:text-[22px]";
 
 function freshState(): FlowState {
   return { v: 1, moduleIndex: 0, stage: 0, ratings: {}, recalibrated: {}, answers: {}, finished: false };
@@ -294,12 +357,98 @@ if (typeof window !== "undefined") {
 
 type Stage =
   | { kind: "gate" }
+  | { kind: "opener" }
+  | { kind: "bridge" }
+  | { kind: "keypoint"; i: number; n: number; kps: string[]; figures: GuidedFigure[] }
+  | { kind: "confidence" }
   | { kind: "layer"; band: "low" | "medium"; field: keyof GuidedDepthLayer; label: string; i: number; n: number }
   | { kind: "refresher" }
   | { kind: "glossary" }
   | { kind: "example" }
-  | { kind: "check" }
+  | { kind: "check"; qids: string[] }
   | { kind: "recalibrate" };
+
+/* ─────────────── P1 Re-chunk and interleave (plan §5.2/§5.3) ───────────────
+ * The gate decomposes into beat cards (opener → bridge → key-point cards →
+ * confidence), and the authored checks interleave after the key-point group
+ * that teaches them — MathsGenie's teach-check cadence — while every delta
+ * stays presentation-layer: the arc is a PURE function of (payload, rating),
+ * so resume indices stay stable, and the end block keeps ALL checks with the
+ * existing resume-at-first-unanswered navigation, so a rating carried over
+ * from the legacy arc still reaches every unanswered check. */
+
+const KP_PAIR_WORD_BUDGET = 30;
+
+function wordCount(s: string): number {
+  return s.trim().split(/\s+/).length;
+}
+
+/** §5.2: key points one per card, or two per card when both fit the 30-word
+ *  beat budget — greedy over the authored order, deterministic. */
+function keyPointGroups(kps: string[]): string[][] {
+  const groups: string[][] = [];
+  for (const kp of kps) {
+    const last = groups[groups.length - 1];
+    if (
+      last &&
+      last.length === 1 &&
+      wordCount(last[0]) < KP_PAIR_WORD_BUDGET &&
+      wordCount(kp) < KP_PAIR_WORD_BUDGET
+    ) {
+      last.push(kp);
+    } else {
+      groups.push([kp]);
+    }
+  }
+  return groups;
+}
+
+const MAP_SCORE_FLOOR = 0.15;
+const MAP_MARGIN_RATIO = 0.75;
+
+/** §5.2: deterministic check→key-point-group mapping. Keyword containment
+ *  between the check (stem + options) and each group's key points; a check
+ *  interleaves only when one group wins CLEARLY (score floor + margin) —
+ *  otherwise it stays in the end block (the conservative fallback law). */
+function mapChecksToGroups(groups: string[][], questions: GuidedQuestion[]): Map<string, number> {
+  const groupWords = groups.map((g) => new Set(practiceTokens(g.join(" "))));
+  const out = new Map<string, number>();
+  for (const q of questions) {
+    const checkWords = practiceTokens([q.stem, ...q.options.map((o) => o.text)].join(" "));
+    if (checkWords.length === 0) continue;
+    let best = -1;
+    let bestScore = 0;
+    let second = 0;
+    groupWords.forEach((gw, gi) => {
+      if (gw.size === 0) return;
+      const hits = checkWords.filter((w) => gw.has(w)).length;
+      const score = hits / checkWords.length;
+      if (score > bestScore) {
+        second = bestScore;
+        bestScore = score;
+        best = gi;
+      } else if (score > second) {
+        second = score;
+      }
+    });
+    if (best >= 0 && bestScore >= MAP_SCORE_FLOOR && bestScore >= second / MAP_MARGIN_RATIO) {
+      out.set(q.id, best);
+    }
+  }
+  return out;
+}
+
+/** Figures ride the key-point card they were authored after (FIGURES-2.1,
+ *  "after the key points they illustrate"): even distribution across the
+ *  cards, deterministic from the authored order. */
+function figuresForGroups(figures: GuidedFigure[], groupCount: number): GuidedFigure[][] {
+  const out: GuidedFigure[][] = Array.from({ length: groupCount }, () => []);
+  figures.forEach((f, j) => {
+    const gi = Math.min(groupCount - 1, Math.floor((j * groupCount) / Math.max(figures.length, 1)));
+    out[gi].push(f);
+  });
+  return out;
+}
 
 /** The authored layers of one band, served one Continue at a time. */
 function layerStages(band: "low" | "medium"): Stage[] {
@@ -333,7 +482,12 @@ export function GuidedLessonFlow({
   base,
   examQuestionsHref,
   flashcardsHref,
+  stageUI = false,
 }: Props) {
+  // False by construction here — the flow component itself renders in the
+  // document layout; only the overlay subtree (below) sits inside the
+  // provider, so the picker and any inline chrome read the legacy strings.
+  const S = useStageUI();
   const lessonId = lesson.lesson.id;
   const store = useMemo(() => getFlowStore(lessonId), [lessonId]);
   const state = useSyncExternalStore(store.subscribe, store.get, () => SERVER_STATE);
@@ -350,18 +504,55 @@ export function GuidedLessonFlow({
   const rating = state.ratings[m.id];
 
   // The module's stage list after the gate depends on the chosen band.
+  // Legacy arc (flag off) vs P1 stage arc (§5.2) — both PURE in (payload,
+  // rating); the stage-mode end block keeps every check so resumes reach
+  // their unanswered checks whichever arc authored the saved state.
   const allStages: Stage[] = useMemo(() => {
-    const stages: Stage[] = [{ kind: "gate" }];
-    if (!rating) return stages;
-    if (rating === "low") stages.push(...layerStages("low"));
-    if (rating === "medium") stages.push(...layerStages("medium"));
-    if (rating === "high") stages.push({ kind: "refresher" });
-    if (glossaryFor(lesson, moduleIndex).length > 0) stages.push({ kind: "glossary" });
-    if (moduleIndex === 0 && lesson.lesson.assets.workedExample) stages.push({ kind: "example" });
-    stages.push({ kind: "check" });
-    if (m.gatePolicy.postCheckRecalibration) stages.push({ kind: "recalibrate" });
+    const questions = m.checkRefs
+      .map((ref) => questionsById.get(ref))
+      .filter((q): q is GuidedQuestion => q !== undefined);
+    if (!stageUI) {
+      const stages: Stage[] = [{ kind: "gate" }];
+      if (!rating) return stages;
+      if (rating === "low") stages.push(...layerStages("low"));
+      if (rating === "medium") stages.push(...layerStages("medium"));
+      if (rating === "high") stages.push({ kind: "refresher" });
+      if (glossaryFor(lesson, moduleIndex).length > 0) stages.push({ kind: "glossary" });
+      if (moduleIndex === 0 && lesson.lesson.assets.workedExample) stages.push({ kind: "example" });
+      stages.push({ kind: "check", qids: m.checkRefs });
+      if (m.gatePolicy.postCheckRecalibration) stages.push({ kind: "recalibrate" });
+      return stages;
+    }
+    const groups = keyPointGroups(m.keyPoints);
+    const mapped = mapChecksToGroups(groups, questions);
+    const groupFigures = figuresForGroups(figuresForModule(lesson, moduleIndex), groups.length);
+    const stages: Stage[] = [];
+    if (!rating) {
+      // fresh walk: the gate arc teaches (opener → bridge → key-point cards
+      // with their figures), the mapped checks interleave after their group,
+      // and the confidence question ends the arc
+      stages.push({ kind: "opener" }, { kind: "bridge" });
+      groups.forEach((kps, gi) => {
+        stages.push({ kind: "keypoint", i: gi, n: groups.length, kps, figures: groupFigures[gi] });
+        for (const q of questions) {
+          if (mapped.get(q.id) === gi) stages.push({ kind: "check", qids: [q.id] });
+        }
+      });
+    }
+    // rated (just now, or resumed): the gate collapses to the locked
+    // confidence screen — the write-once law means the arc never re-asks —
+    // and the adaptive tail runs from there
+    stages.push({ kind: "confidence" });
+    if (rating) {
+      if (rating === "high") stages.push({ kind: "refresher" });
+      else stages.push(...layerStages(rating));
+      if (glossaryFor(lesson, moduleIndex).length > 0) stages.push({ kind: "glossary" });
+      if (moduleIndex === 0 && lesson.lesson.assets.workedExample) stages.push({ kind: "example" });
+      stages.push({ kind: "check", qids: m.checkRefs });
+      if (m.gatePolicy.postCheckRecalibration) stages.push({ kind: "recalibrate" });
+    }
     return stages;
-  }, [rating, lesson, moduleIndex, m]);
+  }, [stageUI, rating, lesson, moduleIndex, m, questionsById]);
 
   const stage = Math.min(state.stage, allStages.length - 1);
 
@@ -415,6 +606,7 @@ export function GuidedLessonFlow({
   const reset = () => {
     setPicked(false);
     setListOpen(null);
+    setStageDismissed(false);
     store.set(() => freshState());
   };
 
@@ -454,26 +646,95 @@ export function GuidedLessonFlow({
   const [listOpen, setListOpen] = useState<boolean | null>(null);
   const listExpanded = listOpen ?? !engaged;
 
-  if (state.finished) {
-    return (
-      <FinishedView
-        modules={modules}
-        state={state}
-        totalChecks={totalChecks}
-        totalCorrect={totalCorrect}
-        noteTitle={noteTitle}
-        noteHref={noteHref}
-        base={base}
-        examQuestionsHref={examQuestionsHref}
-        flashcardsHref={flashcardsHref}
-        onReview={(mi) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0, finished: false }))}
-        onFeedback={(fb) =>
-          store.set((s) => (s.feedback === fb ? s : { ...s, feedback: fb }))
-        }
-        onReset={reset}
-      />
-    );
-  }
+  // ── P0 Restage — the stage takeover (plan §5.1) ── the overlay is open
+  // whenever the learner is inside a lesson (engaged, or has just picked
+  // one) and hasn't explicitly exited; the picker card stays as the
+  // pre-start screen in the document layout underneath. Exit keeps the
+  // flow state (the account pool persists it); picking a lesson re-enters.
+  const [stageDismissed, setStageDismissed] = useState(false);
+  // hydration-safe mounted probe: the portal target only exists client-side
+  // (SSR and no-JS render the document layout either way) — useSyncExternalStore
+  // instead of the setState-in-effect pattern the compiler lint forbids
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
+  const stageOpen = stageUI && !stageDismissed && (engaged || picked);
+  const stageScrollRef = useRef<HTMLDivElement>(null);
+  const stageHeaderRef = useRef<HTMLHeadingElement>(null);
+  const exitStage = useCallback(() => {
+    setStageDismissed(true);
+    setListOpen(null);
+  }, [setStageDismissed, setListOpen]);
+  // the document behind the stage does not scroll while the stage is up
+  useEffect(() => {
+    if (!mounted || !stageOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mounted, stageOpen]);
+  // Escape exits the stage (flow state persists — the zero-DB pool law)
+  useEffect(() => {
+    if (!mounted || !stageOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") exitStage();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mounted, stageOpen, exitStage]);
+  // entering the stage: land at the top and move focus into the header
+  useEffect(() => {
+    if (!mounted || !stageOpen) return;
+    window.scrollTo(0, 0);
+    stageHeaderRef.current?.focus();
+  }, [mounted, stageOpen]);
+  // each beat lands at the top of the column — the lesson paces one card
+  // at a time, not one scroll at a time
+  useEffect(() => {
+    if (!stageOpen) return;
+    stageScrollRef.current?.scrollTo({ top: 0 });
+  }, [stageOpen, moduleIndex, stage]);
+
+  const finishedElement = (
+    <FinishedView
+      modules={modules}
+      state={state}
+      totalChecks={totalChecks}
+      totalCorrect={totalCorrect}
+      noteTitle={noteTitle}
+      noteHref={noteHref}
+      base={base}
+      examQuestionsHref={examQuestionsHref}
+      flashcardsHref={flashcardsHref}
+      onReview={(mi) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0, finished: false }))}
+      onFeedback={(fb) =>
+        store.set((s) => (s.feedback === fb ? s : { ...s, feedback: fb }))
+      }
+      onReset={reset}
+    />
+  );
+
+  const stageViewElement = (
+    <StageView
+      stage={allStages[stage]}
+      module={m}
+      moduleOrdinal={moduleIndex}
+      moduleCount={modules.length}
+      lesson={lesson}
+      questionsById={questionsById}
+      state={state}
+      rating={rating}
+      prevRecalibrated={prevRecalibrated}
+      prevDone={prevDone}
+      examQuestionsHref={examQuestionsHref}
+      flashcardsHref={flashcardsHref}
+      recalChoice={recalChoice[m.id]}
+      onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
+      onChooseRating={chooseRating}
+      onRecalibrate={recalibrate}
+      onAnswer={answer}
+      onNext={handleNext}
+    />
+  );
 
   return (
     <div className="space-y-5">
@@ -482,7 +743,7 @@ export function GuidedLessonFlow({
           once a lesson is being walked the card collapses to a slim header
           so the content leads — the full list stays one click away, and
           picking a concept from the expanded list re-collapses it. */}
-      <Card>
+      <Card className={cn(state.finished && "hidden")}>
         <CardContent className="p-4 sm:p-5">
           {listExpanded ? (
             <div id="lesson-set-list" className="space-y-3">
@@ -528,6 +789,7 @@ export function GuidedLessonFlow({
                         onClick={() => {
                           setPicked(true);
                           setListOpen(null);
+                          setStageDismissed(false); // re-enter the stage takeover
                           gotoModule(mi);
                         }}
                         className={cn(
@@ -552,7 +814,7 @@ export function GuidedLessonFlow({
                           {done ? <Check className="size-3.5" /> : mi + 1}
                         </span>
                         <span className="min-w-0 flex-1">
-                          <span className="block text-xs font-medium">{mod.title}</span>
+                          <span className={pick(S, "text-[15px] font-medium", "block text-xs font-medium")}>{mod.title}</span>
                           <span className="block truncate text-xs text-muted-foreground">{mod.opening}</span>
                         </span>
                         <span className="shrink-0 text-xs font-medium text-muted-foreground">
@@ -607,27 +869,100 @@ export function GuidedLessonFlow({
         </CardContent>
       </Card>
 
-      {/* the active module's current stage */}
-      <StageView
-        stage={allStages[stage]}
-        module={m}
-        moduleOrdinal={moduleIndex}
-        moduleCount={modules.length}
-        lesson={lesson}
-        questionsById={questionsById}
-        state={state}
-        rating={rating}
-        prevRecalibrated={prevRecalibrated}
-        prevDone={prevDone}
-        examQuestionsHref={examQuestionsHref}
-        flashcardsHref={flashcardsHref}
-        recalChoice={recalChoice[m.id]}
-        onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
-        onChooseRating={chooseRating}
-        onRecalibrate={recalibrate}
-        onAnswer={answer}
-        onNext={handleNext}
-      />
+      {/* the active module's current stage — inline in the document layout
+          when the stage is off or exited; inside the takeover the SAME
+          elements render in the portal below */}
+      {!stageOpen && (state.finished ? finishedElement : stageViewElement)}
+
+      {/* ── P0 Restage — the full-height stage (plan §5.1). Portal-mounted
+          after hydration: SSR and no-JS render the document layout, so the
+          picker, breadcrumbs and the read-as-page fallback stay crawlable
+          and reachable; the overlay covers the document chrome once the
+          learner is inside a lesson, and Exit returns to it with the flow
+          state intact (the account pool keeps it). */}
+      {mounted &&
+        stageOpen &&
+        createPortal(
+          <StageUIContext.Provider value={true}>
+            <div
+              ref={stageScrollRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`Guided lesson — ${noteTitle}`}
+              className="guided-stage-in fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-muted"
+            >
+              <header className="sticky top-0 z-10 border-b bg-background/85 backdrop-blur">
+                <div className="mx-auto flex h-14 max-w-3xl items-center gap-2 px-4 sm:gap-3 sm:px-6">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Exit the guided lesson"
+                    onClick={exitStage}
+                  >
+                    <X className="size-4.5" aria-hidden />
+                  </Button>
+                  <div className="min-w-0 flex-1">
+                    <h1
+                      ref={stageHeaderRef}
+                      tabIndex={-1}
+                      className="truncate text-sm font-semibold leading-tight outline-none"
+                    >
+                      {m.title}
+                    </h1>
+                    <p className="truncate text-2xs text-muted-foreground">
+                      Lesson {moduleIndex + 1} of {modules.length} · {noteTitle}
+                    </p>
+                  </div>
+                  {rating && allStages.length > 1 && (
+                    <StageDots
+                      index={stage}
+                      count={allStages.length}
+                      className="hidden sm:flex"
+                    />
+                  )}
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Read the full lesson as a page"
+                    onClick={() => {
+                      setStageDismissed(true);
+                      setListOpen(null);
+                      // let the overlay unmount and the body lock clear before
+                      // scrolling the document to the fallback
+                      requestAnimationFrame(() =>
+                        requestAnimationFrame(() => {
+                          const d = document.getElementById(
+                            "guided-read-as-page",
+                          ) as HTMLDetailsElement | null;
+                          if (d) {
+                            d.open = true;
+                            d.scrollIntoView({ behavior: "smooth", block: "start" });
+                          }
+                        }),
+                      );
+                    }}
+                  >
+                    <BookOpen className="size-4.5" aria-hidden />
+                  </Button>
+                </div>
+                {rating && allStages.length > 1 && (
+                  <div className="px-4 pb-3 sm:hidden">
+                    <StageDots index={stage} count={allStages.length} className="flex" />
+                  </div>
+                )}
+              </header>
+              <main className="mx-auto w-full max-w-[640px] px-4 pb-24 pt-5 sm:px-0 sm:pt-8">
+                {/* keyed per beat — each card lands fresh at the top of the
+                    column (the scroll effect above), and the enter animation
+                    marks it as new */}
+                <div key={`${moduleIndex}-${stage}`} className="guided-stage-beat">
+                  {state.finished ? finishedElement : stageViewElement}
+                </div>
+              </main>
+            </div>
+          </StageUIContext.Provider>,
+          document.body,
+        )}
     </div>
   );
 }
@@ -665,6 +1000,14 @@ function StageView(p: StageProps) {
   switch (p.stage.kind) {
     case "gate":
       return <GateStage {...p} />;
+    case "opener":
+      return <OpenerStage {...p} />;
+    case "bridge":
+      return <BridgeStage {...p} />;
+    case "keypoint":
+      return <KeypointStage {...p} stage={p.stage} />;
+    case "confidence":
+      return <ConfidenceStage {...p} />;
     case "layer":
       return <LayerStage {...p} stage={p.stage} />;
     case "refresher":
@@ -674,14 +1017,256 @@ function StageView(p: StageProps) {
     case "example":
       return <ExampleStage {...p} />;
     case "check":
-      return <CheckStage {...p} />;
+      return <CheckStage {...p} stage={p.stage} />;
     case "recalibrate":
       return <RecalibrateStage {...p} />;
   }
 }
 
+/* ────────────── P1 beat language (plan §5.2 + §6 Table 3) ──────────────
+ * One accent hue per beat type — blue learn, amber analogy, violet exam —
+ * a 4px left edge + faint tint + typed kicker icon, all token-driven so
+ * every course theme re-skins the beats for free. */
+const BEAT_ACCENT = {
+  learn: { edge: "border-l-primary bg-primary/[0.04]", kicker: "text-primary", icon: BookOpen },
+  analogy: { edge: "border-l-warn bg-warn/[0.06]", kicker: "text-warn", icon: Lightbulb },
+  exam: { edge: "border-l-cat bg-cat/[0.06]", kicker: "text-cat", icon: Target },
+} as const;
+
+function BeatKicker({ icon: Icon, tone, children }: { icon: typeof BookOpen; tone: string; children: ReactNode }) {
+  return (
+    <p className={cn("flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-wide", tone)}>
+      <Icon className="size-3.5" aria-hidden />
+      {children}
+    </p>
+  );
+}
+
+/** §5.2 beat 1 — the one-screen opener: what this lesson covers, nothing
+ *  else stacked on it. */
+function OpenerStage(p: StageProps) {
+  const { module: m, moduleOrdinal, moduleCount, onNext } = p;
+  return (
+    <Card className="border-l-4 border-l-primary bg-primary/[0.04] shadow-md">
+      <CardContent className="space-y-4 p-5 sm:p-7">
+        <BeatKicker icon={BEAT_ACCENT.learn.icon} tone={BEAT_ACCENT.learn.kicker}>
+          Here is what this lesson covers
+        </BeatKicker>
+        <div className="space-y-1">
+          <p className="text-2xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Lesson {moduleOrdinal + 1} of {moduleCount}
+          </p>
+          <h2 className={STAGE_TITLE}>{m.title}</h2>
+        </div>
+        <p className={STAGE_BODY}>{m.opening}</p>
+        <Button onClick={onNext} className="w-full sm:w-auto">
+          Continue
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+/** §5.2 beat 2 — the prerequisite bridge as its own card: the authored
+ *  primer (module 1) or the previous lesson's key points (R-4 law). */
+function BridgeStage(p: StageProps) {
+  const { lesson, moduleOrdinal, onNext } = p;
+  const prev = moduleOrdinal > 0 ? lesson.lesson.modules[moduleOrdinal - 1] : null;
+  const prevKeyPoints = prev ? prev.keyPoints.slice(0, 3) : [];
+  const prevRest = prev ? prev.keyPoints.length - prevKeyPoints.length : 0;
+  return (
+    <Card className="border-l-4 border-l-primary bg-primary/[0.04] shadow-md">
+      <CardContent className="space-y-4 p-5 sm:p-7">
+        <BeatKicker icon={BEAT_ACCENT.learn.icon} tone={BEAT_ACCENT.learn.kicker}>
+          What you know already
+        </BeatKicker>
+        {moduleOrdinal === 0 ? (
+          <p className={STAGE_BODY}>{lesson.lesson.primer.text}</p>
+        ) : (
+          prev && (
+            <div className="space-y-2 rounded-md border bg-muted/30 px-4 py-3">
+              <p className="text-xs font-semibold text-muted-foreground">
+                From Lesson {moduleOrdinal}: {prev.title}
+              </p>
+              <ul className="space-y-1.5">
+                {prevKeyPoints.map((kp, i) => (
+                  <li key={i} className="flex gap-2.5 text-[15px] leading-relaxed sm:text-base">
+                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+                    <span>{kp}</span>
+                  </li>
+                ))}
+              </ul>
+              {prevRest > 0 && (
+                <p className="text-xs text-muted-foreground">
+                  …and {prevRest} more key point{prevRest === 1 ? "" : "s"} from that lesson.
+                </p>
+              )}
+            </div>
+          )
+        )}
+        <Button onClick={onNext} className="w-full sm:w-auto">
+          Continue
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+/** §5.2 beats 3..n — one key-point group per card (1-2 points, 30-word
+ *  budget), the group's figure riding the card it was authored after, and
+ *  — on a fresh walk — the group's mapped checks interleaved right after
+ *  (the arc builder owns the check placement). */
+function KeypointStage(p: StageProps & { stage: Extract<Stage, { kind: "keypoint" }> }) {
+  const { stage, onNext } = p;
+  const isLast = stage.i === stage.n - 1;
+  return (
+    <Card className="border-l-4 border-l-primary bg-primary/[0.04] shadow-md">
+      <CardContent className="space-y-4 p-5 sm:p-7">
+        <BeatKicker icon={BEAT_ACCENT.learn.icon} tone={BEAT_ACCENT.learn.kicker}>
+          Key point {stage.i + 1} of {stage.n}
+        </BeatKicker>
+        <ul className="space-y-3">
+          {stage.kps.map((kp, i) => (
+            <li key={i} className="flex gap-3 text-[17px] leading-relaxed text-foreground sm:text-lg">
+              <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+              <span>{kp}</span>
+            </li>
+          ))}
+        </ul>
+        {stage.figures.length > 0 && <StageFigures figures={stage.figures} />}
+        <Button onClick={onNext} className="w-full sm:w-auto">
+          {isLast ? "Rate my confidence" : "Got it — next"}
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+/** §5.2 final gate beat — the confidence question as three large tappable
+ *  cards (not radio rows); the write-once law and the gate policy carry
+ *  over untouched from the legacy gate. */
+function ConfidenceStage(p: StageProps) {
+  const { module: m, moduleOrdinal, moduleCount, rating, prevRecalibrated, onChooseRating, onNext } = p;
+  const selected = rating ?? prevRecalibrated ?? null;
+  const written = rating !== undefined;
+  const disabled = m.gatePolicy.continueDisabledUntilChoice && rating === undefined;
+  return (
+    <Card className="shadow-md">
+      <CardContent className="space-y-5 p-5 sm:p-7">
+        <div className="space-y-2">
+          <BeatKicker icon={ListChecks} tone="text-primary">Your confidence level</BeatKicker>
+          <h2 className={STAGE_TITLE}>How well do you know this already?</h2>
+          <p className="text-[15px] leading-relaxed text-foreground/85 sm:text-base">
+            Lesson {moduleOrdinal + 1} of {moduleCount} — you&apos;ve just met the key points. Rate
+            yourself honestly and the walkthrough adapts to your answer.
+          </p>
+        </div>
+        <fieldset className="space-y-3">
+          <legend className="sr-only">Tell us your confidence level against the key points</legend>
+          {(["low", "medium", "high"] as const).map((r) => {
+            const isSelected = selected === r;
+            return (
+              <button
+                key={r}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                disabled={written}
+                onClick={() => onChooseRating(r)}
+                className={cn(
+                  "flex w-full items-start gap-4 rounded-xl border p-4 text-left transition-colors sm:p-5",
+                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
+                  isSelected ? "border-primary bg-primary/5 shadow-sm" : "hover:border-primary/60",
+                  written && "cursor-default",
+                )}
+              >
+                <span
+                  className={cn(
+                    "mt-1 flex size-5 shrink-0 items-center justify-center rounded-full border",
+                    isSelected ? "border-primary" : "border-muted-foreground/40",
+                  )}
+                  aria-hidden
+                >
+                  {isSelected && <span className="size-2.5 rounded-full bg-primary" />}
+                </span>
+                <span>
+                  <span className="block text-base font-semibold">
+                    {RATING_LABEL[r]}
+                    {written && isSelected && (
+                      <span className="ml-2 text-sm font-normal text-muted-foreground">
+                        (your rating — locked for this lesson)
+                      </span>
+                    )}
+                  </span>
+                  <span className="mt-0.5 block text-sm leading-relaxed text-muted-foreground">{RATING_HELP[r]}</span>
+                </span>
+              </button>
+            );
+          })}
+        </fieldset>
+        <Button onClick={onNext} disabled={disabled} className="w-full sm:w-auto">
+          Continue
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+        {disabled && (
+          <p className="text-xs text-muted-foreground">Choose a confidence level to continue.</p>
+        )}
+        {!written && prevRecalibrated !== undefined && (
+          <p className="text-xs text-muted-foreground">
+            Pre-selected from your last check — change it here if that no longer feels right.
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ───────────────────────── P0 Restage stage chrome ───────────────────────── */
+
+/**
+ * Progress dots (plan §6, pattern P6): one dot per stage of the current
+ * module's arc — filled for done, position-ring on the active beat, quiet
+ * ahead — 150ms fill. They materialise once the gate rating fixes the arc;
+ * before that the header chip carries the position (the arc is adaptive,
+ * so the count is only honest once the band is chosen).
+ */
+function StageDots({
+  index,
+  count,
+  className,
+}: {
+  index: number;
+  count: number;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn("items-center gap-1.5", className)}
+      role="img"
+      aria-label={`Step ${index + 1} of ${count}`}
+    >
+      {Array.from({ length: count }, (_, i) => (
+        <span
+          key={i}
+          className={cn(
+            "size-2 rounded-full transition-colors duration-150",
+            i < index && "bg-primary",
+            i === index && "bg-primary ring-2 ring-primary/25",
+            i > index && "bg-primary/20",
+          )}
+          aria-hidden
+        />
+      ))}
+    </div>
+  );
+}
+
 function GateStage(p: StageProps) {
   const { module: m, lesson, moduleOrdinal, state, rating, prevRecalibrated, prevDone, onChooseRating, onNext } = p;
+  const S = useStageUI();
   // pre-selection from the previous module's recalibration is visual only —
   // the write-once rating happens on the learner's explicit radio click
   const selected = rating ?? prevRecalibrated ?? null;
@@ -706,20 +1291,20 @@ function GateStage(p: StageProps) {
   // without figures renders nothing (fail-closed, identical to earlier generations).
   const moduleFigures = figuresForModule(lesson, moduleOrdinal);
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Lesson {moduleOrdinal + 1} of {p.moduleCount}
           </p>
-          <h2 className="text-lg font-semibold tracking-tight">{m.title}</h2>
-          <p className="text-xs leading-relaxed text-muted-foreground">{m.opening}</p>
+          <h2 className={pick(S, STAGE_TITLE, "text-lg font-semibold tracking-tight")}>{m.title}</h2>
+          <p className={pick(S, STAGE_BODY, "text-xs leading-relaxed text-muted-foreground")}>{m.opening}</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-medium">What you know already</p>
+          <p className={pick(S, "text-[15px] font-semibold", "text-sm font-medium")}>What you know already</p>
           {moduleOrdinal === 0 ? (
-            <p className="text-xs leading-relaxed text-muted-foreground">
+            <p className={pick(S, STAGE_BODY, "text-xs leading-relaxed text-muted-foreground")}>
               {lesson.lesson.primer.text}
             </p>
           ) : (
@@ -730,8 +1315,8 @@ function GateStage(p: StageProps) {
                 </p>
                 <ul className="space-y-1.5">
                   {prevKeyPoints.map((kp, i) => (
-                    <li key={i} className="flex gap-2.5 text-xs leading-relaxed">
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+                    <li key={i} className={pick(S, "flex gap-2.5 text-[17px] leading-relaxed text-foreground sm:text-lg", "flex gap-2.5 text-xs leading-relaxed")}>
+                      <span className={pick(S, "mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/60", "mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60")} aria-hidden />
                       <span>{kp}</span>
                     </li>
                   ))}
@@ -752,11 +1337,11 @@ function GateStage(p: StageProps) {
         </div>
 
         <div className="space-y-2">
-          <p className="text-sm font-medium">Key points of understanding</p>
+          <p className={pick(S, "text-[15px] font-semibold", "text-sm font-medium")}>Key points of understanding</p>
           <ul className="space-y-1.5">
             {m.keyPoints.map((kp, i) => (
-              <li key={i} className="flex gap-2.5 text-xs leading-relaxed">
-                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+              <li key={i} className={pick(S, "flex gap-2.5 text-[17px] leading-relaxed text-foreground sm:text-lg", "flex gap-2.5 text-xs leading-relaxed")}>
+                <span className={pick(S, "mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/60", "mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60")} aria-hidden />
                 <span>{kp}</span>
               </li>
             ))}
@@ -766,7 +1351,7 @@ function GateStage(p: StageProps) {
         {moduleFigures.length > 0 && <ModuleFigures figures={moduleFigures} />}
 
         <fieldset className="space-y-2">
-          <legend className="text-sm font-semibold">Tell us your confidence level against the key points</legend>
+          <legend className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Tell us your confidence level against the key points</legend>
           {(["low", "medium", "high"] as const).map((r) => {
             const isSelected = selected === r;
             return (
@@ -794,7 +1379,7 @@ function GateStage(p: StageProps) {
                   {isSelected && <span className="size-2 rounded-full bg-primary" />}
                 </span>
                 <span>
-                  <span className="block text-xs font-medium">
+                  <span className={pick(S, "text-[15px] font-medium", "block text-xs font-medium")}>
                     {RATING_LABEL[r]}
                     {written && isSelected && (
                       <span className="ml-2 text-xs font-normal text-muted-foreground">
@@ -837,12 +1422,13 @@ function GateStage(p: StageProps) {
  *  part of the lesson, not a provenance gallery). Fail-closed: a module without figures
  *  renders nothing. */
 function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
+  const S = useStageUI();
+  if (S) return <StageFigures figures={figures} />;
   return (
     <div className="space-y-3">
       {figures.map((f) => (
         <figure key={f.id} className="space-y-1.5">
           <span className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40">
-            {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
             <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
           </span>
           {f.caption && (
@@ -856,22 +1442,52 @@ function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
   );
 }
 
+/** §6 figure frame (stage mode): consistent radius, the caption INSIDE the
+ *  frame, 340px height cap — the diagram teaches inside the card column
+ *  instead of dominating it. */
+function StageFigures({ figures }: { figures: GuidedFigure[] }) {
+  return (
+    <div className="space-y-3">
+      {figures.map((f) => (
+        <figure key={f.id} className="overflow-hidden rounded-xl border bg-card shadow-sm">
+          <span className="flex aspect-video max-h-[340px] items-center justify-center overflow-hidden bg-muted/30">
+            <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
+          </span>
+          {f.caption && (
+            <figcaption className="border-t bg-muted/20 px-4 py-2.5">
+              <p className="text-[13px] leading-relaxed text-foreground/80">{f.caption}</p>
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  );
+}
+
 function LayerStage(p: StageProps & { stage: Extract<Stage, { kind: "layer" }> }) {
   const { module: m, stage, onNext } = p;
+  const S = useStageUI();
   const layer = m.depthLayers[stage.band][stage.field];
   const isLast = stage.i === stage.n - 1;
+  const accent =
+    stage.field === "analogy" ? BEAT_ACCENT.analogy : stage.field === "examPointer" ? BEAT_ACCENT.exam : BEAT_ACCENT.learn;
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, cn("border-l-4", accent.edge, "shadow-md"), "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{stage.label}</p>
+          {S ? (
+            <BeatKicker icon={accent.icon} tone={accent.kicker}>{stage.label}</BeatKicker>
+          ) : (
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{stage.label}</p>
+          )}
           <Badge variant="secondary" className="text-2xs">
             Layer {stage.i + 1} of {stage.n}
           </Badge>
         </div>
-        <p className="text-[15px] leading-relaxed">{layer}</p>
+        <p className={pick(S, STAGE_BODY, "text-[15px] leading-relaxed")}>{layer}</p>
         <Button onClick={onNext} className="w-full sm:w-auto">
-          {isLast ? "Continue" : "Continue — reveal the next layer"}
+          {/* §5.2: the student paces the reveal — "got it" in stage mode */}
+          {pick(S, isLast ? "Got it — continue" : "Got it", isLast ? "Continue" : "Continue — reveal the next layer")}
           <ArrowRight className="size-4" aria-hidden />
         </Button>
       </CardContent>
@@ -881,12 +1497,13 @@ function LayerStage(p: StageProps & { stage: Extract<Stage, { kind: "layer" }> }
 
 function RefresherStage(p: StageProps) {
   const { module: m, onNext } = p;
+  const S = useStageUI();
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
-          <p className="text-sm font-semibold">Straight to the checks</p>
-          <p className="text-xs text-muted-foreground">
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Straight to the checks</p>
+          <p className={pick(S, STAGE_BODY_SOFT, "text-xs text-muted-foreground")}>
             You rated yourself confident — so no walkthrough layers. If anything feels shaky, the
             refresher below unpacks it in plain words first.
           </p>
@@ -910,29 +1527,31 @@ function RefresherStage(p: StageProps) {
 }
 
 function LayerBlock({ label, text }: { label: string; text: string }) {
+  const S = useStageUI();
   return (
     <div>
       <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</p>
-      <p className="mt-1 text-xs leading-relaxed">{text}</p>
+      <p className={pick(S, STAGE_BODY_SOFT, "mt-1 text-xs leading-relaxed")}>{text}</p>
     </div>
   );
 }
 
 function GlossaryStage(p: StageProps) {
   const { lesson, moduleOrdinal, onNext } = p;
+  const S = useStageUI();
   const terms = glossaryFor(lesson, moduleOrdinal);
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
-          <p className="text-sm font-semibold">Helpful terms</p>
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Helpful terms</p>
           <p className="text-xs text-muted-foreground">The vocabulary this lesson leans on.</p>
         </div>
         <dl className="grid gap-3 sm:grid-cols-2">
           {terms.map((g) => (
             <div key={g.term} className="rounded-md border p-3">
-              <dt className="text-xs font-semibold">{g.term}</dt>
-              <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">{g.definition}</dd>
+              <dt className={pick(S, "text-[15px] font-semibold sm:text-base", "text-xs font-semibold")}>{g.term}</dt>
+              <dd className={pick(S, STAGE_BODY_SOFT, "mt-1 text-xs leading-relaxed text-muted-foreground")}>{g.definition}</dd>
             </div>
           ))}
         </dl>
@@ -947,37 +1566,64 @@ function GlossaryStage(p: StageProps) {
 
 function ExampleStage(p: StageProps) {
   const { lesson, onNext } = p;
+  const S = useStageUI();
   const we = lesson.lesson.assets.workedExample;
+  // §5.2: the worked example becomes a stepper in stage mode — one line at
+  // a time behind a "What happens next?" tap; legacy renders all steps at
+  // once (byte-identical classes via pick below).
+  const [revealed, setRevealed] = useState(1);
   if (!we) return null;
+  const shown = S ? Math.min(revealed, we.steps.length) : we.steps.length;
+  const allShown = shown >= we.steps.length;
   return (
-    <Card>
-      <CardContent className="space-y-3 p-4 sm:p-5">
-        <p className="flex items-center gap-2 text-sm font-semibold">
+    <Card className={pick(S, "border-l-4 border-l-primary bg-primary/[0.04] shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-3 p-4 sm:p-5")}>
+        <p className={pick(S, "flex items-center gap-2 text-base font-semibold", "flex items-center gap-2 text-sm font-semibold")}>
           <Lightbulb className="size-4 text-primary" aria-hidden />
           An example
         </p>
-        <p className="text-xs font-medium leading-relaxed">{we.prompt}</p>
-        <ol className="list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-muted-foreground">
-          {we.steps.map((s, i) => (
+        <p className={pick(S, STAGE_BODY, "text-xs font-medium leading-relaxed")}>{we.prompt}</p>
+        <ol
+          className={pick(
+            S,
+            "list-decimal space-y-2 border-l-2 border-primary/20 pl-5 text-[17px] leading-relaxed text-foreground sm:text-lg",
+            "list-decimal space-y-1.5 pl-5 text-xs leading-relaxed text-muted-foreground",
+          )}
+        >
+          {we.steps.slice(0, shown).map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ol>
-        <p className="rounded-md bg-muted px-3 py-2 text-xs font-medium">{we.finalAnswer}</p>
-        <Button onClick={onNext} className="w-full sm:w-auto">
-          Continue to the checks
-          <ArrowRight className="size-4" aria-hidden />
-        </Button>
+        {S && !allShown ? (
+          <Button variant="outline" onClick={() => setRevealed((n) => n + 1)} className="w-full sm:w-auto">
+            What happens next?
+            <ArrowRight className="size-4" aria-hidden />
+          </Button>
+        ) : (
+          <>
+            <p className={pick(S, "rounded-md bg-muted px-3.5 py-2.5 text-[15px] font-medium sm:text-base", "rounded-md bg-muted px-3 py-2 text-xs font-medium")}>
+              {we.finalAnswer}
+            </p>
+            <Button onClick={onNext} className="w-full sm:w-auto">
+              Continue to the checks
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          </>
+        )}
       </CardContent>
     </Card>
   );
 }
 
-function CheckStage(p: StageProps) {
-  const { module: m, lesson, moduleOrdinal, questionsById, state, onAnswer, onNext } = p;
-  const questions = m.checkRefs
+function CheckStage(p: StageProps & { stage: Extract<Stage, { kind: "check" }> }) {
+  const { module: m, lesson, moduleOrdinal, questionsById, state, onAnswer, onNext, stage } = p;
+  const S = useStageUI();
+  const questions = stage.qids
     .map((ref) => questionsById.get(ref))
     .filter((q): q is GuidedQuestion => q !== undefined);
-  // resume at the first unanswered question of this module
+  // resume at the first unanswered question of this block — with the end
+  // block holding every check, a resumed session (or a fresh walk whose
+  // interleaved checks are done) lands exactly on what is still open
   const firstUnanswered = Math.max(
     questions.findIndex((q) => state.answers[q.id] === undefined),
     0,
@@ -987,58 +1633,77 @@ function CheckStage(p: StageProps) {
   const q = questions[clampedQi];
   const answered = state.answers[q.id] ?? null;
   const score = questions.filter((x) => state.answers[x.id]?.correct).length;
+  // §5.2: a single interleaved check keeps module-wide numbering
+  // ("Question 4 of 9") so the journey reads continuously across the arc
+  const single = questions.length === 1;
+  const modulePosition = m.checkRefs.indexOf(q.id) + 1;
 
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="flex items-center gap-2 text-sm font-semibold">
+          <p className={pick(S, "flex items-center gap-2 text-base font-semibold", "flex items-center gap-2 text-sm font-semibold")}>
             <ListChecks className="size-4 text-primary" aria-hidden />
             Understanding check
           </p>
           <Badge variant="secondary" className="text-2xs">
-            Question {clampedQi + 1} of {questions.length}
+            {single
+              ? `Question ${modulePosition} of ${m.checkRefs.length}`
+              : `Question ${clampedQi + 1} of ${questions.length}`}
           </Badge>
         </div>
-        <Progress
-          value={((clampedQi + (answered ? 1 : 0)) / questions.length) * 100}
-          aria-label="Check progress"
-        />
+        {!single && (
+          <Progress
+            value={((clampedQi + (answered ? 1 : 0)) / questions.length) * 100}
+            aria-label="Check progress"
+          />
+        )}
         <CheckQuestion
           key={q.id}
           question={q}
-          index={clampedQi + 1}
+          index={single ? modulePosition : clampedQi + 1}
           answered={answered}
           onAnswer={onAnswer}
         />
 
-        {answered && clampedQi < questions.length - 1 && (
-          <Button onClick={() => setQi(clampedQi + 1)} className="w-full sm:w-auto">
-            Next question
-            <ArrowRight className="size-4" aria-hidden />
-          </Button>
-        )}
-        {answered && clampedQi === questions.length - 1 && (
-          <div className="space-y-3 rounded-md border bg-muted/40 p-3">
-            <p className="text-sm font-semibold">
-              Check complete — {score} of {questions.length} correct.
-            </p>
+        {single ? (
+          answered && (
             <Button onClick={onNext} className="w-full sm:w-auto">
               Continue
               <ArrowRight className="size-4" aria-hidden />
             </Button>
-            {/* R-3 (operator trace 1a179c6b53bff529): optional mixed-type
-                practice — derived from the same pinned artifact, never
-                scored, never persisted; the authored MCQ checks above stay
-                the only record (moduleDone untouched). */}
-            <MixedPractice
-              lesson={lesson}
-              module={m}
-              moduleOrdinal={moduleOrdinal}
-              questions={questions}
-              answers={state.answers}
-            />
-          </div>
+          )
+        ) : (
+          <>
+            {answered && clampedQi < questions.length - 1 && (
+              <Button onClick={() => setQi(clampedQi + 1)} className="w-full sm:w-auto">
+                Next question
+                <ArrowRight className="size-4" aria-hidden />
+              </Button>
+            )}
+            {answered && clampedQi === questions.length - 1 && (
+              <div className="space-y-3 rounded-md border bg-muted/40 p-3">
+                <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>
+                  Check complete — {score} of {questions.length} correct.
+                </p>
+                <Button onClick={onNext} className="w-full sm:w-auto">
+                  Continue
+                  <ArrowRight className="size-4" aria-hidden />
+                </Button>
+                {/* R-3 (operator trace 1a179c6b53bff529): optional mixed-type
+                    practice — derived from the same pinned artifact, never
+                    scored, never persisted; the authored MCQ checks above stay
+                    the only record (moduleDone untouched). */}
+                <MixedPractice
+                  lesson={lesson}
+                  module={m}
+                  moduleOrdinal={moduleOrdinal}
+                  questions={questions}
+                  answers={state.answers}
+                />
+              </div>
+            )}
+          </>
         )}
       </CardContent>
     </Card>
@@ -1047,14 +1712,15 @@ function CheckStage(p: StageProps) {
 
 function RecalibrateStage(p: StageProps) {
   const { module: m, rating, recalChoice, onRecalChoice, onRecalibrate, onNext } = p;
+  const S = useStageUI();
   const choice = recalChoice ?? rating ?? "medium";
   const answered = m.checkRefs.filter((r) => p.state.answers[r]?.correct).length;
   return (
-    <Card>
-      <CardContent className="space-y-4 p-4 sm:p-5">
+    <Card className={pick(S, "shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-4 sm:p-5")}>
         <div className="space-y-1">
-          <p className="text-sm font-semibold">How confident do you feel now?</p>
-          <p className="text-xs text-muted-foreground">
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>How confident do you feel now?</p>
+          <p className={pick(S, STAGE_BODY_SOFT, "text-xs text-muted-foreground")}>
             You got {answered} of {m.checkRefs.length} checks correct. Re-rate for next time —
             we&apos;ll pre-select this as your starting confidence for the next lesson. You can
             always change it there.
@@ -1086,7 +1752,7 @@ function RecalibrateStage(p: StageProps) {
               >
                 {choice === r && <span className="size-2 rounded-full bg-primary" />}
               </span>
-              <span className="text-xs font-medium">{RATING_LABEL[r]}</span>
+              <span className={pick(S, "text-[15px] font-medium", "text-xs font-medium")}>{RATING_LABEL[r]}</span>
             </button>
           ))}
         </fieldset>
@@ -1170,6 +1836,7 @@ function CheckQuestion({
   answered: { picked: string; correct: boolean } | null;
   onAnswer: (qid: string, picked: string, correct: boolean) => void;
 }) {
+  const S = useStageUI();
   const mode = checkMode(question);
   // R3 written kinds: gradable == known written kind WITH keywords; otherwise the
   // flow offers reveal-only settle (model answer shown, no verdict, never graded)
@@ -1182,7 +1849,7 @@ function CheckQuestion({
     const modelAnswer = question.modelAnswer;
     return (
       <fieldset className="space-y-2.5">
-        <legend className="text-sm font-medium leading-snug">
+        <legend className={pick(S, "text-[17px] font-medium leading-snug sm:text-lg", "text-sm font-medium leading-snug")}>
           <span className="mr-2 text-muted-foreground">{index}.</span>
           {question.stem}
         </legend>
@@ -1201,7 +1868,11 @@ function CheckQuestion({
               disabled={settled}
               rows={2}
               className={cn(
-                "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-xs leading-relaxed",
+                pick(
+                  S,
+                  "min-h-[72px] w-full rounded-md border bg-transparent px-3.5 py-2.5 text-[15px] leading-relaxed sm:text-base",
+                  "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-xs leading-relaxed",
+                ),
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 "disabled:cursor-default disabled:opacity-70",
               )}
@@ -1233,15 +1904,15 @@ function CheckQuestion({
           <div className="space-y-2" role="status">
             {gradable &&
               (answered.correct ? (
-                <p className="flex items-center gap-2 text-xs font-semibold text-success">
+                <p className={pick(S, "flex items-center gap-2 text-[15px] font-semibold text-success verdict-pop", "flex items-center gap-2 text-xs font-semibold text-success")}>
                   <ThumbsUp className="size-4" aria-hidden />
                   Great job!
                 </p>
               ) : (
-                <p className="text-xs font-semibold text-destructive">Not quite.</p>
+                <p className={pick(S, "text-[15px] font-semibold text-destructive verdict-shake", "text-xs font-semibold text-destructive")}>Not quite.</p>
               ))}
             {modelAnswer ? (
-              <p className="text-xs leading-relaxed text-muted-foreground">
+              <p className={pick(S, STAGE_BODY_SOFT, "text-xs leading-relaxed text-muted-foreground")}>
                 Model answer: <span className="font-medium text-foreground">{modelAnswer}</span>
               </p>
             ) : (
@@ -1258,7 +1929,7 @@ function CheckQuestion({
 
   return (
     <fieldset className="space-y-2.5">
-      <legend className="text-sm font-medium leading-snug">
+      <legend className={pick(S, "text-[17px] font-medium leading-snug sm:text-lg", "text-sm font-medium leading-snug")}>
         <span className="mr-2 text-muted-foreground">{index}.</span>
         {question.stem}
       </legend>
@@ -1283,14 +1954,20 @@ function CheckQuestion({
               disabled={settled}
               onClick={() => setPicked(o.key)}
               className={cn(
-                "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-xs transition-colors",
+                pick(
+                  S,
+                  "flex items-start gap-3 rounded-md border px-3.5 py-3 text-left text-[15px] transition-colors sm:text-base",
+                  "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-xs transition-colors",
+                ),
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
                 // t-ui-polish run-007: the idle hover speaks the house voice,
                 // matching the picked state's border-primary/60 below.
                 state === "idle" && "hover:border-primary/60",
                 state === "picked" && "border-primary/60 bg-primary/5",
-                state === "correct" && "border-success/50 bg-success/10",
-                state === "wrong" && "border-destructive/50 bg-destructive/10",
+                state === "correct" &&
+                  pick(S, "border-success bg-success/15 verdict-pop", "border-success/50 bg-success/10"),
+                state === "wrong" &&
+                  pick(S, "border-destructive/50 bg-destructive/10 verdict-shake", "border-destructive/50 bg-destructive/10"),
                 settled && "cursor-default",
               )}
             >
@@ -1327,16 +2004,16 @@ function CheckQuestion({
       {settled && answered && (
         <div className="space-y-2" role="status">
           {answered.correct ? (
-            <p className="flex items-center gap-2 text-xs font-semibold text-success">
+            <p className={pick(S, "flex items-center gap-2 text-[15px] font-semibold text-success verdict-pop", "flex items-center gap-2 text-xs font-semibold text-success")}>
               <ThumbsUp className="size-4" aria-hidden />
               Great job!
             </p>
           ) : (
-            <p className="text-xs font-semibold text-destructive">
+            <p className={pick(S, "text-[15px] font-semibold text-destructive verdict-shake", "text-xs font-semibold text-destructive")}>
               Not quite — the answer is {correctOption?.key}.
             </p>
           )}
-          <p className="text-xs leading-relaxed text-muted-foreground">{correctOption?.explanation}</p>
+          <p className={pick(S, STAGE_BODY_SOFT, "text-xs leading-relaxed text-muted-foreground")}>{correctOption?.explanation}</p>
           {!answered.correct && pickedOption?.misconception && (
             <p className="text-xs text-muted-foreground">Misconception flagged: {pickedOption.misconception}</p>
           )}
@@ -1347,6 +2024,30 @@ function CheckQuestion({
 }
 
 /* ─────────────────────────── finished summary ─────────────────────────── */
+
+/** §6 recap count-up — 600ms ease-out; honours prefers-reduced-motion by
+ *  landing on the target immediately. No animation library, no sync setState
+ *  in the effect body (the rAF callback owns every tick). */
+function useCountUp(target: number, ms: number, active: boolean): number {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!active) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const id = window.setTimeout(() => setValue(target), 0);
+      return () => window.clearTimeout(id);
+    }
+    let raf = 0;
+    const t0 = performance.now();
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - t0) / ms);
+      setValue(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, ms, active]);
+  return active ? value : target;
+}
 
 function FinishedView({
   modules,
@@ -1375,19 +2076,37 @@ function FinishedView({
   onFeedback: (fb: "up" | "down") => void;
   onReset: () => void;
 }) {
+  const S = useStageUI();
+  // §6: the recap celebrates — inverted card, stat chips, count-up
+  const animatedCorrect = useCountUp(totalCorrect, 600, S);
+  const chipCls =
+    "inline-flex items-center rounded-full border border-background/25 bg-background/10 px-3 py-1 text-[13px] font-semibold";
   return (
-    <Card>
-      <CardContent className="space-y-4 p-5 sm:p-6">
+    <Card className={pick(S, "border-foreground bg-foreground text-background shadow-md", "")}>
+      <CardContent className={pick(S, "space-y-4 p-5 sm:p-7", "space-y-4 p-5 sm:p-6")}>
         <div className="space-y-1">
-          <p className="flex items-center gap-2 text-sm font-semibold text-success">
+          <p className={pick(S, "flex items-center gap-2 text-base font-semibold text-background", "flex items-center gap-2 text-sm font-semibold text-success")}>
             <BookOpenCheck className="size-4" aria-hidden />
             Lesson set complete
           </p>
-          <h2 className="text-lg font-semibold tracking-tight">{noteTitle}</h2>
-          <p className="text-xs text-muted-foreground">
+          <h2 className={pick(S, STAGE_TITLE, "text-lg font-semibold tracking-tight")}>{noteTitle}</h2>
+          <p className={pick(S, "text-[15px] leading-relaxed text-background/75", STAGE_BODY_SOFT)}>
             You worked through all {modules.length} lessons — {totalCorrect} of {totalChecks} checks
             correct across the set.
           </p>
+          {S && (
+            <div className="flex flex-wrap gap-2 pt-1">
+              <span className={chipCls}>
+                {modules.length} {modules.length === 1 ? "lesson" : "lessons"} walked
+              </span>
+              <span className={chipCls}>
+                {animatedCorrect} of {totalChecks} checks correct
+              </span>
+              <span className={chipCls}>
+                {totalChecks > 0 ? Math.round((animatedCorrect / totalChecks) * 100) : 0}% accuracy
+              </span>
+            </div>
+          )}
         </div>
         <ol className="space-y-2">
           {modules.map((mod, mi) => {
@@ -1395,10 +2114,17 @@ function FinishedView({
             const walkedIn = state.ratings[mod.id];
             const recal = state.recalibrated[mod.id];
             return (
-              <li key={mod.id} className="flex items-center gap-3 rounded-md border px-3 py-2.5">
+              <li
+                key={mod.id}
+                className={pick(
+                  S,
+                  "flex items-center gap-3 rounded-md border border-background/20 px-3 py-2.5",
+                  "flex items-center gap-3 rounded-md border px-3 py-2.5",
+                )}
+              >
                 <Check className="size-4 shrink-0 text-success" aria-hidden />
                 <span className="min-w-0 flex-1">
-                  <span className="block text-xs font-medium">{mod.title}</span>
+                  <span className={pick(S, "text-[15px] font-medium", "block text-xs font-medium")}>{mod.title}</span>
                   {/* R-6: the confidence trajectory this lesson actually had */}
                   {walkedIn && (
                     <span className="mt-1 block">
@@ -1406,10 +2132,15 @@ function FinishedView({
                     </span>
                   )}
                 </span>
-                <span className="shrink-0 text-xs text-muted-foreground">
+                <span className={pick(S, "shrink-0 text-[13px] font-medium text-background/70", "shrink-0 text-xs text-muted-foreground")}>
                   {correct}/{mod.checkRefs.length} checks
                 </span>
-                <Button variant="ghost" size="sm" onClick={() => onReview(mi)}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={pick(S, "text-background hover:bg-background/10 hover:text-background", undefined)}
+                  onClick={() => onReview(mi)}
+                >
                   Review
                 </Button>
               </li>
@@ -1422,9 +2153,9 @@ function FinishedView({
             state, is never scored (moduleDone untouched) and never leaves
             the device. */}
         <div className="space-y-2 border-t pt-4">
-          <p className="text-sm font-semibold">Was this guided lesson helpful?</p>
+          <p className={pick(S, "text-base font-semibold", "text-sm font-semibold")}>Was this guided lesson helpful?</p>
           {state.feedback ? (
-            <p className="text-xs text-muted-foreground" role="status">
+            <p className={pick(S, "text-[13px] text-background/70", "text-xs text-muted-foreground")} role="status">
               {state.feedback === "up"
                 ? "Thanks — glad it helped. Your answer stays on this device."
                 : "Thanks — noted. Your answer stays on this device."}
@@ -1435,7 +2166,7 @@ function FinishedView({
                 <ThumbsUp className="size-3.5" aria-hidden />
                 Yes, helpful
               </Button>
-              <Button variant="ghost" size="sm" onClick={() => onFeedback("down")}>
+              <Button variant="ghost" size="sm" className={pick(S, "text-background hover:bg-background/10 hover:text-background", undefined)} onClick={() => onFeedback("down")}>
                 <ThumbsDown className="size-3.5" aria-hidden />
                 Not really
               </Button>
@@ -1451,7 +2182,7 @@ function FinishedView({
             course-level pages as the always-live fallback (never a 404
             handoff). */}
         <div className="space-y-1.5 border-t pt-4">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <p className={pick(S, "text-xs font-semibold uppercase tracking-wide text-background/70", "text-xs font-semibold uppercase tracking-wide text-muted-foreground")}>
             Keep going
           </p>
           <div className="flex flex-wrap gap-2">
@@ -1470,7 +2201,7 @@ function FinishedView({
           <Button asChild variant="outline">
             <a href={`${base}/revision-notes`}>All revision notes</a>
           </Button>
-          <Button variant="ghost" onClick={onReset}>
+          <Button variant="ghost" className={pick(S, "text-background hover:bg-background/10 hover:text-background", undefined)} onClick={onReset}>
             <RotateCcw className="size-4" aria-hidden />
             Restart
           </Button>
