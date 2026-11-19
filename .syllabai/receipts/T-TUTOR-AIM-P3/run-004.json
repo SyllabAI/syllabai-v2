@@ -1,0 +1,42 @@
+{
+  "task": "T-TUTOR-AIM-P3",
+  "run": "run-004",
+  "kind": "the DC10 post-close stress verification — operator order 'Stress test. Check if everything is working properly.' (trace 1a1f492be0421fc1); ZERO code paths touched (receipt + worklog + task card only)",
+  "agent": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1f492be0421fc1)",
+  "date": "2026-11-20",
+  "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md — the DC10 build of record is COMPLETE (P1 #1061, P2 #1068, P3 run-001 #1091 / run-002 #1110 / run-003 #1119); this run is the FIRST post-close verification of record; the previous operator turn (trace 1a1f49078818e301 — 'proceed with remaining work' + the no-exam-date concern) executed read-only without a filing; THIS receipt is that turn's filing of record too; the lane was cut at main 94c037f80 (the #1125 merge moment) — the run-002 as-built plane byte-unchanged since 4caa6570 and the run-003 plane since d4e312773 (lane-cut diff re-verified: apps/api/src/services/tutor/** and apps/api/src/services/cron/** untouched since the run-003 merge)",
+  "operator_order": "'Stress test. Check if everything is working properly.' (trace 1a1f492be0421fc1) — executed as a full local battery + CI-state audit at the tip; the CI-green merge continues the standing order of record (the #1061/#1091/#1110/#1119 precedent)",
+  "environment": "fresh clone of SyllabAI/syllabai-v2, bun 1.3.14, bun install 990 packages clean (5.93s), node v24.22.3",
+  "verified": {
+    "typecheck": "bun x turbo run typecheck rc=0 — 6/6 surfaces (db / shared / contracts / api / hub / editor-gates; the sixth joined via ADR-044 run-011), 48.01s, 0 cached",
+    "full_api_suite": "FULL API suite at 94c037f80: 3105 pass / 13 skip / 0 fail — 43,767 expect() calls across 177 files, 18.42s — the run-003 baseline of record (3074 pass / 13 skip / 0 fail, 43,654 expects, 175 files) PLUS the +31 tests / +2 files the T-MG-CALC calc2 and ADR-044 editor lanes landed since; ZERO regressions",
+    "the_13_skips": "the T-MIG-010/020 Neon-branch-tier integration pins (identity + content read surfaces) — environment-dependent by design, ZERO fails",
+    "targeted_dc10_batteries": {
+      "tutor": "test/tutor 463 pass / 0 fail (27 files) — the run-003 battery of record byte-green",
+      "cla": "test/cla 237 pass / 0 fail (8 files) — the CLA surface's honest-null posture green",
+      "cron": "test/cron 25 pass / 0 fail (3 files: nightly-decay + nightly-served-evidence-purge + review-scheduler) — the run-002 §7.7 retention-purge wiring green (the T-MIG-126 window composition law pinned)",
+      "service_spot_pins": "served-evidence + drill-directive + calibration 52 pass / 0 fail (3 files) incl. the §13.2 metadata-law pin (the wire admits ONLY catalog fields — nodeId, code, title + counts; no learner free text)"
+    },
+    "the_no_exam_date_postures": "THE OPERATOR'S NAMED CONCERN PINNED GREEN — five explicit pins in test/tutor/exam-calendar.test.ts: (1) 'no target / anonymous / unscoped → the honest null' (:371); (2) 'no declared target → the honest empty (byte-stability at the pipeline level)' (:476); (3) 'no declared enrolments: the ONE honest read short-circuits (never a second read)' (:580); (4) the REAL-registry ambiguity pin — 9701-2025-2027 → null (:295-299, one of the 11 real collisions: a code claimed by two courses maps to NOTHING, never a guessed sitting); (5) the unmapped-code honest empty (:309-311). NET LAW: a learner who never declares an exam target gets the PRE-run-003 answer bytes — no EXAM CONTEXT block, the v20 EXAM CALENDAR law bullet inert without a block, the spacing arm stays ×1, and an anonymous asker triggers ZERO reads (the account-only law)",
+    "ci_at_the_tip": "GitHub check-runs at 94c037f80: hub SUCCESS / verify SUCCESS / law-readback SUCCESS / coordination SKIPPED (by design) — the 4-check battery green of record"
+  },
+  "laws_held": [
+    "fail-closed: the V53 no-scope refusal posture pinned green inside the tutor battery",
+    "degrade-never-block: every exam-plane miss (no target / ambiguous / unmapped / anonymous / broken bridge / pre-§7.9 port) degrades to the honest empty ask — pinned at the pipeline level",
+    "pinned prompts, bump + byte-equality: PROMPT_VERSION '20' is the live tip identity (verified by path census); no bump this run (zero code paths)",
+    "account-only: anonymous askers read NOTHING (pinned)",
+    "§13.2 offer-not-claim / metadata-only: the wire-shape pin green (52/52 spot battery)",
+    "zero migration, zero schema planes, zero wire change, zero LLM calls — this run touches NO code paths at all",
+    "append-only worklog: new = old + section, byte delta == len(section), asserted at append time"
+  ],
+  "disclosed": [
+    "the hub plane verified by turbo typecheck (6/6) + the CI hub lane (SUCCESS) — the hub unit battery not re-run locally; the tutor-plane hub surfaces confirmed present at tip by path census (composer confidence buttons, calibration-card + /api/tutor/calibration route, drill-directives claim route, chat tonight-chip)",
+    "production runtime is NOT observable from the sandbox: the nightly [served-evidence-purge] log line and live-ask behavior stay watch-only indicators; the §10 metric windows (probe uptake, aimed-answer delta, confidence gap) remain open on their 2-4-week clocks",
+    "the battery of record was executed at the lane base 94c037f80 and re-verified at the lane head (the delta is receipt + worklog + task card only — no code path can move the numbers)"
+  ],
+  "receipt_review_record": {
+    "self_check": "every number in this receipt re-printed from the actual battery output of this run (not from memory of prior receipts); the five no-exam-date pins cited by test-file line numbers read from the tip's bytes"
+  },
+  "worklog": "appended to .syllabai/worklog.md — the SIXTY-SECOND filing (append-only, the byte-delta asserted before push)",
+  "task_card": ".syllabai/tasks/T-TUTOR-AIM-P3.yaml — run_004 record appended; status IN_REVIEW posture continues (the CI-green merge standing order)"
+}
