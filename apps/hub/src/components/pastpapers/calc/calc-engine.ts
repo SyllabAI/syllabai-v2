@@ -107,7 +107,7 @@ export interface CalcState {
    * phase B (the device's nesting limit), Argument/Range remain part of
    * the hint map's vocabulary without an engine raise site (no fake
    * errors). */
-  error: "Syntax ERROR" | "Math ERROR" | "Stack ERROR" | null;
+  error: "Syntax ERROR" | "Math ERROR" | "Stack ERROR" | "Range ERROR" | null;
   /** T-MG-CALC-2 phase A: the variable store. Unset names evaluate to
    * the device's 0; assigned from the VARIABLE sheet's Store; never
    * persisted (the L2 amendment keeps calculations out of storage). */
@@ -405,8 +405,11 @@ function factorialVal(v: CalcValue): CalcValue {
  * nesting limit); Argument/Range stay vocabulary-only (no engine raise
  * site — no fake errors). */
 export class CalcError extends Error {
-  readonly cls: "Syntax ERROR" | "Math ERROR" | "Stack ERROR";
-  constructor(cls: "Syntax ERROR" | "Math ERROR" | "Stack ERROR") {
+  // phase C (T-MG-CALC-2): "Range ERROR" gains its FIRST genuine raise
+  // site — the Table app's range laws (bad range / row-cap violation).
+  // Until then the phase-B pin kept it vocabulary-only (no fake errors).
+  readonly cls: "Syntax ERROR" | "Math ERROR" | "Stack ERROR" | "Range ERROR";
+  constructor(cls: "Syntax ERROR" | "Math ERROR" | "Stack ERROR" | "Range ERROR") {
     super(cls);
     this.cls = cls;
   }

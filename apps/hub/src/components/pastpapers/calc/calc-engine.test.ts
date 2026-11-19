@@ -491,9 +491,12 @@ describe("(C15) the model registry — the chase card's verbatim data", () => {
     expect(CALC_MODELS["fx-83gt-cw"].apps.map((a) => a.name)).toEqual(["calculate", "statistics", "table", "ratio", "mathBox"]);
     // 11 names verified verbatim; MG's bundle truncates the 12th registration (the chase card notes it)
     expect(CALC_MODELS["fx-991cw"].apps.length).toBe(11);
-    // the phase-A implementation truth: only Calculate launches
+    // phase C (T-MG-CALC-2): the enabled set matches MG exactly —
+    // Calculate, Statistics, Table (spec pin 5); the other registered
+    // apps keep the staged-rollout notice. (Amended from phase A's
+    // calculate-only truth.)
     for (const id of ["fx-83gt-cw", "fx-85gt-cw", "fx-991cw"] as const) {
-      expect(CALC_MODELS[id].implementedApps).toEqual(["calculate"]);
+      expect(CALC_MODELS[id].implementedApps).toEqual(["calculate", "statistics", "table"]);
     }
   });
   test("(C15b) the level→model map is MG's own (gcse/ks2 → 83GT; a-level/igcse/international → 991CW)", () => {
