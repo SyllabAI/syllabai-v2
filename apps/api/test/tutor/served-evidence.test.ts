@@ -229,16 +229,38 @@ describe("purgeExpiredServedEvidence (the retention sweep of record)", () => {
     expect(SERVED_EVIDENCE_RETENTION_DAYS).toBe(180);
   });
 
-  test("the sweep deletes strictly older than the cutoff (now − 180 days)", async () => {
-    let captured: unknown[] = [];
+  test("the sweep deletes strictly older than the cutoff and reports the HONEST count (the run-002 CTE)", async () => {
+    let captured: { strings: TemplateStringsArray; params: unknown[] } | null = null;
     const sql = ((_strings: TemplateStringsArray, ...params: unknown[]) => {
-      captured = params;
-      return Promise.resolve({ rowCount: 4 });
+      captured = { strings: _strings, params };
+      return Promise.resolve([{ deleted: 4 }]);
     }) as unknown as import("../../src/services/tutor/sql").SqlFn;
     const deleted = await purgeExpiredServedEvidence(sql, clock());
     expect(deleted).toBe(4);
-    const cutoff = captured.find((p) => p instanceof Date) as Date;
+    const text = (captured!.strings.join(" ") ?? "").replace(/\s+/g, " ");
+    // the count law: the data-modifying CTE — the createSql adapter
+    // surfaces ROWS ONLY, so the count must ride a row, never the command
+    // tag (a bare DELETE reports a dishonest 0 through this seam forever)
+    expect(text).toContain("with deleted as");
+    expect(text).toContain("delete from tutor_served_evidence where served_at <");
+    expect(text).toContain("returning 1");
+    expect(text).toContain("select count(*)::int as deleted from deleted");
+    const cutoff = captured!.params.find((p) => p instanceof Date) as Date;
     // 2026-11-18 minus 180 days (the retention window of record)
     expect(cutoff.toISOString()).toBe("2026-05-22T00:00:00.000Z");
+  });
+
+  test("an empty CTE result reports 0 (never a fabricated count)", async () => {
+    const sql = ((_strings: TemplateStringsArray, ..._params: unknown[]) => {
+      return Promise.resolve([]);
+    }) as unknown as import("../../src/services/tutor/sql").SqlFn;
+    expect(await purgeExpiredServedEvidence(sql, clock())).toBe(0);
+  });
+
+  test("the count coerces across the driver boundary (bigint-as-string)", async () => {
+    const sql = ((_strings: TemplateStringsArray, ..._params: unknown[]) => {
+      return Promise.resolve([{ deleted: "11" }]);
+    }) as unknown as import("../../src/services/tutor/sql").SqlFn;
+    expect(await purgeExpiredServedEvidence(sql, clock())).toBe(11);
   });
 });

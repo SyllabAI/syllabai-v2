@@ -1,0 +1,41 @@
+{
+ "task": "T-TUTOR-AIM-P3",
+ "run": "run-002",
+ "kind": "the DC10 §7.7 retention sweep's NIGHTLY WIRING — the run-001 disclosed residual closed (one changeset)",
+ "agent": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1f2737f3f80841)",
+ "date": "2026-11-19",
+ "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §7.7 (the retention window of record, 180 days) + §8 (degrade-never-block posture); the run-001 receipt's disclosed residual #3 ('the nightly wiring is the disclosed residual — the cron hook rides the next window band'); P1 merged #1061, P2 merged #1068, P3 run-001 merged #1091 (commit 2cde3453); the lane was cut at main 07a441f4 and REBASED onto 7e6df84c (the #1109 merge moment — the T35 SME lane, ZERO file overlap with this changeset; the worklog append conflict resolved by keeping both appends)",
+ "operator_order": "proceed (trace 1a1f2737f3f80841) — executing the recommendation of record after the P3 verification pass: the nightly retention-purge wiring, the ONE fully-specified unblocked residual of the DC10 three-phase arc",
+ "implemented": {
+  "the_dispatch_composition": "runNightlyDispatch (services/cron/nightly-decay.ts, the T-TUTOR-AIM-P3 RUN-002 ADDENDUM) composes the T-MIG-126 window law UNTOUCHED (runNightlyDecayWindow byte-unchanged, its pins byte-green) + the retention sweep (purgeExpiredServedEvidence — 180 days, the staleness tau of record) riding AFTER the window transaction's COMMIT; the route handler swaps to the dispatch — the auth law UNCHANGED, every 401 path still touches zero DB",
+  "the_placement_law": "degrade-never-block (the DC10 §8 posture): the sweep NEVER rides inside the window transaction — a purge failure there would poison Postgres transaction state (an aborted transaction swallows its successors) and the only outcomes would be BLOCK (housekeeping failing the decay window's ledger row + review inserts) or SILENT ROLLBACK (swallow + 'commit' — Postgres answers ROLLBACK); after the commit the sweep is idempotent housekeeping (served_at < cutoff deletes nothing twice), guarded (a throw is logged under the stable [served-evidence-purge] prefix, the dispatch degrades to servedEvidencePurged = null, the window result rides UNTOUCHED, the dispatch never rejects on the sweep's behalf), riding BOTH dispatch outcomes (ok AND already-run — a re-hit re-sweeps harmlessly and heals a degraded first fire)",
+  "the_count_law": "purgeExpiredServedEvidence restructured to the data-modifying CTE (WITH deleted AS (DELETE ... RETURNING 1) SELECT count(*)::int as deleted) — the createSql adapter surfaces ROWS ONLY (identity/users.ts drops the Neon rowCount and the postgres.js .count at the adapter boundary), so the bare DELETE of record would have reported a dishonest 0 through that seam forever; ONE statement (no count-then-delete race window), ONE row back, the HONEST count — the T-MIG-126 real-counts law applied to the sweep",
+  "the_wire_law": "the response shape STAYS BYTE-IDENTICAL (status ok/already-run + ledgerRow only — Object.keys pinned): the hub seam forwards {status, ledgerRow} only, so a sweep field on the api response would be dead bytes; the count of record discloses via the deployment log line ([served-evidence-purge] deleted=N | degraded — the §4 watch posture), never on the wire"
+ },
+ "gates": {
+  "typecheck": "bun x turbo run typecheck rc=0 — 5/5 surfaces",
+  "api_suite": "FULL API suite 3043 pass / 13 skip / 0 fail (43,565 expects, 174 files) — the run-001 baseline 3037 + the 6 new pins, ZERO regressions",
+  "new_pins": "nightly-served-evidence-purge 4/4 (the call order of record — the sweep rides AFTER the bare ledger INSERT; the already-run ride; the degrade-never-block null posture with the log-prefix disclosure; the log + wire law) + served-evidence sweep 5/5 (the CTE text + the 180-day cutoff of record 2026-05-22T00:00:00Z + the empty-result 0 + the bigint-as-string coercion)",
+  "cron_battery": "test/cron 41/41 green inside the suite — the T-MIG-042 auth law + the T-MIG-126 window law pins byte-untouched",
+  "hub": "ZERO hub files in the diff (the hub seam forwards {status, ledgerRow} — untouched by construction); hub typecheck green via the turbo gate",
+  "schema_planes": "ZERO migration this run — the sweep rides migration 0030 as-built; schema.ts + 0000_snapshot.json + the rebaseline pin UNTOUCHED (no fold, no drift surface)"
+ },
+ "laws_held": {
+  "degrade_never_block": "the placement law verbatim — housekeeping never fails the nightly band; the degrade discloses under the stable prefix",
+  "fail_closed": "the auth law unchanged — 401 fail-closed paths still precede ANY DB dependency (the fail-loud pins byte-green)",
+  "real_counts": "the T-MIG-126 law extended to the sweep — the honest CTE count, never the dishonest adapter-dropped command tag",
+  "zero_llm": "ZERO new LLM calls — the sweep is a deterministic DELETE; the v19 prompt registry UNTOUCHED (no bump)",
+  "infra_class": "the 042 posture continues — no golden case pins the cron surface; the unit battery + the log-line watch govern",
+  "pinned_transaction_law": "the run-001 'heavily pinned transaction' caution honored by COMPOSING AFTER the window, never modifying it — runNightlyDecayWindow byte-unchanged"
+ },
+ "deviations_disclosed": [
+  "the sweep runs on EVERY authenticated dispatch including re-hits (ok AND already-run) — the delete's idempotence (served_at < cutoff) is the exactly-once substitute; a re-hit re-sweeps harmlessly and heals a first fire that degraded",
+  "the count of record lives in the deployment logs ONLY (the hub seam's {status, ledgerRow} forward posture is the 042 law — no wire change this run; a wire change would also be dead bytes at the hub)",
+  "the sweep is not index-optimal (served_at has no leading index — the nightly DELETE scans the 0030 table as-built); the table's growth envelope (tutor_answer writes only, 180-day window) keeps the nightly scan bounded; an index would be a migration-0031 decision of its own, not smuggled into this band",
+  "no DB contact this run — the mock-SqlFn pattern of record (the 042P zero-DB test posture); the sweep's first LIVE run is the nightly dispatch itself, watchable under [served-evidence-purge]",
+  "the run-001 residual language in migration 0030's SQL comment stays byte-untouched (migrations are immutable of record); the residual closure lives in the served-evidence.ts header + this receipt + the task card"
+ ],
+ "receipt_review_record": "author does not self-review; the CI-green merge is the operator's standing order of record (the #1061 review+merge precedent, reaffirmed by run-001 #1091)",
+ "worklog": ".syllabai/worklog.md — the T-TUTOR-AIM-P3 run-002 entry (the FIFTY-EIGHTH filing (re-filed at the #1109 rebase — the T35 lane claimed FIFTY-SEVENTH at 07a441f4) of the standing PAT reminder)",
+ "task_card": ".syllabai/tasks/T-TUTOR-AIM-P3.yaml — run_002_execution_record appended; status IN_REVIEW posture continues"
+}
