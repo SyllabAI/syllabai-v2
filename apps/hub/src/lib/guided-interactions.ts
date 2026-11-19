@@ -22,6 +22,7 @@
  *  - Presentation-only: nothing here touches stage mechanics, payloads,
  *    gate semantics or the zero-DB progress persistence.
  */
+import { matchesAny } from "@/lib/books-chem";
 import type { RailBlock } from "@/lib/books-rail";
 import type {
   GuidedCheckInteraction,
@@ -104,7 +105,14 @@ export function usableInteraction(q: GuidedQuestion): GuidedCheckInteraction | n
       if (labels.length === 0 || labels.length !== it.labels.length) return null;
       if (!Array.isArray(it.slots) || it.slots.length === 0) return null;
       return it.slots.every(
-        (s) => s != null && typeof s === "object" && typeof s.id === "string" && s.id !== "" && typeof s.answer === "string" && s.answer !== "",
+        (s) =>
+          s != null &&
+          typeof s === "object" &&
+          typeof s.id === "string" &&
+          s.id !== "" &&
+          typeof s.answer === "string" &&
+          s.answer !== "" &&
+          slotPlaceable(s.answer, s.alt, labels),
       )
         ? it
         : null;
@@ -113,7 +121,17 @@ export function usableInteraction(q: GuidedQuestion): GuidedCheckInteraction | n
       const it = raw;
       const tokens = strList(it.tokens);
       if (typeof it.target !== "string" || it.target === "") return null;
-      return tokens.length > 0 && tokens.length === it.tokens.length ? it : null;
+      if (tokens.length === 0 || tokens.length !== it.tokens.length) return null;
+      // SOLVABILITY BOUNDARY (review follow-up): shape laws end here at
+      // runtime. The full reachability law — some ordered sub-multiset of
+      // the bank renders to the target under normalizeEquation — cannot be
+      // restated as a cheap string predicate (species-internal "+" interacts
+      // with the normalizer's spacing rules), so it is enforced OFFLINE by
+      // the P3 backfill bake's headless walk (plan §8), which brute-forces
+      // each authored eq-builder before it ships. An unreachable target that
+      // slips through is fail-safe for the learner (the flow's remediation
+      // row + tutor affordance still serve), never a crash.
+      return it;
     }
     default:
       return null; // unknown kind — fail closed to the standard UI
@@ -167,6 +185,18 @@ export function tutorAskHref(
 }
 
 /* ── the defensive list/pair readers (the widgets' own guards, pure) ── */
+
+/** drag-label solvability (the honest-empty law, completed): the learner
+ *  can only PLACE tokens from the `labels` pool, so a slot is answerable
+ *  only when at least one label grades correct against [answer, ...alt]
+ *  under the widget's own matchesAny. An answer naming a label the bank
+ *  does not carry would render an unmarkable check — fail closed. */
+function slotPlaceable(answer: string, alt: unknown, labels: string[]): boolean {
+  const alts = Array.isArray(alt)
+    ? alt.filter((a): a is string => typeof a === "string")
+    : [];
+  return labels.some((l) => matchesAny(l, [answer, ...alts]));
+}
 
 function strList(v: unknown): string[] {
   return Array.isArray(v)

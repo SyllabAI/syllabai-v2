@@ -130,6 +130,23 @@ describe("usableInteraction — the fail-closed fallback law", () => {
     ).toBeNull();
   });
 
+  it("rejects a drag-label whose answer is not placeable from the label pool (solvability)", () => {
+    const drag = {
+      kind: "drag-label" as const,
+      labels: ["cathode", "anode"],
+      slots: [{ id: "A", answer: "electrolyte" }, { id: "B", answer: "anode" }],
+    };
+    // "electrolyte" is carried by no draggable token and no alt — the check
+    // could never be marked correct, so it fails closed to the standard UI
+    expect(usableInteraction(q({ interactions: [drag] }))).toBeNull();
+    // an alt that names a carried label keeps the slot answerable
+    const altSaved = {
+      ...drag,
+      slots: [{ id: "A", answer: "electrolyte", alt: ["cathode"] }, { id: "B", answer: "anode" }],
+    };
+    expect(usableInteraction(q({ interactions: [altSaved] }))).toEqual(altSaved);
+  });
+
   it("accepts a valid eq-builder and rejects an empty bank or missing target", () => {
     const eq = {
       kind: "eq-builder" as const,
