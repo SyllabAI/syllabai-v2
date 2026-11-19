@@ -124,14 +124,18 @@ export function sqrtRat(v: Rat): { exact: true; n: bigint; d: bigint } | { exact
 
 // ── the Statistics engine ──
 
-/** The editor's decimal entry ("1", "1.5", "-2.25") as an exact
- * rational — no float drift in the lists. */
+/** The editor's decimal entry ("1", "1.5", "-2.25", ".01") as an exact
+ * rational — no float drift in the lists. The leading-dot form is
+ * accepted and normalized (".01" = 1/100): the battery-of-record run
+ * caught the strict parser rejecting the device's natural leading-dot
+ * typing (a documented minor ruling — the value a student means). */
 export function statEntryToValue(text: string): CalcValue {
-  if (!/^-?\d+(\.\d+)?$/.test(text)) throw new CalcError("Syntax ERROR");
+  if (!/^-?(\d+(\.\d+)?|\.\d+)$/.test(text)) throw new CalcError("Syntax ERROR");
   const neg = text.startsWith("-");
   const body = neg ? text.slice(1) : text;
-  const [int, frac = ""] = body.split(".");
+  const [int = "", frac = ""] = body.split(".");
   if (frac.length > 15) throw new CalcError("Math ERROR");
+  if (!int && !frac) throw new CalcError("Syntax ERROR");
   const n = BigInt(int + frac) * (neg ? BigInt(-1) : BigInt(1));
   return mkRat(n, BigInt(10) ** BigInt(frac.length));
 }
