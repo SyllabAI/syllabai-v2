@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChevronRight, ExternalLink, ScrollText } from "lucide-react";
 import { PageHeader } from "@/components/layout/page-header";
 import { allArchiveSpecs, type CorpusArchiveSpec } from "@/lib/pastpapers-corpus";
+import { fmtCount } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import officialLinksJson from "@/data/pastpapers-official-links.json";
@@ -112,8 +113,10 @@ export default function PastPapersArchivePage() {
         }
         actions={
           <Badge variant="secondary" className="font-medium">
-            {specs.length} specifications · {paperTotal} papers
-            {officialCount > 0 ? ` · ${officialCount} with official links` : ""}
+            {/* F-15 one-format count law (R-2): corpus totals are four-digit —
+                grouped like every other count chip on the hub. */}
+            {fmtCount(specs.length)} specifications · {fmtCount(paperTotal)} papers
+            {officialCount > 0 ? ` · ${fmtCount(officialCount)} with official links` : ""}
           </Badge>
         }
       />
@@ -163,7 +166,7 @@ export default function PastPapersArchivePage() {
                               data stays canonical */}
                           <p className="border-b bg-muted/30 px-3 py-2 text-xs font-semibold capitalize sm:px-4">
                             {subject}
-                            <span className="font-normal text-muted-foreground"> · {rows.length}</span>
+                            <span className="font-normal text-muted-foreground"> · {fmtCount(rows.length)}</span>
                           </p>
                           <ul>
                             {rows.map((s) => (
@@ -201,7 +204,7 @@ function SpecRow({ s }: { s: CorpusArchiveSpec }) {
             )}
           </p>
           <p className="mt-0.5 text-2xs text-muted-foreground">
-            {s.paperCount} paper{s.paperCount === 1 ? "" : "s"} · {s.sessionCount} session
+            {fmtCount(s.paperCount)} paper{s.paperCount === 1 ? "" : "s"} · {fmtCount(s.sessionCount)} session
             {s.sessionCount === 1 ? "" : "s"}
             {s.courseSlug ? " · mocks + interactive in the hub archive" : " · direct PDF browsing"}
           </p>

@@ -9,7 +9,7 @@
  * instant inside the test, so they hold in any runner timezone.
  */
 import { describe, expect, it } from "bun:test";
-import { formatDue, percentLabel } from "./format";
+import { formatDue, fmtCount, percentLabel } from "./format";
 
 const NOW = Date.parse("2026-11-04T12:00:00Z");
 const MIN = 60_000;
@@ -115,5 +115,24 @@ describe("percentLabel — the zero-state thresholds", () => {
     expect(percentLabel(5)).toBe("5%");
     expect(percentLabel(12.4)).toBe("12%");
     expect(percentLabel(100)).toBe("100%");
+  });
+});
+
+describe("fmtCount — the one-format count law (UX review F-15, R-2)", () => {
+  it("groups corpus-scale totals — the archive chip never ships '5306 papers' again", () => {
+    // The production leak of record: the past-papers archive chip printed
+    // the corpus paper total raw while every sibling surface grouped.
+    expect(fmtCount(5306)).toBe("5,306");
+  });
+
+  it("leaves sub-thousand counts alone", () => {
+    expect(fmtCount(0)).toBe("0");
+    expect(fmtCount(7)).toBe("7");
+    expect(fmtCount(999)).toBe("999");
+  });
+
+  it("crosses each thousand boundary", () => {
+    expect(fmtCount(1000)).toBe("1,000");
+    expect(fmtCount(1234567)).toBe("1,234,567");
   });
 });

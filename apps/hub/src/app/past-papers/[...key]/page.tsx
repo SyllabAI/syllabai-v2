@@ -16,6 +16,7 @@ import {
   sessionLabel,
   specTitle,
 } from "@/lib/pastpapers-shared";
+import { fmtCount } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import officialLinksJson from "@/data/pastpapers-official-links.json";
@@ -100,7 +101,7 @@ export default async function SpecArchivePage({
         }
         actions={
           <Badge variant="secondary" className="font-medium">
-            {papers.length} papers · {sessions.length} session{sessions.length === 1 ? "" : "s"}
+            {fmtCount(papers.length)} papers · {fmtCount(sessions.length)} session{sessions.length === 1 ? "" : "s"}
           </Badge>
         }
       />
@@ -151,7 +152,7 @@ export default async function SpecArchivePage({
               {sessionLabel(sessionId)}
               {/* t-ui-polish run-002 — the MG session header carries its
                   size; same recipe as the course archive. */}
-              <span className="font-normal text-muted-foreground"> · {group.length}</span>
+              <span className="font-normal text-muted-foreground"> · {fmtCount(group.length)}</span>
             </h2>
             <ul className="overflow-hidden rounded-xl border">
               {group.map((p) => (
