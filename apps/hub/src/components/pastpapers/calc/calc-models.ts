@@ -101,7 +101,8 @@ export const CALC_MODELS: Record<CalcModelId, CalcModel> = {
     label: "fx-83GT CW",
     skin: { shiftColor: "blue", solar: false },
     apps: APPS_GT,
-    implementedApps: ["calculate"],
+    // phase C: the enabled set matches MG exactly — Calculate, Statistics, Table
+    implementedApps: ["calculate", "statistics", "table"],
     shiftOverrides: SHIFT_OVERRIDES_GT,
     features: { recurringDecimal: true, complex: false, engineerSymbol: false },
   },
@@ -110,7 +111,8 @@ export const CALC_MODELS: Record<CalcModelId, CalcModel> = {
     label: "fx-85GT CW",
     skin: { shiftColor: "blue", solar: true },
     apps: APPS_GT,
-    implementedApps: ["calculate"],
+    // phase C: the enabled set matches MG exactly — Calculate, Statistics, Table
+    implementedApps: ["calculate", "statistics", "table"],
     shiftOverrides: SHIFT_OVERRIDES_GT,
     features: { recurringDecimal: true, complex: false, engineerSymbol: false },
   },
@@ -119,7 +121,8 @@ export const CALC_MODELS: Record<CalcModelId, CalcModel> = {
     label: "fx-991 CW",
     skin: { shiftColor: "gold", solar: true },
     apps: APPS_991,
-    implementedApps: ["calculate"],
+    // phase C: the enabled set matches MG exactly — Calculate, Statistics, Table
+    implementedApps: ["calculate", "statistics", "table"],
     shiftOverrides: SHIFT_OVERRIDES_991,
     features: { recurringDecimal: false, complex: true, engineerSymbol: true },
   },
