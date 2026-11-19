@@ -69,6 +69,13 @@ describe("(T1) the 1-variable summary — the manual's value set, exact where ex
   test("(T1f) empty data refuses (no fake results)", () => {
     expect(() => stat1Var([])).toThrow(CalcError);
   });
+  test("(T1h) the leading-dot entry normalizes (\u201c.01\u201d = 1/100 — the battery-run-002 ruling)", () => {
+    expect(statEntryToValue(".01")).toEqual(rat(1, 100));
+    expect(statEntryToValue(".5")).toEqual(rat(1, 2));
+    expect(() => statEntryToValue(".")).toThrow(CalcError);
+    expect(() => statEntryToValue("1.")).toThrow(CalcError);
+    expect(() => statEntryToValue("")).toThrow(CalcError);
+  });
   test("(T1g) the quartile helper on its own: {1..7}", () => {
     const sorted = [1, 2, 3, 4, 5, 6, 7].map((n) => rat(n));
     const { q1, q3 } = quartilesOf(sorted);
