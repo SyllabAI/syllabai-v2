@@ -46,3 +46,15 @@ The P3 backfill landed in two declared runs: **run-002** (the
 mode) and **run-003** (the beat-compression lane — re-pins the over-budget
 beats and flips `chunk_law: "enforce"`, so the drift the census table makes
 visible can never re-land).
+
+run-003 also carries the run-002 review follow-up (PR #1138 review, operator
+trace c0a36936075e53f86f0bddaa1751a1de): four chemistry sort-match payloads
+passed the authoring numeric gate by comma-stripping, but their options are
+electronic-configuration shell lists, not "value + ≤3-word unit" sets —
+rn_Syxyh4Fct8KFg8NQ L1::Q3 / L1::Q4 / L2::Q5 and rn_mBqgkpZ3hbSBmWCC L2::Q3
+(the mark scheme stays unique and winnable, but the electron-total reading
+ties 2,8,9 vs 2,8,8,1). Re-derive those four checks under the strict
+thousands-grouping gate (`-?\d{1,3}(,\d{3})+(\.\d+)?` — keeps `576,000 s`,
+rejects shell lists) via the KIND_PRIORITY fallback, in the same landing as
+the enforce flip. Zero learner exposure until then: stage mode is
+allowlist-gated and chemistry is not yet allowlisted in production.
