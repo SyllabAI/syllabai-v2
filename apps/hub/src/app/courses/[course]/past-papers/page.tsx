@@ -4,6 +4,7 @@ import { ChevronRight, FileText, Puzzle, ScrollText } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { collectPastPapers, paperEstTime, type PastPaper } from "@/lib/past-papers";
 import { corpusViewerUrl } from "@/lib/pastpapers-shared";
+import { fmtCount } from "@/lib/format";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import {
   corpusPapersForCourse,
@@ -132,8 +133,8 @@ export default async function PastPapersPage({
       >
         {papers.length > 0 && (
           <Badge variant="secondary" className="font-medium">
-            {papers.length} papers · {sessions.length} session{sessions.length === 1 ? "" : "s"}
-            {interactiveCount > 0 ? ` · ${interactiveCount} interactive` : ""}
+            {fmtCount(papers.length)} papers · {fmtCount(sessions.length)} session{sessions.length === 1 ? "" : "s"}
+            {interactiveCount > 0 ? ` · ${fmtCount(interactiveCount)} interactive` : ""}
           </Badge>
         )}
       </CoursePageHeader>
@@ -190,7 +191,7 @@ export default async function PastPapersPage({
                 {sessionLabel(sessionId)}
                 {/* t-ui-polish run-002 — the MG session header carries its
                     size; the count rides the same quiet recipe. */}
-                <span className="font-normal text-muted-foreground"> · {group.length}</span>
+                <span className="font-normal text-muted-foreground"> · {fmtCount(group.length)}</span>
               </h2>
               <ul className="overflow-hidden rounded-xl border">
                 {group.map((p) => (
@@ -347,7 +348,7 @@ function ReconstructionArchive({
       <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
         Interactive reconstructions
         {/* t-ui-polish run-002 — same session-count recipe as above. */}
-        <span className="font-normal text-muted-foreground"> · {papers.length}</span>
+        <span className="font-normal text-muted-foreground"> · {fmtCount(papers.length)}</span>
       </h2>
       <p className="text-xs text-muted-foreground">
         Papers the question corpus has parsed (partial reconstructions — the questions we hold, in
@@ -376,8 +377,8 @@ function ReconstructionArchive({
                     )}
                   </span>
                   <span className="block text-xs text-muted-foreground">
-                    {p.date} · {p.questions.length} question{p.questions.length === 1 ? "" : "s"} ·{" "}
-                    {p.totalMarks} marks · {paperEstTime(p.totalMarks)}
+                    {p.date} · {fmtCount(p.questions.length)} question{p.questions.length === 1 ? "" : "s"} ·{" "}
+                    {fmtCount(p.totalMarks)} marks · {paperEstTime(p.totalMarks)}
                   </span>
                   {scope && (
                     <span className="mt-0.5 block text-2xs leading-snug text-muted-foreground/80">
