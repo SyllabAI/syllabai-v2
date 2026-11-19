@@ -48,10 +48,38 @@
  * counts ride the window path only. The 042 zero-cell era ends by law:
  * the columns were built for exactly these counts (DecayLedgerRow
  * already carried them).
+ *
+ * T-TUTOR-AIM-P3 RUN-002 ADDENDUM (the retention sweep's nightly wiring;
+ * operator trace 1a1f2737f3f80841 "proceed" — the DC10 P3 run-001 receipt's
+ * disclosed residual: "the nightly band is a heavily pinned transaction;
+ * the cron hook rides the next window band"): runNightlyDispatch composes
+ * the window + the served-evidence retention sweep (the DC10 §7.7 purge of
+ * record, purgeExpiredServedEvidence — 180 days, the staleness tau).
+ *
+ * THE SWEEP'S PLACEMENT LAW (degrade-never-block, the DC10 §8 posture):
+ * the sweep runs AFTER the window transaction COMMITS — never inside it.
+ * Inside, a purge failure would poison Postgres transaction state (an
+ * aborted transaction swallows its successors) and the only outcomes would
+ * be block (the sweep failing the decay window's ledger row + review
+ * inserts — housekeeping blocking the critical path) or silent rollback
+ * (swallowing the error and "committing" — Postgres answers ROLLBACK).
+ * After, the sweep is what it is: IDEMPOTENT housekeeping (served_at <
+ * cutoff deletes nothing twice), guarded (a sweep throw is logged with the
+ * stable [served-evidence-purge] prefix and the dispatch degrades to
+ * servedEvidencePurged = null — the window result rides UNTOUCHED, the
+ * dispatch never rejects on the sweep's behalf), and riding BOTH dispatch
+ * outcomes (ok AND already-run — a re-hit re-sweeps harmlessly and heals a
+ * first fire that degraded).
+ *
+ * THE COUNT LAW: the sweep reports the HONEST count through the data-
+ * modifying CTE (see purgeExpiredServedEvidence); the count NEVER rides
+ * the wire (the hub seam forwards {status, ledgerRow} only — the count
+ * discloses via the deployment log line, the §4 watch posture).
  */
 import type { SqlFn } from "../identity/users";
 import type { ModelUpdateClock as Clock } from "../learner-model/model-update";
 import { runReviewSchedulerPass } from "./review-scheduler";
+import { purgeExpiredServedEvidence } from "../tutor/served-evidence";
 
 export interface DecayLedgerRow {
   windowStart: string;
@@ -209,4 +237,47 @@ export async function runNightlyDecayWindow(
     }
     return { status: "ok", ledgerRow: toLedgerRow(row) } satisfies DecayLedgerResult;
   });
+}
+
+/** The dispatch outcome: the window's ledger result + the retention sweep's
+ * honest count (null = the sweep degraded; the window result is NEVER
+ * affected — degrade-never-block). */
+export interface NightlyDispatchOutcome {
+  result: DecayLedgerResult;
+  servedEvidencePurged: number | null;
+}
+
+/** The stable log prefix of the sweep (the §4 watch greps the deployment
+ * logs for this — the count of record lives here, never on the wire). */
+export const SERVED_EVIDENCE_PURGE_LOG_PREFIX = "[served-evidence-purge]";
+
+/**
+ * T-TUTOR-AIM-P3 RUN-002 — the FULL nightly dispatch, composed: the decay
+ * window (the T-MIG-126 transaction law, UNTOUCHED) + the served-evidence
+ * retention sweep riding AFTER the window's commit (the placement law —
+ * see the header addendum). The route's handler is this function + the
+ * auth law; the wire shape stays byte-identical (status + ledgerRow).
+ */
+export async function runNightlyDispatch(
+  sql: DecayWindowSql,
+  clock: Clock,
+  opts: { windowStart: string; now?: Date; triggerKind?: string },
+): Promise<NightlyDispatchOutcome> {
+  const result = await runNightlyDecayWindow(sql, clock, opts);
+  let servedEvidencePurged: number | null = null;
+  try {
+    servedEvidencePurged = await purgeExpiredServedEvidence(sql, clock);
+  } catch (e) {
+    // degrade-never-block: a lost sweep lives one more day, the decay
+    // window's ledger row + review inserts ride untouched (the placement
+    // law — housekeeping never fails the nightly band)
+    console.error(
+      `${SERVED_EVIDENCE_PURGE_LOG_PREFIX} degraded — the retention sweep never fails the nightly window:`,
+      e,
+    );
+  }
+  console.info(
+    `${SERVED_EVIDENCE_PURGE_LOG_PREFIX} deleted=${servedEvidencePurged ?? "degraded"}`,
+  );
+  return { result, servedEvidencePurged };
 }
