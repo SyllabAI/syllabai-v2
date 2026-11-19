@@ -63,6 +63,7 @@ import { createRequire } from "node:module";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { validateChunkLaw } from "../../src/lib/guided-chunk-law.mjs";
 
 const require = createRequire(import.meta.url);
 // ajv resolution: relative to this runner first (portable across checkouts),
@@ -4353,6 +4354,51 @@ async function main() {
   }
   check("G-C", `ajv draft-07 ×${ARTIFACTS} (${F.adapter} + ${F.package_schema || "sme-question-package/1.0"})`, schemaFails === 0, schemaFails ? `${schemaFails} failures` : "all pass");
 
+  // ── G-CHUNK chunking law (redesign plan §5.2/§5.3/§6/§8) ──────────────────
+  // The micro-chunking law of record — beat budgets (opener/bridge ≤ 45 words,
+  // key points ≤ 30), mandatory analogy + exam pointer per depth band,
+  // check→key-point mappability, and the §8 interaction cadence once
+  // interactions[] exists — validated by the SAME module the renderer's arc
+  // uses (src/lib/guided-chunk-law.mjs), so import-time and render-time can
+  // never drift. Legacy feeds run REPORT mode (the live corpus predates the
+  // law and is grandfathered); a feed declares chunk_law: "enforce" to make
+  // violations FAIL-CLOSED — "a payload that would render as a wall fails at
+  // bake time, not in review" (§8).
+  const CHUNK_LAW_MODE = F.chunk_law || "report";
+  let chunkViolations = 0;
+  let chunkNotesHit = 0;
+  const chunkSig = { modules: 0, checks: 0, mapped: 0, interactions: 0 };
+  const chunkSamples = [];
+  for (const p of parsed) {
+    if (p.kind === "sme-question-package") continue;
+    const pkg = parsed.find((x) => x.kind === "sme-question-package" && x.noteId === p.noteId);
+    const qbm = new Map();
+    for (const m of p.obj.lesson.modules || []) {
+      const refs = new Set(m.checkRefs || []);
+      qbm.set(m.id, ((pkg && pkg.obj.questions) || []).filter((q) => refs.has(q.id)));
+    }
+    const r = validateChunkLaw(p.obj, qbm);
+    chunkViolations += r.violations.length;
+    if (r.violations.length > 0) {
+      chunkNotesHit += 1;
+      if (chunkSamples.length < 3) chunkSamples.push(`${p.noteId}: ${r.violations.slice(0, 2).map((v) => `${v.law}/${v.moduleId}`).join(", ")}`);
+    }
+    chunkSig.modules += r.signals.modules;
+    chunkSig.checks += r.signals.checks;
+    chunkSig.mapped += r.signals.mappedChecks;
+    chunkSig.interactions += r.signals.interactionChecks;
+  }
+  check(
+    "G-CHUNK",
+    `chunking law (${CHUNK_LAW_MODE} mode) — §5.2/§6 beat budgets + mandatory beats + §8 mappability/cadence`,
+    CHUNK_LAW_MODE !== "enforce" || chunkViolations === 0,
+    CHUNK_LAW_MODE === "enforce"
+      ? chunkViolations === 0
+        ? `0 violations — chunked to law (${chunkSig.mapped}/${chunkSig.checks} checks interleaved, ${chunkSig.interactions} interaction checks)`
+        : `${chunkViolations} violations in ${chunkNotesHit} notes — FAIL-CLOSED${chunkSamples.length ? ": " + chunkSamples.join(" | ") : ""}`
+      : `${chunkViolations} violations in ${chunkNotesHit}/${NOTES} notes (report-only — legacy corpus grandfathered); interleave ${chunkSig.mapped}/${chunkSig.checks}, interaction checks ${chunkSig.interactions}`,
+  );
+
   // ── G-D cross-refs: derived-ID grammar + checkRefs ↔ questions 1:1 ─────────
   const idOk = (id, noteId, l, k) =>
     id === `${ID_PREFIX}::${noteId}` || // lesson/package id
@@ -4670,12 +4716,14 @@ async function main() {
       integration_branch: F.integration_branch || "(main ancestry)",
       artifact_pin: F.artifact_pin,
       figures_feed: F.figures_feed,
+      chunk_law: F.chunk_law || "report",
     },
     gates: {
       P0: "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
       GA: "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
       GB: `${ARTIFACTS}/${ARTIFACTS} fetched raw @ pinned commit, sha256+bytes exact`,
       GC: `ajv draft-07 ×${ARTIFACTS} vs both target schemas`,
+      GCHUNK: `chunking law (${F.chunk_law || "report"} mode) — §5.2/§6 beat budgets, mandatory beats, §8 mappability + interaction cadence, via lib/guided-chunk-law.mjs (the renderer's own law module)`,
       GD: `X ×${NOTES} — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (${man.counts.checks} checks), pinned provenance` + (F.figures_feed ? `, figure closure both ways (${man.counts.figures || 0} figures)` : ""),
       GE: `Φ — per-note stream anchors ×${NOTES} vs the feed's INT-3 record; wave subtotals ×${WAVES}; grand stream vs manifest` + (F.figures_feed ? `; legacy-anchor equality ×${NOTES} (figures carried no prose)` : ""),
       ...(F.landing === "revision" ? { GDELTA: `declared revision: exactly the ${NOTES} lesson files carry new bytes; question packages byte-identical ×${NOTES}` } : {}),
