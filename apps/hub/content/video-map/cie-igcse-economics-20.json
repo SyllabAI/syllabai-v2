@@ -11,6 +11,11 @@
    "provider": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
    "method": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) flat-enumerated 2026-11-13T12:53:01Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "provider": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics)",
+   "method": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
   "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
-  "rowsApproved": 10,
+  "rowsApproved": 19,
   "rowsRejected": 5,
   "rejects": [
    {
@@ -85,6 +90,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 9,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -197,6 +213,105 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1jDUGst4vuw",
+   "title": "CRR, SLR, Repo Rate & Reverse Repo Explained in 10 Minutes | Monetary Policy",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=1jDUGst4vuw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2DJ6dOff3Q0",
+   "title": "5 AS Level Economics MCQs Explained | AD-AS, Current Account, Exchange Rate, PES, Deflation",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=2DJ6dOff3Q0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4IEjKRhfbf4",
+   "title": "Scarcity, Choice, Opportunity cost & Production Possibility Curve(PPC) Diagrams|IGCSE, A-Level, UPSC",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=4IEjKRhfbf4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "88TKItb_eX4",
+   "title": "Microeconomics vs Macroeconomics | Positive & Normative Statements | Basic Economics Explained",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=88TKItb_eX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FTwdZx0VsXI",
+   "title": "Economies of Scale: Why Big Companies Produce Cheaper (2-Minute Explainer)",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=FTwdZx0VsXI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HfyP7jK4oZw",
+   "title": "PPC & Marginal Opportunity Cost Explained in Seconds (Teaser)   #shorts",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=HfyP7jK4oZw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "OH-T98YX-iQ",
+   "title": "IGCSE Economics 0455 -Top 5 Most Confusing MCQs Solved | Past Paper Practice",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=OH-T98YX-iQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZLXlC4ytEr4",
+   "title": "What Are Public Goods? Non-Excludable, Non-Rivalrous & Free Rider Problem Explained",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=ZLXlC4ytEr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "_JMF9_KZ4xk",
+   "title": "IGCSE Economics 0455 MCQ Practice : Foreign Exchange Market",
+   "provider": "learn-econ-anjuli",
+   "watchUrl": "https://www.youtube.com/watch?v=_JMF9_KZ4xk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Learn Economics with Anjuli (CIE 0455 IGCSE economics topic lectures + 9708 A-level economics) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -354,20 +469,178 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-economics-20"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "OH-T98YX-iQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Economics 0455 -Top 5 Most Confusing MCQs Solved | Past Paper Practice\"; 0455 IGCSE economics paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "2DJ6dOff3Q0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.4.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.4.2 'causes of current account deficit and surplus' via token(s) ['account', 'current'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "1jDUGst4vuw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.4.1",
+    "4.4.2",
+    "4.4.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Monetary policy' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "ZLXlC4ytEr4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1.2 'economic and free goods' via token(s) ['free', 'goods'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "FTwdZx0VsXI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.5.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.5.5 'economies and diseconomies of scale' via token(s) ['economies', 'scale'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "_JMF9_KZ4xk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.1.1",
+    "6.1.2",
+    "6.2.1",
+    "6.2.2",
+    "6.2.3",
+    "6.2.4",
+    "6.2.5",
+    "6.2.6",
+    "6.3.1",
+    "6.3.2",
+    "6.3.3",
+    "6.3.4",
+    "6.3.5",
+    "6.4.1",
+    "6.4.2",
+    "6.4.3",
+    "6.4.4"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (multi-uniq): title names topic 'International trade and globalisation' via topic-unique token(s) ['foreign', 'exchange'] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "HfyP7jK4oZw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.3.1 'definition of opportunity cost' via token(s) ['cost', 'opportunity'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "4IEjKRhfbf4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.3.1 'definition of opportunity cost' via token(s) ['cost', 'opportunity'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "88TKItb_eX4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.1.1",
+    "2.1.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Microeconomics and macroeconomics' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 129,
-  "specPointsMapped": 7,
-  "specPointsUnmapped": 122,
-  "videosTotal": 10,
-  "videosMapped": 10,
+  "specPointsMapped": 31,
+  "specPointsUnmapped": 98,
+  "videosTotal": 19,
+  "videosMapped": 19,
   "videosUnmapped": 0,
-  "mappingRows": 10,
+  "mappingRows": 19,
   "byConfidence": {
-   "high": 1,
-   "medium": 2,
-   "low": 7
+   "high": 2,
+   "medium": 7,
+   "low": 10
   }
  },
  "inputs": {
@@ -380,7 +653,13 @@
    "path": "Videos/drafts/cie-igcse-economics-20/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-economics-20/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:10.991Z"
+ "generatedUtc": "2026-11-19T14:58:51.619Z"
 }

@@ -11,6 +11,11 @@
    "provider": "Cambridge IGCSE, AS and A Level Study Materials (CIE 0450 Business + 0417 ICT chapter series)",
    "method": "Cambridge IGCSE, AS and A Level Study Materials (CIE 0450 Business + 0417 ICT chapter series) flat-enumerated 2026-11-13T12:52:55Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "provider": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register)",
+   "method": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
   "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
-  "rowsApproved": 8,
+  "rowsApproved": 77,
   "rowsRejected": 16,
   "rejects": [
    {
@@ -195,6 +200,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 69,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -285,6 +301,765 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "Cambridge IGCSE, AS and A Level Study Materials (CIE 0450 Business + 0417 ICT chapter series)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "0Q-DxI6salQ",
+   "title": "Edexcel iGCSE ICT Paper 2, Database Question - Sample Assessment Materials",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=0Q-DxI6salQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "2eyi6U3ATN0",
+   "title": "Edexcel iGCSE ICT Paper 2, Website Question - May 2019 - in KompoZer!",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=2eyi6U3ATN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3I4EGtIilKE",
+   "title": "Open source software - a short video explain what it is!",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=3I4EGtIilKE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "41PSM8o2u2s",
+   "title": "Edexcel iGCSE ICT Paper 1 November 2023",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=41PSM8o2u2s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "4B0v65W0Jx0",
+   "title": "Edexcel iGCSE ICT Specimen Paper 1 Question 4",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=4B0v65W0Jx0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6G9yAgh_o7E",
+   "title": "Validation checks in MS Access a tutorial",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=6G9yAgh_o7E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6RHzyIf8HqQ",
+   "title": "Edexcel iGCSE ICT Specimen Paper 1 Question 5",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=6RHzyIf8HqQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6TwsW0a9axk",
+   "title": "Edexcel iGCSE ICT 2020 Paper 1 Question 1",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=6TwsW0a9axk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9CjkTAsRIQ8",
+   "title": "Edexcel iGCSE ICT Paper 1 2019 Question 5",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=9CjkTAsRIQ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "9F2ylW9gN5I",
+   "title": "Edexcel iGCSE ICT Paper 1 Regional Paper May 2019",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=9F2ylW9gN5I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "A8b2Q4aX-K4",
+   "title": "Edexcel iGCSE ICT 2020 Paper 2 Spreadsheet Question",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=A8b2Q4aX-K4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "C09Yn_l30Pw",
+   "title": "Edexcel iGCSE ICT Specimen Paper 1 Question 2",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=C09Yn_l30Pw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DCgn2jJT1ls",
+   "title": "Edexcel iGCSE ICT Paper 2, Spreadsheet Question - May 2019",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=DCgn2jJT1ls",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "DrYqXyQoKH0",
+   "title": "Edexcel iGCSE ICT 2020 Paper 2 Database Question",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=DrYqXyQoKH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "FROP08jI2u4",
+   "title": "Foreign key - what is it? A short video with a dog with sunglasses!",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=FROP08jI2u4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Fkf-OiD32O4",
+   "title": "Edexcel iGCSE ICT 2020 Paper 2 Word Processing Question",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=Fkf-OiD32O4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "thumb-fallback"
+  },
+  {
+   "id": "Fyr0gbHAlZ8",
+   "title": "Edexcel iGCSE ICT - Full guide to MS PowerPoint",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=Fyr0gbHAlZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GArTCD1F6fg",
+   "title": "Edexcel iGCSE ICT Paper 2 2023",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=GArTCD1F6fg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "GOwjBWOUGsg",
+   "title": "Edexcel iGCSE ICT Specimen Paper 1 Question 3",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=GOwjBWOUGsg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "HdKmTEj8Emw",
+   "title": "Edexcel iGCSE ICT - Full guide to MS Excel",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=HdKmTEj8Emw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Lb6cQ8Gvstg",
+   "title": "Edexcel iGCSE ICT Paper 2, Database Question - May 2019",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=Lb6cQ8Gvstg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Lwghc2M2Uyk",
+   "title": "Edexcel iGCSE ICT, Paper 1, Question 5, Sample Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=Lwghc2M2Uyk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MJZoDLFwqgE",
+   "title": "MS Excel - SUM, AVERAGE, MIN and MAX in Excel",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=MJZoDLFwqgE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Mc_kywC6DsM",
+   "title": "Edexcel iGCSE ICT Paper 1 2019 Question 4",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=Mc_kywC6DsM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NSuqYiJeD-o",
+   "title": "Edexcel iGCSE ICT Specimen Paper 1 Question 1",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=NSuqYiJeD-o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NT4TmpgTinc",
+   "title": "Edexcel iGCSE ICT 2021 Paper 2 Whole Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=NT4TmpgTinc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NW0DNHLnJ6g",
+   "title": "How to - edit the slide master in PowerPoint",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=NW0DNHLnJ6g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "N_5lCSR00kk",
+   "title": "Edexcel iGCSE ICT Paper 2, PowerPoint Question - May 2019",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=N_5lCSR00kk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "RTkTGXeutbQ",
+   "title": "Edexcel iGCSE ICT November 2021 Paper 1",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=RTkTGXeutbQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Sx9i6XWzHDw",
+   "title": "Edexcel iGCSE ICT 2020 Paper 1 Question 3",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=Sx9i6XWzHDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UQzRdiWWELI",
+   "title": "Edexcel iGCSE ICT Paper 2, PowerPoint Question - SAM",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=UQzRdiWWELI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UVX0BaqDkIE",
+   "title": "How to - Format an Microsoft Excel spreadsheet",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=UVX0BaqDkIE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "UhUHEs56awY",
+   "title": "Targeted marketing - what is it all about?",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=UhUHEs56awY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VNpRgaREoQI",
+   "title": "Edexcel iGCSE ICT - Full guide to MS Word",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=VNpRgaREoQI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VQ60owI74Ww",
+   "title": "Edexcel iGCSE ICT Paper 2, Graphics Question - May 2019",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=VQ60owI74Ww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VSXwMzhltSk",
+   "title": "Edexcel iGCSE ICT 2021 Paper 1",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=VSXwMzhltSk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XhumQet8PWU",
+   "title": "Primary key",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=XhumQet8PWU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YYfFUi2ojFk",
+   "title": "Edexcel iGCSE ICT 2020 Paper 1 Question 2",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=YYfFUi2ojFk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ZPImQ77C0v4",
+   "title": "Edexcel iGCSE ICT Paper 2 November 2023",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=ZPImQ77C0v4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "bk1LSQn2DH8",
+   "title": "Edexcel iGCSE ICT Advanced Information 2022 Paper 1 Predictions",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=bk1LSQn2DH8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "cb_nNHiBC-8",
+   "title": "Edexcel iGCSE ICT November 2021 Paper 2 Whole Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=cb_nNHiBC-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eynhJo7_rlw",
+   "title": "Read Only Memory (ROM)",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=eynhJo7_rlw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fWrFnQvbQZQ",
+   "title": "Edexcel iGCSE ICT Examiner Report for paper 2",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=fWrFnQvbQZQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gcmOz3uVyM8",
+   "title": "Edexcel iGCSE ICT - how to answer 8 mark questions",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=gcmOz3uVyM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "hsMQwGEEZ6s",
+   "title": "Edexcel iGCSE ICT Paper 1, Personal Learning Checklist!",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=hsMQwGEEZ6s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "i6K331L0Oog",
+   "title": "Proprietary software - it is different to open source!",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=i6K331L0Oog",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k-7yfNCfKWU",
+   "title": "Edexcel iGCSE ICT Paper 1 2023",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=k-7yfNCfKWU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "l8MSVZTRrSc",
+   "title": "How to - Format a spreadsheet in Excel - Currency and Percentage",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=l8MSVZTRrSc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ldmTfZFV6Mg",
+   "title": "Magnetic hard drive",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=ldmTfZFV6Mg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m8RYLoiOYqE",
+   "title": "Edexcel iGCSE ICT Paper 2, Website Question - May 2019",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=m8RYLoiOYqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "mdr0KyjbiQQ",
+   "title": "Edexcel iGCSE ICT 2020 Paper 2 Logo Question (no fancy software needed!)",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=mdr0KyjbiQQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "o9bsmfDakBI",
+   "title": "Edexcel iGCSE ICT Paper 1, Knowledge organiser!",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=o9bsmfDakBI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "p0P0o_1dZ-4",
+   "title": "Edexcel iGCSE ICT, Paper 1, Question 4, Sample Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=p0P0o_1dZ-4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "prhqJt2p_uU",
+   "title": "Edexcel iGCSE ICT 2022 Paper 1 Whole Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=prhqJt2p_uU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "r4D2xz7yywE",
+   "title": "Edexcel iGCSE ICT Examiner Report for paper 1",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=r4D2xz7yywE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rGTiU-HAq8k",
+   "title": "Absolute cell reference in Excel - what it is and how it works.",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=rGTiU-HAq8k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ra4C8Ni9Mm0",
+   "title": "Edexcel iGCSE ICT Paper 1 2019 Question 3",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=ra4C8Ni9Mm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rlxYEiLnfWk",
+   "title": "Edexcel iGCSE ICT 2022 Paper 2 Whole Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=rlxYEiLnfWk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rmv8FD9WDGU",
+   "title": "Edexcel iGCSE ICT 2020 Paper 1 Question 4",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=rmv8FD9WDGU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "s0ZOf50944g",
+   "title": "Edexcel iGCSE ICT, Paper 1, Question 3, Sample Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=s0ZOf50944g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "soZZZIX5lpg",
+   "title": "Edexcel iGCSE ICT, Paper 1, Question 2, Sample Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=soZZZIX5lpg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "t5wCeyAsK64",
+   "title": "Edexcel iGCSE ICT Paper 2, Word processing Question - SAM",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=t5wCeyAsK64",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tdEMHulPgLQ",
+   "title": "Edexcel iGCSE ICT, Paper 1, Question 1, Sample Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=tdEMHulPgLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tx7qQNKjlZ0",
+   "title": "Edexcel iGCSE ICT 2020 Paper 2 PowerPoint Question",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=tx7qQNKjlZ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uPqMP47nqxs",
+   "title": "Edexcel iGCSE ICT 2020 Paper 1 Question 5",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=uPqMP47nqxs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vp79q0vI3-Q",
+   "title": "Edexcel iGCSE ICT Paper 1 2019 Question 2",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=vp79q0vI3-Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wCq5l32Uot8",
+   "title": "Edexcel iGCSE ICT Paper 1 2019 Question 1",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=wCq5l32Uot8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "wt93hGQc1l8",
+   "title": "Edexcel iGCSE ICT Paper 2, Spreadsheet Question - SAM",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=wt93hGQc1l8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xRKPm7-Xa0w",
+   "title": "Edexcel iGCSE ICT 2020 Paper 1 R - Regional Whole Paper",
+   "provider": "mark-harrison",
+   "watchUrl": "https://www.youtube.com/watch?v=xRKPm7-Xa0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Mark Harrison (Edexcel IGCSE ICT 4IT0 paper walkthroughs + CIE 0417 ICT — dual ICT register) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -408,20 +1183,1286 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ZPImQ77C0v4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2 November 2023\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "41PSM8o2u2s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 November 2023\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "k-7yfNCfKWU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 2023\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "GArTCD1F6fg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2 2023\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "rlxYEiLnfWk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2022 Paper 2 Whole Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "prhqJt2p_uU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2022 Paper 1 Whole Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "gcmOz3uVyM8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT - how to answer 8 mark questions\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "bk1LSQn2DH8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Advanced Information 2022 Paper 1 Predictions\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "cb_nNHiBC-8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT November 2021 Paper 2 Whole Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "RTkTGXeutbQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT November 2021 Paper 1\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "NT4TmpgTinc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2021 Paper 2 Whole Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "VSXwMzhltSk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2021 Paper 1\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "xRKPm7-Xa0w",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 1 R - Regional Whole Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Fkf-OiD32O4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 2 Word Processing Question\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "A8b2Q4aX-K4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 2 Spreadsheet Question\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "tx7qQNKjlZ0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 2 PowerPoint Question\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DrYqXyQoKH0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 2 Database Question\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "uPqMP47nqxs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 1 Question 5\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "rmv8FD9WDGU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 1 Question 4\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "mdr0KyjbiQQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 2 Logo Question (no fancy software needed!)\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Sx9i6XWzHDw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 1 Question 3\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YYfFUi2ojFk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 1 Question 2\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6TwsW0a9axk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT 2020 Paper 1 Question 1\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "6RHzyIf8HqQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Specimen Paper 1 Question 5\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "4B0v65W0Jx0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Specimen Paper 1 Question 4\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "GOwjBWOUGsg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Specimen Paper 1 Question 3\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "C09Yn_l30Pw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Specimen Paper 1 Question 2\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "NSuqYiJeD-o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Specimen Paper 1 Question 1\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "fWrFnQvbQZQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Examiner Report for paper 2\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "r4D2xz7yywE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Examiner Report for paper 1\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "VNpRgaREoQI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT - Full guide to MS Word\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Fyr0gbHAlZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT - Full guide to MS PowerPoint\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "HdKmTEj8Emw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT - Full guide to MS Excel\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "2eyi6U3ATN0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Website Question - May 2019 - in KompoZer!\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "t5wCeyAsK64",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Word processing Question - SAM\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "UQzRdiWWELI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, PowerPoint Question - SAM\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "VQ60owI74Ww",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Graphics Question - May 2019\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "9F2ylW9gN5I",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 Regional Paper May 2019\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "m8RYLoiOYqE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Website Question - May 2019\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "N_5lCSR00kk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, PowerPoint Question - May 2019\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Lb6cQ8Gvstg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Database Question - May 2019\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Lwghc2M2Uyk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT, Paper 1, Question 5, Sample Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "wt93hGQc1l8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Spreadsheet Question - SAM\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "p0P0o_1dZ-4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT, Paper 1, Question 4, Sample Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "hsMQwGEEZ6s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1, Personal Learning Checklist!\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "o9bsmfDakBI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1, Knowledge organiser!\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "soZZZIX5lpg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT, Paper 1, Question 2, Sample Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "DCgn2jJT1ls",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Spreadsheet Question - May 2019\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "tdEMHulPgLQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT, Paper 1, Question 1, Sample Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "s0ZOf50944g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT, Paper 1, Question 3, Sample Paper\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "0Q-DxI6salQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 2, Database Question - Sample Assessment Materials\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "9CjkTAsRIQ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 2019 Question 5\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Mc_kywC6DsM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 2019 Question 4\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "ra4C8Ni9Mm0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 2019 Question 3\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "vp79q0vI3-Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 2019 Question 2\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "igcse-ict-17"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "wCq5l32Uot8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Edexcel iGCSE ICT Paper 1 2019 Question 1\"; Edexcel IGCSE ICT paper register anchor in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "video": "i6K331L0Oog",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.3.5 'Know about software licensing types (free/open source and pr' via token(s) ['open', 'proprietary', 'software', 'source'] (df 22); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "3I4EGtIilKE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.3.5"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.3.5 'Know about software licensing types (free/open source and pr' via token(s) ['open', 'software', 'source'] (df 22); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "XhumQet8PWU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.2.2 'Explain the structure of a given database, including: record' via token(s) ['key', 'primary'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "UhUHEs56awY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.2.4 'Know about targeted marketing and personalisation techniques' via token(s) ['about', 'marketing', 'targeted'] (df 23); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "rGTiU-HAq8k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.3 'Use formulae: arithmetic operators (plus, minus, multiply, d' via token(s) ['absolute', 'cell'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "FROP08jI2u4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "3.6.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.6.1 'Understand key features of online communities: websites, for' via token(s) ['key', 'video'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "NW0DNHLnJ6g",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.5.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.5.1 'Create a template/master slide: placeholders, footer, slide ' via token(s) ['master', 'slide'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "UVX0BaqDkIE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.1",
+    "6.3.2",
+    "6.3.3",
+    "6.3.4",
+    "6.3.5",
+    "6.3.6",
+    "6.3.7",
+    "6.3.8"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Spreadsheet' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "l8MSVZTRrSc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.2"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.2 'Format a worksheet: currency, percentage, decimal places, da' via token(s) ['currency', 'format', 'percentage'] (df 7); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "MJZoDLFwqgE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.3.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.3.4 'Use functions: SUM, AVERAGE, IF, VLOOKUP /LOOKUP, MAXIMUM, M' via token(s) ['average', 'sum'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "6G9yAgh_o7E",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.2.3 'Explain the need for validation and identify validation chec' via token(s) ['checks', 'validation'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "eynhJo7_rlw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.6.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.6.1 'Know that RAM stands for Random Access Memory and that ROM s' via token(s) ['memory', 'only', 'read', 'rom'] (df 6); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "ldmTfZFV6Mg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.5.4"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.5.4 'Know about types of storage media such as hard disks, optica' via token(s) ['hard', 'magnetic'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 138,
-  "specPointsMapped": 8,
-  "specPointsUnmapped": 130,
-  "videosTotal": 8,
-  "videosMapped": 8,
+  "specPointsMapped": 22,
+  "specPointsUnmapped": 116,
+  "videosTotal": 77,
+  "videosMapped": 77,
   "videosUnmapped": 0,
-  "mappingRows": 8,
+  "mappingRows": 77,
   "byConfidence": {
-   "high": 0,
-   "medium": 8,
-   "low": 0
+   "high": 56,
+   "medium": 20,
+   "low": 1
   }
  },
  "inputs": {
@@ -434,7 +2475,13 @@
    "path": "Videos/drafts/igcse-ict-17/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-ict-17/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:11.047Z"
+ "generatedUtc": "2026-11-19T14:58:51.673Z"
 }

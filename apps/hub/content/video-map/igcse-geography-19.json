@@ -11,6 +11,11 @@
    "provider": "The iGCSE Geographer (@TheiGCSEGeographer — CIE 0460 IGCSE Geography case-study channel) + Yi MakesItEasy (@YiMakesItEasy — CIE IGCSE 0460 Geography / 0450 Business / Edexcel-register Further Maths CP1 chapter series)",
    "method": "The iGCSE Geographer (@TheiGCSEGeographer — CIE 0460 IGCSE Geography case-study channel) flat-enumerated 2026-11-13T12:53:32Z; Yi MakesItEasy (@YiMakesItEasy — CIE IGCSE 0460 Geography / 0450 Business / Edexcel-register Further Maths CP1 chapter series) flat-enumerated 2026-11-13T12:52:51Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "provider": "GEO-HACKS (CIE 0460 IGCSE geography register + minor Edexcel 4GE0)",
+   "method": "GEO-HACKS (CIE 0460 IGCSE geography register + minor Edexcel 4GE0) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
   "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
-  "rowsApproved": 13,
+  "rowsApproved": 15,
   "rowsRejected": 15,
   "rejects": [
    {
@@ -185,6 +190,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 2,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -330,6 +346,28 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "The iGCSE Geographer (@TheiGCSEGeographer — CIE 0460 IGCSE Geography case-study channel)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "CuxMgeNeII8",
+   "title": "Formation of Rapids Potholes and Waterfalls",
+   "provider": "geo-hacks",
+   "watchUrl": "https://www.youtube.com/watch?v=CuxMgeNeII8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "GEO-HACKS (CIE 0460 IGCSE geography register + minor Edexcel 4GE0) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "chpcNoNMn5o",
+   "title": "Microsoft Excel: Mean and Median",
+   "provider": "geo-hacks",
+   "watchUrl": "https://www.youtube.com/watch?v=chpcNoNMn5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "GEO-HACKS (CIE 0460 IGCSE geography register + minor Edexcel 4GE0) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -528,19 +566,49 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "CuxMgeNeII8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4GE1-S1.161"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4GE1-S1.161 'How river landscapes change over the course of a river, with' via token(s) ['formation', 'waterfalls'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "chpcNoNMn5o",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4GE1-S9.123"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4GE1-S9.123 'Use appropriate measures of central tendency, spread and cum' via token(s) ['mean', 'median'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 202,
-  "specPointsMapped": 10,
-  "specPointsUnmapped": 192,
-  "videosTotal": 13,
-  "videosMapped": 13,
+  "specPointsMapped": 12,
+  "specPointsUnmapped": 190,
+  "videosTotal": 15,
+  "videosMapped": 15,
   "videosUnmapped": 0,
-  "mappingRows": 13,
+  "mappingRows": 15,
   "byConfidence": {
    "high": 0,
-   "medium": 13,
+   "medium": 15,
    "low": 0
   }
  },
@@ -554,7 +622,13 @@
    "path": "Videos/drafts/igcse-geography-19/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/igcse-geography-19/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:11.045Z"
+ "generatedUtc": "2026-11-19T14:58:51.670Z"
 }

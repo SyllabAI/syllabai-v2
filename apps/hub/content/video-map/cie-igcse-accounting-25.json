@@ -11,6 +11,11 @@
    "provider": "AR Accounting (@AR Accounting — CIE IGCSE/O Level/A Level accounting 0452/9706) + IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
    "method": "AR Accounting (@AR Accounting — CIE IGCSE/O Level/A Level accounting 0452/9706) flat-enumerated 2026-11-13T12:53:11Z; IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series) flat-enumerated 2026-11-13T12:53:01Z; routing: syllabus/paper-code Tier B anchors + chapter-marker/keyword Tier A with class-table judgment, section-marker narrowing and per-row re-adjudication over every routed row",
    "enumeratedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "provider": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool)",
+   "method": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
   }
  },
  "review": {
@@ -19,7 +24,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
   "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
-  "rowsApproved": 25,
+  "rowsApproved": 38,
   "rowsRejected": 23,
   "rejects": [
    {
@@ -265,6 +270,17 @@
       "lane": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)"
      }
     ]
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 13,
+    "rowsRejected": 0,
+    "rejects": []
    }
   ]
  },
@@ -542,6 +558,149 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "IGCSE Online (CIE IGCSE multi-subject: 0455 econ, 0478 CS, 0620 physics, 0620 chem, 0580 maths chapter series)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1teBraRFoVY",
+   "title": "Petty Cash and the Imprest System – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=1teBraRFoVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3mQcI23ubRI",
+   "title": "Manufacturing Direct and Indirect Costs – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=3mQcI23ubRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "45kUsJZcud0",
+   "title": "Depreciation Straight Line Method – IGCSE Accounting 0452_1",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=45kUsJZcud0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Zvj13qQ7MN8",
+   "title": "Accrued and Prepaid Income – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=Zvj13qQ7MN8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "aiGUmvwXKb4",
+   "title": "Limited Companies Financial Statements – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=aiGUmvwXKb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "amsS3XEuu_c",
+   "title": "Interested Parties and Limitations – IGCSE Accounting 0452_1",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=amsS3XEuu_c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "feAcwN0k-e8",
+   "title": "Clubs The Accumulated Fund – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=feAcwN0k-e8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "fvihkrNVvRQ",
+   "title": "Double Entry System Fundamentals – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=fvihkrNVvRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "g7wGQxS6-xU",
+   "title": "Interested Parties and Limitations – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=g7wGQxS6-xU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "k6jW6SZUeBk",
+   "title": "The General Journal Procedures – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=k6jW6SZUeBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "m0TkywajcBk",
+   "title": "Accrued and Prepaid Expenses – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=m0TkywajcBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ty3kLsw_KzA",
+   "title": "Depreciation Straight Line Method – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=ty3kLsw_KzA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "vUtX-opuKjM",
+   "title": "Role of Accounting in Decision Making – IGCSE Accounting 0452",
+   "provider": "keen-mindz",
+   "watchUrl": "https://www.youtube.com/watch?v=vUtX-opuKjM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Keen Mindz (CIE 0452 IGCSE accounting register — 100% on-register pool) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -920,20 +1079,298 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
    "reviewedUtc": "2026-11-13T13:23:03Z"
+  },
+  {
+   "video": "3mQcI23ubRI",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.4.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.4.1 'direct and indirect costs' via token(s) ['costs', 'direct', 'indirect'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "feAcwN0k-e8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.5.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.5.6 'how to define and calculate the accumulated fund' via token(s) ['accumulated', 'fund'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "aiGUmvwXKb4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.1",
+    "5.1.2",
+    "5.1.3",
+    "5.1.4",
+    "5.1.5",
+    "5.1.6",
+    "5.1.7",
+    "5.1.8",
+    "5.1.9",
+    "5.1.10",
+    "5.1.11",
+    "5.1.12",
+    "5.2.1",
+    "5.2.2",
+    "5.2.3",
+    "5.2.4",
+    "5.2.5",
+    "5.2.6",
+    "5.2.7",
+    "5.2.8",
+    "5.2.9",
+    "5.2.10",
+    "5.2.11",
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4",
+    "5.3.5",
+    "5.3.6",
+    "5.3.7",
+    "5.3.8",
+    "5.3.9",
+    "5.4.1",
+    "5.4.2",
+    "5.4.3",
+    "5.4.4",
+    "5.4.5",
+    "5.4.6",
+    "5.5.1",
+    "5.5.2",
+    "5.5.3",
+    "5.5.4",
+    "5.5.5",
+    "5.5.6",
+    "5.6.1",
+    "5.6.2",
+    "5.6.3",
+    "5.6.4",
+    "5.6.5",
+    "5.6.6",
+    "5.6.7",
+    "5.6.8",
+    "5.6.9",
+    "5.6.10"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Preparation of financial statements' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "Zvj13qQ7MN8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.1.10"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 5.1.10 'how to make adjustments for accrued and prepaid expenses and' via token(s) ['accrued', 'income', 'prepaid'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "m0TkywajcBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.3.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.3.3 'how to prepare journal entries and ledger accounts to record' via token(s) ['accrued', 'expenses', 'prepaid'] (df 4); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "45kUsJZcud0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.2.3 'how to calculate depreciation using the straight-line, reduc' via token(s) ['depreciation', 'line', 'straight'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "ty3kLsw_KzA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.2.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.2.3 'how to calculate depreciation using the straight-line, reduc' via token(s) ['depreciation', 'line', 'straight'] (df 9); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "k6jW6SZUeBk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "4.1.1",
+    "4.1.2",
+    "4.1.3",
+    "4.1.4",
+    "4.1.5",
+    "4.1.6",
+    "4.2.1",
+    "4.2.2",
+    "4.2.3",
+    "4.2.4",
+    "4.2.5",
+    "4.2.6",
+    "4.2.7",
+    "4.2.8",
+    "4.3.1",
+    "4.3.2",
+    "4.3.3",
+    "4.3.4",
+    "4.4.1",
+    "4.4.2",
+    "4.4.3",
+    "4.4.4",
+    "4.4.5",
+    "4.5.1",
+    "4.5.2",
+    "4.5.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Accounting procedures' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "1teBraRFoVY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "2.3.6"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 2.3.6 'the purpose of the imprest system of petty cash' via token(s) ['cash', 'imprest', 'petty', 'system'] (df 10); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "fvihkrNVvRQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.1",
+    "1.1.2",
+    "1.1.3",
+    "1.2.1",
+    "1.2.2",
+    "1.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'The fundamentals of accounting' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "vUtX-opuKjM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "1.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 1.1.3 'the role of accounting in providing information for monitori' via token(s) ['decision', 'making', 'role'] (df 1); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "g7wGQxS6-xU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.4.10"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.4.10 'other interested parties, e.g. public and environmental bodi' via token(s) ['interested', 'parties'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
+  },
+  {
+   "video": "amsS3XEuu_c",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "6.4.10"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 6.4.10 'other interested parties, e.g. public and environmental bodi' via token(s) ['interested', 'parties'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row)",
+   "method": "llm-draft-external",
+   "boardMismatch": true,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z"
   }
  ],
  "coverage": {
   "specPointsTotal": 177,
-  "specPointsMapped": 21,
-  "specPointsUnmapped": 156,
-  "videosTotal": 25,
-  "videosMapped": 25,
+  "specPointsMapped": 101,
+  "specPointsUnmapped": 76,
+  "videosTotal": 38,
+  "videosMapped": 38,
   "videosUnmapped": 0,
-  "mappingRows": 25,
+  "mappingRows": 38,
   "byConfidence": {
    "high": 0,
-   "medium": 25,
-   "low": 0
+   "medium": 35,
+   "low": 3
   }
  },
  "inputs": {
@@ -946,7 +1383,13 @@
    "path": "Videos/drafts/cie-igcse-accounting-25/video-map.draft.external-p11.json",
    "task": "T-VIDEOMAP-P11 (multi-cluster uncovered-course lane: fourteen channel pools)",
    "reviewAppliedUtc": "2026-11-13T13:23:03Z"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-accounting-25/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:10.978Z"
+ "generatedUtc": "2026-11-19T14:58:51.604Z"
 }

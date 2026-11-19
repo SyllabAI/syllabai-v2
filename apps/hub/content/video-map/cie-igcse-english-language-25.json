@@ -16,6 +16,11 @@
    "provider": "IGCSESUCCESS (First Language English 0500 register; the 0475 Literature titles are RESERVED pending the lit-21 owner decision — not silently dropped)",
    "method": "IGCSESUCCESS (First Language English 0500 register; the 0475 Literature titles are RESERVED pending the lit-21 owner decision — not silently dropped) flat-enumerated 2026-11-17T04:07:29Z; routing: machine-checkable Tier B anchors (CIE paper-number routing incl. compact ON/MJ/FM sessions and qp_NN patterns, 0580 papers 2/4 extended vs 1/3 core, WMA01 C12/C34 IAL-legacy composites, IAL unit-paper reviews) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
    "enumeratedUtc": "2026-11-17T14:02:23Z"
+  },
+  "p15": {
+   "provider": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision)",
+   "method": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) flat-enumerated 2026-11-19T14:37:11Z; routing: machine-checkable Tier B anchors (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences of the family per the P13 shared-unit precedent; 0417/4IT0 ICT; 4MA1 maths-A higher/foundation/modular-24 units; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH Unit-N session anchors per the P14 Assil law analog; 9708) + section-marker narrowing + section-name binding (verbatim pipe/dash field match) + distinctive-token Tier A (df<=3) + the four-gate topic-lecture class, over every routed row with the degenerate-bind re-adjudication bar",
+   "enumeratedUtc": "2026-11-19T14:52:13Z"
   }
  },
  "review": {
@@ -24,7 +29,7 @@
   "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; lane authorized 2026-11-13 \"lane P11\"",
   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09: \"approve and review yourself\"; lane authorized 2026-11-13: \"lane P11\")",
   "evidenceBasis": "Identity: oEmbed sweep 439/439 author==channel-of-record (0 mismatch, 0 dead, 0 thumb-fallbacks needed). Tier B: syllabus/paper codes regex-verified in titles (9708/41, 0455/0620 session papers, WDM11, WMA11-14, 4MA1). Tier A: deterministic distinctive-token pre-pass (df<=3) then explicit-code class tables, section-marker narrowing (CIE chapter series) and Chapter-N narrowing (verified syllabus-structured igcse-online series) over EVERY routed pair; cross-register rows carry boardMismatch:true; degenerate vocabulary binds (single-token catches incl. teacher-guidance spine specs) dropped on review; three courses re-adjudicated course-level to honest unmapped (igcse-history-17, cie-igcse-history-18, igcse-economics-17).",
-  "rowsApproved": 19,
+  "rowsApproved": 49,
   "rowsRejected": 5,
   "rejects": [
    {
@@ -99,6 +104,17 @@
     "ruledUtc": "2026-11-17T14:02:23Z",
     "evidenceBasis": "Identity: oEmbed sweep 2,830/2,830 author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE paper-number routing per subject incl. compact ON/MJ/FM sessions and the qp_NN paper-store pattern; 0580 papers 2/4 extended vs 1/3 core per the P9 law; WMA01 C12/C34 IAL-legacy composites -> two units each; IAL chemistry \"Unit N <session>\" unit-paper anchors). Tier A: the P13 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar; cross-register binds (ExamSolutions old-GCE teaching titles -> IAL unit courses) carry boardMismatch true at the disclosed P10 bar. ExamSolutions bare GCE session walkthroughs skipped per ANCHOR-GRANULARITY §6 (P9 precedent). Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB/NCERT/GCSE) and the non-qualifier aggregator remainder skipped with reasons (21527 ledgered in work/p14/skips.json by class: {'non-qualifier remainder (aggregator/umbrella content)': 8839, 'no honest binding at the df<=3 bar': 3047, 'guidance/advice/marketing register': 1620, 'O-Level register (no O-Level course in the spine)': 2090, 'other honest skips': 2444, 'out-of-lane register (GCSE/IB/meta)': 280, 'GCE/9MA0 paper evidence (ANCHOR-GRANULARITY §6, P9 precedent)': 3067, 'CIE 0408 World Literature — no spine course': 3, 'NT pools — pool-level ledger (recon verdicts)': 137}); 9 lit-21 titles RESERVED pending the owner decision (work/p14/reserved-lit21.json).",
     "rowsApproved": 1,
+    "rowsRejected": 0,
+    "rejects": []
+   },
+   {
+    "lane": "external-channels-p15 (discovery judgment lane: chem bio by Hosni — the sweep's densest find over the two biggest residual gaps, 0610 x342 + WBI x213; CAIE made easier + Learn Today IGCSE + Science and Stuff for the 0610/0620/0625/0654/0653 registers; Nicos Paphitis 0417 x121; Mark Harrison Ed-IGCSE ICT/CS x93 + 0417 x58; The Math Pad 4MA1 x197 + Libra Maths 4MA1 x127 + 0606 x63; Gilbert Phoon + Shawn Hew 0606/0620; Doctor No Does Science WPH x74 — the P14 Assil law analog; Taughtly 0500 x69; Dr. Maria Emam 0680 x55 + Everything E.M. 0680 x13; GEO-HACKS 0460 x37; Keen Mindz 0452 x64 at 100% register; Learn Economics with Anjuli 0455 + 9708; Belal Sir Ed-IGCSE chem/bio + 0620 with the AQA remainder skipped)",
+    "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+    "ruling": "delegated self-review — owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane; judgment run 2026-11-18",
+    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+    "ruledUtc": "2026-11-19T14:52:13Z",
+    "evidenceBasis": "Identity: oEmbed sweep 1,365/1,365 routed videos author_url channel == channel-of-record via UC id (0 mismatch, 0 dead, 0 thumb fallbacks). Tier B: session/paper codes regex-verified in titles (CIE IGCSE sciences 0610/0620/0625 session/paper registers; 0654/0653 shared-paper anchors binding all three sciences; 0417/4IT0 ICT; 4MA1 higher/foundation/modular-24 routing; 0606; 0452/0455/0680/8291/0460/4GE0/0500 shared-code pairs; IAL WPH/WBI/WCH \"Unit N <session>\" unit-paper anchors per the P14 Assil law analog; 9708). Tier A: the P13/P14 gate ladder (section-marker narrowing, verbatim section-name binding, deduped distinctive-token binds df<=3, the four-gate topic-lecture class) over EVERY routed pair with the degenerate-bind re-adjudication bar. Guidance/advice/marketing registers, the O-Level register, out-of-spine boards (AQA/OCR/IB), the Edexcel UK-GCSE CS register and the no-binding remainder skipped with reasons (3983 ledgered in work/p15/skips.json by class: {'no honest binding at the df<=3 bar': 3401, 'guidance/advice/marketing register': 478, 'out-of-spine board register (AQA/OCR/IB/...)': 89, 'NT-board titles re-adjudicated to skip on the final sanity pass': 15}); 243 lit-0475 titles RESERVED pending the owner decision (work/p15/reserved.json).",
+    "rowsApproved": 30,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -312,6 +328,336 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "IGCSESUCCESS (First Language English 0500 register; the 0475 Literature titles are RESERVED pending the lit-21 owner decision — not silently dropped) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "03j7Dj7MOFg",
+   "title": "2. Analysing Language - Spacesuit (First Language English 0500/0990 IGCSE, Paper 1 Question 2)",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=03j7Dj7MOFg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "1v2aOxsDTv8",
+   "title": "CIE IGCSE 0500/0990 First Language English, Paper 1, Question 3. Extended Response Lesson.",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=1v2aOxsDTv8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "3cz_p74Ri2k",
+   "title": "1. Analysing Language - Honey Hotel (First Language English 0500/0990 CIE IGCSE, Paper 1 Question 2)",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=3cz_p74Ri2k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "5KJOPkFxJJs",
+   "title": "Formal Letter Writing for Directed Writing 🌟 For IGCSE First Language English Paper 2 0500/0990🌟",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=5KJOPkFxJJs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8auHwccyNJM",
+   "title": "Real Student Narrative: Mea Culpa🌟 Settings in Stories 🌟First Language English IGCSE 0500🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=8auHwccyNJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "KW_Sz4nQwbE",
+   "title": "Paper 1 Timed Walkthrough🌟 First Language English IGCSE 0500/0990🌟Do a timed Paper 1 with me!",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=KW_Sz4nQwbE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "LXFPzGn3_uE",
+   "title": "A*  Description Example 🌟Castle by Cyrus🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=LXFPzGn3_uE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QZg71mfmC04",
+   "title": "2027 ✨ Paper 1 - Questions 1a-f ✨ How to answer the short questions for IGCSE First Language English",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=QZg71mfmC04",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "QjJYYC3F1l8",
+   "title": "A* Narrative by a Real Student: The Painting🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=QjJYYC3F1l8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Qnr21LG2Sok",
+   "title": "2027 ✨ Paper 1 - Question 3a-c Vocab Questions ✨ IGCSE First Language English",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=Qnr21LG2Sok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Qntsz9nFE6k",
+   "title": "A* Narratives & Characterisation: Phlogiston 🌟First Language English IGCSE 0500🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=Qntsz9nFE6k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Qoy-uV4nMXA",
+   "title": "Directed Writing 🌟 Write With Me! 🌟 For IGCSE First Language English Paper 2 0500/0990🌟",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=Qoy-uV4nMXA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "S3MozN3yFK8",
+   "title": "2027 ✨ Paper 1 - Question 2b Writer's Attitude ✨ IGCSE First Language English",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=S3MozN3yFK8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "TSfbM-MELGE",
+   "title": "2027 ✨ Paper 1 - Question 4 Extended Response✨ IGCSE First Language English ✨ Do a NEW Paper With Me",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=TSfbM-MELGE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "U6Ekq_qT2d4",
+   "title": "CIE English as a First Language 0500 - Paper 2, Question 2 (Language Analysis)",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=U6Ekq_qT2d4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "VT1P_jZMzF8",
+   "title": "A*  Description Example 🌟Leningrad by Rachel🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=VT1P_jZMzF8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XalEWWMozEE",
+   "title": "A* Narrative by a Real Student: The Invitation🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=XalEWWMozEE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YIpG_f0-xPw",
+   "title": "IGCSE Masterclass for First Language English✨ Live Lessons & Marking ✨ Starting February 2026",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=YIpG_f0-xPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YLfCWwuW7hg",
+   "title": "IGCSE First Language English 🌟 How is Q3 Extended Response Marked for Paper 1? 🌟",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=YLfCWwuW7hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ye_8fy7pkjA",
+   "title": "What is EVALUATION? 🌟 A* Directed Writing 🌟 IGCSE First Language English Paper 2 0500🌟",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=Ye_8fy7pkjA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "YuGXO7NDbaw",
+   "title": "Directed Writing🌟3 student exemplars🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=YuGXO7NDbaw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "eeSGBuQfQf4",
+   "title": "Directed Writing 🌟 Write a Speech With Me! 🌟 For IGCSE First Language English Paper 2 0500/0990🌟",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=eeSGBuQfQf4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gmUZcJiDyQc",
+   "title": "2027 ✨ Paper 1 - Question 3d Writer's Effect ✨ IGCSE First Language English",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=gmUZcJiDyQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jOmPgWbuZmc",
+   "title": "A*  Description by a Real Student: Underwater🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=jOmPgWbuZmc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "kzx0hol8emc",
+   "title": "A* Narrative Example by a Real Student: The Portrait🌟First Language English IGCSE 0500/0990🌟Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=kzx0hol8emc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lDhh_icsNTg",
+   "title": "A* Directed Writing 🌟 IGCSE First Language English Paper 2 0500/0990🌟",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=lDhh_icsNTg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "lxJy2T63q_Y",
+   "title": "IGCSE English as a First Language 0500 - Paper 1, Question 3 (Writing Advice)",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=lxJy2T63q_Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sduGfBc4je0",
+   "title": "A*  Description by Philip: Underwater🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=sduGfBc4je0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "tH0bmx2TfT0",
+   "title": "A* Narrative Example by a Real Student 🌟 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=tH0bmx2TfT0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "uNeV0Sq03MU",
+   "title": "Real A*  Description  🌊Waves by Kalli🌊 First Language English IGCSE 0500/0990🌟 Paper 2",
+   "provider": "taughtly",
+   "watchUrl": "https://www.youtube.com/watch?v=uNeV0Sq03MU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Taughtly (CIE 0500 First Language English register: paper walkthroughs + skills revision) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -600,18 +946,588 @@
    "reviewed": true,
    "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P14 authorized 2026-11-17 \"Proceed\" = file it as P14; judgment lane run 2026-11-17)",
    "reviewedUtc": "2026-11-17T14:02:23Z"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "TSfbM-MELGE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"2027 ✨ Paper 1 - Question 4 Extended Response✨ IGCSE First Language English ✨ Do a NEW Paper With Me\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Qnr21LG2Sok",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"2027 ✨ Paper 1 - Question 3a-c Vocab Questions ✨ IGCSE First Language English\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "S3MozN3yFK8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"2027 ✨ Paper 1 - Question 2b Writer's Attitude ✨ IGCSE First Language English\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "gmUZcJiDyQc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"2027 ✨ Paper 1 - Question 3d Writer's Effect ✨ IGCSE First Language English\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "QZg71mfmC04",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"2027 ✨ Paper 1 - Questions 1a-f ✨ How to answer the short questions for IGCSE First Language English\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "LXFPzGn3_uE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A*  Description Example 🌟Castle by Cyrus🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YLfCWwuW7hg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE First Language English 🌟 How is Q3 Extended Response Marked for Paper 1? 🌟\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "uNeV0Sq03MU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Real A*  Description  🌊Waves by Kalli🌊 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "VT1P_jZMzF8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A*  Description Example 🌟Leningrad by Rachel🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "sduGfBc4je0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A*  Description by Philip: Underwater🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Qntsz9nFE6k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A* Narratives & Characterisation: Phlogiston 🌟First Language English IGCSE 0500🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "8auHwccyNJM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Real Student Narrative: Mea Culpa🌟 Settings in Stories 🌟First Language English IGCSE 0500🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YuGXO7NDbaw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Directed Writing🌟3 student exemplars🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "YIpG_f0-xPw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE Masterclass for First Language English✨ Live Lessons & Marking ✨ Starting February 2026\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "jOmPgWbuZmc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A*  Description by a Real Student: Underwater🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "XalEWWMozEE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A* Narrative by a Real Student: The Invitation🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "QjJYYC3F1l8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A* Narrative by a Real Student: The Painting🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "kzx0hol8emc",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A* Narrative Example by a Real Student: The Portrait🌟First Language English IGCSE 0500/0990🌟Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "tH0bmx2TfT0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A* Narrative Example by a Real Student 🌟 First Language English IGCSE 0500/0990🌟 Paper 2\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "5KJOPkFxJJs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Formal Letter Writing for Directed Writing 🌟 For IGCSE First Language English Paper 2 0500/0990🌟\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Ye_8fy7pkjA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"What is EVALUATION? 🌟 A* Directed Writing 🌟 IGCSE First Language English Paper 2 0500🌟\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "eeSGBuQfQf4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Directed Writing 🌟 Write a Speech With Me! 🌟 For IGCSE First Language English Paper 2 0500/0990🌟\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "Qoy-uV4nMXA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Directed Writing 🌟 Write With Me! 🌟 For IGCSE First Language English Paper 2 0500/0990🌟\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "lDhh_icsNTg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"A* Directed Writing 🌟 IGCSE First Language English Paper 2 0500/0990🌟\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "KW_Sz4nQwbE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"Paper 1 Timed Walkthrough🌟 First Language English IGCSE 0500/0990🌟Do a timed Paper 1 with me!\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "1v2aOxsDTv8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"CIE IGCSE 0500/0990 First Language English, Paper 1, Question 3. Extended Response Lesson.\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "03j7Dj7MOFg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"2. Analysing Language - Spacesuit (First Language English 0500/0990 IGCSE, Paper 1 Question 2)\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "3cz_p74Ri2k",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"1. Analysing Language - Honey Hotel (First Language English 0500/0990 CIE IGCSE, Paper 1 Question 2)\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "U6Ekq_qT2d4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"CIE English as a First Language 0500 - Paper 2, Question 2 (Language Analysis)\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
+  },
+  {
+   "anchor": {
+    "level": "course",
+    "ref": "cie-igcse-english-language-25"
+   },
+   "kind": "past-paper-walkthrough",
+   "video": "lxJy2T63q_Y",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [],
+   "unitScope": null,
+   "confidence": "high",
+   "method": "paper-code",
+   "boardMismatch": false,
+   "reviewed": true,
+   "reviewer": "delegated self-review (agent, per owner chat 2026-11-09 \"approve and review yourself\"; P15 discovery filed 2026-11-18, owner \"Continue working\" 2026-11-18 = run the lane)",
+   "reviewedUtc": "2026-11-19T14:52:13Z",
+   "evidence": "title: \"IGCSE English as a First Language 0500 - Paper 1, Question 3 (Writing Advice)\"; 0500 First Language English paper register anchor — bound to both syllabus-year courses (shared code, disclosed) in the title — machine-checkable course anchor (ANCHOR-GRANULARITY §5); oEmbed author verified"
   }
  ],
  "coverage": {
   "specPointsTotal": 18,
   "specPointsMapped": 5,
   "specPointsUnmapped": 13,
-  "videosTotal": 19,
-  "videosMapped": 19,
+  "videosTotal": 49,
+  "videosMapped": 49,
   "videosUnmapped": 0,
-  "mappingRows": 19,
+  "mappingRows": 49,
   "byConfidence": {
-   "high": 0,
+   "high": 30,
    "medium": 1,
    "low": 18
   }
@@ -632,7 +1548,13 @@
    "path": "Videos/drafts/cie-igcse-english-language-25/video-map.draft.external-p14.json",
    "task": "T-VIDEOMAP-P14 (channel recon judgment lane: T1 x10 + T2 x2 pools + the Allery-CIE re-adjudication group; 18,046 judgment-pool uploads dispositioned exactly-once)",
    "reviewAppliedUtc": "2026-11-17T14:02:23Z"
+  },
+  "p15": {
+   "repo": "SyllabAI/syllabai-resources",
+   "path": "Videos/drafts/cie-igcse-english-language-25/video-map.draft.external-p15.json",
+   "task": "T-VIDEOMAP-P15 (discovery judgment lane: gap-targeted channel search sweep, T1 x14 + T2 x4 pools; 5,591 discovery-pool uploads dispositioned exactly-once)",
+   "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-17T14:41:11.215Z"
+ "generatedUtc": "2026-11-19T14:58:51.626Z"
 }
