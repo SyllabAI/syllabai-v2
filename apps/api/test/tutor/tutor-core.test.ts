@@ -372,8 +372,8 @@ the topic (e.g. "moles", "bonding", "equilibria"), or open the tutor from
 inside your course so it searches that course's material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v19 (T-TUTOR-AIM-P2): the identity follows the bumped prompt
-    expect(promptIdentity()).toBe("tutor-grounded/v19");
+    // v20 (T-TUTOR-AIM-P3 run-003): the identity follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v20");
   });
 
   test("the v17 refusal shape law is in the system prompt", () => {

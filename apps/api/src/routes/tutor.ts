@@ -89,6 +89,7 @@ import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
 import { defaultClock } from "../services/selfmark";
 import { buildSqlLearnerModel } from "../services/tutor/learner-model";
+import { buildCourseSlugOf } from "../services/tutor/exam-calendar";
 import { buildPaperPinResolver } from "../services/tutor/paper-question";
 import { tutorEngagementTelemetrySink } from "../services/learner/engagement-recorder";
 import { buildLlmChain, chainAsLlmProvider, type FailoverLlmChain } from "../services/llmchain";
@@ -699,6 +700,12 @@ export function buildTutorRouters(
     // the pre-wiring behavior) and the telemetry seam records the frozen
     // engagement rows (Phase 2) — never the research log (061 dormant).
     learnerModel: buildSqlLearnerModel(sql, defaultClock),
+    // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the served-registry bridge — the
+    // ask's curriculum code → the course slug of record (the hub's OWN
+    // mapping, apps/hub/content/courses.json through the served
+    // content-plane seam). Absent/unresolvable = the ask carries no exam
+    // context honestly (degrade-never-block).
+    courseSlugOf: buildCourseSlugOf(),
     telemetry: tutorEngagementTelemetrySink(sql, defaultClock),
   });
   return {

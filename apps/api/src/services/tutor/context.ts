@@ -20,6 +20,8 @@ import type { EvidenceItem } from "./evidence";
 import type { QuizScaffold } from "./quiz-scaffold";
 import type { MarkContext } from "./mark-context";
 import { classifyCommandWord, type CommandWordClassification } from "./command-word";
+import type { CourseExamTargetView } from "@syllabai/contracts";
+import { examContextBriefOf, type ExamContextBrief } from "./exam-calendar";
 
 // ── KnowledgeRetriever.KnowledgeContext (:39-73) ────────────────────────────
 
@@ -491,6 +493,12 @@ export interface TutorContext {
    *  classification (null = the question does not OPEN with an exam command
    *  word — nothing renders, the v18 shape law governs alone). */
   commandWord: CommandWordClassification | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the exam-calendar brief computed
+   *  from the learner's DECLARED exam target for the ask's scoped course
+   *  (null = no declared target / unscoped / window ended — NOTHING renders,
+   *  the empty-context byte-stability law keeps the composed prompt at the
+   *  pre-run bytes). Consumed by the generator's EXAM CONTEXT block. */
+  exam: ExamContextBrief | null;
 }
 
 /** Java String.format(Locale.ROOT, "%.2f", v) posture for the briefs. */
@@ -532,6 +540,11 @@ export interface AssembleInputs {
    *  classifier's input (deterministic, no read, no LLM; absent/null =
    *  unclassified, nothing renders). */
   query?: string | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the learner's DECLARED exam target
+   *  for the ask's scoped course, prematched by the pipeline (absent/null =
+   *  no declared target / unscoped — the brief computes to null and nothing
+   *  renders). The countdown derives on the exam-target read (ADR-031). */
+  examTarget?: CourseExamTargetView | null;
   now: Date;
 }
 
@@ -590,6 +603,10 @@ export function assembleTutorContext(inputs: AssembleInputs): TutorContext {
     aim: assembleAim(knowledge, states, readings, inputs.pendingReviews),
     // T-TUTOR-AIM-P2 (DC10 §7.3): the deterministic command-word pin
     commandWord: inputs.query == null ? null : classifyCommandWord(inputs.query),
+    // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the exam-calendar brief — pure
+    // over the prematched target, no read, no LLM; null keeps the prompt at
+    // the pre-run bytes (the byte-stability law)
+    exam: examContextBriefOf(inputs.examTarget ?? null),
   };
 }
 

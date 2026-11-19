@@ -334,6 +334,10 @@ export function buildTutorModule(
     maxTopics: deps.maxTopics,
     vectorCandidates: deps.vectorCandidates,
     evidenceLimit: deps.evidenceLimit,
+    // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the served-registry bridge
+    // forwards with the ports it serves (absent dep = no exam context
+    // honestly — degrade-never-block)
+    courseSlugOf: deps.courseSlugOf,
   };
   return {
     sessionStore: buildTutorSessionStore(sql, clock),

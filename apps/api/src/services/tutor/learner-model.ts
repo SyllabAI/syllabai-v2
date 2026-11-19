@@ -62,6 +62,7 @@
  */
 
 import { skillStatesByRecency, misconceptionStatesByProbability } from "../learner/state";
+import { examTargetsFor } from "../learner-model/exam-target-reader";
 import { relaxedToPrior, TUTOR_BDT_PAPER_DEFAULTS } from "./context";
 import type {
   SkillState,
@@ -73,6 +74,7 @@ import type {
 import type { LearnerModelPort } from "./karag";
 import type { Clock } from "./session-store";
 import type { SqlFn } from "./sql";
+import type { CourseExamTargetView } from "@syllabai/contracts";
 
 export function buildSqlLearnerModel(sql: SqlFn, clock: Clock): LearnerModelPort {
   return {
@@ -152,6 +154,25 @@ export function buildSqlLearnerModel(sql: SqlFn, clock: Clock): LearnerModelPort
         where learner_id = ${learnerId} and status = ${"PENDING"} and node_id = any(${ids})
       `;
       return rows.map((r) => ({ nodeId: String(r.node_id) }));
+    },
+
+    async examTargets(learnerId: string): Promise<CourseExamTargetView[]> {
+      // T-TUTOR-AIM-P3 run-003 (DC10 §7.9) — the M3 EXTENSION of record (the
+      // P2 precedent, documented): the exam-target read joins the ask path —
+      // ONE indexed enrolments read + ONE batched series read per ask, ONLY
+      // for account askers (the caller guards learnerId == null — anonymous
+      // previews read NOTHING). Composes the CANONICAL ExamTargetReader seam
+      // (the 043 consolidation law — no SQL copy): the countdown derives on
+      // that read against this port's clock (ADR-031). The adapter wraps the
+      // session-store Clock into the seam's SubmitClock shape (examTargetsFor
+      // calls now() only — the newId leg is never exercised here).
+      return examTargetsFor(
+        {
+          sql,
+          clock: { newId: () => crypto.randomUUID(), now: () => clock.now() },
+        },
+        learnerId,
+      );
     },
   };
 }

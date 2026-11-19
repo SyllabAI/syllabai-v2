@@ -1178,6 +1178,13 @@ export function buildClaService(deps: ClaServiceDeps) {
           // exactly where they were, the byte-stability law)
           aim: null,
           commandWord: null,
+          // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the CLA surface carries NO
+          // exam context either (the same disclosed residual posture — the
+          // exam-calendar plane lands on the tutor surface first); the null
+          // keeps this surface's prompt bytes exactly where they were (the
+          // byte-stability law — the v20 law bullet is inert without an
+          // EXAM CONTEXT block).
+          exam: null,
         };
         generated = await deps.generator.generate(question.trim(), [], tutorContext);
       }

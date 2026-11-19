@@ -18,6 +18,7 @@ import type { EvidenceItem } from "./evidence";
 import { QUIZ_STEM_BOUND, type QuizScaffold } from "./quiz-scaffold";
 import type { MarkContext } from "./mark-context";
 import type { AimBrief } from "./context";
+import type { ExamContextBrief } from "./exam-calendar";
 import type { CommandWordClassification } from "./command-word";
 
 // ── refusal texts (KaRagService.java :48-83, byte-verbatim) ─────────────────
@@ -107,8 +108,19 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  stonewalled a mid-chat topic pivot with no way forward for the
  *  learner, and the turn recorded refused=false (evidence present but
  *  wrong — the analytics gap the refusal-truth patch closes). */
-export const PROMPT_VERSION = "19";
-/** v19 (T-TUTOR-AIM-P2, DC10 §7.5): the AIM law — when the user message
+export const PROMPT_VERSION = "20";
+/** v20 (T-TUTOR-AIM-P3 run-003, DC10 §7.9): the EXAM CALENDAR law — the
+ *  operator's §13.3 gate release (trace 1a1f41f5679f5ec5 "proceed"): the
+ *  learner's DECLARED exam sitting for the scoped course rides prompt
+ *  assembly as the EXAM CONTEXT block (metadata only, §13.2 — the window
+ *  dates, the series code/label, the URGENCY band computed by the
+ *  deterministic bands of record), the v20 law weights answer EMPHASIS by
+ *  the calendar, and the §7.8 directive's planned count tightens at
+ *  NEAR/IN_WINDOW (the spacing arm). The v19 AIM law text is
+ *  BYTE-UNCHANGED; an ask without an EXAM CONTEXT block renders nothing
+ *  and is answered exactly as before (the empty-context byte-stability
+ *  law, test-pinned).
+ *  v19 (T-TUTOR-AIM-P2, DC10 §7.5): the AIM law — when the user message
  *  carries the deterministic AIM block (computed from the learner's own
  *  record), open with the correction it names, compress what it marks
  *  PROVEN to one line, bias examples toward the strong areas it lists.
@@ -207,6 +219,22 @@ const AIM_LAW = `- AIM. When the user message carries an AIM block, it was compu
   every claim still comes from the SOURCES with its citation, and an
   ask without an AIM block is answered exactly as before.`;
 
+/** DC10 §7.9 exam-calendar law (v20, run-003): how to consume the
+ *  deterministic EXAM CONTEXT block. Presentation/emphasis only — the
+ *  calendar reorders and re-weights what the SOURCES already back; it
+ *  never introduces a claim class, never touches the disclosure or
+ *  refusal laws, and its absence leaves the answer path byte-unchanged. */
+const EXAM_CALENDAR_LAW = `- Exam calendar. When the user message carries an EXAM CONTEXT
+  block, it states this learner's own declared sitting for the course and
+  its URGENCY band. Weight emphasis by the calendar: at NEAR or
+  IN_WINDOW lead with exam discipline — apply the command-word shapes,
+  rehearse mark-scheme literacy, frame practice as timed preparation; at
+  FAR favour the foundations the SOURCES cite. The calendar shapes
+  emphasis and ordering only: every claim still comes from the SOURCES
+  with its citation, the two-tier disclosure law and the refusal shape
+  law are untouched, and an ask without an EXAM CONTEXT block is
+  answered exactly as before.`;
+
 // ── fence codes (v6 prompt-injection defence, :77-97 + :449-465) ────────────
 
 /** unambiguous alphabet: no 0/O/1/I/L lookalikes inside a fence code */
@@ -270,6 +298,7 @@ ${REFUSAL_SHAPE_LAW}
 ${VOICE_LAW}
 ${COMMAND_WORD_SHAPE_LAW}
 ${AIM_LAW}
+${EXAM_CALENDAR_LAW}
 - When the QUESTION names a specific exam-paper question and the SOURCES
   carry its question text and/or mark scheme, answer part by part in the
   paper's own order and label each part exactly as the paper labels it
@@ -384,6 +413,13 @@ export interface PromptContext {
    *  deterministic classification of the fenced question. null = no pin —
    *  nothing renders. */
   commandWord?: CommandWordClassification | null;
+  /** T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the deterministic exam-calendar
+   *  brief — OUR scaffolding (computed from the learner's DECLARED exam
+   *  target for the scoped course; the §11 injection law keeps free text
+   *  out — dates, the series code/label, the band). null = no declared
+   *  target / unscoped / window ended — NOTHING renders (the empty-context
+   *  byte-stability law). */
+  exam?: ExamContextBrief | null;
 }
 
 /** Paper evidence renders to the larger bound (:368-376). */
@@ -639,6 +675,35 @@ export function userPrompt(
       );
     }
     sb.push(`\n`);
+  }
+  // T-TUTOR-AIM-P3 run-003 (DC10 §7.9): the deterministic exam-calendar
+  // block — unfenced (OUR scaffolding computed from the learner's DECLARED
+  // exam target for the scoped course; metadata only, §13.2/§11 — the
+  // window dates, the series code/label, the URGENCY band; never learner
+  // free text). Rendered ONLY when a live declared target matched: an ask
+  // without one renders NOTHING here — the composed prompt keeps the
+  // pre-run bytes (the empty-context byte-stability law, test-pinned).
+  const exam = context.exam;
+  if (exam != null) {
+    sb.push(`EXAM CONTEXT (the learner's declared exam target for this course):\n`);
+    sb.push(
+      `- SITTING: ${exam.seriesCode} — ${exam.seriesLabel}; window ` +
+        `${exam.windowStart} to ${exam.windowEnd}\n`,
+    );
+    // the CALENDAR line is urgency-aware (deterministic strings per band):
+    // an open window says so plainly instead of a negative countdown
+    if (exam.urgency === "IN_WINDOW") {
+      sb.push(
+        `- CALENDAR: the sitting window is open now — it closes in ` +
+          `${exam.daysToWindowEnd} day(s)\n`,
+      );
+    } else {
+      sb.push(
+        `- CALENDAR: the window opens in ${exam.daysToWindowStart} day(s) ` +
+          `and closes in ${exam.daysToWindowEnd}\n`,
+      );
+    }
+    sb.push(`- URGENCY: ${exam.urgency}\n\n`);
   }
   sb.push("\nSOURCES (cite these as [n]):\n");
   let rendered = 0;

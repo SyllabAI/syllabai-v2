@@ -52,11 +52,23 @@ import { createHash } from "node:crypto";
 import type { SqlFn } from "./sql";
 import type { Clock } from "./session-store";
 import type { AimBrief, MatchedTopic } from "./context";
+import type { ExamUrgency } from "./exam-calendar";
 
 /** The draw size of record (drill/draw.ts DRAW_SIZE) — re-declared here as
  *  the per-module seam (the ADR-032 copy doctrine); the planned count and
  *  the actual draw both flow from the drill path's own constant. */
 export const DRILL_DRAW_SIZE = 5;
+
+/** T-TUTOR-AIM-P3 run-003 (DC10 §7.9) — the SPACING arm's multiplier of
+ *  record, fixed at build time (the §12 open-question-4 precedent):
+ *  when the learner's DECLARED sitting is NEAR or IN_WINDOW, the pending
+ *  review loop tightens — the directive's planned count doubles so the
+ *  tonight-chip plans denser practice as the calendar closes. The CLAIM's
+ *  actual scheduled count stays the F-182/F-185 draw law's own (the run-001
+ *  chip law governs plan-vs-actual: the chip flips to the claimed copy from
+ *  the response's ACTUAL count). FAR and every no-calendar ask keep the
+ *  base ×1 law byte-identical (the existing pins stay green). */
+export const EXAM_DRILL_SPACING_MULTIPLIER = 2;
 
 /** The DECISION half of the directive — computed by the pipeline from the
  *  reads it already holds (M3: no new read, no LLM, no turn needed). */
@@ -86,16 +98,25 @@ export function selectDrillDirectiveBasis(
   matchedTopics: ReadonlyArray<MatchedTopic>,
   pendingReviewNodeIds: ReadonlyArray<string>,
   courseRef: string | null,
+  // T-TUTOR-AIM-P3 run-003 (DC10 §7.9, the spacing arm): the declared
+  // sitting's urgency band — IN_WINDOW and NEAR tighten the planned count;
+  // FAR and null keep the base law byte-identical (optional for call-site
+  // compatibility — the existing pins stay green)
+  examUrgency?: ExamUrgency | null,
 ): DrillDirectiveBasis | null {
   const pending = new Set(pendingReviewNodeIds);
   const dueNodes = matchedTopics
     .filter((t) => pending.has(t.nodeId))
     .map((t) => ({ nodeId: t.nodeId, code: t.code, title: t.title }));
   if (dueNodes.length === 0) return null;
+  const spacing =
+    examUrgency === "IN_WINDOW" || examUrgency === "NEAR"
+      ? EXAM_DRILL_SPACING_MULTIPLIER
+      : 1;
   return {
     nodes: dueNodes,
     courseRef,
-    plannedCount: dueNodes.length * DRILL_DRAW_SIZE,
+    plannedCount: dueNodes.length * DRILL_DRAW_SIZE * spacing,
     // the handoff rides the CORRECTION arm (§7.8) — independent of decay
     teachHandoff: aim?.correction ?? null,
   };

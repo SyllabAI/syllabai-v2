@@ -1,0 +1,50 @@
+{
+  "task": "T-TUTOR-AIM-P3",
+  "run": "run-003",
+  "kind": "the DC10 §7.9 exam-date awareness — the §13.3 gate released by the operator (one changeset)",
+  "agent": "Super Z (zai-web session web-b30b2f0b-5100-49db-a722-e5370b2ed7d5, chat e55037d4-6fd0-4a2e-94b0-dc777c61929f, dispatch trace 1a1f41f5679f5ec5)",
+  "date": "2026-11-19",
+  "plan_of_record": "docs/DC10-TUTOR-AIMED-ANSWERING-PLAN.md §7.9 (the exam-date awareness half — 'pass the sitting date into prompt assembly so pendingReview spacing and answer emphasis weight the calendar') + §13.1 (the prompt instruction budget) + §13.2 (offer-not-claim / metadata only) + §13.3 (mechanism evidence ≠ default-on — THIS run is the separately-released bump); P1 merged #1061, P2 merged #1068, P3 run-001 merged #1091, run-002 merged #1110; the lane was cut at main 25d1db65d (the #1116 merge moment; the tutor plane byte-unchanged since the run-002 merge 4caa6570 — verified by the lane-cut diff)",
+  "operator_order": "proceed (trace 1a1f41f5679f5ec5) — the §13.3 gate-taxonomy release for the §7.9 exam-date awareness lane, the ONLY remaining command-buildable DC10 feature; the CI-green merge continues the operator's standing order of record (the #1061/#1091/#1110 precedent)",
+  "implemented": {
+    "the_read_m3_extension": "the learner's DECLARED exam targets join the ask path through the tutor learner-model port's new examTargets(learnerId) — the CANONICAL ExamTargetReader seam composed (services/learner-model/exam-target-reader.ts, the 043 consolidation law — NO SQL copy): ONE indexed enrolments read (learner_course_enrolments where target_series_id is not null) + ONE batched series read (exam_series by id=any(uuid[])), the countdown DERIVED on that read (ADR-031, whole calendar days); anonymous askers read NOTHING (the account-only law — the caller guards learnerId == null); OPTIONAL port method — a port predating this band degrades to the no-exam-context ask honestly",
+    "the_match_law": "matchExamTarget (PURE, exam-calendar.ts): the ask's curriculum code (prep.scopeCode — the hub sends its registry's curriculumCode as courseRef, V53) → the course slug → the declared target for THAT course. THE BRIDGE OF RECORD: apps/hub/content/courses.json — the SERVED registry (the hub's own picker data, census-pinned content plane) read through the SAME seam the drill bank uses (hubContentDir), lazily once per isolate, never a duplicate mapping. THE AMBIGUITY LAW: a code claimed by MORE THAN ONE course maps to null and the exam match renders NOTHING (the V53 posture verbatim — the REAL registry carries 11 such collisions, e.g. 9701-2025-2027 for the AS/A-level chemistry pair; a sibling course's sitting would be a guessed exam date); every miss (no scope / unmapped code / no declared target / unscoped ask) is the honest empty — degrade-never-block",
+    "the_bands": "examUrgencyOf (PURE) — the deterministic bands of record FIXED AT BUILD TIME (the §12 open-question-4 precedent): IN_WINDOW = the sitting window is open now (daysToWindowStart <= 0 and daysToWindowEnd >= 0); NEAR = the window opens within EXAM_NEAR_DAYS = 21 calendar days; FAR = beyond; an ENDED window (daysToWindowEnd < 0) weighs NOTHING — examContextBriefOf returns null, a passed sitting is not calendar pressure",
+    "the_emphasis_arm": "the v20 bump (registry tutor-grounded, PROMPT_VERSION '20', the byte-equality law — the v19 AIM law text BYTE-UNCHANGED): the EXAM CALENDAR law bullet joins the system prompt (weights emphasis by the calendar — NEAR/IN_WINDOW lead with exam discipline, FAR favours foundations; emphasis and ordering only, the disclosure and refusal laws untouched, an ask without the block answered exactly as before) + the EXAM CONTEXT block renders in the user prompt (unfenced OUR scaffolding after the AIM plane, before SOURCES: SITTING = series code — label + window dates; CALENDAR = urgency-aware day counts; URGENCY = the band) ONLY when a live declared target matched — metadata only per §13.2/§11, never learner free text",
+    "the_spacing_arm": "selectDrillDirectiveBasis gains the optional examUrgency param: at NEAR/IN_WINDOW the directive's plannedCount doubles (×2, EXAM_DRILL_SPACING_MULTIPLIER fixed at build time) — the §7.8 tonight-loop tightens as the calendar closes (the §7.9 'pendingReview spacing weights the calendar' arm inside prompt assembly); the CLAIM's actual scheduled count stays the F-182/F-185 draw law's own (the run-001 chip law governs plan-vs-actual); FAR and every no-calendar ask keep the base law byte-identical (the existing 17 drill-directive pins byte-green)",
+    "the_cla_surface": "carries NO exam context (exam: null — the same disclosed residual posture as its aim/commandWord nulls): the v20 law bullet is inert without an EXAM CONTEXT block, the CLA's prompt bytes stay where they were"
+  },
+  "gates": {
+    "typecheck": "bun x turbo run typecheck rc=0 — 5/5 surfaces (CI parity)",
+    "api_suite": "FULL API suite 3074 pass / 13 skip / 0 fail (43,654 expects, 175 files) — the run-002 baseline 3043 + 31 new pins, ZERO regressions",
+    "new_pins": "exam-calendar battery 31/31 (the bands incl. the boundary 21/22 law and the ended-window null; the brief verbatim; the bridge incl. the REAL-registry unique-row pins AND the real-collision ambiguity pin 9701-2025-2027 → null; the spacing arm ×2/×1; the prompt byte-stability — absent vs null byte-identical, the block verbatim, the AIM→EXAM→SOURCES ordering; the pipeline composition — the scoped/resolveActive-scoped/no-scope-refusal/anonymous/broken-bridge postures; the port seam composition — the two-read order + the one-read short-circuit)",
+    "neighbor_batteries": "test/tutor 463/463 + test/cla 237/237 green (the moved v20 identity pins byte-consistent)",
+    "budget_lint": "the §13.1 prompt budget green — 132 non-blank lines ≤ the 160 headroom pin (the v20 law costs 12 lines; cap 200)",
+    "hub": "ZERO hub files in the diff — hub typecheck green via the turbo gate",
+    "schema_planes": "ZERO migration — schema.ts + 0000_snapshot.json + the rebaseline pin UNTOUCHED (no fold, no drift surface); ZERO wire change (the exam context is prompt-side only)"
+  },
+  "laws_held": [
+    "fail-closed: the V53 refusal posture untouched; a no-scope ask still refuses deterministically (pinned)",
+    "degrade-never-block: every exam-plane miss (unmapped code, ambiguous code, no target, broken bridge, pre-§7.9 port) degrades to the honest empty ask — pinned at the pipeline level",
+    "pinned prompts, bump + byte-equality: the v20 bump; the v19 law text byte-unchanged; the empty-context bytes test-pinned at BOTH the prompt and the pipeline level",
+    "account-only: anonymous askers read NOTHING (the examTargets read never fires — pinned)",
+    "M3: the single-read law EXTENDED (the P2 documented precedent, this is the second documented extension) — the extension is TWO bounded indexed reads, only for account askers, only when the port carries the method",
+    "$0 stack: ZERO new LLM calls (the whole plane is deterministic pure functions + a prompt law)",
+    "§13.1: the instruction budget lint green (132 ≤ 160); the v20 law text subtractable on the bump's own terms",
+    "§13.2/§11: the EXAM CONTEXT block carries metadata only (dates, series code/label, band) — never learner free text, never internal state"
+  ],
+  "deviations_disclosed": [
+    "the M3 extension is the DOCUMENTED second extension of record — the plan §7.9 sentence itself orders the sitting date into prompt assembly; the carrier is two bounded indexed reads (enrolments by learner_id, series by id batch) on the ask path",
+    "the NIGHTLY scheduler's insert spacing stays BYTE-UNTOUCHED (the frozen NightlyDecayJob port law): the plan's words put the calendar 'into prompt assembly', so the spacing arm rides the §7.8 directive's planned count (the assembly's own pendingReview consumption), not the cron pass",
+    "the registry bridge reads the SERVED content plane (courses.json — the hub's own mapping of record, the bundleBank seam precedent); a missing/undecodable file yields the honest empty map and every lookup misses (exam awareness degrades, the ask is never blocked)",
+    "the countdown derives on the exam-target READ against the port's clock (ADR-031) — a same-ask discrepancy between read clock and ask clock is bounded by the read window (one UTC day), the 041/066 derived-never-stored law",
+    "the v19 identity pins moved to v20 deliberately (5 spots: aim.test, aim-pipeline.test ×2, tutor-core.test, cla-service.test) — the bump's own version comment records the move",
+    "a pre-existing seam gap OBSERVED not touched: the drill claim's bankOf(courseRef) keys on the SLUG registry while the directive row carries the curriculum code — the claim's per-address skip already handles it honestly (the 409 retryable posture); out of §7.9 scope, recorded here for the drill surface's own band",
+    "no DB contact this run — the mock-SqlFn pattern of record; the plane's first LIVE exercise rides the next production ask by a learner with a declared exam series (the learner/exam-series surfaces already let learners declare targets today)"
+  ],
+  "receipt_review_record": {
+    "self_check": "the lane re-read the plan §7.9 sentence verbatim and pinned the two arms it names (pendingReview spacing, answer emphasis) as pure, unit-pinned functions; every miss path pinned as the honest empty; the REAL registry pinned drift-loud (unique rows + the real collision)"
+  },
+  "worklog": "appended to .syllabai/worklog.md — the SIXTIETH filing (append-only, the byte-delta asserted before push)",
+  "task_card": ".syllabai/tasks/T-TUTOR-AIM-P3.yaml — run_003_execution_record appended; status IN_REVIEW posture continues (the CI-green merge standing order)"
+}

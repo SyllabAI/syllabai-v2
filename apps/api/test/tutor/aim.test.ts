@@ -169,10 +169,10 @@ describe("assembleAim (DC10 §7.5 selection laws)", () => {
   });
 });
 
-describe("the v19 prompt (DC10 §7.5 AIM law + §7.3 pin)", () => {
-  test("the version bump of record: tutor-grounded/v19", () => {
-    expect(PROMPT_VERSION).toBe("19");
-    expect(promptIdentity()).toBe("tutor-grounded/v19");
+describe("the v20 prompt (DC10 §7.5 AIM law + §7.3 pin + §7.9 exam calendar)", () => {
+  test("the version bump of record: tutor-grounded/v20", () => {
+    expect(PROMPT_VERSION).toBe("20");
+    expect(promptIdentity()).toBe("tutor-grounded/v20");
   });
 
   test("the AIM law is in the system prompt (both variants)", () => {
