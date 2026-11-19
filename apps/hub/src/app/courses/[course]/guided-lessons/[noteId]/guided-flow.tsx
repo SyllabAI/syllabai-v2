@@ -122,6 +122,11 @@ import { cn } from "@/lib/utils";
 import { figuresForModule } from "@/lib/guided-figures";
 import { checkMode, gradeWritten } from "@/lib/guided-written";
 import {
+  keyPointGroups,
+  mapChecksToGroups,
+  practiceTokens,
+} from "@/lib/guided-chunk-law";
+import {
   interactionBlock,
   tutorAskHref,
   usableInteraction,
@@ -405,66 +410,10 @@ type Stage =
  * existing resume-at-first-unanswered navigation, so a rating carried over
  * from the legacy arc still reaches every unanswered check. */
 
-const KP_PAIR_WORD_BUDGET = 30;
-
-function wordCount(s: string): number {
-  return s.trim().split(/\s+/).length;
-}
-
-/** §5.2: key points one per card, or two per card when both fit the 30-word
- *  beat budget — greedy over the authored order, deterministic. */
-function keyPointGroups(kps: string[]): string[][] {
-  const groups: string[][] = [];
-  for (const kp of kps) {
-    const last = groups[groups.length - 1];
-    if (
-      last &&
-      last.length === 1 &&
-      wordCount(last[0]) < KP_PAIR_WORD_BUDGET &&
-      wordCount(kp) < KP_PAIR_WORD_BUDGET
-    ) {
-      last.push(kp);
-    } else {
-      groups.push([kp]);
-    }
-  }
-  return groups;
-}
-
-const MAP_SCORE_FLOOR = 0.15;
-const MAP_MARGIN_RATIO = 0.75;
-
-/** §5.2: deterministic check→key-point-group mapping. Keyword containment
- *  between the check (stem + options) and each group's key points; a check
- *  interleaves only when one group wins CLEARLY (score floor + margin) —
- *  otherwise it stays in the end block (the conservative fallback law). */
-function mapChecksToGroups(groups: string[][], questions: GuidedQuestion[]): Map<string, number> {
-  const groupWords = groups.map((g) => new Set(practiceTokens(g.join(" "))));
-  const out = new Map<string, number>();
-  for (const q of questions) {
-    const checkWords = practiceTokens([q.stem, ...q.options.map((o) => o.text)].join(" "));
-    if (checkWords.length === 0) continue;
-    let best = -1;
-    let bestScore = 0;
-    let second = 0;
-    groupWords.forEach((gw, gi) => {
-      if (gw.size === 0) return;
-      const hits = checkWords.filter((w) => gw.has(w)).length;
-      const score = hits / checkWords.length;
-      if (score > bestScore) {
-        second = bestScore;
-        bestScore = score;
-        best = gi;
-      } else if (score > second) {
-        second = score;
-      }
-    });
-    if (best >= 0 && bestScore >= MAP_SCORE_FLOOR && bestScore >= second / MAP_MARGIN_RATIO) {
-      out.set(q.id, best);
-    }
-  }
-  return out;
-}
+/* ─────────── P1 arc helpers — the chunking law of record ───────────
+ * keyPointGroups / mapChecksToGroups / practiceTokens live in
+ * lib/guided-chunk-law.mjs (P3 single source: the import runner's G-CHUNK
+ * gate and the QA census validate the SAME law this arc renders). */
 
 /** Figures ride the key-point card they were authored after (FIGURES-2.1,
  *  "after the key points they illustrate"): even distribution across the
@@ -919,6 +868,7 @@ export function GuidedLessonFlow({
               role="dialog"
               aria-modal="true"
               aria-label={`Guided lesson — ${noteTitle}`}
+              data-guided-stage="open"
               className="guided-stage-in fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-muted"
             >
               <header className="sticky top-0 z-10 border-b bg-background/85 backdrop-blur">
@@ -2414,27 +2364,6 @@ interface PracticeItem {
   model: string;
   /** recall items get the honest keyword auto-check hint on reveal */
   autoCheckModel?: string;
-}
-
-/** Content words for the recall auto-check — stopword-stripped, plural-trimmed. */
-const PRACTICE_STOP_WORDS = new Set([
-  "the", "and", "for", "are", "but", "not", "you", "all", "any", "can", "was", "one",
-  "our", "out", "get", "has", "him", "his", "how", "its", "new", "now", "old", "see",
-  "two", "way", "who", "did", "that", "this", "with", "from", "they", "have", "will",
-  "your", "what", "when", "where", "which", "into", "than", "then", "them", "these",
-  "those", "there", "their", "been", "were", "also", "such", "each", "other", "more",
-  "most", "some", "only", "same", "very", "just", "because", "about", "over", "under",
-  "between", "both", "must", "like", "made", "make", "makes", "called", "call", "uses",
-  "used", "use", "using",
-]);
-
-function practiceTokens(text: string): string[] {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, " ")
-    .split(/\s+/)
-    .filter((w) => w.length > 2 && !PRACTICE_STOP_WORDS.has(w))
-    .map((w) => (w.length > 3 && w.endsWith("s") ? w.slice(0, -1) : w));
 }
 
 /**
