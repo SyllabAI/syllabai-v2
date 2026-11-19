@@ -1095,7 +1095,7 @@ describe("(U15) the Table app — the manual's flow, end to end", () => {
 // end to end (the a11y path: the screen buttons by data attr) ──
 
 describe("(U15) the Equation app — Simul Equation + Polynomial end to end", () => {
-  test("(U15a) the launch law: the Equation menu with the three functions; Solver rides the notice fence; the relaunch resets", () => {
+  test("(U15a) the launch law: the Equation menu with the three functions; the relaunch resets (amended phase E: Solver opens its input screen — the fence item is implemented)", () => {
     const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
     clickKey(el, "Home");
     clickCtl(el, "data-calc-app", "equation");
@@ -1103,9 +1103,10 @@ describe("(U15) the Equation app — Simul Equation + Polynomial end to end", ()
     expect(el.querySelector('[data-calc-screen-btn="Simul Equation"]')).not.toBeNull();
     expect(el.querySelector('[data-calc-screen-btn="Polynomial"]')).not.toBeNull();
     expect(el.querySelector('[data-calc-screen-btn="Solver"]')).not.toBeNull();
-    clickCtl(el, "data-calc-screen-btn", "Solver");
-    expect(screenOf(el)).toBe("notice"); // the pinned-out fence holds
-    clickCtl(el, "data-calc-screen-btn", "Notice back");
+    clickCtl(el, "data-calc-screen-btn", "Solver"); // phase E: the phase-D fence item is now the Solver flow
+    expect(screenOf(el)).toBe("eq-solver-in");
+    clickCtl(el, "data-calc-screen-btn", "Solver in back");
+    clickKey(el, "Home");
     clickCtl(el, "data-calc-app", "equation"); // the relaunch (the retention law)
     expect(screenOf(el)).toBe("eq-menu");
     act(() => {
@@ -1212,6 +1213,114 @@ describe("(U15) the Equation app — Simul Equation + Polynomial end to end", ()
     clickKey(el, "All clear");
     expect(cellText(el, '[data-calc-eq-cell="0-0"]')).toBe("0");
     expect(cellText(el, '[data-calc-eq-cell="2-3"]')).toBe("0");
+    act(() => {
+      root.unmount();
+    });
+  });
+});
+
+// ── (U16) T-MG-CALC-2 phase E: the Solver — the manual's flow end to end ──
+
+describe("(U16) the Solver — the manual's flow end to end", () => {
+  test("(U16a) the fence is gone: Solver opens the equation input (the phase-D notice item is implemented)", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Solver");
+    expect(screenOf(el)).toBe("eq-solver-in");
+    expect(el.querySelector('[data-calc-screen-btn="Insert ="]')).not.toBeNull();
+    expect(el.querySelector('[data-calc-screen-btn="Register equation"]')).not.toBeNull();
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U16b) end-to-end: x−5 registered → the Solve Target ([x] selected) → the initial 0 → Execute → x=5 with L−R≈0", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Solver");
+    for (const k of ["variable x", "Subtract", "5", "Execute"]) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-solver-target");
+    expect(el.querySelector('[data-calc-screen-btn="Target x"]')!.getAttribute("aria-pressed")).toBe("true");
+    clickCtl(el, "data-calc-screen-btn", "Target x");
+    expect(screenOf(el)).toBe("eq-solver-init");
+    // the default initial value: x is unstored → 0 (the engine's var law)
+    expect(cellText(el, "[data-calc-solver-init-field]")).toBe("0");
+    clickCtl(el, "data-calc-screen-btn", "Execute solve");
+    expect(screenOf(el)).toBe("eq-solver-res");
+    expect(cellText(el, "[data-calc-solver-var]")).toBe("x");
+    expect(cellText(el, "[data-calc-solver-solution]")).toBe("5");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U16c) the '=' form + the target order: y=x+5 lists y FIRST (the appearance order) with x the DEFAULT target; y unstored → x=−5", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Solver");
+    clickKey(el, "variable y");
+    clickCtl(el, "data-calc-screen-btn", "Insert ="); // the manual's own menu-path law for the = sign
+    for (const k of ["variable x", "Add", "5", "Execute"]) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-solver-target");
+    const labels = [...el.querySelectorAll("[data-calc-screen-btn]")].filter((n) => /^Target [A-Fxyz]$/.test(n.getAttribute("data-calc-screen-btn") || "")).map((n) => n.getAttribute("data-calc-screen-btn"));
+    expect(labels).toEqual(["Target y", "Target x"]);
+    expect(el.querySelector('[data-calc-screen-btn="Target x"]')!.getAttribute("aria-pressed")).toBe("true"); // the manual's law: [x] selected
+    clickCtl(el, "data-calc-screen-btn", "Target x");
+    clickCtl(el, "data-calc-screen-btn", "Execute solve");
+    expect(cellText(el, "[data-calc-solver-solution]")).toBe("-5"); // y unstored reads 0 → x = −5
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U16d) the no-variable equation '1+2' → Variable ERROR at registration (our ruling; the class from the PDF's error list)", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Solver");
+    for (const k of ["1", "Add", "2", "Execute"]) clickKey(el, k);
+    expect(screenOf(el)).toBe("eq-solver-in");
+    expect(cellText(el, "[data-calc-app-error]")).toContain("Variable ERROR");
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U16e) the non-convergence: 1÷x=0 → the Continue/Exit confirmation screen; Exit returns to the stored equation", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Solver");
+    for (const k of ["1", "Divide", "variable x", "Execute"]) clickKey(el, k);
+    clickCtl(el, "data-calc-screen-btn", "Target x");
+    clickCtl(el, "data-calc-screen-btn", "Execute solve");
+    expect(screenOf(el)).toBe("eq-solver-res");
+    expect(cellText(el, "[data-calc-solver-message]")).toContain("No solution found");
+    clickCtl(el, "data-calc-screen-btn", "Exit solver");
+    expect(screenOf(el)).toBe("eq-solver-in");
+    expect(el.querySelector("[data-calc-solver-equation]")!.textContent).toContain("\\div x"); // the stored equation (the step-9 law; KaTeX renders ÷ as \div)
+    act(() => {
+      root.unmount();
+    });
+  });
+
+  test("(U16f) the snapshot law: the Calculate buffer is restored on leaving (the retention table — the sessions are separate)", () => {
+    const { root, el } = mountCW({ levelHint: "igcse-chemistry-19", seed: { model: null } });
+    clickKey(el, "5");
+    clickKey(el, "Add");
+    clickKey(el, "3"); // typed, NOT executed
+    clickKey(el, "Home");
+    clickCtl(el, "data-calc-app", "equation");
+    clickCtl(el, "data-calc-screen-btn", "Solver");
+    expect(el.querySelector("[data-calc-solver-equation]")!.textContent).not.toContain("5+3"); // the fresh Solver input
+    clickCtl(el, "data-calc-screen-btn", "Solver in back");
+    expect(screenOf(el)).toBe("eq-menu");
+    clickKey(el, "Home"); // the toggle: eq-menu → home
+    clickCtl(el, "data-calc-app", "calculate"); // the Calculate session resumes (the snapshot restores with it)
+    expect(el.querySelector("[data-calc-input]")!.textContent).toContain("5+3"); // restored
     act(() => {
       root.unmount();
     });
