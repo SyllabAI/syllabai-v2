@@ -14,6 +14,8 @@
  * (single-set rows deep-link; multi-set rows land on the grouped view).
  */
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { Curriculum, ExamQuestionTopic, RevisionNote } from "@/lib/contracts";
 import { buildSmeSidebar, buildSpecTreeIndex, smeRowOfNote } from "@/lib/spec-tree";
 
@@ -148,5 +150,61 @@ describe("P2: buildSmeSidebar — counts, expander lists, row-link policy", () =
   test("question counts aggregate every set on the row (D3 law)", () => {
     expect(bar?.counts["TQA1-SME-S3:geometry"].questions).toBe(7);
     expect(bar?.setsByRow["TQA1-SME-S3:geometry"].map((s) => s.slug)).toEqual(["q-multi-1", "q-multi-2"]);
+  });
+});
+
+describe("P3: duplicate sibling titles are qualified (n of k)", () => {
+  // lit-21's real shape: verbatim-colliding titles on the official spine
+  // ("Section A: Poetry" x6 across the 2023/2024/2025 set-text rotation).
+  // T2 collides with T1; SME-S3 collides with SME-S1 ("Number").
+  const dupNodes = CURRICULUM.nodes.map((n) => {
+    const code = String((n as { code: string }).code);
+    if (code === "TQA1-T2") return { ...n, title: "Official one" };
+    if (code === "TQA1-SME-S3") return { ...n, title: "Number" };
+    return n;
+  });
+  const dupIndex = buildSpecTreeIndex({ ...CURRICULUM, nodes: dupNodes } as unknown as Curriculum);
+
+  test("colliding official titles get an honest ordinal; unique titles untouched", () => {
+    expect(dupIndex.tree.topics.map((t) => t.title)).toEqual([
+      "Official one (1 of 2)",
+      "Official one (2 of 2)",
+    ]);
+    const base = buildSpecTreeIndex(CURRICULUM);
+    expect(base.tree.topics.map((t) => t.title)).toEqual(["Official one", "Official two"]);
+  });
+
+  test("the SME picker layer qualifies collisions too (numbers stay positional)", () => {
+    expect(dupIndex.tree.smeSections?.map((s) => s.title)).toEqual([
+      "Number (1 of 2)",
+      "Algebra",
+      "Number (2 of 2)",
+    ]);
+    expect(dupIndex.tree.smeSections?.map((s) => s.number)).toEqual([1, 2, 3]);
+  });
+
+  test("codes are never touched — deep links stay stable", () => {
+    expect(dupIndex.tree.topics.map((t) => t.code)).toEqual(["TQA1-T1", "TQA1-T2"]);
+    expect(dupIndex.subtopicByCode.has("TQA1-SME-S3:geometry")).toBe(true);
+    expect(dupIndex.topicByCode.get("TQA1-SME-S3")?.title).toBe("Number (2 of 2)");
+  });
+});
+
+describe("P3 on the REAL lit-21 bundle: colliding official titles become unique", () => {
+  const lit21Path = join(import.meta.dir, "../../../content/cie-igcse-english-literature-21/curriculum.json");
+  const lit21 = buildSpecTreeIndex(JSON.parse(readFileSync(lit21Path, "utf8")) as unknown as Curriculum);
+
+  test("no two rendered official rows share a title after qualification", () => {
+    const official = lit21.tree.topics; // SME sections are excluded from the official spine
+    const titles = official.map((t) => t.title);
+    expect(new Set(titles).size).toBe(titles.length);
+    expect(titles[0]).toBe("Section A: Poetry (1 of 6)");
+    expect(titles.filter((t) => t.startsWith("Section A: Poetry")).length).toBe(6);
+  });
+
+  test("the SME picker layer's titles stay unique (no collisions there)", () => {
+    const sme = lit21.tree.smeSections?.map((s) => s.title) ?? [];
+    expect(sme.length).toBeGreaterThan(0);
+    expect(new Set(sme).size).toBe(sme.length);
   });
 });

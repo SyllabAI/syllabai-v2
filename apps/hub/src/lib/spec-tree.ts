@@ -242,6 +242,10 @@ export function buildSpecTreeIndex(
     }
   }
 
+  // T-QA-ORG-001 P3: qualify verbatim-colliding titles on both rendered
+  // trees (the official spine and the SME picker layer) — see the helper.
+  qualifyDuplicateTitles(tree.topics);
+  if (tree.smeSections) qualifyDuplicateTitles(tree.smeSections);
   return { tree, subtopicOfSpecPoint, topicOfSubtopic, subtopicByCode, topicByCode };
 }
 
@@ -396,6 +400,35 @@ export function buildSmeSidebar(
         : `${base}/exam-questions?subtopic=${encodeURIComponent(row)}`;
   }
   return out;
+}
+
+// ── T-QA-ORG-001 P3: official-spine hygiene — duplicate sibling titles ──────
+
+/**
+ * The parsed official spines repeat section names verbatim across exam
+ * components and year blocks (lit-21 renders "Section A: Poetry" six times —
+ * the 2023/2024/2025 set-text rotation — and chem-25 repeats every AS/A2
+ * topic title), and the upstream parse truncated some titles outright ("Set
+ * texts for examination in 2023 – Paper"). The repo carries no fuller source
+ * to restore the real paper/component names — spine copy, kg export and
+ * curriculum all agree — so the builder qualifies COLLIDING titles with their
+ * honest position in the collision group ("(n of k)"): no two rendered rows
+ * are indistinguishable, nothing is invented. Deterministic in corpus order;
+ * unique titles untouched; deep links key on codes, never titles. When the
+ * upstream corpus learns real disambiguators (paper names in title or
+ * description), prefer them — this rule only fires on verbatim collisions.
+ */
+function qualifyDuplicateTitles(topics: SpecTopic[]): void {
+  const groups = new Map<string, SpecTopic[]>();
+  for (const t of topics) {
+    const g = groups.get(t.title) ?? [];
+    g.push(t);
+    groups.set(t.title, g);
+  }
+  for (const g of groups.values()) {
+    if (g.length < 2) continue;
+    for (const [n, t] of g.entries()) t.title = `${t.title} (${n + 1} of ${g.length})`;
+  }
 }
 
 /** "4CH1-1.10" sorts after "4CH1-1.9" — numeric, not lexical. */
