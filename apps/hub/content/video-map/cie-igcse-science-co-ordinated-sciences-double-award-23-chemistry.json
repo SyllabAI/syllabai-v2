@@ -19,7 +19,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 117,
+  "rowsApproved": 119,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -30,7 +30,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 111,
+    "rowsApproved": 113,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -1587,6 +1587,28 @@
    "identityMethod": "oembed"
   },
   {
+   "id": "FCUANaOq4NY",
+   "title": "Physics 0625 Cambridge IGCSE | Careless Mistake: Copying 2.5 as 5.2",
+   "provider": "fundoo-tutor",
+   "watchUrl": "https://www.youtube.com/watch?v=FCUANaOq4NY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Fundoo Tutor IGCSE Grade 9 and 10 (Cambridge IGCSE 0610/0455/0625/0620 misconception/error-analysis rows in the 'subject | code | error-class | detail' pipe format) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "a54hDUcgedw",
+   "title": "Physics 0625 Cambridge IGCSE | Knowledge Recall Gap (AO1): Density Upside Down",
+   "provider": "fundoo-tutor",
+   "watchUrl": "https://www.youtube.com/watch?v=a54hDUcgedw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Fundoo Tutor IGCSE Grade 9 and 10 (Cambridge IGCSE 0610/0455/0625/0620 misconception/error-analysis rows in the 'subject | code | error-class | detail' pipe format) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
    "id": "70uWhIkjZSo",
    "title": "Co-ordinated Sciences Paper 6 - Summer 2018 - IGCSE (CIE 0654) Exam Practice",
    "provider": "science-and-stuff",
@@ -2155,6 +2177,30 @@
    ],
    "confidence": "medium",
    "evidence": "title 'Formation of Ions - Electrons | Charge' = ion formation charges linked to group number (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "FCUANaOq4NY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C2.5.1",
+    "C2.5.2",
+    "C2.5.3",
+    "C2.5.4",
+    "C2.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-marker narrowing: title names section 2.5 'Simple molecules and covalent bonds' — section points bound at the disclosed higher title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -3353,6 +3399,26 @@
    }
   },
   {
+   "video": "a54hDUcgedw",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "C8.2.1"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 8.2.1 'Describe the Group I alkali metals, lithium, sodium and pota' via token(s) ['density', 'down'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-chemistry-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-chemistry-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "uYubwlPRdCs",
    "lessonRef": null,
    "lessonUrl": null,
@@ -4293,14 +4359,14 @@
   "specPointsTotal": 181,
   "specPointsMapped": 141,
   "specPointsUnmapped": 40,
-  "videosTotal": 117,
-  "videosMapped": 117,
+  "videosTotal": 119,
+  "videosMapped": 119,
   "videosUnmapped": 0,
-  "mappingRows": 117,
+  "mappingRows": 119,
   "byConfidence": {
    "high": 5,
-   "medium": 80,
-   "low": 32
+   "medium": 81,
+   "low": 33
   }
  },
  "inputs": {
@@ -4329,5 +4395,5 @@
    "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-19T21:12:39.348Z"
+ "generatedUtc": "2026-11-20T04:50:51.781Z"
 }

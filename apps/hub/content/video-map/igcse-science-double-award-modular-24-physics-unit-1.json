@@ -14,7 +14,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 154,
+  "rowsApproved": 156,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -25,7 +25,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 154,
+    "rowsApproved": 156,
     "rowsRejected": 0,
     "rejects": []
    }
@@ -2366,6 +2366,28 @@
    "lessonUrl": null,
    "levelTag": "igcse",
    "boardNote": "Science with Hazel (Edexcel-IGCSE trio + maths register; GCSE/IB/A-level registers skipped as out-of-lane) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "XcGgGHCp8iU",
+   "title": "IGCSE Human Biology | Sample Assessment Q4 | Stem Cells & Burns",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=XcGgGHCp8iU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "sQlzIXlLvw0",
+   "title": "IGCSE Human Biology | Sample Assessment Q5 | Capillaries & Smoking Risks",
+   "provider": "team-elevare",
+   "watchUrl": "https://www.youtube.com/watch?v=sQlzIXlLvw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Team Elevare (Edexcel IAL WBI13/WPH13 unit summaries + IGCSE modular chemistry 4WCH1/4WCH2 + 4MB1/4MA1/4BI1/4CH1/4SD0 paper walkthroughs; the IAL IT/econ (WIT/WEC) remainder skipped — no spine courses) (oEmbed author verified per video)",
    "identityMethod": "oembed"
   }
  ],
@@ -5320,6 +5342,46 @@
    }
   },
   {
+   "video": "sQlzIXlLvw0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.13 'explain the detrimental effects of excessive exposure of the' via token(s) ['human', 'risks'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "XcGgGHCp8iU",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "5.13"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 3.13 'explain the detrimental effects of excessive exposure of the' via token(s) ['burns', 'cells', 'human'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved igcse-physics-19 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "igcse-physics-19",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "MnTYZKHSUBk",
    "lessonRef": null,
    "lessonUrl": null,
@@ -5564,15 +5626,15 @@
  ],
  "coverage": {
   "specPointsTotal": 90,
-  "specPointsMapped": 77,
-  "specPointsUnmapped": 13,
-  "videosTotal": 154,
-  "videosMapped": 154,
+  "specPointsMapped": 78,
+  "specPointsUnmapped": 12,
+  "videosTotal": 156,
+  "videosMapped": 156,
   "videosUnmapped": 0,
-  "mappingRows": 154,
+  "mappingRows": 156,
   "byConfidence": {
    "high": 0,
-   "medium": 121,
+   "medium": 123,
    "low": 33
   }
  },
@@ -5597,5 +5659,5 @@
    "task": "T-VIDEOMAP-P4 (inheritance lane)"
   }
  },
- "generatedUtc": "2026-11-19T21:12:39.223Z"
+ "generatedUtc": "2026-11-20T04:50:51.638Z"
 }

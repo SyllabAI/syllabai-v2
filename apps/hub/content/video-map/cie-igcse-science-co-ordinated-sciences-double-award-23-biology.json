@@ -19,7 +19,7 @@
   "ruling": "delegated self-review (derivation spot-check) — owner chat 2026-11-09: 'For now, approve and review yourself'",
   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
   "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-  "rowsApproved": 71,
+  "rowsApproved": 100,
   "rowsRejected": 0,
   "rejects": [],
   "lanes": [
@@ -30,7 +30,7 @@
     "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
     "ruledUtc": "2026-11-10T23:00:00Z",
     "evidenceBasis": "The inheritance lane emits no new LLM title-to-spec decisions: child rows are deterministic derivations of owner-approved parent rows via Videos/drafts/_p4/inheritance-map.json (idf-weighted title-token containment >= 0.55, >= 3 informative tokens). Review targeted the derivation itself: 12 (child, spec) pairs sampled across all six lane families (CIE AS, Edexcel double-award linear, CIE maths core->extended, IAL sciences, Edexcel maths modular units, CIE combined science) and checked child-title vs parent-title vs parent approved rows. The sample exposed degenerate 1.0-containment matches on trivially short spec titles ('Calculate with money.', 'E = Q this equation', 'r = BQ a magnetic field') — one of which carried a parent row and would have emitted a wrong row. Fix applied (min 3 informative tokens), map regenerated, all three pairs confirmed excluded, sample re-verified. Semantics of the surviving mid-band (0.55-0.6) matches spot-confirmed sound (energy-level vs reaction-pathway diagrams; chromatogram interpretation).",
-    "rowsApproved": 66,
+    "rowsApproved": 95,
     "rowsRejected": 0,
     "rejects": []
    },
@@ -928,6 +928,325 @@
    "identityMethod": "oembed"
   },
   {
+   "id": "1Gl3k0-i3es",
+   "title": "IGCSE Biology - Chapter 17 | Inheritance",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=1Gl3k0-i3es",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "6v1wlGjwLQg",
+   "title": "IGCSE Biology - Chapter 6 | Plant Nutrition",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=6v1wlGjwLQg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7O6AuXlzweM",
+   "title": "IGCSE Biology - Chapter 6 | Plant Nutrition",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=7O6AuXlzweM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "7PsLmtdhHDM",
+   "title": "IGCSE Biology - Chapter 17 | Inheritance",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=7PsLmtdhHDM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "8nQW2xrxM_s",
+   "title": "IGCSE Biology - Chapter 19 | Organisms and their Environment",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=8nQW2xrxM_s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "B5yDtuDORyY",
+   "title": "IGCSE Biology - Chapter 2 | Organisation of the Organism",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=B5yDtuDORyY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Evufww_wDe8",
+   "title": "IGCSE Biology - Chapter 16 | Reproduction in Plants",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=Evufww_wDe8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "IVF8ZKTESE0",
+   "title": "IGCSE Biology - Chapter 19 | Organisms and their environment",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=IVF8ZKTESE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Ktk_DOk-NZ8",
+   "title": "IGCSE Biology - Chapter 10 | Diseases & Immunity",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=Ktk_DOk-NZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "MMM7J-SL8G4",
+   "title": "IGCSE Biology - Chapter 20 | Human Influences on Ecosystems",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=MMM7J-SL8G4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NNW8mqa-plg",
+   "title": "IGCSE Biology - Chapter 1 | Characteristics and Classification of Living Organisms",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=NNW8mqa-plg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "NrXlisvziRo",
+   "title": "IGCSE Biology - Chapter 9 | Transport In Animals | Part 1",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=NrXlisvziRo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "V0naA2DGrBY",
+   "title": "IGCSE Biology - Chapter 7 | Human Nutrition",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=V0naA2DGrBY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "V7VhGym1Pqs",
+   "title": "IGCSE Biology - Chapter 12 | Respiration",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=V7VhGym1Pqs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "WHwtNeJ1hoQ",
+   "title": "IGCSE Biology - Chapter 10 | Diseases & Immunity",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=WHwtNeJ1hoQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "Y6ZUGcUD4s0",
+   "title": "IGCSE Biology - Chapter 7 | Human Nutrition",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=Y6ZUGcUD4s0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "a-GZbn5VapM",
+   "title": "IGCSE Biology - Chapter 4 | Biological Molecules",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=a-GZbn5VapM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "coqyGQlBkC0",
+   "title": "Biology 0610 Grade 10 Cambridge IGCSE | Observation/Recording Error (AO3): Benedict's Test",
+   "provider": "fundoo-tutor",
+   "watchUrl": "https://www.youtube.com/watch?v=coqyGQlBkC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Fundoo Tutor IGCSE Grade 9 and 10 (Cambridge IGCSE 0610/0455/0625/0620 misconception/error-analysis rows in the 'subject | code | error-class | detail' pipe format) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "da5NiTnKNa4",
+   "title": "IGCSE Biology - Chapter 12 | Respiration",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=da5NiTnKNa4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "gEn_07ocaQE",
+   "title": "IGCSE Biology - Chapter 9 | Transport in Animals",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=gEn_07ocaQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "iB9iCJBbRuA",
+   "title": "IGCSE Biology - Chapter 11 | Gas Exchange In Humans (Respiratory System)",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=iB9iCJBbRuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "j8Kxxzw1yyQ",
+   "title": "IGCSE Biology - Chapter 18 | Variation & Selection",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=j8Kxxzw1yyQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "jsAnzECioAs",
+   "title": "IGCSE Biology - Chapter 16 | Reproduction in Humans",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=jsAnzECioAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "phbEHhUf730",
+   "title": "IGCSE Biology - Chapter 11 | Gas Exchange in Humans",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=phbEHhUf730",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "qE-jGu4URsE",
+   "title": "IGCSE Biology - Chapter 14 | Coordination and Response",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=qE-jGu4URsE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "rsmxQRxoxNk",
+   "title": "IGCSE Biology - Chapter 20 | Human Influences on Ecosystems",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=rsmxQRxoxNk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "t876ipAgtU8",
+   "title": "IGCSE Biology - Chapter 3 | Movement Into and Out of Cells",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=t876ipAgtU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "xnAyTPdhzj4",
+   "title": "IGCSE Biology - Chapter 18 | Variation and Selection",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=xnAyTPdhzj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
+   "id": "ywK2aJN9wmk",
+   "title": "IGCSE Biology - Chapter 16 | Reproduction",
+   "provider": "biology-zhan-xuan",
+   "watchUrl": "https://www.youtube.com/watch?v=ywK2aJN9wmk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "levelTag": "igcse",
+   "boardNote": "Biology with Zhan Xuan (CIE 0610 IGCSE biology — 100% on-register pool) (oEmbed author verified per video)",
+   "identityMethod": "oembed"
+  },
+  {
    "id": "70uWhIkjZSo",
    "title": "Co-ordinated Sciences Paper 6 - Summer 2018 - IGCSE (CIE 0654) Exam Practice",
    "provider": "science-and-stuff",
@@ -993,6 +1312,58 @@
    ],
    "confidence": "low",
    "evidence": "section-name binding (verbatim field match): title field names subtopic 'Characteristics of living organisms' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NNW8mqa-plg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B1.1.1",
+    "B10.1.7",
+    "B15.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Characteristics and classification of living organisms' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "B5yDtuDORyY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B15.3.2",
+    "B2.1.1",
+    "B2.1.2",
+    "B2.1.3",
+    "B2.1.4",
+    "B2.1.5",
+    "B2.1.6",
+    "B2.1.7",
+    "B2.2.1",
+    "B2.2.2",
+    "B2.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Organisation of the organism' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1085,6 +1456,37 @@
    }
   },
   {
+   "video": "t876ipAgtU8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B3.1.1",
+    "B3.1.2",
+    "B3.1.3",
+    "B3.1.4",
+    "B3.2.1",
+    "B3.2.2",
+    "B3.2.3",
+    "B3.2.4",
+    "B3.2.5",
+    "B3.2.6",
+    "B3.3.1",
+    "B3.3.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Movement into and out of cells' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "B0cH91joZwA",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1126,6 +1528,28 @@
   },
   {
    "video": "Oo-pH6Q1f9Q",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B4.1.1",
+    "B4.1.2",
+    "B4.1.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Biological molecules' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "a-GZbn5VapM",
    "lessonRef": null,
    "lessonUrl": null,
    "specs": [
@@ -1247,6 +1671,26 @@
    }
   },
   {
+   "video": "coqyGQlBkC0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B4.1.3"
+   ],
+   "confidence": "medium",
+   "evidence": "title names 4.1.3 'Describe the use of: • (a) iodine solution test for starch •' via token(s) ['benedict', 'test'] (df 3); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "AgMvvybtRL4",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1316,6 +1760,70 @@
    ],
    "confidence": "low",
    "evidence": "section-name binding (verbatim field match): title field names subtopic 'Photosynthesis' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "7O6AuXlzweM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B6.1.1",
+    "B6.1.10",
+    "B6.1.2",
+    "B6.1.3",
+    "B6.1.4",
+    "B6.1.5",
+    "B6.1.6",
+    "B6.1.7",
+    "B6.1.8",
+    "B6.1.9",
+    "B6.2.1",
+    "B6.2.2",
+    "B6.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Plant nutrition' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "6v1wlGjwLQg",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B6.1.1",
+    "B6.1.10",
+    "B6.1.2",
+    "B6.1.3",
+    "B6.1.4",
+    "B6.1.5",
+    "B6.1.6",
+    "B6.1.7",
+    "B6.1.8",
+    "B6.1.9",
+    "B6.2.1",
+    "B6.2.2",
+    "B6.2.3"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Plant nutrition' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1487,6 +1995,72 @@
    }
   },
   {
+   "video": "Y6ZUGcUD4s0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B7.1.1",
+    "B7.1.2",
+    "B7.1.3",
+    "B7.2.1",
+    "B7.2.2",
+    "B7.3.1",
+    "B7.3.2",
+    "B7.3.3",
+    "B7.3.4",
+    "B7.3.5",
+    "B7.3.6",
+    "B7.3.7",
+    "B7.3.8",
+    "B7.3.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Human nutrition' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "V0naA2DGrBY",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B7.1.1",
+    "B7.1.2",
+    "B7.1.3",
+    "B7.2.1",
+    "B7.2.2",
+    "B7.3.1",
+    "B7.3.2",
+    "B7.3.3",
+    "B7.3.4",
+    "B7.3.5",
+    "B7.3.6",
+    "B7.3.7",
+    "B7.3.8",
+    "B7.3.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Human nutrition' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "2JqqIsrfKvo",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1525,6 +2099,86 @@
    ],
    "confidence": "medium",
    "evidence": "circulatory system and blood pathway = the 9.1.1 description; US channel (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "gEn_07ocaQE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B9.1.1",
+    "B9.1.2",
+    "B9.1.3",
+    "B9.1.4",
+    "B9.2.1",
+    "B9.2.2",
+    "B9.2.3",
+    "B9.2.4",
+    "B9.2.5",
+    "B9.2.7",
+    "B9.2.8",
+    "B9.3.1",
+    "B9.3.3",
+    "B9.3.4",
+    "B9.3.5",
+    "B9.4.1",
+    "B9.4.2",
+    "B9.4.3",
+    "B9.4.4",
+    "B9.4.5",
+    "B9.4.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Transport in animals' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "NrXlisvziRo",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B9.1.1",
+    "B9.1.2",
+    "B9.1.3",
+    "B9.1.4",
+    "B9.2.1",
+    "B9.2.2",
+    "B9.2.3",
+    "B9.2.4",
+    "B9.2.5",
+    "B9.2.7",
+    "B9.2.8",
+    "B9.3.1",
+    "B9.3.3",
+    "B9.3.4",
+    "B9.3.5",
+    "B9.4.1",
+    "B9.4.2",
+    "B9.4.3",
+    "B9.4.4",
+    "B9.4.5",
+    "B9.4.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Transport in animals' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1645,6 +2299,68 @@
    ],
    "confidence": "medium",
    "evidence": "title names 9.3.3 'Identify in diagrams and images the main blood vessels to an' via token(s) ['renal', 'vein'] (df 2); title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Ktk_DOk-NZ8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B10.1.1",
+    "B10.1.10",
+    "B10.1.11",
+    "B10.1.12",
+    "B10.1.13",
+    "B10.1.14",
+    "B10.1.2",
+    "B10.1.3",
+    "B10.1.4",
+    "B10.1.5",
+    "B10.1.8",
+    "B10.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Diseases and immunity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "WHwtNeJ1hoQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B10.1.1",
+    "B10.1.10",
+    "B10.1.11",
+    "B10.1.12",
+    "B10.1.13",
+    "B10.1.14",
+    "B10.1.2",
+    "B10.1.3",
+    "B10.1.4",
+    "B10.1.5",
+    "B10.1.8",
+    "B10.1.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Diseases and immunity' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1800,6 +2516,58 @@
    }
   },
   {
+   "video": "phbEHhUf730",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B11.1.1",
+    "B11.1.2",
+    "B11.1.3",
+    "B11.1.4",
+    "B11.1.5",
+    "B11.1.6",
+    "B11.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Gas exchange in humans' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "iB9iCJBbRuA",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B11.1.1",
+    "B11.1.2",
+    "B11.1.3",
+    "B11.1.4",
+    "B11.1.5",
+    "B11.1.6",
+    "B11.1.7"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Gas exchange in humans' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "aPUPfzsqDgs",
    "lessonRef": null,
    "lessonUrl": null,
@@ -1836,6 +2604,46 @@
    ],
    "confidence": "low",
    "evidence": "topic-complete lecture (verbatim): title names topic 'Respiration' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "da5NiTnKNa4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B12.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Respiration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "V7VhGym1Pqs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B12.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Respiration' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -1891,6 +2699,31 @@
    ],
    "confidence": "low",
    "evidence": "topic-complete lecture (verbatim): title names topic 'Coordination and response' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "qE-jGu4URsE",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B13.1.1",
+    "B13.1.2",
+    "B13.1.3",
+    "B13.1.4",
+    "B13.1.5",
+    "B13.1.6"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names subtopic 'Coordination and response' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2237,6 +3070,135 @@
    }
   },
   {
+   "video": "ywK2aJN9wmk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B15.1.1",
+    "B15.1.2",
+    "B15.1.3",
+    "B15.2.1",
+    "B15.2.3",
+    "B15.2.4",
+    "B15.3.1",
+    "B15.3.3",
+    "B15.3.4",
+    "B15.3.6",
+    "B15.3.7",
+    "B15.4.1",
+    "B15.4.2",
+    "B15.4.3",
+    "B15.4.4",
+    "B15.4.5",
+    "B15.4.6",
+    "B15.4.7",
+    "B15.4.8",
+    "B15.5.1",
+    "B15.5.2",
+    "B15.5.3",
+    "B15.5.4",
+    "B15.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Reproduction' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "Evufww_wDe8",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B15.1.1",
+    "B15.1.2",
+    "B15.1.3",
+    "B15.2.1",
+    "B15.2.3",
+    "B15.2.4",
+    "B15.3.1",
+    "B15.3.3",
+    "B15.3.4",
+    "B15.3.6",
+    "B15.3.7",
+    "B15.4.1",
+    "B15.4.2",
+    "B15.4.3",
+    "B15.4.4",
+    "B15.4.5",
+    "B15.4.6",
+    "B15.4.7",
+    "B15.4.8",
+    "B15.5.1",
+    "B15.5.2",
+    "B15.5.3",
+    "B15.5.4",
+    "B15.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Reproduction' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "jsAnzECioAs",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B15.1.1",
+    "B15.1.2",
+    "B15.1.3",
+    "B15.2.1",
+    "B15.2.3",
+    "B15.2.4",
+    "B15.3.1",
+    "B15.3.3",
+    "B15.3.4",
+    "B15.3.6",
+    "B15.3.7",
+    "B15.4.1",
+    "B15.4.2",
+    "B15.4.3",
+    "B15.4.4",
+    "B15.4.5",
+    "B15.4.6",
+    "B15.4.7",
+    "B15.4.8",
+    "B15.5.1",
+    "B15.5.2",
+    "B15.5.3",
+    "B15.5.4",
+    "B15.5.5"
+   ],
+   "confidence": "low",
+   "evidence": "topic-complete lecture (verbatim): title names topic 'Reproduction' via topic-unique token(s) [] — topic points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "4n7Cd7SLEQE",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2477,6 +3439,94 @@
    }
   },
   {
+   "video": "7PsLmtdhHDM",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B16.1.1",
+    "B16.1.2",
+    "B16.1.3",
+    "B16.1.4",
+    "B16.1.5",
+    "B16.1.6",
+    "B16.1.7",
+    "B16.2.1",
+    "B16.2.2",
+    "B16.2.3",
+    "B16.2.4",
+    "B16.2.5",
+    "B16.2.6",
+    "B16.3.1",
+    "B16.3.10",
+    "B16.3.11",
+    "B16.3.12",
+    "B16.3.2",
+    "B16.3.3",
+    "B16.3.4",
+    "B16.3.5",
+    "B16.3.6",
+    "B16.3.7",
+    "B16.3.8",
+    "B16.3.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Inheritance' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "1Gl3k0-i3es",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B16.1.1",
+    "B16.1.2",
+    "B16.1.3",
+    "B16.1.4",
+    "B16.1.5",
+    "B16.1.6",
+    "B16.1.7",
+    "B16.2.1",
+    "B16.2.2",
+    "B16.2.3",
+    "B16.2.4",
+    "B16.2.5",
+    "B16.2.6",
+    "B16.3.1",
+    "B16.3.10",
+    "B16.3.11",
+    "B16.3.12",
+    "B16.3.2",
+    "B16.3.3",
+    "B16.3.4",
+    "B16.3.5",
+    "B16.3.6",
+    "B16.3.7",
+    "B16.3.8",
+    "B16.3.9"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Inheritance' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "SAckfm77Nak",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2586,6 +3636,138 @@
    }
   },
   {
+   "video": "j8Kxxzw1yyQ",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B17.1.1",
+    "B17.1.2",
+    "B17.1.3",
+    "B17.1.4",
+    "B17.1.5",
+    "B17.2.1",
+    "B17.2.2",
+    "B17.2.3",
+    "B17.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Variation and selection' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "xnAyTPdhzj4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B17.1.1",
+    "B17.1.2",
+    "B17.1.3",
+    "B17.1.4",
+    "B17.1.5",
+    "B17.2.1",
+    "B17.2.2",
+    "B17.2.3",
+    "B17.2.4"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Variation and selection' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "8nQW2xrxM_s",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B18.1.1",
+    "B18.1.2",
+    "B18.2.1",
+    "B18.2.10",
+    "B18.2.11",
+    "B18.2.12",
+    "B18.2.13",
+    "B18.2.14",
+    "B18.2.15",
+    "B18.2.2",
+    "B18.2.3",
+    "B18.2.4",
+    "B18.2.5",
+    "B18.2.6",
+    "B18.2.7",
+    "B18.2.8",
+    "B18.2.9",
+    "B18.3.1",
+    "B19.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Organisms and their environment' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "IVF8ZKTESE0",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B18.1.1",
+    "B18.1.2",
+    "B18.2.1",
+    "B18.2.10",
+    "B18.2.11",
+    "B18.2.12",
+    "B18.2.13",
+    "B18.2.14",
+    "B18.2.15",
+    "B18.2.2",
+    "B18.2.3",
+    "B18.2.4",
+    "B18.2.5",
+    "B18.2.6",
+    "B18.2.7",
+    "B18.2.8",
+    "B18.2.9",
+    "B18.3.1",
+    "B19.1.1"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Organisms and their environment' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
    "video": "g2QtHxpK0i4",
    "lessonRef": null,
    "lessonUrl": null,
@@ -2618,6 +3800,56 @@
    ],
    "confidence": "medium",
    "evidence": "title 'GCSE Biology Revision \"Trophic Levels\" (Triple)' -> 19.2.18 'Explain, in terms of energy loss, why food cha' via distinctive token(s) level; 19.2.14 'Identify the following as the trophic levels i' via distinctive token(s) level (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "rsmxQRxoxNk",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B19.1.2",
+    "B19.1.3",
+    "B19.1.4",
+    "B19.1.5",
+    "B19.2.1",
+    "B19.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Human influences on ecosystems' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
+   "method": "inherited-external",
+   "reviewed": true,
+   "boardMismatch": true,
+   "reviewer": "delegated self-review (derivation spot-check, per owner chat 2026-11-09: 'approve and review yourself')",
+   "reviewedUtc": "2026-11-10T23:00:00Z",
+   "inherit": {
+    "from": "cie-igcse-biology-23",
+    "threshold": 0.55,
+    "map": "Videos/drafts/_p4/inheritance-map.json"
+   }
+  },
+  {
+   "video": "MMM7J-SL8G4",
+   "lessonRef": null,
+   "lessonUrl": null,
+   "specs": [
+    "B19.1.2",
+    "B19.1.3",
+    "B19.1.4",
+    "B19.1.5",
+    "B19.2.1",
+    "B19.2.2"
+   ],
+   "confidence": "low",
+   "evidence": "section-name binding (verbatim field match): title field names topic 'Human influences on ecosystems' — section points bound at the disclosed title-only bar; title-only posture, distinctive-token binding rule (df<=3) or the disclosed higher title-only bar for section-name/topic-lecture rows (multi-point binds disclosed per row) (inherited from the owner-approved cie-igcse-biology-23 external lane via spec-title containment >= 0.55; Videos/drafts/_p4/inheritance-map.json)",
    "method": "inherited-external",
    "reviewed": true,
    "boardMismatch": true,
@@ -2727,16 +3959,16 @@
  ],
  "coverage": {
   "specPointsTotal": 230,
-  "specPointsMapped": 150,
-  "specPointsUnmapped": 80,
-  "videosTotal": 71,
-  "videosMapped": 71,
+  "specPointsMapped": 218,
+  "specPointsUnmapped": 12,
+  "videosTotal": 100,
+  "videosMapped": 100,
   "videosUnmapped": 0,
-  "mappingRows": 71,
+  "mappingRows": 100,
   "byConfidence": {
    "high": 5,
-   "medium": 26,
-   "low": 40
+   "medium": 27,
+   "low": 68
   }
  },
  "inputs": {
@@ -2765,5 +3997,5 @@
    "reviewAppliedUtc": "2026-11-19T14:52:13Z"
   }
  },
- "generatedUtc": "2026-11-19T21:12:39.345Z"
+ "generatedUtc": "2026-11-20T04:50:51.777Z"
 }
