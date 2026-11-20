@@ -41,7 +41,7 @@ const CTX = { angle: "DEG" as const, ans: null, vars: {}, complex: false };
 const val = (v: { exact: true; n: bigint; d: bigint } | { exact: false; v: number }) => v;
 
 describe("(T1) the 1-variable summary — the manual's value set, exact where exact", () => {
-  test("(T1a) {1..5}: the odd-n quartile law rides the include-median halves", () => {
+  test("(T1a) {1..5}: the odd-n quartile law rides the exclude-median halves (the 2026-11-20 erratum)", () => {
     const r = stat1Var([rat(1), rat(2), rat(3), rat(4), rat(5)]);
     expect(r.n).toEqual(rat(5));
     expect(r.sumX).toEqual(rat(15));
@@ -51,9 +51,9 @@ describe("(T1) the 1-variable summary — the manual's value set, exact where ex
     expect(r.s2X).toEqual(rat(5, 2)); // 2·5/4
     expect(r.sigX).toEqual({ exact: false, v: Math.sqrt(2) });
     expect(r.minX).toEqual(rat(1));
-    expect(r.q1).toEqual(rat(2)); // lower half {1,2,3} → 2
+    expect(r.q1).toEqual(rat(3, 2)); // lower half {1,2} → 3/2 (the median 3 excluded)
     expect(r.med).toEqual(rat(3));
-    expect(r.q3).toEqual(rat(4)); // upper half {3,4,5} → 4
+    expect(r.q3).toEqual(rat(9, 2)); // upper half {4,5} → 9/2
     expect(r.maxX).toEqual(rat(5));
   });
   test("(T1b) even n: {1,2,3,4} → the halves are the first/last two", () => {
@@ -74,12 +74,14 @@ describe("(T1) the 1-variable summary — the manual's value set, exact where ex
     expect(r.maxX).toEqual(statEntryToValue("3.75"));
     expect(r.xBar).toEqual(rat(29, 12)); // (1 + 2.5 + 3.75)/3 = 7.25/3 = 29/12
   });
-  test("(T1e) n = 1: s²x/sx are the honest null (the device's Math ERROR); σ²x = 0", () => {
+  test("(T1e) n = 1: s²x/sx are the honest null (the device's Math ERROR); σ²x = 0; Q1/Q3 the honest null (the MG n=1 probe: '–', Med=7)", () => {
     const r = stat1Var([rat(7)]);
     expect(r.s2X).toBeNull();
     expect(r.sX).toBeNull();
     expect(r.sig2X).toEqual(rat(0));
     expect(r.med).toEqual(rat(7));
+    expect(r.q1).toBeNull();
+    expect(r.q3).toBeNull();
   });
   test("(T1f) empty data refuses (no fake results)", () => {
     expect(() => stat1Var([])).toThrow(CalcError);
@@ -94,8 +96,26 @@ describe("(T1) the 1-variable summary — the manual's value set, exact where ex
   test("(T1g) the quartile helper on its own: {1..7}", () => {
     const sorted = [1, 2, 3, 4, 5, 6, 7].map((n) => rat(n));
     const { q1, q3 } = quartilesOf(sorted);
-    expect(q1).toEqual(rat(5, 2)); // the lower half {1,2,3,4} includes the median 4
-    expect(q3).toEqual(rat(11, 2));
+    expect(q1).toEqual(rat(2)); // the lower half {1,2,3} — the median 4 excluded
+    expect(q3).toEqual(rat(6)); // the upper half {5,6,7}
+  });
+
+  test("(T1i) the DISCRIMINATOR SET {1..9}: the MG-probe/device reading Q1 2.5, Med 5, Q3 7.5 (exclude-median)", () => {
+    const r = stat1Var(Array.from({ length: 9 }, (_, i) => rat(i + 1)));
+    expect(r.n).toEqual(rat(9));
+    expect(r.q1).toEqual(rat(5, 2)); // the lower half {1,2,3,4}
+    expect(r.med).toEqual(rat(5));
+    expect(r.q3).toEqual(rat(15, 2)); // the upper half {6,7,8,9}
+  });
+
+  test("(T1j) the official fx-991EX guide's odd-n worked example: 9,13,7,2,19,17,6,1,10,4,18 → Q1 4, Med 9, Q3 17", () => {
+    const r = stat1Var([9, 13, 7, 2, 19, 17, 6, 1, 10, 4, 18].map((n) => rat(n)));
+    expect(r.n).toEqual(rat(11));
+    expect(r.minX).toEqual(rat(1));
+    expect(r.q1).toEqual(rat(4)); // the lower half {1,2,4,6,7} — the guide's own printed value
+    expect(r.med).toEqual(rat(9));
+    expect(r.q3).toEqual(rat(17)); // the upper half {10,13,17,18,19}
+    expect(r.maxX).toEqual(rat(19));
   });
 });
 
