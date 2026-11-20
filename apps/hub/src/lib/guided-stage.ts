@@ -20,9 +20,23 @@
  * inlined at build time — changing the list requires a redeploy):
  *   NEXT_PUBLIC_GUIDED_STAGE_COURSES="igcse-chemistry-19,igcse-physics-19"
  * An empty value disables the stage everywhere (full rollback switch).
+ *
+ * 2026-11-20 — THE LIST WIDENS (plan §7 step 2). Chemistry was verified live
+ * on production (stage takeover walked as a signed-in learner on desktop and
+ * mobile, 375×812; receipt: guided-lessons rollout receipt of record,
+ * workspace `download/rollout/`), and physics/biology corpora now carry the
+ * full P3 landings (interactions[] widget ladder + compressed beats,
+ * chunk_law enforce), so the operator-gated stage-in proceeds for all three
+ * IGCSE sciences (operator go, Discord DM "Proceed with next", 2026-11-20,
+ * trace 83b8e1ed4b08f2adedfe7898a49ca9fe). The default below is the list of
+ * record for environments that do not set the var (production does not);
+ * the env override stays the widen/rollback switch — narrowing it to
+ * "igcse-chemistry-19" reverts physics/biology, emptying it rolls back the
+ * whole stage, both with one redeploy.
  */
 const ALLOWLIST = new Set(
-  (process.env.NEXT_PUBLIC_GUIDED_STAGE_COURSES ?? "igcse-chemistry-19")
+  (process.env.NEXT_PUBLIC_GUIDED_STAGE_COURSES ??
+    "igcse-chemistry-19,igcse-physics-19,igcse-biology-19")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean),
