@@ -106,7 +106,6 @@ import {
   MessageCircleQuestion,
   PenLine,
   RotateCcw,
-  Sparkles,
   Target,
   ThumbsDown,
   ThumbsUp,
@@ -2512,7 +2511,6 @@ function MixedPractice({
     <div className="space-y-3 rounded-md border bg-background p-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="flex items-center gap-2 text-sm font-semibold">
-          <Sparkles className="size-4 text-primary" aria-hidden />
           Go further — mixed practice
         </p>
         <Badge variant="secondary" className="text-2xs">

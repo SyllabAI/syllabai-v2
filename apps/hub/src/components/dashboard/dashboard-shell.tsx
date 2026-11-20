@@ -47,12 +47,12 @@ import {
   GraduationCap,
   LayoutDashboard,
   Menu,
+  MessagesSquare,
   Network,
   PanelLeftClose,
   PanelLeftOpen,
   Plus,
   ScrollText,
-  Sparkles,
   SquareStack,
   User,
   X,
@@ -316,7 +316,9 @@ export function DashboardShell({
       items: [
         { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, exact: pathname === "/dashboard" },
         { href: "/plan", label: "Study plan", icon: CalendarDays },
-        { href: "/tutor", label: "AI Tutor", icon: Sparkles },
+        // t-anti-slop-1 (trace 4183f8af): the sparkle glyph is retired product-wide;
+        // MessagesSquare names the chat tutor.
+        { href: "/tutor", label: "AI Tutor", icon: MessagesSquare },
         { href: "/practice", label: "Practice", icon: Dumbbell },
       ],
     },

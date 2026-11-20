@@ -6,8 +6,8 @@ import {
   LayoutDashboard,
   ListChecks,
   Network,
-  Sparkles,
   Users,
+  Wrench,
   Waypoints,
   type LucideIcon,
 } from "lucide-react";
@@ -64,7 +64,9 @@ export const TEACHER_NAV_GROUPS: TeacherNavGroup[] = [
       { href: "/teacher/test-builder", label: "Test Builder", icon: ClipboardList },
       { href: "/teacher/assignments", label: "Assignments", icon: ListChecks },
       { href: "/teacher/validation", label: "Validation", icon: FileCheck2 },
-      { href: "/teacher/toolkit", label: "Toolkit", icon: Sparkles, prefix: true },
+      // t-anti-slop-1 (trace 4183f8af): sparkle retired product-wide —
+      // Wrench names the toolkit.
+      { href: "/teacher/toolkit", label: "Toolkit", icon: Wrench, prefix: true },
     ],
   },
   {

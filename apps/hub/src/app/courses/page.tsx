@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FileStack, GraduationCap, LibraryBig, Sparkles } from "lucide-react";
+import { FileStack, GraduationCap, LibraryBig, MessagesSquare } from "lucide-react";
 import { listCourses } from "@/lib/courses";
 import { loadContentJson } from "@/lib/corpus";
 import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
@@ -146,7 +146,7 @@ export default async function CoursesIndexPage() {
                 tone="success"
               />
               <StatChip
-                icon={Sparkles}
+                icon={MessagesSquare}
                 label="tutor ready"
                 value={summary.tutorReady}
                 tone="cat"

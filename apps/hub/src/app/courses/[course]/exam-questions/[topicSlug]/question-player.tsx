@@ -59,10 +59,10 @@ import {
   Lightbulb,
   Loader2,
   Maximize2,
+  MessagesSquare,
   MinusCircle,
   PenLine,
   RotateCcw,
-  Sparkles,
   X,
   XCircle,
 } from "lucide-react";
@@ -846,7 +846,7 @@ function QuestionBody({
             aria-haspopup="dialog"
             title="Ask CLA — scaffolded help with this question, never the answer"
           >
-            <Sparkles className="size-3.5 text-primary" aria-hidden /> Ask CLA
+            <MessagesSquare className="size-3.5 text-primary" aria-hidden /> Ask CLA
           </Button>
         </div>
       )}
@@ -1319,7 +1319,7 @@ function TypedAnswerWorkspace({
             {mark.kind === "loading" ? (
               <Loader2 className="size-3.5 animate-spin" aria-hidden />
             ) : (
-              <Sparkles className="size-3.5 text-primary" aria-hidden />
+              <PenLine className="size-3.5 text-primary" aria-hidden />
             )}
             Mark my answer
           </Button>
@@ -1358,7 +1358,7 @@ function TypedAnswerWorkspace({
         <div ref={resultRef} className="mt-3 space-y-2.5 rounded-lg border border-primary/30 bg-primary/5 p-3">
           <div className="flex flex-wrap items-center gap-2">
             <Badge className="gap-1 text-2xs">
-              <Sparkles className="size-3" aria-hidden /> AI-suggested mark: {mark.score}/{mark.max}
+              <PenLine className="size-3" aria-hidden /> AI-suggested mark: {mark.score}/{mark.max}
             </Badge>
             <span className="text-2xs text-muted-foreground">
               via {mark.provider} — check against the mark scheme
@@ -2155,7 +2155,6 @@ function CoreMarkingFlow({
   return (
     <div className="rounded-lg border border-primary/30 bg-primary/[0.03] p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
-        <Sparkles className="size-3.5 text-primary" aria-hidden />
         <span className="text-xs font-medium">Submit for marking</span>
         <span className="text-2xs text-muted-foreground">
           Submitting saves your answer to your account.
@@ -2212,7 +2211,7 @@ function CoreMarkingFlow({
                 </>
               ) : (
                 <>
-                  <Sparkles className="size-3.5 text-primary" aria-hidden /> Mark my draft with AI
+                  <PenLine className="size-3.5 text-primary" aria-hidden /> Mark my draft with AI
                 </>
               )}
             </Button>
@@ -2349,7 +2348,7 @@ function CoreMarkingFlow({
               </>
             ) : (
               <>
-                <Sparkles className="size-3.5" aria-hidden /> Smart Mark my answers
+                <PenLine className="size-3.5" aria-hidden /> Smart Mark my answers
               </>
             )}
           </Button>
@@ -2363,7 +2362,7 @@ function CoreMarkingFlow({
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-2">
             <Badge className="gap-1 text-2xs">
-              <Sparkles className="size-3" aria-hidden /> Smart Mark: {totalAwarded}/{totalPossible}
+              <PenLine className="size-3" aria-hidden /> Smart Mark: {totalAwarded}/{totalPossible}
             </Badge>
             <span className="text-2xs text-muted-foreground">
               {anyAuthoritative

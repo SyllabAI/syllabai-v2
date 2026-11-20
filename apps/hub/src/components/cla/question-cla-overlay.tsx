@@ -93,7 +93,6 @@ import {
   Pencil,
   Scale,
   Send,
-  Sparkles,
   SquarePen,
   Trash2,
   TriangleAlert,
@@ -426,13 +425,12 @@ export function QuestionClaOverlay({
     </button>
   ) : null;
 
-  // SME's gradient header title (background-clip:text, their verbatim
-  // flourish) — short like their "Explain"; the full product name rides
+  // t-anti-slop-1 (operator DM 2026-11-20T19:05:10Z, trace 4183f8af): the
+  // SME reference's gradient wordmark (background-clip:text) is retired —
+  // flat token ink. Short like their "Explain"; the full product name rides
   // the dialog's aria-label. Rides all three shells.
   const panelTitle = (
-    <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-      CLA
-    </span>
+    <span className="text-primary">CLA</span>
   );
 
   // one panel body, rendered by whichever shell is active
@@ -858,13 +856,13 @@ export function QuestionClaOverlay({
     setMessages(EMPTY_CLA_MESSAGES);
   };
 
-  // SME keeps ONE header across their forms: icon + gradient title + the
-  // circle buttons — New chat, then the form toggle, then Close (their
-  // verbatim order)
+  // SME keeps ONE header across their forms: title + the circle buttons —
+  // New chat, then the form toggle, then Close (their verbatim order); the
+  // leading sparkle icon and gradient title retired in t-anti-slop-1
+  // (operator DM 2026-11-20T19:05:10Z, trace 4183f8af)
   const panelHeader = (
     <>
-      <Sparkles className="size-4 shrink-0 text-primary" aria-hidden />
-      <p className="min-w-0 flex-1 truncate pl-1 text-sm font-semibold">{panelTitle}</p>
+      <p className="min-w-0 flex-1 truncate text-sm font-semibold">{panelTitle}</p>
       <button
         type="button"
         onClick={newChat}
@@ -952,8 +950,7 @@ export function QuestionClaOverlay({
           aria-describedby="cla-question-anchor"
         >
           <SheetHeader className="flex-row items-center gap-0 border-b px-4 py-3 text-left">
-            <Sparkles className="size-4 shrink-0 text-primary" aria-hidden />
-            <div className="min-w-0 flex-1 pl-2 leading-tight">
+            <div className="min-w-0 flex-1 leading-tight">
               <SheetTitle className="block text-sm font-semibold">{panelTitle}</SheetTitle>
               <SheetDescription className="sr-only">
                 Answers come from this question only — never from its mark scheme before you attempt.

@@ -15,9 +15,9 @@ import { useMemo, useState } from "react";
 import {
   Check,
   MessageSquare,
+  BookOpenCheck,
   Plus,
   Search,
-  Sparkles,
   Trash2,
   X,
 } from "lucide-react";
@@ -41,10 +41,10 @@ export function AssistantRailBrand() {
   return (
     <div className="flex items-center gap-2.5 border-b px-4 py-3">
       <span
-        className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground"
+        className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground"
         aria-hidden="true"
       >
-        <Sparkles className="size-4" />
+        <BookOpenCheck className="size-4" />
       </span>
       <div className="leading-tight">
         <h2 className="text-sm font-semibold">Assistant chats</h2>
