@@ -52,13 +52,23 @@
  * byte-for-byte ("Learner state: no prior evidence…", the EXPLANATION plan,
  * a null memory digest).
  *
- * SUBSTRATE HONESTY (T-MIG-124 run-001 census): skill_states and
- * misconception_states have live v2 writers (services/learner-model/
- * model-update.ts via the assessment-evidence path) — the brief and the
- * policy's misconception precedence go LIVE on wiring. struggle_inferences,
- * tutor_topic_engagements and review_schedules have NO v2 writers yet —
- * their reads stay honest-empty until those bands land (the engagement
- * recorder — this band's Phase 2 — supplies tutor_topic_engagements).
+ * SUBSTRATE HONESTY (T-MIG-124 run-001 census; re-derived live by the
+ * T-TUTOR-AIM-P5 run-001 loop-closure verification at HEAD — every table
+ * below has a v2 writer of record, see
+ * .syllabai/receipts/T-TUTOR-AIM-P5/run-001-loop-verify.json):
+ * skill_states and misconception_states (services/learner-model/
+ * model-update.ts via the assessment-evidence path AND the T-MIG-137
+ * graded-evidence seam — every marked attempt writes learner state);
+ * struggle_inferences (services/learner-model/struggle-inference.ts,
+ * T-MIG-131 — the @Order(100) phase after the model write);
+ * tutor_topic_engagements (services/learner/engagement-recorder.ts,
+ * T-MIG-124 Phase 2 — wired as the telemetry sink on routes/tutor.ts and
+ * routes/cla.ts); review_schedules (services/cron/review-scheduler.ts,
+ * T-MIG-126 — the nightly-decay window law, routes/cron.ts). The
+ * honest-empty degradation law is unchanged: EMPTY tables still read as
+ * the empty lists ("Learner state: no prior evidence…", the EXPLANATION
+ * plan, a null memory digest) — the writers feed the reads, never the
+ * reverse.
  */
 
 import { skillStatesByRecency, misconceptionStatesByProbability } from "../learner/state";
