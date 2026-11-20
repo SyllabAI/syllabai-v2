@@ -82,5 +82,15 @@
   ".syllabai/receipts/RN-DEBRIS-11/run-040-postReview.json"
  ],
  "standingReminder": "the PAT remains exposed from chat transmission and MUST be revoked/rotated (the thirty-sixth filing of the standing reminder)",
- "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030/031/032/033/034/035/036/037/038/039 precedents); no force-push; fetch-first race-guard at push"
+ "mergePlan": "author does not self-merge — PR for the R0 desk (the filing-time mergePlan law; the desk orders self-merge separately per the run-021/022/023/024/025/026/027/028/029/030/031/032/033/034/035/036/037/038/039 precedents); no force-push; fetch-first race-guard at push",
+ "updatedUtc": "2026-11-20 (post-merge record: PR #1154 merged of record; the merged block rides the run-041 receipts per the standing ride-along law)",
+ "merged": {
+  "sha": "ebef16b33e3cfb3e5a3fec8b347337f92e36dff4",
+  "mergedAt": "2026-11-20T14:15:07Z",
+  "mergeMethod": "merge (2-parent, no squash)",
+  "shaPinnedTo": "9a4e1a6c3c90a78d202111b55e0c1b2f2ee389fa",
+  "mainTipAfter": "ebef16b33e3cfb3e5a3fec8b347337f92e36dff4 == the merge commit (verified via API merged=true; parents [1830efba7850ac82c5815f3ad7a80207584121d3, 9a4e1a6c3c90a78d202111b55e0c1b2f2ee389fa]; the sha verified an ancestor of the live main tip post-merge)",
+  "raceGuard": "the base of record at merge time == 1830efba7850ac82c5815f3ad7a80207584121d3 (the merge commit first parent — API-verified); the base DID move between filing and PUT — the filing base fd6e63c0 advanced twice (the concurrent landing a144d4d1 — the fd6e63c0..a144d4d1 advance, 2 commits / 1 changed path, topped by Merge pull request #1141 from SyllabAI/fix/editor-0028-wire-proof-origin; then during the CI poll at 98b0b1fa the concurrent landing 1830efba — the a144d4d1..1830efba advance, 5 commits / 101 changed paths, topped by Merge pull request #1152 from SyllabAI/t-videomap-p18/run-001) and the branch merged origin/main into itself as 98b0b1fa (round 1 — clean auto-merge) and as 9a4e1a6c (round 2 — clean auto-merge, zero conflict blocks; the run-023 union law not triggered in both rounds) before the PUT; the first PUT attempt at the round-1 head 98b0b1fa failed loud RACE before issuing any PUT (the race receipt of record — pre_put_tip_is_merged_live, zero merge mutations, archived in the lane work); the pre-PUT probe re-verified CI 5/5 success at the pushed head 9a4e1a6c (verify, hub, law-readback, coordination, Vercel Preview Comments) and the merge-sha CI settled completed post-merge (verify/hub/law-readback success, coordination skipped — the standard main-merge shape, cross-checked vs the recent main merges of record); no force-push",
+  "operatorOrder": "the desk self-merge order of record (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e; the Proceed order trace 1a1f93c372796709 carried in the self-merge receipt of record) executed the PUT in-session (merged=true, merged_at 2026-11-20T14:15:07Z, merged_by SyllabAI, zero lost segments); the filing-time no-self-merge mergePlan superseded in the execution of record, disclosed"
+ }
 }
