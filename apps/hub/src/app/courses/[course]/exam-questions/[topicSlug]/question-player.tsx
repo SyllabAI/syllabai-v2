@@ -7,7 +7,7 @@
  *     scroll) and "One at a time" (one question per view — the number grid
  *     and a Previous/Next footer navigate, the grid ring is the truth);
  *     the choice persists locally (localStorage) across visits;
- *   - per-question toolbar: Full screen, Save (bookmark), difficulty chip;
+ *   - per-question toolbar: Full screen, Bookmark, difficulty chip;
  *   - MCQs are ANSWERABLE (SME parity — live SME markup verified 2026-09-18):
  *     the answer UI is always "Choose your answer" letter buttons → Submit
  *     answer → instant marking (green/red) → "Why this is the answer"
@@ -556,11 +556,11 @@ export function QuestionPlayer({
                   >
                     {progress.saved[q.id] ? (
                       <>
-                        <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Saved
+                        <BookmarkCheck className="size-3.5 text-primary" aria-hidden /> Bookmarked
                       </>
                     ) : (
                       <>
-                        <Bookmark className="size-3.5" aria-hidden /> Save
+                        <Bookmark className="size-3.5" aria-hidden /> Bookmark
                       </>
                     )}
                   </Button>
@@ -732,7 +732,7 @@ function BridgeBanner({ status }: { status: AttemptBridgeStatus }) {
     return (
       <div className="rounded-lg border border-success/25 bg-success/5 px-4 py-2.5 text-xs leading-relaxed">
         <span className="inline-flex items-center gap-1.5 font-medium text-success">
-          <CheckCircle2 className="size-3.5" aria-hidden /> Live · SyllabAI core
+          <CheckCircle2 className="size-3.5" aria-hidden /> Connected
         </span>{" "}
         <span className="text-muted-foreground">
           answers in this set are recorded to your real learner model — Smart Mark,
@@ -822,12 +822,11 @@ function QuestionBody({
   const coreJoin: BridgeQuestion | null =
     bridge.kind === "ready" ? (bridge.data.questions[question.id] ?? null) : null;
   const coreLive = bridge.kind === "ready" && coreJoin !== null;
-  // T-QBANK-AILANE-DEDUP-1: the per-box lane badge renders only when it is
-  // the SOLE liveness signifier on the card. When the core marking flow
-  // owns the question (same gate as the flow below), its header "live"
-  // badge is the one liveness statement — a per-box "live draft" badge on
-  // every structured part repeated that fact N+1 times on one card.
-  const coreFlowActive = coreLive && coreJoin !== null && coreJoin.structured.length > 0;
+  // T-QBANK-AILANE-DEDUP-1 + Task 38 §6.2 (UX-3/UX-5 copy law): the per-box
+  // lane badge renders only in the legacy (simulated) lane. In the core
+  // flow the BridgeBanner is the single liveness statement — per-box "live
+  // draft" chips repeated that fact N+1 times and leaked status vocabulary
+  // (uppercase LIVE) into the learner path.
 
   return (
     <div className="space-y-4" data-question-block={question.id}>
@@ -886,7 +885,7 @@ function QuestionBody({
             labelChip={labelChip}
             partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
             coreLive={coreLive}
-            showLaneBadge={!coreFlowActive}
+            showLaneBadge={!coreLive}
             onAskClaPart={coreJoin ? () => onAskClaPart(p.id) : undefined}
           />
         );
@@ -1249,7 +1248,7 @@ function TypedAnswerWorkspace({
     } catch {
       setMark({
         kind: "error",
-        message: `Network error while marking — ${SELF_MARK_POINTER}`,
+        message: "Network error while marking — try again in a moment.",
       });
     }
   };
@@ -1277,14 +1276,8 @@ function TypedAnswerWorkspace({
         statusSlot={
           <>
             {showLaneBadge && (
-              <Badge
-                variant="outline"
-                className={cn(
-                  "px-1 text-2xs uppercase",
-                  coreLive ? "border-success/30 text-success" : "text-muted-foreground",
-                )}
-              >
-                {coreLive ? "live draft" : "simulated"}
+              <Badge variant="outline" className="px-1 text-2xs text-muted-foreground">
+                simulated
               </Badge>
             )}
             {text.length > 0 && (
@@ -1317,7 +1310,11 @@ function TypedAnswerWorkspace({
         }
       />
       <div className="mt-2 flex flex-wrap items-center gap-2">
-        {aiAvailable !== false ? (
+        {/* UX-2 (Task 38 §6.1): in the core flow the CoreMarkingFlow panel
+            below owns the marking story — the legacy lane renders NOTHING
+            here, so the card never shows "AI marking is unavailable" right
+            above a live AI-draft button. */}
+        {coreLive ? null : aiAvailable !== false ? (
           <Button size="sm" variant="outline" disabled={!canMark} onClick={runMark} className="gap-1.5 text-xs">
             {mark.kind === "loading" ? (
               <Loader2 className="size-3.5 animate-spin" aria-hidden />
@@ -1415,14 +1412,11 @@ function TypedAnswerWorkspace({
 
 // ── MCQ part — answerable, marked instantly (SME, research figure 24) ───
 
-// T-QVIEW-AUDIT-BCD-1 batch D (answer-wording unification): ONE tail for
-// the AI-unavailable fallback, single-sourced — the render sites (legacy
-// error, network error, the probed-off static line, the core advisory
-// lane) previously spelled the self-mark pointer three ways. "How did you
-// do?" is the exact footer box label, in every lane (the box renders for
-// structured questions in both the local and the core lane).
-const SELF_MARK_POINTER = 'use “How did you do?” to self-mark instead.';
-const AI_MARK_UNAVAILABLE = `AI marking is unavailable right now — ${SELF_MARK_POINTER}`;
+// T-QVIEW-AUDIT-BCD-1 batch D unified the AI-unavailable fallback tails.
+// Task 38 §6.1/UX-7 (2026-11-20) supersedes the self-mark pointer: a
+// pre-submit status line must never name a control by its post-mark role —
+// the footer "How did you do?" box speaks for itself once it is on screen.
+const AI_MARK_UNAVAILABLE = "AI marking is unavailable right now.";
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
@@ -2162,12 +2156,9 @@ function CoreMarkingFlow({
     <div className="rounded-lg border border-primary/30 bg-primary/[0.03] p-3">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <Sparkles className="size-3.5 text-primary" aria-hidden />
-        <span className="text-xs font-medium">Submit for marking — SyllabAI core</span>
-        <Badge variant="outline" className="border-success/30 px-1 text-2xs uppercase text-success">
-          live
-        </Badge>
+        <span className="text-xs font-medium">Submit for marking</span>
         <span className="text-2xs text-muted-foreground">
-          your written answers go to your real learner account
+          Submitting saves your answer to your account.
         </span>
       </div>
 
@@ -2195,7 +2186,7 @@ function CoreMarkingFlow({
           </Button>
           <span className="text-2xs text-muted-foreground">
             {hasAnyText
-              ? "then Smart Mark marks every part against the mark scheme"
+              ? "Each part is checked against the mark scheme."
               : "type an answer above first"}
           </span>
         </div>
@@ -2226,7 +2217,7 @@ function CoreMarkingFlow({
               )}
             </Button>
             <span className="text-2xs text-muted-foreground">
-              advisory — writes no attempt; marks each typed part against its mark scheme
+              Checks your draft against the mark scheme — nothing is recorded until you submit.
             </span>
           </div>
           {Object.entries(advisory).map(([hubPartId, state]) => {
