@@ -869,7 +869,7 @@ export function GuidedLessonFlow({
               aria-modal="true"
               aria-label={`Guided lesson — ${noteTitle}`}
               data-guided-stage="open"
-              className="guided-stage-in fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-muted"
+              className="guided-stage-in fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-muted"
             >
               <header className="sticky top-0 z-10 border-b bg-background/85 backdrop-blur">
                 <div className="mx-auto flex h-14 max-w-3xl items-center gap-2 px-4 sm:gap-3 sm:px-6">
@@ -931,7 +931,15 @@ export function GuidedLessonFlow({
                   </div>
                 )}
               </header>
-              <main className="mx-auto w-full max-w-[640px] px-4 pb-24 pt-5 sm:px-0 sm:pt-8">
+              {/* t-audit-f1 — redesign-skill diagnosis of the live stage,
+                  operator "Approve" trace fe1de1fca73201231331125315def262
+                  (2026-11-20T15:38:12Z): the scroll shell is a flex column and
+                  this beat column flex-1 justify-center — short beats center in
+                  the remaining viewport height (pb-24 > pt keeps the optical
+                  center slightly high); tall beats grow the column and
+                  top-anchor exactly as before. Presentation-only: the arc,
+                  payloads, persistence and dialog semantics are untouched. */}
+              <main className="mx-auto flex w-full max-w-[640px] flex-1 flex-col justify-center px-4 pb-24 pt-5 sm:px-0 sm:pt-8">
                 {/* keyed per beat — each card lands fresh at the top of the
                     column (the scroll effect above), and the enter animation
                     marks it as new */}
