@@ -1,7 +1,7 @@
 # PENDING — Sidebar vs selector organization on the 27 SME-layered courses
 
-> Recorded 2026-11-20 · status: **P1 + P2 + P3 IMPLEMENTED on `t-qa-org-002/fix` (414729a3 + 5438494a, off origin/main `a144d4d1`) awaiting landing · P0 RETRACTED (erratum — worked as designed)** · task card: `.syllabai/tasks/T-QA-ORG-001-sidebar-vs-selector.yaml` (status OPEN)
-> Evidence: `.syllabai/receipts/T-QA-ORG-001/run-001.json` (audit) + `run-002.json` (P1/P2 + P0 erratum) + `run-003.json` (P3) · full narrative: the QA session's browser-qa report, section "Topic Trees sidebar vs Revision Notes selector — organization audit (2026-11-20)"
+> Recorded 2026-11-20 · status: **LANDED 2026-11-20: P1 + P2 + P3 merged to main via PR #1161 (eb732f9a) · P0 RETRACTED (erratum — worked as designed)** · task card: `.syllabai/tasks/T-QA-ORG-001-sidebar-vs-selector.yaml` (status DONE)
+> Evidence: `.syllabai/receipts/T-QA-ORG-001/run-001.json` (audit) + `run-002.json` (P1/P2 + P0 erratum) + `run-003.json` (P3) + `run-004.json` (landing) · full narrative: the QA session's browser-qa report, section "Topic Trees sidebar vs Revision Notes selector — organization audit (2026-11-20)"
 
 ## What the learner sees (user-reported, confirmed live on 3 courses)
 

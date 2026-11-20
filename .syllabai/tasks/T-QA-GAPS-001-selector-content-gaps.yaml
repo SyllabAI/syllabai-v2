@@ -30,6 +30,9 @@ task:
     (sectionSlug); exam questions (12 courses) need QP/MS source material; the
     all-three trio needs full authoring (curricula exist, content layers empty).
     The card now hands off with per-layer production mode, not just course lists.
+    LANDED 2026-11-20: the records (census run-001 + triage run-002) landed
+    via PR #1163 (48fb28be). The content production itself remains PENDING
+    with the content lane — this card stays OPEN until the 30 courses ship.
 base:
   repo: "syllabai-v2 @ cb0f9c3f (origin/main at recording; census taken against the
     live prod deploy of the 0ca81cca-era tip and re-verified after the advance)"

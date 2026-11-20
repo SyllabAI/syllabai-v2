@@ -3,7 +3,7 @@ task:
   id: T-QA-ORG-001
   title: "Sidebar vs selector organization on the 27 SME-layered courses — numbering fix (spec-tree.ts:210), sidebar mirror decision, demo-session note-page bounce: per docs/PENDING-sidebar-organization-2026-11-20.md"
   owner: "unassigned"
-  status: OPEN
+  status: DONE
   priority: P1
   wave: pending-backlog
   deps: []
@@ -40,6 +40,10 @@ task:
     official-vs-SME pairs intentionally untouched. 18/18 law tests incl. the
     REAL lit-21 bundle, tsc + eslint clean. Upstream residual: restore real
     names + untruncated titles at the corpus parse — the rule then no-ops.
+    LANDED 2026-11-20: PR #1161 merged (eb732f9a) — the P1+P2 sidebar mirror
+    and the P3 n-of-k qualification are on main; the records (PENDING doc,
+    card, receipts run-001..003) landed via PR #1163 (48fb28be). Card DONE;
+    receipt run-004 records the landing itself.
 base:
   repo: "syllabai-v2 @ 118cbd35 (origin/main at recording; live audit run
     against the prod deploy of cb0f9c3f, code cites re-verified on the new tip)"
