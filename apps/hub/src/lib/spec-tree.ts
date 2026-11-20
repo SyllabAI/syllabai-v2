@@ -204,10 +204,18 @@ export function buildSpecTreeIndex(
     .sort(byNodeOrder);
   if (smeSectionNodes.length > 0) {
     tree.smeSections = [];
-    for (const sec of smeSectionNodes) {
+    for (const [i, sec] of smeSectionNodes.entries()) {
       const sme: SpecTopic = {
         code: sec.code,
-        number: sec.order ?? 0,
+        // T-QA-ORG-001 (P1): display number is the 1-based position among the
+        // SME sections — the SME picker's own numbering, verified against the
+        // live picker on 3 courses. The node's `order` field continues after
+        // the official topics' orders, so the old `sec.order ?? 0` rendered
+        // the notes selector as "11. Number" (maths-b) / "38. 1. Atomic
+        // Structure" (chem-25, doubled with the number baked into the title)
+        // while the sidebar beside the same notes numbered them 1-10 / 1-37.
+        // Deep links key on codes, never this number (display-only).
+        number: i + 1,
         title: normalizeSpecText(sec.title),
         subtopics: [],
         specPointCount: 0,
@@ -305,6 +313,89 @@ export function smeRowOfNote(note: RevisionNote, index: SpecTreeIndex): string |
     if (first !== null) return first;
   }
   return null;
+}
+
+// ── T-QA-ORG-001 P2: the sidebar's SME selector mirror ──────────────────────
+
+export interface SmeSidebarData {
+  /** the SME sections — the SAME organization the selectors render */
+  topics: SpecTopic[];
+  counts: Record<string, { notes: number; questions: number; flashcards: number }>;
+  hrefs: { notes: Record<string, string>; questions: Record<string, string> };
+  /** noteId → its SME row code (the reader page's active-row highlight) */
+  noteRow: Record<string, string | null>;
+  /** row code → the notes anchored there, corpus order (tree expander) */
+  notesByRow: Record<string, { noteId: string; title: string; guidedStudy: boolean }[]>;
+  /** row code → the question sets anchored there, corpus order (tree expander) */
+  setsByRow: Record<string, { slug: string; title: string; count: number }[]>;
+}
+
+/**
+ * The sidebar data for the selector-mirror view: on courses whose spine ships
+ * the SME layer, the notes and questions sidebars render the SAME
+ * organization the selectors render (the ADR-039 mirror law, waves 1/8), so
+ * the tree beside a note agrees with the page that linked to it and the row
+ * counts account for every note (the official-spine sidebar undercounted —
+ * bridged notes have no official home). Rows resolve 1:1 from the corpus
+ * topicSlugs (smeRowOfNote / smeRowOfQuestionSet — audited bijections, zero
+ * leftovers). Returns undefined on non-layered courses: the official spine
+ * stays the hub/flashcards view and the whole story there.
+ */
+export function buildSmeSidebar(
+  topics: readonly SpecTopic[] | undefined,
+  notes: readonly RevisionNote[],
+  questionTopics: readonly ExamQuestionTopic[],
+  base: string,
+): SmeSidebarData | undefined {
+  if (!topics || topics.length === 0) return undefined;
+  const out: SmeSidebarData = {
+    topics: [...topics],
+    counts: {},
+    hrefs: { notes: {}, questions: {} },
+    noteRow: {},
+    notesByRow: {},
+    setsByRow: {},
+  };
+  const index = { tree: { smeSections: out.topics } } as unknown as SpecTreeIndex;
+  const bump = (code: string, k: keyof SmeSidebarData["counts"][string], by = 1) => {
+    const cur = out.counts[code] ?? { notes: 0, questions: 0, flashcards: 0 };
+    cur[k] += by;
+    out.counts[code] = cur;
+  };
+  for (const n of notes) {
+    const row = smeRowOfNote(n, index);
+    out.noteRow[n.noteId] = row;
+    if (row) {
+      bump(row, "notes");
+      // first-write wins (corpus order) — the same law the official rows use
+      out.hrefs.notes[row] ??= `${base}/revision-notes/${n.noteId}`;
+      (out.notesByRow[row] ??= []).push({
+        noteId: n.noteId,
+        title: n.title,
+        guidedStudy: n.guidedStudy,
+      });
+    }
+  }
+  for (const t of questionTopics) {
+    const row = smeRowOfQuestionSet(t, index);
+    if (row) {
+      bump(row, "questions", t.questions.length);
+      (out.setsByRow[row] ??= []).push({
+        slug: t.slug,
+        title: t.setName ?? t.name,
+        count: t.questions.length,
+      });
+    }
+  }
+  // row-link policy (the official plane's D3 law, mirrored verbatim): a row
+  // counting every set's questions must deep-link somewhere that holds them
+  for (const [row, sets] of Object.entries(out.setsByRow)) {
+    out.hrefs.questions[row] =
+      sets.length === 1
+        ? `${base}/exam-questions/${sets[0].slug}`
+        : `${base}/exam-questions?subtopic=${encodeURIComponent(row)}`;
+  }
+  return out;
 }
 
 /** "4CH1-1.10" sorts after "4CH1-1.9" — numeric, not lexical. */

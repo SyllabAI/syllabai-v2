@@ -1,0 +1,29 @@
+{
+  "task": "T-QA-ORG-001",
+  "run": "run-002",
+  "kind": "implementation + erratum",
+  "recorded_utc": "2026-11-20T08:30:00Z",
+  "branch": "t-qa-org-002/fix (off origin/main 74b19a41)",
+  "operator_directive": "\"Ok, proceed\" (2026-11-20) — approval to implement the recorded recommendation",
+  "implemented": {
+    "P1_numbering": "spec-tree.ts smeSections display number: raw corpus order (sec.order) → 1-based position — the SME picker's own numbering. The offsets were exactly each course's official-topic count (10/15/37); chem-25 rows double-numbered ('38. 1. Atomic Structure'). Display-only: deep links key on codes. exam-questions/page.tsx:159 (smeAllRows) consumes the same field and picks up the same correction.",
+    "P2_sidebar_mirror": "buildSmeSidebar (spec-tree.ts, pure) — on the 27 SME-layered courses the notes and questions sidebars render the SME sections (the same organization the selectors render, ADR-039 mirror law), so the tree beside a note agrees with the page that linked to it AND row counts account for every note (the official-spine undercount: 93/173 lit-21, 70/239 chem-25, 197/199 maths-b). topic-tree.tsx picks the mirror for notes/questions variants; hub/flashcards variants and all 79 non-layered courses keep the official spine. ProgressRing gained localPercent (mirror rows derive reads ÷ row notes from the same per-note flags; questions-mirror rings stay not-started until the projection learns SME-keyed rows — disclosed residual). Active-row highlight resolves through noteRow/setsByRow; row hrefs mirror the D3 law (single-set deep link / multi-set grouped view)."
+  },
+  "verification": {
+    "law_tests": "13 pass / 0 fail (apps/hub/src/lib/__tests__/sme-sidebar.test.ts): numbering, official-spine exclusion, slug join, sectionSlug disambiguation, honest nulls, undercount fix, expander corpus order, first-write-wins hrefs, D3 row-link law, aggregation",
+    "tsc_noEmit": "exit 0 (whole hub app)",
+    "eslint_touched_files": "exit 0"
+  },
+  "erratum_P0": {
+    "claimed": "run-001 / the browser-qa report finding 5: 'note pages client-bounce to /login for a fresh demo session'",
+    "verdict": "REFUTED — artifact of testing in a cookie-less browser context (agent-browser close/reopen) plus a curl -b cookie-FILE bug during the audit fetches",
+    "same_session_proof": "authenticated demo session: curl 200 on the note URL AND the browser renders the note page directly (h1 'Mathematical Symbols (Edexcel IGCSE Maths)', sidebar tree in DOM)",
+    "anonymous_behavior": "307 → /login?next=… for BOTH the note page and the selector — the designed session gate (lib/route-gate.ts '/courses/' subtree row, T-ACCOUNT-ONLY + option-1 amendment)",
+    "consequence": "no code fix needed; the ladder loses P0 — P1/P2 implemented, P3 (official-spine hygiene) remains open for the content lane"
+  },
+  "residuals_disclosed": [
+    "questions-mirror rings read not-started until the projection gains SME-keyed rows",
+    "flashcards sidebar variant stays on the official spine (its select page is the SME-native deck index)",
+    "official-spine year-variant duplicate topics (lit-21 'Section A: Poetry' x6) remain a content-lane item (P3)"
+  ]
+}
