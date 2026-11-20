@@ -64,7 +64,6 @@ import {
   Network,
   Pencil,
   ScrollText,
-  Sparkles,
   Trash2,
   Users,
 } from "lucide-react";

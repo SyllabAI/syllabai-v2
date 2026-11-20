@@ -6,9 +6,9 @@ import {
   FileQuestion,
   GraduationCap,
   LayoutDashboard,
+  MessagesSquare,
   Network,
   ScrollText,
-  Sparkles,
   User,
   Zap,
 } from "lucide-react";
@@ -72,7 +72,7 @@ export default async function HubPage() {
     },
     {
       href: "/tutor",
-      icon: Sparkles,
+      icon: MessagesSquare,
       title: "Tutor",
       desc: "An AI tutor that shows its working — every answer cites the spec points it draws on.",
     },

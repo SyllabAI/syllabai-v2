@@ -32,9 +32,9 @@ import {
   LayoutDashboard,
   LogIn,
   LogOut,
+  MessagesSquare,
   Network,
   ScrollText,
-  Sparkles,
   SquareStack,
   User,
   Waypoints,
@@ -88,7 +88,9 @@ const TOOLS = [
 ] as const;
 
 const MORE_TOOLS = [
-  { href: "/tutor", label: "AI Tutor", icon: Sparkles },
+  // t-anti-slop-1 (trace 4183f8af): the sparkle glyph is retired product-wide;
+  // MessagesSquare names the chat tutor (one icon, one action — run-014 law).
+  { href: "/tutor", label: "AI Tutor", icon: MessagesSquare },
   { href: "/assistant", label: "Assistant", icon: BookOpenCheck },
   // run-014 (audit F8): Dumbbell — Zap stays the header CTA's glyph; one icon
   // must not name two different actions in the same header.

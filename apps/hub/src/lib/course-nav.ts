@@ -8,11 +8,11 @@ import {
   GraduationCap,
   LayoutDashboard,
   Lightbulb,
+  Library,
   ListChecks,
   ListTree,
   Map,
   ScrollText,
-  Sparkles,
   Speech,
   SquareStack,
   Target,
@@ -125,8 +125,10 @@ export function buildCourseNavGroups(
         // only renders for courses with a registered Seneca bundle under the
         // live flag (courses without a mapping show nothing, never a
         // disabled placeholder).
+        // t-anti-slop-1 (trace 4183f8af): the sparkle glyph is retired
+        // product-wide — Library names a content library.
         ...(data.seneca
-          ? [{ href: `${base}/seneca`, label: "Seneca Resources", icon: Sparkles, badge: data.seneca.total.toLocaleString() }]
+          ? [{ href: `${base}/seneca`, label: "Seneca Resources", icon: Library, badge: data.seneca.total.toLocaleString() }]
           : []),
       ],
     },

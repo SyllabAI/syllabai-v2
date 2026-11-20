@@ -14,7 +14,7 @@
  */
 
 import { useEffect, useState } from "react";
-import { Sparkles, TriangleAlert } from "lucide-react";
+import { TriangleAlert } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
 import {
   Dialog,
@@ -85,7 +85,6 @@ export function ForesightsDialog({
       <DialogContent className="max-h-[88vh] max-w-2xl overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex flex-wrap items-center gap-2 text-lg">
-            <Sparkles className="size-5 text-primary" aria-hidden />
             Readiness (Foresights)
           </DialogTitle>
           <DialogDescription>

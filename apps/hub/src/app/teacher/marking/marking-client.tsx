@@ -42,9 +42,9 @@ import {
   ClipboardList,
   Gauge,
   ListChecks,
+  PenLine,
   RotateCw,
   ShieldCheck,
-  Sparkles,
   Users,
 } from "lucide-react";
 import { api, ApiError } from "@/lib/api";
@@ -605,7 +605,7 @@ export function MarkingConsoleClient() {
                 onClick={recomputeKappa}
                 disabled={actionBusy === "kappa"}
               >
-                <Sparkles className="size-4" aria-hidden="true" />
+                <PenLine className="size-4" aria-hidden="true" />
                 Evaluate κ
               </Button>
             </>
@@ -801,7 +801,7 @@ export function MarkingConsoleClient() {
                           onClick={() => runBatchForGroup(group.paperId)}
                           disabled={actionBusy !== null}
                         >
-                          <Sparkles className="size-4" aria-hidden="true" />
+                          <PenLine className="size-4" aria-hidden="true" />
                           {actionBusy === "batch"
                             ? "Running…"
                             : `Smart Mark ${Math.min(group.count, 50)}`}
@@ -946,7 +946,7 @@ export function MarkingConsoleClient() {
                     onClick={() => runSmartMark(detail.answerId)}
                     disabled={actionBusy !== null}
                   >
-                    <Sparkles className="size-4" aria-hidden="true" />
+                    <PenLine className="size-4" aria-hidden="true" />
                     {actionBusy === "smart" ? "Running…" : "Run Smart Mark"}
                   </Button>
                 </div>

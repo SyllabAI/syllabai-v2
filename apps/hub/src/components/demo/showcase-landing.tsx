@@ -34,7 +34,7 @@
  */
 import { useState } from "react";
 import Link from "next/link";
-import { Atom, ClipboardList, GraduationCap, Loader2, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { Atom, Check, ClipboardList, GraduationCap, Loader2, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { setSession } from "@/lib/api";
 import { announceSessionChange, useIdentity } from "@/lib/identity";
@@ -166,7 +166,7 @@ export function ShowcaseLanding() {
               <ul className="mt-5 flex-1 space-y-2.5 text-sm">
                 {card.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-2.5">
-                    <Sparkles className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+                    <Check className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" aria-hidden />
                     <span className="leading-relaxed">{bullet}</span>
                   </li>
                 ))}

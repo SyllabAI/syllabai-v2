@@ -15,7 +15,7 @@
  *             a popover explaining the pipeline; it never pretends to play.
  */
 import Link from "next/link";
-import { Puzzle, Route, Sparkles } from "lucide-react";
+import { Puzzle, Route } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -48,7 +48,6 @@ export function InteractiveChip({
         className="h-7 gap-1.5 border-primary/60 text-xs text-primary"
       >
         <Link href={href} title={title} aria-label={`Interactive reconstruction of ${paperRef} — ${title}`}>
-          <Sparkles className="size-3.5" aria-hidden />
           Interactive
           {coverageLabel ? (
             <span

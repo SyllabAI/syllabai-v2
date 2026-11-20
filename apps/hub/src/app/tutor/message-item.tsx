@@ -83,7 +83,7 @@ function TypingDots() {
       {[0, 1, 2].map((d) => (
         <span
           key={d}
-          className="size-1.5 animate-bounce motion-reduce:animate-none rounded-full bg-muted-foreground/60"
+          className="size-1.5 animate-pulse motion-reduce:animate-none rounded-full bg-muted-foreground/60"
           style={{ animationDelay: `${d * 140 - 420}ms` }}
         />
       ))}
@@ -242,9 +242,10 @@ export function MessageItem({
 
   return (
     <div className="group flex gap-2.5">
-      {/* the reference's gradient identity avatar (HUB-TUTOR-CLA-LOOK) */}
+      {/* the reference's identity avatar, de-gradiented in t-anti-slop-1
+          (trace 4183f8af) (HUB-TUTOR-CLA-LOOK) */}
       <div
-        className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground"
+        className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground"
         aria-hidden
       >
         <GraduationCap className="size-4" />

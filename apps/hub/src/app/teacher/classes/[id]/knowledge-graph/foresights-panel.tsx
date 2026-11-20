@@ -50,7 +50,6 @@ import {
   ArrowUpRight,
   GraduationCap,
   ShieldAlert,
-  Sparkles,
   Target,
   TriangleAlert,
 } from "lucide-react";
@@ -140,7 +139,6 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
       <div className={cn("rounded-lg border p-4", STATE_CARD[view.classState])}>
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="outline" className={cn("text-2xs", STATE_CHIP[view.classState].className)}>
-            <Sparkles className="mr-1 size-3" aria-hidden />
             {STATE_CHIP[view.classState].label}
           </Badge>
           <Badge variant="outline" className="font-mono text-2xs">
