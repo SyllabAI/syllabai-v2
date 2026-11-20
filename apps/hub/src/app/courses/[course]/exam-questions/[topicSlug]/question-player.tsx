@@ -244,6 +244,35 @@ export function QuestionPlayer({
   // the course is the pilot and the learner is signed in (ADR-029 tranche 4)
   const bridge = useAttemptBridge(course, topicSlug);
 
+  // F-QB-2a (honest re-audit 2026-11-20): /api/ai/mark is probed through a
+  // module-level singleton, and every TypedAnswerWorkspace used to render
+  // its own "AI marking is unavailable right now." line off the same false
+  // probe — a 36-copy wall down a 19-question paper. The player consumes
+  // the SAME probe once and owns the single set-level statement instead
+  // (the W2 UX-3 "single liveness statement" law, applied to the AI-mark
+  // lane). Per-box copy stays only where it is contextual (failure cards
+  // after an explicit mark attempt). The banner hides from sets the core
+  // flow covers: there Smart Mark owns marking and an "unavailable" line
+  // would be a lie.
+  const [aiLaneAvailable, setAiLaneAvailable] = useState<boolean | null>(null);
+  useEffect(() => {
+    let live = true;
+    aiMarkAvailable().then((v) => live && setAiLaneAvailable(v));
+    return () => {
+      live = false;
+    };
+  }, []);
+  // only structured parts ever rendered the per-box line — an all-MCQ set
+  // must not grow a banner for a lane it never shows
+  const hasTypedParts = useMemo(
+    () =>
+      questions.some(
+        (q) => q.parts.some((p) => p.questionType !== "multiple_choice" && p.solutionMd),
+      ),
+    [questions],
+  );
+  const coreCoversSet = bridge.kind === "ready" && Object.keys(bridge.data.questions).length > 0;
+
   const counts = useMemo(() => {
     const c: Record<Difficulty, number> = { all: questions.length, easy: 0, medium: 0, hard: 0 };
     for (const q of questions) {
@@ -419,6 +448,15 @@ export function QuestionPlayer({
     <div className="space-y-5">
       {/* 4CH1 bridge status — one honest line, never a blocker */}
       <BridgeBanner status={bridge} />
+
+      {/* F-QB-2a: the ONE AI-mark availability statement (was one muted line
+          under every answer box — 36 copies on a 19-question paper). */}
+      {aiLaneAvailable === false && hasTypedParts && !coreCoversSet && (
+        <div className="rounded-lg border bg-muted/30 px-4 py-2.5 text-xs leading-relaxed text-muted-foreground">
+          AI marking is unavailable right now — typed answers save in this
+          browser, and self-marking stays available under each question.
+        </div>
+      )}
 
       {/* difficulty tabs + guided practice (SME controls, research §6.2) —
           bank playback ONLY (T-PAPER-PLAYBACK-1): a past paper is a fixed
@@ -1313,8 +1351,11 @@ function TypedAnswerWorkspace({
         {/* UX-2 (Task 38 §6.1): in the core flow the CoreMarkingFlow panel
             below owns the marking story — the legacy lane renders NOTHING
             here, so the card never shows "AI marking is unavailable" right
-            above a live AI-draft button. */}
-        {coreLive ? null : aiAvailable !== false ? (
+            above a live AI-draft button. F-QB-2a: when the probe says the
+            lane is down, the box renders nothing either — the set-level
+            banner above the list is the sole availability statement (the
+            per-box line repeated it once per part). */}
+        {coreLive || aiAvailable === false ? null : (
           <Button size="sm" variant="outline" disabled={!canMark} onClick={runMark} className="gap-1.5 text-xs">
             {mark.kind === "loading" ? (
               <Loader2 className="size-3.5 animate-spin" aria-hidden />
@@ -1323,10 +1364,6 @@ function TypedAnswerWorkspace({
             )}
             Mark my answer
           </Button>
-        ) : (
-          <span className="text-2xs text-muted-foreground">
-            {AI_MARK_UNAVAILABLE}
-          </span>
         )}
         {aiAvailable === true && text.trim().length === 0 && (
           <span className="text-2xs text-muted-foreground">Type an answer first</span>

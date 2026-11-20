@@ -8,6 +8,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { ZoomableFigure } from "@/components/zoomable-figure";
 import { normalizeCorpusMath, sanitizeMathTex } from "@/lib/math-fix";
 import { normalizeCorpusEmphasis } from "@/lib/emphasis-fix";
 import { rehypeKatexMhchem } from "@/lib/rehypeKatexMhchem";
@@ -259,28 +260,16 @@ export function Markdown({
                 </span>
               );
             }
-            // corpus images are hotlinked from the public resources repo
+            // corpus images are hotlinked from the public resources repo —
+            // the official paper scans (tables, structures, apparatus) live
+            // here. F-QB-2b (honest re-audit 2026-11-20): at container width
+            // a 1074px-wide Description/Name table renders ~301px on a phone
+            // (~28% of print) with no way to read it — the figure is now a
+            // tap-to-zoom control (ZoomableFigure: 1:1 pan overlay, Esc/✕
+            // close) with the same wrapper visuals; the dark-theme scan-plate
+            // glare softens inside the component (F-QB-2d).
             if (s.startsWith("https")) {
-              // Full-width natural-aspect figures. Supersedes UX audit
-              // 2026-10-02 #21 (fixed 16:9 object-contain box): that box
-              // reserved layout height to kill image-load CLS, but locked
-              // ~850px-wide SME-Rev / SME-ExamQuestion figures into a 448px
-              // letterboxed frame at ~53% scale. Figures now span the article
-              // column at their intrinsic ratio. Trade-off: layout height is
-              // not reserved, so content below a lazy image shifts once it
-              // loads (a single self-grow mid-document; accepted). If CLS ever
-              // needs re-mitigating, add intrinsic width/height attributes here.
-              return (
-                <span className="mx-auto my-2 block w-full overflow-hidden rounded-md border bg-muted/40">
-                  <img
-                    src={s}
-                    alt={alt ?? ""}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-auto w-full"
-                  />
-                </span>
-              );
+              return <ZoomableFigure src={s} alt={alt ?? ""} />;
             }
             return <span className="text-sm italic text-muted-foreground">{alt}</span>;
           },
@@ -296,8 +285,14 @@ export function Markdown({
           blockquote: ({ node, children }) => {
             const variant = blockquoteVariant(node as HastNode);
             if (!variant) {
+              // The exam "box" (F-QB-1a fix renders corpus boxes through this
+              // branch — dot-separated option lists). F-QB-2d: 6px/12px
+              // padding + text-xs sat snug under the surrounding 14px prose
+              // (T-QVIEW-AUDIT-BCD-1 batch B raised the prose but left the
+              // box behind) — box now reads at the prose size with room to
+              // breathe in multi-line states.
               return (
-                <blockquote className="rounded-r-md border-l-2 border-primary/50 bg-primary/5 px-3 py-1.5 text-xs">
+                <blockquote className="rounded-r-md border-l-2 border-primary/50 bg-primary/5 px-3.5 py-2.5 text-sm">
                   {children}
                 </blockquote>
               );
