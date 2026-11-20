@@ -1,0 +1,21 @@
+{
+  "task": "T-QA-DEF-001",
+  "run": "run-001",
+  "kind": "implementation (defects 4+5) + investigation (1, 2) + disposition (3, 6)",
+  "recorded_utc": "2026-11-20T12:30:00Z",
+  "branch": "t-qa-def-001/fix @ 6f23389c (off origin/main 361a754c; decoupled from the T-QA-ORG-001 branch t-qa-org-002/fix @ 3911c29f which rebuilt cleanly onto the same tip)",
+  "operator_directive": "\"Proceed\" (2026-11-20) — the related-defects list recorded with T-QA-GAPS-001 is the remaining actionable queue",
+  "implemented": {
+    "defect_4_sitemap": "src/app/sitemap.ts (metadata route): 10 static public pages + all 106 course pages via the registry of record content/courses.json (grade-boundaries/seneca/video-map content dirs are non-course assets — the registry excludes them; verified 109 dirs vs 106 registry entries vs 106 census slugs, census ⊆ registry). Origin of record = layout.tsx metadataBase https://www.syllab-ai.com; public/robots.txt gains the matching Sitemap: line. buildSitemapEntries is pure (import-safe outside RSC) and the default export lazy-imports the server-only registry; 3 law tests (absolute URLs, static pages present, 106 courses + gated pages never leak), tsc --noEmit clean, eslint clean.",
+    "defect_5_login_count": "login-client.tsx '94 courses' → '103' (census of record: 103 notes-bearing courses)."
+  },
+  "investigated_no_static_cause": {
+    "defect_1_progress_401": "route mounts alongside working siblings (index.ts:346, global identity.authMiddleware at :205), same requireAuth/getAuth posture as routes/learner/index.ts — statically symmetric. Needs a LIVE repro with the demo token (sandbox has no auth) before any auth-semantics change; do NOT blind-fix.",
+    "defect_2_hydration_418": "no time-based text, no random/locale formatting in server-rendered dashboard paths; localStorage reads are effect-guarded. Needs the live 1-per-load repro (console component stack) to pin the divergent subtree."
+  },
+  "dispositioned": {
+    "defect_6_editor_me_403": "WON'T-FIX BY DESIGN — identity.ts probeEditorCapability is the ADR-044 Phase-1 capability bootstrap: one GET per signed-in session, fail-closed (401/403 → null, no retry storm), already identity-gated. Editor-ness is a grant row, not a session claim; the client cannot know without asking. Removing the console noise would require moving editor-ness into the session payload (API/ADR-044 change), not a client gate.",
+    "defect_3_lapsed_domain": "EXTERNAL/OPS — registrar property, not in-repo. The codebase's origin of record is www.syllab-ai.com; the sitemap now uses it consistently."
+  },
+  "environment_notes": "sandbox recycled again this turn (branches rebuilt from patches third time; origin ref re-fetched 4008e6ce→361a754c); node_modules re-installed twice (990 packages)"
+}

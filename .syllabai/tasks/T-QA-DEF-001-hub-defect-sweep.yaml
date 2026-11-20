@@ -1,0 +1,56 @@
+id: T-QA-DEF-001
+title: "Related QA defect sweep: sitemap 404, stale login count, editor/me 403, /progress 401, dashboard #418, lapsed domain"
+status: OPEN
+type: defect-sweep (hub lane + investigation)
+wave: pending-backlog
+deps: []
+execution_record: >
+    Defects 1-6 were recorded 2026-11-20 in
+    docs/PENDING-selector-content-gaps-2026-11-20.md ("related open QA defects,
+    separate lanes") from the QA session's live repro. UPDATE 2026-11-20
+    (run-001, operator directive "Proceed"): swept all six from code.
+    DISPOSITIONS —
+    (4) /sitemap.xml 404 + no Sitemap: in robots.txt → FIXED (commit on
+    t-qa-def-001/fix): src/app/sitemap.ts metadata route (10 static public
+    pages + all 106 course pages from the registry of record
+    content/courses.json; the grade-boundaries/seneca/video-map content dirs
+    are non-course assets), origin = layout.tsx's metadataBase
+    (https://www.syllab-ai.com), robots.txt gains the matching Sitemap: line;
+    pure buildSitemapEntries + 3 law tests, tsc + eslint clean.
+    (5) Stale login count → FIXED same commit: "94 courses" → "103" (the
+    census of record counts 103 notes-bearing courses).
+    (6) editor/me 403 auto-probe → WON'T-FIX BY DESIGN: identity.ts's
+    probeEditorCapability is the ADR-044 Phase-1 capability bootstrap — one
+    GET per signed-in session, fail-closed (401/403 → null, no retry storm),
+    already identity-gated (signed-out sessions never fire it). Editor-ness
+    is a grant row, not a session claim, so the client cannot know without
+    asking; the 403 is the designed answer for non-editors, not a bug. The
+    console-noise complaint could only be removed by moving editor-ness into
+    the session payload — an API/ADR-044 change, not a client gate.
+    (1) GET /api/v1/learners/me/progress 401 → INVESTIGATED, NO STATIC ROOT
+    CAUSE: the route mounts alongside the working siblings
+    (index.ts:346, after the global identity.authMiddleware at :205), uses
+    the SAME requireAuth/getAuth posture as routes/learner/index.ts (agenda/
+    courses 200). Statically symmetric. Needs a LIVE repro with the demo
+    token (sandbox has no auth) before any auth-semantics change — do NOT
+    blind-fix.
+    (2) React #418 on /dashboard → INVESTIGATED, NO STATIC CULPRIT: no
+    time-based text, no random/locale formatting in server-rendered paths;
+    the localStorage reads in dashboard-shell.tsx are effect-guarded. Needs
+    the live 1-per-load repro (console component stack) to pin the divergent
+    subtree — do NOT guess-fix.
+    (3) syllabai.com parked for sale → EXTERNAL/OPS: DNS registrar property,
+    not fixable in-repo. NOTE: the codebase's origin of record is
+    www.syllab-ai.com (layout.tsx metadataBase) — the sitemap now uses it.
+    Card stays OPEN until (1) and (2) get live repros and the branch lands
+    (push blocked in the QA sandbox: apply download/T-QA-DEF-001/*.patch
+    with git am, or push the branch).
+base:
+  repo: "syllabai-v2 @ 361a754c (origin/main at fix time)"
+basis: >
+  Operator directive 2026-11-20 ("Proceed") after T-QA-ORG-001 was fully
+  dispositioned and T-QA-GAPS-001 triaged: the six related defects recorded
+  with the GAPS census are the remaining actionable queue. Evidence:
+  identity.ts (probe + settlement law), apps/api/src/index.ts mounting +
+  middleware/auth.ts (progress 401 investigation), apps/hub/src/app/dashboard
+  (#418 sweep), layout.tsx metadataBase, content/courses.json registry.
