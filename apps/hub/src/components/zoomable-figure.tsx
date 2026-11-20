@@ -34,6 +34,20 @@ export function ZoomableFigure({
 }) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  // focus return: effect-driven (runs AFTER the overlay unmounts). A RAF
+  // inside close() races the commit — the autofocus'd ✕ unmounts and drops
+  // focus to <body> after the RAF already fired.
+  const wasOpen = useRef(false);
+  useEffect(() => {
+    if (open) {
+      wasOpen.current = true;
+      return;
+    }
+    if (wasOpen.current) {
+      wasOpen.current = false;
+      triggerRef.current?.focus({ preventScroll: true });
+    }
+  }, [open]);
 
   // Esc closes; the overlay locks body scroll while open and restores it.
   useEffect(() => {
@@ -52,8 +66,6 @@ export function ZoomableFigure({
 
   const close = () => {
     setOpen(false);
-    // focus returns to the figure that opened the overlay
-    requestAnimationFrame(() => triggerRef.current?.focus({ preventScroll: true }));
   };
 
   return (
