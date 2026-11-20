@@ -267,7 +267,7 @@ jobs:
       - name: LIVE WIRE PROOF (GET /editor/me — 403 is the expected grant-less verdict)
         run: |
           set -euo pipefail
-          API="https://syllabai-v2.vercel.app/api/v1"
+          API="https://api.syllab-ai.com/api/v1"
           WEB="https://www.syllab-ai.com"
           STUDENT=$(curl -sf "${WEB}/api/demo/login?role=student" | jq -r '.accessToken')
           [ -n "$STUDENT" ] && [ "$STUDENT" != "null" ] || { echo "demo student mint failed"; exit 1; }
